@@ -4,7 +4,7 @@
 set -o nounset -o errexit -o pipefail
 
 # Update this with the name of the provider
-PROVIDER_NAME="vault"
+PROVIDER_NAME="signalfx"
 
 ROOT=$(dirname $0)/..
 WORK_PATH=$(mktemp -d)
@@ -30,7 +30,7 @@ tar -czf ${PLUGIN_PACKAGE_PATH} -C ${WORK_PATH} .
 # rel.pulumi.com is in our production account, so assume that role first
 CREDS_JSON=$(aws sts assume-role \
                  --role-arn "arn:aws:iam::058607598222:role/UploadPulumiReleases" \
-                 --role-session-name "upload-plugin-pulumi-resource-vault" \
+                 --role-session-name "upload-plugin-pulumi-resource-signalfx" \
                  --external-id "upload-pulumi-release")
 
 # Use the credentials we just assumed
