@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to support go 1.13.x
+* Upgrade to v4.10.1 of the SignalFX Terraform Provider
 
 ---
 
