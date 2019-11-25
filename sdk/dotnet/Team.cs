@@ -23,7 +23,7 @@ namespace Pulumi.Signalfx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Members of team team
+        /// List of user IDs to include in the team.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Signalfx
         private InputList<string>? _members;
 
         /// <summary>
-        /// Members of team team
+        /// List of user IDs to include in the team.
         /// </summary>
         public InputList<string> Members
         {
@@ -235,7 +235,7 @@ namespace Pulumi.Signalfx
         private InputList<string>? _members;
 
         /// <summary>
-        /// Members of team team
+        /// List of user IDs to include in the team.
         /// </summary>
         public InputList<string> Members
         {

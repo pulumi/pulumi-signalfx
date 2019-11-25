@@ -15,6 +15,9 @@ class Team(pulumi.CustomResource):
     Description of the team.
     """
     members: pulumi.Output[list]
+    """
+    List of user IDs to include in the team.
+    """
     name: pulumi.Output[str]
     """
     Name of the team.
@@ -53,6 +56,7 @@ class Team(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
+        :param pulumi.Input[list] members: List of user IDs to include in the team.
         :param pulumi.Input[str] name: Name of the team.
         :param pulumi.Input[list] notifications_criticals: Where to send notifications for critical alerts
         :param pulumi.Input[list] notifications_defaults: Where to send notifications for default alerts
@@ -106,6 +110,7 @@ class Team(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
+        :param pulumi.Input[list] members: List of user IDs to include in the team.
         :param pulumi.Input[str] name: Name of the team.
         :param pulumi.Input[list] notifications_criticals: Where to send notifications for critical alerts
         :param pulumi.Input[list] notifications_defaults: Where to send notifications for default alerts

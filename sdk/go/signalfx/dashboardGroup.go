@@ -21,11 +21,15 @@ func NewDashboardGroup(ctx *pulumi.Context,
 	name string, args *DashboardGroupArgs, opts ...pulumi.ResourceOpt) (*DashboardGroup, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["authorizedWriterTeams"] = nil
+		inputs["authorizedWriterUsers"] = nil
 		inputs["dashboards"] = nil
 		inputs["description"] = nil
 		inputs["name"] = nil
 		inputs["teams"] = nil
 	} else {
+		inputs["authorizedWriterTeams"] = args.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = args.AuthorizedWriterUsers
 		inputs["dashboards"] = args.Dashboards
 		inputs["description"] = args.Description
 		inputs["name"] = args.Name
@@ -44,6 +48,8 @@ func GetDashboardGroup(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DashboardGroupState, opts ...pulumi.ResourceOpt) (*DashboardGroup, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["authorizedWriterTeams"] = state.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = state.AuthorizedWriterUsers
 		inputs["dashboards"] = state.Dashboards
 		inputs["description"] = state.Description
 		inputs["name"] = state.Name
@@ -64,6 +70,16 @@ func (r *DashboardGroup) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *DashboardGroup) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+func (r *DashboardGroup) AuthorizedWriterTeams() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["authorizedWriterTeams"])
+}
+
+// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+func (r *DashboardGroup) AuthorizedWriterUsers() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
 }
 
 // [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
@@ -88,6 +104,10 @@ func (r *DashboardGroup) Teams() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering DashboardGroup resources.
 type DashboardGroupState struct {
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	AuthorizedWriterUsers interface{}
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards interface{}
 	// Description of the dashboard group.
@@ -100,6 +120,10 @@ type DashboardGroupState struct {
 
 // The set of arguments for constructing a DashboardGroup resource.
 type DashboardGroupArgs struct {
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	AuthorizedWriterUsers interface{}
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards interface{}
 	// Description of the dashboard group.

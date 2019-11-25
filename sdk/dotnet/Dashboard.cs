@@ -13,6 +13,18 @@ namespace Pulumi.Signalfx
     public partial class Dashboard : Pulumi.CustomResource
     {
         /// <summary>
+        /// Team IDs that have write access to this dashboard
+        /// </summary>
+        [Output("authorizedWriterTeams")]
+        public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
+
+        /// <summary>
+        /// User IDs that have write access to this dashboard
+        /// </summary>
+        [Output("authorizedWriterUsers")]
+        public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
+
+        /// <summary>
         /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
         [Output("charts")]
@@ -148,6 +160,30 @@ namespace Pulumi.Signalfx
 
     public sealed class DashboardArgs : Pulumi.ResourceArgs
     {
+        [Input("authorizedWriterTeams")]
+        private InputList<string>? _authorizedWriterTeams;
+
+        /// <summary>
+        /// Team IDs that have write access to this dashboard
+        /// </summary>
+        public InputList<string> AuthorizedWriterTeams
+        {
+            get => _authorizedWriterTeams ?? (_authorizedWriterTeams = new InputList<string>());
+            set => _authorizedWriterTeams = value;
+        }
+
+        [Input("authorizedWriterUsers")]
+        private InputList<string>? _authorizedWriterUsers;
+
+        /// <summary>
+        /// User IDs that have write access to this dashboard
+        /// </summary>
+        public InputList<string> AuthorizedWriterUsers
+        {
+            get => _authorizedWriterUsers ?? (_authorizedWriterUsers = new InputList<string>());
+            set => _authorizedWriterUsers = value;
+        }
+
         [Input("charts")]
         private InputList<Inputs.DashboardChartsArgs>? _charts;
 
@@ -281,6 +317,30 @@ namespace Pulumi.Signalfx
 
     public sealed class DashboardState : Pulumi.ResourceArgs
     {
+        [Input("authorizedWriterTeams")]
+        private InputList<string>? _authorizedWriterTeams;
+
+        /// <summary>
+        /// Team IDs that have write access to this dashboard
+        /// </summary>
+        public InputList<string> AuthorizedWriterTeams
+        {
+            get => _authorizedWriterTeams ?? (_authorizedWriterTeams = new InputList<string>());
+            set => _authorizedWriterTeams = value;
+        }
+
+        [Input("authorizedWriterUsers")]
+        private InputList<string>? _authorizedWriterUsers;
+
+        /// <summary>
+        /// User IDs that have write access to this dashboard
+        /// </summary>
+        public InputList<string> AuthorizedWriterUsers
+        {
+            get => _authorizedWriterUsers ?? (_authorizedWriterUsers = new InputList<string>());
+            set => _authorizedWriterUsers = value;
+        }
+
         [Input("charts")]
         private InputList<Inputs.DashboardChartsGetArgs>? _charts;
 

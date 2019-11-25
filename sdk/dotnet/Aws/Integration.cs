@@ -89,7 +89,7 @@ namespace Pulumi.Signalfx.Aws
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
-        /// Role ARN that you add to an existing AWS integration object.
+        /// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         /// </summary>
         [Output("roleArn")]
         public Output<string?> RoleArn { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.Signalfx.Aws
         }
 
         /// <summary>
-        /// Role ARN that you add to an existing AWS integration object.
+        /// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -364,7 +364,7 @@ namespace Pulumi.Signalfx.Aws
         }
 
         /// <summary>
-        /// Role ARN that you add to an existing AWS integration object.
+        /// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }

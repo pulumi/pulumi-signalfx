@@ -21,6 +21,8 @@ func NewDashboard(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["authorizedWriterTeams"] = nil
+		inputs["authorizedWriterUsers"] = nil
 		inputs["charts"] = nil
 		inputs["chartsResolution"] = nil
 		inputs["columns"] = nil
@@ -36,6 +38,8 @@ func NewDashboard(ctx *pulumi.Context,
 		inputs["timeRange"] = nil
 		inputs["variables"] = nil
 	} else {
+		inputs["authorizedWriterTeams"] = args.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = args.AuthorizedWriterUsers
 		inputs["charts"] = args.Charts
 		inputs["chartsResolution"] = args.ChartsResolution
 		inputs["columns"] = args.Columns
@@ -65,6 +69,8 @@ func GetDashboard(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DashboardState, opts ...pulumi.ResourceOpt) (*Dashboard, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["authorizedWriterTeams"] = state.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = state.AuthorizedWriterUsers
 		inputs["charts"] = state.Charts
 		inputs["chartsResolution"] = state.ChartsResolution
 		inputs["columns"] = state.Columns
@@ -96,6 +102,16 @@ func (r *Dashboard) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *Dashboard) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Team IDs that have write access to this dashboard
+func (r *Dashboard) AuthorizedWriterTeams() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["authorizedWriterTeams"])
+}
+
+// User IDs that have write access to this dashboard
+func (r *Dashboard) AuthorizedWriterUsers() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
 }
 
 // Chart ID and layout information for the charts in the dashboard.
@@ -175,6 +191,10 @@ func (r *Dashboard) Variables() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering Dashboard resources.
 type DashboardState struct {
+	// Team IDs that have write access to this dashboard
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this dashboard
+	AuthorizedWriterUsers interface{}
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts interface{}
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
@@ -209,6 +229,10 @@ type DashboardState struct {
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
+	// Team IDs that have write access to this dashboard
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this dashboard
+	AuthorizedWriterUsers interface{}
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts interface{}
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.

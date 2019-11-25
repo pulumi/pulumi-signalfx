@@ -164,7 +164,7 @@ func (r *Integration) Regions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["regions"])
 }
 
-// Role ARN that you add to an existing AWS integration object.
+// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 func (r *Integration) RoleArn() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["roleArn"])
 }
@@ -203,7 +203,7 @@ type IntegrationState struct {
 	PollRate interface{}
 	// List of AWS regions that SignalFx should monitor.
 	Regions interface{}
-	// Role ARN that you add to an existing AWS integration object.
+	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn interface{}
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
 	Services interface{}
@@ -235,7 +235,7 @@ type IntegrationArgs struct {
 	PollRate interface{}
 	// List of AWS regions that SignalFx should monitor.
 	Regions interface{}
-	// Role ARN that you add to an existing AWS integration object.
+	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn interface{}
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
 	Services interface{}

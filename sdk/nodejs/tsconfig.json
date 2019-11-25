@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "alertMutingRule.ts",
         "aws/externalIntegration.ts",
         "aws/index.ts",
         "aws/integration.ts",
@@ -29,6 +30,8 @@
         "gcp/integration.ts",
         "heatmapChart.ts",
         "index.ts",
+        "jira/index.ts",
+        "jira/integration.ts",
         "listChart.ts",
         "opsgenie/index.ts",
         "opsgenie/integration.ts",

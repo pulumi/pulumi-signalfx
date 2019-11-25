@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     }],
  *     pollRate: 300,
  *     regions: ["us-east-1"],
- *     roleArn: awsSfxRole.id,
+ *     roleArn: awsSfxRole.arn,
  * });
  * ```
  *

@@ -7,107 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a SignalFx detector resource. This can be used to create and manage detectors.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * const config = new pulumi.Config();
- * const clusters = config.get("clusters") || [
- *     "clusterA",
- *     "clusterB",
- * ];
- * 
- * const applicationDelay: signalfx.Detector[] = [];
- * for (let i = 0; i < clusters.length; i++) {
- *     applicationDelay.push(new signalfx.Detector(`application_delay-${i}`, {
- *         description: `your application is slow - ${clusters[i]}`,
- *         maxDelay: 30,
- *         programText: `    signal = data('app.delay', filter('cluster','${clusters[i]}'), extrapolation='last_value', maxExtrapolations=5).max()
- *     detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
- *     detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
- * `,
- *         rules: [
- *             {
- *                 description: "maximum > 60 for 5m",
- *                 detectLabel: "Processing old messages 5m",
- *                 notifications: ["Email,foo-alerts@bar.com"],
- *                 severity: "Warning",
- *             },
- *             {
- *                 description: "maximum > 60 for 30m",
- *                 detectLabel: "Processing old messages 30m",
- *                 notifications: ["Email,foo-alerts@bar.com"],
- *                 severity: "Critical",
- *             },
- *         ],
- *     }));
- * }
- * ```
- * 
- * ## Notification Format
- * 
- * As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * This will likely be changed in a future iteration of the provider. See [SignalFX Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
- * 
- * ### Email
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * ### Opsgenie
- * 
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * ### PagerDuty
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * ### Slack
- * 
- * Include the `#` on the channel name!
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * ### Team
- * 
- * Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * ### Team
- * 
- * Sends an email to every member of a team.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * ### Webhook
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/detector.html.markdown.
  */
 export class Detector extends pulumi.CustomResource {
@@ -137,6 +36,14 @@ export class Detector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Detector.__pulumiType;
     }
 
+    /**
+     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     */
+    public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
+    /**
+     * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     */
+    public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
      * Description of the detector.
      */
@@ -202,6 +109,8 @@ export class Detector extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DetectorState | undefined;
+            inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
+            inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disableSampling"] = state ? state.disableSampling : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
@@ -223,6 +132,8 @@ export class Detector extends pulumi.CustomResource {
             if (!args || args.rules === undefined) {
                 throw new Error("Missing required property 'rules'");
             }
+            inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
+            inputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disableSampling"] = args ? args.disableSampling : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
@@ -252,6 +163,14 @@ export class Detector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Detector resources.
  */
 export interface DetectorState {
+    /**
+     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the detector.
      */
@@ -310,6 +229,14 @@ export interface DetectorState {
  * The set of arguments for constructing a Detector resource.
  */
 export interface DetectorArgs {
+    /**
+     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the detector.
      */

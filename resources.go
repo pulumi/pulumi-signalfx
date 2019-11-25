@@ -35,6 +35,7 @@ const (
 	awsMod       = "aws"
 	azureMod     = "azure"
 	gcpMod       = "gcp"
+	jiraMod      = "jira"
 	opsgenieMod  = "opsgenie"
 	pagerdutyMod = "pagerduty"
 	slackMod     = "slack"
@@ -91,6 +92,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_team":               {Tok: makeResource(mainMod, "Team")},
 			"signalfx_text_chart":         {Tok: makeResource(mainMod, "TextChart")},
 			"signalfx_time_chart":         {Tok: makeResource(mainMod, "TimeChart")},
+			"signalfx_alert_muting_rule":  {Tok: makeResource(mainMod, "AlertMutingRule")},
 
 			"signalfx_aws_external_integration": {Tok: makeResource(awsMod, "ExternalIntegration")},
 			"signalfx_aws_integration":          {Tok: makeResource(awsMod, "Integration")},
@@ -107,6 +109,8 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_slack_integration": {Tok: makeResource(slackMod, "Integration")},
 
 			"signalfx_victor_ops_integration": {Tok: makeResource(victoropsMod, "Integration")},
+
+			"signalfx_jira_integration": {Tok: makeResource(jiraMod, "Integration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

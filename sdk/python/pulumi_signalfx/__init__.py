@@ -4,12 +4,13 @@
 
 import importlib
 # Make subpackages available:
-__all__ = ['aws', 'azure', 'config', 'gcp', 'opsgenie', 'pagerduty', 'slack', 'victorops']
+__all__ = ['aws', 'azure', 'config', 'gcp', 'jira', 'opsgenie', 'pagerduty', 'slack', 'victorops']
 for pkg in __all__:
     if pkg != 'config':
         importlib.import_module(f'{__name__}.{pkg}')
 
 # Export this package's modules as members:
+from .alert_muting_rule import *
 from .dashboard import *
 from .dashboard_group import *
 from .detector import *

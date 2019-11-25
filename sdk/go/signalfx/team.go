@@ -88,7 +88,7 @@ func (r *Team) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// Members of team team
+// List of user IDs to include in the team.
 func (r *Team) Members() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["members"])
 }
@@ -137,7 +137,7 @@ func (r *Team) Url() *pulumi.StringOutput {
 type TeamState struct {
 	// Description of the team.
 	Description interface{}
-	// Members of team team
+	// List of user IDs to include in the team.
 	Members interface{}
 	// Name of the team.
 	Name interface{}
@@ -161,7 +161,7 @@ type TeamState struct {
 type TeamArgs struct {
 	// Description of the team.
 	Description interface{}
-	// Members of team team
+	// List of user IDs to include in the team.
 	Members interface{}
 	// Name of the team.
 	Name interface{}
