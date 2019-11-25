@@ -61,7 +61,7 @@ namespace Pulumi.Signalfx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DashboardGroup(string name, DashboardGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:index/dashboardGroup:DashboardGroup", name, args, MakeResourceOptions(options, ""))
+            : base("signalfx:index/dashboardGroup:DashboardGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

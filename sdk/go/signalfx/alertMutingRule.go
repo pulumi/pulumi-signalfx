@@ -72,42 +72,42 @@ func GetAlertMutingRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AlertMutingRule) URN() *pulumi.URNOutput {
+func (r *AlertMutingRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AlertMutingRule) ID() *pulumi.IDOutput {
+func (r *AlertMutingRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The description for this muting rule
-func (r *AlertMutingRule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *AlertMutingRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A convenience attribute that associated this muting rule with specific detector ids.
-func (r *AlertMutingRule) Detectors() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["detectors"])
+func (r *AlertMutingRule) Detectors() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["detectors"])
 }
 
-func (r *AlertMutingRule) EffectiveStartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["effectiveStartTime"])
+func (r *AlertMutingRule) EffectiveStartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["effectiveStartTime"])
 }
 
 // Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
-func (r *AlertMutingRule) Filters() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["filters"])
+func (r *AlertMutingRule) Filters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["filters"])
 }
 
 // Starting time of an alert muting rule as a Unit time stamp in seconds.
-func (r *AlertMutingRule) StartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startTime"])
+func (r *AlertMutingRule) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
 }
 
 // Starting time of an alert muting rule as a Unix time stamp in seconds.
-func (r *AlertMutingRule) StopTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["stopTime"])
+func (r *AlertMutingRule) StopTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["stopTime"])
 }
 
 // Input properties used for looking up and filtering AlertMutingRule resources.

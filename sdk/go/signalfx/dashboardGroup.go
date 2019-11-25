@@ -63,43 +63,43 @@ func GetDashboardGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *DashboardGroup) URN() *pulumi.URNOutput {
+func (r *DashboardGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *DashboardGroup) ID() *pulumi.IDOutput {
+func (r *DashboardGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
-func (r *DashboardGroup) AuthorizedWriterTeams() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["authorizedWriterTeams"])
+func (r *DashboardGroup) AuthorizedWriterTeams() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterTeams"])
 }
 
 // User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
-func (r *DashboardGroup) AuthorizedWriterUsers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
+func (r *DashboardGroup) AuthorizedWriterUsers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
 }
 
 // [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-func (r *DashboardGroup) Dashboards() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["dashboards"])
+func (r *DashboardGroup) Dashboards() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["dashboards"])
 }
 
 // Description of the dashboard group.
-func (r *DashboardGroup) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *DashboardGroup) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Name of the dashboard group.
-func (r *DashboardGroup) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *DashboardGroup) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Team IDs to associate the dashboard group to.
-func (r *DashboardGroup) Teams() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["teams"])
+func (r *DashboardGroup) Teams() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["teams"])
 }
 
 // Input properties used for looking up and filtering DashboardGroup resources.

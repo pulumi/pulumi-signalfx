@@ -100,73 +100,73 @@ func GetIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Integration) URN() *pulumi.URNOutput {
+func (r *Integration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Integration) ID() *pulumi.IDOutput {
+func (r *Integration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The API token for the user email
-func (r *Integration) ApiToken() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["apiToken"])
+func (r *Integration) ApiToken() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["apiToken"])
 }
 
 // Jira display name for the assignee.
-func (r *Integration) AssigneeDisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["assigneeDisplayName"])
+func (r *Integration) AssigneeDisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["assigneeDisplayName"])
 }
 
 // Jira user name for the assignee.
-func (r *Integration) AssigneeName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["assigneeName"])
+func (r *Integration) AssigneeName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["assigneeName"])
 }
 
 // Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
-func (r *Integration) AuthMethod() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["authMethod"])
+func (r *Integration) AuthMethod() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["authMethod"])
 }
 
 // Base URL of the Jira instance that's integrated with SignalFx.
-func (r *Integration) BaseUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["baseUrl"])
+func (r *Integration) BaseUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["baseUrl"])
 }
 
 // Whether the integration is enabled.
-func (r *Integration) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Integration) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-func (r *Integration) IssueType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["issueType"])
+func (r *Integration) IssueType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["issueType"])
 }
 
 // Name of the integration.
-func (r *Integration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Integration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Password used to authenticate the Jira integration.
-func (r *Integration) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *Integration) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
-func (r *Integration) ProjectKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["projectKey"])
+func (r *Integration) ProjectKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["projectKey"])
 }
 
 // Email address used to authenticate the Jira integration.
-func (r *Integration) UserEmail() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userEmail"])
+func (r *Integration) UserEmail() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userEmail"])
 }
 
 // User name used to authenticate the Jira integration.
-func (r *Integration) Username() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["username"])
+func (r *Integration) Username() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["username"])
 }
 
 // Input properties used for looking up and filtering Integration resources.

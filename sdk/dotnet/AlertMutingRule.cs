@@ -58,7 +58,7 @@ namespace Pulumi.Signalfx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AlertMutingRule(string name, AlertMutingRuleArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/alertMutingRule:AlertMutingRule", name, args, MakeResourceOptions(options, ""))
+            : base("signalfx:index/alertMutingRule:AlertMutingRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -39,7 +39,7 @@ namespace Pulumi.Signalfx.Aws
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TokenIntegration(string name, TokenIntegrationArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:aws/tokenIntegration:TokenIntegration", name, args, MakeResourceOptions(options, ""))
+            : base("signalfx:aws/tokenIntegration:TokenIntegration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

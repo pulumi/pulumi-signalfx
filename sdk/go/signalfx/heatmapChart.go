@@ -88,83 +88,83 @@ func GetHeatmapChart(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *HeatmapChart) URN() *pulumi.URNOutput {
+func (r *HeatmapChart) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *HeatmapChart) ID() *pulumi.IDOutput {
+func (r *HeatmapChart) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-func (r *HeatmapChart) ColorRange() *pulumi.Output {
+func (r *HeatmapChart) ColorRange() pulumi.Output {
 	return r.s.State["colorRange"]
 }
 
 // Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-func (r *HeatmapChart) ColorScales() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["colorScales"])
+func (r *HeatmapChart) ColorScales() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["colorScales"])
 }
 
 // Description of the chart.
-func (r *HeatmapChart) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *HeatmapChart) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-func (r *HeatmapChart) DisableSampling() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableSampling"])
+func (r *HeatmapChart) DisableSampling() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableSampling"])
 }
 
 // Properties to group by in the heatmap (in nesting order).
-func (r *HeatmapChart) GroupBies() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["groupBies"])
+func (r *HeatmapChart) GroupBies() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["groupBies"])
 }
 
 // Whether to show the timestamp in the chart. `false` by default.
-func (r *HeatmapChart) HideTimestamp() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["hideTimestamp"])
+func (r *HeatmapChart) HideTimestamp() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["hideTimestamp"])
 }
 
 // How long (in seconds) to wait for late datapoints.
-func (r *HeatmapChart) MaxDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxDelay"])
+func (r *HeatmapChart) MaxDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxDelay"])
 }
 
 // The minimum resolution (in seconds) to use for computing the underlying program.
-func (r *HeatmapChart) MinimumResolution() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minimumResolution"])
+func (r *HeatmapChart) MinimumResolution() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minimumResolution"])
 }
 
 // Name of the chart.
-func (r *HeatmapChart) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *HeatmapChart) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-func (r *HeatmapChart) ProgramText() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["programText"])
+func (r *HeatmapChart) ProgramText() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["programText"])
 }
 
 // How often (in seconds) to refresh the values of the heatmap.
-func (r *HeatmapChart) RefreshInterval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["refreshInterval"])
+func (r *HeatmapChart) RefreshInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["refreshInterval"])
 }
 
 // The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
-func (r *HeatmapChart) SortBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sortBy"])
+func (r *HeatmapChart) SortBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sortBy"])
 }
 
 // Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-func (r *HeatmapChart) UnitPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["unitPrefix"])
+func (r *HeatmapChart) UnitPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["unitPrefix"])
 }
 
 // URL of the chart
-func (r *HeatmapChart) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *HeatmapChart) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering HeatmapChart resources.

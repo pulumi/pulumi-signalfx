@@ -67,48 +67,48 @@ func GetEventFeedChart(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *EventFeedChart) URN() *pulumi.URNOutput {
+func (r *EventFeedChart) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *EventFeedChart) ID() *pulumi.IDOutput {
+func (r *EventFeedChart) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Description of the text note.
-func (r *EventFeedChart) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *EventFeedChart) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-func (r *EventFeedChart) EndTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["endTime"])
+func (r *EventFeedChart) EndTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["endTime"])
 }
 
 // Name of the text note.
-func (r *EventFeedChart) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *EventFeedChart) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-func (r *EventFeedChart) ProgramText() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["programText"])
+func (r *EventFeedChart) ProgramText() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["programText"])
 }
 
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-func (r *EventFeedChart) StartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startTime"])
+func (r *EventFeedChart) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
 }
 
 // From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
-func (r *EventFeedChart) TimeRange() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeRange"])
+func (r *EventFeedChart) TimeRange() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeRange"])
 }
 
 // URL of the chart
-func (r *EventFeedChart) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *EventFeedChart) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering EventFeedChart resources.

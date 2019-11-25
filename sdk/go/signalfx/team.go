@@ -74,63 +74,63 @@ func GetTeam(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Team) URN() *pulumi.URNOutput {
+func (r *Team) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Team) ID() *pulumi.IDOutput {
+func (r *Team) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Description of the team.
-func (r *Team) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Team) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // List of user IDs to include in the team.
-func (r *Team) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *Team) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // Name of the team.
-func (r *Team) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Team) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Where to send notifications for critical alerts
-func (r *Team) NotificationsCriticals() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationsCriticals"])
+func (r *Team) NotificationsCriticals() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationsCriticals"])
 }
 
 // Where to send notifications for default alerts
-func (r *Team) NotificationsDefaults() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationsDefaults"])
+func (r *Team) NotificationsDefaults() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationsDefaults"])
 }
 
 // Where to send notifications for info alerts
-func (r *Team) NotificationsInfos() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationsInfos"])
+func (r *Team) NotificationsInfos() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationsInfos"])
 }
 
 // Where to send notifications for major alerts
-func (r *Team) NotificationsMajors() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationsMajors"])
+func (r *Team) NotificationsMajors() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationsMajors"])
 }
 
 // Where to send notifications for minor alerts
-func (r *Team) NotificationsMinors() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationsMinors"])
+func (r *Team) NotificationsMinors() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationsMinors"])
 }
 
 // Where to send notifications for warning alerts
-func (r *Team) NotificationsWarnings() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notificationsWarnings"])
+func (r *Team) NotificationsWarnings() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notificationsWarnings"])
 }
 
 // URL of the team
-func (r *Team) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *Team) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering Team resources.

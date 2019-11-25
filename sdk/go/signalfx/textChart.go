@@ -58,33 +58,33 @@ func GetTextChart(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TextChart) URN() *pulumi.URNOutput {
+func (r *TextChart) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TextChart) ID() *pulumi.IDOutput {
+func (r *TextChart) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Description of the text note.
-func (r *TextChart) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *TextChart) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Markdown text to display.
-func (r *TextChart) Markdown() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["markdown"])
+func (r *TextChart) Markdown() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["markdown"])
 }
 
 // Name of the text note.
-func (r *TextChart) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TextChart) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // URL of the chart
-func (r *TextChart) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *TextChart) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering TextChart resources.

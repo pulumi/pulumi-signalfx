@@ -85,7 +85,7 @@ namespace Pulumi.Signalfx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Team(string name, TeamArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:index/team:Team", name, args, MakeResourceOptions(options, ""))
+            : base("signalfx:index/team:Team", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

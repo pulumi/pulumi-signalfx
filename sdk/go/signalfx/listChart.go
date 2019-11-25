@@ -98,100 +98,100 @@ func GetListChart(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ListChart) URN() *pulumi.URNOutput {
+func (r *ListChart) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ListChart) ID() *pulumi.IDOutput {
+func (r *ListChart) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-func (r *ListChart) ColorBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["colorBy"])
+func (r *ListChart) ColorBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["colorBy"])
 }
 
 // Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-func (r *ListChart) ColorScales() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["colorScales"])
+func (r *ListChart) ColorScales() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["colorScales"])
 }
 
 // Description of the chart.
-func (r *ListChart) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *ListChart) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-func (r *ListChart) DisableSampling() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableSampling"])
+func (r *ListChart) DisableSampling() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableSampling"])
 }
 
 // Latest timestamp the resource was updated
-func (r *ListChart) LastUpdated() *pulumi.Float64Output {
-	return (*pulumi.Float64Output)(r.s.State["lastUpdated"])
+func (r *ListChart) LastUpdated() pulumi.Float64Output {
+	return (pulumi.Float64Output)(r.s.State["lastUpdated"])
 }
 
 // List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
-func (r *ListChart) LegendFieldsToHides() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["legendFieldsToHides"])
+func (r *ListChart) LegendFieldsToHides() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["legendFieldsToHides"])
 }
 
 // List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 // * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 // * `enabled` True or False depending on if you want the property to be shown or hidden.
-func (r *ListChart) LegendOptionsFields() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["legendOptionsFields"])
+func (r *ListChart) LegendOptionsFields() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["legendOptionsFields"])
 }
 
 // How long (in seconds) to wait for late datapoints.
-func (r *ListChart) MaxDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxDelay"])
+func (r *ListChart) MaxDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxDelay"])
 }
 
 // Maximum number of digits to display when rounding values up or down.
-func (r *ListChart) MaxPrecision() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxPrecision"])
+func (r *ListChart) MaxPrecision() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxPrecision"])
 }
 
 // Name of the chart.
-func (r *ListChart) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ListChart) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-func (r *ListChart) ProgramText() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["programText"])
+func (r *ListChart) ProgramText() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["programText"])
 }
 
 // How often (in seconds) to refresh the values of the list.
-func (r *ListChart) RefreshInterval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["refreshInterval"])
+func (r *ListChart) RefreshInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["refreshInterval"])
 }
 
 // The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
-func (r *ListChart) SecondaryVisualization() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["secondaryVisualization"])
+func (r *ListChart) SecondaryVisualization() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["secondaryVisualization"])
 }
 
 // The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
-func (r *ListChart) SortBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sortBy"])
+func (r *ListChart) SortBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sortBy"])
 }
 
 // Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-func (r *ListChart) UnitPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["unitPrefix"])
+func (r *ListChart) UnitPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["unitPrefix"])
 }
 
 // URL of the chart
-func (r *ListChart) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *ListChart) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Plot-level customization options, associated with a publish statement.
-func (r *ListChart) VizOptions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["vizOptions"])
+func (r *ListChart) VizOptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vizOptions"])
 }
 
 // Input properties used for looking up and filtering ListChart resources.

@@ -61,28 +61,28 @@ func GetIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Integration) URN() *pulumi.URNOutput {
+func (r *Integration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Integration) ID() *pulumi.IDOutput {
+func (r *Integration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Whether the integration is enabled.
-func (r *Integration) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Integration) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // Name of the integration.
-func (r *Integration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Integration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Slack incoming webhook URL.
-func (r *Integration) WebhookUrl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["webhookUrl"])
+func (r *Integration) WebhookUrl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["webhookUrl"])
 }
 
 // Input properties used for looking up and filtering Integration resources.

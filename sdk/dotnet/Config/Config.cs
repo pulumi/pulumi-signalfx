@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Signalfx.Config
+namespace Pulumi.Signalfx
 {
     public static class Config
     {

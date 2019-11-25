@@ -61,44 +61,44 @@ func GetOrgToken(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *OrgToken) URN() *pulumi.URNOutput {
+func (r *OrgToken) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *OrgToken) ID() *pulumi.IDOutput {
+func (r *OrgToken) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Description of the token.
-func (r *OrgToken) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *OrgToken) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
-func (r *OrgToken) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *OrgToken) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // Specify DPM-based limits for this token.
-func (r *OrgToken) DpmLimits() *pulumi.Output {
+func (r *OrgToken) DpmLimits() pulumi.Output {
 	return r.s.State["dpmLimits"]
 }
 
 // Specify Usage-based limits for this token.
-func (r *OrgToken) HostOrUsageLimits() *pulumi.Output {
+func (r *OrgToken) HostOrUsageLimits() pulumi.Output {
 	return r.s.State["hostOrUsageLimits"]
 }
 
 // Name of the token.
-func (r *OrgToken) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *OrgToken) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // List of strings specifying where notifications will be sent when an incident occurs. See
 // https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
-func (r *OrgToken) Notifications() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["notifications"])
+func (r *OrgToken) Notifications() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["notifications"])
 }
 
 // Input properties used for looking up and filtering OrgToken resources.
