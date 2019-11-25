@@ -10,6 +10,8 @@ from typing import Union
 from . import utilities, tables
 
 class Dashboard(pulumi.CustomResource):
+    authorized_writer_teams: pulumi.Output[list]
+    authorized_writer_users: pulumi.Output[list]
     charts: pulumi.Output[list]
     """
     Chart ID and layout information for the charts in the dashboard.
@@ -118,7 +120,7 @@ class Dashboard(pulumi.CustomResource):
       * `values` (`list`) - A list of values to be used with the `property`, they will be combined via `OR`.
       * `valuesSuggesteds` (`list`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
     """
-    def __init__(__self__, resource_name, opts=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Dashboard resource with the given unique name, props, and options.
         
@@ -223,6 +225,8 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['authorized_writer_teams'] = authorized_writer_teams
+            __props__['authorized_writer_users'] = authorized_writer_users
             __props__['charts'] = charts
             __props__['charts_resolution'] = charts_resolution
             __props__['columns'] = columns
@@ -247,7 +251,7 @@ class Dashboard(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, url=None, variables=None):
+    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, url=None, variables=None):
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -340,6 +344,8 @@ class Dashboard(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["authorized_writer_teams"] = authorized_writer_teams
+        __props__["authorized_writer_users"] = authorized_writer_users
         __props__["charts"] = charts
         __props__["charts_resolution"] = charts_resolution
         __props__["columns"] = columns

@@ -37,6 +37,14 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
+     * Team IDs that have write access to this dashboard
+     */
+    public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
+    /**
+     * User IDs that have write access to this dashboard
+     */
+    public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
+    /**
      * Chart ID and layout information for the charts in the dashboard.
      */
     public readonly charts!: pulumi.Output<outputs.DashboardChart[] | undefined>;
@@ -109,6 +117,8 @@ export class Dashboard extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DashboardState | undefined;
+            inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
+            inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
             inputs["charts"] = state ? state.charts : undefined;
             inputs["chartsResolution"] = state ? state.chartsResolution : undefined;
             inputs["columns"] = state ? state.columns : undefined;
@@ -129,6 +139,8 @@ export class Dashboard extends pulumi.CustomResource {
             if (!args || args.dashboardGroup === undefined) {
                 throw new Error("Missing required property 'dashboardGroup'");
             }
+            inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
+            inputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
             inputs["charts"] = args ? args.charts : undefined;
             inputs["chartsResolution"] = args ? args.chartsResolution : undefined;
             inputs["columns"] = args ? args.columns : undefined;
@@ -160,6 +172,14 @@ export class Dashboard extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Dashboard resources.
  */
 export interface DashboardState {
+    /**
+     * Team IDs that have write access to this dashboard
+     */
+    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User IDs that have write access to this dashboard
+     */
+    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Chart ID and layout information for the charts in the dashboard.
      */
@@ -226,6 +246,14 @@ export interface DashboardState {
  * The set of arguments for constructing a Dashboard resource.
  */
 export interface DashboardArgs {
+    /**
+     * Team IDs that have write access to this dashboard
+     */
+    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User IDs that have write access to this dashboard
+     */
+    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Chart ID and layout information for the charts in the dashboard.
      */

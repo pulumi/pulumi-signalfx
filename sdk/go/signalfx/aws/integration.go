@@ -100,83 +100,83 @@ func GetIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Integration) URN() *pulumi.URNOutput {
+func (r *Integration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Integration) ID() *pulumi.IDOutput {
+func (r *Integration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
-func (r *Integration) CustomCloudwatchNamespaces() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["customCloudwatchNamespaces"])
+func (r *Integration) CustomCloudwatchNamespaces() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["customCloudwatchNamespaces"])
 }
 
 // Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
-func (r *Integration) CustomNamespaceSyncRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["customNamespaceSyncRules"])
+func (r *Integration) CustomNamespaceSyncRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["customNamespaceSyncRules"])
 }
 
 // Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
-func (r *Integration) EnableAwsUsage() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enableAwsUsage"])
+func (r *Integration) EnableAwsUsage() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enableAwsUsage"])
 }
 
 // Whether the integration is enabled.
-func (r *Integration) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Integration) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
-func (r *Integration) ExternalId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalId"])
+func (r *Integration) ExternalId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalId"])
 }
 
 // Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
-func (r *Integration) ImportCloudWatch() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["importCloudWatch"])
+func (r *Integration) ImportCloudWatch() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["importCloudWatch"])
 }
 
 // The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-func (r *Integration) IntegrationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["integrationId"])
+func (r *Integration) IntegrationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["integrationId"])
 }
 
 // If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
-func (r *Integration) Key() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["key"])
+func (r *Integration) Key() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["key"])
 }
 
 // Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-func (r *Integration) NamespaceSyncRules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["namespaceSyncRules"])
+func (r *Integration) NamespaceSyncRules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["namespaceSyncRules"])
 }
 
 // AWS poll rate (in seconds). One of `60` or `300`.
-func (r *Integration) PollRate() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["pollRate"])
+func (r *Integration) PollRate() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["pollRate"])
 }
 
 // List of AWS regions that SignalFx should monitor.
-func (r *Integration) Regions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["regions"])
+func (r *Integration) Regions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["regions"])
 }
 
-// Role ARN that you add to an existing AWS integration object.
-func (r *Integration) RoleArn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["roleArn"])
+// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+func (r *Integration) RoleArn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["roleArn"])
 }
 
 // List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
-func (r *Integration) Services() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["services"])
+func (r *Integration) Services() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["services"])
 }
 
 // Used with `signalfx_aws_token_integration`. Use this property to specify the token.
-func (r *Integration) Token() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["token"])
+func (r *Integration) Token() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["token"])
 }
 
 // Input properties used for looking up and filtering Integration resources.
@@ -203,7 +203,7 @@ type IntegrationState struct {
 	PollRate interface{}
 	// List of AWS regions that SignalFx should monitor.
 	Regions interface{}
-	// Role ARN that you add to an existing AWS integration object.
+	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn interface{}
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
 	Services interface{}
@@ -235,7 +235,7 @@ type IntegrationArgs struct {
 	PollRate interface{}
 	// List of AWS regions that SignalFx should monitor.
 	Regions interface{}
-	// Role ARN that you add to an existing AWS integration object.
+	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn interface{}
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
 	Services interface{}

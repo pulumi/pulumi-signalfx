@@ -90,83 +90,83 @@ func GetSingleValueChart(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SingleValueChart) URN() *pulumi.URNOutput {
+func (r *SingleValueChart) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SingleValueChart) ID() *pulumi.IDOutput {
+func (r *SingleValueChart) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-func (r *SingleValueChart) ColorBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["colorBy"])
+func (r *SingleValueChart) ColorBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["colorBy"])
 }
 
 // Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-func (r *SingleValueChart) ColorScales() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["colorScales"])
+func (r *SingleValueChart) ColorScales() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["colorScales"])
 }
 
 // Description of the chart.
-func (r *SingleValueChart) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *SingleValueChart) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether to hide the timestamp in the chart. `false` by default.
-func (r *SingleValueChart) IsTimestampHidden() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["isTimestampHidden"])
+func (r *SingleValueChart) IsTimestampHidden() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["isTimestampHidden"])
 }
 
 // How long (in seconds) to wait for late datapoints
-func (r *SingleValueChart) MaxDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxDelay"])
+func (r *SingleValueChart) MaxDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxDelay"])
 }
 
 // The maximum precision to for value displayed.
-func (r *SingleValueChart) MaxPrecision() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxPrecision"])
+func (r *SingleValueChart) MaxPrecision() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxPrecision"])
 }
 
 // Name of the chart.
-func (r *SingleValueChart) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *SingleValueChart) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-func (r *SingleValueChart) ProgramText() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["programText"])
+func (r *SingleValueChart) ProgramText() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["programText"])
 }
 
 // How often (in seconds) to refresh the value.
-func (r *SingleValueChart) RefreshInterval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["refreshInterval"])
+func (r *SingleValueChart) RefreshInterval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["refreshInterval"])
 }
 
 // The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
-func (r *SingleValueChart) SecondaryVisualization() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["secondaryVisualization"])
+func (r *SingleValueChart) SecondaryVisualization() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["secondaryVisualization"])
 }
 
 // Whether to show a trend line below the current value. `false` by default.
-func (r *SingleValueChart) ShowSparkLine() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["showSparkLine"])
+func (r *SingleValueChart) ShowSparkLine() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["showSparkLine"])
 }
 
 // Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
-func (r *SingleValueChart) UnitPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["unitPrefix"])
+func (r *SingleValueChart) UnitPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["unitPrefix"])
 }
 
 // URL of the chart
-func (r *SingleValueChart) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *SingleValueChart) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Plot-level customization options, associated with a publish statement.
-func (r *SingleValueChart) VizOptions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["vizOptions"])
+func (r *SingleValueChart) VizOptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vizOptions"])
 }
 
 // Input properties used for looking up and filtering SingleValueChart resources.

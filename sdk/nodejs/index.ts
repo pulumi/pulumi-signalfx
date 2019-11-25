@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./alertMutingRule";
 export * from "./dashboard";
 export * from "./dashboardGroup";
 export * from "./detector";
@@ -20,9 +21,10 @@ import * as aws from "./aws/index";
 import * as azure from "./azure/index";
 import * as config from "./config/index";
 import * as gcp from "./gcp/index";
+import * as jira from "./jira/index";
 import * as opsgenie from "./opsgenie/index";
 import * as pagerduty from "./pagerduty/index";
 import * as slack from "./slack/index";
 import * as types from "./types/index";
 import * as victorops from "./victorops/index";
-export {aws, azure, config, gcp, opsgenie, pagerduty, slack, types, victorops};
+export {aws, azure, config, gcp, jira, opsgenie, pagerduty, slack, types, victorops};

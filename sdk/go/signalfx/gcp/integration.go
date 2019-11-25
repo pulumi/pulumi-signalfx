@@ -64,38 +64,38 @@ func GetIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Integration) URN() *pulumi.URNOutput {
+func (r *Integration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Integration) ID() *pulumi.IDOutput {
+func (r *Integration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Whether the integration is enabled.
-func (r *Integration) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Integration) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // Name of the integration.
-func (r *Integration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Integration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
-func (r *Integration) PollRate() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["pollRate"])
+func (r *Integration) PollRate() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["pollRate"])
 }
 
 // GCP projects to add.
-func (r *Integration) ProjectServiceKeys() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["projectServiceKeys"])
+func (r *Integration) ProjectServiceKeys() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["projectServiceKeys"])
 }
 
 // GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
-func (r *Integration) Services() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["services"])
+func (r *Integration) Services() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["services"])
 }
 
 // Input properties used for looking up and filtering Integration resources.

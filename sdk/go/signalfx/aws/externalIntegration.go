@@ -52,23 +52,23 @@ func GetExternalIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ExternalIntegration) URN() *pulumi.URNOutput {
+func (r *ExternalIntegration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ExternalIntegration) ID() *pulumi.IDOutput {
+func (r *ExternalIntegration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The external ID to use with your IAM role and with `aws.Integration`.
-func (r *ExternalIntegration) ExternalId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["externalId"])
+func (r *ExternalIntegration) ExternalId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["externalId"])
 }
 
 // The name of this integration
-func (r *ExternalIntegration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *ExternalIntegration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering ExternalIntegration resources.

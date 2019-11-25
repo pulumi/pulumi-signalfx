@@ -52,23 +52,23 @@ func GetTokenIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TokenIntegration) URN() *pulumi.URNOutput {
+func (r *TokenIntegration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TokenIntegration) ID() *pulumi.IDOutput {
+func (r *TokenIntegration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name of this integration
-func (r *TokenIntegration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TokenIntegration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The SignalFx-generated AWS account ID to use with an AWS integration.
-func (r *TokenIntegration) TokenId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tokenId"])
+func (r *TokenIntegration) TokenId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tokenId"])
 }
 
 // Input properties used for looking up and filtering TokenIntegration resources.

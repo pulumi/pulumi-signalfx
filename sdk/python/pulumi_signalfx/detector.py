@@ -10,6 +10,14 @@ from typing import Union
 from . import utilities, tables
 
 class Detector(pulumi.CustomResource):
+    authorized_writer_teams: pulumi.Output[list]
+    """
+    Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+    """
+    authorized_writer_users: pulumi.Output[list]
+    """
+    User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+    """
     description: pulumi.Output[str]
     """
     Description of the detector.
@@ -69,12 +77,14 @@ class Detector(pulumi.CustomResource):
     Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
     """
     url: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a SignalFx detector resource. This can be used to create and manage detectors.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description of the detector.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -119,6 +129,8 @@ class Detector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['authorized_writer_teams'] = authorized_writer_teams
+            __props__['authorized_writer_users'] = authorized_writer_users
             __props__['description'] = description
             __props__['disable_sampling'] = disable_sampling
             __props__['end_time'] = end_time
@@ -143,7 +155,7 @@ class Detector(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, url=None):
+    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, url=None):
         """
         Get an existing Detector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -151,6 +163,8 @@ class Detector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description of the detector.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -181,6 +195,8 @@ class Detector(pulumi.CustomResource):
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["authorized_writer_teams"] = authorized_writer_teams
+        __props__["authorized_writer_users"] = authorized_writer_users
         __props__["description"] = description
         __props__["disable_sampling"] = disable_sampling
         __props__["end_time"] = end_time

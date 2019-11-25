@@ -26,6 +26,8 @@ func NewDetector(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["authorizedWriterTeams"] = nil
+		inputs["authorizedWriterUsers"] = nil
 		inputs["description"] = nil
 		inputs["disableSampling"] = nil
 		inputs["endTime"] = nil
@@ -39,6 +41,8 @@ func NewDetector(ctx *pulumi.Context,
 		inputs["teams"] = nil
 		inputs["timeRange"] = nil
 	} else {
+		inputs["authorizedWriterTeams"] = args.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = args.AuthorizedWriterUsers
 		inputs["description"] = args.Description
 		inputs["disableSampling"] = args.DisableSampling
 		inputs["endTime"] = args.EndTime
@@ -66,6 +70,8 @@ func GetDetector(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DetectorState, opts ...pulumi.ResourceOpt) (*Detector, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["authorizedWriterTeams"] = state.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = state.AuthorizedWriterUsers
 		inputs["description"] = state.Description
 		inputs["disableSampling"] = state.DisableSampling
 		inputs["endTime"] = state.EndTime
@@ -88,82 +94,96 @@ func GetDetector(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Detector) URN() *pulumi.URNOutput {
+func (r *Detector) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Detector) ID() *pulumi.IDOutput {
+func (r *Detector) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+func (r *Detector) AuthorizedWriterTeams() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterTeams"])
+}
+
+// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+func (r *Detector) AuthorizedWriterUsers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
+}
+
 // Description of the detector.
-func (r *Detector) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Detector) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
-func (r *Detector) DisableSampling() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableSampling"])
+func (r *Detector) DisableSampling() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableSampling"])
 }
 
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-func (r *Detector) EndTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["endTime"])
+func (r *Detector) EndTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["endTime"])
 }
 
 // How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
-func (r *Detector) MaxDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxDelay"])
+func (r *Detector) MaxDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxDelay"])
 }
 
 // Name of the detector.
-func (r *Detector) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Detector) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-func (r *Detector) ProgramText() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["programText"])
+func (r *Detector) ProgramText() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["programText"])
 }
 
 // Set of rules used for alerting.
-func (r *Detector) Rules() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["rules"])
+func (r *Detector) Rules() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["rules"])
 }
 
 // When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
-func (r *Detector) ShowDataMarkers() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["showDataMarkers"])
+func (r *Detector) ShowDataMarkers() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["showDataMarkers"])
 }
 
 // When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
-func (r *Detector) ShowEventLines() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["showEventLines"])
+func (r *Detector) ShowEventLines() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["showEventLines"])
 }
 
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-func (r *Detector) StartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startTime"])
+func (r *Detector) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
 }
 
 // Team IDs to associate the detector to.
-func (r *Detector) Teams() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["teams"])
+func (r *Detector) Teams() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["teams"])
 }
 
 // Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
-func (r *Detector) TimeRange() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeRange"])
+func (r *Detector) TimeRange() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeRange"])
 }
 
 // URL of the detector
-func (r *Detector) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *Detector) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Input properties used for looking up and filtering Detector resources.
 type DetectorState struct {
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	AuthorizedWriterUsers interface{}
 	// Description of the detector.
 	Description interface{}
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
@@ -194,6 +214,10 @@ type DetectorState struct {
 
 // The set of arguments for constructing a Detector resource.
 type DetectorArgs struct {
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	AuthorizedWriterUsers interface{}
 	// Description of the detector.
 	Description interface{}
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.

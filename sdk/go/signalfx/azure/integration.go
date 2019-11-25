@@ -92,58 +92,58 @@ func GetIntegration(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Integration) URN() *pulumi.URNOutput {
+func (r *Integration) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Integration) ID() *pulumi.IDOutput {
+func (r *Integration) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
-func (r *Integration) AppId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["appId"])
+func (r *Integration) AppId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["appId"])
 }
 
 // Whether the integration is enabled.
-func (r *Integration) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *Integration) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
-func (r *Integration) Environment() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["environment"])
+func (r *Integration) Environment() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["environment"])
 }
 
 // Name of the integration.
-func (r *Integration) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Integration) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // AWS poll rate (in seconds). One of `60` or `300`.
-func (r *Integration) PollRate() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["pollRate"])
+func (r *Integration) PollRate() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["pollRate"])
 }
 
 // Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
-func (r *Integration) SecretKey() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["secretKey"])
+func (r *Integration) SecretKey() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["secretKey"])
 }
 
 // List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
-func (r *Integration) Services() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["services"])
+func (r *Integration) Services() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["services"])
 }
 
 // List of Azure subscriptions that SignalFx should monitor.
-func (r *Integration) Subscriptions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["subscriptions"])
+func (r *Integration) Subscriptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["subscriptions"])
 }
 
 // Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
-func (r *Integration) TenantId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tenantId"])
+func (r *Integration) TenantId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tenantId"])
 }
 
 // Input properties used for looking up and filtering Integration resources.

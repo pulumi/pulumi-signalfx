@@ -66,7 +66,7 @@ class Integration(pulumi.CustomResource):
     """
     role_arn: pulumi.Output[str]
     """
-    Role ARN that you add to an existing AWS integration object.
+    Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
     """
     services: pulumi.Output[list]
     """
@@ -98,7 +98,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[list] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[list] regions: List of AWS regions that SignalFx should monitor.
-        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object.
+        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[list] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`.
         
         The **custom_namespace_sync_rules** object supports the following:
@@ -178,7 +178,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[list] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[list] regions: List of AWS regions that SignalFx should monitor.
-        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object.
+        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[list] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`.
         
         The **custom_namespace_sync_rules** object supports the following:

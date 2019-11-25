@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *     }],
  *     pollRate: 300,
  *     regions: ["us-east-1"],
- *     roleArn: awsSfxRole.id,
+ *     roleArn: awsSfxRole.arn,
  * });
  * ```
  * 
@@ -126,7 +126,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly regions!: pulumi.Output<string[] | undefined>;
     /**
-     * Role ARN that you add to an existing AWS integration object.
+     * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface IntegrationState {
      */
     readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role ARN that you add to an existing AWS integration object.
+     * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
     readonly roleArn?: pulumi.Input<string>;
     /**
@@ -309,7 +309,7 @@ export interface IntegrationArgs {
      */
     readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Role ARN that you add to an existing AWS integration object.
+     * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
     readonly roleArn?: pulumi.Input<string>;
     /**

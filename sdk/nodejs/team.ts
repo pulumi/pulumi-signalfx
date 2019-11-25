@@ -10,19 +10,6 @@ import * as utilities from "./utilities";
  * Handles management of SignalFx teams.
  * 
  * You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * const myteam0 = new signalfx.Team("myteam0", {
- *     description: "Super great team no jerks definitely",
- *     notificationsCriticals: ["PagerDuty,credentialId"],
- *     notificiationsInfo: ["Email,notify@example.com"],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/team.html.markdown.
  */
@@ -58,7 +45,7 @@ export class Team extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Members of team team
+     * List of user IDs to include in the team.
      */
     public readonly members!: pulumi.Output<string[] | undefined>;
     /**
@@ -149,7 +136,7 @@ export interface TeamState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Members of team team
+     * List of user IDs to include in the team.
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -195,7 +182,7 @@ export interface TeamArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Members of team team
+     * List of user IDs to include in the team.
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**

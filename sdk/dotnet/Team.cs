@@ -23,7 +23,7 @@ namespace Pulumi.Signalfx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Members of team team
+        /// List of user IDs to include in the team.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.Signalfx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Team(string name, TeamArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:index/team:Team", name, args, MakeResourceOptions(options, ""))
+            : base("signalfx:index/team:Team", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
@@ -132,7 +132,7 @@ namespace Pulumi.Signalfx
         private InputList<string>? _members;
 
         /// <summary>
-        /// Members of team team
+        /// List of user IDs to include in the team.
         /// </summary>
         public InputList<string> Members
         {
@@ -235,7 +235,7 @@ namespace Pulumi.Signalfx
         private InputList<string>? _members;
 
         /// <summary>
-        /// Members of team team
+        /// List of user IDs to include in the team.
         /// </summary>
         public InputList<string> Members
         {

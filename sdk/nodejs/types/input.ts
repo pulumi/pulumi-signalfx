@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface AlertMutingRuleFilter {
+    /**
+     * Determines if this is a "not" filter. Defaults to `false`.
+     */
+    negated?: pulumi.Input<boolean>;
+    /**
+     * The property to filter.
+     */
+    property: pulumi.Input<string>;
+    /**
+     * The property value to filter.
+     */
+    propertyValue: pulumi.Input<string>;
+}
+
 export interface DashboardChart {
     /**
      * ID of the chart to display.

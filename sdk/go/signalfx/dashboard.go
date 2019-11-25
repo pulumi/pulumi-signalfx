@@ -21,6 +21,8 @@ func NewDashboard(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["authorizedWriterTeams"] = nil
+		inputs["authorizedWriterUsers"] = nil
 		inputs["charts"] = nil
 		inputs["chartsResolution"] = nil
 		inputs["columns"] = nil
@@ -36,6 +38,8 @@ func NewDashboard(ctx *pulumi.Context,
 		inputs["timeRange"] = nil
 		inputs["variables"] = nil
 	} else {
+		inputs["authorizedWriterTeams"] = args.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = args.AuthorizedWriterUsers
 		inputs["charts"] = args.Charts
 		inputs["chartsResolution"] = args.ChartsResolution
 		inputs["columns"] = args.Columns
@@ -65,6 +69,8 @@ func GetDashboard(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *DashboardState, opts ...pulumi.ResourceOpt) (*Dashboard, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["authorizedWriterTeams"] = state.AuthorizedWriterTeams
+		inputs["authorizedWriterUsers"] = state.AuthorizedWriterUsers
 		inputs["charts"] = state.Charts
 		inputs["chartsResolution"] = state.ChartsResolution
 		inputs["columns"] = state.Columns
@@ -89,92 +95,106 @@ func GetDashboard(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Dashboard) URN() *pulumi.URNOutput {
+func (r *Dashboard) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Dashboard) ID() *pulumi.IDOutput {
+func (r *Dashboard) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Team IDs that have write access to this dashboard
+func (r *Dashboard) AuthorizedWriterTeams() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterTeams"])
+}
+
+// User IDs that have write access to this dashboard
+func (r *Dashboard) AuthorizedWriterUsers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
+}
+
 // Chart ID and layout information for the charts in the dashboard.
-func (r *Dashboard) Charts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["charts"])
+func (r *Dashboard) Charts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["charts"])
 }
 
 // Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
-func (r *Dashboard) ChartsResolution() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["chartsResolution"])
+func (r *Dashboard) ChartsResolution() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["chartsResolution"])
 }
 
 // Column number for the layout.
-func (r *Dashboard) Columns() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["columns"])
+func (r *Dashboard) Columns() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["columns"])
 }
 
 // The ID of the dashboard group that contains the dashboard.
-func (r *Dashboard) DashboardGroup() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["dashboardGroup"])
+func (r *Dashboard) DashboardGroup() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["dashboardGroup"])
 }
 
 // Variable description.
-func (r *Dashboard) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Dashboard) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
-func (r *Dashboard) EndTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["endTime"])
+func (r *Dashboard) EndTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["endTime"])
 }
 
 // Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
-func (r *Dashboard) EventOverlays() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["eventOverlays"])
+func (r *Dashboard) EventOverlays() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["eventOverlays"])
 }
 
 // Filter to apply to the charts when displaying the dashboard.
-func (r *Dashboard) Filters() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["filters"])
+func (r *Dashboard) Filters() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["filters"])
 }
 
 // Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
-func (r *Dashboard) Grids() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["grids"])
+func (r *Dashboard) Grids() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["grids"])
 }
 
 // Name of the dashboard.
-func (r *Dashboard) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Dashboard) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
-func (r *Dashboard) SelectedEventOverlays() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["selectedEventOverlays"])
+func (r *Dashboard) SelectedEventOverlays() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["selectedEventOverlays"])
 }
 
 // Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
-func (r *Dashboard) StartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startTime"])
+func (r *Dashboard) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
 }
 
 // The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
-func (r *Dashboard) TimeRange() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["timeRange"])
+func (r *Dashboard) TimeRange() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["timeRange"])
 }
 
 // URL of the dashboard
-func (r *Dashboard) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *Dashboard) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Dashboard variable to apply to each chart in the dashboard.
-func (r *Dashboard) Variables() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["variables"])
+func (r *Dashboard) Variables() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["variables"])
 }
 
 // Input properties used for looking up and filtering Dashboard resources.
 type DashboardState struct {
+	// Team IDs that have write access to this dashboard
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this dashboard
+	AuthorizedWriterUsers interface{}
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts interface{}
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
@@ -209,6 +229,10 @@ type DashboardState struct {
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
+	// Team IDs that have write access to this dashboard
+	AuthorizedWriterTeams interface{}
+	// User IDs that have write access to this dashboard
+	AuthorizedWriterUsers interface{}
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts interface{}
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.

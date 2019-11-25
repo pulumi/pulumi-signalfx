@@ -39,7 +39,7 @@ namespace Pulumi.Signalfx.Aws
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ExternalIntegration(string name, ExternalIntegrationArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:aws/externalIntegration:ExternalIntegration", name, args, MakeResourceOptions(options, ""))
+            : base("signalfx:aws/externalIntegration:ExternalIntegration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

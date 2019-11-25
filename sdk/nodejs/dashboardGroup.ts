@@ -7,52 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/v2/docs/dashboard-group-model) is a collection of dashboards.
- * 
- * **NOTE:** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
- *     description: "Cool dashboard group",
- * });
- * ```
- * 
- * ## Example Usage With Mirrored Dashboards
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * const mydashboardgroupWithmirrors = new signalfx.DashboardGroup("mydashboardgroupWithmirrors", {
- *     // You can add as many of these as you like. Make sure your account
- *     // supports this feature!
- *     dashboards: [{
- *         dashboardId: signalfx_dashboard_gc_dashboard.id,
- *         descriptionOverride: "Garbage Collection dashboard maintained by JVM team",
- *         filterOverrides: [{
- *             negated: false,
- *             property: "service",
- *             values: ["myservice"],
- *         }],
- *         nameOverride: "GC For My Service",
- *         variableOverrides: [{
- *             property: "region",
- *             values: ["us-west1"],
- *             valuesSuggesteds: [
- *                 "us-west-1",
- *                 "us-east-1",
- *             ],
- *         }],
- *     }],
- *     description: "Cool dashboard group",
- * });
- * ```
- *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
  */
 export class DashboardGroup extends pulumi.CustomResource {
@@ -83,6 +37,14 @@ export class DashboardGroup extends pulumi.CustomResource {
     }
 
     /**
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     */
+    public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
+    /**
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     */
+    public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
+    /**
      * [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
     public readonly dashboards!: pulumi.Output<outputs.DashboardGroupDashboard[] | undefined>;
@@ -111,12 +73,16 @@ export class DashboardGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DashboardGroupState | undefined;
+            inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
+            inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
             inputs["dashboards"] = state ? state.dashboards : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["teams"] = state ? state.teams : undefined;
         } else {
             const args = argsOrState as DashboardGroupArgs | undefined;
+            inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
+            inputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
             inputs["dashboards"] = args ? args.dashboards : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -137,6 +103,14 @@ export class DashboardGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DashboardGroup resources.
  */
 export interface DashboardGroupState {
+    /**
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
@@ -159,6 +133,14 @@ export interface DashboardGroupState {
  * The set of arguments for constructing a DashboardGroup resource.
  */
 export interface DashboardGroupArgs {
+    /**
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     */
+    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */

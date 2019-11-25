@@ -132,155 +132,155 @@ func GetTimeChart(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *TimeChart) URN() *pulumi.URNOutput {
+func (r *TimeChart) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *TimeChart) ID() *pulumi.IDOutput {
+func (r *TimeChart) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Force the chart to display zero on the y-axes, even if none of the data is near zero.
-func (r *TimeChart) AxesIncludeZero() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["axesIncludeZero"])
+func (r *TimeChart) AxesIncludeZero() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["axesIncludeZero"])
 }
 
 // Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
-func (r *TimeChart) AxesPrecision() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["axesPrecision"])
+func (r *TimeChart) AxesPrecision() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["axesPrecision"])
 }
 
 // Set of axis options.
-func (r *TimeChart) AxisLeft() *pulumi.Output {
+func (r *TimeChart) AxisLeft() pulumi.Output {
 	return r.s.State["axisLeft"]
 }
 
 // Set of axis options.
-func (r *TimeChart) AxisRight() *pulumi.Output {
+func (r *TimeChart) AxisRight() pulumi.Output {
 	return r.s.State["axisRight"]
 }
 
 // Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-func (r *TimeChart) ColorBy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["colorBy"])
+func (r *TimeChart) ColorBy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["colorBy"])
 }
 
 // Description of the chart.
-func (r *TimeChart) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *TimeChart) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-func (r *TimeChart) DisableSampling() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disableSampling"])
+func (r *TimeChart) DisableSampling() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disableSampling"])
 }
 
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-func (r *TimeChart) EndTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["endTime"])
+func (r *TimeChart) EndTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["endTime"])
 }
 
 // Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-func (r *TimeChart) EventOptions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["eventOptions"])
+func (r *TimeChart) EventOptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["eventOptions"])
 }
 
 // Only used when `plotType` is `"Histogram"`. Histogram specific options.
-func (r *TimeChart) HistogramOptions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["histogramOptions"])
+func (r *TimeChart) HistogramOptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["histogramOptions"])
 }
 
 // List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
-func (r *TimeChart) LegendFieldsToHides() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["legendFieldsToHides"])
+func (r *TimeChart) LegendFieldsToHides() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["legendFieldsToHides"])
 }
 
 // List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 // * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 // * `enabled` True or False depending on if you want the property to be shown or hidden.
-func (r *TimeChart) LegendOptionsFields() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["legendOptionsFields"])
+func (r *TimeChart) LegendOptionsFields() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["legendOptionsFields"])
 }
 
 // How long (in seconds) to wait for late datapoints.
-func (r *TimeChart) MaxDelay() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["maxDelay"])
+func (r *TimeChart) MaxDelay() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["maxDelay"])
 }
 
 // The minimum resolution (in seconds) to use for computing the underlying program.
-func (r *TimeChart) MinimumResolution() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minimumResolution"])
+func (r *TimeChart) MinimumResolution() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minimumResolution"])
 }
 
 // Name of the chart.
-func (r *TimeChart) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *TimeChart) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
-func (r *TimeChart) OnChartLegendDimension() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["onChartLegendDimension"])
+func (r *TimeChart) OnChartLegendDimension() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["onChartLegendDimension"])
 }
 
 // The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-func (r *TimeChart) PlotType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["plotType"])
+func (r *TimeChart) PlotType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["plotType"])
 }
 
 // Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-func (r *TimeChart) ProgramText() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["programText"])
+func (r *TimeChart) ProgramText() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["programText"])
 }
 
 // Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-func (r *TimeChart) ShowDataMarkers() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["showDataMarkers"])
+func (r *TimeChart) ShowDataMarkers() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["showDataMarkers"])
 }
 
 // Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-func (r *TimeChart) ShowEventLines() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["showEventLines"])
+func (r *TimeChart) ShowEventLines() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["showEventLines"])
 }
 
 // Whether area and bar charts in the visualization should be stacked. `false` by default.
-func (r *TimeChart) Stacked() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["stacked"])
+func (r *TimeChart) Stacked() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["stacked"])
 }
 
 // Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-func (r *TimeChart) StartTime() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["startTime"])
+func (r *TimeChart) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
 }
 
 // Tags associated with the chart
-func (r *TimeChart) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *TimeChart) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
-func (r *TimeChart) TimeRange() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeRange"])
+func (r *TimeChart) TimeRange() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeRange"])
 }
 
 // Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
-func (r *TimeChart) Timezone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["timezone"])
+func (r *TimeChart) Timezone() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["timezone"])
 }
 
 // Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-func (r *TimeChart) UnitPrefix() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["unitPrefix"])
+func (r *TimeChart) UnitPrefix() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["unitPrefix"])
 }
 
 // URL of the chart
-func (r *TimeChart) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *TimeChart) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // Plot-level customization options, associated with a publish statement.
-func (r *TimeChart) VizOptions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["vizOptions"])
+func (r *TimeChart) VizOptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vizOptions"])
 }
 
 // Input properties used for looking up and filtering TimeChart resources.
