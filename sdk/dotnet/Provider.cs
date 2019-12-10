@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Signalfx
+namespace Pulumi.SignalFx
 {
     /// <summary>
     /// The provider type for the signalfx package. By default, resources use package-wide configuration

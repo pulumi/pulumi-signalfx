@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Signalfx.Slack
+namespace Pulumi.SignalFx.Slack
 {
     /// <summary>
     /// SignalFx Slack integration.

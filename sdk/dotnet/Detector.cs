@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Signalfx
+namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Provides a SignalFx detector resource. This can be used to create and manage detectors.
