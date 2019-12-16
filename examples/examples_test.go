@@ -11,6 +11,7 @@ import (
 )
 
 func TestAccDashboardGroup(t *testing.T) {
+	t.Skip("Skipping as no credit in signalfx account")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: path.Join(getCwd(t), "dashboardGroup"),
