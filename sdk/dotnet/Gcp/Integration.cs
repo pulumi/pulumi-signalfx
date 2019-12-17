@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Signalfx.Gcp
+namespace Pulumi.SignalFx.Gcp
 {
     /// <summary>
     /// SignalFx GCP Integration

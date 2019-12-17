@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Signalfx.Victorops
+namespace Pulumi.SignalFx.VictorOps
 {
     /// <summary>
     /// SignalFx VictorOps integration.

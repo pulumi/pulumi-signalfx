@@ -15,6 +15,7 @@
 package signalfx
 
 import (
+	"strings"
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
@@ -32,18 +33,26 @@ const (
 
 	// modules:
 	mainMod      = "index"
-	awsMod       = "aws"
-	azureMod     = "azure"
-	gcpMod       = "gcp"
-	jiraMod      = "jira"
-	opsgenieMod  = "opsgenie"
-	pagerdutyMod = "pagerduty"
-	slackMod     = "slack"
-	victoropsMod = "victorops"
+	awsMod       = "Aws"
+	azureMod     = "Azure"
+	gcpMod       = "Gcp"
+	jiraMod      = "Jira"
+	opsgenieMod  = "Opsgenie"
+	pagerdutyMod = "PagerDuty"
+	slackMod     = "Slack"
+	victoropsMod = "VictorOps"
 )
 
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
+var namespaceMap = map[string]string{
+	mainPkg: "SignalFx",
+}
+
+func makeMember(moduleTitle string, mem string) tokens.ModuleMember {
+	moduleName := strings.ToLower(moduleTitle)
+	namespaceMap[moduleName] = moduleTitle
+	fn := string(unicode.ToLower(rune(mem[0]))) + mem[1:]
+	token := moduleName + "/" + fn
+	return tokens.ModuleMember(mainPkg + ":" + token + ":" + mem)
 }
 
 func makeType(mod string, typ string) tokens.Type {
@@ -51,8 +60,7 @@ func makeType(mod string, typ string) tokens.Type {
 }
 
 func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
+	return makeType(mod, res)
 }
 
 func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
@@ -132,6 +140,7 @@ func Provider() tfbridge.ProviderInfo {
 				"Pulumi":                       "1.5.0-*",
 				"System.Collections.Immutable": "1.6.0",
 			},
+			Namespaces: namespaceMap,
 		},
 	}
 
