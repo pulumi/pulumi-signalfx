@@ -3,8 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to support go 1.13.x
-* Upgrade to v4.10.1 of the SignalFX Terraform Provider
-* Upgrade to pulumi-terraform-bridge v1.4.3
+* Upgrade to v4.11.0 of the SignalFX Terraform Provider
+* Upgrade to pulumi-terraform-bridge v1.5.2
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#6](https://github.com/pulumi/pulumi-signalfx/pull/6)).
 

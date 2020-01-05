@@ -5,6 +5,7 @@
 export * from "./alertMutingRule";
 export * from "./dashboard";
 export * from "./dashboardGroup";
+export * from "./dataLink";
 export * from "./detector";
 export * from "./eventFeedChart";
 export * from "./heatmapChart";

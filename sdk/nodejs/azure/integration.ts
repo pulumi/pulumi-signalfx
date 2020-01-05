@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *                 pollRate: 300,
  *                 secretKey: "XXX",
  *                 services: ["microsoft.sql/servers/elasticpools"],
- *                 subscriptions: ["microsoft.sql/servers/elasticpools"],
+ *                 subscriptions: ["sub-guid-here"],
  *                 tenantId: "ZZZ",
  *             }],
  *         }],

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  * 
  * **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
  * 
- * > **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
+ * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
  * 
  * ## Example Usage
  * 

@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a SignalFx detector resource. This can be used to create and manage detectors.
+// 
+// > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/detector.html.markdown.
 type Detector struct {
@@ -138,7 +140,7 @@ func (r *Detector) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
 func (r *Detector) ProgramText() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["programText"])
 }
@@ -194,7 +196,7 @@ type DetectorState struct {
 	MaxDelay interface{}
 	// Name of the detector.
 	Name interface{}
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
 	ProgramText interface{}
 	// Set of rules used for alerting.
 	Rules interface{}
@@ -228,7 +230,7 @@ type DetectorArgs struct {
 	MaxDelay interface{}
 	// Name of the detector.
 	Name interface{}
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
 	ProgramText interface{}
 	// Set of rules used for alerting.
 	Rules interface{}
