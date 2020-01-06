@@ -40,7 +40,7 @@ class Detector(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+    Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
     """
     rules: pulumi.Output[list]
     """
@@ -81,6 +81,8 @@ class Detector(pulumi.CustomResource):
         """
         Provides a SignalFx detector resource. This can be used to create and manage detectors.
         
+        > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
@@ -90,7 +92,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
         :param pulumi.Input[str] name: Name of the detector.
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
         :param pulumi.Input[list] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
@@ -170,7 +172,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
         :param pulumi.Input[str] name: Name of the detector.
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
         :param pulumi.Input[list] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.

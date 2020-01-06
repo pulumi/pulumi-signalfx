@@ -101,6 +101,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_text_chart":         {Tok: makeResource(mainMod, "TextChart")},
 			"signalfx_time_chart":         {Tok: makeResource(mainMod, "TimeChart")},
 			"signalfx_alert_muting_rule":  {Tok: makeResource(mainMod, "AlertMutingRule")},
+			"signalfx_data_link":          {Tok: makeResource(mainMod, "DataLink")},
 
 			"signalfx_aws_external_integration": {Tok: makeResource(awsMod, "ExternalIntegration")},
 			"signalfx_aws_integration":          {Tok: makeResource(awsMod, "Integration")},
@@ -137,7 +138,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: namespaceMap,

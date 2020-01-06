@@ -21,7 +21,7 @@ class TokenIntegration(pulumi.CustomResource):
         
         **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
         
-        > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.Integration`.
+        > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

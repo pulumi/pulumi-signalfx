@@ -24,6 +24,7 @@
         "config/vars.ts",
         "dashboard.ts",
         "dashboardGroup.ts",
+        "dataLink.ts",
         "detector.ts",
         "eventFeedChart.ts",
         "gcp/index.ts",

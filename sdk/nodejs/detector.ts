@@ -65,7 +65,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -192,7 +192,7 @@ export interface DetectorState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
      */
     readonly programText?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface DetectorArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
      */
     readonly programText: pulumi.Input<string>;
     /**

@@ -256,6 +256,64 @@ export interface DashboardVariable {
     valuesSuggesteds?: string[];
 }
 
+export interface DataLinkTargetExternalUrl {
+    /**
+     * Flag that designates a target as the default for a data link object. `true` by default
+     */
+    isDefault?: boolean;
+    /**
+     * The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
+     */
+    minimumTimeWindow?: string;
+    /**
+     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     */
+    name: string;
+    /**
+     * Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+     */
+    propertyKeyMapping?: {[key: string]: string};
+    /**
+     * [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+     */
+    timeFormat?: string;
+    url: string;
+}
+
+export interface DataLinkTargetSignalfxDashboard {
+    /**
+     * SignalFx-assigned ID of the dashboard link target's dashboard group
+     */
+    dashboardGroupId: string;
+    /**
+     * SignalFx-assigned ID of the dashboard link target
+     */
+    dashboardId: string;
+    /**
+     * Flag that designates a target as the default for a data link object. `true` by default
+     */
+    isDefault?: boolean;
+    /**
+     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     */
+    name: string;
+}
+
+export interface DataLinkTargetSplunk {
+    /**
+     * Flag that designates a target as the default for a data link object. `true` by default
+     */
+    isDefault?: boolean;
+    /**
+     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     */
+    name: string;
+    /**
+     * Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+     */
+    propertyKeyMapping?: {[key: string]: string};
+}
+
 export interface DetectorRule {
     /**
      * Description of the detector.

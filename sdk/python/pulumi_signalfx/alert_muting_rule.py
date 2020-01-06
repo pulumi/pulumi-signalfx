@@ -25,7 +25,7 @@ class AlertMutingRule(pulumi.CustomResource):
     
       * `negated` (`bool`) - Determines if this is a "not" filter. Defaults to `false`.
       * `property` (`str`) - The property to filter.
-      * `propertyValue` (`str`) - The property value to filter.
+      * `property_value` (`str`) - The property value to filter.
     """
     start_time: pulumi.Output[float]
     """
@@ -53,7 +53,7 @@ class AlertMutingRule(pulumi.CustomResource):
         
           * `negated` (`pulumi.Input[bool]`) - Determines if this is a "not" filter. Defaults to `false`.
           * `property` (`pulumi.Input[str]`) - The property to filter.
-          * `propertyValue` (`pulumi.Input[str]`) - The property value to filter.
+          * `property_value` (`pulumi.Input[str]`) - The property value to filter.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
         """
@@ -111,7 +111,7 @@ class AlertMutingRule(pulumi.CustomResource):
         
           * `negated` (`pulumi.Input[bool]`) - Determines if this is a "not" filter. Defaults to `false`.
           * `property` (`pulumi.Input[str]`) - The property to filter.
-          * `propertyValue` (`pulumi.Input[str]`) - The property value to filter.
+          * `property_value` (`pulumi.Input[str]`) - The property value to filter.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
         """

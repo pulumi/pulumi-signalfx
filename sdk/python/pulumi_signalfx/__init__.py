@@ -13,6 +13,7 @@ for pkg in __all__:
 from .alert_muting_rule import *
 from .dashboard import *
 from .dashboard_group import *
+from .data_link import *
 from .detector import *
 from .event_feed_chart import *
 from .heatmap_chart import *

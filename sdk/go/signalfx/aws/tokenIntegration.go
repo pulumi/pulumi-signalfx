@@ -11,7 +11,7 @@ import (
 // 
 // **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
 // 
-// > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.Integration`.
+// > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
 type TokenIntegration struct {
