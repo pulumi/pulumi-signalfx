@@ -316,7 +316,7 @@ export interface DataLinkTargetSplunk {
 
 export interface DetectorRule {
     /**
-     * Description of the detector.
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
      */
     description?: string;
     /**

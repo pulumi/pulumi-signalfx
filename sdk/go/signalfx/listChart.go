@@ -29,6 +29,7 @@ func NewListChart(ctx *pulumi.Context,
 		inputs["colorScales"] = nil
 		inputs["description"] = nil
 		inputs["disableSampling"] = nil
+		inputs["endTime"] = nil
 		inputs["legendFieldsToHides"] = nil
 		inputs["legendOptionsFields"] = nil
 		inputs["maxDelay"] = nil
@@ -38,6 +39,8 @@ func NewListChart(ctx *pulumi.Context,
 		inputs["refreshInterval"] = nil
 		inputs["secondaryVisualization"] = nil
 		inputs["sortBy"] = nil
+		inputs["startTime"] = nil
+		inputs["timeRange"] = nil
 		inputs["unitPrefix"] = nil
 		inputs["vizOptions"] = nil
 	} else {
@@ -45,6 +48,7 @@ func NewListChart(ctx *pulumi.Context,
 		inputs["colorScales"] = args.ColorScales
 		inputs["description"] = args.Description
 		inputs["disableSampling"] = args.DisableSampling
+		inputs["endTime"] = args.EndTime
 		inputs["legendFieldsToHides"] = args.LegendFieldsToHides
 		inputs["legendOptionsFields"] = args.LegendOptionsFields
 		inputs["maxDelay"] = args.MaxDelay
@@ -54,10 +58,11 @@ func NewListChart(ctx *pulumi.Context,
 		inputs["refreshInterval"] = args.RefreshInterval
 		inputs["secondaryVisualization"] = args.SecondaryVisualization
 		inputs["sortBy"] = args.SortBy
+		inputs["startTime"] = args.StartTime
+		inputs["timeRange"] = args.TimeRange
 		inputs["unitPrefix"] = args.UnitPrefix
 		inputs["vizOptions"] = args.VizOptions
 	}
-	inputs["lastUpdated"] = nil
 	inputs["url"] = nil
 	s, err := ctx.RegisterResource("signalfx:index/listChart:ListChart", name, true, inputs, opts...)
 	if err != nil {
@@ -76,7 +81,7 @@ func GetListChart(ctx *pulumi.Context,
 		inputs["colorScales"] = state.ColorScales
 		inputs["description"] = state.Description
 		inputs["disableSampling"] = state.DisableSampling
-		inputs["lastUpdated"] = state.LastUpdated
+		inputs["endTime"] = state.EndTime
 		inputs["legendFieldsToHides"] = state.LegendFieldsToHides
 		inputs["legendOptionsFields"] = state.LegendOptionsFields
 		inputs["maxDelay"] = state.MaxDelay
@@ -86,6 +91,8 @@ func GetListChart(ctx *pulumi.Context,
 		inputs["refreshInterval"] = state.RefreshInterval
 		inputs["secondaryVisualization"] = state.SecondaryVisualization
 		inputs["sortBy"] = state.SortBy
+		inputs["startTime"] = state.StartTime
+		inputs["timeRange"] = state.TimeRange
 		inputs["unitPrefix"] = state.UnitPrefix
 		inputs["url"] = state.Url
 		inputs["vizOptions"] = state.VizOptions
@@ -127,9 +134,9 @@ func (r *ListChart) DisableSampling() pulumi.BoolOutput {
 	return (pulumi.BoolOutput)(r.s.State["disableSampling"])
 }
 
-// Latest timestamp the resource was updated
-func (r *ListChart) LastUpdated() pulumi.Float64Output {
-	return (pulumi.Float64Output)(r.s.State["lastUpdated"])
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (r *ListChart) EndTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["endTime"])
 }
 
 // List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
@@ -179,6 +186,16 @@ func (r *ListChart) SortBy() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["sortBy"])
 }
 
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (r *ListChart) StartTime() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["startTime"])
+}
+
+// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+func (r *ListChart) TimeRange() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeRange"])
+}
+
 // Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 func (r *ListChart) UnitPrefix() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["unitPrefix"])
@@ -204,8 +221,8 @@ type ListChartState struct {
 	Description interface{}
 	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
 	DisableSampling interface{}
-	// Latest timestamp the resource was updated
-	LastUpdated interface{}
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	EndTime interface{}
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides interface{}
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
@@ -226,6 +243,10 @@ type ListChartState struct {
 	SecondaryVisualization interface{}
 	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
 	SortBy interface{}
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	StartTime interface{}
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	TimeRange interface{}
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix interface{}
 	// URL of the chart
@@ -244,6 +265,8 @@ type ListChartArgs struct {
 	Description interface{}
 	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
 	DisableSampling interface{}
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	EndTime interface{}
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides interface{}
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
@@ -264,6 +287,10 @@ type ListChartArgs struct {
 	SecondaryVisualization interface{}
 	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
 	SortBy interface{}
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	StartTime interface{}
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	TimeRange interface{}
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix interface{}
 	// Plot-level customization options, associated with a publish statement.

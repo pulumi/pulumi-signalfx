@@ -20,7 +20,7 @@ class Detector(pulumi.CustomResource):
     """
     description: pulumi.Output[str]
     """
-    Description of the detector.
+    Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
     """
     disable_sampling: pulumi.Output[bool]
     """
@@ -46,7 +46,7 @@ class Detector(pulumi.CustomResource):
     """
     Set of rules used for alerting.
     
-      * `description` (`str`) - Description of the detector.
+      * `description` (`str`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
       * `detectLabel` (`str`) - A detect label which matches a detect label within `program_text`.
       * `disabled` (`bool`) - When true, notifications and events will not be generated for the detect label. `false` by default.
       * `notifications` (`list`) - List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
@@ -87,7 +87,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
         :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
@@ -102,7 +102,7 @@ class Detector(pulumi.CustomResource):
         
         The **rules** object supports the following:
         
-          * `description` (`pulumi.Input[str]`) - Description of the detector.
+          * `description` (`pulumi.Input[str]`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
           * `detectLabel` (`pulumi.Input[str]`) - A detect label which matches a detect label within `program_text`.
           * `disabled` (`pulumi.Input[bool]`) - When true, notifications and events will not be generated for the detect label. `false` by default.
           * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
@@ -167,7 +167,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
         :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
@@ -182,7 +182,7 @@ class Detector(pulumi.CustomResource):
         
         The **rules** object supports the following:
         
-          * `description` (`pulumi.Input[str]`) - Description of the detector.
+          * `description` (`pulumi.Input[str]`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
           * `detectLabel` (`pulumi.Input[str]`) - A detect label which matches a detect label within `program_text`.
           * `disabled` (`pulumi.Input[bool]`) - When true, notifications and events will not be generated for the detect label. `false` by default.
           * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.

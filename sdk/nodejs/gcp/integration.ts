@@ -73,7 +73,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+     * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
@@ -137,7 +137,7 @@ export interface IntegrationState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+     * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
     readonly pollRate?: pulumi.Input<number>;
     /**
@@ -163,7 +163,7 @@ export interface IntegrationArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+     * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
     readonly pollRate?: pulumi.Input<number>;
     /**

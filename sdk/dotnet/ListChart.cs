@@ -42,10 +42,10 @@ namespace Pulumi.SignalFx
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Latest timestamp the resource was updated
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
-        [Output("lastUpdated")]
-        public Output<double> LastUpdated { get; private set; } = null!;
+        [Output("endTime")]
+        public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
         /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
@@ -102,6 +102,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("sortBy")]
         public Output<string?> SortBy { get; private set; } = null!;
+
+        /// <summary>
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// </summary>
+        [Output("startTime")]
+        public Output<int?> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// </summary>
+        [Output("timeRange")]
+        public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -197,6 +209,12 @@ namespace Pulumi.SignalFx
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
+        /// <summary>
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// </summary>
+        [Input("endTime")]
+        public Input<int>? EndTime { get; set; }
+
         [Input("legendFieldsToHides")]
         private InputList<string>? _legendFieldsToHides;
 
@@ -266,6 +284,18 @@ namespace Pulumi.SignalFx
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// </summary>
+        [Input("startTime")]
+        public Input<int>? StartTime { get; set; }
+
+        /// <summary>
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// </summary>
+        [Input("timeRange")]
+        public Input<int>? TimeRange { get; set; }
+
+        /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
@@ -321,10 +351,10 @@ namespace Pulumi.SignalFx
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Latest timestamp the resource was updated
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
-        [Input("lastUpdated")]
-        public Input<double>? LastUpdated { get; set; }
+        [Input("endTime")]
+        public Input<int>? EndTime { get; set; }
 
         [Input("legendFieldsToHides")]
         private InputList<string>? _legendFieldsToHides;
@@ -393,6 +423,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
+
+        /// <summary>
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        /// </summary>
+        [Input("startTime")]
+        public Input<int>? StartTime { get; set; }
+
+        /// <summary>
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// </summary>
+        [Input("timeRange")]
+        public Input<int>? TimeRange { get; set; }
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.

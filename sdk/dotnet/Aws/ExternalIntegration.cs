@@ -31,6 +31,12 @@ namespace Pulumi.SignalFx.Aws
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        /// </summary>
+        [Output("signalfxAwsAccount")]
+        public Output<string> SignalfxAwsAccount { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ExternalIntegration resource with the given unique name, arguments, and options.
@@ -101,6 +107,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        /// </summary>
+        [Input("signalfxAwsAccount")]
+        public Input<string>? SignalfxAwsAccount { get; set; }
 
         public ExternalIntegrationState()
         {

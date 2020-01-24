@@ -83,7 +83,7 @@ func (r *Integration) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 func (r *Integration) PollRate() pulumi.IntOutput {
 	return (pulumi.IntOutput)(r.s.State["pollRate"])
 }
@@ -104,7 +104,7 @@ type IntegrationState struct {
 	Enabled interface{}
 	// Name of the integration.
 	Name interface{}
-	// GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate interface{}
 	// GCP projects to add.
 	ProjectServiceKeys interface{}
@@ -118,7 +118,7 @@ type IntegrationArgs struct {
 	Enabled interface{}
 	// Name of the integration.
 	Name interface{}
-	// GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate interface{}
 	// GCP projects to add.
 	ProjectServiceKeys interface{}

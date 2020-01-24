@@ -30,7 +30,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the detector.
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description of the detector.
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description of the detector.
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -393,7 +393,7 @@ namespace Pulumi.SignalFx
     public sealed class DetectorRulesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the detector.
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -460,7 +460,7 @@ namespace Pulumi.SignalFx
     public sealed class DetectorRulesGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the detector.
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -532,7 +532,7 @@ namespace Pulumi.SignalFx
     public sealed class DetectorRules
     {
         /// <summary>
-        /// Description of the detector.
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
         /// </summary>
         public readonly string? Description;
         /// <summary>

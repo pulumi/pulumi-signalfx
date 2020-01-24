@@ -20,7 +20,7 @@ class Integration(pulumi.CustomResource):
     """
     poll_rate: pulumi.Output[float]
     """
-    GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+    GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
     """
     project_service_keys: pulumi.Output[list]
     """
@@ -43,7 +43,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[float] poll_rate: GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+        :param pulumi.Input[float] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         :param pulumi.Input[list] project_service_keys: GCP projects to add.
         :param pulumi.Input[list] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
         
@@ -95,7 +95,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[float] poll_rate: GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+        :param pulumi.Input[float] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         :param pulumi.Input[list] project_service_keys: GCP projects to add.
         :param pulumi.Input[list] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
         

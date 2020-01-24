@@ -28,6 +28,7 @@ func NewExternalIntegration(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 	}
 	inputs["externalId"] = nil
+	inputs["signalfxAwsAccount"] = nil
 	s, err := ctx.RegisterResource("signalfx:aws/externalIntegration:ExternalIntegration", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -43,6 +44,7 @@ func GetExternalIntegration(ctx *pulumi.Context,
 	if state != nil {
 		inputs["externalId"] = state.ExternalId
 		inputs["name"] = state.Name
+		inputs["signalfxAwsAccount"] = state.SignalfxAwsAccount
 	}
 	s, err := ctx.ReadResource("signalfx:aws/externalIntegration:ExternalIntegration", name, id, inputs, opts...)
 	if err != nil {
@@ -71,12 +73,19 @@ func (r *ExternalIntegration) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
+// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+func (r *ExternalIntegration) SignalfxAwsAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["signalfxAwsAccount"])
+}
+
 // Input properties used for looking up and filtering ExternalIntegration resources.
 type ExternalIntegrationState struct {
 	// The external ID to use with your IAM role and with `aws.Integration`.
 	ExternalId interface{}
 	// The name of this integration
 	Name interface{}
+	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+	SignalfxAwsAccount interface{}
 }
 
 // The set of arguments for constructing a ExternalIntegration resource.
