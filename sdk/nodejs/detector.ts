@@ -45,7 +45,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
-     * Description of the detector.
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -172,7 +172,7 @@ export interface DetectorState {
      */
     readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description of the detector.
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -238,7 +238,7 @@ export interface DetectorArgs {
      */
     readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description of the detector.
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
      */
     readonly description?: pulumi.Input<string>;
     /**

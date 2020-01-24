@@ -26,7 +26,13 @@ namespace Pulumi.SignalFx.Aws
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The SignalFx-generated AWS account ID to use with an AWS integration.
+        /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        /// </summary>
+        [Output("signalfxAwsAccount")]
+        public Output<string> SignalfxAwsAccount { get; private set; } = null!;
+
+        /// <summary>
+        /// The SignalFx-generated AWS token to use with an AWS integration.
         /// </summary>
         [Output("tokenId")]
         public Output<string> TokenId { get; private set; } = null!;
@@ -97,7 +103,13 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The SignalFx-generated AWS account ID to use with an AWS integration.
+        /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        /// </summary>
+        [Input("signalfxAwsAccount")]
+        public Input<string>? SignalfxAwsAccount { get; set; }
+
+        /// <summary>
+        /// The SignalFx-generated AWS token to use with an AWS integration.
         /// </summary>
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }

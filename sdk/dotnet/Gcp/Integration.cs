@@ -30,7 +30,7 @@ namespace Pulumi.SignalFx.Gcp
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+        /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         /// </summary>
         [Output("pollRate")]
         public Output<int?> PollRate { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.SignalFx.Gcp
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+        /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }
@@ -155,7 +155,7 @@ namespace Pulumi.SignalFx.Gcp
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// GCP integration poll rate in milliseconds. Can be set to either 60000 or 300000 (1 minute or 5 minutes).
+        /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }

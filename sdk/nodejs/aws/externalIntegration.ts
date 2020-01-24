@@ -10,41 +10,6 @@ import * as utilities from "../utilities";
  * **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
  * 
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * // This resource returns an external id in `externalId`…
- * const awsMyteamExternal = new signalfx.aws.ExternalIntegration("awsMyteamExternal", {});
- * // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
- * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
- * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
- *     customNamespaceSyncRules: [{
- *         defaultAction: "Exclude",
- *         filterAction: "Include",
- *         filterSource: "filter('code', '200')",
- *         namespace: "fart",
- *     }],
- *     enableAwsUsage: true,
- *     enabled: true,
- *     externalId: awsMyteamExternal.externalId,
- *     importCloudWatch: true,
- *     integrationId: awsMyteamExternal.id,
- *     namespaceSyncRules: [{
- *         defaultAction: "Exclude",
- *         filterAction: "Include",
- *         filterSource: "filter('code', '200')",
- *         namespace: "AWS/EC2",
- *     }],
- *     pollRate: 300,
- *     regions: ["us-east-1"],
- *     roleArn: awsSfxRole.arn,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
  */
@@ -83,6 +48,10 @@ export class ExternalIntegration extends pulumi.CustomResource {
      * The name of this integration
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+     */
+    public /*out*/ readonly signalfxAwsAccount!: pulumi.Output<string>;
 
     /**
      * Create a ExternalIntegration resource with the given unique name, arguments, and options.
@@ -98,10 +67,12 @@ export class ExternalIntegration extends pulumi.CustomResource {
             const state = argsOrState as ExternalIntegrationState | undefined;
             inputs["externalId"] = state ? state.externalId : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
         } else {
             const args = argsOrState as ExternalIntegrationArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["externalId"] = undefined /*out*/;
+            inputs["signalfxAwsAccount"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -126,6 +97,10 @@ export interface ExternalIntegrationState {
      * The name of this integration
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+     */
+    readonly signalfxAwsAccount?: pulumi.Input<string>;
 }
 
 /**

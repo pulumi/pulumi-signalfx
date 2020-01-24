@@ -27,6 +27,7 @@ func NewTokenIntegration(ctx *pulumi.Context,
 	} else {
 		inputs["name"] = args.Name
 	}
+	inputs["signalfxAwsAccount"] = nil
 	inputs["tokenId"] = nil
 	s, err := ctx.RegisterResource("signalfx:aws/tokenIntegration:TokenIntegration", name, true, inputs, opts...)
 	if err != nil {
@@ -42,6 +43,7 @@ func GetTokenIntegration(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["name"] = state.Name
+		inputs["signalfxAwsAccount"] = state.SignalfxAwsAccount
 		inputs["tokenId"] = state.TokenId
 	}
 	s, err := ctx.ReadResource("signalfx:aws/tokenIntegration:TokenIntegration", name, id, inputs, opts...)
@@ -66,7 +68,12 @@ func (r *TokenIntegration) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-// The SignalFx-generated AWS account ID to use with an AWS integration.
+// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+func (r *TokenIntegration) SignalfxAwsAccount() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["signalfxAwsAccount"])
+}
+
+// The SignalFx-generated AWS token to use with an AWS integration.
 func (r *TokenIntegration) TokenId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["tokenId"])
 }
@@ -75,7 +82,9 @@ func (r *TokenIntegration) TokenId() pulumi.StringOutput {
 type TokenIntegrationState struct {
 	// The name of this integration
 	Name interface{}
-	// The SignalFx-generated AWS account ID to use with an AWS integration.
+	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+	SignalfxAwsAccount interface{}
+	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId interface{}
 }
 

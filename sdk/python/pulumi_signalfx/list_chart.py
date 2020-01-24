@@ -32,7 +32,10 @@ class ListChart(pulumi.CustomResource):
     """
     If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
     """
-    last_updated: pulumi.Output[float]
+    end_time: pulumi.Output[float]
+    """
+    Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+    """
     legend_fields_to_hides: pulumi.Output[list]
     """
     List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
@@ -74,6 +77,14 @@ class ListChart(pulumi.CustomResource):
     """
     The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
     """
+    start_time: pulumi.Output[float]
+    """
+    Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+    """
+    time_range: pulumi.Output[float]
+    """
+    How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+    """
     unit_prefix: pulumi.Output[str]
     """
     Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -91,7 +102,7 @@ class ListChart(pulumi.CustomResource):
       * `valueUnit` (`str`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
     """
-    def __init__(__self__, resource_name, opts=None, color_by=None, color_scales=None, description=None, disable_sampling=None, legend_fields_to_hides=None, legend_options_fields=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, sort_by=None, unit_prefix=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, color_by=None, color_scales=None, description=None, disable_sampling=None, end_time=None, legend_fields_to_hides=None, legend_options_fields=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, sort_by=None, start_time=None, time_range=None, unit_prefix=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
         """
         This chart type displays current data values in a list format.
         
@@ -103,6 +114,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[list] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[list] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[list] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
                * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
@@ -114,6 +126,8 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
         
@@ -163,6 +177,7 @@ class ListChart(pulumi.CustomResource):
             __props__['color_scales'] = color_scales
             __props__['description'] = description
             __props__['disable_sampling'] = disable_sampling
+            __props__['end_time'] = end_time
             __props__['legend_fields_to_hides'] = legend_fields_to_hides
             __props__['legend_options_fields'] = legend_options_fields
             __props__['max_delay'] = max_delay
@@ -174,9 +189,10 @@ class ListChart(pulumi.CustomResource):
             __props__['refresh_interval'] = refresh_interval
             __props__['secondary_visualization'] = secondary_visualization
             __props__['sort_by'] = sort_by
+            __props__['start_time'] = start_time
+            __props__['time_range'] = time_range
             __props__['unit_prefix'] = unit_prefix
             __props__['viz_options'] = viz_options
-            __props__['last_updated'] = None
             __props__['url'] = None
         super(ListChart, __self__).__init__(
             'signalfx:index/listChart:ListChart',
@@ -185,7 +201,7 @@ class ListChart(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, color_by=None, color_scales=None, description=None, disable_sampling=None, last_updated=None, legend_fields_to_hides=None, legend_options_fields=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, sort_by=None, unit_prefix=None, url=None, viz_options=None):
+    def get(resource_name, id, opts=None, color_by=None, color_scales=None, description=None, disable_sampling=None, end_time=None, legend_fields_to_hides=None, legend_options_fields=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, sort_by=None, start_time=None, time_range=None, unit_prefix=None, url=None, viz_options=None):
         """
         Get an existing ListChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -197,6 +213,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[list] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[list] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[list] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
                * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
@@ -208,6 +225,8 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
         
@@ -243,7 +262,7 @@ class ListChart(pulumi.CustomResource):
         __props__["color_scales"] = color_scales
         __props__["description"] = description
         __props__["disable_sampling"] = disable_sampling
-        __props__["last_updated"] = last_updated
+        __props__["end_time"] = end_time
         __props__["legend_fields_to_hides"] = legend_fields_to_hides
         __props__["legend_options_fields"] = legend_options_fields
         __props__["max_delay"] = max_delay
@@ -253,6 +272,8 @@ class ListChart(pulumi.CustomResource):
         __props__["refresh_interval"] = refresh_interval
         __props__["secondary_visualization"] = secondary_visualization
         __props__["sort_by"] = sort_by
+        __props__["start_time"] = start_time
+        __props__["time_range"] = time_range
         __props__["unit_prefix"] = unit_prefix
         __props__["url"] = url
         __props__["viz_options"] = viz_options

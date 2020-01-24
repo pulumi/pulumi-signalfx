@@ -115,7 +115,7 @@ func (r *Detector) AuthorizedWriterUsers() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
 }
 
-// Description of the detector.
+// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
 func (r *Detector) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
@@ -186,7 +186,7 @@ type DetectorState struct {
 	AuthorizedWriterTeams interface{}
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers interface{}
-	// Description of the detector.
+	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
 	Description interface{}
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling interface{}
@@ -220,7 +220,7 @@ type DetectorArgs struct {
 	AuthorizedWriterTeams interface{}
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers interface{}
-	// Description of the detector.
+	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
 	Description interface{}
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling interface{}

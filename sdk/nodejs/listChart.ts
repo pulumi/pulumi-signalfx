@@ -100,9 +100,9 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly disableSampling!: pulumi.Output<boolean | undefined>;
     /**
-     * Latest timestamp the resource was updated
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    public /*out*/ readonly lastUpdated!: pulumi.Output<number>;
+    public readonly endTime!: pulumi.Output<number | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      */
@@ -142,6 +142,14 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly sortBy!: pulumi.Output<string | undefined>;
     /**
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     */
+    public readonly startTime!: pulumi.Output<number | undefined>;
+    /**
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     */
+    public readonly timeRange!: pulumi.Output<number | undefined>;
+    /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
@@ -170,7 +178,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["colorScales"] = state ? state.colorScales : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disableSampling"] = state ? state.disableSampling : undefined;
-            inputs["lastUpdated"] = state ? state.lastUpdated : undefined;
+            inputs["endTime"] = state ? state.endTime : undefined;
             inputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
             inputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
             inputs["maxDelay"] = state ? state.maxDelay : undefined;
@@ -180,6 +188,8 @@ export class ListChart extends pulumi.CustomResource {
             inputs["refreshInterval"] = state ? state.refreshInterval : undefined;
             inputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
             inputs["sortBy"] = state ? state.sortBy : undefined;
+            inputs["startTime"] = state ? state.startTime : undefined;
+            inputs["timeRange"] = state ? state.timeRange : undefined;
             inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
@@ -192,6 +202,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["colorScales"] = args ? args.colorScales : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disableSampling"] = args ? args.disableSampling : undefined;
+            inputs["endTime"] = args ? args.endTime : undefined;
             inputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
             inputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
             inputs["maxDelay"] = args ? args.maxDelay : undefined;
@@ -201,9 +212,10 @@ export class ListChart extends pulumi.CustomResource {
             inputs["refreshInterval"] = args ? args.refreshInterval : undefined;
             inputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
             inputs["sortBy"] = args ? args.sortBy : undefined;
+            inputs["startTime"] = args ? args.startTime : undefined;
+            inputs["timeRange"] = args ? args.timeRange : undefined;
             inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
-            inputs["lastUpdated"] = undefined /*out*/;
             inputs["url"] = undefined /*out*/;
         }
         if (!opts) {
@@ -238,9 +250,9 @@ export interface ListChartState {
      */
     readonly disableSampling?: pulumi.Input<boolean>;
     /**
-     * Latest timestamp the resource was updated
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly lastUpdated?: pulumi.Input<number>;
+    readonly endTime?: pulumi.Input<number>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      */
@@ -280,6 +292,14 @@ export interface ListChartState {
      */
     readonly sortBy?: pulumi.Input<string>;
     /**
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     */
+    readonly startTime?: pulumi.Input<number>;
+    /**
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     */
+    readonly timeRange?: pulumi.Input<number>;
+    /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
     readonly unitPrefix?: pulumi.Input<string>;
@@ -313,6 +333,10 @@ export interface ListChartArgs {
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
     readonly disableSampling?: pulumi.Input<boolean>;
+    /**
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     */
+    readonly endTime?: pulumi.Input<number>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      */
@@ -351,6 +375,14 @@ export interface ListChartArgs {
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
      */
     readonly sortBy?: pulumi.Input<string>;
+    /**
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     */
+    readonly startTime?: pulumi.Input<number>;
+    /**
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     */
+    readonly timeRange?: pulumi.Input<number>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */

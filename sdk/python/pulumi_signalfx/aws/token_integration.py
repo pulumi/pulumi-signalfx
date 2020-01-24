@@ -14,6 +14,10 @@ class TokenIntegration(pulumi.CustomResource):
     """
     The name of this integration
     """
+    signalfx_aws_account: pulumi.Output[str]
+    """
+    The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+    """
     token_id: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -47,6 +51,7 @@ class TokenIntegration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            __props__['signalfx_aws_account'] = None
             __props__['token_id'] = None
         super(TokenIntegration, __self__).__init__(
             'signalfx:aws/tokenIntegration:TokenIntegration',
@@ -55,7 +60,7 @@ class TokenIntegration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, token_id=None):
+    def get(resource_name, id, opts=None, name=None, signalfx_aws_account=None, token_id=None):
         """
         Get an existing TokenIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -64,6 +69,7 @@ class TokenIntegration(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
+        :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
         """
@@ -71,6 +77,7 @@ class TokenIntegration(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["name"] = name
+        __props__["signalfx_aws_account"] = signalfx_aws_account
         __props__["token_id"] = token_id
         return TokenIntegration(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
