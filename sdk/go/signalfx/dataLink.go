@@ -70,7 +70,7 @@ func (r *DataLink) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The dashobard ID to which this data link will be applied
+// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 func (r *DataLink) ContextDashboardId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["contextDashboardId"])
 }
@@ -102,7 +102,7 @@ func (r *DataLink) TargetSplunks() pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering DataLink resources.
 type DataLinkState struct {
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId interface{}
 	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName interface{}
@@ -118,7 +118,7 @@ type DataLinkState struct {
 
 // The set of arguments for constructing a DataLink resource.
 type DataLinkArgs struct {
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId interface{}
 	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName interface{}

@@ -42,6 +42,7 @@ func NewDetector(ctx *pulumi.Context,
 		inputs["startTime"] = nil
 		inputs["teams"] = nil
 		inputs["timeRange"] = nil
+		inputs["vizOptions"] = nil
 	} else {
 		inputs["authorizedWriterTeams"] = args.AuthorizedWriterTeams
 		inputs["authorizedWriterUsers"] = args.AuthorizedWriterUsers
@@ -57,6 +58,7 @@ func NewDetector(ctx *pulumi.Context,
 		inputs["startTime"] = args.StartTime
 		inputs["teams"] = args.Teams
 		inputs["timeRange"] = args.TimeRange
+		inputs["vizOptions"] = args.VizOptions
 	}
 	inputs["url"] = nil
 	s, err := ctx.RegisterResource("signalfx:index/detector:Detector", name, true, inputs, opts...)
@@ -87,6 +89,7 @@ func GetDetector(ctx *pulumi.Context,
 		inputs["teams"] = state.Teams
 		inputs["timeRange"] = state.TimeRange
 		inputs["url"] = state.Url
+		inputs["vizOptions"] = state.VizOptions
 	}
 	s, err := ctx.ReadResource("signalfx:index/detector:Detector", name, id, inputs, opts...)
 	if err != nil {
@@ -115,7 +118,7 @@ func (r *Detector) AuthorizedWriterUsers() pulumi.ArrayOutput {
 	return (pulumi.ArrayOutput)(r.s.State["authorizedWriterUsers"])
 }
 
-// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
 func (r *Detector) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
@@ -180,13 +183,18 @@ func (r *Detector) Url() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
+// Plot-level customization options, associated with a publish statement.
+func (r *Detector) VizOptions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["vizOptions"])
+}
+
 // Input properties used for looking up and filtering Detector resources.
 type DetectorState struct {
 	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
 	AuthorizedWriterTeams interface{}
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers interface{}
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
 	Description interface{}
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling interface{}
@@ -212,6 +220,8 @@ type DetectorState struct {
 	TimeRange interface{}
 	// URL of the detector
 	Url interface{}
+	// Plot-level customization options, associated with a publish statement.
+	VizOptions interface{}
 }
 
 // The set of arguments for constructing a Detector resource.
@@ -220,7 +230,7 @@ type DetectorArgs struct {
 	AuthorizedWriterTeams interface{}
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers interface{}
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
 	Description interface{}
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling interface{}
@@ -244,4 +254,6 @@ type DetectorArgs struct {
 	Teams interface{}
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
 	TimeRange interface{}
+	// Plot-level customization options, associated with a publish statement.
+	VizOptions interface{}
 }

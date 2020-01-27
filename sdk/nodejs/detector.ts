@@ -45,7 +45,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -96,6 +96,10 @@ export class Detector extends pulumi.CustomResource {
      * URL of the detector
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
+    /**
+     * Plot-level customization options, associated with a publish statement.
+     */
+    public readonly vizOptions!: pulumi.Output<outputs.DetectorVizOption[] | undefined>;
 
     /**
      * Create a Detector resource with the given unique name, arguments, and options.
@@ -124,6 +128,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["teams"] = state ? state.teams : undefined;
             inputs["timeRange"] = state ? state.timeRange : undefined;
             inputs["url"] = state ? state.url : undefined;
+            inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as DetectorArgs | undefined;
             if (!args || args.programText === undefined) {
@@ -146,6 +151,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["teams"] = args ? args.teams : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
+            inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
         }
         if (!opts) {
@@ -172,7 +178,7 @@ export interface DetectorState {
      */
     readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -223,6 +229,10 @@ export interface DetectorState {
      * URL of the detector
      */
     readonly url?: pulumi.Input<string>;
+    /**
+     * Plot-level customization options, associated with a publish statement.
+     */
+    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
 }
 
 /**
@@ -238,7 +248,7 @@ export interface DetectorArgs {
      */
     readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -285,4 +295,8 @@ export interface DetectorArgs {
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
      */
     readonly timeRange?: pulumi.Input<number>;
+    /**
+     * Plot-level customization options, associated with a publish statement.
+     */
+    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
 }

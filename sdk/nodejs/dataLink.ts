@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * // A dashboard-specific link to an external URL
  * const myDataLinkDash = new signalfx.DataLink("myDataLinkDash", {
- *     dashboardId: signalfx_dashboard_mydashboard0.id,
+ *     contextDashboardId: signalfx_dashboard_mydashboard0.id,
  *     propertyName: "pname2",
  *     propertyValue: "pvalue",
  *     targetExternalUrls: [{
@@ -73,7 +73,7 @@ export class DataLink extends pulumi.CustomResource {
     }
 
     /**
-     * The dashobard ID to which this data link will be applied
+     * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
     public readonly contextDashboardId!: pulumi.Output<string | undefined>;
     /**
@@ -140,7 +140,7 @@ export class DataLink extends pulumi.CustomResource {
  */
 export interface DataLinkState {
     /**
-     * The dashobard ID to which this data link will be applied
+     * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
     readonly contextDashboardId?: pulumi.Input<string>;
     /**
@@ -170,7 +170,7 @@ export interface DataLinkState {
  */
 export interface DataLinkArgs {
     /**
-     * The dashobard ID to which this data link will be applied
+     * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
     readonly contextDashboardId?: pulumi.Input<string>;
     /**

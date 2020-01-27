@@ -11,6 +11,9 @@ from . import utilities, tables
 
 class DataLink(pulumi.CustomResource):
     context_dashboard_id: pulumi.Output[str]
+    """
+    If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+    """
     property_name: pulumi.Output[str]
     """
     Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
@@ -53,6 +56,7 @@ class DataLink(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
         :param pulumi.Input[list] target_external_urls: Link to an external URL
@@ -121,6 +125,7 @@ class DataLink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
         :param pulumi.Input[list] target_external_urls: Link to an external URL
