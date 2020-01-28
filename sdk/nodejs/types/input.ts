@@ -316,7 +316,7 @@ export interface DataLinkTargetSplunk {
 
 export interface DetectorRule {
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     description?: pulumi.Input<string>;
     /**
@@ -351,6 +351,28 @@ export interface DetectorRule {
      * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: pulumi.Input<string>;
+}
+
+export interface DetectorVizOption {
+    /**
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     */
+    color?: pulumi.Input<string>;
+    /**
+     * Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+     */
+    label: pulumi.Input<string>;
+    valuePrefix?: pulumi.Input<string>;
+    valueSuffix?: pulumi.Input<string>;
+    /**
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+     * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     */
+    valueUnit?: pulumi.Input<string>;
 }
 
 export interface HeatmapChartColorRange {

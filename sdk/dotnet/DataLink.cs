@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx
     public partial class DataLink : Pulumi.CustomResource
     {
         /// <summary>
-        /// The dashobard ID to which this data link will be applied
+        /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         /// </summary>
         [Output("contextDashboardId")]
         public Output<string?> ContextDashboardId { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.SignalFx
     public sealed class DataLinkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dashobard ID to which this data link will be applied
+        /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         /// </summary>
         [Input("contextDashboardId")]
         public Input<string>? ContextDashboardId { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.SignalFx
     public sealed class DataLinkState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dashobard ID to which this data link will be applied
+        /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         /// </summary>
         [Input("contextDashboardId")]
         public Input<string>? ContextDashboardId { get; set; }

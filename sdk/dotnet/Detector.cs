@@ -30,7 +30,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
 
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -107,6 +107,12 @@ namespace Pulumi.SignalFx
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
+        /// <summary>
+        /// Plot-level customization options, associated with a publish statement.
+        /// </summary>
+        [Output("vizOptions")]
+        public Output<ImmutableArray<Outputs.DetectorVizOptions>> VizOptions { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Detector resource with the given unique name, arguments, and options.
@@ -178,7 +184,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -261,6 +267,18 @@ namespace Pulumi.SignalFx
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
+        [Input("vizOptions")]
+        private InputList<Inputs.DetectorVizOptionsArgs>? _vizOptions;
+
+        /// <summary>
+        /// Plot-level customization options, associated with a publish statement.
+        /// </summary>
+        public InputList<Inputs.DetectorVizOptionsArgs> VizOptions
+        {
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.DetectorVizOptionsArgs>());
+            set => _vizOptions = value;
+        }
+
         public DetectorArgs()
         {
         }
@@ -293,7 +311,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -382,6 +400,18 @@ namespace Pulumi.SignalFx
         [Input("url")]
         public Input<string>? Url { get; set; }
 
+        [Input("vizOptions")]
+        private InputList<Inputs.DetectorVizOptionsGetArgs>? _vizOptions;
+
+        /// <summary>
+        /// Plot-level customization options, associated with a publish statement.
+        /// </summary>
+        public InputList<Inputs.DetectorVizOptionsGetArgs> VizOptions
+        {
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.DetectorVizOptionsGetArgs>());
+            set => _vizOptions = value;
+        }
+
         public DetectorState()
         {
         }
@@ -393,7 +423,7 @@ namespace Pulumi.SignalFx
     public sealed class DetectorRulesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -460,7 +490,7 @@ namespace Pulumi.SignalFx
     public sealed class DetectorRulesGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -523,6 +553,82 @@ namespace Pulumi.SignalFx
         {
         }
     }
+
+    public sealed class DetectorVizOptionsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        /// </summary>
+        [Input("color")]
+        public Input<string>? Color { get; set; }
+
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        /// </summary>
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
+        [Input("valuePrefix")]
+        public Input<string>? ValuePrefix { get; set; }
+
+        [Input("valueSuffix")]
+        public Input<string>? ValueSuffix { get; set; }
+
+        /// <summary>
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// </summary>
+        [Input("valueUnit")]
+        public Input<string>? ValueUnit { get; set; }
+
+        public DetectorVizOptionsArgs()
+        {
+        }
+    }
+
+    public sealed class DetectorVizOptionsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        /// </summary>
+        [Input("color")]
+        public Input<string>? Color { get; set; }
+
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        /// </summary>
+        [Input("label", required: true)]
+        public Input<string> Label { get; set; } = null!;
+
+        [Input("valuePrefix")]
+        public Input<string>? ValuePrefix { get; set; }
+
+        [Input("valueSuffix")]
+        public Input<string>? ValueSuffix { get; set; }
+
+        /// <summary>
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// </summary>
+        [Input("valueUnit")]
+        public Input<string>? ValueUnit { get; set; }
+
+        public DetectorVizOptionsGetArgs()
+        {
+        }
+    }
     }
 
     namespace Outputs
@@ -532,7 +638,7 @@ namespace Pulumi.SignalFx
     public sealed class DetectorRules
     {
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI. 
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -589,6 +695,47 @@ namespace Pulumi.SignalFx
             RunbookUrl = runbookUrl;
             Severity = severity;
             Tip = tip;
+        }
+    }
+
+    [OutputType]
+    public sealed class DetectorVizOptions
+    {
+        /// <summary>
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        /// </summary>
+        public readonly string? Color;
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
+        public readonly string? DisplayName;
+        /// <summary>
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        /// </summary>
+        public readonly string Label;
+        public readonly string? ValuePrefix;
+        public readonly string? ValueSuffix;
+        /// <summary>
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// </summary>
+        public readonly string? ValueUnit;
+
+        [OutputConstructor]
+        private DetectorVizOptions(
+            string? color,
+            string? displayName,
+            string label,
+            string? valuePrefix,
+            string? valueSuffix,
+            string? valueUnit)
+        {
+            Color = color;
+            DisplayName = displayName;
+            Label = label;
+            ValuePrefix = valuePrefix;
+            ValueSuffix = valueSuffix;
+            ValueUnit = valueUnit;
         }
     }
     }
