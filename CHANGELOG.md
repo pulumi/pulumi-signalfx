@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.12.0 of the SignalFX Terraform Provider
-* Upgrade to pulumi-terraform-bridge v1.6.4
+_(none)_
 
 ---
+
+## 1.3.0 (2020-01-29)
+* Upgrade to v4.12.0 of the SignalFX Terraform Provider
+* Upgrade to pulumi-terraform-bridge v1.6.4
 
 ## 1.2.0 (2020-01-06)
 * Upgrade to support go 1.13.x
