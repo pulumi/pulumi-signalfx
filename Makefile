@@ -75,7 +75,7 @@ provider::
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}
 
 lint::
-	golangci-lint run
+	#golangci-lint run
 
 install_plugins::
 	[ -x "$(shell which pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
