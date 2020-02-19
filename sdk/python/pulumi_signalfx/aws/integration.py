@@ -73,7 +73,11 @@ class Integration(pulumi.CustomResource):
     List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`.
     """
     token: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, custom_cloudwatch_namespaces=None, custom_namespace_sync_rules=None, enable_aws_usage=None, enabled=None, external_id=None, import_cloud_watch=None, integration_id=None, key=None, namespace_sync_rules=None, poll_rate=None, regions=None, role_arn=None, services=None, token=None, __props__=None, __name__=None, __opts__=None):
+    use_get_metric_data_method: pulumi.Output[bool]
+    """
+    Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+    """
+    def __init__(__self__, resource_name, opts=None, custom_cloudwatch_namespaces=None, custom_namespace_sync_rules=None, enable_aws_usage=None, enabled=None, external_id=None, import_cloud_watch=None, integration_id=None, key=None, namespace_sync_rules=None, poll_rate=None, regions=None, role_arn=None, services=None, token=None, use_get_metric_data_method=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
         
@@ -100,6 +104,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[list] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[list] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`.
+        :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
         
         The **custom_namespace_sync_rules** object supports the following:
         
@@ -152,6 +157,7 @@ class Integration(pulumi.CustomResource):
             __props__['role_arn'] = role_arn
             __props__['services'] = services
             __props__['token'] = token
+            __props__['use_get_metric_data_method'] = use_get_metric_data_method
         super(Integration, __self__).__init__(
             'signalfx:aws/integration:Integration',
             resource_name,
@@ -159,7 +165,7 @@ class Integration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, custom_cloudwatch_namespaces=None, custom_namespace_sync_rules=None, enable_aws_usage=None, enabled=None, external_id=None, import_cloud_watch=None, integration_id=None, key=None, namespace_sync_rules=None, poll_rate=None, regions=None, role_arn=None, services=None, token=None):
+    def get(resource_name, id, opts=None, custom_cloudwatch_namespaces=None, custom_namespace_sync_rules=None, enable_aws_usage=None, enabled=None, external_id=None, import_cloud_watch=None, integration_id=None, key=None, namespace_sync_rules=None, poll_rate=None, regions=None, role_arn=None, services=None, token=None, use_get_metric_data_method=None):
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -180,6 +186,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[list] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[list] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`.
+        :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
         
         The **custom_namespace_sync_rules** object supports the following:
         
@@ -214,6 +221,7 @@ class Integration(pulumi.CustomResource):
         __props__["role_arn"] = role_arn
         __props__["services"] = services
         __props__["token"] = token
+        __props__["use_get_metric_data_method"] = use_get_metric_data_method
         return Integration(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
