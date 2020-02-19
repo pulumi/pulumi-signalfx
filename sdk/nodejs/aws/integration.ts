@@ -137,6 +137,10 @@ export class Integration extends pulumi.CustomResource {
      * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
      */
     public readonly token!: pulumi.Output<string | undefined>;
+    /**
+     * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+     */
+    public readonly useGetMetricDataMethod!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -164,6 +168,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["roleArn"] = state ? state.roleArn : undefined;
             inputs["services"] = state ? state.services : undefined;
             inputs["token"] = state ? state.token : undefined;
+            inputs["useGetMetricDataMethod"] = state ? state.useGetMetricDataMethod : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if (!args || args.enabled === undefined) {
@@ -186,6 +191,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["roleArn"] = args ? args.roleArn : undefined;
             inputs["services"] = args ? args.services : undefined;
             inputs["token"] = args ? args.token : undefined;
+            inputs["useGetMetricDataMethod"] = args ? args.useGetMetricDataMethod : undefined;
         }
         if (!opts) {
             opts = {}
@@ -258,6 +264,10 @@ export interface IntegrationState {
      * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
      */
     readonly token?: pulumi.Input<string>;
+    /**
+     * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+     */
+    readonly useGetMetricDataMethod?: pulumi.Input<boolean>;
 }
 
 /**
@@ -320,4 +330,8 @@ export interface IntegrationArgs {
      * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
      */
     readonly token?: pulumi.Input<string>;
+    /**
+     * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+     */
+    readonly useGetMetricDataMethod?: pulumi.Input<boolean>;
 }

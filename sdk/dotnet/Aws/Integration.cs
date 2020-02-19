@@ -107,6 +107,12 @@ namespace Pulumi.SignalFx.Aws
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        /// </summary>
+        [Output("useGetMetricDataMethod")]
+        public Output<bool?> UseGetMetricDataMethod { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Integration resource with the given unique name, arguments, and options.
@@ -267,6 +273,12 @@ namespace Pulumi.SignalFx.Aws
         [Input("token")]
         public Input<string>? Token { get; set; }
 
+        /// <summary>
+        /// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        /// </summary>
+        [Input("useGetMetricDataMethod")]
+        public Input<bool>? UseGetMetricDataMethod { get; set; }
+
         public IntegrationArgs()
         {
         }
@@ -387,6 +399,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        /// </summary>
+        [Input("useGetMetricDataMethod")]
+        public Input<bool>? UseGetMetricDataMethod { get; set; }
 
         public IntegrationState()
         {

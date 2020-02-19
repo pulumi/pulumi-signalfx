@@ -53,6 +53,8 @@ type Integration struct {
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
+	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	UseGetMetricDataMethod pulumi.BoolPtrOutput `pulumi:"useGetMetricDataMethod"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -117,6 +119,8 @@ type integrationState struct {
 	Services []string `pulumi:"services"`
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token *string `pulumi:"token"`
+	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	UseGetMetricDataMethod *bool `pulumi:"useGetMetricDataMethod"`
 }
 
 type IntegrationState struct {
@@ -148,6 +152,8 @@ type IntegrationState struct {
 	Services pulumi.StringArrayInput
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token pulumi.StringPtrInput
+	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	UseGetMetricDataMethod pulumi.BoolPtrInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -183,6 +189,8 @@ type integrationArgs struct {
 	Services []string `pulumi:"services"`
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token *string `pulumi:"token"`
+	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	UseGetMetricDataMethod *bool `pulumi:"useGetMetricDataMethod"`
 }
 
 // The set of arguments for constructing a Integration resource.
@@ -215,6 +223,8 @@ type IntegrationArgs struct {
 	Services pulumi.StringArrayInput
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token pulumi.StringPtrInput
+	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	UseGetMetricDataMethod pulumi.BoolPtrInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
