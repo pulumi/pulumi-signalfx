@@ -12,40 +12,6 @@ import * as utilities from "../utilities";
  * **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
  * 
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * const awsMyteamToken = new signalfx.aws.TokenIntegration("awsMyteamToken", {});
- * // Make yourself an AWS IAM role here
- * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
- * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
- *     customNamespaceSyncRules: [{
- *         defaultAction: "Exclude",
- *         filterAction: "Include",
- *         filterSource: "filter('code', '200')",
- *         namespace: "fart",
- *     }],
- *     enableAwsUsage: true,
- *     enabled: true,
- *     importCloudWatch: true,
- *     integrationId: awsMyteamToken.id,
- *     key: "putYourKeyHere",
- *     namespaceSyncRules: [{
- *         defaultAction: "Exclude",
- *         filterAction: "Include",
- *         filterSource: "filter('code', '200')",
- *         namespace: "AWS/EC2",
- *     }],
- *     pollRate: 300,
- *     regions: ["us-east-1"],
- *     token: "putYourTokenHere",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
  */

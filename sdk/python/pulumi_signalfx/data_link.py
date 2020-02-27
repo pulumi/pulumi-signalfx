@@ -30,7 +30,7 @@ class DataLink(pulumi.CustomResource):
       * `minimumTimeWindow` (`str`) - The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
       * `name` (`str`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
       * `propertyKeyMapping` (`dict`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-      * `timeFormat` (`str`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+      * `timeFormat` (`str`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
       * `url` (`str`)
     """
     target_signalfx_dashboards: pulumi.Output[list]
@@ -69,7 +69,7 @@ class DataLink(pulumi.CustomResource):
           * `minimumTimeWindow` (`pulumi.Input[str]`) - The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
           * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
           * `propertyKeyMapping` (`pulumi.Input[dict]`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-          * `timeFormat` (`pulumi.Input[str]`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+          * `timeFormat` (`pulumi.Input[str]`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
           * `url` (`pulumi.Input[str]`)
         
         The **target_signalfx_dashboards** object supports the following:
@@ -138,7 +138,7 @@ class DataLink(pulumi.CustomResource):
           * `minimumTimeWindow` (`pulumi.Input[str]`) - The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
           * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
           * `propertyKeyMapping` (`pulumi.Input[dict]`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-          * `timeFormat` (`pulumi.Input[str]`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+          * `timeFormat` (`pulumi.Input[str]`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
           * `url` (`pulumi.Input[str]`)
         
         The **target_signalfx_dashboards** object supports the following:

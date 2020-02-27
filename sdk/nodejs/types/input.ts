@@ -274,7 +274,7 @@ export interface DataLinkTargetExternalUrl {
      */
     propertyKeyMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+     * [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
      */
     timeFormat?: pulumi.Input<string>;
     url: pulumi.Input<string>;
@@ -689,6 +689,17 @@ export interface TimeChartVizOption {
      * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valueUnit?: pulumi.Input<string>;
+}
+
+export interface WebhookIntegrationHeader {
+    /**
+     * The key of the header to send
+     */
+    headerKey: pulumi.Input<string>;
+    /**
+     * The value of the header to send
+     */
+    headerValue: pulumi.Input<string>;
 }
 
 export namespace aws {
