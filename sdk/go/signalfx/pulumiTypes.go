@@ -1543,7 +1543,7 @@ type DataLinkTargetExternalUrl struct {
 	Name string `pulumi:"name"`
 	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
 	PropertyKeyMapping map[string]string `pulumi:"propertyKeyMapping"`
-	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 	TimeFormat *string `pulumi:"timeFormat"`
 	Url string `pulumi:"url"`
 }
@@ -1564,7 +1564,7 @@ type DataLinkTargetExternalUrlArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
 	PropertyKeyMapping pulumi.StringMapInput `pulumi:"propertyKeyMapping"`
-	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 	TimeFormat pulumi.StringPtrInput `pulumi:"timeFormat"`
 	Url pulumi.StringInput `pulumi:"url"`
 }
@@ -1636,7 +1636,7 @@ func (o DataLinkTargetExternalUrlOutput) PropertyKeyMapping() pulumi.StringMapOu
 	return o.ApplyT(func (v DataLinkTargetExternalUrl) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
 }
 
-// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 func (o DataLinkTargetExternalUrlOutput) TimeFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v DataLinkTargetExternalUrl) *string { return v.TimeFormat }).(pulumi.StringPtrOutput)
 }
@@ -4424,6 +4424,104 @@ func (o TimeChartVizOptionArrayOutput) Index(i pulumi.IntInput) TimeChartVizOpti
 	}).(TimeChartVizOptionOutput)
 }
 
+type WebhookIntegrationHeader struct {
+	// The key of the header to send
+	HeaderKey string `pulumi:"headerKey"`
+	// The value of the header to send
+	HeaderValue string `pulumi:"headerValue"`
+}
+
+type WebhookIntegrationHeaderInput interface {
+	pulumi.Input
+
+	ToWebhookIntegrationHeaderOutput() WebhookIntegrationHeaderOutput
+	ToWebhookIntegrationHeaderOutputWithContext(context.Context) WebhookIntegrationHeaderOutput
+}
+
+type WebhookIntegrationHeaderArgs struct {
+	// The key of the header to send
+	HeaderKey pulumi.StringInput `pulumi:"headerKey"`
+	// The value of the header to send
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+}
+
+func (WebhookIntegrationHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookIntegrationHeader)(nil)).Elem()
+}
+
+func (i WebhookIntegrationHeaderArgs) ToWebhookIntegrationHeaderOutput() WebhookIntegrationHeaderOutput {
+	return i.ToWebhookIntegrationHeaderOutputWithContext(context.Background())
+}
+
+func (i WebhookIntegrationHeaderArgs) ToWebhookIntegrationHeaderOutputWithContext(ctx context.Context) WebhookIntegrationHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationHeaderOutput)
+}
+
+type WebhookIntegrationHeaderArrayInput interface {
+	pulumi.Input
+
+	ToWebhookIntegrationHeaderArrayOutput() WebhookIntegrationHeaderArrayOutput
+	ToWebhookIntegrationHeaderArrayOutputWithContext(context.Context) WebhookIntegrationHeaderArrayOutput
+}
+
+type WebhookIntegrationHeaderArray []WebhookIntegrationHeaderInput
+
+func (WebhookIntegrationHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookIntegrationHeader)(nil)).Elem()
+}
+
+func (i WebhookIntegrationHeaderArray) ToWebhookIntegrationHeaderArrayOutput() WebhookIntegrationHeaderArrayOutput {
+	return i.ToWebhookIntegrationHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i WebhookIntegrationHeaderArray) ToWebhookIntegrationHeaderArrayOutputWithContext(ctx context.Context) WebhookIntegrationHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationHeaderArrayOutput)
+}
+
+type WebhookIntegrationHeaderOutput struct { *pulumi.OutputState }
+
+func (WebhookIntegrationHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookIntegrationHeader)(nil)).Elem()
+}
+
+func (o WebhookIntegrationHeaderOutput) ToWebhookIntegrationHeaderOutput() WebhookIntegrationHeaderOutput {
+	return o
+}
+
+func (o WebhookIntegrationHeaderOutput) ToWebhookIntegrationHeaderOutputWithContext(ctx context.Context) WebhookIntegrationHeaderOutput {
+	return o
+}
+
+// The key of the header to send
+func (o WebhookIntegrationHeaderOutput) HeaderKey() pulumi.StringOutput {
+	return o.ApplyT(func (v WebhookIntegrationHeader) string { return v.HeaderKey }).(pulumi.StringOutput)
+}
+
+// The value of the header to send
+func (o WebhookIntegrationHeaderOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func (v WebhookIntegrationHeader) string { return v.HeaderValue }).(pulumi.StringOutput)
+}
+
+type WebhookIntegrationHeaderArrayOutput struct { *pulumi.OutputState}
+
+func (WebhookIntegrationHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookIntegrationHeader)(nil)).Elem()
+}
+
+func (o WebhookIntegrationHeaderArrayOutput) ToWebhookIntegrationHeaderArrayOutput() WebhookIntegrationHeaderArrayOutput {
+	return o
+}
+
+func (o WebhookIntegrationHeaderArrayOutput) ToWebhookIntegrationHeaderArrayOutputWithContext(ctx context.Context) WebhookIntegrationHeaderArrayOutput {
+	return o
+}
+
+func (o WebhookIntegrationHeaderArrayOutput) Index(i pulumi.IntInput) WebhookIntegrationHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) WebhookIntegrationHeader {
+		return vs[0].([]WebhookIntegrationHeader)[vs[1].(int)]
+	}).(WebhookIntegrationHeaderOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertMutingRuleFilterOutput{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterArrayOutput{})
@@ -4495,4 +4593,6 @@ func init() {
 	pulumi.RegisterOutputType(TimeChartLegendOptionsFieldArrayOutput{})
 	pulumi.RegisterOutputType(TimeChartVizOptionOutput{})
 	pulumi.RegisterOutputType(TimeChartVizOptionArrayOutput{})
+	pulumi.RegisterOutputType(WebhookIntegrationHeaderOutput{})
+	pulumi.RegisterOutputType(WebhookIntegrationHeaderArrayOutput{})
 }

@@ -23,4 +23,5 @@ from .single_value_chart import *
 from .team import *
 from .text_chart import *
 from .time_chart import *
+from .webhook_integration import *
 from .provider import *

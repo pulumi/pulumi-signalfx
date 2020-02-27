@@ -16,6 +16,7 @@ export * from "./singleValueChart";
 export * from "./team";
 export * from "./textChart";
 export * from "./timeChart";
+export * from "./webhookIntegration";
 
 // Export sub-modules:
 import * as aws from "./aws/index";

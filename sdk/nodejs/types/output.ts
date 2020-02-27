@@ -274,7 +274,7 @@ export interface DataLinkTargetExternalUrl {
      */
     propertyKeyMapping?: {[key: string]: string};
     /**
-     * [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+     * [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
      */
     timeFormat?: string;
     url: string;
@@ -689,6 +689,17 @@ export interface TimeChartVizOption {
      * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valueUnit?: string;
+}
+
+export interface WebhookIntegrationHeader {
+    /**
+     * The key of the header to send
+     */
+    headerKey: string;
+    /**
+     * The value of the header to send
+     */
+    headerValue: string;
 }
 
 export namespace aws {

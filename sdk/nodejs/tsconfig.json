@@ -51,7 +51,8 @@
         "types/output.ts",
         "utilities.ts",
         "victorops/index.ts",
-        "victorops/integration.ts"
+        "victorops/integration.ts",
+        "webhookIntegration.ts"
     ]
 }
 

@@ -8,40 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * // A global link to SignalFx dashboard.
- * const myDataLink = new signalfx.DataLink("myDataLink", {
- *     propertyName: "pname",
- *     propertyValue: "pvalue",
- *     targetSignalfxDashboards: [{
- *         dashboardGroupId: signalfx_dashboard_group_mydashboardgroup0.id,
- *         dashboardId: signalfx_dashboard_mydashboard0.id,
- *         isDefault: true,
- *         name: "sfxDash",
- *     }],
- * });
- * // A dashboard-specific link to an external URL
- * const myDataLinkDash = new signalfx.DataLink("myDataLinkDash", {
- *     contextDashboardId: signalfx_dashboard_mydashboard0.id,
- *     propertyName: "pname2",
- *     propertyValue: "pvalue",
- *     targetExternalUrls: [{
- *         isDefault: false,
- *         name: "exUrl",
- *         propertyKeyMapping: {
- *             foo: "bar",
- *         },
- *         timeFormat: "ISO8601",
- *         url: "https://www.example.com",
- *     }],
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/data_link.html.markdown.
  */

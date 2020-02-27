@@ -253,7 +253,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         /// </summary>
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         /// </summary>
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }
@@ -460,7 +460,7 @@ namespace Pulumi.SignalFx
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
         /// <summary>
-        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be on of `"ISO8601"` or `"Epoch"` Defaults to `"ISO8601"`.
+        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         /// </summary>
         public readonly string? TimeFormat;
         public readonly string Url;
