@@ -707,15 +707,15 @@ export namespace aws {
         /**
          * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
-        defaultAction: string;
+        defaultAction?: string;
         /**
          * Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
-        filterAction: string;
+        filterAction?: string;
         /**
          * Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
-        filterSource: string;
+        filterSource?: string;
         /**
          * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
@@ -726,15 +726,15 @@ export namespace aws {
         /**
          * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
-        defaultAction: string;
+        defaultAction?: string;
         /**
          * Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
-        filterAction: string;
+        filterAction?: string;
         /**
          * Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
-        filterSource: string;
+        filterSource?: string;
         /**
          * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
