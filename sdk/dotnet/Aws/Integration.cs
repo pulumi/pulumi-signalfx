@@ -419,20 +419,20 @@ namespace Pulumi.SignalFx.Aws
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("defaultAction", required: true)]
-        public Input<string> DefaultAction { get; set; } = null!;
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
 
         /// <summary>
         /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("filterAction", required: true)]
-        public Input<string> FilterAction { get; set; } = null!;
+        [Input("filterAction")]
+        public Input<string>? FilterAction { get; set; }
 
         /// <summary>
         /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         /// </summary>
-        [Input("filterSource", required: true)]
-        public Input<string> FilterSource { get; set; } = null!;
+        [Input("filterSource")]
+        public Input<string>? FilterSource { get; set; }
 
         /// <summary>
         /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
@@ -450,20 +450,20 @@ namespace Pulumi.SignalFx.Aws
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("defaultAction", required: true)]
-        public Input<string> DefaultAction { get; set; } = null!;
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
 
         /// <summary>
         /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("filterAction", required: true)]
-        public Input<string> FilterAction { get; set; } = null!;
+        [Input("filterAction")]
+        public Input<string>? FilterAction { get; set; }
 
         /// <summary>
         /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         /// </summary>
-        [Input("filterSource", required: true)]
-        public Input<string> FilterSource { get; set; } = null!;
+        [Input("filterSource")]
+        public Input<string>? FilterSource { get; set; }
 
         /// <summary>
         /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
@@ -481,20 +481,20 @@ namespace Pulumi.SignalFx.Aws
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("defaultAction", required: true)]
-        public Input<string> DefaultAction { get; set; } = null!;
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
 
         /// <summary>
         /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("filterAction", required: true)]
-        public Input<string> FilterAction { get; set; } = null!;
+        [Input("filterAction")]
+        public Input<string>? FilterAction { get; set; }
 
         /// <summary>
         /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         /// </summary>
-        [Input("filterSource", required: true)]
-        public Input<string> FilterSource { get; set; } = null!;
+        [Input("filterSource")]
+        public Input<string>? FilterSource { get; set; }
 
         /// <summary>
         /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
@@ -512,20 +512,20 @@ namespace Pulumi.SignalFx.Aws
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("defaultAction", required: true)]
-        public Input<string> DefaultAction { get; set; } = null!;
+        [Input("defaultAction")]
+        public Input<string>? DefaultAction { get; set; }
 
         /// <summary>
         /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        [Input("filterAction", required: true)]
-        public Input<string> FilterAction { get; set; } = null!;
+        [Input("filterAction")]
+        public Input<string>? FilterAction { get; set; }
 
         /// <summary>
         /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         /// </summary>
-        [Input("filterSource", required: true)]
-        public Input<string> FilterSource { get; set; } = null!;
+        [Input("filterSource")]
+        public Input<string>? FilterSource { get; set; }
 
         /// <summary>
         /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
@@ -548,15 +548,15 @@ namespace Pulumi.SignalFx.Aws
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        public readonly string DefaultAction;
+        public readonly string? DefaultAction;
         /// <summary>
         /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        public readonly string FilterAction;
+        public readonly string? FilterAction;
         /// <summary>
         /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         /// </summary>
-        public readonly string FilterSource;
+        public readonly string? FilterSource;
         /// <summary>
         /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         /// </summary>
@@ -564,9 +564,9 @@ namespace Pulumi.SignalFx.Aws
 
         [OutputConstructor]
         private IntegrationCustomNamespaceSyncRules(
-            string defaultAction,
-            string filterAction,
-            string filterSource,
+            string? defaultAction,
+            string? filterAction,
+            string? filterSource,
             string @namespace)
         {
             DefaultAction = defaultAction;
@@ -582,15 +582,15 @@ namespace Pulumi.SignalFx.Aws
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        public readonly string DefaultAction;
+        public readonly string? DefaultAction;
         /// <summary>
         /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         /// </summary>
-        public readonly string FilterAction;
+        public readonly string? FilterAction;
         /// <summary>
         /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         /// </summary>
-        public readonly string FilterSource;
+        public readonly string? FilterSource;
         /// <summary>
         /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         /// </summary>
@@ -598,9 +598,9 @@ namespace Pulumi.SignalFx.Aws
 
         [OutputConstructor]
         private IntegrationNamespaceSyncRules(
-            string defaultAction,
-            string filterAction,
-            string filterSource,
+            string? defaultAction,
+            string? filterAction,
+            string? filterSource,
             string @namespace)
         {
             DefaultAction = defaultAction;
