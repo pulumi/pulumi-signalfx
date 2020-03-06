@@ -19,7 +19,7 @@ import (
 type Detector struct {
 	pulumi.CustomResourceState
 
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
 	AuthorizedWriterTeams pulumi.StringArrayOutput `pulumi:"authorizedWriterTeams"`
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
@@ -29,7 +29,7 @@ type Detector struct {
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
 	// Name of the detector.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -37,7 +37,7 @@ type Detector struct {
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Set of rules used for alerting.
 	Rules DetectorRuleArrayOutput `pulumi:"rules"`
-	// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
 	ShowDataMarkers pulumi.BoolPtrOutput `pulumi:"showDataMarkers"`
 	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
 	ShowEventLines pulumi.BoolPtrOutput `pulumi:"showEventLines"`
@@ -45,7 +45,7 @@ type Detector struct {
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// Team IDs to associate the detector to.
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// URL of the detector
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -87,7 +87,7 @@ func GetDetector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Detector resources.
 type detectorState struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
@@ -97,7 +97,7 @@ type detectorState struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
@@ -105,7 +105,7 @@ type detectorState struct {
 	ProgramText *string `pulumi:"programText"`
 	// Set of rules used for alerting.
 	Rules []DetectorRule `pulumi:"rules"`
-	// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
 	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
 	ShowEventLines *bool `pulumi:"showEventLines"`
@@ -113,7 +113,7 @@ type detectorState struct {
 	StartTime *int `pulumi:"startTime"`
 	// Team IDs to associate the detector to.
 	Teams []string `pulumi:"teams"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
 	// URL of the detector
 	Url *string `pulumi:"url"`
@@ -122,7 +122,7 @@ type detectorState struct {
 }
 
 type DetectorState struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
 	AuthorizedWriterTeams pulumi.StringArrayInput
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers pulumi.StringArrayInput
@@ -132,7 +132,7 @@ type DetectorState struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
@@ -140,7 +140,7 @@ type DetectorState struct {
 	ProgramText pulumi.StringPtrInput
 	// Set of rules used for alerting.
 	Rules DetectorRuleArrayInput
-	// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
 	ShowDataMarkers pulumi.BoolPtrInput
 	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
 	ShowEventLines pulumi.BoolPtrInput
@@ -148,7 +148,7 @@ type DetectorState struct {
 	StartTime pulumi.IntPtrInput
 	// Team IDs to associate the detector to.
 	Teams pulumi.StringArrayInput
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
 	// URL of the detector
 	Url pulumi.StringPtrInput
@@ -161,7 +161,7 @@ func (DetectorState) ElementType() reflect.Type {
 }
 
 type detectorArgs struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
@@ -171,7 +171,7 @@ type detectorArgs struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
@@ -179,7 +179,7 @@ type detectorArgs struct {
 	ProgramText string `pulumi:"programText"`
 	// Set of rules used for alerting.
 	Rules []DetectorRule `pulumi:"rules"`
-	// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
 	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
 	ShowEventLines *bool `pulumi:"showEventLines"`
@@ -187,7 +187,7 @@ type detectorArgs struct {
 	StartTime *int `pulumi:"startTime"`
 	// Team IDs to associate the detector to.
 	Teams []string `pulumi:"teams"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions []DetectorVizOption `pulumi:"vizOptions"`
@@ -195,7 +195,7 @@ type detectorArgs struct {
 
 // The set of arguments for constructing a Detector resource.
 type DetectorArgs struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
 	AuthorizedWriterTeams pulumi.StringArrayInput
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers pulumi.StringArrayInput
@@ -205,7 +205,7 @@ type DetectorArgs struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
@@ -213,7 +213,7 @@ type DetectorArgs struct {
 	ProgramText pulumi.StringInput
 	// Set of rules used for alerting.
 	Rules DetectorRuleArrayInput
-	// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
 	ShowDataMarkers pulumi.BoolPtrInput
 	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
 	ShowEventLines pulumi.BoolPtrInput
@@ -221,7 +221,7 @@ type DetectorArgs struct {
 	StartTime pulumi.IntPtrInput
 	// Team IDs to associate the detector to.
 	Teams pulumi.StringArrayInput
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions DetectorVizOptionArrayInput

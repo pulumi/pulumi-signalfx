@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx
     public partial class Detector : Pulumi.CustomResource
     {
         /// <summary>
-        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         /// </summary>
         [Output("authorizedWriterTeams")]
         public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
@@ -48,7 +48,7 @@ namespace Pulumi.SignalFx
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes).
+        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Output("maxDelay")]
         public Output<int?> MaxDelay { get; private set; } = null!;
@@ -72,7 +72,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.DetectorRules>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+        /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         /// </summary>
         [Output("showDataMarkers")]
         public Output<bool?> ShowDataMarkers { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> Teams { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         /// </summary>
         public InputList<string> AuthorizedWriterTeams
         {
@@ -202,7 +202,7 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes).
+        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+        /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         /// </summary>
         public InputList<string> AuthorizedWriterTeams
         {
@@ -329,7 +329,7 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes).
+        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
@@ -359,7 +359,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+        /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
@@ -389,7 +389,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }

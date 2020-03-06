@@ -123,7 +123,7 @@ export class Detector extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
@@ -143,7 +143,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     public readonly maxDelay!: pulumi.Output<number | undefined>;
     /**
@@ -159,7 +159,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.DetectorRule[]>;
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
     public readonly showDataMarkers!: pulumi.Output<boolean | undefined>;
     /**
@@ -175,7 +175,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly teams!: pulumi.Output<string[] | undefined>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
@@ -256,7 +256,7 @@ export class Detector extends pulumi.CustomResource {
  */
 export interface DetectorState {
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
     readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -276,7 +276,7 @@ export interface DetectorState {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     readonly maxDelay?: pulumi.Input<number>;
     /**
@@ -292,7 +292,7 @@ export interface DetectorState {
      */
     readonly rules?: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
     readonly showDataMarkers?: pulumi.Input<boolean>;
     /**
@@ -308,7 +308,7 @@ export interface DetectorState {
      */
     readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
     readonly timeRange?: pulumi.Input<number>;
     /**
@@ -326,7 +326,7 @@ export interface DetectorState {
  */
 export interface DetectorArgs {
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
     readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -346,7 +346,7 @@ export interface DetectorArgs {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes).
+     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     readonly maxDelay?: pulumi.Input<number>;
     /**
@@ -362,7 +362,7 @@ export interface DetectorArgs {
      */
     readonly rules: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `false` by default.
+     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
     readonly showDataMarkers?: pulumi.Input<boolean>;
     /**
@@ -378,7 +378,7 @@ export interface DetectorArgs {
      */
     readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults to 3600.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
     readonly timeRange?: pulumi.Input<number>;
     /**
