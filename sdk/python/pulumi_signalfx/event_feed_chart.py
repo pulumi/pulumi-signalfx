@@ -24,7 +24,7 @@ class EventFeedChart(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+    Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
     """
     start_time: pulumi.Output[float]
     """
@@ -44,7 +44,7 @@ class EventFeedChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
 
@@ -94,7 +94,7 @@ class EventFeedChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
 

@@ -63,7 +63,7 @@ class ListChart(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+    Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
     """
     refresh_interval: pulumi.Output[float]
     """
@@ -122,7 +122,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[float] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
@@ -221,7 +221,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[float] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.

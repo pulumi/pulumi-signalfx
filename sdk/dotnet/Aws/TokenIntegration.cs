@@ -11,7 +11,7 @@ namespace Pulumi.SignalFx.Aws
     /// <summary>
     /// SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
     /// 
-    /// **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
+    /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
     /// 

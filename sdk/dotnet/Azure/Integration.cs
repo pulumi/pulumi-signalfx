@@ -9,9 +9,9 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Azure
 {
     /// <summary>
-    /// SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html).
+    /// SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
     /// 
-    /// **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
     /// 
     /// ## Service Names
     /// 
@@ -52,7 +52,7 @@ namespace Pulumi.SignalFx.Azure
         public Output<int?> PollRate { get; private set; } = null!;
 
         /// <summary>
-        /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Output("secretKey")]
         public Output<string> SecretKey { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.SignalFx.Azure
         public Output<ImmutableArray<string>> Subscriptions { get; private set; } = null!;
 
         /// <summary>
-        /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.SignalFx.Azure
         public Input<int>? PollRate { get; set; }
 
         /// <summary>
-        /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.SignalFx.Azure
         }
 
         /// <summary>
-        /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.SignalFx.Azure
         public Input<int>? PollRate { get; set; }
 
         /// <summary>
-        /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.SignalFx.Azure
         }
 
         /// <summary>
-        /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

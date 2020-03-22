@@ -25,7 +25,7 @@ class HeatmapChart(pulumi.CustomResource):
       * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
       * `gt` (`float`) - Indicates the lower threshold non-inclusive value for this range.
       * `gte` (`float`) - Indicates the lower threshold inclusive value for this range.
-      * `lt` (`float`) - Indicates the upper threshold non-inculsive value for this range.
+      * `lt` (`float`) - Indicates the upper threshold non-inclusive value for this range.
       * `lte` (`float`) - Indicates the upper threshold inclusive value for this range.
     """
     description: pulumi.Output[str]
@@ -104,7 +104,7 @@ class HeatmapChart(pulumi.CustomResource):
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
-          * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inculsive value for this range.
+          * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inclusive value for this range.
           * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.
@@ -182,7 +182,7 @@ class HeatmapChart(pulumi.CustomResource):
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
-          * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inculsive value for this range.
+          * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inclusive value for this range.
           * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.

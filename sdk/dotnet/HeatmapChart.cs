@@ -417,7 +417,7 @@ namespace Pulumi.SignalFx
         public Input<double>? Gte { get; set; }
 
         /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
+        /// Indicates the upper threshold non-inclusive value for this range.
         /// </summary>
         [Input("lt")]
         public Input<double>? Lt { get; set; }
@@ -454,7 +454,7 @@ namespace Pulumi.SignalFx
         public Input<double>? Gte { get; set; }
 
         /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
+        /// Indicates the upper threshold non-inclusive value for this range.
         /// </summary>
         [Input("lt")]
         public Input<double>? Lt { get; set; }
@@ -518,7 +518,7 @@ namespace Pulumi.SignalFx
         /// </summary>
         public readonly double? Gte;
         /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
+        /// Indicates the upper threshold non-inclusive value for this range.
         /// </summary>
         public readonly double? Lt;
         /// <summary>

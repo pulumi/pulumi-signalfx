@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html).
+// SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 // 
-// **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 // 
 // ## Service Names
 // 
@@ -33,13 +33,13 @@ type Integration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
-	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// List of Azure subscriptions that SignalFx should monitor.
 	Subscriptions pulumi.StringArrayOutput `pulumi:"subscriptions"`
-	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
 
@@ -96,13 +96,13 @@ type integrationState struct {
 	Name *string `pulumi:"name"`
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate *int `pulumi:"pollRate"`
-	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey *string `pulumi:"secretKey"`
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
 	Services []string `pulumi:"services"`
 	// List of Azure subscriptions that SignalFx should monitor.
 	Subscriptions []string `pulumi:"subscriptions"`
-	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -117,13 +117,13 @@ type IntegrationState struct {
 	Name pulumi.StringPtrInput
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate pulumi.IntPtrInput
-	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey pulumi.StringPtrInput
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
 	Services pulumi.StringArrayInput
 	// List of Azure subscriptions that SignalFx should monitor.
 	Subscriptions pulumi.StringArrayInput
-	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	TenantId pulumi.StringPtrInput
 }
 
@@ -142,13 +142,13 @@ type integrationArgs struct {
 	Name *string `pulumi:"name"`
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate *int `pulumi:"pollRate"`
-	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey string `pulumi:"secretKey"`
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
 	Services []string `pulumi:"services"`
 	// List of Azure subscriptions that SignalFx should monitor.
 	Subscriptions []string `pulumi:"subscriptions"`
-	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	TenantId string `pulumi:"tenantId"`
 }
 
@@ -164,13 +164,13 @@ type IntegrationArgs struct {
 	Name pulumi.StringPtrInput
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate pulumi.IntPtrInput
-	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey pulumi.StringInput
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
 	Services pulumi.StringArrayInput
 	// List of Azure subscriptions that SignalFx should monitor.
 	Subscriptions pulumi.StringArrayInput
-	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+	// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	TenantId pulumi.StringInput
 }
 

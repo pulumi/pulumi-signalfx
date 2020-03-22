@@ -32,7 +32,7 @@ class Detector(pulumi.CustomResource):
     """
     max_delay: pulumi.Output[float]
     """
-    How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+    How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
     """
     name: pulumi.Output[str]
     """
@@ -40,7 +40,7 @@ class Detector(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+    Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
     """
     rules: pulumi.Output[list]
     """
@@ -49,9 +49,9 @@ class Detector(pulumi.CustomResource):
       * `description` (`str`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
       * `detectLabel` (`str`) - A detect label which matches a detect label within `program_text`.
       * `disabled` (`bool`) - When true, notifications and events will not be generated for the detect label. `false` by default.
-      * `notifications` (`list`) - List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
-      * `parameterizedBody` (`str`) - Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
-      * `parameterizedSubject` (`str`) - Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+      * `notifications` (`list`) - List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
+      * `parameterizedBody` (`str`) - Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
+      * `parameterizedSubject` (`str`) - Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
       * `runbookUrl` (`str`) - URL of page to consult when an alert is triggered. This can be used with custom notification messages.
       * `severity` (`str`) - The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
       * `tip` (`str`) - Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
@@ -102,9 +102,9 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[str] name: Name of the detector.
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[list] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
@@ -118,9 +118,9 @@ class Detector(pulumi.CustomResource):
           * `description` (`pulumi.Input[str]`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
           * `detectLabel` (`pulumi.Input[str]`) - A detect label which matches a detect label within `program_text`.
           * `disabled` (`pulumi.Input[bool]`) - When true, notifications and events will not be generated for the detect label. `false` by default.
-          * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
-          * `parameterizedBody` (`pulumi.Input[str]`) - Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
-          * `parameterizedSubject` (`pulumi.Input[str]`) - Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+          * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
+          * `parameterizedBody` (`pulumi.Input[str]`) - Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
+          * `parameterizedSubject` (`pulumi.Input[str]`) - Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
           * `runbookUrl` (`pulumi.Input[str]`) - URL of page to consult when an alert is triggered. This can be used with custom notification messages.
           * `severity` (`pulumi.Input[str]`) - The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
           * `tip` (`pulumi.Input[str]`) - Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
@@ -194,9 +194,9 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[str] name: Name of the detector.
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[list] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
@@ -210,9 +210,9 @@ class Detector(pulumi.CustomResource):
           * `description` (`pulumi.Input[str]`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
           * `detectLabel` (`pulumi.Input[str]`) - A detect label which matches a detect label within `program_text`.
           * `disabled` (`pulumi.Input[bool]`) - When true, notifications and events will not be generated for the detect label. `false` by default.
-          * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
-          * `parameterizedBody` (`pulumi.Input[str]`) - Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
-          * `parameterizedSubject` (`pulumi.Input[str]`) - Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+          * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
+          * `parameterizedBody` (`pulumi.Input[str]`) - Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
+          * `parameterizedSubject` (`pulumi.Input[str]`) - Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
           * `runbookUrl` (`pulumi.Input[str]`) - URL of page to consult when an alert is triggered. This can be used with custom notification messages.
           * `severity` (`pulumi.Input[str]`) - The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
           * `tip` (`pulumi.Input[str]`) - Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.

@@ -55,6 +55,12 @@ namespace Pulumi.SignalFx
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("discoveryOptionsQuery")]
+        public Output<string?> DiscoveryOptionsQuery { get; private set; } = null!;
+
+        [Output("discoveryOptionsSelectors")]
+        public Output<ImmutableArray<string>> DiscoveryOptionsSelectors { get; private set; } = null!;
+
         /// <summary>
         /// Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
         /// </summary>
@@ -227,6 +233,17 @@ namespace Pulumi.SignalFx
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("discoveryOptionsQuery")]
+        public Input<string>? DiscoveryOptionsQuery { get; set; }
+
+        [Input("discoveryOptionsSelectors")]
+        private InputList<string>? _discoveryOptionsSelectors;
+        public InputList<string> DiscoveryOptionsSelectors
+        {
+            get => _discoveryOptionsSelectors ?? (_discoveryOptionsSelectors = new InputList<string>());
+            set => _discoveryOptionsSelectors = value;
+        }
+
         /// <summary>
         /// Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
         /// </summary>
@@ -383,6 +400,17 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("discoveryOptionsQuery")]
+        public Input<string>? DiscoveryOptionsQuery { get; set; }
+
+        [Input("discoveryOptionsSelectors")]
+        private InputList<string>? _discoveryOptionsSelectors;
+        public InputList<string> DiscoveryOptionsSelectors
+        {
+            get => _discoveryOptionsSelectors ?? (_discoveryOptionsSelectors = new InputList<string>());
+            set => _discoveryOptionsSelectors = value;
+        }
 
         /// <summary>
         /// Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.

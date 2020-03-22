@@ -41,6 +41,7 @@ class DashboardGroup(pulumi.CustomResource):
     """
     Description of the dashboard group.
     """
+    import_qualifiers: pulumi.Output[list]
     name: pulumi.Output[str]
     """
     Name of the dashboard group.
@@ -49,11 +50,11 @@ class DashboardGroup(pulumi.CustomResource):
     """
     Team IDs to associate the dashboard group to.
     """
-    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, dashboards=None, description=None, name=None, teams=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, dashboards=None, description=None, import_qualifiers=None, name=None, teams=None, __props__=None, __name__=None, __opts__=None):
         """
-        In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/v2/docs/dashboard-group-model) is a collection of dashboards.
+        In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
         
-        **NOTE:** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+        > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -80,6 +81,16 @@ class DashboardGroup(pulumi.CustomResource):
             * `property` (`pulumi.Input[str]`) - A metric time series dimension or property name.
             * `values` (`pulumi.Input[list]`) - (Optional) List of of strings (which will be treated as an OR filter on the property).
             * `valuesSuggesteds` (`pulumi.Input[list]`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+        
+        The **import_qualifiers** object supports the following:
+        
+          * `filters` (`pulumi.Input[list]`)
+        
+            * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+            * `property` (`pulumi.Input[str]`) - A metric time series dimension or property name.
+            * `values` (`pulumi.Input[list]`) - (Optional) List of of strings (which will be treated as an OR filter on the property).
+        
+          * `metric` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
         """
@@ -104,6 +115,7 @@ class DashboardGroup(pulumi.CustomResource):
             __props__['authorized_writer_users'] = authorized_writer_users
             __props__['dashboards'] = dashboards
             __props__['description'] = description
+            __props__['import_qualifiers'] = import_qualifiers
             __props__['name'] = name
             __props__['teams'] = teams
         super(DashboardGroup, __self__).__init__(
@@ -113,7 +125,7 @@ class DashboardGroup(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, dashboards=None, description=None, name=None, teams=None):
+    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, dashboards=None, description=None, import_qualifiers=None, name=None, teams=None):
         """
         Get an existing DashboardGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -144,6 +156,16 @@ class DashboardGroup(pulumi.CustomResource):
             * `property` (`pulumi.Input[str]`) - A metric time series dimension or property name.
             * `values` (`pulumi.Input[list]`) - (Optional) List of of strings (which will be treated as an OR filter on the property).
             * `valuesSuggesteds` (`pulumi.Input[list]`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+        
+        The **import_qualifiers** object supports the following:
+        
+          * `filters` (`pulumi.Input[list]`)
+        
+            * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+            * `property` (`pulumi.Input[str]`) - A metric time series dimension or property name.
+            * `values` (`pulumi.Input[list]`) - (Optional) List of of strings (which will be treated as an OR filter on the property).
+        
+          * `metric` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
         """
@@ -154,6 +176,7 @@ class DashboardGroup(pulumi.CustomResource):
         __props__["authorized_writer_users"] = authorized_writer_users
         __props__["dashboards"] = dashboards
         __props__["description"] = description
+        __props__["import_qualifiers"] = import_qualifiers
         __props__["name"] = name
         __props__["teams"] = teams
         return DashboardGroup(resource_name, opts=opts, __props__=__props__)

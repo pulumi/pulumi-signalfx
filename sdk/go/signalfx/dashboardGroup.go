@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/v2/docs/dashboard-group-model) is a collection of dashboards.
+// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
 // 
-// **NOTE:** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+// > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 // 
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
 type DashboardGroup struct {
@@ -26,6 +26,7 @@ type DashboardGroup struct {
 	Dashboards DashboardGroupDashboardArrayOutput `pulumi:"dashboards"`
 	// Description of the dashboard group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	ImportQualifiers DashboardGroupImportQualifierArrayOutput `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Team IDs to associate the dashboard group to.
@@ -68,6 +69,7 @@ type dashboardGroupState struct {
 	Dashboards []DashboardGroupDashboard `pulumi:"dashboards"`
 	// Description of the dashboard group.
 	Description *string `pulumi:"description"`
+	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
 	// Team IDs to associate the dashboard group to.
@@ -83,6 +85,7 @@ type DashboardGroupState struct {
 	Dashboards DashboardGroupDashboardArrayInput
 	// Description of the dashboard group.
 	Description pulumi.StringPtrInput
+	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
 	// Team IDs to associate the dashboard group to.
@@ -102,6 +105,7 @@ type dashboardGroupArgs struct {
 	Dashboards []DashboardGroupDashboard `pulumi:"dashboards"`
 	// Description of the dashboard group.
 	Description *string `pulumi:"description"`
+	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
 	// Team IDs to associate the dashboard group to.
@@ -118,6 +122,7 @@ type DashboardGroupArgs struct {
 	Dashboards DashboardGroupDashboardArrayInput
 	// Description of the dashboard group.
 	Description pulumi.StringPtrInput
+	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
 	// Team IDs to associate the dashboard group to.

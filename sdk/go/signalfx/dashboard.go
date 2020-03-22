@@ -29,6 +29,8 @@ type Dashboard struct {
 	DashboardGroup pulumi.StringOutput `pulumi:"dashboardGroup"`
 	// Variable description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	DiscoveryOptionsQuery pulumi.StringPtrOutput `pulumi:"discoveryOptionsQuery"`
+	DiscoveryOptionsSelectors pulumi.StringArrayOutput `pulumi:"discoveryOptionsSelectors"`
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
@@ -96,6 +98,8 @@ type dashboardState struct {
 	DashboardGroup *string `pulumi:"dashboardGroup"`
 	// Variable description.
 	Description *string `pulumi:"description"`
+	DiscoveryOptionsQuery *string `pulumi:"discoveryOptionsQuery"`
+	DiscoveryOptionsSelectors []string `pulumi:"discoveryOptionsSelectors"`
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime *int `pulumi:"endTime"`
 	// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
@@ -133,6 +137,8 @@ type DashboardState struct {
 	DashboardGroup pulumi.StringPtrInput
 	// Variable description.
 	Description pulumi.StringPtrInput
+	DiscoveryOptionsQuery pulumi.StringPtrInput
+	DiscoveryOptionsSelectors pulumi.StringArrayInput
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime pulumi.IntPtrInput
 	// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
@@ -174,6 +180,8 @@ type dashboardArgs struct {
 	DashboardGroup string `pulumi:"dashboardGroup"`
 	// Variable description.
 	Description *string `pulumi:"description"`
+	DiscoveryOptionsQuery *string `pulumi:"discoveryOptionsQuery"`
+	DiscoveryOptionsSelectors []string `pulumi:"discoveryOptionsSelectors"`
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime *int `pulumi:"endTime"`
 	// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
@@ -210,6 +218,8 @@ type DashboardArgs struct {
 	DashboardGroup pulumi.StringInput
 	// Variable description.
 	Description pulumi.StringPtrInput
+	DiscoveryOptionsQuery pulumi.StringPtrInput
+	DiscoveryOptionsSelectors pulumi.StringArrayInput
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime pulumi.IntPtrInput
 	// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.

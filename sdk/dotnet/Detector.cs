@@ -48,7 +48,7 @@ namespace Pulumi.SignalFx
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        /// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Output("maxDelay")]
         public Output<int?> MaxDelay { get; private set; } = null!;
@@ -60,7 +60,7 @@ namespace Pulumi.SignalFx
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the detector. More info at &lt;https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html&gt;.
+        /// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        /// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the detector. More info at &lt;https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html&gt;.
+        /// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -329,7 +329,7 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints. See &lt;https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints&gt; for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        /// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
@@ -341,7 +341,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the detector. More info at &lt;https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html&gt;.
+        /// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See &lt;https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector&gt; for more info.
+        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
         /// </summary>
         public InputList<string> Notifications
         {
@@ -453,13 +453,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Custom notification message body when an alert is triggered. See &lt;https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings&gt; for more info.
+        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         /// </summary>
         [Input("parameterizedBody")]
         public Input<string>? ParameterizedBody { get; set; }
 
         /// <summary>
-        /// Custom notification message subject when an alert is triggered. See &lt;https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings&gt; for more info.
+        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         /// </summary>
         [Input("parameterizedSubject")]
         public Input<string>? ParameterizedSubject { get; set; }
@@ -511,7 +511,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See &lt;https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector&gt; for more info.
+        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
         /// </summary>
         public InputList<string> Notifications
         {
@@ -520,13 +520,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Custom notification message body when an alert is triggered. See &lt;https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings&gt; for more info.
+        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         /// </summary>
         [Input("parameterizedBody")]
         public Input<string>? ParameterizedBody { get; set; }
 
         /// <summary>
-        /// Custom notification message subject when an alert is triggered. See &lt;https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings&gt; for more info.
+        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         /// </summary>
         [Input("parameterizedSubject")]
         public Input<string>? ParameterizedSubject { get; set; }
@@ -650,15 +650,15 @@ namespace Pulumi.SignalFx
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See &lt;https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector&gt; for more info.
+        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
         /// </summary>
         public readonly ImmutableArray<string> Notifications;
         /// <summary>
-        /// Custom notification message body when an alert is triggered. See &lt;https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings&gt; for more info.
+        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         /// </summary>
         public readonly string? ParameterizedBody;
         /// <summary>
-        /// Custom notification message subject when an alert is triggered. See &lt;https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings&gt; for more info.
+        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         /// </summary>
         public readonly string? ParameterizedSubject;
         /// <summary>

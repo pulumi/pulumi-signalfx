@@ -23,28 +23,6 @@ endif
 
 TESTPARALLELISM := 4
 
-OS := $(shell uname)
-EMPTY_TO_AVOID_SED := ""
-
-prepare::
-	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
-	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
-	@if test ! -d "cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz"; then "Project already prepared"; exit 1; fi
-
-	mv "cmd/pulumi-tfgen-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-tfgen-${NAME}
-	mv "cmd/pulumi-resource-x${EMPTY_TO_AVOID_SED}yz" cmd/pulumi-resource-${NAME}
-
-	if [[ "${OS}" != "Darwin" ]]; then \
-		sed -i 's,github.com/pulumi/pulumi-signalfx,${REPOSITORY},g' go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
-	# In MacOS the -i parameter needs an empty string to execute in place.
-	if [[ "${OS}" == "Darwin" ]]; then \
-		sed -i '' 's,github.com/pulumi/pulumi-signalfx,${REPOSITORY},g' go.mod; \
-		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
-	fi
-
 # NOTE: Since the plugin is published using the nodejs style semver version
 # We set the PLUGIN_VERSION to be the same as the version we use when building
 # the provider (e.g. x.y.z-dev-... instead of x.y.zdev...)
@@ -79,7 +57,7 @@ lint::
 
 install_plugins::
 	[ -x "$(shell which pulumi)" ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource aws 1.7.0
+	pulumi plugin install resource aws 1.10.0
 
 install::
 	GOBIN=$(PULUMI_BIN) go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${PROVIDER}

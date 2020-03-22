@@ -115,7 +115,7 @@ class TimeChart(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+    Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
     """
     show_data_markers: pulumi.Output[bool]
     """
@@ -188,7 +188,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
@@ -336,7 +336,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.

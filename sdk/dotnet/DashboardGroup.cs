@@ -9,9 +9,9 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/v2/docs/dashboard-group-model) is a collection of dashboards.
+    /// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
     /// 
-    /// **NOTE:** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+    /// &gt; **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
     /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
     /// </summary>
@@ -40,6 +40,9 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        [Output("importQualifiers")]
+        public Output<ImmutableArray<Outputs.DashboardGroupImportQualifiers>> ImportQualifiers { get; private set; } = null!;
 
         /// <summary>
         /// Name of the dashboard group.
@@ -141,6 +144,14 @@ namespace Pulumi.SignalFx
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("importQualifiers")]
+        private InputList<Inputs.DashboardGroupImportQualifiersArgs>? _importQualifiers;
+        public InputList<Inputs.DashboardGroupImportQualifiersArgs> ImportQualifiers
+        {
+            get => _importQualifiers ?? (_importQualifiers = new InputList<Inputs.DashboardGroupImportQualifiersArgs>());
+            set => _importQualifiers = value;
+        }
+
         /// <summary>
         /// Name of the dashboard group.
         /// </summary>
@@ -207,6 +218,14 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("importQualifiers")]
+        private InputList<Inputs.DashboardGroupImportQualifiersGetArgs>? _importQualifiers;
+        public InputList<Inputs.DashboardGroupImportQualifiersGetArgs> ImportQualifiers
+        {
+            get => _importQualifiers ?? (_importQualifiers = new InputList<Inputs.DashboardGroupImportQualifiersGetArgs>());
+            set => _importQualifiers = value;
+        }
 
         /// <summary>
         /// Name of the dashboard group.
@@ -459,6 +478,104 @@ namespace Pulumi.SignalFx
         {
         }
     }
+
+    public sealed class DashboardGroupImportQualifiersArgs : Pulumi.ResourceArgs
+    {
+        [Input("filters")]
+        private InputList<DashboardGroupImportQualifiersFiltersArgs>? _filters;
+        public InputList<DashboardGroupImportQualifiersFiltersArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<DashboardGroupImportQualifiersFiltersArgs>());
+            set => _filters = value;
+        }
+
+        [Input("metric", required: true)]
+        public Input<string> Metric { get; set; } = null!;
+
+        public DashboardGroupImportQualifiersArgs()
+        {
+        }
+    }
+
+    public sealed class DashboardGroupImportQualifiersFiltersArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// </summary>
+        [Input("negated")]
+        public Input<bool>? Negated { get; set; }
+
+        /// <summary>
+        /// A metric time series dimension or property name.
+        /// </summary>
+        [Input("property", required: true)]
+        public Input<string> Property { get; set; } = null!;
+
+        [Input("values", required: true)]
+        private InputList<string>? _values;
+
+        /// <summary>
+        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// </summary>
+        public InputList<string> Values
+        {
+            get => _values ?? (_values = new InputList<string>());
+            set => _values = value;
+        }
+
+        public DashboardGroupImportQualifiersFiltersArgs()
+        {
+        }
+    }
+
+    public sealed class DashboardGroupImportQualifiersFiltersGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// </summary>
+        [Input("negated")]
+        public Input<bool>? Negated { get; set; }
+
+        /// <summary>
+        /// A metric time series dimension or property name.
+        /// </summary>
+        [Input("property", required: true)]
+        public Input<string> Property { get; set; } = null!;
+
+        [Input("values", required: true)]
+        private InputList<string>? _values;
+
+        /// <summary>
+        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// </summary>
+        public InputList<string> Values
+        {
+            get => _values ?? (_values = new InputList<string>());
+            set => _values = value;
+        }
+
+        public DashboardGroupImportQualifiersFiltersGetArgs()
+        {
+        }
+    }
+
+    public sealed class DashboardGroupImportQualifiersGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("filters")]
+        private InputList<DashboardGroupImportQualifiersFiltersGetArgs>? _filters;
+        public InputList<DashboardGroupImportQualifiersFiltersGetArgs> Filters
+        {
+            get => _filters ?? (_filters = new InputList<DashboardGroupImportQualifiersFiltersGetArgs>());
+            set => _filters = value;
+        }
+
+        [Input("metric", required: true)]
+        public Input<string> Metric { get; set; } = null!;
+
+        public DashboardGroupImportQualifiersGetArgs()
+        {
+        }
+    }
     }
 
     namespace Outputs
@@ -554,6 +671,50 @@ namespace Pulumi.SignalFx
             Property = property;
             Values = values;
             ValuesSuggesteds = valuesSuggesteds;
+        }
+    }
+
+    [OutputType]
+    public sealed class DashboardGroupImportQualifiers
+    {
+        public readonly ImmutableArray<DashboardGroupImportQualifiersFilters> Filters;
+        public readonly string Metric;
+
+        [OutputConstructor]
+        private DashboardGroupImportQualifiers(
+            ImmutableArray<DashboardGroupImportQualifiersFilters> filters,
+            string metric)
+        {
+            Filters = filters;
+            Metric = metric;
+        }
+    }
+
+    [OutputType]
+    public sealed class DashboardGroupImportQualifiersFilters
+    {
+        /// <summary>
+        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// </summary>
+        public readonly bool? Negated;
+        /// <summary>
+        /// A metric time series dimension or property name.
+        /// </summary>
+        public readonly string Property;
+        /// <summary>
+        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// </summary>
+        public readonly ImmutableArray<string> Values;
+
+        [OutputConstructor]
+        private DashboardGroupImportQualifiersFilters(
+            bool? negated,
+            string property,
+            ImmutableArray<string> values)
+        {
+            Negated = negated;
+            Property = property;
+            Values = values;
         }
     }
     }

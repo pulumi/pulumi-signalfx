@@ -60,7 +60,7 @@ namespace Pulumi.SignalFx
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+        /// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+        /// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+        /// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }

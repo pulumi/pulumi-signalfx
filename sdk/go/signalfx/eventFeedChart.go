@@ -23,7 +23,7 @@ type EventFeedChart struct {
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// Name of the text note.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
@@ -70,7 +70,7 @@ type eventFeedChartState struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the text note.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText *string `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
@@ -87,7 +87,7 @@ type EventFeedChartState struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the text note.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
@@ -108,7 +108,7 @@ type eventFeedChartArgs struct {
 	EndTime *int `pulumi:"endTime"`
 	// Name of the text note.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText string `pulumi:"programText"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
@@ -124,7 +124,7 @@ type EventFeedChartArgs struct {
 	EndTime pulumi.IntPtrInput
 	// Name of the text note.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput

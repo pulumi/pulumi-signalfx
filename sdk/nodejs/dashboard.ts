@@ -64,6 +64,8 @@ export class Dashboard extends pulumi.CustomResource {
      * Variable description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly discoveryOptionsQuery!: pulumi.Output<string | undefined>;
+    public readonly discoveryOptionsSelectors!: pulumi.Output<string[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
      */
@@ -124,6 +126,8 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["columns"] = state ? state.columns : undefined;
             inputs["dashboardGroup"] = state ? state.dashboardGroup : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["discoveryOptionsQuery"] = state ? state.discoveryOptionsQuery : undefined;
+            inputs["discoveryOptionsSelectors"] = state ? state.discoveryOptionsSelectors : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
             inputs["eventOverlays"] = state ? state.eventOverlays : undefined;
             inputs["filters"] = state ? state.filters : undefined;
@@ -146,6 +150,8 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["columns"] = args ? args.columns : undefined;
             inputs["dashboardGroup"] = args ? args.dashboardGroup : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["discoveryOptionsQuery"] = args ? args.discoveryOptionsQuery : undefined;
+            inputs["discoveryOptionsSelectors"] = args ? args.discoveryOptionsSelectors : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["eventOverlays"] = args ? args.eventOverlays : undefined;
             inputs["filters"] = args ? args.filters : undefined;
@@ -200,6 +206,8 @@ export interface DashboardState {
      * Variable description.
      */
     readonly description?: pulumi.Input<string>;
+    readonly discoveryOptionsQuery?: pulumi.Input<string>;
+    readonly discoveryOptionsSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
      */
@@ -274,6 +282,8 @@ export interface DashboardArgs {
      * Variable description.
      */
     readonly description?: pulumi.Input<string>;
+    readonly discoveryOptionsQuery?: pulumi.Input<string>;
+    readonly discoveryOptionsSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
      */

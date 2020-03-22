@@ -143,7 +143,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     public readonly maxDelay!: pulumi.Output<number | undefined>;
     /**
@@ -151,7 +151,7 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -276,7 +276,7 @@ export interface DetectorState {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     readonly maxDelay?: pulumi.Input<number>;
     /**
@@ -284,7 +284,7 @@ export interface DetectorState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     readonly programText?: pulumi.Input<string>;
     /**
@@ -346,7 +346,7 @@ export interface DetectorArgs {
      */
     readonly endTime?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     readonly maxDelay?: pulumi.Input<number>;
     /**
@@ -354,7 +354,7 @@ export interface DetectorArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     readonly programText: pulumi.Input<string>;
     /**

@@ -32,7 +32,7 @@ class Integration(pulumi.CustomResource):
     """
     secret_key: pulumi.Output[str]
     """
-    Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+    Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
     """
     services: pulumi.Output[list]
     """
@@ -44,13 +44,13 @@ class Integration(pulumi.CustomResource):
     """
     tenant_id: pulumi.Output[str]
     """
-    Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+    Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
     """
     def __init__(__self__, resource_name, opts=None, app_id=None, enabled=None, environment=None, name=None, poll_rate=None, secret_key=None, services=None, subscriptions=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html).
+        SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
         
-        **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
         
         ## Service Names
         
@@ -63,10 +63,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
-        :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
         :param pulumi.Input[list] subscriptions: List of Azure subscriptions that SignalFx should monitor.
-        :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
         """
@@ -126,10 +126,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
-        :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
         :param pulumi.Input[list] subscriptions: List of Azure subscriptions that SignalFx should monitor.
-        :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
         """

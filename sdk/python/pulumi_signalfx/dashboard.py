@@ -43,6 +43,8 @@ class Dashboard(pulumi.CustomResource):
     """
     Variable description.
     """
+    discovery_options_query: pulumi.Output[str]
+    discovery_options_selectors: pulumi.Output[list]
     end_time: pulumi.Output[float]
     """
     Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
@@ -120,7 +122,7 @@ class Dashboard(pulumi.CustomResource):
       * `values` (`list`) - A list of values to be used with the `property`, they will be combined via `OR`.
       * `valuesSuggesteds` (`list`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
     """
-    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, discovery_options_query=None, discovery_options_selectors=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Dashboard resource with the given unique name, props, and options.
         
@@ -234,6 +236,8 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dashboard_group'")
             __props__['dashboard_group'] = dashboard_group
             __props__['description'] = description
+            __props__['discovery_options_query'] = discovery_options_query
+            __props__['discovery_options_selectors'] = discovery_options_selectors
             __props__['end_time'] = end_time
             __props__['event_overlays'] = event_overlays
             __props__['filters'] = filters
@@ -251,7 +255,7 @@ class Dashboard(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, url=None, variables=None):
+    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, discovery_options_query=None, discovery_options_selectors=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, url=None, variables=None):
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -351,6 +355,8 @@ class Dashboard(pulumi.CustomResource):
         __props__["columns"] = columns
         __props__["dashboard_group"] = dashboard_group
         __props__["description"] = description
+        __props__["discovery_options_query"] = discovery_options_query
+        __props__["discovery_options_selectors"] = discovery_options_selectors
         __props__["end_time"] = end_time
         __props__["event_overlays"] = event_overlays
         __props__["filters"] = filters

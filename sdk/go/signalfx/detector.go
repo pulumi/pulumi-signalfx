@@ -29,11 +29,11 @@ type Detector struct {
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
 	// Name of the detector.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Set of rules used for alerting.
 	Rules DetectorRuleArrayOutput `pulumi:"rules"`
@@ -97,11 +97,11 @@ type detectorState struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText *string `pulumi:"programText"`
 	// Set of rules used for alerting.
 	Rules []DetectorRule `pulumi:"rules"`
@@ -132,11 +132,11 @@ type DetectorState struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringPtrInput
 	// Set of rules used for alerting.
 	Rules DetectorRuleArrayInput
@@ -171,11 +171,11 @@ type detectorArgs struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText string `pulumi:"programText"`
 	// Set of rules used for alerting.
 	Rules []DetectorRule `pulumi:"rules"`
@@ -205,11 +205,11 @@ type DetectorArgs struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
-	// How long (in seconds) to wait for late datapoints. See <https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints> for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the detector. More info at <https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html>.
+	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringInput
 	// Set of rules used for alerting.
 	Rules DetectorRuleArrayInput

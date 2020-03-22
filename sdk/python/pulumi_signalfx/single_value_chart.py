@@ -46,7 +46,7 @@ class SingleValueChart(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+    Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
     """
     refresh_interval: pulumi.Output[float]
     """
@@ -92,7 +92,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints
         :param pulumi.Input[float] max_precision: The maximum precision to for value displayed.
         :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
@@ -174,7 +174,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints
         :param pulumi.Input[float] max_precision: The maximum precision to for value displayed.
         :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
