@@ -17,7 +17,7 @@ class WebhookIntegration(pulumi.CustomResource):
     headers: pulumi.Output[list]
     """
     A header to send with the request
-    
+
       * `headerKey` (`str`) - The key of the header to send
       * `headerValue` (`str`) - The value of the header to send
     """
@@ -33,22 +33,22 @@ class WebhookIntegration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enabled=None, headers=None, name=None, shared_secret=None, url=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx Webhook integration.
-        
+
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/webhook_integration.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[list] headers: A header to send with the request
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
-        
+
         The **headers** object supports the following:
-        
+
           * `headerKey` (`pulumi.Input[str]`) - The key of the header to send
           * `headerValue` (`pulumi.Input[str]`) - The value of the header to send
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/webhook_integration.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,7 +85,7 @@ class WebhookIntegration(pulumi.CustomResource):
         """
         Get an existing WebhookIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,17 +93,16 @@ class WebhookIntegration(pulumi.CustomResource):
         :param pulumi.Input[list] headers: A header to send with the request
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
-        
+
         The **headers** object supports the following:
-        
+
           * `headerKey` (`pulumi.Input[str]`) - The key of the header to send
           * `headerValue` (`pulumi.Input[str]`) - The value of the header to send
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/webhook_integration.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["enabled"] = enabled
         __props__["headers"] = headers
         __props__["name"] = name

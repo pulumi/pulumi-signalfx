@@ -25,16 +25,16 @@ class ExternalIntegration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
-        
+
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
-        
+
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with SignalFx support for your realm's AWS account id.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,19 +67,18 @@ class ExternalIntegration(pulumi.CustomResource):
         """
         Get an existing ExternalIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_id: The external ID to use with your IAM role and with `aws.Integration`.
         :param pulumi.Input[str] name: The name of this integration
         :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["external_id"] = external_id
         __props__["name"] = name
         __props__["signalfx_aws_account"] = signalfx_aws_account

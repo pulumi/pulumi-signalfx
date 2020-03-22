@@ -12,9 +12,9 @@ import (
 )
 
 // This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
-// 
+//
 // If the time period is in the past, the number represents the value of the metric near the end of the time period.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/single_value_chart.html.markdown.
 type SingleValueChart struct {
 	pulumi.CustomResourceState

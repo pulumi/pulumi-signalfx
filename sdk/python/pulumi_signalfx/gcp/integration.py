@@ -25,9 +25,9 @@ class Integration(pulumi.CustomResource):
     project_service_keys: pulumi.Output[list]
     """
     GCP projects to add.
-    
+
       * `projectId` (`str`)
-      * `projectKey` (`str`)
+      * `project_key` (`str`)
     """
     services: pulumi.Output[list]
     """
@@ -36,9 +36,11 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, enabled=None, name=None, poll_rate=None, project_service_keys=None, services=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx GCP Integration
-        
+
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/gcp_integration.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
@@ -46,13 +48,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[float] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         :param pulumi.Input[list] project_service_keys: GCP projects to add.
         :param pulumi.Input[list] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
-        
-        The **project_service_keys** object supports the following:
-        
-          * `projectId` (`pulumi.Input[str]`)
-          * `projectKey` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/gcp_integration.html.markdown.
+        The **project_service_keys** object supports the following:
+
+          * `projectId` (`pulumi.Input[str]`)
+          * `project_key` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +89,7 @@ class Integration(pulumi.CustomResource):
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -98,17 +98,16 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[float] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         :param pulumi.Input[list] project_service_keys: GCP projects to add.
         :param pulumi.Input[list] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
-        
-        The **project_service_keys** object supports the following:
-        
-          * `projectId` (`pulumi.Input[str]`)
-          * `projectKey` (`pulumi.Input[str]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/gcp_integration.html.markdown.
+        The **project_service_keys** object supports the following:
+
+          * `projectId` (`pulumi.Input[str]`)
+          * `project_key` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["enabled"] = enabled
         __props__["name"] = name
         __props__["poll_rate"] = poll_rate

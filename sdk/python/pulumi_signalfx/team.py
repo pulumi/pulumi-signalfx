@@ -47,12 +47,17 @@ class Team(pulumi.CustomResource):
     Where to send notifications for warning alerts
     """
     url: pulumi.Output[str]
+    """
+    URL of the team
+    """
     def __init__(__self__, resource_name, opts=None, description=None, members=None, name=None, notifications_criticals=None, notifications_defaults=None, notifications_infos=None, notifications_majors=None, notifications_minors=None, notifications_warnings=None, __props__=None, __name__=None, __opts__=None):
         """
         Handles management of SignalFx teams.
-        
+
         You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/team.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
@@ -64,8 +69,6 @@ class Team(pulumi.CustomResource):
         :param pulumi.Input[list] notifications_majors: Where to send notifications for major alerts
         :param pulumi.Input[list] notifications_minors: Where to send notifications for minor alerts
         :param pulumi.Input[list] notifications_warnings: Where to send notifications for warning alerts
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/team.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,7 +108,7 @@ class Team(pulumi.CustomResource):
         """
         Get an existing Team resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,12 +121,12 @@ class Team(pulumi.CustomResource):
         :param pulumi.Input[list] notifications_majors: Where to send notifications for major alerts
         :param pulumi.Input[list] notifications_minors: Where to send notifications for minor alerts
         :param pulumi.Input[list] notifications_warnings: Where to send notifications for warning alerts
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/team.html.markdown.
+        :param pulumi.Input[str] url: URL of the team
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["members"] = members
         __props__["name"] = name

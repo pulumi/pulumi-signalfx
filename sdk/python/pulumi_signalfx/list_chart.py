@@ -17,7 +17,7 @@ class ListChart(pulumi.CustomResource):
     color_scales: pulumi.Output[list]
     """
     Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-    
+
       * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
       * `gt` (`float`) - Indicates the lower threshold non-inclusive value for this range.
       * `gte` (`float`) - Indicates the lower threshold inclusive value for this range.
@@ -45,7 +45,7 @@ class ListChart(pulumi.CustomResource):
     List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
     * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
     * `enabled` True or False depending on if you want the property to be shown or hidden.
-    
+
       * `enabled` (`bool`)
       * `property` (`str`)
     """
@@ -90,10 +90,13 @@ class ListChart(pulumi.CustomResource):
     Must be `"Metric"` or `"Binary`". `"Metric"` by default.
     """
     url: pulumi.Output[str]
+    """
+    URL of the chart
+    """
     viz_options: pulumi.Output[list]
     """
     Plot-level customization options, associated with a publish statement.
-    
+
       * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
       * `displayName` (`str`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
       * `label` (`str`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
@@ -105,9 +108,11 @@ class ListChart(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, color_by=None, color_scales=None, description=None, disable_sampling=None, end_time=None, legend_fields_to_hides=None, legend_options_fields=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, sort_by=None, start_time=None, time_range=None, unit_prefix=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
         """
         This chart type displays current data values in a list format.
-        
+
         The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/list_chart.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -130,22 +135,22 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-        
+
         The **color_scales** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
           * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inculsive value for this range.
           * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
-        
+
         The **legend_options_fields** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
           * `property` (`pulumi.Input[str]`)
-        
+
         The **viz_options** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
@@ -153,8 +158,6 @@ class ListChart(pulumi.CustomResource):
           * `valueSuffix` (`pulumi.Input[str]`)
           * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
             * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/list_chart.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -205,7 +208,7 @@ class ListChart(pulumi.CustomResource):
         """
         Get an existing ListChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,23 +231,24 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        :param pulumi.Input[str] url: URL of the chart
         :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-        
+
         The **color_scales** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
           * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inculsive value for this range.
           * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
-        
+
         The **legend_options_fields** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
           * `property` (`pulumi.Input[str]`)
-        
+
         The **viz_options** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
@@ -252,12 +256,11 @@ class ListChart(pulumi.CustomResource):
           * `valueSuffix` (`pulumi.Input[str]`)
           * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
             * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/list_chart.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["color_by"] = color_by
         __props__["color_scales"] = color_scales
         __props__["description"] = description

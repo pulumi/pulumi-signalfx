@@ -22,7 +22,7 @@ class AlertMutingRule(pulumi.CustomResource):
     filters: pulumi.Output[list]
     """
     Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
-    
+
       * `negated` (`bool`) - Determines if this is a "not" filter. Defaults to `false`.
       * `property` (`str`) - The property to filter.
       * `property_value` (`str`) - The property value to filter.
@@ -38,9 +38,11 @@ class AlertMutingRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, detectors=None, filters=None, start_time=None, stop_time=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a SignalFx resource for managing alert muting rules. See [Mute Notifications](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html) for more information.
-        
+
         > **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for this muting rule
@@ -48,14 +50,12 @@ class AlertMutingRule(pulumi.CustomResource):
         :param pulumi.Input[list] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         :param pulumi.Input[float] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[float] stop_time: Starting time of an alert muting rule as a Unix time stamp in seconds.
-        
+
         The **filters** object supports the following:
-        
+
           * `negated` (`pulumi.Input[bool]`) - Determines if this is a "not" filter. Defaults to `false`.
           * `property` (`pulumi.Input[str]`) - The property to filter.
           * `property_value` (`pulumi.Input[str]`) - The property value to filter.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -97,7 +97,7 @@ class AlertMutingRule(pulumi.CustomResource):
         """
         Get an existing AlertMutingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -106,18 +106,17 @@ class AlertMutingRule(pulumi.CustomResource):
         :param pulumi.Input[list] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         :param pulumi.Input[float] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[float] stop_time: Starting time of an alert muting rule as a Unix time stamp in seconds.
-        
+
         The **filters** object supports the following:
-        
+
           * `negated` (`pulumi.Input[bool]`) - Determines if this is a "not" filter. Defaults to `false`.
           * `property` (`pulumi.Input[str]`) - The property to filter.
           * `property_value` (`pulumi.Input[str]`) - The property value to filter.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["detectors"] = detectors
         __props__["effective_start_time"] = effective_start_time

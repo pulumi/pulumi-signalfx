@@ -11,7 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard.html.markdown.
 type Dashboard struct {
 	pulumi.CustomResourceState
 

@@ -21,14 +21,14 @@ class OrgToken(pulumi.CustomResource):
     dpm_limits: pulumi.Output[dict]
     """
     Specify DPM-based limits for this token.
-    
+
       * `dpmLimit` (`float`) - The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
       * `dpmNotificationThreshold` (`float`) - DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
     """
     host_or_usage_limits: pulumi.Output[dict]
     """
     Specify Usage-based limits for this token.
-    
+
       * `containerLimit` (`float`) - Max number of Docker containers that can use this token
       * `containerNotificationThreshold` (`float`) - Notification threshold for Docker containers
       * `customMetricsLimit` (`float`) - Max number of custom metrics that can be sent with this token
@@ -43,10 +43,16 @@ class OrgToken(pulumi.CustomResource):
     Name of the token.
     """
     notifications: pulumi.Output[list]
+    """
+    List of strings specifying where notifications will be sent when an incident occurs. See
+    https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+    """
     def __init__(__self__, resource_name, opts=None, description=None, disabled=None, dpm_limits=None, host_or_usage_limits=None, name=None, notifications=None, __props__=None, __name__=None, __opts__=None):
         """
         Manage SignalFx org tokens.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/org_token.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the token.
@@ -54,14 +60,16 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[dict] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input[dict] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        
+        :param pulumi.Input[list] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
+               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+
         The **dpm_limits** object supports the following:
-        
+
           * `dpmLimit` (`pulumi.Input[float]`) - The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
           * `dpmNotificationThreshold` (`pulumi.Input[float]`) - DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
-        
+
         The **host_or_usage_limits** object supports the following:
-        
+
           * `containerLimit` (`pulumi.Input[float]`) - Max number of Docker containers that can use this token
           * `containerNotificationThreshold` (`pulumi.Input[float]`) - Notification threshold for Docker containers
           * `customMetricsLimit` (`pulumi.Input[float]`) - Max number of custom metrics that can be sent with this token
@@ -70,8 +78,6 @@ class OrgToken(pulumi.CustomResource):
           * `highResMetricsNotificationThreshold` (`pulumi.Input[float]`) - Notification threshold for hi-res metrics
           * `hostLimit` (`pulumi.Input[float]`) - Max number of hosts that can use this token
           * `hostNotificationThreshold` (`pulumi.Input[float]`) - Notification threshold for hosts
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/org_token.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -107,7 +113,7 @@ class OrgToken(pulumi.CustomResource):
         """
         Get an existing OrgToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -116,14 +122,16 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[dict] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input[dict] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        
+        :param pulumi.Input[list] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
+               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+
         The **dpm_limits** object supports the following:
-        
+
           * `dpmLimit` (`pulumi.Input[float]`) - The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
           * `dpmNotificationThreshold` (`pulumi.Input[float]`) - DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
-        
+
         The **host_or_usage_limits** object supports the following:
-        
+
           * `containerLimit` (`pulumi.Input[float]`) - Max number of Docker containers that can use this token
           * `containerNotificationThreshold` (`pulumi.Input[float]`) - Notification threshold for Docker containers
           * `customMetricsLimit` (`pulumi.Input[float]`) - Max number of custom metrics that can be sent with this token
@@ -132,12 +140,11 @@ class OrgToken(pulumi.CustomResource):
           * `highResMetricsNotificationThreshold` (`pulumi.Input[float]`) - Notification threshold for hi-res metrics
           * `hostLimit` (`pulumi.Input[float]`) - Max number of hosts that can use this token
           * `hostNotificationThreshold` (`pulumi.Input[float]`) - Notification threshold for hosts
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/org_token.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["disabled"] = disabled
         __props__["dpm_limits"] = dpm_limits

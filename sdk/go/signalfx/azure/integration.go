@@ -12,13 +12,13 @@ import (
 )
 
 // SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
-// 
+//
 // > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-// 
+//
 // ## Service Names
-// 
+//
 // Fields that expect an Azure service will work with one of: "microsoft.sql/servers/elasticpools" "microsoft.storage/storageaccounts" "microsoft.storage/storageaccountsservices/tableservices" "microsoft.storage/storageaccountsservices/blobservices" "microsoft.storage/storageaccounts/queueservices" "microsoft.storage/storageaccounts/fileservices" "microsoft.compute/virtualmachinescalesets" "microsoft.compute/virtualmachinescalesets/virtualmachines" "microsoft.compute/virtualmachines" "microsoft.devices/iothubs" "microsoft.eventHub/namespaces" "microsoft.batch/batchaccounts" "microsoft.sql/servers/databases" "microsoft.cache/redis" "microsoft.logic/workflows".
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
 type Integration struct {
 	pulumi.CustomResourceState

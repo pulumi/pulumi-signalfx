@@ -13,7 +13,7 @@ class HeatmapChart(pulumi.CustomResource):
     color_range: pulumi.Output[dict]
     """
     Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-    
+
       * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
       * `maxValue` (`float`) - The maximum value within the coloring range.
       * `minValue` (`float`) - The minimum value within the coloring range.
@@ -21,7 +21,7 @@ class HeatmapChart(pulumi.CustomResource):
     color_scales: pulumi.Output[list]
     """
     Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-    
+
       * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
       * `gt` (`float`) - Indicates the lower threshold non-inclusive value for this range.
       * `gte` (`float`) - Indicates the lower threshold inclusive value for this range.
@@ -73,10 +73,15 @@ class HeatmapChart(pulumi.CustomResource):
     Must be `"Metric"` or `"Binary`". `"Metric"` by default.
     """
     url: pulumi.Output[str]
+    """
+    URL of the chart
+    """
     def __init__(__self__, resource_name, opts=None, color_range=None, color_scales=None, description=None, disable_sampling=None, group_bies=None, hide_timestamp=None, max_delay=None, minimum_resolution=None, name=None, program_text=None, refresh_interval=None, sort_by=None, unit_prefix=None, __props__=None, __name__=None, __opts__=None):
         """
         This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -92,22 +97,20 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        
+
         The **color_range** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `maxValue` (`pulumi.Input[float]`) - The maximum value within the coloring range.
           * `minValue` (`pulumi.Input[float]`) - The minimum value within the coloring range.
-        
+
         The **color_scales** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
           * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inclusive value for this range.
           * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -153,7 +156,7 @@ class HeatmapChart(pulumi.CustomResource):
         """
         Get an existing HeatmapChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,26 +173,26 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        
+        :param pulumi.Input[str] url: URL of the chart
+
         The **color_range** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `maxValue` (`pulumi.Input[float]`) - The maximum value within the coloring range.
           * `minValue` (`pulumi.Input[float]`) - The minimum value within the coloring range.
-        
+
         The **color_scales** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
           * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inclusive value for this range.
           * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["color_range"] = color_range
         __props__["color_scales"] = color_scales
         __props__["description"] = description

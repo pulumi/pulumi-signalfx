@@ -49,13 +49,15 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, app_id=None, enabled=None, environment=None, name=None, poll_rate=None, secret_key=None, services=None, subscriptions=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
-        
+
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-        
+
         ## Service Names
-        
+
         Fields that expect an Azure service will work with one of: "microsoft.sql/servers/elasticpools" "microsoft.storage/storageaccounts" "microsoft.storage/storageaccountsservices/tableservices" "microsoft.storage/storageaccountsservices/blobservices" "microsoft.storage/storageaccounts/queueservices" "microsoft.storage/storageaccounts/fileservices" "microsoft.compute/virtualmachinescalesets" "microsoft.compute/virtualmachinescalesets/virtualmachines" "microsoft.compute/virtualmachines" "microsoft.devices/iothubs" "microsoft.eventHub/namespaces" "microsoft.batch/batchaccounts" "microsoft.sql/servers/databases" "microsoft.cache/redis" "microsoft.logic/workflows".
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
@@ -67,8 +69,6 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
         :param pulumi.Input[list] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -117,7 +117,7 @@ class Integration(pulumi.CustomResource):
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -130,12 +130,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
         :param pulumi.Input[list] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["app_id"] = app_id
         __props__["enabled"] = enabled
         __props__["environment"] = environment
