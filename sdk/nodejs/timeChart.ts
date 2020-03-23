@@ -24,20 +24,8 @@ import * as utilities from "./utilities";
  *     },
  *     legendOptionsFields: [
  *         {
- *             enabled: true,
- *             property: "shcName",
- *         },
- *         {
- *             enabled: true,
- *             property: "role",
- *         },
- *         {
  *             enabled: false,
  *             property: "collector",
- *         },
- *         {
- *             enabled: false,
- *             property: "prefix",
  *         },
  *         {
  *             enabled: false,
@@ -45,9 +33,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  *     plotType: "LineChart",
- *     programText: `myfilters = filter("shcName", "prod") and filter("role", "splunkSearchhead")
- * data("cpu.total.idle", filter=myfilters).publish(label="CPU Idle")
- * `,
+ *     programText: "data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n",
  *     showDataMarkers: true,
  *     timeRange: 3600,
  *     vizOptions: [{
@@ -158,7 +144,7 @@ export class TimeChart extends pulumi.CustomResource {
      */
     public readonly plotType!: pulumi.Output<string | undefined>;
     /**
-     * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -333,6 +319,8 @@ export interface TimeChartState {
     readonly histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * 
+     * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -362,7 +350,7 @@ export interface TimeChartState {
      */
     readonly plotType?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     readonly programText?: pulumi.Input<string>;
     /**
@@ -383,6 +371,8 @@ export interface TimeChartState {
     readonly startTime?: pulumi.Input<number>;
     /**
      * Tags associated with the chart
+     * 
+     * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -453,6 +443,8 @@ export interface TimeChartArgs {
     readonly histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * 
+     * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -482,7 +474,7 @@ export interface TimeChartArgs {
      */
     readonly plotType?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     readonly programText: pulumi.Input<string>;
     /**
@@ -503,6 +495,8 @@ export interface TimeChartArgs {
     readonly startTime?: pulumi.Input<number>;
     /**
      * Tags associated with the chart
+     * 
+     * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

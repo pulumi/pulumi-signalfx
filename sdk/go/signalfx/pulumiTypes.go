@@ -1159,6 +1159,205 @@ func (o DashboardGroupDashboardVariableOverrideArrayOutput) Index(i pulumi.IntIn
 	}).(DashboardGroupDashboardVariableOverrideOutput)
 }
 
+type DashboardGroupImportQualifier struct {
+	Filters []DashboardGroupImportQualifierFilter `pulumi:"filters"`
+	Metric string `pulumi:"metric"`
+}
+
+type DashboardGroupImportQualifierInput interface {
+	pulumi.Input
+
+	ToDashboardGroupImportQualifierOutput() DashboardGroupImportQualifierOutput
+	ToDashboardGroupImportQualifierOutputWithContext(context.Context) DashboardGroupImportQualifierOutput
+}
+
+type DashboardGroupImportQualifierArgs struct {
+	Filters DashboardGroupImportQualifierFilterArrayInput `pulumi:"filters"`
+	Metric pulumi.StringInput `pulumi:"metric"`
+}
+
+func (DashboardGroupImportQualifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupImportQualifier)(nil)).Elem()
+}
+
+func (i DashboardGroupImportQualifierArgs) ToDashboardGroupImportQualifierOutput() DashboardGroupImportQualifierOutput {
+	return i.ToDashboardGroupImportQualifierOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupImportQualifierArgs) ToDashboardGroupImportQualifierOutputWithContext(ctx context.Context) DashboardGroupImportQualifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierOutput)
+}
+
+type DashboardGroupImportQualifierArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGroupImportQualifierArrayOutput() DashboardGroupImportQualifierArrayOutput
+	ToDashboardGroupImportQualifierArrayOutputWithContext(context.Context) DashboardGroupImportQualifierArrayOutput
+}
+
+type DashboardGroupImportQualifierArray []DashboardGroupImportQualifierInput
+
+func (DashboardGroupImportQualifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroupImportQualifier)(nil)).Elem()
+}
+
+func (i DashboardGroupImportQualifierArray) ToDashboardGroupImportQualifierArrayOutput() DashboardGroupImportQualifierArrayOutput {
+	return i.ToDashboardGroupImportQualifierArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupImportQualifierArray) ToDashboardGroupImportQualifierArrayOutputWithContext(ctx context.Context) DashboardGroupImportQualifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierArrayOutput)
+}
+
+type DashboardGroupImportQualifierOutput struct { *pulumi.OutputState }
+
+func (DashboardGroupImportQualifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupImportQualifier)(nil)).Elem()
+}
+
+func (o DashboardGroupImportQualifierOutput) ToDashboardGroupImportQualifierOutput() DashboardGroupImportQualifierOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierOutput) ToDashboardGroupImportQualifierOutputWithContext(ctx context.Context) DashboardGroupImportQualifierOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierOutput) Filters() DashboardGroupImportQualifierFilterArrayOutput {
+	return o.ApplyT(func (v DashboardGroupImportQualifier) []DashboardGroupImportQualifierFilter { return v.Filters }).(DashboardGroupImportQualifierFilterArrayOutput)
+}
+
+func (o DashboardGroupImportQualifierOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func (v DashboardGroupImportQualifier) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+type DashboardGroupImportQualifierArrayOutput struct { *pulumi.OutputState}
+
+func (DashboardGroupImportQualifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroupImportQualifier)(nil)).Elem()
+}
+
+func (o DashboardGroupImportQualifierArrayOutput) ToDashboardGroupImportQualifierArrayOutput() DashboardGroupImportQualifierArrayOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierArrayOutput) ToDashboardGroupImportQualifierArrayOutputWithContext(ctx context.Context) DashboardGroupImportQualifierArrayOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierArrayOutput) Index(i pulumi.IntInput) DashboardGroupImportQualifierOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupImportQualifier {
+		return vs[0].([]DashboardGroupImportQualifier)[vs[1].(int)]
+	}).(DashboardGroupImportQualifierOutput)
+}
+
+type DashboardGroupImportQualifierFilter struct {
+	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	Negated *bool `pulumi:"negated"`
+	// A metric time series dimension or property name.
+	Property string `pulumi:"property"`
+	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	Values []string `pulumi:"values"`
+}
+
+type DashboardGroupImportQualifierFilterInput interface {
+	pulumi.Input
+
+	ToDashboardGroupImportQualifierFilterOutput() DashboardGroupImportQualifierFilterOutput
+	ToDashboardGroupImportQualifierFilterOutputWithContext(context.Context) DashboardGroupImportQualifierFilterOutput
+}
+
+type DashboardGroupImportQualifierFilterArgs struct {
+	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	Negated pulumi.BoolPtrInput `pulumi:"negated"`
+	// A metric time series dimension or property name.
+	Property pulumi.StringInput `pulumi:"property"`
+	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (DashboardGroupImportQualifierFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupImportQualifierFilter)(nil)).Elem()
+}
+
+func (i DashboardGroupImportQualifierFilterArgs) ToDashboardGroupImportQualifierFilterOutput() DashboardGroupImportQualifierFilterOutput {
+	return i.ToDashboardGroupImportQualifierFilterOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupImportQualifierFilterArgs) ToDashboardGroupImportQualifierFilterOutputWithContext(ctx context.Context) DashboardGroupImportQualifierFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierFilterOutput)
+}
+
+type DashboardGroupImportQualifierFilterArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGroupImportQualifierFilterArrayOutput() DashboardGroupImportQualifierFilterArrayOutput
+	ToDashboardGroupImportQualifierFilterArrayOutputWithContext(context.Context) DashboardGroupImportQualifierFilterArrayOutput
+}
+
+type DashboardGroupImportQualifierFilterArray []DashboardGroupImportQualifierFilterInput
+
+func (DashboardGroupImportQualifierFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroupImportQualifierFilter)(nil)).Elem()
+}
+
+func (i DashboardGroupImportQualifierFilterArray) ToDashboardGroupImportQualifierFilterArrayOutput() DashboardGroupImportQualifierFilterArrayOutput {
+	return i.ToDashboardGroupImportQualifierFilterArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupImportQualifierFilterArray) ToDashboardGroupImportQualifierFilterArrayOutputWithContext(ctx context.Context) DashboardGroupImportQualifierFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierFilterArrayOutput)
+}
+
+type DashboardGroupImportQualifierFilterOutput struct { *pulumi.OutputState }
+
+func (DashboardGroupImportQualifierFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupImportQualifierFilter)(nil)).Elem()
+}
+
+func (o DashboardGroupImportQualifierFilterOutput) ToDashboardGroupImportQualifierFilterOutput() DashboardGroupImportQualifierFilterOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierFilterOutput) ToDashboardGroupImportQualifierFilterOutputWithContext(ctx context.Context) DashboardGroupImportQualifierFilterOutput {
+	return o
+}
+
+// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+func (o DashboardGroupImportQualifierFilterOutput) Negated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v DashboardGroupImportQualifierFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+}
+
+// A metric time series dimension or property name.
+func (o DashboardGroupImportQualifierFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func (v DashboardGroupImportQualifierFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// (Optional) List of of strings (which will be treated as an OR filter on the property).
+func (o DashboardGroupImportQualifierFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v DashboardGroupImportQualifierFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type DashboardGroupImportQualifierFilterArrayOutput struct { *pulumi.OutputState}
+
+func (DashboardGroupImportQualifierFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroupImportQualifierFilter)(nil)).Elem()
+}
+
+func (o DashboardGroupImportQualifierFilterArrayOutput) ToDashboardGroupImportQualifierFilterArrayOutput() DashboardGroupImportQualifierFilterArrayOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierFilterArrayOutput) ToDashboardGroupImportQualifierFilterArrayOutputWithContext(ctx context.Context) DashboardGroupImportQualifierFilterArrayOutput {
+	return o
+}
+
+func (o DashboardGroupImportQualifierFilterArrayOutput) Index(i pulumi.IntInput) DashboardGroupImportQualifierFilterOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupImportQualifierFilter {
+		return vs[0].([]DashboardGroupImportQualifierFilter)[vs[1].(int)]
+	}).(DashboardGroupImportQualifierFilterOutput)
+}
+
 type DashboardSelectedEventOverlay struct {
 	// Search term used to choose the events shown in the overlay.
 	Signal string `pulumi:"signal"`
@@ -1895,11 +2094,11 @@ type DetectorRule struct {
 	DetectLabel string `pulumi:"detectLabel"`
 	// When true, notifications and events will not be generated for the detect label. `false` by default.
 	Disabled *bool `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
+	// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
 	Notifications []string `pulumi:"notifications"`
-	// Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+	// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 	ParameterizedBody *string `pulumi:"parameterizedBody"`
-	// Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+	// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 	ParameterizedSubject *string `pulumi:"parameterizedSubject"`
 	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 	RunbookUrl *string `pulumi:"runbookUrl"`
@@ -1923,11 +2122,11 @@ type DetectorRuleArgs struct {
 	DetectLabel pulumi.StringInput `pulumi:"detectLabel"`
 	// When true, notifications and events will not be generated for the detect label. `false` by default.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
+	// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
-	// Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+	// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
-	// Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+	// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 	ParameterizedSubject pulumi.StringPtrInput `pulumi:"parameterizedSubject"`
 	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
@@ -1999,17 +2198,17 @@ func (o DetectorRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v DetectorRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
+// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
 func (o DetectorRuleOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v DetectorRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
 }
 
-// Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 func (o DetectorRuleOutput) ParameterizedBody() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v DetectorRule) *string { return v.ParameterizedBody }).(pulumi.StringPtrOutput)
 }
 
-// Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 func (o DetectorRuleOutput) ParameterizedSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func (v DetectorRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
 }
@@ -2327,7 +2526,7 @@ type HeatmapChartColorScale struct {
 	Gt *float64 `pulumi:"gt"`
 	// Indicates the lower threshold inclusive value for this range.
 	Gte *float64 `pulumi:"gte"`
-	// Indicates the upper threshold non-inculsive value for this range.
+	// Indicates the upper threshold non-inclusive value for this range.
 	Lt *float64 `pulumi:"lt"`
 	// Indicates the upper threshold inclusive value for this range.
 	Lte *float64 `pulumi:"lte"`
@@ -2347,7 +2546,7 @@ type HeatmapChartColorScaleArgs struct {
 	Gt pulumi.Float64PtrInput `pulumi:"gt"`
 	// Indicates the lower threshold inclusive value for this range.
 	Gte pulumi.Float64PtrInput `pulumi:"gte"`
-	// Indicates the upper threshold non-inculsive value for this range.
+	// Indicates the upper threshold non-inclusive value for this range.
 	Lt pulumi.Float64PtrInput `pulumi:"lt"`
 	// Indicates the upper threshold inclusive value for this range.
 	Lte pulumi.Float64PtrInput `pulumi:"lte"`
@@ -2415,7 +2614,7 @@ func (o HeatmapChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func (v HeatmapChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold non-inculsive value for this range.
+// Indicates the upper threshold non-inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func (v HeatmapChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
@@ -4543,6 +4742,10 @@ func init() {
 	pulumi.RegisterOutputType(DashboardGroupDashboardFilterOverrideArrayOutput{})
 	pulumi.RegisterOutputType(DashboardGroupDashboardVariableOverrideOutput{})
 	pulumi.RegisterOutputType(DashboardGroupDashboardVariableOverrideArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGroupImportQualifierOutput{})
+	pulumi.RegisterOutputType(DashboardGroupImportQualifierArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGroupImportQualifierFilterOutput{})
+	pulumi.RegisterOutputType(DashboardGroupImportQualifierFilterArrayOutput{})
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlayOutput{})
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlayArrayOutput{})
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlaySourceOutput{})

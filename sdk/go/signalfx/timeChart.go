@@ -12,9 +12,9 @@ import (
 )
 
 // Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
-// 
+//
 // Time charts display data points over a period of time.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
 type TimeChart struct {
 	pulumi.CustomResourceState
@@ -55,7 +55,7 @@ type TimeChart struct {
 	OnChartLegendDimension pulumi.StringPtrOutput `pulumi:"onChartLegendDimension"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType pulumi.StringPtrOutput `pulumi:"plotType"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers pulumi.BoolPtrOutput `pulumi:"showDataMarkers"`
@@ -146,7 +146,7 @@ type timeChartState struct {
 	OnChartLegendDimension *string `pulumi:"onChartLegendDimension"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType *string `pulumi:"plotType"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText *string `pulumi:"programText"`
 	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
@@ -207,7 +207,7 @@ type TimeChartState struct {
 	OnChartLegendDimension pulumi.StringPtrInput
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringPtrInput
 	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers pulumi.BoolPtrInput
@@ -272,7 +272,7 @@ type timeChartArgs struct {
 	OnChartLegendDimension *string `pulumi:"onChartLegendDimension"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType *string `pulumi:"plotType"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText string `pulumi:"programText"`
 	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
@@ -332,7 +332,7 @@ type TimeChartArgs struct {
 	OnChartLegendDimension pulumi.StringPtrInput
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringInput
 	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers pulumi.BoolPtrInput

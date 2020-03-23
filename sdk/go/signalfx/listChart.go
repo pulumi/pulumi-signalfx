@@ -12,9 +12,9 @@ import (
 )
 
 // This chart type displays current data values in a list format.
-// 
+//
 // The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/list_chart.html.markdown.
 type ListChart struct {
 	pulumi.CustomResourceState
@@ -41,7 +41,7 @@ type ListChart struct {
 	MaxPrecision pulumi.IntPtrOutput `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
@@ -114,7 +114,7 @@ type listChartState struct {
 	MaxPrecision *int `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText *string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -157,7 +157,7 @@ type ListChartState struct {
 	MaxPrecision pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringPtrInput
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval pulumi.IntPtrInput
@@ -204,7 +204,7 @@ type listChartArgs struct {
 	MaxPrecision *int `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -246,7 +246,7 @@ type ListChartArgs struct {
 	MaxPrecision pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringInput
 	// How often (in seconds) to refresh the values of the list.
 	RefreshInterval pulumi.IntPtrInput

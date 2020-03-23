@@ -12,9 +12,9 @@ import (
 )
 
 // SignalFx GCP Integration
-// 
-// **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-// 
+//
+// > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/gcp_integration.html.markdown.
 type Integration struct {
 	pulumi.CustomResourceState

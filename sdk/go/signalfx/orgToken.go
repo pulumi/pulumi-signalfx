@@ -11,7 +11,7 @@ import (
 )
 
 // Manage SignalFx org tokens.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/org_token.html.markdown.
 type OrgToken struct {
 	pulumi.CustomResourceState

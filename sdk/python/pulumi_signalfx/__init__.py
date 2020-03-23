@@ -19,9 +19,9 @@ from .event_feed_chart import *
 from .heatmap_chart import *
 from .list_chart import *
 from .org_token import *
+from .provider import *
 from .single_value_chart import *
 from .team import *
 from .text_chart import *
 from .time_chart import *
 from .webhook_integration import *
-from .provider import *

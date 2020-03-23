@@ -187,6 +187,26 @@ export interface DashboardGroupDashboardVariableOverride {
     valuesSuggesteds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface DashboardGroupImportQualifier {
+    filters?: pulumi.Input<pulumi.Input<inputs.DashboardGroupImportQualifierFilter>[]>;
+    metric: pulumi.Input<string>;
+}
+
+export interface DashboardGroupImportQualifierFilter {
+    /**
+     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     */
+    negated?: pulumi.Input<boolean>;
+    /**
+     * A metric time series dimension or property name.
+     */
+    property: pulumi.Input<string>;
+    /**
+     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface DashboardSelectedEventOverlay {
     /**
      * Search term used to choose the events shown in the overlay.
@@ -328,15 +348,15 @@ export interface DetectorRule {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See <https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector> for more info.
+     * List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Custom notification message body when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+     * Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
      */
     parameterizedBody?: pulumi.Input<string>;
     /**
-     * Custom notification message subject when an alert is triggered. See <https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings> for more info.
+     * Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
      */
     parameterizedSubject?: pulumi.Input<string>;
     /**
@@ -404,7 +424,7 @@ export interface HeatmapChartColorScale {
      */
     gte?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold non-inculsive value for this range.
+     * Indicates the upper threshold non-inclusive value for this range.
      */
     lt?: pulumi.Input<number>;
     /**

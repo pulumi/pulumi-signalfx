@@ -12,9 +12,9 @@ import (
 )
 
 // This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
-// 
+//
 // If the time period is in the past, the number represents the value of the metric near the end of the time period.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/single_value_chart.html.markdown.
 type SingleValueChart struct {
 	pulumi.CustomResourceState
@@ -33,7 +33,7 @@ type SingleValueChart struct {
 	MaxPrecision pulumi.IntPtrOutput `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// How often (in seconds) to refresh the value.
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
@@ -94,7 +94,7 @@ type singleValueChartState struct {
 	MaxPrecision *int `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText *string `pulumi:"programText"`
 	// How often (in seconds) to refresh the value.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -125,7 +125,7 @@ type SingleValueChartState struct {
 	MaxPrecision pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringPtrInput
 	// How often (in seconds) to refresh the value.
 	RefreshInterval pulumi.IntPtrInput
@@ -160,7 +160,7 @@ type singleValueChartArgs struct {
 	MaxPrecision *int `pulumi:"maxPrecision"`
 	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText string `pulumi:"programText"`
 	// How often (in seconds) to refresh the value.
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -190,7 +190,7 @@ type SingleValueChartArgs struct {
 	MaxPrecision pulumi.IntPtrInput
 	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringInput
 	// How often (in seconds) to refresh the value.
 	RefreshInterval pulumi.IntPtrInput

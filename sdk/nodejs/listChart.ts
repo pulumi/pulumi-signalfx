@@ -126,7 +126,7 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -255,6 +255,8 @@ export interface ListChartState {
     readonly endTime?: pulumi.Input<number>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * 
+     * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -276,7 +278,7 @@ export interface ListChartState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     readonly programText?: pulumi.Input<string>;
     /**
@@ -339,6 +341,8 @@ export interface ListChartArgs {
     readonly endTime?: pulumi.Input<number>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * 
+     * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -360,7 +364,7 @@ export interface ListChartArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
     readonly programText: pulumi.Input<string>;
     /**

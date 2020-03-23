@@ -21,7 +21,7 @@ class TimeChart(pulumi.CustomResource):
     axis_left: pulumi.Output[dict]
     """
     Set of axis options.
-    
+
       * `highWatermark` (`float`) - A line to draw as a high watermark.
       * `highWatermarkLabel` (`str`) - A label to attach to the high watermark line.
       * `label` (`str`) - Label used in the publish statement that displays the event query you want to customize.
@@ -30,14 +30,13 @@ class TimeChart(pulumi.CustomResource):
       * `maxValue` (`float`) - The maximum value for the right axis.
       * `minValue` (`float`) - The minimum value for the right axis.
       * `watermarks` (`list`)
-    
         * `label` (`str`) - Label used in the publish statement that displays the event query you want to customize.
         * `value` (`float`)
     """
     axis_right: pulumi.Output[dict]
     """
     Set of axis options.
-    
+
       * `highWatermark` (`float`) - A line to draw as a high watermark.
       * `highWatermarkLabel` (`str`) - A label to attach to the high watermark line.
       * `label` (`str`) - Label used in the publish statement that displays the event query you want to customize.
@@ -46,7 +45,6 @@ class TimeChart(pulumi.CustomResource):
       * `maxValue` (`float`) - The maximum value for the right axis.
       * `minValue` (`float`) - The minimum value for the right axis.
       * `watermarks` (`list`)
-    
         * `label` (`str`) - Label used in the publish statement that displays the event query you want to customize.
         * `value` (`float`)
     """
@@ -69,7 +67,7 @@ class TimeChart(pulumi.CustomResource):
     event_options: pulumi.Output[list]
     """
     Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-    
+
       * `color` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
       * `displayName` (`str`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
       * `label` (`str`) - Label used in the publish statement that displays the event query you want to customize.
@@ -77,7 +75,7 @@ class TimeChart(pulumi.CustomResource):
     histogram_options: pulumi.Output[list]
     """
     Only used when `plot_type` is `"Histogram"`. Histogram specific options.
-    
+
       * `colorTheme` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
     """
     legend_fields_to_hides: pulumi.Output[list]
@@ -89,7 +87,7 @@ class TimeChart(pulumi.CustomResource):
     List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
     * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
     * `enabled` True or False depending on if you want the property to be shown or hidden.
-    
+
       * `enabled` (`bool`)
       * `property` (`str`)
     """
@@ -115,7 +113,7 @@ class TimeChart(pulumi.CustomResource):
     """
     program_text: pulumi.Output[str]
     """
-    Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+    Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
     """
     show_data_markers: pulumi.Output[bool]
     """
@@ -134,6 +132,9 @@ class TimeChart(pulumi.CustomResource):
     Seconds since epoch. Used for visualization. Conflicts with `time_range`.
     """
     tags: pulumi.Output[list]
+    """
+    Tags associated with the chart
+    """
     time_range: pulumi.Output[float]
     """
     How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
@@ -147,10 +148,13 @@ class TimeChart(pulumi.CustomResource):
     Must be `"Metric"` or `"Binary`". `"Metric"` by default.
     """
     url: pulumi.Output[str]
+    """
+    URL of the chart
+    """
     viz_options: pulumi.Output[list]
     """
     Plot-level customization options, associated with a publish statement.
-    
+
       * `axis` (`str`) - Y-axis associated with values for this plot. Must be either `right` or `left`.
       * `color` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
       * `displayName` (`str`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
@@ -164,9 +168,11 @@ class TimeChart(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, axes_include_zero=None, axes_precision=None, axis_left=None, axis_right=None, color_by=None, description=None, disable_sampling=None, end_time=None, event_options=None, histogram_options=None, legend_fields_to_hides=None, legend_options_fields=None, max_delay=None, minimum_resolution=None, name=None, on_chart_legend_dimension=None, plot_type=None, program_text=None, show_data_markers=None, show_event_lines=None, stacked=None, start_time=None, tags=None, time_range=None, timezone=None, unit_prefix=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
-        
+
         Time charts display data points over a period of time.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -188,18 +194,19 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[list] tags: Tags associated with the chart
         :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-        
+
         The **axis_left** object supports the following:
-        
+
           * `highWatermark` (`pulumi.Input[float]`) - A line to draw as a high watermark.
           * `highWatermarkLabel` (`pulumi.Input[str]`) - A label to attach to the high watermark line.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
@@ -208,12 +215,11 @@ class TimeChart(pulumi.CustomResource):
           * `maxValue` (`pulumi.Input[float]`) - The maximum value for the right axis.
           * `minValue` (`pulumi.Input[float]`) - The minimum value for the right axis.
           * `watermarks` (`pulumi.Input[list]`)
-        
             * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
             * `value` (`pulumi.Input[float]`)
-        
+
         The **axis_right** object supports the following:
-        
+
           * `highWatermark` (`pulumi.Input[float]`) - A line to draw as a high watermark.
           * `highWatermarkLabel` (`pulumi.Input[str]`) - A label to attach to the high watermark line.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
@@ -222,27 +228,26 @@ class TimeChart(pulumi.CustomResource):
           * `maxValue` (`pulumi.Input[float]`) - The maximum value for the right axis.
           * `minValue` (`pulumi.Input[float]`) - The minimum value for the right axis.
           * `watermarks` (`pulumi.Input[list]`)
-        
             * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
             * `value` (`pulumi.Input[float]`)
-        
+
         The **event_options** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
           * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
-        
+
         The **histogram_options** object supports the following:
-        
+
           * `colorTheme` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-        
+
         The **legend_options_fields** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
           * `property` (`pulumi.Input[str]`)
-        
+
         The **viz_options** object supports the following:
-        
+
           * `axis` (`pulumi.Input[str]`) - Y-axis associated with values for this plot. Must be either `right` or `left`.
           * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
           * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
@@ -252,8 +257,6 @@ class TimeChart(pulumi.CustomResource):
           * `valueSuffix` (`pulumi.Input[str]`)
           * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
             * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -313,7 +316,7 @@ class TimeChart(pulumi.CustomResource):
         """
         Get an existing TimeChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -336,18 +339,20 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[list] tags: Tags associated with the chart
         :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        :param pulumi.Input[str] url: URL of the chart
         :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-        
+
         The **axis_left** object supports the following:
-        
+
           * `highWatermark` (`pulumi.Input[float]`) - A line to draw as a high watermark.
           * `highWatermarkLabel` (`pulumi.Input[str]`) - A label to attach to the high watermark line.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
@@ -356,12 +361,11 @@ class TimeChart(pulumi.CustomResource):
           * `maxValue` (`pulumi.Input[float]`) - The maximum value for the right axis.
           * `minValue` (`pulumi.Input[float]`) - The minimum value for the right axis.
           * `watermarks` (`pulumi.Input[list]`)
-        
             * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
             * `value` (`pulumi.Input[float]`)
-        
+
         The **axis_right** object supports the following:
-        
+
           * `highWatermark` (`pulumi.Input[float]`) - A line to draw as a high watermark.
           * `highWatermarkLabel` (`pulumi.Input[str]`) - A label to attach to the high watermark line.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
@@ -370,27 +374,26 @@ class TimeChart(pulumi.CustomResource):
           * `maxValue` (`pulumi.Input[float]`) - The maximum value for the right axis.
           * `minValue` (`pulumi.Input[float]`) - The minimum value for the right axis.
           * `watermarks` (`pulumi.Input[list]`)
-        
             * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
             * `value` (`pulumi.Input[float]`)
-        
+
         The **event_options** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
           * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
           * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the event query you want to customize.
-        
+
         The **histogram_options** object supports the following:
-        
+
           * `colorTheme` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-        
+
         The **legend_options_fields** object supports the following:
-        
+
           * `enabled` (`pulumi.Input[bool]`)
           * `property` (`pulumi.Input[str]`)
-        
+
         The **viz_options** object supports the following:
-        
+
           * `axis` (`pulumi.Input[str]`) - Y-axis associated with values for this plot. Must be either `right` or `left`.
           * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
           * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
@@ -400,12 +403,11 @@ class TimeChart(pulumi.CustomResource):
           * `valueSuffix` (`pulumi.Input[str]`)
           * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
             * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["axes_include_zero"] = axes_include_zero
         __props__["axes_precision"] = axes_precision
         __props__["axis_left"] = axis_left

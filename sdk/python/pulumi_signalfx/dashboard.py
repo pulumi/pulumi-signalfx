@@ -11,11 +11,17 @@ from . import utilities, tables
 
 class Dashboard(pulumi.CustomResource):
     authorized_writer_teams: pulumi.Output[list]
+    """
+    Team IDs that have write access to this dashboard
+    """
     authorized_writer_users: pulumi.Output[list]
+    """
+    User IDs that have write access to this dashboard
+    """
     charts: pulumi.Output[list]
     """
     Chart ID and layout information for the charts in the dashboard.
-    
+
       * `chartId` (`str`) - ID of the chart to display.
       * `column` (`float`) - Column number for the layout.
       * `height` (`float`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
@@ -29,7 +35,7 @@ class Dashboard(pulumi.CustomResource):
     columns: pulumi.Output[list]
     """
     Column number for the layout.
-    
+
       * `chartIds` (`list`) - List of IDs of the charts to display.
       * `column` (`float`) - Column number for the layout.
       * `height` (`float`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
@@ -43,6 +49,8 @@ class Dashboard(pulumi.CustomResource):
     """
     Variable description.
     """
+    discovery_options_query: pulumi.Output[str]
+    discovery_options_selectors: pulumi.Output[list]
     end_time: pulumi.Output[float]
     """
     Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
@@ -50,23 +58,22 @@ class Dashboard(pulumi.CustomResource):
     event_overlays: pulumi.Output[list]
     """
     Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
-    
+
       * `color` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
       * `label` (`str`) - Text shown in the dropdown when selecting this overlay from the menu.
       * `line` (`bool`) - Show a vertical line for the event. `false` by default.
       * `signal` (`str`) - Search term used to choose the events shown in the overlay.
       * `sources` (`list`) - Each element specifies a filter to use against the signal specified in the `signal`.
-    
         * `negated` (`bool`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         * `property` (`str`) - The name of a dimension to filter against.
         * `values` (`list`) - A list of values to be used with the `property`, they will be combined via `OR`.
-    
+
       * `type` (`str`) - Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
     """
     filters: pulumi.Output[list]
     """
     Filter to apply to the charts when displaying the dashboard.
-    
+
       * `applyIfExist` (`bool`) - If true, this variable will also match data that doesn't have this property at all.
       * `negated` (`bool`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
       * `property` (`str`) - The name of a dimension to filter against.
@@ -75,7 +82,7 @@ class Dashboard(pulumi.CustomResource):
     grids: pulumi.Output[list]
     """
     Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
-    
+
       * `chartIds` (`list`) - List of IDs of the charts to display.
       * `height` (`float`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
       * `width` (`float`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
@@ -87,14 +94,13 @@ class Dashboard(pulumi.CustomResource):
     selected_event_overlays: pulumi.Output[list]
     """
     Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
-    
+
       * `signal` (`str`) - Search term used to choose the events shown in the overlay.
       * `sources` (`list`) - Each element specifies a filter to use against the signal specified in the `signal`.
-    
         * `negated` (`bool`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         * `property` (`str`) - The name of a dimension to filter against.
         * `values` (`list`) - A list of values to be used with the `property`, they will be combined via `OR`.
-    
+
       * `type` (`str`) - Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
     """
     start_time: pulumi.Output[float]
@@ -106,10 +112,13 @@ class Dashboard(pulumi.CustomResource):
     The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
     """
     url: pulumi.Output[str]
+    """
+    URL of the dashboard
+    """
     variables: pulumi.Output[list]
     """
     Dashboard variable to apply to each chart in the dashboard.
-    
+
       * `alias` (`str`) - An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
       * `applyIfExist` (`bool`) - If true, this variable will also match data that doesn't have this property at all.
       * `description` (`str`) - Variable description.
@@ -120,12 +129,13 @@ class Dashboard(pulumi.CustomResource):
       * `values` (`list`) - A list of values to be used with the `property`, they will be combined via `OR`.
       * `valuesSuggesteds` (`list`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
     """
-    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, discovery_options_query=None, discovery_options_selectors=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
         """
         Create a Dashboard resource with the given unique name, props, and options.
-        
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this dashboard
+        :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this dashboard
         :param pulumi.Input[list] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[list] columns: Column number for the layout.
@@ -140,62 +150,60 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[list] variables: Dashboard variable to apply to each chart in the dashboard.
-        
+
         The **charts** object supports the following:
-        
+
           * `chartId` (`pulumi.Input[str]`) - ID of the chart to display.
           * `column` (`pulumi.Input[float]`) - Column number for the layout.
           * `height` (`pulumi.Input[float]`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
           * `row` (`pulumi.Input[float]`) - The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
           * `width` (`pulumi.Input[float]`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        
+
         The **columns** object supports the following:
-        
+
           * `chartIds` (`pulumi.Input[list]`) - List of IDs of the charts to display.
           * `column` (`pulumi.Input[float]`) - Column number for the layout.
           * `height` (`pulumi.Input[float]`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
           * `width` (`pulumi.Input[float]`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        
+
         The **event_overlays** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
           * `label` (`pulumi.Input[str]`) - Text shown in the dropdown when selecting this overlay from the menu.
           * `line` (`pulumi.Input[bool]`) - Show a vertical line for the event. `false` by default.
           * `signal` (`pulumi.Input[str]`) - Search term used to choose the events shown in the overlay.
           * `sources` (`pulumi.Input[list]`) - Each element specifies a filter to use against the signal specified in the `signal`.
-        
             * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
             * `property` (`pulumi.Input[str]`) - The name of a dimension to filter against.
             * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
-        
+
           * `type` (`pulumi.Input[str]`) - Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        
+
         The **filters** object supports the following:
-        
+
           * `applyIfExist` (`pulumi.Input[bool]`) - If true, this variable will also match data that doesn't have this property at all.
           * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
           * `property` (`pulumi.Input[str]`) - The name of a dimension to filter against.
           * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
-        
+
         The **grids** object supports the following:
-        
+
           * `chartIds` (`pulumi.Input[list]`) - List of IDs of the charts to display.
           * `height` (`pulumi.Input[float]`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
           * `width` (`pulumi.Input[float]`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        
+
         The **selected_event_overlays** object supports the following:
-        
+
           * `signal` (`pulumi.Input[str]`) - Search term used to choose the events shown in the overlay.
           * `sources` (`pulumi.Input[list]`) - Each element specifies a filter to use against the signal specified in the `signal`.
-        
             * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
             * `property` (`pulumi.Input[str]`) - The name of a dimension to filter against.
             * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
-        
+
           * `type` (`pulumi.Input[str]`) - Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        
+
         The **variables** object supports the following:
-        
+
           * `alias` (`pulumi.Input[str]`) - An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
           * `applyIfExist` (`pulumi.Input[bool]`) - If true, this variable will also match data that doesn't have this property at all.
           * `description` (`pulumi.Input[str]`) - Variable description.
@@ -205,8 +213,6 @@ class Dashboard(pulumi.CustomResource):
           * `valueRequired` (`pulumi.Input[bool]`) - Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
           * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
           * `valuesSuggesteds` (`pulumi.Input[list]`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -234,6 +240,8 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dashboard_group'")
             __props__['dashboard_group'] = dashboard_group
             __props__['description'] = description
+            __props__['discovery_options_query'] = discovery_options_query
+            __props__['discovery_options_selectors'] = discovery_options_selectors
             __props__['end_time'] = end_time
             __props__['event_overlays'] = event_overlays
             __props__['filters'] = filters
@@ -251,14 +259,16 @@ class Dashboard(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, url=None, variables=None):
+    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, discovery_options_query=None, discovery_options_selectors=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, url=None, variables=None):
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this dashboard
+        :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this dashboard
         :param pulumi.Input[list] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[list] columns: Column number for the layout.
@@ -272,63 +282,62 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[list] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
+        :param pulumi.Input[str] url: URL of the dashboard
         :param pulumi.Input[list] variables: Dashboard variable to apply to each chart in the dashboard.
-        
+
         The **charts** object supports the following:
-        
+
           * `chartId` (`pulumi.Input[str]`) - ID of the chart to display.
           * `column` (`pulumi.Input[float]`) - Column number for the layout.
           * `height` (`pulumi.Input[float]`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
           * `row` (`pulumi.Input[float]`) - The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
           * `width` (`pulumi.Input[float]`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        
+
         The **columns** object supports the following:
-        
+
           * `chartIds` (`pulumi.Input[list]`) - List of IDs of the charts to display.
           * `column` (`pulumi.Input[float]`) - Column number for the layout.
           * `height` (`pulumi.Input[float]`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
           * `width` (`pulumi.Input[float]`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        
+
         The **event_overlays** object supports the following:
-        
+
           * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
           * `label` (`pulumi.Input[str]`) - Text shown in the dropdown when selecting this overlay from the menu.
           * `line` (`pulumi.Input[bool]`) - Show a vertical line for the event. `false` by default.
           * `signal` (`pulumi.Input[str]`) - Search term used to choose the events shown in the overlay.
           * `sources` (`pulumi.Input[list]`) - Each element specifies a filter to use against the signal specified in the `signal`.
-        
             * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
             * `property` (`pulumi.Input[str]`) - The name of a dimension to filter against.
             * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
-        
+
           * `type` (`pulumi.Input[str]`) - Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        
+
         The **filters** object supports the following:
-        
+
           * `applyIfExist` (`pulumi.Input[bool]`) - If true, this variable will also match data that doesn't have this property at all.
           * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
           * `property` (`pulumi.Input[str]`) - The name of a dimension to filter against.
           * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
-        
+
         The **grids** object supports the following:
-        
+
           * `chartIds` (`pulumi.Input[list]`) - List of IDs of the charts to display.
           * `height` (`pulumi.Input[float]`) - How many rows every chart should take up (greater than or equal to 1). 1 by default.
           * `width` (`pulumi.Input[float]`) - How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        
+
         The **selected_event_overlays** object supports the following:
-        
+
           * `signal` (`pulumi.Input[str]`) - Search term used to choose the events shown in the overlay.
           * `sources` (`pulumi.Input[list]`) - Each element specifies a filter to use against the signal specified in the `signal`.
-        
             * `negated` (`pulumi.Input[bool]`) - If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
             * `property` (`pulumi.Input[str]`) - The name of a dimension to filter against.
             * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
-        
+
           * `type` (`pulumi.Input[str]`) - Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        
+
         The **variables** object supports the following:
-        
+
           * `alias` (`pulumi.Input[str]`) - An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
           * `applyIfExist` (`pulumi.Input[bool]`) - If true, this variable will also match data that doesn't have this property at all.
           * `description` (`pulumi.Input[str]`) - Variable description.
@@ -338,12 +347,11 @@ class Dashboard(pulumi.CustomResource):
           * `valueRequired` (`pulumi.Input[bool]`) - Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
           * `values` (`pulumi.Input[list]`) - A list of values to be used with the `property`, they will be combined via `OR`.
           * `valuesSuggesteds` (`pulumi.Input[list]`) - A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["authorized_writer_teams"] = authorized_writer_teams
         __props__["authorized_writer_users"] = authorized_writer_users
         __props__["charts"] = charts
@@ -351,6 +359,8 @@ class Dashboard(pulumi.CustomResource):
         __props__["columns"] = columns
         __props__["dashboard_group"] = dashboard_group
         __props__["description"] = description
+        __props__["discovery_options_query"] = discovery_options_query
+        __props__["discovery_options_selectors"] = discovery_options_selectors
         __props__["end_time"] = end_time
         __props__["event_overlays"] = event_overlays
         __props__["filters"] = filters

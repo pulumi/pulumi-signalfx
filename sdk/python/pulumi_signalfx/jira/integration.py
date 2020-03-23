@@ -61,9 +61,11 @@ class Integration(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, api_token=None, assignee_display_name=None, assignee_name=None, auth_method=None, base_url=None, enabled=None, issue_type=None, name=None, password=None, project_key=None, user_email=None, username=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx Jira integrations. For help with this integration see [Integration with Jira](https://docs.signalfx.com/en/latest/admin-guide/integrate-notifications.html#integrate-with-jira).
-        
-        **Note:** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-        
+
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/jira_integration.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_token: The API token for the user email
@@ -78,8 +80,6 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/jira_integration.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -133,7 +133,7 @@ class Integration(pulumi.CustomResource):
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -149,12 +149,11 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/jira_integration.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["api_token"] = api_token
         __props__["assignee_display_name"] = assignee_display_name
         __props__["assignee_name"] = assignee_name

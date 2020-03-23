@@ -12,7 +12,7 @@ import (
 )
 
 // This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/text_chart.html.markdown.
 type TextChart struct {
 	pulumi.CustomResourceState
