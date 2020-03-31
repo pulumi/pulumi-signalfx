@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.18.6 of the SignalFX Terraform Provider
+_(none)_
 
 ---
+
+## 1.9.0 (2020-03-31)
+* Upgrade to v4.18.6 of the SignalFX Terraform Provider
 
 ## 1.8.0 (2020-03-23)
 * Upgrade to v4.18.4 of the SignalFX Terraform Provider
