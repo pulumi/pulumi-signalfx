@@ -267,4 +267,3 @@ type ListChartArgs struct {
 func (ListChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listChartArgs)(nil)).Elem()
 }
-

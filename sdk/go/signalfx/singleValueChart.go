@@ -207,4 +207,3 @@ type SingleValueChartArgs struct {
 func (SingleValueChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*singleValueChartArgs)(nil)).Elem()
 }
-

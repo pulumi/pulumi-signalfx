@@ -205,4 +205,3 @@ type HeatmapChartArgs struct {
 func (HeatmapChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*heatmapChartArgs)(nil)).Elem()
 }
-

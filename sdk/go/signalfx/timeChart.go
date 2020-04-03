@@ -357,4 +357,3 @@ type TimeChartArgs struct {
 func (TimeChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeChartArgs)(nil)).Elem()
 }
-

@@ -24,7 +24,7 @@ type WebhookIntegration struct {
 	// A header to send with the request
 	Headers WebhookIntegrationHeaderArrayOutput `pulumi:"headers"`
 	// Name of the integration.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name         pulumi.StringOutput    `pulumi:"name"`
 	SharedSecret pulumi.StringPtrOutput `pulumi:"sharedSecret"`
 	// The URL to request
 	Url pulumi.StringPtrOutput `pulumi:"url"`
@@ -66,7 +66,7 @@ type webhookIntegrationState struct {
 	// A header to send with the request
 	Headers []WebhookIntegrationHeader `pulumi:"headers"`
 	// Name of the integration.
-	Name *string `pulumi:"name"`
+	Name         *string `pulumi:"name"`
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// The URL to request
 	Url *string `pulumi:"url"`
@@ -78,7 +78,7 @@ type WebhookIntegrationState struct {
 	// A header to send with the request
 	Headers WebhookIntegrationHeaderArrayInput
 	// Name of the integration.
-	Name pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	SharedSecret pulumi.StringPtrInput
 	// The URL to request
 	Url pulumi.StringPtrInput
@@ -94,7 +94,7 @@ type webhookIntegrationArgs struct {
 	// A header to send with the request
 	Headers []WebhookIntegrationHeader `pulumi:"headers"`
 	// Name of the integration.
-	Name *string `pulumi:"name"`
+	Name         *string `pulumi:"name"`
 	SharedSecret *string `pulumi:"sharedSecret"`
 	// The URL to request
 	Url *string `pulumi:"url"`
@@ -107,7 +107,7 @@ type WebhookIntegrationArgs struct {
 	// A header to send with the request
 	Headers WebhookIntegrationHeaderArrayInput
 	// Name of the integration.
-	Name pulumi.StringPtrInput
+	Name         pulumi.StringPtrInput
 	SharedSecret pulumi.StringPtrInput
 	// The URL to request
 	Url pulumi.StringPtrInput
@@ -116,4 +116,3 @@ type WebhookIntegrationArgs struct {
 func (WebhookIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhookIntegrationArgs)(nil)).Elem()
 }
-

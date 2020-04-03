@@ -130,4 +130,3 @@ type OrgTokenArgs struct {
 func (OrgTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*orgTokenArgs)(nil)).Elem()
 }
-

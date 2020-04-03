@@ -105,4 +105,3 @@ type TextChartArgs struct {
 func (TextChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*textChartArgs)(nil)).Elem()
 }
-

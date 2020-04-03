@@ -22,8 +22,8 @@ type AlertMutingRule struct {
 	// The description for this muting rule
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A convenience attribute that associated this muting rule with specific detector ids.
-	Detectors pulumi.StringArrayOutput `pulumi:"detectors"`
-	EffectiveStartTime pulumi.IntOutput `pulumi:"effectiveStartTime"`
+	Detectors          pulumi.StringArrayOutput `pulumi:"detectors"`
+	EffectiveStartTime pulumi.IntOutput         `pulumi:"effectiveStartTime"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayOutput `pulumi:"filters"`
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
@@ -72,8 +72,8 @@ type alertMutingRuleState struct {
 	// The description for this muting rule
 	Description *string `pulumi:"description"`
 	// A convenience attribute that associated this muting rule with specific detector ids.
-	Detectors []string `pulumi:"detectors"`
-	EffectiveStartTime *int `pulumi:"effectiveStartTime"`
+	Detectors          []string `pulumi:"detectors"`
+	EffectiveStartTime *int     `pulumi:"effectiveStartTime"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
 	Filters []AlertMutingRuleFilter `pulumi:"filters"`
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
@@ -86,7 +86,7 @@ type AlertMutingRuleState struct {
 	// The description for this muting rule
 	Description pulumi.StringPtrInput
 	// A convenience attribute that associated this muting rule with specific detector ids.
-	Detectors pulumi.StringArrayInput
+	Detectors          pulumi.StringArrayInput
 	EffectiveStartTime pulumi.IntPtrInput
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayInput
@@ -130,4 +130,3 @@ type AlertMutingRuleArgs struct {
 func (AlertMutingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertMutingRuleArgs)(nil)).Elem()
 }
-

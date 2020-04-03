@@ -135,4 +135,3 @@ type EventFeedChartArgs struct {
 func (EventFeedChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventFeedChartArgs)(nil)).Elem()
 }
-
