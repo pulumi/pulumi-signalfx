@@ -27,8 +27,8 @@ type Dashboard struct {
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup pulumi.StringOutput `pulumi:"dashboardGroup"`
 	// Variable description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	DiscoveryOptionsQuery pulumi.StringPtrOutput `pulumi:"discoveryOptionsQuery"`
+	Description               pulumi.StringPtrOutput   `pulumi:"description"`
+	DiscoveryOptionsQuery     pulumi.StringPtrOutput   `pulumi:"discoveryOptionsQuery"`
 	DiscoveryOptionsSelectors pulumi.StringArrayOutput `pulumi:"discoveryOptionsSelectors"`
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
@@ -96,8 +96,8 @@ type dashboardState struct {
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup *string `pulumi:"dashboardGroup"`
 	// Variable description.
-	Description *string `pulumi:"description"`
-	DiscoveryOptionsQuery *string `pulumi:"discoveryOptionsQuery"`
+	Description               *string  `pulumi:"description"`
+	DiscoveryOptionsQuery     *string  `pulumi:"discoveryOptionsQuery"`
 	DiscoveryOptionsSelectors []string `pulumi:"discoveryOptionsSelectors"`
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime *int `pulumi:"endTime"`
@@ -135,8 +135,8 @@ type DashboardState struct {
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup pulumi.StringPtrInput
 	// Variable description.
-	Description pulumi.StringPtrInput
-	DiscoveryOptionsQuery pulumi.StringPtrInput
+	Description               pulumi.StringPtrInput
+	DiscoveryOptionsQuery     pulumi.StringPtrInput
 	DiscoveryOptionsSelectors pulumi.StringArrayInput
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime pulumi.IntPtrInput
@@ -178,8 +178,8 @@ type dashboardArgs struct {
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup string `pulumi:"dashboardGroup"`
 	// Variable description.
-	Description *string `pulumi:"description"`
-	DiscoveryOptionsQuery *string `pulumi:"discoveryOptionsQuery"`
+	Description               *string  `pulumi:"description"`
+	DiscoveryOptionsQuery     *string  `pulumi:"discoveryOptionsQuery"`
 	DiscoveryOptionsSelectors []string `pulumi:"discoveryOptionsSelectors"`
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime *int `pulumi:"endTime"`
@@ -216,8 +216,8 @@ type DashboardArgs struct {
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup pulumi.StringInput
 	// Variable description.
-	Description pulumi.StringPtrInput
-	DiscoveryOptionsQuery pulumi.StringPtrInput
+	Description               pulumi.StringPtrInput
+	DiscoveryOptionsQuery     pulumi.StringPtrInput
 	DiscoveryOptionsSelectors pulumi.StringArrayInput
 	// Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
 	EndTime pulumi.IntPtrInput
@@ -242,4 +242,3 @@ type DashboardArgs struct {
 func (DashboardArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardArgs)(nil)).Elem()
 }
-

@@ -230,4 +230,3 @@ type DetectorArgs struct {
 func (DetectorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*detectorArgs)(nil)).Elem()
 }
-

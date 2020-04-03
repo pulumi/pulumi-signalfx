@@ -25,7 +25,7 @@ type DashboardGroup struct {
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards DashboardGroupDashboardArrayOutput `pulumi:"dashboards"`
 	// Description of the dashboard group.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description      pulumi.StringPtrOutput                   `pulumi:"description"`
 	ImportQualifiers DashboardGroupImportQualifierArrayOutput `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -68,7 +68,7 @@ type dashboardGroupState struct {
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards []DashboardGroupDashboard `pulumi:"dashboards"`
 	// Description of the dashboard group.
-	Description *string `pulumi:"description"`
+	Description      *string                         `pulumi:"description"`
 	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
@@ -84,7 +84,7 @@ type DashboardGroupState struct {
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards DashboardGroupDashboardArrayInput
 	// Description of the dashboard group.
-	Description pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
 	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
@@ -104,7 +104,7 @@ type dashboardGroupArgs struct {
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards []DashboardGroupDashboard `pulumi:"dashboards"`
 	// Description of the dashboard group.
-	Description *string `pulumi:"description"`
+	Description      *string                         `pulumi:"description"`
 	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
@@ -121,7 +121,7 @@ type DashboardGroupArgs struct {
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards DashboardGroupDashboardArrayInput
 	// Description of the dashboard group.
-	Description pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
 	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
@@ -132,4 +132,3 @@ type DashboardGroupArgs struct {
 func (DashboardGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardGroupArgs)(nil)).Elem()
 }
-

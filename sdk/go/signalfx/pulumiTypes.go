@@ -69,7 +69,7 @@ func (i AlertMutingRuleFilterArray) ToAlertMutingRuleFilterArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleFilterArrayOutput)
 }
 
-type AlertMutingRuleFilterOutput struct { *pulumi.OutputState }
+type AlertMutingRuleFilterOutput struct{ *pulumi.OutputState }
 
 func (AlertMutingRuleFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertMutingRuleFilter)(nil)).Elem()
@@ -85,20 +85,20 @@ func (o AlertMutingRuleFilterOutput) ToAlertMutingRuleFilterOutputWithContext(ct
 
 // Determines if this is a "not" filter. Defaults to `false`.
 func (o AlertMutingRuleFilterOutput) Negated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v AlertMutingRuleFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v AlertMutingRuleFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
 // The property to filter.
 func (o AlertMutingRuleFilterOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertMutingRuleFilter) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertMutingRuleFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // The property value to filter.
 func (o AlertMutingRuleFilterOutput) PropertyValue() pulumi.StringOutput {
-	return o.ApplyT(func (v AlertMutingRuleFilter) string { return v.PropertyValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v AlertMutingRuleFilter) string { return v.PropertyValue }).(pulumi.StringOutput)
 }
 
-type AlertMutingRuleFilterArrayOutput struct { *pulumi.OutputState}
+type AlertMutingRuleFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (AlertMutingRuleFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]AlertMutingRuleFilter)(nil)).Elem()
@@ -113,7 +113,7 @@ func (o AlertMutingRuleFilterArrayOutput) ToAlertMutingRuleFilterArrayOutputWith
 }
 
 func (o AlertMutingRuleFilterArrayOutput) Index(i pulumi.IntInput) AlertMutingRuleFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AlertMutingRuleFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertMutingRuleFilter {
 		return vs[0].([]AlertMutingRuleFilter)[vs[1].(int)]
 	}).(AlertMutingRuleFilterOutput)
 }
@@ -184,7 +184,7 @@ func (i DashboardChartArray) ToDashboardChartArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartArrayOutput)
 }
 
-type DashboardChartOutput struct { *pulumi.OutputState }
+type DashboardChartOutput struct{ *pulumi.OutputState }
 
 func (DashboardChartOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardChart)(nil)).Elem()
@@ -200,30 +200,30 @@ func (o DashboardChartOutput) ToDashboardChartOutputWithContext(ctx context.Cont
 
 // ID of the chart to display.
 func (o DashboardChartOutput) ChartId() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardChart) string { return v.ChartId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardChart) string { return v.ChartId }).(pulumi.StringOutput)
 }
 
 // Column number for the layout.
 func (o DashboardChartOutput) Column() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardChart) *int { return v.Column }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardChart) *int { return v.Column }).(pulumi.IntPtrOutput)
 }
 
 // How many rows every chart should take up (greater than or equal to 1). 1 by default.
 func (o DashboardChartOutput) Height() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardChart) *int { return v.Height }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardChart) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
 // The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
 func (o DashboardChartOutput) Row() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardChart) *int { return v.Row }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardChart) *int { return v.Row }).(pulumi.IntPtrOutput)
 }
 
 // How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardChartOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardChart) *int { return v.Width }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardChart) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
 
-type DashboardChartArrayOutput struct { *pulumi.OutputState}
+type DashboardChartArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardChartArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardChart)(nil)).Elem()
@@ -238,7 +238,7 @@ func (o DashboardChartArrayOutput) ToDashboardChartArrayOutputWithContext(ctx co
 }
 
 func (o DashboardChartArrayOutput) Index(i pulumi.IntInput) DashboardChartOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardChart {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardChart {
 		return vs[0].([]DashboardChart)[vs[1].(int)]
 	}).(DashboardChartOutput)
 }
@@ -305,7 +305,7 @@ func (i DashboardColumnArray) ToDashboardColumnArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardColumnArrayOutput)
 }
 
-type DashboardColumnOutput struct { *pulumi.OutputState }
+type DashboardColumnOutput struct{ *pulumi.OutputState }
 
 func (DashboardColumnOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardColumn)(nil)).Elem()
@@ -321,25 +321,25 @@ func (o DashboardColumnOutput) ToDashboardColumnOutputWithContext(ctx context.Co
 
 // List of IDs of the charts to display.
 func (o DashboardColumnOutput) ChartIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardColumn) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardColumn) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
 }
 
 // Column number for the layout.
 func (o DashboardColumnOutput) Column() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardColumn) *int { return v.Column }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardColumn) *int { return v.Column }).(pulumi.IntPtrOutput)
 }
 
 // How many rows every chart should take up (greater than or equal to 1). 1 by default.
 func (o DashboardColumnOutput) Height() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardColumn) *int { return v.Height }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardColumn) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
 // How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardColumnOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardColumn) *int { return v.Width }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardColumn) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
 
-type DashboardColumnArrayOutput struct { *pulumi.OutputState}
+type DashboardColumnArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardColumnArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardColumn)(nil)).Elem()
@@ -354,7 +354,7 @@ func (o DashboardColumnArrayOutput) ToDashboardColumnArrayOutputWithContext(ctx 
 }
 
 func (o DashboardColumnArrayOutput) Index(i pulumi.IntInput) DashboardColumnOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardColumn {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardColumn {
 		return vs[0].([]DashboardColumn)[vs[1].(int)]
 	}).(DashboardColumnOutput)
 }
@@ -429,7 +429,7 @@ func (i DashboardEventOverlayArray) ToDashboardEventOverlayArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardEventOverlayArrayOutput)
 }
 
-type DashboardEventOverlayOutput struct { *pulumi.OutputState }
+type DashboardEventOverlayOutput struct{ *pulumi.OutputState }
 
 func (DashboardEventOverlayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardEventOverlay)(nil)).Elem()
@@ -445,35 +445,35 @@ func (o DashboardEventOverlayOutput) ToDashboardEventOverlayOutputWithContext(ct
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o DashboardEventOverlayOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardEventOverlay) *string { return v.Color }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardEventOverlay) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 // Text shown in the dropdown when selecting this overlay from the menu.
 func (o DashboardEventOverlayOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardEventOverlay) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardEventOverlay) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // Show a vertical line for the event. `false` by default.
 func (o DashboardEventOverlayOutput) Line() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardEventOverlay) *bool { return v.Line }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardEventOverlay) *bool { return v.Line }).(pulumi.BoolPtrOutput)
 }
 
 // Search term used to choose the events shown in the overlay.
 func (o DashboardEventOverlayOutput) Signal() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardEventOverlay) string { return v.Signal }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardEventOverlay) string { return v.Signal }).(pulumi.StringOutput)
 }
 
 // Each element specifies a filter to use against the signal specified in the `signal`.
 func (o DashboardEventOverlayOutput) Sources() DashboardEventOverlaySourceArrayOutput {
-	return o.ApplyT(func (v DashboardEventOverlay) []DashboardEventOverlaySource { return v.Sources }).(DashboardEventOverlaySourceArrayOutput)
+	return o.ApplyT(func(v DashboardEventOverlay) []DashboardEventOverlaySource { return v.Sources }).(DashboardEventOverlaySourceArrayOutput)
 }
 
 // Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
 func (o DashboardEventOverlayOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardEventOverlay) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardEventOverlay) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DashboardEventOverlayArrayOutput struct { *pulumi.OutputState}
+type DashboardEventOverlayArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardEventOverlayArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardEventOverlay)(nil)).Elem()
@@ -488,7 +488,7 @@ func (o DashboardEventOverlayArrayOutput) ToDashboardEventOverlayArrayOutputWith
 }
 
 func (o DashboardEventOverlayArrayOutput) Index(i pulumi.IntInput) DashboardEventOverlayOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardEventOverlay {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardEventOverlay {
 		return vs[0].([]DashboardEventOverlay)[vs[1].(int)]
 	}).(DashboardEventOverlayOutput)
 }
@@ -551,7 +551,7 @@ func (i DashboardEventOverlaySourceArray) ToDashboardEventOverlaySourceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardEventOverlaySourceArrayOutput)
 }
 
-type DashboardEventOverlaySourceOutput struct { *pulumi.OutputState }
+type DashboardEventOverlaySourceOutput struct{ *pulumi.OutputState }
 
 func (DashboardEventOverlaySourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardEventOverlaySource)(nil)).Elem()
@@ -567,20 +567,20 @@ func (o DashboardEventOverlaySourceOutput) ToDashboardEventOverlaySourceOutputWi
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardEventOverlaySourceOutput) Negated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
 // The name of a dimension to filter against.
 func (o DashboardEventOverlaySourceOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardEventOverlaySource) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardEventOverlaySource) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardEventOverlaySourceOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardEventOverlaySource) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardEventOverlaySource) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type DashboardEventOverlaySourceArrayOutput struct { *pulumi.OutputState}
+type DashboardEventOverlaySourceArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardEventOverlaySourceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardEventOverlaySource)(nil)).Elem()
@@ -595,7 +595,7 @@ func (o DashboardEventOverlaySourceArrayOutput) ToDashboardEventOverlaySourceArr
 }
 
 func (o DashboardEventOverlaySourceArrayOutput) Index(i pulumi.IntInput) DashboardEventOverlaySourceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardEventOverlaySource {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardEventOverlaySource {
 		return vs[0].([]DashboardEventOverlaySource)[vs[1].(int)]
 	}).(DashboardEventOverlaySourceOutput)
 }
@@ -662,7 +662,7 @@ func (i DashboardFilterArray) ToDashboardFilterArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterArrayOutput)
 }
 
-type DashboardFilterOutput struct { *pulumi.OutputState }
+type DashboardFilterOutput struct{ *pulumi.OutputState }
 
 func (DashboardFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardFilter)(nil)).Elem()
@@ -678,25 +678,25 @@ func (o DashboardFilterOutput) ToDashboardFilterOutputWithContext(ctx context.Co
 
 // If true, this variable will also match data that doesn't have this property at all.
 func (o DashboardFilterOutput) ApplyIfExist() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardFilter) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardFilter) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
 }
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardFilterOutput) Negated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
 // The name of a dimension to filter against.
 func (o DashboardFilterOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardFilter) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type DashboardFilterArrayOutput struct { *pulumi.OutputState}
+type DashboardFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardFilter)(nil)).Elem()
@@ -711,7 +711,7 @@ func (o DashboardFilterArrayOutput) ToDashboardFilterArrayOutputWithContext(ctx 
 }
 
 func (o DashboardFilterArrayOutput) Index(i pulumi.IntInput) DashboardFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardFilter {
 		return vs[0].([]DashboardFilter)[vs[1].(int)]
 	}).(DashboardFilterOutput)
 }
@@ -774,7 +774,7 @@ func (i DashboardGridArray) ToDashboardGridArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGridArrayOutput)
 }
 
-type DashboardGridOutput struct { *pulumi.OutputState }
+type DashboardGridOutput struct{ *pulumi.OutputState }
 
 func (DashboardGridOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGrid)(nil)).Elem()
@@ -790,20 +790,20 @@ func (o DashboardGridOutput) ToDashboardGridOutputWithContext(ctx context.Contex
 
 // List of IDs of the charts to display.
 func (o DashboardGridOutput) ChartIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardGrid) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardGrid) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
 }
 
 // How many rows every chart should take up (greater than or equal to 1). 1 by default.
 func (o DashboardGridOutput) Height() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardGrid) *int { return v.Height }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardGrid) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
 // How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardGridOutput) Width() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v DashboardGrid) *int { return v.Width }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v DashboardGrid) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
 
-type DashboardGridArrayOutput struct { *pulumi.OutputState}
+type DashboardGridArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardGridArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardGrid)(nil)).Elem()
@@ -818,7 +818,7 @@ func (o DashboardGridArrayOutput) ToDashboardGridArrayOutputWithContext(ctx cont
 }
 
 func (o DashboardGridArrayOutput) Index(i pulumi.IntInput) DashboardGridOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGrid {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGrid {
 		return vs[0].([]DashboardGrid)[vs[1].(int)]
 	}).(DashboardGridOutput)
 }
@@ -831,7 +831,7 @@ type DashboardGroupDashboard struct {
 	// The description that will override the original dashboards's description.
 	FilterOverrides []DashboardGroupDashboardFilterOverride `pulumi:"filterOverrides"`
 	// The name that will override the original dashboards's name.
-	NameOverride *string `pulumi:"nameOverride"`
+	NameOverride      *string                                   `pulumi:"nameOverride"`
 	VariableOverrides []DashboardGroupDashboardVariableOverride `pulumi:"variableOverrides"`
 }
 
@@ -850,7 +850,7 @@ type DashboardGroupDashboardArgs struct {
 	// The description that will override the original dashboards's description.
 	FilterOverrides DashboardGroupDashboardFilterOverrideArrayInput `pulumi:"filterOverrides"`
 	// The name that will override the original dashboards's name.
-	NameOverride pulumi.StringPtrInput `pulumi:"nameOverride"`
+	NameOverride      pulumi.StringPtrInput                             `pulumi:"nameOverride"`
 	VariableOverrides DashboardGroupDashboardVariableOverrideArrayInput `pulumi:"variableOverrides"`
 }
 
@@ -887,7 +887,7 @@ func (i DashboardGroupDashboardArray) ToDashboardGroupDashboardArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardArrayOutput)
 }
 
-type DashboardGroupDashboardOutput struct { *pulumi.OutputState }
+type DashboardGroupDashboardOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGroupDashboard)(nil)).Elem()
@@ -903,29 +903,29 @@ func (o DashboardGroupDashboardOutput) ToDashboardGroupDashboardOutputWithContex
 
 // The dashboard id to mirror
 func (o DashboardGroupDashboardOutput) DashboardId() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardGroupDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardGroupDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
 }
 
 // The description that will override the original dashboards's description.
 func (o DashboardGroupDashboardOutput) DescriptionOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardGroupDashboard) *string { return v.DescriptionOverride }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.DescriptionOverride }).(pulumi.StringPtrOutput)
 }
 
 // The description that will override the original dashboards's description.
 func (o DashboardGroupDashboardOutput) FilterOverrides() DashboardGroupDashboardFilterOverrideArrayOutput {
-	return o.ApplyT(func (v DashboardGroupDashboard) []DashboardGroupDashboardFilterOverride { return v.FilterOverrides }).(DashboardGroupDashboardFilterOverrideArrayOutput)
+	return o.ApplyT(func(v DashboardGroupDashboard) []DashboardGroupDashboardFilterOverride { return v.FilterOverrides }).(DashboardGroupDashboardFilterOverrideArrayOutput)
 }
 
 // The name that will override the original dashboards's name.
 func (o DashboardGroupDashboardOutput) NameOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardGroupDashboard) *string { return v.NameOverride }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.NameOverride }).(pulumi.StringPtrOutput)
 }
 
 func (o DashboardGroupDashboardOutput) VariableOverrides() DashboardGroupDashboardVariableOverrideArrayOutput {
-	return o.ApplyT(func (v DashboardGroupDashboard) []DashboardGroupDashboardVariableOverride { return v.VariableOverrides }).(DashboardGroupDashboardVariableOverrideArrayOutput)
+	return o.ApplyT(func(v DashboardGroupDashboard) []DashboardGroupDashboardVariableOverride { return v.VariableOverrides }).(DashboardGroupDashboardVariableOverrideArrayOutput)
 }
 
-type DashboardGroupDashboardArrayOutput struct { *pulumi.OutputState}
+type DashboardGroupDashboardArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardGroupDashboard)(nil)).Elem()
@@ -940,7 +940,7 @@ func (o DashboardGroupDashboardArrayOutput) ToDashboardGroupDashboardArrayOutput
 }
 
 func (o DashboardGroupDashboardArrayOutput) Index(i pulumi.IntInput) DashboardGroupDashboardOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupDashboard {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroupDashboard {
 		return vs[0].([]DashboardGroupDashboard)[vs[1].(int)]
 	}).(DashboardGroupDashboardOutput)
 }
@@ -1003,7 +1003,7 @@ func (i DashboardGroupDashboardFilterOverrideArray) ToDashboardGroupDashboardFil
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardFilterOverrideArrayOutput)
 }
 
-type DashboardGroupDashboardFilterOverrideOutput struct { *pulumi.OutputState }
+type DashboardGroupDashboardFilterOverrideOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardFilterOverrideOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGroupDashboardFilterOverride)(nil)).Elem()
@@ -1019,20 +1019,20 @@ func (o DashboardGroupDashboardFilterOverrideOutput) ToDashboardGroupDashboardFi
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardGroupDashboardFilterOverrideOutput) Negated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardGroupDashboardFilterOverride) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
 // A metric time series dimension or property name.
 func (o DashboardGroupDashboardFilterOverrideOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardGroupDashboardFilterOverride) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupDashboardFilterOverrideOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardGroupDashboardFilterOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type DashboardGroupDashboardFilterOverrideArrayOutput struct { *pulumi.OutputState}
+type DashboardGroupDashboardFilterOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardFilterOverrideArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardGroupDashboardFilterOverride)(nil)).Elem()
@@ -1047,7 +1047,7 @@ func (o DashboardGroupDashboardFilterOverrideArrayOutput) ToDashboardGroupDashbo
 }
 
 func (o DashboardGroupDashboardFilterOverrideArrayOutput) Index(i pulumi.IntInput) DashboardGroupDashboardFilterOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupDashboardFilterOverride {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroupDashboardFilterOverride {
 		return vs[0].([]DashboardGroupDashboardFilterOverride)[vs[1].(int)]
 	}).(DashboardGroupDashboardFilterOverrideOutput)
 }
@@ -1110,7 +1110,7 @@ func (i DashboardGroupDashboardVariableOverrideArray) ToDashboardGroupDashboardV
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardVariableOverrideArrayOutput)
 }
 
-type DashboardGroupDashboardVariableOverrideOutput struct { *pulumi.OutputState }
+type DashboardGroupDashboardVariableOverrideOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardVariableOverrideOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGroupDashboardVariableOverride)(nil)).Elem()
@@ -1126,20 +1126,20 @@ func (o DashboardGroupDashboardVariableOverrideOutput) ToDashboardGroupDashboard
 
 // A metric time series dimension or property name.
 func (o DashboardGroupDashboardVariableOverrideOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardGroupDashboardVariableOverride) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupDashboardVariableOverrideOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardGroupDashboardVariableOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 func (o DashboardGroupDashboardVariableOverrideOutput) ValuesSuggesteds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardGroupDashboardVariableOverride) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
 }
 
-type DashboardGroupDashboardVariableOverrideArrayOutput struct { *pulumi.OutputState}
+type DashboardGroupDashboardVariableOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardVariableOverrideArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardGroupDashboardVariableOverride)(nil)).Elem()
@@ -1154,14 +1154,14 @@ func (o DashboardGroupDashboardVariableOverrideArrayOutput) ToDashboardGroupDash
 }
 
 func (o DashboardGroupDashboardVariableOverrideArrayOutput) Index(i pulumi.IntInput) DashboardGroupDashboardVariableOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupDashboardVariableOverride {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroupDashboardVariableOverride {
 		return vs[0].([]DashboardGroupDashboardVariableOverride)[vs[1].(int)]
 	}).(DashboardGroupDashboardVariableOverrideOutput)
 }
 
 type DashboardGroupImportQualifier struct {
 	Filters []DashboardGroupImportQualifierFilter `pulumi:"filters"`
-	Metric string `pulumi:"metric"`
+	Metric  string                                `pulumi:"metric"`
 }
 
 type DashboardGroupImportQualifierInput interface {
@@ -1173,7 +1173,7 @@ type DashboardGroupImportQualifierInput interface {
 
 type DashboardGroupImportQualifierArgs struct {
 	Filters DashboardGroupImportQualifierFilterArrayInput `pulumi:"filters"`
-	Metric pulumi.StringInput `pulumi:"metric"`
+	Metric  pulumi.StringInput                            `pulumi:"metric"`
 }
 
 func (DashboardGroupImportQualifierArgs) ElementType() reflect.Type {
@@ -1209,7 +1209,7 @@ func (i DashboardGroupImportQualifierArray) ToDashboardGroupImportQualifierArray
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierArrayOutput)
 }
 
-type DashboardGroupImportQualifierOutput struct { *pulumi.OutputState }
+type DashboardGroupImportQualifierOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupImportQualifierOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGroupImportQualifier)(nil)).Elem()
@@ -1224,14 +1224,14 @@ func (o DashboardGroupImportQualifierOutput) ToDashboardGroupImportQualifierOutp
 }
 
 func (o DashboardGroupImportQualifierOutput) Filters() DashboardGroupImportQualifierFilterArrayOutput {
-	return o.ApplyT(func (v DashboardGroupImportQualifier) []DashboardGroupImportQualifierFilter { return v.Filters }).(DashboardGroupImportQualifierFilterArrayOutput)
+	return o.ApplyT(func(v DashboardGroupImportQualifier) []DashboardGroupImportQualifierFilter { return v.Filters }).(DashboardGroupImportQualifierFilterArrayOutput)
 }
 
 func (o DashboardGroupImportQualifierOutput) Metric() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardGroupImportQualifier) string { return v.Metric }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardGroupImportQualifier) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-type DashboardGroupImportQualifierArrayOutput struct { *pulumi.OutputState}
+type DashboardGroupImportQualifierArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupImportQualifierArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardGroupImportQualifier)(nil)).Elem()
@@ -1246,7 +1246,7 @@ func (o DashboardGroupImportQualifierArrayOutput) ToDashboardGroupImportQualifie
 }
 
 func (o DashboardGroupImportQualifierArrayOutput) Index(i pulumi.IntInput) DashboardGroupImportQualifierOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupImportQualifier {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroupImportQualifier {
 		return vs[0].([]DashboardGroupImportQualifier)[vs[1].(int)]
 	}).(DashboardGroupImportQualifierOutput)
 }
@@ -1309,7 +1309,7 @@ func (i DashboardGroupImportQualifierFilterArray) ToDashboardGroupImportQualifie
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierFilterArrayOutput)
 }
 
-type DashboardGroupImportQualifierFilterOutput struct { *pulumi.OutputState }
+type DashboardGroupImportQualifierFilterOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupImportQualifierFilterOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGroupImportQualifierFilter)(nil)).Elem()
@@ -1325,20 +1325,20 @@ func (o DashboardGroupImportQualifierFilterOutput) ToDashboardGroupImportQualifi
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardGroupImportQualifierFilterOutput) Negated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardGroupImportQualifierFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
 // A metric time series dimension or property name.
 func (o DashboardGroupImportQualifierFilterOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardGroupImportQualifierFilter) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupImportQualifierFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardGroupImportQualifierFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type DashboardGroupImportQualifierFilterArrayOutput struct { *pulumi.OutputState}
+type DashboardGroupImportQualifierFilterArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupImportQualifierFilterArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardGroupImportQualifierFilter)(nil)).Elem()
@@ -1353,7 +1353,7 @@ func (o DashboardGroupImportQualifierFilterArrayOutput) ToDashboardGroupImportQu
 }
 
 func (o DashboardGroupImportQualifierFilterArrayOutput) Index(i pulumi.IntInput) DashboardGroupImportQualifierFilterOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardGroupImportQualifierFilter {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroupImportQualifierFilter {
 		return vs[0].([]DashboardGroupImportQualifierFilter)[vs[1].(int)]
 	}).(DashboardGroupImportQualifierFilterOutput)
 }
@@ -1416,7 +1416,7 @@ func (i DashboardSelectedEventOverlayArray) ToDashboardSelectedEventOverlayArray
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardSelectedEventOverlayArrayOutput)
 }
 
-type DashboardSelectedEventOverlayOutput struct { *pulumi.OutputState }
+type DashboardSelectedEventOverlayOutput struct{ *pulumi.OutputState }
 
 func (DashboardSelectedEventOverlayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardSelectedEventOverlay)(nil)).Elem()
@@ -1432,20 +1432,20 @@ func (o DashboardSelectedEventOverlayOutput) ToDashboardSelectedEventOverlayOutp
 
 // Search term used to choose the events shown in the overlay.
 func (o DashboardSelectedEventOverlayOutput) Signal() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardSelectedEventOverlay) string { return v.Signal }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardSelectedEventOverlay) string { return v.Signal }).(pulumi.StringOutput)
 }
 
 // Each element specifies a filter to use against the signal specified in the `signal`.
 func (o DashboardSelectedEventOverlayOutput) Sources() DashboardSelectedEventOverlaySourceArrayOutput {
-	return o.ApplyT(func (v DashboardSelectedEventOverlay) []DashboardSelectedEventOverlaySource { return v.Sources }).(DashboardSelectedEventOverlaySourceArrayOutput)
+	return o.ApplyT(func(v DashboardSelectedEventOverlay) []DashboardSelectedEventOverlaySource { return v.Sources }).(DashboardSelectedEventOverlaySourceArrayOutput)
 }
 
 // Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
 func (o DashboardSelectedEventOverlayOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardSelectedEventOverlay) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardSelectedEventOverlay) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-type DashboardSelectedEventOverlayArrayOutput struct { *pulumi.OutputState}
+type DashboardSelectedEventOverlayArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardSelectedEventOverlayArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardSelectedEventOverlay)(nil)).Elem()
@@ -1460,7 +1460,7 @@ func (o DashboardSelectedEventOverlayArrayOutput) ToDashboardSelectedEventOverla
 }
 
 func (o DashboardSelectedEventOverlayArrayOutput) Index(i pulumi.IntInput) DashboardSelectedEventOverlayOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardSelectedEventOverlay {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardSelectedEventOverlay {
 		return vs[0].([]DashboardSelectedEventOverlay)[vs[1].(int)]
 	}).(DashboardSelectedEventOverlayOutput)
 }
@@ -1523,7 +1523,7 @@ func (i DashboardSelectedEventOverlaySourceArray) ToDashboardSelectedEventOverla
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardSelectedEventOverlaySourceArrayOutput)
 }
 
-type DashboardSelectedEventOverlaySourceOutput struct { *pulumi.OutputState }
+type DashboardSelectedEventOverlaySourceOutput struct{ *pulumi.OutputState }
 
 func (DashboardSelectedEventOverlaySourceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardSelectedEventOverlaySource)(nil)).Elem()
@@ -1539,20 +1539,20 @@ func (o DashboardSelectedEventOverlaySourceOutput) ToDashboardSelectedEventOverl
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardSelectedEventOverlaySourceOutput) Negated() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardSelectedEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
 // The name of a dimension to filter against.
 func (o DashboardSelectedEventOverlaySourceOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardSelectedEventOverlaySource) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardSelectedEventOverlaySourceOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardSelectedEventOverlaySource) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-type DashboardSelectedEventOverlaySourceArrayOutput struct { *pulumi.OutputState}
+type DashboardSelectedEventOverlaySourceArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardSelectedEventOverlaySourceArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardSelectedEventOverlaySource)(nil)).Elem()
@@ -1567,7 +1567,7 @@ func (o DashboardSelectedEventOverlaySourceArrayOutput) ToDashboardSelectedEvent
 }
 
 func (o DashboardSelectedEventOverlaySourceArrayOutput) Index(i pulumi.IntInput) DashboardSelectedEventOverlaySourceOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardSelectedEventOverlaySource {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardSelectedEventOverlaySource {
 		return vs[0].([]DashboardSelectedEventOverlaySource)[vs[1].(int)]
 	}).(DashboardSelectedEventOverlaySourceOutput)
 }
@@ -1654,7 +1654,7 @@ func (i DashboardVariableArray) ToDashboardVariableArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardVariableArrayOutput)
 }
 
-type DashboardVariableOutput struct { *pulumi.OutputState }
+type DashboardVariableOutput struct{ *pulumi.OutputState }
 
 func (DashboardVariableOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardVariable)(nil)).Elem()
@@ -1670,50 +1670,50 @@ func (o DashboardVariableOutput) ToDashboardVariableOutputWithContext(ctx contex
 
 // An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
 func (o DashboardVariableOutput) Alias() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardVariable) string { return v.Alias }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardVariable) string { return v.Alias }).(pulumi.StringOutput)
 }
 
 // If true, this variable will also match data that doesn't have this property at all.
 func (o DashboardVariableOutput) ApplyIfExist() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardVariable) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardVariable) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
 }
 
 // Variable description.
 func (o DashboardVariableOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DashboardVariable) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DashboardVariable) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The name of a dimension to filter against.
 func (o DashboardVariableOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v DashboardVariable) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DashboardVariable) string { return v.Property }).(pulumi.StringOutput)
 }
 
 // If `true`, this variable will only apply to charts that have a filter for the property.
 func (o DashboardVariableOutput) ReplaceOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardVariable) *bool { return v.ReplaceOnly }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardVariable) *bool { return v.ReplaceOnly }).(pulumi.BoolPtrOutput)
 }
 
 // If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
 func (o DashboardVariableOutput) RestrictedSuggestions() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardVariable) *bool { return v.RestrictedSuggestions }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardVariable) *bool { return v.RestrictedSuggestions }).(pulumi.BoolPtrOutput)
 }
 
 // Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
 func (o DashboardVariableOutput) ValueRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DashboardVariable) *bool { return v.ValueRequired }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DashboardVariable) *bool { return v.ValueRequired }).(pulumi.BoolPtrOutput)
 }
 
 // A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardVariableOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardVariable) []string { return v.Values }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardVariable) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 // A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 func (o DashboardVariableOutput) ValuesSuggesteds() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DashboardVariable) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DashboardVariable) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
 }
 
-type DashboardVariableArrayOutput struct { *pulumi.OutputState}
+type DashboardVariableArrayOutput struct{ *pulumi.OutputState }
 
 func (DashboardVariableArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DashboardVariable)(nil)).Elem()
@@ -1728,7 +1728,7 @@ func (o DashboardVariableArrayOutput) ToDashboardVariableArrayOutputWithContext(
 }
 
 func (o DashboardVariableArrayOutput) Index(i pulumi.IntInput) DashboardVariableOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DashboardVariable {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardVariable {
 		return vs[0].([]DashboardVariable)[vs[1].(int)]
 	}).(DashboardVariableOutput)
 }
@@ -1744,7 +1744,7 @@ type DataLinkTargetExternalUrl struct {
 	PropertyKeyMapping map[string]string `pulumi:"propertyKeyMapping"`
 	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 	TimeFormat *string `pulumi:"timeFormat"`
-	Url string `pulumi:"url"`
+	Url        string  `pulumi:"url"`
 }
 
 type DataLinkTargetExternalUrlInput interface {
@@ -1765,7 +1765,7 @@ type DataLinkTargetExternalUrlArgs struct {
 	PropertyKeyMapping pulumi.StringMapInput `pulumi:"propertyKeyMapping"`
 	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 	TimeFormat pulumi.StringPtrInput `pulumi:"timeFormat"`
-	Url pulumi.StringInput `pulumi:"url"`
+	Url        pulumi.StringInput    `pulumi:"url"`
 }
 
 func (DataLinkTargetExternalUrlArgs) ElementType() reflect.Type {
@@ -1801,7 +1801,7 @@ func (i DataLinkTargetExternalUrlArray) ToDataLinkTargetExternalUrlArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetExternalUrlArrayOutput)
 }
 
-type DataLinkTargetExternalUrlOutput struct { *pulumi.OutputState }
+type DataLinkTargetExternalUrlOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetExternalUrlOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataLinkTargetExternalUrl)(nil)).Elem()
@@ -1817,34 +1817,34 @@ func (o DataLinkTargetExternalUrlOutput) ToDataLinkTargetExternalUrlOutputWithCo
 
 // Flag that designates a target as the default for a data link object. `true` by default
 func (o DataLinkTargetExternalUrlOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DataLinkTargetExternalUrl) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DataLinkTargetExternalUrl) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
 func (o DataLinkTargetExternalUrlOutput) MinimumTimeWindow() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DataLinkTargetExternalUrl) *string { return v.MinimumTimeWindow }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DataLinkTargetExternalUrl) *string { return v.MinimumTimeWindow }).(pulumi.StringPtrOutput)
 }
 
 // User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 func (o DataLinkTargetExternalUrlOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v DataLinkTargetExternalUrl) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataLinkTargetExternalUrl) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
 func (o DataLinkTargetExternalUrlOutput) PropertyKeyMapping() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DataLinkTargetExternalUrl) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DataLinkTargetExternalUrl) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
 }
 
 // [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 func (o DataLinkTargetExternalUrlOutput) TimeFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DataLinkTargetExternalUrl) *string { return v.TimeFormat }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DataLinkTargetExternalUrl) *string { return v.TimeFormat }).(pulumi.StringPtrOutput)
 }
 
 func (o DataLinkTargetExternalUrlOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func (v DataLinkTargetExternalUrl) string { return v.Url }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataLinkTargetExternalUrl) string { return v.Url }).(pulumi.StringOutput)
 }
 
-type DataLinkTargetExternalUrlArrayOutput struct { *pulumi.OutputState}
+type DataLinkTargetExternalUrlArrayOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetExternalUrlArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DataLinkTargetExternalUrl)(nil)).Elem()
@@ -1859,7 +1859,7 @@ func (o DataLinkTargetExternalUrlArrayOutput) ToDataLinkTargetExternalUrlArrayOu
 }
 
 func (o DataLinkTargetExternalUrlArrayOutput) Index(i pulumi.IntInput) DataLinkTargetExternalUrlOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DataLinkTargetExternalUrl {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLinkTargetExternalUrl {
 		return vs[0].([]DataLinkTargetExternalUrl)[vs[1].(int)]
 	}).(DataLinkTargetExternalUrlOutput)
 }
@@ -1926,7 +1926,7 @@ func (i DataLinkTargetSignalfxDashboardArray) ToDataLinkTargetSignalfxDashboardA
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetSignalfxDashboardArrayOutput)
 }
 
-type DataLinkTargetSignalfxDashboardOutput struct { *pulumi.OutputState }
+type DataLinkTargetSignalfxDashboardOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetSignalfxDashboardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataLinkTargetSignalfxDashboard)(nil)).Elem()
@@ -1942,25 +1942,25 @@ func (o DataLinkTargetSignalfxDashboardOutput) ToDataLinkTargetSignalfxDashboard
 
 // SignalFx-assigned ID of the dashboard link target's dashboard group
 func (o DataLinkTargetSignalfxDashboardOutput) DashboardGroupId() pulumi.StringOutput {
-	return o.ApplyT(func (v DataLinkTargetSignalfxDashboard) string { return v.DashboardGroupId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) string { return v.DashboardGroupId }).(pulumi.StringOutput)
 }
 
 // SignalFx-assigned ID of the dashboard link target
 func (o DataLinkTargetSignalfxDashboardOutput) DashboardId() pulumi.StringOutput {
-	return o.ApplyT(func (v DataLinkTargetSignalfxDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
 }
 
 // Flag that designates a target as the default for a data link object. `true` by default
 func (o DataLinkTargetSignalfxDashboardOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DataLinkTargetSignalfxDashboard) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 func (o DataLinkTargetSignalfxDashboardOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v DataLinkTargetSignalfxDashboard) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type DataLinkTargetSignalfxDashboardArrayOutput struct { *pulumi.OutputState}
+type DataLinkTargetSignalfxDashboardArrayOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetSignalfxDashboardArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DataLinkTargetSignalfxDashboard)(nil)).Elem()
@@ -1975,7 +1975,7 @@ func (o DataLinkTargetSignalfxDashboardArrayOutput) ToDataLinkTargetSignalfxDash
 }
 
 func (o DataLinkTargetSignalfxDashboardArrayOutput) Index(i pulumi.IntInput) DataLinkTargetSignalfxDashboardOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DataLinkTargetSignalfxDashboard {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLinkTargetSignalfxDashboard {
 		return vs[0].([]DataLinkTargetSignalfxDashboard)[vs[1].(int)]
 	}).(DataLinkTargetSignalfxDashboardOutput)
 }
@@ -2038,7 +2038,7 @@ func (i DataLinkTargetSplunkArray) ToDataLinkTargetSplunkArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetSplunkArrayOutput)
 }
 
-type DataLinkTargetSplunkOutput struct { *pulumi.OutputState }
+type DataLinkTargetSplunkOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetSplunkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DataLinkTargetSplunk)(nil)).Elem()
@@ -2054,20 +2054,20 @@ func (o DataLinkTargetSplunkOutput) ToDataLinkTargetSplunkOutputWithContext(ctx 
 
 // Flag that designates a target as the default for a data link object. `true` by default
 func (o DataLinkTargetSplunkOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DataLinkTargetSplunk) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DataLinkTargetSplunk) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 func (o DataLinkTargetSplunkOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func (v DataLinkTargetSplunk) string { return v.Name }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DataLinkTargetSplunk) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
 func (o DataLinkTargetSplunkOutput) PropertyKeyMapping() pulumi.StringMapOutput {
-	return o.ApplyT(func (v DataLinkTargetSplunk) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
+	return o.ApplyT(func(v DataLinkTargetSplunk) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
 }
 
-type DataLinkTargetSplunkArrayOutput struct { *pulumi.OutputState}
+type DataLinkTargetSplunkArrayOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetSplunkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DataLinkTargetSplunk)(nil)).Elem()
@@ -2082,7 +2082,7 @@ func (o DataLinkTargetSplunkArrayOutput) ToDataLinkTargetSplunkArrayOutputWithCo
 }
 
 func (o DataLinkTargetSplunkArrayOutput) Index(i pulumi.IntInput) DataLinkTargetSplunkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DataLinkTargetSplunk {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLinkTargetSplunk {
 		return vs[0].([]DataLinkTargetSplunk)[vs[1].(int)]
 	}).(DataLinkTargetSplunkOutput)
 }
@@ -2169,7 +2169,7 @@ func (i DetectorRuleArray) ToDetectorRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorRuleArrayOutput)
 }
 
-type DetectorRuleOutput struct { *pulumi.OutputState }
+type DetectorRuleOutput struct{ *pulumi.OutputState }
 
 func (DetectorRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DetectorRule)(nil)).Elem()
@@ -2185,50 +2185,50 @@ func (o DetectorRuleOutput) ToDetectorRuleOutputWithContext(ctx context.Context)
 
 // Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
 func (o DetectorRuleOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // A detect label which matches a detect label within `programText`.
 func (o DetectorRuleOutput) DetectLabel() pulumi.StringOutput {
-	return o.ApplyT(func (v DetectorRule) string { return v.DetectLabel }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DetectorRule) string { return v.DetectLabel }).(pulumi.StringOutput)
 }
 
 // When true, notifications and events will not be generated for the detect label. `false` by default.
 func (o DetectorRuleOutput) Disabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v DetectorRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v DetectorRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
 func (o DetectorRuleOutput) Notifications() pulumi.StringArrayOutput {
-	return o.ApplyT(func (v DetectorRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v DetectorRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
 }
 
 // Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 func (o DetectorRuleOutput) ParameterizedBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorRule) *string { return v.ParameterizedBody }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedBody }).(pulumi.StringPtrOutput)
 }
 
 // Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 func (o DetectorRuleOutput) ParameterizedSubject() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
 }
 
 // URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 func (o DetectorRuleOutput) RunbookUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorRule) *string { return v.RunbookUrl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorRule) *string { return v.RunbookUrl }).(pulumi.StringPtrOutput)
 }
 
 // The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 func (o DetectorRuleOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func (v DetectorRule) string { return v.Severity }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DetectorRule) string { return v.Severity }).(pulumi.StringOutput)
 }
 
 // Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
 func (o DetectorRuleOutput) Tip() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorRule) *string { return v.Tip }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorRule) *string { return v.Tip }).(pulumi.StringPtrOutput)
 }
 
-type DetectorRuleArrayOutput struct { *pulumi.OutputState}
+type DetectorRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (DetectorRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DetectorRule)(nil)).Elem()
@@ -2243,7 +2243,7 @@ func (o DetectorRuleArrayOutput) ToDetectorRuleArrayOutputWithContext(ctx contex
 }
 
 func (o DetectorRuleArrayOutput) Index(i pulumi.IntInput) DetectorRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DetectorRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DetectorRule {
 		return vs[0].([]DetectorRule)[vs[1].(int)]
 	}).(DetectorRuleOutput)
 }
@@ -2254,7 +2254,7 @@ type DetectorVizOption struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label string `pulumi:"label"`
+	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -2275,7 +2275,7 @@ type DetectorVizOptionArgs struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
+	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -2316,7 +2316,7 @@ func (i DetectorVizOptionArray) ToDetectorVizOptionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorVizOptionArrayOutput)
 }
 
-type DetectorVizOptionOutput struct { *pulumi.OutputState }
+type DetectorVizOptionOutput struct{ *pulumi.OutputState }
 
 func (DetectorVizOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DetectorVizOption)(nil)).Elem()
@@ -2332,34 +2332,34 @@ func (o DetectorVizOptionOutput) ToDetectorVizOptionOutputWithContext(ctx contex
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o DetectorVizOptionOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o DetectorVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o DetectorVizOptionOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v DetectorVizOption) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v DetectorVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
 func (o DetectorVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o DetectorVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 // * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o DetectorVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v DetectorVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
 
-type DetectorVizOptionArrayOutput struct { *pulumi.OutputState}
+type DetectorVizOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (DetectorVizOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]DetectorVizOption)(nil)).Elem()
@@ -2374,7 +2374,7 @@ func (o DetectorVizOptionArrayOutput) ToDetectorVizOptionArrayOutputWithContext(
 }
 
 func (o DetectorVizOptionArrayOutput) Index(i pulumi.IntInput) DetectorVizOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) DetectorVizOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DetectorVizOption {
 		return vs[0].([]DetectorVizOption)[vs[1].(int)]
 	}).(DetectorVizOptionOutput)
 }
@@ -2433,7 +2433,8 @@ type HeatmapChartColorRangePtrInput interface {
 
 type heatmapChartColorRangePtrType HeatmapChartColorRangeArgs
 
-func HeatmapChartColorRangePtr(v *HeatmapChartColorRangeArgs) HeatmapChartColorRangePtrInput {	return (*heatmapChartColorRangePtrType)(v)
+func HeatmapChartColorRangePtr(v *HeatmapChartColorRangeArgs) HeatmapChartColorRangePtrInput {
+	return (*heatmapChartColorRangePtrType)(v)
 }
 
 func (*heatmapChartColorRangePtrType) ElementType() reflect.Type {
@@ -2448,7 +2449,7 @@ func (i *heatmapChartColorRangePtrType) ToHeatmapChartColorRangePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartColorRangePtrOutput)
 }
 
-type HeatmapChartColorRangeOutput struct { *pulumi.OutputState }
+type HeatmapChartColorRangeOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartColorRangeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HeatmapChartColorRange)(nil)).Elem()
@@ -2471,22 +2472,23 @@ func (o HeatmapChartColorRangeOutput) ToHeatmapChartColorRangePtrOutputWithConte
 		return &v
 	}).(HeatmapChartColorRangePtrOutput)
 }
+
 // The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
 func (o HeatmapChartColorRangeOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func (v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
+	return o.ApplyT(func(v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
 }
 
 // The maximum value within the coloring range.
 func (o HeatmapChartColorRangeOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorRange) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value within the coloring range.
 func (o HeatmapChartColorRangeOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorRange) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
-type HeatmapChartColorRangePtrOutput struct { *pulumi.OutputState}
+type HeatmapChartColorRangePtrOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartColorRangePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HeatmapChartColorRange)(nil)).Elem()
@@ -2501,22 +2503,22 @@ func (o HeatmapChartColorRangePtrOutput) ToHeatmapChartColorRangePtrOutputWithCo
 }
 
 func (o HeatmapChartColorRangePtrOutput) Elem() HeatmapChartColorRangeOutput {
-	return o.ApplyT(func (v *HeatmapChartColorRange) HeatmapChartColorRange { return *v }).(HeatmapChartColorRangeOutput)
+	return o.ApplyT(func(v *HeatmapChartColorRange) HeatmapChartColorRange { return *v }).(HeatmapChartColorRangeOutput)
 }
 
 // The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
 func (o HeatmapChartColorRangePtrOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func (v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
+	return o.ApplyT(func(v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
 }
 
 // The maximum value within the coloring range.
 func (o HeatmapChartColorRangePtrOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorRange) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value within the coloring range.
 func (o HeatmapChartColorRangePtrOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorRange) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
 type HeatmapChartColorScale struct {
@@ -2585,7 +2587,7 @@ func (i HeatmapChartColorScaleArray) ToHeatmapChartColorScaleArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartColorScaleArrayOutput)
 }
 
-type HeatmapChartColorScaleOutput struct { *pulumi.OutputState }
+type HeatmapChartColorScaleOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartColorScaleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HeatmapChartColorScale)(nil)).Elem()
@@ -2601,30 +2603,30 @@ func (o HeatmapChartColorScaleOutput) ToHeatmapChartColorScaleOutputWithContext(
 
 // The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
 func (o HeatmapChartColorScaleOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func (v HeatmapChartColorScale) string { return v.Color }).(pulumi.StringOutput)
+	return o.ApplyT(func(v HeatmapChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
 
 // Indicates the lower threshold non-inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Gt() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the lower threshold inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the upper threshold non-inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the upper threshold inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Lte() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v HeatmapChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
 }
 
-type HeatmapChartColorScaleArrayOutput struct { *pulumi.OutputState}
+type HeatmapChartColorScaleArrayOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartColorScaleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]HeatmapChartColorScale)(nil)).Elem()
@@ -2639,7 +2641,7 @@ func (o HeatmapChartColorScaleArrayOutput) ToHeatmapChartColorScaleArrayOutputWi
 }
 
 func (o HeatmapChartColorScaleArrayOutput) Index(i pulumi.IntInput) HeatmapChartColorScaleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) HeatmapChartColorScale {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeatmapChartColorScale {
 		return vs[0].([]HeatmapChartColorScale)[vs[1].(int)]
 	}).(HeatmapChartColorScaleOutput)
 }
@@ -2710,7 +2712,7 @@ func (i ListChartColorScaleArray) ToListChartColorScaleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartColorScaleArrayOutput)
 }
 
-type ListChartColorScaleOutput struct { *pulumi.OutputState }
+type ListChartColorScaleOutput struct{ *pulumi.OutputState }
 
 func (ListChartColorScaleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListChartColorScale)(nil)).Elem()
@@ -2726,30 +2728,30 @@ func (o ListChartColorScaleOutput) ToListChartColorScaleOutputWithContext(ctx co
 
 // The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
 func (o ListChartColorScaleOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func (v ListChartColorScale) string { return v.Color }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ListChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
 
 // Indicates the lower threshold non-inclusive value for this range.
 func (o ListChartColorScaleOutput) Gt() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v ListChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the lower threshold inclusive value for this range.
 func (o ListChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v ListChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the upper threshold non-inculsive value for this range.
 func (o ListChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v ListChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the upper threshold inclusive value for this range.
 func (o ListChartColorScaleOutput) Lte() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v ListChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
 }
 
-type ListChartColorScaleArrayOutput struct { *pulumi.OutputState}
+type ListChartColorScaleArrayOutput struct{ *pulumi.OutputState }
 
 func (ListChartColorScaleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ListChartColorScale)(nil)).Elem()
@@ -2764,13 +2766,13 @@ func (o ListChartColorScaleArrayOutput) ToListChartColorScaleArrayOutputWithCont
 }
 
 func (o ListChartColorScaleArrayOutput) Index(i pulumi.IntInput) ListChartColorScaleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ListChartColorScale {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListChartColorScale {
 		return vs[0].([]ListChartColorScale)[vs[1].(int)]
 	}).(ListChartColorScaleOutput)
 }
 
 type ListChartLegendOptionsField struct {
-	Enabled *bool `pulumi:"enabled"`
+	Enabled  *bool  `pulumi:"enabled"`
 	Property string `pulumi:"property"`
 }
 
@@ -2782,8 +2784,8 @@ type ListChartLegendOptionsFieldInput interface {
 }
 
 type ListChartLegendOptionsFieldArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	Property pulumi.StringInput `pulumi:"property"`
+	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
+	Property pulumi.StringInput  `pulumi:"property"`
 }
 
 func (ListChartLegendOptionsFieldArgs) ElementType() reflect.Type {
@@ -2819,7 +2821,7 @@ func (i ListChartLegendOptionsFieldArray) ToListChartLegendOptionsFieldArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartLegendOptionsFieldArrayOutput)
 }
 
-type ListChartLegendOptionsFieldOutput struct { *pulumi.OutputState }
+type ListChartLegendOptionsFieldOutput struct{ *pulumi.OutputState }
 
 func (ListChartLegendOptionsFieldOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListChartLegendOptionsField)(nil)).Elem()
@@ -2834,14 +2836,14 @@ func (o ListChartLegendOptionsFieldOutput) ToListChartLegendOptionsFieldOutputWi
 }
 
 func (o ListChartLegendOptionsFieldOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v ListChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v ListChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ListChartLegendOptionsFieldOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v ListChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ListChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
 }
 
-type ListChartLegendOptionsFieldArrayOutput struct { *pulumi.OutputState}
+type ListChartLegendOptionsFieldArrayOutput struct{ *pulumi.OutputState }
 
 func (ListChartLegendOptionsFieldArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ListChartLegendOptionsField)(nil)).Elem()
@@ -2856,7 +2858,7 @@ func (o ListChartLegendOptionsFieldArrayOutput) ToListChartLegendOptionsFieldArr
 }
 
 func (o ListChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) ListChartLegendOptionsFieldOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ListChartLegendOptionsField {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListChartLegendOptionsField {
 		return vs[0].([]ListChartLegendOptionsField)[vs[1].(int)]
 	}).(ListChartLegendOptionsFieldOutput)
 }
@@ -2867,7 +2869,7 @@ type ListChartVizOption struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label string `pulumi:"label"`
+	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -2888,7 +2890,7 @@ type ListChartVizOptionArgs struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
+	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -2929,7 +2931,7 @@ func (i ListChartVizOptionArray) ToListChartVizOptionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartVizOptionArrayOutput)
 }
 
-type ListChartVizOptionOutput struct { *pulumi.OutputState }
+type ListChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (ListChartVizOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListChartVizOption)(nil)).Elem()
@@ -2945,34 +2947,34 @@ func (o ListChartVizOptionOutput) ToListChartVizOptionOutputWithContext(ctx cont
 
 // The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
 func (o ListChartVizOptionOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ListChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ListChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o ListChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ListChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ListChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o ListChartVizOptionOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v ListChartVizOption) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v ListChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
 func (o ListChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ListChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o ListChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ListChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 // * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o ListChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v ListChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
 
-type ListChartVizOptionArrayOutput struct { *pulumi.OutputState}
+type ListChartVizOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (ListChartVizOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]ListChartVizOption)(nil)).Elem()
@@ -2987,7 +2989,7 @@ func (o ListChartVizOptionArrayOutput) ToListChartVizOptionArrayOutputWithContex
 }
 
 func (o ListChartVizOptionArrayOutput) Index(i pulumi.IntInput) ListChartVizOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) ListChartVizOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListChartVizOption {
 		return vs[0].([]ListChartVizOption)[vs[1].(int)]
 	}).(ListChartVizOptionOutput)
 }
@@ -3042,7 +3044,8 @@ type OrgTokenDpmLimitsPtrInput interface {
 
 type orgTokenDpmLimitsPtrType OrgTokenDpmLimitsArgs
 
-func OrgTokenDpmLimitsPtr(v *OrgTokenDpmLimitsArgs) OrgTokenDpmLimitsPtrInput {	return (*orgTokenDpmLimitsPtrType)(v)
+func OrgTokenDpmLimitsPtr(v *OrgTokenDpmLimitsArgs) OrgTokenDpmLimitsPtrInput {
+	return (*orgTokenDpmLimitsPtrType)(v)
 }
 
 func (*orgTokenDpmLimitsPtrType) ElementType() reflect.Type {
@@ -3057,7 +3060,7 @@ func (i *orgTokenDpmLimitsPtrType) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenDpmLimitsPtrOutput)
 }
 
-type OrgTokenDpmLimitsOutput struct { *pulumi.OutputState }
+type OrgTokenDpmLimitsOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenDpmLimitsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrgTokenDpmLimits)(nil)).Elem()
@@ -3080,17 +3083,18 @@ func (o OrgTokenDpmLimitsOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx con
 		return &v
 	}).(OrgTokenDpmLimitsPtrOutput)
 }
+
 // The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
 func (o OrgTokenDpmLimitsOutput) DpmLimit() pulumi.IntOutput {
-	return o.ApplyT(func (v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
 }
 
 // DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
 func (o OrgTokenDpmLimitsOutput) DpmNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenDpmLimits) *int { return v.DpmNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenDpmLimits) *int { return v.DpmNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
-type OrgTokenDpmLimitsPtrOutput struct { *pulumi.OutputState}
+type OrgTokenDpmLimitsPtrOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenDpmLimitsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrgTokenDpmLimits)(nil)).Elem()
@@ -3105,17 +3109,17 @@ func (o OrgTokenDpmLimitsPtrOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx 
 }
 
 func (o OrgTokenDpmLimitsPtrOutput) Elem() OrgTokenDpmLimitsOutput {
-	return o.ApplyT(func (v *OrgTokenDpmLimits) OrgTokenDpmLimits { return *v }).(OrgTokenDpmLimitsOutput)
+	return o.ApplyT(func(v *OrgTokenDpmLimits) OrgTokenDpmLimits { return *v }).(OrgTokenDpmLimitsOutput)
 }
 
 // The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
 func (o OrgTokenDpmLimitsPtrOutput) DpmLimit() pulumi.IntOutput {
-	return o.ApplyT(func (v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
+	return o.ApplyT(func(v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
 }
 
 // DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
 func (o OrgTokenDpmLimitsPtrOutput) DpmNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenDpmLimits) *int { return v.DpmNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenDpmLimits) *int { return v.DpmNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 type OrgTokenHostOrUsageLimits struct {
@@ -3192,7 +3196,8 @@ type OrgTokenHostOrUsageLimitsPtrInput interface {
 
 type orgTokenHostOrUsageLimitsPtrType OrgTokenHostOrUsageLimitsArgs
 
-func OrgTokenHostOrUsageLimitsPtr(v *OrgTokenHostOrUsageLimitsArgs) OrgTokenHostOrUsageLimitsPtrInput {	return (*orgTokenHostOrUsageLimitsPtrType)(v)
+func OrgTokenHostOrUsageLimitsPtr(v *OrgTokenHostOrUsageLimitsArgs) OrgTokenHostOrUsageLimitsPtrInput {
+	return (*orgTokenHostOrUsageLimitsPtrType)(v)
 }
 
 func (*orgTokenHostOrUsageLimitsPtrType) ElementType() reflect.Type {
@@ -3207,7 +3212,7 @@ func (i *orgTokenHostOrUsageLimitsPtrType) ToOrgTokenHostOrUsageLimitsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenHostOrUsageLimitsPtrOutput)
 }
 
-type OrgTokenHostOrUsageLimitsOutput struct { *pulumi.OutputState }
+type OrgTokenHostOrUsageLimitsOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenHostOrUsageLimitsOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OrgTokenHostOrUsageLimits)(nil)).Elem()
@@ -3230,47 +3235,48 @@ func (o OrgTokenHostOrUsageLimitsOutput) ToOrgTokenHostOrUsageLimitsPtrOutputWit
 		return &v
 	}).(OrgTokenHostOrUsageLimitsPtrOutput)
 }
+
 // Max number of Docker containers that can use this token
 func (o OrgTokenHostOrUsageLimitsOutput) ContainerLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.ContainerLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for Docker containers
 func (o OrgTokenHostOrUsageLimitsOutput) ContainerNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.ContainerNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Max number of custom metrics that can be sent with this token
 func (o OrgTokenHostOrUsageLimitsOutput) CustomMetricsLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for custom metrics
 func (o OrgTokenHostOrUsageLimitsOutput) CustomMetricsNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Max number of hi-res metrics that can be sent with this toke
 func (o OrgTokenHostOrUsageLimitsOutput) HighResMetricsLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for hi-res metrics
 func (o OrgTokenHostOrUsageLimitsOutput) HighResMetricsNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Max number of hosts that can use this token
 func (o OrgTokenHostOrUsageLimitsOutput) HostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HostLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for hosts
 func (o OrgTokenHostOrUsageLimitsOutput) HostNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HostNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
-type OrgTokenHostOrUsageLimitsPtrOutput struct { *pulumi.OutputState}
+type OrgTokenHostOrUsageLimitsPtrOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenHostOrUsageLimitsPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OrgTokenHostOrUsageLimits)(nil)).Elem()
@@ -3285,47 +3291,47 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) ToOrgTokenHostOrUsageLimitsPtrOutput
 }
 
 func (o OrgTokenHostOrUsageLimitsPtrOutput) Elem() OrgTokenHostOrUsageLimitsOutput {
-	return o.ApplyT(func (v *OrgTokenHostOrUsageLimits) OrgTokenHostOrUsageLimits { return *v }).(OrgTokenHostOrUsageLimitsOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) OrgTokenHostOrUsageLimits { return *v }).(OrgTokenHostOrUsageLimitsOutput)
 }
 
 // Max number of Docker containers that can use this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.ContainerLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for Docker containers
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.ContainerNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Max number of custom metrics that can be sent with this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for custom metrics
 func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Max number of hi-res metrics that can be sent with this toke
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for hi-res metrics
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Max number of hosts that can use this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HostLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostLimit }).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for hosts
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HostNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func (v OrgTokenHostOrUsageLimits) *int { return v.HostNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
 type SingleValueChartColorScale struct {
@@ -3394,7 +3400,7 @@ func (i SingleValueChartColorScaleArray) ToSingleValueChartColorScaleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartColorScaleArrayOutput)
 }
 
-type SingleValueChartColorScaleOutput struct { *pulumi.OutputState }
+type SingleValueChartColorScaleOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartColorScaleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SingleValueChartColorScale)(nil)).Elem()
@@ -3410,30 +3416,30 @@ func (o SingleValueChartColorScaleOutput) ToSingleValueChartColorScaleOutputWith
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o SingleValueChartColorScaleOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func (v SingleValueChartColorScale) string { return v.Color }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SingleValueChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
 
 // Indicates the lower threshold non-inclusive value for this range.
 func (o SingleValueChartColorScaleOutput) Gt() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v SingleValueChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the lower threshold inclusive value for this range.
 func (o SingleValueChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v SingleValueChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the upper threshold non-inculsive value for this range.
 func (o SingleValueChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v SingleValueChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
 
 // Indicates the upper threshold inclusive value for this range.
 func (o SingleValueChartColorScaleOutput) Lte() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v SingleValueChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
 }
 
-type SingleValueChartColorScaleArrayOutput struct { *pulumi.OutputState}
+type SingleValueChartColorScaleArrayOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartColorScaleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SingleValueChartColorScale)(nil)).Elem()
@@ -3448,7 +3454,7 @@ func (o SingleValueChartColorScaleArrayOutput) ToSingleValueChartColorScaleArray
 }
 
 func (o SingleValueChartColorScaleArrayOutput) Index(i pulumi.IntInput) SingleValueChartColorScaleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SingleValueChartColorScale {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SingleValueChartColorScale {
 		return vs[0].([]SingleValueChartColorScale)[vs[1].(int)]
 	}).(SingleValueChartColorScaleOutput)
 }
@@ -3459,7 +3465,7 @@ type SingleValueChartVizOption struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label string `pulumi:"label"`
+	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -3480,7 +3486,7 @@ type SingleValueChartVizOptionArgs struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
+	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -3521,7 +3527,7 @@ func (i SingleValueChartVizOptionArray) ToSingleValueChartVizOptionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartVizOptionArrayOutput)
 }
 
-type SingleValueChartVizOptionOutput struct { *pulumi.OutputState }
+type SingleValueChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartVizOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SingleValueChartVizOption)(nil)).Elem()
@@ -3537,34 +3543,34 @@ func (o SingleValueChartVizOptionOutput) ToSingleValueChartVizOptionOutputWithCo
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o SingleValueChartVizOptionOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SingleValueChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o SingleValueChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SingleValueChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o SingleValueChartVizOptionOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v SingleValueChartVizOption) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v SingleValueChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
 func (o SingleValueChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SingleValueChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o SingleValueChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SingleValueChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 // * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o SingleValueChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v SingleValueChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
 
-type SingleValueChartVizOptionArrayOutput struct { *pulumi.OutputState}
+type SingleValueChartVizOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartVizOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]SingleValueChartVizOption)(nil)).Elem()
@@ -3579,7 +3585,7 @@ func (o SingleValueChartVizOptionArrayOutput) ToSingleValueChartVizOptionArrayOu
 }
 
 func (o SingleValueChartVizOptionArrayOutput) Index(i pulumi.IntInput) SingleValueChartVizOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) SingleValueChartVizOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SingleValueChartVizOption {
 		return vs[0].([]SingleValueChartVizOption)[vs[1].(int)]
 	}).(SingleValueChartVizOptionOutput)
 }
@@ -3598,7 +3604,7 @@ type TimeChartAxisLeft struct {
 	// The maximum value for the right axis.
 	MaxValue *float64 `pulumi:"maxValue"`
 	// The minimum value for the right axis.
-	MinValue *float64 `pulumi:"minValue"`
+	MinValue   *float64                     `pulumi:"minValue"`
 	Watermarks []TimeChartAxisLeftWatermark `pulumi:"watermarks"`
 }
 
@@ -3623,7 +3629,7 @@ type TimeChartAxisLeftArgs struct {
 	// The maximum value for the right axis.
 	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
 	// The minimum value for the right axis.
-	MinValue pulumi.Float64PtrInput `pulumi:"minValue"`
+	MinValue   pulumi.Float64PtrInput               `pulumi:"minValue"`
 	Watermarks TimeChartAxisLeftWatermarkArrayInput `pulumi:"watermarks"`
 }
 
@@ -3656,7 +3662,8 @@ type TimeChartAxisLeftPtrInput interface {
 
 type timeChartAxisLeftPtrType TimeChartAxisLeftArgs
 
-func TimeChartAxisLeftPtr(v *TimeChartAxisLeftArgs) TimeChartAxisLeftPtrInput {	return (*timeChartAxisLeftPtrType)(v)
+func TimeChartAxisLeftPtr(v *TimeChartAxisLeftArgs) TimeChartAxisLeftPtrInput {
+	return (*timeChartAxisLeftPtrType)(v)
 }
 
 func (*timeChartAxisLeftPtrType) ElementType() reflect.Type {
@@ -3671,7 +3678,7 @@ func (i *timeChartAxisLeftPtrType) ToTimeChartAxisLeftPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisLeftPtrOutput)
 }
 
-type TimeChartAxisLeftOutput struct { *pulumi.OutputState }
+type TimeChartAxisLeftOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisLeftOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartAxisLeft)(nil)).Elem()
@@ -3694,46 +3701,47 @@ func (o TimeChartAxisLeftOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx con
 		return &v
 	}).(TimeChartAxisLeftPtrOutput)
 }
+
 // A line to draw as a high watermark.
 func (o TimeChartAxisLeftOutput) HighWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the high watermark line.
 func (o TimeChartAxisLeftOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // A line to draw as a low watermark.
 func (o TimeChartAxisLeftOutput) LowWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the low watermark line.
 func (o TimeChartAxisLeftOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // The maximum value for the right axis.
 func (o TimeChartAxisLeftOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value for the right axis.
 func (o TimeChartAxisLeftOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
 func (o TimeChartAxisLeftOutput) Watermarks() TimeChartAxisLeftWatermarkArrayOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) []TimeChartAxisLeftWatermark { return v.Watermarks }).(TimeChartAxisLeftWatermarkArrayOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) []TimeChartAxisLeftWatermark { return v.Watermarks }).(TimeChartAxisLeftWatermarkArrayOutput)
 }
 
-type TimeChartAxisLeftPtrOutput struct { *pulumi.OutputState}
+type TimeChartAxisLeftPtrOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisLeftPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TimeChartAxisLeft)(nil)).Elem()
@@ -3748,46 +3756,46 @@ func (o TimeChartAxisLeftPtrOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx 
 }
 
 func (o TimeChartAxisLeftPtrOutput) Elem() TimeChartAxisLeftOutput {
-	return o.ApplyT(func (v *TimeChartAxisLeft) TimeChartAxisLeft { return *v }).(TimeChartAxisLeftOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) TimeChartAxisLeft { return *v }).(TimeChartAxisLeftOutput)
 }
 
 // A line to draw as a high watermark.
 func (o TimeChartAxisLeftPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the high watermark line.
 func (o TimeChartAxisLeftPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // A line to draw as a low watermark.
 func (o TimeChartAxisLeftPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the low watermark line.
 func (o TimeChartAxisLeftPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // The maximum value for the right axis.
 func (o TimeChartAxisLeftPtrOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value for the right axis.
 func (o TimeChartAxisLeftPtrOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
 func (o TimeChartAxisLeftPtrOutput) Watermarks() TimeChartAxisLeftWatermarkArrayOutput {
-	return o.ApplyT(func (v TimeChartAxisLeft) []TimeChartAxisLeftWatermark { return v.Watermarks }).(TimeChartAxisLeftWatermarkArrayOutput)
+	return o.ApplyT(func(v TimeChartAxisLeft) []TimeChartAxisLeftWatermark { return v.Watermarks }).(TimeChartAxisLeftWatermarkArrayOutput)
 }
 
 type TimeChartAxisLeftWatermark struct {
@@ -3806,7 +3814,7 @@ type TimeChartAxisLeftWatermarkInput interface {
 type TimeChartAxisLeftWatermarkArgs struct {
 	// Label used in the publish statement that displays the event query you want to customize.
 	Label pulumi.StringPtrInput `pulumi:"label"`
-	Value pulumi.Float64Input `pulumi:"value"`
+	Value pulumi.Float64Input   `pulumi:"value"`
 }
 
 func (TimeChartAxisLeftWatermarkArgs) ElementType() reflect.Type {
@@ -3842,7 +3850,7 @@ func (i TimeChartAxisLeftWatermarkArray) ToTimeChartAxisLeftWatermarkArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisLeftWatermarkArrayOutput)
 }
 
-type TimeChartAxisLeftWatermarkOutput struct { *pulumi.OutputState }
+type TimeChartAxisLeftWatermarkOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisLeftWatermarkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartAxisLeftWatermark)(nil)).Elem()
@@ -3858,14 +3866,14 @@ func (o TimeChartAxisLeftWatermarkOutput) ToTimeChartAxisLeftWatermarkOutputWith
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftWatermarkOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisLeftWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisLeftWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 func (o TimeChartAxisLeftWatermarkOutput) Value() pulumi.Float64Output {
-	return o.ApplyT(func (v TimeChartAxisLeftWatermark) float64 { return v.Value }).(pulumi.Float64Output)
+	return o.ApplyT(func(v TimeChartAxisLeftWatermark) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
-type TimeChartAxisLeftWatermarkArrayOutput struct { *pulumi.OutputState}
+type TimeChartAxisLeftWatermarkArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisLeftWatermarkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TimeChartAxisLeftWatermark)(nil)).Elem()
@@ -3880,7 +3888,7 @@ func (o TimeChartAxisLeftWatermarkArrayOutput) ToTimeChartAxisLeftWatermarkArray
 }
 
 func (o TimeChartAxisLeftWatermarkArrayOutput) Index(i pulumi.IntInput) TimeChartAxisLeftWatermarkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TimeChartAxisLeftWatermark {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartAxisLeftWatermark {
 		return vs[0].([]TimeChartAxisLeftWatermark)[vs[1].(int)]
 	}).(TimeChartAxisLeftWatermarkOutput)
 }
@@ -3899,7 +3907,7 @@ type TimeChartAxisRight struct {
 	// The maximum value for the right axis.
 	MaxValue *float64 `pulumi:"maxValue"`
 	// The minimum value for the right axis.
-	MinValue *float64 `pulumi:"minValue"`
+	MinValue   *float64                      `pulumi:"minValue"`
 	Watermarks []TimeChartAxisRightWatermark `pulumi:"watermarks"`
 }
 
@@ -3924,7 +3932,7 @@ type TimeChartAxisRightArgs struct {
 	// The maximum value for the right axis.
 	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
 	// The minimum value for the right axis.
-	MinValue pulumi.Float64PtrInput `pulumi:"minValue"`
+	MinValue   pulumi.Float64PtrInput                `pulumi:"minValue"`
 	Watermarks TimeChartAxisRightWatermarkArrayInput `pulumi:"watermarks"`
 }
 
@@ -3957,7 +3965,8 @@ type TimeChartAxisRightPtrInput interface {
 
 type timeChartAxisRightPtrType TimeChartAxisRightArgs
 
-func TimeChartAxisRightPtr(v *TimeChartAxisRightArgs) TimeChartAxisRightPtrInput {	return (*timeChartAxisRightPtrType)(v)
+func TimeChartAxisRightPtr(v *TimeChartAxisRightArgs) TimeChartAxisRightPtrInput {
+	return (*timeChartAxisRightPtrType)(v)
 }
 
 func (*timeChartAxisRightPtrType) ElementType() reflect.Type {
@@ -3972,7 +3981,7 @@ func (i *timeChartAxisRightPtrType) ToTimeChartAxisRightPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisRightPtrOutput)
 }
 
-type TimeChartAxisRightOutput struct { *pulumi.OutputState }
+type TimeChartAxisRightOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisRightOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartAxisRight)(nil)).Elem()
@@ -3995,46 +4004,47 @@ func (o TimeChartAxisRightOutput) ToTimeChartAxisRightPtrOutputWithContext(ctx c
 		return &v
 	}).(TimeChartAxisRightPtrOutput)
 }
+
 // A line to draw as a high watermark.
 func (o TimeChartAxisRightOutput) HighWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the high watermark line.
 func (o TimeChartAxisRightOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // A line to draw as a low watermark.
 func (o TimeChartAxisRightOutput) LowWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the low watermark line.
 func (o TimeChartAxisRightOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // The maximum value for the right axis.
 func (o TimeChartAxisRightOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value for the right axis.
 func (o TimeChartAxisRightOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
 func (o TimeChartAxisRightOutput) Watermarks() TimeChartAxisRightWatermarkArrayOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) []TimeChartAxisRightWatermark { return v.Watermarks }).(TimeChartAxisRightWatermarkArrayOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) []TimeChartAxisRightWatermark { return v.Watermarks }).(TimeChartAxisRightWatermarkArrayOutput)
 }
 
-type TimeChartAxisRightPtrOutput struct { *pulumi.OutputState}
+type TimeChartAxisRightPtrOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisRightPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TimeChartAxisRight)(nil)).Elem()
@@ -4049,46 +4059,46 @@ func (o TimeChartAxisRightPtrOutput) ToTimeChartAxisRightPtrOutputWithContext(ct
 }
 
 func (o TimeChartAxisRightPtrOutput) Elem() TimeChartAxisRightOutput {
-	return o.ApplyT(func (v *TimeChartAxisRight) TimeChartAxisRight { return *v }).(TimeChartAxisRightOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) TimeChartAxisRight { return *v }).(TimeChartAxisRightOutput)
 }
 
 // A line to draw as a high watermark.
 func (o TimeChartAxisRightPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the high watermark line.
 func (o TimeChartAxisRightPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 // A line to draw as a low watermark.
 func (o TimeChartAxisRightPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the low watermark line.
 func (o TimeChartAxisRightPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
 // The maximum value for the right axis.
 func (o TimeChartAxisRightPtrOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value for the right axis.
 func (o TimeChartAxisRightPtrOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
 func (o TimeChartAxisRightPtrOutput) Watermarks() TimeChartAxisRightWatermarkArrayOutput {
-	return o.ApplyT(func (v TimeChartAxisRight) []TimeChartAxisRightWatermark { return v.Watermarks }).(TimeChartAxisRightWatermarkArrayOutput)
+	return o.ApplyT(func(v TimeChartAxisRight) []TimeChartAxisRightWatermark { return v.Watermarks }).(TimeChartAxisRightWatermarkArrayOutput)
 }
 
 type TimeChartAxisRightWatermark struct {
@@ -4107,7 +4117,7 @@ type TimeChartAxisRightWatermarkInput interface {
 type TimeChartAxisRightWatermarkArgs struct {
 	// Label used in the publish statement that displays the event query you want to customize.
 	Label pulumi.StringPtrInput `pulumi:"label"`
-	Value pulumi.Float64Input `pulumi:"value"`
+	Value pulumi.Float64Input   `pulumi:"value"`
 }
 
 func (TimeChartAxisRightWatermarkArgs) ElementType() reflect.Type {
@@ -4143,7 +4153,7 @@ func (i TimeChartAxisRightWatermarkArray) ToTimeChartAxisRightWatermarkArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisRightWatermarkArrayOutput)
 }
 
-type TimeChartAxisRightWatermarkOutput struct { *pulumi.OutputState }
+type TimeChartAxisRightWatermarkOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisRightWatermarkOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartAxisRightWatermark)(nil)).Elem()
@@ -4159,14 +4169,14 @@ func (o TimeChartAxisRightWatermarkOutput) ToTimeChartAxisRightWatermarkOutputWi
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightWatermarkOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartAxisRightWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartAxisRightWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
 func (o TimeChartAxisRightWatermarkOutput) Value() pulumi.Float64Output {
-	return o.ApplyT(func (v TimeChartAxisRightWatermark) float64 { return v.Value }).(pulumi.Float64Output)
+	return o.ApplyT(func(v TimeChartAxisRightWatermark) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
-type TimeChartAxisRightWatermarkArrayOutput struct { *pulumi.OutputState}
+type TimeChartAxisRightWatermarkArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisRightWatermarkArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TimeChartAxisRightWatermark)(nil)).Elem()
@@ -4181,7 +4191,7 @@ func (o TimeChartAxisRightWatermarkArrayOutput) ToTimeChartAxisRightWatermarkArr
 }
 
 func (o TimeChartAxisRightWatermarkArrayOutput) Index(i pulumi.IntInput) TimeChartAxisRightWatermarkOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TimeChartAxisRightWatermark {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartAxisRightWatermark {
 		return vs[0].([]TimeChartAxisRightWatermark)[vs[1].(int)]
 	}).(TimeChartAxisRightWatermarkOutput)
 }
@@ -4244,7 +4254,7 @@ func (i TimeChartEventOptionArray) ToTimeChartEventOptionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartEventOptionArrayOutput)
 }
 
-type TimeChartEventOptionOutput struct { *pulumi.OutputState }
+type TimeChartEventOptionOutput struct{ *pulumi.OutputState }
 
 func (TimeChartEventOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartEventOption)(nil)).Elem()
@@ -4260,20 +4270,20 @@ func (o TimeChartEventOptionOutput) ToTimeChartEventOptionOutputWithContext(ctx 
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o TimeChartEventOptionOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartEventOption) *string { return v.Color }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartEventOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o TimeChartEventOptionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartEventOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartEventOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartEventOptionOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v TimeChartEventOption) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TimeChartEventOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
-type TimeChartEventOptionArrayOutput struct { *pulumi.OutputState}
+type TimeChartEventOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeChartEventOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TimeChartEventOption)(nil)).Elem()
@@ -4288,7 +4298,7 @@ func (o TimeChartEventOptionArrayOutput) ToTimeChartEventOptionArrayOutputWithCo
 }
 
 func (o TimeChartEventOptionArrayOutput) Index(i pulumi.IntInput) TimeChartEventOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TimeChartEventOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartEventOption {
 		return vs[0].([]TimeChartEventOption)[vs[1].(int)]
 	}).(TimeChartEventOptionOutput)
 }
@@ -4343,7 +4353,7 @@ func (i TimeChartHistogramOptionArray) ToTimeChartHistogramOptionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartHistogramOptionArrayOutput)
 }
 
-type TimeChartHistogramOptionOutput struct { *pulumi.OutputState }
+type TimeChartHistogramOptionOutput struct{ *pulumi.OutputState }
 
 func (TimeChartHistogramOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartHistogramOption)(nil)).Elem()
@@ -4359,10 +4369,10 @@ func (o TimeChartHistogramOptionOutput) ToTimeChartHistogramOptionOutputWithCont
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
 func (o TimeChartHistogramOptionOutput) ColorTheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartHistogramOption) *string { return v.ColorTheme }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartHistogramOption) *string { return v.ColorTheme }).(pulumi.StringPtrOutput)
 }
 
-type TimeChartHistogramOptionArrayOutput struct { *pulumi.OutputState}
+type TimeChartHistogramOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeChartHistogramOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TimeChartHistogramOption)(nil)).Elem()
@@ -4377,13 +4387,13 @@ func (o TimeChartHistogramOptionArrayOutput) ToTimeChartHistogramOptionArrayOutp
 }
 
 func (o TimeChartHistogramOptionArrayOutput) Index(i pulumi.IntInput) TimeChartHistogramOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TimeChartHistogramOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartHistogramOption {
 		return vs[0].([]TimeChartHistogramOption)[vs[1].(int)]
 	}).(TimeChartHistogramOptionOutput)
 }
 
 type TimeChartLegendOptionsField struct {
-	Enabled *bool `pulumi:"enabled"`
+	Enabled  *bool  `pulumi:"enabled"`
 	Property string `pulumi:"property"`
 }
 
@@ -4395,8 +4405,8 @@ type TimeChartLegendOptionsFieldInput interface {
 }
 
 type TimeChartLegendOptionsFieldArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	Property pulumi.StringInput `pulumi:"property"`
+	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
+	Property pulumi.StringInput  `pulumi:"property"`
 }
 
 func (TimeChartLegendOptionsFieldArgs) ElementType() reflect.Type {
@@ -4432,7 +4442,7 @@ func (i TimeChartLegendOptionsFieldArray) ToTimeChartLegendOptionsFieldArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartLegendOptionsFieldArrayOutput)
 }
 
-type TimeChartLegendOptionsFieldOutput struct { *pulumi.OutputState }
+type TimeChartLegendOptionsFieldOutput struct{ *pulumi.OutputState }
 
 func (TimeChartLegendOptionsFieldOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartLegendOptionsField)(nil)).Elem()
@@ -4447,14 +4457,14 @@ func (o TimeChartLegendOptionsFieldOutput) ToTimeChartLegendOptionsFieldOutputWi
 }
 
 func (o TimeChartLegendOptionsFieldOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func (v TimeChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v TimeChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o TimeChartLegendOptionsFieldOutput) Property() pulumi.StringOutput {
-	return o.ApplyT(func (v TimeChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TimeChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
 }
 
-type TimeChartLegendOptionsFieldArrayOutput struct { *pulumi.OutputState}
+type TimeChartLegendOptionsFieldArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeChartLegendOptionsFieldArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TimeChartLegendOptionsField)(nil)).Elem()
@@ -4469,7 +4479,7 @@ func (o TimeChartLegendOptionsFieldArrayOutput) ToTimeChartLegendOptionsFieldArr
 }
 
 func (o TimeChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) TimeChartLegendOptionsFieldOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TimeChartLegendOptionsField {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartLegendOptionsField {
 		return vs[0].([]TimeChartLegendOptionsField)[vs[1].(int)]
 	}).(TimeChartLegendOptionsFieldOutput)
 }
@@ -4484,7 +4494,7 @@ type TimeChartVizOption struct {
 	// Label used in the publish statement that displays the event query you want to customize.
 	Label string `pulumi:"label"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-	PlotType *string `pulumi:"plotType"`
+	PlotType    *string `pulumi:"plotType"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -4509,7 +4519,7 @@ type TimeChartVizOptionArgs struct {
 	// Label used in the publish statement that displays the event query you want to customize.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-	PlotType pulumi.StringPtrInput `pulumi:"plotType"`
+	PlotType    pulumi.StringPtrInput `pulumi:"plotType"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -4550,7 +4560,7 @@ func (i TimeChartVizOptionArray) ToTimeChartVizOptionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartVizOptionArrayOutput)
 }
 
-type TimeChartVizOptionOutput struct { *pulumi.OutputState }
+type TimeChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (TimeChartVizOptionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChartVizOption)(nil)).Elem()
@@ -4566,44 +4576,44 @@ func (o TimeChartVizOptionOutput) ToTimeChartVizOptionOutputWithContext(ctx cont
 
 // Y-axis associated with values for this plot. Must be either `right` or `left`.
 func (o TimeChartVizOptionOutput) Axis() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.Axis }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Axis }).(pulumi.StringPtrOutput)
 }
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o TimeChartVizOptionOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 // Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o TimeChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartVizOptionOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func (v TimeChartVizOption) string { return v.Label }).(pulumi.StringOutput)
+	return o.ApplyT(func(v TimeChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
 // The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 func (o TimeChartVizOptionOutput) PlotType() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.PlotType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.PlotType }).(pulumi.StringPtrOutput)
 }
 
 func (o TimeChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o TimeChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 // * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o TimeChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v TimeChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
 
-type TimeChartVizOptionArrayOutput struct { *pulumi.OutputState}
+type TimeChartVizOptionArrayOutput struct{ *pulumi.OutputState }
 
 func (TimeChartVizOptionArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]TimeChartVizOption)(nil)).Elem()
@@ -4618,7 +4628,7 @@ func (o TimeChartVizOptionArrayOutput) ToTimeChartVizOptionArrayOutputWithContex
 }
 
 func (o TimeChartVizOptionArrayOutput) Index(i pulumi.IntInput) TimeChartVizOptionOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) TimeChartVizOption {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartVizOption {
 		return vs[0].([]TimeChartVizOption)[vs[1].(int)]
 	}).(TimeChartVizOptionOutput)
 }
@@ -4677,7 +4687,7 @@ func (i WebhookIntegrationHeaderArray) ToWebhookIntegrationHeaderArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationHeaderArrayOutput)
 }
 
-type WebhookIntegrationHeaderOutput struct { *pulumi.OutputState }
+type WebhookIntegrationHeaderOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationHeaderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WebhookIntegrationHeader)(nil)).Elem()
@@ -4693,15 +4703,15 @@ func (o WebhookIntegrationHeaderOutput) ToWebhookIntegrationHeaderOutputWithCont
 
 // The key of the header to send
 func (o WebhookIntegrationHeaderOutput) HeaderKey() pulumi.StringOutput {
-	return o.ApplyT(func (v WebhookIntegrationHeader) string { return v.HeaderKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebhookIntegrationHeader) string { return v.HeaderKey }).(pulumi.StringOutput)
 }
 
 // The value of the header to send
 func (o WebhookIntegrationHeaderOutput) HeaderValue() pulumi.StringOutput {
-	return o.ApplyT(func (v WebhookIntegrationHeader) string { return v.HeaderValue }).(pulumi.StringOutput)
+	return o.ApplyT(func(v WebhookIntegrationHeader) string { return v.HeaderValue }).(pulumi.StringOutput)
 }
 
-type WebhookIntegrationHeaderArrayOutput struct { *pulumi.OutputState}
+type WebhookIntegrationHeaderArrayOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationHeaderArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]WebhookIntegrationHeader)(nil)).Elem()
@@ -4716,7 +4726,7 @@ func (o WebhookIntegrationHeaderArrayOutput) ToWebhookIntegrationHeaderArrayOutp
 }
 
 func (o WebhookIntegrationHeaderArrayOutput) Index(i pulumi.IntInput) WebhookIntegrationHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) WebhookIntegrationHeader {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookIntegrationHeader {
 		return vs[0].([]WebhookIntegrationHeader)[vs[1].(int)]
 	}).(WebhookIntegrationHeaderOutput)
 }

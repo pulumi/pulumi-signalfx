@@ -91,4 +91,3 @@ type ExternalIntegrationArgs struct {
 func (ExternalIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalIntegrationArgs)(nil)).Elem()
 }
-

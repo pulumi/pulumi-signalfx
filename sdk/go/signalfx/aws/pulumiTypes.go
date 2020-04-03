@@ -73,7 +73,7 @@ func (i IntegrationCustomNamespaceSyncRuleArray) ToIntegrationCustomNamespaceSyn
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespaceSyncRuleArrayOutput)
 }
 
-type IntegrationCustomNamespaceSyncRuleOutput struct { *pulumi.OutputState }
+type IntegrationCustomNamespaceSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (IntegrationCustomNamespaceSyncRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IntegrationCustomNamespaceSyncRule)(nil)).Elem()
@@ -89,25 +89,25 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) ToIntegrationCustomNamespaceSy
 
 // Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationCustomNamespaceSyncRuleOutput) DefaultAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IntegrationCustomNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationCustomNamespaceSyncRuleOutput) FilterAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IntegrationCustomNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
 }
 
 // Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 func (o IntegrationCustomNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
 // An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationCustomNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-type IntegrationCustomNamespaceSyncRuleArrayOutput struct { *pulumi.OutputState}
+type IntegrationCustomNamespaceSyncRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (IntegrationCustomNamespaceSyncRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IntegrationCustomNamespaceSyncRule)(nil)).Elem()
@@ -122,7 +122,7 @@ func (o IntegrationCustomNamespaceSyncRuleArrayOutput) ToIntegrationCustomNamesp
 }
 
 func (o IntegrationCustomNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) IntegrationCustomNamespaceSyncRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IntegrationCustomNamespaceSyncRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationCustomNamespaceSyncRule {
 		return vs[0].([]IntegrationCustomNamespaceSyncRule)[vs[1].(int)]
 	}).(IntegrationCustomNamespaceSyncRuleOutput)
 }
@@ -189,7 +189,7 @@ func (i IntegrationNamespaceSyncRuleArray) ToIntegrationNamespaceSyncRuleArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationNamespaceSyncRuleArrayOutput)
 }
 
-type IntegrationNamespaceSyncRuleOutput struct { *pulumi.OutputState }
+type IntegrationNamespaceSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (IntegrationNamespaceSyncRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IntegrationNamespaceSyncRule)(nil)).Elem()
@@ -205,25 +205,25 @@ func (o IntegrationNamespaceSyncRuleOutput) ToIntegrationNamespaceSyncRuleOutput
 
 // Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationNamespaceSyncRuleOutput) DefaultAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IntegrationNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
 // Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationNamespaceSyncRuleOutput) FilterAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IntegrationNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
 }
 
 // Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 func (o IntegrationNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func (v IntegrationNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
 // An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func (v IntegrationNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IntegrationNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
-type IntegrationNamespaceSyncRuleArrayOutput struct { *pulumi.OutputState}
+type IntegrationNamespaceSyncRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (IntegrationNamespaceSyncRuleArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IntegrationNamespaceSyncRule)(nil)).Elem()
@@ -238,7 +238,7 @@ func (o IntegrationNamespaceSyncRuleArrayOutput) ToIntegrationNamespaceSyncRuleA
 }
 
 func (o IntegrationNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) IntegrationNamespaceSyncRuleOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IntegrationNamespaceSyncRule {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationNamespaceSyncRule {
 		return vs[0].([]IntegrationNamespaceSyncRule)[vs[1].(int)]
 	}).(IntegrationNamespaceSyncRuleOutput)
 }

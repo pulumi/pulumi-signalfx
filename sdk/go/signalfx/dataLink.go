@@ -125,4 +125,3 @@ type DataLinkArgs struct {
 func (DataLinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataLinkArgs)(nil)).Elem()
 }
-

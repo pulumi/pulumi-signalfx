@@ -12,7 +12,7 @@ import (
 )
 
 type IntegrationProjectServiceKey struct {
-	ProjectId string `pulumi:"projectId"`
+	ProjectId  string `pulumi:"projectId"`
 	ProjectKey string `pulumi:"projectKey"`
 }
 
@@ -24,7 +24,7 @@ type IntegrationProjectServiceKeyInput interface {
 }
 
 type IntegrationProjectServiceKeyArgs struct {
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	ProjectId  pulumi.StringInput `pulumi:"projectId"`
 	ProjectKey pulumi.StringInput `pulumi:"projectKey"`
 }
 
@@ -61,7 +61,7 @@ func (i IntegrationProjectServiceKeyArray) ToIntegrationProjectServiceKeyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectServiceKeyArrayOutput)
 }
 
-type IntegrationProjectServiceKeyOutput struct { *pulumi.OutputState }
+type IntegrationProjectServiceKeyOutput struct{ *pulumi.OutputState }
 
 func (IntegrationProjectServiceKeyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IntegrationProjectServiceKey)(nil)).Elem()
@@ -76,14 +76,14 @@ func (o IntegrationProjectServiceKeyOutput) ToIntegrationProjectServiceKeyOutput
 }
 
 func (o IntegrationProjectServiceKeyOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func (v IntegrationProjectServiceKey) string { return v.ProjectId }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IntegrationProjectServiceKey) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o IntegrationProjectServiceKeyOutput) ProjectKey() pulumi.StringOutput {
-	return o.ApplyT(func (v IntegrationProjectServiceKey) string { return v.ProjectKey }).(pulumi.StringOutput)
+	return o.ApplyT(func(v IntegrationProjectServiceKey) string { return v.ProjectKey }).(pulumi.StringOutput)
 }
 
-type IntegrationProjectServiceKeyArrayOutput struct { *pulumi.OutputState}
+type IntegrationProjectServiceKeyArrayOutput struct{ *pulumi.OutputState }
 
 func (IntegrationProjectServiceKeyArrayOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*[]IntegrationProjectServiceKey)(nil)).Elem()
@@ -98,7 +98,7 @@ func (o IntegrationProjectServiceKeyArrayOutput) ToIntegrationProjectServiceKeyA
 }
 
 func (o IntegrationProjectServiceKeyArrayOutput) Index(i pulumi.IntInput) IntegrationProjectServiceKeyOutput {
-	return pulumi.All(o, i).ApplyT(func (vs []interface{}) IntegrationProjectServiceKey {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationProjectServiceKey {
 		return vs[0].([]IntegrationProjectServiceKey)[vs[1].(int)]
 	}).(IntegrationProjectServiceKeyOutput)
 }

@@ -91,4 +91,3 @@ type TokenIntegrationArgs struct {
 func (TokenIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenIntegrationArgs)(nil)).Elem()
 }
-
