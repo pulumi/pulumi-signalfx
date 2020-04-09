@@ -54,6 +54,8 @@ class DataLink(pulumi.CustomResource):
         """
         Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/data_link.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -7,10 +7,12 @@ package signalfx
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/data_link.html.markdown.
 type DataLink struct {

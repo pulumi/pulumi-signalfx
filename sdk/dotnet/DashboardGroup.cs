@@ -14,6 +14,8 @@ namespace Pulumi.SignalFx
     /// 
     /// &gt; **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
     /// </summary>
     public partial class DashboardGroup : Pulumi.CustomResource

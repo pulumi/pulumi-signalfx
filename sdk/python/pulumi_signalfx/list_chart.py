@@ -111,6 +111,9 @@ class ListChart(pulumi.CustomResource):
 
         The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
 
+
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/list_chart.html.markdown.
 
         :param str resource_name: The name of the resource.

@@ -14,6 +14,8 @@ namespace Pulumi.SignalFx
     /// 
     /// Time charts display data points over a period of time.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
     /// </summary>
     public partial class TimeChart : Pulumi.CustomResource

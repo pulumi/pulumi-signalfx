@@ -16,6 +16,8 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
     /// </summary>
     public partial class TokenIntegration : Pulumi.CustomResource

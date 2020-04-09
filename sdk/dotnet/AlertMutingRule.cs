@@ -14,6 +14,8 @@ namespace Pulumi.SignalFx
     /// 
     /// &gt; **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
     /// </summary>
     public partial class AlertMutingRule : Pulumi.CustomResource

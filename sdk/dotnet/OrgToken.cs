@@ -12,6 +12,8 @@ namespace Pulumi.SignalFx
     /// <summary>
     /// Manage SignalFx org tokens.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/org_token.html.markdown.
     /// </summary>
     public partial class OrgToken : Pulumi.CustomResource

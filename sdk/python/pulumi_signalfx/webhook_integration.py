@@ -36,6 +36,8 @@ class WebhookIntegration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/webhook_integration.html.markdown.
 
         :param str resource_name: The name of the resource.

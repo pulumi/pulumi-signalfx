@@ -7,7 +7,7 @@ package aws
 import (
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
@@ -15,6 +15,8 @@ import (
 // > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
 //
 // > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
 type TokenIntegration struct {
