@@ -27,7 +27,7 @@ namespace Pulumi.SignalFx
         /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
         [Output("charts")]
-        public Output<ImmutableArray<Outputs.DashboardCharts>> Charts { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardChart>> Charts { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
@@ -39,7 +39,7 @@ namespace Pulumi.SignalFx
         /// Column number for the layout.
         /// </summary>
         [Output("columns")]
-        public Output<ImmutableArray<Outputs.DashboardColumns>> Columns { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardColumn>> Columns { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the dashboard group that contains the dashboard.
@@ -69,19 +69,19 @@ namespace Pulumi.SignalFx
         /// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         /// </summary>
         [Output("eventOverlays")]
-        public Output<ImmutableArray<Outputs.DashboardEventOverlays>> EventOverlays { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardEventOverlay>> EventOverlays { get; private set; } = null!;
 
         /// <summary>
         /// Filter to apply to the charts when displaying the dashboard.
         /// </summary>
         [Output("filters")]
-        public Output<ImmutableArray<Outputs.DashboardFilters>> Filters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardFilter>> Filters { get; private set; } = null!;
 
         /// <summary>
         /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         /// </summary>
         [Output("grids")]
-        public Output<ImmutableArray<Outputs.DashboardGrids>> Grids { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardGrid>> Grids { get; private set; } = null!;
 
         /// <summary>
         /// Name of the dashboard.
@@ -93,7 +93,7 @@ namespace Pulumi.SignalFx
         /// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         /// </summary>
         [Output("selectedEventOverlays")]
-        public Output<ImmutableArray<Outputs.DashboardSelectedEventOverlays>> SelectedEventOverlays { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardSelectedEventOverlay>> SelectedEventOverlays { get; private set; } = null!;
 
         /// <summary>
         /// Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
@@ -117,7 +117,7 @@ namespace Pulumi.SignalFx
         /// Dashboard variable to apply to each chart in the dashboard.
         /// </summary>
         [Output("variables")]
-        public Output<ImmutableArray<Outputs.DashboardVariables>> Variables { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardVariable>> Variables { get; private set; } = null!;
 
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Dashboard(string name, DashboardArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/dashboard:Dashboard", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/dashboard:Dashboard", name, args ?? new DashboardArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -190,14 +190,14 @@ namespace Pulumi.SignalFx
         }
 
         [Input("charts")]
-        private InputList<Inputs.DashboardChartsArgs>? _charts;
+        private InputList<Inputs.DashboardChartArgs>? _charts;
 
         /// <summary>
         /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
-        public InputList<Inputs.DashboardChartsArgs> Charts
+        public InputList<Inputs.DashboardChartArgs> Charts
         {
-            get => _charts ?? (_charts = new InputList<Inputs.DashboardChartsArgs>());
+            get => _charts ?? (_charts = new InputList<Inputs.DashboardChartArgs>());
             set => _charts = value;
         }
 
@@ -208,14 +208,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ChartsResolution { get; set; }
 
         [Input("columns")]
-        private InputList<Inputs.DashboardColumnsArgs>? _columns;
+        private InputList<Inputs.DashboardColumnArgs>? _columns;
 
         /// <summary>
         /// Column number for the layout.
         /// </summary>
-        public InputList<Inputs.DashboardColumnsArgs> Columns
+        public InputList<Inputs.DashboardColumnArgs> Columns
         {
-            get => _columns ?? (_columns = new InputList<Inputs.DashboardColumnsArgs>());
+            get => _columns ?? (_columns = new InputList<Inputs.DashboardColumnArgs>());
             set => _columns = value;
         }
 
@@ -249,38 +249,38 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         [Input("eventOverlays")]
-        private InputList<Inputs.DashboardEventOverlaysArgs>? _eventOverlays;
+        private InputList<Inputs.DashboardEventOverlayArgs>? _eventOverlays;
 
         /// <summary>
         /// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         /// </summary>
-        public InputList<Inputs.DashboardEventOverlaysArgs> EventOverlays
+        public InputList<Inputs.DashboardEventOverlayArgs> EventOverlays
         {
-            get => _eventOverlays ?? (_eventOverlays = new InputList<Inputs.DashboardEventOverlaysArgs>());
+            get => _eventOverlays ?? (_eventOverlays = new InputList<Inputs.DashboardEventOverlayArgs>());
             set => _eventOverlays = value;
         }
 
         [Input("filters")]
-        private InputList<Inputs.DashboardFiltersArgs>? _filters;
+        private InputList<Inputs.DashboardFilterArgs>? _filters;
 
         /// <summary>
         /// Filter to apply to the charts when displaying the dashboard.
         /// </summary>
-        public InputList<Inputs.DashboardFiltersArgs> Filters
+        public InputList<Inputs.DashboardFilterArgs> Filters
         {
-            get => _filters ?? (_filters = new InputList<Inputs.DashboardFiltersArgs>());
+            get => _filters ?? (_filters = new InputList<Inputs.DashboardFilterArgs>());
             set => _filters = value;
         }
 
         [Input("grids")]
-        private InputList<Inputs.DashboardGridsArgs>? _grids;
+        private InputList<Inputs.DashboardGridArgs>? _grids;
 
         /// <summary>
         /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         /// </summary>
-        public InputList<Inputs.DashboardGridsArgs> Grids
+        public InputList<Inputs.DashboardGridArgs> Grids
         {
-            get => _grids ?? (_grids = new InputList<Inputs.DashboardGridsArgs>());
+            get => _grids ?? (_grids = new InputList<Inputs.DashboardGridArgs>());
             set => _grids = value;
         }
 
@@ -291,14 +291,14 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         [Input("selectedEventOverlays")]
-        private InputList<Inputs.DashboardSelectedEventOverlaysArgs>? _selectedEventOverlays;
+        private InputList<Inputs.DashboardSelectedEventOverlayArgs>? _selectedEventOverlays;
 
         /// <summary>
         /// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         /// </summary>
-        public InputList<Inputs.DashboardSelectedEventOverlaysArgs> SelectedEventOverlays
+        public InputList<Inputs.DashboardSelectedEventOverlayArgs> SelectedEventOverlays
         {
-            get => _selectedEventOverlays ?? (_selectedEventOverlays = new InputList<Inputs.DashboardSelectedEventOverlaysArgs>());
+            get => _selectedEventOverlays ?? (_selectedEventOverlays = new InputList<Inputs.DashboardSelectedEventOverlayArgs>());
             set => _selectedEventOverlays = value;
         }
 
@@ -315,14 +315,14 @@ namespace Pulumi.SignalFx
         public Input<string>? TimeRange { get; set; }
 
         [Input("variables")]
-        private InputList<Inputs.DashboardVariablesArgs>? _variables;
+        private InputList<Inputs.DashboardVariableArgs>? _variables;
 
         /// <summary>
         /// Dashboard variable to apply to each chart in the dashboard.
         /// </summary>
-        public InputList<Inputs.DashboardVariablesArgs> Variables
+        public InputList<Inputs.DashboardVariableArgs> Variables
         {
-            get => _variables ?? (_variables = new InputList<Inputs.DashboardVariablesArgs>());
+            get => _variables ?? (_variables = new InputList<Inputs.DashboardVariableArgs>());
             set => _variables = value;
         }
 
@@ -358,14 +358,14 @@ namespace Pulumi.SignalFx
         }
 
         [Input("charts")]
-        private InputList<Inputs.DashboardChartsGetArgs>? _charts;
+        private InputList<Inputs.DashboardChartGetArgs>? _charts;
 
         /// <summary>
         /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
-        public InputList<Inputs.DashboardChartsGetArgs> Charts
+        public InputList<Inputs.DashboardChartGetArgs> Charts
         {
-            get => _charts ?? (_charts = new InputList<Inputs.DashboardChartsGetArgs>());
+            get => _charts ?? (_charts = new InputList<Inputs.DashboardChartGetArgs>());
             set => _charts = value;
         }
 
@@ -376,14 +376,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ChartsResolution { get; set; }
 
         [Input("columns")]
-        private InputList<Inputs.DashboardColumnsGetArgs>? _columns;
+        private InputList<Inputs.DashboardColumnGetArgs>? _columns;
 
         /// <summary>
         /// Column number for the layout.
         /// </summary>
-        public InputList<Inputs.DashboardColumnsGetArgs> Columns
+        public InputList<Inputs.DashboardColumnGetArgs> Columns
         {
-            get => _columns ?? (_columns = new InputList<Inputs.DashboardColumnsGetArgs>());
+            get => _columns ?? (_columns = new InputList<Inputs.DashboardColumnGetArgs>());
             set => _columns = value;
         }
 
@@ -417,38 +417,38 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         [Input("eventOverlays")]
-        private InputList<Inputs.DashboardEventOverlaysGetArgs>? _eventOverlays;
+        private InputList<Inputs.DashboardEventOverlayGetArgs>? _eventOverlays;
 
         /// <summary>
         /// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         /// </summary>
-        public InputList<Inputs.DashboardEventOverlaysGetArgs> EventOverlays
+        public InputList<Inputs.DashboardEventOverlayGetArgs> EventOverlays
         {
-            get => _eventOverlays ?? (_eventOverlays = new InputList<Inputs.DashboardEventOverlaysGetArgs>());
+            get => _eventOverlays ?? (_eventOverlays = new InputList<Inputs.DashboardEventOverlayGetArgs>());
             set => _eventOverlays = value;
         }
 
         [Input("filters")]
-        private InputList<Inputs.DashboardFiltersGetArgs>? _filters;
+        private InputList<Inputs.DashboardFilterGetArgs>? _filters;
 
         /// <summary>
         /// Filter to apply to the charts when displaying the dashboard.
         /// </summary>
-        public InputList<Inputs.DashboardFiltersGetArgs> Filters
+        public InputList<Inputs.DashboardFilterGetArgs> Filters
         {
-            get => _filters ?? (_filters = new InputList<Inputs.DashboardFiltersGetArgs>());
+            get => _filters ?? (_filters = new InputList<Inputs.DashboardFilterGetArgs>());
             set => _filters = value;
         }
 
         [Input("grids")]
-        private InputList<Inputs.DashboardGridsGetArgs>? _grids;
+        private InputList<Inputs.DashboardGridGetArgs>? _grids;
 
         /// <summary>
         /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         /// </summary>
-        public InputList<Inputs.DashboardGridsGetArgs> Grids
+        public InputList<Inputs.DashboardGridGetArgs> Grids
         {
-            get => _grids ?? (_grids = new InputList<Inputs.DashboardGridsGetArgs>());
+            get => _grids ?? (_grids = new InputList<Inputs.DashboardGridGetArgs>());
             set => _grids = value;
         }
 
@@ -459,14 +459,14 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         [Input("selectedEventOverlays")]
-        private InputList<Inputs.DashboardSelectedEventOverlaysGetArgs>? _selectedEventOverlays;
+        private InputList<Inputs.DashboardSelectedEventOverlayGetArgs>? _selectedEventOverlays;
 
         /// <summary>
         /// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         /// </summary>
-        public InputList<Inputs.DashboardSelectedEventOverlaysGetArgs> SelectedEventOverlays
+        public InputList<Inputs.DashboardSelectedEventOverlayGetArgs> SelectedEventOverlays
         {
-            get => _selectedEventOverlays ?? (_selectedEventOverlays = new InputList<Inputs.DashboardSelectedEventOverlaysGetArgs>());
+            get => _selectedEventOverlays ?? (_selectedEventOverlays = new InputList<Inputs.DashboardSelectedEventOverlayGetArgs>());
             set => _selectedEventOverlays = value;
         }
 
@@ -489,1071 +489,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Url { get; set; }
 
         [Input("variables")]
-        private InputList<Inputs.DashboardVariablesGetArgs>? _variables;
+        private InputList<Inputs.DashboardVariableGetArgs>? _variables;
 
         /// <summary>
         /// Dashboard variable to apply to each chart in the dashboard.
         /// </summary>
-        public InputList<Inputs.DashboardVariablesGetArgs> Variables
+        public InputList<Inputs.DashboardVariableGetArgs> Variables
         {
-            get => _variables ?? (_variables = new InputList<Inputs.DashboardVariablesGetArgs>());
+            get => _variables ?? (_variables = new InputList<Inputs.DashboardVariableGetArgs>());
             set => _variables = value;
         }
 
         public DashboardState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DashboardChartsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// ID of the chart to display.
-        /// </summary>
-        [Input("chartId", required: true)]
-        public Input<string> ChartId { get; set; } = null!;
-
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
-        [Input("column")]
-        public Input<int>? Column { get; set; }
-
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        [Input("height")]
-        public Input<int>? Height { get; set; }
-
-        /// <summary>
-        /// The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-        /// </summary>
-        [Input("row")]
-        public Input<int>? Row { get; set; }
-
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        [Input("width")]
-        public Input<int>? Width { get; set; }
-
-        public DashboardChartsArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardChartsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// ID of the chart to display.
-        /// </summary>
-        [Input("chartId", required: true)]
-        public Input<string> ChartId { get; set; } = null!;
-
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
-        [Input("column")]
-        public Input<int>? Column { get; set; }
-
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        [Input("height")]
-        public Input<int>? Height { get; set; }
-
-        /// <summary>
-        /// The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-        /// </summary>
-        [Input("row")]
-        public Input<int>? Row { get; set; }
-
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        [Input("width")]
-        public Input<int>? Width { get; set; }
-
-        public DashboardChartsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardColumnsArgs : Pulumi.ResourceArgs
-    {
-        [Input("chartIds", required: true)]
-        private InputList<string>? _chartIds;
-
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
-        public InputList<string> ChartIds
-        {
-            get => _chartIds ?? (_chartIds = new InputList<string>());
-            set => _chartIds = value;
-        }
-
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
-        [Input("column")]
-        public Input<int>? Column { get; set; }
-
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        [Input("height")]
-        public Input<int>? Height { get; set; }
-
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        [Input("width")]
-        public Input<int>? Width { get; set; }
-
-        public DashboardColumnsArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardColumnsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("chartIds", required: true)]
-        private InputList<string>? _chartIds;
-
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
-        public InputList<string> ChartIds
-        {
-            get => _chartIds ?? (_chartIds = new InputList<string>());
-            set => _chartIds = value;
-        }
-
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
-        [Input("column")]
-        public Input<int>? Column { get; set; }
-
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        [Input("height")]
-        public Input<int>? Height { get; set; }
-
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        [Input("width")]
-        public Input<int>? Width { get; set; }
-
-        public DashboardColumnsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardEventOverlaysArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Text shown in the dropdown when selecting this overlay from the menu.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// Show a vertical line for the event. `false` by default.
-        /// </summary>
-        [Input("line")]
-        public Input<bool>? Line { get; set; }
-
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
-        [Input("signal", required: true)]
-        public Input<string> Signal { get; set; } = null!;
-
-        [Input("sources")]
-        private InputList<DashboardEventOverlaysSourcesArgs>? _sources;
-
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
-        public InputList<DashboardEventOverlaysSourcesArgs> Sources
-        {
-            get => _sources ?? (_sources = new InputList<DashboardEventOverlaysSourcesArgs>());
-            set => _sources = value;
-        }
-
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public DashboardEventOverlaysArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardEventOverlaysGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Text shown in the dropdown when selecting this overlay from the menu.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// Show a vertical line for the event. `false` by default.
-        /// </summary>
-        [Input("line")]
-        public Input<bool>? Line { get; set; }
-
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
-        [Input("signal", required: true)]
-        public Input<string> Signal { get; set; } = null!;
-
-        [Input("sources")]
-        private InputList<DashboardEventOverlaysSourcesGetArgs>? _sources;
-
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
-        public InputList<DashboardEventOverlaysSourcesGetArgs> Sources
-        {
-            get => _sources ?? (_sources = new InputList<DashboardEventOverlaysSourcesGetArgs>());
-            set => _sources = value;
-        }
-
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public DashboardEventOverlaysGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardEventOverlaysSourcesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardEventOverlaysSourcesArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardEventOverlaysSourcesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardEventOverlaysSourcesGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardFiltersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
-        [Input("applyIfExist")]
-        public Input<bool>? ApplyIfExist { get; set; }
-
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardFiltersArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardFiltersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
-        [Input("applyIfExist")]
-        public Input<bool>? ApplyIfExist { get; set; }
-
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardFiltersGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGridsArgs : Pulumi.ResourceArgs
-    {
-        [Input("chartIds", required: true)]
-        private InputList<string>? _chartIds;
-
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
-        public InputList<string> ChartIds
-        {
-            get => _chartIds ?? (_chartIds = new InputList<string>());
-            set => _chartIds = value;
-        }
-
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        [Input("height")]
-        public Input<int>? Height { get; set; }
-
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        [Input("width")]
-        public Input<int>? Width { get; set; }
-
-        public DashboardGridsArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGridsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("chartIds", required: true)]
-        private InputList<string>? _chartIds;
-
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
-        public InputList<string> ChartIds
-        {
-            get => _chartIds ?? (_chartIds = new InputList<string>());
-            set => _chartIds = value;
-        }
-
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        [Input("height")]
-        public Input<int>? Height { get; set; }
-
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        [Input("width")]
-        public Input<int>? Width { get; set; }
-
-        public DashboardGridsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardSelectedEventOverlaysArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
-        [Input("signal", required: true)]
-        public Input<string> Signal { get; set; } = null!;
-
-        [Input("sources")]
-        private InputList<DashboardSelectedEventOverlaysSourcesArgs>? _sources;
-
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
-        public InputList<DashboardSelectedEventOverlaysSourcesArgs> Sources
-        {
-            get => _sources ?? (_sources = new InputList<DashboardSelectedEventOverlaysSourcesArgs>());
-            set => _sources = value;
-        }
-
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public DashboardSelectedEventOverlaysArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardSelectedEventOverlaysGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
-        [Input("signal", required: true)]
-        public Input<string> Signal { get; set; } = null!;
-
-        [Input("sources")]
-        private InputList<DashboardSelectedEventOverlaysSourcesGetArgs>? _sources;
-
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
-        public InputList<DashboardSelectedEventOverlaysSourcesGetArgs> Sources
-        {
-            get => _sources ?? (_sources = new InputList<DashboardSelectedEventOverlaysSourcesGetArgs>());
-            set => _sources = value;
-        }
-
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public DashboardSelectedEventOverlaysGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardSelectedEventOverlaysSourcesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardSelectedEventOverlaysSourcesArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardSelectedEventOverlaysSourcesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardSelectedEventOverlaysSourcesGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardVariablesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
-        /// </summary>
-        [Input("alias", required: true)]
-        public Input<string> Alias { get; set; } = null!;
-
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
-        [Input("applyIfExist")]
-        public Input<bool>? ApplyIfExist { get; set; }
-
-        /// <summary>
-        /// Variable description.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        /// <summary>
-        /// If `true`, this variable will only apply to charts that have a filter for the property.
-        /// </summary>
-        [Input("replaceOnly")]
-        public Input<bool>? ReplaceOnly { get; set; }
-
-        /// <summary>
-        /// If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
-        /// </summary>
-        [Input("restrictedSuggestions")]
-        public Input<bool>? RestrictedSuggestions { get; set; }
-
-        /// <summary>
-        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-        /// </summary>
-        [Input("valueRequired")]
-        public Input<bool>? ValueRequired { get; set; }
-
-        [Input("values")]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        [Input("valuesSuggesteds")]
-        private InputList<string>? _valuesSuggesteds;
-
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
-        public InputList<string> ValuesSuggesteds
-        {
-            get => _valuesSuggesteds ?? (_valuesSuggesteds = new InputList<string>());
-            set => _valuesSuggesteds = value;
-        }
-
-        public DashboardVariablesArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardVariablesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
-        /// </summary>
-        [Input("alias", required: true)]
-        public Input<string> Alias { get; set; } = null!;
-
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
-        [Input("applyIfExist")]
-        public Input<bool>? ApplyIfExist { get; set; }
-
-        /// <summary>
-        /// Variable description.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        /// <summary>
-        /// If `true`, this variable will only apply to charts that have a filter for the property.
-        /// </summary>
-        [Input("replaceOnly")]
-        public Input<bool>? ReplaceOnly { get; set; }
-
-        /// <summary>
-        /// If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
-        /// </summary>
-        [Input("restrictedSuggestions")]
-        public Input<bool>? RestrictedSuggestions { get; set; }
-
-        /// <summary>
-        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-        /// </summary>
-        [Input("valueRequired")]
-        public Input<bool>? ValueRequired { get; set; }
-
-        [Input("values")]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        [Input("valuesSuggesteds")]
-        private InputList<string>? _valuesSuggesteds;
-
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
-        public InputList<string> ValuesSuggesteds
-        {
-            get => _valuesSuggesteds ?? (_valuesSuggesteds = new InputList<string>());
-            set => _valuesSuggesteds = value;
-        }
-
-        public DashboardVariablesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DashboardCharts
-    {
-        /// <summary>
-        /// ID of the chart to display.
-        /// </summary>
-        public readonly string ChartId;
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
-        public readonly int? Column;
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        public readonly int? Height;
-        /// <summary>
-        /// The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-        /// </summary>
-        public readonly int? Row;
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        public readonly int? Width;
-
-        [OutputConstructor]
-        private DashboardCharts(
-            string chartId,
-            int? column,
-            int? height,
-            int? row,
-            int? width)
-        {
-            ChartId = chartId;
-            Column = column;
-            Height = height;
-            Row = row;
-            Width = width;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardColumns
-    {
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
-        public readonly ImmutableArray<string> ChartIds;
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
-        public readonly int? Column;
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        public readonly int? Height;
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        public readonly int? Width;
-
-        [OutputConstructor]
-        private DashboardColumns(
-            ImmutableArray<string> chartIds,
-            int? column,
-            int? height,
-            int? width)
-        {
-            ChartIds = chartIds;
-            Column = column;
-            Height = height;
-            Width = width;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardEventOverlays
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        public readonly string? Color;
-        /// <summary>
-        /// Text shown in the dropdown when selecting this overlay from the menu.
-        /// </summary>
-        public readonly string? Label;
-        /// <summary>
-        /// Show a vertical line for the event. `false` by default.
-        /// </summary>
-        public readonly bool? Line;
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
-        public readonly string Signal;
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
-        public readonly ImmutableArray<DashboardEventOverlaysSources> Sources;
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private DashboardEventOverlays(
-            string? color,
-            string? label,
-            bool? line,
-            string signal,
-            ImmutableArray<DashboardEventOverlaysSources> sources,
-            string? type)
-        {
-            Color = color;
-            Label = label;
-            Line = line;
-            Signal = signal;
-            Sources = sources;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardEventOverlaysSources
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private DashboardEventOverlaysSources(
-            bool? negated,
-            string property,
-            ImmutableArray<string> values)
-        {
-            Negated = negated;
-            Property = property;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardFilters
-    {
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
-        public readonly bool? ApplyIfExist;
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private DashboardFilters(
-            bool? applyIfExist,
-            bool? negated,
-            string property,
-            ImmutableArray<string> values)
-        {
-            ApplyIfExist = applyIfExist;
-            Negated = negated;
-            Property = property;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardGrids
-    {
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
-        public readonly ImmutableArray<string> ChartIds;
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
-        public readonly int? Height;
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
-        public readonly int? Width;
-
-        [OutputConstructor]
-        private DashboardGrids(
-            ImmutableArray<string> chartIds,
-            int? height,
-            int? width)
-        {
-            ChartIds = chartIds;
-            Height = height;
-            Width = width;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardSelectedEventOverlays
-    {
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
-        public readonly string Signal;
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
-        public readonly ImmutableArray<DashboardSelectedEventOverlaysSources> Sources;
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private DashboardSelectedEventOverlays(
-            string signal,
-            ImmutableArray<DashboardSelectedEventOverlaysSources> sources,
-            string? type)
-        {
-            Signal = signal;
-            Sources = sources;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardSelectedEventOverlaysSources
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private DashboardSelectedEventOverlaysSources(
-            bool? negated,
-            string property,
-            ImmutableArray<string> values)
-        {
-            Negated = negated;
-            Property = property;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardVariables
-    {
-        /// <summary>
-        /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
-        /// </summary>
-        public readonly string Alias;
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
-        public readonly bool? ApplyIfExist;
-        /// <summary>
-        /// Variable description.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// If `true`, this variable will only apply to charts that have a filter for the property.
-        /// </summary>
-        public readonly bool? ReplaceOnly;
-        /// <summary>
-        /// If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
-        /// </summary>
-        public readonly bool? RestrictedSuggestions;
-        /// <summary>
-        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-        /// </summary>
-        public readonly bool? ValueRequired;
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
-        public readonly ImmutableArray<string> ValuesSuggesteds;
-
-        [OutputConstructor]
-        private DashboardVariables(
-            string alias,
-            bool? applyIfExist,
-            string? description,
-            string property,
-            bool? replaceOnly,
-            bool? restrictedSuggestions,
-            bool? valueRequired,
-            ImmutableArray<string> values,
-            ImmutableArray<string> valuesSuggesteds)
-        {
-            Alias = alias;
-            ApplyIfExist = applyIfExist;
-            Description = description;
-            Property = property;
-            ReplaceOnly = replaceOnly;
-            RestrictedSuggestions = restrictedSuggestions;
-            ValueRequired = valueRequired;
-            Values = values;
-            ValuesSuggesteds = valuesSuggesteds;
-        }
-    }
     }
 }

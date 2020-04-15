@@ -13,8 +13,6 @@ namespace Pulumi.SignalFx
     /// Provides a SignalFx resource for managing alert muting rules. See [Mute Notifications](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html) for more information.
     /// 
     /// &gt; **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
     /// </summary>
     public partial class AlertMutingRule : Pulumi.CustomResource
     {
@@ -37,7 +35,7 @@ namespace Pulumi.SignalFx
         /// Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         /// </summary>
         [Output("filters")]
-        public Output<ImmutableArray<Outputs.AlertMutingRuleFilters>> Filters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AlertMutingRuleFilter>> Filters { get; private set; } = null!;
 
         /// <summary>
         /// Starting time of an alert muting rule as a Unit time stamp in seconds.
@@ -60,7 +58,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AlertMutingRule(string name, AlertMutingRuleArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/alertMutingRule:AlertMutingRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/alertMutingRule:AlertMutingRule", name, args ?? new AlertMutingRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -116,14 +114,14 @@ namespace Pulumi.SignalFx
         }
 
         [Input("filters", required: true)]
-        private InputList<Inputs.AlertMutingRuleFiltersArgs>? _filters;
+        private InputList<Inputs.AlertMutingRuleFilterArgs>? _filters;
 
         /// <summary>
         /// Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         /// </summary>
-        public InputList<Inputs.AlertMutingRuleFiltersArgs> Filters
+        public InputList<Inputs.AlertMutingRuleFilterArgs> Filters
         {
-            get => _filters ?? (_filters = new InputList<Inputs.AlertMutingRuleFiltersArgs>());
+            get => _filters ?? (_filters = new InputList<Inputs.AlertMutingRuleFilterArgs>());
             set => _filters = value;
         }
 
@@ -168,14 +166,14 @@ namespace Pulumi.SignalFx
         public Input<int>? EffectiveStartTime { get; set; }
 
         [Input("filters")]
-        private InputList<Inputs.AlertMutingRuleFiltersGetArgs>? _filters;
+        private InputList<Inputs.AlertMutingRuleFilterGetArgs>? _filters;
 
         /// <summary>
         /// Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         /// </summary>
-        public InputList<Inputs.AlertMutingRuleFiltersGetArgs> Filters
+        public InputList<Inputs.AlertMutingRuleFilterGetArgs> Filters
         {
-            get => _filters ?? (_filters = new InputList<Inputs.AlertMutingRuleFiltersGetArgs>());
+            get => _filters ?? (_filters = new InputList<Inputs.AlertMutingRuleFilterGetArgs>());
             set => _filters = value;
         }
 
@@ -194,91 +192,5 @@ namespace Pulumi.SignalFx
         public AlertMutingRuleState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AlertMutingRuleFiltersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Determines if this is a "not" filter. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The property to filter.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        /// <summary>
-        /// The property value to filter.
-        /// </summary>
-        [Input("propertyValue", required: true)]
-        public Input<string> PropertyValue { get; set; } = null!;
-
-        public AlertMutingRuleFiltersArgs()
-        {
-        }
-    }
-
-    public sealed class AlertMutingRuleFiltersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Determines if this is a "not" filter. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// The property to filter.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        /// <summary>
-        /// The property value to filter.
-        /// </summary>
-        [Input("propertyValue", required: true)]
-        public Input<string> PropertyValue { get; set; } = null!;
-
-        public AlertMutingRuleFiltersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AlertMutingRuleFilters
-    {
-        /// <summary>
-        /// Determines if this is a "not" filter. Defaults to `false`.
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// The property to filter.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// The property value to filter.
-        /// </summary>
-        public readonly string PropertyValue;
-
-        [OutputConstructor]
-        private AlertMutingRuleFilters(
-            bool? negated,
-            string property,
-            string propertyValue)
-        {
-            Negated = negated;
-            Property = property;
-            PropertyValue = propertyValue;
-        }
-    }
     }
 }

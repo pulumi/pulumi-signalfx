@@ -15,8 +15,6 @@ namespace Pulumi.SignalFx.Aws
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
     /// </summary>
     public partial class ExternalIntegration : Pulumi.CustomResource
     {
@@ -47,7 +45,7 @@ namespace Pulumi.SignalFx.Aws
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ExternalIntegration(string name, ExternalIntegrationArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:aws/externalIntegration:ExternalIntegration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:aws/externalIntegration:ExternalIntegration", name, args ?? new ExternalIntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

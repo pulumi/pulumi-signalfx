@@ -7,23 +7,15 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SignalFx.PagerDuty
+namespace Pulumi.SignalFx.VictorOps
 {
     /// <summary>
-    /// SignalFx PagerDuty integrations
+    /// SignalFx VictorOps integration.
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/pagerduty_integration.html.markdown.
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {
-        /// <summary>
-        /// PagerDuty API key.
-        /// </summary>
-        [Output("apiKey")]
-        public Output<string?> ApiKey { get; private set; } = null!;
-
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
@@ -36,6 +28,12 @@ namespace Pulumi.SignalFx.PagerDuty
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Victor Ops REST API URL.
+        /// </summary>
+        [Output("postUrl")]
+        public Output<string?> PostUrl { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Integration resource with the given unique name, arguments, and options.
@@ -45,12 +43,12 @@ namespace Pulumi.SignalFx.PagerDuty
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Integration(string name, IntegrationArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:pagerduty/integration:Integration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:victorops/integration:Integration", name, args ?? new IntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Integration(string name, Input<string> id, IntegrationState? state = null, CustomResourceOptions? options = null)
-            : base("signalfx:pagerduty/integration:Integration", name, state, MakeResourceOptions(options, id))
+            : base("signalfx:victorops/integration:Integration", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -83,12 +81,6 @@ namespace Pulumi.SignalFx.PagerDuty
     public sealed class IntegrationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PagerDuty API key.
-        /// </summary>
-        [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
-
-        /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled", required: true)]
@@ -100,6 +92,12 @@ namespace Pulumi.SignalFx.PagerDuty
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Victor Ops REST API URL.
+        /// </summary>
+        [Input("postUrl")]
+        public Input<string>? PostUrl { get; set; }
+
         public IntegrationArgs()
         {
         }
@@ -107,12 +105,6 @@ namespace Pulumi.SignalFx.PagerDuty
 
     public sealed class IntegrationState : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// PagerDuty API key.
-        /// </summary>
-        [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
-
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
@@ -124,6 +116,12 @@ namespace Pulumi.SignalFx.PagerDuty
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Victor Ops REST API URL.
+        /// </summary>
+        [Input("postUrl")]
+        public Input<string>? PostUrl { get; set; }
 
         public IntegrationState()
         {

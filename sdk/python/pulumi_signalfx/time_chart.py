@@ -171,7 +171,7 @@ class TimeChart(pulumi.CustomResource):
 
         Time charts display data points over a period of time.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

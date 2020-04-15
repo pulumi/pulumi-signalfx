@@ -86,7 +86,7 @@ class SingleValueChart(pulumi.CustomResource):
 
         If the time period is in the past, the number represents the value of the metric near the end of the time period.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/single_value_chart.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

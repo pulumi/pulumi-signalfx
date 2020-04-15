@@ -14,11 +14,10 @@ namespace Pulumi.SignalFx.Azure
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
     /// 
+    /// 
     /// ## Service Names
     /// 
     /// Fields that expect an Azure service will work with one of: "microsoft.sql/servers/elasticpools" "microsoft.storage/storageaccounts" "microsoft.storage/storageaccountsservices/tableservices" "microsoft.storage/storageaccountsservices/blobservices" "microsoft.storage/storageaccounts/queueservices" "microsoft.storage/storageaccounts/fileservices" "microsoft.compute/virtualmachinescalesets" "microsoft.compute/virtualmachinescalesets/virtualmachines" "microsoft.compute/virtualmachines" "microsoft.devices/iothubs" "microsoft.eventHub/namespaces" "microsoft.batch/batchaccounts" "microsoft.sql/servers/databases" "microsoft.cache/redis" "microsoft.logic/workflows".
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {
@@ -85,7 +84,7 @@ namespace Pulumi.SignalFx.Azure
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Integration(string name, IntegrationArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:azure/integration:Integration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:azure/integration:Integration", name, args ?? new IntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

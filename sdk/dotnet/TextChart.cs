@@ -11,8 +11,6 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/text_chart.html.markdown.
     /// </summary>
     public partial class TextChart : Pulumi.CustomResource
     {
@@ -49,7 +47,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TextChart(string name, TextChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/textChart:TextChart", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/textChart:TextChart", name, args ?? new TextChartArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
  * 
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
  */

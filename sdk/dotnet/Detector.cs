@@ -13,8 +13,6 @@ namespace Pulumi.SignalFx
     /// Provides a SignalFx detector resource. This can be used to create and manage detectors.
     /// 
     /// &gt; **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/detector.html.markdown.
     /// </summary>
     public partial class Detector : Pulumi.CustomResource
     {
@@ -70,7 +68,7 @@ namespace Pulumi.SignalFx
         /// Set of rules used for alerting.
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableArray<Outputs.DetectorRules>> Rules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DetectorRule>> Rules { get; private set; } = null!;
 
         /// <summary>
         /// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
@@ -112,7 +110,7 @@ namespace Pulumi.SignalFx
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         [Output("vizOptions")]
-        public Output<ImmutableArray<Outputs.DetectorVizOptions>> VizOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DetectorVizOption>> VizOptions { get; private set; } = null!;
 
 
         /// <summary>
@@ -123,7 +121,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Detector(string name, DetectorArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/detector:Detector", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/detector:Detector", name, args ?? new DetectorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -221,14 +219,14 @@ namespace Pulumi.SignalFx
         public Input<string> ProgramText { get; set; } = null!;
 
         [Input("rules", required: true)]
-        private InputList<Inputs.DetectorRulesArgs>? _rules;
+        private InputList<Inputs.DetectorRuleArgs>? _rules;
 
         /// <summary>
         /// Set of rules used for alerting.
         /// </summary>
-        public InputList<Inputs.DetectorRulesArgs> Rules
+        public InputList<Inputs.DetectorRuleArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.DetectorRulesArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.DetectorRuleArgs>());
             set => _rules = value;
         }
 
@@ -269,14 +267,14 @@ namespace Pulumi.SignalFx
         public Input<int>? TimeRange { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.DetectorVizOptionsArgs>? _vizOptions;
+        private InputList<Inputs.DetectorVizOptionArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.DetectorVizOptionsArgs> VizOptions
+        public InputList<Inputs.DetectorVizOptionArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.DetectorVizOptionsArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.DetectorVizOptionArgs>());
             set => _vizOptions = value;
         }
 
@@ -348,14 +346,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ProgramText { get; set; }
 
         [Input("rules")]
-        private InputList<Inputs.DetectorRulesGetArgs>? _rules;
+        private InputList<Inputs.DetectorRuleGetArgs>? _rules;
 
         /// <summary>
         /// Set of rules used for alerting.
         /// </summary>
-        public InputList<Inputs.DetectorRulesGetArgs> Rules
+        public InputList<Inputs.DetectorRuleGetArgs> Rules
         {
-            get => _rules ?? (_rules = new InputList<Inputs.DetectorRulesGetArgs>());
+            get => _rules ?? (_rules = new InputList<Inputs.DetectorRuleGetArgs>());
             set => _rules = value;
         }
 
@@ -402,342 +400,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Url { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.DetectorVizOptionsGetArgs>? _vizOptions;
+        private InputList<Inputs.DetectorVizOptionGetArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.DetectorVizOptionsGetArgs> VizOptions
+        public InputList<Inputs.DetectorVizOptionGetArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.DetectorVizOptionsGetArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.DetectorVizOptionGetArgs>());
             set => _vizOptions = value;
         }
 
         public DetectorState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DetectorRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// A detect label which matches a detect label within `program_text`.
-        /// </summary>
-        [Input("detectLabel", required: true)]
-        public Input<string> DetectLabel { get; set; } = null!;
-
-        /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
-        /// </summary>
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        [Input("notifications")]
-        private InputList<string>? _notifications;
-
-        /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-        /// </summary>
-        public InputList<string> Notifications
-        {
-            get => _notifications ?? (_notifications = new InputList<string>());
-            set => _notifications = value;
-        }
-
-        /// <summary>
-        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
-        [Input("parameterizedBody")]
-        public Input<string>? ParameterizedBody { get; set; }
-
-        /// <summary>
-        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
-        [Input("parameterizedSubject")]
-        public Input<string>? ParameterizedSubject { get; set; }
-
-        /// <summary>
-        /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-        /// </summary>
-        [Input("runbookUrl")]
-        public Input<string>? RunbookUrl { get; set; }
-
-        /// <summary>
-        /// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-        /// </summary>
-        [Input("severity", required: true)]
-        public Input<string> Severity { get; set; } = null!;
-
-        /// <summary>
-        /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-        /// </summary>
-        [Input("tip")]
-        public Input<string>? Tip { get; set; }
-
-        public DetectorRulesArgs()
-        {
-        }
-    }
-
-    public sealed class DetectorRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// A detect label which matches a detect label within `program_text`.
-        /// </summary>
-        [Input("detectLabel", required: true)]
-        public Input<string> DetectLabel { get; set; } = null!;
-
-        /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
-        /// </summary>
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        [Input("notifications")]
-        private InputList<string>? _notifications;
-
-        /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-        /// </summary>
-        public InputList<string> Notifications
-        {
-            get => _notifications ?? (_notifications = new InputList<string>());
-            set => _notifications = value;
-        }
-
-        /// <summary>
-        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
-        [Input("parameterizedBody")]
-        public Input<string>? ParameterizedBody { get; set; }
-
-        /// <summary>
-        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
-        [Input("parameterizedSubject")]
-        public Input<string>? ParameterizedSubject { get; set; }
-
-        /// <summary>
-        /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-        /// </summary>
-        [Input("runbookUrl")]
-        public Input<string>? RunbookUrl { get; set; }
-
-        /// <summary>
-        /// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-        /// </summary>
-        [Input("severity", required: true)]
-        public Input<string> Severity { get; set; } = null!;
-
-        /// <summary>
-        /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-        /// </summary>
-        [Input("tip")]
-        public Input<string>? Tip { get; set; }
-
-        public DetectorRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class DetectorVizOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public DetectorVizOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class DetectorVizOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public DetectorVizOptionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DetectorRules
-    {
-        /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-        /// </summary>
-        public readonly string? Description;
-        /// <summary>
-        /// A detect label which matches a detect label within `program_text`.
-        /// </summary>
-        public readonly string DetectLabel;
-        /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
-        /// </summary>
-        public readonly bool? Disabled;
-        /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-        /// </summary>
-        public readonly ImmutableArray<string> Notifications;
-        /// <summary>
-        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
-        public readonly string? ParameterizedBody;
-        /// <summary>
-        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
-        public readonly string? ParameterizedSubject;
-        /// <summary>
-        /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-        /// </summary>
-        public readonly string? RunbookUrl;
-        /// <summary>
-        /// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-        /// </summary>
-        public readonly string Severity;
-        /// <summary>
-        /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-        /// </summary>
-        public readonly string? Tip;
-
-        [OutputConstructor]
-        private DetectorRules(
-            string? description,
-            string detectLabel,
-            bool? disabled,
-            ImmutableArray<string> notifications,
-            string? parameterizedBody,
-            string? parameterizedSubject,
-            string? runbookUrl,
-            string severity,
-            string? tip)
-        {
-            Description = description;
-            DetectLabel = detectLabel;
-            Disabled = disabled;
-            Notifications = notifications;
-            ParameterizedBody = parameterizedBody;
-            ParameterizedSubject = parameterizedSubject;
-            RunbookUrl = runbookUrl;
-            Severity = severity;
-            Tip = tip;
-        }
-    }
-
-    [OutputType]
-    public sealed class DetectorVizOptions
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        public readonly string? Color;
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        public readonly string? DisplayName;
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        public readonly string Label;
-        public readonly string? ValuePrefix;
-        public readonly string? ValueSuffix;
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        public readonly string? ValueUnit;
-
-        [OutputConstructor]
-        private DetectorVizOptions(
-            string? color,
-            string? displayName,
-            string label,
-            string? valuePrefix,
-            string? valueSuffix,
-            string? valueUnit)
-        {
-            Color = color;
-            DisplayName = displayName;
-            Label = label;
-            ValuePrefix = valuePrefix;
-            ValueSuffix = valueSuffix;
-            ValueUnit = valueUnit;
-        }
-    }
     }
 }

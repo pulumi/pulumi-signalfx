@@ -30,7 +30,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with SignalFx support for your realm's AWS account id.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

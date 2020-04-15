@@ -16,11 +16,10 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
     /// 
+    /// 
     /// ## Service Names
     /// 
     /// Fields that expect an AWS service/namespace will work with one of: "AWS/ApiGateway" "AWS/AppStream" "AWS/AutoScaling" "AWS/Billing" "AWS/CloudFront" "AWS/CloudSearch" "AWS/Events" "AWS/Logs" "AWS/Connect" "AWS/DMS" "AWS/DX" "AWS/DynamoDB" "AWS/EC2" "AWS/EC2Spot" "AWS/ECS" "AWS/ElasticBeanstalk" "AWS/EBS" "AWS/EFS" "AWS/ELB" "AWS/ApplicationELB" "AWS/NetworkELB" "AWS/ElasticTranscoder" "AWS/ElastiCache" "AWS/ES" "AWS/ElasticMapReduce" "AWS/GameLift" "AWS/Inspector" "AWS/IoT" "AWS/KMS" "AWS/KinesisAnalytics" "AWS/Firehose" "AWS/Kinesis" "AWS/KinesisVideo" "AWS/Lambda" "AWS/Lex" "AWS/ML" "AWS/OpsWorks" "AWS/Polly" "AWS/Redshift" "AWS/RDS" "AWS/Route53" "AWS/SageMaker" "AWS/DDoSProtection" "AWS/SES" "AWS/SNS" "AWS/SQS" "AWS/S3" "AWS/SWF" "AWS/States" "AWS/StorageGateway" "AWS/Translate" "AWS/NATGateway" "AWS/VPN" "WAF" "AWS/WorkSpaces".
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_integration.html.markdown.
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {
@@ -34,7 +33,7 @@ namespace Pulumi.SignalFx.Aws
         /// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         /// </summary>
         [Output("customNamespaceSyncRules")]
-        public Output<ImmutableArray<Outputs.IntegrationCustomNamespaceSyncRules>> CustomNamespaceSyncRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.IntegrationCustomNamespaceSyncRule>> CustomNamespaceSyncRules { get; private set; } = null!;
 
         /// <summary>
         /// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
@@ -76,7 +75,7 @@ namespace Pulumi.SignalFx.Aws
         /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         /// </summary>
         [Output("namespaceSyncRules")]
-        public Output<ImmutableArray<Outputs.IntegrationNamespaceSyncRules>> NamespaceSyncRules { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.IntegrationNamespaceSyncRule>> NamespaceSyncRules { get; private set; } = null!;
 
         /// <summary>
         /// AWS poll rate (in seconds). One of `60` or `300`.
@@ -123,7 +122,7 @@ namespace Pulumi.SignalFx.Aws
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Integration(string name, IntegrationArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:aws/integration:Integration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:aws/integration:Integration", name, args ?? new IntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -173,14 +172,14 @@ namespace Pulumi.SignalFx.Aws
         }
 
         [Input("customNamespaceSyncRules")]
-        private InputList<Inputs.IntegrationCustomNamespaceSyncRulesArgs>? _customNamespaceSyncRules;
+        private InputList<Inputs.IntegrationCustomNamespaceSyncRuleArgs>? _customNamespaceSyncRules;
 
         /// <summary>
         /// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         /// </summary>
-        public InputList<Inputs.IntegrationCustomNamespaceSyncRulesArgs> CustomNamespaceSyncRules
+        public InputList<Inputs.IntegrationCustomNamespaceSyncRuleArgs> CustomNamespaceSyncRules
         {
-            get => _customNamespaceSyncRules ?? (_customNamespaceSyncRules = new InputList<Inputs.IntegrationCustomNamespaceSyncRulesArgs>());
+            get => _customNamespaceSyncRules ?? (_customNamespaceSyncRules = new InputList<Inputs.IntegrationCustomNamespaceSyncRuleArgs>());
             set => _customNamespaceSyncRules = value;
         }
 
@@ -221,14 +220,14 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? Key { get; set; }
 
         [Input("namespaceSyncRules")]
-        private InputList<Inputs.IntegrationNamespaceSyncRulesArgs>? _namespaceSyncRules;
+        private InputList<Inputs.IntegrationNamespaceSyncRuleArgs>? _namespaceSyncRules;
 
         /// <summary>
         /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         /// </summary>
-        public InputList<Inputs.IntegrationNamespaceSyncRulesArgs> NamespaceSyncRules
+        public InputList<Inputs.IntegrationNamespaceSyncRuleArgs> NamespaceSyncRules
         {
-            get => _namespaceSyncRules ?? (_namespaceSyncRules = new InputList<Inputs.IntegrationNamespaceSyncRulesArgs>());
+            get => _namespaceSyncRules ?? (_namespaceSyncRules = new InputList<Inputs.IntegrationNamespaceSyncRuleArgs>());
             set => _namespaceSyncRules = value;
         }
 
@@ -300,14 +299,14 @@ namespace Pulumi.SignalFx.Aws
         }
 
         [Input("customNamespaceSyncRules")]
-        private InputList<Inputs.IntegrationCustomNamespaceSyncRulesGetArgs>? _customNamespaceSyncRules;
+        private InputList<Inputs.IntegrationCustomNamespaceSyncRuleGetArgs>? _customNamespaceSyncRules;
 
         /// <summary>
         /// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         /// </summary>
-        public InputList<Inputs.IntegrationCustomNamespaceSyncRulesGetArgs> CustomNamespaceSyncRules
+        public InputList<Inputs.IntegrationCustomNamespaceSyncRuleGetArgs> CustomNamespaceSyncRules
         {
-            get => _customNamespaceSyncRules ?? (_customNamespaceSyncRules = new InputList<Inputs.IntegrationCustomNamespaceSyncRulesGetArgs>());
+            get => _customNamespaceSyncRules ?? (_customNamespaceSyncRules = new InputList<Inputs.IntegrationCustomNamespaceSyncRuleGetArgs>());
             set => _customNamespaceSyncRules = value;
         }
 
@@ -348,14 +347,14 @@ namespace Pulumi.SignalFx.Aws
         public Input<string>? Key { get; set; }
 
         [Input("namespaceSyncRules")]
-        private InputList<Inputs.IntegrationNamespaceSyncRulesGetArgs>? _namespaceSyncRules;
+        private InputList<Inputs.IntegrationNamespaceSyncRuleGetArgs>? _namespaceSyncRules;
 
         /// <summary>
         /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         /// </summary>
-        public InputList<Inputs.IntegrationNamespaceSyncRulesGetArgs> NamespaceSyncRules
+        public InputList<Inputs.IntegrationNamespaceSyncRuleGetArgs> NamespaceSyncRules
         {
-            get => _namespaceSyncRules ?? (_namespaceSyncRules = new InputList<Inputs.IntegrationNamespaceSyncRulesGetArgs>());
+            get => _namespaceSyncRules ?? (_namespaceSyncRules = new InputList<Inputs.IntegrationNamespaceSyncRuleGetArgs>());
             set => _namespaceSyncRules = value;
         }
 
@@ -410,205 +409,5 @@ namespace Pulumi.SignalFx.Aws
         public IntegrationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IntegrationCustomNamespaceSyncRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("defaultAction")]
-        public Input<string>? DefaultAction { get; set; }
-
-        /// <summary>
-        /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("filterAction")]
-        public Input<string>? FilterAction { get; set; }
-
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        /// </summary>
-        [Input("filterSource")]
-        public Input<string>? FilterSource { get; set; }
-
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        /// </summary>
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
-
-        public IntegrationCustomNamespaceSyncRulesArgs()
-        {
-        }
-    }
-
-    public sealed class IntegrationCustomNamespaceSyncRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("defaultAction")]
-        public Input<string>? DefaultAction { get; set; }
-
-        /// <summary>
-        /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("filterAction")]
-        public Input<string>? FilterAction { get; set; }
-
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        /// </summary>
-        [Input("filterSource")]
-        public Input<string>? FilterSource { get; set; }
-
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        /// </summary>
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
-
-        public IntegrationCustomNamespaceSyncRulesGetArgs()
-        {
-        }
-    }
-
-    public sealed class IntegrationNamespaceSyncRulesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("defaultAction")]
-        public Input<string>? DefaultAction { get; set; }
-
-        /// <summary>
-        /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("filterAction")]
-        public Input<string>? FilterAction { get; set; }
-
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        /// </summary>
-        [Input("filterSource")]
-        public Input<string>? FilterSource { get; set; }
-
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        /// </summary>
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
-
-        public IntegrationNamespaceSyncRulesArgs()
-        {
-        }
-    }
-
-    public sealed class IntegrationNamespaceSyncRulesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("defaultAction")]
-        public Input<string>? DefaultAction { get; set; }
-
-        /// <summary>
-        /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        [Input("filterAction")]
-        public Input<string>? FilterAction { get; set; }
-
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        /// </summary>
-        [Input("filterSource")]
-        public Input<string>? FilterSource { get; set; }
-
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        /// </summary>
-        [Input("namespace", required: true)]
-        public Input<string> Namespace { get; set; } = null!;
-
-        public IntegrationNamespaceSyncRulesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IntegrationCustomNamespaceSyncRules
-    {
-        /// <summary>
-        /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        public readonly string? DefaultAction;
-        /// <summary>
-        /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        public readonly string? FilterAction;
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        /// </summary>
-        public readonly string? FilterSource;
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        /// </summary>
-        public readonly string Namespace;
-
-        [OutputConstructor]
-        private IntegrationCustomNamespaceSyncRules(
-            string? defaultAction,
-            string? filterAction,
-            string? filterSource,
-            string @namespace)
-        {
-            DefaultAction = defaultAction;
-            FilterAction = filterAction;
-            FilterSource = filterSource;
-            Namespace = @namespace;
-        }
-    }
-
-    [OutputType]
-    public sealed class IntegrationNamespaceSyncRules
-    {
-        /// <summary>
-        /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        public readonly string? DefaultAction;
-        /// <summary>
-        /// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        /// </summary>
-        public readonly string? FilterAction;
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
-        /// </summary>
-        public readonly string? FilterSource;
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        /// </summary>
-        public readonly string Namespace;
-
-        [OutputConstructor]
-        private IntegrationNamespaceSyncRules(
-            string? defaultAction,
-            string? filterAction,
-            string? filterSource,
-            string @namespace)
-        {
-            DefaultAction = defaultAction;
-            FilterAction = filterAction;
-            FilterSource = filterSource;
-            Namespace = @namespace;
-        }
-    }
     }
 }

@@ -13,8 +13,6 @@ namespace Pulumi.SignalFx.Gcp
     /// SignalFx GCP Integration
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/gcp_integration.html.markdown.
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {
@@ -40,7 +38,7 @@ namespace Pulumi.SignalFx.Gcp
         /// GCP projects to add.
         /// </summary>
         [Output("projectServiceKeys")]
-        public Output<ImmutableArray<Outputs.IntegrationProjectServiceKeys>> ProjectServiceKeys { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
         /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
@@ -57,7 +55,7 @@ namespace Pulumi.SignalFx.Gcp
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Integration(string name, IntegrationArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:gcp/integration:Integration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:gcp/integration:Integration", name, args ?? new IntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -113,14 +111,14 @@ namespace Pulumi.SignalFx.Gcp
         public Input<int>? PollRate { get; set; }
 
         [Input("projectServiceKeys")]
-        private InputList<Inputs.IntegrationProjectServiceKeysArgs>? _projectServiceKeys;
+        private InputList<Inputs.IntegrationProjectServiceKeyArgs>? _projectServiceKeys;
 
         /// <summary>
         /// GCP projects to add.
         /// </summary>
-        public InputList<Inputs.IntegrationProjectServiceKeysArgs> ProjectServiceKeys
+        public InputList<Inputs.IntegrationProjectServiceKeyArgs> ProjectServiceKeys
         {
-            get => _projectServiceKeys ?? (_projectServiceKeys = new InputList<Inputs.IntegrationProjectServiceKeysArgs>());
+            get => _projectServiceKeys ?? (_projectServiceKeys = new InputList<Inputs.IntegrationProjectServiceKeyArgs>());
             set => _projectServiceKeys = value;
         }
 
@@ -162,14 +160,14 @@ namespace Pulumi.SignalFx.Gcp
         public Input<int>? PollRate { get; set; }
 
         [Input("projectServiceKeys")]
-        private InputList<Inputs.IntegrationProjectServiceKeysGetArgs>? _projectServiceKeys;
+        private InputList<Inputs.IntegrationProjectServiceKeyGetArgs>? _projectServiceKeys;
 
         /// <summary>
         /// GCP projects to add.
         /// </summary>
-        public InputList<Inputs.IntegrationProjectServiceKeysGetArgs> ProjectServiceKeys
+        public InputList<Inputs.IntegrationProjectServiceKeyGetArgs> ProjectServiceKeys
         {
-            get => _projectServiceKeys ?? (_projectServiceKeys = new InputList<Inputs.IntegrationProjectServiceKeysGetArgs>());
+            get => _projectServiceKeys ?? (_projectServiceKeys = new InputList<Inputs.IntegrationProjectServiceKeyGetArgs>());
             set => _projectServiceKeys = value;
         }
 
@@ -188,55 +186,5 @@ namespace Pulumi.SignalFx.Gcp
         public IntegrationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class IntegrationProjectServiceKeysArgs : Pulumi.ResourceArgs
-    {
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
-
-        [Input("projectKey", required: true)]
-        public Input<string> ProjectKey { get; set; } = null!;
-
-        public IntegrationProjectServiceKeysArgs()
-        {
-        }
-    }
-
-    public sealed class IntegrationProjectServiceKeysGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
-
-        [Input("projectKey", required: true)]
-        public Input<string> ProjectKey { get; set; } = null!;
-
-        public IntegrationProjectServiceKeysGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class IntegrationProjectServiceKeys
-    {
-        public readonly string ProjectId;
-        public readonly string ProjectKey;
-
-        [OutputConstructor]
-        private IntegrationProjectServiceKeys(
-            string projectId,
-            string projectKey)
-        {
-            ProjectId = projectId;
-            ProjectKey = projectKey;
-        }
-    }
     }
 }

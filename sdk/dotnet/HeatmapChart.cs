@@ -11,8 +11,6 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.
     /// </summary>
     public partial class HeatmapChart : Pulumi.CustomResource
     {
@@ -26,7 +24,7 @@ namespace Pulumi.SignalFx
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
         [Output("colorScales")]
-        public Output<ImmutableArray<Outputs.HeatmapChartColorScales>> ColorScales { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.HeatmapChartColorScale>> ColorScales { get; private set; } = null!;
 
         /// <summary>
         /// Description of the chart.
@@ -109,7 +107,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HeatmapChart(string name, HeatmapChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/heatmapChart:HeatmapChart", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/heatmapChart:HeatmapChart", name, args ?? new HeatmapChartArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -153,14 +151,14 @@ namespace Pulumi.SignalFx
         public Input<Inputs.HeatmapChartColorRangeArgs>? ColorRange { get; set; }
 
         [Input("colorScales")]
-        private InputList<Inputs.HeatmapChartColorScalesArgs>? _colorScales;
+        private InputList<Inputs.HeatmapChartColorScaleArgs>? _colorScales;
 
         /// <summary>
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
-        public InputList<Inputs.HeatmapChartColorScalesArgs> ColorScales
+        public InputList<Inputs.HeatmapChartColorScaleArgs> ColorScales
         {
-            get => _colorScales ?? (_colorScales = new InputList<Inputs.HeatmapChartColorScalesArgs>());
+            get => _colorScales ?? (_colorScales = new InputList<Inputs.HeatmapChartColorScaleArgs>());
             set => _colorScales = value;
         }
 
@@ -250,14 +248,14 @@ namespace Pulumi.SignalFx
         public Input<Inputs.HeatmapChartColorRangeGetArgs>? ColorRange { get; set; }
 
         [Input("colorScales")]
-        private InputList<Inputs.HeatmapChartColorScalesGetArgs>? _colorScales;
+        private InputList<Inputs.HeatmapChartColorScaleGetArgs>? _colorScales;
 
         /// <summary>
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
-        public InputList<Inputs.HeatmapChartColorScalesGetArgs> ColorScales
+        public InputList<Inputs.HeatmapChartColorScaleGetArgs> ColorScales
         {
-            get => _colorScales ?? (_colorScales = new InputList<Inputs.HeatmapChartColorScalesGetArgs>());
+            get => _colorScales ?? (_colorScales = new InputList<Inputs.HeatmapChartColorScaleGetArgs>());
             set => _colorScales = value;
         }
 
@@ -342,205 +340,5 @@ namespace Pulumi.SignalFx
         public HeatmapChartState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class HeatmapChartColorRangeArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// The maximum value within the coloring range.
-        /// </summary>
-        [Input("maxValue")]
-        public Input<double>? MaxValue { get; set; }
-
-        /// <summary>
-        /// The minimum value within the coloring range.
-        /// </summary>
-        [Input("minValue")]
-        public Input<double>? MinValue { get; set; }
-
-        public HeatmapChartColorRangeArgs()
-        {
-        }
-    }
-
-    public sealed class HeatmapChartColorRangeGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// The maximum value within the coloring range.
-        /// </summary>
-        [Input("maxValue")]
-        public Input<double>? MaxValue { get; set; }
-
-        /// <summary>
-        /// The minimum value within the coloring range.
-        /// </summary>
-        [Input("minValue")]
-        public Input<double>? MinValue { get; set; }
-
-        public HeatmapChartColorRangeGetArgs()
-        {
-        }
-    }
-
-    public sealed class HeatmapChartColorScalesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("gt")]
-        public Input<double>? Gt { get; set; }
-
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        [Input("gte")]
-        public Input<double>? Gte { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("lt")]
-        public Input<double>? Lt { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        [Input("lte")]
-        public Input<double>? Lte { get; set; }
-
-        public HeatmapChartColorScalesArgs()
-        {
-        }
-    }
-
-    public sealed class HeatmapChartColorScalesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("gt")]
-        public Input<double>? Gt { get; set; }
-
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        [Input("gte")]
-        public Input<double>? Gte { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("lt")]
-        public Input<double>? Lt { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        [Input("lte")]
-        public Input<double>? Lte { get; set; }
-
-        public HeatmapChartColorScalesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class HeatmapChartColorRange
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        public readonly string Color;
-        /// <summary>
-        /// The maximum value within the coloring range.
-        /// </summary>
-        public readonly double? MaxValue;
-        /// <summary>
-        /// The minimum value within the coloring range.
-        /// </summary>
-        public readonly double? MinValue;
-
-        [OutputConstructor]
-        private HeatmapChartColorRange(
-            string color,
-            double? maxValue,
-            double? minValue)
-        {
-            Color = color;
-            MaxValue = maxValue;
-            MinValue = minValue;
-        }
-    }
-
-    [OutputType]
-    public sealed class HeatmapChartColorScales
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        public readonly string Color;
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        public readonly double? Gt;
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        public readonly double? Gte;
-        /// <summary>
-        /// Indicates the upper threshold non-inclusive value for this range.
-        /// </summary>
-        public readonly double? Lt;
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        public readonly double? Lte;
-
-        [OutputConstructor]
-        private HeatmapChartColorScales(
-            string color,
-            double? gt,
-            double? gte,
-            double? lt,
-            double? lte)
-        {
-            Color = color;
-            Gt = gt;
-            Gte = gte;
-            Lt = lt;
-            Lte = lte;
-        }
-    }
     }
 }
