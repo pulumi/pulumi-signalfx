@@ -13,10 +13,6 @@ namespace Pulumi.SignalFx
     /// This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
     /// 
     /// If the time period is in the past, the number represents the value of the metric near the end of the time period.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/single_value_chart.html.markdown.
     /// </summary>
     public partial class SingleValueChart : Pulumi.CustomResource
     {
@@ -30,7 +26,7 @@ namespace Pulumi.SignalFx
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
         [Output("colorScales")]
-        public Output<ImmutableArray<Outputs.SingleValueChartColorScales>> ColorScales { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SingleValueChartColorScale>> ColorScales { get; private set; } = null!;
 
         /// <summary>
         /// Description of the chart.
@@ -102,7 +98,7 @@ namespace Pulumi.SignalFx
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         [Output("vizOptions")]
-        public Output<ImmutableArray<Outputs.SingleValueChartVizOptions>> VizOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.SingleValueChartVizOption>> VizOptions { get; private set; } = null!;
 
 
         /// <summary>
@@ -113,7 +109,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SingleValueChart(string name, SingleValueChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/singleValueChart:SingleValueChart", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/singleValueChart:SingleValueChart", name, args ?? new SingleValueChartArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -157,14 +153,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ColorBy { get; set; }
 
         [Input("colorScales")]
-        private InputList<Inputs.SingleValueChartColorScalesArgs>? _colorScales;
+        private InputList<Inputs.SingleValueChartColorScaleArgs>? _colorScales;
 
         /// <summary>
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
-        public InputList<Inputs.SingleValueChartColorScalesArgs> ColorScales
+        public InputList<Inputs.SingleValueChartColorScaleArgs> ColorScales
         {
-            get => _colorScales ?? (_colorScales = new InputList<Inputs.SingleValueChartColorScalesArgs>());
+            get => _colorScales ?? (_colorScales = new InputList<Inputs.SingleValueChartColorScaleArgs>());
             set => _colorScales = value;
         }
 
@@ -229,14 +225,14 @@ namespace Pulumi.SignalFx
         public Input<string>? UnitPrefix { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.SingleValueChartVizOptionsArgs>? _vizOptions;
+        private InputList<Inputs.SingleValueChartVizOptionArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.SingleValueChartVizOptionsArgs> VizOptions
+        public InputList<Inputs.SingleValueChartVizOptionArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.SingleValueChartVizOptionsArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.SingleValueChartVizOptionArgs>());
             set => _vizOptions = value;
         }
 
@@ -254,14 +250,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ColorBy { get; set; }
 
         [Input("colorScales")]
-        private InputList<Inputs.SingleValueChartColorScalesGetArgs>? _colorScales;
+        private InputList<Inputs.SingleValueChartColorScaleGetArgs>? _colorScales;
 
         /// <summary>
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
-        public InputList<Inputs.SingleValueChartColorScalesGetArgs> ColorScales
+        public InputList<Inputs.SingleValueChartColorScaleGetArgs> ColorScales
         {
-            get => _colorScales ?? (_colorScales = new InputList<Inputs.SingleValueChartColorScalesGetArgs>());
+            get => _colorScales ?? (_colorScales = new InputList<Inputs.SingleValueChartColorScaleGetArgs>());
             set => _colorScales = value;
         }
 
@@ -332,258 +328,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Url { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.SingleValueChartVizOptionsGetArgs>? _vizOptions;
+        private InputList<Inputs.SingleValueChartVizOptionGetArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.SingleValueChartVizOptionsGetArgs> VizOptions
+        public InputList<Inputs.SingleValueChartVizOptionGetArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.SingleValueChartVizOptionsGetArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.SingleValueChartVizOptionGetArgs>());
             set => _vizOptions = value;
         }
 
         public SingleValueChartState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SingleValueChartColorScalesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("gt")]
-        public Input<double>? Gt { get; set; }
-
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        [Input("gte")]
-        public Input<double>? Gte { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
-        /// </summary>
-        [Input("lt")]
-        public Input<double>? Lt { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        [Input("lte")]
-        public Input<double>? Lte { get; set; }
-
-        public SingleValueChartColorScalesArgs()
-        {
-        }
-    }
-
-    public sealed class SingleValueChartColorScalesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("gt")]
-        public Input<double>? Gt { get; set; }
-
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        [Input("gte")]
-        public Input<double>? Gte { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
-        /// </summary>
-        [Input("lt")]
-        public Input<double>? Lt { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        [Input("lte")]
-        public Input<double>? Lte { get; set; }
-
-        public SingleValueChartColorScalesGetArgs()
-        {
-        }
-    }
-
-    public sealed class SingleValueChartVizOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public SingleValueChartVizOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class SingleValueChartVizOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public SingleValueChartVizOptionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SingleValueChartColorScales
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        public readonly string Color;
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        public readonly double? Gt;
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        public readonly double? Gte;
-        /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
-        /// </summary>
-        public readonly double? Lt;
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        public readonly double? Lte;
-
-        [OutputConstructor]
-        private SingleValueChartColorScales(
-            string color,
-            double? gt,
-            double? gte,
-            double? lt,
-            double? lte)
-        {
-            Color = color;
-            Gt = gt;
-            Gte = gte;
-            Lt = lt;
-            Lte = lte;
-        }
-    }
-
-    [OutputType]
-    public sealed class SingleValueChartVizOptions
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        public readonly string? Color;
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        public readonly string? DisplayName;
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        public readonly string Label;
-        public readonly string? ValuePrefix;
-        public readonly string? ValueSuffix;
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        public readonly string? ValueUnit;
-
-        [OutputConstructor]
-        private SingleValueChartVizOptions(
-            string? color,
-            string? displayName,
-            string label,
-            string? valuePrefix,
-            string? valueSuffix,
-            string? valueUnit)
-        {
-            Color = color;
-            DisplayName = displayName;
-            Label = label;
-            ValuePrefix = valuePrefix;
-            ValueSuffix = valueSuffix;
-            ValueUnit = valueUnit;
-        }
-    }
     }
 }

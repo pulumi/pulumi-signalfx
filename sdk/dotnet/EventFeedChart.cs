@@ -11,10 +11,6 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Displays a listing of events as a widget in a dashboard.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/event_feed_chart.html.markdown.
     /// </summary>
     public partial class EventFeedChart : Pulumi.CustomResource
     {
@@ -69,7 +65,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EventFeedChart(string name, EventFeedChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/eventFeedChart:EventFeedChart", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/eventFeedChart:EventFeedChart", name, args ?? new EventFeedChartArgs(), MakeResourceOptions(options, ""))
         {
         }
 

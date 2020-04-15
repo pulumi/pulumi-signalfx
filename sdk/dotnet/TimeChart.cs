@@ -13,10 +13,6 @@ namespace Pulumi.SignalFx
     /// Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
     /// 
     /// Time charts display data points over a period of time.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
     /// </summary>
     public partial class TimeChart : Pulumi.CustomResource
     {
@@ -72,13 +68,13 @@ namespace Pulumi.SignalFx
         /// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         /// </summary>
         [Output("eventOptions")]
-        public Output<ImmutableArray<Outputs.TimeChartEventOptions>> EventOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TimeChartEventOption>> EventOptions { get; private set; } = null!;
 
         /// <summary>
         /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         /// </summary>
         [Output("histogramOptions")]
-        public Output<ImmutableArray<Outputs.TimeChartHistogramOptions>> HistogramOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TimeChartHistogramOption>> HistogramOptions { get; private set; } = null!;
 
         /// <summary>
         /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
@@ -92,7 +88,7 @@ namespace Pulumi.SignalFx
         /// * `enabled` True or False depending on if you want the property to be shown or hidden.
         /// </summary>
         [Output("legendOptionsFields")]
-        public Output<ImmutableArray<Outputs.TimeChartLegendOptionsFields>> LegendOptionsFields { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TimeChartLegendOptionsField>> LegendOptionsFields { get; private set; } = null!;
 
         /// <summary>
         /// How long (in seconds) to wait for late datapoints.
@@ -188,7 +184,7 @@ namespace Pulumi.SignalFx
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         [Output("vizOptions")]
-        public Output<ImmutableArray<Outputs.TimeChartVizOptions>> VizOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.TimeChartVizOption>> VizOptions { get; private set; } = null!;
 
 
         /// <summary>
@@ -199,7 +195,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TimeChart(string name, TimeChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/timeChart:TimeChart", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/timeChart:TimeChart", name, args ?? new TimeChartArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -285,26 +281,26 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         [Input("eventOptions")]
-        private InputList<Inputs.TimeChartEventOptionsArgs>? _eventOptions;
+        private InputList<Inputs.TimeChartEventOptionArgs>? _eventOptions;
 
         /// <summary>
         /// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         /// </summary>
-        public InputList<Inputs.TimeChartEventOptionsArgs> EventOptions
+        public InputList<Inputs.TimeChartEventOptionArgs> EventOptions
         {
-            get => _eventOptions ?? (_eventOptions = new InputList<Inputs.TimeChartEventOptionsArgs>());
+            get => _eventOptions ?? (_eventOptions = new InputList<Inputs.TimeChartEventOptionArgs>());
             set => _eventOptions = value;
         }
 
         [Input("histogramOptions")]
-        private InputList<Inputs.TimeChartHistogramOptionsArgs>? _histogramOptions;
+        private InputList<Inputs.TimeChartHistogramOptionArgs>? _histogramOptions;
 
         /// <summary>
         /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         /// </summary>
-        public InputList<Inputs.TimeChartHistogramOptionsArgs> HistogramOptions
+        public InputList<Inputs.TimeChartHistogramOptionArgs> HistogramOptions
         {
-            get => _histogramOptions ?? (_histogramOptions = new InputList<Inputs.TimeChartHistogramOptionsArgs>());
+            get => _histogramOptions ?? (_histogramOptions = new InputList<Inputs.TimeChartHistogramOptionArgs>());
             set => _histogramOptions = value;
         }
 
@@ -322,16 +318,16 @@ namespace Pulumi.SignalFx
         }
 
         [Input("legendOptionsFields")]
-        private InputList<Inputs.TimeChartLegendOptionsFieldsArgs>? _legendOptionsFields;
+        private InputList<Inputs.TimeChartLegendOptionsFieldArgs>? _legendOptionsFields;
 
         /// <summary>
         /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         /// * `enabled` True or False depending on if you want the property to be shown or hidden.
         /// </summary>
-        public InputList<Inputs.TimeChartLegendOptionsFieldsArgs> LegendOptionsFields
+        public InputList<Inputs.TimeChartLegendOptionsFieldArgs> LegendOptionsFields
         {
-            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.TimeChartLegendOptionsFieldsArgs>());
+            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.TimeChartLegendOptionsFieldArgs>());
             set => _legendOptionsFields = value;
         }
 
@@ -427,14 +423,14 @@ namespace Pulumi.SignalFx
         public Input<string>? UnitPrefix { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.TimeChartVizOptionsArgs>? _vizOptions;
+        private InputList<Inputs.TimeChartVizOptionArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.TimeChartVizOptionsArgs> VizOptions
+        public InputList<Inputs.TimeChartVizOptionArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.TimeChartVizOptionsArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.TimeChartVizOptionArgs>());
             set => _vizOptions = value;
         }
 
@@ -494,26 +490,26 @@ namespace Pulumi.SignalFx
         public Input<int>? EndTime { get; set; }
 
         [Input("eventOptions")]
-        private InputList<Inputs.TimeChartEventOptionsGetArgs>? _eventOptions;
+        private InputList<Inputs.TimeChartEventOptionGetArgs>? _eventOptions;
 
         /// <summary>
         /// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         /// </summary>
-        public InputList<Inputs.TimeChartEventOptionsGetArgs> EventOptions
+        public InputList<Inputs.TimeChartEventOptionGetArgs> EventOptions
         {
-            get => _eventOptions ?? (_eventOptions = new InputList<Inputs.TimeChartEventOptionsGetArgs>());
+            get => _eventOptions ?? (_eventOptions = new InputList<Inputs.TimeChartEventOptionGetArgs>());
             set => _eventOptions = value;
         }
 
         [Input("histogramOptions")]
-        private InputList<Inputs.TimeChartHistogramOptionsGetArgs>? _histogramOptions;
+        private InputList<Inputs.TimeChartHistogramOptionGetArgs>? _histogramOptions;
 
         /// <summary>
         /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         /// </summary>
-        public InputList<Inputs.TimeChartHistogramOptionsGetArgs> HistogramOptions
+        public InputList<Inputs.TimeChartHistogramOptionGetArgs> HistogramOptions
         {
-            get => _histogramOptions ?? (_histogramOptions = new InputList<Inputs.TimeChartHistogramOptionsGetArgs>());
+            get => _histogramOptions ?? (_histogramOptions = new InputList<Inputs.TimeChartHistogramOptionGetArgs>());
             set => _histogramOptions = value;
         }
 
@@ -531,16 +527,16 @@ namespace Pulumi.SignalFx
         }
 
         [Input("legendOptionsFields")]
-        private InputList<Inputs.TimeChartLegendOptionsFieldsGetArgs>? _legendOptionsFields;
+        private InputList<Inputs.TimeChartLegendOptionsFieldGetArgs>? _legendOptionsFields;
 
         /// <summary>
         /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         /// * `enabled` True or False depending on if you want the property to be shown or hidden.
         /// </summary>
-        public InputList<Inputs.TimeChartLegendOptionsFieldsGetArgs> LegendOptionsFields
+        public InputList<Inputs.TimeChartLegendOptionsFieldGetArgs> LegendOptionsFields
         {
-            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.TimeChartLegendOptionsFieldsGetArgs>());
+            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.TimeChartLegendOptionsFieldGetArgs>());
             set => _legendOptionsFields = value;
         }
 
@@ -642,781 +638,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Url { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.TimeChartVizOptionsGetArgs>? _vizOptions;
+        private InputList<Inputs.TimeChartVizOptionGetArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.TimeChartVizOptionsGetArgs> VizOptions
+        public InputList<Inputs.TimeChartVizOptionGetArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.TimeChartVizOptionsGetArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.TimeChartVizOptionGetArgs>());
             set => _vizOptions = value;
         }
 
         public TimeChartState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class TimeChartAxisLeftArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// A line to draw as a high watermark.
-        /// </summary>
-        [Input("highWatermark")]
-        public Input<double>? HighWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the high watermark line.
-        /// </summary>
-        [Input("highWatermarkLabel")]
-        public Input<string>? HighWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// A line to draw as a low watermark.
-        /// </summary>
-        [Input("lowWatermark")]
-        public Input<double>? LowWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the low watermark line.
-        /// </summary>
-        [Input("lowWatermarkLabel")]
-        public Input<string>? LowWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// The maximum value for the right axis.
-        /// </summary>
-        [Input("maxValue")]
-        public Input<double>? MaxValue { get; set; }
-
-        /// <summary>
-        /// The minimum value for the right axis.
-        /// </summary>
-        [Input("minValue")]
-        public Input<double>? MinValue { get; set; }
-
-        [Input("watermarks")]
-        private InputList<TimeChartAxisLeftWatermarksArgs>? _watermarks;
-        public InputList<TimeChartAxisLeftWatermarksArgs> Watermarks
-        {
-            get => _watermarks ?? (_watermarks = new InputList<TimeChartAxisLeftWatermarksArgs>());
-            set => _watermarks = value;
-        }
-
-        public TimeChartAxisLeftArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisLeftGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// A line to draw as a high watermark.
-        /// </summary>
-        [Input("highWatermark")]
-        public Input<double>? HighWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the high watermark line.
-        /// </summary>
-        [Input("highWatermarkLabel")]
-        public Input<string>? HighWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// A line to draw as a low watermark.
-        /// </summary>
-        [Input("lowWatermark")]
-        public Input<double>? LowWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the low watermark line.
-        /// </summary>
-        [Input("lowWatermarkLabel")]
-        public Input<string>? LowWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// The maximum value for the right axis.
-        /// </summary>
-        [Input("maxValue")]
-        public Input<double>? MaxValue { get; set; }
-
-        /// <summary>
-        /// The minimum value for the right axis.
-        /// </summary>
-        [Input("minValue")]
-        public Input<double>? MinValue { get; set; }
-
-        [Input("watermarks")]
-        private InputList<TimeChartAxisLeftWatermarksGetArgs>? _watermarks;
-        public InputList<TimeChartAxisLeftWatermarksGetArgs> Watermarks
-        {
-            get => _watermarks ?? (_watermarks = new InputList<TimeChartAxisLeftWatermarksGetArgs>());
-            set => _watermarks = value;
-        }
-
-        public TimeChartAxisLeftGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisLeftWatermarksArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        [Input("value", required: true)]
-        public Input<double> Value { get; set; } = null!;
-
-        public TimeChartAxisLeftWatermarksArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisLeftWatermarksGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        [Input("value", required: true)]
-        public Input<double> Value { get; set; } = null!;
-
-        public TimeChartAxisLeftWatermarksGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisRightArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// A line to draw as a high watermark.
-        /// </summary>
-        [Input("highWatermark")]
-        public Input<double>? HighWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the high watermark line.
-        /// </summary>
-        [Input("highWatermarkLabel")]
-        public Input<string>? HighWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// A line to draw as a low watermark.
-        /// </summary>
-        [Input("lowWatermark")]
-        public Input<double>? LowWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the low watermark line.
-        /// </summary>
-        [Input("lowWatermarkLabel")]
-        public Input<string>? LowWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// The maximum value for the right axis.
-        /// </summary>
-        [Input("maxValue")]
-        public Input<double>? MaxValue { get; set; }
-
-        /// <summary>
-        /// The minimum value for the right axis.
-        /// </summary>
-        [Input("minValue")]
-        public Input<double>? MinValue { get; set; }
-
-        [Input("watermarks")]
-        private InputList<TimeChartAxisRightWatermarksArgs>? _watermarks;
-        public InputList<TimeChartAxisRightWatermarksArgs> Watermarks
-        {
-            get => _watermarks ?? (_watermarks = new InputList<TimeChartAxisRightWatermarksArgs>());
-            set => _watermarks = value;
-        }
-
-        public TimeChartAxisRightArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisRightGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// A line to draw as a high watermark.
-        /// </summary>
-        [Input("highWatermark")]
-        public Input<double>? HighWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the high watermark line.
-        /// </summary>
-        [Input("highWatermarkLabel")]
-        public Input<string>? HighWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        /// <summary>
-        /// A line to draw as a low watermark.
-        /// </summary>
-        [Input("lowWatermark")]
-        public Input<double>? LowWatermark { get; set; }
-
-        /// <summary>
-        /// A label to attach to the low watermark line.
-        /// </summary>
-        [Input("lowWatermarkLabel")]
-        public Input<string>? LowWatermarkLabel { get; set; }
-
-        /// <summary>
-        /// The maximum value for the right axis.
-        /// </summary>
-        [Input("maxValue")]
-        public Input<double>? MaxValue { get; set; }
-
-        /// <summary>
-        /// The minimum value for the right axis.
-        /// </summary>
-        [Input("minValue")]
-        public Input<double>? MinValue { get; set; }
-
-        [Input("watermarks")]
-        private InputList<TimeChartAxisRightWatermarksGetArgs>? _watermarks;
-        public InputList<TimeChartAxisRightWatermarksGetArgs> Watermarks
-        {
-            get => _watermarks ?? (_watermarks = new InputList<TimeChartAxisRightWatermarksGetArgs>());
-            set => _watermarks = value;
-        }
-
-        public TimeChartAxisRightGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisRightWatermarksArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        [Input("value", required: true)]
-        public Input<double> Value { get; set; } = null!;
-
-        public TimeChartAxisRightWatermarksArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartAxisRightWatermarksGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label")]
-        public Input<string>? Label { get; set; }
-
-        [Input("value", required: true)]
-        public Input<double> Value { get; set; } = null!;
-
-        public TimeChartAxisRightWatermarksGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartEventOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        public TimeChartEventOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartEventOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        public TimeChartEventOptionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartHistogramOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-        /// </summary>
-        [Input("colorTheme")]
-        public Input<string>? ColorTheme { get; set; }
-
-        public TimeChartHistogramOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartHistogramOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-        /// </summary>
-        [Input("colorTheme")]
-        public Input<string>? ColorTheme { get; set; }
-
-        public TimeChartHistogramOptionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartLegendOptionsFieldsArgs : Pulumi.ResourceArgs
-    {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        public TimeChartLegendOptionsFieldsArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartLegendOptionsFieldsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        public TimeChartLegendOptionsFieldsGetArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartVizOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
-        /// </summary>
-        [Input("axis")]
-        public Input<string>? Axis { get; set; }
-
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        /// </summary>
-        [Input("plotType")]
-        public Input<string>? PlotType { get; set; }
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public TimeChartVizOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class TimeChartVizOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
-        /// </summary>
-        [Input("axis")]
-        public Input<string>? Axis { get; set; }
-
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        /// </summary>
-        [Input("plotType")]
-        public Input<string>? PlotType { get; set; }
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public TimeChartVizOptionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class TimeChartAxisLeft
-    {
-        /// <summary>
-        /// A line to draw as a high watermark.
-        /// </summary>
-        public readonly double? HighWatermark;
-        /// <summary>
-        /// A label to attach to the high watermark line.
-        /// </summary>
-        public readonly string? HighWatermarkLabel;
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        public readonly string? Label;
-        /// <summary>
-        /// A line to draw as a low watermark.
-        /// </summary>
-        public readonly double? LowWatermark;
-        /// <summary>
-        /// A label to attach to the low watermark line.
-        /// </summary>
-        public readonly string? LowWatermarkLabel;
-        /// <summary>
-        /// The maximum value for the right axis.
-        /// </summary>
-        public readonly double? MaxValue;
-        /// <summary>
-        /// The minimum value for the right axis.
-        /// </summary>
-        public readonly double? MinValue;
-        public readonly ImmutableArray<TimeChartAxisLeftWatermarks> Watermarks;
-
-        [OutputConstructor]
-        private TimeChartAxisLeft(
-            double? highWatermark,
-            string? highWatermarkLabel,
-            string? label,
-            double? lowWatermark,
-            string? lowWatermarkLabel,
-            double? maxValue,
-            double? minValue,
-            ImmutableArray<TimeChartAxisLeftWatermarks> watermarks)
-        {
-            HighWatermark = highWatermark;
-            HighWatermarkLabel = highWatermarkLabel;
-            Label = label;
-            LowWatermark = lowWatermark;
-            LowWatermarkLabel = lowWatermarkLabel;
-            MaxValue = maxValue;
-            MinValue = minValue;
-            Watermarks = watermarks;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartAxisLeftWatermarks
-    {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        public readonly string? Label;
-        public readonly double Value;
-
-        [OutputConstructor]
-        private TimeChartAxisLeftWatermarks(
-            string? label,
-            double value)
-        {
-            Label = label;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartAxisRight
-    {
-        /// <summary>
-        /// A line to draw as a high watermark.
-        /// </summary>
-        public readonly double? HighWatermark;
-        /// <summary>
-        /// A label to attach to the high watermark line.
-        /// </summary>
-        public readonly string? HighWatermarkLabel;
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        public readonly string? Label;
-        /// <summary>
-        /// A line to draw as a low watermark.
-        /// </summary>
-        public readonly double? LowWatermark;
-        /// <summary>
-        /// A label to attach to the low watermark line.
-        /// </summary>
-        public readonly string? LowWatermarkLabel;
-        /// <summary>
-        /// The maximum value for the right axis.
-        /// </summary>
-        public readonly double? MaxValue;
-        /// <summary>
-        /// The minimum value for the right axis.
-        /// </summary>
-        public readonly double? MinValue;
-        public readonly ImmutableArray<TimeChartAxisRightWatermarks> Watermarks;
-
-        [OutputConstructor]
-        private TimeChartAxisRight(
-            double? highWatermark,
-            string? highWatermarkLabel,
-            string? label,
-            double? lowWatermark,
-            string? lowWatermarkLabel,
-            double? maxValue,
-            double? minValue,
-            ImmutableArray<TimeChartAxisRightWatermarks> watermarks)
-        {
-            HighWatermark = highWatermark;
-            HighWatermarkLabel = highWatermarkLabel;
-            Label = label;
-            LowWatermark = lowWatermark;
-            LowWatermarkLabel = lowWatermarkLabel;
-            MaxValue = maxValue;
-            MinValue = minValue;
-            Watermarks = watermarks;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartAxisRightWatermarks
-    {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        public readonly string? Label;
-        public readonly double Value;
-
-        [OutputConstructor]
-        private TimeChartAxisRightWatermarks(
-            string? label,
-            double value)
-        {
-            Label = label;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartEventOptions
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        public readonly string? Color;
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        public readonly string? DisplayName;
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        public readonly string Label;
-
-        [OutputConstructor]
-        private TimeChartEventOptions(
-            string? color,
-            string? displayName,
-            string label)
-        {
-            Color = color;
-            DisplayName = displayName;
-            Label = label;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartHistogramOptions
-    {
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-        /// </summary>
-        public readonly string? ColorTheme;
-
-        [OutputConstructor]
-        private TimeChartHistogramOptions(string? colorTheme)
-        {
-            ColorTheme = colorTheme;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartLegendOptionsFields
-    {
-        public readonly bool? Enabled;
-        public readonly string Property;
-
-        [OutputConstructor]
-        private TimeChartLegendOptionsFields(
-            bool? enabled,
-            string property)
-        {
-            Enabled = enabled;
-            Property = property;
-        }
-    }
-
-    [OutputType]
-    public sealed class TimeChartVizOptions
-    {
-        /// <summary>
-        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
-        /// </summary>
-        public readonly string? Axis;
-        /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-        /// </summary>
-        public readonly string? Color;
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        public readonly string? DisplayName;
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
-        public readonly string Label;
-        /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        /// </summary>
-        public readonly string? PlotType;
-        public readonly string? ValuePrefix;
-        public readonly string? ValueSuffix;
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        public readonly string? ValueUnit;
-
-        [OutputConstructor]
-        private TimeChartVizOptions(
-            string? axis,
-            string? color,
-            string? displayName,
-            string label,
-            string? plotType,
-            string? valuePrefix,
-            string? valueSuffix,
-            string? valueUnit)
-        {
-            Axis = axis;
-            Color = color;
-            DisplayName = displayName;
-            Label = label;
-            PlotType = plotType;
-            ValuePrefix = valuePrefix;
-            ValueSuffix = valueSuffix;
-            ValueUnit = valueUnit;
-        }
-    }
     }
 }

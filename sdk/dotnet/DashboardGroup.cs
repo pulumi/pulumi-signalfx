@@ -13,10 +13,6 @@ namespace Pulumi.SignalFx
     /// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
     /// 
     /// &gt; **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
     /// </summary>
     public partial class DashboardGroup : Pulumi.CustomResource
     {
@@ -36,7 +32,7 @@ namespace Pulumi.SignalFx
         /// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         /// </summary>
         [Output("dashboards")]
-        public Output<ImmutableArray<Outputs.DashboardGroupDashboards>> Dashboards { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardGroupDashboard>> Dashboards { get; private set; } = null!;
 
         /// <summary>
         /// Description of the dashboard group.
@@ -45,7 +41,7 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         [Output("importQualifiers")]
-        public Output<ImmutableArray<Outputs.DashboardGroupImportQualifiers>> ImportQualifiers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DashboardGroupImportQualifier>> ImportQualifiers { get; private set; } = null!;
 
         /// <summary>
         /// Name of the dashboard group.
@@ -68,7 +64,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DashboardGroup(string name, DashboardGroupArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:index/dashboardGroup:DashboardGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/dashboardGroup:DashboardGroup", name, args ?? new DashboardGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -130,14 +126,14 @@ namespace Pulumi.SignalFx
         }
 
         [Input("dashboards")]
-        private InputList<Inputs.DashboardGroupDashboardsArgs>? _dashboards;
+        private InputList<Inputs.DashboardGroupDashboardArgs>? _dashboards;
 
         /// <summary>
         /// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         /// </summary>
-        public InputList<Inputs.DashboardGroupDashboardsArgs> Dashboards
+        public InputList<Inputs.DashboardGroupDashboardArgs> Dashboards
         {
-            get => _dashboards ?? (_dashboards = new InputList<Inputs.DashboardGroupDashboardsArgs>());
+            get => _dashboards ?? (_dashboards = new InputList<Inputs.DashboardGroupDashboardArgs>());
             set => _dashboards = value;
         }
 
@@ -148,10 +144,10 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         [Input("importQualifiers")]
-        private InputList<Inputs.DashboardGroupImportQualifiersArgs>? _importQualifiers;
-        public InputList<Inputs.DashboardGroupImportQualifiersArgs> ImportQualifiers
+        private InputList<Inputs.DashboardGroupImportQualifierArgs>? _importQualifiers;
+        public InputList<Inputs.DashboardGroupImportQualifierArgs> ImportQualifiers
         {
-            get => _importQualifiers ?? (_importQualifiers = new InputList<Inputs.DashboardGroupImportQualifiersArgs>());
+            get => _importQualifiers ?? (_importQualifiers = new InputList<Inputs.DashboardGroupImportQualifierArgs>());
             set => _importQualifiers = value;
         }
 
@@ -205,14 +201,14 @@ namespace Pulumi.SignalFx
         }
 
         [Input("dashboards")]
-        private InputList<Inputs.DashboardGroupDashboardsGetArgs>? _dashboards;
+        private InputList<Inputs.DashboardGroupDashboardGetArgs>? _dashboards;
 
         /// <summary>
         /// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         /// </summary>
-        public InputList<Inputs.DashboardGroupDashboardsGetArgs> Dashboards
+        public InputList<Inputs.DashboardGroupDashboardGetArgs> Dashboards
         {
-            get => _dashboards ?? (_dashboards = new InputList<Inputs.DashboardGroupDashboardsGetArgs>());
+            get => _dashboards ?? (_dashboards = new InputList<Inputs.DashboardGroupDashboardGetArgs>());
             set => _dashboards = value;
         }
 
@@ -223,10 +219,10 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         [Input("importQualifiers")]
-        private InputList<Inputs.DashboardGroupImportQualifiersGetArgs>? _importQualifiers;
-        public InputList<Inputs.DashboardGroupImportQualifiersGetArgs> ImportQualifiers
+        private InputList<Inputs.DashboardGroupImportQualifierGetArgs>? _importQualifiers;
+        public InputList<Inputs.DashboardGroupImportQualifierGetArgs> ImportQualifiers
         {
-            get => _importQualifiers ?? (_importQualifiers = new InputList<Inputs.DashboardGroupImportQualifiersGetArgs>());
+            get => _importQualifiers ?? (_importQualifiers = new InputList<Inputs.DashboardGroupImportQualifierGetArgs>());
             set => _importQualifiers = value;
         }
 
@@ -251,474 +247,5 @@ namespace Pulumi.SignalFx
         public DashboardGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DashboardGroupDashboardsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The dashboard id to mirror
-        /// </summary>
-        [Input("dashboardId", required: true)]
-        public Input<string> DashboardId { get; set; } = null!;
-
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
-        [Input("descriptionOverride")]
-        public Input<string>? DescriptionOverride { get; set; }
-
-        [Input("filterOverrides")]
-        private InputList<DashboardGroupDashboardsFilterOverridesArgs>? _filterOverrides;
-
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
-        public InputList<DashboardGroupDashboardsFilterOverridesArgs> FilterOverrides
-        {
-            get => _filterOverrides ?? (_filterOverrides = new InputList<DashboardGroupDashboardsFilterOverridesArgs>());
-            set => _filterOverrides = value;
-        }
-
-        /// <summary>
-        /// The name that will override the original dashboards's name.
-        /// </summary>
-        [Input("nameOverride")]
-        public Input<string>? NameOverride { get; set; }
-
-        [Input("variableOverrides")]
-        private InputList<DashboardGroupDashboardsVariableOverridesArgs>? _variableOverrides;
-        public InputList<DashboardGroupDashboardsVariableOverridesArgs> VariableOverrides
-        {
-            get => _variableOverrides ?? (_variableOverrides = new InputList<DashboardGroupDashboardsVariableOverridesArgs>());
-            set => _variableOverrides = value;
-        }
-
-        public DashboardGroupDashboardsArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupDashboardsFilterOverridesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardGroupDashboardsFilterOverridesArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupDashboardsFilterOverridesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardGroupDashboardsFilterOverridesGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupDashboardsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The dashboard id to mirror
-        /// </summary>
-        [Input("dashboardId", required: true)]
-        public Input<string> DashboardId { get; set; } = null!;
-
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
-        [Input("descriptionOverride")]
-        public Input<string>? DescriptionOverride { get; set; }
-
-        [Input("filterOverrides")]
-        private InputList<DashboardGroupDashboardsFilterOverridesGetArgs>? _filterOverrides;
-
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
-        public InputList<DashboardGroupDashboardsFilterOverridesGetArgs> FilterOverrides
-        {
-            get => _filterOverrides ?? (_filterOverrides = new InputList<DashboardGroupDashboardsFilterOverridesGetArgs>());
-            set => _filterOverrides = value;
-        }
-
-        /// <summary>
-        /// The name that will override the original dashboards's name.
-        /// </summary>
-        [Input("nameOverride")]
-        public Input<string>? NameOverride { get; set; }
-
-        [Input("variableOverrides")]
-        private InputList<DashboardGroupDashboardsVariableOverridesGetArgs>? _variableOverrides;
-        public InputList<DashboardGroupDashboardsVariableOverridesGetArgs> VariableOverrides
-        {
-            get => _variableOverrides ?? (_variableOverrides = new InputList<DashboardGroupDashboardsVariableOverridesGetArgs>());
-            set => _variableOverrides = value;
-        }
-
-        public DashboardGroupDashboardsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupDashboardsVariableOverridesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values")]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        [Input("valuesSuggesteds")]
-        private InputList<string>? _valuesSuggesteds;
-
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
-        public InputList<string> ValuesSuggesteds
-        {
-            get => _valuesSuggesteds ?? (_valuesSuggesteds = new InputList<string>());
-            set => _valuesSuggesteds = value;
-        }
-
-        public DashboardGroupDashboardsVariableOverridesArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupDashboardsVariableOverridesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values")]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        [Input("valuesSuggesteds")]
-        private InputList<string>? _valuesSuggesteds;
-
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
-        public InputList<string> ValuesSuggesteds
-        {
-            get => _valuesSuggesteds ?? (_valuesSuggesteds = new InputList<string>());
-            set => _valuesSuggesteds = value;
-        }
-
-        public DashboardGroupDashboardsVariableOverridesGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupImportQualifiersArgs : Pulumi.ResourceArgs
-    {
-        [Input("filters")]
-        private InputList<DashboardGroupImportQualifiersFiltersArgs>? _filters;
-        public InputList<DashboardGroupImportQualifiersFiltersArgs> Filters
-        {
-            get => _filters ?? (_filters = new InputList<DashboardGroupImportQualifiersFiltersArgs>());
-            set => _filters = value;
-        }
-
-        [Input("metric", required: true)]
-        public Input<string> Metric { get; set; } = null!;
-
-        public DashboardGroupImportQualifiersArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupImportQualifiersFiltersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardGroupImportQualifiersFiltersArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupImportQualifiersFiltersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        [Input("negated")]
-        public Input<bool>? Negated { get; set; }
-
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public DashboardGroupImportQualifiersFiltersGetArgs()
-        {
-        }
-    }
-
-    public sealed class DashboardGroupImportQualifiersGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("filters")]
-        private InputList<DashboardGroupImportQualifiersFiltersGetArgs>? _filters;
-        public InputList<DashboardGroupImportQualifiersFiltersGetArgs> Filters
-        {
-            get => _filters ?? (_filters = new InputList<DashboardGroupImportQualifiersFiltersGetArgs>());
-            set => _filters = value;
-        }
-
-        [Input("metric", required: true)]
-        public Input<string> Metric { get; set; } = null!;
-
-        public DashboardGroupImportQualifiersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DashboardGroupDashboards
-    {
-        /// <summary>
-        /// The dashboard id to mirror
-        /// </summary>
-        public readonly string DashboardId;
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
-        public readonly string? DescriptionOverride;
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
-        public readonly ImmutableArray<DashboardGroupDashboardsFilterOverrides> FilterOverrides;
-        /// <summary>
-        /// The name that will override the original dashboards's name.
-        /// </summary>
-        public readonly string? NameOverride;
-        public readonly ImmutableArray<DashboardGroupDashboardsVariableOverrides> VariableOverrides;
-
-        [OutputConstructor]
-        private DashboardGroupDashboards(
-            string dashboardId,
-            string? descriptionOverride,
-            ImmutableArray<DashboardGroupDashboardsFilterOverrides> filterOverrides,
-            string? nameOverride,
-            ImmutableArray<DashboardGroupDashboardsVariableOverrides> variableOverrides)
-        {
-            DashboardId = dashboardId;
-            DescriptionOverride = descriptionOverride;
-            FilterOverrides = filterOverrides;
-            NameOverride = nameOverride;
-            VariableOverrides = variableOverrides;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardGroupDashboardsFilterOverrides
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private DashboardGroupDashboardsFilterOverrides(
-            bool? negated,
-            string property,
-            ImmutableArray<string> values)
-        {
-            Negated = negated;
-            Property = property;
-            Values = values;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardGroupDashboardsVariableOverrides
-    {
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
-        public readonly ImmutableArray<string> ValuesSuggesteds;
-
-        [OutputConstructor]
-        private DashboardGroupDashboardsVariableOverrides(
-            string property,
-            ImmutableArray<string> values,
-            ImmutableArray<string> valuesSuggesteds)
-        {
-            Property = property;
-            Values = values;
-            ValuesSuggesteds = valuesSuggesteds;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardGroupImportQualifiers
-    {
-        public readonly ImmutableArray<DashboardGroupImportQualifiersFilters> Filters;
-        public readonly string Metric;
-
-        [OutputConstructor]
-        private DashboardGroupImportQualifiers(
-            ImmutableArray<DashboardGroupImportQualifiersFilters> filters,
-            string metric)
-        {
-            Filters = filters;
-            Metric = metric;
-        }
-    }
-
-    [OutputType]
-    public sealed class DashboardGroupImportQualifiersFilters
-    {
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
-        public readonly bool? Negated;
-        /// <summary>
-        /// A metric time series dimension or property name.
-        /// </summary>
-        public readonly string Property;
-        /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private DashboardGroupImportQualifiersFilters(
-            bool? negated,
-            string property,
-            ImmutableArray<string> values)
-        {
-            Negated = negated;
-            Property = property;
-            Values = values;
-        }
-    }
     }
 }

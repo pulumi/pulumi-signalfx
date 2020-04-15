@@ -13,10 +13,6 @@ namespace Pulumi.SignalFx
     /// SignalFx Webhook integration.
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/webhook_integration.html.markdown.
     /// </summary>
     public partial class WebhookIntegration : Pulumi.CustomResource
     {
@@ -30,7 +26,7 @@ namespace Pulumi.SignalFx
         /// A header to send with the request
         /// </summary>
         [Output("headers")]
-        public Output<ImmutableArray<Outputs.WebhookIntegrationHeaders>> Headers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.WebhookIntegrationHeader>> Headers { get; private set; } = null!;
 
         /// <summary>
         /// Name of the integration.
@@ -56,7 +52,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WebhookIntegration(string name, WebhookIntegrationArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/webhookIntegration:WebhookIntegration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/webhookIntegration:WebhookIntegration", name, args ?? new WebhookIntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -100,14 +96,14 @@ namespace Pulumi.SignalFx
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("headers")]
-        private InputList<Inputs.WebhookIntegrationHeadersArgs>? _headers;
+        private InputList<Inputs.WebhookIntegrationHeaderArgs>? _headers;
 
         /// <summary>
         /// A header to send with the request
         /// </summary>
-        public InputList<Inputs.WebhookIntegrationHeadersArgs> Headers
+        public InputList<Inputs.WebhookIntegrationHeaderArgs> Headers
         {
-            get => _headers ?? (_headers = new InputList<Inputs.WebhookIntegrationHeadersArgs>());
+            get => _headers ?? (_headers = new InputList<Inputs.WebhookIntegrationHeaderArgs>());
             set => _headers = value;
         }
 
@@ -140,14 +136,14 @@ namespace Pulumi.SignalFx
         public Input<bool>? Enabled { get; set; }
 
         [Input("headers")]
-        private InputList<Inputs.WebhookIntegrationHeadersGetArgs>? _headers;
+        private InputList<Inputs.WebhookIntegrationHeaderGetArgs>? _headers;
 
         /// <summary>
         /// A header to send with the request
         /// </summary>
-        public InputList<Inputs.WebhookIntegrationHeadersGetArgs> Headers
+        public InputList<Inputs.WebhookIntegrationHeaderGetArgs> Headers
         {
-            get => _headers ?? (_headers = new InputList<Inputs.WebhookIntegrationHeadersGetArgs>());
+            get => _headers ?? (_headers = new InputList<Inputs.WebhookIntegrationHeaderGetArgs>());
             set => _headers = value;
         }
 
@@ -169,73 +165,5 @@ namespace Pulumi.SignalFx
         public WebhookIntegrationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class WebhookIntegrationHeadersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The key of the header to send
-        /// </summary>
-        [Input("headerKey", required: true)]
-        public Input<string> HeaderKey { get; set; } = null!;
-
-        /// <summary>
-        /// The value of the header to send
-        /// </summary>
-        [Input("headerValue", required: true)]
-        public Input<string> HeaderValue { get; set; } = null!;
-
-        public WebhookIntegrationHeadersArgs()
-        {
-        }
-    }
-
-    public sealed class WebhookIntegrationHeadersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The key of the header to send
-        /// </summary>
-        [Input("headerKey", required: true)]
-        public Input<string> HeaderKey { get; set; } = null!;
-
-        /// <summary>
-        /// The value of the header to send
-        /// </summary>
-        [Input("headerValue", required: true)]
-        public Input<string> HeaderValue { get; set; } = null!;
-
-        public WebhookIntegrationHeadersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class WebhookIntegrationHeaders
-    {
-        /// <summary>
-        /// The key of the header to send
-        /// </summary>
-        public readonly string HeaderKey;
-        /// <summary>
-        /// The value of the header to send
-        /// </summary>
-        public readonly string HeaderValue;
-
-        [OutputConstructor]
-        private WebhookIntegrationHeaders(
-            string headerKey,
-            string headerValue)
-        {
-            HeaderKey = headerKey;
-            HeaderValue = headerValue;
-        }
-    }
     }
 }

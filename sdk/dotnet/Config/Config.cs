@@ -8,7 +8,6 @@ namespace Pulumi.SignalFx
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("signalfx");
-
         /// <summary>
         /// API URL for your SignalFx org, may include a realm
         /// </summary>
@@ -24,8 +23,5 @@ namespace Pulumi.SignalFx
         /// </summary>
         public static string? CustomAppUrl { get; set; } = __config.Get("customAppUrl");
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

@@ -13,10 +13,6 @@ namespace Pulumi.SignalFx.VictorOps
     /// SignalFx VictorOps integration.
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/victor_ops_integration.html.markdown.
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {
@@ -47,7 +43,7 @@ namespace Pulumi.SignalFx.VictorOps
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Integration(string name, IntegrationArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:victorops/integration:Integration", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:victorops/integration:Integration", name, args ?? new IntegrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

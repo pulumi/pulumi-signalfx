@@ -11,10 +11,6 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/data_link.html.markdown.
     /// </summary>
     public partial class DataLink : Pulumi.CustomResource
     {
@@ -40,19 +36,19 @@ namespace Pulumi.SignalFx
         /// Link to an external URL
         /// </summary>
         [Output("targetExternalUrls")]
-        public Output<ImmutableArray<Outputs.DataLinkTargetExternalUrls>> TargetExternalUrls { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DataLinkTargetExternalUrl>> TargetExternalUrls { get; private set; } = null!;
 
         /// <summary>
         /// Link to a SignalFx dashboard
         /// </summary>
         [Output("targetSignalfxDashboards")]
-        public Output<ImmutableArray<Outputs.DataLinkTargetSignalfxDashboards>> TargetSignalfxDashboards { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DataLinkTargetSignalfxDashboard>> TargetSignalfxDashboards { get; private set; } = null!;
 
         /// <summary>
         /// Link to an external URL
         /// </summary>
         [Output("targetSplunks")]
-        public Output<ImmutableArray<Outputs.DataLinkTargetSplunks>> TargetSplunks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DataLinkTargetSplunk>> TargetSplunks { get; private set; } = null!;
 
 
         /// <summary>
@@ -63,7 +59,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DataLink(string name, DataLinkArgs? args = null, CustomResourceOptions? options = null)
-            : base("signalfx:index/dataLink:DataLink", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/dataLink:DataLink", name, args ?? new DataLinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -119,38 +115,38 @@ namespace Pulumi.SignalFx
         public Input<string>? PropertyValue { get; set; }
 
         [Input("targetExternalUrls")]
-        private InputList<Inputs.DataLinkTargetExternalUrlsArgs>? _targetExternalUrls;
+        private InputList<Inputs.DataLinkTargetExternalUrlArgs>? _targetExternalUrls;
 
         /// <summary>
         /// Link to an external URL
         /// </summary>
-        public InputList<Inputs.DataLinkTargetExternalUrlsArgs> TargetExternalUrls
+        public InputList<Inputs.DataLinkTargetExternalUrlArgs> TargetExternalUrls
         {
-            get => _targetExternalUrls ?? (_targetExternalUrls = new InputList<Inputs.DataLinkTargetExternalUrlsArgs>());
+            get => _targetExternalUrls ?? (_targetExternalUrls = new InputList<Inputs.DataLinkTargetExternalUrlArgs>());
             set => _targetExternalUrls = value;
         }
 
         [Input("targetSignalfxDashboards")]
-        private InputList<Inputs.DataLinkTargetSignalfxDashboardsArgs>? _targetSignalfxDashboards;
+        private InputList<Inputs.DataLinkTargetSignalfxDashboardArgs>? _targetSignalfxDashboards;
 
         /// <summary>
         /// Link to a SignalFx dashboard
         /// </summary>
-        public InputList<Inputs.DataLinkTargetSignalfxDashboardsArgs> TargetSignalfxDashboards
+        public InputList<Inputs.DataLinkTargetSignalfxDashboardArgs> TargetSignalfxDashboards
         {
-            get => _targetSignalfxDashboards ?? (_targetSignalfxDashboards = new InputList<Inputs.DataLinkTargetSignalfxDashboardsArgs>());
+            get => _targetSignalfxDashboards ?? (_targetSignalfxDashboards = new InputList<Inputs.DataLinkTargetSignalfxDashboardArgs>());
             set => _targetSignalfxDashboards = value;
         }
 
         [Input("targetSplunks")]
-        private InputList<Inputs.DataLinkTargetSplunksArgs>? _targetSplunks;
+        private InputList<Inputs.DataLinkTargetSplunkArgs>? _targetSplunks;
 
         /// <summary>
         /// Link to an external URL
         /// </summary>
-        public InputList<Inputs.DataLinkTargetSplunksArgs> TargetSplunks
+        public InputList<Inputs.DataLinkTargetSplunkArgs> TargetSplunks
         {
-            get => _targetSplunks ?? (_targetSplunks = new InputList<Inputs.DataLinkTargetSplunksArgs>());
+            get => _targetSplunks ?? (_targetSplunks = new InputList<Inputs.DataLinkTargetSplunkArgs>());
             set => _targetSplunks = value;
         }
 
@@ -180,372 +176,43 @@ namespace Pulumi.SignalFx
         public Input<string>? PropertyValue { get; set; }
 
         [Input("targetExternalUrls")]
-        private InputList<Inputs.DataLinkTargetExternalUrlsGetArgs>? _targetExternalUrls;
+        private InputList<Inputs.DataLinkTargetExternalUrlGetArgs>? _targetExternalUrls;
 
         /// <summary>
         /// Link to an external URL
         /// </summary>
-        public InputList<Inputs.DataLinkTargetExternalUrlsGetArgs> TargetExternalUrls
+        public InputList<Inputs.DataLinkTargetExternalUrlGetArgs> TargetExternalUrls
         {
-            get => _targetExternalUrls ?? (_targetExternalUrls = new InputList<Inputs.DataLinkTargetExternalUrlsGetArgs>());
+            get => _targetExternalUrls ?? (_targetExternalUrls = new InputList<Inputs.DataLinkTargetExternalUrlGetArgs>());
             set => _targetExternalUrls = value;
         }
 
         [Input("targetSignalfxDashboards")]
-        private InputList<Inputs.DataLinkTargetSignalfxDashboardsGetArgs>? _targetSignalfxDashboards;
+        private InputList<Inputs.DataLinkTargetSignalfxDashboardGetArgs>? _targetSignalfxDashboards;
 
         /// <summary>
         /// Link to a SignalFx dashboard
         /// </summary>
-        public InputList<Inputs.DataLinkTargetSignalfxDashboardsGetArgs> TargetSignalfxDashboards
+        public InputList<Inputs.DataLinkTargetSignalfxDashboardGetArgs> TargetSignalfxDashboards
         {
-            get => _targetSignalfxDashboards ?? (_targetSignalfxDashboards = new InputList<Inputs.DataLinkTargetSignalfxDashboardsGetArgs>());
+            get => _targetSignalfxDashboards ?? (_targetSignalfxDashboards = new InputList<Inputs.DataLinkTargetSignalfxDashboardGetArgs>());
             set => _targetSignalfxDashboards = value;
         }
 
         [Input("targetSplunks")]
-        private InputList<Inputs.DataLinkTargetSplunksGetArgs>? _targetSplunks;
+        private InputList<Inputs.DataLinkTargetSplunkGetArgs>? _targetSplunks;
 
         /// <summary>
         /// Link to an external URL
         /// </summary>
-        public InputList<Inputs.DataLinkTargetSplunksGetArgs> TargetSplunks
+        public InputList<Inputs.DataLinkTargetSplunkGetArgs> TargetSplunks
         {
-            get => _targetSplunks ?? (_targetSplunks = new InputList<Inputs.DataLinkTargetSplunksGetArgs>());
+            get => _targetSplunks ?? (_targetSplunks = new InputList<Inputs.DataLinkTargetSplunkGetArgs>());
             set => _targetSplunks = value;
         }
 
         public DataLinkState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class DataLinkTargetExternalUrlsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-        /// </summary>
-        [Input("minimumTimeWindow")]
-        public Input<string>? MinimumTimeWindow { get; set; }
-
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("propertyKeyMapping")]
-        private InputMap<string>? _propertyKeyMapping;
-
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
-        public InputMap<string> PropertyKeyMapping
-        {
-            get => _propertyKeyMapping ?? (_propertyKeyMapping = new InputMap<string>());
-            set => _propertyKeyMapping = value;
-        }
-
-        /// <summary>
-        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-        /// </summary>
-        [Input("timeFormat")]
-        public Input<string>? TimeFormat { get; set; }
-
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public DataLinkTargetExternalUrlsArgs()
-        {
-        }
-    }
-
-    public sealed class DataLinkTargetExternalUrlsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-        /// </summary>
-        [Input("minimumTimeWindow")]
-        public Input<string>? MinimumTimeWindow { get; set; }
-
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("propertyKeyMapping")]
-        private InputMap<string>? _propertyKeyMapping;
-
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
-        public InputMap<string> PropertyKeyMapping
-        {
-            get => _propertyKeyMapping ?? (_propertyKeyMapping = new InputMap<string>());
-            set => _propertyKeyMapping = value;
-        }
-
-        /// <summary>
-        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-        /// </summary>
-        [Input("timeFormat")]
-        public Input<string>? TimeFormat { get; set; }
-
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        public DataLinkTargetExternalUrlsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DataLinkTargetSignalfxDashboardsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target's dashboard group
-        /// </summary>
-        [Input("dashboardGroupId", required: true)]
-        public Input<string> DashboardGroupId { get; set; } = null!;
-
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target
-        /// </summary>
-        [Input("dashboardId", required: true)]
-        public Input<string> DashboardId { get; set; } = null!;
-
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public DataLinkTargetSignalfxDashboardsArgs()
-        {
-        }
-    }
-
-    public sealed class DataLinkTargetSignalfxDashboardsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target's dashboard group
-        /// </summary>
-        [Input("dashboardGroupId", required: true)]
-        public Input<string> DashboardGroupId { get; set; } = null!;
-
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target
-        /// </summary>
-        [Input("dashboardId", required: true)]
-        public Input<string> DashboardId { get; set; } = null!;
-
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public DataLinkTargetSignalfxDashboardsGetArgs()
-        {
-        }
-    }
-
-    public sealed class DataLinkTargetSplunksArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("propertyKeyMapping")]
-        private InputMap<string>? _propertyKeyMapping;
-
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
-        public InputMap<string> PropertyKeyMapping
-        {
-            get => _propertyKeyMapping ?? (_propertyKeyMapping = new InputMap<string>());
-            set => _propertyKeyMapping = value;
-        }
-
-        public DataLinkTargetSplunksArgs()
-        {
-        }
-    }
-
-    public sealed class DataLinkTargetSplunksGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        [Input("propertyKeyMapping")]
-        private InputMap<string>? _propertyKeyMapping;
-
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
-        public InputMap<string> PropertyKeyMapping
-        {
-            get => _propertyKeyMapping ?? (_propertyKeyMapping = new InputMap<string>());
-            set => _propertyKeyMapping = value;
-        }
-
-        public DataLinkTargetSplunksGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class DataLinkTargetExternalUrls
-    {
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        public readonly bool? IsDefault;
-        /// <summary>
-        /// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-        /// </summary>
-        public readonly string? MinimumTimeWindow;
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
-        /// <summary>
-        /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-        /// </summary>
-        public readonly string? TimeFormat;
-        public readonly string Url;
-
-        [OutputConstructor]
-        private DataLinkTargetExternalUrls(
-            bool? isDefault,
-            string? minimumTimeWindow,
-            string name,
-            ImmutableDictionary<string, string>? propertyKeyMapping,
-            string? timeFormat,
-            string url)
-        {
-            IsDefault = isDefault;
-            MinimumTimeWindow = minimumTimeWindow;
-            Name = name;
-            PropertyKeyMapping = propertyKeyMapping;
-            TimeFormat = timeFormat;
-            Url = url;
-        }
-    }
-
-    [OutputType]
-    public sealed class DataLinkTargetSignalfxDashboards
-    {
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target's dashboard group
-        /// </summary>
-        public readonly string DashboardGroupId;
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target
-        /// </summary>
-        public readonly string DashboardId;
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        public readonly bool? IsDefault;
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private DataLinkTargetSignalfxDashboards(
-            string dashboardGroupId,
-            string dashboardId,
-            bool? isDefault,
-            string name)
-        {
-            DashboardGroupId = dashboardGroupId;
-            DashboardId = dashboardId;
-            IsDefault = isDefault;
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class DataLinkTargetSplunks
-    {
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        public readonly bool? IsDefault;
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
-        public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
-
-        [OutputConstructor]
-        private DataLinkTargetSplunks(
-            bool? isDefault,
-            string name,
-            ImmutableDictionary<string, string>? propertyKeyMapping)
-        {
-            IsDefault = isDefault;
-            Name = name;
-            PropertyKeyMapping = propertyKeyMapping;
-        }
-    }
     }
 }

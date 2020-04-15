@@ -13,11 +13,6 @@ namespace Pulumi.SignalFx
     /// This chart type displays current data values in a list format.
     /// 
     /// The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
-    /// 
-    /// 
-    /// 
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/list_chart.html.markdown.
     /// </summary>
     public partial class ListChart : Pulumi.CustomResource
     {
@@ -31,7 +26,7 @@ namespace Pulumi.SignalFx
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
         [Output("colorScales")]
-        public Output<ImmutableArray<Outputs.ListChartColorScales>> ColorScales { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ListChartColorScale>> ColorScales { get; private set; } = null!;
 
         /// <summary>
         /// Description of the chart.
@@ -63,7 +58,7 @@ namespace Pulumi.SignalFx
         /// * `enabled` True or False depending on if you want the property to be shown or hidden.
         /// </summary>
         [Output("legendOptionsFields")]
-        public Output<ImmutableArray<Outputs.ListChartLegendOptionsFields>> LegendOptionsFields { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ListChartLegendOptionsField>> LegendOptionsFields { get; private set; } = null!;
 
         /// <summary>
         /// How long (in seconds) to wait for late datapoints.
@@ -135,7 +130,7 @@ namespace Pulumi.SignalFx
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         [Output("vizOptions")]
-        public Output<ImmutableArray<Outputs.ListChartVizOptions>> VizOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ListChartVizOption>> VizOptions { get; private set; } = null!;
 
 
         /// <summary>
@@ -146,7 +141,7 @@ namespace Pulumi.SignalFx
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ListChart(string name, ListChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:index/listChart:ListChart", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("signalfx:index/listChart:ListChart", name, args ?? new ListChartArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -190,14 +185,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ColorBy { get; set; }
 
         [Input("colorScales")]
-        private InputList<Inputs.ListChartColorScalesArgs>? _colorScales;
+        private InputList<Inputs.ListChartColorScaleArgs>? _colorScales;
 
         /// <summary>
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
-        public InputList<Inputs.ListChartColorScalesArgs> ColorScales
+        public InputList<Inputs.ListChartColorScaleArgs> ColorScales
         {
-            get => _colorScales ?? (_colorScales = new InputList<Inputs.ListChartColorScalesArgs>());
+            get => _colorScales ?? (_colorScales = new InputList<Inputs.ListChartColorScaleArgs>());
             set => _colorScales = value;
         }
 
@@ -233,16 +228,16 @@ namespace Pulumi.SignalFx
         }
 
         [Input("legendOptionsFields")]
-        private InputList<Inputs.ListChartLegendOptionsFieldsArgs>? _legendOptionsFields;
+        private InputList<Inputs.ListChartLegendOptionsFieldArgs>? _legendOptionsFields;
 
         /// <summary>
         /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         /// * `enabled` True or False depending on if you want the property to be shown or hidden.
         /// </summary>
-        public InputList<Inputs.ListChartLegendOptionsFieldsArgs> LegendOptionsFields
+        public InputList<Inputs.ListChartLegendOptionsFieldArgs> LegendOptionsFields
         {
-            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.ListChartLegendOptionsFieldsArgs>());
+            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.ListChartLegendOptionsFieldArgs>());
             set => _legendOptionsFields = value;
         }
 
@@ -307,14 +302,14 @@ namespace Pulumi.SignalFx
         public Input<string>? UnitPrefix { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.ListChartVizOptionsArgs>? _vizOptions;
+        private InputList<Inputs.ListChartVizOptionArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.ListChartVizOptionsArgs> VizOptions
+        public InputList<Inputs.ListChartVizOptionArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.ListChartVizOptionsArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.ListChartVizOptionArgs>());
             set => _vizOptions = value;
         }
 
@@ -332,14 +327,14 @@ namespace Pulumi.SignalFx
         public Input<string>? ColorBy { get; set; }
 
         [Input("colorScales")]
-        private InputList<Inputs.ListChartColorScalesGetArgs>? _colorScales;
+        private InputList<Inputs.ListChartColorScaleGetArgs>? _colorScales;
 
         /// <summary>
         /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
-        public InputList<Inputs.ListChartColorScalesGetArgs> ColorScales
+        public InputList<Inputs.ListChartColorScaleGetArgs> ColorScales
         {
-            get => _colorScales ?? (_colorScales = new InputList<Inputs.ListChartColorScalesGetArgs>());
+            get => _colorScales ?? (_colorScales = new InputList<Inputs.ListChartColorScaleGetArgs>());
             set => _colorScales = value;
         }
 
@@ -375,16 +370,16 @@ namespace Pulumi.SignalFx
         }
 
         [Input("legendOptionsFields")]
-        private InputList<Inputs.ListChartLegendOptionsFieldsGetArgs>? _legendOptionsFields;
+        private InputList<Inputs.ListChartLegendOptionsFieldGetArgs>? _legendOptionsFields;
 
         /// <summary>
         /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         /// * `enabled` True or False depending on if you want the property to be shown or hidden.
         /// </summary>
-        public InputList<Inputs.ListChartLegendOptionsFieldsGetArgs> LegendOptionsFields
+        public InputList<Inputs.ListChartLegendOptionsFieldGetArgs> LegendOptionsFields
         {
-            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.ListChartLegendOptionsFieldsGetArgs>());
+            get => _legendOptionsFields ?? (_legendOptionsFields = new InputList<Inputs.ListChartLegendOptionsFieldGetArgs>());
             set => _legendOptionsFields = value;
         }
 
@@ -455,300 +450,19 @@ namespace Pulumi.SignalFx
         public Input<string>? Url { get; set; }
 
         [Input("vizOptions")]
-        private InputList<Inputs.ListChartVizOptionsGetArgs>? _vizOptions;
+        private InputList<Inputs.ListChartVizOptionGetArgs>? _vizOptions;
 
         /// <summary>
         /// Plot-level customization options, associated with a publish statement.
         /// </summary>
-        public InputList<Inputs.ListChartVizOptionsGetArgs> VizOptions
+        public InputList<Inputs.ListChartVizOptionGetArgs> VizOptions
         {
-            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.ListChartVizOptionsGetArgs>());
+            get => _vizOptions ?? (_vizOptions = new InputList<Inputs.ListChartVizOptionGetArgs>());
             set => _vizOptions = value;
         }
 
         public ListChartState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ListChartColorScalesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("gt")]
-        public Input<double>? Gt { get; set; }
-
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        [Input("gte")]
-        public Input<double>? Gte { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
-        /// </summary>
-        [Input("lt")]
-        public Input<double>? Lt { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        [Input("lte")]
-        public Input<double>? Lte { get; set; }
-
-        public ListChartColorScalesArgs()
-        {
-        }
-    }
-
-    public sealed class ListChartColorScalesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color", required: true)]
-        public Input<string> Color { get; set; } = null!;
-
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        [Input("gt")]
-        public Input<double>? Gt { get; set; }
-
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        [Input("gte")]
-        public Input<double>? Gte { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
-        /// </summary>
-        [Input("lt")]
-        public Input<double>? Lt { get; set; }
-
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        [Input("lte")]
-        public Input<double>? Lte { get; set; }
-
-        public ListChartColorScalesGetArgs()
-        {
-        }
-    }
-
-    public sealed class ListChartLegendOptionsFieldsArgs : Pulumi.ResourceArgs
-    {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        public ListChartLegendOptionsFieldsArgs()
-        {
-        }
-    }
-
-    public sealed class ListChartLegendOptionsFieldsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        [Input("property", required: true)]
-        public Input<string> Property { get; set; } = null!;
-
-        public ListChartLegendOptionsFieldsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ListChartVizOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public ListChartVizOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class ListChartVizOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        [Input("color")]
-        public Input<string>? Color { get; set; }
-
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
-
-        [Input("valuePrefix")]
-        public Input<string>? ValuePrefix { get; set; }
-
-        [Input("valueSuffix")]
-        public Input<string>? ValueSuffix { get; set; }
-
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        [Input("valueUnit")]
-        public Input<string>? ValueUnit { get; set; }
-
-        public ListChartVizOptionsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ListChartColorScales
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        public readonly string Color;
-        /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range.
-        /// </summary>
-        public readonly double? Gt;
-        /// <summary>
-        /// Indicates the lower threshold inclusive value for this range.
-        /// </summary>
-        public readonly double? Gte;
-        /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range.
-        /// </summary>
-        public readonly double? Lt;
-        /// <summary>
-        /// Indicates the upper threshold inclusive value for this range.
-        /// </summary>
-        public readonly double? Lte;
-
-        [OutputConstructor]
-        private ListChartColorScales(
-            string color,
-            double? gt,
-            double? gte,
-            double? lt,
-            double? lte)
-        {
-            Color = color;
-            Gt = gt;
-            Gte = gte;
-            Lt = lt;
-            Lte = lte;
-        }
-    }
-
-    [OutputType]
-    public sealed class ListChartLegendOptionsFields
-    {
-        public readonly bool? Enabled;
-        public readonly string Property;
-
-        [OutputConstructor]
-        private ListChartLegendOptionsFields(
-            bool? enabled,
-            string property)
-        {
-            Enabled = enabled;
-            Property = property;
-        }
-    }
-
-    [OutputType]
-    public sealed class ListChartVizOptions
-    {
-        /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
-        /// </summary>
-        public readonly string? Color;
-        /// <summary>
-        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        /// </summary>
-        public readonly string? DisplayName;
-        /// <summary>
-        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        /// </summary>
-        public readonly string Label;
-        public readonly string? ValuePrefix;
-        public readonly string? ValueSuffix;
-        /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        /// </summary>
-        public readonly string? ValueUnit;
-
-        [OutputConstructor]
-        private ListChartVizOptions(
-            string? color,
-            string? displayName,
-            string label,
-            string? valuePrefix,
-            string? valueSuffix,
-            string? valueUnit)
-        {
-            Color = color;
-            DisplayName = displayName;
-            Label = label;
-            ValuePrefix = valuePrefix;
-            ValueSuffix = valueSuffix;
-            ValueUnit = valueUnit;
-        }
-    }
     }
 }
