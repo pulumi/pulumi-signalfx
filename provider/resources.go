@@ -63,6 +63,10 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod, res)
 }
 
+func makeDataSource(mod string, res string) tokens.ModuleMember {
+	return makeMember(mod, res)
+}
+
 func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
 	return nil
 }
@@ -122,7 +126,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			"signalfx_jira_integration": {Tok: makeResource(jiraMod, "Integration")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,
 			Dependencies: map[string]string{

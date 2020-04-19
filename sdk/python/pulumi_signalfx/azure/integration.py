@@ -98,6 +98,8 @@ class Integration(pulumi.CustomResource):
             if secret_key is None:
                 raise TypeError("Missing required property 'secret_key'")
             __props__['secret_key'] = secret_key
+            if services is None:
+                raise TypeError("Missing required property 'services'")
             __props__['services'] = services
             if subscriptions is None:
                 raise TypeError("Missing required property 'subscriptions'")

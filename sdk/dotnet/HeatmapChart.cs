@@ -21,7 +21,7 @@ namespace Pulumi.SignalFx
         public Output<Outputs.HeatmapChartColorRange?> ColorRange { get; private set; } = null!;
 
         /// <summary>
-        /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
         [Output("colorScales")]
         public Output<ImmutableArray<Outputs.HeatmapChartColorScale>> ColorScales { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.HeatmapChartColorScaleArgs>? _colorScales;
 
         /// <summary>
-        /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
         public InputList<Inputs.HeatmapChartColorScaleArgs> ColorScales
         {
@@ -251,7 +251,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.HeatmapChartColorScaleGetArgs>? _colorScales;
 
         /// <summary>
-        /// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         /// </summary>
         public InputList<Inputs.HeatmapChartColorScaleGetArgs> ColorScales
         {

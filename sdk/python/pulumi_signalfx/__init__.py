@@ -16,6 +16,7 @@ from .dashboard_group import *
 from .data_link import *
 from .detector import *
 from .event_feed_chart import *
+from .get_dimension_values import *
 from .heatmap_chart import *
 from .list_chart import *
 from .org_token import *

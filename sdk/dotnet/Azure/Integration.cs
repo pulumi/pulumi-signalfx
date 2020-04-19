@@ -157,7 +157,7 @@ namespace Pulumi.SignalFx.Azure
         [Input("secretKey", required: true)]
         public Input<string> SecretKey { get; set; } = null!;
 
-        [Input("services")]
+        [Input("services", required: true)]
         private InputList<string>? _services;
 
         /// <summary>

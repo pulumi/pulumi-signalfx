@@ -397,7 +397,7 @@ export interface DetectorVizOption {
 
 export interface HeatmapChartColorRange {
     /**
-     * The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+     * The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
      */
     color: string;
     /**
@@ -412,7 +412,7 @@ export interface HeatmapChartColorRange {
 
 export interface HeatmapChartColorScale {
     /**
-     * The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+     * The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
      */
     color: string;
     /**
