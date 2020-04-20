@@ -111,7 +111,7 @@ export class ListChart extends pulumi.CustomResource {
     public readonly legendFieldsToHides!: pulumi.Output<string[] | undefined>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-     * * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+     * * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
      * * `enabled` True or False depending on if you want the property to be shown or hidden.
      */
     public readonly legendOptionsFields!: pulumi.Output<outputs.ListChartLegendOptionsField[] | undefined>;
@@ -263,7 +263,7 @@ export interface ListChartState {
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-     * * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+     * * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
      * * `enabled` True or False depending on if you want the property to be shown or hidden.
      */
     readonly legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
@@ -349,7 +349,7 @@ export interface ListChartArgs {
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-     * * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+     * * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
      * * `enabled` True or False depending on if you want the property to be shown or hidden.
      */
     readonly legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;

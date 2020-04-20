@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class HeatmapChartColorScaleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        /// The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;

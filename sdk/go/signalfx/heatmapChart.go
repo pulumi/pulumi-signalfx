@@ -16,7 +16,7 @@ type HeatmapChart struct {
 
 	// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorRange HeatmapChartColorRangePtrOutput `pulumi:"colorRange"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorScales HeatmapChartColorScaleArrayOutput `pulumi:"colorScales"`
 	// Description of the chart.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -77,7 +77,7 @@ func GetHeatmapChart(ctx *pulumi.Context,
 type heatmapChartState struct {
 	// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorRange *HeatmapChartColorRange `pulumi:"colorRange"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorScales []HeatmapChartColorScale `pulumi:"colorScales"`
 	// Description of the chart.
 	Description *string `pulumi:"description"`
@@ -108,7 +108,7 @@ type heatmapChartState struct {
 type HeatmapChartState struct {
 	// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorRange HeatmapChartColorRangePtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorScales HeatmapChartColorScaleArrayInput
 	// Description of the chart.
 	Description pulumi.StringPtrInput
@@ -143,7 +143,7 @@ func (HeatmapChartState) ElementType() reflect.Type {
 type heatmapChartArgs struct {
 	// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorRange *HeatmapChartColorRange `pulumi:"colorRange"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorScales []HeatmapChartColorScale `pulumi:"colorScales"`
 	// Description of the chart.
 	Description *string `pulumi:"description"`
@@ -173,7 +173,7 @@ type heatmapChartArgs struct {
 type HeatmapChartArgs struct {
 	// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorRange HeatmapChartColorRangePtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 	ColorScales HeatmapChartColorScaleArrayInput
 	// Description of the chart.
 	Description pulumi.StringPtrInput

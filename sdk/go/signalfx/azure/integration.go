@@ -53,6 +53,9 @@ func NewIntegration(ctx *pulumi.Context,
 	if args == nil || args.SecretKey == nil {
 		return nil, errors.New("missing required argument 'SecretKey'")
 	}
+	if args == nil || args.Services == nil {
+		return nil, errors.New("missing required argument 'Services'")
+	}
 	if args == nil || args.Subscriptions == nil {
 		return nil, errors.New("missing required argument 'Subscriptions'")
 	}

@@ -29,6 +29,7 @@
         "eventFeedChart.ts",
         "gcp/index.ts",
         "gcp/integration.ts",
+        "getDimensionValues.ts",
         "heatmapChart.ts",
         "index.ts",
         "jira/index.ts",

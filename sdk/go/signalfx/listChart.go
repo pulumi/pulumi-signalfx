@@ -29,7 +29,7 @@ type ListChart struct {
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides pulumi.StringArrayOutput `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-	// * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	// * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 	// * `enabled` True or False depending on if you want the property to be shown or hidden.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayOutput `pulumi:"legendOptionsFields"`
 	// How long (in seconds) to wait for late datapoints.
@@ -102,7 +102,7 @@ type listChartState struct {
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-	// * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	// * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 	// * `enabled` True or False depending on if you want the property to be shown or hidden.
 	LegendOptionsFields []ListChartLegendOptionsField `pulumi:"legendOptionsFields"`
 	// How long (in seconds) to wait for late datapoints.
@@ -145,7 +145,7 @@ type ListChartState struct {
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides pulumi.StringArrayInput
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-	// * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	// * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 	// * `enabled` True or False depending on if you want the property to be shown or hidden.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayInput
 	// How long (in seconds) to wait for late datapoints.
@@ -192,7 +192,7 @@ type listChartArgs struct {
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-	// * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	// * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 	// * `enabled` True or False depending on if you want the property to be shown or hidden.
 	LegendOptionsFields []ListChartLegendOptionsField `pulumi:"legendOptionsFields"`
 	// How long (in seconds) to wait for late datapoints.
@@ -234,7 +234,7 @@ type ListChartArgs struct {
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	LegendFieldsToHides pulumi.StringArrayInput
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-	// * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	// * `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 	// * `enabled` True or False depending on if you want the property to be shown or hidden.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayInput
 	// How long (in seconds) to wait for late datapoints.

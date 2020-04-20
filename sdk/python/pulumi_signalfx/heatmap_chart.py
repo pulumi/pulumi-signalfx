@@ -14,15 +14,15 @@ class HeatmapChart(pulumi.CustomResource):
     """
     Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 
-      * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+      * `color` (`str`) - The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
       * `maxValue` (`float`) - The maximum value within the coloring range.
       * `minValue` (`float`) - The minimum value within the coloring range.
     """
     color_scales: pulumi.Output[list]
     """
-    Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+    One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
 
-      * `color` (`str`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+      * `color` (`str`) - The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
       * `gt` (`float`) - Indicates the lower threshold non-inclusive value for this range.
       * `gte` (`float`) - Indicates the lower threshold inclusive value for this range.
       * `lt` (`float`) - Indicates the upper threshold non-inclusive value for this range.
@@ -85,7 +85,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-        :param pulumi.Input[list] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[list] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[list] group_bies: Properties to group by in the heatmap (in nesting order).
@@ -100,13 +100,13 @@ class HeatmapChart(pulumi.CustomResource):
 
         The **color_range** object supports the following:
 
-          * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+          * `color` (`pulumi.Input[str]`) - The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
           * `maxValue` (`pulumi.Input[float]`) - The maximum value within the coloring range.
           * `minValue` (`pulumi.Input[float]`) - The minimum value within the coloring range.
 
         The **color_scales** object supports the following:
 
-          * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+          * `color` (`pulumi.Input[str]`) - The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
           * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inclusive value for this range.
@@ -161,7 +161,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-        :param pulumi.Input[list] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[list] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[list] group_bies: Properties to group by in the heatmap (in nesting order).
@@ -177,13 +177,13 @@ class HeatmapChart(pulumi.CustomResource):
 
         The **color_range** object supports the following:
 
-          * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+          * `color` (`pulumi.Input[str]`) - The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
           * `maxValue` (`pulumi.Input[float]`) - The maximum value within the coloring range.
           * `minValue` (`pulumi.Input[float]`) - The minimum value within the coloring range.
 
         The **color_scales** object supports the following:
 
-          * `color` (`pulumi.Input[str]`) - The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+          * `color` (`pulumi.Input[str]`) - The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
           * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
           * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
           * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inclusive value for this range.

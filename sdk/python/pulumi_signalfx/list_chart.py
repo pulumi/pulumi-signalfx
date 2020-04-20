@@ -43,7 +43,7 @@ class ListChart(pulumi.CustomResource):
     legend_options_fields: pulumi.Output[list]
     """
     List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-    * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+    * `property` The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
     * `enabled` True or False depending on if you want the property to be shown or hidden.
 
       * `enabled` (`bool`)
@@ -123,7 +123,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[list] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[list] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-               * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+               * `property` The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
                * `enabled` True or False depending on if you want the property to be shown or hidden.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[float] max_precision: Maximum number of digits to display when rounding values up or down.
@@ -220,7 +220,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[list] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[list] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-               * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+               * `property` The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
                * `enabled` True or False depending on if you want the property to be shown or hidden.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[float] max_precision: Maximum number of digits to display when rounding values up or down.

@@ -97,7 +97,7 @@ export class Integration extends pulumi.CustomResource {
     /**
      * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
      */
-    public readonly services!: pulumi.Output<string[] | undefined>;
+    public readonly services!: pulumi.Output<string[]>;
     /**
      * List of Azure subscriptions that SignalFx should monitor.
      */
@@ -138,6 +138,9 @@ export class Integration extends pulumi.CustomResource {
             }
             if (!args || args.secretKey === undefined) {
                 throw new Error("Missing required property 'secretKey'");
+            }
+            if (!args || args.services === undefined) {
+                throw new Error("Missing required property 'services'");
             }
             if (!args || args.subscriptions === undefined) {
                 throw new Error("Missing required property 'subscriptions'");
@@ -239,7 +242,7 @@ export interface IntegrationArgs {
     /**
      * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly services: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Azure subscriptions that SignalFx should monitor.
      */

@@ -8,6 +8,7 @@ export * from "./dashboardGroup";
 export * from "./dataLink";
 export * from "./detector";
 export * from "./eventFeedChart";
+export * from "./getDimensionValues";
 export * from "./heatmapChart";
 export * from "./listChart";
 export * from "./orgToken";
