@@ -87,6 +87,7 @@ export class OrgToken extends pulumi.CustomResource {
      * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      */
     public readonly notifications!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly secret!: pulumi.Output<string>;
 
     /**
      * Create a OrgToken resource with the given unique name, arguments, and options.
@@ -106,6 +107,7 @@ export class OrgToken extends pulumi.CustomResource {
             inputs["hostOrUsageLimits"] = state ? state.hostOrUsageLimits : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notifications"] = state ? state.notifications : undefined;
+            inputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as OrgTokenArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -114,6 +116,7 @@ export class OrgToken extends pulumi.CustomResource {
             inputs["hostOrUsageLimits"] = args ? args.hostOrUsageLimits : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notifications"] = args ? args.notifications : undefined;
+            inputs["secret"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -155,6 +158,7 @@ export interface OrgTokenState {
      * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      */
     readonly notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly secret?: pulumi.Input<string>;
 }
 
 /**

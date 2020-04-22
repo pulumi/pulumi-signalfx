@@ -51,6 +51,9 @@ namespace Pulumi.SignalFx
         [Output("notifications")]
         public Output<ImmutableArray<string>> Notifications { get; private set; } = null!;
 
+        [Output("secret")]
+        public Output<string> Secret { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a OrgToken resource with the given unique name, arguments, and options.
@@ -189,6 +192,9 @@ namespace Pulumi.SignalFx
             get => _notifications ?? (_notifications = new InputList<string>());
             set => _notifications = value;
         }
+
+        [Input("secret")]
+        public Input<string>? Secret { get; set; }
 
         public OrgTokenState()
         {
