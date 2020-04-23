@@ -47,6 +47,7 @@ class OrgToken(pulumi.CustomResource):
     List of strings specifying where notifications will be sent when an incident occurs. See
     https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
     """
+    secret: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, description=None, disabled=None, dpm_limits=None, host_or_usage_limits=None, name=None, notifications=None, __props__=None, __name__=None, __opts__=None):
         """
         Manage SignalFx org tokens.
@@ -102,6 +103,7 @@ class OrgToken(pulumi.CustomResource):
             __props__['host_or_usage_limits'] = host_or_usage_limits
             __props__['name'] = name
             __props__['notifications'] = notifications
+            __props__['secret'] = None
         super(OrgToken, __self__).__init__(
             'signalfx:index/orgToken:OrgToken',
             resource_name,
@@ -109,7 +111,7 @@ class OrgToken(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, disabled=None, dpm_limits=None, host_or_usage_limits=None, name=None, notifications=None):
+    def get(resource_name, id, opts=None, description=None, disabled=None, dpm_limits=None, host_or_usage_limits=None, name=None, notifications=None, secret=None):
         """
         Get an existing OrgToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -151,6 +153,7 @@ class OrgToken(pulumi.CustomResource):
         __props__["host_or_usage_limits"] = host_or_usage_limits
         __props__["name"] = name
         __props__["notifications"] = notifications
+        __props__["secret"] = secret
         return OrgToken(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -26,6 +26,7 @@ type OrgToken struct {
 	// List of strings specifying where notifications will be sent when an incident occurs. See
 	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
 	Notifications pulumi.StringArrayOutput `pulumi:"notifications"`
+	Secret        pulumi.StringOutput      `pulumi:"secret"`
 }
 
 // NewOrgToken registers a new resource with the given unique name, arguments, and options.
@@ -69,6 +70,7 @@ type orgTokenState struct {
 	// List of strings specifying where notifications will be sent when an incident occurs. See
 	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
 	Notifications []string `pulumi:"notifications"`
+	Secret        *string  `pulumi:"secret"`
 }
 
 type OrgTokenState struct {
@@ -85,6 +87,7 @@ type OrgTokenState struct {
 	// List of strings specifying where notifications will be sent when an incident occurs. See
 	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
 	Notifications pulumi.StringArrayInput
+	Secret        pulumi.StringPtrInput
 }
 
 func (OrgTokenState) ElementType() reflect.Type {
