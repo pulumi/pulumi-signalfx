@@ -51,6 +51,9 @@ namespace Pulumi.SignalFx
         [Output("notifications")]
         public Output<ImmutableArray<string>> Notifications { get; private set; } = null!;
 
+        /// <summary>
+        /// The secret token created by the API. You cannot set this value.
+        /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
 
@@ -193,6 +196,9 @@ namespace Pulumi.SignalFx
             set => _notifications = value;
         }
 
+        /// <summary>
+        /// The secret token created by the API. You cannot set this value.
+        /// </summary>
         [Input("secret")]
         public Input<string>? Secret { get; set; }
 

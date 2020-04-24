@@ -48,6 +48,9 @@ class OrgToken(pulumi.CustomResource):
     https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
     """
     secret: pulumi.Output[str]
+    """
+    The secret token created by the API. You cannot set this value.
+    """
     def __init__(__self__, resource_name, opts=None, description=None, disabled=None, dpm_limits=None, host_or_usage_limits=None, name=None, notifications=None, __props__=None, __name__=None, __opts__=None):
         """
         Manage SignalFx org tokens.
@@ -126,6 +129,7 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the token.
         :param pulumi.Input[list] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
                https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
 
         The **dpm_limits** object supports the following:
 
