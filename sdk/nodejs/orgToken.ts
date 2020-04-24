@@ -87,6 +87,9 @@ export class OrgToken extends pulumi.CustomResource {
      * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      */
     public readonly notifications!: pulumi.Output<string[] | undefined>;
+    /**
+     * The secret token created by the API. You cannot set this value.
+     */
     public /*out*/ readonly secret!: pulumi.Output<string>;
 
     /**
@@ -158,6 +161,9 @@ export interface OrgTokenState {
      * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      */
     readonly notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The secret token created by the API. You cannot set this value.
+     */
     readonly secret?: pulumi.Input<string>;
 }
 
