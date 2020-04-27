@@ -26,7 +26,7 @@ type GetDimensionValuesArgs struct {
 
 // A collection of values returned by getDimensionValues.
 type GetDimensionValuesResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id     string   `pulumi:"id"`
 	Query  string   `pulumi:"query"`
 	Values []string `pulumi:"values"`

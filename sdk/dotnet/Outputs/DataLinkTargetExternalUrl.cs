@@ -33,6 +33,9 @@ namespace Pulumi.SignalFx.Outputs
         /// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         /// </summary>
         public readonly string? TimeFormat;
+        /// <summary>
+        /// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

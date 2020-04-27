@@ -12,9 +12,15 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class ListChartLegendOptionsFieldArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// True or False depending on if you want the property to be shown or hidden.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
+        /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 

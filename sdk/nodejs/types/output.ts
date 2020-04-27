@@ -297,6 +297,9 @@ export interface DataLinkTargetExternalUrl {
      * [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
      */
     timeFormat?: string;
+    /**
+     * URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
+     */
     url: string;
 }
 
@@ -457,7 +460,13 @@ export interface ListChartColorScale {
 }
 
 export interface ListChartLegendOptionsField {
+    /**
+     * True or False depending on if you want the property to be shown or hidden.
+     */
     enabled?: boolean;
+    /**
+     * The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
+     */
     property: string;
 }
 
@@ -677,7 +686,13 @@ export interface TimeChartHistogramOption {
 }
 
 export interface TimeChartLegendOptionsField {
+    /**
+     * True or False depending on if you want the property to be shown or hidden.
+     */
     enabled?: boolean;
+    /**
+     * The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+     */
     property: string;
 }
 
