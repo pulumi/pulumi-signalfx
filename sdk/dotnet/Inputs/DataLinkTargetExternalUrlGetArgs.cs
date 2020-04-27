@@ -48,6 +48,9 @@ namespace Pulumi.SignalFx.Inputs
         [Input("timeFormat")]
         public Input<string>? TimeFormat { get; set; }
 
+        /// <summary>
+        /// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
+        /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 

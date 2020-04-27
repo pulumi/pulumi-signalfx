@@ -1893,7 +1893,8 @@ type DataLinkTargetExternalUrl struct {
 	PropertyKeyMapping map[string]string `pulumi:"propertyKeyMapping"`
 	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 	TimeFormat *string `pulumi:"timeFormat"`
-	Url        string  `pulumi:"url"`
+	// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
+	Url string `pulumi:"url"`
 }
 
 // DataLinkTargetExternalUrlInput is an input type that accepts DataLinkTargetExternalUrlArgs and DataLinkTargetExternalUrlOutput values.
@@ -1919,7 +1920,8 @@ type DataLinkTargetExternalUrlArgs struct {
 	PropertyKeyMapping pulumi.StringMapInput `pulumi:"propertyKeyMapping"`
 	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 	TimeFormat pulumi.StringPtrInput `pulumi:"timeFormat"`
-	Url        pulumi.StringInput    `pulumi:"url"`
+	// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (DataLinkTargetExternalUrlArgs) ElementType() reflect.Type {
@@ -1999,6 +2001,7 @@ func (o DataLinkTargetExternalUrlOutput) TimeFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) *string { return v.TimeFormat }).(pulumi.StringPtrOutput)
 }
 
+// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
 func (o DataLinkTargetExternalUrlOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -2720,18 +2723,33 @@ func (o HeatmapChartColorRangePtrOutput) Elem() HeatmapChartColorRangeOutput {
 }
 
 // The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
-func (o HeatmapChartColorRangePtrOutput) Color() pulumi.StringOutput {
-	return o.ApplyT(func(v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
+func (o HeatmapChartColorRangePtrOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HeatmapChartColorRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Color
+	}).(pulumi.StringPtrOutput)
 }
 
 // The maximum value within the coloring range.
 func (o HeatmapChartColorRangePtrOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *HeatmapChartColorRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value within the coloring range.
 func (o HeatmapChartColorRangePtrOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *HeatmapChartColorRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.Float64PtrOutput)
 }
 
 type HeatmapChartColorScale struct {
@@ -3005,7 +3023,9 @@ func (o ListChartColorScaleArrayOutput) Index(i pulumi.IntInput) ListChartColorS
 }
 
 type ListChartLegendOptionsField struct {
-	Enabled  *bool  `pulumi:"enabled"`
+	// True or False depending on if you want the property to be shown or hidden.
+	Enabled *bool `pulumi:"enabled"`
+	// The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 	Property string `pulumi:"property"`
 }
 
@@ -3022,8 +3042,10 @@ type ListChartLegendOptionsFieldInput interface {
 }
 
 type ListChartLegendOptionsFieldArgs struct {
-	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
-	Property pulumi.StringInput  `pulumi:"property"`
+	// True or False depending on if you want the property to be shown or hidden.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
+	Property pulumi.StringInput `pulumi:"property"`
 }
 
 func (ListChartLegendOptionsFieldArgs) ElementType() reflect.Type {
@@ -3078,10 +3100,12 @@ func (o ListChartLegendOptionsFieldOutput) ToListChartLegendOptionsFieldOutputWi
 	return o
 }
 
+// True or False depending on if you want the property to be shown or hidden.
 func (o ListChartLegendOptionsFieldOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 func (o ListChartLegendOptionsFieldOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -3380,13 +3404,23 @@ func (o OrgTokenDpmLimitsPtrOutput) Elem() OrgTokenDpmLimitsOutput {
 }
 
 // The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
-func (o OrgTokenDpmLimitsPtrOutput) DpmLimit() pulumi.IntOutput {
-	return o.ApplyT(func(v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
+func (o OrgTokenDpmLimitsPtrOutput) DpmLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OrgTokenDpmLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.DpmLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 // DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
 func (o OrgTokenDpmLimitsPtrOutput) DpmNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenDpmLimits) *int { return v.DpmNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenDpmLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DpmNotificationThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 type OrgTokenHostOrUsageLimits struct {
@@ -3577,42 +3611,82 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) Elem() OrgTokenHostOrUsageLimitsOutp
 
 // Max number of Docker containers that can use this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for Docker containers
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerNotificationThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 // Max number of custom metrics that can be sent with this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomMetricsLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for custom metrics
 func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CustomMetricsNotificationThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 // Max number of hi-res metrics that can be sent with this toke
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HighResMetricsLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for hi-res metrics
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HighResMetricsNotificationThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 // Max number of hosts that can use this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HostLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostLimit }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HostLimit
+	}).(pulumi.IntPtrOutput)
 }
 
 // Notification threshold for hosts
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HostNotificationThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostNotificationThreshold }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HostNotificationThreshold
+	}).(pulumi.IntPtrOutput)
 }
 
 type SingleValueChartColorScale struct {
@@ -4076,41 +4150,81 @@ func (o TimeChartAxisLeftPtrOutput) Elem() TimeChartAxisLeftOutput {
 
 // A line to draw as a high watermark.
 func (o TimeChartAxisLeftPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HighWatermark
+	}).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the high watermark line.
 func (o TimeChartAxisLeftPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HighWatermarkLabel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
 }
 
 // A line to draw as a low watermark.
 func (o TimeChartAxisLeftPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LowWatermark
+	}).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the low watermark line.
 func (o TimeChartAxisLeftPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LowWatermarkLabel
+	}).(pulumi.StringPtrOutput)
 }
 
 // The maximum value for the right axis.
 func (o TimeChartAxisLeftPtrOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value for the right axis.
 func (o TimeChartAxisLeftPtrOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o TimeChartAxisLeftPtrOutput) Watermarks() TimeChartAxisLeftWatermarkArrayOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) []TimeChartAxisLeftWatermark { return v.Watermarks }).(TimeChartAxisLeftWatermarkArrayOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) []TimeChartAxisLeftWatermark {
+		if v == nil {
+			return nil
+		}
+		return v.Watermarks
+	}).(TimeChartAxisLeftWatermarkArrayOutput)
 }
 
 type TimeChartAxisLeftWatermark struct {
@@ -4403,41 +4517,81 @@ func (o TimeChartAxisRightPtrOutput) Elem() TimeChartAxisRightOutput {
 
 // A line to draw as a high watermark.
 func (o TimeChartAxisRightPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HighWatermark
+	}).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the high watermark line.
 func (o TimeChartAxisRightPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HighWatermarkLabel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightPtrOutput) Label() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
 }
 
 // A line to draw as a low watermark.
 func (o TimeChartAxisRightPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LowWatermark
+	}).(pulumi.Float64PtrOutput)
 }
 
 // A label to attach to the low watermark line.
 func (o TimeChartAxisRightPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LowWatermarkLabel
+	}).(pulumi.StringPtrOutput)
 }
 
 // The maximum value for the right axis.
 func (o TimeChartAxisRightPtrOutput) MaxValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.Float64PtrOutput)
 }
 
 // The minimum value for the right axis.
 func (o TimeChartAxisRightPtrOutput) MinValue() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o TimeChartAxisRightPtrOutput) Watermarks() TimeChartAxisRightWatermarkArrayOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) []TimeChartAxisRightWatermark { return v.Watermarks }).(TimeChartAxisRightWatermarkArrayOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) []TimeChartAxisRightWatermark {
+		if v == nil {
+			return nil
+		}
+		return v.Watermarks
+	}).(TimeChartAxisRightWatermarkArrayOutput)
 }
 
 type TimeChartAxisRightWatermark struct {
@@ -4762,7 +4916,9 @@ func (o TimeChartHistogramOptionArrayOutput) Index(i pulumi.IntInput) TimeChartH
 }
 
 type TimeChartLegendOptionsField struct {
-	Enabled  *bool  `pulumi:"enabled"`
+	// True or False depending on if you want the property to be shown or hidden.
+	Enabled *bool `pulumi:"enabled"`
+	// The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 	Property string `pulumi:"property"`
 }
 
@@ -4779,8 +4935,10 @@ type TimeChartLegendOptionsFieldInput interface {
 }
 
 type TimeChartLegendOptionsFieldArgs struct {
-	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
-	Property pulumi.StringInput  `pulumi:"property"`
+	// True or False depending on if you want the property to be shown or hidden.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	Property pulumi.StringInput `pulumi:"property"`
 }
 
 func (TimeChartLegendOptionsFieldArgs) ElementType() reflect.Type {
@@ -4835,10 +4993,12 @@ func (o TimeChartLegendOptionsFieldOutput) ToTimeChartLegendOptionsFieldOutputWi
 	return o
 }
 
+// True or False depending on if you want the property to be shown or hidden.
 func (o TimeChartLegendOptionsFieldOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TimeChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 func (o TimeChartLegendOptionsFieldOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
 }

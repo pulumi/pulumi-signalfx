@@ -85,11 +85,9 @@ class TimeChart(pulumi.CustomResource):
     legend_options_fields: pulumi.Output[list]
     """
     List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-    * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-    * `enabled` True or False depending on if you want the property to be shown or hidden.
 
-      * `enabled` (`bool`)
-      * `property` (`str`)
+      * `enabled` (`bool`) - True or False depending on if you want the property to be shown or hidden.
+      * `property` (`str`) - The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
     """
     max_delay: pulumi.Output[float]
     """
@@ -187,8 +185,6 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[list] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         :param pulumi.Input[list] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[list] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-               * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-               * `enabled` True or False depending on if you want the property to be shown or hidden.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[float] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
@@ -243,8 +239,8 @@ class TimeChart(pulumi.CustomResource):
 
         The **legend_options_fields** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`)
-          * `property` (`pulumi.Input[str]`)
+          * `enabled` (`pulumi.Input[bool]`) - True or False depending on if you want the property to be shown or hidden.
+          * `property` (`pulumi.Input[str]`) - The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 
         The **viz_options** object supports the following:
 
@@ -332,8 +328,6 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[list] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         :param pulumi.Input[list] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[list] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-               * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-               * `enabled` True or False depending on if you want the property to be shown or hidden.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
         :param pulumi.Input[float] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
@@ -389,8 +383,8 @@ class TimeChart(pulumi.CustomResource):
 
         The **legend_options_fields** object supports the following:
 
-          * `enabled` (`pulumi.Input[bool]`)
-          * `property` (`pulumi.Input[str]`)
+          * `enabled` (`pulumi.Input[bool]`) - True or False depending on if you want the property to be shown or hidden.
+          * `property` (`pulumi.Input[str]`) - The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 
         The **viz_options** object supports the following:
 
