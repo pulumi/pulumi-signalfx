@@ -466,8 +466,8 @@ github.com/signalfx/gohistogram v0.0.0-20160107210732-1ccfd2ff5083/go.mod h1:adP
 github.com/signalfx/golib/v3 v3.0.0 h1:7jU1iitxa4qsLMbOlquaHHaUf0GJ86P8ZFxnE5hTUVA=
 github.com/signalfx/golib/v3 v3.0.0/go.mod h1:p+krygP/cDlWvCBEgdkQp3H16rbP4NW7YQa81TDMRe8=
 github.com/signalfx/gomemcache v0.0.0-20180823214636-4f7ef64c72a9/go.mod h1:Ytb8KfCSyuwy/VILnROdgCvbQLA5ch0nkbG7lKT0BXw=
-github.com/signalfx/signalfx-go v1.6.32 h1:coRDeOqrN96umMD6tO1OAJCuGp4+Ozvhdo4HcCryhAE=
-github.com/signalfx/signalfx-go v1.6.32/go.mod h1:CeCGXKT2wqqky0Nz8eV0NH/CpMPE7tzYUcV8eQS1U1s=
+github.com/signalfx/signalfx-go v1.6.33 h1:XtwD4pSHe9EG5bYoW7xXEw8uKs8Qy48goRYRz6Fb77s=
+github.com/signalfx/signalfx-go v1.6.33/go.mod h1:CeCGXKT2wqqky0Nz8eV0NH/CpMPE7tzYUcV8eQS1U1s=
 github.com/signalfx/thrift v0.0.0-20181211001559-3838fa316492/go.mod h1:Xv29nl9fxdk0hmeqcUHgAZZwvYrOhduNW+9qk4H+6K0=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.1/go.mod h1:ni0Sbl8bgC9z8RoU9G6nDWqqs/fq4eDPysMBDgk/93Q=
@@ -503,8 +503,8 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H4=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
-github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200424202336-777b2c494eef h1:Ix3mieaEM7bputCjIt2RG1hWSreq9CsI8C3pD1+WJdU=
-github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200424202336-777b2c494eef/go.mod h1:6DQ4Dg/z15aTLyiwnLrz3fyB47uX7PtE5Gc0LAW4xlM=
+github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200429165106-470428de0099 h1:LKCb+S78kbyhJqSqgiJnSEUrWMU0IgnJGr/pyfak364=
+github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200429165106-470428de0099/go.mod h1:Gva92rTMXWj/Sct6CotJl2X5XTFESpf6rU41Ul1XIdI=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
