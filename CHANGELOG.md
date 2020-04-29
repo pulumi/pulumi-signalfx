@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v4.19.5 of the SignalFX Terraform Provider
 
 ---
 
