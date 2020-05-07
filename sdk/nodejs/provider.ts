@@ -43,6 +43,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["apiUrl"] = args ? args.apiUrl : undefined;
             inputs["authToken"] = (args ? args.authToken : undefined) || utilities.getEnv("SFX_AUTH_TOKEN");
             inputs["customAppUrl"] = args ? args.customAppUrl : undefined;
+            inputs["timeoutSeconds"] = pulumi.output(args ? args.timeoutSeconds : undefined).apply(JSON.stringify);
         }
         if (!opts) {
             opts = {}
@@ -71,4 +72,8 @@ export interface ProviderArgs {
      * Application URL for your SignalFx org, often customzied for organizations using SSO
      */
     readonly customAppUrl?: pulumi.Input<string>;
+    /**
+     * Timeout duration for a single HTTP call in seconds. Defaults to 120
+     */
+    readonly timeoutSeconds?: pulumi.Input<number>;
 }

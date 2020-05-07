@@ -23,5 +23,10 @@ namespace Pulumi.SignalFx
         /// </summary>
         public static string? CustomAppUrl { get; set; } = __config.Get("customAppUrl");
 
+        /// <summary>
+        /// Timeout duration for a single HTTP call in seconds. Defaults to 120
+        /// </summary>
+        public static int? TimeoutSeconds { get; set; } = __config.GetInt32("timeoutSeconds");
+
     }
 }

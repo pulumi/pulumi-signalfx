@@ -26,3 +26,8 @@ func GetAuthToken(ctx *pulumi.Context) string {
 func GetCustomAppUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:customAppUrl")
 }
+
+// Timeout duration for a single HTTP call in seconds. Defaults to 120
+func GetTimeoutSeconds(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "signalfx:timeoutSeconds")
+}

@@ -26,3 +26,8 @@ custom_app_url = __config__.get('customAppUrl')
 Application URL for your SignalFx org, often customzied for organizations using SSO
 """
 
+timeout_seconds = __config__.get('timeoutSeconds')
+"""
+Timeout duration for a single HTTP call in seconds. Defaults to 120
+"""
+
