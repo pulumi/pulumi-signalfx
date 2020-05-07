@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, api_url=None, auth_token=None, custom_app_url=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, api_url=None, auth_token=None, custom_app_url=None, timeout_seconds=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the signalfx package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -22,6 +22,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] api_url: API URL for your SignalFx org, may include a realm
         :param pulumi.Input[str] auth_token: SignalFx auth token
         :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customzied for organizations using SSO
+        :param pulumi.Input[float] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -45,6 +46,7 @@ class Provider(pulumi.ProviderResource):
                 auth_token = utilities.get_env('SFX_AUTH_TOKEN')
             __props__['auth_token'] = auth_token
             __props__['custom_app_url'] = custom_app_url
+            __props__['timeout_seconds'] = pulumi.Output.from_input(timeout_seconds).apply(json.dumps) if timeout_seconds is not None else None
         super(Provider, __self__).__init__(
             'signalfx',
             resource_name,

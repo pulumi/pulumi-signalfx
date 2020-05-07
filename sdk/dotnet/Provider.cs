@@ -62,6 +62,12 @@ namespace Pulumi.SignalFx
         [Input("customAppUrl")]
         public Input<string>? CustomAppUrl { get; set; }
 
+        /// <summary>
+        /// Timeout duration for a single HTTP call in seconds. Defaults to 120
+        /// </summary>
+        [Input("timeoutSeconds", json: true)]
+        public Input<int>? TimeoutSeconds { get; set; }
+
         public ProviderArgs()
         {
             AuthToken = Utilities.GetEnv("SFX_AUTH_TOKEN");

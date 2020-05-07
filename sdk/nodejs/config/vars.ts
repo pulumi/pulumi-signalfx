@@ -18,3 +18,7 @@ export let authToken: string | undefined = __config.get("authToken") || utilitie
  * Application URL for your SignalFx org, often customzied for organizations using SSO
  */
 export let customAppUrl: string | undefined = __config.get("customAppUrl");
+/**
+ * Timeout duration for a single HTTP call in seconds. Defaults to 120
+ */
+export let timeoutSeconds: number | undefined = __config.getObject<number>("timeoutSeconds");

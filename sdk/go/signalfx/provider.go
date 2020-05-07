@@ -41,6 +41,8 @@ type providerArgs struct {
 	AuthToken *string `pulumi:"authToken"`
 	// Application URL for your SignalFx org, often customzied for organizations using SSO
 	CustomAppUrl *string `pulumi:"customAppUrl"`
+	// Timeout duration for a single HTTP call in seconds. Defaults to 120
+	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -51,6 +53,8 @@ type ProviderArgs struct {
 	AuthToken pulumi.StringPtrInput
 	// Application URL for your SignalFx org, often customzied for organizations using SSO
 	CustomAppUrl pulumi.StringPtrInput
+	// Timeout duration for a single HTTP call in seconds. Defaults to 120
+	TimeoutSeconds pulumi.IntPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
