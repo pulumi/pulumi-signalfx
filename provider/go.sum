@@ -497,8 +497,8 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H4=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
-github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200506162308-63a1c483d6a8 h1:FhYO9MAlpevolGSIwM+C2idwqMOUlIW2X3fMbchqGbc=
-github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200506162308-63a1c483d6a8/go.mod h1:M4uKsGruEjcGZXByFiPIngmJMui0qKDxXDblUQF5tgs=
+github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200507164037-8e3b51013117 h1:1YlLlJ61fnseB0HZMI8dDdqoq9xOLjJP3VdmBu9SAgA=
+github.com/terraform-providers/terraform-provider-signalfx v1.9.2-0.20200507164037-8e3b51013117/go.mod h1:M4uKsGruEjcGZXByFiPIngmJMui0qKDxXDblUQF5tgs=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
