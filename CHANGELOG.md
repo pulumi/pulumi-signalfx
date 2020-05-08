@@ -2,24 +2,24 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.19.7 of the SignalFX Terraform Provider
+* Upgrade to v4.19.7 of the SignalFx Terraform Provider
 
 ---
 
 ## 2.2.1 (2020-04-29)
-* Upgrade to v4.19.5 of the SignalFX Terraform Provider
+* Upgrade to v4.19.5 of the SignalFx Terraform Provider
 
 ## 2.2.0 (2020-04-28)
 * Upgrade to pulumi-terraform-bridge v2.1.0
 
 ## 2.1.2 (2020-04-24)
-* Upgrade to v4.19.4 of the SignalFX Terraform Provider
+* Upgrade to v4.19.4 of the SignalFx Terraform Provider
 
 ## 2.1.1 (2020-04-23)
-* Upgrade to v4.19.3 of the SignalFX Terraform Provider
+* Upgrade to v4.19.3 of the SignalFx Terraform Provider
 
 ## 2.1.0 (2020-04-20)
-* Upgrade to v4.19.1 of the SignalFX Terraform Provider
+* Upgrade to v4.19.1 of the SignalFx Terraform Provider
 
 ## 2.0.0 (2020-04-18)
 * Upgrade to Pulumi v2.0.0
@@ -31,35 +31,35 @@ CHANGELOG
 * Refactor layout to support Go modules
 
 ## 1.9.0 (2020-03-31)
-* Upgrade to v4.18.6 of the SignalFX Terraform Provider
+* Upgrade to v4.18.6 of the SignalFx Terraform Provider
 
 ## 1.8.0 (2020-03-23)
-* Upgrade to v4.18.4 of the SignalFX Terraform Provider
+* Upgrade to v4.18.4 of the SignalFx Terraform Provider
 * Upgrade to Pulumi v1.12.1
 * Upgrade to pulumi-terraform-bridge v1.8.2
 
 ## 1.7.0 (2020-03-06)
-* Upgrade to v4.18.0 of the SignalFX Terraform Provider
+* Upgrade to v4.18.0 of the SignalFx Terraform Provider
 
 ## 1.6.0 (2020-03-04)
-* Upgrade to v4.17.0 of the SignalFX Terraform Provider
+* Upgrade to v4.17.0 of the SignalFx Terraform Provider
 
 ## 1.5.0 (2020-02-27)
-* Upgrade to v4.15.0 of the SignalFX Terraform Provider
+* Upgrade to v4.15.0 of the SignalFx Terraform Provider
 
 ## 1.4.0 (2020-02-19)
-* Upgrade to v4.13.0 of the SignalFX Terraform Provider
+* Upgrade to v4.13.0 of the SignalFx Terraform Provider
 
 ## 1.3.1 (2020-01-31)
-* Upgrade to v4.12.2 of the SignalFX Terraform Provider
+* Upgrade to v4.12.2 of the SignalFx Terraform Provider
 
 ## 1.3.0 (2020-01-29)
-* Upgrade to v4.12.0 of the SignalFX Terraform Provider
+* Upgrade to v4.12.0 of the SignalFx Terraform Provider
 * Upgrade to pulumi-terraform-bridge v1.6.4
 
 ## 1.2.0 (2020-01-06)
 * Upgrade to support go 1.13.x
-* Upgrade to v4.11.0 of the SignalFX Terraform Provider
+* Upgrade to v4.11.0 of the SignalFx Terraform Provider
 * Upgrade to pulumi-terraform-bridge v1.5.2
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#6](https://github.com/pulumi/pulumi-signalfx/pull/6)).
