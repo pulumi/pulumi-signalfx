@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.com/pulumi/pulumi-signalfx.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-signalfx)
 
-# SignalFX Resource Provider
+# SignalFx Resource Provider
 
-The SignalFX resource provider for Pulumi lets you manage SignalFX resources in your cloud programs. To use
+The SignalFx resource provider for Pulumi lets you manage SignalFx resources in your cloud programs. To use
 this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
 ## Installing
