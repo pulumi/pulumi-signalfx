@@ -54,6 +54,39 @@ class DataLink(pulumi.CustomResource):
         """
         Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        # A global link to SignalFx dashboard.
+        my_data_link = signalfx.DataLink("myDataLink",
+            property_name="pname",
+            property_value="pvalue",
+            target_signalfx_dashboard=[{
+                "isDefault": True,
+                "name": "sfx_dash",
+                "dashboardGroupId": signalfx_dashboard_group["mydashboardgroup0"]["id"],
+                "dashboardId": signalfx_dashboard["mydashboard0"]["id"],
+            }])
+        # A dashboard-specific link to an external URL
+        my_data_link_dash = signalfx.DataLink("myDataLinkDash",
+            context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
+            property_name="pname2",
+            property_value="pvalue",
+            target_external_url=[{
+                "isDefault": False,
+                "name": "ex_url",
+                "timeFormat": "ISO8601",
+                "url": "https://www.example.com",
+                "propertyKeyMapping": {
+                    "foo": "bar",
+                },
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

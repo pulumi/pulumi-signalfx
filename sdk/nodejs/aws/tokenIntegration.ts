@@ -13,6 +13,42 @@ import * as utilities from "../utilities";
  * 
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const awsMyteamToken = new signalfx.aws.TokenIntegration("awsMyteamToken", {});
+ * // Make yourself an AWS IAM role here
+ * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
+ * // Stuff here that uses the external and account ID
+ * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
+ *     enabled: true,
+ *     integrationId: awsMyteamToken.id,
+ *     token: "putYourTokenHere",
+ *     key: "putYourKeyHere",
+ *     regions: ["us-east-1"],
+ *     pollRate: 300,
+ *     importCloudWatch: true,
+ *     enableAwsUsage: true,
+ *     custom_namespace_sync_rule: [{
+ *         defaultAction: "Exclude",
+ *         filterAction: "Include",
+ *         filterSource: "filter('code', '200')",
+ *         namespace: "fart",
+ *     }],
+ *     namespace_sync_rule: [{
+ *         defaultAction: "Exclude",
+ *         filterAction: "Include",
+ *         filterSource: "filter('code', '200')",
+ *         namespace: "AWS/EC2",
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
  */

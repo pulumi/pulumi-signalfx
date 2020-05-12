@@ -169,6 +169,41 @@ class TimeChart(pulumi.CustomResource):
 
         Time charts display data points over a period of time.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mychart0 = signalfx.TimeChart("mychart0",
+            axis_left={
+                "label": "CPU Total Idle",
+                "lowWatermark": 1000,
+            },
+            legend_options_fields=[
+                {
+                    "enabled": False,
+                    "property": "collector",
+                },
+                {
+                    "enabled": False,
+                    "property": "hostname",
+                },
+            ],
+            plot_type="LineChart",
+            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
+
+        \"\"\",
+            show_data_markers=True,
+            time_range=3600,
+            viz_options=[{
+                "axis": "left",
+                "color": "orange",
+                "label": "CPU Idle",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

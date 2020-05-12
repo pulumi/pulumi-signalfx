@@ -41,6 +41,24 @@ class AlertMutingRule(pulumi.CustomResource):
 
         > **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        rool_mooter_one = signalfx.AlertMutingRule("roolMooterOne",
+            description="mooted it NEW",
+            start_time=1573063243,
+            stop_time=0,
+            detectors=[signalfx_detector["some_detector_id"]],
+            filter=[{
+                "property": "foo",
+                "property_value": "bar",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

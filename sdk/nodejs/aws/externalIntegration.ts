@@ -11,6 +11,115 @@ import * as utilities from "../utilities";
  * 
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const awsMyteamExtern = new signalfx.aws.ExternalIntegration("awsMyteamExtern", {});
+ * const signalfxAssumePolicy = aws.iam.getPolicyDocument({
+ *     statement: [{
+ *         actions: ["sts:AssumeRole"],
+ *         principals: [{
+ *             type: "AWS",
+ *             identifiers: [awsMyteamExtern.signalfxAwsAccount],
+ *         }],
+ *         condition: [{
+ *             test: "StringEquals",
+ *             variable: "sts:ExternalId",
+ *             values: [awsMyteamExtern.externalId],
+ *         }],
+ *     }],
+ * });
+ * const awsSfxRole = new aws.iam.Role("awsSfxRole", {
+ *     description: "signalfx integration to read out data and send it to signalfxs aws account",
+ *     assumeRolePolicy: signalfxAssumePolicy.json,
+ * });
+ * const awsReadPermissions = new aws.iam.Policy("awsReadPermissions", {
+ *     description: "farts",
+ *     policy: `{
+ * 	"Version": "2012-10-17",
+ * 	"Statement": [
+ * 		{
+ * 			"Action": [
+ * 				"dynamodb:ListTables",
+ * 		    "dynamodb:DescribeTable",
+ * 		    "dynamodb:ListTagsOfResource",
+ * 		    "ec2:DescribeInstances",
+ * 		    "ec2:DescribeInstanceStatus",
+ * 		    "ec2:DescribeVolumes",
+ * 		    "ec2:DescribeReservedInstances",
+ * 		    "ec2:DescribeReservedInstancesModifications",
+ * 		    "ec2:DescribeTags",
+ * 		    "organizations:DescribeOrganization",
+ * 		    "cloudwatch:ListMetrics",
+ * 		    "cloudwatch:GetMetricData",
+ * 		    "cloudwatch:GetMetricStatistics",
+ * 		    "cloudwatch:DescribeAlarms",
+ * 		    "sqs:ListQueues",
+ * 		    "sqs:GetQueueAttributes",
+ * 		    "sqs:ListQueueTags",
+ * 		    "elasticmapreduce:ListClusters",
+ * 		    "elasticmapreduce:DescribeCluster",
+ * 		    "kinesis:ListShards",
+ * 		    "kinesis:ListStreams",
+ * 		    "kinesis:DescribeStream",
+ * 		    "kinesis:ListTagsForStream",
+ * 		    "rds:DescribeDBInstances",
+ * 		    "rds:ListTagsForResource",
+ * 		    "elasticloadbalancing:DescribeLoadBalancers",
+ * 		    "elasticloadbalancing:DescribeTags",
+ * 		    "elasticache:describeCacheClusters",
+ * 		    "redshift:DescribeClusters",
+ * 		    "lambda:GetAlias",
+ * 		    "lambda:ListFunctions",
+ * 		    "lambda:ListTags",
+ * 		    "autoscaling:DescribeAutoScalingGroups",
+ * 		    "s3:ListAllMyBuckets",
+ * 		    "s3:ListBucket",
+ * 		    "s3:GetBucketLocation",
+ * 		    "s3:GetBucketTagging",
+ * 		    "ecs:ListServices",
+ * 		    "ecs:ListTasks",
+ * 		    "ecs:DescribeTasks",
+ * 		    "ecs:DescribeServices",
+ * 		    "ecs:ListClusters",
+ * 		    "ecs:DescribeClusters",
+ * 		    "ecs:ListTaskDefinitions",
+ * 		    "ecs:ListTagsForResource",
+ * 		    "apigateway:GET",
+ * 		    "cloudfront:ListDistributions",
+ * 		    "cloudfront:ListTagsForResource",
+ * 		    "tag:GetResources",
+ * 		    "es:ListDomainNames",
+ * 		    "es:DescribeElasticsearchDomain"
+ * 			],
+ * 			"Effect": "Allow",
+ * 			"Resource": "*"
+ * 		}
+ * 	]
+ * }
+ * `,
+ * });
+ * const sfx-read-attach = new aws.iam.RolePolicyAttachment("sfx-read-attach", {
+ *     role: awsSfxRole.name,
+ *     policyArn: awsReadPermissions.arn,
+ * });
+ * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
+ *     enabled: true,
+ *     integrationId: awsMyteamExtern.id,
+ *     externalId: awsMyteamExtern.externalId,
+ *     roleArn: awsSfxRole.arn,
+ *     regions: ["us-east-1"],
+ *     pollRate: 300,
+ *     importCloudWatch: true,
+ *     enableAwsUsage: true,
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
  */

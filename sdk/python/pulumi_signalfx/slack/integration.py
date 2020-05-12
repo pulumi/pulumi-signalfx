@@ -28,6 +28,18 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        slack_myteam = signalfx.slack.Integration("slackMyteam",
+            enabled=True,
+            webhook_url="http://example.com")
+        ```
 
 
         :param str resource_name: The name of the resource.

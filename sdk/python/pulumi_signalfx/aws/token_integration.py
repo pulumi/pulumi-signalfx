@@ -30,6 +30,41 @@ class TokenIntegration(pulumi.CustomResource):
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_signalfx as signalfx
+
+        aws_myteam_token = signalfx.aws.TokenIntegration("awsMyteamToken")
+        # Make yourself an AWS IAM role here
+        aws_sfx_role = aws.iam.Role("awsSfxRole")
+        # Stuff here that uses the external and account ID
+        aws_myteam = signalfx.aws.Integration("awsMyteam",
+            enabled=True,
+            integration_id=aws_myteam_token.id,
+            token="put_your_token_here",
+            key="put_your_key_here",
+            regions=["us-east-1"],
+            poll_rate=300,
+            import_cloud_watch=True,
+            enable_aws_usage=True,
+            custom_namespace_sync_rule=[{
+                "defaultAction": "Exclude",
+                "filterAction": "Include",
+                "filterSource": "filter('code', '200')",
+                "namespace": "fart",
+            }],
+            namespace_sync_rule=[{
+                "defaultAction": "Exclude",
+                "filterAction": "Include",
+                "filterSource": "filter('code', '200')",
+                "namespace": "AWS/EC2",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

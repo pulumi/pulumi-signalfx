@@ -55,6 +55,28 @@ class OrgToken(pulumi.CustomResource):
         """
         Manage SignalFx org tokens.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteamkey0 = signalfx.OrgToken("myteamkey0",
+            description="My team's rad key",
+            host_or_usage_limits={
+                "containerLimit": 200,
+                "containerNotificationThreshold": 180,
+                "customMetricsLimit": 1000,
+                "customMetricsNotificationThreshold": 900,
+                "highResMetricsLimit": 1000,
+                "highResMetricsNotificationThreshold": 900,
+                "hostLimit": 100,
+                "hostNotificationThreshold": 90,
+            },
+            notifications=["Email,foo-alerts@bar.com"])
+        ```
 
 
         :param str resource_name: The name of the resource.

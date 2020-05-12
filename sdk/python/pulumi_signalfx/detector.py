@@ -99,6 +99,87 @@ class Detector(pulumi.CustomResource):
         > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 
 
+        ## Notification Format
+
+        As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+
+        ```python
+        import pulumi
+        ```
+
+        This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+
+        ### Email
+
+        ```python
+        import pulumi
+        ```
+
+        ### Jira
+
+        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
+
+        ```python
+        import pulumi
+        ```
+
+        ### Opsgenie
+
+        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+
+        ```python
+        import pulumi
+        ```
+
+        ### PagerDuty
+
+        ```python
+        import pulumi
+        ```
+
+        ### Slack
+
+        Exclude the `#` on the channel name!
+
+        ```python
+        import pulumi
+        ```
+
+        ### Team
+
+        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+
+        ```python
+        import pulumi
+        ```
+
+        ### Team
+
+        Sends an email to every member of a team.
+
+        ```python
+        import pulumi
+        ```
+
+        ### VictorOps
+
+        ```python
+        import pulumi
+        ```
+
+        ### Webhook
+
+        > **NOTE** You need to include all the commas even if you only use a credential id below.
+
+        You can either configure a Webhook to use an existing integration's credential id:
+        ```python
+        import pulumi
+        ```
+
+        or configure one inline:
+        ```python
+        import pulumi
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

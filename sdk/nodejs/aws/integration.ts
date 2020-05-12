@@ -13,6 +13,43 @@ import * as utilities from "../utilities";
  * 
  * > **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * // This resource returns an account id in `externalId`…
+ * const awsMyteamExternal = new signalfx.aws.ExternalIntegration("awsMyteamExternal", {});
+ * // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+ * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
+ * // Stuff here that uses the external and account ID
+ * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
+ *     enabled: true,
+ *     integrationId: awsMyteamExternal.id,
+ *     externalId: awsMyteamExternal.externalId,
+ *     roleArn: awsSfxRole.arn,
+ *     regions: ["us-east-1"],
+ *     pollRate: 300,
+ *     importCloudWatch: true,
+ *     enableAwsUsage: true,
+ *     custom_namespace_sync_rule: [{
+ *         defaultAction: "Exclude",
+ *         filterAction: "Include",
+ *         filterSource: "filter('code', '200')",
+ *         namespace: "fart",
+ *     }],
+ *     namespace_sync_rule: [{
+ *         defaultAction: "Exclude",
+ *         filterAction: "Include",
+ *         filterSource: "filter('code', '200')",
+ *         namespace: "AWS/EC2",
+ *     }],
+ * });
+ * ```
  * 
  * ## Service Names
  * 

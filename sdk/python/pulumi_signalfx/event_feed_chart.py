@@ -42,6 +42,22 @@ class EventFeedChart(pulumi.CustomResource):
         """
         Displays a listing of events as a widget in a dashboard.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mynote0 = signalfx.EventFeedChart("mynote0",
+            description="Lorem ipsum dolor sit amet",
+            program_text="A = events(eventType='Fart Testing').publish(label='A')",
+            viz_options=[{
+                "color": "orange",
+                "label": "A",
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

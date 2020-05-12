@@ -30,6 +30,109 @@ class ExternalIntegration(pulumi.CustomResource):
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with SignalFx support for your realm's AWS account id.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_signalfx as signalfx
+
+        aws_myteam_extern = signalfx.aws.ExternalIntegration("awsMyteamExtern")
+        signalfx_assume_policy = aws.iam.get_policy_document(statement=[{
+            "actions": ["sts:AssumeRole"],
+            "principals": [{
+                "type": "AWS",
+                "identifiers": [aws_myteam_extern.signalfx_aws_account],
+            }],
+            "condition": [{
+                "test": "StringEquals",
+                "variable": "sts:ExternalId",
+                "values": [aws_myteam_extern.external_id],
+            }],
+        }])
+        aws_sfx_role = aws.iam.Role("awsSfxRole",
+            description="signalfx integration to read out data and send it to signalfxs aws account",
+            assume_role_policy=signalfx_assume_policy.json)
+        aws_read_permissions = aws.iam.Policy("awsReadPermissions",
+            description="farts",
+            policy=\"\"\"{
+        	"Version": "2012-10-17",
+        	"Statement": [
+        		{
+        			"Action": [
+        				"dynamodb:ListTables",
+        		    "dynamodb:DescribeTable",
+        		    "dynamodb:ListTagsOfResource",
+        		    "ec2:DescribeInstances",
+        		    "ec2:DescribeInstanceStatus",
+        		    "ec2:DescribeVolumes",
+        		    "ec2:DescribeReservedInstances",
+        		    "ec2:DescribeReservedInstancesModifications",
+        		    "ec2:DescribeTags",
+        		    "organizations:DescribeOrganization",
+        		    "cloudwatch:ListMetrics",
+        		    "cloudwatch:GetMetricData",
+        		    "cloudwatch:GetMetricStatistics",
+        		    "cloudwatch:DescribeAlarms",
+        		    "sqs:ListQueues",
+        		    "sqs:GetQueueAttributes",
+        		    "sqs:ListQueueTags",
+        		    "elasticmapreduce:ListClusters",
+        		    "elasticmapreduce:DescribeCluster",
+        		    "kinesis:ListShards",
+        		    "kinesis:ListStreams",
+        		    "kinesis:DescribeStream",
+        		    "kinesis:ListTagsForStream",
+        		    "rds:DescribeDBInstances",
+        		    "rds:ListTagsForResource",
+        		    "elasticloadbalancing:DescribeLoadBalancers",
+        		    "elasticloadbalancing:DescribeTags",
+        		    "elasticache:describeCacheClusters",
+        		    "redshift:DescribeClusters",
+        		    "lambda:GetAlias",
+        		    "lambda:ListFunctions",
+        		    "lambda:ListTags",
+        		    "autoscaling:DescribeAutoScalingGroups",
+        		    "s3:ListAllMyBuckets",
+        		    "s3:ListBucket",
+        		    "s3:GetBucketLocation",
+        		    "s3:GetBucketTagging",
+        		    "ecs:ListServices",
+        		    "ecs:ListTasks",
+        		    "ecs:DescribeTasks",
+        		    "ecs:DescribeServices",
+        		    "ecs:ListClusters",
+        		    "ecs:DescribeClusters",
+        		    "ecs:ListTaskDefinitions",
+        		    "ecs:ListTagsForResource",
+        		    "apigateway:GET",
+        		    "cloudfront:ListDistributions",
+        		    "cloudfront:ListTagsForResource",
+        		    "tag:GetResources",
+        		    "es:ListDomainNames",
+        		    "es:DescribeElasticsearchDomain"
+        			],
+        			"Effect": "Allow",
+        			"Resource": "*"
+        		}
+        	]
+        }
+        \"\"\")
+        sfx_read_attach = aws.iam.RolePolicyAttachment("sfx-read-attach",
+            role=aws_sfx_role.name,
+            policy_arn=aws_read_permissions.arn)
+        aws_myteam = signalfx.aws.Integration("awsMyteam",
+            enabled=True,
+            integration_id=aws_myteam_extern.id,
+            external_id=aws_myteam_extern.external_id,
+            role_arn=aws_sfx_role.arn,
+            regions=["us-east-1"],
+            poll_rate=300,
+            import_cloud_watch=True,
+            enable_aws_usage=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

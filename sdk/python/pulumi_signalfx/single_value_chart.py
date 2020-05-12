@@ -86,6 +86,26 @@ class SingleValueChart(pulumi.CustomResource):
 
         If the time period is in the past, the number represents the value of the metric near the end of the time period.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mysvchart0 = signalfx.SingleValueChart("mysvchart0",
+            color_by="Dimension",
+            description="Very cool Single Value Chart",
+            is_timestamp_hidden=True,
+            max_delay=2,
+            max_precision=2,
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+
+        \"\"\",
+            refresh_interval=1)
+        ```
 
 
         :param str resource_name: The name of the resource.

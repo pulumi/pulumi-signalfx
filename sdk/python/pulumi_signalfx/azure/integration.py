@@ -52,6 +52,32 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        azure_myteam = signalfx.azure.Integration("azureMyteam",
+            enabled=True,
+            resource=[{
+                "signalfxAzureIntegration": [{
+                    "azureMyteamXX": [{
+                        "appId": "YYY",
+                        "enabled": False,
+                        "environment": "azure",
+                        "name": "AzureFoo",
+                        "pollRate": 300,
+                        "secretKey": "XXX",
+                        "services": ["microsoft.sql/servers/elasticpools"],
+                        "subscriptions": ["sub-guid-here"],
+                        "tenantId": "ZZZ",
+                    }],
+                }],
+            }])
+        ```
 
         ## Service Names
 

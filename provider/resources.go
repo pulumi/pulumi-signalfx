@@ -130,7 +130,6 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
 			},
