@@ -29,6 +29,8 @@
         "eventFeedChart.ts",
         "gcp/index.ts",
         "gcp/integration.ts",
+        "getAwsServices.ts",
+        "getAzureServices.ts",
         "getDimensionValues.ts",
         "heatmapChart.ts",
         "index.ts",

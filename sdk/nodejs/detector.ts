@@ -7,91 +7,226 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a SignalFx detector resource. This can be used to create and manage detectors.
+ * Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.
  * 
  * > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
  * 
- * 
- * ## Notification Format
- * 
- * As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * 
- * This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
- * 
- * ### Email
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
+ * ## Example Usage
  * 
  * ### Jira
  * 
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["Jira,credentialId"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### Opsgenie
  * 
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["Opsgenie,credentialId,responderName,responderId,Team"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### PagerDuty
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["PagerDuty,credentialId"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### Slack
  * 
- * Exclude the `#` on the channel name!
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["Slack,credentialId,channel"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### Team
  * 
- * Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["Team,teamId"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### Team
  * 
- * Sends an email to every member of a team.
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["TeamEmail,teamId"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### VictorOps
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["VictorOps,credentialId,routingKey"],
+ *         }],
+ *     }));
+ * }
  * ```
  * 
  * ### Webhook
  * 
- * > **NOTE** You need to include all the commas even if you only use a credential id below.
- * 
- * You can either configure a Webhook to use an existing integration's credential id:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * ```
+ * import * as signalfx from "@pulumi/signalfx";
  * 
- * or configure one inline:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rule: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["Webhook,credentialId,x,"],
+ *         }],
+ *     }));
+ * }
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/detector.html.markdown.

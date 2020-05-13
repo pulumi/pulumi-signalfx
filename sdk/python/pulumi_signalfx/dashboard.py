@@ -131,7 +131,69 @@ class Dashboard(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, charts=None, charts_resolution=None, columns=None, dashboard_group=None, description=None, discovery_options_query=None, discovery_options_selectors=None, end_time=None, event_overlays=None, filters=None, grids=None, name=None, selected_event_overlays=None, start_time=None, time_range=None, variables=None, __props__=None, __name__=None, __opts__=None):
         """
-        Create a Dashboard resource with the given unique name, props, and options.
+        A dashboard is a curated collection of specific charts and supports dimensional [filters](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#filter-dashboard-charts), [dashboard variables](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#dashboard-variables) and [time range](http://docs.signalfx.com/en/latest/_sidebars-and-includes/using-time-range-selector.html#time-range-selector) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
+
+        > **NOTE** Since every dashboard is included in a `dashboard group` (SignalFx collection of dashboards), you need to create that first and reference it as shown in the example.
+
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboard0 = signalfx.Dashboard("mydashboard0",
+            dashboard_group=signalfx_dashboard_group["mydashboardgroup0"]["id"],
+            time_range="-30m",
+            filter=[{
+                "property": "collector",
+                "values": [
+                    "cpu",
+                    "Diamond",
+                ],
+            }],
+            variable=[{
+                "property": "region",
+                "alias": "region",
+                "values": ["uswest-1-"],
+            }],
+            chart=[
+                {
+                    "chartId": signalfx_time_chart["mychart0"]["id"],
+                    "width": 12,
+                    "height": 1,
+                },
+                {
+                    "chartId": signalfx_time_chart["mychart1"]["id"],
+                    "width": 5,
+                    "height": 2,
+                },
+            ])
+        ```
+
+        ### Column
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        load = signalfx.Dashboard("load",
+            columns=[
+                {
+                    "chartIds": [[__item["id"] for __item in signalfx_single_value_chart["rps"]]],
+                    "width": 2,
+                },
+                {
+                    "chartIds": [[__item["id"] for __item in signalfx_time_chart["cpu_capacity"]]],
+                    "column": 2,
+                    "width": 4,
+                },
+            ],
+            dashboard_group=signalfx_dashboard_group["example"]["id"])
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this dashboard

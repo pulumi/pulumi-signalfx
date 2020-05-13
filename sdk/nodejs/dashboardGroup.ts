@@ -11,6 +11,49 @@ import * as utilities from "./utilities";
  * 
  * > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
+ *     description: "Cool dashboard group",
+ *     authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *     authorizedWriterUsers: ["abc123"],
+ * });
+ * ```
+ * 
+ * ## Example Usage With Mirrored Dashboards
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
+ * const mydashboardgroupWithmirrors = new signalfx.DashboardGroup("mydashboardgroupWithmirrors", {
+ *     description: "Cool dashboard group",
+ *     dashboard: [{
+ *         dashboardId: signalfx_dashboard.gc_dashboard.id,
+ *         nameOverride: "GC For My Service",
+ *         descriptionOverride: "Garbage Collection dashboard maintained by JVM team",
+ *         filter_override: [{
+ *             property: "service",
+ *             values: ["myservice"],
+ *             negated: false,
+ *         }],
+ *         variable_override: [{
+ *             property: "region",
+ *             values: ["us-west1"],
+ *             valuesSuggesteds: [
+ *                 "us-west-1",
+ *                 "us-east-1",
+ *             ],
+ *         }],
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/dashboard_group.html.markdown.
  */

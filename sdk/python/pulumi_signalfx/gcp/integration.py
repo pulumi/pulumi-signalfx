@@ -39,6 +39,29 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
+            enabled=True,
+            poll_rate=300000,
+            project_service_keys=[
+                {
+                    "projectId": "gcp_project_id_1",
+                    "projectKey": (lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
+                },
+                {
+                    "projectId": "gcp_project_id_2",
+                    "projectKey": (lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
+                },
+            ],
+            services=["compute"])
+        ```
 
 
         :param str resource_name: The name of the resource.

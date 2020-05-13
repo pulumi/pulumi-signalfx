@@ -23,8 +23,7 @@ type OrgToken struct {
 	HostOrUsageLimits OrgTokenHostOrUsageLimitsPtrOutput `pulumi:"hostOrUsageLimits"`
 	// Name of the token.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
 	Notifications pulumi.StringArrayOutput `pulumi:"notifications"`
 	// The secret token created by the API. You cannot set this value.
 	Secret pulumi.StringOutput `pulumi:"secret"`
@@ -68,8 +67,7 @@ type orgTokenState struct {
 	HostOrUsageLimits *OrgTokenHostOrUsageLimits `pulumi:"hostOrUsageLimits"`
 	// Name of the token.
 	Name *string `pulumi:"name"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
 	Notifications []string `pulumi:"notifications"`
 	// The secret token created by the API. You cannot set this value.
 	Secret *string `pulumi:"secret"`
@@ -86,8 +84,7 @@ type OrgTokenState struct {
 	HostOrUsageLimits OrgTokenHostOrUsageLimitsPtrInput
 	// Name of the token.
 	Name pulumi.StringPtrInput
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
 	Notifications pulumi.StringArrayInput
 	// The secret token created by the API. You cannot set this value.
 	Secret pulumi.StringPtrInput
@@ -108,8 +105,7 @@ type orgTokenArgs struct {
 	HostOrUsageLimits *OrgTokenHostOrUsageLimits `pulumi:"hostOrUsageLimits"`
 	// Name of the token.
 	Name *string `pulumi:"name"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
 	Notifications []string `pulumi:"notifications"`
 }
 
@@ -125,8 +121,7 @@ type OrgTokenArgs struct {
 	HostOrUsageLimits OrgTokenHostOrUsageLimitsPtrInput
 	// Name of the token.
 	Name pulumi.StringPtrInput
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
 	Notifications pulumi.StringArrayInput
 }
 

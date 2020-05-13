@@ -8,6 +8,8 @@ export * from "./dashboardGroup";
 export * from "./dataLink";
 export * from "./detector";
 export * from "./eventFeedChart";
+export * from "./getAwsServices";
+export * from "./getAzureServices";
 export * from "./getDimensionValues";
 export * from "./heatmapChart";
 export * from "./listChart";

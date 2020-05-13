@@ -128,9 +128,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
+			"signalfx_aws_services":     {Tok: makeDataSource(mainMod, "getAwsServices")},
+			"signalfx_azure_services":   {Tok: makeDataSource(mainMod, "getAzureServices")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
 			},

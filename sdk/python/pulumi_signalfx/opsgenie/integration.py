@@ -32,6 +32,19 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
+            api_key="farts",
+            api_url="https://api.opsgenie.com",
+            enabled=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

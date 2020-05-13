@@ -64,6 +64,27 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        jira_myteam_xx = signalfx.jira.Integration("jiraMyteamXX",
+            api_token="abc123",
+            assignee_display_name="Testy Testerson",
+            assignee_name="testytesterson",
+            auth_method="EmailAndToken",
+            base_url="https://www.example.com",
+            enabled=False,
+            issue_type="Story",
+            password="paasword",
+            project_key="TEST",
+            user_email="yoosername@example.com",
+            username="yoosername")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -54,7 +54,47 @@ class DashboardGroup(pulumi.CustomResource):
 
         > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 
+        ## Example Usage
 
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
+            description="Cool dashboard group",
+            authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+            authorized_writer_users=["abc123"])
+        ```
+
+        ## Example Usage With Mirrored Dashboards
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
+            description="Cool dashboard group",
+            dashboard=[{
+                "dashboardId": signalfx_dashboard["gc_dashboard"]["id"],
+                "nameOverride": "GC For My Service",
+                "descriptionOverride": "Garbage Collection dashboard maintained by JVM team",
+                "filter_override": [{
+                    "property": "service",
+                    "values": ["myservice"],
+                    "negated": False,
+                }],
+                "variable_override": [{
+                    "property": "region",
+                    "values": ["us-west1"],
+                    "valuesSuggesteds": [
+                        "us-west-1",
+                        "us-east-1",
+                    ],
+                }],
+            }])
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
