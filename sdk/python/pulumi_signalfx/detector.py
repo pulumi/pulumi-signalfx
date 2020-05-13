@@ -94,92 +94,212 @@ class Detector(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a SignalFx detector resource. This can be used to create and manage detectors.
+        Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.
 
         > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 
-
-        ## Notification Format
-
-        As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
-
-        ```python
-        import pulumi
-        ```
-
-        This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
-
-        ### Email
-
-        ```python
-        import pulumi
-        ```
+        ## Example Usage
 
         ### Jira
 
-        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
-
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["Jira,credentialId"],
+                }]))
         ```
 
         ### Opsgenie
 
-        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
-
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["Opsgenie,credentialId,responderName,responderId,Team"],
+                }]))
         ```
 
         ### PagerDuty
 
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["PagerDuty,credentialId"],
+                }]))
         ```
 
         ### Slack
 
-        Exclude the `#` on the channel name!
-
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["Slack,credentialId,channel"],
+                }]))
         ```
 
         ### Team
 
-        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
-
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["Team,teamId"],
+                }]))
         ```
 
         ### Team
 
-        Sends an email to every member of a team.
-
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["TeamEmail,teamId"],
+                }]))
         ```
 
         ### VictorOps
 
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["VictorOps,credentialId,routingKey"],
+                }]))
         ```
 
         ### Webhook
 
-        > **NOTE** You need to include all the commas even if you only use a credential id below.
-
-        You can either configure a Webhook to use an existing integration's credential id:
         ```python
         import pulumi
+        import pulumi_signalfx as signalfx
+
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(var.clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {var['clusters'][range['value']]}",
+                max_delay=30,
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{var["clusters"][range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rule=[{
+                    "description": "maximum > 60 for 5m",
+                    "severity": "Warning",
+                    "detectLabel": "Processing old messages 5m",
+                    "notifications": ["Webhook,credentialId,x,"],
+                }]))
         ```
 
-        or configure one inline:
-        ```python
-        import pulumi
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

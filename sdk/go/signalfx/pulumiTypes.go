@@ -5290,6 +5290,198 @@ func (o WebhookIntegrationHeaderArrayOutput) Index(i pulumi.IntInput) WebhookInt
 	}).(WebhookIntegrationHeaderOutput)
 }
 
+type GetAwsServicesService struct {
+	Name string `pulumi:"name"`
+}
+
+// GetAwsServicesServiceInput is an input type that accepts GetAwsServicesServiceArgs and GetAwsServicesServiceOutput values.
+// You can construct a concrete instance of `GetAwsServicesServiceInput` via:
+//
+// 		 GetAwsServicesServiceArgs{...}
+//
+type GetAwsServicesServiceInput interface {
+	pulumi.Input
+
+	ToGetAwsServicesServiceOutput() GetAwsServicesServiceOutput
+	ToGetAwsServicesServiceOutputWithContext(context.Context) GetAwsServicesServiceOutput
+}
+
+type GetAwsServicesServiceArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAwsServicesServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsServicesService)(nil)).Elem()
+}
+
+func (i GetAwsServicesServiceArgs) ToGetAwsServicesServiceOutput() GetAwsServicesServiceOutput {
+	return i.ToGetAwsServicesServiceOutputWithContext(context.Background())
+}
+
+func (i GetAwsServicesServiceArgs) ToGetAwsServicesServiceOutputWithContext(ctx context.Context) GetAwsServicesServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsServicesServiceOutput)
+}
+
+// GetAwsServicesServiceArrayInput is an input type that accepts GetAwsServicesServiceArray and GetAwsServicesServiceArrayOutput values.
+// You can construct a concrete instance of `GetAwsServicesServiceArrayInput` via:
+//
+// 		 GetAwsServicesServiceArray{ GetAwsServicesServiceArgs{...} }
+//
+type GetAwsServicesServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetAwsServicesServiceArrayOutput() GetAwsServicesServiceArrayOutput
+	ToGetAwsServicesServiceArrayOutputWithContext(context.Context) GetAwsServicesServiceArrayOutput
+}
+
+type GetAwsServicesServiceArray []GetAwsServicesServiceInput
+
+func (GetAwsServicesServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsServicesService)(nil)).Elem()
+}
+
+func (i GetAwsServicesServiceArray) ToGetAwsServicesServiceArrayOutput() GetAwsServicesServiceArrayOutput {
+	return i.ToGetAwsServicesServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetAwsServicesServiceArray) ToGetAwsServicesServiceArrayOutputWithContext(ctx context.Context) GetAwsServicesServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAwsServicesServiceArrayOutput)
+}
+
+type GetAwsServicesServiceOutput struct{ *pulumi.OutputState }
+
+func (GetAwsServicesServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsServicesService)(nil)).Elem()
+}
+
+func (o GetAwsServicesServiceOutput) ToGetAwsServicesServiceOutput() GetAwsServicesServiceOutput {
+	return o
+}
+
+func (o GetAwsServicesServiceOutput) ToGetAwsServicesServiceOutputWithContext(ctx context.Context) GetAwsServicesServiceOutput {
+	return o
+}
+
+func (o GetAwsServicesServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsServicesService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAwsServicesServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAwsServicesServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAwsServicesService)(nil)).Elem()
+}
+
+func (o GetAwsServicesServiceArrayOutput) ToGetAwsServicesServiceArrayOutput() GetAwsServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetAwsServicesServiceArrayOutput) ToGetAwsServicesServiceArrayOutputWithContext(ctx context.Context) GetAwsServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetAwsServicesServiceArrayOutput) Index(i pulumi.IntInput) GetAwsServicesServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsServicesService {
+		return vs[0].([]GetAwsServicesService)[vs[1].(int)]
+	}).(GetAwsServicesServiceOutput)
+}
+
+type GetAzureServicesService struct {
+	Name string `pulumi:"name"`
+}
+
+// GetAzureServicesServiceInput is an input type that accepts GetAzureServicesServiceArgs and GetAzureServicesServiceOutput values.
+// You can construct a concrete instance of `GetAzureServicesServiceInput` via:
+//
+// 		 GetAzureServicesServiceArgs{...}
+//
+type GetAzureServicesServiceInput interface {
+	pulumi.Input
+
+	ToGetAzureServicesServiceOutput() GetAzureServicesServiceOutput
+	ToGetAzureServicesServiceOutputWithContext(context.Context) GetAzureServicesServiceOutput
+}
+
+type GetAzureServicesServiceArgs struct {
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAzureServicesServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureServicesService)(nil)).Elem()
+}
+
+func (i GetAzureServicesServiceArgs) ToGetAzureServicesServiceOutput() GetAzureServicesServiceOutput {
+	return i.ToGetAzureServicesServiceOutputWithContext(context.Background())
+}
+
+func (i GetAzureServicesServiceArgs) ToGetAzureServicesServiceOutputWithContext(ctx context.Context) GetAzureServicesServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAzureServicesServiceOutput)
+}
+
+// GetAzureServicesServiceArrayInput is an input type that accepts GetAzureServicesServiceArray and GetAzureServicesServiceArrayOutput values.
+// You can construct a concrete instance of `GetAzureServicesServiceArrayInput` via:
+//
+// 		 GetAzureServicesServiceArray{ GetAzureServicesServiceArgs{...} }
+//
+type GetAzureServicesServiceArrayInput interface {
+	pulumi.Input
+
+	ToGetAzureServicesServiceArrayOutput() GetAzureServicesServiceArrayOutput
+	ToGetAzureServicesServiceArrayOutputWithContext(context.Context) GetAzureServicesServiceArrayOutput
+}
+
+type GetAzureServicesServiceArray []GetAzureServicesServiceInput
+
+func (GetAzureServicesServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAzureServicesService)(nil)).Elem()
+}
+
+func (i GetAzureServicesServiceArray) ToGetAzureServicesServiceArrayOutput() GetAzureServicesServiceArrayOutput {
+	return i.ToGetAzureServicesServiceArrayOutputWithContext(context.Background())
+}
+
+func (i GetAzureServicesServiceArray) ToGetAzureServicesServiceArrayOutputWithContext(ctx context.Context) GetAzureServicesServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAzureServicesServiceArrayOutput)
+}
+
+type GetAzureServicesServiceOutput struct{ *pulumi.OutputState }
+
+func (GetAzureServicesServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureServicesService)(nil)).Elem()
+}
+
+func (o GetAzureServicesServiceOutput) ToGetAzureServicesServiceOutput() GetAzureServicesServiceOutput {
+	return o
+}
+
+func (o GetAzureServicesServiceOutput) ToGetAzureServicesServiceOutputWithContext(ctx context.Context) GetAzureServicesServiceOutput {
+	return o
+}
+
+func (o GetAzureServicesServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureServicesService) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAzureServicesServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAzureServicesServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAzureServicesService)(nil)).Elem()
+}
+
+func (o GetAzureServicesServiceArrayOutput) ToGetAzureServicesServiceArrayOutput() GetAzureServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetAzureServicesServiceArrayOutput) ToGetAzureServicesServiceArrayOutputWithContext(ctx context.Context) GetAzureServicesServiceArrayOutput {
+	return o
+}
+
+func (o GetAzureServicesServiceArrayOutput) Index(i pulumi.IntInput) GetAzureServicesServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAzureServicesService {
+		return vs[0].([]GetAzureServicesService)[vs[1].(int)]
+	}).(GetAzureServicesServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertMutingRuleFilterOutput{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterArrayOutput{})
@@ -5367,4 +5559,8 @@ func init() {
 	pulumi.RegisterOutputType(TimeChartVizOptionArrayOutput{})
 	pulumi.RegisterOutputType(WebhookIntegrationHeaderOutput{})
 	pulumi.RegisterOutputType(WebhookIntegrationHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetAwsServicesServiceOutput{})
+	pulumi.RegisterOutputType(GetAwsServicesServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAzureServicesServiceOutput{})
+	pulumi.RegisterOutputType(GetAzureServicesServiceArrayOutput{})
 }

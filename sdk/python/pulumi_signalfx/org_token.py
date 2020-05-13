@@ -44,8 +44,7 @@ class OrgToken(pulumi.CustomResource):
     """
     notifications: pulumi.Output[list]
     """
-    List of strings specifying where notifications will be sent when an incident occurs. See
-    https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+    Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
     """
     secret: pulumi.Output[str]
     """
@@ -86,8 +85,7 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[dict] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input[dict] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        :param pulumi.Input[list] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[list] notifications: Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
 
         The **dpm_limits** object supports the following:
 
@@ -149,8 +147,7 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[dict] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input[dict] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        :param pulumi.Input[list] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[list] notifications: Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
         :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
 
         The **dpm_limits** object supports the following:

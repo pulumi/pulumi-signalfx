@@ -56,13 +56,12 @@ class DataLink(pulumi.CustomResource):
 
         ## Example Usage
 
-
+        ### Global link to a dashboard
 
         ```python
         import pulumi
         import pulumi_signalfx as signalfx
 
-        # A global link to SignalFx dashboard.
         my_data_link = signalfx.DataLink("myDataLink",
             property_name="pname",
             property_value="pvalue",
@@ -72,7 +71,14 @@ class DataLink(pulumi.CustomResource):
                 "dashboardGroupId": signalfx_dashboard_group["mydashboardgroup0"]["id"],
                 "dashboardId": signalfx_dashboard["mydashboard0"]["id"],
             }])
-        # A dashboard-specific link to an external URL
+        ```
+
+        ### Dashboard specific link to an external URL
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
         my_data_link_dash = signalfx.DataLink("myDataLinkDash",
             context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
             property_name="pname2",

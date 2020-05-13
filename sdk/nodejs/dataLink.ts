@@ -11,13 +11,12 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * 
+ * ### Global link to a dashboard
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  * 
- * // A global link to SignalFx dashboard.
  * const myDataLink = new signalfx.DataLink("myDataLink", {
  *     propertyName: "pname",
  *     propertyValue: "pvalue",
@@ -28,7 +27,14 @@ import * as utilities from "./utilities";
  *         dashboardId: signalfx_dashboard.mydashboard0.id,
  *     }],
  * });
- * // A dashboard-specific link to an external URL
+ * ```
+ * 
+ * ### Dashboard specific link to an external URL
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ * 
  * const myDataLinkDash = new signalfx.DataLink("myDataLinkDash", {
  *     contextDashboardId: signalfx_dashboard.mydashboard0.id,
  *     propertyName: "pname2",
