@@ -83,7 +83,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly projectServiceKeys!: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
 
@@ -147,7 +147,7 @@ export interface IntegrationState {
      */
     readonly projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -173,7 +173,7 @@ export interface IntegrationArgs {
      */
     readonly projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
 }

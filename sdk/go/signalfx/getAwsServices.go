@@ -7,7 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get a list of AWS service names.
+//
+// Deprecated: signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices
 func GetAwsServices(ctx *pulumi.Context, args *GetAwsServicesArgs, opts ...pulumi.InvokeOption) (*GetAwsServicesResult, error) {
 	var rv GetAwsServicesResult
 	err := ctx.Invoke("signalfx:index/getAwsServices:getAwsServices", args, &rv, opts...)

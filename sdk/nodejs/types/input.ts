@@ -746,6 +746,10 @@ export interface WebhookIntegrationHeader {
 }
 
 export namespace aws {
+    export interface GetServicesService {
+        name: string;
+    }
+
     export interface IntegrationCustomNamespaceSyncRule {
         /**
          * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
@@ -782,6 +786,12 @@ export namespace aws {
          * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: pulumi.Input<string>;
+    }
+}
+
+export namespace azure {
+    export interface GetServicesService {
+        name: string;
     }
 }
 

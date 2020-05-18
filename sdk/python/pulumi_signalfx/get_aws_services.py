@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
+warnings.warn("signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices", DeprecationWarning)
 class GetAwsServicesResult:
     """
     A collection of values returned by getAwsServices.
@@ -34,22 +35,8 @@ class AwaitableGetAwsServicesResult(GetAwsServicesResult):
 
 def get_aws_services(services=None,opts=None):
     """
-    Use this data source to get a list of AWS service names.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    aws_services = signalfx.get_aws_services()
-    # Leaves out most of the integration bits, see the docs
-    # for aws.Integration for more
-    aws_myteam = signalfx.aws.Integration("awsMyteam", services=[__item["name"] for __item in [aws_services.services]])
-    ```
-
+    Deprecated: signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices
 
 
 
@@ -57,6 +44,7 @@ def get_aws_services(services=None,opts=None):
 
       * `name` (`str`)
     """
+    pulumi.log.warn("get_aws_services is deprecated: signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices")
     __args__ = dict()
 
 

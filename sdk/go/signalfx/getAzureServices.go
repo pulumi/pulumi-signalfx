@@ -7,7 +7,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get a list of Azure service names.
+//
+// Deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices
 func GetAzureServices(ctx *pulumi.Context, args *GetAzureServicesArgs, opts ...pulumi.InvokeOption) (*GetAzureServicesResult, error) {
 	var rv GetAzureServicesResult
 	err := ctx.Invoke("signalfx:index/getAzureServices:getAzureServices", args, &rv, opts...)

@@ -19,9 +19,7 @@ import (
 //
 // ## Service Names
 //
-// > **NOTE** You can use the data source ".getAwsServices" to specify all services.
-//
-// Fields that expect an AWS service/namespace will work with one of: "AWS/ApiGateway" "AWS/AppStream" "AWS/AutoScaling" "AWS/Billing" "AWS/CloudFront" "AWS/CloudSearch" "AWS/Events" "AWS/Logs" "AWS/Connect" "AWS/DMS" "AWS/DX" "AWS/DynamoDB" "AWS/EC2" "AWS/EC2Spot" "AWS/ECS" "AWS/ElasticBeanstalk" "AWS/EBS" "AWS/EFS" "AWS/ELB" "AWS/ApplicationELB" "AWS/NetworkELB" "AWS/ElasticTranscoder" "AWS/ElastiCache" "AWS/ES" "AWS/ElasticMapReduce" "AWS/GameLift" "AWS/Inspector" "AWS/IoT" "AWS/KMS" "AWS/KinesisAnalytics" "AWS/Firehose" "AWS/Kinesis" "AWS/KinesisVideo" "AWS/Lambda" "AWS/Lex" "AWS/ML" "AWS/OpsWorks" "AWS/Polly" "AWS/Redshift" "AWS/RDS" "AWS/Route53" "AWS/SageMaker" "AWS/DDoSProtection" "AWS/SES" "AWS/SNS" "AWS/SQS" "AWS/S3" "AWS/SWF" "AWS/States" "AWS/StorageGateway" "AWS/Translate" "AWS/NATGateway" "AWS/VPN" "WAF" "AWS/WorkSpaces".
+// > **NOTE** You can use the data source "aws.getServices" to specify all services.
 type Integration struct {
 	pulumi.CustomResourceState
 
@@ -49,7 +47,7 @@ type Integration struct {
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
-	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
+	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
@@ -115,7 +113,7 @@ type integrationState struct {
 	Regions []string `pulumi:"regions"`
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn *string `pulumi:"roleArn"`
-	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
+	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services []string `pulumi:"services"`
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token *string `pulumi:"token"`
@@ -148,7 +146,7 @@ type IntegrationState struct {
 	Regions pulumi.StringArrayInput
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn pulumi.StringPtrInput
-	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
+	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayInput
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token pulumi.StringPtrInput
@@ -185,7 +183,7 @@ type integrationArgs struct {
 	Regions []string `pulumi:"regions"`
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn *string `pulumi:"roleArn"`
-	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
+	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services []string `pulumi:"services"`
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token *string `pulumi:"token"`
@@ -219,7 +217,7 @@ type IntegrationArgs struct {
 	Regions pulumi.StringArrayInput
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn pulumi.StringPtrInput
-	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`.
+	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayInput
 	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
 	Token pulumi.StringPtrInput

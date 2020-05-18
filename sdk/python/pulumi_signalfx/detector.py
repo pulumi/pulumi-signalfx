@@ -225,7 +225,7 @@ class Detector(pulumi.CustomResource):
                 }]))
         ```
 
-        ### Team
+        ### TeamEmail
 
         ```python
         import pulumi

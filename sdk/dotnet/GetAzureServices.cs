@@ -9,13 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx
 {
+    [Obsolete(@"signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices")]
     public static class GetAzureServices
     {
         /// <summary>
-        /// Use this data source to get a list of Azure service names.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// Deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices
         /// </summary>
         public static Task<GetAzureServicesResult> InvokeAsync(GetAzureServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAzureServicesResult>("signalfx:index/getAzureServices:getAzureServices", args ?? new GetAzureServicesArgs(), options.WithVersion());

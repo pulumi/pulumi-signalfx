@@ -128,8 +128,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
-			"signalfx_aws_services":     {Tok: makeDataSource(mainMod, "getAwsServices")},
-			"signalfx_azure_services":   {Tok: makeDataSource(mainMod, "getAzureServices")},
+			"signalfx_gcp_services":     {Tok: makeDataSource(gcpMod, "getServices")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -153,6 +152,11 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: namespaceMap,
 		},
 	}
+
+	prov.RenameDataSource("signalfx_aws_services", makeDataSource(mainMod, "getAwsServices"),
+		makeDataSource(awsMod, "getServices"), mainMod, awsMod, nil)
+	prov.RenameDataSource("signalfx_azure_services", makeDataSource(mainMod, "getAzureServices"),
+		makeDataSource(azureMod, "getServices"), mainMod, azureMod, nil)
 
 	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
 	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).

@@ -7,12 +7,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Union
-from . import utilities, tables
+from .. import utilities, tables
 
-warnings.warn("signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices", DeprecationWarning)
-class GetAzureServicesResult:
+class GetServicesResult:
     """
-    A collection of values returned by getAzureServices.
+    A collection of values returned by getServices.
     """
     def __init__(__self__, id=None, services=None):
         if id and not isinstance(id, str):
@@ -24,19 +23,33 @@ class GetAzureServicesResult:
         if services and not isinstance(services, list):
             raise TypeError("Expected argument 'services' to be a list")
         __self__.services = services
-class AwaitableGetAzureServicesResult(GetAzureServicesResult):
+class AwaitableGetServicesResult(GetServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetAzureServicesResult(
+        return GetServicesResult(
             id=self.id,
             services=self.services)
 
-def get_azure_services(services=None,opts=None):
+def get_services(services=None,opts=None):
     """
+    Use this data source to get a list of AWS service names.
 
-    Deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_signalfx as signalfx
+
+    aws_services = signalfx.aws.get_services()
+    # Leaves out most of the integration bits, see the docs
+    # for aws.Integration for more
+    aws_myteam = signalfx.aws.Integration("awsMyteam", services=[__item["name"] for __item in [aws_services.services]])
+    ```
+
 
 
 
@@ -44,7 +57,6 @@ def get_azure_services(services=None,opts=None):
 
       * `name` (`str`)
     """
-    pulumi.log.warn("get_azure_services is deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices")
     __args__ = dict()
 
 
@@ -53,8 +65,8 @@ def get_azure_services(services=None,opts=None):
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('signalfx:index/getAzureServices:getAzureServices', __args__, opts=opts).value
+    __ret__ = pulumi.runtime.invoke('signalfx:aws/getServices:getServices', __args__, opts=opts).value
 
-    return AwaitableGetAzureServicesResult(
+    return AwaitableGetServicesResult(
         id=__ret__.get('id'),
         services=__ret__.get('services'))

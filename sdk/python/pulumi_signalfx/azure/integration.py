@@ -36,7 +36,7 @@ class Integration(pulumi.CustomResource):
     """
     services: pulumi.Output[list]
     """
-    List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
+    List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
     """
     subscriptions: pulumi.Output[list]
     """
@@ -81,9 +81,7 @@ class Integration(pulumi.CustomResource):
 
         ## Service Names
 
-        > **NOTE** You can use the data source ".getAzureServices" to specify all services.
-
-        Fields that expect an Azure service will work with one of: "microsoft.sql/servers/elasticpools", "microsoft.storage/storageaccounts", "microsoft.storage/storageaccountsservices/tableservices", "microsoft.storage/storageaccountsservices/blobservices", "microsoft.storage/storageaccounts/queueservices", "microsoft.storage/storageaccounts/fileservices", "microsoft.compute/virtualmachinescalesets", "microsoft.compute/virtualmachinescalesets/virtualmachines", "microsoft.compute/virtualmachines", "microsoft.devices", "microsoft.devices/iothubs", "microsoft.devices/elasticpools", "microsoft.devices/elasticpools/iothubtenants", "microsoft.eventHub/namespaces", "microsoft.batch/batchaccounts", "microsoft.sql/servers/databases", "microsoft.cache/redis", "microsoft.logic/workflows", "microsoft.web", "microsoft.web/sites", "microsoft.web/serverfarms", "microsoft.web/slots", "microsoft.web/hostingenvironments/multirolepools", "microsoft.web/hostingenvironments/workerpools", "microsoft.analysisservices/servers", "microsoft.apimanagement/service", "microsoft.automation/automationaccounts", "microsoft.classiccompute/virtualmachines", "microsoft.cognitiveservices/accounts", "microsoft.customerinsights/hubs", "microsoft.datafactory", "microsoft.datafactory/datafactories", "microsoft.datafactory/factories", "microsoft.datalakeanalytics/accounts", "microsoft.datalakestore/accounts", "microsoft.dbformysql/servers", "microsoft.dbforpostgresql/servers", "microsoft.documentdb/databaseaccounts", "microsoft.keyvault/vaults", "microsoft.locationbasedservices/accounts", "microsoft.network/loadbalancers", "microsoft.network/publicipaddresses", "microsoft.network/applicationgateways", "microsoft.network/virtualnetworkgateways", "microsoft.network/expressroutecircuits", "microsoft.network/trafficmanagerprofiles", "microsoft.notificationhubs/namespaces/notificationhubs", "microsoft.powerbidedicated/capacities", "microsoft.relay/namespaces", "microsoft.search/searchservices", "microsoft.servicebus/namespaces", "microsoft.sql/servers", "microsoft.streamanalytics/streamingjobs", "microsoft.network/dnszones", "microsoft.hdinsight/clusters", "microsoft.containerinstance/containergroups", "microsoft.containerservice/managedclusters", "microsoft.kusto/clusters", "microsoft.machinelearningservices/workspaces".
+        > **NOTE** You can use the data source "azure.getServices" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,7 +91,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
+        :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         :param pulumi.Input[list] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """
@@ -156,7 +154,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor.
+        :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         :param pulumi.Input[list] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """

@@ -3,5 +3,6 @@
 
 // Export members:
 export * from "./externalIntegration";
+export * from "./getServices";
 export * from "./integration";
 export * from "./tokenIntegration";

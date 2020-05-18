@@ -9,13 +9,12 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx
 {
+    [Obsolete(@"signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices")]
     public static class GetAwsServices
     {
         /// <summary>
-        /// Use this data source to get a list of AWS service names.
         /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
+        /// Deprecated: signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices
         /// </summary>
         public static Task<GetAwsServicesResult> InvokeAsync(GetAwsServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesArgs(), options.WithVersion());
