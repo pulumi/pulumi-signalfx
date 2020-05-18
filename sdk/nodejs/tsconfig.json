@@ -15,9 +15,11 @@
     "files": [
         "alertMutingRule.ts",
         "aws/externalIntegration.ts",
+        "aws/getServices.ts",
         "aws/index.ts",
         "aws/integration.ts",
         "aws/tokenIntegration.ts",
+        "azure/getServices.ts",
         "azure/index.ts",
         "azure/integration.ts",
         "config/index.ts",

@@ -6,26 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get a list of AWS service names.
- * 
- * ## Example Usage
- * 
- * 
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- * 
- * const awsServices = signalfx.getAwsServices({});
- * // Leaves out most of the integration bits, see the docs
- * // for signalfx.aws.Integration for more
- * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {services: [awsServices.then(awsServices => awsServices.services)].map(__item => __item?.name)});
- * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/d/aws_services.markdown.
- */
+/** @deprecated signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices */
 export function getAwsServices(args?: GetAwsServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsServicesResult> {
+    pulumi.log.warn("getAwsServices is deprecated: signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices")
     args = args || {};
     if (!opts) {
         opts = {}

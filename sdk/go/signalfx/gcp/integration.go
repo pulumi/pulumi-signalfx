@@ -24,7 +24,7 @@ type Integration struct {
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayOutput `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 }
 
@@ -67,7 +67,7 @@ type integrationState struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services []string `pulumi:"services"`
 }
 
@@ -80,7 +80,7 @@ type IntegrationState struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayInput
 }
 
@@ -97,7 +97,7 @@ type integrationArgs struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services []string `pulumi:"services"`
 }
 
@@ -111,7 +111,7 @@ type IntegrationArgs struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayInput
 }
 

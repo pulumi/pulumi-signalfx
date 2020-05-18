@@ -148,7 +148,7 @@ import * as utilities from "./utilities";
  * }
  * ```
  * 
- * ### Team
+ * ### TeamEmail
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

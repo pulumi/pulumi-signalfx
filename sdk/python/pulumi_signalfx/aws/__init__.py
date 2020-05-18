@@ -4,5 +4,6 @@
 
 # Export this package's modules as members:
 from .external_integration import *
+from .get_services import *
 from .integration import *
 from .token_integration import *

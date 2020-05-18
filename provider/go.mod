@@ -12,5 +12,5 @@ require (
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/terraform-providers/terraform-provider-signalfx => github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200513104900-6ce2a2bb78fe
+	github.com/terraform-providers/terraform-provider-signalfx => github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200518165554-501754b024c8
 )

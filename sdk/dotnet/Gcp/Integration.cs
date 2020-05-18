@@ -41,7 +41,7 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         /// </summary>
         public InputList<string> Services
         {
@@ -175,7 +175,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         /// </summary>
         public InputList<string> Services
         {
