@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v4.21.0 of the SignalFx Terraform Provider
+* Deprecate `signalFx.getAwsServices` in favor of `signalFx.aws.getServices`
+* Deprecate `signalFx.getAzureServices` in favor of `signalFx.azure.getServices`
 
 ---
 
