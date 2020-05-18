@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.4.0 (2020-05-18)
 * Upgrade to v4.21.0 of the SignalFx Terraform Provider
 * Deprecate `signalFx.getAwsServices` in favor of `signalFx.aws.getServices`
 * Deprecate `signalFx.getAzureServices` in favor of `signalFx.azure.getServices`
-
----
 
 ## 2.3.0 (2020-05-13)
 * Upgrade to v4.20.1 of the SignalFx Terraform Provider
