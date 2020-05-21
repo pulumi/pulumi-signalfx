@@ -7,8 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-//
-// Deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices
+// Deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices
 func GetAzureServices(ctx *pulumi.Context, args *GetAzureServicesArgs, opts ...pulumi.InvokeOption) (*GetAzureServicesResult, error) {
 	var rv GetAzureServicesResult
 	err := ctx.Invoke("signalfx:index/getAzureServices:getAzureServices", args, &rv, opts...)

@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
- * 
+ *
  * Time charts display data points over a period of time.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const mychart0 = new signalfx.TimeChart("mychart0", {
  *     axisLeft: {
  *         label: "CPU Total Idle",
@@ -45,8 +45,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/time_chart.html.markdown.
  */
 export class TimeChart extends pulumi.CustomResource {
     /**
@@ -319,7 +317,6 @@ export interface TimeChartState {
     readonly histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
-     * 
      * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
@@ -368,8 +365,12 @@ export interface TimeChartState {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Tags associated with the chart
-     * 
+     * Tags     * 
+ associated     * 
+ with     * 
+ the     * 
+ chart     * 
+
      * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -441,7 +442,6 @@ export interface TimeChartArgs {
     readonly histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
-     * 
      * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
@@ -490,8 +490,12 @@ export interface TimeChartArgs {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Tags associated with the chart
-     * 
+     * Tags     * 
+ associated     * 
+ with     * 
+ the     * 
+ chart     * 
+
      * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;

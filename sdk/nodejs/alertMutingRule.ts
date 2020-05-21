@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a SignalFx resource for managing alert muting rules. See [Mute Notifications](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html) for more information.
- * 
+ *
  * > **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const roolMooterOne = new signalfx.AlertMutingRule("roolMooterOne", {
  *     description: "mooted it NEW",
  *     startTime: 1573063243,
@@ -30,8 +30,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/alert_muting_rule.html.markdown.
  */
 export class AlertMutingRule extends pulumi.CustomResource {
     /**

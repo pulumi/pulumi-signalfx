@@ -8,22 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get a list of Azure service names.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const azureServices = signalfx.azure.getServices({});
  * // Leaves out most of the integration bits, see the docs
  * // for signalfx.azure.Integration for more
  * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {services: [azureServices.then(azureServices => azureServices.services)].map(__item => __item?.name)});
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/d/azure_services.markdown.
  */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};

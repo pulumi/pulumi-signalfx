@@ -37,6 +37,8 @@ type TimeChart struct {
 	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions TimeChartHistogramOptionArrayOutput `pulumi:"histogramOptions"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayOutput `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields TimeChartLegendOptionsFieldArrayOutput `pulumi:"legendOptionsFields"`
@@ -61,6 +63,8 @@ type TimeChart struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// Tags associated with the chart
+	//
+	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
@@ -126,6 +130,8 @@ type timeChartState struct {
 	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions []TimeChartHistogramOption `pulumi:"histogramOptions"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields []TimeChartLegendOptionsField `pulumi:"legendOptionsFields"`
@@ -150,6 +156,8 @@ type timeChartState struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
 	// Tags associated with the chart
+	//
+	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags []string `pulumi:"tags"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
@@ -185,6 +193,8 @@ type TimeChartState struct {
 	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions TimeChartHistogramOptionArrayInput
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields TimeChartLegendOptionsFieldArrayInput
@@ -209,6 +219,8 @@ type TimeChartState struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
 	// Tags associated with the chart
+	//
+	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags pulumi.StringArrayInput
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
@@ -248,6 +260,8 @@ type timeChartArgs struct {
 	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions []TimeChartHistogramOption `pulumi:"histogramOptions"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields []TimeChartLegendOptionsField `pulumi:"legendOptionsFields"`
@@ -272,6 +286,8 @@ type timeChartArgs struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
 	// Tags associated with the chart
+	//
+	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags []string `pulumi:"tags"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
@@ -306,6 +322,8 @@ type TimeChartArgs struct {
 	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions TimeChartHistogramOptionArrayInput
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields TimeChartLegendOptionsFieldArrayInput
@@ -330,6 +348,8 @@ type TimeChartArgs struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
 	// Tags associated with the chart
+	//
+	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags pulumi.StringArrayInput
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput

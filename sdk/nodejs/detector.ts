@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.
- * 
+ *
  * > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Jira
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -39,13 +39,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### Opsgenie
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -66,13 +66,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### PagerDuty
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -93,13 +93,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### Slack
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -120,13 +120,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### Team
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -147,13 +147,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### TeamEmail
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -174,13 +174,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### VictorOps
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -201,13 +201,13 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * 
+ *
  * ### Webhook
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const applicationDelay: signalfx.Detector[];
  * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
@@ -228,8 +228,6 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/detector.html.markdown.
  */
 export class Detector extends pulumi.CustomResource {
     /**

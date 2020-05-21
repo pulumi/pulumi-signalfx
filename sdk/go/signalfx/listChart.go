@@ -27,6 +27,8 @@ type ListChart struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayOutput `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayOutput `pulumi:"legendOptionsFields"`
@@ -98,6 +100,8 @@ type listChartState struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields []ListChartLegendOptionsField `pulumi:"legendOptionsFields"`
@@ -139,6 +143,8 @@ type ListChartState struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayInput
@@ -184,6 +190,8 @@ type listChartArgs struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields []ListChartLegendOptionsField `pulumi:"legendOptionsFields"`
@@ -224,6 +232,8 @@ type ListChartArgs struct {
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	//
+	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
 	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayInput

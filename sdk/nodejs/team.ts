@@ -8,11 +8,9 @@ import * as utilities from "./utilities";
 
 /**
  * Handles management of SignalFx teams.
- * 
- * You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
- * 
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/team.html.markdown.
+ * You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+ *
  */
 export class Team extends pulumi.CustomResource {
     /**

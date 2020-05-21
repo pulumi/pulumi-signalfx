@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Manage SignalFx org tokens.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const myteamkey0 = new signalfx.OrgToken("myteamkey0", {
  *     description: "My team's rad key",
  *     hostOrUsageLimits: {
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     notifications: ["Email,foo-alerts@bar.com"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/org_token.html.markdown.
  */
 export class OrgToken extends pulumi.CustomResource {
     /**

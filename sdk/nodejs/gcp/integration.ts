@@ -8,18 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * SignalFx GCP Integration
- * 
+ *
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {
  *     enabled: true,
  *     pollRate: 300000,
@@ -36,8 +36,6 @@ import * as utilities from "../utilities";
  *     services: ["compute"],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/gcp_integration.html.markdown.
  */
 export class Integration extends pulumi.CustomResource {
     /**
