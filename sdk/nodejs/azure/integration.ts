@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
- * 
+ *
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {
  *     enabled: true,
  *     resource: [{
@@ -36,12 +36,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * 
- * ## Service Names
- * 
- * > **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/azure_integration.html.markdown.
+ * ## Service Names
+ *
+ * > **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.
  */
 export class Integration extends pulumi.CustomResource {
     /**

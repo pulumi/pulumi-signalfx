@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Displays a listing of events as a widget in a dashboard.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const mynote0 = new signalfx.EventFeedChart("mynote0", {
  *     description: "Lorem ipsum dolor sit amet",
  *     programText: "A = events(eventType='Fart Testing').publish(label='A')",
@@ -26,8 +26,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/event_feed_chart.html.markdown.
  */
 export class EventFeedChart extends pulumi.CustomResource {
     /**

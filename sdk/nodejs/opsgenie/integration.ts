@@ -6,25 +6,23 @@ import * as utilities from "../utilities";
 
 /**
  * SignalFx Opsgenie integration.
- * 
+ *
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const opgenieMyteam = new signalfx.opsgenie.Integration("opgenieMyteam", {
  *     apiKey: "farts",
  *     apiUrl: "https://api.opsgenie.com",
  *     enabled: true,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/opsgenie_integration.html.markdown.
  */
 export class Integration extends pulumi.CustomResource {
     /**

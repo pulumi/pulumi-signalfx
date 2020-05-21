@@ -9,7 +9,7 @@ import pulumi.runtime
 from typing import Union
 from . import utilities, tables
 
-warnings.warn("signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices", DeprecationWarning)
+warnings.warn("signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices", DeprecationWarning)
 class GetAzureServicesResult:
     """
     A collection of values returned by getAzureServices.
@@ -35,16 +35,14 @@ class AwaitableGetAzureServicesResult(GetAzureServicesResult):
 
 def get_azure_services(services=None,opts=None):
     """
-
-    Deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices
-
+    Use this data source to access information about an existing resource.
 
 
     The **services** object supports the following:
 
       * `name` (`str`)
     """
-    pulumi.log.warn("get_azure_services is deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices")
+    pulumi.log.warn("get_azure_services is deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices")
     __args__ = dict()
 
 

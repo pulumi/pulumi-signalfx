@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const myheatmapchart0 = new signalfx.HeatmapChart("myheatmapchart0", {
  *     colorRange: {
  *         color: "#ff0000",
@@ -52,8 +52,6 @@ import * as utilities from "./utilities";
  *     sortBy: "+host",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/heatmap_chart.html.markdown.
  */
 export class HeatmapChart extends pulumi.CustomResource {
     /**

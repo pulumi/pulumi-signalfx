@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
- * 
+ *
  * If the time period is in the past, the number represents the value of the metric near the end of the time period.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const mysvchart0 = new signalfx.SingleValueChart("mysvchart0", {
  *     colorBy: "Dimension",
  *     description: "Very cool Single Value Chart",
@@ -31,8 +31,6 @@ import * as utilities from "./utilities";
  *     refreshInterval: 1,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/single_value_chart.html.markdown.
  */
 export class SingleValueChart extends pulumi.CustomResource {
     /**

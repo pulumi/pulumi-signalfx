@@ -6,20 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * SignalFx AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
- * 
+ *
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
- * 
+ *
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const awsMyteamExtern = new signalfx.aws.ExternalIntegration("awsMyteamExtern", {});
  * const signalfxAssumePolicy = aws.iam.getPolicyDocument({
  *     statement: [{
@@ -120,8 +120,6 @@ import * as utilities from "../utilities";
  *     enableAwsUsage: true,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_external_integration.html.markdown.
  */
 export class ExternalIntegration extends pulumi.CustomResource {
     /**

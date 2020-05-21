@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/** @deprecated signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices */
+/** @deprecated signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices */
 export function getAzureServices(args?: GetAzureServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureServicesResult> {
-    pulumi.log.warn("getAzureServices is deprecated: signalfx.index.getAzureServices has been deprecated in favour of signalfx.azure.getServices")
+    pulumi.log.warn("getAzureServices is deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices")
     args = args || {};
     if (!opts) {
         opts = {}

@@ -8,20 +8,20 @@ import * as utilities from "../utilities";
 
 /**
  * SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
- * 
+ *
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
- * 
+ *
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const awsMyteamToken = new signalfx.aws.TokenIntegration("awsMyteamToken", {});
  * // Make yourself an AWS IAM role here
  * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
@@ -49,8 +49,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/aws_token_integration.html.markdown.
  */
 export class TokenIntegration extends pulumi.CustomResource {
     /**

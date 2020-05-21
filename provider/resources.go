@@ -128,7 +128,6 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
-			"signalfx_gcp_services":     {Tok: makeDataSource(gcpMod, "getServices")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

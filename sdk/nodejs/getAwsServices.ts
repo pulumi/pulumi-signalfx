@@ -6,9 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/** @deprecated signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices */
+/** @deprecated signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices */
 export function getAwsServices(args?: GetAwsServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsServicesResult> {
-    pulumi.log.warn("getAwsServices is deprecated: signalfx.index.getAwsServices has been deprecated in favour of signalfx.aws.getServices")
+    pulumi.log.warn("getAwsServices is deprecated: signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices")
     args = args || {};
     if (!opts) {
         opts = {}

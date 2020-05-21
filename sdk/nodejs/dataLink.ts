@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### Global link to a dashboard
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const myDataLink = new signalfx.DataLink("myDataLink", {
  *     propertyName: "pname",
  *     propertyValue: "pvalue",
@@ -28,13 +28,13 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * 
+ *
  * ### Dashboard specific link to an external URL
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const myDataLinkDash = new signalfx.DataLink("myDataLinkDash", {
  *     contextDashboardId: signalfx_dashboard.mydashboard0.id,
  *     propertyName: "pname2",
@@ -50,8 +50,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/data_link.html.markdown.
  */
 export class DataLink extends pulumi.CustomResource {
     /**

@@ -6,17 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * SignalFx Jira integrations. For help with this integration see [Integration with Jira](https://docs.signalfx.com/en/latest/admin-guide/integrate-notifications.html#integrate-with-jira).
- * 
+ *
  * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
- * 
+ *
  * const jiraMyteamXX = new signalfx.jira.Integration("jira_myteamXX", {
  *     apiToken: "abc123",
  *     assigneeDisplayName: "Testy Testerson",
@@ -31,8 +31,6 @@ import * as utilities from "../utilities";
  *     username: "yoosername",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-signalfx/blob/master/website/docs/r/jira_integration.html.markdown.
  */
 export class Integration extends pulumi.CustomResource {
     /**
