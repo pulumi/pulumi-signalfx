@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-signalfx/provider/v2
 
-go 1.13
+go 1.14
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.11.0
