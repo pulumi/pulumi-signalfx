@@ -15,6 +15,34 @@ namespace Pulumi.SignalFx.Azure
         /// Use this data source to get a list of Azure service names.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var azureServices = Output.Create(SignalFx.Azure.GetServices.InvokeAsync());
+        ///         // Leaves out most of the integration bits, see the docs
+        ///         // for signalfx.azure.Integration for more
+        ///         var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new SignalFx.Azure.IntegrationArgs
+        ///         {
+        ///             Services = 
+        ///             {
+        ///                 azureServices.Apply(azureServices =&gt; azureServices.Services),
+        ///             }.Select(__item =&gt; __item?.Name).ToList(),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)

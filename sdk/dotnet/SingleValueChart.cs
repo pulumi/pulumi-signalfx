@@ -13,6 +13,36 @@ namespace Pulumi.SignalFx
     /// This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
     /// 
     /// If the time period is in the past, the number represents the value of the metric near the end of the time period.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new SignalFx.SingleValueChartArgs
+    ///         {
+    ///             ColorBy = "Dimension",
+    ///             Description = "Very cool Single Value Chart",
+    ///             IsTimestampHidden = true,
+    ///             MaxDelay = 2,
+    ///             MaxPrecision = 2,
+    ///             ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    /// 
+    /// ",
+    ///             RefreshInterval = 1,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SingleValueChart : Pulumi.CustomResource
     {

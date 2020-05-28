@@ -13,6 +13,37 @@ namespace Pulumi.SignalFx.Jira
     /// SignalFx Jira integrations. For help with this integration see [Integration with Jira](https://docs.signalfx.com/en/latest/admin-guide/integrate-notifications.html#integrate-with-jira).
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var jiraMyteamXX = new SignalFx.Jira.Integration("jiraMyteamXX", new SignalFx.Jira.IntegrationArgs
+    ///         {
+    ///             ApiToken = "abc123",
+    ///             AssigneeDisplayName = "Testy Testerson",
+    ///             AssigneeName = "testytesterson",
+    ///             AuthMethod = "EmailAndToken",
+    ///             BaseUrl = "https://www.example.com",
+    ///             Enabled = false,
+    ///             IssueType = "Story",
+    ///             Password = "paasword",
+    ///             ProjectKey = "TEST",
+    ///             UserEmail = "yoosername@example.com",
+    ///             Username = "yoosername",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {

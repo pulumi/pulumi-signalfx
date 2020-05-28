@@ -53,11 +53,11 @@ class Integration(pulumi.CustomResource):
             project_service_keys=[
                 {
                     "projectId": "gcp_project_id_1",
-                    "projectKey": (lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
+                    "project_key": (lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
                 },
                 {
                     "projectId": "gcp_project_id_2",
-                    "projectKey": (lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
+                    "project_key": (lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
                 },
             ],
             services=["compute"])

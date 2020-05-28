@@ -65,15 +65,15 @@ class Integration(pulumi.CustomResource):
             resource=[{
                 "signalfxAzureIntegration": [{
                     "azureMyteamXX": [{
-                        "appId": "YYY",
+                        "app_id": "YYY",
                         "enabled": False,
                         "environment": "azure",
                         "name": "AzureFoo",
-                        "pollRate": 300,
-                        "secretKey": "XXX",
+                        "poll_rate": 300,
+                        "secret_key": "XXX",
                         "services": ["microsoft.sql/servers/elasticpools"],
                         "subscriptions": ["sub-guid-here"],
-                        "tenantId": "ZZZ",
+                        "tenant_id": "ZZZ",
                     }],
                 }],
             }])

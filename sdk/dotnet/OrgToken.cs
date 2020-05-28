@@ -11,6 +11,42 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Manage SignalFx org tokens.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myteamkey0 = new SignalFx.OrgToken("myteamkey0", new SignalFx.OrgTokenArgs
+    ///         {
+    ///             Description = "My team's rad key",
+    ///             HostOrUsageLimits = new SignalFx.Inputs.OrgTokenHostOrUsageLimitsArgs
+    ///             {
+    ///                 ContainerLimit = 200,
+    ///                 ContainerNotificationThreshold = 180,
+    ///                 CustomMetricsLimit = 1000,
+    ///                 CustomMetricsNotificationThreshold = 900,
+    ///                 HighResMetricsLimit = 1000,
+    ///                 HighResMetricsNotificationThreshold = 900,
+    ///                 HostLimit = 100,
+    ///                 HostNotificationThreshold = 90,
+    ///             },
+    ///             Notifications = 
+    ///             {
+    ///                 "Email,foo-alerts@bar.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OrgToken : Pulumi.CustomResource
     {

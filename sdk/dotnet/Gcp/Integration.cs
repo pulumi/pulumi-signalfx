@@ -13,6 +13,46 @@ namespace Pulumi.SignalFx.Gcp
     /// SignalFx GCP Integration
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new SignalFx.Gcp.IntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             PollRate = 300000,
+    ///             ProjectServiceKeys = 
+    ///             {
+    ///                 new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
+    ///                 {
+    ///                     ProjectId = "gcp_project_id_1",
+    ///                     ProjectKey = File.ReadAllText("/path/to/gcp_credentials_1.json"),
+    ///                 },
+    ///                 new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
+    ///                 {
+    ///                     ProjectId = "gcp_project_id_2",
+    ///                     ProjectKey = File.ReadAllText("/path/to/gcp_credentials_2.json"),
+    ///                 },
+    ///             },
+    ///             Services = 
+    ///             {
+    ///                 "compute",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {

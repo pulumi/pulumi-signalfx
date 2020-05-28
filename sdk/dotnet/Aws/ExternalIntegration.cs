@@ -15,6 +15,154 @@ namespace Pulumi.SignalFx.Aws
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration("awsMyteamExtern", new SignalFx.Aws.ExternalIntegrationArgs
+    ///         {
+    ///         });
+    ///         var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
+    ///         {
+    ///             Statement = 
+    ///             {
+    ///                 
+    ///                 {
+    ///                     { "actions", 
+    ///                     {
+    ///                         "sts:AssumeRole",
+    ///                     } },
+    ///                     { "principals", 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "type", "AWS" },
+    ///                             { "identifiers", 
+    ///                             {
+    ///                                 awsMyteamExtern.SignalfxAwsAccount,
+    ///                             } },
+    ///                         },
+    ///                     } },
+    ///                     { "condition", 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "test", "StringEquals" },
+    ///                             { "variable", "sts:ExternalId" },
+    ///                             { "values", 
+    ///                             {
+    ///                                 awsMyteamExtern.ExternalId,
+    ///                             } },
+    ///                         },
+    ///                     } },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
+    ///         {
+    ///             Description = "signalfx integration to read out data and send it to signalfxs aws account",
+    ///             AssumeRolePolicy = signalfxAssumePolicy.Apply(signalfxAssumePolicy =&gt; signalfxAssumePolicy.Json),
+    ///         });
+    ///         var awsReadPermissions = new Aws.Iam.Policy("awsReadPermissions", new Aws.Iam.PolicyArgs
+    ///         {
+    ///             Description = "farts",
+    ///             Policy = @"{
+    /// 	""Version"": ""2012-10-17"",
+    /// 	""Statement"": [
+    /// 		{
+    /// 			""Action"": [
+    /// 				""dynamodb:ListTables"",
+    /// 		    ""dynamodb:DescribeTable"",
+    /// 		    ""dynamodb:ListTagsOfResource"",
+    /// 		    ""ec2:DescribeInstances"",
+    /// 		    ""ec2:DescribeInstanceStatus"",
+    /// 		    ""ec2:DescribeVolumes"",
+    /// 		    ""ec2:DescribeReservedInstances"",
+    /// 		    ""ec2:DescribeReservedInstancesModifications"",
+    /// 		    ""ec2:DescribeTags"",
+    /// 		    ""organizations:DescribeOrganization"",
+    /// 		    ""cloudwatch:ListMetrics"",
+    /// 		    ""cloudwatch:GetMetricData"",
+    /// 		    ""cloudwatch:GetMetricStatistics"",
+    /// 		    ""cloudwatch:DescribeAlarms"",
+    /// 		    ""sqs:ListQueues"",
+    /// 		    ""sqs:GetQueueAttributes"",
+    /// 		    ""sqs:ListQueueTags"",
+    /// 		    ""elasticmapreduce:ListClusters"",
+    /// 		    ""elasticmapreduce:DescribeCluster"",
+    /// 		    ""kinesis:ListShards"",
+    /// 		    ""kinesis:ListStreams"",
+    /// 		    ""kinesis:DescribeStream"",
+    /// 		    ""kinesis:ListTagsForStream"",
+    /// 		    ""rds:DescribeDBInstances"",
+    /// 		    ""rds:ListTagsForResource"",
+    /// 		    ""elasticloadbalancing:DescribeLoadBalancers"",
+    /// 		    ""elasticloadbalancing:DescribeTags"",
+    /// 		    ""elasticache:describeCacheClusters"",
+    /// 		    ""redshift:DescribeClusters"",
+    /// 		    ""lambda:GetAlias"",
+    /// 		    ""lambda:ListFunctions"",
+    /// 		    ""lambda:ListTags"",
+    /// 		    ""autoscaling:DescribeAutoScalingGroups"",
+    /// 		    ""s3:ListAllMyBuckets"",
+    /// 		    ""s3:ListBucket"",
+    /// 		    ""s3:GetBucketLocation"",
+    /// 		    ""s3:GetBucketTagging"",
+    /// 		    ""ecs:ListServices"",
+    /// 		    ""ecs:ListTasks"",
+    /// 		    ""ecs:DescribeTasks"",
+    /// 		    ""ecs:DescribeServices"",
+    /// 		    ""ecs:ListClusters"",
+    /// 		    ""ecs:DescribeClusters"",
+    /// 		    ""ecs:ListTaskDefinitions"",
+    /// 		    ""ecs:ListTagsForResource"",
+    /// 		    ""apigateway:GET"",
+    /// 		    ""cloudfront:ListDistributions"",
+    /// 		    ""cloudfront:ListTagsForResource"",
+    /// 		    ""tag:GetResources"",
+    /// 		    ""es:ListDomainNames"",
+    /// 		    ""es:DescribeElasticsearchDomain""
+    /// 			],
+    /// 			""Effect"": ""Allow"",
+    /// 			""Resource"": ""*""
+    /// 		}
+    /// 	]
+    /// }
+    /// ",
+    ///         });
+    ///         var sfx_read_attach = new Aws.Iam.RolePolicyAttachment("sfx-read-attach", new Aws.Iam.RolePolicyAttachmentArgs
+    ///         {
+    ///             Role = awsSfxRole.Name,
+    ///             PolicyArn = awsReadPermissions.Arn,
+    ///         });
+    ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             IntegrationId = awsMyteamExtern.Id,
+    ///             ExternalId = awsMyteamExtern.ExternalId,
+    ///             RoleArn = awsSfxRole.Arn,
+    ///             Regions = 
+    ///             {
+    ///                 "us-east-1",
+    ///             },
+    ///             PollRate = 300,
+    ///             ImportCloudWatch = true,
+    ///             EnableAwsUsage = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ExternalIntegration : Pulumi.CustomResource
     {

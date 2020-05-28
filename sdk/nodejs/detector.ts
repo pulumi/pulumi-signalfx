@@ -20,13 +20,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -47,13 +47,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -74,13 +74,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -101,13 +101,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -128,13 +128,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -155,13 +155,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -182,13 +182,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
@@ -209,13 +209,13 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const applicationDelay: signalfx.Detector[];
- * for (const range = {value: 0}; range.value < var.clusters.length; range.value++) {
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
  *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${var.clusters[range.value]}`,
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
  *         maxDelay: 30,
  *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
  *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,

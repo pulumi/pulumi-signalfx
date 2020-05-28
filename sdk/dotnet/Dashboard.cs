@@ -13,6 +13,48 @@ namespace Pulumi.SignalFx
     /// A dashboard is a curated collection of specific charts and supports dimensional [filters](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#filter-dashboard-charts), [dashboard variables](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#dashboard-variables) and [time range](http://docs.signalfx.com/en/latest/_sidebars-and-includes/using-time-range-selector.html#time-range-selector) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
     /// 
     /// &gt; **NOTE** Since every dashboard is included in a `dashboard group` (SignalFx collection of dashboards), you need to create that first and reference it as shown in the example.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Column
+    /// 
+    /// ```csharp
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var load = new SignalFx.Dashboard("load", new SignalFx.DashboardArgs
+    ///         {
+    ///             Columns = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardColumnArgs
+    ///                 {
+    ///                     ChartIds = 
+    ///                     {
+    ///                         signalfx_single_value_chart.Rps.Select(__item =&gt; __item.Id).ToList(),
+    ///                     },
+    ///                     Width = 2,
+    ///                 },
+    ///                 new SignalFx.Inputs.DashboardColumnArgs
+    ///                 {
+    ///                     ChartIds = 
+    ///                     {
+    ///                         signalfx_time_chart.Cpu_capacity.Select(__item =&gt; __item.Id).ToList(),
+    ///                     },
+    ///                     Column = 2,
+    ///                     Width = 4,
+    ///                 },
+    ///             },
+    ///             DashboardGroup = signalfx_dashboard_group.Example.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Dashboard : Pulumi.CustomResource
     {

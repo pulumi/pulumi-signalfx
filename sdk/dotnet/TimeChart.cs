@@ -13,6 +13,59 @@ namespace Pulumi.SignalFx
     /// Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
     /// 
     /// Time charts display data points over a period of time.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mychart0 = new SignalFx.TimeChart("mychart0", new SignalFx.TimeChartArgs
+    ///         {
+    ///             AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
+    ///             {
+    ///                 Label = "CPU Total Idle",
+    ///                 LowWatermark = 1000,
+    ///             },
+    ///             LegendOptionsFields = 
+    ///             {
+    ///                 new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                     Property = "collector",
+    ///                 },
+    ///                 new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                     Property = "hostname",
+    ///                 },
+    ///             },
+    ///             PlotType = "LineChart",
+    ///             ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
+    /// 
+    /// ",
+    ///             ShowDataMarkers = true,
+    ///             TimeRange = 3600,
+    ///             VizOptions = 
+    ///             {
+    ///                 new SignalFx.Inputs.TimeChartVizOptionArgs
+    ///                 {
+    ///                     Axis = "left",
+    ///                     Color = "orange",
+    ///                     Label = "CPU Idle",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class TimeChart : Pulumi.CustomResource
     {
