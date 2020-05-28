@@ -15,6 +15,34 @@ namespace Pulumi.SignalFx.Aws
         /// Use this data source to get a list of AWS service names.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var awsServices = Output.Create(SignalFx.Aws.GetServices.InvokeAsync());
+        ///         // Leaves out most of the integration bits, see the docs
+        ///         // for signalfx.aws.Integration for more
+        ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
+        ///         {
+        ///             Services = 
+        ///             {
+        ///                 awsServices.Apply(awsServices =&gt; awsServices.Services),
+        ///             }.Select(__item =&gt; __item?.Name).ToList(),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)

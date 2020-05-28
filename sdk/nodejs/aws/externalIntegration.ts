@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const sfx-read-attach = new aws.iam.RolePolicyAttachment("sfx-read-attach", {
+ * const sfxReadAttach = new aws.iam.RolePolicyAttachment("sfx-read-attach", {
  *     role: awsSfxRole.name,
  *     policyArn: awsReadPermissions.arn,
  * });

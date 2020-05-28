@@ -13,6 +13,35 @@ namespace Pulumi.SignalFx
     /// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
     /// 
     /// &gt; **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new SignalFx.DashboardGroupArgs
+    ///         {
+    ///             Description = "Cool dashboard group",
+    ///             AuthorizedWriterTeams = 
+    ///             {
+    ///                 signalfx_team.Mycoolteam.Id,
+    ///             },
+    ///             AuthorizedWriterUsers = 
+    ///             {
+    ///                 "abc123",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DashboardGroup : Pulumi.CustomResource
     {

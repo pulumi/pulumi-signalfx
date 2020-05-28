@@ -36,19 +36,6 @@ def get_services(services=None,opts=None):
     """
     Use this data source to get a list of Azure service names.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    azure_services = signalfx.azure.get_services()
-    # Leaves out most of the integration bits, see the docs
-    # for azure.Integration for more
-    azure_myteam = signalfx.azure.Integration("azureMyteam", services=[__item["name"] for __item in [azure_services.services]])
-    ```
 
 
 

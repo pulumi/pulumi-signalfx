@@ -13,6 +13,66 @@ namespace Pulumi.SignalFx
     /// This chart type displays current data values in a list format.
     /// 
     /// The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mylistchart0 = new SignalFx.ListChart("mylistchart0", new SignalFx.ListChartArgs
+    ///         {
+    ///             ColorBy = "Metric",
+    ///             Description = "Very cool List Chart",
+    ///             DisableSampling = true,
+    ///             LegendOptionsFields = 
+    ///             {
+    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                     Property = "collector",
+    ///                 },
+    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Property = "cluster_name",
+    ///                 },
+    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = true,
+    ///                     Property = "role",
+    ///                 },
+    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                     Property = "collector",
+    ///                 },
+    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///                 {
+    ///                     Enabled = false,
+    ///                     Property = "host",
+    ///                 },
+    ///             },
+    ///             MaxDelay = 2,
+    ///             MaxPrecision = 2,
+    ///             ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    /// 
+    /// ",
+    ///             RefreshInterval = 1,
+    ///             SortBy = "-value",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ListChart : Pulumi.CustomResource
     {

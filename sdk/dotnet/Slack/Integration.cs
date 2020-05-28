@@ -13,6 +13,28 @@ namespace Pulumi.SignalFx.Slack
     /// SignalFx Slack integration.
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var slackMyteam = new SignalFx.Slack.Integration("slackMyteam", new SignalFx.Slack.IntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             WebhookUrl = "http://example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {

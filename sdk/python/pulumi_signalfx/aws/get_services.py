@@ -36,19 +36,6 @@ def get_services(services=None,opts=None):
     """
     Use this data source to get a list of AWS service names.
 
-    ## Example Usage
-
-
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    aws_services = signalfx.aws.get_services()
-    # Leaves out most of the integration bits, see the docs
-    # for aws.Integration for more
-    aws_myteam = signalfx.aws.Integration("awsMyteam", services=[__item["name"] for __item in [aws_services.services]])
-    ```
 
 
 

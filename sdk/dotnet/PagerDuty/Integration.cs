@@ -13,6 +13,28 @@ namespace Pulumi.SignalFx.PagerDuty
     /// SignalFx PagerDuty integrations
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pagerdutyMyteam = new SignalFx.PagerDuty.Integration("pagerdutyMyteam", new SignalFx.PagerDuty.IntegrationArgs
+    ///         {
+    ///             ApiKey = "1234567890",
+    ///             Enabled = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Integration : Pulumi.CustomResource
     {
