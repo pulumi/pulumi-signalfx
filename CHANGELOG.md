@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v2.3.0
-* Upgrade to pulumi-terraform-bridge v2.4.0
+_(none)_
 
 ---
+
+## 2.4.1 (2020-05-28)
+* Upgrade to Pulumi v2.3.0
+* Upgrade to pulumi-terraform-bridge v2.4.0
 
 ## 2.4.0 (2020-05-18)
 * Upgrade to v4.21.0 of the SignalFx Terraform Provider
