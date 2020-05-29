@@ -81,10 +81,16 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
+
+        /// <summary>
+        /// Compute Metadata Whitelist
+        /// </summary>
+        [Output("whitelists")]
+        public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
 
         /// <summary>
@@ -166,12 +172,24 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
         /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
+        }
+
+        [Input("whitelists")]
+        private InputList<string>? _whitelists;
+
+        /// <summary>
+        /// Compute Metadata Whitelist
+        /// </summary>
+        public InputList<string> Whitelists
+        {
+            get => _whitelists ?? (_whitelists = new InputList<string>());
+            set => _whitelists = value;
         }
 
         public IntegrationArgs()
@@ -215,12 +233,24 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
         /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
+        }
+
+        [Input("whitelists")]
+        private InputList<string>? _whitelists;
+
+        /// <summary>
+        /// Compute Metadata Whitelist
+        /// </summary>
+        public InputList<string> Whitelists
+        {
+            get => _whitelists ?? (_whitelists = new InputList<string>());
+            set => _whitelists = value;
         }
 
         public IntegrationState()

@@ -2601,7 +2601,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.\n"
+                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.\n"
+                },
+                "whitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Compute Metadata Whitelist\n"
                 }
             },
             "required": [
@@ -2633,7 +2640,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.\n"
+                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.\n"
+                },
+                "whitelists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Compute Metadata Whitelist\n"
                 }
             },
             "requiredInputs": [
@@ -2666,7 +2680,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.\n"
+                        "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.\n"
+                    },
+                    "whitelists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Compute Metadata Whitelist\n"
                     }
                 },
                 "type": "object"
