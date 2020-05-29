@@ -81,9 +81,13 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly projectServiceKeys!: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
+    /**
+     * Compute Metadata Whitelist
+     */
+    public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -102,6 +106,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["pollRate"] = state ? state.pollRate : undefined;
             inputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
             inputs["services"] = state ? state.services : undefined;
+            inputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if (!args || args.enabled === undefined) {
@@ -112,6 +117,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["pollRate"] = args ? args.pollRate : undefined;
             inputs["projectServiceKeys"] = args ? args.projectServiceKeys : undefined;
             inputs["services"] = args ? args.services : undefined;
+            inputs["whitelists"] = args ? args.whitelists : undefined;
         }
         if (!opts) {
             opts = {}
@@ -145,9 +151,13 @@ export interface IntegrationState {
      */
     readonly projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
      */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Compute Metadata Whitelist
+     */
+    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -171,7 +181,11 @@ export interface IntegrationArgs {
      */
     readonly projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
      */
     readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Compute Metadata Whitelist
+     */
+    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -24,8 +24,10 @@ type Integration struct {
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayOutput `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
+	// Compute Metadata Whitelist
+	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -67,8 +69,10 @@ type integrationState struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
 	Services []string `pulumi:"services"`
+	// Compute Metadata Whitelist
+	Whitelists []string `pulumi:"whitelists"`
 }
 
 type IntegrationState struct {
@@ -80,8 +84,10 @@ type IntegrationState struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
 	Services pulumi.StringArrayInput
+	// Compute Metadata Whitelist
+	Whitelists pulumi.StringArrayInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -97,8 +103,10 @@ type integrationArgs struct {
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
 	Services []string `pulumi:"services"`
+	// Compute Metadata Whitelist
+	Whitelists []string `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a Integration resource.
@@ -111,8 +119,10 @@ type IntegrationArgs struct {
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
 	Services pulumi.StringArrayInput
+	// Compute Metadata Whitelist
+	Whitelists pulumi.StringArrayInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
