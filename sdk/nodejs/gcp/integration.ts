@@ -73,6 +73,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A named token to use for ingest
+     */
+    public readonly namedToken!: pulumi.Output<string | undefined>;
+    /**
      * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
@@ -103,6 +107,7 @@ export class Integration extends pulumi.CustomResource {
             const state = argsOrState as IntegrationState | undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namedToken"] = state ? state.namedToken : undefined;
             inputs["pollRate"] = state ? state.pollRate : undefined;
             inputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
             inputs["services"] = state ? state.services : undefined;
@@ -114,6 +119,7 @@ export class Integration extends pulumi.CustomResource {
             }
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namedToken"] = args ? args.namedToken : undefined;
             inputs["pollRate"] = args ? args.pollRate : undefined;
             inputs["projectServiceKeys"] = args ? args.projectServiceKeys : undefined;
             inputs["services"] = args ? args.services : undefined;
@@ -142,6 +148,10 @@ export interface IntegrationState {
      * Name of the integration.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A named token to use for ingest
+     */
+    readonly namedToken?: pulumi.Input<string>;
     /**
      * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
@@ -172,6 +182,10 @@ export interface IntegrationArgs {
      * Name of the integration.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A named token to use for ingest
+     */
+    readonly namedToken?: pulumi.Input<string>;
     /**
      * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */

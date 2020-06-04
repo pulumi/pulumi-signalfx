@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.22.0 of the SignalFx Terraform Provider
+* Upgrade to v4.23.0 of the SignalFx Terraform Provider
 
 ---
 

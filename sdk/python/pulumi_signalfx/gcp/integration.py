@@ -18,6 +18,10 @@ class Integration(pulumi.CustomResource):
     """
     Name of the integration.
     """
+    named_token: pulumi.Output[str]
+    """
+    A named token to use for ingest
+    """
     poll_rate: pulumi.Output[float]
     """
     GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
@@ -37,7 +41,7 @@ class Integration(pulumi.CustomResource):
     """
     Compute Metadata Whitelist
     """
-    def __init__(__self__, resource_name, opts=None, enabled=None, name=None, poll_rate=None, project_service_keys=None, services=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, enabled=None, name=None, named_token=None, poll_rate=None, project_service_keys=None, services=None, whitelists=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx GCP Integration
 
@@ -72,6 +76,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[float] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         :param pulumi.Input[list] project_service_keys: GCP projects to add.
         :param pulumi.Input[list] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
@@ -103,6 +108,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
             __props__['name'] = name
+            __props__['named_token'] = named_token
             __props__['poll_rate'] = poll_rate
             __props__['project_service_keys'] = project_service_keys
             __props__['services'] = services
@@ -114,7 +120,7 @@ class Integration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enabled=None, name=None, poll_rate=None, project_service_keys=None, services=None, whitelists=None):
+    def get(resource_name, id, opts=None, enabled=None, name=None, named_token=None, poll_rate=None, project_service_keys=None, services=None, whitelists=None):
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -124,6 +130,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[float] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         :param pulumi.Input[list] project_service_keys: GCP projects to add.
         :param pulumi.Input[list] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
@@ -140,6 +147,7 @@ class Integration(pulumi.CustomResource):
 
         __props__["enabled"] = enabled
         __props__["name"] = name
+        __props__["named_token"] = named_token
         __props__["poll_rate"] = poll_rate
         __props__["project_service_keys"] = project_service_keys
         __props__["services"] = services

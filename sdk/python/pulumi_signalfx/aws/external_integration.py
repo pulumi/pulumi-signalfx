@@ -18,11 +18,15 @@ class ExternalIntegration(pulumi.CustomResource):
     """
     The name of this integration
     """
+    named_token: pulumi.Output[str]
+    """
+    A named token to use for ingest
+    """
     signalfx_aws_account: pulumi.Output[str]
     """
     The AWS Account ARN to use with your policies/roles, provided by SignalFx.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, named_token=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 
@@ -138,6 +142,7 @@ class ExternalIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -157,6 +162,7 @@ class ExternalIntegration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            __props__['named_token'] = named_token
             __props__['external_id'] = None
             __props__['signalfx_aws_account'] = None
         super(ExternalIntegration, __self__).__init__(
@@ -166,7 +172,7 @@ class ExternalIntegration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, external_id=None, name=None, signalfx_aws_account=None):
+    def get(resource_name, id, opts=None, external_id=None, name=None, named_token=None, signalfx_aws_account=None):
         """
         Get an existing ExternalIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -176,6 +182,7 @@ class ExternalIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_id: The external ID to use with your IAM role and with `aws.Integration`.
         :param pulumi.Input[str] name: The name of this integration
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -184,6 +191,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
         __props__["external_id"] = external_id
         __props__["name"] = name
+        __props__["named_token"] = named_token
         __props__["signalfx_aws_account"] = signalfx_aws_account
         return ExternalIntegration(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

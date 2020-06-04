@@ -29,6 +29,8 @@ type Integration struct {
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -95,6 +97,8 @@ type integrationState struct {
 	Environment *string `pulumi:"environment"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
+	// A named token to use for ingest
+	NamedToken *string `pulumi:"namedToken"`
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate *int `pulumi:"pollRate"`
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -116,6 +120,8 @@ type IntegrationState struct {
 	Environment pulumi.StringPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrInput
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate pulumi.IntPtrInput
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -141,6 +147,8 @@ type integrationArgs struct {
 	Environment *string `pulumi:"environment"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
+	// A named token to use for ingest
+	NamedToken *string `pulumi:"namedToken"`
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate *int `pulumi:"pollRate"`
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -163,6 +171,8 @@ type IntegrationArgs struct {
 	Environment pulumi.StringPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrInput
 	// AWS poll rate (in seconds). One of `60` or `300`.
 	PollRate pulumi.IntPtrInput
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.

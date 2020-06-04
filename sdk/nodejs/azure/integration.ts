@@ -85,6 +85,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A named token to use for ingest
+     */
+    public readonly namedToken!: pulumi.Output<string | undefined>;
+    /**
      * AWS poll rate (in seconds). One of `60` or `300`.
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
@@ -121,6 +125,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["namedToken"] = state ? state.namedToken : undefined;
             inputs["pollRate"] = state ? state.pollRate : undefined;
             inputs["secretKey"] = state ? state.secretKey : undefined;
             inputs["services"] = state ? state.services : undefined;
@@ -150,6 +155,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namedToken"] = args ? args.namedToken : undefined;
             inputs["pollRate"] = args ? args.pollRate : undefined;
             inputs["secretKey"] = args ? args.secretKey : undefined;
             inputs["services"] = args ? args.services : undefined;
@@ -187,6 +193,10 @@ export interface IntegrationState {
      * Name of the integration.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A named token to use for ingest
+     */
+    readonly namedToken?: pulumi.Input<string>;
     /**
      * AWS poll rate (in seconds). One of `60` or `300`.
      */
@@ -229,6 +239,10 @@ export interface IntegrationArgs {
      * Name of the integration.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A named token to use for ingest
+     */
+    readonly namedToken?: pulumi.Input<string>;
     /**
      * AWS poll rate (in seconds). One of `60` or `300`.
      */
