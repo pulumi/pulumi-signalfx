@@ -46,6 +46,12 @@ namespace Pulumi.SignalFx.Azure
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Output("namedToken")]
+        public Output<string?> NamedToken { get; private set; } = null!;
+
+        /// <summary>
         /// AWS poll rate (in seconds). One of `60` or `300`.
         /// </summary>
         [Output("pollRate")]
@@ -146,6 +152,12 @@ namespace Pulumi.SignalFx.Azure
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Input("namedToken")]
+        public Input<string>? NamedToken { get; set; }
+
+        /// <summary>
         /// AWS poll rate (in seconds). One of `60` or `300`.
         /// </summary>
         [Input("pollRate")]
@@ -217,6 +229,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Input("namedToken")]
+        public Input<string>? NamedToken { get; set; }
 
         /// <summary>
         /// AWS poll rate (in seconds). One of `60` or `300`.

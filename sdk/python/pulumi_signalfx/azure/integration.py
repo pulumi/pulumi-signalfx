@@ -26,6 +26,10 @@ class Integration(pulumi.CustomResource):
     """
     Name of the integration.
     """
+    named_token: pulumi.Output[str]
+    """
+    A named token to use for ingest
+    """
     poll_rate: pulumi.Output[float]
     """
     AWS poll rate (in seconds). One of `60` or `300`.
@@ -46,7 +50,7 @@ class Integration(pulumi.CustomResource):
     """
     Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
     """
-    def __init__(__self__, resource_name, opts=None, app_id=None, enabled=None, environment=None, name=None, poll_rate=None, secret_key=None, services=None, subscriptions=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_id=None, enabled=None, environment=None, name=None, named_token=None, poll_rate=None, secret_key=None, services=None, subscriptions=None, tenant_id=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 
@@ -89,6 +93,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -120,6 +125,7 @@ class Integration(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['environment'] = environment
             __props__['name'] = name
+            __props__['named_token'] = named_token
             __props__['poll_rate'] = poll_rate
             if secret_key is None:
                 raise TypeError("Missing required property 'secret_key'")
@@ -140,7 +146,7 @@ class Integration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_id=None, enabled=None, environment=None, name=None, poll_rate=None, secret_key=None, services=None, subscriptions=None, tenant_id=None):
+    def get(resource_name, id, opts=None, app_id=None, enabled=None, environment=None, name=None, named_token=None, poll_rate=None, secret_key=None, services=None, subscriptions=None, tenant_id=None):
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -152,6 +158,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         :param pulumi.Input[list] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -166,6 +173,7 @@ class Integration(pulumi.CustomResource):
         __props__["enabled"] = enabled
         __props__["environment"] = environment
         __props__["name"] = name
+        __props__["named_token"] = named_token
         __props__["poll_rate"] = poll_rate
         __props__["secret_key"] = secret_key
         __props__["services"] = services

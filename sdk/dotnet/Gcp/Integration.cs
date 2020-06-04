@@ -69,6 +69,12 @@ namespace Pulumi.SignalFx.Gcp
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Output("namedToken")]
+        public Output<string?> NamedToken { get; private set; } = null!;
+
+        /// <summary>
         /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         /// </summary>
         [Output("pollRate")]
@@ -151,6 +157,12 @@ namespace Pulumi.SignalFx.Gcp
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Input("namedToken")]
+        public Input<string>? NamedToken { get; set; }
+
+        /// <summary>
         /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         /// </summary>
         [Input("pollRate")]
@@ -210,6 +222,12 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Input("namedToken")]
+        public Input<string>? NamedToken { get; set; }
 
         /// <summary>
         /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).

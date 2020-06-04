@@ -2091,6 +2091,10 @@
                     "type": "string",
                     "description": "The name of this integration\n"
                 },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
+                },
                 "signalfxAwsAccount": {
                     "type": "string",
                     "description": "The AWS Account ARN to use with your policies/roles, provided by SignalFx.\n"
@@ -2105,6 +2109,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this integration\n"
+                },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
                 }
             },
             "stateInputs": {
@@ -2117,6 +2125,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this integration\n"
+                    },
+                    "namedToken": {
+                        "type": "string",
+                        "description": "A named token to use for ingest\n"
                     },
                     "signalfxAwsAccount": {
                         "type": "string",
@@ -2379,6 +2391,10 @@
                     "type": "string",
                     "description": "The name of this integration\n"
                 },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
+                },
                 "signalfxAwsAccount": {
                     "type": "string",
                     "description": "The AWS Account ARN to use with your policies/roles, provided by SignalFx.\n"
@@ -2397,6 +2413,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this integration\n"
+                },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
                 }
             },
             "stateInputs": {
@@ -2405,6 +2425,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this integration\n"
+                    },
+                    "namedToken": {
+                        "type": "string",
+                        "description": "A named token to use for ingest\n"
                     },
                     "signalfxAwsAccount": {
                         "type": "string",
@@ -2436,6 +2460,10 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the integration.\n"
+                },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
                 },
                 "pollRate": {
                     "type": "integer",
@@ -2489,6 +2517,10 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the integration.\n"
+                },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
                 },
                 "pollRate": {
                     "type": "integer",
@@ -2544,6 +2576,10 @@
                         "type": "string",
                         "description": "Name of the integration.\n"
                     },
+                    "namedToken": {
+                        "type": "string",
+                        "description": "A named token to use for ingest\n"
+                    },
                     "pollRate": {
                         "type": "integer",
                         "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
@@ -2585,6 +2621,10 @@
                     "type": "string",
                     "description": "Name of the integration.\n"
                 },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
+                },
                 "pollRate": {
                     "type": "integer",
                     "description": "GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).\n"
@@ -2623,6 +2663,10 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the integration.\n"
+                },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
                 },
                 "pollRate": {
                     "type": "integer",
@@ -2663,6 +2707,10 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the integration.\n"
+                    },
+                    "namedToken": {
+                        "type": "string",
+                        "description": "A named token to use for ingest\n"
                     },
                     "pollRate": {
                         "type": "integer",

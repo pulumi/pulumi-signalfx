@@ -20,6 +20,8 @@ type Integration struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// GCP projects to add.
@@ -65,6 +67,8 @@ type integrationState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
+	// A named token to use for ingest
+	NamedToken *string `pulumi:"namedToken"`
 	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
@@ -80,6 +84,8 @@ type IntegrationState struct {
 	Enabled pulumi.BoolPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrInput
 	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.
@@ -99,6 +105,8 @@ type integrationArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
+	// A named token to use for ingest
+	NamedToken *string `pulumi:"namedToken"`
 	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate *int `pulumi:"pollRate"`
 	// GCP projects to add.
@@ -115,6 +123,8 @@ type IntegrationArgs struct {
 	Enabled pulumi.BoolInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrInput
 	// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
 	PollRate pulumi.IntPtrInput
 	// GCP projects to add.

@@ -14,6 +14,10 @@ class TokenIntegration(pulumi.CustomResource):
     """
     The name of this integration
     """
+    named_token: pulumi.Output[str]
+    """
+    A named token to use for ingest
+    """
     signalfx_aws_account: pulumi.Output[str]
     """
     The AWS Account ARN to use with your policies/roles, provided by SignalFx.
@@ -22,7 +26,7 @@ class TokenIntegration(pulumi.CustomResource):
     """
     The SignalFx-generated AWS token to use with an AWS integration.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, named_token=None, __props__=None, __name__=None, __opts__=None):
         """
         SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 
@@ -70,6 +74,7 @@ class TokenIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,6 +94,7 @@ class TokenIntegration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
+            __props__['named_token'] = named_token
             __props__['signalfx_aws_account'] = None
             __props__['token_id'] = None
         super(TokenIntegration, __self__).__init__(
@@ -98,7 +104,7 @@ class TokenIntegration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, signalfx_aws_account=None, token_id=None):
+    def get(resource_name, id, opts=None, name=None, named_token=None, signalfx_aws_account=None, token_id=None):
         """
         Get an existing TokenIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -107,6 +113,7 @@ class TokenIntegration(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         :param pulumi.Input[str] token_id: The SignalFx-generated AWS token to use with an AWS integration.
         """
@@ -115,6 +122,7 @@ class TokenIntegration(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["name"] = name
+        __props__["named_token"] = named_token
         __props__["signalfx_aws_account"] = signalfx_aws_account
         __props__["token_id"] = token_id
         return TokenIntegration(resource_name, opts=opts, __props__=__props__)
