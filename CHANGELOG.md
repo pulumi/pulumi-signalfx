@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.23.0 of the SignalFx Terraform Provider
+_(none)_
 
 ---
+
+## 2.5.0 (2020-06-04)
+* Upgrade to v4.23.0 of the SignalFx Terraform Provider
 
 ## 2.4.1 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
