@@ -64,6 +64,7 @@ export class ListChart extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ListChartState, opts?: pulumi.CustomResourceOptions): ListChart {
         return new ListChart(name, <any>state, { ...opts, id: id });
@@ -105,6 +106,8 @@ export class ListChart extends pulumi.CustomResource {
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     *
+     * @deprecated Please use legend_options_fields
      */
     public readonly legendFieldsToHides!: pulumi.Output<string[] | undefined>;
     /**
@@ -253,6 +256,7 @@ export interface ListChartState {
     readonly endTime?: pulumi.Input<number>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     *
      * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
@@ -336,6 +340,7 @@ export interface ListChartArgs {
     readonly endTime?: pulumi.Input<number>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     *
      * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;

@@ -54,6 +54,7 @@ export class TimeChart extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TimeChartState, opts?: pulumi.CustomResourceOptions): TimeChart {
         return new TimeChart(name, <any>state, { ...opts, id: id });
@@ -115,6 +116,8 @@ export class TimeChart extends pulumi.CustomResource {
     public readonly histogramOptions!: pulumi.Output<outputs.TimeChartHistogramOption[] | undefined>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     *
+     * @deprecated Please use legend_options_fields
      */
     public readonly legendFieldsToHides!: pulumi.Output<string[] | undefined>;
     /**
@@ -163,6 +166,8 @@ export class TimeChart extends pulumi.CustomResource {
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
      * Tags associated with the chart
+     *
+     * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
@@ -317,6 +322,7 @@ export interface TimeChartState {
     readonly histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     *
      * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
@@ -365,12 +371,8 @@ export interface TimeChartState {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Tags     * 
- associated     * 
- with     * 
- the     * 
- chart     * 
-
+     * Tags associated with the chart
+     *
      * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
@@ -442,6 +444,7 @@ export interface TimeChartArgs {
     readonly histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     *
      * @deprecated Please use legend_options_fields
      */
     readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
@@ -490,12 +493,8 @@ export interface TimeChartArgs {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
-     * Tags     * 
- associated     * 
- with     * 
- the     * 
- chart     * 
-
+     * Tags associated with the chart
+     *
      * @deprecated signalfx_time_chart.tags is being removed in the next release
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;

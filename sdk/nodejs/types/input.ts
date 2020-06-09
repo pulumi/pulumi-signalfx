@@ -3,6 +3,7 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AlertMutingRuleFilter {
     /**
@@ -744,7 +745,6 @@ export interface WebhookIntegrationHeader {
      */
     headerValue: pulumi.Input<string>;
 }
-
 export namespace aws {
     export interface GetServicesService {
         name: string;
@@ -801,3 +801,4 @@ export namespace gcp {
         projectKey: pulumi.Input<string>;
     }
 }
+

@@ -22,14 +22,14 @@ export * from "./timeChart";
 export * from "./webhookIntegration";
 
 // Export sub-modules:
-import * as aws from "./aws/index";
-import * as azure from "./azure/index";
-import * as config from "./config/index";
-import * as gcp from "./gcp/index";
-import * as jira from "./jira/index";
-import * as opsgenie from "./opsgenie/index";
-import * as pagerduty from "./pagerduty/index";
-import * as slack from "./slack/index";
-import * as types from "./types/index";
-import * as victorops from "./victorops/index";
+import * as aws from "./aws";
+import * as azure from "./azure";
+import * as config from "./config";
+import * as gcp from "./gcp";
+import * as jira from "./jira";
+import * as opsgenie from "./opsgenie";
+import * as pagerduty from "./pagerduty";
+import * as slack from "./slack";
+import * as types from "./types";
+import * as victorops from "./victorops";
 export {aws, azure, config, gcp, jira, opsgenie, pagerduty, slack, types, victorops};
