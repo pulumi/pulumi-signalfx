@@ -33,9 +33,9 @@ export interface GetAwsServicesArgs {
  * A collection of values returned by getAwsServices.
  */
 export interface GetAwsServicesResult {
-    readonly services?: outputs.GetAwsServicesService[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly services?: outputs.GetAwsServicesService[];
 }

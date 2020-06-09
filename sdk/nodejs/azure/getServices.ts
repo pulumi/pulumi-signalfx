@@ -48,9 +48,9 @@ export interface GetServicesArgs {
  * A collection of values returned by getServices.
  */
 export interface GetServicesResult {
-    readonly services?: outputs.azure.GetServicesService[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly services?: outputs.azure.GetServicesService[];
 }

@@ -33,9 +33,9 @@ export interface GetAzureServicesArgs {
  * A collection of values returned by getAzureServices.
  */
 export interface GetAzureServicesResult {
-    readonly services?: outputs.GetAzureServicesService[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly services?: outputs.GetAzureServicesService[];
 }
