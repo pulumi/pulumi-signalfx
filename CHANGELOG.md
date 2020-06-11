@@ -2,9 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v4.23.1 of the SignalFx Terraform Provider
+_(none)_
 
 ---
+
+## 2.5.1 (2020-06-11)
+* Upgrade to v4.23.1 of the SignalFx Terraform Provider
+* Switch to GitHub actions for build
 
 ## 2.5.0 (2020-06-04)
 * Upgrade to v4.23.0 of the SignalFx Terraform Provider
