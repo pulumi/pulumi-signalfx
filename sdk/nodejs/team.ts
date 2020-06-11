@@ -8,6 +8,25 @@ import * as utilities from "./utilities";
  * Handles management of SignalFx teams.
  *
  * You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+ *
+ * ## Example Usage
+ *
+ *
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const myteam0 = new signalfx.Team("myteam0", {
+ *     description: "Super great team no jerks definitely",
+ *     members: [
+ *         "userid1",
+ *         "userid2",
+ *     ],
+ *     notificationsCriticals: ["PagerDuty,credentialId"],
+ *     notificationsInfos: ["Email,notify@example.com"],
+ * });
+ * ```
  */
 export class Team extends pulumi.CustomResource {
     /**
