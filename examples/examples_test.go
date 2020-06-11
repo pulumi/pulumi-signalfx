@@ -4,21 +4,12 @@ package examples
 
 import (
 	"os"
-	"path"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
-func TestAccDashboardGroup(t *testing.T) {
-	t.Skip("Skipping as no credit in signalfx account")
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "dashboardGroup"),
-		})
 
-	integration.ProgramTest(t, &test)
-}
 
 func getApiUrl(t *testing.T) string {
 	url := os.Getenv("SFX_API_URL")
@@ -44,17 +35,3 @@ func getBaseOptions() integration.ProgramTestOptions {
 	}
 }
 
-func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	apiUrl := getApiUrl(t)
-	base := getBaseOptions()
-	baseJS := base.With(integration.ProgramTestOptions{
-		Config: map[string]string{
-			"signalfx:apiUrl": apiUrl,
-		},
-		Dependencies: []string{
-			"@pulumi/signalfx",
-		},
-	})
-
-	return baseJS
-}
