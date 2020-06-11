@@ -18,16 +18,14 @@ import * as utilities from "../utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const jiraMyteamXX = new signalfx.jira.Integration("jira_myteamXX", {
- *     apiToken: "abc123",
  *     assigneeDisplayName: "Testy Testerson",
  *     assigneeName: "testytesterson",
- *     authMethod: "EmailAndToken",
+ *     authMethod: "UsernameAndPassword",
  *     baseUrl: "https://www.example.com",
  *     enabled: false,
  *     issueType: "Story",
  *     password: "paasword",
  *     projectKey: "TEST",
- *     userEmail: "yoosername@example.com",
  *     username: "yoosername",
  * });
  * ```

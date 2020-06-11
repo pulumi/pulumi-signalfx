@@ -73,16 +73,14 @@ class Integration(pulumi.CustomResource):
         import pulumi_signalfx as signalfx
 
         jira_myteam_xx = signalfx.jira.Integration("jiraMyteamXX",
-            api_token="abc123",
             assignee_display_name="Testy Testerson",
             assignee_name="testytesterson",
-            auth_method="EmailAndToken",
+            auth_method="UsernameAndPassword",
             base_url="https://www.example.com",
             enabled=False,
             issue_type="Story",
             password="paasword",
             project_key="TEST",
-            user_email="yoosername@example.com",
             username="yoosername")
         ```
 

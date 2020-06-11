@@ -28,16 +28,14 @@ namespace Pulumi.SignalFx.Jira
     ///     {
     ///         var jiraMyteamXX = new SignalFx.Jira.Integration("jiraMyteamXX", new SignalFx.Jira.IntegrationArgs
     ///         {
-    ///             ApiToken = "abc123",
     ///             AssigneeDisplayName = "Testy Testerson",
     ///             AssigneeName = "testytesterson",
-    ///             AuthMethod = "EmailAndToken",
+    ///             AuthMethod = "UsernameAndPassword",
     ///             BaseUrl = "https://www.example.com",
     ///             Enabled = false,
     ///             IssueType = "Story",
     ///             Password = "paasword",
     ///             ProjectKey = "TEST",
-    ///             UserEmail = "yoosername@example.com",
     ///             Username = "yoosername",
     ///         });
     ///     }

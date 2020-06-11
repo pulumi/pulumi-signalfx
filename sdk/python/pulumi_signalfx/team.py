@@ -56,6 +56,23 @@ class Team(pulumi.CustomResource):
 
         You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteam0 = signalfx.Team("myteam0",
+            description="Super great team no jerks definitely",
+            members=[
+                "userid1",
+                "userid2",
+            ],
+            notifications_criticals=["PagerDuty,credentialId"],
+            notifications_infos=["Email,notify@example.com"])
+        ```
 
 
         :param str resource_name: The name of the resource.

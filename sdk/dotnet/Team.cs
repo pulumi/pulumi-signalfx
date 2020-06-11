@@ -13,6 +13,40 @@ namespace Pulumi.SignalFx
     /// Handles management of SignalFx teams.
     /// 
     /// You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myteam0 = new SignalFx.Team("myteam0", new SignalFx.TeamArgs
+    ///         {
+    ///             Description = "Super great team no jerks definitely",
+    ///             Members = 
+    ///             {
+    ///                 "userid1",
+    ///                 "userid2",
+    ///             },
+    ///             NotificationsCriticals = 
+    ///             {
+    ///                 "PagerDuty,credentialId",
+    ///             },
+    ///             NotificationsInfos = 
+    ///             {
+    ///                 "Email,notify@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Team : Pulumi.CustomResource
     {
