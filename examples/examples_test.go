@@ -9,8 +9,6 @@ import (
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
-
-
 func getApiUrl(t *testing.T) string {
 	url := os.Getenv("SFX_API_URL")
 	if url == "" {

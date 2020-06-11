@@ -3,6 +3,13 @@
 
 package examples
 
+import (
+	"path"
+	"testing"
+
+	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
+)
+
 func TestAccDashboardGroup(t *testing.T) {
 	t.Skip("Skipping as no credit in signalfx account")
 	test := getJSBaseOptions(t).
