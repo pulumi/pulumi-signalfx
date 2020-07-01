@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const vioctorOpsMyteam = new signalfx.VictorOpsResource("vioctorOpsMyteam", {
+ * const vioctorOpsMyteam = new signalfx.VictorOpsResource("vioctor_ops_myteam", {
  *     enabled: true,
  *     name: "VictorOps - My Team",
  *     postUrl: "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",

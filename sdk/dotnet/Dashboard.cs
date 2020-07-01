@@ -16,7 +16,73 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydashboard0 = new SignalFx.Dashboard("mydashboard0", new SignalFx.DashboardArgs
+    ///         {
+    ///             DashboardGroup = signalfx_dashboard_group.Mydashboardgroup0.Id,
+    ///             TimeRange = "-30m",
+    ///             Filters = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardFilterArgs
+    ///                 {
+    ///                     Property = "collector",
+    ///                     Values = 
+    ///                     {
+    ///                         "cpu",
+    ///                         "Diamond",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Variables = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardVariableArgs
+    ///                 {
+    ///                     Property = "region",
+    ///                     Alias = "region",
+    ///                     Values = 
+    ///                     {
+    ///                         "uswest-1-",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Charts = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardChartArgs
+    ///                 {
+    ///                     ChartId = signalfx_time_chart.Mychart0.Id,
+    ///                     Width = 12,
+    ///                     Height = 1,
+    ///                 },
+    ///                 new SignalFx.Inputs.DashboardChartArgs
+    ///                 {
+    ///                     ChartId = signalfx_time_chart.Mychart1.Id,
+    ///                     Width = 5,
+    ///                     Height = 2,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// **Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.
+    /// 
+    /// When you define a dashboard resource, you need to specify which charts (by `chart_id`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.
+    /// 
+    /// The are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.
+    /// 
+    /// &gt; **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.
     /// ### Column
+    /// 
+    /// The dashboard is divided into equal-sized charts (defined by `width` and `height`). The charts are placed in the grid by column (column number is called `column`).
     /// 
     /// ```csharp
     /// using System.Linq;
@@ -55,7 +121,6 @@ namespace Pulumi.SignalFx
     /// 
     /// }
     /// ```
-    /// 
     /// ## Dashboard Layout Information
     /// 
     /// **Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.
@@ -65,6 +130,48 @@ namespace Pulumi.SignalFx
     /// The are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.
     /// 
     /// &gt; **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.
+    /// 
+    /// ### Column
+    /// 
+    /// The dashboard is divided into equal-sized charts (defined by `width` and `height`). The charts are placed in the grid by column (column number is called `column`).
+    /// 
+    /// ```csharp
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var load = new SignalFx.Dashboard("load", new SignalFx.DashboardArgs
+    ///         {
+    ///             DashboardGroup = signalfx_dashboard_group.Example.Id,
+    ///             Columns = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardColumnArgs
+    ///                 {
+    ///                     ChartIds = 
+    ///                     {
+    ///                         signalfx_single_value_chart.Rps.Select(__item =&gt; __item.Id).ToList(),
+    ///                     },
+    ///                     Width = 2,
+    ///                 },
+    ///                 new SignalFx.Inputs.DashboardColumnArgs
+    ///                 {
+    ///                     ChartIds = 
+    ///                     {
+    ///                         signalfx_time_chart.Cpu_capacity.Select(__item =&gt; __item.Id).ToList(),
+    ///                     },
+    ///                     Column = 2,
+    ///                     Width = 4,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Dashboard : Pulumi.CustomResource
     {

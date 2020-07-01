@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
  *
  * ## Example Usage
- *
  * ### Global link to a dashboard
  *
  * ```typescript
@@ -20,15 +19,14 @@ import * as utilities from "./utilities";
  * const myDataLink = new signalfx.DataLink("myDataLink", {
  *     propertyName: "pname",
  *     propertyValue: "pvalue",
- *     target_signalfx_dashboard: [{
+ *     targetSignalfxDashboards: [{
  *         isDefault: true,
- *         name: "sfxDash",
+ *         name: "sfx_dash",
  *         dashboardGroupId: signalfx_dashboard_group.mydashboardgroup0.id,
  *         dashboardId: signalfx_dashboard.mydashboard0.id,
  *     }],
  * });
  * ```
- *
  * ### Dashboard specific link to an external URL
  *
  * ```typescript
@@ -39,9 +37,9 @@ import * as utilities from "./utilities";
  *     contextDashboardId: signalfx_dashboard.mydashboard0.id,
  *     propertyName: "pname2",
  *     propertyValue: "pvalue",
- *     target_external_url: [{
+ *     targetExternalUrls: [{
  *         isDefault: false,
- *         name: "exUrl",
+ *         name: "ex_url",
  *         timeFormat: "ISO8601",
  *         url: "https://www.example.com",
  *         propertyKeyMapping: {

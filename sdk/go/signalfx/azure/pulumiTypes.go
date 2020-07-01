@@ -17,8 +17,7 @@ type GetServicesService struct {
 // GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
 // You can construct a concrete instance of `GetServicesServiceInput` via:
 //
-// 		 GetServicesServiceArgs{...}
-//
+//          GetServicesServiceArgs{...}
 type GetServicesServiceInput interface {
 	pulumi.Input
 
@@ -45,8 +44,7 @@ func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx contex
 // GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetServicesServiceArrayInput` via:
 //
-// 		 GetServicesServiceArray{ GetServicesServiceArgs{...} }
-//
+//          GetServicesServiceArray{ GetServicesServiceArgs{...} }
 type GetServicesServiceArrayInput interface {
 	pulumi.Input
 

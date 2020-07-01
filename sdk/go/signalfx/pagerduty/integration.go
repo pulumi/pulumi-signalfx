@@ -13,6 +13,30 @@ import (
 // SignalFx PagerDuty integrations
 //
 // > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx/pagerduty"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := pagerduty.NewIntegration(ctx, "pagerdutyMyteam", &pagerduty.IntegrationArgs{
+// 			ApiKey:  pulumi.String("1234567890"),
+// 			Enabled: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

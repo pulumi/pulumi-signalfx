@@ -16,7 +16,64 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
     /// 
+    /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // This resource returns an account id in `external_id`…
+    ///         var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration("awsMyteamExternal", new SignalFx.Aws.ExternalIntegrationArgs
+    ///         {
+    ///         });
+    ///         // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+    ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
+    ///         {
+    ///         });
+    ///         // Stuff here that uses the external and account ID
+    ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             IntegrationId = awsMyteamExternal.Id,
+    ///             ExternalId = awsMyteamExternal.ExternalId,
+    ///             RoleArn = awsSfxRole.Arn,
+    ///             Regions = 
+    ///             {
+    ///                 "us-east-1",
+    ///             },
+    ///             PollRate = 300,
+    ///             ImportCloudWatch = true,
+    ///             EnableAwsUsage = true,
+    ///             CustomNamespaceSyncRules = 
+    ///             {
+    ///                 new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
+    ///                 {
+    ///                     DefaultAction = "Exclude",
+    ///                     FilterAction = "Include",
+    ///                     FilterSource = "filter('code', '200')",
+    ///                     Namespace = "fart",
+    ///                 },
+    ///             },
+    ///             NamespaceSyncRules = 
+    ///             {
+    ///                 new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
+    ///                 {
+    ///                     DefaultAction = "Exclude",
+    ///                     FilterAction = "Include",
+    ///                     FilterSource = "filter('code', '200')",
+    ///                     Namespace = "AWS/EC2",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Service Names
     /// 
     /// &gt; **NOTE** You can use the data source "signalfx.aws.getServices" to specify all services.

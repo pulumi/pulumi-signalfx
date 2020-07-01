@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -25,7 +23,7 @@ import * as utilities from "./utilities";
  *     isTimestampHidden: true,
  *     maxDelay: 2,
  *     maxPrecision: 2,
- *     programText: `myfilters = filter("clusterName", "prod") and filter("role", "search")
+ *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
  * data("cpu.total.idle", filter=myfilters).publish()
  * `,
  *     refreshInterval: 1,

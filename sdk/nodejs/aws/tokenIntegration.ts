@@ -13,8 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
@@ -27,19 +25,19 @@ import * as utilities from "../utilities";
  * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
  *     enabled: true,
  *     integrationId: awsMyteamToken.id,
- *     token: "putYourTokenHere",
- *     key: "putYourKeyHere",
+ *     token: "put_your_token_here",
+ *     key: "put_your_key_here",
  *     regions: ["us-east-1"],
  *     pollRate: 300,
  *     importCloudWatch: true,
  *     enableAwsUsage: true,
- *     custom_namespace_sync_rule: [{
+ *     customNamespaceSyncRules: [{
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",
  *         namespace: "fart",
  *     }],
- *     namespace_sync_rule: [{
+ *     namespaceSyncRules: [{
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",

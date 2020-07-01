@@ -16,8 +16,6 @@ namespace Pulumi.SignalFx.Opsgenie
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;

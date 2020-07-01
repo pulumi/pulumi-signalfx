@@ -13,6 +13,55 @@ import (
 // Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
 //
 // Time charts display data points over a period of time.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
+// 			AxisLeft: &signalfx.TimeChartAxisLeftArgs{
+// 				Label:        pulumi.String("CPU Total Idle"),
+// 				LowWatermark: pulumi.Float64(1000),
+// 			},
+// 			LegendOptionsFields: signalfx.TimeChartLegendOptionsFieldArray{
+// 				&signalfx.TimeChartLegendOptionsFieldArgs{
+// 					Enabled:  pulumi.Bool(false),
+// 					Property: pulumi.String("collector"),
+// 				},
+// 				&signalfx.TimeChartLegendOptionsFieldArgs{
+// 					Enabled:  pulumi.Bool(false),
+// 					Property: pulumi.String("hostname"),
+// 				},
+// 			},
+// 			PlotType:        pulumi.String("LineChart"),
+// 			ProgramText:     pulumi.String(fmt.Sprintf("%v%v", "data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n", "\n")),
+// 			ShowDataMarkers: pulumi.Bool(true),
+// 			TimeRange:       pulumi.Int(3600),
+// 			VizOptions: signalfx.TimeChartVizOptionArray{
+// 				&signalfx.TimeChartVizOptionArgs{
+// 					Axis:  pulumi.String("left"),
+// 					Color: pulumi.String("orange"),
+// 					Label: pulumi.String("CPU Idle"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TimeChart struct {
 	pulumi.CustomResourceState
 

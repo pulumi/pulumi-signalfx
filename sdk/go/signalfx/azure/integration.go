@@ -14,7 +14,6 @@ import (
 //
 // > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 //
-//
 // ## Service Names
 //
 // > **NOTE** You can use the data source "azure.getServices" to specify all services.

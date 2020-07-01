@@ -11,10 +11,7 @@ import * as utilities from "./utilities";
  *
  * The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
  *
- *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +28,7 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             enabled: true,
- *             property: "clusterName",
+ *             property: "cluster_name",
  *         },
  *         {
  *             enabled: true,
@@ -48,7 +45,7 @@ import * as utilities from "./utilities";
  *     ],
  *     maxDelay: 2,
  *     maxPrecision: 2,
- *     programText: `myfilters = filter("clusterName", "prod") and filter("role", "search")
+ *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
  * data("cpu.total.idle", filter=myfilters).publish()
  * `,
  *     refreshInterval: 1,

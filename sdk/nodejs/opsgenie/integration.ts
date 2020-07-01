@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const opgenieMyteam = new signalfx.opsgenie.Integration("opgenieMyteam", {
+ * const opgenieMyteam = new signalfx.opsgenie.Integration("opgenie_myteam", {
  *     apiKey: "farts",
  *     apiUrl: "https://api.opsgenie.com",
  *     enabled: true,

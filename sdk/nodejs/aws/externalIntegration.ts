@@ -13,28 +13,26 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const awsMyteamExtern = new signalfx.aws.ExternalIntegration("awsMyteamExtern", {});
- * const signalfxAssumePolicy = aws.iam.getPolicyDocument({
- *     statement: [{
+ * const signalfxAssumePolicy = pulumi.all([awsMyteamExtern.signalfxAwsAccount, awsMyteamExtern.externalId]).apply(([signalfxAwsAccount, externalId]) => aws.iam.getPolicyDocument({
+ *     statements: [{
  *         actions: ["sts:AssumeRole"],
  *         principals: [{
  *             type: "AWS",
- *             identifiers: [awsMyteamExtern.signalfxAwsAccount],
+ *             identifiers: [signalfxAwsAccount],
  *         }],
- *         condition: [{
+ *         conditions: [{
  *             test: "StringEquals",
  *             variable: "sts:ExternalId",
- *             values: [awsMyteamExtern.externalId],
+ *             values: [externalId],
  *         }],
  *     }],
- * });
+ * }));
  * const awsSfxRole = new aws.iam.Role("awsSfxRole", {
  *     description: "signalfx integration to read out data and send it to signalfxs aws account",
  *     assumeRolePolicy: signalfxAssumePolicy.json,
@@ -105,7 +103,7 @@ import * as utilities from "../utilities";
  * }
  * `,
  * });
- * const sfxReadAttach = new aws.iam.RolePolicyAttachment("sfx-read-attach", {
+ * const sfx_read_attach = new aws.iam.RolePolicyAttachment("sfx-read-attach", {
  *     role: awsSfxRole.name,
  *     policyArn: awsReadPermissions.arn,
  * });

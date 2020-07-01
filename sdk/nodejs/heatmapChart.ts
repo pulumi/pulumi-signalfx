@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -24,7 +22,7 @@ import * as utilities from "./utilities";
  *         minValue: 0,
  *     },
  *     colorScales: [
- *         // You can only use one of colorRange or color_scale!
+ *         // You can only use one of color_range or color_scale!
  *         {
  *             color: "green",
  *             gte: 99,
@@ -46,7 +44,7 @@ import * as utilities from "./utilities";
  *         "host",
  *     ],
  *     hideTimestamp: true,
- *     programText: `myfilters = filter("clusterName", "prod") and filter("role", "search")
+ *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
  * data("cpu.total.idle", filter=myfilters).publish()
  * `,
  *     sortBy: "+host",

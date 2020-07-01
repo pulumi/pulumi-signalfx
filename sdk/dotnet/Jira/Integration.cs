@@ -16,8 +16,6 @@ namespace Pulumi.SignalFx.Jira
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
