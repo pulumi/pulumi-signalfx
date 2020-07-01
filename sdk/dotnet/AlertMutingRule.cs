@@ -13,6 +13,39 @@ namespace Pulumi.SignalFx
     /// Provides a SignalFx resource for managing alert muting rules. See [Mute Notifications](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html) for more information.
     /// 
     /// &gt; **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var roolMooterOne = new SignalFx.AlertMutingRule("roolMooterOne", new SignalFx.AlertMutingRuleArgs
+    ///         {
+    ///             Description = "mooted it NEW",
+    ///             StartTime = 1573063243,
+    ///             StopTime = 0,
+    ///             Detectors = 
+    ///             {
+    ///                 signalfx_detector.Some_detector_id,
+    ///             },
+    ///             Filters = 
+    ///             {
+    ///                 new SignalFx.Inputs.AlertMutingRuleFilterArgs
+    ///                 {
+    ///                     Property = "foo",
+    ///                     PropertyValue = "bar",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AlertMutingRule : Pulumi.CustomResource
     {

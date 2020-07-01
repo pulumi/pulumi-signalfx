@@ -15,6 +15,64 @@ namespace Pulumi.SignalFx.Aws
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var awsMyteamToken = new SignalFx.Aws.TokenIntegration("awsMyteamToken", new SignalFx.Aws.TokenIntegrationArgs
+    ///         {
+    ///         });
+    ///         // Make yourself an AWS IAM role here
+    ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
+    ///         {
+    ///         });
+    ///         // Stuff here that uses the external and account ID
+    ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             IntegrationId = awsMyteamToken.Id,
+    ///             Token = "put_your_token_here",
+    ///             Key = "put_your_key_here",
+    ///             Regions = 
+    ///             {
+    ///                 "us-east-1",
+    ///             },
+    ///             PollRate = 300,
+    ///             ImportCloudWatch = true,
+    ///             EnableAwsUsage = true,
+    ///             CustomNamespaceSyncRules = 
+    ///             {
+    ///                 new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
+    ///                 {
+    ///                     DefaultAction = "Exclude",
+    ///                     FilterAction = "Include",
+    ///                     FilterSource = "filter('code', '200')",
+    ///                     Namespace = "fart",
+    ///                 },
+    ///             },
+    ///             NamespaceSyncRules = 
+    ///             {
+    ///                 new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
+    ///                 {
+    ///                     DefaultAction = "Exclude",
+    ///                     FilterAction = "Include",
+    ///                     FilterSource = "filter('code', '200')",
+    ///                     Namespace = "AWS/EC2",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class TokenIntegration : Pulumi.CustomResource
     {

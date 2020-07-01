@@ -11,15 +11,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const azureServices = signalfx.azure.getServices({});
  * // Leaves out most of the integration bits, see the docs
- * // for signalfx.azure.Integration for more
+ * // for signalfx_azure_integration for more
  * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {services: [azureServices.then(azureServices => azureServices.services)].map(__item => __item?.name)});
  * ```
  */

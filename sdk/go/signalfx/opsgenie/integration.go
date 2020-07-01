@@ -13,6 +13,31 @@ import (
 // SignalFx Opsgenie integration.
 //
 // > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx/opsgenie"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := opsgenie.NewIntegration(ctx, "opgenieMyteam", &opsgenie.IntegrationArgs{
+// 			ApiKey:  pulumi.String("farts"),
+// 			ApiUrl:  pulumi.String("https://api.opsgenie.com"),
+// 			Enabled: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

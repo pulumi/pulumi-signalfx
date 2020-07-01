@@ -22,8 +22,7 @@ type AlertMutingRuleFilter struct {
 // AlertMutingRuleFilterInput is an input type that accepts AlertMutingRuleFilterArgs and AlertMutingRuleFilterOutput values.
 // You can construct a concrete instance of `AlertMutingRuleFilterInput` via:
 //
-// 		 AlertMutingRuleFilterArgs{...}
-//
+//          AlertMutingRuleFilterArgs{...}
 type AlertMutingRuleFilterInput interface {
 	pulumi.Input
 
@@ -55,8 +54,7 @@ func (i AlertMutingRuleFilterArgs) ToAlertMutingRuleFilterOutputWithContext(ctx 
 // AlertMutingRuleFilterArrayInput is an input type that accepts AlertMutingRuleFilterArray and AlertMutingRuleFilterArrayOutput values.
 // You can construct a concrete instance of `AlertMutingRuleFilterArrayInput` via:
 //
-// 		 AlertMutingRuleFilterArray{ AlertMutingRuleFilterArgs{...} }
-//
+//          AlertMutingRuleFilterArray{ AlertMutingRuleFilterArgs{...} }
 type AlertMutingRuleFilterArrayInput interface {
 	pulumi.Input
 
@@ -143,8 +141,7 @@ type DashboardChart struct {
 // DashboardChartInput is an input type that accepts DashboardChartArgs and DashboardChartOutput values.
 // You can construct a concrete instance of `DashboardChartInput` via:
 //
-// 		 DashboardChartArgs{...}
-//
+//          DashboardChartArgs{...}
 type DashboardChartInput interface {
 	pulumi.Input
 
@@ -180,8 +177,7 @@ func (i DashboardChartArgs) ToDashboardChartOutputWithContext(ctx context.Contex
 // DashboardChartArrayInput is an input type that accepts DashboardChartArray and DashboardChartArrayOutput values.
 // You can construct a concrete instance of `DashboardChartArrayInput` via:
 //
-// 		 DashboardChartArray{ DashboardChartArgs{...} }
-//
+//          DashboardChartArray{ DashboardChartArgs{...} }
 type DashboardChartArrayInput interface {
 	pulumi.Input
 
@@ -276,8 +272,7 @@ type DashboardColumn struct {
 // DashboardColumnInput is an input type that accepts DashboardColumnArgs and DashboardColumnOutput values.
 // You can construct a concrete instance of `DashboardColumnInput` via:
 //
-// 		 DashboardColumnArgs{...}
-//
+//          DashboardColumnArgs{...}
 type DashboardColumnInput interface {
 	pulumi.Input
 
@@ -311,8 +306,7 @@ func (i DashboardColumnArgs) ToDashboardColumnOutputWithContext(ctx context.Cont
 // DashboardColumnArrayInput is an input type that accepts DashboardColumnArray and DashboardColumnArrayOutput values.
 // You can construct a concrete instance of `DashboardColumnArrayInput` via:
 //
-// 		 DashboardColumnArray{ DashboardColumnArgs{...} }
-//
+//          DashboardColumnArray{ DashboardColumnArgs{...} }
 type DashboardColumnArrayInput interface {
 	pulumi.Input
 
@@ -406,8 +400,7 @@ type DashboardEventOverlay struct {
 // DashboardEventOverlayInput is an input type that accepts DashboardEventOverlayArgs and DashboardEventOverlayOutput values.
 // You can construct a concrete instance of `DashboardEventOverlayInput` via:
 //
-// 		 DashboardEventOverlayArgs{...}
-//
+//          DashboardEventOverlayArgs{...}
 type DashboardEventOverlayInput interface {
 	pulumi.Input
 
@@ -445,8 +438,7 @@ func (i DashboardEventOverlayArgs) ToDashboardEventOverlayOutputWithContext(ctx 
 // DashboardEventOverlayArrayInput is an input type that accepts DashboardEventOverlayArray and DashboardEventOverlayArrayOutput values.
 // You can construct a concrete instance of `DashboardEventOverlayArrayInput` via:
 //
-// 		 DashboardEventOverlayArray{ DashboardEventOverlayArgs{...} }
-//
+//          DashboardEventOverlayArray{ DashboardEventOverlayArgs{...} }
 type DashboardEventOverlayArrayInput interface {
 	pulumi.Input
 
@@ -544,8 +536,7 @@ type DashboardEventOverlaySource struct {
 // DashboardEventOverlaySourceInput is an input type that accepts DashboardEventOverlaySourceArgs and DashboardEventOverlaySourceOutput values.
 // You can construct a concrete instance of `DashboardEventOverlaySourceInput` via:
 //
-// 		 DashboardEventOverlaySourceArgs{...}
-//
+//          DashboardEventOverlaySourceArgs{...}
 type DashboardEventOverlaySourceInput interface {
 	pulumi.Input
 
@@ -577,8 +568,7 @@ func (i DashboardEventOverlaySourceArgs) ToDashboardEventOverlaySourceOutputWith
 // DashboardEventOverlaySourceArrayInput is an input type that accepts DashboardEventOverlaySourceArray and DashboardEventOverlaySourceArrayOutput values.
 // You can construct a concrete instance of `DashboardEventOverlaySourceArrayInput` via:
 //
-// 		 DashboardEventOverlaySourceArray{ DashboardEventOverlaySourceArgs{...} }
-//
+//          DashboardEventOverlaySourceArray{ DashboardEventOverlaySourceArgs{...} }
 type DashboardEventOverlaySourceArrayInput interface {
 	pulumi.Input
 
@@ -663,8 +653,7 @@ type DashboardFilter struct {
 // DashboardFilterInput is an input type that accepts DashboardFilterArgs and DashboardFilterOutput values.
 // You can construct a concrete instance of `DashboardFilterInput` via:
 //
-// 		 DashboardFilterArgs{...}
-//
+//          DashboardFilterArgs{...}
 type DashboardFilterInput interface {
 	pulumi.Input
 
@@ -698,8 +687,7 @@ func (i DashboardFilterArgs) ToDashboardFilterOutputWithContext(ctx context.Cont
 // DashboardFilterArrayInput is an input type that accepts DashboardFilterArray and DashboardFilterArrayOutput values.
 // You can construct a concrete instance of `DashboardFilterArrayInput` via:
 //
-// 		 DashboardFilterArray{ DashboardFilterArgs{...} }
-//
+//          DashboardFilterArray{ DashboardFilterArgs{...} }
 type DashboardFilterArrayInput interface {
 	pulumi.Input
 
@@ -787,8 +775,7 @@ type DashboardGrid struct {
 // DashboardGridInput is an input type that accepts DashboardGridArgs and DashboardGridOutput values.
 // You can construct a concrete instance of `DashboardGridInput` via:
 //
-// 		 DashboardGridArgs{...}
-//
+//          DashboardGridArgs{...}
 type DashboardGridInput interface {
 	pulumi.Input
 
@@ -820,8 +807,7 @@ func (i DashboardGridArgs) ToDashboardGridOutputWithContext(ctx context.Context)
 // DashboardGridArrayInput is an input type that accepts DashboardGridArray and DashboardGridArrayOutput values.
 // You can construct a concrete instance of `DashboardGridArrayInput` via:
 //
-// 		 DashboardGridArray{ DashboardGridArgs{...} }
-//
+//          DashboardGridArray{ DashboardGridArgs{...} }
 type DashboardGridArrayInput interface {
 	pulumi.Input
 
@@ -907,8 +893,7 @@ type DashboardGroupDashboard struct {
 // DashboardGroupDashboardInput is an input type that accepts DashboardGroupDashboardArgs and DashboardGroupDashboardOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardInput` via:
 //
-// 		 DashboardGroupDashboardArgs{...}
-//
+//          DashboardGroupDashboardArgs{...}
 type DashboardGroupDashboardInput interface {
 	pulumi.Input
 
@@ -943,8 +928,7 @@ func (i DashboardGroupDashboardArgs) ToDashboardGroupDashboardOutputWithContext(
 // DashboardGroupDashboardArrayInput is an input type that accepts DashboardGroupDashboardArray and DashboardGroupDashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardArrayInput` via:
 //
-// 		 DashboardGroupDashboardArray{ DashboardGroupDashboardArgs{...} }
-//
+//          DashboardGroupDashboardArray{ DashboardGroupDashboardArgs{...} }
 type DashboardGroupDashboardArrayInput interface {
 	pulumi.Input
 
@@ -1036,8 +1020,7 @@ type DashboardGroupDashboardFilterOverride struct {
 // DashboardGroupDashboardFilterOverrideInput is an input type that accepts DashboardGroupDashboardFilterOverrideArgs and DashboardGroupDashboardFilterOverrideOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardFilterOverrideInput` via:
 //
-// 		 DashboardGroupDashboardFilterOverrideArgs{...}
-//
+//          DashboardGroupDashboardFilterOverrideArgs{...}
 type DashboardGroupDashboardFilterOverrideInput interface {
 	pulumi.Input
 
@@ -1069,8 +1052,7 @@ func (i DashboardGroupDashboardFilterOverrideArgs) ToDashboardGroupDashboardFilt
 // DashboardGroupDashboardFilterOverrideArrayInput is an input type that accepts DashboardGroupDashboardFilterOverrideArray and DashboardGroupDashboardFilterOverrideArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardFilterOverrideArrayInput` via:
 //
-// 		 DashboardGroupDashboardFilterOverrideArray{ DashboardGroupDashboardFilterOverrideArgs{...} }
-//
+//          DashboardGroupDashboardFilterOverrideArray{ DashboardGroupDashboardFilterOverrideArgs{...} }
 type DashboardGroupDashboardFilterOverrideArrayInput interface {
 	pulumi.Input
 
@@ -1153,8 +1135,7 @@ type DashboardGroupDashboardVariableOverride struct {
 // DashboardGroupDashboardVariableOverrideInput is an input type that accepts DashboardGroupDashboardVariableOverrideArgs and DashboardGroupDashboardVariableOverrideOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardVariableOverrideInput` via:
 //
-// 		 DashboardGroupDashboardVariableOverrideArgs{...}
-//
+//          DashboardGroupDashboardVariableOverrideArgs{...}
 type DashboardGroupDashboardVariableOverrideInput interface {
 	pulumi.Input
 
@@ -1186,8 +1167,7 @@ func (i DashboardGroupDashboardVariableOverrideArgs) ToDashboardGroupDashboardVa
 // DashboardGroupDashboardVariableOverrideArrayInput is an input type that accepts DashboardGroupDashboardVariableOverrideArray and DashboardGroupDashboardVariableOverrideArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardVariableOverrideArrayInput` via:
 //
-// 		 DashboardGroupDashboardVariableOverrideArray{ DashboardGroupDashboardVariableOverrideArgs{...} }
-//
+//          DashboardGroupDashboardVariableOverrideArray{ DashboardGroupDashboardVariableOverrideArgs{...} }
 type DashboardGroupDashboardVariableOverrideArrayInput interface {
 	pulumi.Input
 
@@ -1266,8 +1246,7 @@ type DashboardGroupImportQualifier struct {
 // DashboardGroupImportQualifierInput is an input type that accepts DashboardGroupImportQualifierArgs and DashboardGroupImportQualifierOutput values.
 // You can construct a concrete instance of `DashboardGroupImportQualifierInput` via:
 //
-// 		 DashboardGroupImportQualifierArgs{...}
-//
+//          DashboardGroupImportQualifierArgs{...}
 type DashboardGroupImportQualifierInput interface {
 	pulumi.Input
 
@@ -1295,8 +1274,7 @@ func (i DashboardGroupImportQualifierArgs) ToDashboardGroupImportQualifierOutput
 // DashboardGroupImportQualifierArrayInput is an input type that accepts DashboardGroupImportQualifierArray and DashboardGroupImportQualifierArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupImportQualifierArrayInput` via:
 //
-// 		 DashboardGroupImportQualifierArray{ DashboardGroupImportQualifierArgs{...} }
-//
+//          DashboardGroupImportQualifierArray{ DashboardGroupImportQualifierArgs{...} }
 type DashboardGroupImportQualifierArrayInput interface {
 	pulumi.Input
 
@@ -1372,8 +1350,7 @@ type DashboardGroupImportQualifierFilter struct {
 // DashboardGroupImportQualifierFilterInput is an input type that accepts DashboardGroupImportQualifierFilterArgs and DashboardGroupImportQualifierFilterOutput values.
 // You can construct a concrete instance of `DashboardGroupImportQualifierFilterInput` via:
 //
-// 		 DashboardGroupImportQualifierFilterArgs{...}
-//
+//          DashboardGroupImportQualifierFilterArgs{...}
 type DashboardGroupImportQualifierFilterInput interface {
 	pulumi.Input
 
@@ -1405,8 +1382,7 @@ func (i DashboardGroupImportQualifierFilterArgs) ToDashboardGroupImportQualifier
 // DashboardGroupImportQualifierFilterArrayInput is an input type that accepts DashboardGroupImportQualifierFilterArray and DashboardGroupImportQualifierFilterArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupImportQualifierFilterArrayInput` via:
 //
-// 		 DashboardGroupImportQualifierFilterArray{ DashboardGroupImportQualifierFilterArgs{...} }
-//
+//          DashboardGroupImportQualifierFilterArray{ DashboardGroupImportQualifierFilterArgs{...} }
 type DashboardGroupImportQualifierFilterArrayInput interface {
 	pulumi.Input
 
@@ -1489,8 +1465,7 @@ type DashboardSelectedEventOverlay struct {
 // DashboardSelectedEventOverlayInput is an input type that accepts DashboardSelectedEventOverlayArgs and DashboardSelectedEventOverlayOutput values.
 // You can construct a concrete instance of `DashboardSelectedEventOverlayInput` via:
 //
-// 		 DashboardSelectedEventOverlayArgs{...}
-//
+//          DashboardSelectedEventOverlayArgs{...}
 type DashboardSelectedEventOverlayInput interface {
 	pulumi.Input
 
@@ -1522,8 +1497,7 @@ func (i DashboardSelectedEventOverlayArgs) ToDashboardSelectedEventOverlayOutput
 // DashboardSelectedEventOverlayArrayInput is an input type that accepts DashboardSelectedEventOverlayArray and DashboardSelectedEventOverlayArrayOutput values.
 // You can construct a concrete instance of `DashboardSelectedEventOverlayArrayInput` via:
 //
-// 		 DashboardSelectedEventOverlayArray{ DashboardSelectedEventOverlayArgs{...} }
-//
+//          DashboardSelectedEventOverlayArray{ DashboardSelectedEventOverlayArgs{...} }
 type DashboardSelectedEventOverlayArrayInput interface {
 	pulumi.Input
 
@@ -1606,8 +1580,7 @@ type DashboardSelectedEventOverlaySource struct {
 // DashboardSelectedEventOverlaySourceInput is an input type that accepts DashboardSelectedEventOverlaySourceArgs and DashboardSelectedEventOverlaySourceOutput values.
 // You can construct a concrete instance of `DashboardSelectedEventOverlaySourceInput` via:
 //
-// 		 DashboardSelectedEventOverlaySourceArgs{...}
-//
+//          DashboardSelectedEventOverlaySourceArgs{...}
 type DashboardSelectedEventOverlaySourceInput interface {
 	pulumi.Input
 
@@ -1639,8 +1612,7 @@ func (i DashboardSelectedEventOverlaySourceArgs) ToDashboardSelectedEventOverlay
 // DashboardSelectedEventOverlaySourceArrayInput is an input type that accepts DashboardSelectedEventOverlaySourceArray and DashboardSelectedEventOverlaySourceArrayOutput values.
 // You can construct a concrete instance of `DashboardSelectedEventOverlaySourceArrayInput` via:
 //
-// 		 DashboardSelectedEventOverlaySourceArray{ DashboardSelectedEventOverlaySourceArgs{...} }
-//
+//          DashboardSelectedEventOverlaySourceArray{ DashboardSelectedEventOverlaySourceArgs{...} }
 type DashboardSelectedEventOverlaySourceArrayInput interface {
 	pulumi.Input
 
@@ -1735,8 +1707,7 @@ type DashboardVariable struct {
 // DashboardVariableInput is an input type that accepts DashboardVariableArgs and DashboardVariableOutput values.
 // You can construct a concrete instance of `DashboardVariableInput` via:
 //
-// 		 DashboardVariableArgs{...}
-//
+//          DashboardVariableArgs{...}
 type DashboardVariableInput interface {
 	pulumi.Input
 
@@ -1780,8 +1751,7 @@ func (i DashboardVariableArgs) ToDashboardVariableOutputWithContext(ctx context.
 // DashboardVariableArrayInput is an input type that accepts DashboardVariableArray and DashboardVariableArrayOutput values.
 // You can construct a concrete instance of `DashboardVariableArrayInput` via:
 //
-// 		 DashboardVariableArray{ DashboardVariableArgs{...} }
-//
+//          DashboardVariableArray{ DashboardVariableArgs{...} }
 type DashboardVariableArrayInput interface {
 	pulumi.Input
 
@@ -1900,8 +1870,7 @@ type DataLinkTargetExternalUrl struct {
 // DataLinkTargetExternalUrlInput is an input type that accepts DataLinkTargetExternalUrlArgs and DataLinkTargetExternalUrlOutput values.
 // You can construct a concrete instance of `DataLinkTargetExternalUrlInput` via:
 //
-// 		 DataLinkTargetExternalUrlArgs{...}
-//
+//          DataLinkTargetExternalUrlArgs{...}
 type DataLinkTargetExternalUrlInput interface {
 	pulumi.Input
 
@@ -1939,8 +1908,7 @@ func (i DataLinkTargetExternalUrlArgs) ToDataLinkTargetExternalUrlOutputWithCont
 // DataLinkTargetExternalUrlArrayInput is an input type that accepts DataLinkTargetExternalUrlArray and DataLinkTargetExternalUrlArrayOutput values.
 // You can construct a concrete instance of `DataLinkTargetExternalUrlArrayInput` via:
 //
-// 		 DataLinkTargetExternalUrlArray{ DataLinkTargetExternalUrlArgs{...} }
-//
+//          DataLinkTargetExternalUrlArray{ DataLinkTargetExternalUrlArgs{...} }
 type DataLinkTargetExternalUrlArrayInput interface {
 	pulumi.Input
 
@@ -2040,8 +2008,7 @@ type DataLinkTargetSignalfxDashboard struct {
 // DataLinkTargetSignalfxDashboardInput is an input type that accepts DataLinkTargetSignalfxDashboardArgs and DataLinkTargetSignalfxDashboardOutput values.
 // You can construct a concrete instance of `DataLinkTargetSignalfxDashboardInput` via:
 //
-// 		 DataLinkTargetSignalfxDashboardArgs{...}
-//
+//          DataLinkTargetSignalfxDashboardArgs{...}
 type DataLinkTargetSignalfxDashboardInput interface {
 	pulumi.Input
 
@@ -2075,8 +2042,7 @@ func (i DataLinkTargetSignalfxDashboardArgs) ToDataLinkTargetSignalfxDashboardOu
 // DataLinkTargetSignalfxDashboardArrayInput is an input type that accepts DataLinkTargetSignalfxDashboardArray and DataLinkTargetSignalfxDashboardArrayOutput values.
 // You can construct a concrete instance of `DataLinkTargetSignalfxDashboardArrayInput` via:
 //
-// 		 DataLinkTargetSignalfxDashboardArray{ DataLinkTargetSignalfxDashboardArgs{...} }
-//
+//          DataLinkTargetSignalfxDashboardArray{ DataLinkTargetSignalfxDashboardArgs{...} }
 type DataLinkTargetSignalfxDashboardArrayInput interface {
 	pulumi.Input
 
@@ -2164,8 +2130,7 @@ type DataLinkTargetSplunk struct {
 // DataLinkTargetSplunkInput is an input type that accepts DataLinkTargetSplunkArgs and DataLinkTargetSplunkOutput values.
 // You can construct a concrete instance of `DataLinkTargetSplunkInput` via:
 //
-// 		 DataLinkTargetSplunkArgs{...}
-//
+//          DataLinkTargetSplunkArgs{...}
 type DataLinkTargetSplunkInput interface {
 	pulumi.Input
 
@@ -2197,8 +2162,7 @@ func (i DataLinkTargetSplunkArgs) ToDataLinkTargetSplunkOutputWithContext(ctx co
 // DataLinkTargetSplunkArrayInput is an input type that accepts DataLinkTargetSplunkArray and DataLinkTargetSplunkArrayOutput values.
 // You can construct a concrete instance of `DataLinkTargetSplunkArrayInput` via:
 //
-// 		 DataLinkTargetSplunkArray{ DataLinkTargetSplunkArgs{...} }
-//
+//          DataLinkTargetSplunkArray{ DataLinkTargetSplunkArgs{...} }
 type DataLinkTargetSplunkArrayInput interface {
 	pulumi.Input
 
@@ -2293,8 +2257,7 @@ type DetectorRule struct {
 // DetectorRuleInput is an input type that accepts DetectorRuleArgs and DetectorRuleOutput values.
 // You can construct a concrete instance of `DetectorRuleInput` via:
 //
-// 		 DetectorRuleArgs{...}
-//
+//          DetectorRuleArgs{...}
 type DetectorRuleInput interface {
 	pulumi.Input
 
@@ -2338,8 +2301,7 @@ func (i DetectorRuleArgs) ToDetectorRuleOutputWithContext(ctx context.Context) D
 // DetectorRuleArrayInput is an input type that accepts DetectorRuleArray and DetectorRuleArrayOutput values.
 // You can construct a concrete instance of `DetectorRuleArrayInput` via:
 //
-// 		 DetectorRuleArray{ DetectorRuleArgs{...} }
-//
+//          DetectorRuleArray{ DetectorRuleArgs{...} }
 type DetectorRuleArrayInput interface {
 	pulumi.Input
 
@@ -2457,8 +2419,7 @@ type DetectorVizOption struct {
 // DetectorVizOptionInput is an input type that accepts DetectorVizOptionArgs and DetectorVizOptionOutput values.
 // You can construct a concrete instance of `DetectorVizOptionInput` via:
 //
-// 		 DetectorVizOptionArgs{...}
-//
+//          DetectorVizOptionArgs{...}
 type DetectorVizOptionInput interface {
 	pulumi.Input
 
@@ -2495,8 +2456,7 @@ func (i DetectorVizOptionArgs) ToDetectorVizOptionOutputWithContext(ctx context.
 // DetectorVizOptionArrayInput is an input type that accepts DetectorVizOptionArray and DetectorVizOptionArrayOutput values.
 // You can construct a concrete instance of `DetectorVizOptionArrayInput` via:
 //
-// 		 DetectorVizOptionArray{ DetectorVizOptionArgs{...} }
-//
+//          DetectorVizOptionArray{ DetectorVizOptionArgs{...} }
 type DetectorVizOptionArrayInput interface {
 	pulumi.Input
 
@@ -2593,8 +2553,7 @@ type HeatmapChartColorRange struct {
 // HeatmapChartColorRangeInput is an input type that accepts HeatmapChartColorRangeArgs and HeatmapChartColorRangeOutput values.
 // You can construct a concrete instance of `HeatmapChartColorRangeInput` via:
 //
-// 		 HeatmapChartColorRangeArgs{...}
-//
+//          HeatmapChartColorRangeArgs{...}
 type HeatmapChartColorRangeInput interface {
 	pulumi.Input
 
@@ -2634,12 +2593,11 @@ func (i HeatmapChartColorRangeArgs) ToHeatmapChartColorRangePtrOutputWithContext
 // HeatmapChartColorRangePtrInput is an input type that accepts HeatmapChartColorRangeArgs, HeatmapChartColorRangePtr and HeatmapChartColorRangePtrOutput values.
 // You can construct a concrete instance of `HeatmapChartColorRangePtrInput` via:
 //
-// 		 HeatmapChartColorRangeArgs{...}
+//          HeatmapChartColorRangeArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type HeatmapChartColorRangePtrInput interface {
 	pulumi.Input
 
@@ -2768,8 +2726,7 @@ type HeatmapChartColorScale struct {
 // HeatmapChartColorScaleInput is an input type that accepts HeatmapChartColorScaleArgs and HeatmapChartColorScaleOutput values.
 // You can construct a concrete instance of `HeatmapChartColorScaleInput` via:
 //
-// 		 HeatmapChartColorScaleArgs{...}
-//
+//          HeatmapChartColorScaleArgs{...}
 type HeatmapChartColorScaleInput interface {
 	pulumi.Input
 
@@ -2805,8 +2762,7 @@ func (i HeatmapChartColorScaleArgs) ToHeatmapChartColorScaleOutputWithContext(ct
 // HeatmapChartColorScaleArrayInput is an input type that accepts HeatmapChartColorScaleArray and HeatmapChartColorScaleArrayOutput values.
 // You can construct a concrete instance of `HeatmapChartColorScaleArrayInput` via:
 //
-// 		 HeatmapChartColorScaleArray{ HeatmapChartColorScaleArgs{...} }
-//
+//          HeatmapChartColorScaleArray{ HeatmapChartColorScaleArgs{...} }
 type HeatmapChartColorScaleArrayInput interface {
 	pulumi.Input
 
@@ -2903,8 +2859,7 @@ type ListChartColorScale struct {
 // ListChartColorScaleInput is an input type that accepts ListChartColorScaleArgs and ListChartColorScaleOutput values.
 // You can construct a concrete instance of `ListChartColorScaleInput` via:
 //
-// 		 ListChartColorScaleArgs{...}
-//
+//          ListChartColorScaleArgs{...}
 type ListChartColorScaleInput interface {
 	pulumi.Input
 
@@ -2940,8 +2895,7 @@ func (i ListChartColorScaleArgs) ToListChartColorScaleOutputWithContext(ctx cont
 // ListChartColorScaleArrayInput is an input type that accepts ListChartColorScaleArray and ListChartColorScaleArrayOutput values.
 // You can construct a concrete instance of `ListChartColorScaleArrayInput` via:
 //
-// 		 ListChartColorScaleArray{ ListChartColorScaleArgs{...} }
-//
+//          ListChartColorScaleArray{ ListChartColorScaleArgs{...} }
 type ListChartColorScaleArrayInput interface {
 	pulumi.Input
 
@@ -3032,8 +2986,7 @@ type ListChartLegendOptionsField struct {
 // ListChartLegendOptionsFieldInput is an input type that accepts ListChartLegendOptionsFieldArgs and ListChartLegendOptionsFieldOutput values.
 // You can construct a concrete instance of `ListChartLegendOptionsFieldInput` via:
 //
-// 		 ListChartLegendOptionsFieldArgs{...}
-//
+//          ListChartLegendOptionsFieldArgs{...}
 type ListChartLegendOptionsFieldInput interface {
 	pulumi.Input
 
@@ -3063,8 +3016,7 @@ func (i ListChartLegendOptionsFieldArgs) ToListChartLegendOptionsFieldOutputWith
 // ListChartLegendOptionsFieldArrayInput is an input type that accepts ListChartLegendOptionsFieldArray and ListChartLegendOptionsFieldArrayOutput values.
 // You can construct a concrete instance of `ListChartLegendOptionsFieldArrayInput` via:
 //
-// 		 ListChartLegendOptionsFieldArray{ ListChartLegendOptionsFieldArgs{...} }
-//
+//          ListChartLegendOptionsFieldArray{ ListChartLegendOptionsFieldArgs{...} }
 type ListChartLegendOptionsFieldArrayInput interface {
 	pulumi.Input
 
@@ -3147,8 +3099,7 @@ type ListChartVizOption struct {
 // ListChartVizOptionInput is an input type that accepts ListChartVizOptionArgs and ListChartVizOptionOutput values.
 // You can construct a concrete instance of `ListChartVizOptionInput` via:
 //
-// 		 ListChartVizOptionArgs{...}
-//
+//          ListChartVizOptionArgs{...}
 type ListChartVizOptionInput interface {
 	pulumi.Input
 
@@ -3185,8 +3136,7 @@ func (i ListChartVizOptionArgs) ToListChartVizOptionOutputWithContext(ctx contex
 // ListChartVizOptionArrayInput is an input type that accepts ListChartVizOptionArray and ListChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `ListChartVizOptionArrayInput` via:
 //
-// 		 ListChartVizOptionArray{ ListChartVizOptionArgs{...} }
-//
+//          ListChartVizOptionArray{ ListChartVizOptionArgs{...} }
 type ListChartVizOptionArrayInput interface {
 	pulumi.Input
 
@@ -3281,8 +3231,7 @@ type OrgTokenDpmLimits struct {
 // OrgTokenDpmLimitsInput is an input type that accepts OrgTokenDpmLimitsArgs and OrgTokenDpmLimitsOutput values.
 // You can construct a concrete instance of `OrgTokenDpmLimitsInput` via:
 //
-// 		 OrgTokenDpmLimitsArgs{...}
-//
+//          OrgTokenDpmLimitsArgs{...}
 type OrgTokenDpmLimitsInput interface {
 	pulumi.Input
 
@@ -3320,12 +3269,11 @@ func (i OrgTokenDpmLimitsArgs) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx conte
 // OrgTokenDpmLimitsPtrInput is an input type that accepts OrgTokenDpmLimitsArgs, OrgTokenDpmLimitsPtr and OrgTokenDpmLimitsPtrOutput values.
 // You can construct a concrete instance of `OrgTokenDpmLimitsPtrInput` via:
 //
-// 		 OrgTokenDpmLimitsArgs{...}
+//          OrgTokenDpmLimitsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OrgTokenDpmLimitsPtrInput interface {
 	pulumi.Input
 
@@ -3445,8 +3393,7 @@ type OrgTokenHostOrUsageLimits struct {
 // OrgTokenHostOrUsageLimitsInput is an input type that accepts OrgTokenHostOrUsageLimitsArgs and OrgTokenHostOrUsageLimitsOutput values.
 // You can construct a concrete instance of `OrgTokenHostOrUsageLimitsInput` via:
 //
-// 		 OrgTokenHostOrUsageLimitsArgs{...}
-//
+//          OrgTokenHostOrUsageLimitsArgs{...}
 type OrgTokenHostOrUsageLimitsInput interface {
 	pulumi.Input
 
@@ -3496,12 +3443,11 @@ func (i OrgTokenHostOrUsageLimitsArgs) ToOrgTokenHostOrUsageLimitsPtrOutputWithC
 // OrgTokenHostOrUsageLimitsPtrInput is an input type that accepts OrgTokenHostOrUsageLimitsArgs, OrgTokenHostOrUsageLimitsPtr and OrgTokenHostOrUsageLimitsPtrOutput values.
 // You can construct a concrete instance of `OrgTokenHostOrUsageLimitsPtrInput` via:
 //
-// 		 OrgTokenHostOrUsageLimitsArgs{...}
+//          OrgTokenHostOrUsageLimitsArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type OrgTokenHostOrUsageLimitsPtrInput interface {
 	pulumi.Input
 
@@ -3705,8 +3651,7 @@ type SingleValueChartColorScale struct {
 // SingleValueChartColorScaleInput is an input type that accepts SingleValueChartColorScaleArgs and SingleValueChartColorScaleOutput values.
 // You can construct a concrete instance of `SingleValueChartColorScaleInput` via:
 //
-// 		 SingleValueChartColorScaleArgs{...}
-//
+//          SingleValueChartColorScaleArgs{...}
 type SingleValueChartColorScaleInput interface {
 	pulumi.Input
 
@@ -3742,8 +3687,7 @@ func (i SingleValueChartColorScaleArgs) ToSingleValueChartColorScaleOutputWithCo
 // SingleValueChartColorScaleArrayInput is an input type that accepts SingleValueChartColorScaleArray and SingleValueChartColorScaleArrayOutput values.
 // You can construct a concrete instance of `SingleValueChartColorScaleArrayInput` via:
 //
-// 		 SingleValueChartColorScaleArray{ SingleValueChartColorScaleArgs{...} }
-//
+//          SingleValueChartColorScaleArray{ SingleValueChartColorScaleArgs{...} }
 type SingleValueChartColorScaleArrayInput interface {
 	pulumi.Input
 
@@ -3841,8 +3785,7 @@ type SingleValueChartVizOption struct {
 // SingleValueChartVizOptionInput is an input type that accepts SingleValueChartVizOptionArgs and SingleValueChartVizOptionOutput values.
 // You can construct a concrete instance of `SingleValueChartVizOptionInput` via:
 //
-// 		 SingleValueChartVizOptionArgs{...}
-//
+//          SingleValueChartVizOptionArgs{...}
 type SingleValueChartVizOptionInput interface {
 	pulumi.Input
 
@@ -3879,8 +3822,7 @@ func (i SingleValueChartVizOptionArgs) ToSingleValueChartVizOptionOutputWithCont
 // SingleValueChartVizOptionArrayInput is an input type that accepts SingleValueChartVizOptionArray and SingleValueChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `SingleValueChartVizOptionArrayInput` via:
 //
-// 		 SingleValueChartVizOptionArray{ SingleValueChartVizOptionArgs{...} }
-//
+//          SingleValueChartVizOptionArray{ SingleValueChartVizOptionArgs{...} }
 type SingleValueChartVizOptionArrayInput interface {
 	pulumi.Input
 
@@ -3986,8 +3928,7 @@ type TimeChartAxisLeft struct {
 // TimeChartAxisLeftInput is an input type that accepts TimeChartAxisLeftArgs and TimeChartAxisLeftOutput values.
 // You can construct a concrete instance of `TimeChartAxisLeftInput` via:
 //
-// 		 TimeChartAxisLeftArgs{...}
-//
+//          TimeChartAxisLeftArgs{...}
 type TimeChartAxisLeftInput interface {
 	pulumi.Input
 
@@ -4036,12 +3977,11 @@ func (i TimeChartAxisLeftArgs) ToTimeChartAxisLeftPtrOutputWithContext(ctx conte
 // TimeChartAxisLeftPtrInput is an input type that accepts TimeChartAxisLeftArgs, TimeChartAxisLeftPtr and TimeChartAxisLeftPtrOutput values.
 // You can construct a concrete instance of `TimeChartAxisLeftPtrInput` via:
 //
-// 		 TimeChartAxisLeftArgs{...}
+//          TimeChartAxisLeftArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TimeChartAxisLeftPtrInput interface {
 	pulumi.Input
 
@@ -4236,8 +4176,7 @@ type TimeChartAxisLeftWatermark struct {
 // TimeChartAxisLeftWatermarkInput is an input type that accepts TimeChartAxisLeftWatermarkArgs and TimeChartAxisLeftWatermarkOutput values.
 // You can construct a concrete instance of `TimeChartAxisLeftWatermarkInput` via:
 //
-// 		 TimeChartAxisLeftWatermarkArgs{...}
-//
+//          TimeChartAxisLeftWatermarkArgs{...}
 type TimeChartAxisLeftWatermarkInput interface {
 	pulumi.Input
 
@@ -4266,8 +4205,7 @@ func (i TimeChartAxisLeftWatermarkArgs) ToTimeChartAxisLeftWatermarkOutputWithCo
 // TimeChartAxisLeftWatermarkArrayInput is an input type that accepts TimeChartAxisLeftWatermarkArray and TimeChartAxisLeftWatermarkArrayOutput values.
 // You can construct a concrete instance of `TimeChartAxisLeftWatermarkArrayInput` via:
 //
-// 		 TimeChartAxisLeftWatermarkArray{ TimeChartAxisLeftWatermarkArgs{...} }
-//
+//          TimeChartAxisLeftWatermarkArray{ TimeChartAxisLeftWatermarkArgs{...} }
 type TimeChartAxisLeftWatermarkArrayInput interface {
 	pulumi.Input
 
@@ -4353,8 +4291,7 @@ type TimeChartAxisRight struct {
 // TimeChartAxisRightInput is an input type that accepts TimeChartAxisRightArgs and TimeChartAxisRightOutput values.
 // You can construct a concrete instance of `TimeChartAxisRightInput` via:
 //
-// 		 TimeChartAxisRightArgs{...}
-//
+//          TimeChartAxisRightArgs{...}
 type TimeChartAxisRightInput interface {
 	pulumi.Input
 
@@ -4403,12 +4340,11 @@ func (i TimeChartAxisRightArgs) ToTimeChartAxisRightPtrOutputWithContext(ctx con
 // TimeChartAxisRightPtrInput is an input type that accepts TimeChartAxisRightArgs, TimeChartAxisRightPtr and TimeChartAxisRightPtrOutput values.
 // You can construct a concrete instance of `TimeChartAxisRightPtrInput` via:
 //
-// 		 TimeChartAxisRightArgs{...}
+//          TimeChartAxisRightArgs{...}
 //
 //  or:
 //
-// 		 nil
-//
+//          nil
 type TimeChartAxisRightPtrInput interface {
 	pulumi.Input
 
@@ -4603,8 +4539,7 @@ type TimeChartAxisRightWatermark struct {
 // TimeChartAxisRightWatermarkInput is an input type that accepts TimeChartAxisRightWatermarkArgs and TimeChartAxisRightWatermarkOutput values.
 // You can construct a concrete instance of `TimeChartAxisRightWatermarkInput` via:
 //
-// 		 TimeChartAxisRightWatermarkArgs{...}
-//
+//          TimeChartAxisRightWatermarkArgs{...}
 type TimeChartAxisRightWatermarkInput interface {
 	pulumi.Input
 
@@ -4633,8 +4568,7 @@ func (i TimeChartAxisRightWatermarkArgs) ToTimeChartAxisRightWatermarkOutputWith
 // TimeChartAxisRightWatermarkArrayInput is an input type that accepts TimeChartAxisRightWatermarkArray and TimeChartAxisRightWatermarkArrayOutput values.
 // You can construct a concrete instance of `TimeChartAxisRightWatermarkArrayInput` via:
 //
-// 		 TimeChartAxisRightWatermarkArray{ TimeChartAxisRightWatermarkArgs{...} }
-//
+//          TimeChartAxisRightWatermarkArray{ TimeChartAxisRightWatermarkArgs{...} }
 type TimeChartAxisRightWatermarkArrayInput interface {
 	pulumi.Input
 
@@ -4711,8 +4645,7 @@ type TimeChartEventOption struct {
 // TimeChartEventOptionInput is an input type that accepts TimeChartEventOptionArgs and TimeChartEventOptionOutput values.
 // You can construct a concrete instance of `TimeChartEventOptionInput` via:
 //
-// 		 TimeChartEventOptionArgs{...}
-//
+//          TimeChartEventOptionArgs{...}
 type TimeChartEventOptionInput interface {
 	pulumi.Input
 
@@ -4744,8 +4677,7 @@ func (i TimeChartEventOptionArgs) ToTimeChartEventOptionOutputWithContext(ctx co
 // TimeChartEventOptionArrayInput is an input type that accepts TimeChartEventOptionArray and TimeChartEventOptionArrayOutput values.
 // You can construct a concrete instance of `TimeChartEventOptionArrayInput` via:
 //
-// 		 TimeChartEventOptionArray{ TimeChartEventOptionArgs{...} }
-//
+//          TimeChartEventOptionArray{ TimeChartEventOptionArgs{...} }
 type TimeChartEventOptionArrayInput interface {
 	pulumi.Input
 
@@ -4824,8 +4756,7 @@ type TimeChartHistogramOption struct {
 // TimeChartHistogramOptionInput is an input type that accepts TimeChartHistogramOptionArgs and TimeChartHistogramOptionOutput values.
 // You can construct a concrete instance of `TimeChartHistogramOptionInput` via:
 //
-// 		 TimeChartHistogramOptionArgs{...}
-//
+//          TimeChartHistogramOptionArgs{...}
 type TimeChartHistogramOptionInput interface {
 	pulumi.Input
 
@@ -4853,8 +4784,7 @@ func (i TimeChartHistogramOptionArgs) ToTimeChartHistogramOptionOutputWithContex
 // TimeChartHistogramOptionArrayInput is an input type that accepts TimeChartHistogramOptionArray and TimeChartHistogramOptionArrayOutput values.
 // You can construct a concrete instance of `TimeChartHistogramOptionArrayInput` via:
 //
-// 		 TimeChartHistogramOptionArray{ TimeChartHistogramOptionArgs{...} }
-//
+//          TimeChartHistogramOptionArray{ TimeChartHistogramOptionArgs{...} }
 type TimeChartHistogramOptionArrayInput interface {
 	pulumi.Input
 
@@ -4925,8 +4855,7 @@ type TimeChartLegendOptionsField struct {
 // TimeChartLegendOptionsFieldInput is an input type that accepts TimeChartLegendOptionsFieldArgs and TimeChartLegendOptionsFieldOutput values.
 // You can construct a concrete instance of `TimeChartLegendOptionsFieldInput` via:
 //
-// 		 TimeChartLegendOptionsFieldArgs{...}
-//
+//          TimeChartLegendOptionsFieldArgs{...}
 type TimeChartLegendOptionsFieldInput interface {
 	pulumi.Input
 
@@ -4956,8 +4885,7 @@ func (i TimeChartLegendOptionsFieldArgs) ToTimeChartLegendOptionsFieldOutputWith
 // TimeChartLegendOptionsFieldArrayInput is an input type that accepts TimeChartLegendOptionsFieldArray and TimeChartLegendOptionsFieldArrayOutput values.
 // You can construct a concrete instance of `TimeChartLegendOptionsFieldArrayInput` via:
 //
-// 		 TimeChartLegendOptionsFieldArray{ TimeChartLegendOptionsFieldArgs{...} }
-//
+//          TimeChartLegendOptionsFieldArray{ TimeChartLegendOptionsFieldArgs{...} }
 type TimeChartLegendOptionsFieldArrayInput interface {
 	pulumi.Input
 
@@ -5044,8 +4972,7 @@ type TimeChartVizOption struct {
 // TimeChartVizOptionInput is an input type that accepts TimeChartVizOptionArgs and TimeChartVizOptionOutput values.
 // You can construct a concrete instance of `TimeChartVizOptionInput` via:
 //
-// 		 TimeChartVizOptionArgs{...}
-//
+//          TimeChartVizOptionArgs{...}
 type TimeChartVizOptionInput interface {
 	pulumi.Input
 
@@ -5086,8 +5013,7 @@ func (i TimeChartVizOptionArgs) ToTimeChartVizOptionOutputWithContext(ctx contex
 // TimeChartVizOptionArrayInput is an input type that accepts TimeChartVizOptionArray and TimeChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `TimeChartVizOptionArrayInput` via:
 //
-// 		 TimeChartVizOptionArray{ TimeChartVizOptionArgs{...} }
-//
+//          TimeChartVizOptionArray{ TimeChartVizOptionArgs{...} }
 type TimeChartVizOptionArrayInput interface {
 	pulumi.Input
 
@@ -5192,8 +5118,7 @@ type WebhookIntegrationHeader struct {
 // WebhookIntegrationHeaderInput is an input type that accepts WebhookIntegrationHeaderArgs and WebhookIntegrationHeaderOutput values.
 // You can construct a concrete instance of `WebhookIntegrationHeaderInput` via:
 //
-// 		 WebhookIntegrationHeaderArgs{...}
-//
+//          WebhookIntegrationHeaderArgs{...}
 type WebhookIntegrationHeaderInput interface {
 	pulumi.Input
 
@@ -5223,8 +5148,7 @@ func (i WebhookIntegrationHeaderArgs) ToWebhookIntegrationHeaderOutputWithContex
 // WebhookIntegrationHeaderArrayInput is an input type that accepts WebhookIntegrationHeaderArray and WebhookIntegrationHeaderArrayOutput values.
 // You can construct a concrete instance of `WebhookIntegrationHeaderArrayInput` via:
 //
-// 		 WebhookIntegrationHeaderArray{ WebhookIntegrationHeaderArgs{...} }
-//
+//          WebhookIntegrationHeaderArray{ WebhookIntegrationHeaderArgs{...} }
 type WebhookIntegrationHeaderArrayInput interface {
 	pulumi.Input
 
@@ -5297,8 +5221,7 @@ type GetAwsServicesService struct {
 // GetAwsServicesServiceInput is an input type that accepts GetAwsServicesServiceArgs and GetAwsServicesServiceOutput values.
 // You can construct a concrete instance of `GetAwsServicesServiceInput` via:
 //
-// 		 GetAwsServicesServiceArgs{...}
-//
+//          GetAwsServicesServiceArgs{...}
 type GetAwsServicesServiceInput interface {
 	pulumi.Input
 
@@ -5325,8 +5248,7 @@ func (i GetAwsServicesServiceArgs) ToGetAwsServicesServiceOutputWithContext(ctx 
 // GetAwsServicesServiceArrayInput is an input type that accepts GetAwsServicesServiceArray and GetAwsServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetAwsServicesServiceArrayInput` via:
 //
-// 		 GetAwsServicesServiceArray{ GetAwsServicesServiceArgs{...} }
-//
+//          GetAwsServicesServiceArray{ GetAwsServicesServiceArgs{...} }
 type GetAwsServicesServiceArrayInput interface {
 	pulumi.Input
 
@@ -5393,8 +5315,7 @@ type GetAzureServicesService struct {
 // GetAzureServicesServiceInput is an input type that accepts GetAzureServicesServiceArgs and GetAzureServicesServiceOutput values.
 // You can construct a concrete instance of `GetAzureServicesServiceInput` via:
 //
-// 		 GetAzureServicesServiceArgs{...}
-//
+//          GetAzureServicesServiceArgs{...}
 type GetAzureServicesServiceInput interface {
 	pulumi.Input
 
@@ -5421,8 +5342,7 @@ func (i GetAzureServicesServiceArgs) ToGetAzureServicesServiceOutputWithContext(
 // GetAzureServicesServiceArrayInput is an input type that accepts GetAzureServicesServiceArray and GetAzureServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetAzureServicesServiceArrayInput` via:
 //
-// 		 GetAzureServicesServiceArray{ GetAzureServicesServiceArgs{...} }
-//
+//          GetAzureServicesServiceArray{ GetAzureServicesServiceArgs{...} }
 type GetAzureServicesServiceArrayInput interface {
 	pulumi.Input
 

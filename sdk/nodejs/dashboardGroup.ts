@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -25,8 +23,7 @@ import * as utilities from "./utilities";
  *     authorizedWriterUsers: ["abc123"],
  * });
  * ```
- *
- * ## Example Usage With Mirrored Dashboards
+ * ### With Mirrored Dashboards
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -34,16 +31,16 @@ import * as utilities from "./utilities";
  *
  * const mydashboardgroupWithmirrors = new signalfx.DashboardGroup("mydashboardgroupWithmirrors", {
  *     description: "Cool dashboard group",
- *     dashboard: [{
+ *     dashboards: [{
  *         dashboardId: signalfx_dashboard.gc_dashboard.id,
  *         nameOverride: "GC For My Service",
  *         descriptionOverride: "Garbage Collection dashboard maintained by JVM team",
- *         filter_override: [{
+ *         filterOverrides: [{
  *             property: "service",
  *             values: ["myservice"],
  *             negated: false,
  *         }],
- *         variable_override: [{
+ *         variableOverrides: [{
  *             property: "region",
  *             values: ["us-west1"],
  *             valuesSuggesteds: [

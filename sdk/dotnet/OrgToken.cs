@@ -14,8 +14,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;

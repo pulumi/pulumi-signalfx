@@ -24,8 +24,7 @@ type IntegrationCustomNamespaceSyncRule struct {
 // IntegrationCustomNamespaceSyncRuleInput is an input type that accepts IntegrationCustomNamespaceSyncRuleArgs and IntegrationCustomNamespaceSyncRuleOutput values.
 // You can construct a concrete instance of `IntegrationCustomNamespaceSyncRuleInput` via:
 //
-// 		 IntegrationCustomNamespaceSyncRuleArgs{...}
-//
+//          IntegrationCustomNamespaceSyncRuleArgs{...}
 type IntegrationCustomNamespaceSyncRuleInput interface {
 	pulumi.Input
 
@@ -59,8 +58,7 @@ func (i IntegrationCustomNamespaceSyncRuleArgs) ToIntegrationCustomNamespaceSync
 // IntegrationCustomNamespaceSyncRuleArrayInput is an input type that accepts IntegrationCustomNamespaceSyncRuleArray and IntegrationCustomNamespaceSyncRuleArrayOutput values.
 // You can construct a concrete instance of `IntegrationCustomNamespaceSyncRuleArrayInput` via:
 //
-// 		 IntegrationCustomNamespaceSyncRuleArray{ IntegrationCustomNamespaceSyncRuleArgs{...} }
-//
+//          IntegrationCustomNamespaceSyncRuleArray{ IntegrationCustomNamespaceSyncRuleArgs{...} }
 type IntegrationCustomNamespaceSyncRuleArrayInput interface {
 	pulumi.Input
 
@@ -150,8 +148,7 @@ type IntegrationNamespaceSyncRule struct {
 // IntegrationNamespaceSyncRuleInput is an input type that accepts IntegrationNamespaceSyncRuleArgs and IntegrationNamespaceSyncRuleOutput values.
 // You can construct a concrete instance of `IntegrationNamespaceSyncRuleInput` via:
 //
-// 		 IntegrationNamespaceSyncRuleArgs{...}
-//
+//          IntegrationNamespaceSyncRuleArgs{...}
 type IntegrationNamespaceSyncRuleInput interface {
 	pulumi.Input
 
@@ -185,8 +182,7 @@ func (i IntegrationNamespaceSyncRuleArgs) ToIntegrationNamespaceSyncRuleOutputWi
 // IntegrationNamespaceSyncRuleArrayInput is an input type that accepts IntegrationNamespaceSyncRuleArray and IntegrationNamespaceSyncRuleArrayOutput values.
 // You can construct a concrete instance of `IntegrationNamespaceSyncRuleArrayInput` via:
 //
-// 		 IntegrationNamespaceSyncRuleArray{ IntegrationNamespaceSyncRuleArgs{...} }
-//
+//          IntegrationNamespaceSyncRuleArray{ IntegrationNamespaceSyncRuleArgs{...} }
 type IntegrationNamespaceSyncRuleArrayInput interface {
 	pulumi.Input
 
@@ -269,8 +265,7 @@ type GetServicesService struct {
 // GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
 // You can construct a concrete instance of `GetServicesServiceInput` via:
 //
-// 		 GetServicesServiceArgs{...}
-//
+//          GetServicesServiceArgs{...}
 type GetServicesServiceInput interface {
 	pulumi.Input
 
@@ -297,8 +292,7 @@ func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx contex
 // GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetServicesServiceArrayInput` via:
 //
-// 		 GetServicesServiceArray{ GetServicesServiceArgs{...} }
-//
+//          GetServicesServiceArray{ GetServicesServiceArgs{...} }
 type GetServicesServiceArrayInput interface {
 	pulumi.Input
 

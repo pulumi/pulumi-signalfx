@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const pagerdutyMyteam = new signalfx.pagerduty.Integration("pagerdutyMyteam", {
+ * const pagerdutyMyteam = new signalfx.pagerduty.Integration("pagerduty_myteam", {
  *     apiKey: "1234567890",
  *     enabled: true,
  * });

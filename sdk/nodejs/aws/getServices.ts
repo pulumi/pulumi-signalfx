@@ -11,15 +11,13 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const awsServices = signalfx.aws.getServices({});
  * // Leaves out most of the integration bits, see the docs
- * // for signalfx.aws.Integration for more
+ * // for signalfx_aws_integration for more
  * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {services: [awsServices.then(awsServices => awsServices.services)].map(__item => __item?.name)});
  * ```
  */

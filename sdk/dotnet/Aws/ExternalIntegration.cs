@@ -18,8 +18,6 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
@@ -32,41 +30,46 @@ namespace Pulumi.SignalFx.Aws
     ///         var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration("awsMyteamExtern", new SignalFx.Aws.ExternalIntegrationArgs
     ///         {
     ///         });
-    ///         var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
+    ///         var signalfxAssumePolicy = Output.Tuple(awsMyteamExtern.SignalfxAwsAccount, awsMyteamExtern.ExternalId).Apply(values =&gt;
     ///         {
-    ///             Statement = 
+    ///             var signalfxAwsAccount = values.Item1;
+    ///             var externalId = values.Item2;
+    ///             return Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
     ///             {
-    ///                 
+    ///                 Statements = 
     ///                 {
-    ///                     { "actions", 
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
     ///                     {
-    ///                         "sts:AssumeRole",
-    ///                     } },
-    ///                     { "principals", 
-    ///                     {
-    ///                         
+    ///                         Actions = 
     ///                         {
-    ///                             { "type", "AWS" },
-    ///                             { "identifiers", 
-    ///                             {
-    ///                                 awsMyteamExtern.SignalfxAwsAccount,
-    ///                             } },
+    ///                             "sts:AssumeRole",
     ///                         },
-    ///                     } },
-    ///                     { "condition", 
-    ///                     {
-    ///                         
+    ///                         Principals = 
     ///                         {
-    ///                             { "test", "StringEquals" },
-    ///                             { "variable", "sts:ExternalId" },
-    ///                             { "values", 
+    ///                             new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
     ///                             {
-    ///                                 awsMyteamExtern.ExternalId,
-    ///                             } },
+    ///                                 Type = "AWS",
+    ///                                 Identifiers = 
+    ///                                 {
+    ///                                     signalfxAwsAccount,
+    ///                                 },
+    ///                             },
     ///                         },
-    ///                     } },
+    ///                         Conditions = 
+    ///                         {
+    ///                             new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
+    ///                             {
+    ///                                 Test = "StringEquals",
+    ///                                 Variable = "sts:ExternalId",
+    ///                                 Values = 
+    ///                                 {
+    ///                                     externalId,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
     ///                 },
-    ///             },
+    ///             });
     ///         });
     ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
     ///         {

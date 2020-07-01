@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const slackMyteam = new signalfx.slack.Integration("slackMyteam", {
+ * const slackMyteam = new signalfx.slack.Integration("slack_myteam", {
  *     enabled: true,
  *     webhookUrl: "http://example.com",
  * });

@@ -16,8 +16,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
@@ -36,6 +34,61 @@ namespace Pulumi.SignalFx
     ///             AuthorizedWriterUsers = 
     ///             {
     ///                 "abc123",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### With Mirrored Dashboards
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup("mydashboardgroupWithmirrors", new SignalFx.DashboardGroupArgs
+    ///         {
+    ///             Description = "Cool dashboard group",
+    ///             Dashboards = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardGroupDashboardArgs
+    ///                 {
+    ///                     DashboardId = signalfx_dashboard.Gc_dashboard.Id,
+    ///                     NameOverride = "GC For My Service",
+    ///                     DescriptionOverride = "Garbage Collection dashboard maintained by JVM team",
+    ///                     FilterOverrides = 
+    ///                     {
+    ///                         new SignalFx.Inputs.DashboardGroupDashboardFilterOverrideArgs
+    ///                         {
+    ///                             Property = "service",
+    ///                             Values = 
+    ///                             {
+    ///                                 "myservice",
+    ///                             },
+    ///                             Negated = false,
+    ///                         },
+    ///                     },
+    ///                     VariableOverrides = 
+    ///                     {
+    ///                         new SignalFx.Inputs.DashboardGroupDashboardVariableOverrideArgs
+    ///                         {
+    ///                             Property = "region",
+    ///                             Values = 
+    ///                             {
+    ///                                 "us-west1",
+    ///                             },
+    ///                             ValuesSuggesteds = 
+    ///                             {
+    ///                                 "us-west-1",
+    ///                                 "us-east-1",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
     ///             },
     ///         });
     ///     }

@@ -3,12 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import importlib
-# Make subpackages available:
-__all__ = ['aws', 'azure', 'config', 'gcp', 'jira', 'opsgenie', 'pagerduty', 'slack', 'victorops']
-for pkg in __all__:
-    if pkg != 'config':
-        importlib.import_module(f'{__name__}.{pkg}')
-
 # Export this package's modules as members:
 from .alert_muting_rule import *
 from .dashboard import *
@@ -28,3 +22,19 @@ from .team import *
 from .text_chart import *
 from .time_chart import *
 from .webhook_integration import *
+
+# Make subpackages available:
+_submodules = [
+    'aws',
+    'azure',
+    'config',
+    'gcp',
+    'jira',
+    'opsgenie',
+    'pagerduty',
+    'slack',
+    'victorops',
+]
+for pkg in _submodules:
+    if pkg != 'config':
+        importlib.import_module(f'{__name__}.{pkg}')

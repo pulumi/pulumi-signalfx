@@ -16,8 +16,6 @@ namespace Pulumi.SignalFx.Slack
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;

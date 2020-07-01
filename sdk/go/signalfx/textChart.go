@@ -11,6 +11,32 @@ import (
 )
 
 // This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewTextChart(ctx, "mynote0", &signalfx.TextChartArgs{
+// 			Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
+// 			Markdown:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    1. First ordered list item\n", "    2. Another item\n", "      * Unordered sub-list.\n", "    1. Actual numbers don't matter, just that it's a number\n", "      1. Ordered sub-list\n", "    4. And another item.\n", "\n", "       You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).\n", "\n", "       To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅\n", "       Note that this line is separate, but within the same paragraph.⋅⋅\n", "       (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)\n", "\n", "    * Unordered list can use asterisks\n", "    - Or minuses\n", "    + Or pluses\n", "\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type TextChart struct {
 	pulumi.CustomResourceState
 

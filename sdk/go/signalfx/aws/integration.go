@@ -16,7 +16,62 @@ import (
 //
 // > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 //
+// ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-aws/sdk/v2/go/aws/iam"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx/aws"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		awsMyteamExternal, err := aws.NewExternalIntegration(ctx, "awsMyteamExternal", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		awsSfxRole, err := iam.NewRole(ctx, "awsSfxRole", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
+// 			Enabled:       pulumi.Bool(true),
+// 			IntegrationId: awsMyteamExternal.ID(),
+// 			ExternalId:    awsMyteamExternal.ExternalId,
+// 			RoleArn:       awsSfxRole.Arn,
+// 			Regions: pulumi.StringArray{
+// 				pulumi.String("us-east-1"),
+// 			},
+// 			PollRate:         pulumi.Int(300),
+// 			ImportCloudWatch: pulumi.Bool(true),
+// 			EnableAwsUsage:   pulumi.Bool(true),
+// 			CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
+// 				&aws.IntegrationCustomNamespaceSyncRuleArgs{
+// 					DefaultAction: pulumi.String("Exclude"),
+// 					FilterAction:  pulumi.String("Include"),
+// 					FilterSource:  pulumi.String("filter('code', '200')"),
+// 					Namespace:     pulumi.String("fart"),
+// 				},
+// 			},
+// 			NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
+// 				&aws.IntegrationNamespaceSyncRuleArgs{
+// 					DefaultAction: pulumi.String("Exclude"),
+// 					FilterAction:  pulumi.String("Include"),
+// 					FilterSource:  pulumi.String("filter('code', '200')"),
+// 					Namespace:     pulumi.String("AWS/EC2"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ## Service Names
 //
 // > **NOTE** You can use the data source "aws.getServices" to specify all services.

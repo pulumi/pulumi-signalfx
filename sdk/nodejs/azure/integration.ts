@@ -11,13 +11,11 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {
+ * const azureMyteam = new signalfx.azure.Integration("azure_myteam", {
  *     enabled: true,
  *     resource: [{
  *         signalfxAzureIntegration: [{
@@ -36,7 +34,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ## Service Names
  *
  * > **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.

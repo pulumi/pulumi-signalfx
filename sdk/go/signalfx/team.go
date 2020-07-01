@@ -12,6 +12,39 @@ import (
 // Handles management of SignalFx teams.
 //
 // You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewTeam(ctx, "myteam0", &signalfx.TeamArgs{
+// 			Description: pulumi.String("Super great team no jerks definitely"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("userid1"),
+// 				pulumi.String("userid2"),
+// 			},
+// 			NotificationsCriticals: pulumi.StringArray{
+// 				pulumi.String("PagerDuty,credentialId"),
+// 			},
+// 			NotificationsInfos: pulumi.StringArray{
+// 				pulumi.String("Email,notify@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Team struct {
 	pulumi.CustomResourceState
 

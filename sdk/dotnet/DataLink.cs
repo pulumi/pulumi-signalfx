@@ -11,6 +11,71 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+    /// 
+    /// ## Example Usage
+    /// ### Global link to a dashboard
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myDataLink = new SignalFx.DataLink("myDataLink", new SignalFx.DataLinkArgs
+    ///         {
+    ///             PropertyName = "pname",
+    ///             PropertyValue = "pvalue",
+    ///             TargetSignalfxDashboards = 
+    ///             {
+    ///                 new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs
+    ///                 {
+    ///                     IsDefault = true,
+    ///                     Name = "sfx_dash",
+    ///                     DashboardGroupId = signalfx_dashboard_group.Mydashboardgroup0.Id,
+    ///                     DashboardId = signalfx_dashboard.Mydashboard0.Id,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Dashboard specific link to an external URL
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myDataLinkDash = new SignalFx.DataLink("myDataLinkDash", new SignalFx.DataLinkArgs
+    ///         {
+    ///             ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,
+    ///             PropertyName = "pname2",
+    ///             PropertyValue = "pvalue",
+    ///             TargetExternalUrls = 
+    ///             {
+    ///                 new SignalFx.Inputs.DataLinkTargetExternalUrlArgs
+    ///                 {
+    ///                     IsDefault = false,
+    ///                     Name = "ex_url",
+    ///                     TimeFormat = "ISO8601",
+    ///                     Url = "https://www.example.com",
+    ///                     PropertyKeyMapping = 
+    ///                     {
+    ///                         { "foo", "bar" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class DataLink : Pulumi.CustomResource
     {

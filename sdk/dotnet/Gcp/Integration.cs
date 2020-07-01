@@ -16,8 +16,6 @@ namespace Pulumi.SignalFx.Gcp
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.IO;
     /// using Pulumi;

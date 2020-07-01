@@ -12,6 +12,58 @@ import (
 // In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
 //
 // > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+//
+// ## Example Usage
+// ### With Mirrored Dashboards
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithmirrors", &signalfx.DashboardGroupArgs{
+// 			Description: pulumi.String("Cool dashboard group"),
+// 			Dashboards: signalfx.DashboardGroupDashboardArray{
+// 				&signalfx.DashboardGroupDashboardArgs{
+// 					DashboardId:         pulumi.String(signalfx_dashboard.Gc_dashboard.Id),
+// 					NameOverride:        pulumi.String("GC For My Service"),
+// 					DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
+// 					FilterOverrides: signalfx.DashboardGroupDashboardFilterOverrideArray{
+// 						&signalfx.DashboardGroupDashboardFilterOverrideArgs{
+// 							Property: pulumi.String("service"),
+// 							Values: pulumi.StringArray{
+// 								pulumi.String("myservice"),
+// 							},
+// 							Negated: pulumi.Bool(false),
+// 						},
+// 					},
+// 					VariableOverrides: signalfx.DashboardGroupDashboardVariableOverrideArray{
+// 						&signalfx.DashboardGroupDashboardVariableOverrideArgs{
+// 							Property: pulumi.String("region"),
+// 							Values: pulumi.StringArray{
+// 								pulumi.String("us-west1"),
+// 							},
+// 							ValuesSuggesteds: pulumi.StringArray{
+// 								pulumi.String("us-west-1"),
+// 								pulumi.String("us-east-1"),
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type DashboardGroup struct {
 	pulumi.CustomResourceState
 

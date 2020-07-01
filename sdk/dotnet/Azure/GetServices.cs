@@ -29,7 +29,7 @@ namespace Pulumi.SignalFx.Azure
         ///     {
         ///         var azureServices = Output.Create(SignalFx.Azure.GetServices.InvokeAsync());
         ///         // Leaves out most of the integration bits, see the docs
-        ///         // for signalfx.azure.Integration for more
+        ///         // for signalfx_azure_integration for more
         ///         var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new SignalFx.Azure.IntegrationArgs
         ///         {
         ///             Services = 
@@ -41,7 +41,6 @@ namespace Pulumi.SignalFx.Azure
         /// 
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

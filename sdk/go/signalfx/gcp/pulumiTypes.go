@@ -18,8 +18,7 @@ type IntegrationProjectServiceKey struct {
 // IntegrationProjectServiceKeyInput is an input type that accepts IntegrationProjectServiceKeyArgs and IntegrationProjectServiceKeyOutput values.
 // You can construct a concrete instance of `IntegrationProjectServiceKeyInput` via:
 //
-// 		 IntegrationProjectServiceKeyArgs{...}
-//
+//          IntegrationProjectServiceKeyArgs{...}
 type IntegrationProjectServiceKeyInput interface {
 	pulumi.Input
 
@@ -47,8 +46,7 @@ func (i IntegrationProjectServiceKeyArgs) ToIntegrationProjectServiceKeyOutputWi
 // IntegrationProjectServiceKeyArrayInput is an input type that accepts IntegrationProjectServiceKeyArray and IntegrationProjectServiceKeyArrayOutput values.
 // You can construct a concrete instance of `IntegrationProjectServiceKeyArrayInput` via:
 //
-// 		 IntegrationProjectServiceKeyArray{ IntegrationProjectServiceKeyArgs{...} }
-//
+//          IntegrationProjectServiceKeyArray{ IntegrationProjectServiceKeyArgs{...} }
 type IntegrationProjectServiceKeyArrayInput interface {
 	pulumi.Input
 

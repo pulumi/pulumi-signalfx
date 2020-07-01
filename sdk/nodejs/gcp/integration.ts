@@ -13,23 +13,21 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {
+ * const gcpMyteam = new signalfx.gcp.Integration("gcp_myteam", {
  *     enabled: true,
  *     pollRate: 300000,
  *     projectServiceKeys: [
  *         {
- *             projectId: "gcpProjectId1",
+ *             projectId: "gcp_project_id_1",
  *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json", "utf-8"),
  *         },
  *         {
- *             projectId: "gcpProjectId2",
+ *             projectId: "gcp_project_id_2",
  *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json", "utf-8"),
  *         },
  *     ],

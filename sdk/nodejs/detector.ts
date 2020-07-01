@@ -12,8 +12,9 @@ import * as utilities from "./utilities";
  * > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
  *
  * ## Example Usage
- *
  * ### Jira
+ *
+ * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -30,7 +31,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -39,8 +40,9 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### Opsgenie
+ *
+ * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -57,7 +59,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -66,7 +68,6 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### PagerDuty
  *
  * ```typescript
@@ -84,7 +85,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -93,8 +94,9 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### Slack
+ *
+ * Exclude the `#` on the channel name!
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -111,7 +113,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -120,8 +122,9 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### Team
+ *
+ * Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -138,7 +141,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -147,8 +150,9 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### TeamEmail
+ *
+ * Sends an email to every member of a team.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -165,7 +169,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -174,7 +178,6 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### VictorOps
  *
  * ```typescript
@@ -192,7 +195,7 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
@@ -201,9 +204,11 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- *
  * ### Webhook
  *
+ * > **NOTE** You need to include all the commas even if you only use a credential id below.
+ *
+ * You can either configure a Webhook to use an existing integration's credential id:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -219,11 +224,37 @@ import * as utilities from "./utilities";
  * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
  * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
  * `,
- *         rule: [{
+ *         rules: [{
  *             description: "maximum > 60 for 5m",
  *             severity: "Warning",
  *             detectLabel: "Processing old messages 5m",
  *             notifications: ["Webhook,credentialId,x,"],
+ *         }],
+ *     }));
+ * }
+ * ```
+ *
+ * or configure one inline:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < _var.clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${_var.clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${_var.clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rules: [{
+ *             description: "maximum > 60 for 5m",
+ *             severity: "Warning",
+ *             detectLabel: "Processing old messages 5m",
+ *             notifications: ["Webhook,,secret,url"],
  *         }],
  *     }));
  * }

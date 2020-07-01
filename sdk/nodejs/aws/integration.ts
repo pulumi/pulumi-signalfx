@@ -15,14 +15,12 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aws from "@pulumi/aws";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * // This resource returns an account id in `externalId`…
+ * // This resource returns an account id in `external_id`…
  * const awsMyteamExternal = new signalfx.aws.ExternalIntegration("awsMyteamExternal", {});
  * // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
  * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
@@ -36,13 +34,13 @@ import * as utilities from "../utilities";
  *     pollRate: 300,
  *     importCloudWatch: true,
  *     enableAwsUsage: true,
- *     custom_namespace_sync_rule: [{
+ *     customNamespaceSyncRules: [{
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",
  *         namespace: "fart",
  *     }],
- *     namespace_sync_rule: [{
+ *     namespaceSyncRules: [{
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",
@@ -50,7 +48,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- *
  * ## Service Names
  *
  * > **NOTE** You can use the data source "signalfx.aws.getServices" to specify all services.

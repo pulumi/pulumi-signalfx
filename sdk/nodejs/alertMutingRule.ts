@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -24,7 +22,7 @@ import * as utilities from "./utilities";
  *     startTime: 1573063243,
  *     stopTime: 0,
  *     detectors: [signalfx_detector.some_detector_id],
- *     filter: [{
+ *     filters: [{
  *         property: "foo",
  *         propertyValue: "bar",
  *     }],
