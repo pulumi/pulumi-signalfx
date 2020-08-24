@@ -30,7 +30,7 @@ import (
 // 			Description: pulumi.String("Cool dashboard group"),
 // 			Dashboards: signalfx.DashboardGroupDashboardArray{
 // 				&signalfx.DashboardGroupDashboardArgs{
-// 					DashboardId:         pulumi.String(signalfx_dashboard.Gc_dashboard.Id),
+// 					DashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),
 // 					NameOverride:        pulumi.String("GC For My Service"),
 // 					DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
 // 					FilterOverrides: signalfx.DashboardGroupDashboardFilterOverrideArray{

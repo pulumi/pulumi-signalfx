@@ -5,32 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['WebhookIntegration']
 
 
 class WebhookIntegration(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
-    """
-    Whether the integration is enabled.
-    """
-    headers: pulumi.Output[list]
-    """
-    A header to send with the request
-
-      * `headerKey` (`str`) - The key of the header to send
-      * `headerValue` (`str`) - The value of the header to send
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the integration.
-    """
-    shared_secret: pulumi.Output[str]
-    url: pulumi.Output[str]
-    """
-    The URL to request
-    """
-    def __init__(__self__, resource_name, opts=None, enabled=None, headers=None, name=None, shared_secret=None, url=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 shared_secret: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         SignalFx Webhook integration.
 
@@ -39,14 +33,9 @@ class WebhookIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[list] headers: A header to send with the request
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
-
-        The **headers** object supports the following:
-
-          * `headerKey` (`pulumi.Input[str]`) - The key of the header to send
-          * `headerValue` (`pulumi.Input[str]`) - The value of the header to send
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,7 +48,7 @@ class WebhookIntegration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -79,23 +68,25 @@ class WebhookIntegration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enabled=None, headers=None, name=None, shared_secret=None, url=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            shared_secret: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'WebhookIntegration':
         """
         Get an existing WebhookIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[list] headers: A header to send with the request
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
-
-        The **headers** object supports the following:
-
-          * `headerKey` (`pulumi.Input[str]`) - The key of the header to send
-          * `headerValue` (`pulumi.Input[str]`) - The value of the header to send
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -108,8 +99,46 @@ class WebhookIntegration(pulumi.CustomResource):
         __props__["url"] = url
         return WebhookIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[List['outputs.WebhookIntegrationHeader']]:
+        """
+        A header to send with the request
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> Optional[str]:
+        return pulumi.get(self, "shared_secret")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL to request
+        """
+        return pulumi.get(self, "url")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

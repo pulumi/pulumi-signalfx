@@ -27,7 +27,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewDashboard(ctx, "mydashboard0", &signalfx.DashboardArgs{
-// 			DashboardGroup: pulumi.String(signalfx_dashboard_group.Mydashboardgroup0.Id),
+// 			DashboardGroup: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),
 // 			TimeRange:      pulumi.String("-30m"),
 // 			Filters: signalfx.DashboardFilterArray{
 // 				&signalfx.DashboardFilterArgs{
@@ -49,12 +49,12 @@ import (
 // 			},
 // 			Charts: signalfx.DashboardChartArray{
 // 				&signalfx.DashboardChartArgs{
-// 					ChartId: pulumi.String(signalfx_time_chart.Mychart0.Id),
+// 					ChartId: pulumi.Any(signalfx_time_chart.Mychart0.Id),
 // 					Width:   pulumi.Int(12),
 // 					Height:  pulumi.Int(1),
 // 				},
 // 				&signalfx.DashboardChartArgs{
-// 					ChartId: pulumi.String(signalfx_time_chart.Mychart1.Id),
+// 					ChartId: pulumi.Any(signalfx_time_chart.Mychart1.Id),
 // 					Width:   pulumi.Int(5),
 // 					Height:  pulumi.Int(2),
 // 				},

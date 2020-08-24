@@ -5,28 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['TextChart']
 
 
 class TextChart(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    Description of the text note.
-    """
-    markdown: pulumi.Output[str]
-    """
-    Markdown text to display.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the text note.
-    """
-    url: pulumi.Output[str]
-    """
-    URL of the chart
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, markdown=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 markdown: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
 
@@ -75,7 +69,7 @@ class TextChart(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -94,13 +88,19 @@ class TextChart(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, markdown=None, name=None, url=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            markdown: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'TextChart':
         """
         Get an existing TextChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] markdown: Markdown text to display.
@@ -117,8 +117,41 @@ class TextChart(pulumi.CustomResource):
         __props__["url"] = url
         return TextChart(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the text note.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def markdown(self) -> str:
+        """
+        Markdown text to display.
+        """
+        return pulumi.get(self, "markdown")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the text note.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL of the chart
+        """
+        return pulumi.get(self, "url")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

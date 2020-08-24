@@ -5,94 +5,36 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Detector']
 
 
 class Detector(pulumi.CustomResource):
-    authorized_writer_teams: pulumi.Output[list]
-    """
-    Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-    """
-    authorized_writer_users: pulumi.Output[list]
-    """
-    User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-    """
-    description: pulumi.Output[str]
-    """
-    Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-    """
-    disable_sampling: pulumi.Output[bool]
-    """
-    When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
-    """
-    end_time: pulumi.Output[float]
-    """
-    Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-    """
-    max_delay: pulumi.Output[float]
-    """
-    How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the detector.
-    """
-    program_text: pulumi.Output[str]
-    """
-    Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-    """
-    rules: pulumi.Output[list]
-    """
-    Set of rules used for alerting.
-
-      * `description` (`str`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-      * `detectLabel` (`str`) - A detect label which matches a detect label within `program_text`.
-      * `disabled` (`bool`) - When true, notifications and events will not be generated for the detect label. `false` by default.
-      * `notifications` (`list`) - List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-      * `parameterizedBody` (`str`) - Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-      * `parameterizedSubject` (`str`) - Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-      * `runbookUrl` (`str`) - URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-      * `severity` (`str`) - The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-      * `tip` (`str`) - Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-    """
-    show_data_markers: pulumi.Output[bool]
-    """
-    When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
-    """
-    show_event_lines: pulumi.Output[bool]
-    """
-    When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
-    """
-    start_time: pulumi.Output[float]
-    """
-    Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-    """
-    teams: pulumi.Output[list]
-    """
-    Team IDs to associate the detector to.
-    """
-    time_range: pulumi.Output[float]
-    """
-    Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
-    """
-    url: pulumi.Output[str]
-    """
-    URL of the detector
-    """
-    viz_options: pulumi.Output[list]
-    """
-    Plot-level customization options, associated with a publish statement.
-
-      * `color` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-      * `displayName` (`str`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-      * `label` (`str`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-      * `valuePrefix` (`str`)
-      * `valueSuffix` (`str`)
-      * `valueUnit` (`str`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-    """
-    def __init__(__self__, resource_name, opts=None, authorized_writer_teams=None, authorized_writer_users=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[float]] = None,
+                 max_delay: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+                 show_data_markers: Optional[pulumi.Input[bool]] = None,
+                 show_event_lines: Optional[pulumi.Input[bool]] = None,
+                 start_time: Optional[pulumi.Input[float]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 time_range: Optional[pulumi.Input[float]] = None,
+                 viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.
 
@@ -118,12 +60,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["Jira,credentialId"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["Jira,credentialId"],
+                )]))
         ```
         ### Opsgenie
 
@@ -144,12 +86,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["Opsgenie,credentialId,responderName,responderId,Team"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["Opsgenie,credentialId,responderName,responderId,Team"],
+                )]))
         ```
         ### PagerDuty
 
@@ -168,12 +110,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["PagerDuty,credentialId"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["PagerDuty,credentialId"],
+                )]))
         ```
         ### Slack
 
@@ -194,12 +136,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["Slack,credentialId,channel"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["Slack,credentialId,channel"],
+                )]))
         ```
         ### Team
 
@@ -220,12 +162,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["Team,teamId"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["Team,teamId"],
+                )]))
         ```
         ### TeamEmail
 
@@ -246,12 +188,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["TeamEmail,teamId"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["TeamEmail,teamId"],
+                )]))
         ```
         ### VictorOps
 
@@ -270,12 +212,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["VictorOps,credentialId,routingKey"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["VictorOps,credentialId,routingKey"],
+                )]))
         ```
         ### Webhook
 
@@ -297,12 +239,12 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["Webhook,credentialId,x,"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["Webhook,credentialId,x,"],
+                )]))
         ```
 
         or configure one inline:
@@ -321,53 +263,31 @@ class Detector(pulumi.CustomResource):
         detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
         detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
         \"\"\",
-                rules=[{
-                    "description": "maximum > 60 for 5m",
-                    "severity": "Warning",
-                    "detectLabel": "Processing old messages 5m",
-                    "notifications": ["Webhook,,secret,url"],
-                }]))
+                rules=[signalfx.DetectorRuleArgs(
+                    description="maximum > 60 for 5m",
+                    severity="Warning",
+                    detect_label="Processing old messages 5m",
+                    notifications=["Webhook,,secret,url"],
+                )]))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-        :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[list] rules: Set of rules used for alerting.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[list] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[List[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[float] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
-        :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-
-        The **rules** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-          * `detectLabel` (`pulumi.Input[str]`) - A detect label which matches a detect label within `program_text`.
-          * `disabled` (`pulumi.Input[bool]`) - When true, notifications and events will not be generated for the detect label. `false` by default.
-          * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-          * `parameterizedBody` (`pulumi.Input[str]`) - Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-          * `parameterizedSubject` (`pulumi.Input[str]`) - Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-          * `runbookUrl` (`pulumi.Input[str]`) - URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-          * `severity` (`pulumi.Input[str]`) - The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-          * `tip` (`pulumi.Input[str]`) - Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-
-        The **viz_options** object supports the following:
-
-          * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-          * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-          * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-          * `valuePrefix` (`pulumi.Input[str]`)
-          * `valueSuffix` (`pulumi.Input[str]`)
-          * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -380,7 +300,7 @@ class Detector(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -413,52 +333,48 @@ class Detector(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, authorized_writer_teams=None, authorized_writer_users=None, description=None, disable_sampling=None, end_time=None, max_delay=None, name=None, program_text=None, rules=None, show_data_markers=None, show_event_lines=None, start_time=None, teams=None, time_range=None, url=None, viz_options=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            disable_sampling: Optional[pulumi.Input[bool]] = None,
+            end_time: Optional[pulumi.Input[float]] = None,
+            max_delay: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            program_text: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+            show_data_markers: Optional[pulumi.Input[bool]] = None,
+            show_event_lines: Optional[pulumi.Input[bool]] = None,
+            start_time: Optional[pulumi.Input[float]] = None,
+            teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            time_range: Optional[pulumi.Input[float]] = None,
+            url: Optional[pulumi.Input[str]] = None,
+            viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None) -> 'Detector':
         """
         Get an existing Detector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[list] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-        :param pulumi.Input[list] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[list] rules: Set of rules used for alerting.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[list] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[List[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[float] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] url: URL of the detector
-        :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-
-        The **rules** object supports the following:
-
-          * `description` (`pulumi.Input[str]`) - Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-          * `detectLabel` (`pulumi.Input[str]`) - A detect label which matches a detect label within `program_text`.
-          * `disabled` (`pulumi.Input[bool]`) - When true, notifications and events will not be generated for the detect label. `false` by default.
-          * `notifications` (`pulumi.Input[list]`) - List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-          * `parameterizedBody` (`pulumi.Input[str]`) - Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-          * `parameterizedSubject` (`pulumi.Input[str]`) - Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-          * `runbookUrl` (`pulumi.Input[str]`) - URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-          * `severity` (`pulumi.Input[str]`) - The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-          * `tip` (`pulumi.Input[str]`) - Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-
-        The **viz_options** object supports the following:
-
-          * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-          * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-          * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-          * `valuePrefix` (`pulumi.Input[str]`)
-          * `valueSuffix` (`pulumi.Input[str]`)
-          * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -482,8 +398,137 @@ class Detector(pulumi.CustomResource):
         __props__["viz_options"] = viz_options
         return Detector(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="authorizedWriterTeams")
+    def authorized_writer_teams(self) -> Optional[List[str]]:
+        """
+        Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        """
+        return pulumi.get(self, "authorized_writer_teams")
+
+    @property
+    @pulumi.getter(name="authorizedWriterUsers")
+    def authorized_writer_users(self) -> Optional[List[str]]:
+        """
+        User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        """
+        return pulumi.get(self, "authorized_writer_users")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableSampling")
+    def disable_sampling(self) -> Optional[bool]:
+        """
+        When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        """
+        return pulumi.get(self, "disable_sampling")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[float]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[float]:
+        """
+        How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        """
+        return pulumi.get(self, "max_delay")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the detector.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> str:
+        """
+        Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> List['outputs.DetectorRule']:
+        """
+        Set of rules used for alerting.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="showDataMarkers")
+    def show_data_markers(self) -> Optional[bool]:
+        """
+        When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        """
+        return pulumi.get(self, "show_data_markers")
+
+    @property
+    @pulumi.getter(name="showEventLines")
+    def show_event_lines(self) -> Optional[bool]:
+        """
+        When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        """
+        return pulumi.get(self, "show_event_lines")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[float]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        """
+        Team IDs to associate the detector to.
+        """
+        return pulumi.get(self, "teams")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[float]:
+        """
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        """
+        return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL of the detector
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="vizOptions")
+    def viz_options(self) -> Optional[List['outputs.DetectorVizOption']]:
+        """
+        Plot-level customization options, associated with a publish statement.
+        """
+        return pulumi.get(self, "viz_options")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
