@@ -5,52 +5,27 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['DataLink']
 
 
 class DataLink(pulumi.CustomResource):
-    context_dashboard_id: pulumi.Output[str]
-    """
-    If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
-    """
-    property_name: pulumi.Output[str]
-    """
-    Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
-    """
-    property_value: pulumi.Output[str]
-    """
-    Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
-    """
-    target_external_urls: pulumi.Output[list]
-    """
-    Link to an external URL
-
-      * `isDefault` (`bool`) - Flag that designates a target as the default for a data link object. `true` by default
-      * `minimumTimeWindow` (`str`) - The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-      * `name` (`str`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-      * `propertyKeyMapping` (`dict`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-      * `timeFormat` (`str`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-      * `url` (`str`) - URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
-    """
-    target_signalfx_dashboards: pulumi.Output[list]
-    """
-    Link to a SignalFx dashboard
-
-      * `dashboardGroupId` (`str`) - SignalFx-assigned ID of the dashboard link target's dashboard group
-      * `dashboardId` (`str`) - SignalFx-assigned ID of the dashboard link target
-      * `isDefault` (`bool`) - Flag that designates a target as the default for a data link object. `true` by default
-      * `name` (`str`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-    """
-    target_splunks: pulumi.Output[list]
-    """
-    Link to an external URL
-
-      * `isDefault` (`bool`) - Flag that designates a target as the default for a data link object. `true` by default
-      * `name` (`str`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-      * `propertyKeyMapping` (`dict`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-    """
-    def __init__(__self__, resource_name, opts=None, context_dashboard_id=None, property_name=None, property_value=None, target_external_urls=None, target_signalfx_dashboards=None, target_splunks=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 context_dashboard_id: Optional[pulumi.Input[str]] = None,
+                 property_name: Optional[pulumi.Input[str]] = None,
+                 property_value: Optional[pulumi.Input[str]] = None,
+                 target_external_urls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetExternalUrlArgs']]]]] = None,
+                 target_signalfx_dashboards: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSignalfxDashboardArgs']]]]] = None,
+                 target_splunks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSplunkArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 
@@ -64,12 +39,12 @@ class DataLink(pulumi.CustomResource):
         my_data_link = signalfx.DataLink("myDataLink",
             property_name="pname",
             property_value="pvalue",
-            target_signalfx_dashboards=[{
-                "isDefault": True,
-                "name": "sfx_dash",
-                "dashboardGroupId": signalfx_dashboard_group["mydashboardgroup0"]["id"],
-                "dashboardId": signalfx_dashboard["mydashboard0"]["id"],
-            }])
+            target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
+                is_default=True,
+                name="sfx_dash",
+                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
+                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
+            )])
         ```
         ### Dashboard specific link to an external URL
 
@@ -81,15 +56,15 @@ class DataLink(pulumi.CustomResource):
             context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
             property_name="pname2",
             property_value="pvalue",
-            target_external_urls=[{
-                "isDefault": False,
-                "name": "ex_url",
-                "timeFormat": "ISO8601",
-                "url": "https://www.example.com",
-                "propertyKeyMapping": {
+            target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(
+                is_default=False,
+                name="ex_url",
+                time_format="ISO8601",
+                url="https://www.example.com",
+                property_key_mapping={
                     "foo": "bar",
                 },
-            }])
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -97,31 +72,9 @@ class DataLink(pulumi.CustomResource):
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
-        :param pulumi.Input[list] target_external_urls: Link to an external URL
-        :param pulumi.Input[list] target_signalfx_dashboards: Link to a SignalFx dashboard
-        :param pulumi.Input[list] target_splunks: Link to an external URL
-
-        The **target_external_urls** object supports the following:
-
-          * `isDefault` (`pulumi.Input[bool]`) - Flag that designates a target as the default for a data link object. `true` by default
-          * `minimumTimeWindow` (`pulumi.Input[str]`) - The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-          * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-          * `propertyKeyMapping` (`pulumi.Input[dict]`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-          * `timeFormat` (`pulumi.Input[str]`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-          * `url` (`pulumi.Input[str]`) - URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
-
-        The **target_signalfx_dashboards** object supports the following:
-
-          * `dashboardGroupId` (`pulumi.Input[str]`) - SignalFx-assigned ID of the dashboard link target's dashboard group
-          * `dashboardId` (`pulumi.Input[str]`) - SignalFx-assigned ID of the dashboard link target
-          * `isDefault` (`pulumi.Input[bool]`) - Flag that designates a target as the default for a data link object. `true` by default
-          * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-
-        The **target_splunks** object supports the following:
-
-          * `isDefault` (`pulumi.Input[bool]`) - Flag that designates a target as the default for a data link object. `true` by default
-          * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-          * `propertyKeyMapping` (`pulumi.Input[dict]`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetExternalUrlArgs']]]] target_external_urls: Link to an external URL
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSignalfxDashboardArgs']]]] target_signalfx_dashboards: Link to a SignalFx dashboard
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSplunkArgs']]]] target_splunks: Link to an external URL
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -134,7 +87,7 @@ class DataLink(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -153,42 +106,28 @@ class DataLink(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, context_dashboard_id=None, property_name=None, property_value=None, target_external_urls=None, target_signalfx_dashboards=None, target_splunks=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            context_dashboard_id: Optional[pulumi.Input[str]] = None,
+            property_name: Optional[pulumi.Input[str]] = None,
+            property_value: Optional[pulumi.Input[str]] = None,
+            target_external_urls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetExternalUrlArgs']]]]] = None,
+            target_signalfx_dashboards: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSignalfxDashboardArgs']]]]] = None,
+            target_splunks: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSplunkArgs']]]]] = None) -> 'DataLink':
         """
         Get an existing DataLink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         :param pulumi.Input[str] property_name: Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         :param pulumi.Input[str] property_value: Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
-        :param pulumi.Input[list] target_external_urls: Link to an external URL
-        :param pulumi.Input[list] target_signalfx_dashboards: Link to a SignalFx dashboard
-        :param pulumi.Input[list] target_splunks: Link to an external URL
-
-        The **target_external_urls** object supports the following:
-
-          * `isDefault` (`pulumi.Input[bool]`) - Flag that designates a target as the default for a data link object. `true` by default
-          * `minimumTimeWindow` (`pulumi.Input[str]`) - The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-          * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-          * `propertyKeyMapping` (`pulumi.Input[dict]`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-          * `timeFormat` (`pulumi.Input[str]`) - [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-          * `url` (`pulumi.Input[str]`) - URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
-
-        The **target_signalfx_dashboards** object supports the following:
-
-          * `dashboardGroupId` (`pulumi.Input[str]`) - SignalFx-assigned ID of the dashboard link target's dashboard group
-          * `dashboardId` (`pulumi.Input[str]`) - SignalFx-assigned ID of the dashboard link target
-          * `isDefault` (`pulumi.Input[bool]`) - Flag that designates a target as the default for a data link object. `true` by default
-          * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-
-        The **target_splunks** object supports the following:
-
-          * `isDefault` (`pulumi.Input[bool]`) - Flag that designates a target as the default for a data link object. `true` by default
-          * `name` (`pulumi.Input[str]`) - User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-          * `propertyKeyMapping` (`pulumi.Input[dict]`) - Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetExternalUrlArgs']]]] target_external_urls: Link to an external URL
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSignalfxDashboardArgs']]]] target_signalfx_dashboards: Link to a SignalFx dashboard
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DataLinkTargetSplunkArgs']]]] target_splunks: Link to an external URL
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,8 +141,57 @@ class DataLink(pulumi.CustomResource):
         __props__["target_splunks"] = target_splunks
         return DataLink(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="contextDashboardId")
+    def context_dashboard_id(self) -> Optional[str]:
+        """
+        If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+        """
+        return pulumi.get(self, "context_dashboard_id")
+
+    @property
+    @pulumi.getter(name="propertyName")
+    def property_name(self) -> Optional[str]:
+        """
+        Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        """
+        return pulumi.get(self, "property_name")
+
+    @property
+    @pulumi.getter(name="propertyValue")
+    def property_value(self) -> Optional[str]:
+        """
+        Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        """
+        return pulumi.get(self, "property_value")
+
+    @property
+    @pulumi.getter(name="targetExternalUrls")
+    def target_external_urls(self) -> Optional[List['outputs.DataLinkTargetExternalUrl']]:
+        """
+        Link to an external URL
+        """
+        return pulumi.get(self, "target_external_urls")
+
+    @property
+    @pulumi.getter(name="targetSignalfxDashboards")
+    def target_signalfx_dashboards(self) -> Optional[List['outputs.DataLinkTargetSignalfxDashboard']]:
+        """
+        Link to a SignalFx dashboard
+        """
+        return pulumi.get(self, "target_signalfx_dashboards")
+
+    @property
+    @pulumi.getter(name="targetSplunks")
+    def target_splunks(self) -> Optional[List['outputs.DataLinkTargetSplunk']]:
+        """
+        Link to an external URL
+        """
+        return pulumi.get(self, "target_splunks")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

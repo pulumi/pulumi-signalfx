@@ -5,52 +5,28 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Team']
 
 
 class Team(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    Description of the team.
-    """
-    members: pulumi.Output[list]
-    """
-    List of user IDs to include in the team.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the team.
-    """
-    notifications_criticals: pulumi.Output[list]
-    """
-    Where to send notifications for critical alerts
-    """
-    notifications_defaults: pulumi.Output[list]
-    """
-    Where to send notifications for default alerts
-    """
-    notifications_infos: pulumi.Output[list]
-    """
-    Where to send notifications for info alerts
-    """
-    notifications_majors: pulumi.Output[list]
-    """
-    Where to send notifications for major alerts
-    """
-    notifications_minors: pulumi.Output[list]
-    """
-    Where to send notifications for minor alerts
-    """
-    notifications_warnings: pulumi.Output[list]
-    """
-    Where to send notifications for warning alerts
-    """
-    url: pulumi.Output[str]
-    """
-    URL of the team
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, members=None, name=None, notifications_criticals=None, notifications_defaults=None, notifications_infos=None, notifications_majors=None, notifications_minors=None, notifications_warnings=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notifications_criticals: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notifications_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notifications_infos: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notifications_majors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notifications_minors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notifications_warnings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Handles management of SignalFx teams.
 
@@ -75,14 +51,14 @@ class Team(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
-        :param pulumi.Input[list] members: List of user IDs to include in the team.
+        :param pulumi.Input[List[pulumi.Input[str]]] members: List of user IDs to include in the team.
         :param pulumi.Input[str] name: Name of the team.
-        :param pulumi.Input[list] notifications_criticals: Where to send notifications for critical alerts
-        :param pulumi.Input[list] notifications_defaults: Where to send notifications for default alerts
-        :param pulumi.Input[list] notifications_infos: Where to send notifications for info alerts
-        :param pulumi.Input[list] notifications_majors: Where to send notifications for major alerts
-        :param pulumi.Input[list] notifications_minors: Where to send notifications for minor alerts
-        :param pulumi.Input[list] notifications_warnings: Where to send notifications for warning alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_criticals: Where to send notifications for critical alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_defaults: Where to send notifications for default alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_infos: Where to send notifications for info alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_majors: Where to send notifications for major alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,7 +71,7 @@ class Team(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -118,23 +94,35 @@ class Team(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, members=None, name=None, notifications_criticals=None, notifications_defaults=None, notifications_infos=None, notifications_majors=None, notifications_minors=None, notifications_warnings=None, url=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            notifications_criticals: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notifications_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notifications_infos: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notifications_majors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notifications_minors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notifications_warnings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'Team':
         """
         Get an existing Team resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
-        :param pulumi.Input[list] members: List of user IDs to include in the team.
+        :param pulumi.Input[List[pulumi.Input[str]]] members: List of user IDs to include in the team.
         :param pulumi.Input[str] name: Name of the team.
-        :param pulumi.Input[list] notifications_criticals: Where to send notifications for critical alerts
-        :param pulumi.Input[list] notifications_defaults: Where to send notifications for default alerts
-        :param pulumi.Input[list] notifications_infos: Where to send notifications for info alerts
-        :param pulumi.Input[list] notifications_majors: Where to send notifications for major alerts
-        :param pulumi.Input[list] notifications_minors: Where to send notifications for minor alerts
-        :param pulumi.Input[list] notifications_warnings: Where to send notifications for warning alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_criticals: Where to send notifications for critical alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_defaults: Where to send notifications for default alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_infos: Where to send notifications for info alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_majors: Where to send notifications for major alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
+        :param pulumi.Input[List[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
         :param pulumi.Input[str] url: URL of the team
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -153,8 +141,89 @@ class Team(pulumi.CustomResource):
         __props__["url"] = url
         return Team(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the team.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[List[str]]:
+        """
+        List of user IDs to include in the team.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the team.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationsCriticals")
+    def notifications_criticals(self) -> Optional[List[str]]:
+        """
+        Where to send notifications for critical alerts
+        """
+        return pulumi.get(self, "notifications_criticals")
+
+    @property
+    @pulumi.getter(name="notificationsDefaults")
+    def notifications_defaults(self) -> Optional[List[str]]:
+        """
+        Where to send notifications for default alerts
+        """
+        return pulumi.get(self, "notifications_defaults")
+
+    @property
+    @pulumi.getter(name="notificationsInfos")
+    def notifications_infos(self) -> Optional[List[str]]:
+        """
+        Where to send notifications for info alerts
+        """
+        return pulumi.get(self, "notifications_infos")
+
+    @property
+    @pulumi.getter(name="notificationsMajors")
+    def notifications_majors(self) -> Optional[List[str]]:
+        """
+        Where to send notifications for major alerts
+        """
+        return pulumi.get(self, "notifications_majors")
+
+    @property
+    @pulumi.getter(name="notificationsMinors")
+    def notifications_minors(self) -> Optional[List[str]]:
+        """
+        Where to send notifications for minor alerts
+        """
+        return pulumi.get(self, "notifications_minors")
+
+    @property
+    @pulumi.getter(name="notificationsWarnings")
+    def notifications_warnings(self) -> Optional[List[str]]:
+        """
+        Where to send notifications for warning alerts
+        """
+        return pulumi.get(self, "notifications_warnings")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL of the team
+        """
+        return pulumi.get(self, "url")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

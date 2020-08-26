@@ -5,8 +5,15 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'api_url',
+    'auth_token',
+    'custom_app_url',
+    'timeout_seconds',
+]
 
 __config__ = pulumi.Config('signalfx')
 
@@ -15,7 +22,7 @@ api_url = __config__.get('apiUrl')
 API URL for your SignalFx org, may include a realm
 """
 
-auth_token = __config__.get('authToken') or utilities.get_env('SFX_AUTH_TOKEN')
+auth_token = __config__.get('authToken') or _utilities.get_env('SFX_AUTH_TOKEN')
 """
 SignalFx auth token
 """

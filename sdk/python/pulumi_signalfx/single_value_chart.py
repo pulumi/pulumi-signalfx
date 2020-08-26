@@ -5,82 +5,34 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['SingleValueChart']
 
 
 class SingleValueChart(pulumi.CustomResource):
-    color_by: pulumi.Output[str]
-    """
-    Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-    """
-    color_scales: pulumi.Output[list]
-    """
-    Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-
-      * `color` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-      * `gt` (`float`) - Indicates the lower threshold non-inclusive value for this range.
-      * `gte` (`float`) - Indicates the lower threshold inclusive value for this range.
-      * `lt` (`float`) - Indicates the upper threshold non-inculsive value for this range.
-      * `lte` (`float`) - Indicates the upper threshold inclusive value for this range.
-    """
-    description: pulumi.Output[str]
-    """
-    Description of the chart.
-    """
-    is_timestamp_hidden: pulumi.Output[bool]
-    """
-    Whether to hide the timestamp in the chart. `false` by default.
-    """
-    max_delay: pulumi.Output[float]
-    """
-    How long (in seconds) to wait for late datapoints
-    """
-    max_precision: pulumi.Output[float]
-    """
-    The maximum precision to for value displayed.
-    """
-    name: pulumi.Output[str]
-    """
-    Name of the chart.
-    """
-    program_text: pulumi.Output[str]
-    """
-    Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-    """
-    refresh_interval: pulumi.Output[float]
-    """
-    How often (in seconds) to refresh the value.
-    """
-    secondary_visualization: pulumi.Output[str]
-    """
-    The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
-    """
-    show_spark_line: pulumi.Output[bool]
-    """
-    Whether to show a trend line below the current value. `false` by default.
-    """
-    unit_prefix: pulumi.Output[str]
-    """
-    Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
-    """
-    url: pulumi.Output[str]
-    """
-    URL of the chart
-    """
-    viz_options: pulumi.Output[list]
-    """
-    Plot-level customization options, associated with a publish statement.
-
-      * `color` (`str`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-      * `displayName` (`str`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-      * `label` (`str`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-      * `valuePrefix` (`str`)
-      * `valueSuffix` (`str`)
-      * `valueUnit` (`str`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-    """
-    def __init__(__self__, resource_name, opts=None, color_by=None, color_scales=None, description=None, is_timestamp_hidden=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, show_spark_line=None, unit_prefix=None, viz_options=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 color_by: Optional[pulumi.Input[str]] = None,
+                 color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
+                 max_delay: Optional[pulumi.Input[float]] = None,
+                 max_precision: Optional[pulumi.Input[float]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[float]] = None,
+                 secondary_visualization: Optional[pulumi.Input[str]] = None,
+                 show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
 
@@ -108,7 +60,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[list] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints
@@ -119,25 +71,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
-        :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-
-        The **color_scales** object supports the following:
-
-          * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-          * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
-          * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
-          * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inculsive value for this range.
-          * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
-
-        The **viz_options** object supports the following:
-
-          * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-          * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-          * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-          * `valuePrefix` (`pulumi.Input[str]`)
-          * `valueSuffix` (`pulumi.Input[str]`)
-          * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -150,7 +84,7 @@ class SingleValueChart(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -179,16 +113,32 @@ class SingleValueChart(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, color_by=None, color_scales=None, description=None, is_timestamp_hidden=None, max_delay=None, max_precision=None, name=None, program_text=None, refresh_interval=None, secondary_visualization=None, show_spark_line=None, unit_prefix=None, url=None, viz_options=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            color_by: Optional[pulumi.Input[str]] = None,
+            color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
+            max_delay: Optional[pulumi.Input[float]] = None,
+            max_precision: Optional[pulumi.Input[float]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            program_text: Optional[pulumi.Input[str]] = None,
+            refresh_interval: Optional[pulumi.Input[float]] = None,
+            secondary_visualization: Optional[pulumi.Input[str]] = None,
+            show_spark_line: Optional[pulumi.Input[bool]] = None,
+            unit_prefix: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None,
+            viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None) -> 'SingleValueChart':
         """
         Get an existing SingleValueChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[list] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints
@@ -200,25 +150,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[str] url: URL of the chart
-        :param pulumi.Input[list] viz_options: Plot-level customization options, associated with a publish statement.
-
-        The **color_scales** object supports the following:
-
-          * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-          * `gt` (`pulumi.Input[float]`) - Indicates the lower threshold non-inclusive value for this range.
-          * `gte` (`pulumi.Input[float]`) - Indicates the lower threshold inclusive value for this range.
-          * `lt` (`pulumi.Input[float]`) - Indicates the upper threshold non-inculsive value for this range.
-          * `lte` (`pulumi.Input[float]`) - Indicates the upper threshold inclusive value for this range.
-
-        The **viz_options** object supports the following:
-
-          * `color` (`pulumi.Input[str]`) - Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-          * `displayName` (`pulumi.Input[str]`) - Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-          * `label` (`pulumi.Input[str]`) - Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-          * `valuePrefix` (`pulumi.Input[str]`)
-          * `valueSuffix` (`pulumi.Input[str]`)
-          * `valueUnit` (`pulumi.Input[str]`) - A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -240,8 +172,121 @@ class SingleValueChart(pulumi.CustomResource):
         __props__["viz_options"] = viz_options
         return SingleValueChart(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="colorBy")
+    def color_by(self) -> Optional[str]:
+        """
+        Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+        """
+        return pulumi.get(self, "color_by")
+
+    @property
+    @pulumi.getter(name="colorScales")
+    def color_scales(self) -> Optional[List['outputs.SingleValueChartColorScale']]:
+        """
+        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        """
+        return pulumi.get(self, "color_scales")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the chart.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="isTimestampHidden")
+    def is_timestamp_hidden(self) -> Optional[bool]:
+        """
+        Whether to hide the timestamp in the chart. `false` by default.
+        """
+        return pulumi.get(self, "is_timestamp_hidden")
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[float]:
+        """
+        How long (in seconds) to wait for late datapoints
+        """
+        return pulumi.get(self, "max_delay")
+
+    @property
+    @pulumi.getter(name="maxPrecision")
+    def max_precision(self) -> Optional[float]:
+        """
+        The maximum precision to for value displayed.
+        """
+        return pulumi.get(self, "max_precision")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the chart.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> str:
+        """
+        Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> Optional[float]:
+        """
+        How often (in seconds) to refresh the value.
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @property
+    @pulumi.getter(name="secondaryVisualization")
+    def secondary_visualization(self) -> Optional[str]:
+        """
+        The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+        """
+        return pulumi.get(self, "secondary_visualization")
+
+    @property
+    @pulumi.getter(name="showSparkLine")
+    def show_spark_line(self) -> Optional[bool]:
+        """
+        Whether to show a trend line below the current value. `false` by default.
+        """
+        return pulumi.get(self, "show_spark_line")
+
+    @property
+    @pulumi.getter(name="unitPrefix")
+    def unit_prefix(self) -> Optional[str]:
+        """
+        Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+        """
+        return pulumi.get(self, "unit_prefix")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        URL of the chart
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="vizOptions")
+    def viz_options(self) -> Optional[List['outputs.SingleValueChartVizOption']]:
+        """
+        Plot-level customization options, associated with a publish statement.
+        """
+        return pulumi.get(self, "viz_options")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -31,8 +31,8 @@ import (
 // 				&signalfx.DataLinkTargetSignalfxDashboardArgs{
 // 					IsDefault:        pulumi.Bool(true),
 // 					Name:             pulumi.String("sfx_dash"),
-// 					DashboardGroupId: pulumi.String(signalfx_dashboard_group.Mydashboardgroup0.Id),
-// 					DashboardId:      pulumi.String(signalfx_dashboard.Mydashboard0.Id),
+// 					DashboardGroupId: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),
+// 					DashboardId:      pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
 // 				},
 // 			},
 // 		})
@@ -56,7 +56,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewDataLink(ctx, "myDataLinkDash", &signalfx.DataLinkArgs{
-// 			ContextDashboardId: pulumi.String(signalfx_dashboard.Mydashboard0.Id),
+// 			ContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
 // 			PropertyName:       pulumi.String("pname2"),
 // 			PropertyValue:      pulumi.String("pvalue"),
 // 			TargetExternalUrls: signalfx.DataLinkTargetExternalUrlArray{

@@ -5,28 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = ['TokenIntegration']
 
 
 class TokenIntegration(pulumi.CustomResource):
-    name: pulumi.Output[str]
-    """
-    The name of this integration
-    """
-    named_token: pulumi.Output[str]
-    """
-    A named token to use for ingest
-    """
-    signalfx_aws_account: pulumi.Output[str]
-    """
-    The AWS Account ARN to use with your policies/roles, provided by SignalFx.
-    """
-    token_id: pulumi.Output[str]
-    """
-    The SignalFx-generated AWS token to use with an AWS integration.
-    """
-    def __init__(__self__, resource_name, opts=None, name=None, named_token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_token: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 
@@ -54,18 +47,18 @@ class TokenIntegration(pulumi.CustomResource):
             poll_rate=300,
             import_cloud_watch=True,
             enable_aws_usage=True,
-            custom_namespace_sync_rules=[{
-                "defaultAction": "Exclude",
-                "filterAction": "Include",
-                "filterSource": "filter('code', '200')",
-                "namespace": "fart",
-            }],
-            namespace_sync_rules=[{
-                "defaultAction": "Exclude",
-                "filterAction": "Include",
-                "filterSource": "filter('code', '200')",
-                "namespace": "AWS/EC2",
-            }])
+            custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(
+                default_action="Exclude",
+                filter_action="Include",
+                filter_source="filter('code', '200')",
+                namespace="fart",
+            )],
+            namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
+                default_action="Exclude",
+                filter_action="Include",
+                filter_source="filter('code', '200')",
+                namespace="AWS/EC2",
+            )])
         ```
 
         :param str resource_name: The name of the resource.
@@ -84,7 +77,7 @@ class TokenIntegration(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -101,13 +94,19 @@ class TokenIntegration(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, name=None, named_token=None, signalfx_aws_account=None, token_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            named_token: Optional[pulumi.Input[str]] = None,
+            signalfx_aws_account: Optional[pulumi.Input[str]] = None,
+            token_id: Optional[pulumi.Input[str]] = None) -> 'TokenIntegration':
         """
         Get an existing TokenIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
         :param pulumi.Input[str] named_token: A named token to use for ingest
@@ -124,8 +123,41 @@ class TokenIntegration(pulumi.CustomResource):
         __props__["token_id"] = token_id
         return TokenIntegration(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of this integration
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="namedToken")
+    def named_token(self) -> Optional[str]:
+        """
+        A named token to use for ingest
+        """
+        return pulumi.get(self, "named_token")
+
+    @property
+    @pulumi.getter(name="signalfxAwsAccount")
+    def signalfx_aws_account(self) -> str:
+        """
+        The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        """
+        return pulumi.get(self, "signalfx_aws_account")
+
+    @property
+    @pulumi.getter(name="tokenId")
+    def token_id(self) -> str:
+        """
+        The SignalFx-generated AWS token to use with an AWS integration.
+        """
+        return pulumi.get(self, "token_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

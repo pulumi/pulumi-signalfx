@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetServicesResult',
+    'AwaitableGetServicesResult',
+    'get_services',
+]
+
+@pulumi.output_type
 class GetServicesResult:
     """
     A collection of values returned by getServices.
@@ -15,13 +24,25 @@ class GetServicesResult:
     def __init__(__self__, id=None, services=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if services and not isinstance(services, list):
+            raise TypeError("Expected argument 'services' to be a list")
+        pulumi.set(__self__, "services", services)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if services and not isinstance(services, list):
-            raise TypeError("Expected argument 'services' to be a list")
-        __self__.services = services
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[List['outputs.GetServicesServiceResult']]:
+        return pulumi.get(self, "services")
+
+
 class AwaitableGetServicesResult(GetServicesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -31,26 +52,20 @@ class AwaitableGetServicesResult(GetServicesResult):
             id=self.id,
             services=self.services)
 
-def get_services(services=None,opts=None):
+
+def get_services(services: Optional[List[pulumi.InputType['GetServicesServiceArgs']]] = None,
+                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
     Use this data source to get a list of Azure service names.
-
-
-
-    The **services** object supports the following:
-
-      * `name` (`str`)
     """
     __args__ = dict()
-
-
     __args__['services'] = services
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('signalfx:azure/getServices:getServices', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('signalfx:azure/getServices:getServices', __args__, opts=opts, typ=GetServicesResult).value
 
     return AwaitableGetServicesResult(
-        id=__ret__.get('id'),
-        services=__ret__.get('services'))
+        id=__ret__.id,
+        services=__ret__.services)

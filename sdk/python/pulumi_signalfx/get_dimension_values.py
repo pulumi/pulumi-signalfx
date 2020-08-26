@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetDimensionValuesResult',
+    'AwaitableGetDimensionValuesResult',
+    'get_dimension_values',
+]
+
+@pulumi.output_type
 class GetDimensionValuesResult:
     """
     A collection of values returned by getDimensionValues.
@@ -15,16 +22,33 @@ class GetDimensionValuesResult:
     def __init__(__self__, id=None, query=None, values=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if query and not isinstance(query, str):
+            raise TypeError("Expected argument 'query' to be a str")
+        pulumi.set(__self__, "query", query)
+        if values and not isinstance(values, list):
+            raise TypeError("Expected argument 'values' to be a list")
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if query and not isinstance(query, str):
-            raise TypeError("Expected argument 'query' to be a str")
-        __self__.query = query
-        if values and not isinstance(values, list):
-            raise TypeError("Expected argument 'values' to be a list")
-        __self__.values = values
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def query(self) -> str:
+        return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def values(self) -> List[str]:
+        return pulumi.get(self, "values")
+
+
 class AwaitableGetDimensionValuesResult(GetDimensionValuesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -35,23 +59,23 @@ class AwaitableGetDimensionValuesResult(GetDimensionValuesResult):
             query=self.query,
             values=self.values)
 
-def get_dimension_values(query=None,opts=None):
+
+def get_dimension_values(query: Optional[str] = None,
+                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDimensionValuesResult:
     """
     Use this data source to get a list of dimension values matching the provided query.
 
     > **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.
     """
     __args__ = dict()
-
-
     __args__['query'] = query
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('signalfx:index/getDimensionValues:getDimensionValues', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('signalfx:index/getDimensionValues:getDimensionValues', __args__, opts=opts, typ=GetDimensionValuesResult).value
 
     return AwaitableGetDimensionValuesResult(
-        id=__ret__.get('id'),
-        query=__ret__.get('query'),
-        values=__ret__.get('values'))
+        id=__ret__.id,
+        query=__ret__.query,
+        values=__ret__.values)
