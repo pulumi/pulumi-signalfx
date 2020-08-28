@@ -15,7 +15,7 @@ __all__ = ['SingleValueChart']
 
 class SingleValueChart(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_by: Optional[pulumi.Input[str]] = None,
                  color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
@@ -174,7 +174,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorBy")
-    def color_by(self) -> Optional[str]:
+    def color_by(self) -> pulumi.Output[Optional[str]]:
         """
         Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
         """
@@ -182,7 +182,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorScales")
-    def color_scales(self) -> Optional[List['outputs.SingleValueChartColorScale']]:
+    def color_scales(self) -> pulumi.Output[Optional[List['outputs.SingleValueChartColorScale']]]:
         """
         Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         """
@@ -190,7 +190,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the chart.
         """
@@ -198,7 +198,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isTimestampHidden")
-    def is_timestamp_hidden(self) -> Optional[bool]:
+    def is_timestamp_hidden(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to hide the timestamp in the chart. `false` by default.
         """
@@ -206,7 +206,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[float]:
+    def max_delay(self) -> pulumi.Output[Optional[float]]:
         """
         How long (in seconds) to wait for late datapoints
         """
@@ -214,7 +214,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxPrecision")
-    def max_precision(self) -> Optional[float]:
+    def max_precision(self) -> pulumi.Output[Optional[float]]:
         """
         The maximum precision to for value displayed.
         """
@@ -222,7 +222,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the chart.
         """
@@ -230,7 +230,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="programText")
-    def program_text(self) -> str:
+    def program_text(self) -> pulumi.Output[str]:
         """
         Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         """
@@ -238,7 +238,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[float]:
+    def refresh_interval(self) -> pulumi.Output[Optional[float]]:
         """
         How often (in seconds) to refresh the value.
         """
@@ -246,7 +246,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secondaryVisualization")
-    def secondary_visualization(self) -> Optional[str]:
+    def secondary_visualization(self) -> pulumi.Output[Optional[str]]:
         """
         The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         """
@@ -254,7 +254,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="showSparkLine")
-    def show_spark_line(self) -> Optional[bool]:
+    def show_spark_line(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to show a trend line below the current value. `false` by default.
         """
@@ -262,7 +262,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[str]:
+    def unit_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         """
@@ -270,7 +270,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the chart
         """
@@ -278,7 +278,7 @@ class SingleValueChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[List['outputs.SingleValueChartVizOption']]:
+    def viz_options(self) -> pulumi.Output[Optional[List['outputs.SingleValueChartVizOption']]]:
         """
         Plot-level customization options, associated with a publish statement.
         """

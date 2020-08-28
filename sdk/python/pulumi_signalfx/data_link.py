@@ -15,7 +15,7 @@ __all__ = ['DataLink']
 
 class DataLink(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  context_dashboard_id: Optional[pulumi.Input[str]] = None,
                  property_name: Optional[pulumi.Input[str]] = None,
@@ -143,7 +143,7 @@ class DataLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contextDashboardId")
-    def context_dashboard_id(self) -> Optional[str]:
+    def context_dashboard_id(self) -> pulumi.Output[Optional[str]]:
         """
         If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
         """
@@ -151,7 +151,7 @@ class DataLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="propertyName")
-    def property_name(self) -> Optional[str]:
+    def property_name(self) -> pulumi.Output[Optional[str]]:
         """
         Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
         """
@@ -159,7 +159,7 @@ class DataLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="propertyValue")
-    def property_value(self) -> Optional[str]:
+    def property_value(self) -> pulumi.Output[Optional[str]]:
         """
         Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
         """
@@ -167,7 +167,7 @@ class DataLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetExternalUrls")
-    def target_external_urls(self) -> Optional[List['outputs.DataLinkTargetExternalUrl']]:
+    def target_external_urls(self) -> pulumi.Output[Optional[List['outputs.DataLinkTargetExternalUrl']]]:
         """
         Link to an external URL
         """
@@ -175,7 +175,7 @@ class DataLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetSignalfxDashboards")
-    def target_signalfx_dashboards(self) -> Optional[List['outputs.DataLinkTargetSignalfxDashboard']]:
+    def target_signalfx_dashboards(self) -> pulumi.Output[Optional[List['outputs.DataLinkTargetSignalfxDashboard']]]:
         """
         Link to a SignalFx dashboard
         """
@@ -183,7 +183,7 @@ class DataLink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="targetSplunks")
-    def target_splunks(self) -> Optional[List['outputs.DataLinkTargetSplunk']]:
+    def target_splunks(self) -> pulumi.Output[Optional[List['outputs.DataLinkTargetSplunk']]]:
         """
         Link to an external URL
         """

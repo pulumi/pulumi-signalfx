@@ -15,7 +15,7 @@ __all__ = ['AlertMutingRule']
 
 class AlertMutingRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  detectors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -127,7 +127,7 @@ class AlertMutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description for this muting rule
         """
@@ -135,7 +135,7 @@ class AlertMutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def detectors(self) -> Optional[List[str]]:
+    def detectors(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A convenience attribute that associated this muting rule with specific detector ids.
         """
@@ -143,12 +143,12 @@ class AlertMutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveStartTime")
-    def effective_start_time(self) -> float:
+    def effective_start_time(self) -> pulumi.Output[float]:
         return pulumi.get(self, "effective_start_time")
 
     @property
     @pulumi.getter
-    def filters(self) -> List['outputs.AlertMutingRuleFilter']:
+    def filters(self) -> pulumi.Output[List['outputs.AlertMutingRuleFilter']]:
         """
         Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         """
@@ -156,7 +156,7 @@ class AlertMutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> float:
+    def start_time(self) -> pulumi.Output[float]:
         """
         Starting time of an alert muting rule as a Unit time stamp in seconds.
         """
@@ -164,7 +164,7 @@ class AlertMutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="stopTime")
-    def stop_time(self) -> Optional[float]:
+    def stop_time(self) -> pulumi.Output[Optional[float]]:
         """
         Starting time of an alert muting rule as a Unix time stamp in seconds.
         """

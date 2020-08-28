@@ -13,7 +13,7 @@ __all__ = ['TextChart']
 
 class TextChart(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  markdown: Optional[pulumi.Input[str]] = None,
@@ -119,7 +119,7 @@ class TextChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the text note.
         """
@@ -127,7 +127,7 @@ class TextChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def markdown(self) -> str:
+    def markdown(self) -> pulumi.Output[str]:
         """
         Markdown text to display.
         """
@@ -135,7 +135,7 @@ class TextChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the text note.
         """
@@ -143,7 +143,7 @@ class TextChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the chart
         """

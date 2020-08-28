@@ -13,7 +13,7 @@ __all__ = ['ExternalIntegration']
 
 class ExternalIntegration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
@@ -193,7 +193,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> str:
+    def external_id(self) -> pulumi.Output[str]:
         """
         The external ID to use with your IAM role and with `aws.Integration`.
         """
@@ -201,7 +201,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of this integration
         """
@@ -209,7 +209,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedToken")
-    def named_token(self) -> Optional[str]:
+    def named_token(self) -> pulumi.Output[Optional[str]]:
         """
         A named token to use for ingest
         """
@@ -217,7 +217,7 @@ class ExternalIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="signalfxAwsAccount")
-    def signalfx_aws_account(self) -> str:
+    def signalfx_aws_account(self) -> pulumi.Output[str]:
         """
         The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         """

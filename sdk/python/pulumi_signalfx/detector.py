@@ -15,7 +15,7 @@ __all__ = ['Detector']
 
 class Detector(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -400,7 +400,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> Optional[List[str]]:
+    def authorized_writer_teams(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
@@ -408,7 +408,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> Optional[List[str]]:
+    def authorized_writer_users(self) -> pulumi.Output[Optional[List[str]]]:
         """
         User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
@@ -416,7 +416,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         """
@@ -424,7 +424,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[bool]:
+    def disable_sampling(self) -> pulumi.Output[Optional[bool]]:
         """
         When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         """
@@ -432,7 +432,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[float]:
+    def end_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -440,7 +440,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[float]:
+    def max_delay(self) -> pulumi.Output[Optional[float]]:
         """
         How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         """
@@ -448,7 +448,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the detector.
         """
@@ -456,7 +456,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="programText")
-    def program_text(self) -> str:
+    def program_text(self) -> pulumi.Output[str]:
         """
         Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         """
@@ -464,7 +464,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> List['outputs.DetectorRule']:
+    def rules(self) -> pulumi.Output[List['outputs.DetectorRule']]:
         """
         Set of rules used for alerting.
         """
@@ -472,7 +472,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="showDataMarkers")
-    def show_data_markers(self) -> Optional[bool]:
+    def show_data_markers(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         """
@@ -480,7 +480,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="showEventLines")
-    def show_event_lines(self) -> Optional[bool]:
+    def show_event_lines(self) -> pulumi.Output[Optional[bool]]:
         """
         When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         """
@@ -488,7 +488,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[float]:
+    def start_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -496,7 +496,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Team IDs to associate the detector to.
         """
@@ -504,7 +504,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[float]:
+    def time_range(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
@@ -512,7 +512,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the detector
         """
@@ -520,7 +520,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[List['outputs.DetectorVizOption']]:
+    def viz_options(self) -> pulumi.Output[Optional[List['outputs.DetectorVizOption']]]:
         """
         Plot-level customization options, associated with a publish statement.
         """
