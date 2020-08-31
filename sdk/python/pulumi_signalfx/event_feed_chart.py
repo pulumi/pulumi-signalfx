@@ -13,7 +13,7 @@ __all__ = ['EventFeedChart']
 
 class EventFeedChart(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[float]] = None,
@@ -109,7 +109,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the text note.
         """
@@ -117,7 +117,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[float]:
+    def end_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -125,7 +125,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the text note.
         """
@@ -133,7 +133,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="programText")
-    def program_text(self) -> str:
+    def program_text(self) -> pulumi.Output[str]:
         """
         Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         """
@@ -141,7 +141,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[float]:
+    def start_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -149,7 +149,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[float]:
+    def time_range(self) -> pulumi.Output[Optional[float]]:
         """
         From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
@@ -157,7 +157,7 @@ class EventFeedChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the chart
         """

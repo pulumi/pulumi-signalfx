@@ -15,7 +15,7 @@ __all__ = ['TimeChart']
 
 class TimeChart(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  axes_include_zero: Optional[pulumi.Input[bool]] = None,
                  axes_precision: Optional[pulumi.Input[float]] = None,
@@ -279,7 +279,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="axesIncludeZero")
-    def axes_include_zero(self) -> Optional[bool]:
+    def axes_include_zero(self) -> pulumi.Output[Optional[bool]]:
         """
         Force the chart to display zero on the y-axes, even if none of the data is near zero.
         """
@@ -287,7 +287,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="axesPrecision")
-    def axes_precision(self) -> Optional[float]:
+    def axes_precision(self) -> pulumi.Output[Optional[float]]:
         """
         Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
         """
@@ -295,7 +295,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="axisLeft")
-    def axis_left(self) -> Optional['outputs.TimeChartAxisLeft']:
+    def axis_left(self) -> pulumi.Output[Optional['outputs.TimeChartAxisLeft']]:
         """
         Set of axis options.
         """
@@ -303,7 +303,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="axisRight")
-    def axis_right(self) -> Optional['outputs.TimeChartAxisRight']:
+    def axis_right(self) -> pulumi.Output[Optional['outputs.TimeChartAxisRight']]:
         """
         Set of axis options.
         """
@@ -311,7 +311,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorBy")
-    def color_by(self) -> Optional[str]:
+    def color_by(self) -> pulumi.Output[Optional[str]]:
         """
         Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         """
@@ -319,7 +319,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the chart.
         """
@@ -327,7 +327,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[bool]:
+    def disable_sampling(self) -> pulumi.Output[Optional[bool]]:
         """
         If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         """
@@ -335,7 +335,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[float]:
+    def end_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -343,7 +343,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventOptions")
-    def event_options(self) -> Optional[List['outputs.TimeChartEventOption']]:
+    def event_options(self) -> pulumi.Output[Optional[List['outputs.TimeChartEventOption']]]:
         """
         Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         """
@@ -351,7 +351,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="histogramOptions")
-    def histogram_options(self) -> Optional[List['outputs.TimeChartHistogramOption']]:
+    def histogram_options(self) -> pulumi.Output[Optional[List['outputs.TimeChartHistogramOption']]]:
         """
         Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         """
@@ -359,7 +359,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
-    def legend_fields_to_hides(self) -> Optional[List[str]]:
+    def legend_fields_to_hides(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
@@ -367,7 +367,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legendOptionsFields")
-    def legend_options_fields(self) -> Optional[List['outputs.TimeChartLegendOptionsField']]:
+    def legend_options_fields(self) -> pulumi.Output[Optional[List['outputs.TimeChartLegendOptionsField']]]:
         """
         List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         """
@@ -375,7 +375,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[float]:
+    def max_delay(self) -> pulumi.Output[Optional[float]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
@@ -383,7 +383,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[float]:
+    def minimum_resolution(self) -> pulumi.Output[Optional[float]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
@@ -391,7 +391,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the chart.
         """
@@ -399,7 +399,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onChartLegendDimension")
-    def on_chart_legend_dimension(self) -> Optional[str]:
+    def on_chart_legend_dimension(self) -> pulumi.Output[Optional[str]]:
         """
         Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         """
@@ -407,7 +407,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="plotType")
-    def plot_type(self) -> Optional[str]:
+    def plot_type(self) -> pulumi.Output[Optional[str]]:
         """
         The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         """
@@ -415,7 +415,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="programText")
-    def program_text(self) -> str:
+    def program_text(self) -> pulumi.Output[str]:
         """
         Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         """
@@ -423,7 +423,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="showDataMarkers")
-    def show_data_markers(self) -> Optional[bool]:
+    def show_data_markers(self) -> pulumi.Output[Optional[bool]]:
         """
         Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         """
@@ -431,7 +431,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="showEventLines")
-    def show_event_lines(self) -> Optional[bool]:
+    def show_event_lines(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         """
@@ -439,7 +439,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def stacked(self) -> Optional[bool]:
+    def stacked(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether area and bar charts in the visualization should be stacked. `false` by default.
         """
@@ -447,7 +447,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[float]:
+    def start_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -455,7 +455,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Tags associated with the chart
         """
@@ -463,7 +463,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[float]:
+    def time_range(self) -> pulumi.Output[Optional[float]]:
         """
         How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         """
@@ -471,7 +471,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timezone(self) -> Optional[str]:
+    def timezone(self) -> pulumi.Output[Optional[str]]:
         """
         Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
         """
@@ -479,7 +479,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[str]:
+    def unit_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
@@ -487,7 +487,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the chart
         """
@@ -495,7 +495,7 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> Optional[List['outputs.TimeChartVizOption']]:
+    def viz_options(self) -> pulumi.Output[Optional[List['outputs.TimeChartVizOption']]]:
         """
         Plot-level customization options, associated with a publish statement.
         """

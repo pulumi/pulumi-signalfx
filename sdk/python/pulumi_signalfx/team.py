@@ -13,7 +13,7 @@ __all__ = ['Team']
 
 class Team(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -143,7 +143,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the team.
         """
@@ -151,7 +151,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> Optional[List[str]]:
+    def members(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of user IDs to include in the team.
         """
@@ -159,7 +159,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the team.
         """
@@ -167,7 +167,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsCriticals")
-    def notifications_criticals(self) -> Optional[List[str]]:
+    def notifications_criticals(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications for critical alerts
         """
@@ -175,7 +175,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsDefaults")
-    def notifications_defaults(self) -> Optional[List[str]]:
+    def notifications_defaults(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications for default alerts
         """
@@ -183,7 +183,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsInfos")
-    def notifications_infos(self) -> Optional[List[str]]:
+    def notifications_infos(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications for info alerts
         """
@@ -191,7 +191,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsMajors")
-    def notifications_majors(self) -> Optional[List[str]]:
+    def notifications_majors(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications for major alerts
         """
@@ -199,7 +199,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsMinors")
-    def notifications_minors(self) -> Optional[List[str]]:
+    def notifications_minors(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications for minor alerts
         """
@@ -207,7 +207,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsWarnings")
-    def notifications_warnings(self) -> Optional[List[str]]:
+    def notifications_warnings(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications for warning alerts
         """
@@ -215,7 +215,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the team
         """

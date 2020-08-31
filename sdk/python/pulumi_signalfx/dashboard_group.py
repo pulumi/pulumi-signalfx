@@ -15,7 +15,7 @@ __all__ = ['DashboardGroup']
 
 class DashboardGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -150,7 +150,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> Optional[List[str]]:
+    def authorized_writer_teams(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
         """
@@ -158,7 +158,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> Optional[List[str]]:
+    def authorized_writer_users(self) -> pulumi.Output[Optional[List[str]]]:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
@@ -166,7 +166,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dashboards(self) -> Optional[List['outputs.DashboardGroupDashboard']]:
+    def dashboards(self) -> pulumi.Output[Optional[List['outputs.DashboardGroupDashboard']]]:
         """
         [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
@@ -174,7 +174,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the dashboard group.
         """
@@ -182,12 +182,12 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importQualifiers")
-    def import_qualifiers(self) -> Optional[List['outputs.DashboardGroupImportQualifier']]:
+    def import_qualifiers(self) -> pulumi.Output[Optional[List['outputs.DashboardGroupImportQualifier']]]:
         return pulumi.get(self, "import_qualifiers")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the dashboard group.
         """
@@ -195,7 +195,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Team IDs to associate the dashboard group to.
         """

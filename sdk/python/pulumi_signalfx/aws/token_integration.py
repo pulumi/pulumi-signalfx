@@ -13,7 +13,7 @@ __all__ = ['TokenIntegration']
 
 class TokenIntegration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
@@ -125,7 +125,7 @@ class TokenIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of this integration
         """
@@ -133,7 +133,7 @@ class TokenIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedToken")
-    def named_token(self) -> Optional[str]:
+    def named_token(self) -> pulumi.Output[Optional[str]]:
         """
         A named token to use for ingest
         """
@@ -141,7 +141,7 @@ class TokenIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="signalfxAwsAccount")
-    def signalfx_aws_account(self) -> str:
+    def signalfx_aws_account(self) -> pulumi.Output[str]:
         """
         The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         """
@@ -149,7 +149,7 @@ class TokenIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tokenId")
-    def token_id(self) -> str:
+    def token_id(self) -> pulumi.Output[str]:
         """
         The SignalFx-generated AWS token to use with an AWS integration.
         """

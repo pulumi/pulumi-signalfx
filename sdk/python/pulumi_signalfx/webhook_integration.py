@@ -15,7 +15,7 @@ __all__ = ['WebhookIntegration']
 
 class WebhookIntegration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
@@ -101,7 +101,7 @@ class WebhookIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the integration is enabled.
         """
@@ -109,7 +109,7 @@ class WebhookIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.WebhookIntegrationHeader']]:
+    def headers(self) -> pulumi.Output[Optional[List['outputs.WebhookIntegrationHeader']]]:
         """
         A header to send with the request
         """
@@ -117,7 +117,7 @@ class WebhookIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the integration.
         """
@@ -125,12 +125,12 @@ class WebhookIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sharedSecret")
-    def shared_secret(self) -> Optional[str]:
+    def shared_secret(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "shared_secret")
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[str]:
+    def url(self) -> pulumi.Output[Optional[str]]:
         """
         The URL to request
         """

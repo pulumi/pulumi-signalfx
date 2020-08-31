@@ -15,7 +15,7 @@ __all__ = ['Integration']
 
 class Integration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the integration is enabled.
         """
@@ -145,7 +145,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the integration.
         """
@@ -153,7 +153,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedToken")
-    def named_token(self) -> Optional[str]:
+    def named_token(self) -> pulumi.Output[Optional[str]]:
         """
         A named token to use for ingest
         """
@@ -161,7 +161,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pollRate")
-    def poll_rate(self) -> Optional[float]:
+    def poll_rate(self) -> pulumi.Output[Optional[float]]:
         """
         GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
         """
@@ -169,7 +169,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectServiceKeys")
-    def project_service_keys(self) -> Optional[List['outputs.IntegrationProjectServiceKey']]:
+    def project_service_keys(self) -> pulumi.Output[Optional[List['outputs.IntegrationProjectServiceKey']]]:
         """
         GCP projects to add.
         """
@@ -177,7 +177,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List[str]]:
+    def services(self) -> pulumi.Output[Optional[List[str]]]:
         """
         GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
         """
@@ -185,7 +185,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def whitelists(self) -> Optional[List[str]]:
+    def whitelists(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Compute Metadata Whitelist
         """

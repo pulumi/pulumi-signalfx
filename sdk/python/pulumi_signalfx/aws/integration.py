@@ -15,7 +15,7 @@ __all__ = ['Integration']
 
 class Integration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]]] = None,
@@ -205,7 +205,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customCloudwatchNamespaces")
-    def custom_cloudwatch_namespaces(self) -> Optional[List[str]]:
+    def custom_cloudwatch_namespaces(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
         """
@@ -213,7 +213,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customNamespaceSyncRules")
-    def custom_namespace_sync_rules(self) -> Optional[List['outputs.IntegrationCustomNamespaceSyncRule']]:
+    def custom_namespace_sync_rules(self) -> pulumi.Output[Optional[List['outputs.IntegrationCustomNamespaceSyncRule']]]:
         """
         Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         """
@@ -221,7 +221,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableAwsUsage")
-    def enable_aws_usage(self) -> Optional[bool]:
+    def enable_aws_usage(self) -> pulumi.Output[Optional[bool]]:
         """
         Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
         """
@@ -229,7 +229,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the integration is enabled.
         """
@@ -237,7 +237,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalId")
-    def external_id(self) -> Optional[str]:
+    def external_id(self) -> pulumi.Output[Optional[str]]:
         """
         The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         """
@@ -245,7 +245,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importCloudWatch")
-    def import_cloud_watch(self) -> Optional[bool]:
+    def import_cloud_watch(self) -> pulumi.Output[Optional[bool]]:
         """
         Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         """
@@ -253,7 +253,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="integrationId")
-    def integration_id(self) -> str:
+    def integration_id(self) -> pulumi.Output[str]:
         """
         The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         """
@@ -261,7 +261,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[str]:
+    def key(self) -> pulumi.Output[Optional[str]]:
         """
         If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
         """
@@ -269,7 +269,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceSyncRules")
-    def namespace_sync_rules(self) -> Optional[List['outputs.IntegrationNamespaceSyncRule']]:
+    def namespace_sync_rules(self) -> pulumi.Output[Optional[List['outputs.IntegrationNamespaceSyncRule']]]:
         """
         Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         """
@@ -277,7 +277,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pollRate")
-    def poll_rate(self) -> Optional[float]:
+    def poll_rate(self) -> pulumi.Output[Optional[float]]:
         """
         AWS poll rate (in seconds). One of `60` or `300`.
         """
@@ -285,7 +285,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> Optional[List[str]]:
+    def regions(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of AWS regions that SignalFx should monitor.
         """
@@ -293,7 +293,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[str]:
+    def role_arn(self) -> pulumi.Output[Optional[str]]:
         """
         Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         """
@@ -301,7 +301,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List[str]]:
+    def services(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         """
@@ -309,7 +309,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def token(self) -> Optional[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
@@ -317,7 +317,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useGetMetricDataMethod")
-    def use_get_metric_data_method(self) -> Optional[bool]:
+    def use_get_metric_data_method(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
         """

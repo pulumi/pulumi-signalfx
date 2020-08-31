@@ -13,7 +13,7 @@ __all__ = ['Integration']
 
 class Integration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -145,7 +145,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appId")
-    def app_id(self) -> str:
+    def app_id(self) -> pulumi.Output[str]:
         """
         Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
         """
@@ -153,7 +153,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the integration is enabled.
         """
@@ -161,7 +161,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def environment(self) -> Optional[str]:
+    def environment(self) -> pulumi.Output[Optional[str]]:
         """
         What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         """
@@ -169,7 +169,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the integration.
         """
@@ -177,7 +177,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namedToken")
-    def named_token(self) -> Optional[str]:
+    def named_token(self) -> pulumi.Output[Optional[str]]:
         """
         A named token to use for ingest
         """
@@ -185,7 +185,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pollRate")
-    def poll_rate(self) -> Optional[float]:
+    def poll_rate(self) -> pulumi.Output[Optional[float]]:
         """
         AWS poll rate (in seconds). One of `60` or `300`.
         """
@@ -193,7 +193,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> str:
+    def secret_key(self) -> pulumi.Output[str]:
         """
         Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """
@@ -201,7 +201,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> List[str]:
+    def services(self) -> pulumi.Output[List[str]]:
         """
         List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         """
@@ -209,7 +209,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subscriptions(self) -> List[str]:
+    def subscriptions(self) -> pulumi.Output[List[str]]:
         """
         List of Azure subscriptions that SignalFx should monitor.
         """
@@ -217,7 +217,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tenantId")
-    def tenant_id(self) -> str:
+    def tenant_id(self) -> pulumi.Output[str]:
         """
         Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """

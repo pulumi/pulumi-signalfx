@@ -15,7 +15,7 @@ __all__ = ['OrgToken']
 
 class OrgToken(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -130,7 +130,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the token.
         """
@@ -138,7 +138,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         """
@@ -146,7 +146,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dpmLimits")
-    def dpm_limits(self) -> Optional['outputs.OrgTokenDpmLimits']:
+    def dpm_limits(self) -> pulumi.Output[Optional['outputs.OrgTokenDpmLimits']]:
         """
         Specify DPM-based limits for this token.
         """
@@ -154,7 +154,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hostOrUsageLimits")
-    def host_or_usage_limits(self) -> Optional['outputs.OrgTokenHostOrUsageLimits']:
+    def host_or_usage_limits(self) -> pulumi.Output[Optional['outputs.OrgTokenHostOrUsageLimits']]:
         """
         Specify Usage-based limits for this token.
         """
@@ -162,7 +162,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the token.
         """
@@ -170,7 +170,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def notifications(self) -> Optional[List[str]]:
+    def notifications(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
         """
@@ -178,7 +178,7 @@ class OrgToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def secret(self) -> str:
+    def secret(self) -> pulumi.Output[str]:
         """
         The secret token created by the API. You cannot set this value.
         """

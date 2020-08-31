@@ -15,7 +15,7 @@ __all__ = ['HeatmapChart']
 
 class HeatmapChart(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_range: Optional[pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']]] = None,
                  color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
@@ -194,7 +194,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorRange")
-    def color_range(self) -> Optional['outputs.HeatmapChartColorRange']:
+    def color_range(self) -> pulumi.Output[Optional['outputs.HeatmapChartColorRange']]:
         """
         Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         """
@@ -202,7 +202,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorScales")
-    def color_scales(self) -> Optional[List['outputs.HeatmapChartColorScale']]:
+    def color_scales(self) -> pulumi.Output[Optional[List['outputs.HeatmapChartColorScale']]]:
         """
         One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         """
@@ -210,7 +210,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the chart.
         """
@@ -218,7 +218,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disableSampling")
-    def disable_sampling(self) -> Optional[bool]:
+    def disable_sampling(self) -> pulumi.Output[Optional[bool]]:
         """
         If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         """
@@ -226,7 +226,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> Optional[List[str]]:
+    def group_bies(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Properties to group by in the heatmap (in nesting order).
         """
@@ -234,7 +234,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hideTimestamp")
-    def hide_timestamp(self) -> Optional[bool]:
+    def hide_timestamp(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to show the timestamp in the chart. `false` by default.
         """
@@ -242,7 +242,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> Optional[float]:
+    def max_delay(self) -> pulumi.Output[Optional[float]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
@@ -250,7 +250,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> Optional[float]:
+    def minimum_resolution(self) -> pulumi.Output[Optional[float]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
@@ -258,7 +258,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the chart.
         """
@@ -266,7 +266,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="programText")
-    def program_text(self) -> str:
+    def program_text(self) -> pulumi.Output[str]:
         """
         Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
         """
@@ -274,7 +274,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> Optional[float]:
+    def refresh_interval(self) -> pulumi.Output[Optional[float]]:
         """
         How often (in seconds) to refresh the values of the heatmap.
         """
@@ -282,7 +282,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sortBy")
-    def sort_by(self) -> Optional[str]:
+    def sort_by(self) -> pulumi.Output[Optional[str]]:
         """
         The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         """
@@ -290,7 +290,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="unitPrefix")
-    def unit_prefix(self) -> Optional[str]:
+    def unit_prefix(self) -> pulumi.Output[Optional[str]]:
         """
         Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
@@ -298,7 +298,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the chart
         """

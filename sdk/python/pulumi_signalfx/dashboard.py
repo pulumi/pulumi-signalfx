@@ -15,7 +15,7 @@ __all__ = ['Dashboard']
 
 class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -278,7 +278,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> Optional[List[str]]:
+    def authorized_writer_teams(self) -> pulumi.Output[Optional[List[str]]]:
         """
         Team IDs that have write access to this dashboard
         """
@@ -286,7 +286,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> Optional[List[str]]:
+    def authorized_writer_users(self) -> pulumi.Output[Optional[List[str]]]:
         """
         User IDs that have write access to this dashboard
         """
@@ -294,7 +294,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def charts(self) -> Optional[List['outputs.DashboardChart']]:
+    def charts(self) -> pulumi.Output[Optional[List['outputs.DashboardChart']]]:
         """
         Chart ID and layout information for the charts in the dashboard.
         """
@@ -302,7 +302,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="chartsResolution")
-    def charts_resolution(self) -> Optional[str]:
+    def charts_resolution(self) -> pulumi.Output[Optional[str]]:
         """
         Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         """
@@ -310,7 +310,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[List['outputs.DashboardColumn']]:
+    def columns(self) -> pulumi.Output[Optional[List['outputs.DashboardColumn']]]:
         """
         Column number for the layout.
         """
@@ -318,7 +318,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dashboardGroup")
-    def dashboard_group(self) -> str:
+    def dashboard_group(self) -> pulumi.Output[str]:
         """
         The ID of the dashboard group that contains the dashboard.
         """
@@ -326,7 +326,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Variable description.
         """
@@ -334,17 +334,17 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="discoveryOptionsQuery")
-    def discovery_options_query(self) -> Optional[str]:
+    def discovery_options_query(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "discovery_options_query")
 
     @property
     @pulumi.getter(name="discoveryOptionsSelectors")
-    def discovery_options_selectors(self) -> Optional[List[str]]:
+    def discovery_options_selectors(self) -> pulumi.Output[Optional[List[str]]]:
         return pulumi.get(self, "discovery_options_selectors")
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[float]:
+    def end_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
         """
@@ -352,7 +352,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="eventOverlays")
-    def event_overlays(self) -> Optional[List['outputs.DashboardEventOverlay']]:
+    def event_overlays(self) -> pulumi.Output[Optional[List['outputs.DashboardEventOverlay']]]:
         """
         Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         """
@@ -360,7 +360,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.DashboardFilter']]:
+    def filters(self) -> pulumi.Output[Optional[List['outputs.DashboardFilter']]]:
         """
         Filter to apply to the charts when displaying the dashboard.
         """
@@ -368,7 +368,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def grids(self) -> Optional[List['outputs.DashboardGrid']]:
+    def grids(self) -> pulumi.Output[Optional[List['outputs.DashboardGrid']]]:
         """
         Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         """
@@ -376,7 +376,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the dashboard.
         """
@@ -384,7 +384,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="selectedEventOverlays")
-    def selected_event_overlays(self) -> Optional[List['outputs.DashboardSelectedEventOverlay']]:
+    def selected_event_overlays(self) -> pulumi.Output[Optional[List['outputs.DashboardSelectedEventOverlay']]]:
         """
         Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         """
@@ -392,7 +392,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[float]:
+    def start_time(self) -> pulumi.Output[Optional[float]]:
         """
         Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
         """
@@ -400,7 +400,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[str]:
+    def time_range(self) -> pulumi.Output[Optional[str]]:
         """
         The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         """
@@ -408,7 +408,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of the dashboard
         """
@@ -416,7 +416,7 @@ class Dashboard(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def variables(self) -> Optional[List['outputs.DashboardVariable']]:
+    def variables(self) -> pulumi.Output[Optional[List['outputs.DashboardVariable']]]:
         """
         Dashboard variable to apply to each chart in the dashboard.
         """

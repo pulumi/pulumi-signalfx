@@ -13,7 +13,7 @@ __all__ = ['Integration']
 
 class Integration(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
                  assignee_display_name: Optional[pulumi.Input[str]] = None,
@@ -171,7 +171,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[str]:
+    def api_token(self) -> pulumi.Output[Optional[str]]:
         """
         The API token for the user email
         """
@@ -179,7 +179,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assigneeDisplayName")
-    def assignee_display_name(self) -> Optional[str]:
+    def assignee_display_name(self) -> pulumi.Output[Optional[str]]:
         """
         Jira display name for the assignee.
         """
@@ -187,7 +187,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="assigneeName")
-    def assignee_name(self) -> str:
+    def assignee_name(self) -> pulumi.Output[str]:
         """
         Jira user name for the assignee.
         """
@@ -195,7 +195,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authMethod")
-    def auth_method(self) -> str:
+    def auth_method(self) -> pulumi.Output[str]:
         """
         Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         """
@@ -203,7 +203,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="baseUrl")
-    def base_url(self) -> str:
+    def base_url(self) -> pulumi.Output[str]:
         """
         Base URL of the Jira instance that's integrated with SignalFx.
         """
@@ -211,7 +211,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether the integration is enabled.
         """
@@ -219,7 +219,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="issueType")
-    def issue_type(self) -> str:
+    def issue_type(self) -> pulumi.Output[str]:
         """
         Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
         """
@@ -227,7 +227,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Name of the integration.
         """
@@ -235,7 +235,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> Optional[str]:
+    def password(self) -> pulumi.Output[Optional[str]]:
         """
         Password used to authenticate the Jira integration.
         """
@@ -243,7 +243,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectKey")
-    def project_key(self) -> str:
+    def project_key(self) -> pulumi.Output[str]:
         """
         Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         """
@@ -251,7 +251,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[str]:
+    def user_email(self) -> pulumi.Output[Optional[str]]:
         """
         Email address used to authenticate the Jira integration.
         """
@@ -259,7 +259,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def username(self) -> Optional[str]:
+    def username(self) -> pulumi.Output[Optional[str]]:
         """
         User name used to authenticate the Jira integration.
         """
