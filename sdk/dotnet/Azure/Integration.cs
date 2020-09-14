@@ -14,6 +14,49 @@ namespace Pulumi.SignalFx.Azure
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new SignalFx.Azure.IntegrationArgs
+    ///         {
+    ///             AppId = "YYY",
+    ///             CustomNamespacesPerServices = 
+    ///             {
+    ///                 new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs
+    ///                 {
+    ///                     Namespaces = 
+    ///                     {
+    ///                         "monitoringAgent",
+    ///                         "customNamespace",
+    ///                     },
+    ///                     Service = "Microsoft.Compute/virtualMachines",
+    ///                 },
+    ///             },
+    ///             Enabled = true,
+    ///             Environment = "azure",
+    ///             PollRate = 300,
+    ///             SecretKey = "XXX",
+    ///             Services = 
+    ///             {
+    ///                 "microsoft.sql/servers/elasticpools",
+    ///             },
+    ///             Subscriptions = 
+    ///             {
+    ///                 "sub-guid-here",
+    ///             },
+    ///             TenantId = "ZZZ",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Service Names
     /// 
     /// &gt; **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.
@@ -25,6 +68,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
+
+        /// <summary>
+        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        /// </summary>
+        [Output("customNamespacesPerServices")]
+        public Output<ImmutableArray<Outputs.IntegrationCustomNamespacesPerService>> CustomNamespacesPerServices { get; private set; } = null!;
 
         /// <summary>
         /// Whether the integration is enabled.
@@ -73,6 +122,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Output("subscriptions")]
         public Output<ImmutableArray<string>> Subscriptions { get; private set; } = null!;
+
+        /// <summary>
+        /// If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+        /// </summary>
+        [Output("syncGuestOsNamespaces")]
+        public Output<bool?> SyncGuestOsNamespaces { get; private set; } = null!;
 
         /// <summary>
         /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -131,6 +186,18 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
+
+        [Input("customNamespacesPerServices")]
+        private InputList<Inputs.IntegrationCustomNamespacesPerServiceArgs>? _customNamespacesPerServices;
+
+        /// <summary>
+        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        /// </summary>
+        public InputList<Inputs.IntegrationCustomNamespacesPerServiceArgs> CustomNamespacesPerServices
+        {
+            get => _customNamespacesPerServices ?? (_customNamespacesPerServices = new InputList<Inputs.IntegrationCustomNamespacesPerServiceArgs>());
+            set => _customNamespacesPerServices = value;
+        }
 
         /// <summary>
         /// Whether the integration is enabled.
@@ -193,6 +260,12 @@ namespace Pulumi.SignalFx.Azure
         }
 
         /// <summary>
+        /// If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+        /// </summary>
+        [Input("syncGuestOsNamespaces")]
+        public Input<bool>? SyncGuestOsNamespaces { get; set; }
+
+        /// <summary>
         /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
         [Input("tenantId", required: true)]
@@ -210,6 +283,18 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
+
+        [Input("customNamespacesPerServices")]
+        private InputList<Inputs.IntegrationCustomNamespacesPerServiceGetArgs>? _customNamespacesPerServices;
+
+        /// <summary>
+        /// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        /// </summary>
+        public InputList<Inputs.IntegrationCustomNamespacesPerServiceGetArgs> CustomNamespacesPerServices
+        {
+            get => _customNamespacesPerServices ?? (_customNamespacesPerServices = new InputList<Inputs.IntegrationCustomNamespacesPerServiceGetArgs>());
+            set => _customNamespacesPerServices = value;
+        }
 
         /// <summary>
         /// Whether the integration is enabled.
@@ -270,6 +355,12 @@ namespace Pulumi.SignalFx.Azure
             get => _subscriptions ?? (_subscriptions = new InputList<string>());
             set => _subscriptions = value;
         }
+
+        /// <summary>
+        /// If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+        /// </summary>
+        [Input("syncGuestOsNamespaces")]
+        public Input<bool>? SyncGuestOsNamespaces { get; set; }
 
         /// <summary>
         /// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.

@@ -93,6 +93,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly enableAwsUsage!: pulumi.Output<boolean | undefined>;
     /**
+     * Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+     */
+    public readonly enableCheckLargeVolume!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -113,11 +117,15 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string | undefined>;
     /**
+     * A named token to use for ingest
+     */
+    public readonly namedToken!: pulumi.Output<string | undefined>;
+    /**
      * Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
      */
     public readonly namespaceSyncRules!: pulumi.Output<outputs.aws.IntegrationNamespaceSyncRule[] | undefined>;
     /**
-     * AWS poll rate (in seconds). One of `60` or `300`.
+     * AWS poll rate (in seconds). Value between `60` and `300`.
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
@@ -156,11 +164,13 @@ export class Integration extends pulumi.CustomResource {
             inputs["customCloudwatchNamespaces"] = state ? state.customCloudwatchNamespaces : undefined;
             inputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
             inputs["enableAwsUsage"] = state ? state.enableAwsUsage : undefined;
+            inputs["enableCheckLargeVolume"] = state ? state.enableCheckLargeVolume : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["externalId"] = state ? state.externalId : undefined;
             inputs["importCloudWatch"] = state ? state.importCloudWatch : undefined;
             inputs["integrationId"] = state ? state.integrationId : undefined;
             inputs["key"] = state ? state.key : undefined;
+            inputs["namedToken"] = state ? state.namedToken : undefined;
             inputs["namespaceSyncRules"] = state ? state.namespaceSyncRules : undefined;
             inputs["pollRate"] = state ? state.pollRate : undefined;
             inputs["regions"] = state ? state.regions : undefined;
@@ -179,11 +189,13 @@ export class Integration extends pulumi.CustomResource {
             inputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
             inputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
             inputs["enableAwsUsage"] = args ? args.enableAwsUsage : undefined;
+            inputs["enableCheckLargeVolume"] = args ? args.enableCheckLargeVolume : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["externalId"] = args ? args.externalId : undefined;
             inputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
             inputs["integrationId"] = args ? args.integrationId : undefined;
             inputs["key"] = args ? args.key : undefined;
+            inputs["namedToken"] = args ? args.namedToken : undefined;
             inputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
             inputs["pollRate"] = args ? args.pollRate : undefined;
             inputs["regions"] = args ? args.regions : undefined;
@@ -220,6 +232,10 @@ export interface IntegrationState {
      */
     readonly enableAwsUsage?: pulumi.Input<boolean>;
     /**
+     * Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+     */
+    readonly enableCheckLargeVolume?: pulumi.Input<boolean>;
+    /**
      * Whether the integration is enabled.
      */
     readonly enabled?: pulumi.Input<boolean>;
@@ -240,11 +256,15 @@ export interface IntegrationState {
      */
     readonly key?: pulumi.Input<string>;
     /**
+     * A named token to use for ingest
+     */
+    readonly namedToken?: pulumi.Input<string>;
+    /**
      * Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
      */
     readonly namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
     /**
-     * AWS poll rate (in seconds). One of `60` or `300`.
+     * AWS poll rate (in seconds). Value between `60` and `300`.
      */
     readonly pollRate?: pulumi.Input<number>;
     /**
@@ -286,6 +306,10 @@ export interface IntegrationArgs {
      */
     readonly enableAwsUsage?: pulumi.Input<boolean>;
     /**
+     * Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+     */
+    readonly enableCheckLargeVolume?: pulumi.Input<boolean>;
+    /**
      * Whether the integration is enabled.
      */
     readonly enabled: pulumi.Input<boolean>;
@@ -306,11 +330,15 @@ export interface IntegrationArgs {
      */
     readonly key?: pulumi.Input<string>;
     /**
+     * A named token to use for ingest
+     */
+    readonly namedToken?: pulumi.Input<string>;
+    /**
      * Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
      */
     readonly namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
     /**
-     * AWS poll rate (in seconds). One of `60` or `300`.
+     * AWS poll rate (in seconds). Value between `60` and `300`.
      */
     readonly pollRate?: pulumi.Input<number>;
     /**

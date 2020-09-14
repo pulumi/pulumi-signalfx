@@ -6,129 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * A dashboard is a curated collection of specific charts and supports dimensional [filters](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#filter-dashboard-charts), [dashboard variables](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#dashboard-variables) and [time range](http://docs.signalfx.com/en/latest/_sidebars-and-includes/using-time-range-selector.html#time-range-selector) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
- *
- * > **NOTE** Since every dashboard is included in a `dashboard group` (SignalFx collection of dashboards), you need to create that first and reference it as shown in the example.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mydashboard0 = new signalfx.Dashboard("mydashboard0", {
- *     dashboardGroup: signalfx_dashboard_group.mydashboardgroup0.id,
- *     timeRange: "-30m",
- *     filters: [{
- *         property: "collector",
- *         values: [
- *             "cpu",
- *             "Diamond",
- *         ],
- *     }],
- *     variables: [{
- *         property: "region",
- *         alias: "region",
- *         values: ["uswest-1-"],
- *     }],
- *     charts: [
- *         {
- *             chartId: signalfx_time_chart.mychart0.id,
- *             width: 12,
- *             height: 1,
- *         },
- *         {
- *             chartId: signalfx_time_chart.mychart1.id,
- *             width: 5,
- *             height: 2,
- *         },
- *     ],
- * });
- * ```
- *
- * **Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.
- *
- * When you define a dashboard resource, you need to specify which charts (by `chartId`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.
- *
- * The are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.
- *
- * > **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.
- * ### Grid
- *
- * The dashboard is divided into equal-sized charts (defined by `width` and `height`). If a chart does not fit in the same row (because the total width > max allowed by the dashboard), this and the next ones will be place in the next row(s).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const gridExample = new signalfx.Dashboard("grid_example", {
- *     dashboardGroup: signalfx_dashboard_group_example.id,
- *     grids: [{
- *         chartIds: pulumi.all([pulumi.all(signalfx_time_chart_rps.map(v => v.id)), pulumi.all(signalfx_time_chart_50ths.map(v => v.id)), pulumi.all(signalfx_time_chart_99ths.map(v => v.id)), pulumi.all(signalfx_time_chart_idle_workers.map(v => v.id)), pulumi.all(signalfx_time_chart_cpu_idle.map(v => v.id))]).apply(([signalfx_time_chart_rpsId, signalfx_time_chart_50thsId, signalfx_time_chart_99thsId, signalfx_time_chart_idle_workersId, signalfx_time_chart_cpu_idleId]) => signalfx_time_chart_rpsId.map(v => v).concat(signalfx_time_chart_50thsId.map(v => v), signalfx_time_chart_99thsId.map(v => v), signalfx_time_chart_idle_workersId.map(v => v), signalfx_time_chart_cpu_idleId.map(v => v))),
- *         height: 1,
- *         width: 3,
- *     }],
- *     timeRange: "-15m",
- * });
- * ```
- * ### Column
- *
- * The dashboard is divided into equal-sized charts (defined by `width` and `height`). The charts are placed in the grid by column (column number is called `column`).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const load = new signalfx.Dashboard("load", {
- *     columns: [
- *         {
- *             chartIds: [signalfx_single_value_chart_rps.map(v => v.id)],
- *             width: 2,
- *         },
- *         {
- *             chartIds: [signalfx_time_chart_cpu_capacity.map(v => v.id)],
- *             column: 2,
- *             width: 4,
- *         },
- *     ],
- *     dashboardGroup: signalfx_dashboard_group_example.id,
- * });
- * ```
- * ## Dashboard Layout Information
- *
- * **Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.
- *
- * When you define a dashboard resource, you need to specify which charts (by `chartId`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.
- *
- * The are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.
- *
- * > **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.
- *
- * ### Column
- *
- * The dashboard is divided into equal-sized charts (defined by `width` and `height`). The charts are placed in the grid by column (column number is called `column`).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const load = new signalfx.Dashboard("load", {
- *     dashboardGroup: signalfx_dashboard_group.example.id,
- *     columns: [
- *         {
- *             chartIds: [signalfx_single_value_chart.rps.map(__item => __item.id)],
- *             width: 2,
- *         },
- *         {
- *             chartIds: [signalfx_time_chart.cpu_capacity.map(__item => __item.id)],
- *             column: 2,
- *             width: 4,
- *         },
- *     ],
- * });
- * ```
- */
 export class Dashboard extends pulumi.CustomResource {
     /**
      * Get an existing Dashboard resource's state with the given name, ID, and optional extra
@@ -158,11 +35,11 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this dashboard
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this dashboard
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
@@ -188,7 +65,7 @@ export class Dashboard extends pulumi.CustomResource {
     public readonly discoveryOptionsQuery!: pulumi.Output<string | undefined>;
     public readonly discoveryOptionsSelectors!: pulumi.Output<string[] | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
+     * Seconds since epoch. Used for visualization.
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
@@ -212,7 +89,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly selectedEventOverlays!: pulumi.Output<outputs.DashboardSelectedEventOverlay[] | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
+     * Seconds since epoch. Used for visualization.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
@@ -220,7 +97,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly timeRange!: pulumi.Output<string | undefined>;
     /**
-     * URL of the dashboard
+     * The URL of the dashboard.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -300,11 +177,11 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * Team IDs that have write access to this dashboard
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
      */
     readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
     readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -330,7 +207,7 @@ export interface DashboardState {
     readonly discoveryOptionsQuery?: pulumi.Input<string>;
     readonly discoveryOptionsSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
+     * Seconds since epoch. Used for visualization.
      */
     readonly endTime?: pulumi.Input<number>;
     /**
@@ -354,7 +231,7 @@ export interface DashboardState {
      */
     readonly selectedEventOverlays?: pulumi.Input<pulumi.Input<inputs.DashboardSelectedEventOverlay>[]>;
     /**
-     * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
+     * Seconds since epoch. Used for visualization.
      */
     readonly startTime?: pulumi.Input<number>;
     /**
@@ -362,7 +239,7 @@ export interface DashboardState {
      */
     readonly timeRange?: pulumi.Input<string>;
     /**
-     * URL of the dashboard
+     * The URL of the dashboard.
      */
     readonly url?: pulumi.Input<string>;
     /**
@@ -376,11 +253,11 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * Team IDs that have write access to this dashboard
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
      */
     readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
     readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -406,7 +283,7 @@ export interface DashboardArgs {
     readonly discoveryOptionsQuery?: pulumi.Input<string>;
     readonly discoveryOptionsSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
+     * Seconds since epoch. Used for visualization.
      */
     readonly endTime?: pulumi.Input<number>;
     /**
@@ -430,7 +307,7 @@ export interface DashboardArgs {
      */
     readonly selectedEventOverlays?: pulumi.Input<pulumi.Input<inputs.DashboardSelectedEventOverlay>[]>;
     /**
-     * Seconds since epoch. Used for visualization. You must specify timeSpanType = `"absolute"` too.
+     * Seconds since epoch. Used for visualization.
      */
     readonly startTime?: pulumi.Input<number>;
     /**

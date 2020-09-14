@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`signalfx` Terraform Provider](https://github.com/terraform-providers/terraform-provider-signalfx).",
+    "attribution": "This Pulumi package is based on the [`signalfx` Terraform Provider](https://github.com/splunk-terraform/terraform-provider-signalfx).",
     "repository": "https://github.com/pulumi/pulumi-signalfx",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -1048,7 +1048,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.\n",
+                    "description": "The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1083,7 +1083,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.\n",
+                    "description": "The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1136,7 +1136,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.\n",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1215,7 +1215,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.\n",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1378,7 +1378,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.\n",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1431,7 +1431,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.\n",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2011,6 +2011,36 @@
                 "name"
             ]
         },
+        "signalfx:azure/IntegrationCustomNamespacesPerService:IntegrationCustomNamespacesPerService": {
+            "properties": {
+                "namespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The additional namespaces.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "service": {
+                    "type": "string",
+                    "description": "The name of the service.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "namespaces",
+                "service"
+            ]
+        },
         "signalfx:azure/getServicesService:getServicesService": {
             "properties": {
                 "name": {
@@ -2091,10 +2121,6 @@
                     "type": "string",
                     "description": "The name of this integration\n"
                 },
-                "namedToken": {
-                    "type": "string",
-                    "description": "A named token to use for ingest\n"
-                },
                 "signalfxAwsAccount": {
                     "type": "string",
                     "description": "The AWS Account ARN to use with your policies/roles, provided by SignalFx.\n"
@@ -2109,10 +2135,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this integration\n"
-                },
-                "namedToken": {
-                    "type": "string",
-                    "description": "A named token to use for ingest\n"
                 }
             },
             "stateInputs": {
@@ -2125,10 +2147,6 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this integration\n"
-                    },
-                    "namedToken": {
-                        "type": "string",
-                        "description": "A named token to use for ingest\n"
                     },
                     "signalfxAwsAccount": {
                         "type": "string",
@@ -2159,6 +2177,10 @@
                     "type": "boolean",
                     "description": "Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.\n"
                 },
+                "enableCheckLargeVolume": {
+                    "type": "boolean",
+                    "description": "Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -2179,6 +2201,10 @@
                     "type": "string",
                     "description": "If you specify `auth_method = \\\"SecurityToken\\\"` in your request to create an AWS integration object, use this property to specify the key.\n"
                 },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
+                },
                 "namespaceSyncRules": {
                     "type": "array",
                     "items": {
@@ -2188,7 +2214,7 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
+                    "description": "AWS poll rate (in seconds). Value between `60` and `300`.\n"
                 },
                 "regions": {
                     "type": "array",
@@ -2240,6 +2266,10 @@
                     "type": "boolean",
                     "description": "Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.\n"
                 },
+                "enableCheckLargeVolume": {
+                    "type": "boolean",
+                    "description": "Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -2260,6 +2290,10 @@
                     "type": "string",
                     "description": "If you specify `auth_method = \\\"SecurityToken\\\"` in your request to create an AWS integration object, use this property to specify the key.\n"
                 },
+                "namedToken": {
+                    "type": "string",
+                    "description": "A named token to use for ingest\n"
+                },
                 "namespaceSyncRules": {
                     "type": "array",
                     "items": {
@@ -2269,7 +2303,7 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
+                    "description": "AWS poll rate (in seconds). Value between `60` and `300`.\n"
                 },
                 "regions": {
                     "type": "array",
@@ -2323,6 +2357,10 @@
                         "type": "boolean",
                         "description": "Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.\n"
                     },
+                    "enableCheckLargeVolume": {
+                        "type": "boolean",
+                        "description": "Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.\n"
+                    },
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the integration is enabled.\n"
@@ -2343,6 +2381,10 @@
                         "type": "string",
                         "description": "If you specify `auth_method = \\\"SecurityToken\\\"` in your request to create an AWS integration object, use this property to specify the key.\n"
                     },
+                    "namedToken": {
+                        "type": "string",
+                        "description": "A named token to use for ingest\n"
+                    },
                     "namespaceSyncRules": {
                         "type": "array",
                         "items": {
@@ -2352,7 +2394,7 @@
                     },
                     "pollRate": {
                         "type": "integer",
-                        "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
+                        "description": "AWS poll rate (in seconds). Value between `60` and `300`.\n"
                     },
                     "regions": {
                         "type": "array",
@@ -2391,10 +2433,6 @@
                     "type": "string",
                     "description": "The name of this integration\n"
                 },
-                "namedToken": {
-                    "type": "string",
-                    "description": "A named token to use for ingest\n"
-                },
                 "signalfxAwsAccount": {
                     "type": "string",
                     "description": "The AWS Account ARN to use with your policies/roles, provided by SignalFx.\n"
@@ -2413,10 +2451,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of this integration\n"
-                },
-                "namedToken": {
-                    "type": "string",
-                    "description": "A named token to use for ingest\n"
                 }
             },
             "stateInputs": {
@@ -2425,10 +2459,6 @@
                     "name": {
                         "type": "string",
                         "description": "The name of this integration\n"
-                    },
-                    "namedToken": {
-                        "type": "string",
-                        "description": "A named token to use for ingest\n"
                     },
                     "signalfxAwsAccount": {
                         "type": "string",
@@ -2443,11 +2473,18 @@
             }
         },
         "signalfx:azure/integration:Integration": {
-            "description": "SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).\n\n\u003e **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst azureMyteam = new signalfx.azure.Integration(\"azure_myteam\", {\n    enabled: true,\n    resource: [{\n        signalfxAzureIntegration: [{\n            azureMyteamXX: [{\n                appId: \"YYY\",\n                enabled: false,\n                environment: \"azure\",\n                name: \"AzureFoo\",\n                pollRate: 300,\n                secretKey: \"XXX\",\n                services: [\"microsoft.sql/servers/elasticpools\"],\n                subscriptions: [\"sub-guid-here\"],\n                tenantId: \"ZZZ\",\n            }],\n        }],\n    }],\n});\n```\n{{% /example %}}\n{{% /examples %}}\n## Service Names\n\n\u003e **NOTE** You can use the data source \"signalfx.azure.getServices\" to specify all services.\n",
+            "description": "SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).\n\n\u003e **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst azureMyteam = new signalfx.azure.Integration(\"azure_myteam\", {\n    appId: \"YYY\",\n    // Optional\n    customNamespacesPerServices: [{\n        namespaces: [\n            \"monitoringAgent\",\n            \"customNamespace\",\n        ],\n        service: \"Microsoft.Compute/virtualMachines\",\n    }],\n    enabled: true,\n    environment: \"azure\",\n    pollRate: 300,\n    secretKey: \"XXX\",\n    services: [\"microsoft.sql/servers/elasticpools\"],\n    subscriptions: [\"sub-guid-here\"],\n    tenantId: \"ZZZ\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nazure_myteam = signalfx.azure.Integration(\"azureMyteam\",\n    app_id=\"YYY\",\n    custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(\n        namespaces=[\n            \"monitoringAgent\",\n            \"customNamespace\",\n        ],\n        service=\"Microsoft.Compute/virtualMachines\",\n    )],\n    enabled=True,\n    environment=\"azure\",\n    poll_rate=300,\n    secret_key=\"XXX\",\n    services=[\"microsoft.sql/servers/elasticpools\"],\n    subscriptions=[\"sub-guid-here\"],\n    tenant_id=\"ZZZ\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var azureMyteam = new SignalFx.Azure.Integration(\"azureMyteam\", new SignalFx.Azure.IntegrationArgs\n        {\n            AppId = \"YYY\",\n            CustomNamespacesPerServices = \n            {\n                new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs\n                {\n                    Namespaces = \n                    {\n                        \"monitoringAgent\",\n                        \"customNamespace\",\n                    },\n                    Service = \"Microsoft.Compute/virtualMachines\",\n                },\n            },\n            Enabled = true,\n            Environment = \"azure\",\n            PollRate = 300,\n            SecretKey = \"XXX\",\n            Services = \n            {\n                \"microsoft.sql/servers/elasticpools\",\n            },\n            Subscriptions = \n            {\n                \"sub-guid-here\",\n            },\n            TenantId = \"ZZZ\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewIntegration(ctx, \"azureMyteam\", \u0026azure.IntegrationArgs{\n\t\t\tAppId: pulumi.String(\"YYY\"),\n\t\t\tCustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{\n\t\t\t\t\u0026azure.IntegrationCustomNamespacesPerServiceArgs{\n\t\t\t\t\tNamespaces: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"monitoringAgent\"),\n\t\t\t\t\t\tpulumi.String(\"customNamespace\"),\n\t\t\t\t\t},\n\t\t\t\t\tService: pulumi.String(\"Microsoft.Compute/virtualMachines\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tEnvironment: pulumi.String(\"azure\"),\n\t\t\tPollRate:    pulumi.Int(300),\n\t\t\tSecretKey:   pulumi.String(\"XXX\"),\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"microsoft.sql/servers/elasticpools\"),\n\t\t\t},\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sub-guid-here\"),\n\t\t\t},\n\t\t\tTenantId: pulumi.String(\"ZZZ\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Service Names\n\n\u003e **NOTE** You can use the data source \"signalfx.azure.getServices\" to specify all services.\n",
             "properties": {
                 "appId": {
                     "type": "string",
                     "description": "Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.\n"
+                },
+                "customNamespacesPerServices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:azure/IntegrationCustomNamespacesPerService:IntegrationCustomNamespacesPerService"
+                    },
+                    "description": "Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -2486,6 +2523,10 @@
                         "type": "string"
                     },
                     "description": "List of Azure subscriptions that SignalFx should monitor.\n"
+                },
+                "syncGuestOsNamespaces": {
+                    "type": "boolean",
+                    "description": "If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.\n"
                 },
                 "tenantId": {
                     "type": "string",
@@ -2506,6 +2547,13 @@
                     "type": "string",
                     "description": "Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.\n"
                 },
+                "customNamespacesPerServices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:azure/IntegrationCustomNamespacesPerService:IntegrationCustomNamespacesPerService"
+                    },
+                    "description": "Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -2543,6 +2591,10 @@
                         "type": "string"
                     },
                     "description": "List of Azure subscriptions that SignalFx should monitor.\n"
+                },
+                "syncGuestOsNamespaces": {
+                    "type": "boolean",
+                    "description": "If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.\n"
                 },
                 "tenantId": {
                     "type": "string",
@@ -2563,6 +2615,13 @@
                     "appId": {
                         "type": "string",
                         "description": "Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.\n"
+                    },
+                    "customNamespacesPerServices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:azure/IntegrationCustomNamespacesPerService:IntegrationCustomNamespacesPerService"
+                        },
+                        "description": "Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -2601,6 +2660,10 @@
                             "type": "string"
                         },
                         "description": "List of Azure subscriptions that SignalFx should monitor.\n"
+                    },
+                    "syncGuestOsNamespaces": {
+                        "type": "boolean",
+                        "description": "If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.\n"
                     },
                     "tenantId": {
                         "type": "string",
@@ -2850,21 +2913,20 @@
             }
         },
         "signalfx:index/dashboard:Dashboard": {
-            "description": "A dashboard is a curated collection of specific charts and supports dimensional [filters](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#filter-dashboard-charts), [dashboard variables](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#dashboard-variables) and [time range](http://docs.signalfx.com/en/latest/_sidebars-and-includes/using-time-range-selector.html#time-range-selector) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.\n\n\u003e **NOTE** Since every dashboard is included in a `dashboard group` (SignalFx collection of dashboards), you need to create that first and reference it as shown in the example.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mydashboard0 = new signalfx.Dashboard(\"mydashboard0\", {\n    dashboardGroup: signalfx_dashboard_group.mydashboardgroup0.id,\n    timeRange: \"-30m\",\n    filters: [{\n        property: \"collector\",\n        values: [\n            \"cpu\",\n            \"Diamond\",\n        ],\n    }],\n    variables: [{\n        property: \"region\",\n        alias: \"region\",\n        values: [\"uswest-1-\"],\n    }],\n    charts: [\n        {\n            chartId: signalfx_time_chart.mychart0.id,\n            width: 12,\n            height: 1,\n        },\n        {\n            chartId: signalfx_time_chart.mychart1.id,\n            width: 5,\n            height: 2,\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmydashboard0 = signalfx.Dashboard(\"mydashboard0\",\n    dashboard_group=signalfx_dashboard_group[\"mydashboardgroup0\"][\"id\"],\n    time_range=\"-30m\",\n    filters=[signalfx.DashboardFilterArgs(\n        property=\"collector\",\n        values=[\n            \"cpu\",\n            \"Diamond\",\n        ],\n    )],\n    variables=[signalfx.DashboardVariableArgs(\n        property=\"region\",\n        alias=\"region\",\n        values=[\"uswest-1-\"],\n    )],\n    charts=[\n        signalfx.DashboardChartArgs(\n            chart_id=signalfx_time_chart[\"mychart0\"][\"id\"],\n            width=12,\n            height=1,\n        ),\n        signalfx.DashboardChartArgs(\n            chart_id=signalfx_time_chart[\"mychart1\"][\"id\"],\n            width=5,\n            height=2,\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mydashboard0 = new SignalFx.Dashboard(\"mydashboard0\", new SignalFx.DashboardArgs\n        {\n            DashboardGroup = signalfx_dashboard_group.Mydashboardgroup0.Id,\n            TimeRange = \"-30m\",\n            Filters = \n            {\n                new SignalFx.Inputs.DashboardFilterArgs\n                {\n                    Property = \"collector\",\n                    Values = \n                    {\n                        \"cpu\",\n                        \"Diamond\",\n                    },\n                },\n            },\n            Variables = \n            {\n                new SignalFx.Inputs.DashboardVariableArgs\n                {\n                    Property = \"region\",\n                    Alias = \"region\",\n                    Values = \n                    {\n                        \"uswest-1-\",\n                    },\n                },\n            },\n            Charts = \n            {\n                new SignalFx.Inputs.DashboardChartArgs\n                {\n                    ChartId = signalfx_time_chart.Mychart0.Id,\n                    Width = 12,\n                    Height = 1,\n                },\n                new SignalFx.Inputs.DashboardChartArgs\n                {\n                    ChartId = signalfx_time_chart.Mychart1.Id,\n                    Width = 5,\n                    Height = 2,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDashboard(ctx, \"mydashboard0\", \u0026signalfx.DashboardArgs{\n\t\t\tDashboardGroup: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),\n\t\t\tTimeRange:      pulumi.String(\"-30m\"),\n\t\t\tFilters: signalfx.DashboardFilterArray{\n\t\t\t\t\u0026signalfx.DashboardFilterArgs{\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"cpu\"),\n\t\t\t\t\t\tpulumi.String(\"Diamond\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tVariables: signalfx.DashboardVariableArray{\n\t\t\t\t\u0026signalfx.DashboardVariableArgs{\n\t\t\t\t\tProperty: pulumi.String(\"region\"),\n\t\t\t\t\tAlias:    pulumi.String(\"region\"),\n\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"uswest-1-\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tCharts: signalfx.DashboardChartArray{\n\t\t\t\t\u0026signalfx.DashboardChartArgs{\n\t\t\t\t\tChartId: pulumi.Any(signalfx_time_chart.Mychart0.Id),\n\t\t\t\t\tWidth:   pulumi.Int(12),\n\t\t\t\t\tHeight:  pulumi.Int(1),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.DashboardChartArgs{\n\t\t\t\t\tChartId: pulumi.Any(signalfx_time_chart.Mychart1.Id),\n\t\t\t\t\tWidth:   pulumi.Int(5),\n\t\t\t\t\tHeight:  pulumi.Int(2),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n**Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.\n\nWhen you define a dashboard resource, you need to specify which charts (by `chart_id`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.\n\nThe are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.\n\n\u003e **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.\n{{% /example %}}\n{{% example %}}\n### Grid\n\nThe dashboard is divided into equal-sized charts (defined by `width` and `height`). If a chart does not fit in the same row (because the total width \u003e max allowed by the dashboard), this and the next ones will be place in the next row(s).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst gridExample = new signalfx.Dashboard(\"grid_example\", {\n    dashboardGroup: signalfx_dashboard_group_example.id,\n    grids: [{\n        chartIds: pulumi.all([pulumi.all(signalfx_time_chart_rps.map(v =\u003e v.id)), pulumi.all(signalfx_time_chart_50ths.map(v =\u003e v.id)), pulumi.all(signalfx_time_chart_99ths.map(v =\u003e v.id)), pulumi.all(signalfx_time_chart_idle_workers.map(v =\u003e v.id)), pulumi.all(signalfx_time_chart_cpu_idle.map(v =\u003e v.id))]).apply(([signalfx_time_chart_rpsId, signalfx_time_chart_50thsId, signalfx_time_chart_99thsId, signalfx_time_chart_idle_workersId, signalfx_time_chart_cpu_idleId]) =\u003e signalfx_time_chart_rpsId.map(v =\u003e v).concat(signalfx_time_chart_50thsId.map(v =\u003e v), signalfx_time_chart_99thsId.map(v =\u003e v), signalfx_time_chart_idle_workersId.map(v =\u003e v), signalfx_time_chart_cpu_idleId.map(v =\u003e v))),\n        height: 1,\n        width: 3,\n    }],\n    timeRange: \"-15m\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n## Dashboard Layout Information\n\n**Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.\n\nWhen you define a dashboard resource, you need to specify which charts (by `chart_id`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.\n\nThe are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.\n\n\u003e **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.\n",
             "properties": {
                 "authorizedWriterTeams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Team IDs that have write access to this dashboard\n"
+                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
                 },
                 "authorizedWriterUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "User IDs that have write access to this dashboard\n"
+                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
                 },
                 "charts": {
                     "type": "array",
@@ -2903,7 +2965,7 @@
                 },
                 "endTime": {
                     "type": "integer",
-                    "description": "Seconds since epoch. Used for visualization. You must specify time_span_type = `\"absolute\"` too.\n"
+                    "description": "Seconds since epoch. Used for visualization.\n"
                 },
                 "eventOverlays": {
                     "type": "array",
@@ -2939,7 +3001,7 @@
                 },
                 "startTime": {
                     "type": "integer",
-                    "description": "Seconds since epoch. Used for visualization. You must specify time_span_type = `\"absolute\"` too.\n"
+                    "description": "Seconds since epoch. Used for visualization.\n"
                 },
                 "timeRange": {
                     "type": "string",
@@ -2947,7 +3009,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the dashboard\n"
+                    "description": "The URL of the dashboard.\n"
                 },
                 "variables": {
                     "type": "array",
@@ -2968,14 +3030,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Team IDs that have write access to this dashboard\n"
+                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
                 },
                 "authorizedWriterUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "User IDs that have write access to this dashboard\n"
+                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
                 },
                 "charts": {
                     "type": "array",
@@ -3014,7 +3076,7 @@
                 },
                 "endTime": {
                     "type": "integer",
-                    "description": "Seconds since epoch. Used for visualization. You must specify time_span_type = `\"absolute\"` too.\n"
+                    "description": "Seconds since epoch. Used for visualization.\n"
                 },
                 "eventOverlays": {
                     "type": "array",
@@ -3050,7 +3112,7 @@
                 },
                 "startTime": {
                     "type": "integer",
-                    "description": "Seconds since epoch. Used for visualization. You must specify time_span_type = `\"absolute\"` too.\n"
+                    "description": "Seconds since epoch. Used for visualization.\n"
                 },
                 "timeRange": {
                     "type": "string",
@@ -3075,14 +3137,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Team IDs that have write access to this dashboard\n"
+                        "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
                     },
                     "authorizedWriterUsers": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "User IDs that have write access to this dashboard\n"
+                        "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
                     },
                     "charts": {
                         "type": "array",
@@ -3121,7 +3183,7 @@
                     },
                     "endTime": {
                         "type": "integer",
-                        "description": "Seconds since epoch. Used for visualization. You must specify time_span_type = `\"absolute\"` too.\n"
+                        "description": "Seconds since epoch. Used for visualization.\n"
                     },
                     "eventOverlays": {
                         "type": "array",
@@ -3157,7 +3219,7 @@
                     },
                     "startTime": {
                         "type": "integer",
-                        "description": "Seconds since epoch. Used for visualization. You must specify time_span_type = `\"absolute\"` too.\n"
+                        "description": "Seconds since epoch. Used for visualization.\n"
                     },
                     "timeRange": {
                         "type": "string",
@@ -3165,7 +3227,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the dashboard\n"
+                        "description": "The URL of the dashboard.\n"
                     },
                     "variables": {
                         "type": "array",
@@ -3215,13 +3277,6 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard group.\n"
-                },
-                "teams": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Team IDs to associate the dashboard group to.\n"
                 }
             },
             "required": [
@@ -3262,13 +3317,6 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard group.\n"
-                },
-                "teams": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Team IDs to associate the dashboard group to.\n"
                 }
             },
             "stateInputs": {
@@ -3308,20 +3356,13 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the dashboard group.\n"
-                    },
-                    "teams": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Team IDs to associate the dashboard group to.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "signalfx:index/dataLink:DataLink": {
-            "description": "Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Global link to a dashboard\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myDataLink = new signalfx.DataLink(\"myDataLink\", {\n    propertyName: \"pname\",\n    propertyValue: \"pvalue\",\n    targetSignalfxDashboards: [{\n        isDefault: true,\n        name: \"sfx_dash\",\n        dashboardGroupId: signalfx_dashboard_group.mydashboardgroup0.id,\n        dashboardId: signalfx_dashboard.mydashboard0.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmy_data_link = signalfx.DataLink(\"myDataLink\",\n    property_name=\"pname\",\n    property_value=\"pvalue\",\n    target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(\n        is_default=True,\n        name=\"sfx_dash\",\n        dashboard_group_id=signalfx_dashboard_group[\"mydashboardgroup0\"][\"id\"],\n        dashboard_id=signalfx_dashboard[\"mydashboard0\"][\"id\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myDataLink = new SignalFx.DataLink(\"myDataLink\", new SignalFx.DataLinkArgs\n        {\n            PropertyName = \"pname\",\n            PropertyValue = \"pvalue\",\n            TargetSignalfxDashboards = \n            {\n                new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs\n                {\n                    IsDefault = true,\n                    Name = \"sfx_dash\",\n                    DashboardGroupId = signalfx_dashboard_group.Mydashboardgroup0.Id,\n                    DashboardId = signalfx_dashboard.Mydashboard0.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDataLink(ctx, \"myDataLink\", \u0026signalfx.DataLinkArgs{\n\t\t\tPropertyName:  pulumi.String(\"pname\"),\n\t\t\tPropertyValue: pulumi.String(\"pvalue\"),\n\t\t\tTargetSignalfxDashboards: signalfx.DataLinkTargetSignalfxDashboardArray{\n\t\t\t\t\u0026signalfx.DataLinkTargetSignalfxDashboardArgs{\n\t\t\t\t\tIsDefault:        pulumi.Bool(true),\n\t\t\t\t\tName:             pulumi.String(\"sfx_dash\"),\n\t\t\t\t\tDashboardGroupId: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),\n\t\t\t\t\tDashboardId:      pulumi.Any(signalfx_dashboard.Mydashboard0.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Dashboard specific link to an external URL\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myDataLinkDash = new signalfx.DataLink(\"myDataLinkDash\", {\n    contextDashboardId: signalfx_dashboard.mydashboard0.id,\n    propertyName: \"pname2\",\n    propertyValue: \"pvalue\",\n    targetExternalUrls: [{\n        isDefault: false,\n        name: \"ex_url\",\n        timeFormat: \"ISO8601\",\n        url: \"https://www.example.com\",\n        propertyKeyMapping: {\n            foo: \"bar\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmy_data_link_dash = signalfx.DataLink(\"myDataLinkDash\",\n    context_dashboard_id=signalfx_dashboard[\"mydashboard0\"][\"id\"],\n    property_name=\"pname2\",\n    property_value=\"pvalue\",\n    target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(\n        is_default=False,\n        name=\"ex_url\",\n        time_format=\"ISO8601\",\n        url=\"https://www.example.com\",\n        property_key_mapping={\n            \"foo\": \"bar\",\n        },\n    )])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myDataLinkDash = new SignalFx.DataLink(\"myDataLinkDash\", new SignalFx.DataLinkArgs\n        {\n            ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,\n            PropertyName = \"pname2\",\n            PropertyValue = \"pvalue\",\n            TargetExternalUrls = \n            {\n                new SignalFx.Inputs.DataLinkTargetExternalUrlArgs\n                {\n                    IsDefault = false,\n                    Name = \"ex_url\",\n                    TimeFormat = \"ISO8601\",\n                    Url = \"https://www.example.com\",\n                    PropertyKeyMapping = \n                    {\n                        { \"foo\", \"bar\" },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDataLink(ctx, \"myDataLinkDash\", \u0026signalfx.DataLinkArgs{\n\t\t\tContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),\n\t\t\tPropertyName:       pulumi.String(\"pname2\"),\n\t\t\tPropertyValue:      pulumi.String(\"pvalue\"),\n\t\t\tTargetExternalUrls: signalfx.DataLinkTargetExternalUrlArray{\n\t\t\t\t\u0026signalfx.DataLinkTargetExternalUrlArgs{\n\t\t\t\t\tIsDefault:  pulumi.Bool(false),\n\t\t\t\t\tName:       pulumi.String(\"ex_url\"),\n\t\t\t\t\tTimeFormat: pulumi.String(\"ISO8601\"),\n\t\t\t\t\tUrl:        pulumi.String(\"https://www.example.com\"),\n\t\t\t\t\tPropertyKeyMapping: pulumi.StringMap{\n\t\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\n// A global link to SignalFx dashboard.\nconst myDataLink = new signalfx.DataLink(\"myDataLink\", {\n    propertyName: \"pname\",\n    propertyValue: \"pvalue\",\n    targetSignalfxDashboards: [{\n        isDefault: true,\n        name: \"sfx_dash\",\n        dashboardGroupId: signalfx_dashboard_group.mydashboardgroup0.id,\n        dashboardId: signalfx_dashboard.mydashboard0.id,\n    }],\n});\n// A dashboard-specific link to an external URL\nconst myDataLinkDash = new signalfx.DataLink(\"myDataLinkDash\", {\n    contextDashboardId: signalfx_dashboard.mydashboard0.id,\n    propertyName: \"pname2\",\n    propertyValue: \"pvalue\",\n    targetExternalUrls: [{\n        isDefault: false,\n        name: \"ex_url\",\n        timeFormat: \"ISO8601\",\n        url: \"https://www.example.com\",\n        propertyKeyMapping: {\n            foo: \"bar\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\n# A global link to SignalFx dashboard.\nmy_data_link = signalfx.DataLink(\"myDataLink\",\n    property_name=\"pname\",\n    property_value=\"pvalue\",\n    target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(\n        is_default=True,\n        name=\"sfx_dash\",\n        dashboard_group_id=signalfx_dashboard_group[\"mydashboardgroup0\"][\"id\"],\n        dashboard_id=signalfx_dashboard[\"mydashboard0\"][\"id\"],\n    )])\n# A dashboard-specific link to an external URL\nmy_data_link_dash = signalfx.DataLink(\"myDataLinkDash\",\n    context_dashboard_id=signalfx_dashboard[\"mydashboard0\"][\"id\"],\n    property_name=\"pname2\",\n    property_value=\"pvalue\",\n    target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(\n        is_default=False,\n        name=\"ex_url\",\n        time_format=\"ISO8601\",\n        url=\"https://www.example.com\",\n        property_key_mapping={\n            \"foo\": \"bar\",\n        },\n    )])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // A global link to SignalFx dashboard.\n        var myDataLink = new SignalFx.DataLink(\"myDataLink\", new SignalFx.DataLinkArgs\n        {\n            PropertyName = \"pname\",\n            PropertyValue = \"pvalue\",\n            TargetSignalfxDashboards = \n            {\n                new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs\n                {\n                    IsDefault = true,\n                    Name = \"sfx_dash\",\n                    DashboardGroupId = signalfx_dashboard_group.Mydashboardgroup0.Id,\n                    DashboardId = signalfx_dashboard.Mydashboard0.Id,\n                },\n            },\n        });\n        // A dashboard-specific link to an external URL\n        var myDataLinkDash = new SignalFx.DataLink(\"myDataLinkDash\", new SignalFx.DataLinkArgs\n        {\n            ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,\n            PropertyName = \"pname2\",\n            PropertyValue = \"pvalue\",\n            TargetExternalUrls = \n            {\n                new SignalFx.Inputs.DataLinkTargetExternalUrlArgs\n                {\n                    IsDefault = false,\n                    Name = \"ex_url\",\n                    TimeFormat = \"ISO8601\",\n                    Url = \"https://www.example.com\",\n                    PropertyKeyMapping = \n                    {\n                        { \"foo\", \"bar\" },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDataLink(ctx, \"myDataLink\", \u0026signalfx.DataLinkArgs{\n\t\t\tPropertyName:  pulumi.String(\"pname\"),\n\t\t\tPropertyValue: pulumi.String(\"pvalue\"),\n\t\t\tTargetSignalfxDashboards: signalfx.DataLinkTargetSignalfxDashboardArray{\n\t\t\t\t\u0026signalfx.DataLinkTargetSignalfxDashboardArgs{\n\t\t\t\t\tIsDefault:        pulumi.Bool(true),\n\t\t\t\t\tName:             pulumi.String(\"sfx_dash\"),\n\t\t\t\t\tDashboardGroupId: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),\n\t\t\t\t\tDashboardId:      pulumi.Any(signalfx_dashboard.Mydashboard0.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = signalfx.NewDataLink(ctx, \"myDataLinkDash\", \u0026signalfx.DataLinkArgs{\n\t\t\tContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),\n\t\t\tPropertyName:       pulumi.String(\"pname2\"),\n\t\t\tPropertyValue:      pulumi.String(\"pvalue\"),\n\t\t\tTargetExternalUrls: signalfx.DataLinkTargetExternalUrlArray{\n\t\t\t\t\u0026signalfx.DataLinkTargetExternalUrlArgs{\n\t\t\t\t\tIsDefault:  pulumi.Bool(false),\n\t\t\t\t\tName:       pulumi.String(\"ex_url\"),\n\t\t\t\t\tTimeFormat: pulumi.String(\"ISO8601\"),\n\t\t\t\t\tUrl:        pulumi.String(\"https://www.example.com\"),\n\t\t\t\t\tPropertyKeyMapping: pulumi.StringMap{\n\t\t\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "contextDashboardId": {
                     "type": "string",
@@ -3433,7 +3474,7 @@
             }
         },
         "signalfx:index/detector:Detector": {
-            "description": "Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.\n\n\u003e **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the \"Show SignalFlow\" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).\n",
+            "description": "Provides a SignalFx detector resource. This can be used to create and manage detectors.\n\n\u003e **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the \"Show SignalFlow\" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).\n\n## Notification Format\n\nAs SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\nThis will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:\n\n### Email\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### Jira\n\nNote that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### Opsgenie\n\nNote that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### PagerDuty\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### Slack\n\nExclude the `#` on the channel name!\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### Team\n\nSends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### TeamEmail\n\nSends an email to every member of a team.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### VictorOps\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\n### Webhook\n\n\u003e **NOTE** You need to include all the commas even if you only use a credential id below.\n\nYou can either configure a Webhook to use an existing integration's credential id:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n\nor configure one inline:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing Pulumi;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n",
             "properties": {
                 "authorizedWriterTeams": {
                     "type": "array",
@@ -3492,20 +3533,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
-                "teams": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Team IDs to associate the detector to.\n"
-                },
                 "timeRange": {
                     "type": "integer",
                     "description": "Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.\n"
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the detector\n"
+                    "description": "The URL of the detector.\n"
                 },
                 "vizOptions": {
                     "type": "array",
@@ -3578,13 +3612,6 @@
                 "startTime": {
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
-                },
-                "teams": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Team IDs to associate the detector to.\n"
                 },
                 "timeRange": {
                     "type": "integer",
@@ -3662,20 +3689,13 @@
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                     },
-                    "teams": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Team IDs to associate the detector to.\n"
-                    },
                     "timeRange": {
                         "type": "integer",
                         "description": "Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.\n"
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the detector\n"
+                        "description": "The URL of the detector.\n"
                     },
                     "vizOptions": {
                         "type": "array",
@@ -3717,7 +3737,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the chart\n"
+                    "description": "The URL of the chart.\n"
                 }
             },
             "required": [
@@ -3783,14 +3803,14 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the chart\n"
+                        "description": "The URL of the chart.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "signalfx:index/heatmapChart:HeatmapChart": {
-            "description": "This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myheatmapchart0 = new signalfx.HeatmapChart(\"myheatmapchart0\", {\n    colorRange: {\n        color: \"#ff0000\",\n        maxValue: 100,\n        minValue: 0,\n    },\n    colorScales: [\n        // You can only use one of color_range or color_scale!\n        {\n            color: \"green\",\n            gte: 99,\n        },\n        {\n            color: \"yellow\",\n            gte: 95,\n            lt: 99, // This ensures we cover the range 95-99\n        },\n        {\n            color: \"red\",\n            lt: 95,\n        },\n    ],\n    description: \"Very cool Heatmap\",\n    disableSampling: true,\n    groupBies: [\n        \"hostname\",\n        \"host\",\n    ],\n    hideTimestamp: true,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    sortBy: \"+host\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyheatmapchart0 = signalfx.HeatmapChart(\"myheatmapchart0\",\n    color_range=signalfx.HeatmapChartColorRangeArgs(\n        color=\"#ff0000\",\n        max_value=100,\n        min_value=0,\n    ),\n    color_scales=[\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"green\",\n            gte=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"yellow\",\n            gte=95,\n            lt=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"red\",\n            lt=95,\n        ),\n    ],\n    description=\"Very cool Heatmap\",\n    disable_sampling=True,\n    group_bies=[\n        \"hostname\",\n        \"host\",\n    ],\n    hide_timestamp=True,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    sort_by=\"+host\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myheatmapchart0 = new SignalFx.HeatmapChart(\"myheatmapchart0\", new SignalFx.HeatmapChartArgs\n        {\n            ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs\n            {\n                Color = \"#ff0000\",\n                MaxValue = 100,\n                MinValue = 0,\n            },\n            ColorScales = \n            {\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"green\",\n                    Gte = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"yellow\",\n                    Gte = 95,\n                    Lt = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"red\",\n                    Lt = 95,\n                },\n            },\n            Description = \"Very cool Heatmap\",\n            DisableSampling = true,\n            GroupBies = \n            {\n                \"hostname\",\n                \"host\",\n            },\n            HideTimestamp = true,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            SortBy = \"+host\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewHeatmapChart(ctx, \"myheatmapchart0\", \u0026signalfx.HeatmapChartArgs{\n\t\t\tColorRange: \u0026signalfx.HeatmapChartColorRangeArgs{\n\t\t\t\tColor:    pulumi.String(\"#ff0000\"),\n\t\t\t\tMaxValue: pulumi.Float64(100),\n\t\t\t\tMinValue: pulumi.Float64(0),\n\t\t\t},\n\t\t\tColorScales: signalfx.HeatmapChartColorScaleArray{\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"green\"),\n\t\t\t\t\tGte:   pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"yellow\"),\n\t\t\t\t\tGte:   pulumi.Float64(95),\n\t\t\t\t\tLt:    pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"red\"),\n\t\t\t\t\tLt:    pulumi.Float64(95),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription:     pulumi.String(\"Very cool Heatmap\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tGroupBies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"hostname\"),\n\t\t\t\tpulumi.String(\"host\"),\n\t\t\t},\n\t\t\tHideTimestamp: pulumi.Bool(true),\n\t\t\tProgramText:   pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tSortBy:        pulumi.String(\"+host\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myheatmapchart0 = new signalfx.HeatmapChart(\"myheatmapchart0\", {\n    colorRange: {\n        color: \"#ff0000\",\n        maxValue: 100,\n        minValue: 0,\n    },\n    colorScales: [\n        // You can only use one of color_range or color_scale!\n        {\n            color: \"green\",\n            gte: 99,\n        },\n        {\n            color: \"yellow\",\n            gte: 95,\n            lt: 99, // This ensures terraform recognizes that we cover the range 95-99\n        },\n        {\n            color: \"red\",\n            lt: 95,\n        },\n    ],\n    description: \"Very cool Heatmap\",\n    disableSampling: true,\n    groupBies: [\n        \"hostname\",\n        \"host\",\n    ],\n    hideTimestamp: true,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    sortBy: \"+host\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyheatmapchart0 = signalfx.HeatmapChart(\"myheatmapchart0\",\n    color_range=signalfx.HeatmapChartColorRangeArgs(\n        color=\"#ff0000\",\n        max_value=100,\n        min_value=0,\n    ),\n    color_scales=[\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"green\",\n            gte=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"yellow\",\n            gte=95,\n            lt=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"red\",\n            lt=95,\n        ),\n    ],\n    description=\"Very cool Heatmap\",\n    disable_sampling=True,\n    group_bies=[\n        \"hostname\",\n        \"host\",\n    ],\n    hide_timestamp=True,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    sort_by=\"+host\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myheatmapchart0 = new SignalFx.HeatmapChart(\"myheatmapchart0\", new SignalFx.HeatmapChartArgs\n        {\n            ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs\n            {\n                Color = \"#ff0000\",\n                MaxValue = 100,\n                MinValue = 0,\n            },\n            ColorScales = \n            {\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"green\",\n                    Gte = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"yellow\",\n                    Gte = 95,\n                    Lt = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"red\",\n                    Lt = 95,\n                },\n            },\n            Description = \"Very cool Heatmap\",\n            DisableSampling = true,\n            GroupBies = \n            {\n                \"hostname\",\n                \"host\",\n            },\n            HideTimestamp = true,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            SortBy = \"+host\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewHeatmapChart(ctx, \"myheatmapchart0\", \u0026signalfx.HeatmapChartArgs{\n\t\t\tColorRange: \u0026signalfx.HeatmapChartColorRangeArgs{\n\t\t\t\tColor:    pulumi.String(\"#ff0000\"),\n\t\t\t\tMaxValue: pulumi.Float64(100),\n\t\t\t\tMinValue: pulumi.Float64(0),\n\t\t\t},\n\t\t\tColorScales: signalfx.HeatmapChartColorScaleArray{\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"green\"),\n\t\t\t\t\tGte:   pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"yellow\"),\n\t\t\t\t\tGte:   pulumi.Float64(95),\n\t\t\t\t\tLt:    pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"red\"),\n\t\t\t\t\tLt:    pulumi.Float64(95),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription:     pulumi.String(\"Very cool Heatmap\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tGroupBies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"hostname\"),\n\t\t\t\tpulumi.String(\"host\"),\n\t\t\t},\n\t\t\tHideTimestamp: pulumi.Bool(true),\n\t\t\tProgramText:   pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tSortBy:        pulumi.String(\"+host\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "colorRange": {
                     "$ref": "#/types/signalfx:/HeatmapChartColorRange:HeatmapChartColorRange",
@@ -3852,7 +3872,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the chart\n"
+                    "description": "The URL of the chart.\n"
                 }
             },
             "required": [
@@ -3986,14 +4006,14 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the chart\n"
+                        "description": "The URL of the chart.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "signalfx:index/listChart:ListChart": {
-            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new SignalFx.ListChartArgs\n        {\n            ColorBy = \"Metric\",\n            Description = \"Very cool List Chart\",\n            DisableSampling = true,\n            LegendOptionsFields = \n            {\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"cluster_name\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"role\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"host\",\n                },\n            },\n            MaxDelay = 2,\n            MaxPrecision = 2,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            RefreshInterval = 1,\n            SortBy = \"-value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:         pulumi.String(\"Metric\"),\n\t\t\tDescription:     pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new SignalFx.ListChartArgs\n        {\n            ColorBy = \"Metric\",\n            Description = \"Very cool List Chart\",\n            DisableSampling = true,\n            LegendOptionsFields = \n            {\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"cluster_name\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"role\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"host\",\n                },\n            },\n            MaxDelay = 2,\n            MaxPrecision = 2,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            RefreshInterval = 1,\n            SortBy = \"-value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:         pulumi.String(\"Metric\"),\n\t\t\tDescription:     pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "colorBy": {
                     "type": "string",
@@ -4075,7 +4095,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the chart\n"
+                    "description": "The URL of the chart.\n"
                 },
                 "vizOptions": {
                     "type": "array",
@@ -4263,7 +4283,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the chart\n"
+                        "description": "The URL of the chart.\n"
                     },
                     "vizOptions": {
                         "type": "array",
@@ -4304,7 +4324,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.\n"
+                    "description": "List of strings specifying where notifications will be sent when an incident occurs. See\nhttps://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info\n"
                 },
                 "secret": {
                     "type": "string",
@@ -4341,7 +4361,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.\n"
+                    "description": "List of strings specifying where notifications will be sent when an incident occurs. See\nhttps://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info\n"
                 }
             },
             "stateInputs": {
@@ -4372,7 +4392,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.\n"
+                        "description": "List of strings specifying where notifications will be sent when an incident occurs. See\nhttps://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info\n"
                     },
                     "secret": {
                         "type": "string",
@@ -4438,7 +4458,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the chart\n"
+                    "description": "The URL of the chart.\n"
                 },
                 "vizOptions": {
                     "type": "array",
@@ -4572,7 +4592,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the chart\n"
+                        "description": "The URL of the chart.\n"
                     },
                     "vizOptions": {
                         "type": "array",
@@ -4586,11 +4606,25 @@
             }
         },
         "signalfx:index/team:Team": {
-            "description": "Handles management of SignalFx teams.\n\nYou can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myteam0 = new signalfx.Team(\"myteam0\", {\n    description: \"Super great team no jerks definitely\",\n    members: [\n        \"userid1\",\n        \"userid2\",\n    ],\n    notificationsCriticals: [\"PagerDuty,credentialId\"],\n    notificationsInfos: [\"Email,notify@example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyteam0 = signalfx.Team(\"myteam0\",\n    description=\"Super great team no jerks definitely\",\n    members=[\n        \"userid1\",\n        \"userid2\",\n    ],\n    notifications_criticals=[\"PagerDuty,credentialId\"],\n    notifications_infos=[\"Email,notify@example.com\"])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myteam0 = new SignalFx.Team(\"myteam0\", new SignalFx.TeamArgs\n        {\n            Description = \"Super great team no jerks definitely\",\n            Members = \n            {\n                \"userid1\",\n                \"userid2\",\n            },\n            NotificationsCriticals = \n            {\n                \"PagerDuty,credentialId\",\n            },\n            NotificationsInfos = \n            {\n                \"Email,notify@example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewTeam(ctx, \"myteam0\", \u0026signalfx.TeamArgs{\n\t\t\tDescription: pulumi.String(\"Super great team no jerks definitely\"),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userid1\"),\n\t\t\t\tpulumi.String(\"userid2\"),\n\t\t\t},\n\t\t\tNotificationsCriticals: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"PagerDuty,credentialId\"),\n\t\t\t},\n\t\t\tNotificationsInfos: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Email,notify@example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Handles management of SignalFx teams.\n\nYou can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myteam0 = new signalfx.Team(\"myteam0\", {\n    dashboardGroups: [\n        \"dashboardGroupId1\",\n        \"dashboardGroupId2\",\n    ],\n    description: \"Super great team no jerks definitely\",\n    detectors: [\n        \"detectorId1\",\n        \"detectorId2\",\n    ],\n    members: [\n        \"userid1\",\n        \"userid2\",\n    ],\n    notificationsCriticals: [\"PagerDuty,credentialId\"],\n    notificationsInfos: [\"Email,notify@example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyteam0 = signalfx.Team(\"myteam0\",\n    dashboard_groups=[\n        \"dashboardGroupId1\",\n        \"dashboardGroupId2\",\n    ],\n    description=\"Super great team no jerks definitely\",\n    detectors=[\n        \"detectorId1\",\n        \"detectorId2\",\n    ],\n    members=[\n        \"userid1\",\n        \"userid2\",\n    ],\n    notifications_criticals=[\"PagerDuty,credentialId\"],\n    notifications_infos=[\"Email,notify@example.com\"])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myteam0 = new SignalFx.Team(\"myteam0\", new SignalFx.TeamArgs\n        {\n            DashboardGroups = \n            {\n                \"dashboardGroupId1\",\n                \"dashboardGroupId2\",\n            },\n            Description = \"Super great team no jerks definitely\",\n            Detectors = \n            {\n                \"detectorId1\",\n                \"detectorId2\",\n            },\n            Members = \n            {\n                \"userid1\",\n                \"userid2\",\n            },\n            NotificationsCriticals = \n            {\n                \"PagerDuty,credentialId\",\n            },\n            NotificationsInfos = \n            {\n                \"Email,notify@example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewTeam(ctx, \"myteam0\", \u0026signalfx.TeamArgs{\n\t\t\tDashboardGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dashboardGroupId1\"),\n\t\t\t\tpulumi.String(\"dashboardGroupId2\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Super great team no jerks definitely\"),\n\t\t\tDetectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"detectorId1\"),\n\t\t\t\tpulumi.String(\"detectorId2\"),\n\t\t\t},\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userid1\"),\n\t\t\t\tpulumi.String(\"userid2\"),\n\t\t\t},\n\t\t\tNotificationsCriticals: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"PagerDuty,credentialId\"),\n\t\t\t},\n\t\t\tNotificationsInfos: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Email,notify@example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "dashboardGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Dashboard Groups that belong to this team\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Description of the team.\n"
+                },
+                "detectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of detector IDs to include in the team.\n"
                 },
                 "members": {
                     "type": "array",
@@ -4647,7 +4681,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the team\n"
+                    "description": "The URL of the team.\n"
                 }
             },
             "required": [
@@ -4655,9 +4689,23 @@
                 "url"
             ],
             "inputProperties": {
+                "dashboardGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Dashboard Groups that belong to this team\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Description of the team.\n"
+                },
+                "detectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of detector IDs to include in the team.\n"
                 },
                 "members": {
                     "type": "array",
@@ -4716,9 +4764,23 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Team resources.\n",
                 "properties": {
+                    "dashboardGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Dashboard Groups that belong to this team\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "Description of the team.\n"
+                    },
+                    "detectors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of detector IDs to include in the team.\n"
                     },
                     "members": {
                         "type": "array",
@@ -4775,7 +4837,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the team\n"
+                        "description": "The URL of the team.\n"
                     }
                 },
                 "type": "object"
@@ -4798,7 +4860,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the chart\n"
+                    "description": "The URL of the chart.\n"
                 }
             },
             "required": [
@@ -4840,7 +4902,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the chart\n"
+                        "description": "The URL of the chart.\n"
                     }
                 },
                 "type": "object"
@@ -4972,7 +5034,7 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of the chart\n"
+                    "description": "The URL of the chart.\n"
                 },
                 "vizOptions": {
                     "type": "array",
@@ -5246,7 +5308,7 @@
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL of the chart\n"
+                        "description": "The URL of the chart.\n"
                     },
                     "vizOptions": {
                         "type": "array",
@@ -5967,11 +6029,11 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing SignalFx resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-signalfx)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-signalfx` repo](https://github.com/pulumi/pulumi-signalfx/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-signalfx` repo](https://github.com/terraform-providers/terraform-provider-signalfx/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/splunk-terraform/terraform-provider-signalfx)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-signalfx` repo](https://github.com/pulumi/pulumi-signalfx/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`splunk-terraform/terraform-provider-signalfx` repo](https://github.com/splunk-terraform/terraform-provider-signalfx/issues).",
             "typescriptVersion": ""
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-signalfx)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-signalfx` repo](https://github.com/pulumi/pulumi-signalfx/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-signalfx` repo](https://github.com/terraform-providers/terraform-provider-signalfx/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/splunk-terraform/terraform-provider-signalfx)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-signalfx` repo](https://github.com/pulumi/pulumi-signalfx/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`splunk-terraform/terraform-provider-signalfx` repo](https://github.com/splunk-terraform/terraform-provider-signalfx/issues).",
             "requires": {
                 "pulumi": "\u003e=2.9.0,\u003c3.0.0"
             },

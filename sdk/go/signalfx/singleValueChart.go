@@ -71,7 +71,7 @@ type SingleValueChart struct {
 	ShowSparkLine pulumi.BoolPtrOutput `pulumi:"showSparkLine"`
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions SingleValueChartVizOptionArrayOutput `pulumi:"vizOptions"`
@@ -132,7 +132,7 @@ type singleValueChartState struct {
 	ShowSparkLine *bool `pulumi:"showSparkLine"`
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions []SingleValueChartVizOption `pulumi:"vizOptions"`
@@ -163,7 +163,7 @@ type SingleValueChartState struct {
 	ShowSparkLine pulumi.BoolPtrInput
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions SingleValueChartVizOptionArrayInput

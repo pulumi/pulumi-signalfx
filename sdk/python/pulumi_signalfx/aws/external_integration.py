@@ -16,7 +16,6 @@ class ExternalIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_token: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -132,7 +131,6 @@ class ExternalIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
-        :param pulumi.Input[str] named_token: A named token to use for ingest
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -152,7 +150,6 @@ class ExternalIntegration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['named_token'] = named_token
             __props__['external_id'] = None
             __props__['signalfx_aws_account'] = None
         super(ExternalIntegration, __self__).__init__(
@@ -167,7 +164,6 @@ class ExternalIntegration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            named_token: Optional[pulumi.Input[str]] = None,
             signalfx_aws_account: Optional[pulumi.Input[str]] = None) -> 'ExternalIntegration':
         """
         Get an existing ExternalIntegration resource's state with the given name, id, and optional extra
@@ -178,7 +174,6 @@ class ExternalIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] external_id: The external ID to use with your IAM role and with `aws.Integration`.
         :param pulumi.Input[str] name: The name of this integration
-        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -187,7 +182,6 @@ class ExternalIntegration(pulumi.CustomResource):
 
         __props__["external_id"] = external_id
         __props__["name"] = name
-        __props__["named_token"] = named_token
         __props__["signalfx_aws_account"] = signalfx_aws_account
         return ExternalIntegration(resource_name, opts=opts, __props__=__props__)
 
@@ -206,14 +200,6 @@ class ExternalIntegration(pulumi.CustomResource):
         The name of this integration
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="namedToken")
-    def named_token(self) -> pulumi.Output[Optional[str]]:
-        """
-        A named token to use for ingest
-        """
-        return pulumi.get(self, "named_token")
 
     @property
     @pulumi.getter(name="signalfxAwsAccount")

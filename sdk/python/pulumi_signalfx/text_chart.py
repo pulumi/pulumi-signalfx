@@ -105,7 +105,7 @@ class TextChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] markdown: Markdown text to display.
         :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -145,7 +145,7 @@ class TextChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 

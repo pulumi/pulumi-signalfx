@@ -181,7 +181,7 @@ export class TimeChart extends pulumi.CustomResource {
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -387,7 +387,7 @@ export interface TimeChartState {
      */
     readonly unitPrefix?: pulumi.Input<string>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     readonly url?: pulumi.Input<string>;
     /**

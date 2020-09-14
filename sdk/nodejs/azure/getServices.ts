@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const azureServices = signalfx.azure.getServices({});
  * // Leaves out most of the integration bits, see the docs
  * // for signalfx_azure_integration for more
+ * // …
  * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {services: [azureServices.then(azureServices => azureServices.services)].map(__item => __item?.name)});
  * ```
  */

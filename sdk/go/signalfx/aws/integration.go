@@ -84,6 +84,8 @@ type Integration struct {
 	CustomNamespaceSyncRules IntegrationCustomNamespaceSyncRuleArrayOutput `pulumi:"customNamespaceSyncRules"`
 	// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
 	EnableAwsUsage pulumi.BoolPtrOutput `pulumi:"enableAwsUsage"`
+	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+	EnableCheckLargeVolume pulumi.BoolPtrOutput `pulumi:"enableCheckLargeVolume"`
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -94,9 +96,11 @@ type Integration struct {
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
 	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayOutput `pulumi:"namespaceSyncRules"`
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// AWS poll rate (in seconds). Value between `60` and `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// List of AWS regions that SignalFx should monitor.
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
@@ -150,6 +154,8 @@ type integrationState struct {
 	CustomNamespaceSyncRules []IntegrationCustomNamespaceSyncRule `pulumi:"customNamespaceSyncRules"`
 	// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
 	EnableAwsUsage *bool `pulumi:"enableAwsUsage"`
+	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+	EnableCheckLargeVolume *bool `pulumi:"enableCheckLargeVolume"`
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -160,9 +166,11 @@ type integrationState struct {
 	IntegrationId *string `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
 	Key *string `pulumi:"key"`
+	// A named token to use for ingest
+	NamedToken *string `pulumi:"namedToken"`
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules []IntegrationNamespaceSyncRule `pulumi:"namespaceSyncRules"`
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// AWS poll rate (in seconds). Value between `60` and `300`.
 	PollRate *int `pulumi:"pollRate"`
 	// List of AWS regions that SignalFx should monitor.
 	Regions []string `pulumi:"regions"`
@@ -183,6 +191,8 @@ type IntegrationState struct {
 	CustomNamespaceSyncRules IntegrationCustomNamespaceSyncRuleArrayInput
 	// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
 	EnableAwsUsage pulumi.BoolPtrInput
+	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+	EnableCheckLargeVolume pulumi.BoolPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -193,9 +203,11 @@ type IntegrationState struct {
 	IntegrationId pulumi.StringPtrInput
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
 	Key pulumi.StringPtrInput
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrInput
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayInput
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// AWS poll rate (in seconds). Value between `60` and `300`.
 	PollRate pulumi.IntPtrInput
 	// List of AWS regions that SignalFx should monitor.
 	Regions pulumi.StringArrayInput
@@ -220,6 +232,8 @@ type integrationArgs struct {
 	CustomNamespaceSyncRules []IntegrationCustomNamespaceSyncRule `pulumi:"customNamespaceSyncRules"`
 	// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
 	EnableAwsUsage *bool `pulumi:"enableAwsUsage"`
+	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+	EnableCheckLargeVolume *bool `pulumi:"enableCheckLargeVolume"`
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -230,9 +244,11 @@ type integrationArgs struct {
 	IntegrationId string `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
 	Key *string `pulumi:"key"`
+	// A named token to use for ingest
+	NamedToken *string `pulumi:"namedToken"`
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules []IntegrationNamespaceSyncRule `pulumi:"namespaceSyncRules"`
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// AWS poll rate (in seconds). Value between `60` and `300`.
 	PollRate *int `pulumi:"pollRate"`
 	// List of AWS regions that SignalFx should monitor.
 	Regions []string `pulumi:"regions"`
@@ -254,6 +270,8 @@ type IntegrationArgs struct {
 	CustomNamespaceSyncRules IntegrationCustomNamespaceSyncRuleArrayInput
 	// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
 	EnableAwsUsage pulumi.BoolPtrInput
+	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+	EnableCheckLargeVolume pulumi.BoolPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -264,9 +282,11 @@ type IntegrationArgs struct {
 	IntegrationId pulumi.StringInput
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
 	Key pulumi.StringPtrInput
+	// A named token to use for ingest
+	NamedToken pulumi.StringPtrInput
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayInput
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// AWS poll rate (in seconds). Value between `60` and `300`.
 	PollRate pulumi.IntPtrInput
 	// List of AWS regions that SignalFx should monitor.
 	Regions pulumi.StringArrayInput

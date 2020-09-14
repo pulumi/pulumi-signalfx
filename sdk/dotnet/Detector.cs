@@ -10,420 +10,162 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.
+    /// Provides a SignalFx detector resource. This can be used to create and manage detectors.
     /// 
     /// &gt; **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
     /// 
-    /// ## Example Usage
+    /// ## Notification Format
+    /// 
+    /// As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+    /// 
+    /// ### Email
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ### Jira
     /// 
     /// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Jira,credentialId",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### Opsgenie
     /// 
     /// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Opsgenie,credentialId,responderName,responderId,Team",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### PagerDuty
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "PagerDuty,credentialId",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### Slack
     /// 
     /// Exclude the `#` on the channel name!
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Slack,credentialId,channel",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### Team
     /// 
     /// Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Team,teamId",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### TeamEmail
     /// 
     /// Sends an email to every member of a team.
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "TeamEmail,teamId",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### VictorOps
     /// 
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "VictorOps,credentialId,routingKey",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
     /// ```
+    /// 
     /// ### Webhook
     /// 
     /// &gt; **NOTE** You need to include all the commas even if you only use a credential id below.
     /// 
     /// You can either configure a Webhook to use an existing integration's credential id:
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Webhook,credentialId,x,",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
@@ -431,49 +173,12 @@ namespace Pulumi.SignalFx
     /// 
     /// or configure one inline:
     /// ```csharp
-    /// using System.Collections.Generic;
     /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
     /// 
     /// class MyStack : Stack
     /// {
     ///     public MyStack()
     ///     {
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; @var.Clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
-    ///             {
-    ///                 Description = $"your application is slow - {@var.Clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{@var.Clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///                 Rules = 
-    ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Webhook,,secret,url",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             }));
-    ///         }
     ///     }
     /// 
     /// }
@@ -554,19 +259,13 @@ namespace Pulumi.SignalFx
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Team IDs to associate the detector to.
-        /// </summary>
-        [Output("teams")]
-        public Output<ImmutableArray<string>> Teams { get; private set; } = null!;
-
-        /// <summary>
         /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the detector
+        /// The URL of the detector.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -713,18 +412,6 @@ namespace Pulumi.SignalFx
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
-        [Input("teams")]
-        private InputList<string>? _teams;
-
-        /// <summary>
-        /// Team IDs to associate the detector to.
-        /// </summary>
-        public InputList<string> Teams
-        {
-            get => _teams ?? (_teams = new InputList<string>());
-            set => _teams = value;
-        }
-
         /// <summary>
         /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
@@ -840,18 +527,6 @@ namespace Pulumi.SignalFx
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
-        [Input("teams")]
-        private InputList<string>? _teams;
-
-        /// <summary>
-        /// Team IDs to associate the detector to.
-        /// </summary>
-        public InputList<string> Teams
-        {
-            get => _teams ?? (_teams = new InputList<string>());
-            set => _teams = value;
-        }
-
         /// <summary>
         /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
@@ -859,7 +534,7 @@ namespace Pulumi.SignalFx
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
-        /// URL of the detector
+        /// The URL of the detector.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

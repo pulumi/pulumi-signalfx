@@ -92,7 +92,7 @@ class EventFeedChart(pulumi.CustomResource):
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -159,7 +159,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 

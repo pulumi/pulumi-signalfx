@@ -9,8 +9,41 @@ from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'IntegrationCustomNamespacesPerService',
     'GetServicesServiceResult',
 ]
+
+@pulumi.output_type
+class IntegrationCustomNamespacesPerService(dict):
+    def __init__(__self__, *,
+                 namespaces: List[str],
+                 service: str):
+        """
+        :param List[str] namespaces: The additional namespaces.
+        :param str service: The name of the service.
+        """
+        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def namespaces(self) -> List[str]:
+        """
+        The additional namespaces.
+        """
+        return pulumi.get(self, "namespaces")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The name of the service.
+        """
+        return pulumi.get(self, "service")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class GetServicesServiceResult(dict):

@@ -46,7 +46,7 @@ type TextChart struct {
 	Markdown pulumi.StringOutput `pulumi:"markdown"`
 	// Name of the text note.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -87,7 +87,7 @@ type textChartState struct {
 	Markdown *string `pulumi:"markdown"`
 	// Name of the text note.
 	Name *string `pulumi:"name"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
 }
 
@@ -98,7 +98,7 @@ type TextChartState struct {
 	Markdown pulumi.StringPtrInput
 	// Name of the text note.
 	Name pulumi.StringPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
 }
 

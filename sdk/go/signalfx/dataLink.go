@@ -12,7 +12,6 @@ import (
 // Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 //
 // ## Example Usage
-// ### Global link to a dashboard
 //
 // ```go
 // package main
@@ -39,23 +38,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### Dashboard specific link to an external URL
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewDataLink(ctx, "myDataLinkDash", &signalfx.DataLinkArgs{
+// 		_, err = signalfx.NewDataLink(ctx, "myDataLinkDash", &signalfx.DataLinkArgs{
 // 			ContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
 // 			PropertyName:       pulumi.String("pname2"),
 // 			PropertyValue:      pulumi.String("pvalue"),

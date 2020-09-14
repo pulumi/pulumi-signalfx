@@ -76,8 +76,6 @@ type TokenIntegration struct {
 
 	// The name of this integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A named token to use for ingest
-	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 	SignalfxAwsAccount pulumi.StringOutput `pulumi:"signalfxAwsAccount"`
 	// The SignalFx-generated AWS token to use with an AWS integration.
@@ -114,8 +112,6 @@ func GetTokenIntegration(ctx *pulumi.Context,
 type tokenIntegrationState struct {
 	// The name of this integration
 	Name *string `pulumi:"name"`
-	// A named token to use for ingest
-	NamedToken *string `pulumi:"namedToken"`
 	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 	SignalfxAwsAccount *string `pulumi:"signalfxAwsAccount"`
 	// The SignalFx-generated AWS token to use with an AWS integration.
@@ -125,8 +121,6 @@ type tokenIntegrationState struct {
 type TokenIntegrationState struct {
 	// The name of this integration
 	Name pulumi.StringPtrInput
-	// A named token to use for ingest
-	NamedToken pulumi.StringPtrInput
 	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 	SignalfxAwsAccount pulumi.StringPtrInput
 	// The SignalFx-generated AWS token to use with an AWS integration.
@@ -140,16 +134,12 @@ func (TokenIntegrationState) ElementType() reflect.Type {
 type tokenIntegrationArgs struct {
 	// The name of this integration
 	Name *string `pulumi:"name"`
-	// A named token to use for ingest
-	NamedToken *string `pulumi:"namedToken"`
 }
 
 // The set of arguments for constructing a TokenIntegration resource.
 type TokenIntegrationArgs struct {
 	// The name of this integration
 	Name pulumi.StringPtrInput
-	// A named token to use for ingest
-	NamedToken pulumi.StringPtrInput
 }
 
 func (TokenIntegrationArgs) ElementType() reflect.Type {

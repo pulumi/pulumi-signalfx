@@ -20,11 +20,13 @@ class Integration(pulumi.CustomResource):
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
+                 enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 named_token: Optional[pulumi.Input[str]] = None,
                  namespace_sync_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]]] = None,
                  poll_rate: Optional[pulumi.Input[float]] = None,
                  regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -85,13 +87,15 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
+        :param pulumi.Input[bool] enable_check_large_volume: Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-        :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
+        :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
         :param pulumi.Input[List[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[List[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -118,6 +122,7 @@ class Integration(pulumi.CustomResource):
             __props__['custom_cloudwatch_namespaces'] = custom_cloudwatch_namespaces
             __props__['custom_namespace_sync_rules'] = custom_namespace_sync_rules
             __props__['enable_aws_usage'] = enable_aws_usage
+            __props__['enable_check_large_volume'] = enable_check_large_volume
             if enabled is None:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
@@ -127,6 +132,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'integration_id'")
             __props__['integration_id'] = integration_id
             __props__['key'] = key
+            __props__['named_token'] = named_token
             __props__['namespace_sync_rules'] = namespace_sync_rules
             __props__['poll_rate'] = poll_rate
             __props__['regions'] = regions
@@ -147,11 +153,13 @@ class Integration(pulumi.CustomResource):
             custom_cloudwatch_namespaces: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             custom_namespace_sync_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]]] = None,
             enable_aws_usage: Optional[pulumi.Input[bool]] = None,
+            enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             import_cloud_watch: Optional[pulumi.Input[bool]] = None,
             integration_id: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
+            named_token: Optional[pulumi.Input[str]] = None,
             namespace_sync_rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]]] = None,
             poll_rate: Optional[pulumi.Input[float]] = None,
             regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -169,13 +177,15 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[List[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
+        :param pulumi.Input[bool] enable_check_large_volume: Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-        :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
+        :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
         :param pulumi.Input[List[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[List[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -189,11 +199,13 @@ class Integration(pulumi.CustomResource):
         __props__["custom_cloudwatch_namespaces"] = custom_cloudwatch_namespaces
         __props__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
         __props__["enable_aws_usage"] = enable_aws_usage
+        __props__["enable_check_large_volume"] = enable_check_large_volume
         __props__["enabled"] = enabled
         __props__["external_id"] = external_id
         __props__["import_cloud_watch"] = import_cloud_watch
         __props__["integration_id"] = integration_id
         __props__["key"] = key
+        __props__["named_token"] = named_token
         __props__["namespace_sync_rules"] = namespace_sync_rules
         __props__["poll_rate"] = poll_rate
         __props__["regions"] = regions
@@ -226,6 +238,14 @@ class Integration(pulumi.CustomResource):
         Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
         """
         return pulumi.get(self, "enable_aws_usage")
+
+    @property
+    @pulumi.getter(name="enableCheckLargeVolume")
+    def enable_check_large_volume(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        """
+        return pulumi.get(self, "enable_check_large_volume")
 
     @property
     @pulumi.getter
@@ -268,6 +288,14 @@ class Integration(pulumi.CustomResource):
         return pulumi.get(self, "key")
 
     @property
+    @pulumi.getter(name="namedToken")
+    def named_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        A named token to use for ingest
+        """
+        return pulumi.get(self, "named_token")
+
+    @property
     @pulumi.getter(name="namespaceSyncRules")
     def namespace_sync_rules(self) -> pulumi.Output[Optional[List['outputs.IntegrationNamespaceSyncRule']]]:
         """
@@ -279,7 +307,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> pulumi.Output[Optional[float]]:
         """
-        AWS poll rate (in seconds). One of `60` or `300`.
+        AWS poll rate (in seconds). Value between `60` and `300`.
         """
         return pulumi.get(self, "poll_rate")
 

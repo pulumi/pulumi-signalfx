@@ -200,7 +200,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -368,7 +368,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 

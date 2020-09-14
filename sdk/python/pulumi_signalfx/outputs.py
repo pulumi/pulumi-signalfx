@@ -1252,7 +1252,7 @@ class HeatmapChartColorRange(dict):
                  max_value: Optional[float] = None,
                  min_value: Optional[float] = None):
         """
-        :param str color: The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        :param str color: The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float max_value: The maximum value within the coloring range.
         :param float min_value: The minimum value within the coloring range.
         """
@@ -1266,7 +1266,7 @@ class HeatmapChartColorRange(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1299,7 +1299,7 @@ class HeatmapChartColorScale(dict):
                  lt: Optional[float] = None,
                  lte: Optional[float] = None):
         """
-        :param str color: The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        :param str color: The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float gt: Indicates the lower threshold non-inclusive value for this range.
         :param float gte: Indicates the lower threshold inclusive value for this range.
         :param float lt: Indicates the upper threshold non-inclusive value for this range.
@@ -1319,7 +1319,7 @@ class HeatmapChartColorScale(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1368,7 +1368,7 @@ class ListChartColorScale(dict):
                  lt: Optional[float] = None,
                  lte: Optional[float] = None):
         """
-        :param str color: The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float gt: Indicates the lower threshold non-inclusive value for this range.
         :param float gte: Indicates the lower threshold inclusive value for this range.
         :param float lt: Indicates the upper threshold non-inculsive value for this range.
@@ -1388,7 +1388,7 @@ class ListChartColorScale(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1472,7 +1472,7 @@ class ListChartVizOption(dict):
                  value_unit: Optional[str] = None):
         """
         :param str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param str color: The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param str value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
                * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
@@ -1501,7 +1501,7 @@ class ListChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[str]:
         """
-        The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1684,7 +1684,7 @@ class SingleValueChartColorScale(dict):
                  lt: Optional[float] = None,
                  lte: Optional[float] = None):
         """
-        :param str color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float gt: Indicates the lower threshold non-inclusive value for this range.
         :param float gte: Indicates the lower threshold inclusive value for this range.
         :param float lt: Indicates the upper threshold non-inculsive value for this range.
@@ -1704,7 +1704,7 @@ class SingleValueChartColorScale(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1755,7 +1755,7 @@ class SingleValueChartVizOption(dict):
                  value_unit: Optional[str] = None):
         """
         :param str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param str color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param str value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
                * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
@@ -1784,7 +1784,7 @@ class SingleValueChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[str]:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 

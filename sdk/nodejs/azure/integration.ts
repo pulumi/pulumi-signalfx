@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,22 +18,22 @@ import * as utilities from "../utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const azureMyteam = new signalfx.azure.Integration("azure_myteam", {
- *     enabled: true,
- *     resource: [{
- *         signalfxAzureIntegration: [{
- *             azureMyteamXX: [{
- *                 appId: "YYY",
- *                 enabled: false,
- *                 environment: "azure",
- *                 name: "AzureFoo",
- *                 pollRate: 300,
- *                 secretKey: "XXX",
- *                 services: ["microsoft.sql/servers/elasticpools"],
- *                 subscriptions: ["sub-guid-here"],
- *                 tenantId: "ZZZ",
- *             }],
- *         }],
+ *     appId: "YYY",
+ *     // Optional
+ *     customNamespacesPerServices: [{
+ *         namespaces: [
+ *             "monitoringAgent",
+ *             "customNamespace",
+ *         ],
+ *         service: "Microsoft.Compute/virtualMachines",
  *     }],
+ *     enabled: true,
+ *     environment: "azure",
+ *     pollRate: 300,
+ *     secretKey: "XXX",
+ *     services: ["microsoft.sql/servers/elasticpools"],
+ *     subscriptions: ["sub-guid-here"],
+ *     tenantId: "ZZZ",
  * });
  * ```
  * ## Service Names
@@ -71,6 +73,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly appId!: pulumi.Output<string>;
     /**
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     */
+    public readonly customNamespacesPerServices!: pulumi.Output<outputs.azure.IntegrationCustomNamespacesPerService[] | undefined>;
+    /**
      * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -103,6 +109,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly subscriptions!: pulumi.Output<string[]>;
     /**
+     * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+     */
+    public readonly syncGuestOsNamespaces!: pulumi.Output<boolean | undefined>;
+    /**
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
     public readonly tenantId!: pulumi.Output<string>;
@@ -120,6 +130,7 @@ export class Integration extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
+            inputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["environment"] = state ? state.environment : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -128,6 +139,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["secretKey"] = state ? state.secretKey : undefined;
             inputs["services"] = state ? state.services : undefined;
             inputs["subscriptions"] = state ? state.subscriptions : undefined;
+            inputs["syncGuestOsNamespaces"] = state ? state.syncGuestOsNamespaces : undefined;
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
@@ -150,6 +162,7 @@ export class Integration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["appId"] = args ? args.appId : undefined;
+            inputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["environment"] = args ? args.environment : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -158,6 +171,7 @@ export class Integration extends pulumi.CustomResource {
             inputs["secretKey"] = args ? args.secretKey : undefined;
             inputs["services"] = args ? args.services : undefined;
             inputs["subscriptions"] = args ? args.subscriptions : undefined;
+            inputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
         if (!opts) {
@@ -179,6 +193,10 @@ export interface IntegrationState {
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
     readonly appId?: pulumi.Input<string>;
+    /**
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     */
+    readonly customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
     /**
      * Whether the integration is enabled.
      */
@@ -212,6 +230,10 @@ export interface IntegrationState {
      */
     readonly subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+     */
+    readonly syncGuestOsNamespaces?: pulumi.Input<boolean>;
+    /**
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
     readonly tenantId?: pulumi.Input<string>;
@@ -225,6 +247,10 @@ export interface IntegrationArgs {
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
     readonly appId: pulumi.Input<string>;
+    /**
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     */
+    readonly customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
     /**
      * Whether the integration is enabled.
      */
@@ -257,6 +283,10 @@ export interface IntegrationArgs {
      * List of Azure subscriptions that SignalFx should monitor.
      */
     readonly subscriptions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+     */
+    readonly syncGuestOsNamespaces?: pulumi.Input<boolean>;
     /**
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */

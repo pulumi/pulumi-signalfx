@@ -76,7 +76,7 @@ export class TextChart extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -134,7 +134,7 @@ export interface TextChartState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     readonly url?: pulumi.Input<string>;
 }

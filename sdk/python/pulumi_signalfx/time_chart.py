@@ -240,7 +240,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -489,7 +489,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 

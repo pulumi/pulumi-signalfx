@@ -149,7 +149,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -272,7 +272,7 @@ class SingleValueChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 

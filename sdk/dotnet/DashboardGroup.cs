@@ -131,12 +131,6 @@ namespace Pulumi.SignalFx
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// Team IDs to associate the dashboard group to.
-        /// </summary>
-        [Output("teams")]
-        public Output<ImmutableArray<string>> Teams { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a DashboardGroup resource with the given unique name, arguments, and options.
@@ -239,18 +233,6 @@ namespace Pulumi.SignalFx
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("teams")]
-        private InputList<string>? _teams;
-
-        /// <summary>
-        /// Team IDs to associate the dashboard group to.
-        /// </summary>
-        public InputList<string> Teams
-        {
-            get => _teams ?? (_teams = new InputList<string>());
-            set => _teams = value;
-        }
-
         public DashboardGroupArgs()
         {
         }
@@ -313,18 +295,6 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("teams")]
-        private InputList<string>? _teams;
-
-        /// <summary>
-        /// Team IDs to associate the dashboard group to.
-        /// </summary>
-        public InputList<string> Teams
-        {
-            get => _teams ?? (_teams = new InputList<string>());
-            set => _teams = value;
-        }
 
         public DashboardGroupState()
         {

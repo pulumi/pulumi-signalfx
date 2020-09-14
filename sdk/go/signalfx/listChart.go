@@ -106,7 +106,7 @@ type ListChart struct {
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions ListChartVizOptionArrayOutput `pulumi:"vizOptions"`
@@ -179,7 +179,7 @@ type listChartState struct {
 	TimeRange *int `pulumi:"timeRange"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions []ListChartVizOption `pulumi:"vizOptions"`
@@ -222,7 +222,7 @@ type ListChartState struct {
 	TimeRange pulumi.IntPtrInput
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions ListChartVizOptionArrayInput

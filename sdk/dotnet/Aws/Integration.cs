@@ -99,6 +99,12 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> EnableAwsUsage { get; private set; } = null!;
 
         /// <summary>
+        /// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        /// </summary>
+        [Output("enableCheckLargeVolume")]
+        public Output<bool?> EnableCheckLargeVolume { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
         [Output("enabled")]
@@ -129,13 +135,19 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Output("namedToken")]
+        public Output<string?> NamedToken { get; private set; } = null!;
+
+        /// <summary>
         /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         /// </summary>
         [Output("namespaceSyncRules")]
         public Output<ImmutableArray<Outputs.IntegrationNamespaceSyncRule>> NamespaceSyncRules { get; private set; } = null!;
 
         /// <summary>
-        /// AWS poll rate (in seconds). One of `60` or `300`.
+        /// AWS poll rate (in seconds). Value between `60` and `300`.
         /// </summary>
         [Output("pollRate")]
         public Output<int?> PollRate { get; private set; } = null!;
@@ -247,6 +259,12 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? EnableAwsUsage { get; set; }
 
         /// <summary>
+        /// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        /// </summary>
+        [Input("enableCheckLargeVolume")]
+        public Input<bool>? EnableCheckLargeVolume { get; set; }
+
+        /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled", required: true)]
@@ -276,6 +294,12 @@ namespace Pulumi.SignalFx.Aws
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Input("namedToken")]
+        public Input<string>? NamedToken { get; set; }
+
         [Input("namespaceSyncRules")]
         private InputList<Inputs.IntegrationNamespaceSyncRuleArgs>? _namespaceSyncRules;
 
@@ -289,7 +313,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// AWS poll rate (in seconds). One of `60` or `300`.
+        /// AWS poll rate (in seconds). Value between `60` and `300`.
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }
@@ -374,6 +398,12 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? EnableAwsUsage { get; set; }
 
         /// <summary>
+        /// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        /// </summary>
+        [Input("enableCheckLargeVolume")]
+        public Input<bool>? EnableCheckLargeVolume { get; set; }
+
+        /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled")]
@@ -403,6 +433,12 @@ namespace Pulumi.SignalFx.Aws
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// A named token to use for ingest
+        /// </summary>
+        [Input("namedToken")]
+        public Input<string>? NamedToken { get; set; }
+
         [Input("namespaceSyncRules")]
         private InputList<Inputs.IntegrationNamespaceSyncRuleGetArgs>? _namespaceSyncRules;
 
@@ -416,7 +452,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// AWS poll rate (in seconds). One of `60` or `300`.
+        /// AWS poll rate (in seconds). Value between `60` and `300`.
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }

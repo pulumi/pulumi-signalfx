@@ -93,7 +93,7 @@ type HeatmapChart struct {
 	SortBy pulumi.StringPtrOutput `pulumi:"sortBy"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -154,7 +154,7 @@ type heatmapChartState struct {
 	SortBy *string `pulumi:"sortBy"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
 }
 
@@ -185,7 +185,7 @@ type HeatmapChartState struct {
 	SortBy pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
 }
 

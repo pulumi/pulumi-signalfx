@@ -83,8 +83,6 @@ type ExternalIntegration struct {
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// The name of this integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A named token to use for ingest
-	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 	SignalfxAwsAccount pulumi.StringOutput `pulumi:"signalfxAwsAccount"`
 }
@@ -121,8 +119,6 @@ type externalIntegrationState struct {
 	ExternalId *string `pulumi:"externalId"`
 	// The name of this integration
 	Name *string `pulumi:"name"`
-	// A named token to use for ingest
-	NamedToken *string `pulumi:"namedToken"`
 	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 	SignalfxAwsAccount *string `pulumi:"signalfxAwsAccount"`
 }
@@ -132,8 +128,6 @@ type ExternalIntegrationState struct {
 	ExternalId pulumi.StringPtrInput
 	// The name of this integration
 	Name pulumi.StringPtrInput
-	// A named token to use for ingest
-	NamedToken pulumi.StringPtrInput
 	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
 	SignalfxAwsAccount pulumi.StringPtrInput
 }
@@ -145,16 +139,12 @@ func (ExternalIntegrationState) ElementType() reflect.Type {
 type externalIntegrationArgs struct {
 	// The name of this integration
 	Name *string `pulumi:"name"`
-	// A named token to use for ingest
-	NamedToken *string `pulumi:"namedToken"`
 }
 
 // The set of arguments for constructing a ExternalIntegration resource.
 type ExternalIntegrationArgs struct {
 	// The name of this integration
 	Name pulumi.StringPtrInput
-	// A named token to use for ingest
-	NamedToken pulumi.StringPtrInput
 }
 
 func (ExternalIntegrationArgs) ElementType() reflect.Type {

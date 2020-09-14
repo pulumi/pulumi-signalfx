@@ -176,7 +176,7 @@ namespace Pulumi.SignalFx
         public Output<string?> UnitPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -495,7 +495,7 @@ namespace Pulumi.SignalFx
         public Input<string>? UnitPrefix { get; set; }
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

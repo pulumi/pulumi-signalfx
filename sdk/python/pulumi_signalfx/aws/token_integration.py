@@ -16,7 +16,6 @@ class TokenIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 named_token: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -64,7 +63,6 @@ class TokenIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
-        :param pulumi.Input[str] named_token: A named token to use for ingest
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -84,7 +82,6 @@ class TokenIntegration(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            __props__['named_token'] = named_token
             __props__['signalfx_aws_account'] = None
             __props__['token_id'] = None
         super(TokenIntegration, __self__).__init__(
@@ -98,7 +95,6 @@ class TokenIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            named_token: Optional[pulumi.Input[str]] = None,
             signalfx_aws_account: Optional[pulumi.Input[str]] = None,
             token_id: Optional[pulumi.Input[str]] = None) -> 'TokenIntegration':
         """
@@ -109,7 +105,6 @@ class TokenIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
-        :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         :param pulumi.Input[str] token_id: The SignalFx-generated AWS token to use with an AWS integration.
         """
@@ -118,7 +113,6 @@ class TokenIntegration(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["name"] = name
-        __props__["named_token"] = named_token
         __props__["signalfx_aws_account"] = signalfx_aws_account
         __props__["token_id"] = token_id
         return TokenIntegration(resource_name, opts=opts, __props__=__props__)
@@ -130,14 +124,6 @@ class TokenIntegration(pulumi.CustomResource):
         The name of this integration
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="namedToken")
-    def named_token(self) -> pulumi.Output[Optional[str]]:
-        """
-        A named token to use for ingest
-        """
-        return pulumi.get(self, "named_token")
 
     @property
     @pulumi.getter(name="signalfxAwsAccount")
