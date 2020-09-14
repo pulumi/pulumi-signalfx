@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *         {
  *             color: "yellow",
  *             gte: 95,
- *             lt: 99, // This ensures we cover the range 95-99
+ *             lt: 99, // This ensures terraform recognizes that we cover the range 95-99
  *         },
  *         {
  *             color: "red",
@@ -132,7 +132,7 @@ export class HeatmapChart extends pulumi.CustomResource {
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -250,7 +250,7 @@ export interface HeatmapChartState {
      */
     readonly unitPrefix?: pulumi.Input<string>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     readonly url?: pulumi.Input<string>;
 }

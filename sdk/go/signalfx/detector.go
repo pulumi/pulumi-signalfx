@@ -10,9 +10,201 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a SignalFx detector resource. This can be used to create and manage detectors. As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list.
+// Provides a SignalFx detector resource. This can be used to create and manage detectors.
 //
 // > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+//
+// ## Notification Format
+//
+// As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+//
+// ### Email
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Jira
+//
+// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Opsgenie
+//
+// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### PagerDuty
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Slack
+//
+// Exclude the `#` on the channel name!
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Team
+//
+// Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### TeamEmail
+//
+// Sends an email to every member of a team.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### VictorOps
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ### Webhook
+//
+// > **NOTE** You need to include all the commas even if you only use a credential id below.
+//
+// You can either configure a Webhook to use an existing integration's credential id:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
+//
+// or configure one inline:
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		return nil
+// 	})
+// }
+// ```
 type Detector struct {
 	pulumi.CustomResourceState
 
@@ -40,11 +232,9 @@ type Detector struct {
 	ShowEventLines pulumi.BoolPtrOutput `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Team IDs to associate the detector to.
-	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
-	// URL of the detector
+	// The URL of the detector.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions DetectorVizOptionArrayOutput `pulumi:"vizOptions"`
@@ -108,11 +298,9 @@ type detectorState struct {
 	ShowEventLines *bool `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
-	// Team IDs to associate the detector to.
-	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
-	// URL of the detector
+	// The URL of the detector.
 	Url *string `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions []DetectorVizOption `pulumi:"vizOptions"`
@@ -143,11 +331,9 @@ type DetectorState struct {
 	ShowEventLines pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
-	// Team IDs to associate the detector to.
-	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
-	// URL of the detector
+	// The URL of the detector.
 	Url pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions DetectorVizOptionArrayInput
@@ -182,8 +368,6 @@ type detectorArgs struct {
 	ShowEventLines *bool `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
-	// Team IDs to associate the detector to.
-	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
 	// Plot-level customization options, associated with a publish statement.
@@ -216,8 +400,6 @@ type DetectorArgs struct {
 	ShowEventLines pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
-	// Team IDs to associate the detector to.
-	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
 	// Plot-level customization options, associated with a publish statement.

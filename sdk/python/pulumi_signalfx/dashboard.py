@@ -39,123 +39,23 @@ class Dashboard(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        A dashboard is a curated collection of specific charts and supports dimensional [filters](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#filter-dashboard-charts), [dashboard variables](http://docs.signalfx.com/en/latest/dashboards/dashboard-filter-dynamic.html#dashboard-variables) and [time range](http://docs.signalfx.com/en/latest/_sidebars-and-includes/using-time-range-selector.html#time-range-selector) options. These options are applied to all charts in the dashboard, providing a consistent view of the data displayed in that dashboard. This also means that when you open a chart to drill down for more details, you are viewing the same data that is visible in the dashboard view.
-
-        > **NOTE** Since every dashboard is included in a `dashboard group` (SignalFx collection of dashboards), you need to create that first and reference it as shown in the example.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboard0 = signalfx.Dashboard("mydashboard0",
-            dashboard_group=signalfx_dashboard_group["mydashboardgroup0"]["id"],
-            time_range="-30m",
-            filters=[signalfx.DashboardFilterArgs(
-                property="collector",
-                values=[
-                    "cpu",
-                    "Diamond",
-                ],
-            )],
-            variables=[signalfx.DashboardVariableArgs(
-                property="region",
-                alias="region",
-                values=["uswest-1-"],
-            )],
-            charts=[
-                signalfx.DashboardChartArgs(
-                    chart_id=signalfx_time_chart["mychart0"]["id"],
-                    width=12,
-                    height=1,
-                ),
-                signalfx.DashboardChartArgs(
-                    chart_id=signalfx_time_chart["mychart1"]["id"],
-                    width=5,
-                    height=2,
-                ),
-            ])
-        ```
-
-        **Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.
-
-        When you define a dashboard resource, you need to specify which charts (by `chart_id`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.
-
-        The are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.
-
-        > **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.
-        ### Column
-
-        The dashboard is divided into equal-sized charts (defined by `width` and `height`). The charts are placed in the grid by column (column number is called `column`).
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        load = signalfx.Dashboard("load",
-            columns=[
-                signalfx.DashboardColumnArgs(
-                    chart_ids=[[__item["id"] for __item in signalfx_single_value_chart["rps"]]],
-                    width=2,
-                ),
-                signalfx.DashboardColumnArgs(
-                    chart_ids=[[__item["id"] for __item in signalfx_time_chart["cpu_capacity"]]],
-                    column=2,
-                    width=4,
-                ),
-            ],
-            dashboard_group=signalfx_dashboard_group["example"]["id"])
-        ```
-        ## Dashboard Layout Information
-
-        **Every SignalFx dashboard is shown as a grid of 12 columns and potentially infinite number of rows.** The dimension of the single column depends on the screen resolution.
-
-        When you define a dashboard resource, you need to specify which charts (by `chart_id`) should be displayed in the dashboard, along with layout information determining where on the dashboard the charts should be displayed. You have to assign to every chart a **width** in terms of number of columns to cover up (from 1 to 12) and a **height** in terms of number of rows (more or equal than 1). You can also assign a position in the dashboard grid where you like the graph to stay. In order to do that, you assign a **row** that represents the topmost row of the chart and a **column** that represent the leftmost column of the chart. If by mistake, you wrote a configuration where there are not enough columns to accommodate your charts in a specific row, they will be split in different rows. In case a **row** was specified with value higher than 1, if all the rows above are not filled by other charts, the chart will be placed the **first empty row**.
-
-        The are a bunch of use cases where this layout makes things too verbose and hard to work with loops. For those you can now use one of these two layouts: grids and columns.
-
-        > **WARNING** These other layouts are not supported by the SignalFx API and are purely provider-side constructs. As such the provider cannot import them and cannot properly reconcile API-side changes. In other words, if someone changes the charts in the UI it will not be reconciled at the next apply. Also, you may only use one of `chart`, `column`, or `grid` when laying out dashboards. You can, however, use multiple instances of each (e.g. multiple `grid`s) for fancy layout.
-
-        ### Column
-
-        The dashboard is divided into equal-sized charts (defined by `width` and `height`). The charts are placed in the grid by column (column number is called `column`).
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        load = signalfx.Dashboard("load",
-            dashboard_group=signalfx_dashboard_group["example"]["id"],
-            columns=[
-                signalfx.DashboardColumnArgs(
-                    chart_ids=[[__item["id"] for __item in signalfx_single_value_chart["rps"]]],
-                    width=2,
-                ),
-                signalfx.DashboardColumnArgs(
-                    chart_ids=[[__item["id"] for __item in signalfx_time_chart["cpu_capacity"]]],
-                    column=2,
-                    width=4,
-                ),
-            ])
-        ```
-
+        Create a Dashboard resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
         :param pulumi.Input[str] description: Variable description.
-        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
+        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardEventOverlayArgs']]]] event_overlays: Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] filters: Filter to apply to the charts when displaying the dashboard.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]] grids: Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         :param pulumi.Input[str] name: Name of the dashboard.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
-        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
+        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
@@ -233,22 +133,22 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
         :param pulumi.Input[str] description: Variable description.
-        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
+        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardEventOverlayArgs']]]] event_overlays: Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] filters: Filter to apply to the charts when displaying the dashboard.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]] grids: Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         :param pulumi.Input[str] name: Name of the dashboard.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
-        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
+        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
-        :param pulumi.Input[str] url: URL of the dashboard
+        :param pulumi.Input[str] url: The URL of the dashboard.
         :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -280,7 +180,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        Team IDs that have write access to this dashboard
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -288,7 +188,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> pulumi.Output[Optional[List[str]]]:
         """
-        User IDs that have write access to this dashboard
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -346,7 +246,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[float]]:
         """
-        Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
+        Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "end_time")
 
@@ -394,7 +294,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[float]]:
         """
-        Seconds since epoch. Used for visualization. You must specify time_span_type = `"absolute"` too.
+        Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "start_time")
 
@@ -410,7 +310,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the dashboard
+        The URL of the dashboard.
         """
         return pulumi.get(self, "url")
 

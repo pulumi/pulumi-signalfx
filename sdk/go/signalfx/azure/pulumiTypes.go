@@ -10,6 +10,112 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type IntegrationCustomNamespacesPerService struct {
+	// The additional namespaces.
+	Namespaces []string `pulumi:"namespaces"`
+	// The name of the service.
+	Service string `pulumi:"service"`
+}
+
+// IntegrationCustomNamespacesPerServiceInput is an input type that accepts IntegrationCustomNamespacesPerServiceArgs and IntegrationCustomNamespacesPerServiceOutput values.
+// You can construct a concrete instance of `IntegrationCustomNamespacesPerServiceInput` via:
+//
+//          IntegrationCustomNamespacesPerServiceArgs{...}
+type IntegrationCustomNamespacesPerServiceInput interface {
+	pulumi.Input
+
+	ToIntegrationCustomNamespacesPerServiceOutput() IntegrationCustomNamespacesPerServiceOutput
+	ToIntegrationCustomNamespacesPerServiceOutputWithContext(context.Context) IntegrationCustomNamespacesPerServiceOutput
+}
+
+type IntegrationCustomNamespacesPerServiceArgs struct {
+	// The additional namespaces.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// The name of the service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (IntegrationCustomNamespacesPerServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationCustomNamespacesPerService)(nil)).Elem()
+}
+
+func (i IntegrationCustomNamespacesPerServiceArgs) ToIntegrationCustomNamespacesPerServiceOutput() IntegrationCustomNamespacesPerServiceOutput {
+	return i.ToIntegrationCustomNamespacesPerServiceOutputWithContext(context.Background())
+}
+
+func (i IntegrationCustomNamespacesPerServiceArgs) ToIntegrationCustomNamespacesPerServiceOutputWithContext(ctx context.Context) IntegrationCustomNamespacesPerServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespacesPerServiceOutput)
+}
+
+// IntegrationCustomNamespacesPerServiceArrayInput is an input type that accepts IntegrationCustomNamespacesPerServiceArray and IntegrationCustomNamespacesPerServiceArrayOutput values.
+// You can construct a concrete instance of `IntegrationCustomNamespacesPerServiceArrayInput` via:
+//
+//          IntegrationCustomNamespacesPerServiceArray{ IntegrationCustomNamespacesPerServiceArgs{...} }
+type IntegrationCustomNamespacesPerServiceArrayInput interface {
+	pulumi.Input
+
+	ToIntegrationCustomNamespacesPerServiceArrayOutput() IntegrationCustomNamespacesPerServiceArrayOutput
+	ToIntegrationCustomNamespacesPerServiceArrayOutputWithContext(context.Context) IntegrationCustomNamespacesPerServiceArrayOutput
+}
+
+type IntegrationCustomNamespacesPerServiceArray []IntegrationCustomNamespacesPerServiceInput
+
+func (IntegrationCustomNamespacesPerServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationCustomNamespacesPerService)(nil)).Elem()
+}
+
+func (i IntegrationCustomNamespacesPerServiceArray) ToIntegrationCustomNamespacesPerServiceArrayOutput() IntegrationCustomNamespacesPerServiceArrayOutput {
+	return i.ToIntegrationCustomNamespacesPerServiceArrayOutputWithContext(context.Background())
+}
+
+func (i IntegrationCustomNamespacesPerServiceArray) ToIntegrationCustomNamespacesPerServiceArrayOutputWithContext(ctx context.Context) IntegrationCustomNamespacesPerServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespacesPerServiceArrayOutput)
+}
+
+type IntegrationCustomNamespacesPerServiceOutput struct{ *pulumi.OutputState }
+
+func (IntegrationCustomNamespacesPerServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationCustomNamespacesPerService)(nil)).Elem()
+}
+
+func (o IntegrationCustomNamespacesPerServiceOutput) ToIntegrationCustomNamespacesPerServiceOutput() IntegrationCustomNamespacesPerServiceOutput {
+	return o
+}
+
+func (o IntegrationCustomNamespacesPerServiceOutput) ToIntegrationCustomNamespacesPerServiceOutputWithContext(ctx context.Context) IntegrationCustomNamespacesPerServiceOutput {
+	return o
+}
+
+// The additional namespaces.
+func (o IntegrationCustomNamespacesPerServiceOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationCustomNamespacesPerService) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// The name of the service.
+func (o IntegrationCustomNamespacesPerServiceOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationCustomNamespacesPerService) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type IntegrationCustomNamespacesPerServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (IntegrationCustomNamespacesPerServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationCustomNamespacesPerService)(nil)).Elem()
+}
+
+func (o IntegrationCustomNamespacesPerServiceArrayOutput) ToIntegrationCustomNamespacesPerServiceArrayOutput() IntegrationCustomNamespacesPerServiceArrayOutput {
+	return o
+}
+
+func (o IntegrationCustomNamespacesPerServiceArrayOutput) ToIntegrationCustomNamespacesPerServiceArrayOutputWithContext(ctx context.Context) IntegrationCustomNamespacesPerServiceArrayOutput {
+	return o
+}
+
+func (o IntegrationCustomNamespacesPerServiceArrayOutput) Index(i pulumi.IntInput) IntegrationCustomNamespacesPerServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationCustomNamespacesPerService {
+		return vs[0].([]IntegrationCustomNamespacesPerService)[vs[1].(int)]
+	}).(IntegrationCustomNamespacesPerServiceOutput)
+}
+
 type GetServicesService struct {
 	Name string `pulumi:"name"`
 }
@@ -105,6 +211,8 @@ func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServi
 }
 
 func init() {
+	pulumi.RegisterOutputType(IntegrationCustomNamespacesPerServiceOutput{})
+	pulumi.RegisterOutputType(IntegrationCustomNamespacesPerServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 }

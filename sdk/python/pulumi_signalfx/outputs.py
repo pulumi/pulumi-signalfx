@@ -69,14 +69,6 @@ class AlertMutingRuleFilter(dict):
             pulumi.set(__self__, "negated", negated)
 
     @property
-    @pulumi.getter
-    def property(self) -> str:
-        """
-        The property to filter.
-        """
-        return pulumi.get(self, "property")
-
-    @property
     @pulumi.getter(name="propertyValue")
     def property_value(self) -> str:
         """
@@ -91,6 +83,14 @@ class AlertMutingRuleFilter(dict):
         Determines if this is a "not" filter. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The property to filter.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -321,14 +321,6 @@ class DashboardEventOverlaySource(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def values(self) -> List[str]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
@@ -342,6 +334,14 @@ class DashboardEventOverlaySource(dict):
         If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -369,14 +369,6 @@ class DashboardFilter(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def values(self) -> List[str]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
@@ -398,6 +390,14 @@ class DashboardFilter(dict):
         If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -531,14 +531,6 @@ class DashboardGroupDashboardFilterOverride(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        A metric time series dimension or property name.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def values(self) -> List[str]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
@@ -552,6 +544,14 @@ class DashboardGroupDashboardFilterOverride(dict):
         If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        A metric time series dimension or property name.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -576,14 +576,6 @@ class DashboardGroupDashboardVariableOverride(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        A metric time series dimension or property name.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def values(self) -> Optional[List[str]]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
@@ -597,6 +589,14 @@ class DashboardGroupDashboardVariableOverride(dict):
         A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         return pulumi.get(self, "values_suggesteds")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        A metric time series dimension or property name.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -643,14 +643,6 @@ class DashboardGroupImportQualifierFilter(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        A metric time series dimension or property name.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def values(self) -> List[str]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
@@ -664,6 +656,14 @@ class DashboardGroupImportQualifierFilter(dict):
         If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        A metric time series dimension or property name.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -732,14 +732,6 @@ class DashboardSelectedEventOverlaySource(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def values(self) -> List[str]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
@@ -753,6 +745,14 @@ class DashboardSelectedEventOverlaySource(dict):
         If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -805,14 +805,6 @@ class DashboardVariable(dict):
         An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
         """
         return pulumi.get(self, "alias")
-
-    @property
-    @pulumi.getter
-    def property(self) -> str:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
 
     @property
     @pulumi.getter(name="applyIfExist")
@@ -869,6 +861,14 @@ class DashboardVariable(dict):
         A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         return pulumi.get(self, "values_suggesteds")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1252,7 +1252,7 @@ class HeatmapChartColorRange(dict):
                  max_value: Optional[float] = None,
                  min_value: Optional[float] = None):
         """
-        :param str color: The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        :param str color: The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float max_value: The maximum value within the coloring range.
         :param float min_value: The minimum value within the coloring range.
         """
@@ -1266,7 +1266,7 @@ class HeatmapChartColorRange(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1299,7 +1299,7 @@ class HeatmapChartColorScale(dict):
                  lt: Optional[float] = None,
                  lte: Optional[float] = None):
         """
-        :param str color: The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        :param str color: The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float gt: Indicates the lower threshold non-inclusive value for this range.
         :param float gte: Indicates the lower threshold inclusive value for this range.
         :param float lt: Indicates the upper threshold non-inclusive value for this range.
@@ -1319,7 +1319,7 @@ class HeatmapChartColorScale(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1368,7 +1368,7 @@ class ListChartColorScale(dict):
                  lt: Optional[float] = None,
                  lte: Optional[float] = None):
         """
-        :param str color: The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float gt: Indicates the lower threshold non-inclusive value for this range.
         :param float gte: Indicates the lower threshold inclusive value for this range.
         :param float lt: Indicates the upper threshold non-inculsive value for this range.
@@ -1388,7 +1388,7 @@ class ListChartColorScale(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1443,19 +1443,19 @@ class ListChartLegendOptionsField(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
         True or False depending on if you want the property to be shown or hidden.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1472,7 +1472,7 @@ class ListChartVizOption(dict):
                  value_unit: Optional[str] = None):
         """
         :param str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param str color: The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param str value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
                * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
@@ -1501,7 +1501,7 @@ class ListChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[str]:
         """
-        The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1684,7 +1684,7 @@ class SingleValueChartColorScale(dict):
                  lt: Optional[float] = None,
                  lte: Optional[float] = None):
         """
-        :param str color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param float gt: Indicates the lower threshold non-inclusive value for this range.
         :param float gte: Indicates the lower threshold inclusive value for this range.
         :param float lt: Indicates the upper threshold non-inculsive value for this range.
@@ -1704,7 +1704,7 @@ class SingleValueChartColorScale(dict):
     @pulumi.getter
     def color(self) -> str:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1755,7 +1755,7 @@ class SingleValueChartVizOption(dict):
                  value_unit: Optional[str] = None):
         """
         :param str label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-        :param str color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param str color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param str display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param str value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
                * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
@@ -1784,7 +1784,7 @@ class SingleValueChartVizOption(dict):
     @pulumi.getter
     def color(self) -> Optional[str]:
         """
-        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -2163,19 +2163,19 @@ class TimeChartLegendOptionsField(dict):
 
     @property
     @pulumi.getter
-    def property(self) -> str:
-        """
-        The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-        """
-        return pulumi.get(self, "property")
-
-    @property
-    @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
         True or False depending on if you want the property to be shown or hidden.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+        """
+        return pulumi.get(self, "property")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

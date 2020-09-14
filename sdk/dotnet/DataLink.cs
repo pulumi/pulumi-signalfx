@@ -13,7 +13,6 @@ namespace Pulumi.SignalFx
     /// Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
     /// 
     /// ## Example Usage
-    /// ### Global link to a dashboard
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -23,6 +22,7 @@ namespace Pulumi.SignalFx
     /// {
     ///     public MyStack()
     ///     {
+    ///         // A global link to SignalFx dashboard.
     ///         var myDataLink = new SignalFx.DataLink("myDataLink", new SignalFx.DataLinkArgs
     ///         {
     ///             PropertyName = "pname",
@@ -38,20 +38,7 @@ namespace Pulumi.SignalFx
     ///                 },
     ///             },
     ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### Dashboard specific link to an external URL
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
+    ///         // A dashboard-specific link to an external URL
     ///         var myDataLinkDash = new SignalFx.DataLink("myDataLinkDash", new SignalFx.DataLinkArgs
     ///         {
     ///             ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,

@@ -409,7 +409,7 @@ export interface GetAzureServicesService {
 
 export interface HeatmapChartColorRange {
     /**
-     * The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color: string;
     /**
@@ -424,7 +424,7 @@ export interface HeatmapChartColorRange {
 
 export interface HeatmapChartColorScale {
     /**
-     * The color range to use. Hex values are not supported here. Must be either gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, lime_green.
+     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color: string;
     /**
@@ -447,7 +447,7 @@ export interface HeatmapChartColorScale {
 
 export interface ListChartColorScale {
     /**
-     * The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color: string;
     /**
@@ -481,7 +481,7 @@ export interface ListChartLegendOptionsField {
 
 export interface ListChartVizOption {
     /**
-     * The color range to use. Must be either gray, blue, navy, orange, yellow, magenta, purple, violet, lilac, green, aquamarine.
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color?: string;
     /**
@@ -549,7 +549,7 @@ export interface OrgTokenHostOrUsageLimits {
 
 export interface SingleValueChartColorScale {
     /**
-     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color: string;
     /**
@@ -572,7 +572,7 @@ export interface SingleValueChartColorScale {
 
 export interface SingleValueChartVizOption {
     /**
-     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color?: string;
     /**
@@ -793,6 +793,17 @@ export namespace azure {
     export interface GetServicesService {
         name: string;
     }
+
+    export interface IntegrationCustomNamespacesPerService {
+        /**
+         * The additional namespaces.
+         */
+        namespaces: string[];
+        /**
+         * The name of the service.
+         */
+        service: string;
+    }
 }
 
 export namespace gcp {
@@ -801,4 +812,3 @@ export namespace gcp {
         projectKey: string;
     }
 }
-

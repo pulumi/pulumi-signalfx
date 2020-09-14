@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class SingleValueChartVizOption
     {
         /// <summary>
-        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        /// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         /// </summary>
         public readonly string? Color;
         /// <summary>

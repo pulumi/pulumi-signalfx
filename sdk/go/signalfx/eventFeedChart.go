@@ -26,7 +26,7 @@ type EventFeedChart struct {
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -73,7 +73,7 @@ type eventFeedChartState struct {
 	StartTime *int `pulumi:"startTime"`
 	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
 }
 
@@ -90,7 +90,7 @@ type EventFeedChartState struct {
 	StartTime pulumi.IntPtrInput
 	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
 }
 

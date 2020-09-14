@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * const awsServices = signalfx.aws.getServices({});
  * // Leaves out most of the integration bits, see the docs
  * // for signalfx_aws_integration for more
+ * // …
  * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {services: [awsServices.then(awsServices => awsServices.services)].map(__item => __item?.name)});
  * ```
  */

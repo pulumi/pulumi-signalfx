@@ -182,12 +182,6 @@ namespace Pulumi.SignalFx.Aws
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A named token to use for ingest
-        /// </summary>
-        [Output("namedToken")]
-        public Output<string?> NamedToken { get; private set; } = null!;
-
-        /// <summary>
         /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         /// </summary>
         [Output("signalfxAwsAccount")]
@@ -245,12 +239,6 @@ namespace Pulumi.SignalFx.Aws
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// A named token to use for ingest
-        /// </summary>
-        [Input("namedToken")]
-        public Input<string>? NamedToken { get; set; }
-
         public ExternalIntegrationArgs()
         {
         }
@@ -269,12 +257,6 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// A named token to use for ingest
-        /// </summary>
-        [Input("namedToken")]
-        public Input<string>? NamedToken { get; set; }
 
         /// <summary>
         /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.

@@ -30,6 +30,7 @@ namespace Pulumi.SignalFx.Aws
         ///         var awsServices = Output.Create(SignalFx.Aws.GetServices.InvokeAsync());
         ///         // Leaves out most of the integration bits, see the docs
         ///         // for signalfx_aws_integration for more
+        ///         // …
         ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
         ///         {
         ///             Services = 

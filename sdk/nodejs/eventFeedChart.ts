@@ -76,7 +76,7 @@ export class EventFeedChart extends pulumi.CustomResource {
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -152,7 +152,7 @@ export interface EventFeedChartState {
      */
     readonly timeRange?: pulumi.Input<number>;
     /**
-     * URL of the chart
+     * The URL of the chart.
      */
     readonly url?: pulumi.Input<string>;
 }

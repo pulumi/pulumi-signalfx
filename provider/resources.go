@@ -23,7 +23,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-signalfx/signalfx"
+	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
 )
 
 // all of the token components used below.
@@ -82,6 +82,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-signalfx",
+		GitHubOrg:   "splunk-terraform",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"auth_token": {
 				Default: &tfbridge.DefaultInfo{

@@ -79,7 +79,8 @@ namespace Pulumi.SignalFx
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
+        /// List of strings specifying where notifications will be sent when an incident occurs. See
+        /// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         /// </summary>
         [Output("notifications")]
         public Output<ImmutableArray<string>> Notifications { get; private set; } = null!;
@@ -170,7 +171,8 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
+        /// List of strings specifying where notifications will be sent when an incident occurs. See
+        /// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         /// </summary>
         public InputList<string> Notifications
         {
@@ -219,7 +221,8 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// Where to send notifications about this token's limits. Please consult the `Notification Format` laid out in detectors.
+        /// List of strings specifying where notifications will be sent when an incident occurs. See
+        /// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         /// </summary>
         public InputList<string> Notifications
         {

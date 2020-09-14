@@ -156,10 +156,6 @@ export class ExternalIntegration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A named token to use for ingest
-     */
-    public readonly namedToken!: pulumi.Output<string | undefined>;
-    /**
      * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
      */
     public /*out*/ readonly signalfxAwsAccount!: pulumi.Output<string>;
@@ -178,12 +174,10 @@ export class ExternalIntegration extends pulumi.CustomResource {
             const state = argsOrState as ExternalIntegrationState | undefined;
             inputs["externalId"] = state ? state.externalId : undefined;
             inputs["name"] = state ? state.name : undefined;
-            inputs["namedToken"] = state ? state.namedToken : undefined;
             inputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
         } else {
             const args = argsOrState as ExternalIntegrationArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["namedToken"] = args ? args.namedToken : undefined;
             inputs["externalId"] = undefined /*out*/;
             inputs["signalfxAwsAccount"] = undefined /*out*/;
         }
@@ -211,10 +205,6 @@ export interface ExternalIntegrationState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * A named token to use for ingest
-     */
-    readonly namedToken?: pulumi.Input<string>;
-    /**
      * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
      */
     readonly signalfxAwsAccount?: pulumi.Input<string>;
@@ -228,8 +218,4 @@ export interface ExternalIntegrationArgs {
      * The name of this integration
      */
     readonly name?: pulumi.Input<string>;
-    /**
-     * A named token to use for ingest
-     */
-    readonly namedToken?: pulumi.Input<string>;
 }
