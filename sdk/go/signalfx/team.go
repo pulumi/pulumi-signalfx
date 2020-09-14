@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v2/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v3/go/signalfx"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
