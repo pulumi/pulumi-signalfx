@@ -812,4 +812,3 @@ export namespace gcp {
         projectKey: pulumi.Input<string>;
     }
 }
-

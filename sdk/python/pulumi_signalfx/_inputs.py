@@ -68,18 +68,6 @@ class AlertMutingRuleFilterArgs:
             pulumi.set(__self__, "negated", negated)
 
     @property
-    @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The property to filter.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
     @pulumi.getter(name="propertyValue")
     def property_value(self) -> pulumi.Input[str]:
         """
@@ -102,6 +90,18 @@ class AlertMutingRuleFilterArgs:
     @negated.setter
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The property to filter.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -380,18 +380,6 @@ class DashboardEventOverlaySourceArgs:
 
     @property
     @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
-    @pulumi.getter
     def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
@@ -414,6 +402,18 @@ class DashboardEventOverlaySourceArgs:
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
 
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
 
 @pulumi.input_type
 class DashboardFilterArgs:
@@ -434,18 +434,6 @@ class DashboardFilterArgs:
             pulumi.set(__self__, "apply_if_exist", apply_if_exist)
         if negated is not None:
             pulumi.set(__self__, "negated", negated)
-
-    @property
-    @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
 
     @property
     @pulumi.getter
@@ -482,6 +470,18 @@ class DashboardFilterArgs:
     @negated.setter
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -638,18 +638,6 @@ class DashboardGroupDashboardFilterOverrideArgs:
 
     @property
     @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        A metric time series dimension or property name.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
-    @pulumi.getter
     def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
@@ -672,6 +660,18 @@ class DashboardGroupDashboardFilterOverrideArgs:
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
 
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        A metric time series dimension or property name.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
 
 @pulumi.input_type
 class DashboardGroupDashboardVariableOverrideArgs:
@@ -689,18 +689,6 @@ class DashboardGroupDashboardVariableOverrideArgs:
             pulumi.set(__self__, "values", values)
         if values_suggesteds is not None:
             pulumi.set(__self__, "values_suggesteds", values_suggesteds)
-
-    @property
-    @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        A metric time series dimension or property name.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
 
     @property
     @pulumi.getter
@@ -725,6 +713,18 @@ class DashboardGroupDashboardVariableOverrideArgs:
     @values_suggesteds.setter
     def values_suggesteds(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
         pulumi.set(self, "values_suggesteds", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        A metric time series dimension or property name.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -773,18 +773,6 @@ class DashboardGroupImportQualifierFilterArgs:
 
     @property
     @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        A metric time series dimension or property name.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
-    @pulumi.getter
     def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
@@ -806,6 +794,18 @@ class DashboardGroupImportQualifierFilterArgs:
     @negated.setter
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        A metric time series dimension or property name.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -880,18 +880,6 @@ class DashboardSelectedEventOverlaySourceArgs:
 
     @property
     @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
-    @pulumi.getter
     def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
@@ -913,6 +901,18 @@ class DashboardSelectedEventOverlaySourceArgs:
     @negated.setter
     def negated(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "negated", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -966,18 +966,6 @@ class DashboardVariableArgs:
     @alias.setter
     def alias(self, value: pulumi.Input[str]):
         pulumi.set(self, "alias", value)
-
-    @property
-    @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The name of a dimension to filter against.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
 
     @property
     @pulumi.getter(name="applyIfExist")
@@ -1062,6 +1050,18 @@ class DashboardVariableArgs:
     @values_suggesteds.setter
     def values_suggesteds(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
         pulumi.set(self, "values_suggesteds", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The name of a dimension to filter against.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -1773,18 +1773,6 @@ class ListChartLegendOptionsFieldArgs:
 
     @property
     @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
-    @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         True or False depending on if you want the property to be shown or hidden.
@@ -1794,6 +1782,18 @@ class ListChartLegendOptionsFieldArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type
@@ -2669,18 +2669,6 @@ class TimeChartLegendOptionsFieldArgs:
 
     @property
     @pulumi.getter
-    def property(self) -> pulumi.Input[str]:
-        """
-        The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-        """
-        return pulumi.get(self, "property")
-
-    @property.setter
-    def property(self, value: pulumi.Input[str]):
-        pulumi.set(self, "property", value)
-
-    @property
-    @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         True or False depending on if you want the property to be shown or hidden.
@@ -2690,6 +2678,18 @@ class TimeChartLegendOptionsFieldArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
 
 
 @pulumi.input_type

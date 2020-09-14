@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to v5.0.0 of the SignalFx Terraform Provider
+* Upgrade to pulumi-terraform-bridge v2.8.0
+* Upgrade to Pulumi v2.10.0
 
 ---
 
