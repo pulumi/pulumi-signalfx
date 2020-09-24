@@ -14,13 +14,13 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardGroupImportQualifier
     {
         public readonly ImmutableArray<Outputs.DashboardGroupImportQualifierFilter> Filters;
-        public readonly string Metric;
+        public readonly string? Metric;
 
         [OutputConstructor]
         private DashboardGroupImportQualifier(
             ImmutableArray<Outputs.DashboardGroupImportQualifierFilter> filters,
 
-            string metric)
+            string? metric)
         {
             Filters = filters;
             Metric = metric;

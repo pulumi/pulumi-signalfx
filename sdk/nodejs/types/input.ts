@@ -190,7 +190,7 @@ export interface DashboardGroupDashboardVariableOverride {
 
 export interface DashboardGroupImportQualifier {
     filters?: pulumi.Input<pulumi.Input<inputs.DashboardGroupImportQualifierFilter>[]>;
-    metric: pulumi.Input<string>;
+    metric?: pulumi.Input<string>;
 }
 
 export interface DashboardGroupImportQualifierFilter {

@@ -20,8 +20,8 @@ namespace Pulumi.SignalFx.Inputs
             set => _filters = value;
         }
 
-        [Input("metric", required: true)]
-        public Input<string> Metric { get; set; } = null!;
+        [Input("metric")]
+        public Input<string>? Metric { get; set; }
 
         public DashboardGroupImportQualifierGetArgs()
         {
