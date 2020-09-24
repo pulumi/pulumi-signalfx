@@ -524,6 +524,8 @@ github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200914142645-f76d2a07aa
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200914142645-f76d2a07aa25/go.mod h1:DNfyLrMZ7lT3l/KIW0ITZUJo0EG4HcKysyJxLhM96pA=
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200914150050-df1863718382 h1:0Rfaub3DVatyCj9MaY7c4J85h1zjkrUabWCRwFr5jNc=
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200914150050-df1863718382/go.mod h1:DNfyLrMZ7lT3l/KIW0ITZUJo0EG4HcKysyJxLhM96pA=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200923153551-56c20774e293 h1:in+itN//SQ1LPMIAnkxMKMGVX5X8pUT8OmY7kEFNJI4=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20200923153551-56c20774e293/go.mod h1:DNfyLrMZ7lT3l/KIW0ITZUJo0EG4HcKysyJxLhM96pA=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200701212620-1e7538fb9a34 h1:u1NyO0NXvl+b6kXq2iuQgU95U3O1muXMZLEglS/k+zM=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200701212620-1e7538fb9a34/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
 github.com/pulumi/tf2pulumi v0.9.0 h1:oOvFFYGQVg4fFbHhTOqGhiWyuwW4mHa4fEUcHxAmeHc=

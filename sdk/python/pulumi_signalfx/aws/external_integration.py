@@ -34,18 +34,18 @@ class ExternalIntegration(pulumi.CustomResource):
         import pulumi_signalfx as signalfx
 
         aws_myteam_extern = signalfx.aws.ExternalIntegration("awsMyteamExtern")
-        signalfx_assume_policy = pulumi.Output.all(aws_myteam_extern.signalfx_aws_account, aws_myteam_extern.external_id).apply(lambda signalfx_aws_account, external_id: aws.iam.get_policy_document(statements=[{
-            "actions": ["sts:AssumeRole"],
-            "principals": [{
-                "type": "AWS",
-                "identifiers": [signalfx_aws_account],
-            }],
-            "conditions": [{
-                "test": "StringEquals",
-                "variable": "sts:ExternalId",
-                "values": [external_id],
-            }],
-        }]))
+        signalfx_assume_policy = pulumi.Output.all(aws_myteam_extern.signalfx_aws_account, aws_myteam_extern.external_id).apply(lambda signalfx_aws_account, external_id: aws.iam.get_policy_document(statements=[aws.iam.GetPolicyDocumentStatementArgs(
+            actions=["sts:AssumeRole"],
+            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
+                type="AWS",
+                identifiers=[signalfx_aws_account],
+            )],
+            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
+                test="StringEquals",
+                variable="sts:ExternalId",
+                values=[external_id],
+            )],
+        )]))
         aws_sfx_role = aws.iam.Role("awsSfxRole",
             description="signalfx integration to read out data and send it to signalfxs aws account",
             assume_role_policy=signalfx_assume_policy.json)

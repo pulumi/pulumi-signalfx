@@ -190,7 +190,7 @@ export interface DashboardGroupDashboardVariableOverride {
 
 export interface DashboardGroupImportQualifier {
     filters?: outputs.DashboardGroupImportQualifierFilter[];
-    metric: string;
+    metric?: string;
 }
 
 export interface DashboardGroupImportQualifierFilter {

@@ -1240,7 +1240,7 @@ func (o DashboardGroupDashboardVariableOverrideArrayOutput) Index(i pulumi.IntIn
 
 type DashboardGroupImportQualifier struct {
 	Filters []DashboardGroupImportQualifierFilter `pulumi:"filters"`
-	Metric  string                                `pulumi:"metric"`
+	Metric  *string                               `pulumi:"metric"`
 }
 
 // DashboardGroupImportQualifierInput is an input type that accepts DashboardGroupImportQualifierArgs and DashboardGroupImportQualifierOutput values.
@@ -1256,7 +1256,7 @@ type DashboardGroupImportQualifierInput interface {
 
 type DashboardGroupImportQualifierArgs struct {
 	Filters DashboardGroupImportQualifierFilterArrayInput `pulumi:"filters"`
-	Metric  pulumi.StringInput                            `pulumi:"metric"`
+	Metric  pulumi.StringPtrInput                         `pulumi:"metric"`
 }
 
 func (DashboardGroupImportQualifierArgs) ElementType() reflect.Type {
@@ -1314,8 +1314,8 @@ func (o DashboardGroupImportQualifierOutput) Filters() DashboardGroupImportQuali
 	return o.ApplyT(func(v DashboardGroupImportQualifier) []DashboardGroupImportQualifierFilter { return v.Filters }).(DashboardGroupImportQualifierFilterArrayOutput)
 }
 
-func (o DashboardGroupImportQualifierOutput) Metric() pulumi.StringOutput {
-	return o.ApplyT(func(v DashboardGroupImportQualifier) string { return v.Metric }).(pulumi.StringOutput)
+func (o DashboardGroupImportQualifierOutput) Metric() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGroupImportQualifier) *string { return v.Metric }).(pulumi.StringPtrOutput)
 }
 
 type DashboardGroupImportQualifierArrayOutput struct{ *pulumi.OutputState }

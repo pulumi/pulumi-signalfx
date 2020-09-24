@@ -605,21 +605,22 @@ class DashboardGroupDashboardVariableOverride(dict):
 @pulumi.output_type
 class DashboardGroupImportQualifier(dict):
     def __init__(__self__, *,
-                 metric: str,
-                 filters: Optional[List['outputs.DashboardGroupImportQualifierFilter']] = None):
-        pulumi.set(__self__, "metric", metric)
+                 filters: Optional[List['outputs.DashboardGroupImportQualifierFilter']] = None,
+                 metric: Optional[str] = None):
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
-
-    @property
-    @pulumi.getter
-    def metric(self) -> str:
-        return pulumi.get(self, "metric")
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
 
     @property
     @pulumi.getter
     def filters(self) -> Optional[List['outputs.DashboardGroupImportQualifierFilter']]:
         return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[str]:
+        return pulumi.get(self, "metric")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

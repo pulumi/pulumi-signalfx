@@ -730,20 +730,12 @@ class DashboardGroupDashboardVariableOverrideArgs:
 @pulumi.input_type
 class DashboardGroupImportQualifierArgs:
     def __init__(__self__, *,
-                 metric: pulumi.Input[str],
-                 filters: Optional[pulumi.Input[List[pulumi.Input['DashboardGroupImportQualifierFilterArgs']]]] = None):
-        pulumi.set(__self__, "metric", metric)
+                 filters: Optional[pulumi.Input[List[pulumi.Input['DashboardGroupImportQualifierFilterArgs']]]] = None,
+                 metric: Optional[pulumi.Input[str]] = None):
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
-
-    @property
-    @pulumi.getter
-    def metric(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "metric")
-
-    @metric.setter
-    def metric(self, value: pulumi.Input[str]):
-        pulumi.set(self, "metric", value)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
 
     @property
     @pulumi.getter
@@ -753,6 +745,15 @@ class DashboardGroupImportQualifierArgs:
     @filters.setter
     def filters(self, value: Optional[pulumi.Input[List[pulumi.Input['DashboardGroupImportQualifierFilterArgs']]]]):
         pulumi.set(self, "filters", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric", value)
 
 
 @pulumi.input_type
