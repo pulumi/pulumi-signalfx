@@ -19,8 +19,9 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
@@ -67,13 +68,13 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 	return makeMember(mod, res)
 }
 
-func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
+func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 	return nil
 }
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
-	p := signalfx.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(signalfx.Provider().(*schema.Provider))
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "signalfx",
@@ -159,22 +160,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov.RenameDataSource("signalfx_azure_services", makeDataSource(mainMod, "getAzureServices"),
 		makeDataSource(azureMod, "getServices"), mainMod, azureMod, nil)
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const nameProperty = "name"
-	for resname, res := range prov.Resources {
-		if resourceSchema := p.ResourcesMap[resname]; resourceSchema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := resourceSchema.Schema[nameProperty]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[nameProperty]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					res.Fields[nameProperty] = tfbridge.AutoName(nameProperty, 255)
-				}
-			}
-		}
-	}
+	prov.SetAutonaming(255, "-")
 
 	return prov
 }
