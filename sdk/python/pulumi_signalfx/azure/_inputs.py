@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
@@ -16,10 +16,10 @@ __all__ = [
 @pulumi.input_type
 class IntegrationCustomNamespacesPerServiceArgs:
     def __init__(__self__, *,
-                 namespaces: pulumi.Input[List[pulumi.Input[str]]],
+                 namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] namespaces: The additional namespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: The additional namespaces.
         :param pulumi.Input[str] service: The name of the service.
         """
         pulumi.set(__self__, "namespaces", namespaces)
@@ -27,14 +27,14 @@ class IntegrationCustomNamespacesPerServiceArgs:
 
     @property
     @pulumi.getter
-    def namespaces(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         The additional namespaces.
         """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def namespaces(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "namespaces", value)
 
     @property

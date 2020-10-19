@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Team']
@@ -15,17 +15,17 @@ class Team(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dashboard_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 dashboard_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 detectors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notifications_criticals: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 notifications_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 notifications_infos: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 notifications_majors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 notifications_minors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 notifications_warnings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -60,17 +60,17 @@ class Team(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] dashboard_groups: Dashboard Groups that belong to this team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dashboard_groups: Dashboard Groups that belong to this team
         :param pulumi.Input[str] description: Description of the team.
-        :param pulumi.Input[List[pulumi.Input[str]]] detectors: List of detector IDs to include in the team.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: List of user IDs to include in the team.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: List of detector IDs to include in the team.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: List of user IDs to include in the team.
         :param pulumi.Input[str] name: Name of the team.
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_criticals: Where to send notifications for critical alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_defaults: Where to send notifications for default alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_infos: Where to send notifications for info alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_majors: Where to send notifications for major alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_criticals: Where to send notifications for critical alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_defaults: Where to send notifications for default alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_infos: Where to send notifications for info alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_majors: Where to send notifications for major alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -111,17 +111,17 @@ class Team(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dashboard_groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            dashboard_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            detectors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notifications_criticals: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            notifications_defaults: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            notifications_infos: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            notifications_majors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            notifications_minors: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            notifications_warnings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'Team':
         """
         Get an existing Team resource's state with the given name, id, and optional extra
@@ -130,17 +130,17 @@ class Team(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] dashboard_groups: Dashboard Groups that belong to this team
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dashboard_groups: Dashboard Groups that belong to this team
         :param pulumi.Input[str] description: Description of the team.
-        :param pulumi.Input[List[pulumi.Input[str]]] detectors: List of detector IDs to include in the team.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: List of user IDs to include in the team.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: List of detector IDs to include in the team.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: List of user IDs to include in the team.
         :param pulumi.Input[str] name: Name of the team.
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_criticals: Where to send notifications for critical alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_defaults: Where to send notifications for default alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_infos: Where to send notifications for info alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_majors: Where to send notifications for major alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
-        :param pulumi.Input[List[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_criticals: Where to send notifications for critical alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_defaults: Where to send notifications for default alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_infos: Where to send notifications for info alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_majors: Where to send notifications for major alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
         :param pulumi.Input[str] url: The URL of the team.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -163,7 +163,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dashboardGroups")
-    def dashboard_groups(self) -> pulumi.Output[Optional[List[str]]]:
+    def dashboard_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Dashboard Groups that belong to this team
         """
@@ -179,7 +179,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def detectors(self) -> pulumi.Output[Optional[List[str]]]:
+    def detectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of detector IDs to include in the team.
         """
@@ -187,7 +187,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[Optional[List[str]]]:
+    def members(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of user IDs to include in the team.
         """
@@ -203,7 +203,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsCriticals")
-    def notifications_criticals(self) -> pulumi.Output[Optional[List[str]]]:
+    def notifications_criticals(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Where to send notifications for critical alerts
         """
@@ -211,7 +211,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsDefaults")
-    def notifications_defaults(self) -> pulumi.Output[Optional[List[str]]]:
+    def notifications_defaults(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Where to send notifications for default alerts
         """
@@ -219,7 +219,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsInfos")
-    def notifications_infos(self) -> pulumi.Output[Optional[List[str]]]:
+    def notifications_infos(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Where to send notifications for info alerts
         """
@@ -227,7 +227,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsMajors")
-    def notifications_majors(self) -> pulumi.Output[Optional[List[str]]]:
+    def notifications_majors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Where to send notifications for major alerts
         """
@@ -235,7 +235,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsMinors")
-    def notifications_minors(self) -> pulumi.Output[Optional[List[str]]]:
+    def notifications_minors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Where to send notifications for minor alerts
         """
@@ -243,7 +243,7 @@ class Team(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationsWarnings")
-    def notifications_warnings(self) -> pulumi.Output[Optional[List[str]]]:
+    def notifications_warnings(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Where to send notifications for warning alerts
         """

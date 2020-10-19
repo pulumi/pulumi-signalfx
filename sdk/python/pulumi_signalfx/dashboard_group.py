@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class DashboardGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 dashboards: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]]] = None,
+                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 import_qualifiers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
+                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -72,9 +72,9 @@ class DashboardGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
         """
@@ -111,11 +111,11 @@ class DashboardGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            dashboards: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]]] = None,
+            authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            import_qualifiers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
+            import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'DashboardGroup':
         """
         Get an existing DashboardGroup resource's state with the given name, id, and optional extra
@@ -124,9 +124,9 @@ class DashboardGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
         """
@@ -144,7 +144,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> pulumi.Output[Optional[List[str]]]:
+    def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
         """
@@ -152,7 +152,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> pulumi.Output[Optional[List[str]]]:
+    def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
@@ -160,7 +160,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dashboards(self) -> pulumi.Output[Optional[List['outputs.DashboardGroupDashboard']]]:
+    def dashboards(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardGroupDashboard']]]:
         """
         [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         """
@@ -176,7 +176,7 @@ class DashboardGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="importQualifiers")
-    def import_qualifiers(self) -> pulumi.Output[Optional[List['outputs.DashboardGroupImportQualifier']]]:
+    def import_qualifiers(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardGroupImportQualifier']]]:
         return pulumi.get(self, "import_qualifiers")
 
     @property
