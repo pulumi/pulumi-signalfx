@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -41,7 +41,7 @@ class GetAwsServicesResult:
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List['outputs.GetAwsServicesServiceResult']]:
+    def services(self) -> Optional[Sequence['outputs.GetAwsServicesServiceResult']]:
         return pulumi.get(self, "services")
 
 
@@ -55,7 +55,7 @@ class AwaitableGetAwsServicesResult(GetAwsServicesResult):
             services=self.services)
 
 
-def get_aws_services(services: Optional[List[pulumi.InputType['GetAwsServicesServiceArgs']]] = None,
+def get_aws_services(services: Optional[Sequence[pulumi.InputType['GetAwsServicesServiceArgs']]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsServicesResult:
     """
     Use this data source to access information about an existing resource.

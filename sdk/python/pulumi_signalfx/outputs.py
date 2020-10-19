@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -100,16 +100,16 @@ class AlertMutingRuleFilter(dict):
 class DashboardChart(dict):
     def __init__(__self__, *,
                  chart_id: str,
-                 column: Optional[float] = None,
-                 height: Optional[float] = None,
-                 row: Optional[float] = None,
-                 width: Optional[float] = None):
+                 column: Optional[int] = None,
+                 height: Optional[int] = None,
+                 row: Optional[int] = None,
+                 width: Optional[int] = None):
         """
         :param str chart_id: ID of the chart to display.
-        :param float column: Column number for the layout.
-        :param float height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        :param float row: The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-        :param float width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        :param int column: Column number for the layout.
+        :param int height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        :param int row: The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
+        :param int width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
         pulumi.set(__self__, "chart_id", chart_id)
         if column is not None:
@@ -131,7 +131,7 @@ class DashboardChart(dict):
 
     @property
     @pulumi.getter
-    def column(self) -> Optional[float]:
+    def column(self) -> Optional[int]:
         """
         Column number for the layout.
         """
@@ -139,7 +139,7 @@ class DashboardChart(dict):
 
     @property
     @pulumi.getter
-    def height(self) -> Optional[float]:
+    def height(self) -> Optional[int]:
         """
         How many rows every chart should take up (greater than or equal to 1). 1 by default.
         """
@@ -147,7 +147,7 @@ class DashboardChart(dict):
 
     @property
     @pulumi.getter
-    def row(self) -> Optional[float]:
+    def row(self) -> Optional[int]:
         """
         The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
         """
@@ -155,7 +155,7 @@ class DashboardChart(dict):
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[float]:
+    def width(self) -> Optional[int]:
         """
         How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
@@ -168,15 +168,15 @@ class DashboardChart(dict):
 @pulumi.output_type
 class DashboardColumn(dict):
     def __init__(__self__, *,
-                 chart_ids: List[str],
-                 column: Optional[float] = None,
-                 height: Optional[float] = None,
-                 width: Optional[float] = None):
+                 chart_ids: Sequence[str],
+                 column: Optional[int] = None,
+                 height: Optional[int] = None,
+                 width: Optional[int] = None):
         """
-        :param List[str] chart_ids: List of IDs of the charts to display.
-        :param float column: Column number for the layout.
-        :param float height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        :param float width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        :param Sequence[str] chart_ids: List of IDs of the charts to display.
+        :param int column: Column number for the layout.
+        :param int height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        :param int width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
         pulumi.set(__self__, "chart_ids", chart_ids)
         if column is not None:
@@ -188,7 +188,7 @@ class DashboardColumn(dict):
 
     @property
     @pulumi.getter(name="chartIds")
-    def chart_ids(self) -> List[str]:
+    def chart_ids(self) -> Sequence[str]:
         """
         List of IDs of the charts to display.
         """
@@ -196,7 +196,7 @@ class DashboardColumn(dict):
 
     @property
     @pulumi.getter
-    def column(self) -> Optional[float]:
+    def column(self) -> Optional[int]:
         """
         Column number for the layout.
         """
@@ -204,7 +204,7 @@ class DashboardColumn(dict):
 
     @property
     @pulumi.getter
-    def height(self) -> Optional[float]:
+    def height(self) -> Optional[int]:
         """
         How many rows every chart should take up (greater than or equal to 1). 1 by default.
         """
@@ -212,7 +212,7 @@ class DashboardColumn(dict):
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[float]:
+    def width(self) -> Optional[int]:
         """
         How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
@@ -229,14 +229,14 @@ class DashboardEventOverlay(dict):
                  color: Optional[str] = None,
                  label: Optional[str] = None,
                  line: Optional[bool] = None,
-                 sources: Optional[List['outputs.DashboardEventOverlaySource']] = None,
+                 sources: Optional[Sequence['outputs.DashboardEventOverlaySource']] = None,
                  type: Optional[str] = None):
         """
         :param str signal: Search term used to choose the events shown in the overlay.
         :param str color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param str label: Text shown in the dropdown when selecting this overlay from the menu.
         :param bool line: Show a vertical line for the event. `false` by default.
-        :param List['DashboardEventOverlaySourceArgs'] sources: Each element specifies a filter to use against the signal specified in the `signal`.
+        :param Sequence['DashboardEventOverlaySourceArgs'] sources: Each element specifies a filter to use against the signal specified in the `signal`.
         :param str type: Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
         pulumi.set(__self__, "signal", signal)
@@ -285,7 +285,7 @@ class DashboardEventOverlay(dict):
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[List['outputs.DashboardEventOverlaySource']]:
+    def sources(self) -> Optional[Sequence['outputs.DashboardEventOverlaySource']]:
         """
         Each element specifies a filter to use against the signal specified in the `signal`.
         """
@@ -307,11 +307,11 @@ class DashboardEventOverlay(dict):
 class DashboardEventOverlaySource(dict):
     def __init__(__self__, *,
                  property: str,
-                 values: List[str],
+                 values: Sequence[str],
                  negated: Optional[bool] = None):
         """
         :param str property: The name of a dimension to filter against.
-        :param List[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
+        :param Sequence[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
@@ -321,7 +321,7 @@ class DashboardEventOverlaySource(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
         """
@@ -351,12 +351,12 @@ class DashboardEventOverlaySource(dict):
 class DashboardFilter(dict):
     def __init__(__self__, *,
                  property: str,
-                 values: List[str],
+                 values: Sequence[str],
                  apply_if_exist: Optional[bool] = None,
                  negated: Optional[bool] = None):
         """
         :param str property: The name of a dimension to filter against.
-        :param List[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
+        :param Sequence[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param bool apply_if_exist: If true, this variable will also match data that doesn't have this property at all.
         :param bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
@@ -369,7 +369,7 @@ class DashboardFilter(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
         """
@@ -406,13 +406,13 @@ class DashboardFilter(dict):
 @pulumi.output_type
 class DashboardGrid(dict):
     def __init__(__self__, *,
-                 chart_ids: List[str],
-                 height: Optional[float] = None,
-                 width: Optional[float] = None):
+                 chart_ids: Sequence[str],
+                 height: Optional[int] = None,
+                 width: Optional[int] = None):
         """
-        :param List[str] chart_ids: List of IDs of the charts to display.
-        :param float height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        :param float width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        :param Sequence[str] chart_ids: List of IDs of the charts to display.
+        :param int height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        :param int width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
         pulumi.set(__self__, "chart_ids", chart_ids)
         if height is not None:
@@ -422,7 +422,7 @@ class DashboardGrid(dict):
 
     @property
     @pulumi.getter(name="chartIds")
-    def chart_ids(self) -> List[str]:
+    def chart_ids(self) -> Sequence[str]:
         """
         List of IDs of the charts to display.
         """
@@ -430,7 +430,7 @@ class DashboardGrid(dict):
 
     @property
     @pulumi.getter
-    def height(self) -> Optional[float]:
+    def height(self) -> Optional[int]:
         """
         How many rows every chart should take up (greater than or equal to 1). 1 by default.
         """
@@ -438,7 +438,7 @@ class DashboardGrid(dict):
 
     @property
     @pulumi.getter
-    def width(self) -> Optional[float]:
+    def width(self) -> Optional[int]:
         """
         How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
@@ -453,13 +453,13 @@ class DashboardGroupDashboard(dict):
     def __init__(__self__, *,
                  dashboard_id: str,
                  description_override: Optional[str] = None,
-                 filter_overrides: Optional[List['outputs.DashboardGroupDashboardFilterOverride']] = None,
+                 filter_overrides: Optional[Sequence['outputs.DashboardGroupDashboardFilterOverride']] = None,
                  name_override: Optional[str] = None,
-                 variable_overrides: Optional[List['outputs.DashboardGroupDashboardVariableOverride']] = None):
+                 variable_overrides: Optional[Sequence['outputs.DashboardGroupDashboardVariableOverride']] = None):
         """
         :param str dashboard_id: The dashboard id to mirror
         :param str description_override: The description that will override the original dashboards's description.
-        :param List['DashboardGroupDashboardFilterOverrideArgs'] filter_overrides: The description that will override the original dashboards's description.
+        :param Sequence['DashboardGroupDashboardFilterOverrideArgs'] filter_overrides: The description that will override the original dashboards's description.
         :param str name_override: The name that will override the original dashboards's name.
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
@@ -490,7 +490,7 @@ class DashboardGroupDashboard(dict):
 
     @property
     @pulumi.getter(name="filterOverrides")
-    def filter_overrides(self) -> Optional[List['outputs.DashboardGroupDashboardFilterOverride']]:
+    def filter_overrides(self) -> Optional[Sequence['outputs.DashboardGroupDashboardFilterOverride']]:
         """
         The description that will override the original dashboards's description.
         """
@@ -506,7 +506,7 @@ class DashboardGroupDashboard(dict):
 
     @property
     @pulumi.getter(name="variableOverrides")
-    def variable_overrides(self) -> Optional[List['outputs.DashboardGroupDashboardVariableOverride']]:
+    def variable_overrides(self) -> Optional[Sequence['outputs.DashboardGroupDashboardVariableOverride']]:
         return pulumi.get(self, "variable_overrides")
 
     def _translate_property(self, prop):
@@ -517,11 +517,11 @@ class DashboardGroupDashboard(dict):
 class DashboardGroupDashboardFilterOverride(dict):
     def __init__(__self__, *,
                  property: str,
-                 values: List[str],
+                 values: Sequence[str],
                  negated: Optional[bool] = None):
         """
         :param str property: A metric time series dimension or property name.
-        :param List[str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
+        :param Sequence[str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
         :param bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
@@ -531,7 +531,7 @@ class DashboardGroupDashboardFilterOverride(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
         """
@@ -561,12 +561,12 @@ class DashboardGroupDashboardFilterOverride(dict):
 class DashboardGroupDashboardVariableOverride(dict):
     def __init__(__self__, *,
                  property: str,
-                 values: Optional[List[str]] = None,
-                 values_suggesteds: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None,
+                 values_suggesteds: Optional[Sequence[str]] = None):
         """
         :param str property: A metric time series dimension or property name.
-        :param List[str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
-        :param List[str] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+        :param Sequence[str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
+        :param Sequence[str] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         pulumi.set(__self__, "property", property)
         if values is not None:
@@ -576,7 +576,7 @@ class DashboardGroupDashboardVariableOverride(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
         """
@@ -584,7 +584,7 @@ class DashboardGroupDashboardVariableOverride(dict):
 
     @property
     @pulumi.getter(name="valuesSuggesteds")
-    def values_suggesteds(self) -> Optional[List[str]]:
+    def values_suggesteds(self) -> Optional[Sequence[str]]:
         """
         A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
@@ -605,7 +605,7 @@ class DashboardGroupDashboardVariableOverride(dict):
 @pulumi.output_type
 class DashboardGroupImportQualifier(dict):
     def __init__(__self__, *,
-                 filters: Optional[List['outputs.DashboardGroupImportQualifierFilter']] = None,
+                 filters: Optional[Sequence['outputs.DashboardGroupImportQualifierFilter']] = None,
                  metric: Optional[str] = None):
         if filters is not None:
             pulumi.set(__self__, "filters", filters)
@@ -614,7 +614,7 @@ class DashboardGroupImportQualifier(dict):
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[List['outputs.DashboardGroupImportQualifierFilter']]:
+    def filters(self) -> Optional[Sequence['outputs.DashboardGroupImportQualifierFilter']]:
         return pulumi.get(self, "filters")
 
     @property
@@ -630,11 +630,11 @@ class DashboardGroupImportQualifier(dict):
 class DashboardGroupImportQualifierFilter(dict):
     def __init__(__self__, *,
                  property: str,
-                 values: List[str],
+                 values: Sequence[str],
                  negated: Optional[bool] = None):
         """
         :param str property: A metric time series dimension or property name.
-        :param List[str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
+        :param Sequence[str] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
         :param bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
@@ -644,7 +644,7 @@ class DashboardGroupImportQualifierFilter(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         (Optional) List of of strings (which will be treated as an OR filter on the property).
         """
@@ -674,11 +674,11 @@ class DashboardGroupImportQualifierFilter(dict):
 class DashboardSelectedEventOverlay(dict):
     def __init__(__self__, *,
                  signal: str,
-                 sources: Optional[List['outputs.DashboardSelectedEventOverlaySource']] = None,
+                 sources: Optional[Sequence['outputs.DashboardSelectedEventOverlaySource']] = None,
                  type: Optional[str] = None):
         """
         :param str signal: Search term used to choose the events shown in the overlay.
-        :param List['DashboardSelectedEventOverlaySourceArgs'] sources: Each element specifies a filter to use against the signal specified in the `signal`.
+        :param Sequence['DashboardSelectedEventOverlaySourceArgs'] sources: Each element specifies a filter to use against the signal specified in the `signal`.
         :param str type: Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
         pulumi.set(__self__, "signal", signal)
@@ -697,7 +697,7 @@ class DashboardSelectedEventOverlay(dict):
 
     @property
     @pulumi.getter
-    def sources(self) -> Optional[List['outputs.DashboardSelectedEventOverlaySource']]:
+    def sources(self) -> Optional[Sequence['outputs.DashboardSelectedEventOverlaySource']]:
         """
         Each element specifies a filter to use against the signal specified in the `signal`.
         """
@@ -719,11 +719,11 @@ class DashboardSelectedEventOverlay(dict):
 class DashboardSelectedEventOverlaySource(dict):
     def __init__(__self__, *,
                  property: str,
-                 values: List[str],
+                 values: Sequence[str],
                  negated: Optional[bool] = None):
         """
         :param str property: The name of a dimension to filter against.
-        :param List[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
+        :param Sequence[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param bool negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
@@ -733,7 +733,7 @@ class DashboardSelectedEventOverlaySource(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
         """
@@ -769,8 +769,8 @@ class DashboardVariable(dict):
                  replace_only: Optional[bool] = None,
                  restricted_suggestions: Optional[bool] = None,
                  value_required: Optional[bool] = None,
-                 values: Optional[List[str]] = None,
-                 values_suggesteds: Optional[List[str]] = None):
+                 values: Optional[Sequence[str]] = None,
+                 values_suggesteds: Optional[Sequence[str]] = None):
         """
         :param str alias: An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
         :param str property: The name of a dimension to filter against.
@@ -779,8 +779,8 @@ class DashboardVariable(dict):
         :param bool replace_only: If `true`, this variable will only apply to charts that have a filter for the property.
         :param bool restricted_suggestions: If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
         :param bool value_required: Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-        :param List[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
-        :param List[str] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+        :param Sequence[str] values: A list of values to be used with the `property`, they will be combined via `OR`.
+        :param Sequence[str] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         pulumi.set(__self__, "alias", alias)
         pulumi.set(__self__, "property", property)
@@ -849,7 +849,7 @@ class DashboardVariable(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[List[str]]:
+    def values(self) -> Optional[Sequence[str]]:
         """
         A list of values to be used with the `property`, they will be combined via `OR`.
         """
@@ -857,7 +857,7 @@ class DashboardVariable(dict):
 
     @property
     @pulumi.getter(name="valuesSuggesteds")
-    def values_suggesteds(self) -> Optional[List[str]]:
+    def values_suggesteds(self) -> Optional[Sequence[str]]:
         """
         A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
@@ -1062,7 +1062,7 @@ class DetectorRule(dict):
                  severity: str,
                  description: Optional[str] = None,
                  disabled: Optional[bool] = None,
-                 notifications: Optional[List[str]] = None,
+                 notifications: Optional[Sequence[str]] = None,
                  parameterized_body: Optional[str] = None,
                  parameterized_subject: Optional[str] = None,
                  runbook_url: Optional[str] = None,
@@ -1072,7 +1072,7 @@ class DetectorRule(dict):
         :param str severity: The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
         :param str description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param bool disabled: When true, notifications and events will not be generated for the detect label. `false` by default.
-        :param List[str] notifications: List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
+        :param Sequence[str] notifications: List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
         :param str parameterized_body: Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         :param str parameterized_subject: Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
         :param str runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
@@ -1129,7 +1129,7 @@ class DetectorRule(dict):
 
     @property
     @pulumi.getter
-    def notifications(self) -> Optional[List[str]]:
+    def notifications(self) -> Optional[Sequence[str]]:
         """
         List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
         """
@@ -1540,11 +1540,11 @@ class ListChartVizOption(dict):
 @pulumi.output_type
 class OrgTokenDpmLimits(dict):
     def __init__(__self__, *,
-                 dpm_limit: float,
-                 dpm_notification_threshold: Optional[float] = None):
+                 dpm_limit: int,
+                 dpm_notification_threshold: Optional[int] = None):
         """
-        :param float dpm_limit: The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
-        :param float dpm_notification_threshold: DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
+        :param int dpm_limit: The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
+        :param int dpm_notification_threshold: DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
         """
         pulumi.set(__self__, "dpm_limit", dpm_limit)
         if dpm_notification_threshold is not None:
@@ -1552,7 +1552,7 @@ class OrgTokenDpmLimits(dict):
 
     @property
     @pulumi.getter(name="dpmLimit")
-    def dpm_limit(self) -> float:
+    def dpm_limit(self) -> int:
         """
         The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
         """
@@ -1560,7 +1560,7 @@ class OrgTokenDpmLimits(dict):
 
     @property
     @pulumi.getter(name="dpmNotificationThreshold")
-    def dpm_notification_threshold(self) -> Optional[float]:
+    def dpm_notification_threshold(self) -> Optional[int]:
         """
         DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
         """
@@ -1573,23 +1573,23 @@ class OrgTokenDpmLimits(dict):
 @pulumi.output_type
 class OrgTokenHostOrUsageLimits(dict):
     def __init__(__self__, *,
-                 container_limit: Optional[float] = None,
-                 container_notification_threshold: Optional[float] = None,
-                 custom_metrics_limit: Optional[float] = None,
-                 custom_metrics_notification_threshold: Optional[float] = None,
-                 high_res_metrics_limit: Optional[float] = None,
-                 high_res_metrics_notification_threshold: Optional[float] = None,
-                 host_limit: Optional[float] = None,
-                 host_notification_threshold: Optional[float] = None):
+                 container_limit: Optional[int] = None,
+                 container_notification_threshold: Optional[int] = None,
+                 custom_metrics_limit: Optional[int] = None,
+                 custom_metrics_notification_threshold: Optional[int] = None,
+                 high_res_metrics_limit: Optional[int] = None,
+                 high_res_metrics_notification_threshold: Optional[int] = None,
+                 host_limit: Optional[int] = None,
+                 host_notification_threshold: Optional[int] = None):
         """
-        :param float container_limit: Max number of Docker containers that can use this token
-        :param float container_notification_threshold: Notification threshold for Docker containers
-        :param float custom_metrics_limit: Max number of custom metrics that can be sent with this token
-        :param float custom_metrics_notification_threshold: Notification threshold for custom metrics
-        :param float high_res_metrics_limit: Max number of hi-res metrics that can be sent with this toke
-        :param float high_res_metrics_notification_threshold: Notification threshold for hi-res metrics
-        :param float host_limit: Max number of hosts that can use this token
-        :param float host_notification_threshold: Notification threshold for hosts
+        :param int container_limit: Max number of Docker containers that can use this token
+        :param int container_notification_threshold: Notification threshold for Docker containers
+        :param int custom_metrics_limit: Max number of custom metrics that can be sent with this token
+        :param int custom_metrics_notification_threshold: Notification threshold for custom metrics
+        :param int high_res_metrics_limit: Max number of hi-res metrics that can be sent with this toke
+        :param int high_res_metrics_notification_threshold: Notification threshold for hi-res metrics
+        :param int host_limit: Max number of hosts that can use this token
+        :param int host_notification_threshold: Notification threshold for hosts
         """
         if container_limit is not None:
             pulumi.set(__self__, "container_limit", container_limit)
@@ -1610,7 +1610,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="containerLimit")
-    def container_limit(self) -> Optional[float]:
+    def container_limit(self) -> Optional[int]:
         """
         Max number of Docker containers that can use this token
         """
@@ -1618,7 +1618,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="containerNotificationThreshold")
-    def container_notification_threshold(self) -> Optional[float]:
+    def container_notification_threshold(self) -> Optional[int]:
         """
         Notification threshold for Docker containers
         """
@@ -1626,7 +1626,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="customMetricsLimit")
-    def custom_metrics_limit(self) -> Optional[float]:
+    def custom_metrics_limit(self) -> Optional[int]:
         """
         Max number of custom metrics that can be sent with this token
         """
@@ -1634,7 +1634,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="customMetricsNotificationThreshold")
-    def custom_metrics_notification_threshold(self) -> Optional[float]:
+    def custom_metrics_notification_threshold(self) -> Optional[int]:
         """
         Notification threshold for custom metrics
         """
@@ -1642,7 +1642,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="highResMetricsLimit")
-    def high_res_metrics_limit(self) -> Optional[float]:
+    def high_res_metrics_limit(self) -> Optional[int]:
         """
         Max number of hi-res metrics that can be sent with this toke
         """
@@ -1650,7 +1650,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="highResMetricsNotificationThreshold")
-    def high_res_metrics_notification_threshold(self) -> Optional[float]:
+    def high_res_metrics_notification_threshold(self) -> Optional[int]:
         """
         Notification threshold for hi-res metrics
         """
@@ -1658,7 +1658,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="hostLimit")
-    def host_limit(self) -> Optional[float]:
+    def host_limit(self) -> Optional[int]:
         """
         Max number of hosts that can use this token
         """
@@ -1666,7 +1666,7 @@ class OrgTokenHostOrUsageLimits(dict):
 
     @property
     @pulumi.getter(name="hostNotificationThreshold")
-    def host_notification_threshold(self) -> Optional[float]:
+    def host_notification_threshold(self) -> Optional[int]:
         """
         Notification threshold for hosts
         """
@@ -1830,7 +1830,7 @@ class TimeChartAxisLeft(dict):
                  low_watermark_label: Optional[str] = None,
                  max_value: Optional[float] = None,
                  min_value: Optional[float] = None,
-                 watermarks: Optional[List['outputs.TimeChartAxisLeftWatermark']] = None):
+                 watermarks: Optional[Sequence['outputs.TimeChartAxisLeftWatermark']] = None):
         """
         :param float high_watermark: A line to draw as a high watermark.
         :param str high_watermark_label: A label to attach to the high watermark line.
@@ -1915,7 +1915,7 @@ class TimeChartAxisLeft(dict):
 
     @property
     @pulumi.getter
-    def watermarks(self) -> Optional[List['outputs.TimeChartAxisLeftWatermark']]:
+    def watermarks(self) -> Optional[Sequence['outputs.TimeChartAxisLeftWatermark']]:
         return pulumi.get(self, "watermarks")
 
     def _translate_property(self, prop):
@@ -1961,7 +1961,7 @@ class TimeChartAxisRight(dict):
                  low_watermark_label: Optional[str] = None,
                  max_value: Optional[float] = None,
                  min_value: Optional[float] = None,
-                 watermarks: Optional[List['outputs.TimeChartAxisRightWatermark']] = None):
+                 watermarks: Optional[Sequence['outputs.TimeChartAxisRightWatermark']] = None):
         """
         :param float high_watermark: A line to draw as a high watermark.
         :param str high_watermark_label: A label to attach to the high watermark line.
@@ -2046,7 +2046,7 @@ class TimeChartAxisRight(dict):
 
     @property
     @pulumi.getter
-    def watermarks(self) -> Optional[List['outputs.TimeChartAxisRightWatermark']]:
+    def watermarks(self) -> Optional[Sequence['outputs.TimeChartAxisRightWatermark']]:
         return pulumi.get(self, "watermarks")
 
     def _translate_property(self, prop):

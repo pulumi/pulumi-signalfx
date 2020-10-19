@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -41,7 +41,7 @@ class GetAzureServicesResult:
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List['outputs.GetAzureServicesServiceResult']]:
+    def services(self) -> Optional[Sequence['outputs.GetAzureServicesServiceResult']]:
         return pulumi.get(self, "services")
 
 
@@ -55,7 +55,7 @@ class AwaitableGetAzureServicesResult(GetAzureServicesResult):
             services=self.services)
 
 
-def get_azure_services(services: Optional[List[pulumi.InputType['GetAzureServicesServiceArgs']]] = None,
+def get_azure_services(services: Optional[Sequence[pulumi.InputType['GetAzureServicesServiceArgs']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzureServicesResult:
     """
     Use this data source to access information about an existing resource.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,20 +17,20 @@ class Detector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
-                 end_time: Optional[pulumi.Input[float]] = None,
-                 max_delay: Optional[pulumi.Input[float]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
                  show_event_lines: Optional[pulumi.Input[bool]] = None,
-                 start_time: Optional[pulumi.Input[float]] = None,
-                 time_range: Optional[pulumi.Input[float]] = None,
-                 viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -123,20 +123,20 @@ class Detector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
-        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
-        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -184,21 +184,21 @@ class Detector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authorized_writer_teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            authorized_writer_users: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
-            end_time: Optional[pulumi.Input[float]] = None,
-            max_delay: Optional[pulumi.Input[float]] = None,
+            end_time: Optional[pulumi.Input[int]] = None,
+            max_delay: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
-            rules: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
             show_data_markers: Optional[pulumi.Input[bool]] = None,
             show_event_lines: Optional[pulumi.Input[bool]] = None,
-            start_time: Optional[pulumi.Input[float]] = None,
-            time_range: Optional[pulumi.Input[float]] = None,
+            start_time: Optional[pulumi.Input[int]] = None,
+            time_range: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None) -> 'Detector':
+            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None) -> 'Detector':
         """
         Get an existing Detector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -206,21 +206,21 @@ class Detector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-        :param pulumi.Input[List[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
-        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
-        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] url: The URL of the detector.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -245,7 +245,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
-    def authorized_writer_teams(self) -> pulumi.Output[Optional[List[str]]]:
+    def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
@@ -253,7 +253,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedWriterUsers")
-    def authorized_writer_users(self) -> pulumi.Output[Optional[List[str]]]:
+    def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
@@ -277,7 +277,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> pulumi.Output[Optional[float]]:
+    def end_time(self) -> pulumi.Output[Optional[int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -285,7 +285,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> pulumi.Output[Optional[float]]:
+    def max_delay(self) -> pulumi.Output[Optional[int]]:
         """
         How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         """
@@ -309,7 +309,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[List['outputs.DetectorRule']]:
+    def rules(self) -> pulumi.Output[Sequence['outputs.DetectorRule']]:
         """
         Set of rules used for alerting.
         """
@@ -333,7 +333,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> pulumi.Output[Optional[float]]:
+    def start_time(self) -> pulumi.Output[Optional[int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -341,7 +341,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> pulumi.Output[Optional[float]]:
+    def time_range(self) -> pulumi.Output[Optional[int]]:
         """
         Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
@@ -357,7 +357,7 @@ class Detector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> pulumi.Output[Optional[List['outputs.DetectorVizOption']]]:
+    def viz_options(self) -> pulumi.Output[Optional[Sequence['outputs.DetectorVizOption']]]:
         """
         Plot-level customization options, associated with a publish statement.
         """

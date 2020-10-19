@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,16 +18,16 @@ class HeatmapChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_range: Optional[pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']]] = None,
-                 color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
-                 group_bies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  hide_timestamp: Optional[pulumi.Input[bool]] = None,
-                 max_delay: Optional[pulumi.Input[float]] = None,
-                 minimum_resolution: Optional[pulumi.Input[float]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 minimum_resolution: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 refresh_interval: Optional[pulumi.Input[float]] = None,
+                 refresh_interval: Optional[pulumi.Input[int]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -80,16 +80,16 @@ class HeatmapChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
         :param pulumi.Input[bool] hide_timestamp: Whether to show the timestamp in the chart. `false` by default.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[float] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-        :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
@@ -137,16 +137,16 @@ class HeatmapChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color_range: Optional[pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']]] = None,
-            color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
+            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
-            group_bies: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             hide_timestamp: Optional[pulumi.Input[bool]] = None,
-            max_delay: Optional[pulumi.Input[float]] = None,
-            minimum_resolution: Optional[pulumi.Input[float]] = None,
+            max_delay: Optional[pulumi.Input[int]] = None,
+            minimum_resolution: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
-            refresh_interval: Optional[pulumi.Input[float]] = None,
+            refresh_interval: Optional[pulumi.Input[int]] = None,
             sort_by: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'HeatmapChart':
@@ -158,16 +158,16 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HeatmapChartColorScaleArgs']]]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-        :param pulumi.Input[List[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
         :param pulumi.Input[bool] hide_timestamp: Whether to show the timestamp in the chart. `false` by default.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[float] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
-        :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
@@ -202,7 +202,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorScales")
-    def color_scales(self) -> pulumi.Output[Optional[List['outputs.HeatmapChartColorScale']]]:
+    def color_scales(self) -> pulumi.Output[Optional[Sequence['outputs.HeatmapChartColorScale']]]:
         """
         One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         """
@@ -226,7 +226,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> pulumi.Output[Optional[List[str]]]:
+    def group_bies(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Properties to group by in the heatmap (in nesting order).
         """
@@ -242,7 +242,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> pulumi.Output[Optional[float]]:
+    def max_delay(self) -> pulumi.Output[Optional[int]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
@@ -250,7 +250,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumResolution")
-    def minimum_resolution(self) -> pulumi.Output[Optional[float]]:
+    def minimum_resolution(self) -> pulumi.Output[Optional[int]]:
         """
         The minimum resolution (in seconds) to use for computing the underlying program.
         """
@@ -274,7 +274,7 @@ class HeatmapChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> pulumi.Output[Optional[float]]:
+    def refresh_interval(self) -> pulumi.Output[Optional[int]]:
         """
         How often (in seconds) to refresh the values of the heatmap.
         """

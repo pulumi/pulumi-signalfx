@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -39,7 +39,7 @@ class GetServicesResult:
 
     @property
     @pulumi.getter
-    def services(self) -> Optional[List['outputs.GetServicesServiceResult']]:
+    def services(self) -> Optional[Sequence['outputs.GetServicesServiceResult']]:
         return pulumi.get(self, "services")
 
 
@@ -53,7 +53,7 @@ class AwaitableGetServicesResult(GetServicesResult):
             services=self.services)
 
 
-def get_services(services: Optional[List[pulumi.InputType['GetServicesServiceArgs']]] = None,
+def get_services(services: Optional[Sequence[pulumi.InputType['GetServicesServiceArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
     Use this data source to get a list of Azure service names.

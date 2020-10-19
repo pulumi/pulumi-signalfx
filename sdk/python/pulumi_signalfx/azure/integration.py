@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,15 +18,15 @@ class Integration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
-                 custom_namespaces_per_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]]] = None,
+                 custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
-                 poll_rate: Optional[pulumi.Input[float]] = None,
+                 poll_rate: Optional[pulumi.Input[int]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
-                 services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 subscriptions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -67,15 +67,15 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: A named token to use for ingest
-        :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[List[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
-        :param pulumi.Input[List[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """
@@ -131,15 +131,15 @@ class Integration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_id: Optional[pulumi.Input[str]] = None,
-            custom_namespaces_per_services: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]]] = None,
+            custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             environment: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_token: Optional[pulumi.Input[str]] = None,
-            poll_rate: Optional[pulumi.Input[float]] = None,
+            poll_rate: Optional[pulumi.Input[int]] = None,
             secret_key: Optional[pulumi.Input[str]] = None,
-            services: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            subscriptions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
             tenant_id: Optional[pulumi.Input[str]] = None) -> 'Integration':
         """
@@ -150,15 +150,15 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespacesPerServiceArgs']]]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: A named token to use for ingest
-        :param pulumi.Input[float] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[List[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
-        :param pulumi.Input[List[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """
@@ -190,7 +190,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customNamespacesPerServices")
-    def custom_namespaces_per_services(self) -> pulumi.Output[Optional[List['outputs.IntegrationCustomNamespacesPerService']]]:
+    def custom_namespaces_per_services(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationCustomNamespacesPerService']]]:
         """
         Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         """
@@ -230,7 +230,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pollRate")
-    def poll_rate(self) -> pulumi.Output[Optional[float]]:
+    def poll_rate(self) -> pulumi.Output[Optional[int]]:
         """
         AWS poll rate (in seconds). One of `60` or `300`.
         """
@@ -246,7 +246,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def services(self) -> pulumi.Output[List[str]]:
+    def services(self) -> pulumi.Output[Sequence[str]]:
         """
         List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
         """
@@ -254,7 +254,7 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def subscriptions(self) -> pulumi.Output[List[str]]:
+    def subscriptions(self) -> pulumi.Output[Sequence[str]]:
         """
         List of Azure subscriptions that SignalFx should monitor.
         """

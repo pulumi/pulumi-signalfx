@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class WebhookIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -33,7 +33,7 @@ class WebhookIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
         """
@@ -72,7 +72,7 @@ class WebhookIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+            headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             shared_secret: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'WebhookIntegration':
@@ -84,7 +84,7 @@ class WebhookIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
         """
@@ -109,7 +109,7 @@ class WebhookIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def headers(self) -> pulumi.Output[Optional[List['outputs.WebhookIntegrationHeader']]]:
+    def headers(self) -> pulumi.Output[Optional[Sequence['outputs.WebhookIntegrationHeader']]]:
         """
         A header to send with the request
         """

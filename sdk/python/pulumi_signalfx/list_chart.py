@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,23 +18,23 @@ class ListChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_by: Optional[pulumi.Input[str]] = None,
-                 color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
-                 end_time: Optional[pulumi.Input[float]] = None,
-                 legend_fields_to_hides: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 legend_options_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
-                 max_delay: Optional[pulumi.Input[float]] = None,
-                 max_precision: Optional[pulumi.Input[float]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 max_precision: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 refresh_interval: Optional[pulumi.Input[float]] = None,
+                 refresh_interval: Optional[pulumi.Input[int]] = None,
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[float]] = None,
-                 time_range: Optional[pulumi.Input[float]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -88,23 +88,23 @@ class ListChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[List[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[float] max_precision: Maximum number of digits to display when rounding values up or down.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the list.
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
-        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -158,24 +158,24 @@ class ListChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color_by: Optional[pulumi.Input[str]] = None,
-            color_scales: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
+            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
-            end_time: Optional[pulumi.Input[float]] = None,
-            legend_fields_to_hides: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-            legend_options_fields: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
-            max_delay: Optional[pulumi.Input[float]] = None,
-            max_precision: Optional[pulumi.Input[float]] = None,
+            end_time: Optional[pulumi.Input[int]] = None,
+            legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
+            max_delay: Optional[pulumi.Input[int]] = None,
+            max_precision: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
-            refresh_interval: Optional[pulumi.Input[float]] = None,
+            refresh_interval: Optional[pulumi.Input[int]] = None,
             secondary_visualization: Optional[pulumi.Input[str]] = None,
             sort_by: Optional[pulumi.Input[str]] = None,
-            start_time: Optional[pulumi.Input[float]] = None,
-            time_range: Optional[pulumi.Input[float]] = None,
+            start_time: Optional[pulumi.Input[int]] = None,
+            time_range: Optional[pulumi.Input[int]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            viz_options: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None) -> 'ListChart':
+            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None) -> 'ListChart':
         """
         Get an existing ListChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -184,24 +184,24 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-        :param pulumi.Input[float] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[List[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-        :param pulumi.Input[float] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[float] max_precision: Maximum number of digits to display when rounding values up or down.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] max_precision: Maximum number of digits to display when rounding values up or down.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[float] refresh_interval: How often (in seconds) to refresh the values of the list.
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the list.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
-        :param pulumi.Input[float] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[float] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -238,7 +238,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="colorScales")
-    def color_scales(self) -> pulumi.Output[Optional[List['outputs.ListChartColorScale']]]:
+    def color_scales(self) -> pulumi.Output[Optional[Sequence['outputs.ListChartColorScale']]]:
         """
         Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         """
@@ -262,7 +262,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> pulumi.Output[Optional[float]]:
+    def end_time(self) -> pulumi.Output[Optional[int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -270,7 +270,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
-    def legend_fields_to_hides(self) -> pulumi.Output[Optional[List[str]]]:
+    def legend_fields_to_hides(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
@@ -278,7 +278,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legendOptionsFields")
-    def legend_options_fields(self) -> pulumi.Output[Optional[List['outputs.ListChartLegendOptionsField']]]:
+    def legend_options_fields(self) -> pulumi.Output[Optional[Sequence['outputs.ListChartLegendOptionsField']]]:
         """
         List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         """
@@ -286,7 +286,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxDelay")
-    def max_delay(self) -> pulumi.Output[Optional[float]]:
+    def max_delay(self) -> pulumi.Output[Optional[int]]:
         """
         How long (in seconds) to wait for late datapoints.
         """
@@ -294,7 +294,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxPrecision")
-    def max_precision(self) -> pulumi.Output[Optional[float]]:
+    def max_precision(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum number of digits to display when rounding values up or down.
         """
@@ -318,7 +318,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="refreshInterval")
-    def refresh_interval(self) -> pulumi.Output[Optional[float]]:
+    def refresh_interval(self) -> pulumi.Output[Optional[int]]:
         """
         How often (in seconds) to refresh the values of the list.
         """
@@ -342,7 +342,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> pulumi.Output[Optional[float]]:
+    def start_time(self) -> pulumi.Output[Optional[int]]:
         """
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
@@ -350,7 +350,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="timeRange")
-    def time_range(self) -> pulumi.Output[Optional[float]]:
+    def time_range(self) -> pulumi.Output[Optional[int]]:
         """
         How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         """
@@ -374,7 +374,7 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vizOptions")
-    def viz_options(self) -> pulumi.Output[Optional[List['outputs.ListChartVizOption']]]:
+    def viz_options(self) -> pulumi.Output[Optional[Sequence['outputs.ListChartVizOption']]]:
         """
         Plot-level customization options, associated with a publish statement.
         """
