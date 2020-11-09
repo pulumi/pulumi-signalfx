@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-signalfx/provider/v3
+module github.com/pulumi/pulumi-signalfx/provider/v4
 
 go 1.14
 
@@ -11,5 +11,5 @@ require (
 
 replace (
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
-	github.com/splunk-terraform/terraform-provider-signalfx => github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20201022201019-936aec954267
+	github.com/splunk-terraform/terraform-provider-signalfx => github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20201106210931-c39db71802d5
 )

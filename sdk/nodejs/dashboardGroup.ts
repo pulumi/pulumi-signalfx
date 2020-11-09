@@ -101,6 +101,10 @@ export class DashboardGroup extends pulumi.CustomResource {
      * Name of the dashboard group.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Team IDs to associate the dashboard group to.
+     */
+    public readonly teams!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a DashboardGroup resource with the given unique name, arguments, and options.
@@ -120,6 +124,7 @@ export class DashboardGroup extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["importQualifiers"] = state ? state.importQualifiers : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["teams"] = state ? state.teams : undefined;
         } else {
             const args = argsOrState as DashboardGroupArgs | undefined;
             inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
@@ -128,6 +133,7 @@ export class DashboardGroup extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["importQualifiers"] = args ? args.importQualifiers : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["teams"] = args ? args.teams : undefined;
         }
         if (!opts) {
             opts = {}
@@ -165,6 +171,10 @@ export interface DashboardGroupState {
      * Name of the dashboard group.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Team IDs to associate the dashboard group to.
+     */
+    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -192,4 +202,8 @@ export interface DashboardGroupArgs {
      * Name of the dashboard group.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Team IDs to associate the dashboard group to.
+     */
+    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
 }

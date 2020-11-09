@@ -78,6 +78,8 @@ type DashboardGroup struct {
 	ImportQualifiers DashboardGroupImportQualifierArrayOutput `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Team IDs to associate the dashboard group to.
+	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 }
 
 // NewDashboardGroup registers a new resource with the given unique name, arguments, and options.
@@ -119,6 +121,8 @@ type dashboardGroupState struct {
 	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
+	// Team IDs to associate the dashboard group to.
+	Teams []string `pulumi:"teams"`
 }
 
 type DashboardGroupState struct {
@@ -133,6 +137,8 @@ type DashboardGroupState struct {
 	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
+	// Team IDs to associate the dashboard group to.
+	Teams pulumi.StringArrayInput
 }
 
 func (DashboardGroupState) ElementType() reflect.Type {
@@ -151,6 +157,8 @@ type dashboardGroupArgs struct {
 	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
+	// Team IDs to associate the dashboard group to.
+	Teams []string `pulumi:"teams"`
 }
 
 // The set of arguments for constructing a DashboardGroup resource.
@@ -166,6 +174,8 @@ type DashboardGroupArgs struct {
 	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
+	// Team IDs to associate the dashboard group to.
+	Teams pulumi.StringArrayInput
 }
 
 func (DashboardGroupArgs) ElementType() reflect.Type {

@@ -23,6 +23,7 @@ class DashboardGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -77,6 +78,7 @@ class DashboardGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -101,6 +103,7 @@ class DashboardGroup(pulumi.CustomResource):
             __props__['description'] = description
             __props__['import_qualifiers'] = import_qualifiers
             __props__['name'] = name
+            __props__['teams'] = teams
         super(DashboardGroup, __self__).__init__(
             'signalfx:index/dashboardGroup:DashboardGroup',
             resource_name,
@@ -116,7 +119,8 @@ class DashboardGroup(pulumi.CustomResource):
             dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'DashboardGroup':
+            name: Optional[pulumi.Input[str]] = None,
+            teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'DashboardGroup':
         """
         Get an existing DashboardGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -129,6 +133,7 @@ class DashboardGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,6 +145,7 @@ class DashboardGroup(pulumi.CustomResource):
         __props__["description"] = description
         __props__["import_qualifiers"] = import_qualifiers
         __props__["name"] = name
+        __props__["teams"] = teams
         return DashboardGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -186,6 +192,14 @@ class DashboardGroup(pulumi.CustomResource):
         Name of the dashboard group.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Team IDs to associate the dashboard group to.
+        """
+        return pulumi.get(self, "teams")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

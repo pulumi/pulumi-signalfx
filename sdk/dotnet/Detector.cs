@@ -259,6 +259,12 @@ namespace Pulumi.SignalFx
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
+        /// Team IDs to associate the detector to.
+        /// </summary>
+        [Output("teams")]
+        public Output<ImmutableArray<string>> Teams { get; private set; } = null!;
+
+        /// <summary>
         /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
         [Output("timeRange")]
@@ -412,6 +418,18 @@ namespace Pulumi.SignalFx
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
+        [Input("teams")]
+        private InputList<string>? _teams;
+
+        /// <summary>
+        /// Team IDs to associate the detector to.
+        /// </summary>
+        public InputList<string> Teams
+        {
+            get => _teams ?? (_teams = new InputList<string>());
+            set => _teams = value;
+        }
+
         /// <summary>
         /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         /// </summary>
@@ -526,6 +544,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
+
+        [Input("teams")]
+        private InputList<string>? _teams;
+
+        /// <summary>
+        /// Team IDs to associate the detector to.
+        /// </summary>
+        public InputList<string> Teams
+        {
+            get => _teams ?? (_teams = new InputList<string>());
+            set => _teams = value;
+        }
 
         /// <summary>
         /// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.

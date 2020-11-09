@@ -26,17 +26,7 @@ namespace Pulumi.SignalFx
     ///     {
     ///         var myteam0 = new SignalFx.Team("myteam0", new SignalFx.TeamArgs
     ///         {
-    ///             DashboardGroups = 
-    ///             {
-    ///                 "dashboardGroupId1",
-    ///                 "dashboardGroupId2",
-    ///             },
     ///             Description = "Super great team no jerks definitely",
-    ///             Detectors = 
-    ///             {
-    ///                 "detectorId1",
-    ///                 "detectorId2",
-    ///             },
     ///             Members = 
     ///             {
     ///                 "userid1",
@@ -59,22 +49,10 @@ namespace Pulumi.SignalFx
     public partial class Team : Pulumi.CustomResource
     {
         /// <summary>
-        /// Dashboard Groups that belong to this team
-        /// </summary>
-        [Output("dashboardGroups")]
-        public Output<ImmutableArray<string>> DashboardGroups { get; private set; } = null!;
-
-        /// <summary>
         /// Description of the team.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// List of detector IDs to include in the team.
-        /// </summary>
-        [Output("detectors")]
-        public Output<ImmutableArray<string>> Detectors { get; private set; } = null!;
 
         /// <summary>
         /// List of user IDs to include in the team.
@@ -176,35 +154,11 @@ namespace Pulumi.SignalFx
 
     public sealed class TeamArgs : Pulumi.ResourceArgs
     {
-        [Input("dashboardGroups")]
-        private InputList<string>? _dashboardGroups;
-
-        /// <summary>
-        /// Dashboard Groups that belong to this team
-        /// </summary>
-        public InputList<string> DashboardGroups
-        {
-            get => _dashboardGroups ?? (_dashboardGroups = new InputList<string>());
-            set => _dashboardGroups = value;
-        }
-
         /// <summary>
         /// Description of the team.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("detectors")]
-        private InputList<string>? _detectors;
-
-        /// <summary>
-        /// List of detector IDs to include in the team.
-        /// </summary>
-        public InputList<string> Detectors
-        {
-            get => _detectors ?? (_detectors = new InputList<string>());
-            set => _detectors = value;
-        }
 
         [Input("members")]
         private InputList<string>? _members;
@@ -303,35 +257,11 @@ namespace Pulumi.SignalFx
 
     public sealed class TeamState : Pulumi.ResourceArgs
     {
-        [Input("dashboardGroups")]
-        private InputList<string>? _dashboardGroups;
-
-        /// <summary>
-        /// Dashboard Groups that belong to this team
-        /// </summary>
-        public InputList<string> DashboardGroups
-        {
-            get => _dashboardGroups ?? (_dashboardGroups = new InputList<string>());
-            set => _dashboardGroups = value;
-        }
-
         /// <summary>
         /// Description of the team.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("detectors")]
-        private InputList<string>? _detectors;
-
-        /// <summary>
-        /// List of detector IDs to include in the team.
-        /// </summary>
-        public InputList<string> Detectors
-        {
-            get => _detectors ?? (_detectors = new InputList<string>());
-            set => _detectors = value;
-        }
 
         [Input("members")]
         private InputList<string>? _members;

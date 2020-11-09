@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-signalfx/examples/v3
+module github.com/pulumi/pulumi-signalfx/examples/v4
 
 go 1.14
 

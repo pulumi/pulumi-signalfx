@@ -29,6 +29,7 @@ class Detector(pulumi.CustomResource):
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
                  show_event_lines: Optional[pulumi.Input[bool]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
                  __props__=None,
@@ -135,6 +136,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
@@ -171,6 +173,7 @@ class Detector(pulumi.CustomResource):
             __props__['show_data_markers'] = show_data_markers
             __props__['show_event_lines'] = show_event_lines
             __props__['start_time'] = start_time
+            __props__['teams'] = teams
             __props__['time_range'] = time_range
             __props__['viz_options'] = viz_options
             __props__['url'] = None
@@ -196,6 +199,7 @@ class Detector(pulumi.CustomResource):
             show_data_markers: Optional[pulumi.Input[bool]] = None,
             show_event_lines: Optional[pulumi.Input[bool]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
+            teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None,
             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None) -> 'Detector':
@@ -218,6 +222,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] url: The URL of the detector.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
@@ -238,6 +243,7 @@ class Detector(pulumi.CustomResource):
         __props__["show_data_markers"] = show_data_markers
         __props__["show_event_lines"] = show_event_lines
         __props__["start_time"] = start_time
+        __props__["teams"] = teams
         __props__["time_range"] = time_range
         __props__["url"] = url
         __props__["viz_options"] = viz_options
@@ -338,6 +344,14 @@ class Detector(pulumi.CustomResource):
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Team IDs to associate the detector to.
+        """
+        return pulumi.get(self, "teams")
 
     @property
     @pulumi.getter(name="timeRange")

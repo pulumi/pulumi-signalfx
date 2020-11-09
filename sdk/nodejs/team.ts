@@ -16,15 +16,7 @@ import * as utilities from "./utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const myteam0 = new signalfx.Team("myteam0", {
- *     dashboardGroups: [
- *         "dashboardGroupId1",
- *         "dashboardGroupId2",
- *     ],
  *     description: "Super great team no jerks definitely",
- *     detectors: [
- *         "detectorId1",
- *         "detectorId2",
- *     ],
  *     members: [
  *         "userid1",
  *         "userid2",
@@ -63,17 +55,9 @@ export class Team extends pulumi.CustomResource {
     }
 
     /**
-     * Dashboard Groups that belong to this team
-     */
-    public readonly dashboardGroups!: pulumi.Output<string[] | undefined>;
-    /**
      * Description of the team.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * List of detector IDs to include in the team.
-     */
-    public readonly detectors!: pulumi.Output<string[] | undefined>;
     /**
      * List of user IDs to include in the team.
      */
@@ -123,9 +107,7 @@ export class Team extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as TeamState | undefined;
-            inputs["dashboardGroups"] = state ? state.dashboardGroups : undefined;
             inputs["description"] = state ? state.description : undefined;
-            inputs["detectors"] = state ? state.detectors : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationsCriticals"] = state ? state.notificationsCriticals : undefined;
@@ -137,9 +119,7 @@ export class Team extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TeamArgs | undefined;
-            inputs["dashboardGroups"] = args ? args.dashboardGroups : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["detectors"] = args ? args.detectors : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationsCriticals"] = args ? args.notificationsCriticals : undefined;
@@ -166,17 +146,9 @@ export class Team extends pulumi.CustomResource {
  */
 export interface TeamState {
     /**
-     * Dashboard Groups that belong to this team
-     */
-    readonly dashboardGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Description of the team.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * List of detector IDs to include in the team.
-     */
-    readonly detectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of user IDs to include in the team.
      */
@@ -220,17 +192,9 @@ export interface TeamState {
  */
 export interface TeamArgs {
     /**
-     * Dashboard Groups that belong to this team
-     */
-    readonly dashboardGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * Description of the team.
      */
     readonly description?: pulumi.Input<string>;
-    /**
-     * List of detector IDs to include in the team.
-     */
-    readonly detectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of user IDs to include in the team.
      */
