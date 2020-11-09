@@ -29,9 +29,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewListChart(ctx, "mylistchart0", &signalfx.ListChartArgs{
-// 			ColorBy:         pulumi.String("Metric"),
-// 			Description:     pulumi.String("Very cool List Chart"),
-// 			DisableSampling: pulumi.Bool(true),
+// 			ColorBy:           pulumi.String("Metric"),
+// 			Description:       pulumi.String("Very cool List Chart"),
+// 			DisableSampling:   pulumi.Bool(true),
+// 			HideMissingValues: pulumi.Bool(true),
 // 			LegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{
 // 				&signalfx.ListChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(false),
@@ -80,6 +81,8 @@ type ListChart struct {
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
+	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	HideMissingValues pulumi.BoolPtrOutput `pulumi:"hideMissingValues"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
@@ -153,6 +156,8 @@ type listChartState struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
+	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	HideMissingValues *bool `pulumi:"hideMissingValues"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
@@ -196,6 +201,8 @@ type ListChartState struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
+	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	HideMissingValues pulumi.BoolPtrInput
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
@@ -243,6 +250,8 @@ type listChartArgs struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
+	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	HideMissingValues *bool `pulumi:"hideMissingValues"`
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
@@ -285,6 +294,8 @@ type ListChartArgs struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
+	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	HideMissingValues pulumi.BoolPtrInput
 	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields

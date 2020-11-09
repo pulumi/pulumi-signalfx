@@ -232,6 +232,8 @@ type Detector struct {
 	ShowEventLines pulumi.BoolPtrOutput `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
+	// Team IDs to associate the detector to.
+	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// The URL of the detector.
@@ -298,6 +300,8 @@ type detectorState struct {
 	ShowEventLines *bool `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Team IDs to associate the detector to.
+	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
 	// The URL of the detector.
@@ -331,6 +335,8 @@ type DetectorState struct {
 	ShowEventLines pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Team IDs to associate the detector to.
+	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
 	// The URL of the detector.
@@ -368,6 +374,8 @@ type detectorArgs struct {
 	ShowEventLines *bool `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Team IDs to associate the detector to.
+	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
 	// Plot-level customization options, associated with a publish statement.
@@ -400,6 +408,8 @@ type DetectorArgs struct {
 	ShowEventLines pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Team IDs to associate the detector to.
+	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
 	// Plot-level customization options, associated with a publish statement.

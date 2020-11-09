@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  *     colorBy: "Metric",
  *     description: "Very cool List Chart",
  *     disableSampling: true,
+ *     hideMissingValues: true,
  *     legendOptionsFields: [
  *         {
  *             enabled: false,
@@ -102,6 +103,10 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
+     * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+     */
+    public readonly hideMissingValues!: pulumi.Output<boolean | undefined>;
+    /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
@@ -177,6 +182,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["disableSampling"] = state ? state.disableSampling : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
+            inputs["hideMissingValues"] = state ? state.hideMissingValues : undefined;
             inputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
             inputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
             inputs["maxDelay"] = state ? state.maxDelay : undefined;
@@ -201,6 +207,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["disableSampling"] = args ? args.disableSampling : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
+            inputs["hideMissingValues"] = args ? args.hideMissingValues : undefined;
             inputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
             inputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
             inputs["maxDelay"] = args ? args.maxDelay : undefined;
@@ -251,6 +258,10 @@ export interface ListChartState {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     readonly endTime?: pulumi.Input<number>;
+    /**
+     * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+     */
+    readonly hideMissingValues?: pulumi.Input<boolean>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
@@ -335,6 +346,10 @@ export interface ListChartArgs {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     readonly endTime?: pulumi.Input<number>;
+    /**
+     * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+     */
+    readonly hideMissingValues?: pulumi.Input<boolean>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *

@@ -26,15 +26,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewTeam(ctx, "myteam0", &signalfx.TeamArgs{
-// 			DashboardGroups: pulumi.StringArray{
-// 				pulumi.String("dashboardGroupId1"),
-// 				pulumi.String("dashboardGroupId2"),
-// 			},
 // 			Description: pulumi.String("Super great team no jerks definitely"),
-// 			Detectors: pulumi.StringArray{
-// 				pulumi.String("detectorId1"),
-// 				pulumi.String("detectorId2"),
-// 			},
 // 			Members: pulumi.StringArray{
 // 				pulumi.String("userid1"),
 // 				pulumi.String("userid2"),
@@ -56,12 +48,8 @@ import (
 type Team struct {
 	pulumi.CustomResourceState
 
-	// Dashboard Groups that belong to this team
-	DashboardGroups pulumi.StringArrayOutput `pulumi:"dashboardGroups"`
 	// Description of the team.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// List of detector IDs to include in the team.
-	Detectors pulumi.StringArrayOutput `pulumi:"detectors"`
 	// List of user IDs to include in the team.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// Name of the team.
@@ -110,12 +98,8 @@ func GetTeam(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Team resources.
 type teamState struct {
-	// Dashboard Groups that belong to this team
-	DashboardGroups []string `pulumi:"dashboardGroups"`
 	// Description of the team.
 	Description *string `pulumi:"description"`
-	// List of detector IDs to include in the team.
-	Detectors []string `pulumi:"detectors"`
 	// List of user IDs to include in the team.
 	Members []string `pulumi:"members"`
 	// Name of the team.
@@ -137,12 +121,8 @@ type teamState struct {
 }
 
 type TeamState struct {
-	// Dashboard Groups that belong to this team
-	DashboardGroups pulumi.StringArrayInput
 	// Description of the team.
 	Description pulumi.StringPtrInput
-	// List of detector IDs to include in the team.
-	Detectors pulumi.StringArrayInput
 	// List of user IDs to include in the team.
 	Members pulumi.StringArrayInput
 	// Name of the team.
@@ -168,12 +148,8 @@ func (TeamState) ElementType() reflect.Type {
 }
 
 type teamArgs struct {
-	// Dashboard Groups that belong to this team
-	DashboardGroups []string `pulumi:"dashboardGroups"`
 	// Description of the team.
 	Description *string `pulumi:"description"`
-	// List of detector IDs to include in the team.
-	Detectors []string `pulumi:"detectors"`
 	// List of user IDs to include in the team.
 	Members []string `pulumi:"members"`
 	// Name of the team.
@@ -194,12 +170,8 @@ type teamArgs struct {
 
 // The set of arguments for constructing a Team resource.
 type TeamArgs struct {
-	// Dashboard Groups that belong to this team
-	DashboardGroups pulumi.StringArrayInput
 	// Description of the team.
 	Description pulumi.StringPtrInput
-	// List of detector IDs to include in the team.
-	Detectors pulumi.StringArrayInput
 	// List of user IDs to include in the team.
 	Members pulumi.StringArrayInput
 	// Name of the team.

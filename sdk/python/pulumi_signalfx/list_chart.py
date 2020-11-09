@@ -22,6 +22,7 @@ class ListChart(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
+                 hide_missing_values: Optional[pulumi.Input[bool]] = None,
                  legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
@@ -53,6 +54,7 @@ class ListChart(pulumi.CustomResource):
             color_by="Metric",
             description="Very cool List Chart",
             disable_sampling=True,
+            hide_missing_values=True,
             legend_options_fields=[
                 signalfx.ListChartLegendOptionsFieldArgs(
                     enabled=False,
@@ -92,6 +94,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[bool] hide_missing_values: Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
@@ -128,6 +131,7 @@ class ListChart(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disable_sampling'] = disable_sampling
             __props__['end_time'] = end_time
+            __props__['hide_missing_values'] = hide_missing_values
             if legend_fields_to_hides is not None:
                 warnings.warn("Please use legend_options_fields", DeprecationWarning)
                 pulumi.log.warn("legend_fields_to_hides is deprecated: Please use legend_options_fields")
@@ -162,6 +166,7 @@ class ListChart(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
+            hide_missing_values: Optional[pulumi.Input[bool]] = None,
             legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]]] = None,
             max_delay: Optional[pulumi.Input[int]] = None,
@@ -188,6 +193,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[bool] hide_missing_values: Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
@@ -212,6 +218,7 @@ class ListChart(pulumi.CustomResource):
         __props__["description"] = description
         __props__["disable_sampling"] = disable_sampling
         __props__["end_time"] = end_time
+        __props__["hide_missing_values"] = hide_missing_values
         __props__["legend_fields_to_hides"] = legend_fields_to_hides
         __props__["legend_options_fields"] = legend_options_fields
         __props__["max_delay"] = max_delay
@@ -267,6 +274,14 @@ class ListChart(pulumi.CustomResource):
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="hideMissingValues")
+    def hide_missing_values(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        """
+        return pulumi.get(self, "hide_missing_values")
 
     @property
     @pulumi.getter(name="legendFieldsToHides")

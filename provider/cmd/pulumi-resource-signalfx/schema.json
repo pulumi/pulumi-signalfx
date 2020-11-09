@@ -3274,6 +3274,13 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard group.\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Team IDs to associate the dashboard group to.\n"
                 }
             },
             "required": [
@@ -3314,6 +3321,13 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard group.\n"
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Team IDs to associate the dashboard group to.\n"
                 }
             },
             "stateInputs": {
@@ -3353,6 +3367,13 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the dashboard group.\n"
+                    },
+                    "teams": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Team IDs to associate the dashboard group to.\n"
                     }
                 },
                 "type": "object"
@@ -3530,6 +3551,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Team IDs to associate the detector to.\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.\n"
@@ -3610,6 +3638,13 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Team IDs to associate the detector to.\n"
+                },
                 "timeRange": {
                     "type": "integer",
                     "description": "Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.\n"
@@ -3685,6 +3720,13 @@
                     "startTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "teams": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Team IDs to associate the detector to.\n"
                     },
                     "timeRange": {
                         "type": "integer",
@@ -4010,7 +4052,7 @@
             }
         },
         "signalfx:index/listChart:ListChart": {
-            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new SignalFx.ListChartArgs\n        {\n            ColorBy = \"Metric\",\n            Description = \"Very cool List Chart\",\n            DisableSampling = true,\n            LegendOptionsFields = \n            {\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"cluster_name\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"role\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"host\",\n                },\n            },\n            MaxDelay = 2,\n            MaxPrecision = 2,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            RefreshInterval = 1,\n            SortBy = \"-value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v3/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:         pulumi.String(\"Metric\"),\n\t\t\tDescription:     pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    hideMissingValues: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    hide_missing_values=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new SignalFx.ListChartArgs\n        {\n            ColorBy = \"Metric\",\n            Description = \"Very cool List Chart\",\n            DisableSampling = true,\n            HideMissingValues = true,\n            LegendOptionsFields = \n            {\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"cluster_name\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"role\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"host\",\n                },\n            },\n            MaxDelay = 2,\n            MaxPrecision = 2,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            RefreshInterval = 1,\n            SortBy = \"-value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v3/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:           pulumi.String(\"Metric\"),\n\t\t\tDescription:       pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling:   pulumi.Bool(true),\n\t\t\tHideMissingValues: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "colorBy": {
                     "type": "string",
@@ -4034,6 +4076,10 @@
                 "endTime": {
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "hideMissingValues": {
+                    "type": "boolean",
+                    "description": "Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.\n"
                 },
                 "legendFieldsToHides": {
                     "type": "array",
@@ -4131,6 +4177,10 @@
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
                 },
+                "hideMissingValues": {
+                    "type": "boolean",
+                    "description": "Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.\n"
+                },
                 "legendFieldsToHides": {
                     "type": "array",
                     "items": {
@@ -4222,6 +4272,10 @@
                     "endTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "hideMissingValues": {
+                        "type": "boolean",
+                        "description": "Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.\n"
                     },
                     "legendFieldsToHides": {
                         "type": "array",
@@ -4603,25 +4657,11 @@
             }
         },
         "signalfx:index/team:Team": {
-            "description": "Handles management of SignalFx teams.\n\nYou can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myteam0 = new signalfx.Team(\"myteam0\", {\n    dashboardGroups: [\n        \"dashboardGroupId1\",\n        \"dashboardGroupId2\",\n    ],\n    description: \"Super great team no jerks definitely\",\n    detectors: [\n        \"detectorId1\",\n        \"detectorId2\",\n    ],\n    members: [\n        \"userid1\",\n        \"userid2\",\n    ],\n    notificationsCriticals: [\"PagerDuty,credentialId\"],\n    notificationsInfos: [\"Email,notify@example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyteam0 = signalfx.Team(\"myteam0\",\n    dashboard_groups=[\n        \"dashboardGroupId1\",\n        \"dashboardGroupId2\",\n    ],\n    description=\"Super great team no jerks definitely\",\n    detectors=[\n        \"detectorId1\",\n        \"detectorId2\",\n    ],\n    members=[\n        \"userid1\",\n        \"userid2\",\n    ],\n    notifications_criticals=[\"PagerDuty,credentialId\"],\n    notifications_infos=[\"Email,notify@example.com\"])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myteam0 = new SignalFx.Team(\"myteam0\", new SignalFx.TeamArgs\n        {\n            DashboardGroups = \n            {\n                \"dashboardGroupId1\",\n                \"dashboardGroupId2\",\n            },\n            Description = \"Super great team no jerks definitely\",\n            Detectors = \n            {\n                \"detectorId1\",\n                \"detectorId2\",\n            },\n            Members = \n            {\n                \"userid1\",\n                \"userid2\",\n            },\n            NotificationsCriticals = \n            {\n                \"PagerDuty,credentialId\",\n            },\n            NotificationsInfos = \n            {\n                \"Email,notify@example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v3/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewTeam(ctx, \"myteam0\", \u0026signalfx.TeamArgs{\n\t\t\tDashboardGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"dashboardGroupId1\"),\n\t\t\t\tpulumi.String(\"dashboardGroupId2\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Super great team no jerks definitely\"),\n\t\t\tDetectors: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"detectorId1\"),\n\t\t\t\tpulumi.String(\"detectorId2\"),\n\t\t\t},\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userid1\"),\n\t\t\t\tpulumi.String(\"userid2\"),\n\t\t\t},\n\t\t\tNotificationsCriticals: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"PagerDuty,credentialId\"),\n\t\t\t},\n\t\t\tNotificationsInfos: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Email,notify@example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Handles management of SignalFx teams.\n\nYou can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myteam0 = new signalfx.Team(\"myteam0\", {\n    description: \"Super great team no jerks definitely\",\n    members: [\n        \"userid1\",\n        \"userid2\",\n    ],\n    notificationsCriticals: [\"PagerDuty,credentialId\"],\n    notificationsInfos: [\"Email,notify@example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyteam0 = signalfx.Team(\"myteam0\",\n    description=\"Super great team no jerks definitely\",\n    members=[\n        \"userid1\",\n        \"userid2\",\n    ],\n    notifications_criticals=[\"PagerDuty,credentialId\"],\n    notifications_infos=[\"Email,notify@example.com\"])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myteam0 = new SignalFx.Team(\"myteam0\", new SignalFx.TeamArgs\n        {\n            Description = \"Super great team no jerks definitely\",\n            Members = \n            {\n                \"userid1\",\n                \"userid2\",\n            },\n            NotificationsCriticals = \n            {\n                \"PagerDuty,credentialId\",\n            },\n            NotificationsInfos = \n            {\n                \"Email,notify@example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v3/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewTeam(ctx, \"myteam0\", \u0026signalfx.TeamArgs{\n\t\t\tDescription: pulumi.String(\"Super great team no jerks definitely\"),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"userid1\"),\n\t\t\t\tpulumi.String(\"userid2\"),\n\t\t\t},\n\t\t\tNotificationsCriticals: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"PagerDuty,credentialId\"),\n\t\t\t},\n\t\t\tNotificationsInfos: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Email,notify@example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
-                "dashboardGroups": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Dashboard Groups that belong to this team\n"
-                },
                 "description": {
                     "type": "string",
                     "description": "Description of the team.\n"
-                },
-                "detectors": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of detector IDs to include in the team.\n"
                 },
                 "members": {
                     "type": "array",
@@ -4686,23 +4726,9 @@
                 "url"
             ],
             "inputProperties": {
-                "dashboardGroups": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Dashboard Groups that belong to this team\n"
-                },
                 "description": {
                     "type": "string",
                     "description": "Description of the team.\n"
-                },
-                "detectors": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "List of detector IDs to include in the team.\n"
                 },
                 "members": {
                     "type": "array",
@@ -4761,23 +4787,9 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Team resources.\n",
                 "properties": {
-                    "dashboardGroups": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "Dashboard Groups that belong to this team\n"
-                    },
                     "description": {
                         "type": "string",
                         "description": "Description of the team.\n"
-                    },
-                    "detectors": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "List of detector IDs to include in the team.\n"
                     },
                     "members": {
                         "type": "array",

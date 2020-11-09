@@ -170,6 +170,10 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
+     * Team IDs to associate the detector to.
+     */
+    public readonly teams!: pulumi.Output<string[] | undefined>;
+    /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
@@ -206,6 +210,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
             inputs["showEventLines"] = state ? state.showEventLines : undefined;
             inputs["startTime"] = state ? state.startTime : undefined;
+            inputs["teams"] = state ? state.teams : undefined;
             inputs["timeRange"] = state ? state.timeRange : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
@@ -229,6 +234,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
             inputs["showEventLines"] = args ? args.showEventLines : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
+            inputs["teams"] = args ? args.teams : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
@@ -297,6 +303,10 @@ export interface DetectorState {
      */
     readonly startTime?: pulumi.Input<number>;
     /**
+     * Team IDs to associate the detector to.
+     */
+    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
     readonly timeRange?: pulumi.Input<number>;
@@ -362,6 +372,10 @@ export interface DetectorArgs {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     readonly startTime?: pulumi.Input<number>;
+    /**
+     * Team IDs to associate the detector to.
+     */
+    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */

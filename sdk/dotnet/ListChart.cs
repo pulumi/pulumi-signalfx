@@ -29,6 +29,7 @@ namespace Pulumi.SignalFx
     ///             ColorBy = "Metric",
     ///             Description = "Very cool List Chart",
     ///             DisableSampling = true,
+    ///             HideMissingValues = true,
     ///             LegendOptionsFields = 
     ///             {
     ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
@@ -102,6 +103,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        /// </summary>
+        [Output("hideMissingValues")]
+        public Output<bool?> HideMissingValues { get; private set; } = null!;
 
         /// <summary>
         /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
@@ -269,6 +276,12 @@ namespace Pulumi.SignalFx
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
+        /// <summary>
+        /// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        /// </summary>
+        [Input("hideMissingValues")]
+        public Input<bool>? HideMissingValues { get; set; }
+
         [Input("legendFieldsToHides")]
         private InputList<string>? _legendFieldsToHides;
 
@@ -408,6 +421,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
+
+        /// <summary>
+        /// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        /// </summary>
+        [Input("hideMissingValues")]
+        public Input<bool>? HideMissingValues { get; set; }
 
         [Input("legendFieldsToHides")]
         private InputList<string>? _legendFieldsToHides;
