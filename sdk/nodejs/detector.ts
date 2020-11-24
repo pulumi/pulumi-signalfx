@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -91,6 +90,14 @@ import * as utilities from "./utilities";
  * or configure one inline:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
+ * ```
+ *
+ * ## Import
+ *
+ * Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import signalfx:index/detector:Detector application_delay abc123
  * ```
  */
 export class Detector extends pulumi.CustomResource {

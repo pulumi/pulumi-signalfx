@@ -16,7 +16,7 @@ __all__ = [
     'get_aws_services',
 ]
 
-warnings.warn("signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices", DeprecationWarning)
+warnings.warn("""signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices""", DeprecationWarning)
 
 @pulumi.output_type
 class GetAwsServicesResult:

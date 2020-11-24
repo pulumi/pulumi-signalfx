@@ -4,6 +4,7 @@
 package aws
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -144,4 +145,43 @@ type TokenIntegrationArgs struct {
 
 func (TokenIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenIntegrationArgs)(nil)).Elem()
+}
+
+type TokenIntegrationInput interface {
+	pulumi.Input
+
+	ToTokenIntegrationOutput() TokenIntegrationOutput
+	ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput
+}
+
+func (TokenIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenIntegration)(nil)).Elem()
+}
+
+func (i TokenIntegration) ToTokenIntegrationOutput() TokenIntegrationOutput {
+	return i.ToTokenIntegrationOutputWithContext(context.Background())
+}
+
+func (i TokenIntegration) ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationOutput)
+}
+
+type TokenIntegrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (TokenIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenIntegrationOutput)(nil)).Elem()
+}
+
+func (o TokenIntegrationOutput) ToTokenIntegrationOutput() TokenIntegrationOutput {
+	return o
+}
+
+func (o TokenIntegrationOutput) ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TokenIntegrationOutput{})
 }

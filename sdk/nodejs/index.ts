@@ -32,4 +32,16 @@ import * as pagerduty from "./pagerduty";
 import * as slack from "./slack";
 import * as types from "./types";
 import * as victorops from "./victorops";
-export {aws, azure, config, gcp, jira, opsgenie, pagerduty, slack, types, victorops};
+
+export {
+    aws,
+    azure,
+    config,
+    gcp,
+    jira,
+    opsgenie,
+    pagerduty,
+    slack,
+    types,
+    victorops,
+};

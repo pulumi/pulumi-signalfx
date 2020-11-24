@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -328,4 +329,43 @@ type ListChartArgs struct {
 
 func (ListChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*listChartArgs)(nil)).Elem()
+}
+
+type ListChartInput interface {
+	pulumi.Input
+
+	ToListChartOutput() ListChartOutput
+	ToListChartOutputWithContext(ctx context.Context) ListChartOutput
+}
+
+func (ListChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListChart)(nil)).Elem()
+}
+
+func (i ListChart) ToListChartOutput() ListChartOutput {
+	return i.ToListChartOutputWithContext(context.Background())
+}
+
+func (i ListChart) ToListChartOutputWithContext(ctx context.Context) ListChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListChartOutput)
+}
+
+type ListChartOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListChartOutput)(nil)).Elem()
+}
+
+func (o ListChartOutput) ToListChartOutput() ListChartOutput {
+	return o
+}
+
+func (o ListChartOutput) ToListChartOutputWithContext(ctx context.Context) ListChartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ListChartOutput{})
 }

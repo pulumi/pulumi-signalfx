@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -412,4 +413,43 @@ type TimeChartArgs struct {
 
 func (TimeChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeChartArgs)(nil)).Elem()
+}
+
+type TimeChartInput interface {
+	pulumi.Input
+
+	ToTimeChartOutput() TimeChartOutput
+	ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput
+}
+
+func (TimeChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeChart)(nil)).Elem()
+}
+
+func (i TimeChart) ToTimeChartOutput() TimeChartOutput {
+	return i.ToTimeChartOutputWithContext(context.Background())
+}
+
+func (i TimeChart) ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeChartOutput)
+}
+
+type TimeChartOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeChartOutput)(nil)).Elem()
+}
+
+func (o TimeChartOutput) ToTimeChartOutput() TimeChartOutput {
+	return o
+}
+
+func (o TimeChartOutput) ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TimeChartOutput{})
 }

@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -112,4 +113,43 @@ type WebhookIntegrationArgs struct {
 
 func (WebhookIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webhookIntegrationArgs)(nil)).Elem()
+}
+
+type WebhookIntegrationInput interface {
+	pulumi.Input
+
+	ToWebhookIntegrationOutput() WebhookIntegrationOutput
+	ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput
+}
+
+func (WebhookIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookIntegration)(nil)).Elem()
+}
+
+func (i WebhookIntegration) ToWebhookIntegrationOutput() WebhookIntegrationOutput {
+	return i.ToWebhookIntegrationOutputWithContext(context.Background())
+}
+
+func (i WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationOutput)
+}
+
+type WebhookIntegrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebhookIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookIntegrationOutput)(nil)).Elem()
+}
+
+func (o WebhookIntegrationOutput) ToWebhookIntegrationOutput() WebhookIntegrationOutput {
+	return o
+}
+
+func (o WebhookIntegrationOutput) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebhookIntegrationOutput{})
 }

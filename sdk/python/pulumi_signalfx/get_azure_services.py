@@ -16,7 +16,7 @@ __all__ = [
     'get_azure_services',
 ]
 
-warnings.warn("signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices", DeprecationWarning)
+warnings.warn("""signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices""", DeprecationWarning)
 
 @pulumi.output_type
 class GetAzureServicesResult:

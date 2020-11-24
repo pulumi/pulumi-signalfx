@@ -122,6 +122,14 @@ class Detector(pulumi.CustomResource):
         import pulumi
         ```
 
+        ## Import
+
+        Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
+
+        ```sh
+         $ pulumi import signalfx:index/detector:Detector application_delay abc123
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
