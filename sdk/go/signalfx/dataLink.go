@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -172,4 +173,43 @@ type DataLinkArgs struct {
 
 func (DataLinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataLinkArgs)(nil)).Elem()
+}
+
+type DataLinkInput interface {
+	pulumi.Input
+
+	ToDataLinkOutput() DataLinkOutput
+	ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput
+}
+
+func (DataLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataLink)(nil)).Elem()
+}
+
+func (i DataLink) ToDataLinkOutput() DataLinkOutput {
+	return i.ToDataLinkOutputWithContext(context.Background())
+}
+
+func (i DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkOutput)
+}
+
+type DataLinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataLinkOutput)(nil)).Elem()
+}
+
+func (o DataLinkOutput) ToDataLinkOutput() DataLinkOutput {
+	return o
+}
+
+func (o DataLinkOutput) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataLinkOutput{})
 }

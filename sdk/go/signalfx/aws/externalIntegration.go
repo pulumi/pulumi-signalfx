@@ -4,6 +4,7 @@
 package aws
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -149,4 +150,43 @@ type ExternalIntegrationArgs struct {
 
 func (ExternalIntegrationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*externalIntegrationArgs)(nil)).Elem()
+}
+
+type ExternalIntegrationInput interface {
+	pulumi.Input
+
+	ToExternalIntegrationOutput() ExternalIntegrationOutput
+	ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput
+}
+
+func (ExternalIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalIntegration)(nil)).Elem()
+}
+
+func (i ExternalIntegration) ToExternalIntegrationOutput() ExternalIntegrationOutput {
+	return i.ToExternalIntegrationOutputWithContext(context.Background())
+}
+
+func (i ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationOutput)
+}
+
+type ExternalIntegrationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExternalIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalIntegrationOutput)(nil)).Elem()
+}
+
+func (o ExternalIntegrationOutput) ToExternalIntegrationOutput() ExternalIntegrationOutput {
+	return o
+}
+
+func (o ExternalIntegrationOutput) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ExternalIntegrationOutput{})
 }

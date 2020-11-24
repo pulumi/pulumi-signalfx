@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -180,4 +181,43 @@ type DashboardGroupArgs struct {
 
 func (DashboardGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dashboardGroupArgs)(nil)).Elem()
+}
+
+type DashboardGroupInput interface {
+	pulumi.Input
+
+	ToDashboardGroupOutput() DashboardGroupOutput
+	ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput
+}
+
+func (DashboardGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroup)(nil)).Elem()
+}
+
+func (i DashboardGroup) ToDashboardGroupOutput() DashboardGroupOutput {
+	return i.ToDashboardGroupOutputWithContext(context.Background())
+}
+
+func (i DashboardGroup) ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupOutput)
+}
+
+type DashboardGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (DashboardGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupOutput)(nil)).Elem()
+}
+
+func (o DashboardGroupOutput) ToDashboardGroupOutput() DashboardGroupOutput {
+	return o
+}
+
+func (o DashboardGroupOutput) ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DashboardGroupOutput{})
 }

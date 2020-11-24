@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -127,4 +128,43 @@ type TextChartArgs struct {
 
 func (TextChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*textChartArgs)(nil)).Elem()
+}
+
+type TextChartInput interface {
+	pulumi.Input
+
+	ToTextChartOutput() TextChartOutput
+	ToTextChartOutputWithContext(ctx context.Context) TextChartOutput
+}
+
+func (TextChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextChart)(nil)).Elem()
+}
+
+func (i TextChart) ToTextChartOutput() TextChartOutput {
+	return i.ToTextChartOutputWithContext(context.Background())
+}
+
+func (i TextChart) ToTextChartOutputWithContext(ctx context.Context) TextChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextChartOutput)
+}
+
+type TextChartOutput struct {
+	*pulumi.OutputState
+}
+
+func (TextChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextChartOutput)(nil)).Elem()
+}
+
+func (o TextChartOutput) ToTextChartOutput() TextChartOutput {
+	return o
+}
+
+func (o TextChartOutput) ToTextChartOutputWithContext(ctx context.Context) TextChartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TextChartOutput{})
 }

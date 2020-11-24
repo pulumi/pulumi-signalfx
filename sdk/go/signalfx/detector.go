@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -204,6 +205,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
+//
+// ```sh
+//  $ pulumi import signalfx:index/detector:Detector application_delay abc123
 // ```
 type Detector struct {
 	pulumi.CustomResourceState
@@ -418,4 +427,43 @@ type DetectorArgs struct {
 
 func (DetectorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*detectorArgs)(nil)).Elem()
+}
+
+type DetectorInput interface {
+	pulumi.Input
+
+	ToDetectorOutput() DetectorOutput
+	ToDetectorOutputWithContext(ctx context.Context) DetectorOutput
+}
+
+func (Detector) ElementType() reflect.Type {
+	return reflect.TypeOf((*Detector)(nil)).Elem()
+}
+
+func (i Detector) ToDetectorOutput() DetectorOutput {
+	return i.ToDetectorOutputWithContext(context.Background())
+}
+
+func (i Detector) ToDetectorOutputWithContext(ctx context.Context) DetectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DetectorOutput)
+}
+
+type DetectorOutput struct {
+	*pulumi.OutputState
+}
+
+func (DetectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DetectorOutput)(nil)).Elem()
+}
+
+func (o DetectorOutput) ToDetectorOutput() DetectorOutput {
+	return o
+}
+
+func (o DetectorOutput) ToDetectorOutputWithContext(ctx context.Context) DetectorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DetectorOutput{})
 }

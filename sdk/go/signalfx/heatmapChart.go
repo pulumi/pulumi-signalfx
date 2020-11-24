@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -254,4 +255,43 @@ type HeatmapChartArgs struct {
 
 func (HeatmapChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*heatmapChartArgs)(nil)).Elem()
+}
+
+type HeatmapChartInput interface {
+	pulumi.Input
+
+	ToHeatmapChartOutput() HeatmapChartOutput
+	ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput
+}
+
+func (HeatmapChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeatmapChart)(nil)).Elem()
+}
+
+func (i HeatmapChart) ToHeatmapChartOutput() HeatmapChartOutput {
+	return i.ToHeatmapChartOutputWithContext(context.Background())
+}
+
+func (i HeatmapChart) ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartOutput)
+}
+
+type HeatmapChartOutput struct {
+	*pulumi.OutputState
+}
+
+func (HeatmapChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeatmapChartOutput)(nil)).Elem()
+}
+
+func (o HeatmapChartOutput) ToHeatmapChartOutput() HeatmapChartOutput {
+	return o
+}
+
+func (o HeatmapChartOutput) ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HeatmapChartOutput{})
 }

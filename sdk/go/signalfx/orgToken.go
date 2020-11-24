@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -168,4 +169,43 @@ type OrgTokenArgs struct {
 
 func (OrgTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*orgTokenArgs)(nil)).Elem()
+}
+
+type OrgTokenInput interface {
+	pulumi.Input
+
+	ToOrgTokenOutput() OrgTokenOutput
+	ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput
+}
+
+func (OrgToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrgToken)(nil)).Elem()
+}
+
+func (i OrgToken) ToOrgTokenOutput() OrgTokenOutput {
+	return i.ToOrgTokenOutputWithContext(context.Background())
+}
+
+func (i OrgToken) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenOutput)
+}
+
+type OrgTokenOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrgTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrgTokenOutput)(nil)).Elem()
+}
+
+func (o OrgTokenOutput) ToOrgTokenOutput() OrgTokenOutput {
+	return o
+}
+
+func (o OrgTokenOutput) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrgTokenOutput{})
 }

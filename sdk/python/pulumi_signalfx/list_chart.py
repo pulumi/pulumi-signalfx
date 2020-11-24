@@ -133,7 +133,7 @@ class ListChart(pulumi.CustomResource):
             __props__['end_time'] = end_time
             __props__['hide_missing_values'] = hide_missing_values
             if legend_fields_to_hides is not None:
-                warnings.warn("Please use legend_options_fields", DeprecationWarning)
+                warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
                 pulumi.log.warn("legend_fields_to_hides is deprecated: Please use legend_options_fields")
             __props__['legend_fields_to_hides'] = legend_fields_to_hides
             __props__['legend_options_fields'] = legend_options_fields

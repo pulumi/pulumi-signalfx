@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -234,4 +235,43 @@ type SingleValueChartArgs struct {
 
 func (SingleValueChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*singleValueChartArgs)(nil)).Elem()
+}
+
+type SingleValueChartInput interface {
+	pulumi.Input
+
+	ToSingleValueChartOutput() SingleValueChartOutput
+	ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput
+}
+
+func (SingleValueChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleValueChart)(nil)).Elem()
+}
+
+func (i SingleValueChart) ToSingleValueChartOutput() SingleValueChartOutput {
+	return i.ToSingleValueChartOutputWithContext(context.Background())
+}
+
+func (i SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartOutput)
+}
+
+type SingleValueChartOutput struct {
+	*pulumi.OutputState
+}
+
+func (SingleValueChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleValueChartOutput)(nil)).Elem()
+}
+
+func (o SingleValueChartOutput) ToSingleValueChartOutput() SingleValueChartOutput {
+	return o
+}
+
+func (o SingleValueChartOutput) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SingleValueChartOutput{})
 }

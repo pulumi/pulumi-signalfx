@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -131,4 +132,43 @@ type EventFeedChartArgs struct {
 
 func (EventFeedChartArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*eventFeedChartArgs)(nil)).Elem()
+}
+
+type EventFeedChartInput interface {
+	pulumi.Input
+
+	ToEventFeedChartOutput() EventFeedChartOutput
+	ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput
+}
+
+func (EventFeedChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventFeedChart)(nil)).Elem()
+}
+
+func (i EventFeedChart) ToEventFeedChartOutput() EventFeedChartOutput {
+	return i.ToEventFeedChartOutputWithContext(context.Background())
+}
+
+func (i EventFeedChart) ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartOutput)
+}
+
+type EventFeedChartOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventFeedChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventFeedChartOutput)(nil)).Elem()
+}
+
+func (o EventFeedChartOutput) ToEventFeedChartOutput() EventFeedChartOutput {
+	return o
+}
+
+func (o EventFeedChartOutput) ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EventFeedChartOutput{})
 }

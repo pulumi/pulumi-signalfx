@@ -4,6 +4,7 @@
 package signalfx
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -126,4 +127,43 @@ type AlertMutingRuleArgs struct {
 
 func (AlertMutingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertMutingRuleArgs)(nil)).Elem()
+}
+
+type AlertMutingRuleInput interface {
+	pulumi.Input
+
+	ToAlertMutingRuleOutput() AlertMutingRuleOutput
+	ToAlertMutingRuleOutputWithContext(ctx context.Context) AlertMutingRuleOutput
+}
+
+func (AlertMutingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertMutingRule)(nil)).Elem()
+}
+
+func (i AlertMutingRule) ToAlertMutingRuleOutput() AlertMutingRuleOutput {
+	return i.ToAlertMutingRuleOutputWithContext(context.Background())
+}
+
+func (i AlertMutingRule) ToAlertMutingRuleOutputWithContext(ctx context.Context) AlertMutingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleOutput)
+}
+
+type AlertMutingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertMutingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertMutingRuleOutput)(nil)).Elem()
+}
+
+func (o AlertMutingRuleOutput) ToAlertMutingRuleOutput() AlertMutingRuleOutput {
+	return o
+}
+
+func (o AlertMutingRuleOutput) ToAlertMutingRuleOutputWithContext(ctx context.Context) AlertMutingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlertMutingRuleOutput{})
 }
