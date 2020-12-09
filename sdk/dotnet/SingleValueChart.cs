@@ -111,6 +111,12 @@ namespace Pulumi.SignalFx
         public Output<bool?> ShowSparkLine { get; private set; } = null!;
 
         /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
+
+        /// <summary>
         /// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         /// </summary>
         [Output("unitPrefix")]
@@ -247,6 +253,12 @@ namespace Pulumi.SignalFx
         public Input<bool>? ShowSparkLine { get; set; }
 
         /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
+        /// <summary>
         /// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
@@ -342,6 +354,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("showSparkLine")]
         public Input<bool>? ShowSparkLine { get; set; }
+
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
