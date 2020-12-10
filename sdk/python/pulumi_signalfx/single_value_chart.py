@@ -28,6 +28,7 @@ class SingleValueChart(pulumi.CustomResource):
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  secondary_visualization: Optional[pulumi.Input[str]] = None,
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None,
                  __props__=None,
@@ -70,6 +71,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
@@ -103,6 +105,7 @@ class SingleValueChart(pulumi.CustomResource):
             __props__['refresh_interval'] = refresh_interval
             __props__['secondary_visualization'] = secondary_visualization
             __props__['show_spark_line'] = show_spark_line
+            __props__['timezone'] = timezone
             __props__['unit_prefix'] = unit_prefix
             __props__['viz_options'] = viz_options
             __props__['url'] = None
@@ -127,6 +130,7 @@ class SingleValueChart(pulumi.CustomResource):
             refresh_interval: Optional[pulumi.Input[int]] = None,
             secondary_visualization: Optional[pulumi.Input[str]] = None,
             show_spark_line: Optional[pulumi.Input[bool]] = None,
+            timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None) -> 'SingleValueChart':
@@ -148,6 +152,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
         :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
@@ -167,6 +172,7 @@ class SingleValueChart(pulumi.CustomResource):
         __props__["refresh_interval"] = refresh_interval
         __props__["secondary_visualization"] = secondary_visualization
         __props__["show_spark_line"] = show_spark_line
+        __props__["timezone"] = timezone
         __props__["unit_prefix"] = unit_prefix
         __props__["url"] = url
         __props__["viz_options"] = viz_options
@@ -259,6 +265,14 @@ class SingleValueChart(pulumi.CustomResource):
         Whether to show a trend line below the current value. `false` by default.
         """
         return pulumi.get(self, "show_spark_line")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        """
+        return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter(name="unitPrefix")

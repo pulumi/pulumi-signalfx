@@ -70,6 +70,8 @@ type SingleValueChart struct {
 	SecondaryVisualization pulumi.StringPtrOutput `pulumi:"secondaryVisualization"`
 	// Whether to show a trend line below the current value. `false` by default.
 	ShowSparkLine pulumi.BoolPtrOutput `pulumi:"showSparkLine"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
 	// The URL of the chart.
@@ -131,6 +133,8 @@ type singleValueChartState struct {
 	SecondaryVisualization *string `pulumi:"secondaryVisualization"`
 	// Whether to show a trend line below the current value. `false` by default.
 	ShowSparkLine *bool `pulumi:"showSparkLine"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone *string `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
 	// The URL of the chart.
@@ -162,6 +166,8 @@ type SingleValueChartState struct {
 	SecondaryVisualization pulumi.StringPtrInput
 	// Whether to show a trend line below the current value. `false` by default.
 	ShowSparkLine pulumi.BoolPtrInput
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
 	// The URL of the chart.
@@ -197,6 +203,8 @@ type singleValueChartArgs struct {
 	SecondaryVisualization *string `pulumi:"secondaryVisualization"`
 	// Whether to show a trend line below the current value. `false` by default.
 	ShowSparkLine *bool `pulumi:"showSparkLine"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone *string `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
 	// Plot-level customization options, associated with a publish statement.
@@ -227,6 +235,8 @@ type SingleValueChartArgs struct {
 	SecondaryVisualization pulumi.StringPtrInput
 	// Whether to show a trend line below the current value. `false` by default.
 	ShowSparkLine pulumi.BoolPtrInput
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.

@@ -4503,6 +4503,10 @@
                     "type": "boolean",
                     "description": "Whether to show a trend line below the current value. `false` by default.\n"
                 },
+                "timezone": {
+                    "type": "string",
+                    "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
+                },
                 "unitPrefix": {
                     "type": "string",
                     "description": "Must be `\"Metric\"` or `\"Binary\"`. `\"Metric\"` by default.\n"
@@ -4572,6 +4576,10 @@
                     "type": "boolean",
                     "description": "Whether to show a trend line below the current value. `false` by default.\n"
                 },
+                "timezone": {
+                    "type": "string",
+                    "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
+                },
                 "unitPrefix": {
                     "type": "string",
                     "description": "Must be `\"Metric\"` or `\"Binary\"`. `\"Metric\"` by default.\n"
@@ -4636,6 +4644,10 @@
                     "showSparkLine": {
                         "type": "boolean",
                         "description": "Whether to show a trend line below the current value. `false` by default.\n"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)\n"
                     },
                     "unitPrefix": {
                         "type": "string",
