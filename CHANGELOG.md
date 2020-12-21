@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.0.0 (2020-12-21)
 * Upgrade to v6.2.0 of the SignalFx Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.13.2  
   * This adds support for import specific examples in documentation
-
----
 
 ## 3.1.1 (2020-10-28)
 * Upgrade to v5.0.2 of the SignalFx Terraform Provider
