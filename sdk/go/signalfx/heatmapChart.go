@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v3/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
