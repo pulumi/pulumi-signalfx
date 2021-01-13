@@ -223,10 +223,10 @@ export class Detector extends pulumi.CustomResource {
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as DetectorArgs | undefined;
-            if (!args || args.programText === undefined) {
+            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'programText'");
             }
-            if (!args || args.rules === undefined) {
+            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rules'");
             }
             inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;

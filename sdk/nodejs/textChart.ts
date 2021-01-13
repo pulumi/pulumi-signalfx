@@ -98,7 +98,7 @@ export class TextChart extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TextChartArgs | undefined;
-            if (!args || args.markdown === undefined) {
+            if ((!args || args.markdown === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'markdown'");
             }
             inputs["description"] = args ? args.description : undefined;

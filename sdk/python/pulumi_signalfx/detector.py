@@ -172,10 +172,10 @@ class Detector(pulumi.CustomResource):
             __props__['end_time'] = end_time
             __props__['max_delay'] = max_delay
             __props__['name'] = name
-            if program_text is None:
+            if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
             __props__['program_text'] = program_text
-            if rules is None:
+            if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__['rules'] = rules
             __props__['show_data_markers'] = show_data_markers

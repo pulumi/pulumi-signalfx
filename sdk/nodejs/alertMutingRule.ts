@@ -98,13 +98,13 @@ export class AlertMutingRule extends pulumi.CustomResource {
             inputs["stopTime"] = state ? state.stopTime : undefined;
         } else {
             const args = argsOrState as AlertMutingRuleArgs | undefined;
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.filters === undefined) {
+            if ((!args || args.filters === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'filters'");
             }
-            if (!args || args.startTime === undefined) {
+            if ((!args || args.startTime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'startTime'");
             }
             inputs["description"] = args ? args.description : undefined;

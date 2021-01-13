@@ -132,7 +132,7 @@ class ListChart(pulumi.CustomResource):
             __props__['disable_sampling'] = disable_sampling
             __props__['end_time'] = end_time
             __props__['hide_missing_values'] = hide_missing_values
-            if legend_fields_to_hides is not None:
+            if legend_fields_to_hides is not None and not opts.urn:
                 warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
                 pulumi.log.warn("legend_fields_to_hides is deprecated: Please use legend_options_fields")
             __props__['legend_fields_to_hides'] = legend_fields_to_hides
@@ -140,7 +140,7 @@ class ListChart(pulumi.CustomResource):
             __props__['max_delay'] = max_delay
             __props__['max_precision'] = max_precision
             __props__['name'] = name
-            if program_text is None:
+            if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
             __props__['program_text'] = program_text
             __props__['refresh_interval'] = refresh_interval

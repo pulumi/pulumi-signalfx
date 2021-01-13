@@ -77,26 +77,27 @@ type Integration struct {
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
 func NewIntegration(ctx *pulumi.Context,
 	name string, args *IntegrationArgs, opts ...pulumi.ResourceOption) (*Integration, error) {
-	if args == nil || args.AssigneeName == nil {
-		return nil, errors.New("missing required argument 'AssigneeName'")
-	}
-	if args == nil || args.AuthMethod == nil {
-		return nil, errors.New("missing required argument 'AuthMethod'")
-	}
-	if args == nil || args.BaseUrl == nil {
-		return nil, errors.New("missing required argument 'BaseUrl'")
-	}
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.IssueType == nil {
-		return nil, errors.New("missing required argument 'IssueType'")
-	}
-	if args == nil || args.ProjectKey == nil {
-		return nil, errors.New("missing required argument 'ProjectKey'")
-	}
 	if args == nil {
-		args = &IntegrationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AssigneeName == nil {
+		return nil, errors.New("invalid value for required argument 'AssigneeName'")
+	}
+	if args.AuthMethod == nil {
+		return nil, errors.New("invalid value for required argument 'AuthMethod'")
+	}
+	if args.BaseUrl == nil {
+		return nil, errors.New("invalid value for required argument 'BaseUrl'")
+	}
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.IssueType == nil {
+		return nil, errors.New("invalid value for required argument 'IssueType'")
+	}
+	if args.ProjectKey == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectKey'")
 	}
 	var resource Integration
 	err := ctx.RegisterResource("signalfx:jira/integration:Integration", name, args, &resource, opts...)

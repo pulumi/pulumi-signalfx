@@ -73,6 +73,7 @@ func NewOrgToken(ctx *pulumi.Context,
 	if args == nil {
 		args = &OrgTokenArgs{}
 	}
+
 	var resource OrgToken
 	err := ctx.RegisterResource("signalfx:index/orgToken:OrgToken", name, args, &resource, opts...)
 	if err != nil {

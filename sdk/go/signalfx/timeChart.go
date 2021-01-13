@@ -131,11 +131,12 @@ type TimeChart struct {
 // NewTimeChart registers a new resource with the given unique name, arguments, and options.
 func NewTimeChart(ctx *pulumi.Context,
 	name string, args *TimeChartArgs, opts ...pulumi.ResourceOption) (*TimeChart, error) {
-	if args == nil || args.ProgramText == nil {
-		return nil, errors.New("missing required argument 'ProgramText'")
-	}
 	if args == nil {
-		args = &TimeChartArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProgramText == nil {
+		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
 	var resource TimeChart
 	err := ctx.RegisterResource("signalfx:index/timeChart:TimeChart", name, args, &resource, opts...)

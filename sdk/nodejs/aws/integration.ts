@@ -179,10 +179,10 @@ export class Integration extends pulumi.CustomResource {
             inputs["useGetMetricDataMethod"] = state ? state.useGetMetricDataMethod : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if (!args || args.enabled === undefined) {
+            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if (!args || args.integrationId === undefined) {
+            if ((!args || args.integrationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'integrationId'");
             }
             inputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;

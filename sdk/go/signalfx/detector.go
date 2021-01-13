@@ -254,14 +254,15 @@ type Detector struct {
 // NewDetector registers a new resource with the given unique name, arguments, and options.
 func NewDetector(ctx *pulumi.Context,
 	name string, args *DetectorArgs, opts ...pulumi.ResourceOption) (*Detector, error) {
-	if args == nil || args.ProgramText == nil {
-		return nil, errors.New("missing required argument 'ProgramText'")
-	}
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
 	if args == nil {
-		args = &DetectorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProgramText == nil {
+		return nil, errors.New("invalid value for required argument 'ProgramText'")
+	}
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
 	}
 	var resource Detector
 	err := ctx.RegisterResource("signalfx:index/detector:Detector", name, args, &resource, opts...)

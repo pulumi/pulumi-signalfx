@@ -119,11 +119,12 @@ type ListChart struct {
 // NewListChart registers a new resource with the given unique name, arguments, and options.
 func NewListChart(ctx *pulumi.Context,
 	name string, args *ListChartArgs, opts ...pulumi.ResourceOption) (*ListChart, error) {
-	if args == nil || args.ProgramText == nil {
-		return nil, errors.New("missing required argument 'ProgramText'")
-	}
 	if args == nil {
-		args = &ListChartArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProgramText == nil {
+		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
 	var resource ListChart
 	err := ctx.RegisterResource("signalfx:index/listChart:ListChart", name, args, &resource, opts...)

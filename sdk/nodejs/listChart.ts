@@ -198,7 +198,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as ListChartArgs | undefined;
-            if (!args || args.programText === undefined) {
+            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["colorBy"] = args ? args.colorBy : undefined;

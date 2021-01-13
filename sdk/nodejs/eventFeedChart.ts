@@ -101,7 +101,7 @@ export class EventFeedChart extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as EventFeedChartArgs | undefined;
-            if (!args || args.programText === undefined) {
+            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["description"] = args ? args.description : undefined;

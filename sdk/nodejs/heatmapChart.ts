@@ -163,7 +163,7 @@ export class HeatmapChart extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as HeatmapChartArgs | undefined;
-            if (!args || args.programText === undefined) {
+            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["colorRange"] = args ? args.colorRange : undefined;

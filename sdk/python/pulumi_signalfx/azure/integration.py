@@ -96,28 +96,28 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if app_id is None:
+            if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__['app_id'] = app_id
             __props__['custom_namespaces_per_services'] = custom_namespaces_per_services
-            if enabled is None:
+            if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
             __props__['environment'] = environment
             __props__['name'] = name
             __props__['named_token'] = named_token
             __props__['poll_rate'] = poll_rate
-            if secret_key is None:
+            if secret_key is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_key'")
             __props__['secret_key'] = secret_key
-            if services is None:
+            if services is None and not opts.urn:
                 raise TypeError("Missing required property 'services'")
             __props__['services'] = services
-            if subscriptions is None:
+            if subscriptions is None and not opts.urn:
                 raise TypeError("Missing required property 'subscriptions'")
             __props__['subscriptions'] = subscriptions
             __props__['sync_guest_os_namespaces'] = sync_guest_os_namespaces
-            if tenant_id is None:
+            if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__['tenant_id'] = tenant_id
         super(Integration, __self__).__init__(

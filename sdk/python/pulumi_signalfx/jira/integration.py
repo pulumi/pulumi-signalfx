@@ -87,24 +87,24 @@ class Integration(pulumi.CustomResource):
 
             __props__['api_token'] = api_token
             __props__['assignee_display_name'] = assignee_display_name
-            if assignee_name is None:
+            if assignee_name is None and not opts.urn:
                 raise TypeError("Missing required property 'assignee_name'")
             __props__['assignee_name'] = assignee_name
-            if auth_method is None:
+            if auth_method is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_method'")
             __props__['auth_method'] = auth_method
-            if base_url is None:
+            if base_url is None and not opts.urn:
                 raise TypeError("Missing required property 'base_url'")
             __props__['base_url'] = base_url
-            if enabled is None:
+            if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
-            if issue_type is None:
+            if issue_type is None and not opts.urn:
                 raise TypeError("Missing required property 'issue_type'")
             __props__['issue_type'] = issue_type
             __props__['name'] = name
             __props__['password'] = password
-            if project_key is None:
+            if project_key is None and not opts.urn:
                 raise TypeError("Missing required property 'project_key'")
             __props__['project_key'] = project_key
             __props__['user_email'] = user_email

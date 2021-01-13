@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.AuthToken == nil {
 		args.AuthToken = pulumi.StringPtr(getEnvOrDefault("", nil, "SFX_AUTH_TOKEN").(string))
 	}

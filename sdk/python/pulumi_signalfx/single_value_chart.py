@@ -99,7 +99,7 @@ class SingleValueChart(pulumi.CustomResource):
             __props__['max_delay'] = max_delay
             __props__['max_precision'] = max_precision
             __props__['name'] = name
-            if program_text is None:
+            if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
             __props__['program_text'] = program_text
             __props__['refresh_interval'] = refresh_interval

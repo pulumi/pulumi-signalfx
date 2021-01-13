@@ -89,6 +89,7 @@ func NewDashboardGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &DashboardGroupArgs{}
 	}
+
 	var resource DashboardGroup
 	err := ctx.RegisterResource("signalfx:index/dashboardGroup:DashboardGroup", name, args, &resource, opts...)
 	if err != nil {

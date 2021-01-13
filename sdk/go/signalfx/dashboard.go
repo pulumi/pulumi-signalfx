@@ -55,11 +55,12 @@ type Dashboard struct {
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
 func NewDashboard(ctx *pulumi.Context,
 	name string, args *DashboardArgs, opts ...pulumi.ResourceOption) (*Dashboard, error) {
-	if args == nil || args.DashboardGroup == nil {
-		return nil, errors.New("missing required argument 'DashboardGroup'")
-	}
 	if args == nil {
-		args = &DashboardArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DashboardGroup == nil {
+		return nil, errors.New("invalid value for required argument 'DashboardGroup'")
 	}
 	var resource Dashboard
 	err := ctx.RegisterResource("signalfx:index/dashboard:Dashboard", name, args, &resource, opts...)

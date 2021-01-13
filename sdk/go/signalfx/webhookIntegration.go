@@ -31,11 +31,12 @@ type WebhookIntegration struct {
 // NewWebhookIntegration registers a new resource with the given unique name, arguments, and options.
 func NewWebhookIntegration(ctx *pulumi.Context,
 	name string, args *WebhookIntegrationArgs, opts ...pulumi.ResourceOption) (*WebhookIntegration, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
 	if args == nil {
-		args = &WebhookIntegrationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
 	var resource WebhookIntegration
 	err := ctx.RegisterResource("signalfx:index/webhookIntegration:WebhookIntegration", name, args, &resource, opts...)

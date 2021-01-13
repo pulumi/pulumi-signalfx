@@ -131,22 +131,22 @@ export class Integration extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if (!args || args.assigneeName === undefined) {
+            if ((!args || args.assigneeName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'assigneeName'");
             }
-            if (!args || args.authMethod === undefined) {
+            if ((!args || args.authMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'authMethod'");
             }
-            if (!args || args.baseUrl === undefined) {
+            if ((!args || args.baseUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'baseUrl'");
             }
-            if (!args || args.enabled === undefined) {
+            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if (!args || args.issueType === undefined) {
+            if ((!args || args.issueType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'issueType'");
             }
-            if (!args || args.projectKey === undefined) {
+            if ((!args || args.projectKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectKey'");
             }
             inputs["apiToken"] = args ? args.apiToken : undefined;
