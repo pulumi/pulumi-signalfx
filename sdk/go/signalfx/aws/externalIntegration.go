@@ -94,6 +94,7 @@ func NewExternalIntegration(ctx *pulumi.Context,
 	if args == nil {
 		args = &ExternalIntegrationArgs{}
 	}
+
 	var resource ExternalIntegration
 	err := ctx.RegisterResource("signalfx:aws/externalIntegration:ExternalIntegration", name, args, &resource, opts...)
 	if err != nil {

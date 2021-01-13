@@ -54,11 +54,12 @@ type TextChart struct {
 // NewTextChart registers a new resource with the given unique name, arguments, and options.
 func NewTextChart(ctx *pulumi.Context,
 	name string, args *TextChartArgs, opts ...pulumi.ResourceOption) (*TextChart, error) {
-	if args == nil || args.Markdown == nil {
-		return nil, errors.New("missing required argument 'Markdown'")
-	}
 	if args == nil {
-		args = &TextChartArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Markdown == nil {
+		return nil, errors.New("invalid value for required argument 'Markdown'")
 	}
 	var resource TextChart
 	err := ctx.RegisterResource("signalfx:index/textChart:TextChart", name, args, &resource, opts...)

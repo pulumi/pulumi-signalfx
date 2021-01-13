@@ -79,10 +79,10 @@ export class Integration extends pulumi.CustomResource {
             inputs["webhookUrl"] = state ? state.webhookUrl : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if (!args || args.enabled === undefined) {
+            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if (!args || args.webhookUrl === undefined) {
+            if ((!args || args.webhookUrl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'webhookUrl'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;

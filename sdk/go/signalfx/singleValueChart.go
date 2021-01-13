@@ -83,11 +83,12 @@ type SingleValueChart struct {
 // NewSingleValueChart registers a new resource with the given unique name, arguments, and options.
 func NewSingleValueChart(ctx *pulumi.Context,
 	name string, args *SingleValueChartArgs, opts ...pulumi.ResourceOption) (*SingleValueChart, error) {
-	if args == nil || args.ProgramText == nil {
-		return nil, errors.New("missing required argument 'ProgramText'")
-	}
 	if args == nil {
-		args = &SingleValueChartArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProgramText == nil {
+		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
 	var resource SingleValueChart
 	err := ctx.RegisterResource("signalfx:index/singleValueChart:SingleValueChart", name, args, &resource, opts...)

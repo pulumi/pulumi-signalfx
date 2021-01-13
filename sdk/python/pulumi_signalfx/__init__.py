@@ -36,3 +36,80 @@ from . import (
     slack,
     victorops,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "signalfx:index/alertMutingRule:AlertMutingRule":
+                return AlertMutingRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/dashboard:Dashboard":
+                return Dashboard(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/dashboardGroup:DashboardGroup":
+                return DashboardGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/dataLink:DataLink":
+                return DataLink(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/detector:Detector":
+                return Detector(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/eventFeedChart:EventFeedChart":
+                return EventFeedChart(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/heatmapChart:HeatmapChart":
+                return HeatmapChart(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/listChart:ListChart":
+                return ListChart(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/orgToken:OrgToken":
+                return OrgToken(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/singleValueChart:SingleValueChart":
+                return SingleValueChart(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/team:Team":
+                return Team(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/textChart:TextChart":
+                return TextChart(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/timeChart:TimeChart":
+                return TimeChart(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "signalfx:index/webhookIntegration:WebhookIntegration":
+                return WebhookIntegration(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("signalfx", "index/alertMutingRule", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/dashboard", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/dashboardGroup", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/dataLink", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/detector", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/eventFeedChart", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/heatmapChart", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/listChart", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/orgToken", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/singleValueChart", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/team", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/textChart", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/timeChart", _module_instance)
+    pulumi.runtime.register_resource_module("signalfx", "index/webhookIntegration", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:signalfx":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("signalfx", Package())
+
+_register_module()

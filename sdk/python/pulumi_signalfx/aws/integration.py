@@ -123,12 +123,12 @@ class Integration(pulumi.CustomResource):
             __props__['custom_namespace_sync_rules'] = custom_namespace_sync_rules
             __props__['enable_aws_usage'] = enable_aws_usage
             __props__['enable_check_large_volume'] = enable_check_large_volume
-            if enabled is None:
+            if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
             __props__['external_id'] = external_id
             __props__['import_cloud_watch'] = import_cloud_watch
-            if integration_id is None:
+            if integration_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_id'")
             __props__['integration_id'] = integration_id
             __props__['key'] = key

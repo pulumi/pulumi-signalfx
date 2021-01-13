@@ -230,7 +230,7 @@ export class TimeChart extends pulumi.CustomResource {
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as TimeChartArgs | undefined;
-            if (!args || args.programText === undefined) {
+            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["axesIncludeZero"] = args ? args.axesIncludeZero : undefined;

@@ -81,7 +81,7 @@ class Dashboard(pulumi.CustomResource):
             __props__['charts'] = charts
             __props__['charts_resolution'] = charts_resolution
             __props__['columns'] = columns
-            if dashboard_group is None:
+            if dashboard_group is None and not opts.urn:
                 raise TypeError("Missing required property 'dashboard_group'")
             __props__['dashboard_group'] = dashboard_group
             __props__['description'] = description

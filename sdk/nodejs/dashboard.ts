@@ -137,7 +137,7 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["variables"] = state ? state.variables : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if (!args || args.dashboardGroup === undefined) {
+            if ((!args || args.dashboardGroup === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dashboardGroup'");
             }
             inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;

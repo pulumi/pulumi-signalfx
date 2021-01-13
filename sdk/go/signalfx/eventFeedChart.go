@@ -34,11 +34,12 @@ type EventFeedChart struct {
 // NewEventFeedChart registers a new resource with the given unique name, arguments, and options.
 func NewEventFeedChart(ctx *pulumi.Context,
 	name string, args *EventFeedChartArgs, opts ...pulumi.ResourceOption) (*EventFeedChart, error) {
-	if args == nil || args.ProgramText == nil {
-		return nil, errors.New("missing required argument 'ProgramText'")
-	}
 	if args == nil {
-		args = &EventFeedChartArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ProgramText == nil {
+		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
 	var resource EventFeedChart
 	err := ctx.RegisterResource("signalfx:index/eventFeedChart:EventFeedChart", name, args, &resource, opts...)

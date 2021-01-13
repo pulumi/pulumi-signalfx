@@ -56,7 +56,7 @@ class EventFeedChart(pulumi.CustomResource):
             __props__['description'] = description
             __props__['end_time'] = end_time
             __props__['name'] = name
-            if program_text is None:
+            if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
             __props__['program_text'] = program_text
             __props__['start_time'] = start_time

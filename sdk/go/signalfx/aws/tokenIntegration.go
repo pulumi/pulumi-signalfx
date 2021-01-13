@@ -89,6 +89,7 @@ func NewTokenIntegration(ctx *pulumi.Context,
 	if args == nil {
 		args = &TokenIntegrationArgs{}
 	}
+
 	var resource TokenIntegration
 	err := ctx.RegisterResource("signalfx:aws/tokenIntegration:TokenIntegration", name, args, &resource, opts...)
 	if err != nil {

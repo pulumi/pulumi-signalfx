@@ -76,7 +76,7 @@ class TextChart(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if markdown is None:
+            if markdown is None and not opts.urn:
                 raise TypeError("Missing required property 'markdown'")
             __props__['markdown'] = markdown
             __props__['name'] = name

@@ -33,17 +33,18 @@ type AlertMutingRule struct {
 // NewAlertMutingRule registers a new resource with the given unique name, arguments, and options.
 func NewAlertMutingRule(ctx *pulumi.Context,
 	name string, args *AlertMutingRuleArgs, opts ...pulumi.ResourceOption) (*AlertMutingRule, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.Filters == nil {
-		return nil, errors.New("missing required argument 'Filters'")
-	}
-	if args == nil || args.StartTime == nil {
-		return nil, errors.New("missing required argument 'StartTime'")
-	}
 	if args == nil {
-		args = &AlertMutingRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.Filters == nil {
+		return nil, errors.New("invalid value for required argument 'Filters'")
+	}
+	if args.StartTime == nil {
+		return nil, errors.New("invalid value for required argument 'StartTime'")
 	}
 	var resource AlertMutingRule
 	err := ctx.RegisterResource("signalfx:index/alertMutingRule:AlertMutingRule", name, args, &resource, opts...)

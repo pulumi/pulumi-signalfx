@@ -85,6 +85,7 @@ func NewDataLink(ctx *pulumi.Context,
 	if args == nil {
 		args = &DataLinkArgs{}
 	}
+
 	var resource DataLink
 	err := ctx.RegisterResource("signalfx:index/dataLink:DataLink", name, args, &resource, opts...)
 	if err != nil {

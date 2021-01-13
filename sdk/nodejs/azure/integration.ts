@@ -142,22 +142,22 @@ export class Integration extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.enabled === undefined) {
+            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if (!args || args.secretKey === undefined) {
+            if ((!args || args.secretKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secretKey'");
             }
-            if (!args || args.services === undefined) {
+            if ((!args || args.services === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'services'");
             }
-            if (!args || args.subscriptions === undefined) {
+            if ((!args || args.subscriptions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subscriptions'");
             }
-            if (!args || args.tenantId === undefined) {
+            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["appId"] = args ? args.appId : undefined;
