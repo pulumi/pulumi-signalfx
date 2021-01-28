@@ -77,4 +77,11 @@ namespace Pulumi.SignalFx
             }
         }
     }
+
+    internal sealed class SignalFxResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public SignalFxResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

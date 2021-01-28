@@ -123,15 +123,15 @@ type WebhookIntegrationInput interface {
 	ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput
 }
 
-func (WebhookIntegration) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookIntegration)(nil)).Elem()
+func (*WebhookIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookIntegration)(nil))
 }
 
-func (i WebhookIntegration) ToWebhookIntegrationOutput() WebhookIntegrationOutput {
+func (i *WebhookIntegration) ToWebhookIntegrationOutput() WebhookIntegrationOutput {
 	return i.ToWebhookIntegrationOutputWithContext(context.Background())
 }
 
-func (i WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
+func (i *WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationOutput)
 }
 
@@ -140,7 +140,7 @@ type WebhookIntegrationOutput struct {
 }
 
 func (WebhookIntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookIntegrationOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebhookIntegration)(nil))
 }
 
 func (o WebhookIntegrationOutput) ToWebhookIntegrationOutput() WebhookIntegrationOutput {

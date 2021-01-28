@@ -19,6 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -179,15 +180,15 @@ type OrgTokenInput interface {
 	ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput
 }
 
-func (OrgToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrgToken)(nil)).Elem()
+func (*OrgToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrgToken)(nil))
 }
 
-func (i OrgToken) ToOrgTokenOutput() OrgTokenOutput {
+func (i *OrgToken) ToOrgTokenOutput() OrgTokenOutput {
 	return i.ToOrgTokenOutputWithContext(context.Background())
 }
 
-func (i OrgToken) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
+func (i *OrgToken) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenOutput)
 }
 
@@ -196,7 +197,7 @@ type OrgTokenOutput struct {
 }
 
 func (OrgTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrgTokenOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrgToken)(nil))
 }
 
 func (o OrgTokenOutput) ToOrgTokenOutput() OrgTokenOutput {

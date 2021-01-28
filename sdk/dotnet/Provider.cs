@@ -15,6 +15,7 @@ namespace Pulumi.SignalFx
     /// construction to achieve fine-grained programmatic control over provider settings. See the
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
+    [SignalFxResourceType("pulumi:providers:signalfx")]
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>

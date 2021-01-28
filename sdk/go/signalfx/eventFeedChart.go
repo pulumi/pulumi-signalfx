@@ -142,15 +142,15 @@ type EventFeedChartInput interface {
 	ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput
 }
 
-func (EventFeedChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventFeedChart)(nil)).Elem()
+func (*EventFeedChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventFeedChart)(nil))
 }
 
-func (i EventFeedChart) ToEventFeedChartOutput() EventFeedChartOutput {
+func (i *EventFeedChart) ToEventFeedChartOutput() EventFeedChartOutput {
 	return i.ToEventFeedChartOutputWithContext(context.Background())
 }
 
-func (i EventFeedChart) ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput {
+func (i *EventFeedChart) ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartOutput)
 }
 
@@ -159,7 +159,7 @@ type EventFeedChartOutput struct {
 }
 
 func (EventFeedChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EventFeedChartOutput)(nil)).Elem()
+	return reflect.TypeOf((*EventFeedChart)(nil))
 }
 
 func (o EventFeedChartOutput) ToEventFeedChartOutput() EventFeedChartOutput {

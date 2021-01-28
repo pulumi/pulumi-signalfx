@@ -160,15 +160,15 @@ type ExternalIntegrationInput interface {
 	ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput
 }
 
-func (ExternalIntegration) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalIntegration)(nil)).Elem()
+func (*ExternalIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalIntegration)(nil))
 }
 
-func (i ExternalIntegration) ToExternalIntegrationOutput() ExternalIntegrationOutput {
+func (i *ExternalIntegration) ToExternalIntegrationOutput() ExternalIntegrationOutput {
 	return i.ToExternalIntegrationOutputWithContext(context.Background())
 }
 
-func (i ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
+func (i *ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationOutput)
 }
 
@@ -177,7 +177,7 @@ type ExternalIntegrationOutput struct {
 }
 
 func (ExternalIntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalIntegrationOutput)(nil)).Elem()
+	return reflect.TypeOf((*ExternalIntegration)(nil))
 }
 
 func (o ExternalIntegrationOutput) ToExternalIntegrationOutput() ExternalIntegrationOutput {

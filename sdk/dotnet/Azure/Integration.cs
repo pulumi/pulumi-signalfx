@@ -61,6 +61,7 @@ namespace Pulumi.SignalFx.Azure
     /// 
     /// &gt; **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.
     /// </summary>
+    [SignalFxResourceType("signalfx:azure/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>

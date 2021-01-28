@@ -74,6 +74,7 @@ namespace Pulumi.SignalFx.Aws
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:aws/tokenIntegration:TokenIntegration")]
     public partial class TokenIntegration : Pulumi.CustomResource
     {
         /// <summary>

@@ -46,6 +46,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/orgToken:OrgToken")]
     public partial class OrgToken : Pulumi.CustomResource
     {
         /// <summary>

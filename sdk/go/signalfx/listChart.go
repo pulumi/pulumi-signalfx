@@ -24,6 +24,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -339,15 +340,15 @@ type ListChartInput interface {
 	ToListChartOutputWithContext(ctx context.Context) ListChartOutput
 }
 
-func (ListChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListChart)(nil)).Elem()
+func (*ListChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListChart)(nil))
 }
 
-func (i ListChart) ToListChartOutput() ListChartOutput {
+func (i *ListChart) ToListChartOutput() ListChartOutput {
 	return i.ToListChartOutputWithContext(context.Background())
 }
 
-func (i ListChart) ToListChartOutputWithContext(ctx context.Context) ListChartOutput {
+func (i *ListChart) ToListChartOutputWithContext(ctx context.Context) ListChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartOutput)
 }
 
@@ -356,7 +357,7 @@ type ListChartOutput struct {
 }
 
 func (ListChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListChartOutput)(nil)).Elem()
+	return reflect.TypeOf((*ListChart)(nil))
 }
 
 func (o ListChartOutput) ToListChartOutput() ListChartOutput {

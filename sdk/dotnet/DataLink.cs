@@ -64,6 +64,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/dataLink:DataLink")]
     public partial class DataLink : Pulumi.CustomResource
     {
         /// <summary>

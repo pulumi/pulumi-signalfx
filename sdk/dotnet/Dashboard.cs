@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SignalFx
 {
+    [SignalFxResourceType("signalfx:index/dashboard:Dashboard")]
     public partial class Dashboard : Pulumi.CustomResource
     {
         /// <summary>

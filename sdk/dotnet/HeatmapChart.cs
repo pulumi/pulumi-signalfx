@@ -68,6 +68,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/heatmapChart:HeatmapChart")]
     public partial class HeatmapChart : Pulumi.CustomResource
     {
         /// <summary>

@@ -41,6 +41,7 @@ namespace Pulumi.SignalFx.Jira
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:jira/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>
