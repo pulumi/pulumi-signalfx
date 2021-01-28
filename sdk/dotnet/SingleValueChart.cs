@@ -42,6 +42,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/singleValueChart:SingleValueChart")]
     public partial class SingleValueChart : Pulumi.CustomResource
     {
         /// <summary>

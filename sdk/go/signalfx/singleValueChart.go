@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -255,15 +255,15 @@ type SingleValueChartInput interface {
 	ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput
 }
 
-func (SingleValueChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*SingleValueChart)(nil)).Elem()
+func (*SingleValueChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleValueChart)(nil))
 }
 
-func (i SingleValueChart) ToSingleValueChartOutput() SingleValueChartOutput {
+func (i *SingleValueChart) ToSingleValueChartOutput() SingleValueChartOutput {
 	return i.ToSingleValueChartOutputWithContext(context.Background())
 }
 
-func (i SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
+func (i *SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartOutput)
 }
 
@@ -272,7 +272,7 @@ type SingleValueChartOutput struct {
 }
 
 func (SingleValueChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SingleValueChartOutput)(nil)).Elem()
+	return reflect.TypeOf((*SingleValueChart)(nil))
 }
 
 func (o SingleValueChartOutput) ToSingleValueChartOutput() SingleValueChartOutput {

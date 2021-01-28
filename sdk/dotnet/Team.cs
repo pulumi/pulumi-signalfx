@@ -46,6 +46,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/team:Team")]
     public partial class Team : Pulumi.CustomResource
     {
         /// <summary>

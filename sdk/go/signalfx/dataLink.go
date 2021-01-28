@@ -19,6 +19,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -183,15 +184,15 @@ type DataLinkInput interface {
 	ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput
 }
 
-func (DataLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataLink)(nil)).Elem()
+func (*DataLink) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataLink)(nil))
 }
 
-func (i DataLink) ToDataLinkOutput() DataLinkOutput {
+func (i *DataLink) ToDataLinkOutput() DataLinkOutput {
 	return i.ToDataLinkOutputWithContext(context.Background())
 }
 
-func (i DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
+func (i *DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkOutput)
 }
 
@@ -200,7 +201,7 @@ type DataLinkOutput struct {
 }
 
 func (DataLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataLinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataLink)(nil))
 }
 
 func (o DataLinkOutput) ToDataLinkOutput() DataLinkOutput {

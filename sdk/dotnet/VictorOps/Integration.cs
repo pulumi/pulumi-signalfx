@@ -14,6 +14,7 @@ namespace Pulumi.SignalFx.VictorOps
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
     /// </summary>
+    [SignalFxResourceType("signalfx:victorops/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>

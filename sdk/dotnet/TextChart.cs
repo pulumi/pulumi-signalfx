@@ -49,6 +49,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/textChart:TextChart")]
     public partial class TextChart : Pulumi.CustomResource
     {
         /// <summary>

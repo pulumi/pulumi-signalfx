@@ -52,6 +52,7 @@ namespace Pulumi.SignalFx.Gcp
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:gcp/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>

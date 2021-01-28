@@ -96,6 +96,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/dashboardGroup:DashboardGroup")]
     public partial class DashboardGroup : Pulumi.CustomResource
     {
         /// <summary>

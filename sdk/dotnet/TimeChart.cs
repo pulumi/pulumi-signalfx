@@ -65,6 +65,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/timeChart:TimeChart")]
     public partial class TimeChart : Pulumi.CustomResource
     {
         /// <summary>

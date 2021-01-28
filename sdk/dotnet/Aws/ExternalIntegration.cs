@@ -167,6 +167,7 @@ namespace Pulumi.SignalFx.Aws
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:aws/externalIntegration:ExternalIntegration")]
     public partial class ExternalIntegration : Pulumi.CustomResource
     {
         /// <summary>

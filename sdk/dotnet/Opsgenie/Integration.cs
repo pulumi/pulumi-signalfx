@@ -35,6 +35,7 @@ namespace Pulumi.SignalFx.Opsgenie
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:opsgenie/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>

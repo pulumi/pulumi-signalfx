@@ -24,6 +24,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -423,15 +424,15 @@ type TimeChartInput interface {
 	ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput
 }
 
-func (TimeChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeChart)(nil)).Elem()
+func (*TimeChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeChart)(nil))
 }
 
-func (i TimeChart) ToTimeChartOutput() TimeChartOutput {
+func (i *TimeChart) ToTimeChartOutput() TimeChartOutput {
 	return i.ToTimeChartOutputWithContext(context.Background())
 }
 
-func (i TimeChart) ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput {
+func (i *TimeChart) ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartOutput)
 }
 
@@ -440,7 +441,7 @@ type TimeChartOutput struct {
 }
 
 func (TimeChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TimeChartOutput)(nil)).Elem()
+	return reflect.TypeOf((*TimeChart)(nil))
 }
 
 func (o TimeChartOutput) ToTimeChartOutput() TimeChartOutput {

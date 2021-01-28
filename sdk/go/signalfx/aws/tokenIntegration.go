@@ -155,15 +155,15 @@ type TokenIntegrationInput interface {
 	ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput
 }
 
-func (TokenIntegration) ElementType() reflect.Type {
-	return reflect.TypeOf((*TokenIntegration)(nil)).Elem()
+func (*TokenIntegration) ElementType() reflect.Type {
+	return reflect.TypeOf((*TokenIntegration)(nil))
 }
 
-func (i TokenIntegration) ToTokenIntegrationOutput() TokenIntegrationOutput {
+func (i *TokenIntegration) ToTokenIntegrationOutput() TokenIntegrationOutput {
 	return i.ToTokenIntegrationOutputWithContext(context.Background())
 }
 
-func (i TokenIntegration) ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput {
+func (i *TokenIntegration) ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationOutput)
 }
 
@@ -172,7 +172,7 @@ type TokenIntegrationOutput struct {
 }
 
 func (TokenIntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TokenIntegrationOutput)(nil)).Elem()
+	return reflect.TypeOf((*TokenIntegration)(nil))
 }
 
 func (o TokenIntegrationOutput) ToTokenIntegrationOutput() TokenIntegrationOutput {

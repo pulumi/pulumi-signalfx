@@ -34,6 +34,7 @@ namespace Pulumi.SignalFx.Slack
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:slack/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>

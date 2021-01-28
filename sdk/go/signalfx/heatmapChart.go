@@ -22,6 +22,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -265,15 +266,15 @@ type HeatmapChartInput interface {
 	ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput
 }
 
-func (HeatmapChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*HeatmapChart)(nil)).Elem()
+func (*HeatmapChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeatmapChart)(nil))
 }
 
-func (i HeatmapChart) ToHeatmapChartOutput() HeatmapChartOutput {
+func (i *HeatmapChart) ToHeatmapChartOutput() HeatmapChartOutput {
 	return i.ToHeatmapChartOutputWithContext(context.Background())
 }
 
-func (i HeatmapChart) ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput {
+func (i *HeatmapChart) ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartOutput)
 }
 
@@ -282,7 +283,7 @@ type HeatmapChartOutput struct {
 }
 
 func (HeatmapChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HeatmapChartOutput)(nil)).Elem()
+	return reflect.TypeOf((*HeatmapChart)(nil))
 }
 
 func (o HeatmapChartOutput) ToHeatmapChartOutput() HeatmapChartOutput {

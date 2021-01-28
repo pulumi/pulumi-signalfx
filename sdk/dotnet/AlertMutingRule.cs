@@ -47,6 +47,7 @@ namespace Pulumi.SignalFx
     /// }
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/alertMutingRule:AlertMutingRule")]
     public partial class AlertMutingRule : Pulumi.CustomResource
     {
         /// <summary>

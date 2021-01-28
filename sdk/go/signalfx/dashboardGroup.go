@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -191,15 +192,15 @@ type DashboardGroupInput interface {
 	ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput
 }
 
-func (DashboardGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardGroup)(nil)).Elem()
+func (*DashboardGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroup)(nil))
 }
 
-func (i DashboardGroup) ToDashboardGroupOutput() DashboardGroupOutput {
+func (i *DashboardGroup) ToDashboardGroupOutput() DashboardGroupOutput {
 	return i.ToDashboardGroupOutputWithContext(context.Background())
 }
 
-func (i DashboardGroup) ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput {
+func (i *DashboardGroup) ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupOutput)
 }
 
@@ -208,7 +209,7 @@ type DashboardGroupOutput struct {
 }
 
 func (DashboardGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DashboardGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*DashboardGroup)(nil))
 }
 
 func (o DashboardGroupOutput) ToDashboardGroupOutput() DashboardGroupOutput {

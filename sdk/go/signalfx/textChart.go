@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -138,15 +138,15 @@ type TextChartInput interface {
 	ToTextChartOutputWithContext(ctx context.Context) TextChartOutput
 }
 
-func (TextChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextChart)(nil)).Elem()
+func (*TextChart) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextChart)(nil))
 }
 
-func (i TextChart) ToTextChartOutput() TextChartOutput {
+func (i *TextChart) ToTextChartOutput() TextChartOutput {
 	return i.ToTextChartOutputWithContext(context.Background())
 }
 
-func (i TextChart) ToTextChartOutputWithContext(ctx context.Context) TextChartOutput {
+func (i *TextChart) ToTextChartOutputWithContext(ctx context.Context) TextChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TextChartOutput)
 }
 
@@ -155,7 +155,7 @@ type TextChartOutput struct {
 }
 
 func (TextChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TextChartOutput)(nil)).Elem()
+	return reflect.TypeOf((*TextChart)(nil))
 }
 
 func (o TextChartOutput) ToTextChartOutput() TextChartOutput {

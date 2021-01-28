@@ -192,6 +192,7 @@ namespace Pulumi.SignalFx
     ///  $ pulumi import signalfx:index/detector:Detector application_delay abc123
     /// ```
     /// </summary>
+    [SignalFxResourceType("signalfx:index/detector:Detector")]
     public partial class Detector : Pulumi.CustomResource
     {
         /// <summary>

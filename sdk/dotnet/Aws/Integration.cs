@@ -78,6 +78,7 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// &gt; **NOTE** You can use the data source "signalfx.aws.getServices" to specify all services.
     /// </summary>
+    [SignalFxResourceType("signalfx:aws/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
     {
         /// <summary>
