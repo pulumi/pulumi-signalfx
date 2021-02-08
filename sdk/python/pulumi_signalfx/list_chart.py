@@ -34,6 +34,7 @@ class ListChart(pulumi.CustomResource):
                  sort_by: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None,
                  __props__=None,
@@ -84,7 +85,8 @@ class ListChart(pulumi.CustomResource):
 
         \"\"\",
             refresh_interval=1,
-            sort_by="-value")
+            sort_by="-value",
+            timezone="Europe/Paris")
         ```
 
         :param str resource_name: The name of the resource.
@@ -106,6 +108,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
@@ -148,6 +151,7 @@ class ListChart(pulumi.CustomResource):
             __props__['sort_by'] = sort_by
             __props__['start_time'] = start_time
             __props__['time_range'] = time_range
+            __props__['timezone'] = timezone
             __props__['unit_prefix'] = unit_prefix
             __props__['viz_options'] = viz_options
             __props__['url'] = None
@@ -178,6 +182,7 @@ class ListChart(pulumi.CustomResource):
             sort_by: Optional[pulumi.Input[str]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
+            timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]]] = None) -> 'ListChart':
@@ -205,6 +210,7 @@ class ListChart(pulumi.CustomResource):
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
@@ -230,6 +236,7 @@ class ListChart(pulumi.CustomResource):
         __props__["sort_by"] = sort_by
         __props__["start_time"] = start_time
         __props__["time_range"] = time_range
+        __props__["timezone"] = timezone
         __props__["unit_prefix"] = unit_prefix
         __props__["url"] = url
         __props__["viz_options"] = viz_options
@@ -370,6 +377,14 @@ class ListChart(pulumi.CustomResource):
         How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        """
+        return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter(name="unitPrefix")

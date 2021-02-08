@@ -806,6 +806,10 @@ export namespace azure {
 }
 
 export namespace gcp {
+    export interface GetServicesService {
+        name: string;
+    }
+
     export interface IntegrationProjectServiceKey {
         projectId: string;
         projectKey: string;

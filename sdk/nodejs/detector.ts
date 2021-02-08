@@ -153,6 +153,10 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly maxDelay!: pulumi.Output<number | undefined>;
     /**
+     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     */
+    public readonly minDelay!: pulumi.Output<number | undefined>;
+    /**
      * Name of the detector.
      */
     public readonly name!: pulumi.Output<string>;
@@ -176,6 +180,10 @@ export class Detector extends pulumi.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
+    /**
+     * Tags associated with the detector.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Team IDs to associate the detector to.
      */
@@ -211,12 +219,14 @@ export class Detector extends pulumi.CustomResource {
             inputs["disableSampling"] = state ? state.disableSampling : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
             inputs["maxDelay"] = state ? state.maxDelay : undefined;
+            inputs["minDelay"] = state ? state.minDelay : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["programText"] = state ? state.programText : undefined;
             inputs["rules"] = state ? state.rules : undefined;
             inputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
             inputs["showEventLines"] = state ? state.showEventLines : undefined;
             inputs["startTime"] = state ? state.startTime : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["teams"] = state ? state.teams : undefined;
             inputs["timeRange"] = state ? state.timeRange : undefined;
             inputs["url"] = state ? state.url : undefined;
@@ -235,12 +245,14 @@ export class Detector extends pulumi.CustomResource {
             inputs["disableSampling"] = args ? args.disableSampling : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["maxDelay"] = args ? args.maxDelay : undefined;
+            inputs["minDelay"] = args ? args.minDelay : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["programText"] = args ? args.programText : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
             inputs["showEventLines"] = args ? args.showEventLines : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["teams"] = args ? args.teams : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
@@ -286,6 +298,10 @@ export interface DetectorState {
      */
     readonly maxDelay?: pulumi.Input<number>;
     /**
+     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     */
+    readonly minDelay?: pulumi.Input<number>;
+    /**
      * Name of the detector.
      */
     readonly name?: pulumi.Input<string>;
@@ -309,6 +325,10 @@ export interface DetectorState {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     readonly startTime?: pulumi.Input<number>;
+    /**
+     * Tags associated with the detector.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Team IDs to associate the detector to.
      */
@@ -356,6 +376,10 @@ export interface DetectorArgs {
      */
     readonly maxDelay?: pulumi.Input<number>;
     /**
+     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     */
+    readonly minDelay?: pulumi.Input<number>;
+    /**
      * Name of the detector.
      */
     readonly name?: pulumi.Input<string>;
@@ -379,6 +403,10 @@ export interface DetectorArgs {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     readonly startTime?: pulumi.Input<number>;
+    /**
+     * Tags associated with the detector.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Team IDs to associate the detector to.
      */

@@ -213,6 +213,22 @@
                 "projectKey"
             ]
         },
+        "signalfx:gcp/getServicesService:getServicesService": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
         "signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter": {
             "properties": {
                 "negated": {
@@ -3524,6 +3540,10 @@
                     "type": "integer",
                     "description": "How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.\n"
                 },
+                "minDelay": {
+                    "type": "integer",
+                    "description": "How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the detector.\n"
@@ -3550,6 +3570,13 @@
                 "startTime": {
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the detector.\n"
                 },
                 "teams": {
                     "type": "array",
@@ -3611,6 +3638,10 @@
                     "type": "integer",
                     "description": "How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.\n"
                 },
+                "minDelay": {
+                    "type": "integer",
+                    "description": "How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the detector.\n"
@@ -3637,6 +3668,13 @@
                 "startTime": {
                     "type": "integer",
                     "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tags associated with the detector.\n"
                 },
                 "teams": {
                     "type": "array",
@@ -3694,6 +3732,10 @@
                         "type": "integer",
                         "description": "How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.\n"
                     },
+                    "minDelay": {
+                        "type": "integer",
+                        "description": "How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the detector.\n"
@@ -3720,6 +3762,13 @@
                     "startTime": {
                         "type": "integer",
                         "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Tags associated with the detector.\n"
                     },
                     "teams": {
                         "type": "array",
@@ -3849,7 +3898,7 @@
             }
         },
         "signalfx:index/heatmapChart:HeatmapChart": {
-            "description": "This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myheatmapchart0 = new signalfx.HeatmapChart(\"myheatmapchart0\", {\n    colorRange: {\n        color: \"#ff0000\",\n        maxValue: 100,\n        minValue: 0,\n    },\n    colorScales: [\n        // You can only use one of color_range or color_scale!\n        {\n            color: \"green\",\n            gte: 99,\n        },\n        {\n            color: \"yellow\",\n            gte: 95,\n            lt: 99, // This ensures terraform recognizes that we cover the range 95-99\n        },\n        {\n            color: \"red\",\n            lt: 95,\n        },\n    ],\n    description: \"Very cool Heatmap\",\n    disableSampling: true,\n    groupBies: [\n        \"hostname\",\n        \"host\",\n    ],\n    hideTimestamp: true,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    sortBy: \"+host\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyheatmapchart0 = signalfx.HeatmapChart(\"myheatmapchart0\",\n    color_range=signalfx.HeatmapChartColorRangeArgs(\n        color=\"#ff0000\",\n        max_value=100,\n        min_value=0,\n    ),\n    color_scales=[\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"green\",\n            gte=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"yellow\",\n            gte=95,\n            lt=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"red\",\n            lt=95,\n        ),\n    ],\n    description=\"Very cool Heatmap\",\n    disable_sampling=True,\n    group_bies=[\n        \"hostname\",\n        \"host\",\n    ],\n    hide_timestamp=True,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    sort_by=\"+host\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myheatmapchart0 = new SignalFx.HeatmapChart(\"myheatmapchart0\", new SignalFx.HeatmapChartArgs\n        {\n            ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs\n            {\n                Color = \"#ff0000\",\n                MaxValue = 100,\n                MinValue = 0,\n            },\n            ColorScales = \n            {\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"green\",\n                    Gte = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"yellow\",\n                    Gte = 95,\n                    Lt = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"red\",\n                    Lt = 95,\n                },\n            },\n            Description = \"Very cool Heatmap\",\n            DisableSampling = true,\n            GroupBies = \n            {\n                \"hostname\",\n                \"host\",\n            },\n            HideTimestamp = true,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            SortBy = \"+host\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewHeatmapChart(ctx, \"myheatmapchart0\", \u0026signalfx.HeatmapChartArgs{\n\t\t\tColorRange: \u0026signalfx.HeatmapChartColorRangeArgs{\n\t\t\t\tColor:    pulumi.String(\"#ff0000\"),\n\t\t\t\tMaxValue: pulumi.Float64(100),\n\t\t\t\tMinValue: pulumi.Float64(0),\n\t\t\t},\n\t\t\tColorScales: signalfx.HeatmapChartColorScaleArray{\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"green\"),\n\t\t\t\t\tGte:   pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"yellow\"),\n\t\t\t\t\tGte:   pulumi.Float64(95),\n\t\t\t\t\tLt:    pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"red\"),\n\t\t\t\t\tLt:    pulumi.Float64(95),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription:     pulumi.String(\"Very cool Heatmap\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tGroupBies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"hostname\"),\n\t\t\t\tpulumi.String(\"host\"),\n\t\t\t},\n\t\t\tHideTimestamp: pulumi.Bool(true),\n\t\t\tProgramText:   pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tSortBy:        pulumi.String(\"+host\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myheatmapchart0 = new signalfx.HeatmapChart(\"myheatmapchart0\", {\n    colorRange: {\n        color: \"#ff0000\",\n        maxValue: 100,\n        minValue: 0,\n    },\n    colorScales: [\n        // You can only use one of color_range or color_scale!\n        {\n            color: \"green\",\n            gte: 99,\n        },\n        {\n            color: \"yellow\",\n            gte: 95,\n            lt: 99, // This ensures terraform recognizes that we cover the range 95-99\n        },\n        {\n            color: \"red\",\n            lt: 95,\n        },\n    ],\n    description: \"Very cool Heatmap\",\n    disableSampling: true,\n    groupBies: [\n        \"hostname\",\n        \"host\",\n    ],\n    hideTimestamp: true,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    sortBy: \"+host\",\n    timezone: \"Europe/Paris\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmyheatmapchart0 = signalfx.HeatmapChart(\"myheatmapchart0\",\n    color_range=signalfx.HeatmapChartColorRangeArgs(\n        color=\"#ff0000\",\n        max_value=100,\n        min_value=0,\n    ),\n    color_scales=[\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"green\",\n            gte=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"yellow\",\n            gte=95,\n            lt=99,\n        ),\n        signalfx.HeatmapChartColorScaleArgs(\n            color=\"red\",\n            lt=95,\n        ),\n    ],\n    description=\"Very cool Heatmap\",\n    disable_sampling=True,\n    group_bies=[\n        \"hostname\",\n        \"host\",\n    ],\n    hide_timestamp=True,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    sort_by=\"+host\",\n    timezone=\"Europe/Paris\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myheatmapchart0 = new SignalFx.HeatmapChart(\"myheatmapchart0\", new SignalFx.HeatmapChartArgs\n        {\n            ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs\n            {\n                Color = \"#ff0000\",\n                MaxValue = 100,\n                MinValue = 0,\n            },\n            ColorScales = \n            {\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"green\",\n                    Gte = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"yellow\",\n                    Gte = 95,\n                    Lt = 99,\n                },\n                new SignalFx.Inputs.HeatmapChartColorScaleArgs\n                {\n                    Color = \"red\",\n                    Lt = 95,\n                },\n            },\n            Description = \"Very cool Heatmap\",\n            DisableSampling = true,\n            GroupBies = \n            {\n                \"hostname\",\n                \"host\",\n            },\n            HideTimestamp = true,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            SortBy = \"+host\",\n            Timezone = \"Europe/Paris\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewHeatmapChart(ctx, \"myheatmapchart0\", \u0026signalfx.HeatmapChartArgs{\n\t\t\tColorRange: \u0026signalfx.HeatmapChartColorRangeArgs{\n\t\t\t\tColor:    pulumi.String(\"#ff0000\"),\n\t\t\t\tMaxValue: pulumi.Float64(100),\n\t\t\t\tMinValue: pulumi.Float64(0),\n\t\t\t},\n\t\t\tColorScales: signalfx.HeatmapChartColorScaleArray{\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"green\"),\n\t\t\t\t\tGte:   pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"yellow\"),\n\t\t\t\t\tGte:   pulumi.Float64(95),\n\t\t\t\t\tLt:    pulumi.Float64(99),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.HeatmapChartColorScaleArgs{\n\t\t\t\t\tColor: pulumi.String(\"red\"),\n\t\t\t\t\tLt:    pulumi.Float64(95),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription:     pulumi.String(\"Very cool Heatmap\"),\n\t\t\tDisableSampling: pulumi.Bool(true),\n\t\t\tGroupBies: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"hostname\"),\n\t\t\t\tpulumi.String(\"host\"),\n\t\t\t},\n\t\t\tHideTimestamp: pulumi.Bool(true),\n\t\t\tProgramText:   pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tSortBy:        pulumi.String(\"+host\"),\n\t\t\tTimezone:      pulumi.String(\"Europe/Paris\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "colorRange": {
                     "$ref": "#/types/signalfx:index/HeatmapChartColorRange:HeatmapChartColorRange",
@@ -3904,6 +3953,10 @@
                 "sortBy": {
                     "type": "string",
                     "description": "The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
                 },
                 "unitPrefix": {
                     "type": "string",
@@ -3974,6 +4027,10 @@
                     "type": "string",
                     "description": "The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).\n"
                 },
+                "timezone": {
+                    "type": "string",
+                    "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
+                },
                 "unitPrefix": {
                     "type": "string",
                     "description": "Must be `\"Metric\"` or `\"Binary`\". `\"Metric\"` by default.\n"
@@ -4039,6 +4096,10 @@
                         "type": "string",
                         "description": "The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).\n"
                     },
+                    "timezone": {
+                        "type": "string",
+                        "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
+                    },
                     "unitPrefix": {
                         "type": "string",
                         "description": "Must be `\"Metric\"` or `\"Binary`\". `\"Metric\"` by default.\n"
@@ -4052,7 +4113,7 @@
             }
         },
         "signalfx:index/listChart:ListChart": {
-            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    hideMissingValues: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    hide_missing_values=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new SignalFx.ListChartArgs\n        {\n            ColorBy = \"Metric\",\n            Description = \"Very cool List Chart\",\n            DisableSampling = true,\n            HideMissingValues = true,\n            LegendOptionsFields = \n            {\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"cluster_name\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"role\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"host\",\n                },\n            },\n            MaxDelay = 2,\n            MaxPrecision = 2,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            RefreshInterval = 1,\n            SortBy = \"-value\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:           pulumi.String(\"Metric\"),\n\t\t\tDescription:       pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling:   pulumi.Bool(true),\n\t\t\tHideMissingValues: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    hideMissingValues: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n    timezone: \"Europe/Paris\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    hide_missing_values=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\",\n    timezone=\"Europe/Paris\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new SignalFx.ListChartArgs\n        {\n            ColorBy = \"Metric\",\n            Description = \"Very cool List Chart\",\n            DisableSampling = true,\n            HideMissingValues = true,\n            LegendOptionsFields = \n            {\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"cluster_name\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = true,\n                    Property = \"role\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"collector\",\n                },\n                new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n                {\n                    Enabled = false,\n                    Property = \"host\",\n                },\n            },\n            MaxDelay = 2,\n            MaxPrecision = 2,\n            ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n            RefreshInterval = 1,\n            SortBy = \"-value\",\n            Timezone = \"Europe/Paris\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:           pulumi.String(\"Metric\"),\n\t\t\tDescription:       pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling:   pulumi.Bool(true),\n\t\t\tHideMissingValues: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026signalfx.ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"%v%v%v\", \"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\n\", \"data(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\", \"\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t\tTimezone:        pulumi.String(\"Europe/Paris\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "colorBy": {
                     "type": "string",
@@ -4131,6 +4192,10 @@
                 "timeRange": {
                     "type": "integer",
                     "description": "How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
                 },
                 "unitPrefix": {
                     "type": "string",
@@ -4231,6 +4296,10 @@
                 "timeRange": {
                     "type": "integer",
                     "description": "How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
                 },
                 "unitPrefix": {
                     "type": "string",
@@ -4327,6 +4396,10 @@
                     "timeRange": {
                         "type": "integer",
                         "description": "How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.\n"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "The property value is a string that denotes the geographic region associated with the time zone, (default UTC).\n"
                     },
                     "unitPrefix": {
                         "type": "string",
@@ -5912,6 +5985,40 @@
                 ]
             }
         },
+        "signalfx:gcp/getServices:getServices": {
+            "description": "Use this data source to get a list of GCP service names.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst gcpServices = signalfx.gcp.getServices({});\n// Leaves out most of the integration bits, see the docs\n// for signalfx_gcp_integration for more\n// …\nconst gcpMyteam = new signalfx.gcp.Integration(\"gcpMyteam\", {services: [gcpServices.then(gcpServices =\u003e gcpServices.services)].map(__item =\u003e __item?.name)});\n```\n```csharp\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var gcpServices = Output.Create(SignalFx.Gcp.GetServices.InvokeAsync());\n        // Leaves out most of the integration bits, see the docs\n        // for signalfx_gcp_integration for more\n        // …\n        var gcpMyteam = new SignalFx.Gcp.Integration(\"gcpMyteam\", new SignalFx.Gcp.IntegrationArgs\n        {\n            Services = \n            {\n                gcpServices.Apply(gcpServices =\u003e gcpServices.Services),\n            }.Select(__item =\u003e __item?.Name).ToList(),\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServices.\n",
+                "properties": {
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:gcp/getServicesService:getServicesService"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServices.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "services": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:gcp/getServicesService:getServicesService"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            }
+        },
         "signalfx:index/getAwsServices:getAwsServices": {
             "inputs": {
                 "description": "A collection of arguments for invoking getAwsServices.\n",
@@ -6015,6 +6122,40 @@
                 "required": [
                     "query",
                     "values",
+                    "id"
+                ]
+            }
+        },
+        "signalfx:pagerduty/getIntegration:getIntegration": {
+            "description": "Use this data source to get information on an existing PagerDuty integration.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst pdIntegration = pulumi.output(signalfx.pagerduty.getIntegration({\n    name: \"PD-Integration\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\npd_integration = signalfx.pagerduty.get_integration(name=\"PD-Integration\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var pdIntegration = Output.Create(SignalFx.PagerDuty.GetIntegration.InvokeAsync(new SignalFx.PagerDuty.GetIntegrationArgs\n        {\n            Name = \"PD-Integration\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/pagerduty\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := pagerduty.LookupIntegration(ctx, \u0026pagerduty.LookupIntegrationArgs{\n\t\t\tName: \"PD-Integration\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIntegration.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Specify the exact name of the desired PagerDuty integration\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIntegration.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the integration.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
                     "id"
                 ]
             }

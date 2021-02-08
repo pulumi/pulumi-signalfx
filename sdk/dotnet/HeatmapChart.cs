@@ -62,6 +62,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ",
     ///             SortBy = "+host",
+    ///             Timezone = "Europe/Paris",
     ///         });
     ///     }
     /// 
@@ -142,6 +143,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("sortBy")]
         public Output<string?> SortBy { get; private set; } = null!;
+
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -286,6 +293,12 @@ namespace Pulumi.SignalFx
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
+        /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
@@ -381,6 +394,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
+
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.

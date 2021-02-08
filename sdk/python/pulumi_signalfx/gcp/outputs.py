@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'IntegrationProjectServiceKey',
+    'GetServicesServiceResult',
 ]
 
 @pulumi.output_type
@@ -32,5 +33,17 @@ class IntegrationProjectServiceKey(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetServicesServiceResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 

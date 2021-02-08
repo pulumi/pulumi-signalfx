@@ -23,12 +23,14 @@ class Detector(pulumi.CustomResource):
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
+                 min_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
                  show_event_lines: Optional[pulumi.Input[bool]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
@@ -138,12 +140,14 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
@@ -171,6 +175,7 @@ class Detector(pulumi.CustomResource):
             __props__['disable_sampling'] = disable_sampling
             __props__['end_time'] = end_time
             __props__['max_delay'] = max_delay
+            __props__['min_delay'] = min_delay
             __props__['name'] = name
             if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
@@ -181,6 +186,7 @@ class Detector(pulumi.CustomResource):
             __props__['show_data_markers'] = show_data_markers
             __props__['show_event_lines'] = show_event_lines
             __props__['start_time'] = start_time
+            __props__['tags'] = tags
             __props__['teams'] = teams
             __props__['time_range'] = time_range
             __props__['viz_options'] = viz_options
@@ -201,12 +207,14 @@ class Detector(pulumi.CustomResource):
             disable_sampling: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
             max_delay: Optional[pulumi.Input[int]] = None,
+            min_delay: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
             show_data_markers: Optional[pulumi.Input[bool]] = None,
             show_event_lines: Optional[pulumi.Input[bool]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
             url: Optional[pulumi.Input[str]] = None,
@@ -224,12 +232,14 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] url: The URL of the detector.
@@ -245,12 +255,14 @@ class Detector(pulumi.CustomResource):
         __props__["disable_sampling"] = disable_sampling
         __props__["end_time"] = end_time
         __props__["max_delay"] = max_delay
+        __props__["min_delay"] = min_delay
         __props__["name"] = name
         __props__["program_text"] = program_text
         __props__["rules"] = rules
         __props__["show_data_markers"] = show_data_markers
         __props__["show_event_lines"] = show_event_lines
         __props__["start_time"] = start_time
+        __props__["tags"] = tags
         __props__["teams"] = teams
         __props__["time_range"] = time_range
         __props__["url"] = url
@@ -306,6 +318,14 @@ class Detector(pulumi.CustomResource):
         return pulumi.get(self, "max_delay")
 
     @property
+    @pulumi.getter(name="minDelay")
+    def min_delay(self) -> pulumi.Output[Optional[int]]:
+        """
+        How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        """
+        return pulumi.get(self, "min_delay")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -352,6 +372,14 @@ class Detector(pulumi.CustomResource):
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags associated with the detector.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

@@ -133,6 +133,10 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},
+
+			"signalfx_gcp_services": {Tok: makeDataSource(gcpMod, "getServices")},
+
+			"signalfx_pagerduty_integration": {Tok: makeDataSource(pagerdutyMod, "getIntegration")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

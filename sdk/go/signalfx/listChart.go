@@ -62,6 +62,7 @@ import (
 // 			ProgramText:     pulumi.String(fmt.Sprintf("%v%v%v", "myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\n", "data(\"cpu.total.idle\", filter=myfilters).publish()\n", "\n")),
 // 			RefreshInterval: pulumi.Int(1),
 // 			SortBy:          pulumi.String("-value"),
+// 			Timezone:        pulumi.String("Europe/Paris"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -109,6 +110,8 @@ type ListChart struct {
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
 	// The URL of the chart.
@@ -185,6 +188,8 @@ type listChartState struct {
 	StartTime *int `pulumi:"startTime"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	Timezone *string `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
 	// The URL of the chart.
@@ -230,6 +235,8 @@ type ListChartState struct {
 	StartTime pulumi.IntPtrInput
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
+	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	Timezone pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
 	// The URL of the chart.
@@ -279,6 +286,8 @@ type listChartArgs struct {
 	StartTime *int `pulumi:"startTime"`
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	Timezone *string `pulumi:"timezone"`
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
 	// Plot-level customization options, associated with a publish statement.
@@ -323,6 +332,8 @@ type ListChartArgs struct {
 	StartTime pulumi.IntPtrInput
 	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
+	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	Timezone pulumi.StringPtrInput
 	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.

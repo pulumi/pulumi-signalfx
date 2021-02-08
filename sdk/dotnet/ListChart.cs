@@ -66,6 +66,7 @@ namespace Pulumi.SignalFx
     /// ",
     ///             RefreshInterval = 1,
     ///             SortBy = "-value",
+    ///             Timezone = "Europe/Paris",
     ///         });
     ///     }
     /// 
@@ -176,6 +177,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
+
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
@@ -363,6 +370,12 @@ namespace Pulumi.SignalFx
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
+        /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
@@ -507,6 +520,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
+
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.

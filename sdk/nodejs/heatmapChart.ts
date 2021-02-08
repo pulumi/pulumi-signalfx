@@ -47,6 +47,7 @@ import * as utilities from "./utilities";
  * data("cpu.total.idle", filter=myfilters).publish()
  * `,
  *     sortBy: "+host",
+ *     timezone: "Europe/Paris",
  * });
  * ```
  */
@@ -127,6 +128,10 @@ export class HeatmapChart extends pulumi.CustomResource {
      */
     public readonly sortBy!: pulumi.Output<string | undefined>;
     /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     */
+    public readonly timezone!: pulumi.Output<string | undefined>;
+    /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
@@ -159,6 +164,7 @@ export class HeatmapChart extends pulumi.CustomResource {
             inputs["programText"] = state ? state.programText : undefined;
             inputs["refreshInterval"] = state ? state.refreshInterval : undefined;
             inputs["sortBy"] = state ? state.sortBy : undefined;
+            inputs["timezone"] = state ? state.timezone : undefined;
             inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
             inputs["url"] = state ? state.url : undefined;
         } else {
@@ -178,6 +184,7 @@ export class HeatmapChart extends pulumi.CustomResource {
             inputs["programText"] = args ? args.programText : undefined;
             inputs["refreshInterval"] = args ? args.refreshInterval : undefined;
             inputs["sortBy"] = args ? args.sortBy : undefined;
+            inputs["timezone"] = args ? args.timezone : undefined;
             inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             inputs["url"] = undefined /*out*/;
         }
@@ -245,6 +252,10 @@ export interface HeatmapChartState {
      */
     readonly sortBy?: pulumi.Input<string>;
     /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     */
+    readonly timezone?: pulumi.Input<string>;
+    /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
     readonly unitPrefix?: pulumi.Input<string>;
@@ -306,6 +317,10 @@ export interface HeatmapChartArgs {
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
     readonly sortBy?: pulumi.Input<string>;
+    /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     */
+    readonly timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
