@@ -229,6 +229,8 @@ type Detector struct {
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
+	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	MinDelay pulumi.IntPtrOutput `pulumi:"minDelay"`
 	// Name of the detector.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
@@ -241,6 +243,8 @@ type Detector struct {
 	ShowEventLines pulumi.BoolPtrOutput `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
+	// Tags associated with the detector.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Team IDs to associate the detector to.
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
@@ -298,6 +302,8 @@ type detectorState struct {
 	EndTime *int `pulumi:"endTime"`
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
+	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	MinDelay *int `pulumi:"minDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
 	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
@@ -310,6 +316,8 @@ type detectorState struct {
 	ShowEventLines *bool `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the detector.
+	Tags []string `pulumi:"tags"`
 	// Team IDs to associate the detector to.
 	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
@@ -333,6 +341,8 @@ type DetectorState struct {
 	EndTime pulumi.IntPtrInput
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
+	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	MinDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
 	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
@@ -345,6 +355,8 @@ type DetectorState struct {
 	ShowEventLines pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the detector.
+	Tags pulumi.StringArrayInput
 	// Team IDs to associate the detector to.
 	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
@@ -372,6 +384,8 @@ type detectorArgs struct {
 	EndTime *int `pulumi:"endTime"`
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
+	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	MinDelay *int `pulumi:"minDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
 	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
@@ -384,6 +398,8 @@ type detectorArgs struct {
 	ShowEventLines *bool `pulumi:"showEventLines"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
+	// Tags associated with the detector.
+	Tags []string `pulumi:"tags"`
 	// Team IDs to associate the detector to.
 	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
@@ -406,6 +422,8 @@ type DetectorArgs struct {
 	EndTime pulumi.IntPtrInput
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
+	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	MinDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
 	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
@@ -418,6 +436,8 @@ type DetectorArgs struct {
 	ShowEventLines pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
+	// Tags associated with the detector.
+	Tags pulumi.StringArrayInput
 	// Team IDs to associate the detector to.
 	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.

@@ -29,6 +29,7 @@ class HeatmapChart(pulumi.CustomResource):
                  program_text: Optional[pulumi.Input[str]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  sort_by: Optional[pulumi.Input[str]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -74,7 +75,8 @@ class HeatmapChart(pulumi.CustomResource):
         data("cpu.total.idle", filter=myfilters).publish()
 
         \"\"\",
-            sort_by="+host")
+            sort_by="+host",
+            timezone="Europe/Paris")
         ```
 
         :param str resource_name: The name of the resource.
@@ -91,6 +93,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
         if __name__ is not None:
@@ -124,6 +127,7 @@ class HeatmapChart(pulumi.CustomResource):
             __props__['program_text'] = program_text
             __props__['refresh_interval'] = refresh_interval
             __props__['sort_by'] = sort_by
+            __props__['timezone'] = timezone
             __props__['unit_prefix'] = unit_prefix
             __props__['url'] = None
         super(HeatmapChart, __self__).__init__(
@@ -148,6 +152,7 @@ class HeatmapChart(pulumi.CustomResource):
             program_text: Optional[pulumi.Input[str]] = None,
             refresh_interval: Optional[pulumi.Input[int]] = None,
             sort_by: Optional[pulumi.Input[str]] = None,
+            timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'HeatmapChart':
         """
@@ -169,6 +174,7 @@ class HeatmapChart(pulumi.CustomResource):
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
         :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
         """
@@ -188,6 +194,7 @@ class HeatmapChart(pulumi.CustomResource):
         __props__["program_text"] = program_text
         __props__["refresh_interval"] = refresh_interval
         __props__["sort_by"] = sort_by
+        __props__["timezone"] = timezone
         __props__["unit_prefix"] = unit_prefix
         __props__["url"] = url
         return HeatmapChart(resource_name, opts=opts, __props__=__props__)
@@ -287,6 +294,14 @@ class HeatmapChart(pulumi.CustomResource):
         The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         """
         return pulumi.get(self, "sort_by")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        """
+        return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter(name="unitPrefix")

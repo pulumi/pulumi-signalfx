@@ -232,6 +232,12 @@ namespace Pulumi.SignalFx
         public Output<int?> MaxDelay { get; private set; } = null!;
 
         /// <summary>
+        /// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        /// </summary>
+        [Output("minDelay")]
+        public Output<int?> MinDelay { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the detector.
         /// </summary>
         [Output("name")]
@@ -266,6 +272,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Tags associated with the detector.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Team IDs to associate the detector to.
@@ -386,6 +398,12 @@ namespace Pulumi.SignalFx
         public Input<int>? MaxDelay { get; set; }
 
         /// <summary>
+        /// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        /// </summary>
+        [Input("minDelay")]
+        public Input<int>? MinDelay { get; set; }
+
+        /// <summary>
         /// Name of the detector.
         /// </summary>
         [Input("name")]
@@ -426,6 +444,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the detector.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         [Input("teams")]
         private InputList<string>? _teams;
@@ -513,6 +543,12 @@ namespace Pulumi.SignalFx
         public Input<int>? MaxDelay { get; set; }
 
         /// <summary>
+        /// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        /// </summary>
+        [Input("minDelay")]
+        public Input<int>? MinDelay { get; set; }
+
+        /// <summary>
         /// Name of the detector.
         /// </summary>
         [Input("name")]
@@ -553,6 +589,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags associated with the detector.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         [Input("teams")]
         private InputList<string>? _teams;

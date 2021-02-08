@@ -50,6 +50,7 @@ import * as utilities from "./utilities";
  * `,
  *     refreshInterval: 1,
  *     sortBy: "-value",
+ *     timezone: "Europe/Paris",
  * });
  * ```
  */
@@ -152,6 +153,10 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     */
+    public readonly timezone!: pulumi.Output<string | undefined>;
+    /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
@@ -193,6 +198,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["sortBy"] = state ? state.sortBy : undefined;
             inputs["startTime"] = state ? state.startTime : undefined;
             inputs["timeRange"] = state ? state.timeRange : undefined;
+            inputs["timezone"] = state ? state.timezone : undefined;
             inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
@@ -218,6 +224,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["sortBy"] = args ? args.sortBy : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
+            inputs["timezone"] = args ? args.timezone : undefined;
             inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
@@ -308,6 +315,10 @@ export interface ListChartState {
      */
     readonly timeRange?: pulumi.Input<number>;
     /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     */
+    readonly timezone?: pulumi.Input<string>;
+    /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
     readonly unitPrefix?: pulumi.Input<string>;
@@ -395,6 +406,10 @@ export interface ListChartArgs {
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
     readonly timeRange?: pulumi.Input<number>;
+    /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     */
+    readonly timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */

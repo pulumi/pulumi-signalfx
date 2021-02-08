@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 
 __all__ = [
     'IntegrationProjectServiceKeyArgs',
+    'GetServicesServiceArgs',
 ]
 
 @pulumi.input_type
@@ -37,5 +38,21 @@ class IntegrationProjectServiceKeyArgs:
     @project_key.setter
     def project_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_key", value)
+
+
+@pulumi.input_type
+class GetServicesServiceArgs:
+    def __init__(__self__, *,
+                 name: str):
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
 
 
