@@ -292,6 +292,12 @@ namespace Pulumi.SignalFx
         public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// </summary>
+        [Output("timezone")]
+        public Output<string?> Timezone { get; private set; } = null!;
+
+        /// <summary>
         /// The URL of the detector.
         /// </summary>
         [Output("url")]
@@ -475,6 +481,12 @@ namespace Pulumi.SignalFx
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
+
         [Input("vizOptions")]
         private InputList<Inputs.DetectorVizOptionArgs>? _vizOptions;
 
@@ -619,6 +631,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
+
+        /// <summary>
+        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// </summary>
+        [Input("timezone")]
+        public Input<string>? Timezone { get; set; }
 
         /// <summary>
         /// The URL of the detector.

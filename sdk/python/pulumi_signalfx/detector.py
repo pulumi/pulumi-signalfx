@@ -33,6 +33,7 @@ class Detector(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
@@ -150,6 +151,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         if __name__ is not None:
@@ -189,6 +191,7 @@ class Detector(pulumi.CustomResource):
             __props__['tags'] = tags
             __props__['teams'] = teams
             __props__['time_range'] = time_range
+            __props__['timezone'] = timezone
             __props__['viz_options'] = viz_options
             __props__['url'] = None
         super(Detector, __self__).__init__(
@@ -217,6 +220,7 @@ class Detector(pulumi.CustomResource):
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
+            timezone: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None) -> 'Detector':
         """
@@ -242,6 +246,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
         :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] url: The URL of the detector.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
@@ -265,6 +270,7 @@ class Detector(pulumi.CustomResource):
         __props__["tags"] = tags
         __props__["teams"] = teams
         __props__["time_range"] = time_range
+        __props__["timezone"] = timezone
         __props__["url"] = url
         __props__["viz_options"] = viz_options
         return Detector(resource_name, opts=opts, __props__=__props__)
@@ -396,6 +402,14 @@ class Detector(pulumi.CustomResource):
         Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
         return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> pulumi.Output[Optional[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        """
+        return pulumi.get(self, "timezone")
 
     @property
     @pulumi.getter

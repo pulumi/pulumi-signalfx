@@ -249,6 +249,8 @@ type Detector struct {
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The URL of the detector.
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
@@ -322,6 +324,8 @@ type detectorState struct {
 	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone *string `pulumi:"timezone"`
 	// The URL of the detector.
 	Url *string `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement.
@@ -361,6 +365,8 @@ type DetectorState struct {
 	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone pulumi.StringPtrInput
 	// The URL of the detector.
 	Url pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.
@@ -404,6 +410,8 @@ type detectorArgs struct {
 	Teams []string `pulumi:"teams"`
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange *int `pulumi:"timeRange"`
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone *string `pulumi:"timezone"`
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions []DetectorVizOption `pulumi:"vizOptions"`
 }
@@ -442,6 +450,8 @@ type DetectorArgs struct {
 	Teams pulumi.StringArrayInput
 	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
 	TimeRange pulumi.IntPtrInput
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	Timezone pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement.
 	VizOptions DetectorVizOptionArrayInput
 }
