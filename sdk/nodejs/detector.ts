@@ -193,6 +193,10 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     */
+    public readonly timezone!: pulumi.Output<string | undefined>;
+    /**
      * The URL of the detector.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
@@ -229,6 +233,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
             inputs["teams"] = state ? state.teams : undefined;
             inputs["timeRange"] = state ? state.timeRange : undefined;
+            inputs["timezone"] = state ? state.timezone : undefined;
             inputs["url"] = state ? state.url : undefined;
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
@@ -255,6 +260,7 @@ export class Detector extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["teams"] = args ? args.teams : undefined;
             inputs["timeRange"] = args ? args.timeRange : undefined;
+            inputs["timezone"] = args ? args.timezone : undefined;
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
         }
@@ -338,6 +344,10 @@ export interface DetectorState {
      */
     readonly timeRange?: pulumi.Input<number>;
     /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     */
+    readonly timezone?: pulumi.Input<string>;
+    /**
      * The URL of the detector.
      */
     readonly url?: pulumi.Input<string>;
@@ -415,6 +425,10 @@ export interface DetectorArgs {
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
     readonly timeRange?: pulumi.Input<number>;
+    /**
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     */
+    readonly timezone?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
