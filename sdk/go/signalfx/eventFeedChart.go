@@ -154,6 +154,85 @@ func (i *EventFeedChart) ToEventFeedChartOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartOutput)
 }
 
+func (i *EventFeedChart) ToEventFeedChartPtrOutput() EventFeedChartPtrOutput {
+	return i.ToEventFeedChartPtrOutputWithContext(context.Background())
+}
+
+func (i *EventFeedChart) ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartPtrOutput)
+}
+
+type EventFeedChartPtrInput interface {
+	pulumi.Input
+
+	ToEventFeedChartPtrOutput() EventFeedChartPtrOutput
+	ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput
+}
+
+type eventFeedChartPtrType EventFeedChartArgs
+
+func (*eventFeedChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventFeedChart)(nil))
+}
+
+func (i *eventFeedChartPtrType) ToEventFeedChartPtrOutput() EventFeedChartPtrOutput {
+	return i.ToEventFeedChartPtrOutputWithContext(context.Background())
+}
+
+func (i *eventFeedChartPtrType) ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartPtrOutput)
+}
+
+// EventFeedChartArrayInput is an input type that accepts EventFeedChartArray and EventFeedChartArrayOutput values.
+// You can construct a concrete instance of `EventFeedChartArrayInput` via:
+//
+//          EventFeedChartArray{ EventFeedChartArgs{...} }
+type EventFeedChartArrayInput interface {
+	pulumi.Input
+
+	ToEventFeedChartArrayOutput() EventFeedChartArrayOutput
+	ToEventFeedChartArrayOutputWithContext(context.Context) EventFeedChartArrayOutput
+}
+
+type EventFeedChartArray []EventFeedChartInput
+
+func (EventFeedChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EventFeedChart)(nil))
+}
+
+func (i EventFeedChartArray) ToEventFeedChartArrayOutput() EventFeedChartArrayOutput {
+	return i.ToEventFeedChartArrayOutputWithContext(context.Background())
+}
+
+func (i EventFeedChartArray) ToEventFeedChartArrayOutputWithContext(ctx context.Context) EventFeedChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartArrayOutput)
+}
+
+// EventFeedChartMapInput is an input type that accepts EventFeedChartMap and EventFeedChartMapOutput values.
+// You can construct a concrete instance of `EventFeedChartMapInput` via:
+//
+//          EventFeedChartMap{ "key": EventFeedChartArgs{...} }
+type EventFeedChartMapInput interface {
+	pulumi.Input
+
+	ToEventFeedChartMapOutput() EventFeedChartMapOutput
+	ToEventFeedChartMapOutputWithContext(context.Context) EventFeedChartMapOutput
+}
+
+type EventFeedChartMap map[string]EventFeedChartInput
+
+func (EventFeedChartMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EventFeedChart)(nil))
+}
+
+func (i EventFeedChartMap) ToEventFeedChartMapOutput() EventFeedChartMapOutput {
+	return i.ToEventFeedChartMapOutputWithContext(context.Background())
+}
+
+func (i EventFeedChartMap) ToEventFeedChartMapOutputWithContext(ctx context.Context) EventFeedChartMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartMapOutput)
+}
+
 type EventFeedChartOutput struct {
 	*pulumi.OutputState
 }
@@ -170,6 +249,75 @@ func (o EventFeedChartOutput) ToEventFeedChartOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o EventFeedChartOutput) ToEventFeedChartPtrOutput() EventFeedChartPtrOutput {
+	return o.ToEventFeedChartPtrOutputWithContext(context.Background())
+}
+
+func (o EventFeedChartOutput) ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput {
+	return o.ApplyT(func(v EventFeedChart) *EventFeedChart {
+		return &v
+	}).(EventFeedChartPtrOutput)
+}
+
+type EventFeedChartPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EventFeedChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventFeedChart)(nil))
+}
+
+func (o EventFeedChartPtrOutput) ToEventFeedChartPtrOutput() EventFeedChartPtrOutput {
+	return o
+}
+
+func (o EventFeedChartPtrOutput) ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput {
+	return o
+}
+
+type EventFeedChartArrayOutput struct{ *pulumi.OutputState }
+
+func (EventFeedChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventFeedChart)(nil))
+}
+
+func (o EventFeedChartArrayOutput) ToEventFeedChartArrayOutput() EventFeedChartArrayOutput {
+	return o
+}
+
+func (o EventFeedChartArrayOutput) ToEventFeedChartArrayOutputWithContext(ctx context.Context) EventFeedChartArrayOutput {
+	return o
+}
+
+func (o EventFeedChartArrayOutput) Index(i pulumi.IntInput) EventFeedChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventFeedChart {
+		return vs[0].([]EventFeedChart)[vs[1].(int)]
+	}).(EventFeedChartOutput)
+}
+
+type EventFeedChartMapOutput struct{ *pulumi.OutputState }
+
+func (EventFeedChartMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EventFeedChart)(nil))
+}
+
+func (o EventFeedChartMapOutput) ToEventFeedChartMapOutput() EventFeedChartMapOutput {
+	return o
+}
+
+func (o EventFeedChartMapOutput) ToEventFeedChartMapOutputWithContext(ctx context.Context) EventFeedChartMapOutput {
+	return o
+}
+
+func (o EventFeedChartMapOutput) MapIndex(k pulumi.StringInput) EventFeedChartOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EventFeedChart {
+		return vs[0].(map[string]EventFeedChart)[vs[1].(string)]
+	}).(EventFeedChartOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EventFeedChartOutput{})
+	pulumi.RegisterOutputType(EventFeedChartPtrOutput{})
+	pulumi.RegisterOutputType(EventFeedChartArrayOutput{})
+	pulumi.RegisterOutputType(EventFeedChartMapOutput{})
 }

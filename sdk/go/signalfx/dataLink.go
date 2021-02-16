@@ -19,7 +19,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -196,6 +195,85 @@ func (i *DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkOutput)
 }
 
+func (i *DataLink) ToDataLinkPtrOutput() DataLinkPtrOutput {
+	return i.ToDataLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *DataLink) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkPtrOutput)
+}
+
+type DataLinkPtrInput interface {
+	pulumi.Input
+
+	ToDataLinkPtrOutput() DataLinkPtrOutput
+	ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput
+}
+
+type dataLinkPtrType DataLinkArgs
+
+func (*dataLinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataLink)(nil))
+}
+
+func (i *dataLinkPtrType) ToDataLinkPtrOutput() DataLinkPtrOutput {
+	return i.ToDataLinkPtrOutputWithContext(context.Background())
+}
+
+func (i *dataLinkPtrType) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkPtrOutput)
+}
+
+// DataLinkArrayInput is an input type that accepts DataLinkArray and DataLinkArrayOutput values.
+// You can construct a concrete instance of `DataLinkArrayInput` via:
+//
+//          DataLinkArray{ DataLinkArgs{...} }
+type DataLinkArrayInput interface {
+	pulumi.Input
+
+	ToDataLinkArrayOutput() DataLinkArrayOutput
+	ToDataLinkArrayOutputWithContext(context.Context) DataLinkArrayOutput
+}
+
+type DataLinkArray []DataLinkInput
+
+func (DataLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DataLink)(nil))
+}
+
+func (i DataLinkArray) ToDataLinkArrayOutput() DataLinkArrayOutput {
+	return i.ToDataLinkArrayOutputWithContext(context.Background())
+}
+
+func (i DataLinkArray) ToDataLinkArrayOutputWithContext(ctx context.Context) DataLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkArrayOutput)
+}
+
+// DataLinkMapInput is an input type that accepts DataLinkMap and DataLinkMapOutput values.
+// You can construct a concrete instance of `DataLinkMapInput` via:
+//
+//          DataLinkMap{ "key": DataLinkArgs{...} }
+type DataLinkMapInput interface {
+	pulumi.Input
+
+	ToDataLinkMapOutput() DataLinkMapOutput
+	ToDataLinkMapOutputWithContext(context.Context) DataLinkMapOutput
+}
+
+type DataLinkMap map[string]DataLinkInput
+
+func (DataLinkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DataLink)(nil))
+}
+
+func (i DataLinkMap) ToDataLinkMapOutput() DataLinkMapOutput {
+	return i.ToDataLinkMapOutputWithContext(context.Background())
+}
+
+func (i DataLinkMap) ToDataLinkMapOutputWithContext(ctx context.Context) DataLinkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataLinkMapOutput)
+}
+
 type DataLinkOutput struct {
 	*pulumi.OutputState
 }
@@ -212,6 +290,75 @@ func (o DataLinkOutput) ToDataLinkOutputWithContext(ctx context.Context) DataLin
 	return o
 }
 
+func (o DataLinkOutput) ToDataLinkPtrOutput() DataLinkPtrOutput {
+	return o.ToDataLinkPtrOutputWithContext(context.Background())
+}
+
+func (o DataLinkOutput) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
+	return o.ApplyT(func(v DataLink) *DataLink {
+		return &v
+	}).(DataLinkPtrOutput)
+}
+
+type DataLinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataLinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataLink)(nil))
+}
+
+func (o DataLinkPtrOutput) ToDataLinkPtrOutput() DataLinkPtrOutput {
+	return o
+}
+
+func (o DataLinkPtrOutput) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
+	return o
+}
+
+type DataLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (DataLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataLink)(nil))
+}
+
+func (o DataLinkArrayOutput) ToDataLinkArrayOutput() DataLinkArrayOutput {
+	return o
+}
+
+func (o DataLinkArrayOutput) ToDataLinkArrayOutputWithContext(ctx context.Context) DataLinkArrayOutput {
+	return o
+}
+
+func (o DataLinkArrayOutput) Index(i pulumi.IntInput) DataLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLink {
+		return vs[0].([]DataLink)[vs[1].(int)]
+	}).(DataLinkOutput)
+}
+
+type DataLinkMapOutput struct{ *pulumi.OutputState }
+
+func (DataLinkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DataLink)(nil))
+}
+
+func (o DataLinkMapOutput) ToDataLinkMapOutput() DataLinkMapOutput {
+	return o
+}
+
+func (o DataLinkMapOutput) ToDataLinkMapOutputWithContext(ctx context.Context) DataLinkMapOutput {
+	return o
+}
+
+func (o DataLinkMapOutput) MapIndex(k pulumi.StringInput) DataLinkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DataLink {
+		return vs[0].(map[string]DataLink)[vs[1].(string)]
+	}).(DataLinkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataLinkOutput{})
+	pulumi.RegisterOutputType(DataLinkPtrOutput{})
+	pulumi.RegisterOutputType(DataLinkArrayOutput{})
+	pulumi.RegisterOutputType(DataLinkMapOutput{})
 }

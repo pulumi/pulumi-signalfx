@@ -22,7 +22,7 @@ api_url = __config__.get('apiUrl')
 API URL for your SignalFx org, may include a realm
 """
 
-auth_token = __config__.get('authToken') or _utilities.get_env('SFX_AUTH_TOKEN')
+auth_token = __config__.get('authToken')
 """
 SignalFx auth token
 """

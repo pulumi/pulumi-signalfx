@@ -114,7 +114,8 @@ export class Dashboard extends pulumi.CustomResource {
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
             inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
             inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
@@ -137,7 +138,7 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["variables"] = state ? state.variables : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
-            if ((!args || args.dashboardGroup === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dashboardGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dashboardGroup'");
             }
             inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
@@ -160,12 +161,8 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["variables"] = args ? args.variables : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Dashboard.__pulumiType, name, inputs, opts);
     }

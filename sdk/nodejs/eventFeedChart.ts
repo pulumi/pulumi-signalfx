@@ -90,7 +90,8 @@ export class EventFeedChart extends pulumi.CustomResource {
     constructor(name: string, args: EventFeedChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EventFeedChartArgs | EventFeedChartState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EventFeedChartState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["endTime"] = state ? state.endTime : undefined;
@@ -101,7 +102,7 @@ export class EventFeedChart extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as EventFeedChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -112,12 +113,8 @@ export class EventFeedChart extends pulumi.CustomResource {
             inputs["timeRange"] = args ? args.timeRange : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EventFeedChart.__pulumiType, name, inputs, opts);
     }

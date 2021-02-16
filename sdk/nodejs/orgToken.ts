@@ -98,7 +98,8 @@ export class OrgToken extends pulumi.CustomResource {
     constructor(name: string, args?: OrgTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrgTokenArgs | OrgTokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrgTokenState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
@@ -117,12 +118,8 @@ export class OrgToken extends pulumi.CustomResource {
             inputs["notifications"] = args ? args.notifications : undefined;
             inputs["secret"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrgToken.__pulumiType, name, inputs, opts);
     }

@@ -90,7 +90,8 @@ export class TextChart extends pulumi.CustomResource {
     constructor(name: string, args: TextChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TextChartArgs | TextChartState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TextChartState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["markdown"] = state ? state.markdown : undefined;
@@ -98,7 +99,7 @@ export class TextChart extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TextChartArgs | undefined;
-            if ((!args || args.markdown === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.markdown === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'markdown'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -106,12 +107,8 @@ export class TextChart extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TextChart.__pulumiType, name, inputs, opts);
     }

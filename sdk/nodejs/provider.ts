@@ -35,18 +35,15 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
             inputs["apiUrl"] = args ? args.apiUrl : undefined;
-            inputs["authToken"] = (args ? args.authToken : undefined) || utilities.getEnv("SFX_AUTH_TOKEN");
+            inputs["authToken"] = args ? args.authToken : undefined;
             inputs["customAppUrl"] = args ? args.customAppUrl : undefined;
             inputs["timeoutSeconds"] = pulumi.output(args ? args.timeoutSeconds : undefined).apply(JSON.stringify);
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

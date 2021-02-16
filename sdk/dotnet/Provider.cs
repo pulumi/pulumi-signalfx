@@ -71,7 +71,6 @@ namespace Pulumi.SignalFx
 
         public ProviderArgs()
         {
-            AuthToken = Utilities.GetEnv("SFX_AUTH_TOKEN");
         }
     }
 }

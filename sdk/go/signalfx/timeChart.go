@@ -24,7 +24,6 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -436,6 +435,85 @@ func (i *TimeChart) ToTimeChartOutputWithContext(ctx context.Context) TimeChartO
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartOutput)
 }
 
+func (i *TimeChart) ToTimeChartPtrOutput() TimeChartPtrOutput {
+	return i.ToTimeChartPtrOutputWithContext(context.Background())
+}
+
+func (i *TimeChart) ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeChartPtrOutput)
+}
+
+type TimeChartPtrInput interface {
+	pulumi.Input
+
+	ToTimeChartPtrOutput() TimeChartPtrOutput
+	ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput
+}
+
+type timeChartPtrType TimeChartArgs
+
+func (*timeChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeChart)(nil))
+}
+
+func (i *timeChartPtrType) ToTimeChartPtrOutput() TimeChartPtrOutput {
+	return i.ToTimeChartPtrOutputWithContext(context.Background())
+}
+
+func (i *timeChartPtrType) ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeChartPtrOutput)
+}
+
+// TimeChartArrayInput is an input type that accepts TimeChartArray and TimeChartArrayOutput values.
+// You can construct a concrete instance of `TimeChartArrayInput` via:
+//
+//          TimeChartArray{ TimeChartArgs{...} }
+type TimeChartArrayInput interface {
+	pulumi.Input
+
+	ToTimeChartArrayOutput() TimeChartArrayOutput
+	ToTimeChartArrayOutputWithContext(context.Context) TimeChartArrayOutput
+}
+
+type TimeChartArray []TimeChartInput
+
+func (TimeChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TimeChart)(nil))
+}
+
+func (i TimeChartArray) ToTimeChartArrayOutput() TimeChartArrayOutput {
+	return i.ToTimeChartArrayOutputWithContext(context.Background())
+}
+
+func (i TimeChartArray) ToTimeChartArrayOutputWithContext(ctx context.Context) TimeChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeChartArrayOutput)
+}
+
+// TimeChartMapInput is an input type that accepts TimeChartMap and TimeChartMapOutput values.
+// You can construct a concrete instance of `TimeChartMapInput` via:
+//
+//          TimeChartMap{ "key": TimeChartArgs{...} }
+type TimeChartMapInput interface {
+	pulumi.Input
+
+	ToTimeChartMapOutput() TimeChartMapOutput
+	ToTimeChartMapOutputWithContext(context.Context) TimeChartMapOutput
+}
+
+type TimeChartMap map[string]TimeChartInput
+
+func (TimeChartMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TimeChart)(nil))
+}
+
+func (i TimeChartMap) ToTimeChartMapOutput() TimeChartMapOutput {
+	return i.ToTimeChartMapOutputWithContext(context.Background())
+}
+
+func (i TimeChartMap) ToTimeChartMapOutputWithContext(ctx context.Context) TimeChartMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeChartMapOutput)
+}
+
 type TimeChartOutput struct {
 	*pulumi.OutputState
 }
@@ -452,6 +530,75 @@ func (o TimeChartOutput) ToTimeChartOutputWithContext(ctx context.Context) TimeC
 	return o
 }
 
+func (o TimeChartOutput) ToTimeChartPtrOutput() TimeChartPtrOutput {
+	return o.ToTimeChartPtrOutputWithContext(context.Background())
+}
+
+func (o TimeChartOutput) ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput {
+	return o.ApplyT(func(v TimeChart) *TimeChart {
+		return &v
+	}).(TimeChartPtrOutput)
+}
+
+type TimeChartPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TimeChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeChart)(nil))
+}
+
+func (o TimeChartPtrOutput) ToTimeChartPtrOutput() TimeChartPtrOutput {
+	return o
+}
+
+func (o TimeChartPtrOutput) ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput {
+	return o
+}
+
+type TimeChartArrayOutput struct{ *pulumi.OutputState }
+
+func (TimeChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TimeChart)(nil))
+}
+
+func (o TimeChartArrayOutput) ToTimeChartArrayOutput() TimeChartArrayOutput {
+	return o
+}
+
+func (o TimeChartArrayOutput) ToTimeChartArrayOutputWithContext(ctx context.Context) TimeChartArrayOutput {
+	return o
+}
+
+func (o TimeChartArrayOutput) Index(i pulumi.IntInput) TimeChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChart {
+		return vs[0].([]TimeChart)[vs[1].(int)]
+	}).(TimeChartOutput)
+}
+
+type TimeChartMapOutput struct{ *pulumi.OutputState }
+
+func (TimeChartMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TimeChart)(nil))
+}
+
+func (o TimeChartMapOutput) ToTimeChartMapOutput() TimeChartMapOutput {
+	return o
+}
+
+func (o TimeChartMapOutput) ToTimeChartMapOutputWithContext(ctx context.Context) TimeChartMapOutput {
+	return o
+}
+
+func (o TimeChartMapOutput) MapIndex(k pulumi.StringInput) TimeChartOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TimeChart {
+		return vs[0].(map[string]TimeChart)[vs[1].(string)]
+	}).(TimeChartOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TimeChartOutput{})
+	pulumi.RegisterOutputType(TimeChartPtrOutput{})
+	pulumi.RegisterOutputType(TimeChartArrayOutput{})
+	pulumi.RegisterOutputType(TimeChartMapOutput{})
 }

@@ -167,6 +167,85 @@ func (i *TokenIntegration) ToTokenIntegrationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationOutput)
 }
 
+func (i *TokenIntegration) ToTokenIntegrationPtrOutput() TokenIntegrationPtrOutput {
+	return i.ToTokenIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *TokenIntegration) ToTokenIntegrationPtrOutputWithContext(ctx context.Context) TokenIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationPtrOutput)
+}
+
+type TokenIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToTokenIntegrationPtrOutput() TokenIntegrationPtrOutput
+	ToTokenIntegrationPtrOutputWithContext(ctx context.Context) TokenIntegrationPtrOutput
+}
+
+type tokenIntegrationPtrType TokenIntegrationArgs
+
+func (*tokenIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TokenIntegration)(nil))
+}
+
+func (i *tokenIntegrationPtrType) ToTokenIntegrationPtrOutput() TokenIntegrationPtrOutput {
+	return i.ToTokenIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *tokenIntegrationPtrType) ToTokenIntegrationPtrOutputWithContext(ctx context.Context) TokenIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationPtrOutput)
+}
+
+// TokenIntegrationArrayInput is an input type that accepts TokenIntegrationArray and TokenIntegrationArrayOutput values.
+// You can construct a concrete instance of `TokenIntegrationArrayInput` via:
+//
+//          TokenIntegrationArray{ TokenIntegrationArgs{...} }
+type TokenIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToTokenIntegrationArrayOutput() TokenIntegrationArrayOutput
+	ToTokenIntegrationArrayOutputWithContext(context.Context) TokenIntegrationArrayOutput
+}
+
+type TokenIntegrationArray []TokenIntegrationInput
+
+func (TokenIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TokenIntegration)(nil))
+}
+
+func (i TokenIntegrationArray) ToTokenIntegrationArrayOutput() TokenIntegrationArrayOutput {
+	return i.ToTokenIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i TokenIntegrationArray) ToTokenIntegrationArrayOutputWithContext(ctx context.Context) TokenIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationArrayOutput)
+}
+
+// TokenIntegrationMapInput is an input type that accepts TokenIntegrationMap and TokenIntegrationMapOutput values.
+// You can construct a concrete instance of `TokenIntegrationMapInput` via:
+//
+//          TokenIntegrationMap{ "key": TokenIntegrationArgs{...} }
+type TokenIntegrationMapInput interface {
+	pulumi.Input
+
+	ToTokenIntegrationMapOutput() TokenIntegrationMapOutput
+	ToTokenIntegrationMapOutputWithContext(context.Context) TokenIntegrationMapOutput
+}
+
+type TokenIntegrationMap map[string]TokenIntegrationInput
+
+func (TokenIntegrationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TokenIntegration)(nil))
+}
+
+func (i TokenIntegrationMap) ToTokenIntegrationMapOutput() TokenIntegrationMapOutput {
+	return i.ToTokenIntegrationMapOutputWithContext(context.Background())
+}
+
+func (i TokenIntegrationMap) ToTokenIntegrationMapOutputWithContext(ctx context.Context) TokenIntegrationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationMapOutput)
+}
+
 type TokenIntegrationOutput struct {
 	*pulumi.OutputState
 }
@@ -183,6 +262,75 @@ func (o TokenIntegrationOutput) ToTokenIntegrationOutputWithContext(ctx context.
 	return o
 }
 
+func (o TokenIntegrationOutput) ToTokenIntegrationPtrOutput() TokenIntegrationPtrOutput {
+	return o.ToTokenIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o TokenIntegrationOutput) ToTokenIntegrationPtrOutputWithContext(ctx context.Context) TokenIntegrationPtrOutput {
+	return o.ApplyT(func(v TokenIntegration) *TokenIntegration {
+		return &v
+	}).(TokenIntegrationPtrOutput)
+}
+
+type TokenIntegrationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TokenIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TokenIntegration)(nil))
+}
+
+func (o TokenIntegrationPtrOutput) ToTokenIntegrationPtrOutput() TokenIntegrationPtrOutput {
+	return o
+}
+
+func (o TokenIntegrationPtrOutput) ToTokenIntegrationPtrOutputWithContext(ctx context.Context) TokenIntegrationPtrOutput {
+	return o
+}
+
+type TokenIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (TokenIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TokenIntegration)(nil))
+}
+
+func (o TokenIntegrationArrayOutput) ToTokenIntegrationArrayOutput() TokenIntegrationArrayOutput {
+	return o
+}
+
+func (o TokenIntegrationArrayOutput) ToTokenIntegrationArrayOutputWithContext(ctx context.Context) TokenIntegrationArrayOutput {
+	return o
+}
+
+func (o TokenIntegrationArrayOutput) Index(i pulumi.IntInput) TokenIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TokenIntegration {
+		return vs[0].([]TokenIntegration)[vs[1].(int)]
+	}).(TokenIntegrationOutput)
+}
+
+type TokenIntegrationMapOutput struct{ *pulumi.OutputState }
+
+func (TokenIntegrationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TokenIntegration)(nil))
+}
+
+func (o TokenIntegrationMapOutput) ToTokenIntegrationMapOutput() TokenIntegrationMapOutput {
+	return o
+}
+
+func (o TokenIntegrationMapOutput) ToTokenIntegrationMapOutputWithContext(ctx context.Context) TokenIntegrationMapOutput {
+	return o
+}
+
+func (o TokenIntegrationMapOutput) MapIndex(k pulumi.StringInput) TokenIntegrationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TokenIntegration {
+		return vs[0].(map[string]TokenIntegration)[vs[1].(string)]
+	}).(TokenIntegrationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TokenIntegrationOutput{})
+	pulumi.RegisterOutputType(TokenIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(TokenIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(TokenIntegrationMapOutput{})
 }

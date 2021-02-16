@@ -115,7 +115,8 @@ export class DashboardGroup extends pulumi.CustomResource {
     constructor(name: string, args?: DashboardGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardGroupArgs | DashboardGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DashboardGroupState | undefined;
             inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
             inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
@@ -134,12 +135,8 @@ export class DashboardGroup extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["teams"] = args ? args.teams : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DashboardGroup.__pulumiType, name, inputs, opts);
     }

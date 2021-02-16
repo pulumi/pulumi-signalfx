@@ -135,6 +135,85 @@ func (i *WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationOutput)
 }
 
+func (i *WebhookIntegration) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
+	return i.ToWebhookIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *WebhookIntegration) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationPtrOutput)
+}
+
+type WebhookIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput
+	ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput
+}
+
+type webhookIntegrationPtrType WebhookIntegrationArgs
+
+func (*webhookIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookIntegration)(nil))
+}
+
+func (i *webhookIntegrationPtrType) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
+	return i.ToWebhookIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *webhookIntegrationPtrType) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationPtrOutput)
+}
+
+// WebhookIntegrationArrayInput is an input type that accepts WebhookIntegrationArray and WebhookIntegrationArrayOutput values.
+// You can construct a concrete instance of `WebhookIntegrationArrayInput` via:
+//
+//          WebhookIntegrationArray{ WebhookIntegrationArgs{...} }
+type WebhookIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToWebhookIntegrationArrayOutput() WebhookIntegrationArrayOutput
+	ToWebhookIntegrationArrayOutputWithContext(context.Context) WebhookIntegrationArrayOutput
+}
+
+type WebhookIntegrationArray []WebhookIntegrationInput
+
+func (WebhookIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WebhookIntegration)(nil))
+}
+
+func (i WebhookIntegrationArray) ToWebhookIntegrationArrayOutput() WebhookIntegrationArrayOutput {
+	return i.ToWebhookIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i WebhookIntegrationArray) ToWebhookIntegrationArrayOutputWithContext(ctx context.Context) WebhookIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationArrayOutput)
+}
+
+// WebhookIntegrationMapInput is an input type that accepts WebhookIntegrationMap and WebhookIntegrationMapOutput values.
+// You can construct a concrete instance of `WebhookIntegrationMapInput` via:
+//
+//          WebhookIntegrationMap{ "key": WebhookIntegrationArgs{...} }
+type WebhookIntegrationMapInput interface {
+	pulumi.Input
+
+	ToWebhookIntegrationMapOutput() WebhookIntegrationMapOutput
+	ToWebhookIntegrationMapOutputWithContext(context.Context) WebhookIntegrationMapOutput
+}
+
+type WebhookIntegrationMap map[string]WebhookIntegrationInput
+
+func (WebhookIntegrationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WebhookIntegration)(nil))
+}
+
+func (i WebhookIntegrationMap) ToWebhookIntegrationMapOutput() WebhookIntegrationMapOutput {
+	return i.ToWebhookIntegrationMapOutputWithContext(context.Background())
+}
+
+func (i WebhookIntegrationMap) ToWebhookIntegrationMapOutputWithContext(ctx context.Context) WebhookIntegrationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationMapOutput)
+}
+
 type WebhookIntegrationOutput struct {
 	*pulumi.OutputState
 }
@@ -151,6 +230,75 @@ func (o WebhookIntegrationOutput) ToWebhookIntegrationOutputWithContext(ctx cont
 	return o
 }
 
+func (o WebhookIntegrationOutput) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
+	return o.ToWebhookIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookIntegrationOutput) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
+	return o.ApplyT(func(v WebhookIntegration) *WebhookIntegration {
+		return &v
+	}).(WebhookIntegrationPtrOutput)
+}
+
+type WebhookIntegrationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebhookIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebhookIntegration)(nil))
+}
+
+func (o WebhookIntegrationPtrOutput) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
+	return o
+}
+
+func (o WebhookIntegrationPtrOutput) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
+	return o
+}
+
+type WebhookIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (WebhookIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookIntegration)(nil))
+}
+
+func (o WebhookIntegrationArrayOutput) ToWebhookIntegrationArrayOutput() WebhookIntegrationArrayOutput {
+	return o
+}
+
+func (o WebhookIntegrationArrayOutput) ToWebhookIntegrationArrayOutputWithContext(ctx context.Context) WebhookIntegrationArrayOutput {
+	return o
+}
+
+func (o WebhookIntegrationArrayOutput) Index(i pulumi.IntInput) WebhookIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookIntegration {
+		return vs[0].([]WebhookIntegration)[vs[1].(int)]
+	}).(WebhookIntegrationOutput)
+}
+
+type WebhookIntegrationMapOutput struct{ *pulumi.OutputState }
+
+func (WebhookIntegrationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WebhookIntegration)(nil))
+}
+
+func (o WebhookIntegrationMapOutput) ToWebhookIntegrationMapOutput() WebhookIntegrationMapOutput {
+	return o
+}
+
+func (o WebhookIntegrationMapOutput) ToWebhookIntegrationMapOutputWithContext(ctx context.Context) WebhookIntegrationMapOutput {
+	return o
+}
+
+func (o WebhookIntegrationMapOutput) MapIndex(k pulumi.StringInput) WebhookIntegrationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebhookIntegration {
+		return vs[0].(map[string]WebhookIntegration)[vs[1].(string)]
+	}).(WebhookIntegrationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebhookIntegrationOutput{})
+	pulumi.RegisterOutputType(WebhookIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(WebhookIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(WebhookIntegrationMapOutput{})
 }

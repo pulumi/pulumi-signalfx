@@ -15,11 +15,7 @@ func GetApiUrl(ctx *pulumi.Context) string {
 
 // SignalFx auth token
 func GetAuthToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "signalfx:authToken")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "SFX_AUTH_TOKEN").(string)
+	return config.Get(ctx, "signalfx:authToken")
 }
 
 // Application URL for your SignalFx org, often customzied for organizations using SSO

@@ -172,6 +172,85 @@ func (i *ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationOutput)
 }
 
+func (i *ExternalIntegration) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
+	return i.ToExternalIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *ExternalIntegration) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationPtrOutput)
+}
+
+type ExternalIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput
+	ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput
+}
+
+type externalIntegrationPtrType ExternalIntegrationArgs
+
+func (*externalIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalIntegration)(nil))
+}
+
+func (i *externalIntegrationPtrType) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
+	return i.ToExternalIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *externalIntegrationPtrType) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationPtrOutput)
+}
+
+// ExternalIntegrationArrayInput is an input type that accepts ExternalIntegrationArray and ExternalIntegrationArrayOutput values.
+// You can construct a concrete instance of `ExternalIntegrationArrayInput` via:
+//
+//          ExternalIntegrationArray{ ExternalIntegrationArgs{...} }
+type ExternalIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToExternalIntegrationArrayOutput() ExternalIntegrationArrayOutput
+	ToExternalIntegrationArrayOutputWithContext(context.Context) ExternalIntegrationArrayOutput
+}
+
+type ExternalIntegrationArray []ExternalIntegrationInput
+
+func (ExternalIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ExternalIntegration)(nil))
+}
+
+func (i ExternalIntegrationArray) ToExternalIntegrationArrayOutput() ExternalIntegrationArrayOutput {
+	return i.ToExternalIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalIntegrationArray) ToExternalIntegrationArrayOutputWithContext(ctx context.Context) ExternalIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationArrayOutput)
+}
+
+// ExternalIntegrationMapInput is an input type that accepts ExternalIntegrationMap and ExternalIntegrationMapOutput values.
+// You can construct a concrete instance of `ExternalIntegrationMapInput` via:
+//
+//          ExternalIntegrationMap{ "key": ExternalIntegrationArgs{...} }
+type ExternalIntegrationMapInput interface {
+	pulumi.Input
+
+	ToExternalIntegrationMapOutput() ExternalIntegrationMapOutput
+	ToExternalIntegrationMapOutputWithContext(context.Context) ExternalIntegrationMapOutput
+}
+
+type ExternalIntegrationMap map[string]ExternalIntegrationInput
+
+func (ExternalIntegrationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ExternalIntegration)(nil))
+}
+
+func (i ExternalIntegrationMap) ToExternalIntegrationMapOutput() ExternalIntegrationMapOutput {
+	return i.ToExternalIntegrationMapOutputWithContext(context.Background())
+}
+
+func (i ExternalIntegrationMap) ToExternalIntegrationMapOutputWithContext(ctx context.Context) ExternalIntegrationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationMapOutput)
+}
+
 type ExternalIntegrationOutput struct {
 	*pulumi.OutputState
 }
@@ -188,6 +267,75 @@ func (o ExternalIntegrationOutput) ToExternalIntegrationOutputWithContext(ctx co
 	return o
 }
 
+func (o ExternalIntegrationOutput) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
+	return o.ToExternalIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalIntegrationOutput) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
+	return o.ApplyT(func(v ExternalIntegration) *ExternalIntegration {
+		return &v
+	}).(ExternalIntegrationPtrOutput)
+}
+
+type ExternalIntegrationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExternalIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalIntegration)(nil))
+}
+
+func (o ExternalIntegrationPtrOutput) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
+	return o
+}
+
+func (o ExternalIntegrationPtrOutput) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
+	return o
+}
+
+type ExternalIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalIntegration)(nil))
+}
+
+func (o ExternalIntegrationArrayOutput) ToExternalIntegrationArrayOutput() ExternalIntegrationArrayOutput {
+	return o
+}
+
+func (o ExternalIntegrationArrayOutput) ToExternalIntegrationArrayOutputWithContext(ctx context.Context) ExternalIntegrationArrayOutput {
+	return o
+}
+
+func (o ExternalIntegrationArrayOutput) Index(i pulumi.IntInput) ExternalIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalIntegration {
+		return vs[0].([]ExternalIntegration)[vs[1].(int)]
+	}).(ExternalIntegrationOutput)
+}
+
+type ExternalIntegrationMapOutput struct{ *pulumi.OutputState }
+
+func (ExternalIntegrationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ExternalIntegration)(nil))
+}
+
+func (o ExternalIntegrationMapOutput) ToExternalIntegrationMapOutput() ExternalIntegrationMapOutput {
+	return o
+}
+
+func (o ExternalIntegrationMapOutput) ToExternalIntegrationMapOutputWithContext(ctx context.Context) ExternalIntegrationMapOutput {
+	return o
+}
+
+func (o ExternalIntegrationMapOutput) MapIndex(k pulumi.StringInput) ExternalIntegrationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExternalIntegration {
+		return vs[0].(map[string]ExternalIntegration)[vs[1].(string)]
+	}).(ExternalIntegrationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExternalIntegrationOutput{})
+	pulumi.RegisterOutputType(ExternalIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(ExternalIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(ExternalIntegrationMapOutput{})
 }
