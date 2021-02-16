@@ -126,7 +126,8 @@ export class Integration extends pulumi.CustomResource {
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
@@ -142,22 +143,22 @@ export class Integration extends pulumi.CustomResource {
             inputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.secretKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.secretKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretKey'");
             }
-            if ((!args || args.services === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.services === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'services'");
             }
-            if ((!args || args.subscriptions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subscriptions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptions'");
             }
-            if ((!args || args.tenantId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
             inputs["appId"] = args ? args.appId : undefined;
@@ -173,12 +174,8 @@ export class Integration extends pulumi.CustomResource {
             inputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Integration.__pulumiType, name, inputs, opts);
     }

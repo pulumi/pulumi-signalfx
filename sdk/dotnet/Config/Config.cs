@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx
         /// <summary>
         /// SignalFx auth token
         /// </summary>
-        public static string? AuthToken { get; set; } = __config.Get("authToken") ?? Utilities.GetEnv("SFX_AUTH_TOKEN");
+        public static string? AuthToken { get; set; } = __config.Get("authToken");
 
         /// <summary>
         /// Application URL for your SignalFx org, often customzied for organizations using SSO

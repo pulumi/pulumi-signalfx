@@ -13,7 +13,7 @@ export let apiUrl: string | undefined = __config.get("apiUrl");
 /**
  * SignalFx auth token
  */
-export let authToken: string | undefined = __config.get("authToken") || utilities.getEnv("SFX_AUTH_TOKEN");
+export let authToken: string | undefined = __config.get("authToken");
 /**
  * Application URL for your SignalFx org, often customzied for organizations using SSO
  */

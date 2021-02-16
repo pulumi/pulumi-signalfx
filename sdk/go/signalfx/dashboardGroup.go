@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -204,6 +203,85 @@ func (i *DashboardGroup) ToDashboardGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupOutput)
 }
 
+func (i *DashboardGroup) ToDashboardGroupPtrOutput() DashboardGroupPtrOutput {
+	return i.ToDashboardGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *DashboardGroup) ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupPtrOutput)
+}
+
+type DashboardGroupPtrInput interface {
+	pulumi.Input
+
+	ToDashboardGroupPtrOutput() DashboardGroupPtrOutput
+	ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput
+}
+
+type dashboardGroupPtrType DashboardGroupArgs
+
+func (*dashboardGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardGroup)(nil))
+}
+
+func (i *dashboardGroupPtrType) ToDashboardGroupPtrOutput() DashboardGroupPtrOutput {
+	return i.ToDashboardGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *dashboardGroupPtrType) ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupPtrOutput)
+}
+
+// DashboardGroupArrayInput is an input type that accepts DashboardGroupArray and DashboardGroupArrayOutput values.
+// You can construct a concrete instance of `DashboardGroupArrayInput` via:
+//
+//          DashboardGroupArray{ DashboardGroupArgs{...} }
+type DashboardGroupArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGroupArrayOutput() DashboardGroupArrayOutput
+	ToDashboardGroupArrayOutputWithContext(context.Context) DashboardGroupArrayOutput
+}
+
+type DashboardGroupArray []DashboardGroupInput
+
+func (DashboardGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DashboardGroup)(nil))
+}
+
+func (i DashboardGroupArray) ToDashboardGroupArrayOutput() DashboardGroupArrayOutput {
+	return i.ToDashboardGroupArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupArray) ToDashboardGroupArrayOutputWithContext(ctx context.Context) DashboardGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupArrayOutput)
+}
+
+// DashboardGroupMapInput is an input type that accepts DashboardGroupMap and DashboardGroupMapOutput values.
+// You can construct a concrete instance of `DashboardGroupMapInput` via:
+//
+//          DashboardGroupMap{ "key": DashboardGroupArgs{...} }
+type DashboardGroupMapInput interface {
+	pulumi.Input
+
+	ToDashboardGroupMapOutput() DashboardGroupMapOutput
+	ToDashboardGroupMapOutputWithContext(context.Context) DashboardGroupMapOutput
+}
+
+type DashboardGroupMap map[string]DashboardGroupInput
+
+func (DashboardGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DashboardGroup)(nil))
+}
+
+func (i DashboardGroupMap) ToDashboardGroupMapOutput() DashboardGroupMapOutput {
+	return i.ToDashboardGroupMapOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupMap) ToDashboardGroupMapOutputWithContext(ctx context.Context) DashboardGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupMapOutput)
+}
+
 type DashboardGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -220,6 +298,75 @@ func (o DashboardGroupOutput) ToDashboardGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DashboardGroupOutput) ToDashboardGroupPtrOutput() DashboardGroupPtrOutput {
+	return o.ToDashboardGroupPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardGroupOutput) ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput {
+	return o.ApplyT(func(v DashboardGroup) *DashboardGroup {
+		return &v
+	}).(DashboardGroupPtrOutput)
+}
+
+type DashboardGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DashboardGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardGroup)(nil))
+}
+
+func (o DashboardGroupPtrOutput) ToDashboardGroupPtrOutput() DashboardGroupPtrOutput {
+	return o
+}
+
+func (o DashboardGroupPtrOutput) ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput {
+	return o
+}
+
+type DashboardGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroup)(nil))
+}
+
+func (o DashboardGroupArrayOutput) ToDashboardGroupArrayOutput() DashboardGroupArrayOutput {
+	return o
+}
+
+func (o DashboardGroupArrayOutput) ToDashboardGroupArrayOutputWithContext(ctx context.Context) DashboardGroupArrayOutput {
+	return o
+}
+
+func (o DashboardGroupArrayOutput) Index(i pulumi.IntInput) DashboardGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroup {
+		return vs[0].([]DashboardGroup)[vs[1].(int)]
+	}).(DashboardGroupOutput)
+}
+
+type DashboardGroupMapOutput struct{ *pulumi.OutputState }
+
+func (DashboardGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DashboardGroup)(nil))
+}
+
+func (o DashboardGroupMapOutput) ToDashboardGroupMapOutput() DashboardGroupMapOutput {
+	return o
+}
+
+func (o DashboardGroupMapOutput) ToDashboardGroupMapOutputWithContext(ctx context.Context) DashboardGroupMapOutput {
+	return o
+}
+
+func (o DashboardGroupMapOutput) MapIndex(k pulumi.StringInput) DashboardGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DashboardGroup {
+		return vs[0].(map[string]DashboardGroup)[vs[1].(string)]
+	}).(DashboardGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DashboardGroupOutput{})
+	pulumi.RegisterOutputType(DashboardGroupPtrOutput{})
+	pulumi.RegisterOutputType(DashboardGroupArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGroupMapOutput{})
 }

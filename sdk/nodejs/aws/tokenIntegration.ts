@@ -97,7 +97,8 @@ export class TokenIntegration extends pulumi.CustomResource {
     constructor(name: string, args?: TokenIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenIntegrationArgs | TokenIntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TokenIntegrationState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
@@ -108,12 +109,8 @@ export class TokenIntegration extends pulumi.CustomResource {
             inputs["signalfxAwsAccount"] = undefined /*out*/;
             inputs["tokenId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TokenIntegration.__pulumiType, name, inputs, opts);
     }

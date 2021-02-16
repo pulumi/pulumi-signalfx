@@ -88,7 +88,8 @@ export class AlertMutingRule extends pulumi.CustomResource {
     constructor(name: string, args: AlertMutingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertMutingRuleArgs | AlertMutingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlertMutingRuleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["detectors"] = state ? state.detectors : undefined;
@@ -98,13 +99,13 @@ export class AlertMutingRule extends pulumi.CustomResource {
             inputs["stopTime"] = state ? state.stopTime : undefined;
         } else {
             const args = argsOrState as AlertMutingRuleArgs | undefined;
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.filters === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.filters === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filters'");
             }
-            if ((!args || args.startTime === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.startTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -114,12 +115,8 @@ export class AlertMutingRule extends pulumi.CustomResource {
             inputs["stopTime"] = args ? args.stopTime : undefined;
             inputs["effectiveStartTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlertMutingRule.__pulumiType, name, inputs, opts);
     }

@@ -215,7 +215,8 @@ export class Detector extends pulumi.CustomResource {
     constructor(name: string, args: DetectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DetectorArgs | DetectorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DetectorState | undefined;
             inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
             inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
@@ -238,10 +239,10 @@ export class Detector extends pulumi.CustomResource {
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as DetectorArgs | undefined;
-            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
             inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
@@ -264,12 +265,8 @@ export class Detector extends pulumi.CustomResource {
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Detector.__pulumiType, name, inputs, opts);
     }

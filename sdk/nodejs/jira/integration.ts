@@ -115,7 +115,8 @@ export class Integration extends pulumi.CustomResource {
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             inputs["apiToken"] = state ? state.apiToken : undefined;
             inputs["assigneeDisplayName"] = state ? state.assigneeDisplayName : undefined;
@@ -131,22 +132,22 @@ export class Integration extends pulumi.CustomResource {
             inputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.assigneeName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.assigneeName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'assigneeName'");
             }
-            if ((!args || args.authMethod === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.authMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authMethod'");
             }
-            if ((!args || args.baseUrl === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.baseUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'baseUrl'");
             }
-            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.issueType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.issueType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'issueType'");
             }
-            if ((!args || args.projectKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
             inputs["apiToken"] = args ? args.apiToken : undefined;
@@ -162,12 +163,8 @@ export class Integration extends pulumi.CustomResource {
             inputs["userEmail"] = args ? args.userEmail : undefined;
             inputs["username"] = args ? args.username : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Integration.__pulumiType, name, inputs, opts);
     }

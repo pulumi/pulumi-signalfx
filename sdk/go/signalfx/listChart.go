@@ -24,7 +24,6 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -363,6 +362,85 @@ func (i *ListChart) ToListChartOutputWithContext(ctx context.Context) ListChartO
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartOutput)
 }
 
+func (i *ListChart) ToListChartPtrOutput() ListChartPtrOutput {
+	return i.ToListChartPtrOutputWithContext(context.Background())
+}
+
+func (i *ListChart) ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListChartPtrOutput)
+}
+
+type ListChartPtrInput interface {
+	pulumi.Input
+
+	ToListChartPtrOutput() ListChartPtrOutput
+	ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput
+}
+
+type listChartPtrType ListChartArgs
+
+func (*listChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListChart)(nil))
+}
+
+func (i *listChartPtrType) ToListChartPtrOutput() ListChartPtrOutput {
+	return i.ToListChartPtrOutputWithContext(context.Background())
+}
+
+func (i *listChartPtrType) ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListChartPtrOutput)
+}
+
+// ListChartArrayInput is an input type that accepts ListChartArray and ListChartArrayOutput values.
+// You can construct a concrete instance of `ListChartArrayInput` via:
+//
+//          ListChartArray{ ListChartArgs{...} }
+type ListChartArrayInput interface {
+	pulumi.Input
+
+	ToListChartArrayOutput() ListChartArrayOutput
+	ToListChartArrayOutputWithContext(context.Context) ListChartArrayOutput
+}
+
+type ListChartArray []ListChartInput
+
+func (ListChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ListChart)(nil))
+}
+
+func (i ListChartArray) ToListChartArrayOutput() ListChartArrayOutput {
+	return i.ToListChartArrayOutputWithContext(context.Background())
+}
+
+func (i ListChartArray) ToListChartArrayOutputWithContext(ctx context.Context) ListChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListChartArrayOutput)
+}
+
+// ListChartMapInput is an input type that accepts ListChartMap and ListChartMapOutput values.
+// You can construct a concrete instance of `ListChartMapInput` via:
+//
+//          ListChartMap{ "key": ListChartArgs{...} }
+type ListChartMapInput interface {
+	pulumi.Input
+
+	ToListChartMapOutput() ListChartMapOutput
+	ToListChartMapOutputWithContext(context.Context) ListChartMapOutput
+}
+
+type ListChartMap map[string]ListChartInput
+
+func (ListChartMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ListChart)(nil))
+}
+
+func (i ListChartMap) ToListChartMapOutput() ListChartMapOutput {
+	return i.ToListChartMapOutputWithContext(context.Background())
+}
+
+func (i ListChartMap) ToListChartMapOutputWithContext(ctx context.Context) ListChartMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListChartMapOutput)
+}
+
 type ListChartOutput struct {
 	*pulumi.OutputState
 }
@@ -379,6 +457,75 @@ func (o ListChartOutput) ToListChartOutputWithContext(ctx context.Context) ListC
 	return o
 }
 
+func (o ListChartOutput) ToListChartPtrOutput() ListChartPtrOutput {
+	return o.ToListChartPtrOutputWithContext(context.Background())
+}
+
+func (o ListChartOutput) ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput {
+	return o.ApplyT(func(v ListChart) *ListChart {
+		return &v
+	}).(ListChartPtrOutput)
+}
+
+type ListChartPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ListChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListChart)(nil))
+}
+
+func (o ListChartPtrOutput) ToListChartPtrOutput() ListChartPtrOutput {
+	return o
+}
+
+func (o ListChartPtrOutput) ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput {
+	return o
+}
+
+type ListChartArrayOutput struct{ *pulumi.OutputState }
+
+func (ListChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ListChart)(nil))
+}
+
+func (o ListChartArrayOutput) ToListChartArrayOutput() ListChartArrayOutput {
+	return o
+}
+
+func (o ListChartArrayOutput) ToListChartArrayOutputWithContext(ctx context.Context) ListChartArrayOutput {
+	return o
+}
+
+func (o ListChartArrayOutput) Index(i pulumi.IntInput) ListChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListChart {
+		return vs[0].([]ListChart)[vs[1].(int)]
+	}).(ListChartOutput)
+}
+
+type ListChartMapOutput struct{ *pulumi.OutputState }
+
+func (ListChartMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ListChart)(nil))
+}
+
+func (o ListChartMapOutput) ToListChartMapOutput() ListChartMapOutput {
+	return o
+}
+
+func (o ListChartMapOutput) ToListChartMapOutputWithContext(ctx context.Context) ListChartMapOutput {
+	return o
+}
+
+func (o ListChartMapOutput) MapIndex(k pulumi.StringInput) ListChartOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ListChart {
+		return vs[0].(map[string]ListChart)[vs[1].(string)]
+	}).(ListChartOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ListChartOutput{})
+	pulumi.RegisterOutputType(ListChartPtrOutput{})
+	pulumi.RegisterOutputType(ListChartArrayOutput{})
+	pulumi.RegisterOutputType(ListChartMapOutput{})
 }

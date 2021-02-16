@@ -105,7 +105,8 @@ export class DataLink extends pulumi.CustomResource {
     constructor(name: string, args?: DataLinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataLinkArgs | DataLinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DataLinkState | undefined;
             inputs["contextDashboardId"] = state ? state.contextDashboardId : undefined;
             inputs["propertyName"] = state ? state.propertyName : undefined;
@@ -122,12 +123,8 @@ export class DataLink extends pulumi.CustomResource {
             inputs["targetSignalfxDashboards"] = args ? args.targetSignalfxDashboards : undefined;
             inputs["targetSplunks"] = args ? args.targetSplunks : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DataLink.__pulumiType, name, inputs, opts);
     }

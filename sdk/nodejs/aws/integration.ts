@@ -158,7 +158,8 @@ export class Integration extends pulumi.CustomResource {
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             inputs["customCloudwatchNamespaces"] = state ? state.customCloudwatchNamespaces : undefined;
             inputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
@@ -179,10 +180,10 @@ export class Integration extends pulumi.CustomResource {
             inputs["useGetMetricDataMethod"] = state ? state.useGetMetricDataMethod : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.integrationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.integrationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'integrationId'");
             }
             inputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
@@ -203,12 +204,8 @@ export class Integration extends pulumi.CustomResource {
             inputs["token"] = args ? args.token : undefined;
             inputs["useGetMetricDataMethod"] = args ? args.useGetMetricDataMethod : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Integration.__pulumiType, name, inputs, opts);
     }

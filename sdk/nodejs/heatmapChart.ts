@@ -150,7 +150,8 @@ export class HeatmapChart extends pulumi.CustomResource {
     constructor(name: string, args: HeatmapChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HeatmapChartArgs | HeatmapChartState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HeatmapChartState | undefined;
             inputs["colorRange"] = state ? state.colorRange : undefined;
             inputs["colorScales"] = state ? state.colorScales : undefined;
@@ -169,7 +170,7 @@ export class HeatmapChart extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as HeatmapChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["colorRange"] = args ? args.colorRange : undefined;
@@ -188,12 +189,8 @@ export class HeatmapChart extends pulumi.CustomResource {
             inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HeatmapChart.__pulumiType, name, inputs, opts);
     }

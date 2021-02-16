@@ -53,8 +53,6 @@ class Provider(pulumi.ProviderResource):
             __props__ = dict()
 
             __props__['api_url'] = api_url
-            if auth_token is None:
-                auth_token = _utilities.get_env('SFX_AUTH_TOKEN')
             __props__['auth_token'] = auth_token
             __props__['custom_app_url'] = custom_app_url
             __props__['timeout_seconds'] = pulumi.Output.from_input(timeout_seconds).apply(pulumi.runtime.to_json) if timeout_seconds is not None else None

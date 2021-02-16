@@ -170,7 +170,8 @@ export class ExternalIntegration extends pulumi.CustomResource {
     constructor(name: string, args?: ExternalIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExternalIntegrationArgs | ExternalIntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ExternalIntegrationState | undefined;
             inputs["externalId"] = state ? state.externalId : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -181,12 +182,8 @@ export class ExternalIntegration extends pulumi.CustomResource {
             inputs["externalId"] = undefined /*out*/;
             inputs["signalfxAwsAccount"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ExternalIntegration.__pulumiType, name, inputs, opts);
     }

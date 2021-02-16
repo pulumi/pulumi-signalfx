@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -267,6 +267,85 @@ func (i *SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartOutput)
 }
 
+func (i *SingleValueChart) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
+	return i.ToSingleValueChartPtrOutputWithContext(context.Background())
+}
+
+func (i *SingleValueChart) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartPtrOutput)
+}
+
+type SingleValueChartPtrInput interface {
+	pulumi.Input
+
+	ToSingleValueChartPtrOutput() SingleValueChartPtrOutput
+	ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput
+}
+
+type singleValueChartPtrType SingleValueChartArgs
+
+func (*singleValueChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleValueChart)(nil))
+}
+
+func (i *singleValueChartPtrType) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
+	return i.ToSingleValueChartPtrOutputWithContext(context.Background())
+}
+
+func (i *singleValueChartPtrType) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartPtrOutput)
+}
+
+// SingleValueChartArrayInput is an input type that accepts SingleValueChartArray and SingleValueChartArrayOutput values.
+// You can construct a concrete instance of `SingleValueChartArrayInput` via:
+//
+//          SingleValueChartArray{ SingleValueChartArgs{...} }
+type SingleValueChartArrayInput interface {
+	pulumi.Input
+
+	ToSingleValueChartArrayOutput() SingleValueChartArrayOutput
+	ToSingleValueChartArrayOutputWithContext(context.Context) SingleValueChartArrayOutput
+}
+
+type SingleValueChartArray []SingleValueChartInput
+
+func (SingleValueChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SingleValueChart)(nil))
+}
+
+func (i SingleValueChartArray) ToSingleValueChartArrayOutput() SingleValueChartArrayOutput {
+	return i.ToSingleValueChartArrayOutputWithContext(context.Background())
+}
+
+func (i SingleValueChartArray) ToSingleValueChartArrayOutputWithContext(ctx context.Context) SingleValueChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartArrayOutput)
+}
+
+// SingleValueChartMapInput is an input type that accepts SingleValueChartMap and SingleValueChartMapOutput values.
+// You can construct a concrete instance of `SingleValueChartMapInput` via:
+//
+//          SingleValueChartMap{ "key": SingleValueChartArgs{...} }
+type SingleValueChartMapInput interface {
+	pulumi.Input
+
+	ToSingleValueChartMapOutput() SingleValueChartMapOutput
+	ToSingleValueChartMapOutputWithContext(context.Context) SingleValueChartMapOutput
+}
+
+type SingleValueChartMap map[string]SingleValueChartInput
+
+func (SingleValueChartMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SingleValueChart)(nil))
+}
+
+func (i SingleValueChartMap) ToSingleValueChartMapOutput() SingleValueChartMapOutput {
+	return i.ToSingleValueChartMapOutputWithContext(context.Background())
+}
+
+func (i SingleValueChartMap) ToSingleValueChartMapOutputWithContext(ctx context.Context) SingleValueChartMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartMapOutput)
+}
+
 type SingleValueChartOutput struct {
 	*pulumi.OutputState
 }
@@ -283,6 +362,75 @@ func (o SingleValueChartOutput) ToSingleValueChartOutputWithContext(ctx context.
 	return o
 }
 
+func (o SingleValueChartOutput) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
+	return o.ToSingleValueChartPtrOutputWithContext(context.Background())
+}
+
+func (o SingleValueChartOutput) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
+	return o.ApplyT(func(v SingleValueChart) *SingleValueChart {
+		return &v
+	}).(SingleValueChartPtrOutput)
+}
+
+type SingleValueChartPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SingleValueChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleValueChart)(nil))
+}
+
+func (o SingleValueChartPtrOutput) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
+	return o
+}
+
+func (o SingleValueChartPtrOutput) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
+	return o
+}
+
+type SingleValueChartArrayOutput struct{ *pulumi.OutputState }
+
+func (SingleValueChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SingleValueChart)(nil))
+}
+
+func (o SingleValueChartArrayOutput) ToSingleValueChartArrayOutput() SingleValueChartArrayOutput {
+	return o
+}
+
+func (o SingleValueChartArrayOutput) ToSingleValueChartArrayOutputWithContext(ctx context.Context) SingleValueChartArrayOutput {
+	return o
+}
+
+func (o SingleValueChartArrayOutput) Index(i pulumi.IntInput) SingleValueChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SingleValueChart {
+		return vs[0].([]SingleValueChart)[vs[1].(int)]
+	}).(SingleValueChartOutput)
+}
+
+type SingleValueChartMapOutput struct{ *pulumi.OutputState }
+
+func (SingleValueChartMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SingleValueChart)(nil))
+}
+
+func (o SingleValueChartMapOutput) ToSingleValueChartMapOutput() SingleValueChartMapOutput {
+	return o
+}
+
+func (o SingleValueChartMapOutput) ToSingleValueChartMapOutputWithContext(ctx context.Context) SingleValueChartMapOutput {
+	return o
+}
+
+func (o SingleValueChartMapOutput) MapIndex(k pulumi.StringInput) SingleValueChartOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SingleValueChart {
+		return vs[0].(map[string]SingleValueChart)[vs[1].(string)]
+	}).(SingleValueChartOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SingleValueChartOutput{})
+	pulumi.RegisterOutputType(SingleValueChartPtrOutput{})
+	pulumi.RegisterOutputType(SingleValueChartArrayOutput{})
+	pulumi.RegisterOutputType(SingleValueChartMapOutput{})
 }

@@ -179,7 +179,8 @@ export class ListChart extends pulumi.CustomResource {
     constructor(name: string, args: ListChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListChartArgs | ListChartState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ListChartState | undefined;
             inputs["colorBy"] = state ? state.colorBy : undefined;
             inputs["colorScales"] = state ? state.colorScales : undefined;
@@ -204,7 +205,7 @@ export class ListChart extends pulumi.CustomResource {
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as ListChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["colorBy"] = args ? args.colorBy : undefined;
@@ -229,12 +230,8 @@ export class ListChart extends pulumi.CustomResource {
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ListChart.__pulumiType, name, inputs, opts);
     }

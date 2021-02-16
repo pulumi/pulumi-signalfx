@@ -84,7 +84,8 @@ export class WebhookIntegration extends pulumi.CustomResource {
     constructor(name: string, args: WebhookIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebhookIntegrationArgs | WebhookIntegrationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WebhookIntegrationState | undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["headers"] = state ? state.headers : undefined;
@@ -93,7 +94,7 @@ export class WebhookIntegration extends pulumi.CustomResource {
             inputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as WebhookIntegrationArgs | undefined;
-            if ((!args || args.enabled === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -102,12 +103,8 @@ export class WebhookIntegration extends pulumi.CustomResource {
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
             inputs["url"] = args ? args.url : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WebhookIntegration.__pulumiType, name, inputs, opts);
     }

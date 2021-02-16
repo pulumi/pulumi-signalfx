@@ -21,7 +21,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx/"
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v4/go/signalfx"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -150,6 +150,85 @@ func (i *TextChart) ToTextChartOutputWithContext(ctx context.Context) TextChartO
 	return pulumi.ToOutputWithContext(ctx, i).(TextChartOutput)
 }
 
+func (i *TextChart) ToTextChartPtrOutput() TextChartPtrOutput {
+	return i.ToTextChartPtrOutputWithContext(context.Background())
+}
+
+func (i *TextChart) ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextChartPtrOutput)
+}
+
+type TextChartPtrInput interface {
+	pulumi.Input
+
+	ToTextChartPtrOutput() TextChartPtrOutput
+	ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput
+}
+
+type textChartPtrType TextChartArgs
+
+func (*textChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextChart)(nil))
+}
+
+func (i *textChartPtrType) ToTextChartPtrOutput() TextChartPtrOutput {
+	return i.ToTextChartPtrOutputWithContext(context.Background())
+}
+
+func (i *textChartPtrType) ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextChartPtrOutput)
+}
+
+// TextChartArrayInput is an input type that accepts TextChartArray and TextChartArrayOutput values.
+// You can construct a concrete instance of `TextChartArrayInput` via:
+//
+//          TextChartArray{ TextChartArgs{...} }
+type TextChartArrayInput interface {
+	pulumi.Input
+
+	ToTextChartArrayOutput() TextChartArrayOutput
+	ToTextChartArrayOutputWithContext(context.Context) TextChartArrayOutput
+}
+
+type TextChartArray []TextChartInput
+
+func (TextChartArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TextChart)(nil))
+}
+
+func (i TextChartArray) ToTextChartArrayOutput() TextChartArrayOutput {
+	return i.ToTextChartArrayOutputWithContext(context.Background())
+}
+
+func (i TextChartArray) ToTextChartArrayOutputWithContext(ctx context.Context) TextChartArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextChartArrayOutput)
+}
+
+// TextChartMapInput is an input type that accepts TextChartMap and TextChartMapOutput values.
+// You can construct a concrete instance of `TextChartMapInput` via:
+//
+//          TextChartMap{ "key": TextChartArgs{...} }
+type TextChartMapInput interface {
+	pulumi.Input
+
+	ToTextChartMapOutput() TextChartMapOutput
+	ToTextChartMapOutputWithContext(context.Context) TextChartMapOutput
+}
+
+type TextChartMap map[string]TextChartInput
+
+func (TextChartMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TextChart)(nil))
+}
+
+func (i TextChartMap) ToTextChartMapOutput() TextChartMapOutput {
+	return i.ToTextChartMapOutputWithContext(context.Background())
+}
+
+func (i TextChartMap) ToTextChartMapOutputWithContext(ctx context.Context) TextChartMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TextChartMapOutput)
+}
+
 type TextChartOutput struct {
 	*pulumi.OutputState
 }
@@ -166,6 +245,75 @@ func (o TextChartOutput) ToTextChartOutputWithContext(ctx context.Context) TextC
 	return o
 }
 
+func (o TextChartOutput) ToTextChartPtrOutput() TextChartPtrOutput {
+	return o.ToTextChartPtrOutputWithContext(context.Background())
+}
+
+func (o TextChartOutput) ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput {
+	return o.ApplyT(func(v TextChart) *TextChart {
+		return &v
+	}).(TextChartPtrOutput)
+}
+
+type TextChartPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TextChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TextChart)(nil))
+}
+
+func (o TextChartPtrOutput) ToTextChartPtrOutput() TextChartPtrOutput {
+	return o
+}
+
+func (o TextChartPtrOutput) ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput {
+	return o
+}
+
+type TextChartArrayOutput struct{ *pulumi.OutputState }
+
+func (TextChartArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TextChart)(nil))
+}
+
+func (o TextChartArrayOutput) ToTextChartArrayOutput() TextChartArrayOutput {
+	return o
+}
+
+func (o TextChartArrayOutput) ToTextChartArrayOutputWithContext(ctx context.Context) TextChartArrayOutput {
+	return o
+}
+
+func (o TextChartArrayOutput) Index(i pulumi.IntInput) TextChartOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TextChart {
+		return vs[0].([]TextChart)[vs[1].(int)]
+	}).(TextChartOutput)
+}
+
+type TextChartMapOutput struct{ *pulumi.OutputState }
+
+func (TextChartMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TextChart)(nil))
+}
+
+func (o TextChartMapOutput) ToTextChartMapOutput() TextChartMapOutput {
+	return o
+}
+
+func (o TextChartMapOutput) ToTextChartMapOutputWithContext(ctx context.Context) TextChartMapOutput {
+	return o
+}
+
+func (o TextChartMapOutput) MapIndex(k pulumi.StringInput) TextChartOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TextChart {
+		return vs[0].(map[string]TextChart)[vs[1].(string)]
+	}).(TextChartOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TextChartOutput{})
+	pulumi.RegisterOutputType(TextChartPtrOutput{})
+	pulumi.RegisterOutputType(TextChartArrayOutput{})
+	pulumi.RegisterOutputType(TextChartMapOutput{})
 }

@@ -198,7 +198,8 @@ export class TimeChart extends pulumi.CustomResource {
     constructor(name: string, args: TimeChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TimeChartArgs | TimeChartState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TimeChartState | undefined;
             inputs["axesIncludeZero"] = state ? state.axesIncludeZero : undefined;
             inputs["axesPrecision"] = state ? state.axesPrecision : undefined;
@@ -230,7 +231,7 @@ export class TimeChart extends pulumi.CustomResource {
             inputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as TimeChartArgs | undefined;
-            if ((!args || args.programText === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
             inputs["axesIncludeZero"] = args ? args.axesIncludeZero : undefined;
@@ -262,12 +263,8 @@ export class TimeChart extends pulumi.CustomResource {
             inputs["vizOptions"] = args ? args.vizOptions : undefined;
             inputs["url"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TimeChart.__pulumiType, name, inputs, opts);
     }

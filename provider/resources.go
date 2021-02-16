@@ -79,23 +79,15 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 func Provider() tfbridge.ProviderInfo {
 	p := shimv1.NewProvider(signalfx.Provider().(*schema.Provider))
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "signalfx",
-		Description: "A Pulumi package for creating and managing SignalFx resources.",
-		Keywords:    []string{"pulumi", "signalfx"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-signalfx",
-		GitHubOrg:   "splunk-terraform",
-		Config: map[string]*tfbridge.SchemaInfo{
-			"auth_token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"SFX_AUTH_TOKEN",
-					},
-				},
-			},
-		},
+		P:                    p,
+		Name:                 "signalfx",
+		Description:          "A Pulumi package for creating and managing SignalFx resources.",
+		Keywords:             []string{"pulumi", "signalfx"},
+		License:              "Apache-2.0",
+		Homepage:             "https://pulumi.io",
+		Repository:           "https://github.com/pulumi/pulumi-signalfx",
+		GitHubOrg:            "splunk-terraform",
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
