@@ -12,21 +12,20 @@ blobs:
   provider: s3
   region: us-west-2
 builds:
-- binary: pulumi-resource-signalfx
+- binary: pulumi-resource-splunk
   dir: provider
   env:
   - CGO_ENABLED=0
   - GO111MODULE=on
   goarch:
   - amd64
-  - arm64
   goos:
   - darwin
   - windows
   - linux
   ldflags:
-  - -X github.com/pulumi/pulumi-signalfx/provider/v4/pkg/version.Version={{.Tag}}
-  main: ./cmd/pulumi-resource-signalfx/
+  - -X github.com/pulumi/pulumi-splunk/provider/pkg/version.Version={{.Tag}}
+  main: ./cmd/pulumi-resource-splunk/
 changelog:
   skip: true
 release:
