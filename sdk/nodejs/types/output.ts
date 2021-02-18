@@ -278,10 +278,6 @@ export interface DashboardVariable {
 
 export interface DataLinkTargetExternalUrl {
     /**
-     * Flag that designates a target as the default for a data link object. `true` by default
-     */
-    isDefault?: boolean;
-    /**
      * The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
      */
     minimumTimeWindow?: string;
@@ -323,10 +319,6 @@ export interface DataLinkTargetSignalfxDashboard {
 }
 
 export interface DataLinkTargetSplunk {
-    /**
-     * Flag that designates a target as the default for a data link object. `true` by default
-     */
-    isDefault?: boolean;
     /**
      * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
      */

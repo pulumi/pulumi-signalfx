@@ -880,22 +880,18 @@ class DataLinkTargetExternalUrl(dict):
     def __init__(__self__, *,
                  name: str,
                  url: str,
-                 is_default: Optional[bool] = None,
                  minimum_time_window: Optional[str] = None,
                  property_key_mapping: Optional[Mapping[str, str]] = None,
                  time_format: Optional[str] = None):
         """
         :param str name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
         :param str url: URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
-        :param bool is_default: Flag that designates a target as the default for a data link object. `true` by default
         :param str minimum_time_window: The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
         :param Mapping[str, str] property_key_mapping: Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
         :param str time_format: [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "url", url)
-        if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
         if minimum_time_window is not None:
             pulumi.set(__self__, "minimum_time_window", minimum_time_window)
         if property_key_mapping is not None:
@@ -918,14 +914,6 @@ class DataLinkTargetExternalUrl(dict):
         URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
         """
         return pulumi.get(self, "url")
-
-    @property
-    @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[bool]:
-        """
-        Flag that designates a target as the default for a data link object. `true` by default
-        """
-        return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter(name="minimumTimeWindow")
@@ -1014,16 +1002,12 @@ class DataLinkTargetSignalfxDashboard(dict):
 class DataLinkTargetSplunk(dict):
     def __init__(__self__, *,
                  name: str,
-                 is_default: Optional[bool] = None,
                  property_key_mapping: Optional[Mapping[str, str]] = None):
         """
         :param str name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        :param bool is_default: Flag that designates a target as the default for a data link object. `true` by default
         :param Mapping[str, str] property_key_mapping: Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
         """
         pulumi.set(__self__, "name", name)
-        if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
         if property_key_mapping is not None:
             pulumi.set(__self__, "property_key_mapping", property_key_mapping)
 
@@ -1034,14 +1018,6 @@ class DataLinkTargetSplunk(dict):
         User-assigned target name. Use this value to differentiate between the link targets for a data link object.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="isDefault")
-    def is_default(self) -> Optional[bool]:
-        """
-        Flag that designates a target as the default for a data link object. `true` by default
-        """
-        return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter(name="propertyKeyMapping")

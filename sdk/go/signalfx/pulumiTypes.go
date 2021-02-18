@@ -1853,8 +1853,6 @@ func (o DashboardVariableArrayOutput) Index(i pulumi.IntInput) DashboardVariable
 }
 
 type DataLinkTargetExternalUrl struct {
-	// Flag that designates a target as the default for a data link object. `true` by default
-	IsDefault *bool `pulumi:"isDefault"`
 	// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
 	MinimumTimeWindow *string `pulumi:"minimumTimeWindow"`
 	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
@@ -1879,8 +1877,6 @@ type DataLinkTargetExternalUrlInput interface {
 }
 
 type DataLinkTargetExternalUrlArgs struct {
-	// Flag that designates a target as the default for a data link object. `true` by default
-	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
 	// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
 	MinimumTimeWindow pulumi.StringPtrInput `pulumi:"minimumTimeWindow"`
 	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
@@ -1942,11 +1938,6 @@ func (o DataLinkTargetExternalUrlOutput) ToDataLinkTargetExternalUrlOutput() Dat
 
 func (o DataLinkTargetExternalUrlOutput) ToDataLinkTargetExternalUrlOutputWithContext(ctx context.Context) DataLinkTargetExternalUrlOutput {
 	return o
-}
-
-// Flag that designates a target as the default for a data link object. `true` by default
-func (o DataLinkTargetExternalUrlOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DataLinkTargetExternalUrl) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
@@ -2119,8 +2110,6 @@ func (o DataLinkTargetSignalfxDashboardArrayOutput) Index(i pulumi.IntInput) Dat
 }
 
 type DataLinkTargetSplunk struct {
-	// Flag that designates a target as the default for a data link object. `true` by default
-	IsDefault *bool `pulumi:"isDefault"`
 	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 	Name string `pulumi:"name"`
 	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
@@ -2139,8 +2128,6 @@ type DataLinkTargetSplunkInput interface {
 }
 
 type DataLinkTargetSplunkArgs struct {
-	// Flag that designates a target as the default for a data link object. `true` by default
-	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
 	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
@@ -2196,11 +2183,6 @@ func (o DataLinkTargetSplunkOutput) ToDataLinkTargetSplunkOutput() DataLinkTarge
 
 func (o DataLinkTargetSplunkOutput) ToDataLinkTargetSplunkOutputWithContext(ctx context.Context) DataLinkTargetSplunkOutput {
 	return o
-}
-
-// Flag that designates a target as the default for a data link object. `true` by default
-func (o DataLinkTargetSplunkOutput) IsDefault() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v DataLinkTargetSplunk) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // User-assigned target name. Use this value to differentiate between the link targets for a data link object.

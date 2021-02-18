@@ -541,8 +541,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc h1:3fFCltL
 github.com/pulumi/pulumi/sdk/v2 v2.20.1-0.20210212181059-f4b0fa86fedc/go.mod h1:fCFhRV6NmidWetmgDPA76efL+s0JqLlS54JJIwfOt+o=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210211182433-77a288d4c90e h1:FHZ6JsiamLhCK4TgyLdD0liDkOhoCkLN7AKr+/W6wiA=
-github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210211182433-77a288d4c90e/go.mod h1:w0nvxgkgq1iS8jaaE1MluT4Mg31ipAy+Zf+NDcYbtGA=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210218133336-f5b07b23e092 h1:uy/XZkhLpR173UE0xRzqMzjWM+EGJpWiSj2TegV+6gI=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210218133336-f5b07b23e092/go.mod h1:w0nvxgkgq1iS8jaaE1MluT4Mg31ipAy+Zf+NDcYbtGA=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=

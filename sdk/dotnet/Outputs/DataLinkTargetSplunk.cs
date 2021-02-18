@@ -14,10 +14,6 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DataLinkTargetSplunk
     {
         /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        public readonly bool? IsDefault;
-        /// <summary>
         /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
         /// </summary>
         public readonly string Name;
@@ -28,13 +24,10 @@ namespace Pulumi.SignalFx.Outputs
 
         [OutputConstructor]
         private DataLinkTargetSplunk(
-            bool? isDefault,
-
             string name,
 
             ImmutableDictionary<string, string>? propertyKeyMapping)
         {
-            IsDefault = isDefault;
             Name = name;
             PropertyKeyMapping = propertyKeyMapping;
         }
