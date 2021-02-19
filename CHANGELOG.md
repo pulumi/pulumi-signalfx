@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v6.7.0 of the SignalFx Terraform Provider
+_(none)_
 
 ---
+
+## 4.4.0 (2021-02-19)
+* Upgrade to v6.7.0 of the SignalFx Terraform Provider
 
 ## 4.3.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
