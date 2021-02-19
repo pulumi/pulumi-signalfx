@@ -13,12 +13,6 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DataLinkTargetSplunkGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        [Input("isDefault")]
-        public Input<bool>? IsDefault { get; set; }
-
-        /// <summary>
         /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
         /// </summary>
         [Input("name", required: true)]

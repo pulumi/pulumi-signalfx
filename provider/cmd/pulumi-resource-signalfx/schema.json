@@ -926,15 +926,6 @@
         },
         "signalfx:index/DataLinkTargetExternalUrl:DataLinkTargetExternalUrl": {
             "properties": {
-                "isDefault": {
-                    "type": "boolean",
-                    "description": "Flag that designates a target as the default for a data link object. `true` by default\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "minimumTimeWindow": {
                     "type": "string",
                     "description": "The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`\n",
@@ -1038,15 +1029,6 @@
         },
         "signalfx:index/DataLinkTargetSplunk:DataLinkTargetSplunk": {
             "properties": {
-                "isDefault": {
-                    "type": "boolean",
-                    "description": "Flag that designates a target as the default for a data link object. `true` by default\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "name": {
                     "type": "string",
                     "description": "User-assigned target name. Use this value to differentiate between the link targets for a data link object.\n",

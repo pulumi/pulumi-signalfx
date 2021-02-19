@@ -14,10 +14,6 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DataLinkTargetExternalUrl
     {
         /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
-        public readonly bool? IsDefault;
-        /// <summary>
         /// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
         /// </summary>
         public readonly string? MinimumTimeWindow;
@@ -40,8 +36,6 @@ namespace Pulumi.SignalFx.Outputs
 
         [OutputConstructor]
         private DataLinkTargetExternalUrl(
-            bool? isDefault,
-
             string? minimumTimeWindow,
 
             string name,
@@ -52,7 +46,6 @@ namespace Pulumi.SignalFx.Outputs
 
             string url)
         {
-            IsDefault = isDefault;
             MinimumTimeWindow = minimumTimeWindow;
             Name = name;
             PropertyKeyMapping = propertyKeyMapping;
