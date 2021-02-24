@@ -47,6 +47,10 @@ export interface GetIntegrationArgs {
  */
 export interface GetIntegrationResult {
     /**
+     * Whether the integration is enabled.
+     */
+    readonly enabled: boolean;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

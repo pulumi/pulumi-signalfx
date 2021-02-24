@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  *     propertyName: "pname2",
  *     propertyValue: "pvalue",
  *     targetExternalUrls: [{
- *         isDefault: false,
  *         name: "ex_url",
  *         timeFormat: "ISO8601",
  *         url: "https://www.example.com",
