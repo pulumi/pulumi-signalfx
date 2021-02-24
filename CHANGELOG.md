@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v6.7.1 of the SignalFx Terraform Provider
+_(none)_
 
 ---
+
+## 4.4.1 (2021-02-24)
+* Upgrade to v6.7.1 of the SignalFx Terraform Provider
 
 ## 4.4.0 (2021-02-19)
 * Upgrade to v6.7.0 of the SignalFx Terraform Provider
