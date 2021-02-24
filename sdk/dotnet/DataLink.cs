@@ -48,7 +48,6 @@ namespace Pulumi.SignalFx
     ///             {
     ///                 new SignalFx.Inputs.DataLinkTargetExternalUrlArgs
     ///                 {
-    ///                     IsDefault = false,
     ///                     Name = "ex_url",
     ///                     TimeFormat = "ISO8601",
     ///                     Url = "https://www.example.com",

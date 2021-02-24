@@ -51,7 +51,6 @@ class DataLink(pulumi.CustomResource):
             property_name="pname2",
             property_value="pvalue",
             target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(
-                is_default=False,
                 name="ex_url",
                 time_format="ISO8601",
                 url="https://www.example.com",

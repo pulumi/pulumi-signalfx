@@ -60,6 +60,10 @@ namespace Pulumi.SignalFx.PagerDuty
     public sealed class GetIntegrationResult
     {
         /// <summary>
+        /// Whether the integration is enabled.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -70,10 +74,13 @@ namespace Pulumi.SignalFx.PagerDuty
 
         [OutputConstructor]
         private GetIntegrationResult(
+            bool enabled,
+
             string id,
 
             string name)
         {
+            Enabled = enabled;
             Id = id;
             Name = name;
         }

@@ -19,13 +19,24 @@ class GetIntegrationResult:
     """
     A collection of values returned by getIntegration.
     """
-    def __init__(__self__, id=None, name=None):
+    def __init__(__self__, enabled=None, id=None, name=None):
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
@@ -50,6 +61,7 @@ class AwaitableGetIntegrationResult(GetIntegrationResult):
         if False:
             yield self
         return GetIntegrationResult(
+            enabled=self.enabled,
             id=self.id,
             name=self.name)
 
@@ -80,5 +92,6 @@ def get_integration(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('signalfx:pagerduty/getIntegration:getIntegration', __args__, opts=opts, typ=GetIntegrationResult).value
 
     return AwaitableGetIntegrationResult(
+        enabled=__ret__.enabled,
         id=__ret__.id,
         name=__ret__.name)

@@ -48,6 +48,8 @@ type LookupIntegrationArgs struct {
 
 // A collection of values returned by getIntegration.
 type LookupIntegrationResult struct {
+	// Whether the integration is enabled.
+	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the integration.

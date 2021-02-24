@@ -45,7 +45,6 @@ import (
 // 			PropertyValue:      pulumi.String("pvalue"),
 // 			TargetExternalUrls: signalfx.DataLinkTargetExternalUrlArray{
 // 				&signalfx.DataLinkTargetExternalUrlArgs{
-// 					IsDefault:  pulumi.Bool(false),
 // 					Name:       pulumi.String("ex_url"),
 // 					TimeFormat: pulumi.String("ISO8601"),
 // 					Url:        pulumi.String("https://www.example.com"),
