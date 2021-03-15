@@ -145,7 +145,7 @@ class TimeChart(pulumi.CustomResource):
             __props__['histogram_options'] = histogram_options
             if legend_fields_to_hides is not None and not opts.urn:
                 warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-                pulumi.log.warn("legend_fields_to_hides is deprecated: Please use legend_options_fields")
+                pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
             __props__['legend_fields_to_hides'] = legend_fields_to_hides
             __props__['legend_options_fields'] = legend_options_fields
             __props__['max_delay'] = max_delay
@@ -162,7 +162,7 @@ class TimeChart(pulumi.CustomResource):
             __props__['start_time'] = start_time
             if tags is not None and not opts.urn:
                 warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
-                pulumi.log.warn("tags is deprecated: signalfx_time_chart.tags is being removed in the next release")
+                pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
             __props__['tags'] = tags
             __props__['time_range'] = time_range
             __props__['timezone'] = timezone
