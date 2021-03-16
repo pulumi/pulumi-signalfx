@@ -60,7 +60,7 @@ def get_azure_services(services: Optional[Sequence[pulumi.InputType['GetAzureSer
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("get_azure_services is deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices")
+    pulumi.log.warn("""get_azure_services is deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices""")
     __args__ = dict()
     __args__['services'] = services
     if opts is None:

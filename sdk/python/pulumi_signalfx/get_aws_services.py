@@ -60,7 +60,7 @@ def get_aws_services(services: Optional[Sequence[pulumi.InputType['GetAwsService
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("get_aws_services is deprecated: signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices")
+    pulumi.log.warn("""get_aws_services is deprecated: signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices""")
     __args__ = dict()
     __args__['services'] = services
     if opts is None:
