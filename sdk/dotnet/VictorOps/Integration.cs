@@ -13,6 +13,26 @@ namespace Pulumi.SignalFx.VictorOps
     /// SignalFx VictorOps integration.
     /// 
     /// &gt; **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vioctorOpsMyteam = new SignalFx.VictorOps.Integration("vioctorOpsMyteam", new SignalFx.VictorOps.IntegrationArgs
+    ///         {
+    ///             Enabled = true,
+    ///             PostUrl = "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:victorops/integration:Integration")]
     public partial class Integration : Pulumi.CustomResource
