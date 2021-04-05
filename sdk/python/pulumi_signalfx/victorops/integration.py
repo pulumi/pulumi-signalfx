@@ -26,6 +26,17 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        vioctor_ops_myteam = signalfx.victorops.Integration("vioctorOpsMyteam",
+            enabled=True,
+            post_url="https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
