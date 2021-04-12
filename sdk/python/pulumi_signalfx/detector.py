@@ -5,15 +5,309 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Detector']
+__all__ = ['DetectorArgs', 'Detector']
+
+@pulumi.input_type
+class DetectorArgs:
+    def __init__(__self__, *,
+                 program_text: pulumi.Input[str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]],
+                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 min_delay: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 show_data_markers: Optional[pulumi.Input[bool]] = None,
+                 show_event_lines: Optional[pulumi.Input[bool]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
+        """
+        The set of arguments for constructing a Detector resource.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
+        """
+        pulumi.set(__self__, "program_text", program_text)
+        pulumi.set(__self__, "rules", rules)
+        if authorized_writer_teams is not None:
+            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+        if authorized_writer_users is not None:
+            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disable_sampling is not None:
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if max_delay is not None:
+            pulumi.set(__self__, "max_delay", max_delay)
+        if min_delay is not None:
+            pulumi.set(__self__, "min_delay", min_delay)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if show_data_markers is not None:
+            pulumi.set(__self__, "show_data_markers", show_data_markers)
+        if show_event_lines is not None:
+            pulumi.set(__self__, "show_event_lines", show_event_lines)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if viz_options is not None:
+            pulumi.set(__self__, "viz_options", viz_options)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> pulumi.Input[str]:
+        """
+        Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]:
+        """
+        Set of rules used for alerting.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="authorizedWriterTeams")
+    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        """
+        return pulumi.get(self, "authorized_writer_teams")
+
+    @authorized_writer_teams.setter
+    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_writer_teams", value)
+
+    @property
+    @pulumi.getter(name="authorizedWriterUsers")
+    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        """
+        return pulumi.get(self, "authorized_writer_users")
+
+    @authorized_writer_users.setter
+    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_writer_users", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableSampling")
+    def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        """
+        return pulumi.get(self, "disable_sampling")
+
+    @disable_sampling.setter
+    def disable_sampling(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_sampling", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+        """
+        return pulumi.get(self, "max_delay")
+
+    @max_delay.setter
+    def max_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_delay", value)
+
+    @property
+    @pulumi.getter(name="minDelay")
+    def min_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        """
+        return pulumi.get(self, "min_delay")
+
+    @min_delay.setter
+    def min_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_delay", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the detector.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="showDataMarkers")
+    def show_data_markers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        """
+        return pulumi.get(self, "show_data_markers")
+
+    @show_data_markers.setter
+    def show_data_markers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_data_markers", value)
+
+    @property
+    @pulumi.getter(name="showEventLines")
+    def show_event_lines(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        """
+        return pulumi.get(self, "show_event_lines")
+
+    @show_event_lines.setter
+    def show_event_lines(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_event_lines", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the detector.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Team IDs to associate the detector to.
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="vizOptions")
+    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
+        """
+        Plot-level customization options, associated with a publish statement.
+        """
+        return pulumi.get(self, "viz_options")
+
+    @viz_options.setter
+    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]):
+        pulumi.set(self, "viz_options", value)
 
 
 class Detector(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -154,6 +448,143 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DetectorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a SignalFx detector resource. This can be used to create and manage detectors.
+
+        > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+
+        ## Notification Format
+
+        As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+
+        ```python
+        import pulumi
+        ```
+
+        This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+
+        ### Email
+
+        ```python
+        import pulumi
+        ```
+
+        ### Jira
+
+        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
+
+        ```python
+        import pulumi
+        ```
+
+        ### Opsgenie
+
+        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+
+        ```python
+        import pulumi
+        ```
+
+        ### PagerDuty
+
+        ```python
+        import pulumi
+        ```
+
+        ### Slack
+
+        Exclude the `#` on the channel name!
+
+        ```python
+        import pulumi
+        ```
+
+        ### Team
+
+        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+
+        ```python
+        import pulumi
+        ```
+
+        ### TeamEmail
+
+        Sends an email to every member of a team.
+
+        ```python
+        import pulumi
+        ```
+
+        ### VictorOps
+
+        ```python
+        import pulumi
+        ```
+
+        ### Webhook
+
+        > **NOTE** You need to include all the commas even if you only use a credential id below.
+
+        You can either configure a Webhook to use an existing integration's credential id:
+        ```python
+        import pulumi
+        ```
+
+        or configure one inline:
+        ```python
+        import pulumi
+        ```
+
+        ## Import
+
+        Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
+
+        ```sh
+         $ pulumi import signalfx:index/detector:Detector application_delay abc123
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DetectorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DetectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 min_delay: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
+                 show_data_markers: Optional[pulumi.Input[bool]] = None,
+                 show_event_lines: Optional[pulumi.Input[bool]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

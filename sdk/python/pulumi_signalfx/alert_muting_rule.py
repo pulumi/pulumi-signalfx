@@ -5,15 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AlertMutingRule']
+__all__ = ['AlertMutingRuleArgs', 'AlertMutingRule']
+
+@pulumi.input_type
+class AlertMutingRuleArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 filters: pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]],
+                 start_time: pulumi.Input[int],
+                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 stop_time: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a AlertMutingRule resource.
+        :param pulumi.Input[str] description: The description for this muting rule
+        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
+        :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector ids.
+        :param pulumi.Input[int] stop_time: Starting time of an alert muting rule as a Unix time stamp in seconds.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "filters", filters)
+        pulumi.set(__self__, "start_time", start_time)
+        if detectors is not None:
+            pulumi.set(__self__, "detectors", detectors)
+        if stop_time is not None:
+            pulumi.set(__self__, "stop_time", stop_time)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description for this muting rule
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]:
+        """
+        Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]):
+        pulumi.set(self, "filters", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[int]:
+        """
+        Starting time of an alert muting rule as a Unit time stamp in seconds.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[int]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def detectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A convenience attribute that associated this muting rule with specific detector ids.
+        """
+        return pulumi.get(self, "detectors")
+
+    @detectors.setter
+    def detectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "detectors", value)
+
+    @property
+    @pulumi.getter(name="stopTime")
+    def stop_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Starting time of an alert muting rule as a Unix time stamp in seconds.
+        """
+        return pulumi.get(self, "stop_time")
+
+    @stop_time.setter
+    def stop_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "stop_time", value)
 
 
 class AlertMutingRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +140,57 @@ class AlertMutingRule(pulumi.CustomResource):
         :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[int] stop_time: Starting time of an alert muting rule as a Unix time stamp in seconds.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AlertMutingRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a SignalFx resource for managing alert muting rules. See [Mute Notifications](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html) for more information.
+
+        > **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        rool_mooter_one = signalfx.AlertMutingRule("roolMooterOne",
+            description="mooted it NEW",
+            start_time=1573063243,
+            stop_time=0,
+            detectors=[signalfx_detector["some_detector_id"]],
+            filters=[signalfx.AlertMutingRuleFilterArgs(
+                property="foo",
+                property_value="bar",
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AlertMutingRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AlertMutingRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 stop_time: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

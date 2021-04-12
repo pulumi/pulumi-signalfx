@@ -5,13 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['EventFeedChart']
+__all__ = ['EventFeedChartArgs', 'EventFeedChart']
+
+@pulumi.input_type
+class EventFeedChartArgs:
+    def __init__(__self__, *,
+                 program_text: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a EventFeedChart resource.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[str] description: Description of the text note.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        """
+        pulumi.set(__self__, "program_text", program_text)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> pulumi.Input[str]:
+        """
+        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the text note.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the text note.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_range", value)
 
 
 class EventFeedChart(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +139,39 @@ class EventFeedChart(pulumi.CustomResource):
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EventFeedChartArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Displays a listing of events as a widget in a dashboard.
+
+        :param str resource_name: The name of the resource.
+        :param EventFeedChartArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EventFeedChartArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

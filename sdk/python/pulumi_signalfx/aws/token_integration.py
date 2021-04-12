@@ -5,13 +5,37 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['TokenIntegration']
+__all__ = ['TokenIntegrationArgs', 'TokenIntegration']
+
+@pulumi.input_type
+class TokenIntegrationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TokenIntegration resource.
+        :param pulumi.Input[str] name: The name of this integration
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this integration
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class TokenIntegration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +88,72 @@ class TokenIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[TokenIntegrationArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
+
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
+
+        > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aws as aws
+        import pulumi_signalfx as signalfx
+
+        aws_myteam_token = signalfx.aws.TokenIntegration("awsMyteamToken")
+        # Make yourself an AWS IAM role here
+        aws_sfx_role = aws.iam.Role("awsSfxRole")
+        # Stuff here that uses the external and account ID
+        aws_myteam = signalfx.aws.Integration("awsMyteam",
+            enabled=True,
+            integration_id=aws_myteam_token.id,
+            token="put_your_token_here",
+            key="put_your_key_here",
+            regions=["us-east-1"],
+            poll_rate=300,
+            import_cloud_watch=True,
+            enable_aws_usage=True,
+            custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(
+                default_action="Exclude",
+                filter_action="Include",
+                filter_source="filter('code', '200')",
+                namespace="fart",
+            )],
+            namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
+                default_action="Exclude",
+                filter_action="Include",
+                filter_source="filter('code', '200')",
+                namespace="AWS/EC2",
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TokenIntegrationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TokenIntegrationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

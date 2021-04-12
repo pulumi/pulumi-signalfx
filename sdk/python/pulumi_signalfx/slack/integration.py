@@ -5,13 +5,67 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Integration']
+__all__ = ['IntegrationArgs', 'Integration']
+
+@pulumi.input_type
+class IntegrationArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 webhook_url: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Integration resource.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
+        :param pulumi.Input[str] name: Name of the integration.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "webhook_url", webhook_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="webhookUrl")
+    def webhook_url(self) -> pulumi.Input[str]:
+        """
+        Slack incoming webhook URL.
+        """
+        return pulumi.get(self, "webhook_url")
+
+    @webhook_url.setter
+    def webhook_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "webhook_url", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Integration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +97,49 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntegrationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SignalFx Slack integration.
+
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        slack_myteam = signalfx.slack.Integration("slackMyteam",
+            enabled=True,
+            webhook_url="http://example.com")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IntegrationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 webhook_url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

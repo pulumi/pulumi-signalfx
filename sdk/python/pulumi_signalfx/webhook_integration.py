@@ -5,15 +5,98 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WebhookIntegration']
+__all__ = ['WebhookIntegrationArgs', 'WebhookIntegration']
+
+@pulumi.input_type
+class WebhookIntegrationArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 shared_secret: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WebhookIntegration resource.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] url: The URL to request
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if shared_secret is not None:
+            pulumi.set(__self__, "shared_secret", shared_secret)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]]:
+        """
+        A header to send with the request
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_secret")
+
+    @shared_secret.setter
+    def shared_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_secret", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to request
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 class WebhookIntegration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +120,40 @@ class WebhookIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WebhookIntegrationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SignalFx Webhook integration.
+
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+
+        :param str resource_name: The name of the resource.
+        :param WebhookIntegrationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WebhookIntegrationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 shared_secret: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

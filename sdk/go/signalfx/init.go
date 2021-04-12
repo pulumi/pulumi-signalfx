@@ -21,37 +21,38 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "signalfx:index/alertMutingRule:AlertMutingRule":
-		r, err = NewAlertMutingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &AlertMutingRule{}
 	case "signalfx:index/dashboard:Dashboard":
-		r, err = NewDashboard(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dashboard{}
 	case "signalfx:index/dashboardGroup:DashboardGroup":
-		r, err = NewDashboardGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &DashboardGroup{}
 	case "signalfx:index/dataLink:DataLink":
-		r, err = NewDataLink(ctx, name, nil, pulumi.URN_(urn))
+		r = &DataLink{}
 	case "signalfx:index/detector:Detector":
-		r, err = NewDetector(ctx, name, nil, pulumi.URN_(urn))
+		r = &Detector{}
 	case "signalfx:index/eventFeedChart:EventFeedChart":
-		r, err = NewEventFeedChart(ctx, name, nil, pulumi.URN_(urn))
+		r = &EventFeedChart{}
 	case "signalfx:index/heatmapChart:HeatmapChart":
-		r, err = NewHeatmapChart(ctx, name, nil, pulumi.URN_(urn))
+		r = &HeatmapChart{}
 	case "signalfx:index/listChart:ListChart":
-		r, err = NewListChart(ctx, name, nil, pulumi.URN_(urn))
+		r = &ListChart{}
 	case "signalfx:index/orgToken:OrgToken":
-		r, err = NewOrgToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrgToken{}
 	case "signalfx:index/singleValueChart:SingleValueChart":
-		r, err = NewSingleValueChart(ctx, name, nil, pulumi.URN_(urn))
+		r = &SingleValueChart{}
 	case "signalfx:index/team:Team":
-		r, err = NewTeam(ctx, name, nil, pulumi.URN_(urn))
+		r = &Team{}
 	case "signalfx:index/textChart:TextChart":
-		r, err = NewTextChart(ctx, name, nil, pulumi.URN_(urn))
+		r = &TextChart{}
 	case "signalfx:index/timeChart:TimeChart":
-		r, err = NewTimeChart(ctx, name, nil, pulumi.URN_(urn))
+		r = &TimeChart{}
 	case "signalfx:index/webhookIntegration:WebhookIntegration":
-		r, err = NewWebhookIntegration(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebhookIntegration{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -68,7 +69,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {
