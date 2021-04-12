@@ -5,15 +5,460 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TimeChart']
+__all__ = ['TimeChartArgs', 'TimeChart']
+
+@pulumi.input_type
+class TimeChartArgs:
+    def __init__(__self__, *,
+                 program_text: pulumi.Input[str],
+                 axes_include_zero: Optional[pulumi.Input[bool]] = None,
+                 axes_precision: Optional[pulumi.Input[int]] = None,
+                 axis_left: Optional[pulumi.Input['TimeChartAxisLeftArgs']] = None,
+                 axis_right: Optional[pulumi.Input['TimeChartAxisRightArgs']] = None,
+                 color_by: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 event_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
+                 histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
+                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 minimum_resolution: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 on_chart_legend_dimension: Optional[pulumi.Input[str]] = None,
+                 plot_type: Optional[pulumi.Input[str]] = None,
+                 show_data_markers: Optional[pulumi.Input[bool]] = None,
+                 show_event_lines: Optional[pulumi.Input[bool]] = None,
+                 stacked: Optional[pulumi.Input[bool]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
+        """
+        The set of arguments for constructing a TimeChart resource.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        :param pulumi.Input[int] axes_precision: Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+        :param pulumi.Input['TimeChartAxisLeftArgs'] axis_left: Set of axis options.
+        :param pulumi.Input['TimeChartAxisRightArgs'] axis_right: Set of axis options.
+        :param pulumi.Input[str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        :param pulumi.Input[str] description: Description of the chart.
+        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
+        :param pulumi.Input[str] name: Name of the chart.
+        :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the chart
+        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
+        """
+        pulumi.set(__self__, "program_text", program_text)
+        if axes_include_zero is not None:
+            pulumi.set(__self__, "axes_include_zero", axes_include_zero)
+        if axes_precision is not None:
+            pulumi.set(__self__, "axes_precision", axes_precision)
+        if axis_left is not None:
+            pulumi.set(__self__, "axis_left", axis_left)
+        if axis_right is not None:
+            pulumi.set(__self__, "axis_right", axis_right)
+        if color_by is not None:
+            pulumi.set(__self__, "color_by", color_by)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disable_sampling is not None:
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if event_options is not None:
+            pulumi.set(__self__, "event_options", event_options)
+        if histogram_options is not None:
+            pulumi.set(__self__, "histogram_options", histogram_options)
+        if legend_fields_to_hides is not None:
+            warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
+            pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
+        if legend_fields_to_hides is not None:
+            pulumi.set(__self__, "legend_fields_to_hides", legend_fields_to_hides)
+        if legend_options_fields is not None:
+            pulumi.set(__self__, "legend_options_fields", legend_options_fields)
+        if max_delay is not None:
+            pulumi.set(__self__, "max_delay", max_delay)
+        if minimum_resolution is not None:
+            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if on_chart_legend_dimension is not None:
+            pulumi.set(__self__, "on_chart_legend_dimension", on_chart_legend_dimension)
+        if plot_type is not None:
+            pulumi.set(__self__, "plot_type", plot_type)
+        if show_data_markers is not None:
+            pulumi.set(__self__, "show_data_markers", show_data_markers)
+        if show_event_lines is not None:
+            pulumi.set(__self__, "show_event_lines", show_event_lines)
+        if stacked is not None:
+            pulumi.set(__self__, "stacked", stacked)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
+            pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if unit_prefix is not None:
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
+        if viz_options is not None:
+            pulumi.set(__self__, "viz_options", viz_options)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> pulumi.Input[str]:
+        """
+        Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter(name="axesIncludeZero")
+    def axes_include_zero(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        """
+        return pulumi.get(self, "axes_include_zero")
+
+    @axes_include_zero.setter
+    def axes_include_zero(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "axes_include_zero", value)
+
+    @property
+    @pulumi.getter(name="axesPrecision")
+    def axes_precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+        """
+        return pulumi.get(self, "axes_precision")
+
+    @axes_precision.setter
+    def axes_precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "axes_precision", value)
+
+    @property
+    @pulumi.getter(name="axisLeft")
+    def axis_left(self) -> Optional[pulumi.Input['TimeChartAxisLeftArgs']]:
+        """
+        Set of axis options.
+        """
+        return pulumi.get(self, "axis_left")
+
+    @axis_left.setter
+    def axis_left(self, value: Optional[pulumi.Input['TimeChartAxisLeftArgs']]):
+        pulumi.set(self, "axis_left", value)
+
+    @property
+    @pulumi.getter(name="axisRight")
+    def axis_right(self) -> Optional[pulumi.Input['TimeChartAxisRightArgs']]:
+        """
+        Set of axis options.
+        """
+        return pulumi.get(self, "axis_right")
+
+    @axis_right.setter
+    def axis_right(self, value: Optional[pulumi.Input['TimeChartAxisRightArgs']]):
+        pulumi.set(self, "axis_right", value)
+
+    @property
+    @pulumi.getter(name="colorBy")
+    def color_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        """
+        return pulumi.get(self, "color_by")
+
+    @color_by.setter
+    def color_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "color_by", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the chart.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableSampling")
+    def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        """
+        return pulumi.get(self, "disable_sampling")
+
+    @disable_sampling.setter
+    def disable_sampling(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_sampling", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="eventOptions")
+    def event_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
+        """
+        Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        """
+        return pulumi.get(self, "event_options")
+
+    @event_options.setter
+    def event_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]):
+        pulumi.set(self, "event_options", value)
+
+    @property
+    @pulumi.getter(name="histogramOptions")
+    def histogram_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
+        """
+        Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        """
+        return pulumi.get(self, "histogram_options")
+
+    @histogram_options.setter
+    def histogram_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]):
+        pulumi.set(self, "histogram_options", value)
+
+    @property
+    @pulumi.getter(name="legendFieldsToHides")
+    def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        """
+        return pulumi.get(self, "legend_fields_to_hides")
+
+    @legend_fields_to_hides.setter
+    def legend_fields_to_hides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "legend_fields_to_hides", value)
+
+    @property
+    @pulumi.getter(name="legendOptionsFields")
+    def legend_options_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
+        """
+        List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        """
+        return pulumi.get(self, "legend_options_fields")
+
+    @legend_options_fields.setter
+    def legend_options_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]):
+        pulumi.set(self, "legend_options_fields", value)
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long (in seconds) to wait for late datapoints.
+        """
+        return pulumi.get(self, "max_delay")
+
+    @max_delay.setter
+    def max_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_delay", value)
+
+    @property
+    @pulumi.getter(name="minimumResolution")
+    def minimum_resolution(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum resolution (in seconds) to use for computing the underlying program.
+        """
+        return pulumi.get(self, "minimum_resolution")
+
+    @minimum_resolution.setter
+    def minimum_resolution(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_resolution", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the chart.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="onChartLegendDimension")
+    def on_chart_legend_dimension(self) -> Optional[pulumi.Input[str]]:
+        """
+        Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        """
+        return pulumi.get(self, "on_chart_legend_dimension")
+
+    @on_chart_legend_dimension.setter
+    def on_chart_legend_dimension(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "on_chart_legend_dimension", value)
+
+    @property
+    @pulumi.getter(name="plotType")
+    def plot_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        """
+        return pulumi.get(self, "plot_type")
+
+    @plot_type.setter
+    def plot_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plot_type", value)
+
+    @property
+    @pulumi.getter(name="showDataMarkers")
+    def show_data_markers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        """
+        return pulumi.get(self, "show_data_markers")
+
+    @show_data_markers.setter
+    def show_data_markers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_data_markers", value)
+
+    @property
+    @pulumi.getter(name="showEventLines")
+    def show_event_lines(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        """
+        return pulumi.get(self, "show_event_lines")
+
+    @show_event_lines.setter
+    def show_event_lines(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_event_lines", value)
+
+    @property
+    @pulumi.getter
+    def stacked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether area and bar charts in the visualization should be stacked. `false` by default.
+        """
+        return pulumi.get(self, "stacked")
+
+    @stacked.setter
+    def stacked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stacked", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags associated with the chart
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="unitPrefix")
+    def unit_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        """
+        return pulumi.get(self, "unit_prefix")
+
+    @unit_prefix.setter
+    def unit_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit_prefix", value)
+
+    @property
+    @pulumi.getter(name="vizOptions")
+    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
+        """
+        Plot-level customization options, associated with a publish statement.
+        """
+        return pulumi.get(self, "viz_options")
+
+    @viz_options.setter
+    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]):
+        pulumi.set(self, "viz_options", value)
 
 
 class TimeChart(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -116,6 +561,96 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TimeChartArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
+
+        Time charts display data points over a period of time.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mychart0 = signalfx.TimeChart("mychart0",
+            axis_left=signalfx.TimeChartAxisLeftArgs(
+                label="CPU Total Idle",
+                low_watermark=1000,
+            ),
+            legend_options_fields=[
+                signalfx.TimeChartLegendOptionsFieldArgs(
+                    enabled=False,
+                    property="collector",
+                ),
+                signalfx.TimeChartLegendOptionsFieldArgs(
+                    enabled=False,
+                    property="hostname",
+                ),
+            ],
+            plot_type="LineChart",
+            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
+
+        \"\"\",
+            show_data_markers=True,
+            time_range=3600,
+            viz_options=[signalfx.TimeChartVizOptionArgs(
+                axis="left",
+                color="orange",
+                label="CPU Idle",
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param TimeChartArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TimeChartArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 axes_include_zero: Optional[pulumi.Input[bool]] = None,
+                 axes_precision: Optional[pulumi.Input[int]] = None,
+                 axis_left: Optional[pulumi.Input[pulumi.InputType['TimeChartAxisLeftArgs']]] = None,
+                 axis_right: Optional[pulumi.Input[pulumi.InputType['TimeChartAxisRightArgs']]] = None,
+                 color_by: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 event_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartEventOptionArgs']]]]] = None,
+                 histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartHistogramOptionArgs']]]]] = None,
+                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartLegendOptionsFieldArgs']]]]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 minimum_resolution: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 on_chart_legend_dimension: Optional[pulumi.Input[str]] = None,
+                 plot_type: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 show_data_markers: Optional[pulumi.Input[bool]] = None,
+                 show_event_lines: Optional[pulumi.Input[bool]] = None,
+                 stacked: Optional[pulumi.Input[bool]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

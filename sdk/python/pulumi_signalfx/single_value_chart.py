@@ -5,15 +5,246 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SingleValueChart']
+__all__ = ['SingleValueChartArgs', 'SingleValueChart']
+
+@pulumi.input_type
+class SingleValueChartArgs:
+    def __init__(__self__, *,
+                 program_text: pulumi.Input[str],
+                 color_by: Optional[pulumi.Input[str]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 max_precision: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[int]] = None,
+                 secondary_visualization: Optional[pulumi.Input[str]] = None,
+                 show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None):
+        """
+        The set of arguments for constructing a SingleValueChart resource.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+        :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[str] description: Description of the chart.
+        :param pulumi.Input[bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
+        :param pulumi.Input[int] max_precision: The maximum precision to for value displayed.
+        :param pulumi.Input[str] name: Name of the chart.
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the value.
+        :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+        :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+        :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
+        """
+        pulumi.set(__self__, "program_text", program_text)
+        if color_by is not None:
+            pulumi.set(__self__, "color_by", color_by)
+        if color_scales is not None:
+            pulumi.set(__self__, "color_scales", color_scales)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if is_timestamp_hidden is not None:
+            pulumi.set(__self__, "is_timestamp_hidden", is_timestamp_hidden)
+        if max_delay is not None:
+            pulumi.set(__self__, "max_delay", max_delay)
+        if max_precision is not None:
+            pulumi.set(__self__, "max_precision", max_precision)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
+        if secondary_visualization is not None:
+            pulumi.set(__self__, "secondary_visualization", secondary_visualization)
+        if show_spark_line is not None:
+            pulumi.set(__self__, "show_spark_line", show_spark_line)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if unit_prefix is not None:
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
+        if viz_options is not None:
+            pulumi.set(__self__, "viz_options", viz_options)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> pulumi.Input[str]:
+        """
+        Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter(name="colorBy")
+    def color_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+        """
+        return pulumi.get(self, "color_by")
+
+    @color_by.setter
+    def color_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "color_by", value)
+
+    @property
+    @pulumi.getter(name="colorScales")
+    def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]]:
+        """
+        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        """
+        return pulumi.get(self, "color_scales")
+
+    @color_scales.setter
+    def color_scales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]]):
+        pulumi.set(self, "color_scales", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the chart.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="isTimestampHidden")
+    def is_timestamp_hidden(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to hide the timestamp in the chart. `false` by default.
+        """
+        return pulumi.get(self, "is_timestamp_hidden")
+
+    @is_timestamp_hidden.setter
+    def is_timestamp_hidden(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_timestamp_hidden", value)
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long (in seconds) to wait for late datapoints
+        """
+        return pulumi.get(self, "max_delay")
+
+    @max_delay.setter
+    def max_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_delay", value)
+
+    @property
+    @pulumi.getter(name="maxPrecision")
+    def max_precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum precision to for value displayed.
+        """
+        return pulumi.get(self, "max_precision")
+
+    @max_precision.setter
+    def max_precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_precision", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the chart.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to refresh the value.
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @refresh_interval.setter
+    def refresh_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_interval", value)
+
+    @property
+    @pulumi.getter(name="secondaryVisualization")
+    def secondary_visualization(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+        """
+        return pulumi.get(self, "secondary_visualization")
+
+    @secondary_visualization.setter
+    def secondary_visualization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_visualization", value)
+
+    @property
+    @pulumi.getter(name="showSparkLine")
+    def show_spark_line(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to show a trend line below the current value. `false` by default.
+        """
+        return pulumi.get(self, "show_spark_line")
+
+    @show_spark_line.setter
+    def show_spark_line(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_spark_line", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="unitPrefix")
+    def unit_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+        """
+        return pulumi.get(self, "unit_prefix")
+
+    @unit_prefix.setter
+    def unit_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit_prefix", value)
+
+    @property
+    @pulumi.getter(name="vizOptions")
+    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]]:
+        """
+        Plot-level customization options, associated with a publish statement.
+        """
+        return pulumi.get(self, "viz_options")
+
+    @viz_options.setter
+    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]]):
+        pulumi.set(self, "viz_options", value)
 
 
 class SingleValueChart(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -75,6 +306,68 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SingleValueChartArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
+
+        If the time period is in the past, the number represents the value of the metric near the end of the time period.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mysvchart0 = signalfx.SingleValueChart("mysvchart0",
+            color_by="Dimension",
+            description="Very cool Single Value Chart",
+            is_timestamp_hidden=True,
+            max_delay=2,
+            max_precision=2,
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+
+        \"\"\",
+            refresh_interval=1)
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SingleValueChartArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SingleValueChartArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 color_by: Optional[pulumi.Input[str]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 max_precision: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[int]] = None,
+                 secondary_visualization: Optional[pulumi.Input[str]] = None,
+                 show_spark_line: Optional[pulumi.Input[bool]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

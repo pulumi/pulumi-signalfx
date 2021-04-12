@@ -5,13 +5,68 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 
-__all__ = ['Integration']
+__all__ = ['IntegrationArgs', 'Integration']
+
+@pulumi.input_type
+class IntegrationArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 name: Optional[pulumi.Input[str]] = None,
+                 post_url: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Integration resource.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] post_url: Victor Ops REST API URL.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if post_url is not None:
+            pulumi.set(__self__, "post_url", post_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="postUrl")
+    def post_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Victor Ops REST API URL.
+        """
+        return pulumi.get(self, "post_url")
+
+    @post_url.setter
+    def post_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "post_url", value)
 
 
 class Integration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +98,49 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] post_url: Victor Ops REST API URL.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntegrationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SignalFx VictorOps integration.
+
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        vioctor_ops_myteam = signalfx.victorops.Integration("vioctorOpsMyteam",
+            enabled=True,
+            post_url="https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IntegrationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 post_url: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,15 +5,134 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Integration']
+__all__ = ['IntegrationArgs', 'Integration']
+
+@pulumi.input_type
+class IntegrationArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_token: Optional[pulumi.Input[str]] = None,
+                 poll_rate: Optional[pulumi.Input[int]] = None,
+                 project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Integration resource.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[int] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if named_token is not None:
+            pulumi.set(__self__, "named_token", named_token)
+        if poll_rate is not None:
+            pulumi.set(__self__, "poll_rate", poll_rate)
+        if project_service_keys is not None:
+            pulumi.set(__self__, "project_service_keys", project_service_keys)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if whitelists is not None:
+            pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namedToken")
+    def named_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A named token to use for ingest
+        """
+        return pulumi.get(self, "named_token")
+
+    @named_token.setter
+    def named_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "named_token", value)
+
+    @property
+    @pulumi.getter(name="pollRate")
+    def poll_rate(self) -> Optional[pulumi.Input[int]]:
+        """
+        GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        """
+        return pulumi.get(self, "poll_rate")
+
+    @poll_rate.setter
+    def poll_rate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "poll_rate", value)
+
+    @property
+    @pulumi.getter(name="projectServiceKeys")
+    def project_service_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]]:
+        """
+        GCP projects to add.
+        """
+        return pulumi.get(self, "project_service_keys")
+
+    @project_service_keys.setter
+    def project_service_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]]):
+        pulumi.set(self, "project_service_keys", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Compute Metadata Whitelist
+        """
+        return pulumi.get(self, "whitelists")
+
+    @whitelists.setter
+    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelists", value)
 
 
 class Integration(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -64,6 +183,64 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IntegrationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        SignalFx GCP Integration
+
+        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider. Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
+            enabled=True,
+            poll_rate=300000,
+            project_service_keys=[
+                signalfx.gcp.IntegrationProjectServiceKeyArgs(
+                    project_id="gcp_project_id_1",
+                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
+                ),
+                signalfx.gcp.IntegrationProjectServiceKeyArgs(
+                    project_id="gcp_project_id_2",
+                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
+                ),
+            ],
+            services=["compute"])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IntegrationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IntegrationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_token: Optional[pulumi.Input[str]] = None,
+                 poll_rate: Optional[pulumi.Input[int]] = None,
+                 project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

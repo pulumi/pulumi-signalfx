@@ -5,15 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DashboardGroup']
+__all__ = ['DashboardGroupArgs', 'DashboardGroup']
+
+@pulumi.input_type
+class DashboardGroupArgs:
+    def __init__(__self__, *,
+                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a DashboardGroup resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        :param pulumi.Input[str] description: Description of the dashboard group.
+        :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
+        """
+        if authorized_writer_teams is not None:
+            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+        if authorized_writer_users is not None:
+            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+        if dashboards is not None:
+            pulumi.set(__self__, "dashboards", dashboards)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if import_qualifiers is not None:
+            pulumi.set(__self__, "import_qualifiers", import_qualifiers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
+
+    @property
+    @pulumi.getter(name="authorizedWriterTeams")
+    def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        """
+        return pulumi.get(self, "authorized_writer_teams")
+
+    @authorized_writer_teams.setter
+    def authorized_writer_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_writer_teams", value)
+
+    @property
+    @pulumi.getter(name="authorizedWriterUsers")
+    def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        """
+        return pulumi.get(self, "authorized_writer_users")
+
+    @authorized_writer_users.setter
+    def authorized_writer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_writer_users", value)
+
+    @property
+    @pulumi.getter
+    def dashboards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
+        """
+        [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
+        return pulumi.get(self, "dashboards")
+
+    @dashboards.setter
+    def dashboards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]):
+        pulumi.set(self, "dashboards", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the dashboard group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="importQualifiers")
+    def import_qualifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]:
+        return pulumi.get(self, "import_qualifiers")
+
+    @import_qualifiers.setter
+    def import_qualifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]]):
+        pulumi.set(self, "import_qualifiers", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the dashboard group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Team IDs to associate the dashboard group to.
+        """
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
 
 
 class DashboardGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -80,6 +196,81 @@ class DashboardGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the dashboard group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[DashboardGroupArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
+
+        > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
+            description="Cool dashboard group",
+            authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+            authorized_writer_users=["abc123"])
+        ```
+        ### With Mirrored Dashboards
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
+            description="Cool dashboard group",
+            dashboards=[signalfx.DashboardGroupDashboardArgs(
+                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
+                name_override="GC For My Service",
+                description_override="Garbage Collection dashboard maintained by JVM team",
+                filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
+                    property="service",
+                    values=["myservice"],
+                    negated=False,
+                )],
+                variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(
+                    property="region",
+                    values=["us-west1"],
+                    values_suggesteds=[
+                        "us-west-1",
+                        "us-east-1",
+                    ],
+                )],
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DashboardGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DashboardGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

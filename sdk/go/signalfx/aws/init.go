@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "signalfx:aws/externalIntegration:ExternalIntegration":
-		r, err = NewExternalIntegration(ctx, name, nil, pulumi.URN_(urn))
+		r = &ExternalIntegration{}
 	case "signalfx:aws/integration:Integration":
-		r, err = NewIntegration(ctx, name, nil, pulumi.URN_(urn))
+		r = &Integration{}
 	case "signalfx:aws/tokenIntegration:TokenIntegration":
-		r, err = NewTokenIntegration(ctx, name, nil, pulumi.URN_(urn))
+		r = &TokenIntegration{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
