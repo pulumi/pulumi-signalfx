@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -243,6 +243,254 @@ class HeatmapChartArgs:
         pulumi.set(self, "unit_prefix", value)
 
 
+@pulumi.input_type
+class _HeatmapChartState:
+    def __init__(__self__, *,
+                 color_range: Optional[pulumi.Input['HeatmapChartColorRangeArgs']] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 hide_timestamp: Optional[pulumi.Input[bool]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 minimum_resolution: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[int]] = None,
+                 sort_by: Optional[pulumi.Input[str]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering HeatmapChart resources.
+        :param pulumi.Input['HeatmapChartColorRangeArgs'] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]] color_scales: One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[str] description: Description of the chart.
+        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the heatmap (in nesting order).
+        :param pulumi.Input[bool] hide_timestamp: Whether to show the timestamp in the chart. `false` by default.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
+        :param pulumi.Input[str] name: Name of the chart.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the heatmap.
+        :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        :param pulumi.Input[str] url: The URL of the chart.
+        """
+        if color_range is not None:
+            pulumi.set(__self__, "color_range", color_range)
+        if color_scales is not None:
+            pulumi.set(__self__, "color_scales", color_scales)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disable_sampling is not None:
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
+        if group_bies is not None:
+            pulumi.set(__self__, "group_bies", group_bies)
+        if hide_timestamp is not None:
+            pulumi.set(__self__, "hide_timestamp", hide_timestamp)
+        if max_delay is not None:
+            pulumi.set(__self__, "max_delay", max_delay)
+        if minimum_resolution is not None:
+            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if program_text is not None:
+            pulumi.set(__self__, "program_text", program_text)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
+        if sort_by is not None:
+            pulumi.set(__self__, "sort_by", sort_by)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if unit_prefix is not None:
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="colorRange")
+    def color_range(self) -> Optional[pulumi.Input['HeatmapChartColorRangeArgs']]:
+        """
+        Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        """
+        return pulumi.get(self, "color_range")
+
+    @color_range.setter
+    def color_range(self, value: Optional[pulumi.Input['HeatmapChartColorRangeArgs']]):
+        pulumi.set(self, "color_range", value)
+
+    @property
+    @pulumi.getter(name="colorScales")
+    def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]:
+        """
+        One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        """
+        return pulumi.get(self, "color_scales")
+
+    @color_scales.setter
+    def color_scales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]]):
+        pulumi.set(self, "color_scales", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the chart.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableSampling")
+    def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        """
+        return pulumi.get(self, "disable_sampling")
+
+    @disable_sampling.setter
+    def disable_sampling(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_sampling", value)
+
+    @property
+    @pulumi.getter(name="groupBies")
+    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Properties to group by in the heatmap (in nesting order).
+        """
+        return pulumi.get(self, "group_bies")
+
+    @group_bies.setter
+    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "group_bies", value)
+
+    @property
+    @pulumi.getter(name="hideTimestamp")
+    def hide_timestamp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to show the timestamp in the chart. `false` by default.
+        """
+        return pulumi.get(self, "hide_timestamp")
+
+    @hide_timestamp.setter
+    def hide_timestamp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide_timestamp", value)
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long (in seconds) to wait for late datapoints.
+        """
+        return pulumi.get(self, "max_delay")
+
+    @max_delay.setter
+    def max_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_delay", value)
+
+    @property
+    @pulumi.getter(name="minimumResolution")
+    def minimum_resolution(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum resolution (in seconds) to use for computing the underlying program.
+        """
+        return pulumi.get(self, "minimum_resolution")
+
+    @minimum_resolution.setter
+    def minimum_resolution(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_resolution", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the chart.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to refresh the values of the heatmap.
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @refresh_interval.setter
+    def refresh_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_interval", value)
+
+    @property
+    @pulumi.getter(name="sortBy")
+    def sort_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+        """
+        return pulumi.get(self, "sort_by")
+
+    @sort_by.setter
+    def sort_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sort_by", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="unitPrefix")
+    def unit_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        """
+        return pulumi.get(self, "unit_prefix")
+
+    @unit_prefix.setter
+    def unit_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit_prefix", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the chart.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
 class HeatmapChart(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -425,25 +673,25 @@ class HeatmapChart(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HeatmapChartArgs.__new__(HeatmapChartArgs)
 
-            __props__['color_range'] = color_range
-            __props__['color_scales'] = color_scales
-            __props__['description'] = description
-            __props__['disable_sampling'] = disable_sampling
-            __props__['group_bies'] = group_bies
-            __props__['hide_timestamp'] = hide_timestamp
-            __props__['max_delay'] = max_delay
-            __props__['minimum_resolution'] = minimum_resolution
-            __props__['name'] = name
+            __props__.__dict__["color_range"] = color_range
+            __props__.__dict__["color_scales"] = color_scales
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disable_sampling"] = disable_sampling
+            __props__.__dict__["group_bies"] = group_bies
+            __props__.__dict__["hide_timestamp"] = hide_timestamp
+            __props__.__dict__["max_delay"] = max_delay
+            __props__.__dict__["minimum_resolution"] = minimum_resolution
+            __props__.__dict__["name"] = name
             if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
-            __props__['program_text'] = program_text
-            __props__['refresh_interval'] = refresh_interval
-            __props__['sort_by'] = sort_by
-            __props__['timezone'] = timezone
-            __props__['unit_prefix'] = unit_prefix
-            __props__['url'] = None
+            __props__.__dict__["program_text"] = program_text
+            __props__.__dict__["refresh_interval"] = refresh_interval
+            __props__.__dict__["sort_by"] = sort_by
+            __props__.__dict__["timezone"] = timezone
+            __props__.__dict__["unit_prefix"] = unit_prefix
+            __props__.__dict__["url"] = None
         super(HeatmapChart, __self__).__init__(
             'signalfx:index/heatmapChart:HeatmapChart',
             resource_name,
@@ -494,23 +742,23 @@ class HeatmapChart(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _HeatmapChartState.__new__(_HeatmapChartState)
 
-        __props__["color_range"] = color_range
-        __props__["color_scales"] = color_scales
-        __props__["description"] = description
-        __props__["disable_sampling"] = disable_sampling
-        __props__["group_bies"] = group_bies
-        __props__["hide_timestamp"] = hide_timestamp
-        __props__["max_delay"] = max_delay
-        __props__["minimum_resolution"] = minimum_resolution
-        __props__["name"] = name
-        __props__["program_text"] = program_text
-        __props__["refresh_interval"] = refresh_interval
-        __props__["sort_by"] = sort_by
-        __props__["timezone"] = timezone
-        __props__["unit_prefix"] = unit_prefix
-        __props__["url"] = url
+        __props__.__dict__["color_range"] = color_range
+        __props__.__dict__["color_scales"] = color_scales
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disable_sampling"] = disable_sampling
+        __props__.__dict__["group_bies"] = group_bies
+        __props__.__dict__["hide_timestamp"] = hide_timestamp
+        __props__.__dict__["max_delay"] = max_delay
+        __props__.__dict__["minimum_resolution"] = minimum_resolution
+        __props__.__dict__["name"] = name
+        __props__.__dict__["program_text"] = program_text
+        __props__.__dict__["refresh_interval"] = refresh_interval
+        __props__.__dict__["sort_by"] = sort_by
+        __props__.__dict__["timezone"] = timezone
+        __props__.__dict__["unit_prefix"] = unit_prefix
+        __props__.__dict__["url"] = url
         return HeatmapChart(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -632,10 +880,4 @@ class HeatmapChart(pulumi.CustomResource):
         The URL of the chart.
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

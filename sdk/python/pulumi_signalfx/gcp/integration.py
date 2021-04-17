@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -56,6 +56,126 @@ class IntegrationArgs:
 
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namedToken")
+    def named_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A named token to use for ingest
+        """
+        return pulumi.get(self, "named_token")
+
+    @named_token.setter
+    def named_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "named_token", value)
+
+    @property
+    @pulumi.getter(name="pollRate")
+    def poll_rate(self) -> Optional[pulumi.Input[int]]:
+        """
+        GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        """
+        return pulumi.get(self, "poll_rate")
+
+    @poll_rate.setter
+    def poll_rate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "poll_rate", value)
+
+    @property
+    @pulumi.getter(name="projectServiceKeys")
+    def project_service_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]]:
+        """
+        GCP projects to add.
+        """
+        return pulumi.get(self, "project_service_keys")
+
+    @project_service_keys.setter
+    def project_service_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]]):
+        pulumi.set(self, "project_service_keys", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Compute Metadata Whitelist
+        """
+        return pulumi.get(self, "whitelists")
+
+    @whitelists.setter
+    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "whitelists", value)
+
+
+@pulumi.input_type
+class _IntegrationState:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_token: Optional[pulumi.Input[str]] = None,
+                 poll_rate: Optional[pulumi.Input[int]] = None,
+                 project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering Integration resources.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[int] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if named_token is not None:
+            pulumi.set(__self__, "named_token", named_token)
+        if poll_rate is not None:
+            pulumi.set(__self__, "poll_rate", poll_rate)
+        if project_service_keys is not None:
+            pulumi.set(__self__, "project_service_keys", project_service_keys)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if whitelists is not None:
+            pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
     @property
@@ -256,17 +376,17 @@ class Integration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
-            __props__['enabled'] = enabled
-            __props__['name'] = name
-            __props__['named_token'] = named_token
-            __props__['poll_rate'] = poll_rate
-            __props__['project_service_keys'] = project_service_keys
-            __props__['services'] = services
-            __props__['whitelists'] = whitelists
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["name"] = name
+            __props__.__dict__["named_token"] = named_token
+            __props__.__dict__["poll_rate"] = poll_rate
+            __props__.__dict__["project_service_keys"] = project_service_keys
+            __props__.__dict__["services"] = services
+            __props__.__dict__["whitelists"] = whitelists
         super(Integration, __self__).__init__(
             'signalfx:gcp/integration:Integration',
             resource_name,
@@ -301,15 +421,15 @@ class Integration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IntegrationState.__new__(_IntegrationState)
 
-        __props__["enabled"] = enabled
-        __props__["name"] = name
-        __props__["named_token"] = named_token
-        __props__["poll_rate"] = poll_rate
-        __props__["project_service_keys"] = project_service_keys
-        __props__["services"] = services
-        __props__["whitelists"] = whitelists
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["name"] = name
+        __props__.__dict__["named_token"] = named_token
+        __props__.__dict__["poll_rate"] = poll_rate
+        __props__.__dict__["project_service_keys"] = project_service_keys
+        __props__.__dict__["services"] = services
+        __props__.__dict__["whitelists"] = whitelists
         return Integration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -367,10 +487,4 @@ class Integration(pulumi.CustomResource):
         Compute Metadata Whitelist
         """
         return pulumi.get(self, "whitelists")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
