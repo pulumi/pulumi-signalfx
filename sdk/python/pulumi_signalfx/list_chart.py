@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -342,6 +342,353 @@ class ListChartArgs:
         pulumi.set(self, "viz_options", value)
 
 
+@pulumi.input_type
+class _ListChartState:
+    def __init__(__self__, *,
+                 color_by: Optional[pulumi.Input[str]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disable_sampling: Optional[pulumi.Input[bool]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 hide_missing_values: Optional[pulumi.Input[bool]] = None,
+                 legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartLegendOptionsFieldArgs']]]] = None,
+                 max_delay: Optional[pulumi.Input[int]] = None,
+                 max_precision: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 refresh_interval: Optional[pulumi.Input[int]] = None,
+                 secondary_visualization: Optional[pulumi.Input[str]] = None,
+                 sort_by: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 timezone: Optional[pulumi.Input[str]] = None,
+                 unit_prefix: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering ListChart resources.
+        :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        :param pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[str] description: Description of the chart.
+        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[bool] hide_missing_values: Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        :param pulumi.Input[Sequence[pulumi.Input['ListChartLegendOptionsFieldArgs']]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
+        :param pulumi.Input[int] max_precision: Maximum number of digits to display when rounding values up or down.
+        :param pulumi.Input[str] name: Name of the chart.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the list.
+        :param pulumi.Input[str] secondary_visualization: The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+        :param pulumi.Input[str] sort_by: The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
+        """
+        if color_by is not None:
+            pulumi.set(__self__, "color_by", color_by)
+        if color_scales is not None:
+            pulumi.set(__self__, "color_scales", color_scales)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disable_sampling is not None:
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if hide_missing_values is not None:
+            pulumi.set(__self__, "hide_missing_values", hide_missing_values)
+        if legend_fields_to_hides is not None:
+            warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
+            pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
+        if legend_fields_to_hides is not None:
+            pulumi.set(__self__, "legend_fields_to_hides", legend_fields_to_hides)
+        if legend_options_fields is not None:
+            pulumi.set(__self__, "legend_options_fields", legend_options_fields)
+        if max_delay is not None:
+            pulumi.set(__self__, "max_delay", max_delay)
+        if max_precision is not None:
+            pulumi.set(__self__, "max_precision", max_precision)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if program_text is not None:
+            pulumi.set(__self__, "program_text", program_text)
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
+        if secondary_visualization is not None:
+            pulumi.set(__self__, "secondary_visualization", secondary_visualization)
+        if sort_by is not None:
+            pulumi.set(__self__, "sort_by", sort_by)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+        if timezone is not None:
+            pulumi.set(__self__, "timezone", timezone)
+        if unit_prefix is not None:
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if viz_options is not None:
+            pulumi.set(__self__, "viz_options", viz_options)
+
+    @property
+    @pulumi.getter(name="colorBy")
+    def color_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        """
+        return pulumi.get(self, "color_by")
+
+    @color_by.setter
+    def color_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "color_by", value)
+
+    @property
+    @pulumi.getter(name="colorScales")
+    def color_scales(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]]]:
+        """
+        Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        """
+        return pulumi.get(self, "color_scales")
+
+    @color_scales.setter
+    def color_scales(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]]]):
+        pulumi.set(self, "color_scales", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the chart.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableSampling")
+    def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+        """
+        return pulumi.get(self, "disable_sampling")
+
+    @disable_sampling.setter
+    def disable_sampling(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_sampling", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="hideMissingValues")
+    def hide_missing_values(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+        """
+        return pulumi.get(self, "hide_missing_values")
+
+    @hide_missing_values.setter
+    def hide_missing_values(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide_missing_values", value)
+
+    @property
+    @pulumi.getter(name="legendFieldsToHides")
+    def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        """
+        return pulumi.get(self, "legend_fields_to_hides")
+
+    @legend_fields_to_hides.setter
+    def legend_fields_to_hides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "legend_fields_to_hides", value)
+
+    @property
+    @pulumi.getter(name="legendOptionsFields")
+    def legend_options_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartLegendOptionsFieldArgs']]]]:
+        """
+        List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        """
+        return pulumi.get(self, "legend_options_fields")
+
+    @legend_options_fields.setter
+    def legend_options_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartLegendOptionsFieldArgs']]]]):
+        pulumi.set(self, "legend_options_fields", value)
+
+    @property
+    @pulumi.getter(name="maxDelay")
+    def max_delay(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long (in seconds) to wait for late datapoints.
+        """
+        return pulumi.get(self, "max_delay")
+
+    @max_delay.setter
+    def max_delay(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_delay", value)
+
+    @property
+    @pulumi.getter(name="maxPrecision")
+    def max_precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of digits to display when rounding values up or down.
+        """
+        return pulumi.get(self, "max_precision")
+
+    @max_precision.setter
+    def max_precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_precision", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the chart.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        How often (in seconds) to refresh the values of the list.
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @refresh_interval.setter
+    def refresh_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "refresh_interval", value)
+
+    @property
+    @pulumi.getter(name="secondaryVisualization")
+    def secondary_visualization(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+        """
+        return pulumi.get(self, "secondary_visualization")
+
+    @secondary_visualization.setter
+    def secondary_visualization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_visualization", value)
+
+    @property
+    @pulumi.getter(name="sortBy")
+    def sort_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sf_metric"` for plot.
+        """
+        return pulumi.get(self, "sort_by")
+
+    @sort_by.setter
+    def sort_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sort_by", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def timezone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+        """
+        return pulumi.get(self, "timezone")
+
+    @timezone.setter
+    def timezone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timezone", value)
+
+    @property
+    @pulumi.getter(name="unitPrefix")
+    def unit_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        """
+        return pulumi.get(self, "unit_prefix")
+
+    @unit_prefix.setter
+    def unit_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unit_prefix", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the chart.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="vizOptions")
+    def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]]:
+        """
+        Plot-level customization options, associated with a publish statement.
+        """
+        return pulumi.get(self, "viz_options")
+
+    @viz_options.setter
+    def viz_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]]):
+        pulumi.set(self, "viz_options", value)
+
+
 class ListChart(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -550,34 +897,34 @@ class ListChart(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ListChartArgs.__new__(ListChartArgs)
 
-            __props__['color_by'] = color_by
-            __props__['color_scales'] = color_scales
-            __props__['description'] = description
-            __props__['disable_sampling'] = disable_sampling
-            __props__['end_time'] = end_time
-            __props__['hide_missing_values'] = hide_missing_values
+            __props__.__dict__["color_by"] = color_by
+            __props__.__dict__["color_scales"] = color_scales
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disable_sampling"] = disable_sampling
+            __props__.__dict__["end_time"] = end_time
+            __props__.__dict__["hide_missing_values"] = hide_missing_values
             if legend_fields_to_hides is not None and not opts.urn:
                 warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
                 pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-            __props__['legend_fields_to_hides'] = legend_fields_to_hides
-            __props__['legend_options_fields'] = legend_options_fields
-            __props__['max_delay'] = max_delay
-            __props__['max_precision'] = max_precision
-            __props__['name'] = name
+            __props__.__dict__["legend_fields_to_hides"] = legend_fields_to_hides
+            __props__.__dict__["legend_options_fields"] = legend_options_fields
+            __props__.__dict__["max_delay"] = max_delay
+            __props__.__dict__["max_precision"] = max_precision
+            __props__.__dict__["name"] = name
             if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
-            __props__['program_text'] = program_text
-            __props__['refresh_interval'] = refresh_interval
-            __props__['secondary_visualization'] = secondary_visualization
-            __props__['sort_by'] = sort_by
-            __props__['start_time'] = start_time
-            __props__['time_range'] = time_range
-            __props__['timezone'] = timezone
-            __props__['unit_prefix'] = unit_prefix
-            __props__['viz_options'] = viz_options
-            __props__['url'] = None
+            __props__.__dict__["program_text"] = program_text
+            __props__.__dict__["refresh_interval"] = refresh_interval
+            __props__.__dict__["secondary_visualization"] = secondary_visualization
+            __props__.__dict__["sort_by"] = sort_by
+            __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["time_range"] = time_range
+            __props__.__dict__["timezone"] = timezone
+            __props__.__dict__["unit_prefix"] = unit_prefix
+            __props__.__dict__["viz_options"] = viz_options
+            __props__.__dict__["url"] = None
         super(ListChart, __self__).__init__(
             'signalfx:index/listChart:ListChart',
             resource_name,
@@ -640,29 +987,29 @@ class ListChart(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ListChartState.__new__(_ListChartState)
 
-        __props__["color_by"] = color_by
-        __props__["color_scales"] = color_scales
-        __props__["description"] = description
-        __props__["disable_sampling"] = disable_sampling
-        __props__["end_time"] = end_time
-        __props__["hide_missing_values"] = hide_missing_values
-        __props__["legend_fields_to_hides"] = legend_fields_to_hides
-        __props__["legend_options_fields"] = legend_options_fields
-        __props__["max_delay"] = max_delay
-        __props__["max_precision"] = max_precision
-        __props__["name"] = name
-        __props__["program_text"] = program_text
-        __props__["refresh_interval"] = refresh_interval
-        __props__["secondary_visualization"] = secondary_visualization
-        __props__["sort_by"] = sort_by
-        __props__["start_time"] = start_time
-        __props__["time_range"] = time_range
-        __props__["timezone"] = timezone
-        __props__["unit_prefix"] = unit_prefix
-        __props__["url"] = url
-        __props__["viz_options"] = viz_options
+        __props__.__dict__["color_by"] = color_by
+        __props__.__dict__["color_scales"] = color_scales
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disable_sampling"] = disable_sampling
+        __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["hide_missing_values"] = hide_missing_values
+        __props__.__dict__["legend_fields_to_hides"] = legend_fields_to_hides
+        __props__.__dict__["legend_options_fields"] = legend_options_fields
+        __props__.__dict__["max_delay"] = max_delay
+        __props__.__dict__["max_precision"] = max_precision
+        __props__.__dict__["name"] = name
+        __props__.__dict__["program_text"] = program_text
+        __props__.__dict__["refresh_interval"] = refresh_interval
+        __props__.__dict__["secondary_visualization"] = secondary_visualization
+        __props__.__dict__["sort_by"] = sort_by
+        __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["time_range"] = time_range
+        __props__.__dict__["timezone"] = timezone
+        __props__.__dict__["unit_prefix"] = unit_prefix
+        __props__.__dict__["url"] = url
+        __props__.__dict__["viz_options"] = viz_options
         return ListChart(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -832,10 +1179,4 @@ class ListChart(pulumi.CustomResource):
         Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

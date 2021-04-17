@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -54,6 +54,23 @@ __all__ = [
 
 @pulumi.output_type
 class AlertMutingRuleFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyValue":
+            suggest = "property_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertMutingRuleFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertMutingRuleFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertMutingRuleFilter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  property: str,
                  property_value: str,
@@ -92,12 +109,26 @@ class AlertMutingRuleFilter(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardChart(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartId":
+            suggest = "chart_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardChart. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardChart.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardChart.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chart_id: str,
                  column: Optional[int] = None,
@@ -161,12 +192,26 @@ class DashboardChart(dict):
         """
         return pulumi.get(self, "width")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardColumn(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartIds":
+            suggest = "chart_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardColumn. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardColumn.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardColumn.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chart_ids: Sequence[str],
                  column: Optional[int] = None,
@@ -217,9 +262,6 @@ class DashboardColumn(dict):
         How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
         return pulumi.get(self, "width")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -299,9 +341,6 @@ class DashboardEventOverlay(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardEventOverlaySource(dict):
@@ -343,12 +382,26 @@ class DashboardEventOverlaySource(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applyIfExist":
+            suggest = "apply_if_exist"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardFilter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  property: str,
                  values: Sequence[str],
@@ -399,12 +452,26 @@ class DashboardFilter(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardGrid(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartIds":
+            suggest = "chart_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGrid. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGrid.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGrid.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chart_ids: Sequence[str],
                  height: Optional[int] = None,
@@ -444,12 +511,34 @@ class DashboardGrid(dict):
         """
         return pulumi.get(self, "width")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardGroupDashboard(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dashboardId":
+            suggest = "dashboard_id"
+        elif key == "descriptionOverride":
+            suggest = "description_override"
+        elif key == "filterOverrides":
+            suggest = "filter_overrides"
+        elif key == "nameOverride":
+            suggest = "name_override"
+        elif key == "variableOverrides":
+            suggest = "variable_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGroupDashboard. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGroupDashboard.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGroupDashboard.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dashboard_id: str,
                  description_override: Optional[str] = None,
@@ -509,9 +598,6 @@ class DashboardGroupDashboard(dict):
     def variable_overrides(self) -> Optional[Sequence['outputs.DashboardGroupDashboardVariableOverride']]:
         return pulumi.get(self, "variable_overrides")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardGroupDashboardFilterOverride(dict):
@@ -553,12 +639,26 @@ class DashboardGroupDashboardFilterOverride(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardGroupDashboardVariableOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valuesSuggesteds":
+            suggest = "values_suggesteds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGroupDashboardVariableOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGroupDashboardVariableOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGroupDashboardVariableOverride.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  property: str,
                  values: Optional[Sequence[str]] = None,
@@ -598,9 +698,6 @@ class DashboardGroupDashboardVariableOverride(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardGroupImportQualifier(dict):
@@ -621,9 +718,6 @@ class DashboardGroupImportQualifier(dict):
     @pulumi.getter
     def metric(self) -> Optional[str]:
         return pulumi.get(self, "metric")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -665,9 +759,6 @@ class DashboardGroupImportQualifierFilter(dict):
         A metric time series dimension or property name.
         """
         return pulumi.get(self, "property")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -711,9 +802,6 @@ class DashboardSelectedEventOverlay(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardSelectedEventOverlaySource(dict):
@@ -755,12 +843,34 @@ class DashboardSelectedEventOverlaySource(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DashboardVariable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applyIfExist":
+            suggest = "apply_if_exist"
+        elif key == "replaceOnly":
+            suggest = "replace_only"
+        elif key == "restrictedSuggestions":
+            suggest = "restricted_suggestions"
+        elif key == "valueRequired":
+            suggest = "value_required"
+        elif key == "valuesSuggesteds":
+            suggest = "values_suggesteds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardVariable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardVariable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardVariable.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alias: str,
                  property: str,
@@ -871,12 +981,30 @@ class DashboardVariable(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataLinkTargetExternalUrl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minimumTimeWindow":
+            suggest = "minimum_time_window"
+        elif key == "propertyKeyMapping":
+            suggest = "property_key_mapping"
+        elif key == "timeFormat":
+            suggest = "time_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataLinkTargetExternalUrl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataLinkTargetExternalUrl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataLinkTargetExternalUrl.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  url: str,
@@ -939,12 +1067,30 @@ class DataLinkTargetExternalUrl(dict):
         """
         return pulumi.get(self, "time_format")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataLinkTargetSignalfxDashboard(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dashboardGroupId":
+            suggest = "dashboard_group_id"
+        elif key == "dashboardId":
+            suggest = "dashboard_id"
+        elif key == "isDefault":
+            suggest = "is_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataLinkTargetSignalfxDashboard. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataLinkTargetSignalfxDashboard.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataLinkTargetSignalfxDashboard.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dashboard_group_id: str,
                  dashboard_id: str,
@@ -994,12 +1140,26 @@ class DataLinkTargetSignalfxDashboard(dict):
         """
         return pulumi.get(self, "is_default")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataLinkTargetSplunk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "propertyKeyMapping":
+            suggest = "property_key_mapping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataLinkTargetSplunk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataLinkTargetSplunk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataLinkTargetSplunk.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  property_key_mapping: Optional[Mapping[str, str]] = None):
@@ -1027,12 +1187,32 @@ class DataLinkTargetSplunk(dict):
         """
         return pulumi.get(self, "property_key_mapping")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DetectorRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detectLabel":
+            suggest = "detect_label"
+        elif key == "parameterizedBody":
+            suggest = "parameterized_body"
+        elif key == "parameterizedSubject":
+            suggest = "parameterized_subject"
+        elif key == "runbookUrl":
+            suggest = "runbook_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DetectorRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DetectorRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DetectorRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  detect_label: str,
                  severity: str,
@@ -1143,12 +1323,32 @@ class DetectorRule(dict):
         """
         return pulumi.get(self, "tip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DetectorVizOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "valuePrefix":
+            suggest = "value_prefix"
+        elif key == "valueSuffix":
+            suggest = "value_suffix"
+        elif key == "valueUnit":
+            suggest = "value_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DetectorVizOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DetectorVizOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DetectorVizOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  color: Optional[str] = None,
@@ -1218,12 +1418,28 @@ class DetectorVizOption(dict):
         """
         return pulumi.get(self, "value_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HeatmapChartColorRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HeatmapChartColorRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HeatmapChartColorRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HeatmapChartColorRange.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  color: str,
                  max_value: Optional[float] = None,
@@ -1262,9 +1478,6 @@ class HeatmapChartColorRange(dict):
         The minimum value within the coloring range.
         """
         return pulumi.get(self, "min_value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1332,9 +1545,6 @@ class HeatmapChartColorScale(dict):
         """
         return pulumi.get(self, "lte")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListChartColorScale(dict):
@@ -1401,9 +1611,6 @@ class ListChartColorScale(dict):
         """
         return pulumi.get(self, "lte")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListChartLegendOptionsField(dict):
@@ -1434,12 +1641,32 @@ class ListChartLegendOptionsField(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ListChartVizOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "valuePrefix":
+            suggest = "value_prefix"
+        elif key == "valueSuffix":
+            suggest = "value_suffix"
+        elif key == "valueUnit":
+            suggest = "value_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListChartVizOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListChartVizOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListChartVizOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  color: Optional[str] = None,
@@ -1509,12 +1736,28 @@ class ListChartVizOption(dict):
         """
         return pulumi.get(self, "value_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrgTokenDpmLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dpmLimit":
+            suggest = "dpm_limit"
+        elif key == "dpmNotificationThreshold":
+            suggest = "dpm_notification_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrgTokenDpmLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrgTokenDpmLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrgTokenDpmLimits.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dpm_limit: int,
                  dpm_notification_threshold: Optional[int] = None):
@@ -1542,12 +1785,40 @@ class OrgTokenDpmLimits(dict):
         """
         return pulumi.get(self, "dpm_notification_threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrgTokenHostOrUsageLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerLimit":
+            suggest = "container_limit"
+        elif key == "containerNotificationThreshold":
+            suggest = "container_notification_threshold"
+        elif key == "customMetricsLimit":
+            suggest = "custom_metrics_limit"
+        elif key == "customMetricsNotificationThreshold":
+            suggest = "custom_metrics_notification_threshold"
+        elif key == "highResMetricsLimit":
+            suggest = "high_res_metrics_limit"
+        elif key == "highResMetricsNotificationThreshold":
+            suggest = "high_res_metrics_notification_threshold"
+        elif key == "hostLimit":
+            suggest = "host_limit"
+        elif key == "hostNotificationThreshold":
+            suggest = "host_notification_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrgTokenHostOrUsageLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrgTokenHostOrUsageLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrgTokenHostOrUsageLimits.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_limit: Optional[int] = None,
                  container_notification_threshold: Optional[int] = None,
@@ -1648,9 +1919,6 @@ class OrgTokenHostOrUsageLimits(dict):
         """
         return pulumi.get(self, "host_notification_threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SingleValueChartColorScale(dict):
@@ -1717,12 +1985,32 @@ class SingleValueChartColorScale(dict):
         """
         return pulumi.get(self, "lte")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SingleValueChartVizOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "valuePrefix":
+            suggest = "value_prefix"
+        elif key == "valueSuffix":
+            suggest = "value_suffix"
+        elif key == "valueUnit":
+            suggest = "value_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SingleValueChartVizOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SingleValueChartVizOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SingleValueChartVizOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  color: Optional[str] = None,
@@ -1792,12 +2080,36 @@ class SingleValueChartVizOption(dict):
         """
         return pulumi.get(self, "value_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartAxisLeft(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "highWatermark":
+            suggest = "high_watermark"
+        elif key == "highWatermarkLabel":
+            suggest = "high_watermark_label"
+        elif key == "lowWatermark":
+            suggest = "low_watermark"
+        elif key == "lowWatermarkLabel":
+            suggest = "low_watermark_label"
+        elif key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeChartAxisLeft. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeChartAxisLeft.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeChartAxisLeft.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  high_watermark: Optional[float] = None,
                  high_watermark_label: Optional[str] = None,
@@ -1894,9 +2206,6 @@ class TimeChartAxisLeft(dict):
     def watermarks(self) -> Optional[Sequence['outputs.TimeChartAxisLeftWatermark']]:
         return pulumi.get(self, "watermarks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartAxisLeftWatermark(dict):
@@ -1923,12 +2232,36 @@ class TimeChartAxisLeftWatermark(dict):
         """
         return pulumi.get(self, "label")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartAxisRight(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "highWatermark":
+            suggest = "high_watermark"
+        elif key == "highWatermarkLabel":
+            suggest = "high_watermark_label"
+        elif key == "lowWatermark":
+            suggest = "low_watermark"
+        elif key == "lowWatermarkLabel":
+            suggest = "low_watermark_label"
+        elif key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeChartAxisRight. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeChartAxisRight.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeChartAxisRight.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  high_watermark: Optional[float] = None,
                  high_watermark_label: Optional[str] = None,
@@ -2025,9 +2358,6 @@ class TimeChartAxisRight(dict):
     def watermarks(self) -> Optional[Sequence['outputs.TimeChartAxisRightWatermark']]:
         return pulumi.get(self, "watermarks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartAxisRightWatermark(dict):
@@ -2054,12 +2384,26 @@ class TimeChartAxisRightWatermark(dict):
         """
         return pulumi.get(self, "label")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartEventOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeChartEventOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeChartEventOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeChartEventOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  color: Optional[str] = None,
@@ -2099,12 +2443,26 @@ class TimeChartEventOption(dict):
         """
         return pulumi.get(self, "display_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartHistogramOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "colorTheme":
+            suggest = "color_theme"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeChartHistogramOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeChartHistogramOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeChartHistogramOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  color_theme: Optional[str] = None):
         """
@@ -2120,9 +2478,6 @@ class TimeChartHistogramOption(dict):
         Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
         """
         return pulumi.get(self, "color_theme")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2154,12 +2509,34 @@ class TimeChartLegendOptionsField(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeChartVizOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "plotType":
+            suggest = "plot_type"
+        elif key == "valuePrefix":
+            suggest = "value_prefix"
+        elif key == "valueSuffix":
+            suggest = "value_suffix"
+        elif key == "valueUnit":
+            suggest = "value_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeChartVizOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeChartVizOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeChartVizOption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  label: str,
                  axis: Optional[str] = None,
@@ -2253,12 +2630,28 @@ class TimeChartVizOption(dict):
         """
         return pulumi.get(self, "value_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebhookIntegrationHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerKey":
+            suggest = "header_key"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebhookIntegrationHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebhookIntegrationHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebhookIntegrationHeader.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  header_key: str,
                  header_value: str):
@@ -2284,9 +2677,6 @@ class WebhookIntegrationHeader(dict):
         The value of the header to send
         """
         return pulumi.get(self, "header_value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

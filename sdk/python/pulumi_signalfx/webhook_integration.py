@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -47,6 +47,90 @@ class WebhookIntegrationArgs:
 
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]]:
+        """
+        A header to send with the request
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sharedSecret")
+    def shared_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_secret")
+
+    @shared_secret.setter
+    def shared_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_secret", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL to request
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class _WebhookIntegrationState:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 shared_secret: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WebhookIntegration resources.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] url: The URL to request
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if shared_secret is not None:
+            pulumi.set(__self__, "shared_secret", shared_secret)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
 
     @property
@@ -169,15 +253,15 @@ class WebhookIntegration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WebhookIntegrationArgs.__new__(WebhookIntegrationArgs)
 
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
-            __props__['enabled'] = enabled
-            __props__['headers'] = headers
-            __props__['name'] = name
-            __props__['shared_secret'] = shared_secret
-            __props__['url'] = url
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["headers"] = headers
+            __props__.__dict__["name"] = name
+            __props__.__dict__["shared_secret"] = shared_secret
+            __props__.__dict__["url"] = url
         super(WebhookIntegration, __self__).__init__(
             'signalfx:index/webhookIntegration:WebhookIntegration',
             resource_name,
@@ -207,13 +291,13 @@ class WebhookIntegration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WebhookIntegrationState.__new__(_WebhookIntegrationState)
 
-        __props__["enabled"] = enabled
-        __props__["headers"] = headers
-        __props__["name"] = name
-        __props__["shared_secret"] = shared_secret
-        __props__["url"] = url
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["headers"] = headers
+        __props__.__dict__["name"] = name
+        __props__.__dict__["shared_secret"] = shared_secret
+        __props__.__dict__["url"] = url
         return WebhookIntegration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -252,10 +336,4 @@ class WebhookIntegration(pulumi.CustomResource):
         The URL to request
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

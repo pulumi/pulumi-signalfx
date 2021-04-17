@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['EventFeedChartArgs', 'EventFeedChart']
 
@@ -113,6 +113,126 @@ class EventFeedChartArgs:
         pulumi.set(self, "time_range", value)
 
 
+@pulumi.input_type
+class _EventFeedChartState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 program_text: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[int]] = None,
+                 time_range: Optional[pulumi.Input[int]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering EventFeedChart resources.
+        :param pulumi.Input[str] description: Description of the text note.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] url: The URL of the chart.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if program_text is not None:
+            pulumi.set(__self__, "program_text", program_text)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the text note.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the text note.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input[int]]:
+        """
+        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the chart.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
 class EventFeedChart(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -187,17 +307,17 @@ class EventFeedChart(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EventFeedChartArgs.__new__(EventFeedChartArgs)
 
-            __props__['description'] = description
-            __props__['end_time'] = end_time
-            __props__['name'] = name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["end_time"] = end_time
+            __props__.__dict__["name"] = name
             if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
-            __props__['program_text'] = program_text
-            __props__['start_time'] = start_time
-            __props__['time_range'] = time_range
-            __props__['url'] = None
+            __props__.__dict__["program_text"] = program_text
+            __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["time_range"] = time_range
+            __props__.__dict__["url"] = None
         super(EventFeedChart, __self__).__init__(
             'signalfx:index/eventFeedChart:EventFeedChart',
             resource_name,
@@ -232,15 +352,15 @@ class EventFeedChart(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _EventFeedChartState.__new__(_EventFeedChartState)
 
-        __props__["description"] = description
-        __props__["end_time"] = end_time
-        __props__["name"] = name
-        __props__["program_text"] = program_text
-        __props__["start_time"] = start_time
-        __props__["time_range"] = time_range
-        __props__["url"] = url
+        __props__.__dict__["description"] = description
+        __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["name"] = name
+        __props__.__dict__["program_text"] = program_text
+        __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["time_range"] = time_range
+        __props__.__dict__["url"] = url
         return EventFeedChart(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -298,10 +418,4 @@ class EventFeedChart(pulumi.CustomResource):
         The URL of the chart.
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

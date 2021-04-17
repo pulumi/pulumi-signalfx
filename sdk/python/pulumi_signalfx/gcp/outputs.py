@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'IntegrationProjectServiceKey',
@@ -15,6 +15,25 @@ __all__ = [
 
 @pulumi.output_type
 class IntegrationProjectServiceKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "projectKey":
+            suggest = "project_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationProjectServiceKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationProjectServiceKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationProjectServiceKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project_id: str,
                  project_key: str):
@@ -30,9 +49,6 @@ class IntegrationProjectServiceKey(dict):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> str:
         return pulumi.get(self, "project_key")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

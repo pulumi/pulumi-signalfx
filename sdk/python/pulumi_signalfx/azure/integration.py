@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -206,6 +206,206 @@ class IntegrationArgs:
         pulumi.set(self, "sync_guest_os_namespaces", value)
 
 
+@pulumi.input_type
+class _IntegrationState:
+    def __init__(__self__, *,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 named_token: Optional[pulumi.Input[str]] = None,
+                 poll_rate: Optional[pulumi.Input[int]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Integration resources.
+        :param pulumi.Input[str] app_id: Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). One of `60` or `300`.
+        :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
+        :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+        :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+        """
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if custom_namespaces_per_services is not None:
+            pulumi.set(__self__, "custom_namespaces_per_services", custom_namespaces_per_services)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if named_token is not None:
+            pulumi.set(__self__, "named_token", named_token)
+        if poll_rate is not None:
+            pulumi.set(__self__, "poll_rate", poll_rate)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if services is not None:
+            pulumi.set(__self__, "services", services)
+        if subscriptions is not None:
+            pulumi.set(__self__, "subscriptions", subscriptions)
+        if sync_guest_os_namespaces is not None:
+            pulumi.set(__self__, "sync_guest_os_namespaces", sync_guest_os_namespaces)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="customNamespacesPerServices")
+    def custom_namespaces_per_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]:
+        """
+        Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+        """
+        return pulumi.get(self, "custom_namespaces_per_services")
+
+    @custom_namespaces_per_services.setter
+    def custom_namespaces_per_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]]):
+        pulumi.set(self, "custom_namespaces_per_services", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namedToken")
+    def named_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        A named token to use for ingest
+        """
+        return pulumi.get(self, "named_token")
+
+    @named_token.setter
+    def named_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "named_token", value)
+
+    @property
+    @pulumi.getter(name="pollRate")
+    def poll_rate(self) -> Optional[pulumi.Input[int]]:
+        """
+        AWS poll rate (in seconds). One of `60` or `300`.
+        """
+        return pulumi.get(self, "poll_rate")
+
+    @poll_rate.setter
+    def poll_rate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "poll_rate", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter
+    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        """
+        return pulumi.get(self, "services")
+
+    @services.setter
+    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def subscriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Azure subscriptions that SignalFx should monitor.
+        """
+        return pulumi.get(self, "subscriptions")
+
+    @subscriptions.setter
+    def subscriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subscriptions", value)
+
+    @property
+    @pulumi.getter(name="syncGuestOsNamespaces")
+    def sync_guest_os_namespaces(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+        """
+        return pulumi.get(self, "sync_guest_os_namespaces")
+
+    @sync_guest_os_namespaces.setter
+    def sync_guest_os_namespaces(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sync_guest_os_namespaces", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+
 class Integration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -356,32 +556,32 @@ class Integration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
-            __props__['app_id'] = app_id
-            __props__['custom_namespaces_per_services'] = custom_namespaces_per_services
+            __props__.__dict__["app_id"] = app_id
+            __props__.__dict__["custom_namespaces_per_services"] = custom_namespaces_per_services
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
-            __props__['enabled'] = enabled
-            __props__['environment'] = environment
-            __props__['name'] = name
-            __props__['named_token'] = named_token
-            __props__['poll_rate'] = poll_rate
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["environment"] = environment
+            __props__.__dict__["name"] = name
+            __props__.__dict__["named_token"] = named_token
+            __props__.__dict__["poll_rate"] = poll_rate
             if secret_key is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_key'")
-            __props__['secret_key'] = secret_key
+            __props__.__dict__["secret_key"] = secret_key
             if services is None and not opts.urn:
                 raise TypeError("Missing required property 'services'")
-            __props__['services'] = services
+            __props__.__dict__["services"] = services
             if subscriptions is None and not opts.urn:
                 raise TypeError("Missing required property 'subscriptions'")
-            __props__['subscriptions'] = subscriptions
-            __props__['sync_guest_os_namespaces'] = sync_guest_os_namespaces
+            __props__.__dict__["subscriptions"] = subscriptions
+            __props__.__dict__["sync_guest_os_namespaces"] = sync_guest_os_namespaces
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
-            __props__['tenant_id'] = tenant_id
+            __props__.__dict__["tenant_id"] = tenant_id
         super(Integration, __self__).__init__(
             'signalfx:azure/integration:Integration',
             resource_name,
@@ -426,20 +626,20 @@ class Integration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IntegrationState.__new__(_IntegrationState)
 
-        __props__["app_id"] = app_id
-        __props__["custom_namespaces_per_services"] = custom_namespaces_per_services
-        __props__["enabled"] = enabled
-        __props__["environment"] = environment
-        __props__["name"] = name
-        __props__["named_token"] = named_token
-        __props__["poll_rate"] = poll_rate
-        __props__["secret_key"] = secret_key
-        __props__["services"] = services
-        __props__["subscriptions"] = subscriptions
-        __props__["sync_guest_os_namespaces"] = sync_guest_os_namespaces
-        __props__["tenant_id"] = tenant_id
+        __props__.__dict__["app_id"] = app_id
+        __props__.__dict__["custom_namespaces_per_services"] = custom_namespaces_per_services
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["environment"] = environment
+        __props__.__dict__["name"] = name
+        __props__.__dict__["named_token"] = named_token
+        __props__.__dict__["poll_rate"] = poll_rate
+        __props__.__dict__["secret_key"] = secret_key
+        __props__.__dict__["services"] = services
+        __props__.__dict__["subscriptions"] = subscriptions
+        __props__.__dict__["sync_guest_os_namespaces"] = sync_guest_os_namespaces
+        __props__.__dict__["tenant_id"] = tenant_id
         return Integration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -537,10 +737,4 @@ class Integration(pulumi.CustomResource):
         Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """
         return pulumi.get(self, "tenant_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

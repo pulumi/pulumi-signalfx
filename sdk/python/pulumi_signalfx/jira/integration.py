@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['IntegrationArgs', 'Integration']
 
@@ -204,6 +204,206 @@ class IntegrationArgs:
         pulumi.set(self, "username", value)
 
 
+@pulumi.input_type
+class _IntegrationState:
+    def __init__(__self__, *,
+                 api_token: Optional[pulumi.Input[str]] = None,
+                 assignee_display_name: Optional[pulumi.Input[str]] = None,
+                 assignee_name: Optional[pulumi.Input[str]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
+                 base_url: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 issue_type: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 project_key: Optional[pulumi.Input[str]] = None,
+                 user_email: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Integration resources.
+        :param pulumi.Input[str] api_token: The API token for the user email
+        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee.
+        :param pulumi.Input[str] assignee_name: Jira user name for the assignee.
+        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+        :param pulumi.Input[str] base_url: Base URL of the Jira instance that's integrated with SignalFx.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] password: Password used to authenticate the Jira integration.
+        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+        :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
+        :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
+        """
+        if api_token is not None:
+            pulumi.set(__self__, "api_token", api_token)
+        if assignee_display_name is not None:
+            pulumi.set(__self__, "assignee_display_name", assignee_display_name)
+        if assignee_name is not None:
+            pulumi.set(__self__, "assignee_name", assignee_name)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if issue_type is not None:
+            pulumi.set(__self__, "issue_type", issue_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if project_key is not None:
+            pulumi.set(__self__, "project_key", project_key)
+        if user_email is not None:
+            pulumi.set(__self__, "user_email", user_email)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API token for the user email
+        """
+        return pulumi.get(self, "api_token")
+
+    @api_token.setter
+    def api_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_token", value)
+
+    @property
+    @pulumi.getter(name="assigneeDisplayName")
+    def assignee_display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jira display name for the assignee.
+        """
+        return pulumi.get(self, "assignee_display_name")
+
+    @assignee_display_name.setter
+    def assignee_display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "assignee_display_name", value)
+
+    @property
+    @pulumi.getter(name="assigneeName")
+    def assignee_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jira user name for the assignee.
+        """
+        return pulumi.get(self, "assignee_name")
+
+    @assignee_name.setter
+    def assignee_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "assignee_name", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+        """
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
+
+    @property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Base URL of the Jira instance that's integrated with SignalFx.
+        """
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="issueType")
+    def issue_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        """
+        return pulumi.get(self, "issue_type")
+
+    @issue_type.setter
+    def issue_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issue_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the integration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password used to authenticate the Jira integration.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="projectKey")
+    def project_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+        """
+        return pulumi.get(self, "project_key")
+
+    @project_key.setter
+    def project_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_key", value)
+
+    @property
+    @pulumi.getter(name="userEmail")
+    def user_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address used to authenticate the Jira integration.
+        """
+        return pulumi.get(self, "user_email")
+
+    @user_email.setter
+    def user_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_email", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        User name used to authenticate the Jira integration.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
 class Integration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -336,32 +536,32 @@ class Integration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
-            __props__['api_token'] = api_token
-            __props__['assignee_display_name'] = assignee_display_name
+            __props__.__dict__["api_token"] = api_token
+            __props__.__dict__["assignee_display_name"] = assignee_display_name
             if assignee_name is None and not opts.urn:
                 raise TypeError("Missing required property 'assignee_name'")
-            __props__['assignee_name'] = assignee_name
+            __props__.__dict__["assignee_name"] = assignee_name
             if auth_method is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_method'")
-            __props__['auth_method'] = auth_method
+            __props__.__dict__["auth_method"] = auth_method
             if base_url is None and not opts.urn:
                 raise TypeError("Missing required property 'base_url'")
-            __props__['base_url'] = base_url
+            __props__.__dict__["base_url"] = base_url
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
-            __props__['enabled'] = enabled
+            __props__.__dict__["enabled"] = enabled
             if issue_type is None and not opts.urn:
                 raise TypeError("Missing required property 'issue_type'")
-            __props__['issue_type'] = issue_type
-            __props__['name'] = name
-            __props__['password'] = password
+            __props__.__dict__["issue_type"] = issue_type
+            __props__.__dict__["name"] = name
+            __props__.__dict__["password"] = password
             if project_key is None and not opts.urn:
                 raise TypeError("Missing required property 'project_key'")
-            __props__['project_key'] = project_key
-            __props__['user_email'] = user_email
-            __props__['username'] = username
+            __props__.__dict__["project_key"] = project_key
+            __props__.__dict__["user_email"] = user_email
+            __props__.__dict__["username"] = username
         super(Integration, __self__).__init__(
             'signalfx:jira/integration:Integration',
             resource_name,
@@ -406,20 +606,20 @@ class Integration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IntegrationState.__new__(_IntegrationState)
 
-        __props__["api_token"] = api_token
-        __props__["assignee_display_name"] = assignee_display_name
-        __props__["assignee_name"] = assignee_name
-        __props__["auth_method"] = auth_method
-        __props__["base_url"] = base_url
-        __props__["enabled"] = enabled
-        __props__["issue_type"] = issue_type
-        __props__["name"] = name
-        __props__["password"] = password
-        __props__["project_key"] = project_key
-        __props__["user_email"] = user_email
-        __props__["username"] = username
+        __props__.__dict__["api_token"] = api_token
+        __props__.__dict__["assignee_display_name"] = assignee_display_name
+        __props__.__dict__["assignee_name"] = assignee_name
+        __props__.__dict__["auth_method"] = auth_method
+        __props__.__dict__["base_url"] = base_url
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["issue_type"] = issue_type
+        __props__.__dict__["name"] = name
+        __props__.__dict__["password"] = password
+        __props__.__dict__["project_key"] = project_key
+        __props__.__dict__["user_email"] = user_email
+        __props__.__dict__["username"] = username
         return Integration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -517,10 +717,4 @@ class Integration(pulumi.CustomResource):
         User name used to authenticate the Jira integration.
         """
         return pulumi.get(self, "username")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

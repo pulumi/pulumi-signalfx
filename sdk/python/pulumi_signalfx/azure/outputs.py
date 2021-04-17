@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = [
     'IntegrationCustomNamespacesPerService',
@@ -40,9 +40,6 @@ class IntegrationCustomNamespacesPerService(dict):
         The name of the service.
         """
         return pulumi.get(self, "service")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

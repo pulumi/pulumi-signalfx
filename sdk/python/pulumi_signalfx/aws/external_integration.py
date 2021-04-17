@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities, _tables
+from .. import _utilities
 
 __all__ = ['ExternalIntegrationArgs', 'ExternalIntegration']
 
@@ -32,6 +32,62 @@ class ExternalIntegrationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _ExternalIntegrationState:
+    def __init__(__self__, *,
+                 external_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 signalfx_aws_account: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ExternalIntegration resources.
+        :param pulumi.Input[str] external_id: The external ID to use with your IAM role and with `aws.Integration`.
+        :param pulumi.Input[str] name: The name of this integration
+        :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        """
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if signalfx_aws_account is not None:
+            pulumi.set(__self__, "signalfx_aws_account", signalfx_aws_account)
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to use with your IAM role and with `aws.Integration`.
+        """
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this integration
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="signalfxAwsAccount")
+    def signalfx_aws_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        """
+        return pulumi.get(self, "signalfx_aws_account")
+
+    @signalfx_aws_account.setter
+    def signalfx_aws_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signalfx_aws_account", value)
 
 
 class ExternalIntegration(pulumi.CustomResource):
@@ -305,11 +361,11 @@ class ExternalIntegration(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ExternalIntegrationArgs.__new__(ExternalIntegrationArgs)
 
-            __props__['name'] = name
-            __props__['external_id'] = None
-            __props__['signalfx_aws_account'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["external_id"] = None
+            __props__.__dict__["signalfx_aws_account"] = None
         super(ExternalIntegration, __self__).__init__(
             'signalfx:aws/externalIntegration:ExternalIntegration',
             resource_name,
@@ -336,11 +392,11 @@ class ExternalIntegration(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ExternalIntegrationState.__new__(_ExternalIntegrationState)
 
-        __props__["external_id"] = external_id
-        __props__["name"] = name
-        __props__["signalfx_aws_account"] = signalfx_aws_account
+        __props__.__dict__["external_id"] = external_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["signalfx_aws_account"] = signalfx_aws_account
         return ExternalIntegration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -366,10 +422,4 @@ class ExternalIntegration(pulumi.CustomResource):
         The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         """
         return pulumi.get(self, "signalfx_aws_account")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

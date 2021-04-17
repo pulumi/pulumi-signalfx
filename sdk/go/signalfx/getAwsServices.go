@@ -4,7 +4,7 @@
 package signalfx
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Deprecated: signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices
