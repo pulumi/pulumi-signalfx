@@ -951,9 +951,7 @@ class TimeChart(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
 
@@ -1110,15 +1108,7 @@ class TimeChart(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

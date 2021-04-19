@@ -231,9 +231,7 @@ class DataLink(pulumi.CustomResource):
                  target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLinkTargetExternalUrlArgs']]]]] = None,
                  target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLinkTargetSignalfxDashboardArgs']]]]] = None,
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLinkTargetSplunkArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 
@@ -338,15 +336,7 @@ class DataLink(pulumi.CustomResource):
                  target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLinkTargetExternalUrlArgs']]]]] = None,
                  target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLinkTargetSignalfxDashboardArgs']]]]] = None,
                  target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DataLinkTargetSplunkArgs']]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
