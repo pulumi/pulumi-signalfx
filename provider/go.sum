@@ -743,6 +743,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210330145014-71bc922955b7 h1:bV4naqMLlLaFcBixvYRIFpKFTFKo0izKKpjkLmm+g8M=
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210330145014-71bc922955b7/go.mod h1:rfQO0Hu60nWnTQNC6biqwckeReyXhmOG1vDMPz50Zjs=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210519101442-32f9c02ab96c h1:OY0D/ICDuvdH7qSe3DdEtJyeGowKIE8Fxb5ecff1+60=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210519101442-32f9c02ab96c/go.mod h1:rfQO0Hu60nWnTQNC6biqwckeReyXhmOG1vDMPz50Zjs=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
