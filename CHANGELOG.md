@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v6.7.4 of the SignalFx Terraform Provider
+_(none)_
 
 ---
+
+## 5.0.1 (2021-05-21)
+* Upgrade to v6.7.4 of the SignalFx Terraform Provider
 
 ## 5.0.0 (2021-04-19)
 * Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
