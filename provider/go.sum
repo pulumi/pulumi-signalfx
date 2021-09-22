@@ -419,6 +419,8 @@ github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB7
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
 github.com/gorilla/websocket v1.4.1 h1:q7AeDBpnBk8AogcD4DSag/Ukw/KV+YhzLj2bP5HvKCM=
 github.com/gorilla/websocket v1.4.1/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
+github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0Ufc=
+github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/grpc-ecosystem/go-grpc-middleware v1.0.0 h1:Iju5GlWwrvL6UBg4zJJt3btmonfrMlCDdsejg4CZE7c=
 github.com/grpc-ecosystem/go-grpc-middleware v1.0.0/go.mod h1:FiyG127CGDf3tlThmgyCl78X/SZQqEOJBCDaAfeWzPs=
 github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 h1:Ovs26xHkKqVztRpIrF/92BcuyuQ/YW4NSIpoGtfXNho=
@@ -749,6 +751,8 @@ github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210712151539-cbf23f96cc
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210712151539-cbf23f96cc82/go.mod h1:rfQO0Hu60nWnTQNC6biqwckeReyXhmOG1vDMPz50Zjs=
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210908132451-cf3ed1e71e3e h1:xSa751Yc8ul8FfO9ps7jUjXhogNwkVPjRKqnR3R9rr4=
 github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210908132451-cf3ed1e71e3e/go.mod h1:rfQO0Hu60nWnTQNC6biqwckeReyXhmOG1vDMPz50Zjs=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210922133900-bacd948e8cd3 h1:OXKieZMFIMNDOATFqYmfPfexLcm/sv1GlbKzfQF2Juw=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20210922133900-bacd948e8cd3/go.mod h1:olwzISA+Ps3dLqwwo5SyyBlJyic0auPbsCsGFWNxF1k=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af h1:gu+uRPtBe88sKxUCEXRoeCvVG90TJmwhiqRpvdhQFng=
@@ -788,6 +792,8 @@ github.com/signalfx/gomemcache v0.0.0-20180823214636-4f7ef64c72a9 h1:M3hb9iDDlB3
 github.com/signalfx/gomemcache v0.0.0-20180823214636-4f7ef64c72a9/go.mod h1:Ytb8KfCSyuwy/VILnROdgCvbQLA5ch0nkbG7lKT0BXw=
 github.com/signalfx/signalfx-go v1.7.18 h1:sxUz0ayXpIZAH4Wot6LVzGzVz5t86q2BDT/8lVREYPA=
 github.com/signalfx/signalfx-go v1.7.18/go.mod h1:CeCGXKT2wqqky0Nz8eV0NH/CpMPE7tzYUcV8eQS1U1s=
+github.com/signalfx/signalfx-go v1.8.2-0.20210915131150-ef9961af55b6 h1:k9ygCeL+sambOb2S1r/yCDOpkLEGausx/fZ+VDjew0k=
+github.com/signalfx/signalfx-go v1.8.2-0.20210915131150-ef9961af55b6/go.mod h1:EtCwkwvLv+wfjDQVAs1O37yVn3hp2xAKmXA6BFKkRT4=
 github.com/signalfx/thrift v0.0.0-20181211001559-3838fa316492 h1:xWH5x1J8QgMdxs1q+jcuVyBKmazAee82UWeS9BPMxzY=
 github.com/signalfx/thrift v0.0.0-20181211001559-3838fa316492/go.mod h1:Xv29nl9fxdk0hmeqcUHgAZZwvYrOhduNW+9qk4H+6K0=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
