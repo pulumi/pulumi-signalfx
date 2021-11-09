@@ -203,63 +203,63 @@ export interface HeatmapChartState {
     /**
      * Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorRange?: pulumi.Input<inputs.HeatmapChartColorRange>;
+    colorRange?: pulumi.Input<inputs.HeatmapChartColorRange>;
     /**
      * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[]>;
     /**
      * Description of the chart.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    readonly disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean>;
     /**
      * Properties to group by in the heatmap (in nesting order).
      */
-    readonly groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to show the timestamp in the chart. `false` by default.
      */
-    readonly hideTimestamp?: pulumi.Input<boolean>;
+    hideTimestamp?: pulumi.Input<boolean>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    readonly minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number>;
     /**
      * Name of the chart.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
      */
-    readonly programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string>;
     /**
      * How often (in seconds) to refresh the values of the heatmap.
      */
-    readonly refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number>;
     /**
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
-    readonly sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    readonly unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string>;
     /**
      * The URL of the chart.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -269,57 +269,57 @@ export interface HeatmapChartArgs {
     /**
      * Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorRange?: pulumi.Input<inputs.HeatmapChartColorRange>;
+    colorRange?: pulumi.Input<inputs.HeatmapChartColorRange>;
     /**
      * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.HeatmapChartColorScale>[]>;
     /**
      * Description of the chart.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    readonly disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean>;
     /**
      * Properties to group by in the heatmap (in nesting order).
      */
-    readonly groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether to show the timestamp in the chart. `false` by default.
      */
-    readonly hideTimestamp?: pulumi.Input<boolean>;
+    hideTimestamp?: pulumi.Input<boolean>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * The minimum resolution (in seconds) to use for computing the underlying program.
      */
-    readonly minimumResolution?: pulumi.Input<number>;
+    minimumResolution?: pulumi.Input<number>;
     /**
      * Name of the chart.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
      */
-    readonly programText: pulumi.Input<string>;
+    programText: pulumi.Input<string>;
     /**
      * How often (in seconds) to refresh the values of the heatmap.
      */
-    readonly refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number>;
     /**
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      */
-    readonly sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    readonly unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string>;
 }

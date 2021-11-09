@@ -177,51 +177,51 @@ export interface IntegrationState {
     /**
      * The API token for the user email
      */
-    readonly apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string>;
     /**
      * Jira display name for the assignee.
      */
-    readonly assigneeDisplayName?: pulumi.Input<string>;
+    assigneeDisplayName?: pulumi.Input<string>;
     /**
      * Jira user name for the assignee.
      */
-    readonly assigneeName?: pulumi.Input<string>;
+    assigneeName?: pulumi.Input<string>;
     /**
      * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
-    readonly authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string>;
     /**
      * Base URL of the Jira instance that's integrated with SignalFx.
      */
-    readonly baseUrl?: pulumi.Input<string>;
+    baseUrl?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
-    readonly issueType?: pulumi.Input<string>;
+    issueType?: pulumi.Input<string>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Password used to authenticate the Jira integration.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
-    readonly projectKey?: pulumi.Input<string>;
+    projectKey?: pulumi.Input<string>;
     /**
      * Email address used to authenticate the Jira integration.
      */
-    readonly userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string>;
     /**
      * User name used to authenticate the Jira integration.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -231,49 +231,49 @@ export interface IntegrationArgs {
     /**
      * The API token for the user email
      */
-    readonly apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string>;
     /**
      * Jira display name for the assignee.
      */
-    readonly assigneeDisplayName?: pulumi.Input<string>;
+    assigneeDisplayName?: pulumi.Input<string>;
     /**
      * Jira user name for the assignee.
      */
-    readonly assigneeName: pulumi.Input<string>;
+    assigneeName: pulumi.Input<string>;
     /**
      * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
-    readonly authMethod: pulumi.Input<string>;
+    authMethod: pulumi.Input<string>;
     /**
      * Base URL of the Jira instance that's integrated with SignalFx.
      */
-    readonly baseUrl: pulumi.Input<string>;
+    baseUrl: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
-    readonly issueType: pulumi.Input<string>;
+    issueType: pulumi.Input<string>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Password used to authenticate the Jira integration.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
-    readonly projectKey: pulumi.Input<string>;
+    projectKey: pulumi.Input<string>;
     /**
      * Email address used to authenticate the Jira integration.
      */
-    readonly userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string>;
     /**
      * User name used to authenticate the Jira integration.
      */
-    readonly username?: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
 }

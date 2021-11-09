@@ -636,7 +636,7 @@ class Integration(pulumi.CustomResource):
         ```
         ## Service Names
 
-        > **NOTE** You can use the data source "aws.getServices" to specify all services.
+        > **NOTE** You can use the data source "aws.get_services" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -707,7 +707,7 @@ class Integration(pulumi.CustomResource):
         ```
         ## Service Names
 
-        > **NOTE** You can use the data source "aws.getServices" to specify all services.
+        > **NOTE** You can use the data source "aws.get_services" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

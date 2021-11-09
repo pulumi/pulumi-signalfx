@@ -193,7 +193,7 @@ type TextChartArrayInput interface {
 type TextChartArray []TextChartInput
 
 func (TextChartArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TextChart)(nil))
+	return reflect.TypeOf((*[]*TextChart)(nil)).Elem()
 }
 
 func (i TextChartArray) ToTextChartArrayOutput() TextChartArrayOutput {
@@ -218,7 +218,7 @@ type TextChartMapInput interface {
 type TextChartMap map[string]TextChartInput
 
 func (TextChartMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TextChart)(nil))
+	return reflect.TypeOf((*map[string]*TextChart)(nil)).Elem()
 }
 
 func (i TextChartMap) ToTextChartMapOutput() TextChartMapOutput {
@@ -229,9 +229,7 @@ func (i TextChartMap) ToTextChartMapOutputWithContext(ctx context.Context) TextC
 	return pulumi.ToOutputWithContext(ctx, i).(TextChartMapOutput)
 }
 
-type TextChartOutput struct {
-	*pulumi.OutputState
-}
+type TextChartOutput struct{ *pulumi.OutputState }
 
 func (TextChartOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TextChart)(nil))
@@ -250,14 +248,12 @@ func (o TextChartOutput) ToTextChartPtrOutput() TextChartPtrOutput {
 }
 
 func (o TextChartOutput) ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput {
-	return o.ApplyT(func(v TextChart) *TextChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextChart) *TextChart {
 		return &v
 	}).(TextChartPtrOutput)
 }
 
-type TextChartPtrOutput struct {
-	*pulumi.OutputState
-}
+type TextChartPtrOutput struct{ *pulumi.OutputState }
 
 func (TextChartPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TextChart)(nil))
@@ -269,6 +265,16 @@ func (o TextChartPtrOutput) ToTextChartPtrOutput() TextChartPtrOutput {
 
 func (o TextChartPtrOutput) ToTextChartPtrOutputWithContext(ctx context.Context) TextChartPtrOutput {
 	return o
+}
+
+func (o TextChartPtrOutput) Elem() TextChartOutput {
+	return o.ApplyT(func(v *TextChart) TextChart {
+		if v != nil {
+			return *v
+		}
+		var ret TextChart
+		return ret
+	}).(TextChartOutput)
 }
 
 type TextChartArrayOutput struct{ *pulumi.OutputState }
@@ -312,6 +318,10 @@ func (o TextChartMapOutput) MapIndex(k pulumi.StringInput) TextChartOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TextChartInput)(nil)).Elem(), &TextChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextChartPtrInput)(nil)).Elem(), &TextChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextChartArrayInput)(nil)).Elem(), TextChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TextChartMapInput)(nil)).Elem(), TextChartMap{})
 	pulumi.RegisterOutputType(TextChartOutput{})
 	pulumi.RegisterOutputType(TextChartPtrOutput{})
 	pulumi.RegisterOutputType(TextChartArrayOutput{})

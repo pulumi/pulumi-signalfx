@@ -14,6 +14,77 @@ namespace Pulumi.SignalFx
     /// 
     /// &gt; **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var clusters = config.GetObject&lt;dynamic&gt;("clusters") ?? 
+    ///         {
+    ///             "clusterA",
+    ///             "clusterB",
+    ///         };
+    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; clusters.Length; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
+    ///             {
+    ///                 Description = $"your application is slow - {clusters[range.Value]}",
+    ///                 MaxDelay = 30,
+    ///                 Tags = 
+    ///                 {
+    ///                     "app-backend",
+    ///                     "staging",
+    ///                 },
+    ///                 AuthorizedWriterTeams = 
+    ///                 {
+    ///                     signalfx_team.Mycoolteam.Id,
+    ///                 },
+    ///                 AuthorizedWriterUsers = 
+    ///                 {
+    ///                     "abc123",
+    ///                 },
+    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
+    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
+    /// ",
+    ///                 Rules = 
+    ///                 {
+    ///                     new SignalFx.Inputs.DetectorRuleArgs
+    ///                     {
+    ///                         Description = "maximum &gt; 60 for 5m",
+    ///                         Severity = "Warning",
+    ///                         DetectLabel = "Processing old messages 5m",
+    ///                         Notifications = 
+    ///                         {
+    ///                             "Email,foo-alerts@bar.com",
+    ///                         },
+    ///                     },
+    ///                     new SignalFx.Inputs.DetectorRuleArgs
+    ///                     {
+    ///                         Description = "maximum &gt; 60 for 30m",
+    ///                         Severity = "Critical",
+    ///                         DetectLabel = "Processing old messages 30m",
+    ///                         Notifications = 
+    ///                         {
+    ///                             "Email,foo-alerts@bar.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             }));
+    ///         }
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Notification Format
     /// 
     /// As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:

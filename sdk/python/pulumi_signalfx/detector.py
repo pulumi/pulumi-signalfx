@@ -647,6 +647,49 @@ class Detector(pulumi.CustomResource):
 
         > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        config = pulumi.Config()
+        clusters = config.get_object("clusters")
+        if clusters is None:
+            clusters = [
+                "clusterA",
+                "clusterB",
+            ]
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {clusters[range['value']]}",
+                max_delay=30,
+                tags=[
+                    "app-backend",
+                    "staging",
+                ],
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rules=[
+                    signalfx.DetectorRuleArgs(
+                        description="maximum > 60 for 5m",
+                        severity="Warning",
+                        detect_label="Processing old messages 5m",
+                        notifications=["Email,foo-alerts@bar.com"],
+                    ),
+                    signalfx.DetectorRuleArgs(
+                        description="maximum > 60 for 30m",
+                        severity="Critical",
+                        detect_label="Processing old messages 30m",
+                        notifications=["Email,foo-alerts@bar.com"],
+                    ),
+                ]))
+        ```
         ## Notification Format
 
         As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
@@ -769,6 +812,49 @@ class Detector(pulumi.CustomResource):
 
         > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        config = pulumi.Config()
+        clusters = config.get_object("clusters")
+        if clusters is None:
+            clusters = [
+                "clusterA",
+                "clusterB",
+            ]
+        application_delay = []
+        for range in [{"value": i} for i in range(0, len(clusters))]:
+            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
+                description=f"your application is slow - {clusters[range['value']]}",
+                max_delay=30,
+                tags=[
+                    "app-backend",
+                    "staging",
+                ],
+                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
+                authorized_writer_users=["abc123"],
+                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
+        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+        \"\"\",
+                rules=[
+                    signalfx.DetectorRuleArgs(
+                        description="maximum > 60 for 5m",
+                        severity="Warning",
+                        detect_label="Processing old messages 5m",
+                        notifications=["Email,foo-alerts@bar.com"],
+                    ),
+                    signalfx.DetectorRuleArgs(
+                        description="maximum > 60 for 30m",
+                        severity="Critical",
+                        detect_label="Processing old messages 30m",
+                        notifications=["Email,foo-alerts@bar.com"],
+                    ),
+                ]))
+        ```
         ## Notification Format
 
         As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:

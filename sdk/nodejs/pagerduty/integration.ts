@@ -101,15 +101,15 @@ export interface IntegrationState {
     /**
      * PagerDuty API key.
      */
-    readonly apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -119,13 +119,13 @@ export interface IntegrationArgs {
     /**
      * PagerDuty API key.
      */
-    readonly apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

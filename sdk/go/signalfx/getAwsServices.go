@@ -4,6 +4,9 @@
 package signalfx
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,4 +30,50 @@ type GetAwsServicesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string                  `pulumi:"id"`
 	Services []GetAwsServicesService `pulumi:"services"`
+}
+
+func GetAwsServicesOutput(ctx *pulumi.Context, args GetAwsServicesOutputArgs, opts ...pulumi.InvokeOption) GetAwsServicesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAwsServicesResult, error) {
+			args := v.(GetAwsServicesArgs)
+			r, err := GetAwsServices(ctx, &args, opts...)
+			return *r, err
+		}).(GetAwsServicesResultOutput)
+}
+
+// A collection of arguments for invoking getAwsServices.
+type GetAwsServicesOutputArgs struct {
+	Services GetAwsServicesServiceArrayInput `pulumi:"services"`
+}
+
+func (GetAwsServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsServicesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAwsServices.
+type GetAwsServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAwsServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAwsServicesResult)(nil)).Elem()
+}
+
+func (o GetAwsServicesResultOutput) ToGetAwsServicesResultOutput() GetAwsServicesResultOutput {
+	return o
+}
+
+func (o GetAwsServicesResultOutput) ToGetAwsServicesResultOutputWithContext(ctx context.Context) GetAwsServicesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAwsServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAwsServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAwsServicesResultOutput) Services() GetAwsServicesServiceArrayOutput {
+	return o.ApplyT(func(v GetAwsServicesResult) []GetAwsServicesService { return v.Services }).(GetAwsServicesServiceArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAwsServicesResultOutput{})
 }

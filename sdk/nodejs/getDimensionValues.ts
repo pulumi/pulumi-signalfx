@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -27,7 +26,7 @@ export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.I
  * A collection of arguments for invoking getDimensionValues.
  */
 export interface GetDimensionValuesArgs {
-    readonly query: string;
+    query: string;
 }
 
 /**
@@ -40,4 +39,15 @@ export interface GetDimensionValuesResult {
     readonly id: string;
     readonly query: string;
     readonly values: string[];
+}
+
+export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDimensionValuesResult> {
+    return pulumi.output(args).apply(a => getDimensionValues(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDimensionValues.
+ */
+export interface GetDimensionValuesOutputArgs {
+    query: pulumi.Input<string>;
 }

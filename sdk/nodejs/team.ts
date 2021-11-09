@@ -145,43 +145,43 @@ export interface TeamState {
     /**
      * Description of the team.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of user IDs to include in the team.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the team.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Where to send notifications for critical alerts
      */
-    readonly notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for default alerts
      */
-    readonly notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for info alerts
      */
-    readonly notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for major alerts
      */
-    readonly notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for minor alerts
      */
-    readonly notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for warning alerts
      */
-    readonly notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The URL of the team.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -191,37 +191,37 @@ export interface TeamArgs {
     /**
      * Description of the team.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * List of user IDs to include in the team.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Name of the team.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Where to send notifications for critical alerts
      */
-    readonly notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for default alerts
      */
-    readonly notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for info alerts
      */
-    readonly notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for major alerts
      */
-    readonly notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for minor alerts
      */
-    readonly notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Where to send notifications for warning alerts
      */
-    readonly notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
 }

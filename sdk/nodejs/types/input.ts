@@ -390,8 +390,16 @@ export interface DetectorVizOption {
     valueUnit?: pulumi.Input<string>;
 }
 
+export interface GetAwsServicesServiceArgs {
+    name: pulumi.Input<string>;
+}
+
 export interface GetAwsServicesService {
     name: string;
+}
+
+export interface GetAzureServicesServiceArgs {
+    name: pulumi.Input<string>;
 }
 
 export interface GetAzureServicesService {
@@ -741,6 +749,10 @@ export namespace aws {
         name: string;
     }
 
+    export interface GetServicesServiceArgs {
+        name: pulumi.Input<string>;
+    }
+
     export interface IntegrationCustomNamespaceSyncRule {
         /**
          * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
@@ -785,6 +797,10 @@ export namespace azure {
         name: string;
     }
 
+    export interface GetServicesServiceArgs {
+        name: pulumi.Input<string>;
+    }
+
     export interface IntegrationCustomNamespacesPerService {
         /**
          * The additional namespaces.
@@ -800,6 +816,10 @@ export namespace azure {
 export namespace gcp {
     export interface GetServicesService {
         name: string;
+    }
+
+    export interface GetServicesServiceArgs {
+        name: pulumi.Input<string>;
     }
 
     export interface IntegrationProjectServiceKey {

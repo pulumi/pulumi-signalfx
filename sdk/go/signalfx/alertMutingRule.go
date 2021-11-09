@@ -14,6 +14,40 @@ import (
 // Provides a SignalFx resource for managing alert muting rules. See [Mute Notifications](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html) for more information.
 //
 // > **WARNING** SignalFx does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewAlertMutingRule(ctx, "roolMooterOne", &signalfx.AlertMutingRuleArgs{
+// 			Description: pulumi.String("mooted it NEW"),
+// 			StartTime:   pulumi.Int(1573063243),
+// 			StopTime:    pulumi.Int(0),
+// 			Detectors: pulumi.StringArray{
+// 				pulumi.Any(signalfx_detector.Some_detector_id),
+// 			},
+// 			Filters: AlertMutingRuleFilterArray{
+// 				&AlertMutingRuleFilterArgs{
+// 					Property:      pulumi.String("foo"),
+// 					PropertyValue: pulumi.String("bar"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AlertMutingRule struct {
 	pulumi.CustomResourceState
 
@@ -192,7 +226,7 @@ type AlertMutingRuleArrayInput interface {
 type AlertMutingRuleArray []AlertMutingRuleInput
 
 func (AlertMutingRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AlertMutingRule)(nil))
+	return reflect.TypeOf((*[]*AlertMutingRule)(nil)).Elem()
 }
 
 func (i AlertMutingRuleArray) ToAlertMutingRuleArrayOutput() AlertMutingRuleArrayOutput {
@@ -217,7 +251,7 @@ type AlertMutingRuleMapInput interface {
 type AlertMutingRuleMap map[string]AlertMutingRuleInput
 
 func (AlertMutingRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AlertMutingRule)(nil))
+	return reflect.TypeOf((*map[string]*AlertMutingRule)(nil)).Elem()
 }
 
 func (i AlertMutingRuleMap) ToAlertMutingRuleMapOutput() AlertMutingRuleMapOutput {
@@ -228,9 +262,7 @@ func (i AlertMutingRuleMap) ToAlertMutingRuleMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleMapOutput)
 }
 
-type AlertMutingRuleOutput struct {
-	*pulumi.OutputState
-}
+type AlertMutingRuleOutput struct{ *pulumi.OutputState }
 
 func (AlertMutingRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AlertMutingRule)(nil))
@@ -249,14 +281,12 @@ func (o AlertMutingRuleOutput) ToAlertMutingRulePtrOutput() AlertMutingRulePtrOu
 }
 
 func (o AlertMutingRuleOutput) ToAlertMutingRulePtrOutputWithContext(ctx context.Context) AlertMutingRulePtrOutput {
-	return o.ApplyT(func(v AlertMutingRule) *AlertMutingRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertMutingRule) *AlertMutingRule {
 		return &v
 	}).(AlertMutingRulePtrOutput)
 }
 
-type AlertMutingRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type AlertMutingRulePtrOutput struct{ *pulumi.OutputState }
 
 func (AlertMutingRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AlertMutingRule)(nil))
@@ -268,6 +298,16 @@ func (o AlertMutingRulePtrOutput) ToAlertMutingRulePtrOutput() AlertMutingRulePt
 
 func (o AlertMutingRulePtrOutput) ToAlertMutingRulePtrOutputWithContext(ctx context.Context) AlertMutingRulePtrOutput {
 	return o
+}
+
+func (o AlertMutingRulePtrOutput) Elem() AlertMutingRuleOutput {
+	return o.ApplyT(func(v *AlertMutingRule) AlertMutingRule {
+		if v != nil {
+			return *v
+		}
+		var ret AlertMutingRule
+		return ret
+	}).(AlertMutingRuleOutput)
 }
 
 type AlertMutingRuleArrayOutput struct{ *pulumi.OutputState }
@@ -311,6 +351,10 @@ func (o AlertMutingRuleMapOutput) MapIndex(k pulumi.StringInput) AlertMutingRule
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleInput)(nil)).Elem(), &AlertMutingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRulePtrInput)(nil)).Elem(), &AlertMutingRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleArrayInput)(nil)).Elem(), AlertMutingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleMapInput)(nil)).Elem(), AlertMutingRuleMap{})
 	pulumi.RegisterOutputType(AlertMutingRuleOutput{})
 	pulumi.RegisterOutputType(AlertMutingRulePtrOutput{})
 	pulumi.RegisterOutputType(AlertMutingRuleArrayOutput{})

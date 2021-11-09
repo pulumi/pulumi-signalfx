@@ -104,15 +104,15 @@ export interface IntegrationState {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Slack incoming webhook URL.
      */
-    readonly webhookUrl?: pulumi.Input<string>;
+    webhookUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -122,13 +122,13 @@ export interface IntegrationArgs {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Slack incoming webhook URL.
      */
-    readonly webhookUrl: pulumi.Input<string>;
+    webhookUrl: pulumi.Input<string>;
 }

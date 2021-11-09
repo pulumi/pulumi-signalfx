@@ -306,7 +306,7 @@ type DashboardArrayInput interface {
 type DashboardArray []DashboardInput
 
 func (DashboardArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Dashboard)(nil))
+	return reflect.TypeOf((*[]*Dashboard)(nil)).Elem()
 }
 
 func (i DashboardArray) ToDashboardArrayOutput() DashboardArrayOutput {
@@ -331,7 +331,7 @@ type DashboardMapInput interface {
 type DashboardMap map[string]DashboardInput
 
 func (DashboardMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Dashboard)(nil))
+	return reflect.TypeOf((*map[string]*Dashboard)(nil)).Elem()
 }
 
 func (i DashboardMap) ToDashboardMapOutput() DashboardMapOutput {
@@ -342,9 +342,7 @@ func (i DashboardMap) ToDashboardMapOutputWithContext(ctx context.Context) Dashb
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardMapOutput)
 }
 
-type DashboardOutput struct {
-	*pulumi.OutputState
-}
+type DashboardOutput struct{ *pulumi.OutputState }
 
 func (DashboardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Dashboard)(nil))
@@ -363,14 +361,12 @@ func (o DashboardOutput) ToDashboardPtrOutput() DashboardPtrOutput {
 }
 
 func (o DashboardOutput) ToDashboardPtrOutputWithContext(ctx context.Context) DashboardPtrOutput {
-	return o.ApplyT(func(v Dashboard) *Dashboard {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Dashboard) *Dashboard {
 		return &v
 	}).(DashboardPtrOutput)
 }
 
-type DashboardPtrOutput struct {
-	*pulumi.OutputState
-}
+type DashboardPtrOutput struct{ *pulumi.OutputState }
 
 func (DashboardPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Dashboard)(nil))
@@ -382,6 +378,16 @@ func (o DashboardPtrOutput) ToDashboardPtrOutput() DashboardPtrOutput {
 
 func (o DashboardPtrOutput) ToDashboardPtrOutputWithContext(ctx context.Context) DashboardPtrOutput {
 	return o
+}
+
+func (o DashboardPtrOutput) Elem() DashboardOutput {
+	return o.ApplyT(func(v *Dashboard) Dashboard {
+		if v != nil {
+			return *v
+		}
+		var ret Dashboard
+		return ret
+	}).(DashboardOutput)
 }
 
 type DashboardArrayOutput struct{ *pulumi.OutputState }
@@ -425,6 +431,10 @@ func (o DashboardMapOutput) MapIndex(k pulumi.StringInput) DashboardOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardInput)(nil)).Elem(), &Dashboard{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPtrInput)(nil)).Elem(), &Dashboard{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardArrayInput)(nil)).Elem(), DashboardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardMapInput)(nil)).Elem(), DashboardMap{})
 	pulumi.RegisterOutputType(DashboardOutput{})
 	pulumi.RegisterOutputType(DashboardPtrOutput{})
 	pulumi.RegisterOutputType(DashboardArrayOutput{})

@@ -188,51 +188,51 @@ export interface IntegrationState {
     /**
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
-    readonly appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string>;
     /**
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      */
-    readonly customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
+    customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A named token to use for ingest
      */
-    readonly namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string>;
     /**
      * AWS poll rate (in seconds). One of `60` or `300`.
      */
-    readonly pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number>;
     /**
      * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
-    readonly secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
     /**
      * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Azure subscriptions that SignalFx should monitor.
      */
-    readonly subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      */
-    readonly syncGuestOsNamespaces?: pulumi.Input<boolean>;
+    syncGuestOsNamespaces?: pulumi.Input<boolean>;
     /**
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
 }
 
 /**
@@ -242,49 +242,49 @@ export interface IntegrationArgs {
     /**
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
-    readonly appId: pulumi.Input<string>;
+    appId: pulumi.Input<string>;
     /**
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      */
-    readonly customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
+    customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A named token to use for ingest
      */
-    readonly namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string>;
     /**
      * AWS poll rate (in seconds). One of `60` or `300`.
      */
-    readonly pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number>;
     /**
      * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
-    readonly secretKey: pulumi.Input<string>;
+    secretKey: pulumi.Input<string>;
     /**
      * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
-    readonly services: pulumi.Input<pulumi.Input<string>[]>;
+    services: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Azure subscriptions that SignalFx should monitor.
      */
-    readonly subscriptions: pulumi.Input<pulumi.Input<string>[]>;
+    subscriptions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      */
-    readonly syncGuestOsNamespaces?: pulumi.Input<boolean>;
+    syncGuestOsNamespaces?: pulumi.Input<boolean>;
     /**
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
-    readonly tenantId: pulumi.Input<string>;
+    tenantId: pulumi.Input<string>;
 }

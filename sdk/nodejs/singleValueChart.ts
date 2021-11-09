@@ -181,63 +181,63 @@ export interface SingleValueChartState {
     /**
      * Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
      */
-    readonly colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
     /**
      * Description of the chart.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to hide the timestamp in the chart. `false` by default.
      */
-    readonly isTimestampHidden?: pulumi.Input<boolean>;
+    isTimestampHidden?: pulumi.Input<boolean>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * The maximum precision to for value displayed.
      */
-    readonly maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number>;
     /**
      * Name of the chart.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    readonly programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string>;
     /**
      * How often (in seconds) to refresh the value.
      */
-    readonly refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
      */
-    readonly secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string>;
     /**
      * Whether to show a trend line below the current value. `false` by default.
      */
-    readonly showSparkLine?: pulumi.Input<boolean>;
+    showSparkLine?: pulumi.Input<boolean>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
      */
-    readonly unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string>;
     /**
      * The URL of the chart.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[]>;
 }
 
 /**
@@ -247,57 +247,57 @@ export interface SingleValueChartArgs {
     /**
      * Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
      */
-    readonly colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.SingleValueChartColorScale>[]>;
     /**
      * Description of the chart.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to hide the timestamp in the chart. `false` by default.
      */
-    readonly isTimestampHidden?: pulumi.Input<boolean>;
+    isTimestampHidden?: pulumi.Input<boolean>;
     /**
      * How long (in seconds) to wait for late datapoints
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * The maximum precision to for value displayed.
      */
-    readonly maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number>;
     /**
      * Name of the chart.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    readonly programText: pulumi.Input<string>;
+    programText: pulumi.Input<string>;
     /**
      * How often (in seconds) to refresh the value.
      */
-    readonly refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
      */
-    readonly secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string>;
     /**
      * Whether to show a trend line below the current value. `false` by default.
      */
-    readonly showSparkLine?: pulumi.Input<boolean>;
+    showSparkLine?: pulumi.Input<boolean>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
      */
-    readonly unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.SingleValueChartVizOption>[]>;
 }

@@ -138,31 +138,31 @@ export interface IntegrationState {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A named token to use for ingest
      */
-    readonly namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string>;
     /**
      * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
-    readonly pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number>;
     /**
      * GCP projects to add.
      */
-    readonly projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
+    projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Compute Metadata Whitelist
      */
-    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -172,29 +172,29 @@ export interface IntegrationArgs {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A named token to use for ingest
      */
-    readonly namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string>;
     /**
      * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
      */
-    readonly pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number>;
     /**
      * GCP projects to add.
      */
-    readonly projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
+    projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Compute Metadata Whitelist
      */
-    readonly whitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

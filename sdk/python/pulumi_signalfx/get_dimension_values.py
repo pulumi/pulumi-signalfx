@@ -12,6 +12,7 @@ __all__ = [
     'GetDimensionValuesResult',
     'AwaitableGetDimensionValuesResult',
     'get_dimension_values',
+    'get_dimension_values_output',
 ]
 
 @pulumi.output_type
@@ -79,3 +80,14 @@ def get_dimension_values(query: Optional[str] = None,
         id=__ret__.id,
         query=__ret__.query,
         values=__ret__.values)
+
+
+@_utilities.lift_output_func(get_dimension_values)
+def get_dimension_values_output(query: Optional[pulumi.Input[str]] = None,
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDimensionValuesResult]:
+    """
+    Use this data source to get a list of dimension values matching the provided query.
+
+    > **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.
+    """
+    ...

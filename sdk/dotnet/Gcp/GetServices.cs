@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SignalFx.Gcp
 {
@@ -47,6 +48,43 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("signalfx:gcp/getServices:getServices", args ?? new GetServicesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get a list of GCP service names.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var gcpServices = Output.Create(SignalFx.Gcp.GetServices.InvokeAsync());
+        ///         // Leaves out most of the integration bits, see the docs
+        ///         // for signalfx_gcp_integration for more
+        ///         // …
+        ///         var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new SignalFx.Gcp.IntegrationArgs
+        ///         {
+        ///             Services = 
+        ///             {
+        ///                 gcpServices.Apply(gcpServices =&gt; gcpServices.Services),
+        ///             }.Select(__item =&gt; __item?.Name).ToList(),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServicesResult>("signalfx:gcp/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -61,6 +99,21 @@ namespace Pulumi.SignalFx.Gcp
         }
 
         public GetServicesArgs()
+        {
+        }
+    }
+
+    public sealed class GetServicesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("services")]
+        private InputList<Inputs.GetServicesServiceInputArgs>? _services;
+        public InputList<Inputs.GetServicesServiceInputArgs> Services
+        {
+            get => _services ?? (_services = new InputList<Inputs.GetServicesServiceInputArgs>());
+            set => _services = value;
+        }
+
+        public GetServicesInvokeArgs()
         {
         }
     }

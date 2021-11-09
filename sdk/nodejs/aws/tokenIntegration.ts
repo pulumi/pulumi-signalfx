@@ -123,15 +123,15 @@ export interface TokenIntegrationState {
     /**
      * The name of this integration
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
      */
-    readonly signalfxAwsAccount?: pulumi.Input<string>;
+    signalfxAwsAccount?: pulumi.Input<string>;
     /**
      * The SignalFx-generated AWS token to use with an AWS integration.
      */
-    readonly tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string>;
 }
 
 /**
@@ -141,5 +141,5 @@ export interface TokenIntegrationArgs {
     /**
      * The name of this integration
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

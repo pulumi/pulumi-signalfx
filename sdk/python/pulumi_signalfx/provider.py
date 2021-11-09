@@ -158,3 +158,27 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        API URL for your SignalFx org, may include a realm
+        """
+        return pulumi.get(self, "api_url")
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        SignalFx auth token
+        """
+        return pulumi.get(self, "auth_token")
+
+    @property
+    @pulumi.getter(name="customAppUrl")
+    def custom_app_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Application URL for your SignalFx org, often customzied for organizations using SSO
+        """
+        return pulumi.get(self, "custom_app_url")
+

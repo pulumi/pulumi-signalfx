@@ -28,22 +28,22 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewHeatmapChart(ctx, "myheatmapchart0", &signalfx.HeatmapChartArgs{
-// 			ColorRange: &signalfx.HeatmapChartColorRangeArgs{
+// 			ColorRange: &HeatmapChartColorRangeArgs{
 // 				Color:    pulumi.String("#ff0000"),
 // 				MaxValue: pulumi.Float64(100),
 // 				MinValue: pulumi.Float64(0),
 // 			},
-// 			ColorScales: signalfx.HeatmapChartColorScaleArray{
-// 				&signalfx.HeatmapChartColorScaleArgs{
+// 			ColorScales: HeatmapChartColorScaleArray{
+// 				&HeatmapChartColorScaleArgs{
 // 					Color: pulumi.String("green"),
 // 					Gte:   pulumi.Float64(99),
 // 				},
-// 				&signalfx.HeatmapChartColorScaleArgs{
+// 				&HeatmapChartColorScaleArgs{
 // 					Color: pulumi.String("yellow"),
 // 					Gte:   pulumi.Float64(95),
 // 					Lt:    pulumi.Float64(99),
 // 				},
-// 				&signalfx.HeatmapChartColorScaleArgs{
+// 				&HeatmapChartColorScaleArgs{
 // 					Color: pulumi.String("red"),
 // 					Lt:    pulumi.Float64(95),
 // 				},
@@ -331,7 +331,7 @@ type HeatmapChartArrayInput interface {
 type HeatmapChartArray []HeatmapChartInput
 
 func (HeatmapChartArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*HeatmapChart)(nil))
+	return reflect.TypeOf((*[]*HeatmapChart)(nil)).Elem()
 }
 
 func (i HeatmapChartArray) ToHeatmapChartArrayOutput() HeatmapChartArrayOutput {
@@ -356,7 +356,7 @@ type HeatmapChartMapInput interface {
 type HeatmapChartMap map[string]HeatmapChartInput
 
 func (HeatmapChartMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*HeatmapChart)(nil))
+	return reflect.TypeOf((*map[string]*HeatmapChart)(nil)).Elem()
 }
 
 func (i HeatmapChartMap) ToHeatmapChartMapOutput() HeatmapChartMapOutput {
@@ -367,9 +367,7 @@ func (i HeatmapChartMap) ToHeatmapChartMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartMapOutput)
 }
 
-type HeatmapChartOutput struct {
-	*pulumi.OutputState
-}
+type HeatmapChartOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*HeatmapChart)(nil))
@@ -388,14 +386,12 @@ func (o HeatmapChartOutput) ToHeatmapChartPtrOutput() HeatmapChartPtrOutput {
 }
 
 func (o HeatmapChartOutput) ToHeatmapChartPtrOutputWithContext(ctx context.Context) HeatmapChartPtrOutput {
-	return o.ApplyT(func(v HeatmapChart) *HeatmapChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HeatmapChart) *HeatmapChart {
 		return &v
 	}).(HeatmapChartPtrOutput)
 }
 
-type HeatmapChartPtrOutput struct {
-	*pulumi.OutputState
-}
+type HeatmapChartPtrOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**HeatmapChart)(nil))
@@ -407,6 +403,16 @@ func (o HeatmapChartPtrOutput) ToHeatmapChartPtrOutput() HeatmapChartPtrOutput {
 
 func (o HeatmapChartPtrOutput) ToHeatmapChartPtrOutputWithContext(ctx context.Context) HeatmapChartPtrOutput {
 	return o
+}
+
+func (o HeatmapChartPtrOutput) Elem() HeatmapChartOutput {
+	return o.ApplyT(func(v *HeatmapChart) HeatmapChart {
+		if v != nil {
+			return *v
+		}
+		var ret HeatmapChart
+		return ret
+	}).(HeatmapChartOutput)
 }
 
 type HeatmapChartArrayOutput struct{ *pulumi.OutputState }
@@ -450,6 +456,10 @@ func (o HeatmapChartMapOutput) MapIndex(k pulumi.StringInput) HeatmapChartOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartInput)(nil)).Elem(), &HeatmapChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartPtrInput)(nil)).Elem(), &HeatmapChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartArrayInput)(nil)).Elem(), HeatmapChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartMapInput)(nil)).Elem(), HeatmapChartMap{})
 	pulumi.RegisterOutputType(HeatmapChartOutput{})
 	pulumi.RegisterOutputType(HeatmapChartPtrOutput{})
 	pulumi.RegisterOutputType(HeatmapChartArrayOutput{})

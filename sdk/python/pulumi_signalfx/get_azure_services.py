@@ -14,6 +14,7 @@ __all__ = [
     'GetAzureServicesResult',
     'AwaitableGetAzureServicesResult',
     'get_azure_services',
+    'get_azure_services_output',
 ]
 
 warnings.warn("""signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices""", DeprecationWarning)
@@ -72,3 +73,13 @@ def get_azure_services(services: Optional[Sequence[pulumi.InputType['GetAzureSer
     return AwaitableGetAzureServicesResult(
         id=__ret__.id,
         services=__ret__.services)
+
+
+@_utilities.lift_output_func(get_azure_services)
+def get_azure_services_output(services: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAzureServicesServiceArgs']]]]] = None,
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzureServicesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    pulumi.log.warn("""get_azure_services is deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices""")
+    ...

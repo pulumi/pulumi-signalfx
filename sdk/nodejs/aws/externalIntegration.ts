@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * }));
  * const awsSfxRole = new aws.iam.Role("awsSfxRole", {
  *     description: "signalfx integration to read out data and send it to signalfxs aws account",
- *     assumeRolePolicy: signalfxAssumePolicy.json,
+ *     assumeRolePolicy: signalfxAssumePolicy.apply(signalfxAssumePolicy => signalfxAssumePolicy.json),
  * });
  * const awsReadPermissions = new aws.iam.Policy("awsReadPermissions", {
  *     description: "farts",
@@ -196,15 +196,15 @@ export interface ExternalIntegrationState {
     /**
      * The external ID to use with your IAM role and with `signalfx.aws.Integration`.
      */
-    readonly externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string>;
     /**
      * The name of this integration
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
      */
-    readonly signalfxAwsAccount?: pulumi.Input<string>;
+    signalfxAwsAccount?: pulumi.Input<string>;
 }
 
 /**
@@ -214,5 +214,5 @@ export interface ExternalIntegrationArgs {
     /**
      * The name of this integration
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

@@ -522,7 +522,7 @@ type DetectorArrayInput interface {
 type DetectorArray []DetectorInput
 
 func (DetectorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Detector)(nil))
+	return reflect.TypeOf((*[]*Detector)(nil)).Elem()
 }
 
 func (i DetectorArray) ToDetectorArrayOutput() DetectorArrayOutput {
@@ -547,7 +547,7 @@ type DetectorMapInput interface {
 type DetectorMap map[string]DetectorInput
 
 func (DetectorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Detector)(nil))
+	return reflect.TypeOf((*map[string]*Detector)(nil)).Elem()
 }
 
 func (i DetectorMap) ToDetectorMapOutput() DetectorMapOutput {
@@ -558,9 +558,7 @@ func (i DetectorMap) ToDetectorMapOutputWithContext(ctx context.Context) Detecto
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorMapOutput)
 }
 
-type DetectorOutput struct {
-	*pulumi.OutputState
-}
+type DetectorOutput struct{ *pulumi.OutputState }
 
 func (DetectorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Detector)(nil))
@@ -579,14 +577,12 @@ func (o DetectorOutput) ToDetectorPtrOutput() DetectorPtrOutput {
 }
 
 func (o DetectorOutput) ToDetectorPtrOutputWithContext(ctx context.Context) DetectorPtrOutput {
-	return o.ApplyT(func(v Detector) *Detector {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Detector) *Detector {
 		return &v
 	}).(DetectorPtrOutput)
 }
 
-type DetectorPtrOutput struct {
-	*pulumi.OutputState
-}
+type DetectorPtrOutput struct{ *pulumi.OutputState }
 
 func (DetectorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Detector)(nil))
@@ -598,6 +594,16 @@ func (o DetectorPtrOutput) ToDetectorPtrOutput() DetectorPtrOutput {
 
 func (o DetectorPtrOutput) ToDetectorPtrOutputWithContext(ctx context.Context) DetectorPtrOutput {
 	return o
+}
+
+func (o DetectorPtrOutput) Elem() DetectorOutput {
+	return o.ApplyT(func(v *Detector) Detector {
+		if v != nil {
+			return *v
+		}
+		var ret Detector
+		return ret
+	}).(DetectorOutput)
 }
 
 type DetectorArrayOutput struct{ *pulumi.OutputState }
@@ -641,6 +647,10 @@ func (o DetectorMapOutput) MapIndex(k pulumi.StringInput) DetectorOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorInput)(nil)).Elem(), &Detector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorPtrInput)(nil)).Elem(), &Detector{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorArrayInput)(nil)).Elem(), DetectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorMapInput)(nil)).Elem(), DetectorMap{})
 	pulumi.RegisterOutputType(DetectorOutput{})
 	pulumi.RegisterOutputType(DetectorPtrOutput{})
 	pulumi.RegisterOutputType(DetectorArrayOutput{})
