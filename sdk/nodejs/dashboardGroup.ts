@@ -149,28 +149,28 @@ export interface DashboardGroupState {
     /**
      * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
      */
-    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
-    readonly dashboards?: pulumi.Input<pulumi.Input<inputs.DashboardGroupDashboard>[]>;
+    dashboards?: pulumi.Input<pulumi.Input<inputs.DashboardGroupDashboard>[]>;
     /**
      * Description of the dashboard group.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly importQualifiers?: pulumi.Input<pulumi.Input<inputs.DashboardGroupImportQualifier>[]>;
+    description?: pulumi.Input<string>;
+    importQualifiers?: pulumi.Input<pulumi.Input<inputs.DashboardGroupImportQualifier>[]>;
     /**
      * Name of the dashboard group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Team IDs to associate the dashboard group to.
      */
-    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -180,26 +180,26 @@ export interface DashboardGroupArgs {
     /**
      * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
      */
-    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
-    readonly dashboards?: pulumi.Input<pulumi.Input<inputs.DashboardGroupDashboard>[]>;
+    dashboards?: pulumi.Input<pulumi.Input<inputs.DashboardGroupDashboard>[]>;
     /**
      * Description of the dashboard group.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly importQualifiers?: pulumi.Input<pulumi.Input<inputs.DashboardGroupImportQualifier>[]>;
+    description?: pulumi.Input<string>;
+    importQualifiers?: pulumi.Input<pulumi.Input<inputs.DashboardGroupImportQualifier>[]>;
     /**
      * Name of the dashboard group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Team IDs to associate the dashboard group to.
      */
-    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }

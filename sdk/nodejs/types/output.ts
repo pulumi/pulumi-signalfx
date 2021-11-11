@@ -778,6 +778,7 @@ export namespace aws {
          */
         namespace: string;
     }
+
 }
 
 export namespace azure {
@@ -795,6 +796,7 @@ export namespace azure {
          */
         service: string;
     }
+
 }
 
 export namespace gcp {
@@ -806,4 +808,5 @@ export namespace gcp {
         projectId: string;
         projectKey: string;
     }
+
 }

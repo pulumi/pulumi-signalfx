@@ -34,24 +34,24 @@ import (
 // 			Description:       pulumi.String("Very cool List Chart"),
 // 			DisableSampling:   pulumi.Bool(true),
 // 			HideMissingValues: pulumi.Bool(true),
-// 			LegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{
-// 				&signalfx.ListChartLegendOptionsFieldArgs{
+// 			LegendOptionsFields: ListChartLegendOptionsFieldArray{
+// 				&ListChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(false),
 // 					Property: pulumi.String("collector"),
 // 				},
-// 				&signalfx.ListChartLegendOptionsFieldArgs{
+// 				&ListChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(true),
 // 					Property: pulumi.String("cluster_name"),
 // 				},
-// 				&signalfx.ListChartLegendOptionsFieldArgs{
+// 				&ListChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(true),
 // 					Property: pulumi.String("role"),
 // 				},
-// 				&signalfx.ListChartLegendOptionsFieldArgs{
+// 				&ListChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(false),
 // 					Property: pulumi.String("collector"),
 // 				},
-// 				&signalfx.ListChartLegendOptionsFieldArgs{
+// 				&ListChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(false),
 // 					Property: pulumi.String("host"),
 // 				},
@@ -405,7 +405,7 @@ type ListChartArrayInput interface {
 type ListChartArray []ListChartInput
 
 func (ListChartArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ListChart)(nil))
+	return reflect.TypeOf((*[]*ListChart)(nil)).Elem()
 }
 
 func (i ListChartArray) ToListChartArrayOutput() ListChartArrayOutput {
@@ -430,7 +430,7 @@ type ListChartMapInput interface {
 type ListChartMap map[string]ListChartInput
 
 func (ListChartMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ListChart)(nil))
+	return reflect.TypeOf((*map[string]*ListChart)(nil)).Elem()
 }
 
 func (i ListChartMap) ToListChartMapOutput() ListChartMapOutput {
@@ -441,9 +441,7 @@ func (i ListChartMap) ToListChartMapOutputWithContext(ctx context.Context) ListC
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartMapOutput)
 }
 
-type ListChartOutput struct {
-	*pulumi.OutputState
-}
+type ListChartOutput struct{ *pulumi.OutputState }
 
 func (ListChartOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListChart)(nil))
@@ -462,14 +460,12 @@ func (o ListChartOutput) ToListChartPtrOutput() ListChartPtrOutput {
 }
 
 func (o ListChartOutput) ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput {
-	return o.ApplyT(func(v ListChart) *ListChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListChart) *ListChart {
 		return &v
 	}).(ListChartPtrOutput)
 }
 
-type ListChartPtrOutput struct {
-	*pulumi.OutputState
-}
+type ListChartPtrOutput struct{ *pulumi.OutputState }
 
 func (ListChartPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ListChart)(nil))
@@ -481,6 +477,16 @@ func (o ListChartPtrOutput) ToListChartPtrOutput() ListChartPtrOutput {
 
 func (o ListChartPtrOutput) ToListChartPtrOutputWithContext(ctx context.Context) ListChartPtrOutput {
 	return o
+}
+
+func (o ListChartPtrOutput) Elem() ListChartOutput {
+	return o.ApplyT(func(v *ListChart) ListChart {
+		if v != nil {
+			return *v
+		}
+		var ret ListChart
+		return ret
+	}).(ListChartOutput)
 }
 
 type ListChartArrayOutput struct{ *pulumi.OutputState }
@@ -524,6 +530,10 @@ func (o ListChartMapOutput) MapIndex(k pulumi.StringInput) ListChartOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartInput)(nil)).Elem(), &ListChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartPtrInput)(nil)).Elem(), &ListChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartArrayInput)(nil)).Elem(), ListChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartMapInput)(nil)).Elem(), ListChartMap{})
 	pulumi.RegisterOutputType(ListChartOutput{})
 	pulumi.RegisterOutputType(ListChartPtrOutput{})
 	pulumi.RegisterOutputType(ListChartArrayOutput{})

@@ -15,6 +15,33 @@ import (
 // > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 //
 // ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
+// 			Description: pulumi.String("Cool dashboard group"),
+// 			AuthorizedWriterTeams: pulumi.StringArray{
+// 				pulumi.Any(signalfx_team.Mycoolteam.Id),
+// 			},
+// 			AuthorizedWriterUsers: pulumi.StringArray{
+// 				pulumi.String("abc123"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### With Mirrored Dashboards
 //
 // ```go
@@ -29,13 +56,13 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithmirrors", &signalfx.DashboardGroupArgs{
 // 			Description: pulumi.String("Cool dashboard group"),
-// 			Dashboards: signalfx.DashboardGroupDashboardArray{
-// 				&signalfx.DashboardGroupDashboardArgs{
+// 			Dashboards: DashboardGroupDashboardArray{
+// 				&DashboardGroupDashboardArgs{
 // 					DashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),
 // 					NameOverride:        pulumi.String("GC For My Service"),
 // 					DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
-// 					FilterOverrides: signalfx.DashboardGroupDashboardFilterOverrideArray{
-// 						&signalfx.DashboardGroupDashboardFilterOverrideArgs{
+// 					FilterOverrides: DashboardGroupDashboardFilterOverrideArray{
+// 						&DashboardGroupDashboardFilterOverrideArgs{
 // 							Property: pulumi.String("service"),
 // 							Values: pulumi.StringArray{
 // 								pulumi.String("myservice"),
@@ -43,8 +70,8 @@ import (
 // 							Negated: pulumi.Bool(false),
 // 						},
 // 					},
-// 					VariableOverrides: signalfx.DashboardGroupDashboardVariableOverrideArray{
-// 						&signalfx.DashboardGroupDashboardVariableOverrideArgs{
+// 					VariableOverrides: DashboardGroupDashboardVariableOverrideArray{
+// 						&DashboardGroupDashboardVariableOverrideArgs{
 // 							Property: pulumi.String("region"),
 // 							Values: pulumi.StringArray{
 // 								pulumi.String("us-west1"),
@@ -246,7 +273,7 @@ type DashboardGroupArrayInput interface {
 type DashboardGroupArray []DashboardGroupInput
 
 func (DashboardGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DashboardGroup)(nil))
+	return reflect.TypeOf((*[]*DashboardGroup)(nil)).Elem()
 }
 
 func (i DashboardGroupArray) ToDashboardGroupArrayOutput() DashboardGroupArrayOutput {
@@ -271,7 +298,7 @@ type DashboardGroupMapInput interface {
 type DashboardGroupMap map[string]DashboardGroupInput
 
 func (DashboardGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DashboardGroup)(nil))
+	return reflect.TypeOf((*map[string]*DashboardGroup)(nil)).Elem()
 }
 
 func (i DashboardGroupMap) ToDashboardGroupMapOutput() DashboardGroupMapOutput {
@@ -282,9 +309,7 @@ func (i DashboardGroupMap) ToDashboardGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupMapOutput)
 }
 
-type DashboardGroupOutput struct {
-	*pulumi.OutputState
-}
+type DashboardGroupOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DashboardGroup)(nil))
@@ -303,14 +328,12 @@ func (o DashboardGroupOutput) ToDashboardGroupPtrOutput() DashboardGroupPtrOutpu
 }
 
 func (o DashboardGroupOutput) ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput {
-	return o.ApplyT(func(v DashboardGroup) *DashboardGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardGroup) *DashboardGroup {
 		return &v
 	}).(DashboardGroupPtrOutput)
 }
 
-type DashboardGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type DashboardGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DashboardGroup)(nil))
@@ -322,6 +345,16 @@ func (o DashboardGroupPtrOutput) ToDashboardGroupPtrOutput() DashboardGroupPtrOu
 
 func (o DashboardGroupPtrOutput) ToDashboardGroupPtrOutputWithContext(ctx context.Context) DashboardGroupPtrOutput {
 	return o
+}
+
+func (o DashboardGroupPtrOutput) Elem() DashboardGroupOutput {
+	return o.ApplyT(func(v *DashboardGroup) DashboardGroup {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardGroup
+		return ret
+	}).(DashboardGroupOutput)
 }
 
 type DashboardGroupArrayOutput struct{ *pulumi.OutputState }
@@ -365,6 +398,10 @@ func (o DashboardGroupMapOutput) MapIndex(k pulumi.StringInput) DashboardGroupOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupInput)(nil)).Elem(), &DashboardGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupPtrInput)(nil)).Elem(), &DashboardGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupArrayInput)(nil)).Elem(), DashboardGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupMapInput)(nil)).Elem(), DashboardGroupMap{})
 	pulumi.RegisterOutputType(DashboardGroupOutput{})
 	pulumi.RegisterOutputType(DashboardGroupPtrOutput{})
 	pulumi.RegisterOutputType(DashboardGroupArrayOutput{})

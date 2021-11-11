@@ -2624,7 +2624,7 @@ func (o HeatmapChartColorRangeOutput) ToHeatmapChartColorRangePtrOutput() Heatma
 }
 
 func (o HeatmapChartColorRangeOutput) ToHeatmapChartColorRangePtrOutputWithContext(ctx context.Context) HeatmapChartColorRangePtrOutput {
-	return o.ApplyT(func(v HeatmapChartColorRange) *HeatmapChartColorRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HeatmapChartColorRange) *HeatmapChartColorRange {
 		return &v
 	}).(HeatmapChartColorRangePtrOutput)
 }
@@ -2659,7 +2659,13 @@ func (o HeatmapChartColorRangePtrOutput) ToHeatmapChartColorRangePtrOutputWithCo
 }
 
 func (o HeatmapChartColorRangePtrOutput) Elem() HeatmapChartColorRangeOutput {
-	return o.ApplyT(func(v *HeatmapChartColorRange) HeatmapChartColorRange { return *v }).(HeatmapChartColorRangeOutput)
+	return o.ApplyT(func(v *HeatmapChartColorRange) HeatmapChartColorRange {
+		if v != nil {
+			return *v
+		}
+		var ret HeatmapChartColorRange
+		return ret
+	}).(HeatmapChartColorRangeOutput)
 }
 
 // The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -3300,7 +3306,7 @@ func (o OrgTokenDpmLimitsOutput) ToOrgTokenDpmLimitsPtrOutput() OrgTokenDpmLimit
 }
 
 func (o OrgTokenDpmLimitsOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx context.Context) OrgTokenDpmLimitsPtrOutput {
-	return o.ApplyT(func(v OrgTokenDpmLimits) *OrgTokenDpmLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrgTokenDpmLimits) *OrgTokenDpmLimits {
 		return &v
 	}).(OrgTokenDpmLimitsPtrOutput)
 }
@@ -3330,7 +3336,13 @@ func (o OrgTokenDpmLimitsPtrOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx 
 }
 
 func (o OrgTokenDpmLimitsPtrOutput) Elem() OrgTokenDpmLimitsOutput {
-	return o.ApplyT(func(v *OrgTokenDpmLimits) OrgTokenDpmLimits { return *v }).(OrgTokenDpmLimitsOutput)
+	return o.ApplyT(func(v *OrgTokenDpmLimits) OrgTokenDpmLimits {
+		if v != nil {
+			return *v
+		}
+		var ret OrgTokenDpmLimits
+		return ret
+	}).(OrgTokenDpmLimitsOutput)
 }
 
 // The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
@@ -3474,7 +3486,7 @@ func (o OrgTokenHostOrUsageLimitsOutput) ToOrgTokenHostOrUsageLimitsPtrOutput() 
 }
 
 func (o OrgTokenHostOrUsageLimitsOutput) ToOrgTokenHostOrUsageLimitsPtrOutputWithContext(ctx context.Context) OrgTokenHostOrUsageLimitsPtrOutput {
-	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *OrgTokenHostOrUsageLimits {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrgTokenHostOrUsageLimits) *OrgTokenHostOrUsageLimits {
 		return &v
 	}).(OrgTokenHostOrUsageLimitsPtrOutput)
 }
@@ -3534,7 +3546,13 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) ToOrgTokenHostOrUsageLimitsPtrOutput
 }
 
 func (o OrgTokenHostOrUsageLimitsPtrOutput) Elem() OrgTokenHostOrUsageLimitsOutput {
-	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) OrgTokenHostOrUsageLimits { return *v }).(OrgTokenHostOrUsageLimitsOutput)
+	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) OrgTokenHostOrUsageLimits {
+		if v != nil {
+			return *v
+		}
+		var ret OrgTokenHostOrUsageLimits
+		return ret
+	}).(OrgTokenHostOrUsageLimitsOutput)
 }
 
 // Max number of Docker containers that can use this token
@@ -4008,7 +4026,7 @@ func (o TimeChartAxisLeftOutput) ToTimeChartAxisLeftPtrOutput() TimeChartAxisLef
 }
 
 func (o TimeChartAxisLeftOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx context.Context) TimeChartAxisLeftPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisLeft) *TimeChartAxisLeft {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeChartAxisLeft) *TimeChartAxisLeft {
 		return &v
 	}).(TimeChartAxisLeftPtrOutput)
 }
@@ -4067,7 +4085,13 @@ func (o TimeChartAxisLeftPtrOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx 
 }
 
 func (o TimeChartAxisLeftPtrOutput) Elem() TimeChartAxisLeftOutput {
-	return o.ApplyT(func(v *TimeChartAxisLeft) TimeChartAxisLeft { return *v }).(TimeChartAxisLeftOutput)
+	return o.ApplyT(func(v *TimeChartAxisLeft) TimeChartAxisLeft {
+		if v != nil {
+			return *v
+		}
+		var ret TimeChartAxisLeft
+		return ret
+	}).(TimeChartAxisLeftOutput)
 }
 
 // A line to draw as a high watermark.
@@ -4371,7 +4395,7 @@ func (o TimeChartAxisRightOutput) ToTimeChartAxisRightPtrOutput() TimeChartAxisR
 }
 
 func (o TimeChartAxisRightOutput) ToTimeChartAxisRightPtrOutputWithContext(ctx context.Context) TimeChartAxisRightPtrOutput {
-	return o.ApplyT(func(v TimeChartAxisRight) *TimeChartAxisRight {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeChartAxisRight) *TimeChartAxisRight {
 		return &v
 	}).(TimeChartAxisRightPtrOutput)
 }
@@ -4430,7 +4454,13 @@ func (o TimeChartAxisRightPtrOutput) ToTimeChartAxisRightPtrOutputWithContext(ct
 }
 
 func (o TimeChartAxisRightPtrOutput) Elem() TimeChartAxisRightOutput {
-	return o.ApplyT(func(v *TimeChartAxisRight) TimeChartAxisRight { return *v }).(TimeChartAxisRightOutput)
+	return o.ApplyT(func(v *TimeChartAxisRight) TimeChartAxisRight {
+		if v != nil {
+			return *v
+		}
+		var ret TimeChartAxisRight
+		return ret
+	}).(TimeChartAxisRightOutput)
 }
 
 // A line to draw as a high watermark.
@@ -5385,6 +5415,86 @@ func (o GetAzureServicesServiceArrayOutput) Index(i pulumi.IntInput) GetAzureSer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleFilterInput)(nil)).Elem(), AlertMutingRuleFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleFilterArrayInput)(nil)).Elem(), AlertMutingRuleFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartInput)(nil)).Elem(), DashboardChartArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartArrayInput)(nil)).Elem(), DashboardChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColumnInput)(nil)).Elem(), DashboardColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColumnArrayInput)(nil)).Elem(), DashboardColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardEventOverlayInput)(nil)).Elem(), DashboardEventOverlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardEventOverlayArrayInput)(nil)).Elem(), DashboardEventOverlayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardEventOverlaySourceInput)(nil)).Elem(), DashboardEventOverlaySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardEventOverlaySourceArrayInput)(nil)).Elem(), DashboardEventOverlaySourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterInput)(nil)).Elem(), DashboardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterArrayInput)(nil)).Elem(), DashboardFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGridInput)(nil)).Elem(), DashboardGridArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGridArrayInput)(nil)).Elem(), DashboardGridArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupDashboardInput)(nil)).Elem(), DashboardGroupDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupDashboardArrayInput)(nil)).Elem(), DashboardGroupDashboardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupDashboardFilterOverrideInput)(nil)).Elem(), DashboardGroupDashboardFilterOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupDashboardFilterOverrideArrayInput)(nil)).Elem(), DashboardGroupDashboardFilterOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupDashboardVariableOverrideInput)(nil)).Elem(), DashboardGroupDashboardVariableOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupDashboardVariableOverrideArrayInput)(nil)).Elem(), DashboardGroupDashboardVariableOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierInput)(nil)).Elem(), DashboardGroupImportQualifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierArrayInput)(nil)).Elem(), DashboardGroupImportQualifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierFilterInput)(nil)).Elem(), DashboardGroupImportQualifierFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierFilterArrayInput)(nil)).Elem(), DashboardGroupImportQualifierFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlayInput)(nil)).Elem(), DashboardSelectedEventOverlayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlayArrayInput)(nil)).Elem(), DashboardSelectedEventOverlayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlaySourceInput)(nil)).Elem(), DashboardSelectedEventOverlaySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlaySourceArrayInput)(nil)).Elem(), DashboardSelectedEventOverlaySourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableInput)(nil)).Elem(), DashboardVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardVariableArrayInput)(nil)).Elem(), DashboardVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetExternalUrlInput)(nil)).Elem(), DataLinkTargetExternalUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetExternalUrlArrayInput)(nil)).Elem(), DataLinkTargetExternalUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetSignalfxDashboardInput)(nil)).Elem(), DataLinkTargetSignalfxDashboardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetSignalfxDashboardArrayInput)(nil)).Elem(), DataLinkTargetSignalfxDashboardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetSplunkInput)(nil)).Elem(), DataLinkTargetSplunkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkTargetSplunkArrayInput)(nil)).Elem(), DataLinkTargetSplunkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorRuleInput)(nil)).Elem(), DetectorRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorRuleArrayInput)(nil)).Elem(), DetectorRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorVizOptionInput)(nil)).Elem(), DetectorVizOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DetectorVizOptionArrayInput)(nil)).Elem(), DetectorVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartColorRangeInput)(nil)).Elem(), HeatmapChartColorRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartColorRangePtrInput)(nil)).Elem(), HeatmapChartColorRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartColorScaleInput)(nil)).Elem(), HeatmapChartColorScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeatmapChartColorScaleArrayInput)(nil)).Elem(), HeatmapChartColorScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartColorScaleInput)(nil)).Elem(), ListChartColorScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartColorScaleArrayInput)(nil)).Elem(), ListChartColorScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartLegendOptionsFieldInput)(nil)).Elem(), ListChartLegendOptionsFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartLegendOptionsFieldArrayInput)(nil)).Elem(), ListChartLegendOptionsFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartVizOptionInput)(nil)).Elem(), ListChartVizOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListChartVizOptionArrayInput)(nil)).Elem(), ListChartVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsPtrInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenHostOrUsageLimitsInput)(nil)).Elem(), OrgTokenHostOrUsageLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenHostOrUsageLimitsPtrInput)(nil)).Elem(), OrgTokenHostOrUsageLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartColorScaleInput)(nil)).Elem(), SingleValueChartColorScaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartColorScaleArrayInput)(nil)).Elem(), SingleValueChartColorScaleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartVizOptionInput)(nil)).Elem(), SingleValueChartVizOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartVizOptionArrayInput)(nil)).Elem(), SingleValueChartVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftInput)(nil)).Elem(), TimeChartAxisLeftArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftPtrInput)(nil)).Elem(), TimeChartAxisLeftArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftWatermarkInput)(nil)).Elem(), TimeChartAxisLeftWatermarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftWatermarkArrayInput)(nil)).Elem(), TimeChartAxisLeftWatermarkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisRightInput)(nil)).Elem(), TimeChartAxisRightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisRightPtrInput)(nil)).Elem(), TimeChartAxisRightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisRightWatermarkInput)(nil)).Elem(), TimeChartAxisRightWatermarkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisRightWatermarkArrayInput)(nil)).Elem(), TimeChartAxisRightWatermarkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartEventOptionInput)(nil)).Elem(), TimeChartEventOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartEventOptionArrayInput)(nil)).Elem(), TimeChartEventOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartHistogramOptionInput)(nil)).Elem(), TimeChartHistogramOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartHistogramOptionArrayInput)(nil)).Elem(), TimeChartHistogramOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartLegendOptionsFieldInput)(nil)).Elem(), TimeChartLegendOptionsFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartLegendOptionsFieldArrayInput)(nil)).Elem(), TimeChartLegendOptionsFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartVizOptionInput)(nil)).Elem(), TimeChartVizOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartVizOptionArrayInput)(nil)).Elem(), TimeChartVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationHeaderInput)(nil)).Elem(), WebhookIntegrationHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationHeaderArrayInput)(nil)).Elem(), WebhookIntegrationHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsServicesServiceInput)(nil)).Elem(), GetAwsServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsServicesServiceArrayInput)(nil)).Elem(), GetAwsServicesServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureServicesServiceInput)(nil)).Elem(), GetAzureServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureServicesServiceArrayInput)(nil)).Elem(), GetAzureServicesServiceArray{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterOutput{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterArrayOutput{})
 	pulumi.RegisterOutputType(DashboardChartOutput{})

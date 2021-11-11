@@ -218,71 +218,71 @@ export interface IntegrationState {
     /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
      */
-    readonly customCloudwatchNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    customCloudwatchNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
      */
-    readonly customNamespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationCustomNamespaceSyncRule>[]>;
+    customNamespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationCustomNamespaceSyncRule>[]>;
     /**
      * Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
      */
-    readonly enableAwsUsage?: pulumi.Input<boolean>;
+    enableAwsUsage?: pulumi.Input<boolean>;
     /**
      * Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
      */
-    readonly enableCheckLargeVolume?: pulumi.Input<boolean>;
+    enableCheckLargeVolume?: pulumi.Input<boolean>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The `externalId` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
      */
-    readonly externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string>;
     /**
      * Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
      */
-    readonly importCloudWatch?: pulumi.Input<boolean>;
+    importCloudWatch?: pulumi.Input<boolean>;
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
      */
-    readonly integrationId?: pulumi.Input<string>;
+    integrationId?: pulumi.Input<string>;
     /**
      * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * A named token to use for ingest
      */
-    readonly namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string>;
     /**
      * Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
      */
-    readonly namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
+    namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
     /**
      * AWS poll rate (in seconds). Value between `60` and `300`.
      */
-    readonly pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number>;
     /**
      * List of AWS regions that SignalFx should monitor.
      */
-    readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
-    readonly roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
     /**
      * List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
      */
-    readonly useGetMetricDataMethod?: pulumi.Input<boolean>;
+    useGetMetricDataMethod?: pulumi.Input<boolean>;
 }
 
 /**
@@ -292,69 +292,69 @@ export interface IntegrationArgs {
     /**
      * List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
      */
-    readonly customCloudwatchNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    customCloudwatchNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
      */
-    readonly customNamespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationCustomNamespaceSyncRule>[]>;
+    customNamespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationCustomNamespaceSyncRule>[]>;
     /**
      * Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
      */
-    readonly enableAwsUsage?: pulumi.Input<boolean>;
+    enableAwsUsage?: pulumi.Input<boolean>;
     /**
      * Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
      */
-    readonly enableCheckLargeVolume?: pulumi.Input<boolean>;
+    enableCheckLargeVolume?: pulumi.Input<boolean>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * The `externalId` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
      */
-    readonly externalId?: pulumi.Input<string>;
+    externalId?: pulumi.Input<string>;
     /**
      * Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
      */
-    readonly importCloudWatch?: pulumi.Input<boolean>;
+    importCloudWatch?: pulumi.Input<boolean>;
     /**
      * The id of one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
      */
-    readonly integrationId: pulumi.Input<string>;
+    integrationId: pulumi.Input<string>;
     /**
      * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * A named token to use for ingest
      */
-    readonly namedToken?: pulumi.Input<string>;
+    namedToken?: pulumi.Input<string>;
     /**
      * Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
      */
-    readonly namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
+    namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
     /**
      * AWS poll rate (in seconds). Value between `60` and `300`.
      */
-    readonly pollRate?: pulumi.Input<number>;
+    pollRate?: pulumi.Input<number>;
     /**
      * List of AWS regions that SignalFx should monitor.
      */
-    readonly regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
-    readonly roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
     /**
      * List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
      */
-    readonly services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
      */
-    readonly token?: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
      */
-    readonly useGetMetricDataMethod?: pulumi.Input<boolean>;
+    useGetMetricDataMethod?: pulumi.Input<boolean>;
 }

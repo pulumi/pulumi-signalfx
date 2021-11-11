@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SignalFx
 {
@@ -14,6 +15,9 @@ namespace Pulumi.SignalFx
     {
         public static Task<GetAwsServicesResult> InvokeAsync(GetAwsServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesArgs(), options.WithVersion());
+
+        public static Output<GetAwsServicesResult> Invoke(GetAwsServicesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +32,21 @@ namespace Pulumi.SignalFx
         }
 
         public GetAwsServicesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAwsServicesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("services")]
+        private InputList<Inputs.GetAwsServicesServiceInputArgs>? _services;
+        public InputList<Inputs.GetAwsServicesServiceInputArgs> Services
+        {
+            get => _services ?? (_services = new InputList<Inputs.GetAwsServicesServiceInputArgs>());
+            set => _services = value;
+        }
+
+        public GetAwsServicesInvokeArgs()
         {
         }
     }

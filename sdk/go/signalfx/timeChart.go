@@ -30,16 +30,16 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
-// 			AxisLeft: &signalfx.TimeChartAxisLeftArgs{
+// 			AxisLeft: &TimeChartAxisLeftArgs{
 // 				Label:        pulumi.String("CPU Total Idle"),
 // 				LowWatermark: pulumi.Float64(1000),
 // 			},
-// 			LegendOptionsFields: signalfx.TimeChartLegendOptionsFieldArray{
-// 				&signalfx.TimeChartLegendOptionsFieldArgs{
+// 			LegendOptionsFields: TimeChartLegendOptionsFieldArray{
+// 				&TimeChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(false),
 // 					Property: pulumi.String("collector"),
 // 				},
-// 				&signalfx.TimeChartLegendOptionsFieldArgs{
+// 				&TimeChartLegendOptionsFieldArgs{
 // 					Enabled:  pulumi.Bool(false),
 // 					Property: pulumi.String("hostname"),
 // 				},
@@ -48,8 +48,8 @@ import (
 // 			ProgramText:     pulumi.String(fmt.Sprintf("%v%v", "data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n", "\n")),
 // 			ShowDataMarkers: pulumi.Bool(true),
 // 			TimeRange:       pulumi.Int(3600),
-// 			VizOptions: signalfx.TimeChartVizOptionArray{
-// 				&signalfx.TimeChartVizOptionArgs{
+// 			VizOptions: TimeChartVizOptionArray{
+// 				&TimeChartVizOptionArgs{
 // 					Axis:  pulumi.String("left"),
 // 					Color: pulumi.String("orange"),
 // 					Label: pulumi.String("CPU Idle"),
@@ -478,7 +478,7 @@ type TimeChartArrayInput interface {
 type TimeChartArray []TimeChartInput
 
 func (TimeChartArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TimeChart)(nil))
+	return reflect.TypeOf((*[]*TimeChart)(nil)).Elem()
 }
 
 func (i TimeChartArray) ToTimeChartArrayOutput() TimeChartArrayOutput {
@@ -503,7 +503,7 @@ type TimeChartMapInput interface {
 type TimeChartMap map[string]TimeChartInput
 
 func (TimeChartMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TimeChart)(nil))
+	return reflect.TypeOf((*map[string]*TimeChart)(nil)).Elem()
 }
 
 func (i TimeChartMap) ToTimeChartMapOutput() TimeChartMapOutput {
@@ -514,9 +514,7 @@ func (i TimeChartMap) ToTimeChartMapOutputWithContext(ctx context.Context) TimeC
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartMapOutput)
 }
 
-type TimeChartOutput struct {
-	*pulumi.OutputState
-}
+type TimeChartOutput struct{ *pulumi.OutputState }
 
 func (TimeChartOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TimeChart)(nil))
@@ -535,14 +533,12 @@ func (o TimeChartOutput) ToTimeChartPtrOutput() TimeChartPtrOutput {
 }
 
 func (o TimeChartOutput) ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput {
-	return o.ApplyT(func(v TimeChart) *TimeChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeChart) *TimeChart {
 		return &v
 	}).(TimeChartPtrOutput)
 }
 
-type TimeChartPtrOutput struct {
-	*pulumi.OutputState
-}
+type TimeChartPtrOutput struct{ *pulumi.OutputState }
 
 func (TimeChartPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TimeChart)(nil))
@@ -554,6 +550,16 @@ func (o TimeChartPtrOutput) ToTimeChartPtrOutput() TimeChartPtrOutput {
 
 func (o TimeChartPtrOutput) ToTimeChartPtrOutputWithContext(ctx context.Context) TimeChartPtrOutput {
 	return o
+}
+
+func (o TimeChartPtrOutput) Elem() TimeChartOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChart {
+		if v != nil {
+			return *v
+		}
+		var ret TimeChart
+		return ret
+	}).(TimeChartOutput)
 }
 
 type TimeChartArrayOutput struct{ *pulumi.OutputState }
@@ -597,6 +603,10 @@ func (o TimeChartMapOutput) MapIndex(k pulumi.StringInput) TimeChartOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartInput)(nil)).Elem(), &TimeChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartPtrInput)(nil)).Elem(), &TimeChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartArrayInput)(nil)).Elem(), TimeChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartMapInput)(nil)).Elem(), TimeChartMap{})
 	pulumi.RegisterOutputType(TimeChartOutput{})
 	pulumi.RegisterOutputType(TimeChartPtrOutput{})
 	pulumi.RegisterOutputType(TimeChartArrayOutput{})

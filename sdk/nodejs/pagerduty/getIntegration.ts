@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const pdIntegration = pulumi.output(signalfx.pagerduty.getIntegration({
  *     name: "PD-Integration",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationResult> {
@@ -39,7 +38,7 @@ export interface GetIntegrationArgs {
     /**
      * Specify the exact name of the desired PagerDuty integration
      */
-    readonly name: string;
+    name: string;
 }
 
 /**
@@ -58,4 +57,18 @@ export interface GetIntegrationResult {
      * The name of the integration.
      */
     readonly name: string;
+}
+
+export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationResult> {
+    return pulumi.output(args).apply(a => getIntegration(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getIntegration.
+ */
+export interface GetIntegrationOutputArgs {
+    /**
+     * Specify the exact name of the desired PagerDuty integration
+     */
+    name: pulumi.Input<string>;
 }

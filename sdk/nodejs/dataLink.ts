@@ -136,27 +136,27 @@ export interface DataLinkState {
     /**
      * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
-    readonly contextDashboardId?: pulumi.Input<string>;
+    contextDashboardId?: pulumi.Input<string>;
     /**
      * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      */
-    readonly propertyName?: pulumi.Input<string>;
+    propertyName?: pulumi.Input<string>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
-    readonly propertyValue?: pulumi.Input<string>;
+    propertyValue?: pulumi.Input<string>;
     /**
      * Link to an external URL
      */
-    readonly targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[]>;
+    targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[]>;
     /**
      * Link to a SignalFx dashboard
      */
-    readonly targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[]>;
+    targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[]>;
     /**
      * Link to an external URL
      */
-    readonly targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[]>;
+    targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[]>;
 }
 
 /**
@@ -166,25 +166,25 @@ export interface DataLinkArgs {
     /**
      * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      */
-    readonly contextDashboardId?: pulumi.Input<string>;
+    contextDashboardId?: pulumi.Input<string>;
     /**
      * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
      */
-    readonly propertyName?: pulumi.Input<string>;
+    propertyName?: pulumi.Input<string>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
      */
-    readonly propertyValue?: pulumi.Input<string>;
+    propertyValue?: pulumi.Input<string>;
     /**
      * Link to an external URL
      */
-    readonly targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[]>;
+    targetExternalUrls?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetExternalUrl>[]>;
     /**
      * Link to a SignalFx dashboard
      */
-    readonly targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[]>;
+    targetSignalfxDashboards?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSignalfxDashboard>[]>;
     /**
      * Link to an external URL
      */
-    readonly targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[]>;
+    targetSplunks?: pulumi.Input<pulumi.Input<inputs.DataLinkTargetSplunk>[]>;
 }

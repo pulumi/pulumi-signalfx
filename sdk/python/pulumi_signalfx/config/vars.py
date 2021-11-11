@@ -8,32 +8,37 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'api_url',
-    'auth_token',
-    'custom_app_url',
-    'timeout_seconds',
-]
+import types
 
 __config__ = pulumi.Config('signalfx')
 
-api_url = __config__.get('apiUrl')
-"""
-API URL for your SignalFx org, may include a realm
-"""
 
-auth_token = __config__.get('authToken')
-"""
-SignalFx auth token
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def api_url(self) -> Optional[str]:
+        """
+        API URL for your SignalFx org, may include a realm
+        """
+        return __config__.get('apiUrl')
 
-custom_app_url = __config__.get('customAppUrl')
-"""
-Application URL for your SignalFx org, often customzied for organizations using SSO
-"""
+    @property
+    def auth_token(self) -> Optional[str]:
+        """
+        SignalFx auth token
+        """
+        return __config__.get('authToken')
 
-timeout_seconds = __config__.get('timeoutSeconds')
-"""
-Timeout duration for a single HTTP call in seconds. Defaults to 120
-"""
+    @property
+    def custom_app_url(self) -> Optional[str]:
+        """
+        Application URL for your SignalFx org, often customzied for organizations using SSO
+        """
+        return __config__.get('customAppUrl')
+
+    @property
+    def timeout_seconds(self) -> Optional[int]:
+        """
+        Timeout duration for a single HTTP call in seconds. Defaults to 120
+        """
+        return __config__.get_int('timeoutSeconds')
 

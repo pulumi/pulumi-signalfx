@@ -132,32 +132,32 @@ export interface OrgTokenState {
     /**
      * Description of the token.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Specify DPM-based limits for this token.
      */
-    readonly dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
+    dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
     /**
      * Specify Usage-based limits for this token.
      */
-    readonly hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
+    hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
     /**
      * Name of the token.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of strings specifying where notifications will be sent when an incident occurs. See
      * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      */
-    readonly notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    notifications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The secret token created by the API. You cannot set this value.
      */
-    readonly secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
 }
 
 /**
@@ -167,26 +167,26 @@ export interface OrgTokenArgs {
     /**
      * Description of the token.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Specify DPM-based limits for this token.
      */
-    readonly dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
+    dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
     /**
      * Specify Usage-based limits for this token.
      */
-    readonly hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
+    hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
     /**
      * Name of the token.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * List of strings specifying where notifications will be sent when an incident occurs. See
      * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      */
-    readonly notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    notifications?: pulumi.Input<pulumi.Input<string>[]>;
 }

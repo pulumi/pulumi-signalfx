@@ -129,24 +129,24 @@ export interface AlertMutingRuleState {
     /**
      * The description for this muting rule
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A convenience attribute that associated this muting rule with specific detector ids.
      */
-    readonly detectors?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly effectiveStartTime?: pulumi.Input<number>;
+    detectors?: pulumi.Input<pulumi.Input<string>[]>;
+    effectiveStartTime?: pulumi.Input<number>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
      */
-    readonly filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * Starting time of an alert muting rule as a Unix time stamp in seconds.
      */
-    readonly stopTime?: pulumi.Input<number>;
+    stopTime?: pulumi.Input<number>;
 }
 
 /**
@@ -156,21 +156,21 @@ export interface AlertMutingRuleArgs {
     /**
      * The description for this muting rule
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * A convenience attribute that associated this muting rule with specific detector ids.
      */
-    readonly detectors?: pulumi.Input<pulumi.Input<string>[]>;
+    detectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
      */
-    readonly filters: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
+    filters: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
-    readonly startTime: pulumi.Input<number>;
+    startTime: pulumi.Input<number>;
     /**
      * Starting time of an alert muting rule as a Unix time stamp in seconds.
      */
-    readonly stopTime?: pulumi.Input<number>;
+    stopTime?: pulumi.Input<number>;
 }

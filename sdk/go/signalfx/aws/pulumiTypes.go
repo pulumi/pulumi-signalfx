@@ -353,6 +353,12 @@ func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespaceSyncRuleInput)(nil)).Elem(), IntegrationCustomNamespaceSyncRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespaceSyncRuleArrayInput)(nil)).Elem(), IntegrationCustomNamespaceSyncRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNamespaceSyncRuleInput)(nil)).Elem(), IntegrationNamespaceSyncRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNamespaceSyncRuleArrayInput)(nil)).Elem(), IntegrationNamespaceSyncRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespaceSyncRuleOutput{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespaceSyncRuleArrayOutput{})
 	pulumi.RegisterOutputType(IntegrationNamespaceSyncRuleOutput{})

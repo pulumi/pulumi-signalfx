@@ -14,6 +14,7 @@ __all__ = [
     'GetAwsServicesResult',
     'AwaitableGetAwsServicesResult',
     'get_aws_services',
+    'get_aws_services_output',
 ]
 
 warnings.warn("""signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices""", DeprecationWarning)
@@ -72,3 +73,13 @@ def get_aws_services(services: Optional[Sequence[pulumi.InputType['GetAwsService
     return AwaitableGetAwsServicesResult(
         id=__ret__.id,
         services=__ret__.services)
+
+
+@_utilities.lift_output_func(get_aws_services)
+def get_aws_services_output(services: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetAwsServicesServiceArgs']]]]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsServicesResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    pulumi.log.warn("""get_aws_services is deprecated: signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices""")
+    ...

@@ -4,6 +4,9 @@
 package signalfx
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,4 +30,50 @@ type GetAzureServicesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string                    `pulumi:"id"`
 	Services []GetAzureServicesService `pulumi:"services"`
+}
+
+func GetAzureServicesOutput(ctx *pulumi.Context, args GetAzureServicesOutputArgs, opts ...pulumi.InvokeOption) GetAzureServicesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetAzureServicesResult, error) {
+			args := v.(GetAzureServicesArgs)
+			r, err := GetAzureServices(ctx, &args, opts...)
+			return *r, err
+		}).(GetAzureServicesResultOutput)
+}
+
+// A collection of arguments for invoking getAzureServices.
+type GetAzureServicesOutputArgs struct {
+	Services GetAzureServicesServiceArrayInput `pulumi:"services"`
+}
+
+func (GetAzureServicesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureServicesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getAzureServices.
+type GetAzureServicesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAzureServicesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAzureServicesResult)(nil)).Elem()
+}
+
+func (o GetAzureServicesResultOutput) ToGetAzureServicesResultOutput() GetAzureServicesResultOutput {
+	return o
+}
+
+func (o GetAzureServicesResultOutput) ToGetAzureServicesResultOutputWithContext(ctx context.Context) GetAzureServicesResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAzureServicesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAzureServicesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetAzureServicesResultOutput) Services() GetAzureServicesServiceArrayOutput {
+	return o.ApplyT(func(v GetAzureServicesResult) []GetAzureServicesService { return v.Services }).(GetAzureServicesServiceArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAzureServicesResultOutput{})
 }

@@ -111,19 +111,19 @@ export interface IntegrationState {
     /**
      * The API key
      */
-    readonly apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string>;
     /**
      * Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
      */
-    readonly apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -133,17 +133,17 @@ export interface IntegrationArgs {
     /**
      * The API key
      */
-    readonly apiKey: pulumi.Input<string>;
+    apiKey: pulumi.Input<string>;
     /**
      * Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
      */
-    readonly apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string>;
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

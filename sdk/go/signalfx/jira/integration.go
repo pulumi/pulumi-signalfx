@@ -299,7 +299,7 @@ type IntegrationArrayInput interface {
 type IntegrationArray []IntegrationInput
 
 func (IntegrationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Integration)(nil))
+	return reflect.TypeOf((*[]*Integration)(nil)).Elem()
 }
 
 func (i IntegrationArray) ToIntegrationArrayOutput() IntegrationArrayOutput {
@@ -324,7 +324,7 @@ type IntegrationMapInput interface {
 type IntegrationMap map[string]IntegrationInput
 
 func (IntegrationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Integration)(nil))
+	return reflect.TypeOf((*map[string]*Integration)(nil)).Elem()
 }
 
 func (i IntegrationMap) ToIntegrationMapOutput() IntegrationMapOutput {
@@ -335,9 +335,7 @@ func (i IntegrationMap) ToIntegrationMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMapOutput)
 }
 
-type IntegrationOutput struct {
-	*pulumi.OutputState
-}
+type IntegrationOutput struct{ *pulumi.OutputState }
 
 func (IntegrationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Integration)(nil))
@@ -356,14 +354,12 @@ func (o IntegrationOutput) ToIntegrationPtrOutput() IntegrationPtrOutput {
 }
 
 func (o IntegrationOutput) ToIntegrationPtrOutputWithContext(ctx context.Context) IntegrationPtrOutput {
-	return o.ApplyT(func(v Integration) *Integration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Integration) *Integration {
 		return &v
 	}).(IntegrationPtrOutput)
 }
 
-type IntegrationPtrOutput struct {
-	*pulumi.OutputState
-}
+type IntegrationPtrOutput struct{ *pulumi.OutputState }
 
 func (IntegrationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Integration)(nil))
@@ -375,6 +371,16 @@ func (o IntegrationPtrOutput) ToIntegrationPtrOutput() IntegrationPtrOutput {
 
 func (o IntegrationPtrOutput) ToIntegrationPtrOutputWithContext(ctx context.Context) IntegrationPtrOutput {
 	return o
+}
+
+func (o IntegrationPtrOutput) Elem() IntegrationOutput {
+	return o.ApplyT(func(v *Integration) Integration {
+		if v != nil {
+			return *v
+		}
+		var ret Integration
+		return ret
+	}).(IntegrationOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }
@@ -418,6 +424,10 @@ func (o IntegrationMapOutput) MapIndex(k pulumi.StringInput) IntegrationOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationInput)(nil)).Elem(), &Integration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationPtrInput)(nil)).Elem(), &Integration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationArrayInput)(nil)).Elem(), IntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMapInput)(nil)).Elem(), IntegrationMap{})
 	pulumi.RegisterOutputType(IntegrationOutput{})
 	pulumi.RegisterOutputType(IntegrationPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationArrayOutput{})

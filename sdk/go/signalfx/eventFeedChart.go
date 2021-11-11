@@ -197,7 +197,7 @@ type EventFeedChartArrayInput interface {
 type EventFeedChartArray []EventFeedChartInput
 
 func (EventFeedChartArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EventFeedChart)(nil))
+	return reflect.TypeOf((*[]*EventFeedChart)(nil)).Elem()
 }
 
 func (i EventFeedChartArray) ToEventFeedChartArrayOutput() EventFeedChartArrayOutput {
@@ -222,7 +222,7 @@ type EventFeedChartMapInput interface {
 type EventFeedChartMap map[string]EventFeedChartInput
 
 func (EventFeedChartMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EventFeedChart)(nil))
+	return reflect.TypeOf((*map[string]*EventFeedChart)(nil)).Elem()
 }
 
 func (i EventFeedChartMap) ToEventFeedChartMapOutput() EventFeedChartMapOutput {
@@ -233,9 +233,7 @@ func (i EventFeedChartMap) ToEventFeedChartMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartMapOutput)
 }
 
-type EventFeedChartOutput struct {
-	*pulumi.OutputState
-}
+type EventFeedChartOutput struct{ *pulumi.OutputState }
 
 func (EventFeedChartOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EventFeedChart)(nil))
@@ -254,14 +252,12 @@ func (o EventFeedChartOutput) ToEventFeedChartPtrOutput() EventFeedChartPtrOutpu
 }
 
 func (o EventFeedChartOutput) ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput {
-	return o.ApplyT(func(v EventFeedChart) *EventFeedChart {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventFeedChart) *EventFeedChart {
 		return &v
 	}).(EventFeedChartPtrOutput)
 }
 
-type EventFeedChartPtrOutput struct {
-	*pulumi.OutputState
-}
+type EventFeedChartPtrOutput struct{ *pulumi.OutputState }
 
 func (EventFeedChartPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EventFeedChart)(nil))
@@ -273,6 +269,16 @@ func (o EventFeedChartPtrOutput) ToEventFeedChartPtrOutput() EventFeedChartPtrOu
 
 func (o EventFeedChartPtrOutput) ToEventFeedChartPtrOutputWithContext(ctx context.Context) EventFeedChartPtrOutput {
 	return o
+}
+
+func (o EventFeedChartPtrOutput) Elem() EventFeedChartOutput {
+	return o.ApplyT(func(v *EventFeedChart) EventFeedChart {
+		if v != nil {
+			return *v
+		}
+		var ret EventFeedChart
+		return ret
+	}).(EventFeedChartOutput)
 }
 
 type EventFeedChartArrayOutput struct{ *pulumi.OutputState }
@@ -316,6 +322,10 @@ func (o EventFeedChartMapOutput) MapIndex(k pulumi.StringInput) EventFeedChartOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EventFeedChartInput)(nil)).Elem(), &EventFeedChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventFeedChartPtrInput)(nil)).Elem(), &EventFeedChart{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventFeedChartArrayInput)(nil)).Elem(), EventFeedChartArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventFeedChartMapInput)(nil)).Elem(), EventFeedChartMap{})
 	pulumi.RegisterOutputType(EventFeedChartOutput{})
 	pulumi.RegisterOutputType(EventFeedChartPtrOutput{})
 	pulumi.RegisterOutputType(EventFeedChartArrayOutput{})

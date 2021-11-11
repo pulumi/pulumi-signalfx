@@ -10,6 +10,49 @@ import * as utilities from "./utilities";
  *
  * > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const config = new pulumi.Config();
+ * const clusters = config.getObject("clusters") || [
+ *     "clusterA",
+ *     "clusterB",
+ * ];
+ * const applicationDelay: signalfx.Detector[];
+ * for (const range = {value: 0}; range.value < clusters.length; range.value++) {
+ *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
+ *         description: `your application is slow - ${clusters[range.value]}`,
+ *         maxDelay: 30,
+ *         tags: [
+ *             "app-backend",
+ *             "staging",
+ *         ],
+ *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *         authorizedWriterUsers: ["abc123"],
+ *         programText: `signal = data('app.delay', filter('cluster','${clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+ * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
+ * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
+ * `,
+ *         rules: [
+ *             {
+ *                 description: "maximum > 60 for 5m",
+ *                 severity: "Warning",
+ *                 detectLabel: "Processing old messages 5m",
+ *                 notifications: ["Email,foo-alerts@bar.com"],
+ *             },
+ *             {
+ *                 description: "maximum > 60 for 30m",
+ *                 severity: "Critical",
+ *                 detectLabel: "Processing old messages 30m",
+ *                 notifications: ["Email,foo-alerts@bar.com"],
+ *             },
+ *         ],
+ *     }));
+ * }
+ * ```
  * ## Notification Format
  *
  * As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
@@ -279,79 +322,79 @@ export interface DetectorState {
     /**
      * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
-    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
-    readonly disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number>;
     /**
      * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
      */
-    readonly minDelay?: pulumi.Input<number>;
+    minDelay?: pulumi.Input<number>;
     /**
      * Name of the detector.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    readonly programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string>;
     /**
      * Set of rules used for alerting.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
     /**
      * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
-    readonly showDataMarkers?: pulumi.Input<boolean>;
+    showDataMarkers?: pulumi.Input<boolean>;
     /**
      * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
      */
-    readonly showEventLines?: pulumi.Input<boolean>;
+    showEventLines?: pulumi.Input<boolean>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * Tags associated with the detector.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Team IDs to associate the detector to.
      */
-    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
-    readonly timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * The URL of the detector.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
 }
 
 /**
@@ -361,73 +404,73 @@ export interface DetectorArgs {
     /**
      * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
      */
-    readonly authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
      */
-    readonly authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
-    readonly disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number>;
     /**
      * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
      */
-    readonly minDelay?: pulumi.Input<number>;
+    minDelay?: pulumi.Input<number>;
     /**
      * Name of the detector.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    readonly programText: pulumi.Input<string>;
+    programText: pulumi.Input<string>;
     /**
      * Set of rules used for alerting.
      */
-    readonly rules: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
+    rules: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
     /**
      * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      */
-    readonly showDataMarkers?: pulumi.Input<boolean>;
+    showDataMarkers?: pulumi.Input<boolean>;
     /**
      * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
      */
-    readonly showEventLines?: pulumi.Input<boolean>;
+    showEventLines?: pulumi.Input<boolean>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * Tags associated with the detector.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Team IDs to associate the detector to.
      */
-    readonly teams?: pulumi.Input<pulumi.Input<string>[]>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      */
-    readonly timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
 }

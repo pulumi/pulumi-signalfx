@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SignalFx
 {
@@ -14,6 +15,9 @@ namespace Pulumi.SignalFx
     {
         public static Task<GetAzureServicesResult> InvokeAsync(GetAzureServicesArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAzureServicesResult>("signalfx:index/getAzureServices:getAzureServices", args ?? new GetAzureServicesArgs(), options.WithVersion());
+
+        public static Output<GetAzureServicesResult> Invoke(GetAzureServicesInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetAzureServicesResult>("signalfx:index/getAzureServices:getAzureServices", args ?? new GetAzureServicesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -28,6 +32,21 @@ namespace Pulumi.SignalFx
         }
 
         public GetAzureServicesArgs()
+        {
+        }
+    }
+
+    public sealed class GetAzureServicesInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("services")]
+        private InputList<Inputs.GetAzureServicesServiceInputArgs>? _services;
+        public InputList<Inputs.GetAzureServicesServiceInputArgs> Services
+        {
+            get => _services ?? (_services = new InputList<Inputs.GetAzureServicesServiceInputArgs>());
+            set => _services = value;
+        }
+
+        public GetAzureServicesInvokeArgs()
         {
         }
     }

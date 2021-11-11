@@ -4,6 +4,9 @@
 package pagerduty
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,57 @@ type LookupIntegrationResult struct {
 	Id string `pulumi:"id"`
 	// The name of the integration.
 	Name string `pulumi:"name"`
+}
+
+func LookupIntegrationOutput(ctx *pulumi.Context, args LookupIntegrationOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupIntegrationResult, error) {
+			args := v.(LookupIntegrationArgs)
+			r, err := LookupIntegration(ctx, &args, opts...)
+			return *r, err
+		}).(LookupIntegrationResultOutput)
+}
+
+// A collection of arguments for invoking getIntegration.
+type LookupIntegrationOutputArgs struct {
+	// Specify the exact name of the desired PagerDuty integration
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LookupIntegrationOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntegrationArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getIntegration.
+type LookupIntegrationResultOutput struct{ *pulumi.OutputState }
+
+func (LookupIntegrationResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIntegrationResult)(nil)).Elem()
+}
+
+func (o LookupIntegrationResultOutput) ToLookupIntegrationResultOutput() LookupIntegrationResultOutput {
+	return o
+}
+
+func (o LookupIntegrationResultOutput) ToLookupIntegrationResultOutputWithContext(ctx context.Context) LookupIntegrationResultOutput {
+	return o
+}
+
+// Whether the integration is enabled.
+func (o LookupIntegrationResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupIntegrationResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupIntegrationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the integration.
+func (o LookupIntegrationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupIntegrationResultOutput{})
 }

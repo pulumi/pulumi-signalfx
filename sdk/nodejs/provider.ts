@@ -25,6 +25,18 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * API URL for your SignalFx org, may include a realm
+     */
+    public readonly apiUrl!: pulumi.Output<string | undefined>;
+    /**
+     * SignalFx auth token
+     */
+    public readonly authToken!: pulumi.Output<string | undefined>;
+    /**
+     * Application URL for your SignalFx org, often customzied for organizations using SSO
+     */
+    public readonly customAppUrl!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -56,17 +68,17 @@ export interface ProviderArgs {
     /**
      * API URL for your SignalFx org, may include a realm
      */
-    readonly apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string>;
     /**
      * SignalFx auth token
      */
-    readonly authToken?: pulumi.Input<string>;
+    authToken?: pulumi.Input<string>;
     /**
      * Application URL for your SignalFx org, often customzied for organizations using SSO
      */
-    readonly customAppUrl?: pulumi.Input<string>;
+    customAppUrl?: pulumi.Input<string>;
     /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      */
-    readonly timeoutSeconds?: pulumi.Input<number>;
+    timeoutSeconds?: pulumi.Input<number>;
 }

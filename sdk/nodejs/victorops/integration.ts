@@ -101,15 +101,15 @@ export interface IntegrationState {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Victor Ops REST API URL.
      */
-    readonly postUrl?: pulumi.Input<string>;
+    postUrl?: pulumi.Input<string>;
 }
 
 /**
@@ -119,13 +119,13 @@ export interface IntegrationArgs {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Victor Ops REST API URL.
      */
-    readonly postUrl?: pulumi.Input<string>;
+    postUrl?: pulumi.Input<string>;
 }

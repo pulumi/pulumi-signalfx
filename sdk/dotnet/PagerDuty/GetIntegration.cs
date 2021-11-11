@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.SignalFx.PagerDuty
 {
@@ -39,6 +40,35 @@ namespace Pulumi.SignalFx.PagerDuty
         /// </summary>
         public static Task<GetIntegrationResult> InvokeAsync(GetIntegrationArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to get information on an existing PagerDuty integration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var pdIntegration = Output.Create(SignalFx.PagerDuty.GetIntegration.InvokeAsync(new SignalFx.PagerDuty.GetIntegrationArgs
+        ///         {
+        ///             Name = "PD-Integration",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIntegrationResult> Invoke(GetIntegrationInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.SignalFx.PagerDuty
         public string Name { get; set; } = null!;
 
         public GetIntegrationArgs()
+        {
+        }
+    }
+
+    public sealed class GetIntegrationInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specify the exact name of the desired PagerDuty integration
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        public GetIntegrationInvokeArgs()
         {
         }
     }

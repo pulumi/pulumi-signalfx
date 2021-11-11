@@ -24,6 +24,7 @@ import (
 // import (
 // 	"fmt"
 //
+// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
 // 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
 // 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -46,7 +47,7 @@ import (
 // 		}
 // 		awsReadPermissions, err := iam.NewPolicy(ctx, "awsReadPermissions", &iam.PolicyArgs{
 // 			Description: pulumi.String("farts"),
-// 			Policy: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [\n", "		{\n", "			\"Action\": [\n", "				\"dynamodb:ListTables\",\n", "		    \"dynamodb:DescribeTable\",\n", "		    \"dynamodb:ListTagsOfResource\",\n", "		    \"ec2:DescribeInstances\",\n", "		    \"ec2:DescribeInstanceStatus\",\n", "		    \"ec2:DescribeVolumes\",\n", "		    \"ec2:DescribeReservedInstances\",\n", "		    \"ec2:DescribeReservedInstancesModifications\",\n", "		    \"ec2:DescribeTags\",\n", "		    \"organizations:DescribeOrganization\",\n", "		    \"cloudwatch:ListMetrics\",\n", "		    \"cloudwatch:GetMetricData\",\n", "		    \"cloudwatch:GetMetricStatistics\",\n", "		    \"cloudwatch:DescribeAlarms\",\n", "		    \"sqs:ListQueues\",\n", "		    \"sqs:GetQueueAttributes\",\n", "		    \"sqs:ListQueueTags\",\n", "		    \"elasticmapreduce:ListClusters\",\n", "		    \"elasticmapreduce:DescribeCluster\",\n", "		    \"kinesis:ListShards\",\n", "		    \"kinesis:ListStreams\",\n", "		    \"kinesis:DescribeStream\",\n", "		    \"kinesis:ListTagsForStream\",\n", "		    \"rds:DescribeDBInstances\",\n", "		    \"rds:ListTagsForResource\",\n", "		    \"elasticloadbalancing:DescribeLoadBalancers\",\n", "		    \"elasticloadbalancing:DescribeTags\",\n", "		    \"elasticache:describeCacheClusters\",\n", "		    \"redshift:DescribeClusters\",\n", "		    \"lambda:GetAlias\",\n", "		    \"lambda:ListFunctions\",\n", "		    \"lambda:ListTags\",\n", "		    \"autoscaling:DescribeAutoScalingGroups\",\n", "		    \"s3:ListAllMyBuckets\",\n", "		    \"s3:ListBucket\",\n", "		    \"s3:GetBucketLocation\",\n", "		    \"s3:GetBucketTagging\",\n", "		    \"ecs:ListServices\",\n", "		    \"ecs:ListTasks\",\n", "		    \"ecs:DescribeTasks\",\n", "		    \"ecs:DescribeServices\",\n", "		    \"ecs:ListClusters\",\n", "		    \"ecs:DescribeClusters\",\n", "		    \"ecs:ListTaskDefinitions\",\n", "		    \"ecs:ListTagsForResource\",\n", "		    \"apigateway:GET\",\n", "		    \"cloudfront:ListDistributions\",\n", "		    \"cloudfront:ListTagsForResource\",\n", "		    \"tag:GetResources\",\n", "		    \"es:ListDomainNames\",\n", "		    \"es:DescribeElasticsearchDomain\"\n", "			],\n", "			\"Effect\": \"Allow\",\n", "			\"Resource\": \"*\"\n", "		}\n", "	]\n", "}\n")),
+// 			Policy: pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [\n", "		{\n", "			\"Action\": [\n", "				\"dynamodb:ListTables\",\n", "		    \"dynamodb:DescribeTable\",\n", "		    \"dynamodb:ListTagsOfResource\",\n", "		    \"ec2:DescribeInstances\",\n", "		    \"ec2:DescribeInstanceStatus\",\n", "		    \"ec2:DescribeVolumes\",\n", "		    \"ec2:DescribeReservedInstances\",\n", "		    \"ec2:DescribeReservedInstancesModifications\",\n", "		    \"ec2:DescribeTags\",\n", "		    \"organizations:DescribeOrganization\",\n", "		    \"cloudwatch:ListMetrics\",\n", "		    \"cloudwatch:GetMetricData\",\n", "		    \"cloudwatch:GetMetricStatistics\",\n", "		    \"cloudwatch:DescribeAlarms\",\n", "		    \"sqs:ListQueues\",\n", "		    \"sqs:GetQueueAttributes\",\n", "		    \"sqs:ListQueueTags\",\n", "		    \"elasticmapreduce:ListClusters\",\n", "		    \"elasticmapreduce:DescribeCluster\",\n", "		    \"kinesis:ListShards\",\n", "		    \"kinesis:ListStreams\",\n", "		    \"kinesis:DescribeStream\",\n", "		    \"kinesis:ListTagsForStream\",\n", "		    \"rds:DescribeDBInstances\",\n", "		    \"rds:ListTagsForResource\",\n", "		    \"elasticloadbalancing:DescribeLoadBalancers\",\n", "		    \"elasticloadbalancing:DescribeTags\",\n", "		    \"elasticache:describeCacheClusters\",\n", "		    \"redshift:DescribeClusters\",\n", "		    \"lambda:GetAlias\",\n", "		    \"lambda:ListFunctions\",\n", "		    \"lambda:ListTags\",\n", "		    \"autoscaling:DescribeAutoScalingGroups\",\n", "		    \"s3:ListAllMyBuckets\",\n", "		    \"s3:ListBucket\",\n", "		    \"s3:GetBucketLocation\",\n", "		    \"s3:GetBucketTagging\",\n", "		    \"ecs:ListServices\",\n", "		    \"ecs:ListTasks\",\n", "		    \"ecs:DescribeTasks\",\n", "		    \"ecs:DescribeServices\",\n", "		    \"ecs:ListClusters\",\n", "		    \"ecs:DescribeClusters\",\n", "		    \"ecs:ListTaskDefinitions\",\n", "		    \"ecs:ListTagsForResource\",\n", "		    \"apigateway:GET\",\n", "		    \"cloudfront:ListDistributions\",\n", "		    \"cloudfront:ListTagsForResource\",\n", "		    \"tag:GetResources\",\n", "		    \"es:ListDomainNames\",\n", "		    \"es:DescribeElasticsearchDomain\"\n", "			],\n", "			\"Effect\": \"Allow\",\n", "			\"Resource\": \"*\"\n", "		}\n", "	]\n", "}\n")),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -215,7 +216,7 @@ type ExternalIntegrationArrayInput interface {
 type ExternalIntegrationArray []ExternalIntegrationInput
 
 func (ExternalIntegrationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ExternalIntegration)(nil))
+	return reflect.TypeOf((*[]*ExternalIntegration)(nil)).Elem()
 }
 
 func (i ExternalIntegrationArray) ToExternalIntegrationArrayOutput() ExternalIntegrationArrayOutput {
@@ -240,7 +241,7 @@ type ExternalIntegrationMapInput interface {
 type ExternalIntegrationMap map[string]ExternalIntegrationInput
 
 func (ExternalIntegrationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ExternalIntegration)(nil))
+	return reflect.TypeOf((*map[string]*ExternalIntegration)(nil)).Elem()
 }
 
 func (i ExternalIntegrationMap) ToExternalIntegrationMapOutput() ExternalIntegrationMapOutput {
@@ -251,9 +252,7 @@ func (i ExternalIntegrationMap) ToExternalIntegrationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationMapOutput)
 }
 
-type ExternalIntegrationOutput struct {
-	*pulumi.OutputState
-}
+type ExternalIntegrationOutput struct{ *pulumi.OutputState }
 
 func (ExternalIntegrationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ExternalIntegration)(nil))
@@ -272,14 +271,12 @@ func (o ExternalIntegrationOutput) ToExternalIntegrationPtrOutput() ExternalInte
 }
 
 func (o ExternalIntegrationOutput) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
-	return o.ApplyT(func(v ExternalIntegration) *ExternalIntegration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalIntegration) *ExternalIntegration {
 		return &v
 	}).(ExternalIntegrationPtrOutput)
 }
 
-type ExternalIntegrationPtrOutput struct {
-	*pulumi.OutputState
-}
+type ExternalIntegrationPtrOutput struct{ *pulumi.OutputState }
 
 func (ExternalIntegrationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ExternalIntegration)(nil))
@@ -291,6 +288,16 @@ func (o ExternalIntegrationPtrOutput) ToExternalIntegrationPtrOutput() ExternalI
 
 func (o ExternalIntegrationPtrOutput) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
 	return o
+}
+
+func (o ExternalIntegrationPtrOutput) Elem() ExternalIntegrationOutput {
+	return o.ApplyT(func(v *ExternalIntegration) ExternalIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret ExternalIntegration
+		return ret
+	}).(ExternalIntegrationOutput)
 }
 
 type ExternalIntegrationArrayOutput struct{ *pulumi.OutputState }
@@ -334,6 +341,10 @@ func (o ExternalIntegrationMapOutput) MapIndex(k pulumi.StringInput) ExternalInt
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationInput)(nil)).Elem(), &ExternalIntegration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationPtrInput)(nil)).Elem(), &ExternalIntegration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationArrayInput)(nil)).Elem(), ExternalIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationMapInput)(nil)).Elem(), ExternalIntegrationMap{})
 	pulumi.RegisterOutputType(ExternalIntegrationOutput{})
 	pulumi.RegisterOutputType(ExternalIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(ExternalIntegrationArrayOutput{})

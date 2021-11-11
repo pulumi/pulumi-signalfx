@@ -121,19 +121,19 @@ export interface TextChartState {
     /**
      * Description of the text note.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Markdown text to display.
      */
-    readonly markdown?: pulumi.Input<string>;
+    markdown?: pulumi.Input<string>;
     /**
      * Name of the text note.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The URL of the chart.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -143,13 +143,13 @@ export interface TextChartArgs {
     /**
      * Description of the text note.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Markdown text to display.
      */
-    readonly markdown: pulumi.Input<string>;
+    markdown: pulumi.Input<string>;
     /**
      * Name of the text note.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

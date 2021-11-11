@@ -39,7 +39,7 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getServices.
  */
 export interface GetServicesArgs {
-    readonly services?: inputs.aws.GetServicesService[];
+    services?: inputs.aws.GetServicesService[];
 }
 
 /**
@@ -51,4 +51,15 @@ export interface GetServicesResult {
      */
     readonly id: string;
     readonly services?: outputs.aws.GetServicesService[];
+}
+
+export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
+    return pulumi.output(args).apply(a => getServices(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServices.
+ */
+export interface GetServicesOutputArgs {
+    services?: pulumi.Input<pulumi.Input<inputs.aws.GetServicesServiceArgs>[]>;
 }

@@ -244,89 +244,89 @@ export interface ListChartState {
     /**
      * Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    readonly colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[]>;
     /**
      * Description of the chart.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    readonly disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number>;
     /**
      * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      */
-    readonly hideMissingValues?: pulumi.Input<boolean>;
+    hideMissingValues?: pulumi.Input<boolean>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
+    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    readonly legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
+    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * Maximum number of digits to display when rounding values up or down.
      */
-    readonly maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number>;
     /**
      * Name of the chart.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    readonly programText?: pulumi.Input<string>;
+    programText?: pulumi.Input<string>;
     /**
      * How often (in seconds) to refresh the values of the list.
      */
-    readonly refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
      */
-    readonly secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string>;
     /**
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
      */
-    readonly sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    readonly timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    readonly unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string>;
     /**
      * The URL of the chart.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[]>;
 }
 
 /**
@@ -336,83 +336,83 @@ export interface ListChartArgs {
     /**
      * Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
      */
-    readonly colorBy?: pulumi.Input<string>;
+    colorBy?: pulumi.Input<string>;
     /**
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      */
-    readonly colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[]>;
+    colorScales?: pulumi.Input<pulumi.Input<inputs.ListChartColorScale>[]>;
     /**
      * Description of the chart.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      */
-    readonly disableSampling?: pulumi.Input<boolean>;
+    disableSampling?: pulumi.Input<boolean>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number>;
     /**
      * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      */
-    readonly hideMissingValues?: pulumi.Input<boolean>;
+    hideMissingValues?: pulumi.Input<boolean>;
     /**
      * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
      *
      * @deprecated Please use legend_options_fields
      */
-    readonly legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
+    legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
      */
-    readonly legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
+    legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.ListChartLegendOptionsField>[]>;
     /**
      * How long (in seconds) to wait for late datapoints.
      */
-    readonly maxDelay?: pulumi.Input<number>;
+    maxDelay?: pulumi.Input<number>;
     /**
      * Maximum number of digits to display when rounding values up or down.
      */
-    readonly maxPrecision?: pulumi.Input<number>;
+    maxPrecision?: pulumi.Input<number>;
     /**
      * Name of the chart.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      */
-    readonly programText: pulumi.Input<string>;
+    programText: pulumi.Input<string>;
     /**
      * How often (in seconds) to refresh the values of the list.
      */
-    readonly refreshInterval?: pulumi.Input<number>;
+    refreshInterval?: pulumi.Input<number>;
     /**
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
      */
-    readonly secondaryVisualization?: pulumi.Input<string>;
+    secondaryVisualization?: pulumi.Input<string>;
     /**
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
      */
-    readonly sortBy?: pulumi.Input<string>;
+    sortBy?: pulumi.Input<string>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
-    readonly startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number>;
     /**
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
      */
-    readonly timeRange?: pulumi.Input<number>;
+    timeRange?: pulumi.Input<number>;
     /**
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      */
-    readonly timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string>;
     /**
      * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
      */
-    readonly unitPrefix?: pulumi.Input<string>;
+    unitPrefix?: pulumi.Input<string>;
     /**
      * Plot-level customization options, associated with a publish statement.
      */
-    readonly vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[]>;
+    vizOptions?: pulumi.Input<pulumi.Input<inputs.ListChartVizOption>[]>;
 }

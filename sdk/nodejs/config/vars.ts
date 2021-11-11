@@ -4,21 +4,50 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("signalfx");
+declare var exports: any;
+const __config = new pulumi.Config("signalfx");
 
 /**
  * API URL for your SignalFx org, may include a realm
  */
-export let apiUrl: string | undefined = __config.get("apiUrl");
+export declare const apiUrl: string | undefined;
+Object.defineProperty(exports, "apiUrl", {
+    get() {
+        return __config.get("apiUrl");
+    },
+    enumerable: true,
+});
+
 /**
  * SignalFx auth token
  */
-export let authToken: string | undefined = __config.get("authToken");
+export declare const authToken: string | undefined;
+Object.defineProperty(exports, "authToken", {
+    get() {
+        return __config.get("authToken");
+    },
+    enumerable: true,
+});
+
 /**
  * Application URL for your SignalFx org, often customzied for organizations using SSO
  */
-export let customAppUrl: string | undefined = __config.get("customAppUrl");
+export declare const customAppUrl: string | undefined;
+Object.defineProperty(exports, "customAppUrl", {
+    get() {
+        return __config.get("customAppUrl");
+    },
+    enumerable: true,
+});
+
 /**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120
  */
-export let timeoutSeconds: number | undefined = __config.getObject<number>("timeoutSeconds");
+export declare const timeoutSeconds: number | undefined;
+Object.defineProperty(exports, "timeoutSeconds", {
+    get() {
+        return __config.getObject<number>("timeoutSeconds");
+    },
+    enumerable: true,
+});
+

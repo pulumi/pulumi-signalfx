@@ -19,6 +19,25 @@ namespace Pulumi.SignalFx
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// API URL for your SignalFx org, may include a realm
+        /// </summary>
+        [Output("apiUrl")]
+        public Output<string?> ApiUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// SignalFx auth token
+        /// </summary>
+        [Output("authToken")]
+        public Output<string?> AuthToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Application URL for your SignalFx org, often customzied for organizations using SSO
+        /// </summary>
+        [Output("customAppUrl")]
+        public Output<string?> CustomAppUrl { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

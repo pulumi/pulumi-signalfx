@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Gcp.Inputs
 {
 
-    public sealed class GetServicesServiceInputArgs : Pulumi.ResourceArgs
+    public sealed class GetServicesServiceArgs : Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        public string Name { get; set; } = null!;
 
-        public GetServicesServiceInputArgs()
+        public GetServicesServiceArgs()
         {
         }
     }

@@ -117,20 +117,20 @@ export interface WebhookIntegrationState {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * A header to send with the request
      */
-    readonly headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly sharedSecret?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string>;
     /**
      * The URL to request
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
 
 /**
@@ -140,18 +140,18 @@ export interface WebhookIntegrationArgs {
     /**
      * Whether the integration is enabled.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * A header to send with the request
      */
-    readonly headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
      * Name of the integration.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly sharedSecret?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    sharedSecret?: pulumi.Input<string>;
     /**
      * The URL to request
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
 }
