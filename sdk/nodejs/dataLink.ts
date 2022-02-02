@@ -103,29 +103,27 @@ export class DataLink extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DataLinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataLinkArgs | DataLinkState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataLinkState | undefined;
-            inputs["contextDashboardId"] = state ? state.contextDashboardId : undefined;
-            inputs["propertyName"] = state ? state.propertyName : undefined;
-            inputs["propertyValue"] = state ? state.propertyValue : undefined;
-            inputs["targetExternalUrls"] = state ? state.targetExternalUrls : undefined;
-            inputs["targetSignalfxDashboards"] = state ? state.targetSignalfxDashboards : undefined;
-            inputs["targetSplunks"] = state ? state.targetSplunks : undefined;
+            resourceInputs["contextDashboardId"] = state ? state.contextDashboardId : undefined;
+            resourceInputs["propertyName"] = state ? state.propertyName : undefined;
+            resourceInputs["propertyValue"] = state ? state.propertyValue : undefined;
+            resourceInputs["targetExternalUrls"] = state ? state.targetExternalUrls : undefined;
+            resourceInputs["targetSignalfxDashboards"] = state ? state.targetSignalfxDashboards : undefined;
+            resourceInputs["targetSplunks"] = state ? state.targetSplunks : undefined;
         } else {
             const args = argsOrState as DataLinkArgs | undefined;
-            inputs["contextDashboardId"] = args ? args.contextDashboardId : undefined;
-            inputs["propertyName"] = args ? args.propertyName : undefined;
-            inputs["propertyValue"] = args ? args.propertyValue : undefined;
-            inputs["targetExternalUrls"] = args ? args.targetExternalUrls : undefined;
-            inputs["targetSignalfxDashboards"] = args ? args.targetSignalfxDashboards : undefined;
-            inputs["targetSplunks"] = args ? args.targetSplunks : undefined;
+            resourceInputs["contextDashboardId"] = args ? args.contextDashboardId : undefined;
+            resourceInputs["propertyName"] = args ? args.propertyName : undefined;
+            resourceInputs["propertyValue"] = args ? args.propertyValue : undefined;
+            resourceInputs["targetExternalUrls"] = args ? args.targetExternalUrls : undefined;
+            resourceInputs["targetSignalfxDashboards"] = args ? args.targetSignalfxDashboards : undefined;
+            resourceInputs["targetSplunks"] = args ? args.targetSplunks : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DataLink.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DataLink.__pulumiType, name, resourceInputs, opts);
     }
 }
 

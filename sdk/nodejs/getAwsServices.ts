@@ -13,9 +13,7 @@ export function getAwsServices(args?: GetAwsServicesArgs, opts?: pulumi.InvokeOp
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("signalfx:index/getAwsServices:getAwsServices", {
         "services": args.services,
     }, opts);

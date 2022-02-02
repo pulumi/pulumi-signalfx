@@ -124,7 +124,7 @@ type WebhookIntegrationInput interface {
 }
 
 func (*WebhookIntegration) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookIntegration)(nil))
+	return reflect.TypeOf((**WebhookIntegration)(nil)).Elem()
 }
 
 func (i *WebhookIntegration) ToWebhookIntegrationOutput() WebhookIntegrationOutput {
@@ -133,35 +133,6 @@ func (i *WebhookIntegration) ToWebhookIntegrationOutput() WebhookIntegrationOutp
 
 func (i *WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationOutput)
-}
-
-func (i *WebhookIntegration) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
-	return i.ToWebhookIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (i *WebhookIntegration) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationPtrOutput)
-}
-
-type WebhookIntegrationPtrInput interface {
-	pulumi.Input
-
-	ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput
-	ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput
-}
-
-type webhookIntegrationPtrType WebhookIntegrationArgs
-
-func (*webhookIntegrationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookIntegration)(nil))
-}
-
-func (i *webhookIntegrationPtrType) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
-	return i.ToWebhookIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (i *webhookIntegrationPtrType) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationPtrOutput)
 }
 
 // WebhookIntegrationArrayInput is an input type that accepts WebhookIntegrationArray and WebhookIntegrationArrayOutput values.
@@ -217,7 +188,7 @@ func (i WebhookIntegrationMap) ToWebhookIntegrationMapOutputWithContext(ctx cont
 type WebhookIntegrationOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookIntegration)(nil))
+	return reflect.TypeOf((**WebhookIntegration)(nil)).Elem()
 }
 
 func (o WebhookIntegrationOutput) ToWebhookIntegrationOutput() WebhookIntegrationOutput {
@@ -228,44 +199,10 @@ func (o WebhookIntegrationOutput) ToWebhookIntegrationOutputWithContext(ctx cont
 	return o
 }
 
-func (o WebhookIntegrationOutput) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
-	return o.ToWebhookIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (o WebhookIntegrationOutput) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookIntegration) *WebhookIntegration {
-		return &v
-	}).(WebhookIntegrationPtrOutput)
-}
-
-type WebhookIntegrationPtrOutput struct{ *pulumi.OutputState }
-
-func (WebhookIntegrationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WebhookIntegration)(nil))
-}
-
-func (o WebhookIntegrationPtrOutput) ToWebhookIntegrationPtrOutput() WebhookIntegrationPtrOutput {
-	return o
-}
-
-func (o WebhookIntegrationPtrOutput) ToWebhookIntegrationPtrOutputWithContext(ctx context.Context) WebhookIntegrationPtrOutput {
-	return o
-}
-
-func (o WebhookIntegrationPtrOutput) Elem() WebhookIntegrationOutput {
-	return o.ApplyT(func(v *WebhookIntegration) WebhookIntegration {
-		if v != nil {
-			return *v
-		}
-		var ret WebhookIntegration
-		return ret
-	}).(WebhookIntegrationOutput)
-}
-
 type WebhookIntegrationArrayOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebhookIntegration)(nil))
+	return reflect.TypeOf((*[]*WebhookIntegration)(nil)).Elem()
 }
 
 func (o WebhookIntegrationArrayOutput) ToWebhookIntegrationArrayOutput() WebhookIntegrationArrayOutput {
@@ -277,15 +214,15 @@ func (o WebhookIntegrationArrayOutput) ToWebhookIntegrationArrayOutputWithContex
 }
 
 func (o WebhookIntegrationArrayOutput) Index(i pulumi.IntInput) WebhookIntegrationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookIntegration {
-		return vs[0].([]WebhookIntegration)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebhookIntegration {
+		return vs[0].([]*WebhookIntegration)[vs[1].(int)]
 	}).(WebhookIntegrationOutput)
 }
 
 type WebhookIntegrationMapOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WebhookIntegration)(nil))
+	return reflect.TypeOf((*map[string]*WebhookIntegration)(nil)).Elem()
 }
 
 func (o WebhookIntegrationMapOutput) ToWebhookIntegrationMapOutput() WebhookIntegrationMapOutput {
@@ -297,18 +234,16 @@ func (o WebhookIntegrationMapOutput) ToWebhookIntegrationMapOutputWithContext(ct
 }
 
 func (o WebhookIntegrationMapOutput) MapIndex(k pulumi.StringInput) WebhookIntegrationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebhookIntegration {
-		return vs[0].(map[string]WebhookIntegration)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WebhookIntegration {
+		return vs[0].(map[string]*WebhookIntegration)[vs[1].(string)]
 	}).(WebhookIntegrationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationInput)(nil)).Elem(), &WebhookIntegration{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationPtrInput)(nil)).Elem(), &WebhookIntegration{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationArrayInput)(nil)).Elem(), WebhookIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationMapInput)(nil)).Elem(), WebhookIntegrationMap{})
 	pulumi.RegisterOutputType(WebhookIntegrationOutput{})
-	pulumi.RegisterOutputType(WebhookIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(WebhookIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(WebhookIntegrationMapOutput{})
 }

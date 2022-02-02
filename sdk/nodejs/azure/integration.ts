@@ -125,22 +125,22 @@ export class Integration extends pulumi.CustomResource {
      */
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            inputs["appId"] = state ? state.appId : undefined;
-            inputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["environment"] = state ? state.environment : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namedToken"] = state ? state.namedToken : undefined;
-            inputs["pollRate"] = state ? state.pollRate : undefined;
-            inputs["secretKey"] = state ? state.secretKey : undefined;
-            inputs["services"] = state ? state.services : undefined;
-            inputs["subscriptions"] = state ? state.subscriptions : undefined;
-            inputs["syncGuestOsNamespaces"] = state ? state.syncGuestOsNamespaces : undefined;
-            inputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["appId"] = state ? state.appId : undefined;
+            resourceInputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namedToken"] = state ? state.namedToken : undefined;
+            resourceInputs["pollRate"] = state ? state.pollRate : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["subscriptions"] = state ? state.subscriptions : undefined;
+            resourceInputs["syncGuestOsNamespaces"] = state ? state.syncGuestOsNamespaces : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.appId === undefined) && !opts.urn) {
@@ -161,23 +161,21 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
-            inputs["appId"] = args ? args.appId : undefined;
-            inputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["environment"] = args ? args.environment : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namedToken"] = args ? args.namedToken : undefined;
-            inputs["pollRate"] = args ? args.pollRate : undefined;
-            inputs["secretKey"] = args ? args.secretKey : undefined;
-            inputs["services"] = args ? args.services : undefined;
-            inputs["subscriptions"] = args ? args.subscriptions : undefined;
-            inputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
-            inputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namedToken"] = args ? args.namedToken : undefined;
+            resourceInputs["pollRate"] = args ? args.pollRate : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["subscriptions"] = args ? args.subscriptions : undefined;
+            resourceInputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Integration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

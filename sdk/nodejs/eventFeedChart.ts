@@ -89,34 +89,32 @@ export class EventFeedChart extends pulumi.CustomResource {
      */
     constructor(name: string, args: EventFeedChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EventFeedChartArgs | EventFeedChartState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EventFeedChartState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["programText"] = state ? state.programText : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["timeRange"] = state ? state.timeRange : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["programText"] = state ? state.programText : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as EventFeedChartArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["programText"] = args ? args.programText : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["programText"] = args ? args.programText : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EventFeedChart.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EventFeedChart.__pulumiType, name, resourceInputs, opts);
     }
 }
 

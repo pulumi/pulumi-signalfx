@@ -100,34 +100,32 @@ export class Integration extends pulumi.CustomResource {
      */
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["namedToken"] = state ? state.namedToken : undefined;
-            inputs["pollRate"] = state ? state.pollRate : undefined;
-            inputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
-            inputs["services"] = state ? state.services : undefined;
-            inputs["whitelists"] = state ? state.whitelists : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["namedToken"] = state ? state.namedToken : undefined;
+            resourceInputs["pollRate"] = state ? state.pollRate : undefined;
+            resourceInputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["namedToken"] = args ? args.namedToken : undefined;
-            inputs["pollRate"] = args ? args.pollRate : undefined;
-            inputs["projectServiceKeys"] = args ? args.projectServiceKeys : undefined;
-            inputs["services"] = args ? args.services : undefined;
-            inputs["whitelists"] = args ? args.whitelists : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["namedToken"] = args ? args.namedToken : undefined;
+            resourceInputs["pollRate"] = args ? args.pollRate : undefined;
+            resourceInputs["projectServiceKeys"] = args ? args.projectServiceKeys : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Integration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

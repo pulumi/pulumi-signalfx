@@ -183,7 +183,7 @@ type DataLinkInput interface {
 }
 
 func (*DataLink) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataLink)(nil))
+	return reflect.TypeOf((**DataLink)(nil)).Elem()
 }
 
 func (i *DataLink) ToDataLinkOutput() DataLinkOutput {
@@ -192,35 +192,6 @@ func (i *DataLink) ToDataLinkOutput() DataLinkOutput {
 
 func (i *DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkOutput)
-}
-
-func (i *DataLink) ToDataLinkPtrOutput() DataLinkPtrOutput {
-	return i.ToDataLinkPtrOutputWithContext(context.Background())
-}
-
-func (i *DataLink) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataLinkPtrOutput)
-}
-
-type DataLinkPtrInput interface {
-	pulumi.Input
-
-	ToDataLinkPtrOutput() DataLinkPtrOutput
-	ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput
-}
-
-type dataLinkPtrType DataLinkArgs
-
-func (*dataLinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataLink)(nil))
-}
-
-func (i *dataLinkPtrType) ToDataLinkPtrOutput() DataLinkPtrOutput {
-	return i.ToDataLinkPtrOutputWithContext(context.Background())
-}
-
-func (i *dataLinkPtrType) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DataLinkPtrOutput)
 }
 
 // DataLinkArrayInput is an input type that accepts DataLinkArray and DataLinkArrayOutput values.
@@ -276,7 +247,7 @@ func (i DataLinkMap) ToDataLinkMapOutputWithContext(ctx context.Context) DataLin
 type DataLinkOutput struct{ *pulumi.OutputState }
 
 func (DataLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataLink)(nil))
+	return reflect.TypeOf((**DataLink)(nil)).Elem()
 }
 
 func (o DataLinkOutput) ToDataLinkOutput() DataLinkOutput {
@@ -287,44 +258,10 @@ func (o DataLinkOutput) ToDataLinkOutputWithContext(ctx context.Context) DataLin
 	return o
 }
 
-func (o DataLinkOutput) ToDataLinkPtrOutput() DataLinkPtrOutput {
-	return o.ToDataLinkPtrOutputWithContext(context.Background())
-}
-
-func (o DataLinkOutput) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataLink) *DataLink {
-		return &v
-	}).(DataLinkPtrOutput)
-}
-
-type DataLinkPtrOutput struct{ *pulumi.OutputState }
-
-func (DataLinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataLink)(nil))
-}
-
-func (o DataLinkPtrOutput) ToDataLinkPtrOutput() DataLinkPtrOutput {
-	return o
-}
-
-func (o DataLinkPtrOutput) ToDataLinkPtrOutputWithContext(ctx context.Context) DataLinkPtrOutput {
-	return o
-}
-
-func (o DataLinkPtrOutput) Elem() DataLinkOutput {
-	return o.ApplyT(func(v *DataLink) DataLink {
-		if v != nil {
-			return *v
-		}
-		var ret DataLink
-		return ret
-	}).(DataLinkOutput)
-}
-
 type DataLinkArrayOutput struct{ *pulumi.OutputState }
 
 func (DataLinkArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DataLink)(nil))
+	return reflect.TypeOf((*[]*DataLink)(nil)).Elem()
 }
 
 func (o DataLinkArrayOutput) ToDataLinkArrayOutput() DataLinkArrayOutput {
@@ -336,15 +273,15 @@ func (o DataLinkArrayOutput) ToDataLinkArrayOutputWithContext(ctx context.Contex
 }
 
 func (o DataLinkArrayOutput) Index(i pulumi.IntInput) DataLinkOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataLink {
-		return vs[0].([]DataLink)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataLink {
+		return vs[0].([]*DataLink)[vs[1].(int)]
 	}).(DataLinkOutput)
 }
 
 type DataLinkMapOutput struct{ *pulumi.OutputState }
 
 func (DataLinkMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DataLink)(nil))
+	return reflect.TypeOf((*map[string]*DataLink)(nil)).Elem()
 }
 
 func (o DataLinkMapOutput) ToDataLinkMapOutput() DataLinkMapOutput {
@@ -356,18 +293,16 @@ func (o DataLinkMapOutput) ToDataLinkMapOutputWithContext(ctx context.Context) D
 }
 
 func (o DataLinkMapOutput) MapIndex(k pulumi.StringInput) DataLinkOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DataLink {
-		return vs[0].(map[string]DataLink)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DataLink {
+		return vs[0].(map[string]*DataLink)[vs[1].(string)]
 	}).(DataLinkOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkInput)(nil)).Elem(), &DataLink{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkPtrInput)(nil)).Elem(), &DataLink{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkArrayInput)(nil)).Elem(), DataLinkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataLinkMapInput)(nil)).Elem(), DataLinkMap{})
 	pulumi.RegisterOutputType(DataLinkOutput{})
-	pulumi.RegisterOutputType(DataLinkPtrOutput{})
 	pulumi.RegisterOutputType(DataLinkArrayOutput{})
 	pulumi.RegisterOutputType(DataLinkMapOutput{})
 }

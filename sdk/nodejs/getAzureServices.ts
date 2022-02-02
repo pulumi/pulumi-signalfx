@@ -13,9 +13,7 @@ export function getAzureServices(args?: GetAzureServicesArgs, opts?: pulumi.Invo
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("signalfx:index/getAzureServices:getAzureServices", {
         "services": args.services,
     }, opts);

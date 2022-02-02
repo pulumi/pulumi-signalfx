@@ -89,28 +89,26 @@ export class TextChart extends pulumi.CustomResource {
      */
     constructor(name: string, args: TextChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TextChartArgs | TextChartState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TextChartState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["markdown"] = state ? state.markdown : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["markdown"] = state ? state.markdown : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TextChartArgs | undefined;
             if ((!args || args.markdown === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'markdown'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["markdown"] = args ? args.markdown : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["markdown"] = args ? args.markdown : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TextChart.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TextChart.__pulumiType, name, resourceInputs, opts);
     }
 }
 

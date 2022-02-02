@@ -197,76 +197,74 @@ export class TimeChart extends pulumi.CustomResource {
      */
     constructor(name: string, args: TimeChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TimeChartArgs | TimeChartState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TimeChartState | undefined;
-            inputs["axesIncludeZero"] = state ? state.axesIncludeZero : undefined;
-            inputs["axesPrecision"] = state ? state.axesPrecision : undefined;
-            inputs["axisLeft"] = state ? state.axisLeft : undefined;
-            inputs["axisRight"] = state ? state.axisRight : undefined;
-            inputs["colorBy"] = state ? state.colorBy : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableSampling"] = state ? state.disableSampling : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["eventOptions"] = state ? state.eventOptions : undefined;
-            inputs["histogramOptions"] = state ? state.histogramOptions : undefined;
-            inputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
-            inputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
-            inputs["maxDelay"] = state ? state.maxDelay : undefined;
-            inputs["minimumResolution"] = state ? state.minimumResolution : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["onChartLegendDimension"] = state ? state.onChartLegendDimension : undefined;
-            inputs["plotType"] = state ? state.plotType : undefined;
-            inputs["programText"] = state ? state.programText : undefined;
-            inputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
-            inputs["showEventLines"] = state ? state.showEventLines : undefined;
-            inputs["stacked"] = state ? state.stacked : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["timeRange"] = state ? state.timeRange : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
-            inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["axesIncludeZero"] = state ? state.axesIncludeZero : undefined;
+            resourceInputs["axesPrecision"] = state ? state.axesPrecision : undefined;
+            resourceInputs["axisLeft"] = state ? state.axisLeft : undefined;
+            resourceInputs["axisRight"] = state ? state.axisRight : undefined;
+            resourceInputs["colorBy"] = state ? state.colorBy : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["eventOptions"] = state ? state.eventOptions : undefined;
+            resourceInputs["histogramOptions"] = state ? state.histogramOptions : undefined;
+            resourceInputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
+            resourceInputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
+            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
+            resourceInputs["minimumResolution"] = state ? state.minimumResolution : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["onChartLegendDimension"] = state ? state.onChartLegendDimension : undefined;
+            resourceInputs["plotType"] = state ? state.plotType : undefined;
+            resourceInputs["programText"] = state ? state.programText : undefined;
+            resourceInputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
+            resourceInputs["showEventLines"] = state ? state.showEventLines : undefined;
+            resourceInputs["stacked"] = state ? state.stacked : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as TimeChartArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            inputs["axesIncludeZero"] = args ? args.axesIncludeZero : undefined;
-            inputs["axesPrecision"] = args ? args.axesPrecision : undefined;
-            inputs["axisLeft"] = args ? args.axisLeft : undefined;
-            inputs["axisRight"] = args ? args.axisRight : undefined;
-            inputs["colorBy"] = args ? args.colorBy : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableSampling"] = args ? args.disableSampling : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["eventOptions"] = args ? args.eventOptions : undefined;
-            inputs["histogramOptions"] = args ? args.histogramOptions : undefined;
-            inputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
-            inputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
-            inputs["maxDelay"] = args ? args.maxDelay : undefined;
-            inputs["minimumResolution"] = args ? args.minimumResolution : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["onChartLegendDimension"] = args ? args.onChartLegendDimension : undefined;
-            inputs["plotType"] = args ? args.plotType : undefined;
-            inputs["programText"] = args ? args.programText : undefined;
-            inputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
-            inputs["showEventLines"] = args ? args.showEventLines : undefined;
-            inputs["stacked"] = args ? args.stacked : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
-            inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            inputs["vizOptions"] = args ? args.vizOptions : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["axesIncludeZero"] = args ? args.axesIncludeZero : undefined;
+            resourceInputs["axesPrecision"] = args ? args.axesPrecision : undefined;
+            resourceInputs["axisLeft"] = args ? args.axisLeft : undefined;
+            resourceInputs["axisRight"] = args ? args.axisRight : undefined;
+            resourceInputs["colorBy"] = args ? args.colorBy : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["eventOptions"] = args ? args.eventOptions : undefined;
+            resourceInputs["histogramOptions"] = args ? args.histogramOptions : undefined;
+            resourceInputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
+            resourceInputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
+            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
+            resourceInputs["minimumResolution"] = args ? args.minimumResolution : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["onChartLegendDimension"] = args ? args.onChartLegendDimension : undefined;
+            resourceInputs["plotType"] = args ? args.plotType : undefined;
+            resourceInputs["programText"] = args ? args.programText : undefined;
+            resourceInputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
+            resourceInputs["showEventLines"] = args ? args.showEventLines : undefined;
+            resourceInputs["stacked"] = args ? args.stacked : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
+            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TimeChart.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TimeChart.__pulumiType, name, resourceInputs, opts);
     }
 }
 

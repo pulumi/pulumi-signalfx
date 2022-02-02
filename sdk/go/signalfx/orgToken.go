@@ -180,7 +180,7 @@ type OrgTokenInput interface {
 }
 
 func (*OrgToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrgToken)(nil))
+	return reflect.TypeOf((**OrgToken)(nil)).Elem()
 }
 
 func (i *OrgToken) ToOrgTokenOutput() OrgTokenOutput {
@@ -189,35 +189,6 @@ func (i *OrgToken) ToOrgTokenOutput() OrgTokenOutput {
 
 func (i *OrgToken) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenOutput)
-}
-
-func (i *OrgToken) ToOrgTokenPtrOutput() OrgTokenPtrOutput {
-	return i.ToOrgTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *OrgToken) ToOrgTokenPtrOutputWithContext(ctx context.Context) OrgTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenPtrOutput)
-}
-
-type OrgTokenPtrInput interface {
-	pulumi.Input
-
-	ToOrgTokenPtrOutput() OrgTokenPtrOutput
-	ToOrgTokenPtrOutputWithContext(ctx context.Context) OrgTokenPtrOutput
-}
-
-type orgTokenPtrType OrgTokenArgs
-
-func (*orgTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrgToken)(nil))
-}
-
-func (i *orgTokenPtrType) ToOrgTokenPtrOutput() OrgTokenPtrOutput {
-	return i.ToOrgTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *orgTokenPtrType) ToOrgTokenPtrOutputWithContext(ctx context.Context) OrgTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenPtrOutput)
 }
 
 // OrgTokenArrayInput is an input type that accepts OrgTokenArray and OrgTokenArrayOutput values.
@@ -273,7 +244,7 @@ func (i OrgTokenMap) ToOrgTokenMapOutputWithContext(ctx context.Context) OrgToke
 type OrgTokenOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrgToken)(nil))
+	return reflect.TypeOf((**OrgToken)(nil)).Elem()
 }
 
 func (o OrgTokenOutput) ToOrgTokenOutput() OrgTokenOutput {
@@ -284,44 +255,10 @@ func (o OrgTokenOutput) ToOrgTokenOutputWithContext(ctx context.Context) OrgToke
 	return o
 }
 
-func (o OrgTokenOutput) ToOrgTokenPtrOutput() OrgTokenPtrOutput {
-	return o.ToOrgTokenPtrOutputWithContext(context.Background())
-}
-
-func (o OrgTokenOutput) ToOrgTokenPtrOutputWithContext(ctx context.Context) OrgTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrgToken) *OrgToken {
-		return &v
-	}).(OrgTokenPtrOutput)
-}
-
-type OrgTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (OrgTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OrgToken)(nil))
-}
-
-func (o OrgTokenPtrOutput) ToOrgTokenPtrOutput() OrgTokenPtrOutput {
-	return o
-}
-
-func (o OrgTokenPtrOutput) ToOrgTokenPtrOutputWithContext(ctx context.Context) OrgTokenPtrOutput {
-	return o
-}
-
-func (o OrgTokenPtrOutput) Elem() OrgTokenOutput {
-	return o.ApplyT(func(v *OrgToken) OrgToken {
-		if v != nil {
-			return *v
-		}
-		var ret OrgToken
-		return ret
-	}).(OrgTokenOutput)
-}
-
 type OrgTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OrgToken)(nil))
+	return reflect.TypeOf((*[]*OrgToken)(nil)).Elem()
 }
 
 func (o OrgTokenArrayOutput) ToOrgTokenArrayOutput() OrgTokenArrayOutput {
@@ -333,15 +270,15 @@ func (o OrgTokenArrayOutput) ToOrgTokenArrayOutputWithContext(ctx context.Contex
 }
 
 func (o OrgTokenArrayOutput) Index(i pulumi.IntInput) OrgTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrgToken {
-		return vs[0].([]OrgToken)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrgToken {
+		return vs[0].([]*OrgToken)[vs[1].(int)]
 	}).(OrgTokenOutput)
 }
 
 type OrgTokenMapOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OrgToken)(nil))
+	return reflect.TypeOf((*map[string]*OrgToken)(nil)).Elem()
 }
 
 func (o OrgTokenMapOutput) ToOrgTokenMapOutput() OrgTokenMapOutput {
@@ -353,18 +290,16 @@ func (o OrgTokenMapOutput) ToOrgTokenMapOutputWithContext(ctx context.Context) O
 }
 
 func (o OrgTokenMapOutput) MapIndex(k pulumi.StringInput) OrgTokenOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrgToken {
-		return vs[0].(map[string]OrgToken)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OrgToken {
+		return vs[0].(map[string]*OrgToken)[vs[1].(string)]
 	}).(OrgTokenOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenInput)(nil)).Elem(), &OrgToken{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenPtrInput)(nil)).Elem(), &OrgToken{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenArrayInput)(nil)).Elem(), OrgTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenMapInput)(nil)).Elem(), OrgTokenMap{})
 	pulumi.RegisterOutputType(OrgTokenOutput{})
-	pulumi.RegisterOutputType(OrgTokenPtrOutput{})
 	pulumi.RegisterOutputType(OrgTokenArrayOutput{})
 	pulumi.RegisterOutputType(OrgTokenMapOutput{})
 }

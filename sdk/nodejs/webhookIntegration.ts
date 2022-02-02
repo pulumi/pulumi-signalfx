@@ -83,30 +83,28 @@ export class WebhookIntegration extends pulumi.CustomResource {
      */
     constructor(name: string, args: WebhookIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebhookIntegrationArgs | WebhookIntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookIntegrationState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["headers"] = state ? state.headers : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sharedSecret"] = state ? state.sharedSecret : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["headers"] = state ? state.headers : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as WebhookIntegrationArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["headers"] = args ? args.headers : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
-            inputs["url"] = args ? args.url : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["headers"] = args ? args.headers : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sharedSecret"] = args ? args.sharedSecret : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WebhookIntegration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WebhookIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

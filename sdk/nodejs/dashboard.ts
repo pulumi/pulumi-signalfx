@@ -113,58 +113,56 @@ export class Dashboard extends pulumi.CustomResource {
      */
     constructor(name: string, args: DashboardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardArgs | DashboardState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardState | undefined;
-            inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
-            inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
-            inputs["charts"] = state ? state.charts : undefined;
-            inputs["chartsResolution"] = state ? state.chartsResolution : undefined;
-            inputs["columns"] = state ? state.columns : undefined;
-            inputs["dashboardGroup"] = state ? state.dashboardGroup : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["discoveryOptionsQuery"] = state ? state.discoveryOptionsQuery : undefined;
-            inputs["discoveryOptionsSelectors"] = state ? state.discoveryOptionsSelectors : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["eventOverlays"] = state ? state.eventOverlays : undefined;
-            inputs["filters"] = state ? state.filters : undefined;
-            inputs["grids"] = state ? state.grids : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["selectedEventOverlays"] = state ? state.selectedEventOverlays : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["timeRange"] = state ? state.timeRange : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["variables"] = state ? state.variables : undefined;
+            resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
+            resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
+            resourceInputs["charts"] = state ? state.charts : undefined;
+            resourceInputs["chartsResolution"] = state ? state.chartsResolution : undefined;
+            resourceInputs["columns"] = state ? state.columns : undefined;
+            resourceInputs["dashboardGroup"] = state ? state.dashboardGroup : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["discoveryOptionsQuery"] = state ? state.discoveryOptionsQuery : undefined;
+            resourceInputs["discoveryOptionsSelectors"] = state ? state.discoveryOptionsSelectors : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["eventOverlays"] = state ? state.eventOverlays : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["grids"] = state ? state.grids : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["selectedEventOverlays"] = state ? state.selectedEventOverlays : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["variables"] = state ? state.variables : undefined;
         } else {
             const args = argsOrState as DashboardArgs | undefined;
             if ((!args || args.dashboardGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dashboardGroup'");
             }
-            inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
-            inputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
-            inputs["charts"] = args ? args.charts : undefined;
-            inputs["chartsResolution"] = args ? args.chartsResolution : undefined;
-            inputs["columns"] = args ? args.columns : undefined;
-            inputs["dashboardGroup"] = args ? args.dashboardGroup : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["discoveryOptionsQuery"] = args ? args.discoveryOptionsQuery : undefined;
-            inputs["discoveryOptionsSelectors"] = args ? args.discoveryOptionsSelectors : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["eventOverlays"] = args ? args.eventOverlays : undefined;
-            inputs["filters"] = args ? args.filters : undefined;
-            inputs["grids"] = args ? args.grids : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["selectedEventOverlays"] = args ? args.selectedEventOverlays : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["variables"] = args ? args.variables : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
+            resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
+            resourceInputs["charts"] = args ? args.charts : undefined;
+            resourceInputs["chartsResolution"] = args ? args.chartsResolution : undefined;
+            resourceInputs["columns"] = args ? args.columns : undefined;
+            resourceInputs["dashboardGroup"] = args ? args.dashboardGroup : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["discoveryOptionsQuery"] = args ? args.discoveryOptionsQuery : undefined;
+            resourceInputs["discoveryOptionsSelectors"] = args ? args.discoveryOptionsSelectors : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["eventOverlays"] = args ? args.eventOverlays : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["grids"] = args ? args.grids : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["selectedEventOverlays"] = args ? args.selectedEventOverlays : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["variables"] = args ? args.variables : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Dashboard.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Dashboard.__pulumiType, name, resourceInputs, opts);
     }
 }
 

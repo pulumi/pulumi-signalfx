@@ -27,9 +27,7 @@ export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions)
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("signalfx:gcp/getServices:getServices", {
         "services": args.services,
     }, opts);

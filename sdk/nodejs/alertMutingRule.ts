@@ -87,16 +87,16 @@ export class AlertMutingRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AlertMutingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertMutingRuleArgs | AlertMutingRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlertMutingRuleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["detectors"] = state ? state.detectors : undefined;
-            inputs["effectiveStartTime"] = state ? state.effectiveStartTime : undefined;
-            inputs["filters"] = state ? state.filters : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["stopTime"] = state ? state.stopTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["detectors"] = state ? state.detectors : undefined;
+            resourceInputs["effectiveStartTime"] = state ? state.effectiveStartTime : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["stopTime"] = state ? state.stopTime : undefined;
         } else {
             const args = argsOrState as AlertMutingRuleArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -108,17 +108,15 @@ export class AlertMutingRule extends pulumi.CustomResource {
             if ((!args || args.startTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["detectors"] = args ? args.detectors : undefined;
-            inputs["filters"] = args ? args.filters : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["stopTime"] = args ? args.stopTime : undefined;
-            inputs["effectiveStartTime"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["detectors"] = args ? args.detectors : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["stopTime"] = args ? args.stopTime : undefined;
+            resourceInputs["effectiveStartTime"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AlertMutingRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AlertMutingRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

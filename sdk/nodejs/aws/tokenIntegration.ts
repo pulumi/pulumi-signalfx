@@ -96,23 +96,21 @@ export class TokenIntegration extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TokenIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TokenIntegrationArgs | TokenIntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TokenIntegrationState | undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
-            inputs["tokenId"] = state ? state.tokenId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
+            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
         } else {
             const args = argsOrState as TokenIntegrationArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["signalfxAwsAccount"] = undefined /*out*/;
-            inputs["tokenId"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["signalfxAwsAccount"] = undefined /*out*/;
+            resourceInputs["tokenId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TokenIntegration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TokenIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }
 
