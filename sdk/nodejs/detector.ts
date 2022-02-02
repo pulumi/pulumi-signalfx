@@ -257,29 +257,29 @@ export class Detector extends pulumi.CustomResource {
      */
     constructor(name: string, args: DetectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DetectorArgs | DetectorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DetectorState | undefined;
-            inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
-            inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableSampling"] = state ? state.disableSampling : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["maxDelay"] = state ? state.maxDelay : undefined;
-            inputs["minDelay"] = state ? state.minDelay : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["programText"] = state ? state.programText : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
-            inputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
-            inputs["showEventLines"] = state ? state.showEventLines : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["teams"] = state ? state.teams : undefined;
-            inputs["timeRange"] = state ? state.timeRange : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
+            resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
+            resourceInputs["minDelay"] = state ? state.minDelay : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["programText"] = state ? state.programText : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
+            resourceInputs["showEventLines"] = state ? state.showEventLines : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["teams"] = state ? state.teams : undefined;
+            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as DetectorArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
@@ -288,30 +288,28 @@ export class Detector extends pulumi.CustomResource {
             if ((!args || args.rules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
-            inputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableSampling"] = args ? args.disableSampling : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["maxDelay"] = args ? args.maxDelay : undefined;
-            inputs["minDelay"] = args ? args.minDelay : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["programText"] = args ? args.programText : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
-            inputs["showEventLines"] = args ? args.showEventLines : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["teams"] = args ? args.teams : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
-            inputs["vizOptions"] = args ? args.vizOptions : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
+            resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
+            resourceInputs["minDelay"] = args ? args.minDelay : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["programText"] = args ? args.programText : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
+            resourceInputs["showEventLines"] = args ? args.showEventLines : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["teams"] = args ? args.teams : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Detector.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Detector.__pulumiType, name, resourceInputs, opts);
     }
 }
 

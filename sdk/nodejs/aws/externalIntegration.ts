@@ -19,20 +19,20 @@ import * as utilities from "../utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const awsMyteamExtern = new signalfx.aws.ExternalIntegration("awsMyteamExtern", {});
- * const signalfxAssumePolicy = pulumi.all([awsMyteamExtern.signalfxAwsAccount, awsMyteamExtern.externalId]).apply(([signalfxAwsAccount, externalId]) => aws.iam.getPolicyDocument({
+ * const signalfxAssumePolicy = aws.iam.getPolicyDocumentOutput({
  *     statements: [{
  *         actions: ["sts:AssumeRole"],
  *         principals: [{
  *             type: "AWS",
- *             identifiers: [signalfxAwsAccount],
+ *             identifiers: [awsMyteamExtern.signalfxAwsAccount],
  *         }],
  *         conditions: [{
  *             test: "StringEquals",
  *             variable: "sts:ExternalId",
- *             values: [externalId],
+ *             values: [awsMyteamExtern.externalId],
  *         }],
  *     }],
- * }));
+ * });
  * const awsSfxRole = new aws.iam.Role("awsSfxRole", {
  *     description: "signalfx integration to read out data and send it to signalfxs aws account",
  *     assumeRolePolicy: signalfxAssumePolicy.apply(signalfxAssumePolicy => signalfxAssumePolicy.json),
@@ -169,23 +169,21 @@ export class ExternalIntegration extends pulumi.CustomResource {
      */
     constructor(name: string, args?: ExternalIntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExternalIntegrationArgs | ExternalIntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ExternalIntegrationState | undefined;
-            inputs["externalId"] = state ? state.externalId : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
+            resourceInputs["externalId"] = state ? state.externalId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["signalfxAwsAccount"] = state ? state.signalfxAwsAccount : undefined;
         } else {
             const args = argsOrState as ExternalIntegrationArgs | undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["externalId"] = undefined /*out*/;
-            inputs["signalfxAwsAccount"] = undefined /*out*/;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["externalId"] = undefined /*out*/;
+            resourceInputs["signalfxAwsAccount"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ExternalIntegration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ExternalIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

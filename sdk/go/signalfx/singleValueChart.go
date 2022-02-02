@@ -256,7 +256,7 @@ type SingleValueChartInput interface {
 }
 
 func (*SingleValueChart) ElementType() reflect.Type {
-	return reflect.TypeOf((*SingleValueChart)(nil))
+	return reflect.TypeOf((**SingleValueChart)(nil)).Elem()
 }
 
 func (i *SingleValueChart) ToSingleValueChartOutput() SingleValueChartOutput {
@@ -265,35 +265,6 @@ func (i *SingleValueChart) ToSingleValueChartOutput() SingleValueChartOutput {
 
 func (i *SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartOutput)
-}
-
-func (i *SingleValueChart) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
-	return i.ToSingleValueChartPtrOutputWithContext(context.Background())
-}
-
-func (i *SingleValueChart) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartPtrOutput)
-}
-
-type SingleValueChartPtrInput interface {
-	pulumi.Input
-
-	ToSingleValueChartPtrOutput() SingleValueChartPtrOutput
-	ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput
-}
-
-type singleValueChartPtrType SingleValueChartArgs
-
-func (*singleValueChartPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SingleValueChart)(nil))
-}
-
-func (i *singleValueChartPtrType) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
-	return i.ToSingleValueChartPtrOutputWithContext(context.Background())
-}
-
-func (i *singleValueChartPtrType) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartPtrOutput)
 }
 
 // SingleValueChartArrayInput is an input type that accepts SingleValueChartArray and SingleValueChartArrayOutput values.
@@ -349,7 +320,7 @@ func (i SingleValueChartMap) ToSingleValueChartMapOutputWithContext(ctx context.
 type SingleValueChartOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SingleValueChart)(nil))
+	return reflect.TypeOf((**SingleValueChart)(nil)).Elem()
 }
 
 func (o SingleValueChartOutput) ToSingleValueChartOutput() SingleValueChartOutput {
@@ -360,44 +331,10 @@ func (o SingleValueChartOutput) ToSingleValueChartOutputWithContext(ctx context.
 	return o
 }
 
-func (o SingleValueChartOutput) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
-	return o.ToSingleValueChartPtrOutputWithContext(context.Background())
-}
-
-func (o SingleValueChartOutput) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleValueChart) *SingleValueChart {
-		return &v
-	}).(SingleValueChartPtrOutput)
-}
-
-type SingleValueChartPtrOutput struct{ *pulumi.OutputState }
-
-func (SingleValueChartPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SingleValueChart)(nil))
-}
-
-func (o SingleValueChartPtrOutput) ToSingleValueChartPtrOutput() SingleValueChartPtrOutput {
-	return o
-}
-
-func (o SingleValueChartPtrOutput) ToSingleValueChartPtrOutputWithContext(ctx context.Context) SingleValueChartPtrOutput {
-	return o
-}
-
-func (o SingleValueChartPtrOutput) Elem() SingleValueChartOutput {
-	return o.ApplyT(func(v *SingleValueChart) SingleValueChart {
-		if v != nil {
-			return *v
-		}
-		var ret SingleValueChart
-		return ret
-	}).(SingleValueChartOutput)
-}
-
 type SingleValueChartArrayOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SingleValueChart)(nil))
+	return reflect.TypeOf((*[]*SingleValueChart)(nil)).Elem()
 }
 
 func (o SingleValueChartArrayOutput) ToSingleValueChartArrayOutput() SingleValueChartArrayOutput {
@@ -409,15 +346,15 @@ func (o SingleValueChartArrayOutput) ToSingleValueChartArrayOutputWithContext(ct
 }
 
 func (o SingleValueChartArrayOutput) Index(i pulumi.IntInput) SingleValueChartOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SingleValueChart {
-		return vs[0].([]SingleValueChart)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SingleValueChart {
+		return vs[0].([]*SingleValueChart)[vs[1].(int)]
 	}).(SingleValueChartOutput)
 }
 
 type SingleValueChartMapOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SingleValueChart)(nil))
+	return reflect.TypeOf((*map[string]*SingleValueChart)(nil)).Elem()
 }
 
 func (o SingleValueChartMapOutput) ToSingleValueChartMapOutput() SingleValueChartMapOutput {
@@ -429,18 +366,16 @@ func (o SingleValueChartMapOutput) ToSingleValueChartMapOutputWithContext(ctx co
 }
 
 func (o SingleValueChartMapOutput) MapIndex(k pulumi.StringInput) SingleValueChartOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SingleValueChart {
-		return vs[0].(map[string]SingleValueChart)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SingleValueChart {
+		return vs[0].(map[string]*SingleValueChart)[vs[1].(string)]
 	}).(SingleValueChartOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartInput)(nil)).Elem(), &SingleValueChart{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartPtrInput)(nil)).Elem(), &SingleValueChart{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartArrayInput)(nil)).Elem(), SingleValueChartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartMapInput)(nil)).Elem(), SingleValueChartMap{})
 	pulumi.RegisterOutputType(SingleValueChartOutput{})
-	pulumi.RegisterOutputType(SingleValueChartPtrOutput{})
 	pulumi.RegisterOutputType(SingleValueChartArrayOutput{})
 	pulumi.RegisterOutputType(SingleValueChartMapOutput{})
 }

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SignalFx.PagerDuty
 {
@@ -39,7 +38,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIntegrationResult> InvokeAsync(GetIntegrationArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information on an existing PagerDuty integration.
@@ -68,7 +67,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetIntegrationResult> Invoke(GetIntegrationInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationInvokeArgs(), options.WithDefaults());
     }
 
 

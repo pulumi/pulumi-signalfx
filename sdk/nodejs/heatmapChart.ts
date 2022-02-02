@@ -149,50 +149,48 @@ export class HeatmapChart extends pulumi.CustomResource {
      */
     constructor(name: string, args: HeatmapChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HeatmapChartArgs | HeatmapChartState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HeatmapChartState | undefined;
-            inputs["colorRange"] = state ? state.colorRange : undefined;
-            inputs["colorScales"] = state ? state.colorScales : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableSampling"] = state ? state.disableSampling : undefined;
-            inputs["groupBies"] = state ? state.groupBies : undefined;
-            inputs["hideTimestamp"] = state ? state.hideTimestamp : undefined;
-            inputs["maxDelay"] = state ? state.maxDelay : undefined;
-            inputs["minimumResolution"] = state ? state.minimumResolution : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["programText"] = state ? state.programText : undefined;
-            inputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            inputs["sortBy"] = state ? state.sortBy : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
-            inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["colorRange"] = state ? state.colorRange : undefined;
+            resourceInputs["colorScales"] = state ? state.colorScales : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
+            resourceInputs["groupBies"] = state ? state.groupBies : undefined;
+            resourceInputs["hideTimestamp"] = state ? state.hideTimestamp : undefined;
+            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
+            resourceInputs["minimumResolution"] = state ? state.minimumResolution : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["programText"] = state ? state.programText : undefined;
+            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
+            resourceInputs["sortBy"] = state ? state.sortBy : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as HeatmapChartArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            inputs["colorRange"] = args ? args.colorRange : undefined;
-            inputs["colorScales"] = args ? args.colorScales : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableSampling"] = args ? args.disableSampling : undefined;
-            inputs["groupBies"] = args ? args.groupBies : undefined;
-            inputs["hideTimestamp"] = args ? args.hideTimestamp : undefined;
-            inputs["maxDelay"] = args ? args.maxDelay : undefined;
-            inputs["minimumResolution"] = args ? args.minimumResolution : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["programText"] = args ? args.programText : undefined;
-            inputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            inputs["sortBy"] = args ? args.sortBy : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
-            inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["colorRange"] = args ? args.colorRange : undefined;
+            resourceInputs["colorScales"] = args ? args.colorScales : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
+            resourceInputs["groupBies"] = args ? args.groupBies : undefined;
+            resourceInputs["hideTimestamp"] = args ? args.hideTimestamp : undefined;
+            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
+            resourceInputs["minimumResolution"] = args ? args.minimumResolution : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["programText"] = args ? args.programText : undefined;
+            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
+            resourceInputs["sortBy"] = args ? args.sortBy : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(HeatmapChart.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(HeatmapChart.__pulumiType, name, resourceInputs, opts);
     }
 }
 

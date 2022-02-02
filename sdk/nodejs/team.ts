@@ -104,37 +104,35 @@ export class Team extends pulumi.CustomResource {
      */
     constructor(name: string, args?: TeamArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TeamArgs | TeamState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationsCriticals"] = state ? state.notificationsCriticals : undefined;
-            inputs["notificationsDefaults"] = state ? state.notificationsDefaults : undefined;
-            inputs["notificationsInfos"] = state ? state.notificationsInfos : undefined;
-            inputs["notificationsMajors"] = state ? state.notificationsMajors : undefined;
-            inputs["notificationsMinors"] = state ? state.notificationsMinors : undefined;
-            inputs["notificationsWarnings"] = state ? state.notificationsWarnings : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationsCriticals"] = state ? state.notificationsCriticals : undefined;
+            resourceInputs["notificationsDefaults"] = state ? state.notificationsDefaults : undefined;
+            resourceInputs["notificationsInfos"] = state ? state.notificationsInfos : undefined;
+            resourceInputs["notificationsMajors"] = state ? state.notificationsMajors : undefined;
+            resourceInputs["notificationsMinors"] = state ? state.notificationsMinors : undefined;
+            resourceInputs["notificationsWarnings"] = state ? state.notificationsWarnings : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as TeamArgs | undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationsCriticals"] = args ? args.notificationsCriticals : undefined;
-            inputs["notificationsDefaults"] = args ? args.notificationsDefaults : undefined;
-            inputs["notificationsInfos"] = args ? args.notificationsInfos : undefined;
-            inputs["notificationsMajors"] = args ? args.notificationsMajors : undefined;
-            inputs["notificationsMinors"] = args ? args.notificationsMinors : undefined;
-            inputs["notificationsWarnings"] = args ? args.notificationsWarnings : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationsCriticals"] = args ? args.notificationsCriticals : undefined;
+            resourceInputs["notificationsDefaults"] = args ? args.notificationsDefaults : undefined;
+            resourceInputs["notificationsInfos"] = args ? args.notificationsInfos : undefined;
+            resourceInputs["notificationsMajors"] = args ? args.notificationsMajors : undefined;
+            resourceInputs["notificationsMinors"] = args ? args.notificationsMinors : undefined;
+            resourceInputs["notificationsWarnings"] = args ? args.notificationsWarnings : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Team.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Team.__pulumiType, name, resourceInputs, opts);
     }
 }
 

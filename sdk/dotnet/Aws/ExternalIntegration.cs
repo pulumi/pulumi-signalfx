@@ -30,46 +30,41 @@ namespace Pulumi.SignalFx.Aws
     ///         var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration("awsMyteamExtern", new SignalFx.Aws.ExternalIntegrationArgs
     ///         {
     ///         });
-    ///         var signalfxAssumePolicy = Output.Tuple(awsMyteamExtern.SignalfxAwsAccount, awsMyteamExtern.ExternalId).Apply(values =&gt;
+    ///         var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.Invoke(new Aws.Iam.GetPolicyDocumentInvokeArgs
     ///         {
-    ///             var signalfxAwsAccount = values.Item1;
-    ///             var externalId = values.Item2;
-    ///             return Aws.Iam.GetPolicyDocument.InvokeAsync(new Aws.Iam.GetPolicyDocumentArgs
+    ///             Statements = 
     ///             {
-    ///                 Statements = 
+    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
     ///                 {
-    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementArgs
+    ///                     Actions = 
     ///                     {
-    ///                         Actions = 
+    ///                         "sts:AssumeRole",
+    ///                     },
+    ///                     Principals = 
+    ///                     {
+    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
     ///                         {
-    ///                             "sts:AssumeRole",
-    ///                         },
-    ///                         Principals = 
-    ///                         {
-    ///                             new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalArgs
+    ///                             Type = "AWS",
+    ///                             Identifiers = 
     ///                             {
-    ///                                 Type = "AWS",
-    ///                                 Identifiers = 
-    ///                                 {
-    ///                                     signalfxAwsAccount,
-    ///                                 },
+    ///                                 awsMyteamExtern.SignalfxAwsAccount,
     ///                             },
     ///                         },
-    ///                         Conditions = 
+    ///                     },
+    ///                     Conditions = 
+    ///                     {
+    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
     ///                         {
-    ///                             new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionArgs
+    ///                             Test = "StringEquals",
+    ///                             Variable = "sts:ExternalId",
+    ///                             Values = 
     ///                             {
-    ///                                 Test = "StringEquals",
-    ///                                 Variable = "sts:ExternalId",
-    ///                                 Values = 
-    ///                                 {
-    ///                                     externalId,
-    ///                                 },
+    ///                                 awsMyteamExtern.ExternalId,
     ///                             },
     ///                         },
     ///                     },
     ///                 },
-    ///             });
+    ///             },
     ///         });
     ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
     ///         {

@@ -71,13 +71,13 @@ export class Integration extends pulumi.CustomResource {
      */
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["webhookUrl"] = state ? state.webhookUrl : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["webhookUrl"] = state ? state.webhookUrl : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -86,14 +86,12 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.webhookUrl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'webhookUrl'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["webhookUrl"] = args ? args.webhookUrl : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["webhookUrl"] = args ? args.webhookUrl : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Integration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

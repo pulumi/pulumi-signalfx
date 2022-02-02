@@ -127,50 +127,48 @@ export class SingleValueChart extends pulumi.CustomResource {
      */
     constructor(name: string, args: SingleValueChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SingleValueChartArgs | SingleValueChartState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SingleValueChartState | undefined;
-            inputs["colorBy"] = state ? state.colorBy : undefined;
-            inputs["colorScales"] = state ? state.colorScales : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["isTimestampHidden"] = state ? state.isTimestampHidden : undefined;
-            inputs["maxDelay"] = state ? state.maxDelay : undefined;
-            inputs["maxPrecision"] = state ? state.maxPrecision : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["programText"] = state ? state.programText : undefined;
-            inputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            inputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
-            inputs["showSparkLine"] = state ? state.showSparkLine : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
-            inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["colorBy"] = state ? state.colorBy : undefined;
+            resourceInputs["colorScales"] = state ? state.colorScales : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["isTimestampHidden"] = state ? state.isTimestampHidden : undefined;
+            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
+            resourceInputs["maxPrecision"] = state ? state.maxPrecision : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["programText"] = state ? state.programText : undefined;
+            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
+            resourceInputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
+            resourceInputs["showSparkLine"] = state ? state.showSparkLine : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as SingleValueChartArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            inputs["colorBy"] = args ? args.colorBy : undefined;
-            inputs["colorScales"] = args ? args.colorScales : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["isTimestampHidden"] = args ? args.isTimestampHidden : undefined;
-            inputs["maxDelay"] = args ? args.maxDelay : undefined;
-            inputs["maxPrecision"] = args ? args.maxPrecision : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["programText"] = args ? args.programText : undefined;
-            inputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            inputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
-            inputs["showSparkLine"] = args ? args.showSparkLine : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
-            inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            inputs["vizOptions"] = args ? args.vizOptions : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["colorBy"] = args ? args.colorBy : undefined;
+            resourceInputs["colorScales"] = args ? args.colorScales : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["isTimestampHidden"] = args ? args.isTimestampHidden : undefined;
+            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
+            resourceInputs["maxPrecision"] = args ? args.maxPrecision : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["programText"] = args ? args.programText : undefined;
+            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
+            resourceInputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
+            resourceInputs["showSparkLine"] = args ? args.showSparkLine : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
+            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SingleValueChart.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SingleValueChart.__pulumiType, name, resourceInputs, opts);
     }
 }
 

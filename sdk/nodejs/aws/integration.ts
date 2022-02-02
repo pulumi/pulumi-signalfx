@@ -157,27 +157,27 @@ export class Integration extends pulumi.CustomResource {
      */
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            inputs["customCloudwatchNamespaces"] = state ? state.customCloudwatchNamespaces : undefined;
-            inputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
-            inputs["enableAwsUsage"] = state ? state.enableAwsUsage : undefined;
-            inputs["enableCheckLargeVolume"] = state ? state.enableCheckLargeVolume : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["externalId"] = state ? state.externalId : undefined;
-            inputs["importCloudWatch"] = state ? state.importCloudWatch : undefined;
-            inputs["integrationId"] = state ? state.integrationId : undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["namedToken"] = state ? state.namedToken : undefined;
-            inputs["namespaceSyncRules"] = state ? state.namespaceSyncRules : undefined;
-            inputs["pollRate"] = state ? state.pollRate : undefined;
-            inputs["regions"] = state ? state.regions : undefined;
-            inputs["roleArn"] = state ? state.roleArn : undefined;
-            inputs["services"] = state ? state.services : undefined;
-            inputs["token"] = state ? state.token : undefined;
-            inputs["useGetMetricDataMethod"] = state ? state.useGetMetricDataMethod : undefined;
+            resourceInputs["customCloudwatchNamespaces"] = state ? state.customCloudwatchNamespaces : undefined;
+            resourceInputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
+            resourceInputs["enableAwsUsage"] = state ? state.enableAwsUsage : undefined;
+            resourceInputs["enableCheckLargeVolume"] = state ? state.enableCheckLargeVolume : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["externalId"] = state ? state.externalId : undefined;
+            resourceInputs["importCloudWatch"] = state ? state.importCloudWatch : undefined;
+            resourceInputs["integrationId"] = state ? state.integrationId : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["namedToken"] = state ? state.namedToken : undefined;
+            resourceInputs["namespaceSyncRules"] = state ? state.namespaceSyncRules : undefined;
+            resourceInputs["pollRate"] = state ? state.pollRate : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
+            resourceInputs["roleArn"] = state ? state.roleArn : undefined;
+            resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["token"] = state ? state.token : undefined;
+            resourceInputs["useGetMetricDataMethod"] = state ? state.useGetMetricDataMethod : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -186,28 +186,26 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.integrationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'integrationId'");
             }
-            inputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
-            inputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
-            inputs["enableAwsUsage"] = args ? args.enableAwsUsage : undefined;
-            inputs["enableCheckLargeVolume"] = args ? args.enableCheckLargeVolume : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["externalId"] = args ? args.externalId : undefined;
-            inputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
-            inputs["integrationId"] = args ? args.integrationId : undefined;
-            inputs["key"] = args ? args.key : undefined;
-            inputs["namedToken"] = args ? args.namedToken : undefined;
-            inputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
-            inputs["pollRate"] = args ? args.pollRate : undefined;
-            inputs["regions"] = args ? args.regions : undefined;
-            inputs["roleArn"] = args ? args.roleArn : undefined;
-            inputs["services"] = args ? args.services : undefined;
-            inputs["token"] = args ? args.token : undefined;
-            inputs["useGetMetricDataMethod"] = args ? args.useGetMetricDataMethod : undefined;
+            resourceInputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
+            resourceInputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
+            resourceInputs["enableAwsUsage"] = args ? args.enableAwsUsage : undefined;
+            resourceInputs["enableCheckLargeVolume"] = args ? args.enableCheckLargeVolume : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
+            resourceInputs["integrationId"] = args ? args.integrationId : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["namedToken"] = args ? args.namedToken : undefined;
+            resourceInputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
+            resourceInputs["pollRate"] = args ? args.pollRate : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
+            resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["useGetMetricDataMethod"] = args ? args.useGetMetricDataMethod : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Integration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

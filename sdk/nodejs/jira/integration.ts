@@ -114,22 +114,22 @@ export class Integration extends pulumi.CustomResource {
      */
     constructor(name: string, args: IntegrationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IntegrationArgs | IntegrationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
-            inputs["apiToken"] = state ? state.apiToken : undefined;
-            inputs["assigneeDisplayName"] = state ? state.assigneeDisplayName : undefined;
-            inputs["assigneeName"] = state ? state.assigneeName : undefined;
-            inputs["authMethod"] = state ? state.authMethod : undefined;
-            inputs["baseUrl"] = state ? state.baseUrl : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["issueType"] = state ? state.issueType : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["projectKey"] = state ? state.projectKey : undefined;
-            inputs["userEmail"] = state ? state.userEmail : undefined;
-            inputs["username"] = state ? state.username : undefined;
+            resourceInputs["apiToken"] = state ? state.apiToken : undefined;
+            resourceInputs["assigneeDisplayName"] = state ? state.assigneeDisplayName : undefined;
+            resourceInputs["assigneeName"] = state ? state.assigneeName : undefined;
+            resourceInputs["authMethod"] = state ? state.authMethod : undefined;
+            resourceInputs["baseUrl"] = state ? state.baseUrl : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["issueType"] = state ? state.issueType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["projectKey"] = state ? state.projectKey : undefined;
+            resourceInputs["userEmail"] = state ? state.userEmail : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.assigneeName === undefined) && !opts.urn) {
@@ -150,23 +150,21 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.projectKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            inputs["apiToken"] = args ? args.apiToken : undefined;
-            inputs["assigneeDisplayName"] = args ? args.assigneeDisplayName : undefined;
-            inputs["assigneeName"] = args ? args.assigneeName : undefined;
-            inputs["authMethod"] = args ? args.authMethod : undefined;
-            inputs["baseUrl"] = args ? args.baseUrl : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["issueType"] = args ? args.issueType : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["projectKey"] = args ? args.projectKey : undefined;
-            inputs["userEmail"] = args ? args.userEmail : undefined;
-            inputs["username"] = args ? args.username : undefined;
+            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
+            resourceInputs["assigneeDisplayName"] = args ? args.assigneeDisplayName : undefined;
+            resourceInputs["assigneeName"] = args ? args.assigneeName : undefined;
+            resourceInputs["authMethod"] = args ? args.authMethod : undefined;
+            resourceInputs["baseUrl"] = args ? args.baseUrl : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["issueType"] = args ? args.issueType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["projectKey"] = args ? args.projectKey : undefined;
+            resourceInputs["userEmail"] = args ? args.userEmail : undefined;
+            resourceInputs["username"] = args ? args.username : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Integration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

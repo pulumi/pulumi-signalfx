@@ -23,9 +23,7 @@ export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("signalfx:pagerduty/getIntegration:getIntegration", {
         "name": args.name,
     }, opts);

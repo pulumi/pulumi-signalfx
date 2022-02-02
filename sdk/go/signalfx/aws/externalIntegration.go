@@ -36,6 +36,32 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		signalfxAssumePolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+// 			Statements: iam.GetPolicyDocumentStatementArray{
+// 				&iam.GetPolicyDocumentStatementArgs{
+// 					Actions: pulumi.StringArray{
+// 						pulumi.String("sts:AssumeRole"),
+// 					},
+// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
+// 							Type: pulumi.String("AWS"),
+// 							Identifiers: pulumi.StringArray{
+// 								awsMyteamExtern.SignalfxAwsAccount,
+// 							},
+// 						},
+// 					},
+// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
+// 						&iam.GetPolicyDocumentStatementConditionArgs{
+// 							Test:     pulumi.String("StringEquals"),
+// 							Variable: pulumi.String("sts:ExternalId"),
+// 							Values: pulumi.StringArray{
+// 								awsMyteamExtern.ExternalId,
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 		}, nil)
 // 		awsSfxRole, err := iam.NewRole(ctx, "awsSfxRole", &iam.RoleArgs{
 // 			Description: pulumi.String("signalfx integration to read out data and send it to signalfxs aws account"),
 // 			AssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {
@@ -52,7 +78,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "sfx_read_attach", &iam.RolePolicyAttachmentArgs{
+// 		_, err = iam.NewRolePolicyAttachment(ctx, "sfx-read-attach", &iam.RolePolicyAttachmentArgs{
 // 			Role:      awsSfxRole.Name,
 // 			PolicyArn: awsReadPermissions.Arn,
 // 		})
@@ -162,7 +188,7 @@ type ExternalIntegrationInput interface {
 }
 
 func (*ExternalIntegration) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalIntegration)(nil))
+	return reflect.TypeOf((**ExternalIntegration)(nil)).Elem()
 }
 
 func (i *ExternalIntegration) ToExternalIntegrationOutput() ExternalIntegrationOutput {
@@ -171,35 +197,6 @@ func (i *ExternalIntegration) ToExternalIntegrationOutput() ExternalIntegrationO
 
 func (i *ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationOutput)
-}
-
-func (i *ExternalIntegration) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
-	return i.ToExternalIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (i *ExternalIntegration) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationPtrOutput)
-}
-
-type ExternalIntegrationPtrInput interface {
-	pulumi.Input
-
-	ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput
-	ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput
-}
-
-type externalIntegrationPtrType ExternalIntegrationArgs
-
-func (*externalIntegrationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalIntegration)(nil))
-}
-
-func (i *externalIntegrationPtrType) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
-	return i.ToExternalIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (i *externalIntegrationPtrType) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationPtrOutput)
 }
 
 // ExternalIntegrationArrayInput is an input type that accepts ExternalIntegrationArray and ExternalIntegrationArrayOutput values.
@@ -255,7 +252,7 @@ func (i ExternalIntegrationMap) ToExternalIntegrationMapOutputWithContext(ctx co
 type ExternalIntegrationOutput struct{ *pulumi.OutputState }
 
 func (ExternalIntegrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExternalIntegration)(nil))
+	return reflect.TypeOf((**ExternalIntegration)(nil)).Elem()
 }
 
 func (o ExternalIntegrationOutput) ToExternalIntegrationOutput() ExternalIntegrationOutput {
@@ -266,44 +263,10 @@ func (o ExternalIntegrationOutput) ToExternalIntegrationOutputWithContext(ctx co
 	return o
 }
 
-func (o ExternalIntegrationOutput) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
-	return o.ToExternalIntegrationPtrOutputWithContext(context.Background())
-}
-
-func (o ExternalIntegrationOutput) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExternalIntegration) *ExternalIntegration {
-		return &v
-	}).(ExternalIntegrationPtrOutput)
-}
-
-type ExternalIntegrationPtrOutput struct{ *pulumi.OutputState }
-
-func (ExternalIntegrationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExternalIntegration)(nil))
-}
-
-func (o ExternalIntegrationPtrOutput) ToExternalIntegrationPtrOutput() ExternalIntegrationPtrOutput {
-	return o
-}
-
-func (o ExternalIntegrationPtrOutput) ToExternalIntegrationPtrOutputWithContext(ctx context.Context) ExternalIntegrationPtrOutput {
-	return o
-}
-
-func (o ExternalIntegrationPtrOutput) Elem() ExternalIntegrationOutput {
-	return o.ApplyT(func(v *ExternalIntegration) ExternalIntegration {
-		if v != nil {
-			return *v
-		}
-		var ret ExternalIntegration
-		return ret
-	}).(ExternalIntegrationOutput)
-}
-
 type ExternalIntegrationArrayOutput struct{ *pulumi.OutputState }
 
 func (ExternalIntegrationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExternalIntegration)(nil))
+	return reflect.TypeOf((*[]*ExternalIntegration)(nil)).Elem()
 }
 
 func (o ExternalIntegrationArrayOutput) ToExternalIntegrationArrayOutput() ExternalIntegrationArrayOutput {
@@ -315,15 +278,15 @@ func (o ExternalIntegrationArrayOutput) ToExternalIntegrationArrayOutputWithCont
 }
 
 func (o ExternalIntegrationArrayOutput) Index(i pulumi.IntInput) ExternalIntegrationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalIntegration {
-		return vs[0].([]ExternalIntegration)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExternalIntegration {
+		return vs[0].([]*ExternalIntegration)[vs[1].(int)]
 	}).(ExternalIntegrationOutput)
 }
 
 type ExternalIntegrationMapOutput struct{ *pulumi.OutputState }
 
 func (ExternalIntegrationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ExternalIntegration)(nil))
+	return reflect.TypeOf((*map[string]*ExternalIntegration)(nil)).Elem()
 }
 
 func (o ExternalIntegrationMapOutput) ToExternalIntegrationMapOutput() ExternalIntegrationMapOutput {
@@ -335,18 +298,16 @@ func (o ExternalIntegrationMapOutput) ToExternalIntegrationMapOutputWithContext(
 }
 
 func (o ExternalIntegrationMapOutput) MapIndex(k pulumi.StringInput) ExternalIntegrationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExternalIntegration {
-		return vs[0].(map[string]ExternalIntegration)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ExternalIntegration {
+		return vs[0].(map[string]*ExternalIntegration)[vs[1].(string)]
 	}).(ExternalIntegrationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationInput)(nil)).Elem(), &ExternalIntegration{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationPtrInput)(nil)).Elem(), &ExternalIntegration{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationArrayInput)(nil)).Elem(), ExternalIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalIntegrationMapInput)(nil)).Elem(), ExternalIntegrationMap{})
 	pulumi.RegisterOutputType(ExternalIntegrationOutput{})
-	pulumi.RegisterOutputType(ExternalIntegrationPtrOutput{})
 	pulumi.RegisterOutputType(ExternalIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(ExternalIntegrationMapOutput{})
 }

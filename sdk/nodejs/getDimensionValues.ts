@@ -14,9 +14,7 @@ export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.I
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("signalfx:index/getDimensionValues:getDimensionValues", {
         "query": args.query,
     }, opts);

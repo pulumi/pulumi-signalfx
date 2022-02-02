@@ -178,62 +178,60 @@ export class ListChart extends pulumi.CustomResource {
      */
     constructor(name: string, args: ListChartArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ListChartArgs | ListChartState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListChartState | undefined;
-            inputs["colorBy"] = state ? state.colorBy : undefined;
-            inputs["colorScales"] = state ? state.colorScales : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableSampling"] = state ? state.disableSampling : undefined;
-            inputs["endTime"] = state ? state.endTime : undefined;
-            inputs["hideMissingValues"] = state ? state.hideMissingValues : undefined;
-            inputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
-            inputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
-            inputs["maxDelay"] = state ? state.maxDelay : undefined;
-            inputs["maxPrecision"] = state ? state.maxPrecision : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["programText"] = state ? state.programText : undefined;
-            inputs["refreshInterval"] = state ? state.refreshInterval : undefined;
-            inputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
-            inputs["sortBy"] = state ? state.sortBy : undefined;
-            inputs["startTime"] = state ? state.startTime : undefined;
-            inputs["timeRange"] = state ? state.timeRange : undefined;
-            inputs["timezone"] = state ? state.timezone : undefined;
-            inputs["unitPrefix"] = state ? state.unitPrefix : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["vizOptions"] = state ? state.vizOptions : undefined;
+            resourceInputs["colorBy"] = state ? state.colorBy : undefined;
+            resourceInputs["colorScales"] = state ? state.colorScales : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["hideMissingValues"] = state ? state.hideMissingValues : undefined;
+            resourceInputs["legendFieldsToHides"] = state ? state.legendFieldsToHides : undefined;
+            resourceInputs["legendOptionsFields"] = state ? state.legendOptionsFields : undefined;
+            resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
+            resourceInputs["maxPrecision"] = state ? state.maxPrecision : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["programText"] = state ? state.programText : undefined;
+            resourceInputs["refreshInterval"] = state ? state.refreshInterval : undefined;
+            resourceInputs["secondaryVisualization"] = state ? state.secondaryVisualization : undefined;
+            resourceInputs["sortBy"] = state ? state.sortBy : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["timeRange"] = state ? state.timeRange : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["unitPrefix"] = state ? state.unitPrefix : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["vizOptions"] = state ? state.vizOptions : undefined;
         } else {
             const args = argsOrState as ListChartArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
-            inputs["colorBy"] = args ? args.colorBy : undefined;
-            inputs["colorScales"] = args ? args.colorScales : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableSampling"] = args ? args.disableSampling : undefined;
-            inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["hideMissingValues"] = args ? args.hideMissingValues : undefined;
-            inputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
-            inputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
-            inputs["maxDelay"] = args ? args.maxDelay : undefined;
-            inputs["maxPrecision"] = args ? args.maxPrecision : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["programText"] = args ? args.programText : undefined;
-            inputs["refreshInterval"] = args ? args.refreshInterval : undefined;
-            inputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
-            inputs["sortBy"] = args ? args.sortBy : undefined;
-            inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["timeRange"] = args ? args.timeRange : undefined;
-            inputs["timezone"] = args ? args.timezone : undefined;
-            inputs["unitPrefix"] = args ? args.unitPrefix : undefined;
-            inputs["vizOptions"] = args ? args.vizOptions : undefined;
-            inputs["url"] = undefined /*out*/;
+            resourceInputs["colorBy"] = args ? args.colorBy : undefined;
+            resourceInputs["colorScales"] = args ? args.colorScales : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
+            resourceInputs["endTime"] = args ? args.endTime : undefined;
+            resourceInputs["hideMissingValues"] = args ? args.hideMissingValues : undefined;
+            resourceInputs["legendFieldsToHides"] = args ? args.legendFieldsToHides : undefined;
+            resourceInputs["legendOptionsFields"] = args ? args.legendOptionsFields : undefined;
+            resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
+            resourceInputs["maxPrecision"] = args ? args.maxPrecision : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["programText"] = args ? args.programText : undefined;
+            resourceInputs["refreshInterval"] = args ? args.refreshInterval : undefined;
+            resourceInputs["secondaryVisualization"] = args ? args.secondaryVisualization : undefined;
+            resourceInputs["sortBy"] = args ? args.sortBy : undefined;
+            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["timeRange"] = args ? args.timeRange : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["unitPrefix"] = args ? args.unitPrefix : undefined;
+            resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["url"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ListChart.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ListChart.__pulumiType, name, resourceInputs, opts);
     }
 }
 

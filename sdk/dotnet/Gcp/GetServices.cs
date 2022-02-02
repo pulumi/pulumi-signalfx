@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.SignalFx.Gcp
 {
@@ -47,7 +46,7 @@ namespace Pulumi.SignalFx.Gcp
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetServicesResult> InvokeAsync(GetServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("signalfx:gcp/getServices:getServices", args ?? new GetServicesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("signalfx:gcp/getServices:getServices", args ?? new GetServicesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of GCP service names.
@@ -84,7 +83,7 @@ namespace Pulumi.SignalFx.Gcp
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetServicesResult>("signalfx:gcp/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetServicesResult>("signalfx:gcp/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
     }
 
 

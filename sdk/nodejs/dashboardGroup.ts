@@ -114,31 +114,29 @@ export class DashboardGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DashboardGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DashboardGroupArgs | DashboardGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DashboardGroupState | undefined;
-            inputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
-            inputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
-            inputs["dashboards"] = state ? state.dashboards : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["importQualifiers"] = state ? state.importQualifiers : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["teams"] = state ? state.teams : undefined;
+            resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
+            resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
+            resourceInputs["dashboards"] = state ? state.dashboards : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["importQualifiers"] = state ? state.importQualifiers : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["teams"] = state ? state.teams : undefined;
         } else {
             const args = argsOrState as DashboardGroupArgs | undefined;
-            inputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
-            inputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
-            inputs["dashboards"] = args ? args.dashboards : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["importQualifiers"] = args ? args.importQualifiers : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["teams"] = args ? args.teams : undefined;
+            resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
+            resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
+            resourceInputs["dashboards"] = args ? args.dashboards : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["importQualifiers"] = args ? args.importQualifiers : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["teams"] = args ? args.teams : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DashboardGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DashboardGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 
