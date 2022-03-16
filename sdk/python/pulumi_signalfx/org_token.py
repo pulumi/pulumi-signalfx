@@ -15,6 +15,7 @@ __all__ = ['OrgTokenArgs', 'OrgToken']
 @pulumi.input_type
 class OrgTokenArgs:
     def __init__(__self__, *,
+                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  dpm_limits: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']] = None,
@@ -23,6 +24,7 @@ class OrgTokenArgs:
                  notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OrgToken resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         :param pulumi.Input['OrgTokenDpmLimitsArgs'] dpm_limits: Specify DPM-based limits for this token.
@@ -31,6 +33,8 @@ class OrgTokenArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
                https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         """
+        if auth_scopes is not None:
+            pulumi.set(__self__, "auth_scopes", auth_scopes)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -43,6 +47,18 @@ class OrgTokenArgs:
             pulumi.set(__self__, "name", name)
         if notifications is not None:
             pulumi.set(__self__, "notifications", notifications)
+
+    @property
+    @pulumi.getter(name="authScopes")
+    def auth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Authentication scope, ex: INGEST, API, RUM ... (Optional)
+        """
+        return pulumi.get(self, "auth_scopes")
+
+    @auth_scopes.setter
+    def auth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "auth_scopes", value)
 
     @property
     @pulumi.getter
@@ -121,6 +137,7 @@ class OrgTokenArgs:
 @pulumi.input_type
 class _OrgTokenState:
     def __init__(__self__, *,
+                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  dpm_limits: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']] = None,
@@ -130,6 +147,7 @@ class _OrgTokenState:
                  secret: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OrgToken resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         :param pulumi.Input['OrgTokenDpmLimitsArgs'] dpm_limits: Specify DPM-based limits for this token.
@@ -139,6 +157,8 @@ class _OrgTokenState:
                https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
         """
+        if auth_scopes is not None:
+            pulumi.set(__self__, "auth_scopes", auth_scopes)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -153,6 +173,18 @@ class _OrgTokenState:
             pulumi.set(__self__, "notifications", notifications)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter(name="authScopes")
+    def auth_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Authentication scope, ex: INGEST, API, RUM ... (Optional)
+        """
+        return pulumi.get(self, "auth_scopes")
+
+    @auth_scopes.setter
+    def auth_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "auth_scopes", value)
 
     @property
     @pulumi.getter
@@ -245,6 +277,7 @@ class OrgToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  dpm_limits: Optional[pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']]] = None,
@@ -278,6 +311,7 @@ class OrgToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']] dpm_limits: Specify DPM-based limits for this token.
@@ -331,6 +365,7 @@ class OrgToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  dpm_limits: Optional[pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']]] = None,
@@ -349,6 +384,7 @@ class OrgToken(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrgTokenArgs.__new__(OrgTokenArgs)
 
+            __props__.__dict__["auth_scopes"] = auth_scopes
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["dpm_limits"] = dpm_limits
@@ -366,6 +402,7 @@ class OrgToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             dpm_limits: Optional[pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']]] = None,
@@ -380,6 +417,7 @@ class OrgToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']] dpm_limits: Specify DPM-based limits for this token.
@@ -393,6 +431,7 @@ class OrgToken(pulumi.CustomResource):
 
         __props__ = _OrgTokenState.__new__(_OrgTokenState)
 
+        __props__.__dict__["auth_scopes"] = auth_scopes
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["dpm_limits"] = dpm_limits
@@ -401,6 +440,14 @@ class OrgToken(pulumi.CustomResource):
         __props__.__dict__["notifications"] = notifications
         __props__.__dict__["secret"] = secret
         return OrgToken(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="authScopes")
+    def auth_scopes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Authentication scope, ex: INGEST, API, RUM ... (Optional)
+        """
+        return pulumi.get(self, "auth_scopes")
 
     @property
     @pulumi.getter

@@ -227,6 +227,8 @@ type Detector struct {
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
+	// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+	LabelResolutions pulumi.IntMapOutput `pulumi:"labelResolutions"`
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
 	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
@@ -302,6 +304,8 @@ type detectorState struct {
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
+	// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+	LabelResolutions map[string]int `pulumi:"labelResolutions"`
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay *int `pulumi:"maxDelay"`
 	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
@@ -343,6 +347,8 @@ type DetectorState struct {
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
+	// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+	LabelResolutions pulumi.IntMapInput
 	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
 	MaxDelay pulumi.IntPtrInput
 	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).

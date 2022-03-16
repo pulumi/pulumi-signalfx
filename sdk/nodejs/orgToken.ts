@@ -59,6 +59,10 @@ export class OrgToken extends pulumi.CustomResource {
     }
 
     /**
+     * Authentication scope, ex: INGEST, API, RUM ... (Optional)
+     */
+    public readonly authScopes!: pulumi.Output<string[]>;
+    /**
      * Description of the token.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -101,6 +105,7 @@ export class OrgToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrgTokenState | undefined;
+            resourceInputs["authScopes"] = state ? state.authScopes : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["dpmLimits"] = state ? state.dpmLimits : undefined;
@@ -110,6 +115,7 @@ export class OrgToken extends pulumi.CustomResource {
             resourceInputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as OrgTokenArgs | undefined;
+            resourceInputs["authScopes"] = args ? args.authScopes : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["dpmLimits"] = args ? args.dpmLimits : undefined;
@@ -127,6 +133,10 @@ export class OrgToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrgToken resources.
  */
 export interface OrgTokenState {
+    /**
+     * Authentication scope, ex: INGEST, API, RUM ... (Optional)
+     */
+    authScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the token.
      */
@@ -162,6 +172,10 @@ export interface OrgTokenState {
  * The set of arguments for constructing a OrgToken resource.
  */
 export interface OrgTokenArgs {
+    /**
+     * Authentication scope, ex: INGEST, API, RUM ... (Optional)
+     */
+    authScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Description of the token.
      */

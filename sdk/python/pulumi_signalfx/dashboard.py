@@ -31,6 +31,7 @@ class DashboardArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
@@ -49,6 +50,7 @@ class DashboardArgs:
         :param pulumi.Input[str] name: Name of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
@@ -83,6 +85,8 @@ class DashboardArgs:
             pulumi.set(__self__, "selected_event_overlays", selected_event_overlays)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_range is not None:
             pulumi.set(__self__, "time_range", time_range)
         if variables is not None:
@@ -275,6 +279,18 @@ class DashboardArgs:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags of the dashboard.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -318,6 +334,7 @@ class _DashboardState:
                  name: Optional[pulumi.Input[str]] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
@@ -337,6 +354,7 @@ class _DashboardState:
         :param pulumi.Input[str] name: Name of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[str] url: The URL of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: Dashboard variable to apply to each chart in the dashboard.
@@ -373,6 +391,8 @@ class _DashboardState:
             pulumi.set(__self__, "selected_event_overlays", selected_event_overlays)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if time_range is not None:
             pulumi.set(__self__, "time_range", time_range)
         if url is not None:
@@ -567,6 +587,18 @@ class _DashboardState:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags of the dashboard.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -624,6 +656,7 @@ class Dashboard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]]] = None,
                  __props__=None):
@@ -645,6 +678,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
@@ -687,6 +721,7 @@ class Dashboard(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_range: Optional[pulumi.Input[str]] = None,
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]]] = None,
                  __props__=None):
@@ -719,6 +754,7 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["selected_event_overlays"] = selected_event_overlays
             __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["variables"] = variables
             __props__.__dict__["url"] = None
@@ -748,6 +784,7 @@ class Dashboard(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             time_range: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
             variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]]] = None) -> 'Dashboard':
@@ -772,6 +809,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[str] url: The URL of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: Dashboard variable to apply to each chart in the dashboard.
@@ -796,6 +834,7 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["selected_event_overlays"] = selected_event_overlays
         __props__.__dict__["start_time"] = start_time
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["time_range"] = time_range
         __props__.__dict__["url"] = url
         __props__.__dict__["variables"] = variables
@@ -922,6 +961,14 @@ class Dashboard(pulumi.CustomResource):
         Seconds since epoch. Used for visualization.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Tags of the dashboard.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="timeRange")

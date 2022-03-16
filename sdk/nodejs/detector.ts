@@ -192,6 +192,10 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
+     * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     */
+    public /*out*/ readonly labelResolutions!: pulumi.Output<{[key: string]: number}>;
+    /**
      * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
     public readonly maxDelay!: pulumi.Output<number | undefined>;
@@ -266,6 +270,7 @@ export class Detector extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
             resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["labelResolutions"] = state ? state.labelResolutions : undefined;
             resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
             resourceInputs["minDelay"] = state ? state.minDelay : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -306,6 +311,7 @@ export class Detector extends pulumi.CustomResource {
             resourceInputs["timeRange"] = args ? args.timeRange : undefined;
             resourceInputs["timezone"] = args ? args.timezone : undefined;
             resourceInputs["vizOptions"] = args ? args.vizOptions : undefined;
+            resourceInputs["labelResolutions"] = undefined /*out*/;
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -337,6 +343,10 @@ export interface DetectorState {
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     endTime?: pulumi.Input<number>;
+    /**
+     * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     */
+    labelResolutions?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     /**
      * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      */
