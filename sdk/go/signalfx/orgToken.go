@@ -50,6 +50,8 @@ import (
 type OrgToken struct {
 	pulumi.CustomResourceState
 
+	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+	AuthScopes pulumi.StringArrayOutput `pulumi:"authScopes"`
 	// Description of the token.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
@@ -96,6 +98,8 @@ func GetOrgToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrgToken resources.
 type orgTokenState struct {
+	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+	AuthScopes []string `pulumi:"authScopes"`
 	// Description of the token.
 	Description *string `pulumi:"description"`
 	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
@@ -114,6 +118,8 @@ type orgTokenState struct {
 }
 
 type OrgTokenState struct {
+	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+	AuthScopes pulumi.StringArrayInput
 	// Description of the token.
 	Description pulumi.StringPtrInput
 	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
@@ -136,6 +142,8 @@ func (OrgTokenState) ElementType() reflect.Type {
 }
 
 type orgTokenArgs struct {
+	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+	AuthScopes []string `pulumi:"authScopes"`
 	// Description of the token.
 	Description *string `pulumi:"description"`
 	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
@@ -153,6 +161,8 @@ type orgTokenArgs struct {
 
 // The set of arguments for constructing a OrgToken resource.
 type OrgTokenArgs struct {
+	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+	AuthScopes pulumi.StringArrayInput
 	// Description of the token.
 	Description pulumi.StringPtrInput
 	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.

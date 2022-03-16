@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
  *
- * > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
+ * > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
  * > **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
  *
@@ -96,6 +96,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly enableCheckLargeVolume!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     */
+    public readonly enableLogsSync!: pulumi.Output<boolean>;
+    /**
      * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -112,7 +116,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly integrationId!: pulumi.Output<string>;
     /**
-     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      */
     public readonly key!: pulumi.Output<string | undefined>;
     /**
@@ -140,13 +144,17 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
      */
     public readonly useGetMetricDataMethod!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+     */
+    public readonly useMetricStreamsSync!: pulumi.Output<boolean>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -165,6 +173,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["customNamespaceSyncRules"] = state ? state.customNamespaceSyncRules : undefined;
             resourceInputs["enableAwsUsage"] = state ? state.enableAwsUsage : undefined;
             resourceInputs["enableCheckLargeVolume"] = state ? state.enableCheckLargeVolume : undefined;
+            resourceInputs["enableLogsSync"] = state ? state.enableLogsSync : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["externalId"] = state ? state.externalId : undefined;
             resourceInputs["importCloudWatch"] = state ? state.importCloudWatch : undefined;
@@ -178,6 +187,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["services"] = state ? state.services : undefined;
             resourceInputs["token"] = state ? state.token : undefined;
             resourceInputs["useGetMetricDataMethod"] = state ? state.useGetMetricDataMethod : undefined;
+            resourceInputs["useMetricStreamsSync"] = state ? state.useMetricStreamsSync : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -190,6 +200,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
             resourceInputs["enableAwsUsage"] = args ? args.enableAwsUsage : undefined;
             resourceInputs["enableCheckLargeVolume"] = args ? args.enableCheckLargeVolume : undefined;
+            resourceInputs["enableLogsSync"] = args ? args.enableLogsSync : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
             resourceInputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
@@ -203,6 +214,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["token"] = args ? args.token : undefined;
             resourceInputs["useGetMetricDataMethod"] = args ? args.useGetMetricDataMethod : undefined;
+            resourceInputs["useMetricStreamsSync"] = args ? args.useMetricStreamsSync : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
@@ -230,6 +242,10 @@ export interface IntegrationState {
      */
     enableCheckLargeVolume?: pulumi.Input<boolean>;
     /**
+     * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     */
+    enableLogsSync?: pulumi.Input<boolean>;
+    /**
      * Whether the integration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
@@ -246,7 +262,7 @@ export interface IntegrationState {
      */
     integrationId?: pulumi.Input<string>;
     /**
-     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      */
     key?: pulumi.Input<string>;
     /**
@@ -274,13 +290,17 @@ export interface IntegrationState {
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      */
     token?: pulumi.Input<string>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
      */
     useGetMetricDataMethod?: pulumi.Input<boolean>;
+    /**
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+     */
+    useMetricStreamsSync?: pulumi.Input<boolean>;
 }
 
 /**
@@ -304,6 +324,10 @@ export interface IntegrationArgs {
      */
     enableCheckLargeVolume?: pulumi.Input<boolean>;
     /**
+     * Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+     */
+    enableLogsSync?: pulumi.Input<boolean>;
+    /**
      * Whether the integration is enabled.
      */
     enabled: pulumi.Input<boolean>;
@@ -320,7 +344,7 @@ export interface IntegrationArgs {
      */
     integrationId: pulumi.Input<string>;
     /**
-     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
      */
     key?: pulumi.Input<string>;
     /**
@@ -348,11 +372,15 @@ export interface IntegrationArgs {
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
      */
     token?: pulumi.Input<string>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
      */
     useGetMetricDataMethod?: pulumi.Input<boolean>;
+    /**
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+     */
+    useMetricStreamsSync?: pulumi.Input<boolean>;
 }

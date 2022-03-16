@@ -314,6 +314,7 @@ class _DetectorState:
                  description: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
+                 label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  min_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -335,6 +336,7 @@ class _DetectorState:
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
@@ -360,6 +362,8 @@ class _DetectorState:
             pulumi.set(__self__, "disable_sampling", disable_sampling)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
+        if label_resolutions is not None:
+            pulumi.set(__self__, "label_resolutions", label_resolutions)
         if max_delay is not None:
             pulumi.set(__self__, "max_delay", max_delay)
         if min_delay is not None:
@@ -448,6 +452,18 @@ class _DetectorState:
     @end_time.setter
     def end_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="labelResolutions")
+    def label_resolutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]:
+        """
+        The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+        """
+        return pulumi.get(self, "label_resolutions")
+
+    @label_resolutions.setter
+    def label_resolutions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]):
+        pulumi.set(self, "label_resolutions", value)
 
     @property
     @pulumi.getter(name="maxDelay")
@@ -1012,6 +1028,7 @@ class Detector(pulumi.CustomResource):
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["viz_options"] = viz_options
+            __props__.__dict__["label_resolutions"] = None
             __props__.__dict__["url"] = None
         super(Detector, __self__).__init__(
             'signalfx:index/detector:Detector',
@@ -1028,6 +1045,7 @@ class Detector(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
+            label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
             max_delay: Optional[pulumi.Input[int]] = None,
             min_delay: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1054,6 +1072,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
@@ -1078,6 +1097,7 @@ class Detector(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_sampling"] = disable_sampling
         __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["label_resolutions"] = label_resolutions
         __props__.__dict__["max_delay"] = max_delay
         __props__.__dict__["min_delay"] = min_delay
         __props__.__dict__["name"] = name
@@ -1133,6 +1153,14 @@ class Detector(pulumi.CustomResource):
         Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="labelResolutions")
+    def label_resolutions(self) -> pulumi.Output[Mapping[str, int]]:
+        """
+        The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+        """
+        return pulumi.get(self, "label_resolutions")
 
     @property
     @pulumi.getter(name="maxDelay")

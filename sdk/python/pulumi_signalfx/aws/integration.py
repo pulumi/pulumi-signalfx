@@ -21,6 +21,7 @@ class IntegrationArgs:
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
                  enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
+                 enable_logs_sync: Optional[pulumi.Input[bool]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
@@ -31,7 +32,8 @@ class IntegrationArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 use_get_metric_data_method: Optional[pulumi.Input[bool]] = None):
+                 use_get_metric_data_method: Optional[pulumi.Input[bool]] = None,
+                 use_metric_streams_sync: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
@@ -40,17 +42,19 @@ class IntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
         :param pulumi.Input[bool] enable_check_large_volume: Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "integration_id", integration_id)
@@ -62,6 +66,8 @@ class IntegrationArgs:
             pulumi.set(__self__, "enable_aws_usage", enable_aws_usage)
         if enable_check_large_volume is not None:
             pulumi.set(__self__, "enable_check_large_volume", enable_check_large_volume)
+        if enable_logs_sync is not None:
+            pulumi.set(__self__, "enable_logs_sync", enable_logs_sync)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
         if import_cloud_watch is not None:
@@ -84,6 +90,8 @@ class IntegrationArgs:
             pulumi.set(__self__, "token", token)
         if use_get_metric_data_method is not None:
             pulumi.set(__self__, "use_get_metric_data_method", use_get_metric_data_method)
+        if use_metric_streams_sync is not None:
+            pulumi.set(__self__, "use_metric_streams_sync", use_metric_streams_sync)
 
     @property
     @pulumi.getter
@@ -158,6 +166,18 @@ class IntegrationArgs:
         pulumi.set(self, "enable_check_large_volume", value)
 
     @property
+    @pulumi.getter(name="enableLogsSync")
+    def enable_logs_sync(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        """
+        return pulumi.get(self, "enable_logs_sync")
+
+    @enable_logs_sync.setter
+    def enable_logs_sync(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logs_sync", value)
+
+    @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -185,7 +205,7 @@ class IntegrationArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         """
         return pulumi.get(self, "key")
 
@@ -269,7 +289,7 @@ class IntegrationArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         """
         return pulumi.get(self, "token")
 
@@ -289,6 +309,18 @@ class IntegrationArgs:
     def use_get_metric_data_method(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_get_metric_data_method", value)
 
+    @property
+    @pulumi.getter(name="useMetricStreamsSync")
+    def use_metric_streams_sync(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        """
+        return pulumi.get(self, "use_metric_streams_sync")
+
+    @use_metric_streams_sync.setter
+    def use_metric_streams_sync(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_metric_streams_sync", value)
+
 
 @pulumi.input_type
 class _IntegrationState:
@@ -297,6 +329,7 @@ class _IntegrationState:
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
                  enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
+                 enable_logs_sync: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
@@ -309,26 +342,29 @@ class _IntegrationState:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
-                 use_get_metric_data_method: Optional[pulumi.Input[bool]] = None):
+                 use_get_metric_data_method: Optional[pulumi.Input[bool]] = None,
+                 use_metric_streams_sync: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
         :param pulumi.Input[bool] enable_check_large_volume: Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
         """
         if custom_cloudwatch_namespaces is not None:
             pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
@@ -338,6 +374,8 @@ class _IntegrationState:
             pulumi.set(__self__, "enable_aws_usage", enable_aws_usage)
         if enable_check_large_volume is not None:
             pulumi.set(__self__, "enable_check_large_volume", enable_check_large_volume)
+        if enable_logs_sync is not None:
+            pulumi.set(__self__, "enable_logs_sync", enable_logs_sync)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if external_id is not None:
@@ -364,6 +402,8 @@ class _IntegrationState:
             pulumi.set(__self__, "token", token)
         if use_get_metric_data_method is not None:
             pulumi.set(__self__, "use_get_metric_data_method", use_get_metric_data_method)
+        if use_metric_streams_sync is not None:
+            pulumi.set(__self__, "use_metric_streams_sync", use_metric_streams_sync)
 
     @property
     @pulumi.getter(name="customCloudwatchNamespaces")
@@ -412,6 +452,18 @@ class _IntegrationState:
     @enable_check_large_volume.setter
     def enable_check_large_volume(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_check_large_volume", value)
+
+    @property
+    @pulumi.getter(name="enableLogsSync")
+    def enable_logs_sync(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        """
+        return pulumi.get(self, "enable_logs_sync")
+
+    @enable_logs_sync.setter
+    def enable_logs_sync(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logs_sync", value)
 
     @property
     @pulumi.getter
@@ -465,7 +517,7 @@ class _IntegrationState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         """
         return pulumi.get(self, "key")
 
@@ -549,7 +601,7 @@ class _IntegrationState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         """
         return pulumi.get(self, "token")
 
@@ -569,6 +621,18 @@ class _IntegrationState:
     def use_get_metric_data_method(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_get_metric_data_method", value)
 
+    @property
+    @pulumi.getter(name="useMetricStreamsSync")
+    def use_metric_streams_sync(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        """
+        return pulumi.get(self, "use_metric_streams_sync")
+
+    @use_metric_streams_sync.setter
+    def use_metric_streams_sync(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_metric_streams_sync", value)
+
 
 class Integration(pulumi.CustomResource):
     @overload
@@ -579,6 +643,7 @@ class Integration(pulumi.CustomResource):
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
                  enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
+                 enable_logs_sync: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
@@ -592,11 +657,12 @@ class Integration(pulumi.CustomResource):
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  use_get_metric_data_method: Optional[pulumi.Input[bool]] = None,
+                 use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
 
-        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
+        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 
@@ -644,19 +710,21 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
         :param pulumi.Input[bool] enable_check_large_volume: Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
         """
         ...
     @overload
@@ -667,7 +735,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
 
-        > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
+        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 
@@ -728,6 +796,7 @@ class Integration(pulumi.CustomResource):
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
                  enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
+                 enable_logs_sync: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
@@ -741,6 +810,7 @@ class Integration(pulumi.CustomResource):
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  use_get_metric_data_method: Optional[pulumi.Input[bool]] = None,
+                 use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -757,6 +827,7 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
             __props__.__dict__["enable_aws_usage"] = enable_aws_usage
             __props__.__dict__["enable_check_large_volume"] = enable_check_large_volume
+            __props__.__dict__["enable_logs_sync"] = enable_logs_sync
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
@@ -774,6 +845,7 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["services"] = services
             __props__.__dict__["token"] = token
             __props__.__dict__["use_get_metric_data_method"] = use_get_metric_data_method
+            __props__.__dict__["use_metric_streams_sync"] = use_metric_streams_sync
         super(Integration, __self__).__init__(
             'signalfx:aws/integration:Integration',
             resource_name,
@@ -788,6 +860,7 @@ class Integration(pulumi.CustomResource):
             custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]]] = None,
             enable_aws_usage: Optional[pulumi.Input[bool]] = None,
             enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
+            enable_logs_sync: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             external_id: Optional[pulumi.Input[str]] = None,
             import_cloud_watch: Optional[pulumi.Input[bool]] = None,
@@ -800,7 +873,8 @@ class Integration(pulumi.CustomResource):
             role_arn: Optional[pulumi.Input[str]] = None,
             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             token: Optional[pulumi.Input[str]] = None,
-            use_get_metric_data_method: Optional[pulumi.Input[bool]] = None) -> 'Integration':
+            use_get_metric_data_method: Optional[pulumi.Input[bool]] = None,
+            use_metric_streams_sync: Optional[pulumi.Input[bool]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -812,19 +886,21 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
         :param pulumi.Input[bool] enable_check_large_volume: Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -834,6 +910,7 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["custom_namespace_sync_rules"] = custom_namespace_sync_rules
         __props__.__dict__["enable_aws_usage"] = enable_aws_usage
         __props__.__dict__["enable_check_large_volume"] = enable_check_large_volume
+        __props__.__dict__["enable_logs_sync"] = enable_logs_sync
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["external_id"] = external_id
         __props__.__dict__["import_cloud_watch"] = import_cloud_watch
@@ -847,6 +924,7 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["services"] = services
         __props__.__dict__["token"] = token
         __props__.__dict__["use_get_metric_data_method"] = use_get_metric_data_method
+        __props__.__dict__["use_metric_streams_sync"] = use_metric_streams_sync
         return Integration(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -880,6 +958,14 @@ class Integration(pulumi.CustomResource):
         Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
         """
         return pulumi.get(self, "enable_check_large_volume")
+
+    @property
+    @pulumi.getter(name="enableLogsSync")
+    def enable_logs_sync(self) -> pulumi.Output[bool]:
+        """
+        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        """
+        return pulumi.get(self, "enable_logs_sync")
 
     @property
     @pulumi.getter
@@ -917,7 +1003,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[Optional[str]]:
         """
-        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         """
         return pulumi.get(self, "key")
 
@@ -973,7 +1059,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         """
         return pulumi.get(self, "token")
 
@@ -984,4 +1070,12 @@ class Integration(pulumi.CustomResource):
         Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
         """
         return pulumi.get(self, "use_get_metric_data_method")
+
+    @property
+    @pulumi.getter(name="useMetricStreamsSync")
+    def use_metric_streams_sync(self) -> pulumi.Output[bool]:
+        """
+        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        """
+        return pulumi.get(self, "use_metric_streams_sync")
 

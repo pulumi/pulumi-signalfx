@@ -92,6 +92,10 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
+     * Tags of the dashboard.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
      */
     public readonly timeRange!: pulumi.Output<string | undefined>;
@@ -133,6 +137,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["selectedEventOverlays"] = state ? state.selectedEventOverlays : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["timeRange"] = state ? state.timeRange : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["variables"] = state ? state.variables : undefined;
@@ -157,6 +162,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["selectedEventOverlays"] = args ? args.selectedEventOverlays : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeRange"] = args ? args.timeRange : undefined;
             resourceInputs["variables"] = args ? args.variables : undefined;
             resourceInputs["url"] = undefined /*out*/;
@@ -228,6 +234,10 @@ export interface DashboardState {
      * Seconds since epoch. Used for visualization.
      */
     startTime?: pulumi.Input<number>;
+    /**
+     * Tags of the dashboard.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
      */
@@ -304,6 +314,10 @@ export interface DashboardArgs {
      * Seconds since epoch. Used for visualization.
      */
     startTime?: pulumi.Input<number>;
+    /**
+     * Tags of the dashboard.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
      */

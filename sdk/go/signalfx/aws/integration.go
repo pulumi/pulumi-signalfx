@@ -13,7 +13,7 @@ import (
 
 // SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
 //
-// > **NOTE** When managing integrations you'll need to use an admin token to authenticate the SignalFx provider.
+// > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
 // > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 //
@@ -87,6 +87,8 @@ type Integration struct {
 	EnableAwsUsage pulumi.BoolPtrOutput `pulumi:"enableAwsUsage"`
 	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume pulumi.BoolPtrOutput `pulumi:"enableCheckLargeVolume"`
+	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	EnableLogsSync pulumi.BoolOutput `pulumi:"enableLogsSync"`
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -95,7 +97,7 @@ type Integration struct {
 	ImportCloudWatch pulumi.BoolPtrOutput `pulumi:"importCloudWatch"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
-	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key pulumi.StringPtrOutput `pulumi:"key"`
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
@@ -109,10 +111,12 @@ type Integration struct {
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayOutput `pulumi:"services"`
-	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
 	UseGetMetricDataMethod pulumi.BoolPtrOutput `pulumi:"useGetMetricDataMethod"`
+	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+	UseMetricStreamsSync pulumi.BoolOutput `pulumi:"useMetricStreamsSync"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -158,6 +162,8 @@ type integrationState struct {
 	EnableAwsUsage *bool `pulumi:"enableAwsUsage"`
 	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume *bool `pulumi:"enableCheckLargeVolume"`
+	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	EnableLogsSync *bool `pulumi:"enableLogsSync"`
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -166,7 +172,7 @@ type integrationState struct {
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId *string `pulumi:"integrationId"`
-	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key *string `pulumi:"key"`
 	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
@@ -180,10 +186,12 @@ type integrationState struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services []string `pulumi:"services"`
-	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token *string `pulumi:"token"`
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
 	UseGetMetricDataMethod *bool `pulumi:"useGetMetricDataMethod"`
+	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+	UseMetricStreamsSync *bool `pulumi:"useMetricStreamsSync"`
 }
 
 type IntegrationState struct {
@@ -195,6 +203,8 @@ type IntegrationState struct {
 	EnableAwsUsage pulumi.BoolPtrInput
 	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume pulumi.BoolPtrInput
+	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	EnableLogsSync pulumi.BoolPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -203,7 +213,7 @@ type IntegrationState struct {
 	ImportCloudWatch pulumi.BoolPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringPtrInput
-	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key pulumi.StringPtrInput
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
@@ -217,10 +227,12 @@ type IntegrationState struct {
 	RoleArn pulumi.StringPtrInput
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayInput
-	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token pulumi.StringPtrInput
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
 	UseGetMetricDataMethod pulumi.BoolPtrInput
+	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+	UseMetricStreamsSync pulumi.BoolPtrInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -236,6 +248,8 @@ type integrationArgs struct {
 	EnableAwsUsage *bool `pulumi:"enableAwsUsage"`
 	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume *bool `pulumi:"enableCheckLargeVolume"`
+	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	EnableLogsSync *bool `pulumi:"enableLogsSync"`
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -244,7 +258,7 @@ type integrationArgs struct {
 	ImportCloudWatch *bool `pulumi:"importCloudWatch"`
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId string `pulumi:"integrationId"`
-	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key *string `pulumi:"key"`
 	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
@@ -258,10 +272,12 @@ type integrationArgs struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services []string `pulumi:"services"`
-	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token *string `pulumi:"token"`
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
 	UseGetMetricDataMethod *bool `pulumi:"useGetMetricDataMethod"`
+	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+	UseMetricStreamsSync *bool `pulumi:"useMetricStreamsSync"`
 }
 
 // The set of arguments for constructing a Integration resource.
@@ -274,6 +290,8 @@ type IntegrationArgs struct {
 	EnableAwsUsage pulumi.BoolPtrInput
 	// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
 	EnableCheckLargeVolume pulumi.BoolPtrInput
+	// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+	EnableLogsSync pulumi.BoolPtrInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
 	// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
@@ -282,7 +300,7 @@ type IntegrationArgs struct {
 	ImportCloudWatch pulumi.BoolPtrInput
 	// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
 	IntegrationId pulumi.StringInput
-	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key pulumi.StringPtrInput
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
@@ -296,10 +314,12 @@ type IntegrationArgs struct {
 	RoleArn pulumi.StringPtrInput
 	// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
 	Services pulumi.StringArrayInput
-	// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token pulumi.StringPtrInput
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
 	UseGetMetricDataMethod pulumi.BoolPtrInput
+	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+	UseMetricStreamsSync pulumi.BoolPtrInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {

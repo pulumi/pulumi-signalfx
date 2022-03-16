@@ -50,6 +50,12 @@ namespace Pulumi.SignalFx
     public partial class OrgToken : Pulumi.CustomResource
     {
         /// <summary>
+        /// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+        /// </summary>
+        [Output("authScopes")]
+        public Output<ImmutableArray<string>> AuthScopes { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the token.
         /// </summary>
         [Output("description")]
@@ -138,6 +144,18 @@ namespace Pulumi.SignalFx
 
     public sealed class OrgTokenArgs : Pulumi.ResourceArgs
     {
+        [Input("authScopes")]
+        private InputList<string>? _authScopes;
+
+        /// <summary>
+        /// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+        /// </summary>
+        public InputList<string> AuthScopes
+        {
+            get => _authScopes ?? (_authScopes = new InputList<string>());
+            set => _authScopes = value;
+        }
+
         /// <summary>
         /// Description of the token.
         /// </summary>
@@ -188,6 +206,18 @@ namespace Pulumi.SignalFx
 
     public sealed class OrgTokenState : Pulumi.ResourceArgs
     {
+        [Input("authScopes")]
+        private InputList<string>? _authScopes;
+
+        /// <summary>
+        /// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+        /// </summary>
+        public InputList<string> AuthScopes
+        {
+            get => _authScopes ?? (_authScopes = new InputList<string>());
+            set => _authScopes = value;
+        }
+
         /// <summary>
         /// Description of the token.
         /// </summary>

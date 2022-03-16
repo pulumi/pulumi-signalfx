@@ -103,6 +103,12 @@ namespace Pulumi.SignalFx
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
+        /// Tags of the dashboard.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         /// </summary>
         [Output("timeRange")]
@@ -309,6 +315,18 @@ namespace Pulumi.SignalFx
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags of the dashboard.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         /// </summary>
@@ -476,6 +494,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// Tags of the dashboard.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).

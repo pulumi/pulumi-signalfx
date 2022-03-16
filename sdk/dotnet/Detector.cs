@@ -297,6 +297,12 @@ namespace Pulumi.SignalFx
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
+        /// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+        /// </summary>
+        [Output("labelResolutions")]
+        public Output<ImmutableDictionary<string, int>> LabelResolutions { get; private set; } = null!;
+
+        /// <summary>
         /// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
         /// </summary>
         [Output("maxDelay")]
@@ -618,6 +624,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
+
+        [Input("labelResolutions")]
+        private InputMap<int>? _labelResolutions;
+
+        /// <summary>
+        /// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+        /// </summary>
+        public InputMap<int> LabelResolutions
+        {
+            get => _labelResolutions ?? (_labelResolutions = new InputMap<int>());
+            set => _labelResolutions = value;
+        }
 
         /// <summary>
         /// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.

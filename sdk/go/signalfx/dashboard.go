@@ -44,6 +44,8 @@ type Dashboard struct {
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayOutput `pulumi:"selectedEventOverlays"`
 	// Seconds since epoch. Used for visualization.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
+	// Tags of the dashboard.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
 	TimeRange pulumi.StringPtrOutput `pulumi:"timeRange"`
 	// The URL of the dashboard.
@@ -114,6 +116,8 @@ type dashboardState struct {
 	SelectedEventOverlays []DashboardSelectedEventOverlay `pulumi:"selectedEventOverlays"`
 	// Seconds since epoch. Used for visualization.
 	StartTime *int `pulumi:"startTime"`
+	// Tags of the dashboard.
+	Tags []string `pulumi:"tags"`
 	// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
 	TimeRange *string `pulumi:"timeRange"`
 	// The URL of the dashboard.
@@ -153,6 +157,8 @@ type DashboardState struct {
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayInput
 	// Seconds since epoch. Used for visualization.
 	StartTime pulumi.IntPtrInput
+	// Tags of the dashboard.
+	Tags pulumi.StringArrayInput
 	// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
 	TimeRange pulumi.StringPtrInput
 	// The URL of the dashboard.
@@ -196,6 +202,8 @@ type dashboardArgs struct {
 	SelectedEventOverlays []DashboardSelectedEventOverlay `pulumi:"selectedEventOverlays"`
 	// Seconds since epoch. Used for visualization.
 	StartTime *int `pulumi:"startTime"`
+	// Tags of the dashboard.
+	Tags []string `pulumi:"tags"`
 	// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
 	TimeRange *string `pulumi:"timeRange"`
 	// Dashboard variable to apply to each chart in the dashboard.
@@ -234,6 +242,8 @@ type DashboardArgs struct {
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayInput
 	// Seconds since epoch. Used for visualization.
 	StartTime pulumi.IntPtrInput
+	// Tags of the dashboard.
+	Tags pulumi.StringArrayInput
 	// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
 	TimeRange pulumi.StringPtrInput
 	// Dashboard variable to apply to each chart in the dashboard.
