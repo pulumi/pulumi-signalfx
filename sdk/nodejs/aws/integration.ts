@@ -37,13 +37,18 @@ import * as utilities from "../utilities";
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",
- *         namespace: "fart",
+ *         namespace: "my-custom-namespace",
  *     }],
  *     namespaceSyncRules: [{
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",
  *         namespace: "AWS/EC2",
+ *     }],
+ *     metricStatsToSyncs: [{
+ *         namespace: "AWS/EC2",
+ *         metric: "NetworkPacketsIn",
+ *         stats: ["upper"],
  *     }],
  * });
  * ```
@@ -120,6 +125,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string | undefined>;
     /**
+     * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+     */
+    public readonly metricStatsToSyncs!: pulumi.Output<outputs.aws.IntegrationMetricStatsToSync[] | undefined>;
+    /**
      * A named token to use for ingest
      */
     public readonly namedToken!: pulumi.Output<string | undefined>;
@@ -128,7 +137,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly namespaceSyncRules!: pulumi.Output<outputs.aws.IntegrationNamespaceSyncRule[] | undefined>;
     /**
-     * AWS poll rate (in seconds). Value between `60` and `300`.
+     * AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
@@ -179,6 +188,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["importCloudWatch"] = state ? state.importCloudWatch : undefined;
             resourceInputs["integrationId"] = state ? state.integrationId : undefined;
             resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["metricStatsToSyncs"] = state ? state.metricStatsToSyncs : undefined;
             resourceInputs["namedToken"] = state ? state.namedToken : undefined;
             resourceInputs["namespaceSyncRules"] = state ? state.namespaceSyncRules : undefined;
             resourceInputs["pollRate"] = state ? state.pollRate : undefined;
@@ -206,6 +216,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
             resourceInputs["integrationId"] = args ? args.integrationId : undefined;
             resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["metricStatsToSyncs"] = args ? args.metricStatsToSyncs : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
@@ -266,6 +277,10 @@ export interface IntegrationState {
      */
     key?: pulumi.Input<string>;
     /**
+     * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+     */
+    metricStatsToSyncs?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationMetricStatsToSync>[]>;
+    /**
      * A named token to use for ingest
      */
     namedToken?: pulumi.Input<string>;
@@ -274,7 +289,7 @@ export interface IntegrationState {
      */
     namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
     /**
-     * AWS poll rate (in seconds). Value between `60` and `300`.
+     * AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
     /**
@@ -348,6 +363,10 @@ export interface IntegrationArgs {
      */
     key?: pulumi.Input<string>;
     /**
+     * Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+     */
+    metricStatsToSyncs?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationMetricStatsToSync>[]>;
+    /**
      * A named token to use for ingest
      */
     namedToken?: pulumi.Input<string>;
@@ -356,7 +375,7 @@ export interface IntegrationArgs {
      */
     namespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationNamespaceSyncRule>[]>;
     /**
-     * AWS poll rate (in seconds). Value between `60` and `300`.
+     * AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
     /**

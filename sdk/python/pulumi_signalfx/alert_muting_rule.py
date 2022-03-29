@@ -16,23 +16,24 @@ __all__ = ['AlertMutingRuleArgs', 'AlertMutingRule']
 class AlertMutingRuleArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
-                 filters: pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]],
                  start_time: pulumi.Input[int],
                  detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
                  stop_time: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AlertMutingRule resource.
         :param pulumi.Input[str] description: The description for this muting rule
-        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector ids.
+        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         :param pulumi.Input[int] stop_time: Starting time of an alert muting rule as a Unix time stamp in seconds.
         """
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "filters", filters)
         pulumi.set(__self__, "start_time", start_time)
         if detectors is not None:
             pulumi.set(__self__, "detectors", detectors)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
         if stop_time is not None:
             pulumi.set(__self__, "stop_time", stop_time)
 
@@ -47,18 +48,6 @@ class AlertMutingRuleArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def filters(self) -> pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]:
-        """
-        Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
-        """
-        return pulumi.get(self, "filters")
-
-    @filters.setter
-    def filters(self, value: pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]):
-        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter(name="startTime")
@@ -83,6 +72,18 @@ class AlertMutingRuleArgs:
     @detectors.setter
     def detectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "detectors", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
+        """
+        Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
 
     @property
     @pulumi.getter(name="stopTime")
@@ -302,8 +303,6 @@ class AlertMutingRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["detectors"] = detectors
-            if filters is None and not opts.urn:
-                raise TypeError("Missing required property 'filters'")
             __props__.__dict__["filters"] = filters
             if start_time is None and not opts.urn:
                 raise TypeError("Missing required property 'start_time'")
@@ -374,7 +373,7 @@ class AlertMutingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filters(self) -> pulumi.Output[Sequence['outputs.AlertMutingRuleFilter']]:
+    def filters(self) -> pulumi.Output[Optional[Sequence['outputs.AlertMutingRuleFilter']]]:
         """
         Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
         """

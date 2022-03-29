@@ -17,7 +17,7 @@ type IntegrationCustomNamespaceSyncRule struct {
 	FilterAction *string `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS namespace having AWS metric that you want to pick statistics for
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -39,7 +39,7 @@ type IntegrationCustomNamespaceSyncRuleArgs struct {
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS namespace having AWS metric that you want to pick statistics for
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -109,7 +109,7 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) FilterSource() pulumi.StringPt
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+// An AWS namespace having AWS metric that you want to pick statistics for
 func (o IntegrationCustomNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -134,6 +134,121 @@ func (o IntegrationCustomNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) 
 	}).(IntegrationCustomNamespaceSyncRuleOutput)
 }
 
+type IntegrationMetricStatsToSync struct {
+	// AWS metric that you want to pick statistics for
+	Metric string `pulumi:"metric"`
+	// An AWS namespace having AWS metric that you want to pick statistics for
+	Namespace string `pulumi:"namespace"`
+	// AWS statistics you want to collect
+	Stats []string `pulumi:"stats"`
+}
+
+// IntegrationMetricStatsToSyncInput is an input type that accepts IntegrationMetricStatsToSyncArgs and IntegrationMetricStatsToSyncOutput values.
+// You can construct a concrete instance of `IntegrationMetricStatsToSyncInput` via:
+//
+//          IntegrationMetricStatsToSyncArgs{...}
+type IntegrationMetricStatsToSyncInput interface {
+	pulumi.Input
+
+	ToIntegrationMetricStatsToSyncOutput() IntegrationMetricStatsToSyncOutput
+	ToIntegrationMetricStatsToSyncOutputWithContext(context.Context) IntegrationMetricStatsToSyncOutput
+}
+
+type IntegrationMetricStatsToSyncArgs struct {
+	// AWS metric that you want to pick statistics for
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// An AWS namespace having AWS metric that you want to pick statistics for
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// AWS statistics you want to collect
+	Stats pulumi.StringArrayInput `pulumi:"stats"`
+}
+
+func (IntegrationMetricStatsToSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationMetricStatsToSync)(nil)).Elem()
+}
+
+func (i IntegrationMetricStatsToSyncArgs) ToIntegrationMetricStatsToSyncOutput() IntegrationMetricStatsToSyncOutput {
+	return i.ToIntegrationMetricStatsToSyncOutputWithContext(context.Background())
+}
+
+func (i IntegrationMetricStatsToSyncArgs) ToIntegrationMetricStatsToSyncOutputWithContext(ctx context.Context) IntegrationMetricStatsToSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMetricStatsToSyncOutput)
+}
+
+// IntegrationMetricStatsToSyncArrayInput is an input type that accepts IntegrationMetricStatsToSyncArray and IntegrationMetricStatsToSyncArrayOutput values.
+// You can construct a concrete instance of `IntegrationMetricStatsToSyncArrayInput` via:
+//
+//          IntegrationMetricStatsToSyncArray{ IntegrationMetricStatsToSyncArgs{...} }
+type IntegrationMetricStatsToSyncArrayInput interface {
+	pulumi.Input
+
+	ToIntegrationMetricStatsToSyncArrayOutput() IntegrationMetricStatsToSyncArrayOutput
+	ToIntegrationMetricStatsToSyncArrayOutputWithContext(context.Context) IntegrationMetricStatsToSyncArrayOutput
+}
+
+type IntegrationMetricStatsToSyncArray []IntegrationMetricStatsToSyncInput
+
+func (IntegrationMetricStatsToSyncArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationMetricStatsToSync)(nil)).Elem()
+}
+
+func (i IntegrationMetricStatsToSyncArray) ToIntegrationMetricStatsToSyncArrayOutput() IntegrationMetricStatsToSyncArrayOutput {
+	return i.ToIntegrationMetricStatsToSyncArrayOutputWithContext(context.Background())
+}
+
+func (i IntegrationMetricStatsToSyncArray) ToIntegrationMetricStatsToSyncArrayOutputWithContext(ctx context.Context) IntegrationMetricStatsToSyncArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMetricStatsToSyncArrayOutput)
+}
+
+type IntegrationMetricStatsToSyncOutput struct{ *pulumi.OutputState }
+
+func (IntegrationMetricStatsToSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationMetricStatsToSync)(nil)).Elem()
+}
+
+func (o IntegrationMetricStatsToSyncOutput) ToIntegrationMetricStatsToSyncOutput() IntegrationMetricStatsToSyncOutput {
+	return o
+}
+
+func (o IntegrationMetricStatsToSyncOutput) ToIntegrationMetricStatsToSyncOutputWithContext(ctx context.Context) IntegrationMetricStatsToSyncOutput {
+	return o
+}
+
+// AWS metric that you want to pick statistics for
+func (o IntegrationMetricStatsToSyncOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Metric }).(pulumi.StringOutput)
+}
+
+// An AWS namespace having AWS metric that you want to pick statistics for
+func (o IntegrationMetricStatsToSyncOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// AWS statistics you want to collect
+func (o IntegrationMetricStatsToSyncOutput) Stats() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegrationMetricStatsToSync) []string { return v.Stats }).(pulumi.StringArrayOutput)
+}
+
+type IntegrationMetricStatsToSyncArrayOutput struct{ *pulumi.OutputState }
+
+func (IntegrationMetricStatsToSyncArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationMetricStatsToSync)(nil)).Elem()
+}
+
+func (o IntegrationMetricStatsToSyncArrayOutput) ToIntegrationMetricStatsToSyncArrayOutput() IntegrationMetricStatsToSyncArrayOutput {
+	return o
+}
+
+func (o IntegrationMetricStatsToSyncArrayOutput) ToIntegrationMetricStatsToSyncArrayOutputWithContext(ctx context.Context) IntegrationMetricStatsToSyncArrayOutput {
+	return o
+}
+
+func (o IntegrationMetricStatsToSyncArrayOutput) Index(i pulumi.IntInput) IntegrationMetricStatsToSyncOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationMetricStatsToSync {
+		return vs[0].([]IntegrationMetricStatsToSync)[vs[1].(int)]
+	}).(IntegrationMetricStatsToSyncOutput)
+}
+
 type IntegrationNamespaceSyncRule struct {
 	// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction *string `pulumi:"defaultAction"`
@@ -141,7 +256,7 @@ type IntegrationNamespaceSyncRule struct {
 	FilterAction *string `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS namespace having AWS metric that you want to pick statistics for
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -163,7 +278,7 @@ type IntegrationNamespaceSyncRuleArgs struct {
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS namespace having AWS metric that you want to pick statistics for
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -233,7 +348,7 @@ func (o IntegrationNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+// An AWS namespace having AWS metric that you want to pick statistics for
 func (o IntegrationNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -355,12 +470,16 @@ func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespaceSyncRuleInput)(nil)).Elem(), IntegrationCustomNamespaceSyncRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespaceSyncRuleArrayInput)(nil)).Elem(), IntegrationCustomNamespaceSyncRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMetricStatsToSyncInput)(nil)).Elem(), IntegrationMetricStatsToSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMetricStatsToSyncArrayInput)(nil)).Elem(), IntegrationMetricStatsToSyncArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNamespaceSyncRuleInput)(nil)).Elem(), IntegrationNamespaceSyncRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNamespaceSyncRuleArrayInput)(nil)).Elem(), IntegrationNamespaceSyncRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespaceSyncRuleOutput{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespaceSyncRuleArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationMetricStatsToSyncOutput{})
+	pulumi.RegisterOutputType(IntegrationMetricStatsToSyncArrayOutput{})
 	pulumi.RegisterOutputType(IntegrationNamespaceSyncRuleOutput{})
 	pulumi.RegisterOutputType(IntegrationNamespaceSyncRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceOutput{})

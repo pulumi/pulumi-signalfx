@@ -116,6 +116,149 @@ func (o IntegrationCustomNamespacesPerServiceArrayOutput) Index(i pulumi.IntInpu
 	}).(IntegrationCustomNamespacesPerServiceOutput)
 }
 
+type IntegrationResourceFilterRule struct {
+	Filter IntegrationResourceFilterRuleFilter `pulumi:"filter"`
+}
+
+// IntegrationResourceFilterRuleInput is an input type that accepts IntegrationResourceFilterRuleArgs and IntegrationResourceFilterRuleOutput values.
+// You can construct a concrete instance of `IntegrationResourceFilterRuleInput` via:
+//
+//          IntegrationResourceFilterRuleArgs{...}
+type IntegrationResourceFilterRuleInput interface {
+	pulumi.Input
+
+	ToIntegrationResourceFilterRuleOutput() IntegrationResourceFilterRuleOutput
+	ToIntegrationResourceFilterRuleOutputWithContext(context.Context) IntegrationResourceFilterRuleOutput
+}
+
+type IntegrationResourceFilterRuleArgs struct {
+	Filter IntegrationResourceFilterRuleFilterInput `pulumi:"filter"`
+}
+
+func (IntegrationResourceFilterRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationResourceFilterRule)(nil)).Elem()
+}
+
+func (i IntegrationResourceFilterRuleArgs) ToIntegrationResourceFilterRuleOutput() IntegrationResourceFilterRuleOutput {
+	return i.ToIntegrationResourceFilterRuleOutputWithContext(context.Background())
+}
+
+func (i IntegrationResourceFilterRuleArgs) ToIntegrationResourceFilterRuleOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResourceFilterRuleOutput)
+}
+
+// IntegrationResourceFilterRuleArrayInput is an input type that accepts IntegrationResourceFilterRuleArray and IntegrationResourceFilterRuleArrayOutput values.
+// You can construct a concrete instance of `IntegrationResourceFilterRuleArrayInput` via:
+//
+//          IntegrationResourceFilterRuleArray{ IntegrationResourceFilterRuleArgs{...} }
+type IntegrationResourceFilterRuleArrayInput interface {
+	pulumi.Input
+
+	ToIntegrationResourceFilterRuleArrayOutput() IntegrationResourceFilterRuleArrayOutput
+	ToIntegrationResourceFilterRuleArrayOutputWithContext(context.Context) IntegrationResourceFilterRuleArrayOutput
+}
+
+type IntegrationResourceFilterRuleArray []IntegrationResourceFilterRuleInput
+
+func (IntegrationResourceFilterRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationResourceFilterRule)(nil)).Elem()
+}
+
+func (i IntegrationResourceFilterRuleArray) ToIntegrationResourceFilterRuleArrayOutput() IntegrationResourceFilterRuleArrayOutput {
+	return i.ToIntegrationResourceFilterRuleArrayOutputWithContext(context.Background())
+}
+
+func (i IntegrationResourceFilterRuleArray) ToIntegrationResourceFilterRuleArrayOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResourceFilterRuleArrayOutput)
+}
+
+type IntegrationResourceFilterRuleOutput struct{ *pulumi.OutputState }
+
+func (IntegrationResourceFilterRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationResourceFilterRule)(nil)).Elem()
+}
+
+func (o IntegrationResourceFilterRuleOutput) ToIntegrationResourceFilterRuleOutput() IntegrationResourceFilterRuleOutput {
+	return o
+}
+
+func (o IntegrationResourceFilterRuleOutput) ToIntegrationResourceFilterRuleOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleOutput {
+	return o
+}
+
+func (o IntegrationResourceFilterRuleOutput) Filter() IntegrationResourceFilterRuleFilterOutput {
+	return o.ApplyT(func(v IntegrationResourceFilterRule) IntegrationResourceFilterRuleFilter { return v.Filter }).(IntegrationResourceFilterRuleFilterOutput)
+}
+
+type IntegrationResourceFilterRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (IntegrationResourceFilterRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntegrationResourceFilterRule)(nil)).Elem()
+}
+
+func (o IntegrationResourceFilterRuleArrayOutput) ToIntegrationResourceFilterRuleArrayOutput() IntegrationResourceFilterRuleArrayOutput {
+	return o
+}
+
+func (o IntegrationResourceFilterRuleArrayOutput) ToIntegrationResourceFilterRuleArrayOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleArrayOutput {
+	return o
+}
+
+func (o IntegrationResourceFilterRuleArrayOutput) Index(i pulumi.IntInput) IntegrationResourceFilterRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntegrationResourceFilterRule {
+		return vs[0].([]IntegrationResourceFilterRule)[vs[1].(int)]
+	}).(IntegrationResourceFilterRuleOutput)
+}
+
+type IntegrationResourceFilterRuleFilter struct {
+	Source string `pulumi:"source"`
+}
+
+// IntegrationResourceFilterRuleFilterInput is an input type that accepts IntegrationResourceFilterRuleFilterArgs and IntegrationResourceFilterRuleFilterOutput values.
+// You can construct a concrete instance of `IntegrationResourceFilterRuleFilterInput` via:
+//
+//          IntegrationResourceFilterRuleFilterArgs{...}
+type IntegrationResourceFilterRuleFilterInput interface {
+	pulumi.Input
+
+	ToIntegrationResourceFilterRuleFilterOutput() IntegrationResourceFilterRuleFilterOutput
+	ToIntegrationResourceFilterRuleFilterOutputWithContext(context.Context) IntegrationResourceFilterRuleFilterOutput
+}
+
+type IntegrationResourceFilterRuleFilterArgs struct {
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (IntegrationResourceFilterRuleFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationResourceFilterRuleFilter)(nil)).Elem()
+}
+
+func (i IntegrationResourceFilterRuleFilterArgs) ToIntegrationResourceFilterRuleFilterOutput() IntegrationResourceFilterRuleFilterOutput {
+	return i.ToIntegrationResourceFilterRuleFilterOutputWithContext(context.Background())
+}
+
+func (i IntegrationResourceFilterRuleFilterArgs) ToIntegrationResourceFilterRuleFilterOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResourceFilterRuleFilterOutput)
+}
+
+type IntegrationResourceFilterRuleFilterOutput struct{ *pulumi.OutputState }
+
+func (IntegrationResourceFilterRuleFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationResourceFilterRuleFilter)(nil)).Elem()
+}
+
+func (o IntegrationResourceFilterRuleFilterOutput) ToIntegrationResourceFilterRuleFilterOutput() IntegrationResourceFilterRuleFilterOutput {
+	return o
+}
+
+func (o IntegrationResourceFilterRuleFilterOutput) ToIntegrationResourceFilterRuleFilterOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleFilterOutput {
+	return o
+}
+
+func (o IntegrationResourceFilterRuleFilterOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationResourceFilterRuleFilter) string { return v.Source }).(pulumi.StringOutput)
+}
+
 type GetServicesService struct {
 	Name string `pulumi:"name"`
 }
@@ -213,10 +356,16 @@ func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServi
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespacesPerServiceInput)(nil)).Elem(), IntegrationCustomNamespacesPerServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespacesPerServiceArrayInput)(nil)).Elem(), IntegrationCustomNamespacesPerServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationResourceFilterRuleInput)(nil)).Elem(), IntegrationResourceFilterRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationResourceFilterRuleArrayInput)(nil)).Elem(), IntegrationResourceFilterRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationResourceFilterRuleFilterInput)(nil)).Elem(), IntegrationResourceFilterRuleFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespacesPerServiceOutput{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespacesPerServiceArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationResourceFilterRuleOutput{})
+	pulumi.RegisterOutputType(IntegrationResourceFilterRuleArrayOutput{})
+	pulumi.RegisterOutputType(IntegrationResourceFilterRuleFilterOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceOutput{})
 	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 }

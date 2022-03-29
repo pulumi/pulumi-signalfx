@@ -66,89 +66,105 @@ namespace Pulumi.SignalFx.Aws
     ///                 },
     ///             },
     ///         });
-    ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
+    ///         var awsSplunkRole = new Aws.Iam.Role("awsSplunkRole", new Aws.Iam.RoleArgs
     ///         {
     ///             Description = "signalfx integration to read out data and send it to signalfxs aws account",
     ///             AssumeRolePolicy = signalfxAssumePolicy.Apply(signalfxAssumePolicy =&gt; signalfxAssumePolicy.Json),
     ///         });
-    ///         var awsReadPermissions = new Aws.Iam.Policy("awsReadPermissions", new Aws.Iam.PolicyArgs
+    ///         var awsSplunkPolicy = new Aws.Iam.Policy("awsSplunkPolicy", new Aws.Iam.PolicyArgs
     ///         {
-    ///             Description = "farts",
+    ///             Description = "AWS permissions required by the Splunk Observability Cloud",
     ///             Policy = @"{
-    /// 	""Version"": ""2012-10-17"",
-    /// 	""Statement"": [
-    /// 		{
-    /// 			""Action"": [
-    /// 				""dynamodb:ListTables"",
-    /// 		    ""dynamodb:DescribeTable"",
-    /// 		    ""dynamodb:ListTagsOfResource"",
-    /// 		    ""ec2:DescribeInstances"",
-    /// 		    ""ec2:DescribeInstanceStatus"",
-    /// 		    ""ec2:DescribeVolumes"",
-    /// 		    ""ec2:DescribeReservedInstances"",
-    /// 		    ""ec2:DescribeReservedInstancesModifications"",
-    /// 		    ""ec2:DescribeTags"",
-    /// 		    ""organizations:DescribeOrganization"",
-    /// 		    ""cloudwatch:ListMetrics"",
-    /// 		    ""cloudwatch:GetMetricData"",
-    /// 		    ""cloudwatch:GetMetricStatistics"",
-    /// 		    ""cloudwatch:DescribeAlarms"",
-    /// 		    ""sqs:ListQueues"",
-    /// 		    ""sqs:GetQueueAttributes"",
-    /// 		    ""sqs:ListQueueTags"",
-    /// 		    ""elasticmapreduce:ListClusters"",
-    /// 		    ""elasticmapreduce:DescribeCluster"",
-    /// 		    ""kinesis:ListShards"",
-    /// 		    ""kinesis:ListStreams"",
-    /// 		    ""kinesis:DescribeStream"",
-    /// 		    ""kinesis:ListTagsForStream"",
-    /// 		    ""rds:DescribeDBInstances"",
-    /// 		    ""rds:ListTagsForResource"",
-    /// 		    ""elasticloadbalancing:DescribeLoadBalancers"",
-    /// 		    ""elasticloadbalancing:DescribeTags"",
-    /// 		    ""elasticache:describeCacheClusters"",
-    /// 		    ""redshift:DescribeClusters"",
-    /// 		    ""lambda:GetAlias"",
-    /// 		    ""lambda:ListFunctions"",
-    /// 		    ""lambda:ListTags"",
-    /// 		    ""autoscaling:DescribeAutoScalingGroups"",
-    /// 		    ""s3:ListAllMyBuckets"",
-    /// 		    ""s3:ListBucket"",
-    /// 		    ""s3:GetBucketLocation"",
-    /// 		    ""s3:GetBucketTagging"",
-    /// 		    ""ecs:ListServices"",
-    /// 		    ""ecs:ListTasks"",
-    /// 		    ""ecs:DescribeTasks"",
-    /// 		    ""ecs:DescribeServices"",
-    /// 		    ""ecs:ListClusters"",
-    /// 		    ""ecs:DescribeClusters"",
-    /// 		    ""ecs:ListTaskDefinitions"",
-    /// 		    ""ecs:ListTagsForResource"",
-    /// 		    ""apigateway:GET"",
-    /// 		    ""cloudfront:ListDistributions"",
-    /// 		    ""cloudfront:ListTagsForResource"",
-    /// 		    ""tag:GetResources"",
-    /// 		    ""es:ListDomainNames"",
-    /// 		    ""es:DescribeElasticsearchDomain""
-    /// 			],
-    /// 			""Effect"": ""Allow"",
-    /// 			""Resource"": ""*""
-    /// 		}
-    /// 	]
+    ///   ""Version"": ""2012-10-17"",
+    ///   ""Statement"": [
+    ///     {
+    ///       ""Effect"": ""Allow"",
+    ///       ""Action"": [
+    ///         ""apigateway:GET"",
+    ///         ""autoscaling:DescribeAutoScalingGroups"",
+    ///         ""cloudfront:GetDistributionConfig"",
+    ///         ""cloudfront:ListDistributions"",
+    ///         ""cloudfront:ListTagsForResource"",
+    ///         ""cloudwatch:DescribeAlarms"",
+    ///         ""cloudwatch:GetMetricData"",
+    ///         ""cloudwatch:GetMetricStatistics"",
+    ///         ""cloudwatch:ListMetrics"",
+    ///         ""directconnect:DescribeConnections"",
+    ///         ""dynamodb:DescribeTable"",
+    ///         ""dynamodb:ListTables"",
+    ///         ""dynamodb:ListTagsOfResource"",
+    ///         ""ec2:DescribeInstances"",
+    ///         ""ec2:DescribeInstanceStatus"",
+    ///         ""ec2:DescribeRegions"",
+    ///         ""ec2:DescribeReservedInstances"",
+    ///         ""ec2:DescribeReservedInstancesModifications"",
+    ///         ""ec2:DescribeTags"",
+    ///         ""ec2:DescribeVolumes"",
+    ///         ""ecs:DescribeClusters"",
+    ///         ""ecs:DescribeServices"",
+    ///         ""ecs:DescribeTasks"",
+    ///         ""ecs:ListClusters"",
+    ///         ""ecs:ListServices"",
+    ///         ""ecs:ListTagsForResource"",
+    ///         ""ecs:ListTaskDefinitions"",
+    ///         ""ecs:ListTasks"",
+    ///         ""elasticache:DescribeCacheClusters"",
+    ///         ""elasticloadbalancing:DescribeLoadBalancerAttributes"",
+    ///         ""elasticloadbalancing:DescribeLoadBalancers"",
+    ///         ""elasticloadbalancing:DescribeTags"",
+    ///         ""elasticloadbalancing:DescribeTargetGroups"",
+    ///         ""elasticmapreduce:DescribeCluster"",
+    ///         ""elasticmapreduce:ListClusters"",
+    ///         ""es:DescribeElasticsearchDomain"",
+    ///         ""es:ListDomainNames"",
+    ///         ""kinesis:DescribeStream"",
+    ///         ""kinesis:ListShards"",
+    ///         ""kinesis:ListStreams"",
+    ///         ""kinesis:ListTagsForStream"",
+    ///         ""lambda:GetAlias"",
+    ///         ""lambda:ListFunctions"",
+    ///         ""lambda:ListTags"",
+    ///         ""logs:DeleteSubscriptionFilter"",
+    ///         ""logs:DescribeLogGroups"",
+    ///         ""logs:DescribeSubscriptionFilters"",
+    ///         ""logs:PutSubscriptionFilter"",
+    ///         ""organizations:DescribeOrganization"",
+    ///         ""rds:DescribeDBClusters"",
+    ///         ""rds:DescribeDBInstances"",
+    ///         ""rds:ListTagsForResource"",
+    ///         ""redshift:DescribeClusters"",
+    ///         ""redshift:DescribeLoggingStatus"",
+    ///         ""s3:GetBucketLocation"",
+    ///         ""s3:GetBucketLogging"",
+    ///         ""s3:GetBucketNotification"",
+    ///         ""s3:GetBucketTagging"",
+    ///         ""s3:ListAllMyBuckets"",
+    ///         ""s3:ListBucket"",
+    ///         ""s3:PutBucketNotification"",
+    ///         ""sqs:GetQueueAttributes"",
+    ///         ""sqs:ListQueues"",
+    ///         ""sqs:ListQueueTags"",
+    ///         ""states:ListStateMachines"",
+    ///         ""tag:GetResources"",
+    ///         ""workspaces:DescribeWorkspaces""
+    ///       ],
+    ///       ""Resource"": ""*""
+    ///     }
+    ///   ]
     /// }
     /// ",
     ///         });
-    ///         var sfx_read_attach = new Aws.Iam.RolePolicyAttachment("sfx-read-attach", new Aws.Iam.RolePolicyAttachmentArgs
+    ///         var splunkRolePolicyAttach = new Aws.Iam.RolePolicyAttachment("splunkRolePolicyAttach", new Aws.Iam.RolePolicyAttachmentArgs
     ///         {
-    ///             Role = awsSfxRole.Name,
-    ///             PolicyArn = awsReadPermissions.Arn,
+    ///             Role = awsSplunkRole.Name,
+    ///             PolicyArn = awsSplunkPolicy.Arn,
     ///         });
     ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
     ///         {
     ///             Enabled = true,
     ///             IntegrationId = awsMyteamExtern.Id,
     ///             ExternalId = awsMyteamExtern.ExternalId,
-    ///             RoleArn = awsSfxRole.Arn,
+    ///             RoleArn = awsSplunkRole.Arn,
     ///             Regions = 
     ///             {
     ///                 "us-east-1",

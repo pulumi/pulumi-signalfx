@@ -68,7 +68,7 @@ export class AlertMutingRule extends pulumi.CustomResource {
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
      */
-    public readonly filters!: pulumi.Output<outputs.AlertMutingRuleFilter[]>;
+    public readonly filters!: pulumi.Output<outputs.AlertMutingRuleFilter[] | undefined>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
@@ -101,9 +101,6 @@ export class AlertMutingRule extends pulumi.CustomResource {
             const args = argsOrState as AlertMutingRuleArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
-            }
-            if ((!args || args.filters === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'filters'");
             }
             if ((!args || args.startTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'startTime'");
@@ -162,7 +159,7 @@ export interface AlertMutingRuleArgs {
     /**
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.signalfx.com/en/latest/detect-alert/mute-notifications.html#rule-from-scratch) for more information.
      */
-    filters: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */

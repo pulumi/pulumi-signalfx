@@ -1453,6 +1453,384 @@ func (o DashboardGroupImportQualifierFilterArrayOutput) Index(i pulumi.IntInput)
 	}).(DashboardGroupImportQualifierFilterOutput)
 }
 
+type DashboardGroupPermission struct {
+	// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+	Actions []string `pulumi:"actions"`
+	// ID of the user, team, or organization for which you're granting permissions.
+	PrincipalId string `pulumi:"principalId"`
+	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+	PrincipalType string `pulumi:"principalType"`
+}
+
+// DashboardGroupPermissionInput is an input type that accepts DashboardGroupPermissionArgs and DashboardGroupPermissionOutput values.
+// You can construct a concrete instance of `DashboardGroupPermissionInput` via:
+//
+//          DashboardGroupPermissionArgs{...}
+type DashboardGroupPermissionInput interface {
+	pulumi.Input
+
+	ToDashboardGroupPermissionOutput() DashboardGroupPermissionOutput
+	ToDashboardGroupPermissionOutputWithContext(context.Context) DashboardGroupPermissionOutput
+}
+
+type DashboardGroupPermissionArgs struct {
+	// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// ID of the user, team, or organization for which you're granting permissions.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+}
+
+func (DashboardGroupPermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupPermission)(nil)).Elem()
+}
+
+func (i DashboardGroupPermissionArgs) ToDashboardGroupPermissionOutput() DashboardGroupPermissionOutput {
+	return i.ToDashboardGroupPermissionOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupPermissionArgs) ToDashboardGroupPermissionOutputWithContext(ctx context.Context) DashboardGroupPermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupPermissionOutput)
+}
+
+// DashboardGroupPermissionArrayInput is an input type that accepts DashboardGroupPermissionArray and DashboardGroupPermissionArrayOutput values.
+// You can construct a concrete instance of `DashboardGroupPermissionArrayInput` via:
+//
+//          DashboardGroupPermissionArray{ DashboardGroupPermissionArgs{...} }
+type DashboardGroupPermissionArrayInput interface {
+	pulumi.Input
+
+	ToDashboardGroupPermissionArrayOutput() DashboardGroupPermissionArrayOutput
+	ToDashboardGroupPermissionArrayOutputWithContext(context.Context) DashboardGroupPermissionArrayOutput
+}
+
+type DashboardGroupPermissionArray []DashboardGroupPermissionInput
+
+func (DashboardGroupPermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroupPermission)(nil)).Elem()
+}
+
+func (i DashboardGroupPermissionArray) ToDashboardGroupPermissionArrayOutput() DashboardGroupPermissionArrayOutput {
+	return i.ToDashboardGroupPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardGroupPermissionArray) ToDashboardGroupPermissionArrayOutputWithContext(ctx context.Context) DashboardGroupPermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupPermissionArrayOutput)
+}
+
+type DashboardGroupPermissionOutput struct{ *pulumi.OutputState }
+
+func (DashboardGroupPermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardGroupPermission)(nil)).Elem()
+}
+
+func (o DashboardGroupPermissionOutput) ToDashboardGroupPermissionOutput() DashboardGroupPermissionOutput {
+	return o
+}
+
+func (o DashboardGroupPermissionOutput) ToDashboardGroupPermissionOutputWithContext(ctx context.Context) DashboardGroupPermissionOutput {
+	return o
+}
+
+// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+func (o DashboardGroupPermissionOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DashboardGroupPermission) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// ID of the user, team, or organization for which you're granting permissions.
+func (o DashboardGroupPermissionOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGroupPermission) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+func (o DashboardGroupPermissionOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardGroupPermission) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+type DashboardGroupPermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardGroupPermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardGroupPermission)(nil)).Elem()
+}
+
+func (o DashboardGroupPermissionArrayOutput) ToDashboardGroupPermissionArrayOutput() DashboardGroupPermissionArrayOutput {
+	return o
+}
+
+func (o DashboardGroupPermissionArrayOutput) ToDashboardGroupPermissionArrayOutputWithContext(ctx context.Context) DashboardGroupPermissionArrayOutput {
+	return o
+}
+
+func (o DashboardGroupPermissionArrayOutput) Index(i pulumi.IntInput) DashboardGroupPermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardGroupPermission {
+		return vs[0].([]DashboardGroupPermission)[vs[1].(int)]
+	}).(DashboardGroupPermissionOutput)
+}
+
+type DashboardPermissions struct {
+	Acls   []DashboardPermissionsAcl `pulumi:"acls"`
+	Parent *string                   `pulumi:"parent"`
+}
+
+// DashboardPermissionsInput is an input type that accepts DashboardPermissionsArgs and DashboardPermissionsOutput values.
+// You can construct a concrete instance of `DashboardPermissionsInput` via:
+//
+//          DashboardPermissionsArgs{...}
+type DashboardPermissionsInput interface {
+	pulumi.Input
+
+	ToDashboardPermissionsOutput() DashboardPermissionsOutput
+	ToDashboardPermissionsOutputWithContext(context.Context) DashboardPermissionsOutput
+}
+
+type DashboardPermissionsArgs struct {
+	Acls   DashboardPermissionsAclArrayInput `pulumi:"acls"`
+	Parent pulumi.StringPtrInput             `pulumi:"parent"`
+}
+
+func (DashboardPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPermissions)(nil)).Elem()
+}
+
+func (i DashboardPermissionsArgs) ToDashboardPermissionsOutput() DashboardPermissionsOutput {
+	return i.ToDashboardPermissionsOutputWithContext(context.Background())
+}
+
+func (i DashboardPermissionsArgs) ToDashboardPermissionsOutputWithContext(ctx context.Context) DashboardPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsOutput)
+}
+
+func (i DashboardPermissionsArgs) ToDashboardPermissionsPtrOutput() DashboardPermissionsPtrOutput {
+	return i.ToDashboardPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i DashboardPermissionsArgs) ToDashboardPermissionsPtrOutputWithContext(ctx context.Context) DashboardPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsOutput).ToDashboardPermissionsPtrOutputWithContext(ctx)
+}
+
+// DashboardPermissionsPtrInput is an input type that accepts DashboardPermissionsArgs, DashboardPermissionsPtr and DashboardPermissionsPtrOutput values.
+// You can construct a concrete instance of `DashboardPermissionsPtrInput` via:
+//
+//          DashboardPermissionsArgs{...}
+//
+//  or:
+//
+//          nil
+type DashboardPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToDashboardPermissionsPtrOutput() DashboardPermissionsPtrOutput
+	ToDashboardPermissionsPtrOutputWithContext(context.Context) DashboardPermissionsPtrOutput
+}
+
+type dashboardPermissionsPtrType DashboardPermissionsArgs
+
+func DashboardPermissionsPtr(v *DashboardPermissionsArgs) DashboardPermissionsPtrInput {
+	return (*dashboardPermissionsPtrType)(v)
+}
+
+func (*dashboardPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardPermissions)(nil)).Elem()
+}
+
+func (i *dashboardPermissionsPtrType) ToDashboardPermissionsPtrOutput() DashboardPermissionsPtrOutput {
+	return i.ToDashboardPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *dashboardPermissionsPtrType) ToDashboardPermissionsPtrOutputWithContext(ctx context.Context) DashboardPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsPtrOutput)
+}
+
+type DashboardPermissionsOutput struct{ *pulumi.OutputState }
+
+func (DashboardPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPermissions)(nil)).Elem()
+}
+
+func (o DashboardPermissionsOutput) ToDashboardPermissionsOutput() DashboardPermissionsOutput {
+	return o
+}
+
+func (o DashboardPermissionsOutput) ToDashboardPermissionsOutputWithContext(ctx context.Context) DashboardPermissionsOutput {
+	return o
+}
+
+func (o DashboardPermissionsOutput) ToDashboardPermissionsPtrOutput() DashboardPermissionsPtrOutput {
+	return o.ToDashboardPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardPermissionsOutput) ToDashboardPermissionsPtrOutputWithContext(ctx context.Context) DashboardPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardPermissions) *DashboardPermissions {
+		return &v
+	}).(DashboardPermissionsPtrOutput)
+}
+
+func (o DashboardPermissionsOutput) Acls() DashboardPermissionsAclArrayOutput {
+	return o.ApplyT(func(v DashboardPermissions) []DashboardPermissionsAcl { return v.Acls }).(DashboardPermissionsAclArrayOutput)
+}
+
+func (o DashboardPermissionsOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardPermissions) *string { return v.Parent }).(pulumi.StringPtrOutput)
+}
+
+type DashboardPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DashboardPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardPermissions)(nil)).Elem()
+}
+
+func (o DashboardPermissionsPtrOutput) ToDashboardPermissionsPtrOutput() DashboardPermissionsPtrOutput {
+	return o
+}
+
+func (o DashboardPermissionsPtrOutput) ToDashboardPermissionsPtrOutputWithContext(ctx context.Context) DashboardPermissionsPtrOutput {
+	return o
+}
+
+func (o DashboardPermissionsPtrOutput) Elem() DashboardPermissionsOutput {
+	return o.ApplyT(func(v *DashboardPermissions) DashboardPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardPermissions
+		return ret
+	}).(DashboardPermissionsOutput)
+}
+
+func (o DashboardPermissionsPtrOutput) Acls() DashboardPermissionsAclArrayOutput {
+	return o.ApplyT(func(v *DashboardPermissions) []DashboardPermissionsAcl {
+		if v == nil {
+			return nil
+		}
+		return v.Acls
+	}).(DashboardPermissionsAclArrayOutput)
+}
+
+func (o DashboardPermissionsPtrOutput) Parent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DashboardPermissions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Parent
+	}).(pulumi.StringPtrOutput)
+}
+
+type DashboardPermissionsAcl struct {
+	// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+	Actions []string `pulumi:"actions"`
+	// ID of the user, team, or organization for which you're granting permissions.
+	PrincipalId string `pulumi:"principalId"`
+	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+	PrincipalType string `pulumi:"principalType"`
+}
+
+// DashboardPermissionsAclInput is an input type that accepts DashboardPermissionsAclArgs and DashboardPermissionsAclOutput values.
+// You can construct a concrete instance of `DashboardPermissionsAclInput` via:
+//
+//          DashboardPermissionsAclArgs{...}
+type DashboardPermissionsAclInput interface {
+	pulumi.Input
+
+	ToDashboardPermissionsAclOutput() DashboardPermissionsAclOutput
+	ToDashboardPermissionsAclOutputWithContext(context.Context) DashboardPermissionsAclOutput
+}
+
+type DashboardPermissionsAclArgs struct {
+	// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// ID of the user, team, or organization for which you're granting permissions.
+	PrincipalId pulumi.StringInput `pulumi:"principalId"`
+	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+}
+
+func (DashboardPermissionsAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPermissionsAcl)(nil)).Elem()
+}
+
+func (i DashboardPermissionsAclArgs) ToDashboardPermissionsAclOutput() DashboardPermissionsAclOutput {
+	return i.ToDashboardPermissionsAclOutputWithContext(context.Background())
+}
+
+func (i DashboardPermissionsAclArgs) ToDashboardPermissionsAclOutputWithContext(ctx context.Context) DashboardPermissionsAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsAclOutput)
+}
+
+// DashboardPermissionsAclArrayInput is an input type that accepts DashboardPermissionsAclArray and DashboardPermissionsAclArrayOutput values.
+// You can construct a concrete instance of `DashboardPermissionsAclArrayInput` via:
+//
+//          DashboardPermissionsAclArray{ DashboardPermissionsAclArgs{...} }
+type DashboardPermissionsAclArrayInput interface {
+	pulumi.Input
+
+	ToDashboardPermissionsAclArrayOutput() DashboardPermissionsAclArrayOutput
+	ToDashboardPermissionsAclArrayOutputWithContext(context.Context) DashboardPermissionsAclArrayOutput
+}
+
+type DashboardPermissionsAclArray []DashboardPermissionsAclInput
+
+func (DashboardPermissionsAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardPermissionsAcl)(nil)).Elem()
+}
+
+func (i DashboardPermissionsAclArray) ToDashboardPermissionsAclArrayOutput() DashboardPermissionsAclArrayOutput {
+	return i.ToDashboardPermissionsAclArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardPermissionsAclArray) ToDashboardPermissionsAclArrayOutputWithContext(ctx context.Context) DashboardPermissionsAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsAclArrayOutput)
+}
+
+type DashboardPermissionsAclOutput struct{ *pulumi.OutputState }
+
+func (DashboardPermissionsAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardPermissionsAcl)(nil)).Elem()
+}
+
+func (o DashboardPermissionsAclOutput) ToDashboardPermissionsAclOutput() DashboardPermissionsAclOutput {
+	return o
+}
+
+func (o DashboardPermissionsAclOutput) ToDashboardPermissionsAclOutputWithContext(ctx context.Context) DashboardPermissionsAclOutput {
+	return o
+}
+
+// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+func (o DashboardPermissionsAclOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DashboardPermissionsAcl) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// ID of the user, team, or organization for which you're granting permissions.
+func (o DashboardPermissionsAclOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardPermissionsAcl) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+func (o DashboardPermissionsAclOutput) PrincipalType() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardPermissionsAcl) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+type DashboardPermissionsAclArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardPermissionsAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardPermissionsAcl)(nil)).Elem()
+}
+
+func (o DashboardPermissionsAclArrayOutput) ToDashboardPermissionsAclArrayOutput() DashboardPermissionsAclArrayOutput {
+	return o
+}
+
+func (o DashboardPermissionsAclArrayOutput) ToDashboardPermissionsAclArrayOutputWithContext(ctx context.Context) DashboardPermissionsAclArrayOutput {
+	return o
+}
+
+func (o DashboardPermissionsAclArrayOutput) Index(i pulumi.IntInput) DashboardPermissionsAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardPermissionsAcl {
+		return vs[0].([]DashboardPermissionsAcl)[vs[1].(int)]
+	}).(DashboardPermissionsAclOutput)
+}
+
 type DashboardSelectedEventOverlay struct {
 	// Search term used to choose the events shown in the overlay.
 	Signal string `pulumi:"signal"`
@@ -5439,6 +5817,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierArrayInput)(nil)).Elem(), DashboardGroupImportQualifierArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierFilterInput)(nil)).Elem(), DashboardGroupImportQualifierFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupImportQualifierFilterArrayInput)(nil)).Elem(), DashboardGroupImportQualifierFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupPermissionInput)(nil)).Elem(), DashboardGroupPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardGroupPermissionArrayInput)(nil)).Elem(), DashboardGroupPermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPermissionsInput)(nil)).Elem(), DashboardPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPermissionsPtrInput)(nil)).Elem(), DashboardPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPermissionsAclInput)(nil)).Elem(), DashboardPermissionsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardPermissionsAclArrayInput)(nil)).Elem(), DashboardPermissionsAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlayInput)(nil)).Elem(), DashboardSelectedEventOverlayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlayArrayInput)(nil)).Elem(), DashboardSelectedEventOverlayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardSelectedEventOverlaySourceInput)(nil)).Elem(), DashboardSelectedEventOverlaySourceArgs{})
@@ -5519,6 +5903,12 @@ func init() {
 	pulumi.RegisterOutputType(DashboardGroupImportQualifierArrayOutput{})
 	pulumi.RegisterOutputType(DashboardGroupImportQualifierFilterOutput{})
 	pulumi.RegisterOutputType(DashboardGroupImportQualifierFilterArrayOutput{})
+	pulumi.RegisterOutputType(DashboardGroupPermissionOutput{})
+	pulumi.RegisterOutputType(DashboardGroupPermissionArrayOutput{})
+	pulumi.RegisterOutputType(DashboardPermissionsOutput{})
+	pulumi.RegisterOutputType(DashboardPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(DashboardPermissionsAclOutput{})
+	pulumi.RegisterOutputType(DashboardPermissionsAclArrayOutput{})
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlayOutput{})
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlayArrayOutput{})
 	pulumi.RegisterOutputType(DashboardSelectedEventOverlaySourceOutput{})

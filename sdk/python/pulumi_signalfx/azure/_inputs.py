@@ -10,6 +10,8 @@ from .. import _utilities
 
 __all__ = [
     'IntegrationCustomNamespacesPerServiceArgs',
+    'IntegrationResourceFilterRuleArgs',
+    'IntegrationResourceFilterRuleFilterArgs',
     'GetServicesServiceArgs',
 ]
 
@@ -48,6 +50,38 @@ class IntegrationCustomNamespacesPerServiceArgs:
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
+class IntegrationResourceFilterRuleArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input['IntegrationResourceFilterRuleFilterArgs']):
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input['IntegrationResourceFilterRuleFilterArgs']:
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input['IntegrationResourceFilterRuleFilterArgs']):
+        pulumi.set(self, "filter", value)
+
+
+@pulumi.input_type
+class IntegrationResourceFilterRuleFilterArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input[str]):
+        pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source", value)
 
 
 @pulumi.input_type

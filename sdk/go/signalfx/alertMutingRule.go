@@ -74,9 +74,6 @@ func NewAlertMutingRule(ctx *pulumi.Context,
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
 	}
-	if args.Filters == nil {
-		return nil, errors.New("invalid value for required argument 'Filters'")
-	}
 	if args.StartTime == nil {
 		return nil, errors.New("invalid value for required argument 'StartTime'")
 	}

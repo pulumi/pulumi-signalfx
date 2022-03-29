@@ -31,7 +31,7 @@ namespace Pulumi.SignalFx.Aws.Inputs
         public Input<string>? FilterSource { get; set; }
 
         /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+        /// An AWS namespace having AWS metric that you want to pick statistics for
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;

@@ -27,10 +27,10 @@ class IntegrationArgs:
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: A named token to use for ingest
-        :param pulumi.Input[int] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         pulumi.set(__self__, "enabled", enabled)
         if name is not None:
@@ -86,7 +86,7 @@ class IntegrationArgs:
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -110,7 +110,7 @@ class IntegrationArgs:
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         """
         return pulumi.get(self, "services")
 
@@ -122,7 +122,7 @@ class IntegrationArgs:
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Compute Metadata Whitelist
+        [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         return pulumi.get(self, "whitelists")
 
@@ -146,10 +146,10 @@ class _IntegrationState:
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: A named token to use for ingest
-        :param pulumi.Input[int] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -206,7 +206,7 @@ class _IntegrationState:
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -230,7 +230,7 @@ class _IntegrationState:
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         """
         return pulumi.get(self, "services")
 
@@ -242,7 +242,7 @@ class _IntegrationState:
     @pulumi.getter
     def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Compute Metadata Whitelist
+        [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         return pulumi.get(self, "whitelists")
 
@@ -277,7 +277,7 @@ class Integration(pulumi.CustomResource):
 
         gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
             enabled=True,
-            poll_rate=300000,
+            poll_rate=300,
             project_service_keys=[
                 signalfx.gcp.IntegrationProjectServiceKeyArgs(
                     project_id="gcp_project_id_1",
@@ -296,10 +296,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: A named token to use for ingest
-        :param pulumi.Input[int] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         ...
     @overload
@@ -320,7 +320,7 @@ class Integration(pulumi.CustomResource):
 
         gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
             enabled=True,
-            poll_rate=300000,
+            poll_rate=300,
             project_service_keys=[
                 signalfx.gcp.IntegrationProjectServiceKeyArgs(
                     project_id="gcp_project_id_1",
@@ -404,10 +404,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: A named token to use for ingest
-        :param pulumi.Input[int] poll_rate: GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]] project_service_keys: GCP projects to add.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: Compute Metadata Whitelist
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -450,7 +450,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> pulumi.Output[Optional[int]]:
         """
-        GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -466,7 +466,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def services(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         """
         return pulumi.get(self, "services")
 
@@ -474,7 +474,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Compute Metadata Whitelist
+        [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         return pulumi.get(self, "whitelists")
 

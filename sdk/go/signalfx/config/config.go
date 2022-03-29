@@ -18,7 +18,7 @@ func GetAuthToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:authToken")
 }
 
-// Application URL for your SignalFx org, often customzied for organizations using SSO
+// Application URL for your SignalFx org, often customized for organizations using SSO
 func GetCustomAppUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:customAppUrl")
 }

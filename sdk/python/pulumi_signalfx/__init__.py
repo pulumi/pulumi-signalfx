@@ -42,6 +42,8 @@ if typing.TYPE_CHECKING:
     opsgenie = __opsgenie
     import pulumi_signalfx.pagerduty as __pagerduty
     pagerduty = __pagerduty
+    import pulumi_signalfx.servicenow as __servicenow
+    servicenow = __servicenow
     import pulumi_signalfx.slack as __slack
     slack = __slack
     import pulumi_signalfx.victorops as __victorops
@@ -54,6 +56,7 @@ else:
     jira = _utilities.lazy_import('pulumi_signalfx.jira')
     opsgenie = _utilities.lazy_import('pulumi_signalfx.opsgenie')
     pagerduty = _utilities.lazy_import('pulumi_signalfx.pagerduty')
+    servicenow = _utilities.lazy_import('pulumi_signalfx.servicenow')
     slack = _utilities.lazy_import('pulumi_signalfx.slack')
     victorops = _utilities.lazy_import('pulumi_signalfx.victorops')
 
@@ -234,6 +237,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx.pagerduty",
   "classes": {
    "signalfx:pagerduty/integration:Integration": "Integration"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "servicenow/integration",
+  "fqn": "pulumi_signalfx.servicenow",
+  "classes": {
+   "signalfx:servicenow/integration:Integration": "Integration"
   }
  },
  {

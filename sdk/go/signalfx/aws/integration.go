@@ -54,7 +54,7 @@ import (
 // 					DefaultAction: pulumi.String("Exclude"),
 // 					FilterAction:  pulumi.String("Include"),
 // 					FilterSource:  pulumi.String("filter('code', '200')"),
-// 					Namespace:     pulumi.String("fart"),
+// 					Namespace:     pulumi.String("my-custom-namespace"),
 // 				},
 // 			},
 // 			NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
@@ -63,6 +63,15 @@ import (
 // 					FilterAction:  pulumi.String("Include"),
 // 					FilterSource:  pulumi.String("filter('code', '200')"),
 // 					Namespace:     pulumi.String("AWS/EC2"),
+// 				},
+// 			},
+// 			MetricStatsToSyncs: aws.IntegrationMetricStatsToSyncArray{
+// 				&aws.IntegrationMetricStatsToSyncArgs{
+// 					Namespace: pulumi.String("AWS/EC2"),
+// 					Metric:    pulumi.String("NetworkPacketsIn"),
+// 					Stats: pulumi.StringArray{
+// 						pulumi.String("upper"),
+// 					},
 // 				},
 // 			},
 // 		})
@@ -99,11 +108,13 @@ type Integration struct {
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+	MetricStatsToSyncs IntegrationMetricStatsToSyncArrayOutput `pulumi:"metricStatsToSyncs"`
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayOutput `pulumi:"namespaceSyncRules"`
-	// AWS poll rate (in seconds). Value between `60` and `300`.
+	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
 	// List of AWS regions that SignalFx should monitor.
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
@@ -174,11 +185,13 @@ type integrationState struct {
 	IntegrationId *string `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key *string `pulumi:"key"`
+	// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+	MetricStatsToSyncs []IntegrationMetricStatsToSync `pulumi:"metricStatsToSyncs"`
 	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules []IntegrationNamespaceSyncRule `pulumi:"namespaceSyncRules"`
-	// AWS poll rate (in seconds). Value between `60` and `300`.
+	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
 	// List of AWS regions that SignalFx should monitor.
 	Regions []string `pulumi:"regions"`
@@ -215,11 +228,13 @@ type IntegrationState struct {
 	IntegrationId pulumi.StringPtrInput
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key pulumi.StringPtrInput
+	// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+	MetricStatsToSyncs IntegrationMetricStatsToSyncArrayInput
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayInput
-	// AWS poll rate (in seconds). Value between `60` and `300`.
+	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
 	// List of AWS regions that SignalFx should monitor.
 	Regions pulumi.StringArrayInput
@@ -260,11 +275,13 @@ type integrationArgs struct {
 	IntegrationId string `pulumi:"integrationId"`
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key *string `pulumi:"key"`
+	// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+	MetricStatsToSyncs []IntegrationMetricStatsToSync `pulumi:"metricStatsToSyncs"`
 	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules []IntegrationNamespaceSyncRule `pulumi:"namespaceSyncRules"`
-	// AWS poll rate (in seconds). Value between `60` and `300`.
+	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
 	// List of AWS regions that SignalFx should monitor.
 	Regions []string `pulumi:"regions"`
@@ -302,11 +319,13 @@ type IntegrationArgs struct {
 	IntegrationId pulumi.StringInput
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
 	Key pulumi.StringPtrInput
+	// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+	MetricStatsToSyncs IntegrationMetricStatsToSyncArrayInput
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
 	// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayInput
-	// AWS poll rate (in seconds). Value between `60` and `300`.
+	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
 	// List of AWS regions that SignalFx should monitor.
 	Regions pulumi.StringArrayInput

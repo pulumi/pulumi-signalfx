@@ -207,6 +207,41 @@ export interface DashboardGroupImportQualifierFilter {
     values: string[];
 }
 
+export interface DashboardGroupPermission {
+    /**
+     * Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+     */
+    actions?: string[];
+    /**
+     * ID of the user, team, or organization for which you're granting permissions.
+     */
+    principalId: string;
+    /**
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+     */
+    principalType: string;
+}
+
+export interface DashboardPermissions {
+    acls?: outputs.DashboardPermissionsAcl[];
+    parent?: string;
+}
+
+export interface DashboardPermissionsAcl {
+    /**
+     * Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+     */
+    actions?: string[];
+    /**
+     * ID of the user, team, or organization for which you're granting permissions.
+     */
+    principalId: string;
+    /**
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+     */
+    principalType: string;
+}
+
 export interface DashboardSelectedEventOverlay {
     /**
      * Search term used to choose the events shown in the overlay.
@@ -736,6 +771,7 @@ export interface WebhookIntegrationHeader {
      */
     headerValue: string;
 }
+
 export namespace aws {
     export interface GetServicesService {
         name: string;
@@ -755,9 +791,24 @@ export namespace aws {
          */
         filterSource?: string;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS namespace having AWS metric that you want to pick statistics for
          */
         namespace: string;
+    }
+
+    export interface IntegrationMetricStatsToSync {
+        /**
+         * AWS metric that you want to pick statistics for
+         */
+        metric: string;
+        /**
+         * An AWS namespace having AWS metric that you want to pick statistics for
+         */
+        namespace: string;
+        /**
+         * AWS statistics you want to collect
+         */
+        stats: string[];
     }
 
     export interface IntegrationNamespaceSyncRule {
@@ -774,7 +825,7 @@ export namespace aws {
          */
         filterSource?: string;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS namespace having AWS metric that you want to pick statistics for
          */
         namespace: string;
     }
@@ -795,6 +846,14 @@ export namespace azure {
          * The name of the service.
          */
         service: string;
+    }
+
+    export interface IntegrationResourceFilterRule {
+        filter: outputs.azure.IntegrationResourceFilterRuleFilter;
+    }
+
+    export interface IntegrationResourceFilterRuleFilter {
+        source: string;
     }
 
 }

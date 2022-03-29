@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const opgenieMyteam = new signalfx.opsgenie.Integration("opgenie_myteam", {
- *     apiKey: "farts",
+ *     apiKey: "my-key",
  *     apiUrl: "https://api.opsgenie.com",
  *     enabled: true,
  * });

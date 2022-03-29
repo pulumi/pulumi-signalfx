@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Opsgenie
     ///     {
     ///         var opgenieMyteam = new SignalFx.Opsgenie.Integration("opgenieMyteam", new SignalFx.Opsgenie.IntegrationArgs
     ///         {
-    ///             ApiKey = "farts",
+    ///             ApiKey = "my-key",
     ///             ApiUrl = "https://api.opsgenie.com",
     ///             Enabled = true,
     ///         });

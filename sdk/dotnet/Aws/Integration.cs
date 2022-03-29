@@ -56,7 +56,7 @@ namespace Pulumi.SignalFx.Aws
     ///                     DefaultAction = "Exclude",
     ///                     FilterAction = "Include",
     ///                     FilterSource = "filter('code', '200')",
-    ///                     Namespace = "fart",
+    ///                     Namespace = "my-custom-namespace",
     ///                 },
     ///             },
     ///             NamespaceSyncRules = 
@@ -67,6 +67,18 @@ namespace Pulumi.SignalFx.Aws
     ///                     FilterAction = "Include",
     ///                     FilterSource = "filter('code', '200')",
     ///                     Namespace = "AWS/EC2",
+    ///                 },
+    ///             },
+    ///             MetricStatsToSyncs = 
+    ///             {
+    ///                 new SignalFx.Aws.Inputs.IntegrationMetricStatsToSyncArgs
+    ///                 {
+    ///                     Namespace = "AWS/EC2",
+    ///                     Metric = "NetworkPacketsIn",
+    ///                     Stats = 
+    ///                     {
+    ///                         "upper",
+    ///                     },
     ///                 },
     ///             },
     ///         });
@@ -142,6 +154,12 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// </summary>
+        [Output("metricStatsToSyncs")]
+        public Output<ImmutableArray<Outputs.IntegrationMetricStatsToSync>> MetricStatsToSyncs { get; private set; } = null!;
+
+        /// <summary>
         /// A named token to use for ingest
         /// </summary>
         [Output("namedToken")]
@@ -154,7 +172,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<ImmutableArray<Outputs.IntegrationNamespaceSyncRule>> NamespaceSyncRules { get; private set; } = null!;
 
         /// <summary>
-        /// AWS poll rate (in seconds). Value between `60` and `300`.
+        /// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         /// </summary>
         [Output("pollRate")]
         public Output<int?> PollRate { get; private set; } = null!;
@@ -313,6 +331,18 @@ namespace Pulumi.SignalFx.Aws
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        [Input("metricStatsToSyncs")]
+        private InputList<Inputs.IntegrationMetricStatsToSyncArgs>? _metricStatsToSyncs;
+
+        /// <summary>
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// </summary>
+        public InputList<Inputs.IntegrationMetricStatsToSyncArgs> MetricStatsToSyncs
+        {
+            get => _metricStatsToSyncs ?? (_metricStatsToSyncs = new InputList<Inputs.IntegrationMetricStatsToSyncArgs>());
+            set => _metricStatsToSyncs = value;
+        }
+
         /// <summary>
         /// A named token to use for ingest
         /// </summary>
@@ -332,7 +362,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// AWS poll rate (in seconds). Value between `60` and `300`.
+        /// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }
@@ -464,6 +494,18 @@ namespace Pulumi.SignalFx.Aws
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        [Input("metricStatsToSyncs")]
+        private InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>? _metricStatsToSyncs;
+
+        /// <summary>
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// </summary>
+        public InputList<Inputs.IntegrationMetricStatsToSyncGetArgs> MetricStatsToSyncs
+        {
+            get => _metricStatsToSyncs ?? (_metricStatsToSyncs = new InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>());
+            set => _metricStatsToSyncs = value;
+        }
+
         /// <summary>
         /// A named token to use for ingest
         /// </summary>
@@ -483,7 +525,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// AWS poll rate (in seconds). Value between `60` and `300`.
+        /// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }

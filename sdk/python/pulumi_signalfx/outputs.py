@@ -22,6 +22,9 @@ __all__ = [
     'DashboardGroupDashboardVariableOverride',
     'DashboardGroupImportQualifier',
     'DashboardGroupImportQualifierFilter',
+    'DashboardGroupPermission',
+    'DashboardPermissions',
+    'DashboardPermissionsAcl',
     'DashboardSelectedEventOverlay',
     'DashboardSelectedEventOverlaySource',
     'DashboardVariable',
@@ -759,6 +762,147 @@ class DashboardGroupImportQualifierFilter(dict):
         A metric time series dimension or property name.
         """
         return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class DashboardGroupPermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "principalType":
+            suggest = "principal_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardGroupPermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardGroupPermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardGroupPermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 principal_id: str,
+                 principal_type: str,
+                 actions: Optional[Sequence[str]] = None):
+        """
+        :param str principal_id: ID of the user, team, or organization for which you're granting permissions.
+        :param str principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        :param Sequence[str] actions: Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        """
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_type", principal_type)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        ID of the user, team, or organization for which you're granting permissions.
+        """
+        return pulumi.get(self, "principal_id")
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> str:
+        """
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        """
+        return pulumi.get(self, "principal_type")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        """
+        Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        """
+        return pulumi.get(self, "actions")
+
+
+@pulumi.output_type
+class DashboardPermissions(dict):
+    def __init__(__self__, *,
+                 acls: Optional[Sequence['outputs.DashboardPermissionsAcl']] = None,
+                 parent: Optional[str] = None):
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[Sequence['outputs.DashboardPermissionsAcl']]:
+        return pulumi.get(self, "acls")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[str]:
+        return pulumi.get(self, "parent")
+
+
+@pulumi.output_type
+class DashboardPermissionsAcl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalId":
+            suggest = "principal_id"
+        elif key == "principalType":
+            suggest = "principal_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPermissionsAcl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPermissionsAcl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPermissionsAcl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 principal_id: str,
+                 principal_type: str,
+                 actions: Optional[Sequence[str]] = None):
+        """
+        :param str principal_id: ID of the user, team, or organization for which you're granting permissions.
+        :param str principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        :param Sequence[str] actions: Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+        """
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_type", principal_type)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> str:
+        """
+        ID of the user, team, or organization for which you're granting permissions.
+        """
+        return pulumi.get(self, "principal_id")
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> str:
+        """
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        """
+        return pulumi.get(self, "principal_type")
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[Sequence[str]]:
+        """
+        Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+        """
+        return pulumi.get(self, "actions")
 
 
 @pulumi.output_type

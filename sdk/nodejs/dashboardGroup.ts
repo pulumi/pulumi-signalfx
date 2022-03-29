@@ -22,6 +22,33 @@ import * as utilities from "./utilities";
  *     authorizedWriterUsers: ["abc123"],
  * });
  * ```
+ * ### With Permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroupWithpermissions = new signalfx.DashboardGroup("mydashboardgroup_withpermissions", {
+ *     description: "Cool dashboard group",
+ *     permissions: [
+ *         // You can add up to 25 of entries for permission configurations. 
+ *         // Make sure your account supports this feature!
+ *         {
+ *             actions: ["READ"],
+ *             principalId: "abc123",
+ *             principalType: "ORG",
+ *         },
+ *         {
+ *             actions: [
+ *                 "READ",
+ *                 "WRITE",
+ *             ],
+ *             principalId: "abc456",
+ *             principalType: "USER",
+ *         },
+ *     ],
+ * });
+ * ```
  * ### With Mirrored Dashboards
  *
  * ```typescript
@@ -80,11 +107,15 @@ export class DashboardGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     *
+     * @deprecated Please use permissions field now
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     *
+     * @deprecated Please use permissions field now
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
@@ -100,6 +131,10 @@ export class DashboardGroup extends pulumi.CustomResource {
      * Name of the dashboard group.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The custom access control list for this dashboard
+     */
+    public readonly permissions!: pulumi.Output<outputs.DashboardGroupPermission[]>;
     /**
      * Team IDs to associate the dashboard group to.
      */
@@ -124,6 +159,7 @@ export class DashboardGroup extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["importQualifiers"] = state ? state.importQualifiers : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
             resourceInputs["teams"] = state ? state.teams : undefined;
         } else {
             const args = argsOrState as DashboardGroupArgs | undefined;
@@ -133,6 +169,7 @@ export class DashboardGroup extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["importQualifiers"] = args ? args.importQualifiers : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
             resourceInputs["teams"] = args ? args.teams : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -145,11 +182,15 @@ export class DashboardGroup extends pulumi.CustomResource {
  */
 export interface DashboardGroupState {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     *
+     * @deprecated Please use permissions field now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     *
+     * @deprecated Please use permissions field now
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -165,6 +206,10 @@ export interface DashboardGroupState {
      * Name of the dashboard group.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The custom access control list for this dashboard
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.DashboardGroupPermission>[]>;
     /**
      * Team IDs to associate the dashboard group to.
      */
@@ -176,11 +221,15 @@ export interface DashboardGroupState {
  */
 export interface DashboardGroupArgs {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     *
+     * @deprecated Please use permissions field now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     *
+     * @deprecated Please use permissions field now
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -196,6 +245,10 @@ export interface DashboardGroupArgs {
      * Name of the dashboard group.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The custom access control list for this dashboard
+     */
+    permissions?: pulumi.Input<pulumi.Input<inputs.DashboardGroupPermission>[]>;
     /**
      * Team IDs to associate the dashboard group to.
      */

@@ -28,6 +28,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := azure.NewIntegration(ctx, "azureMyteam", &azure.IntegrationArgs{
+// 			AdditionalServices: pulumi.StringArray{
+// 				pulumi.String("some/service"),
+// 				pulumi.String("another/service"),
+// 			},
 // 			AppId: pulumi.String("YYY"),
 // 			CustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{
 // 				&azure.IntegrationCustomNamespacesPerServiceArgs{
@@ -41,7 +45,19 @@ import (
 // 			Enabled:     pulumi.Bool(true),
 // 			Environment: pulumi.String("azure"),
 // 			PollRate:    pulumi.Int(300),
-// 			SecretKey:   pulumi.String("XXX"),
+// 			ResourceFilterRules: azure.IntegrationResourceFilterRuleArray{
+// 				&azure.IntegrationResourceFilterRuleArgs{
+// 					Filter: &azure.IntegrationResourceFilterRuleFilterArgs{
+// 						Source: pulumi.String("filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
+// 					},
+// 				},
+// 				&azure.IntegrationResourceFilterRuleArgs{
+// 					Filter: &azure.IntegrationResourceFilterRuleFilterArgs{
+// 						Source: pulumi.String("filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
+// 					},
+// 				},
+// 			},
+// 			SecretKey: pulumi.String("XXX"),
 // 			Services: pulumi.StringArray{
 // 				pulumi.String("microsoft.sql/servers/elasticpools"),
 // 			},
@@ -63,6 +79,8 @@ import (
 type Integration struct {
 	pulumi.CustomResourceState
 
+	// Additional Azure resource types that you want to sync with Observability Cloud.
+	AdditionalServices pulumi.StringArrayOutput `pulumi:"additionalServices"`
 	// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
@@ -75,8 +93,12 @@ type Integration struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
+	// List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+	// filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+	// limited to tags and must start with the azure_tag_ prefix..
+	ResourceFilterRules IntegrationResourceFilterRuleArrayOutput `pulumi:"resourceFilterRules"`
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -136,6 +158,8 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
+	// Additional Azure resource types that you want to sync with Observability Cloud.
+	AdditionalServices []string `pulumi:"additionalServices"`
 	// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
 	AppId *string `pulumi:"appId"`
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
@@ -148,8 +172,12 @@ type integrationState struct {
 	Name *string `pulumi:"name"`
 	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
+	// List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+	// filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+	// limited to tags and must start with the azure_tag_ prefix..
+	ResourceFilterRules []IntegrationResourceFilterRule `pulumi:"resourceFilterRules"`
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey *string `pulumi:"secretKey"`
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -163,6 +191,8 @@ type integrationState struct {
 }
 
 type IntegrationState struct {
+	// Additional Azure resource types that you want to sync with Observability Cloud.
+	AdditionalServices pulumi.StringArrayInput
 	// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
 	AppId pulumi.StringPtrInput
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
@@ -175,8 +205,12 @@ type IntegrationState struct {
 	Name pulumi.StringPtrInput
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
+	// List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+	// filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+	// limited to tags and must start with the azure_tag_ prefix..
+	ResourceFilterRules IntegrationResourceFilterRuleArrayInput
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey pulumi.StringPtrInput
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -194,6 +228,8 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
+	// Additional Azure resource types that you want to sync with Observability Cloud.
+	AdditionalServices []string `pulumi:"additionalServices"`
 	// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
 	AppId string `pulumi:"appId"`
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
@@ -206,8 +242,12 @@ type integrationArgs struct {
 	Name *string `pulumi:"name"`
 	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
+	// List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+	// filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+	// limited to tags and must start with the azure_tag_ prefix..
+	ResourceFilterRules []IntegrationResourceFilterRule `pulumi:"resourceFilterRules"`
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey string `pulumi:"secretKey"`
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -222,6 +262,8 @@ type integrationArgs struct {
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
+	// Additional Azure resource types that you want to sync with Observability Cloud.
+	AdditionalServices pulumi.StringArrayInput
 	// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
 	AppId pulumi.StringInput
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
@@ -234,8 +276,12 @@ type IntegrationArgs struct {
 	Name pulumi.StringPtrInput
 	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
-	// AWS poll rate (in seconds). One of `60` or `300`.
+	// Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
+	// List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+	// filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+	// limited to tags and must start with the azure_tag_ prefix..
+	ResourceFilterRules IntegrationResourceFilterRuleArrayInput
 	// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
 	SecretKey pulumi.StringInput
 	// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.

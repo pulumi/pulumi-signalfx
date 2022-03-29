@@ -21,7 +21,7 @@ class ProviderArgs:
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] api_url: API URL for your SignalFx org, may include a realm
         :param pulumi.Input[str] auth_token: SignalFx auth token
-        :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customzied for organizations using SSO
+        :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customized for organizations using SSO
         :param pulumi.Input[int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
         if api_url is not None:
@@ -61,7 +61,7 @@ class ProviderArgs:
     @pulumi.getter(name="customAppUrl")
     def custom_app_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Application URL for your SignalFx org, often customzied for organizations using SSO
+        Application URL for your SignalFx org, often customized for organizations using SSO
         """
         return pulumi.get(self, "custom_app_url")
 
@@ -102,7 +102,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_url: API URL for your SignalFx org, may include a realm
         :param pulumi.Input[str] auth_token: SignalFx auth token
-        :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customzied for organizations using SSO
+        :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customized for organizations using SSO
         :param pulumi.Input[int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
         ...
@@ -178,7 +178,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="customAppUrl")
     def custom_app_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Application URL for your SignalFx org, often customzied for organizations using SSO
+        Application URL for your SignalFx org, often customized for organizations using SSO
         """
         return pulumi.get(self, "custom_app_url")
 
