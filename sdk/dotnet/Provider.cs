@@ -31,7 +31,7 @@ namespace Pulumi.SignalFx
         public Output<string?> AuthToken { get; private set; } = null!;
 
         /// <summary>
-        /// Application URL for your SignalFx org, often customzied for organizations using SSO
+        /// Application URL for your SignalFx org, often customized for organizations using SSO
         /// </summary>
         [Output("customAppUrl")]
         public Output<string?> CustomAppUrl { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.SignalFx
         public Input<string>? AuthToken { get; set; }
 
         /// <summary>
-        /// Application URL for your SignalFx org, often customzied for organizations using SSO
+        /// Application URL for your SignalFx org, often customized for organizations using SSO
         /// </summary>
         [Input("customAppUrl")]
         public Input<string>? CustomAppUrl { get; set; }

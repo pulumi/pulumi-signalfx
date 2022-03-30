@@ -24,7 +24,7 @@
             },
             "customAppUrl": {
                 "type": "string",
-                "description": "Application URL for your SignalFx org, often customzied for organizations using SSO\n"
+                "description": "Application URL for your SignalFx org, often customized for organizations using SSO\n"
             },
             "timeoutSeconds": {
                 "type": "integer",
@@ -64,7 +64,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.\n",
+                    "description": "An AWS namespace having AWS metric that you want to pick statistics for\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -75,6 +75,46 @@
             "type": "object",
             "required": [
                 "namespace"
+            ]
+        },
+        "signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync": {
+            "properties": {
+                "metric": {
+                    "type": "string",
+                    "description": "AWS metric that you want to pick statistics for\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "An AWS namespace having AWS metric that you want to pick statistics for\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "stats": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "AWS statistics you want to collect\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "metric",
+                "namespace",
+                "stats"
             ]
         },
         "signalfx:aws/IntegrationNamespaceSyncRule:IntegrationNamespaceSyncRule": {
@@ -108,7 +148,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.\n",
+                    "description": "An AWS namespace having AWS metric that you want to pick statistics for\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -165,6 +205,38 @@
             "required": [
                 "namespaces",
                 "service"
+            ]
+        },
+        "signalfx:azure/IntegrationResourceFilterRule:IntegrationResourceFilterRule": {
+            "properties": {
+                "filter": {
+                    "$ref": "#/types/signalfx:azure/IntegrationResourceFilterRuleFilter:IntegrationResourceFilterRuleFilter",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "filter"
+            ]
+        },
+        "signalfx:azure/IntegrationResourceFilterRuleFilter:IntegrationResourceFilterRuleFilter": {
+            "properties": {
+                "source": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "source"
             ]
         },
         "signalfx:azure/getServicesService:getServicesService": {
@@ -749,6 +821,108 @@
             "required": [
                 "property",
                 "values"
+            ]
+        },
+        "signalfx:index/DashboardGroupPermission:DashboardGroupPermission": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Action the user, team, or organization can take with the dashboard group. List of values (value can be \"READ\" or \"WRITE\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "ID of the user, team, or organization for which you're granting permissions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principalType": {
+                    "type": "string",
+                    "description": "Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of \"USER\", \"TEAM\", or \"ORG\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "principalId",
+                "principalType"
+            ]
+        },
+        "signalfx:index/DashboardPermissions:DashboardPermissions": {
+            "properties": {
+                "acls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/DashboardPermissionsAcl:DashboardPermissionsAcl"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "parent": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "signalfx:index/DashboardPermissionsAcl:DashboardPermissionsAcl": {
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Action the user, team, or organization can take with the dashboard. List of values (value can be \"READ\" or \"WRITE\").\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principalId": {
+                    "type": "string",
+                    "description": "ID of the user, team, or organization for which you're granting permissions.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "principalType": {
+                    "type": "string",
+                    "description": "Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of \"USER\", \"TEAM\", or \"ORG\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "principalId",
+                "principalType"
             ]
         },
         "signalfx:index/DashboardSelectedEventOverlay:DashboardSelectedEventOverlay": {
@@ -2086,7 +2260,7 @@
             },
             "customAppUrl": {
                 "type": "string",
-                "description": "Application URL for your SignalFx org, often customzied for organizations using SSO\n"
+                "description": "Application URL for your SignalFx org, often customized for organizations using SSO\n"
             },
             "timeoutSeconds": {
                 "type": "integer",
@@ -2104,7 +2278,7 @@
             },
             "customAppUrl": {
                 "type": "string",
-                "description": "Application URL for your SignalFx org, often customzied for organizations using SSO\n"
+                "description": "Application URL for your SignalFx org, often customized for organizations using SSO\n"
             },
             "timeoutSeconds": {
                 "type": "integer",
@@ -2114,7 +2288,7 @@
     },
     "resources": {
         "signalfx:aws/externalIntegration:ExternalIntegration": {
-            "description": "SignalFx AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst awsMyteamExtern = new signalfx.aws.ExternalIntegration(\"awsMyteamExtern\", {});\nconst signalfxAssumePolicy = aws.iam.getPolicyDocumentOutput({\n    statements: [{\n        actions: [\"sts:AssumeRole\"],\n        principals: [{\n            type: \"AWS\",\n            identifiers: [awsMyteamExtern.signalfxAwsAccount],\n        }],\n        conditions: [{\n            test: \"StringEquals\",\n            variable: \"sts:ExternalId\",\n            values: [awsMyteamExtern.externalId],\n        }],\n    }],\n});\nconst awsSfxRole = new aws.iam.Role(\"awsSfxRole\", {\n    description: \"signalfx integration to read out data and send it to signalfxs aws account\",\n    assumeRolePolicy: signalfxAssumePolicy.apply(signalfxAssumePolicy =\u003e signalfxAssumePolicy.json),\n});\nconst awsReadPermissions = new aws.iam.Policy(\"awsReadPermissions\", {\n    description: \"farts\",\n    policy: `{\n\t\"Version\": \"2012-10-17\",\n\t\"Statement\": [\n\t\t{\n\t\t\t\"Action\": [\n\t\t\t\t\"dynamodb:ListTables\",\n\t\t    \"dynamodb:DescribeTable\",\n\t\t    \"dynamodb:ListTagsOfResource\",\n\t\t    \"ec2:DescribeInstances\",\n\t\t    \"ec2:DescribeInstanceStatus\",\n\t\t    \"ec2:DescribeVolumes\",\n\t\t    \"ec2:DescribeReservedInstances\",\n\t\t    \"ec2:DescribeReservedInstancesModifications\",\n\t\t    \"ec2:DescribeTags\",\n\t\t    \"organizations:DescribeOrganization\",\n\t\t    \"cloudwatch:ListMetrics\",\n\t\t    \"cloudwatch:GetMetricData\",\n\t\t    \"cloudwatch:GetMetricStatistics\",\n\t\t    \"cloudwatch:DescribeAlarms\",\n\t\t    \"sqs:ListQueues\",\n\t\t    \"sqs:GetQueueAttributes\",\n\t\t    \"sqs:ListQueueTags\",\n\t\t    \"elasticmapreduce:ListClusters\",\n\t\t    \"elasticmapreduce:DescribeCluster\",\n\t\t    \"kinesis:ListShards\",\n\t\t    \"kinesis:ListStreams\",\n\t\t    \"kinesis:DescribeStream\",\n\t\t    \"kinesis:ListTagsForStream\",\n\t\t    \"rds:DescribeDBInstances\",\n\t\t    \"rds:ListTagsForResource\",\n\t\t    \"elasticloadbalancing:DescribeLoadBalancers\",\n\t\t    \"elasticloadbalancing:DescribeTags\",\n\t\t    \"elasticache:describeCacheClusters\",\n\t\t    \"redshift:DescribeClusters\",\n\t\t    \"lambda:GetAlias\",\n\t\t    \"lambda:ListFunctions\",\n\t\t    \"lambda:ListTags\",\n\t\t    \"autoscaling:DescribeAutoScalingGroups\",\n\t\t    \"s3:ListAllMyBuckets\",\n\t\t    \"s3:ListBucket\",\n\t\t    \"s3:GetBucketLocation\",\n\t\t    \"s3:GetBucketTagging\",\n\t\t    \"ecs:ListServices\",\n\t\t    \"ecs:ListTasks\",\n\t\t    \"ecs:DescribeTasks\",\n\t\t    \"ecs:DescribeServices\",\n\t\t    \"ecs:ListClusters\",\n\t\t    \"ecs:DescribeClusters\",\n\t\t    \"ecs:ListTaskDefinitions\",\n\t\t    \"ecs:ListTagsForResource\",\n\t\t    \"apigateway:GET\",\n\t\t    \"cloudfront:ListDistributions\",\n\t\t    \"cloudfront:ListTagsForResource\",\n\t\t    \"tag:GetResources\",\n\t\t    \"es:ListDomainNames\",\n\t\t    \"es:DescribeElasticsearchDomain\"\n\t\t\t],\n\t\t\t\"Effect\": \"Allow\",\n\t\t\t\"Resource\": \"*\"\n\t\t}\n\t]\n}\n`,\n});\nconst sfx_read_attach = new aws.iam.RolePolicyAttachment(\"sfx-read-attach\", {\n    role: awsSfxRole.name,\n    policyArn: awsReadPermissions.arn,\n});\nconst awsMyteam = new signalfx.aws.Integration(\"awsMyteam\", {\n    enabled: true,\n    integrationId: awsMyteamExtern.id,\n    externalId: awsMyteamExtern.externalId,\n    roleArn: awsSfxRole.arn,\n    regions: [\"us-east-1\"],\n    pollRate: 300,\n    importCloudWatch: true,\n    enableAwsUsage: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_signalfx as signalfx\n\naws_myteam_extern = signalfx.aws.ExternalIntegration(\"awsMyteamExtern\")\nsignalfx_assume_policy = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(\n    actions=[\"sts:AssumeRole\"],\n    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(\n        type=\"AWS\",\n        identifiers=[aws_myteam_extern.signalfx_aws_account],\n    )],\n    conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(\n        test=\"StringEquals\",\n        variable=\"sts:ExternalId\",\n        values=[aws_myteam_extern.external_id],\n    )],\n)])\naws_sfx_role = aws.iam.Role(\"awsSfxRole\",\n    description=\"signalfx integration to read out data and send it to signalfxs aws account\",\n    assume_role_policy=signalfx_assume_policy.json)\naws_read_permissions = aws.iam.Policy(\"awsReadPermissions\",\n    description=\"farts\",\n    policy=\"\"\"{\n\t\"Version\": \"2012-10-17\",\n\t\"Statement\": [\n\t\t{\n\t\t\t\"Action\": [\n\t\t\t\t\"dynamodb:ListTables\",\n\t\t    \"dynamodb:DescribeTable\",\n\t\t    \"dynamodb:ListTagsOfResource\",\n\t\t    \"ec2:DescribeInstances\",\n\t\t    \"ec2:DescribeInstanceStatus\",\n\t\t    \"ec2:DescribeVolumes\",\n\t\t    \"ec2:DescribeReservedInstances\",\n\t\t    \"ec2:DescribeReservedInstancesModifications\",\n\t\t    \"ec2:DescribeTags\",\n\t\t    \"organizations:DescribeOrganization\",\n\t\t    \"cloudwatch:ListMetrics\",\n\t\t    \"cloudwatch:GetMetricData\",\n\t\t    \"cloudwatch:GetMetricStatistics\",\n\t\t    \"cloudwatch:DescribeAlarms\",\n\t\t    \"sqs:ListQueues\",\n\t\t    \"sqs:GetQueueAttributes\",\n\t\t    \"sqs:ListQueueTags\",\n\t\t    \"elasticmapreduce:ListClusters\",\n\t\t    \"elasticmapreduce:DescribeCluster\",\n\t\t    \"kinesis:ListShards\",\n\t\t    \"kinesis:ListStreams\",\n\t\t    \"kinesis:DescribeStream\",\n\t\t    \"kinesis:ListTagsForStream\",\n\t\t    \"rds:DescribeDBInstances\",\n\t\t    \"rds:ListTagsForResource\",\n\t\t    \"elasticloadbalancing:DescribeLoadBalancers\",\n\t\t    \"elasticloadbalancing:DescribeTags\",\n\t\t    \"elasticache:describeCacheClusters\",\n\t\t    \"redshift:DescribeClusters\",\n\t\t    \"lambda:GetAlias\",\n\t\t    \"lambda:ListFunctions\",\n\t\t    \"lambda:ListTags\",\n\t\t    \"autoscaling:DescribeAutoScalingGroups\",\n\t\t    \"s3:ListAllMyBuckets\",\n\t\t    \"s3:ListBucket\",\n\t\t    \"s3:GetBucketLocation\",\n\t\t    \"s3:GetBucketTagging\",\n\t\t    \"ecs:ListServices\",\n\t\t    \"ecs:ListTasks\",\n\t\t    \"ecs:DescribeTasks\",\n\t\t    \"ecs:DescribeServices\",\n\t\t    \"ecs:ListClusters\",\n\t\t    \"ecs:DescribeClusters\",\n\t\t    \"ecs:ListTaskDefinitions\",\n\t\t    \"ecs:ListTagsForResource\",\n\t\t    \"apigateway:GET\",\n\t\t    \"cloudfront:ListDistributions\",\n\t\t    \"cloudfront:ListTagsForResource\",\n\t\t    \"tag:GetResources\",\n\t\t    \"es:ListDomainNames\",\n\t\t    \"es:DescribeElasticsearchDomain\"\n\t\t\t],\n\t\t\t\"Effect\": \"Allow\",\n\t\t\t\"Resource\": \"*\"\n\t\t}\n\t]\n}\n\"\"\")\nsfx_read_attach = aws.iam.RolePolicyAttachment(\"sfx-read-attach\",\n    role=aws_sfx_role.name,\n    policy_arn=aws_read_permissions.arn)\naws_myteam = signalfx.aws.Integration(\"awsMyteam\",\n    enabled=True,\n    integration_id=aws_myteam_extern.id,\n    external_id=aws_myteam_extern.external_id,\n    role_arn=aws_sfx_role.arn,\n    regions=[\"us-east-1\"],\n    poll_rate=300,\n    import_cloud_watch=True,\n    enable_aws_usage=True)\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration(\"awsMyteamExtern\", new SignalFx.Aws.ExternalIntegrationArgs\n        {\n        });\n        var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.Invoke(new Aws.Iam.GetPolicyDocumentInvokeArgs\n        {\n            Statements = \n            {\n                new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs\n                {\n                    Actions = \n                    {\n                        \"sts:AssumeRole\",\n                    },\n                    Principals = \n                    {\n                        new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs\n                        {\n                            Type = \"AWS\",\n                            Identifiers = \n                            {\n                                awsMyteamExtern.SignalfxAwsAccount,\n                            },\n                        },\n                    },\n                    Conditions = \n                    {\n                        new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs\n                        {\n                            Test = \"StringEquals\",\n                            Variable = \"sts:ExternalId\",\n                            Values = \n                            {\n                                awsMyteamExtern.ExternalId,\n                            },\n                        },\n                    },\n                },\n            },\n        });\n        var awsSfxRole = new Aws.Iam.Role(\"awsSfxRole\", new Aws.Iam.RoleArgs\n        {\n            Description = \"signalfx integration to read out data and send it to signalfxs aws account\",\n            AssumeRolePolicy = signalfxAssumePolicy.Apply(signalfxAssumePolicy =\u003e signalfxAssumePolicy.Json),\n        });\n        var awsReadPermissions = new Aws.Iam.Policy(\"awsReadPermissions\", new Aws.Iam.PolicyArgs\n        {\n            Description = \"farts\",\n            Policy = @\"{\n\t\"\"Version\"\": \"\"2012-10-17\"\",\n\t\"\"Statement\"\": [\n\t\t{\n\t\t\t\"\"Action\"\": [\n\t\t\t\t\"\"dynamodb:ListTables\"\",\n\t\t    \"\"dynamodb:DescribeTable\"\",\n\t\t    \"\"dynamodb:ListTagsOfResource\"\",\n\t\t    \"\"ec2:DescribeInstances\"\",\n\t\t    \"\"ec2:DescribeInstanceStatus\"\",\n\t\t    \"\"ec2:DescribeVolumes\"\",\n\t\t    \"\"ec2:DescribeReservedInstances\"\",\n\t\t    \"\"ec2:DescribeReservedInstancesModifications\"\",\n\t\t    \"\"ec2:DescribeTags\"\",\n\t\t    \"\"organizations:DescribeOrganization\"\",\n\t\t    \"\"cloudwatch:ListMetrics\"\",\n\t\t    \"\"cloudwatch:GetMetricData\"\",\n\t\t    \"\"cloudwatch:GetMetricStatistics\"\",\n\t\t    \"\"cloudwatch:DescribeAlarms\"\",\n\t\t    \"\"sqs:ListQueues\"\",\n\t\t    \"\"sqs:GetQueueAttributes\"\",\n\t\t    \"\"sqs:ListQueueTags\"\",\n\t\t    \"\"elasticmapreduce:ListClusters\"\",\n\t\t    \"\"elasticmapreduce:DescribeCluster\"\",\n\t\t    \"\"kinesis:ListShards\"\",\n\t\t    \"\"kinesis:ListStreams\"\",\n\t\t    \"\"kinesis:DescribeStream\"\",\n\t\t    \"\"kinesis:ListTagsForStream\"\",\n\t\t    \"\"rds:DescribeDBInstances\"\",\n\t\t    \"\"rds:ListTagsForResource\"\",\n\t\t    \"\"elasticloadbalancing:DescribeLoadBalancers\"\",\n\t\t    \"\"elasticloadbalancing:DescribeTags\"\",\n\t\t    \"\"elasticache:describeCacheClusters\"\",\n\t\t    \"\"redshift:DescribeClusters\"\",\n\t\t    \"\"lambda:GetAlias\"\",\n\t\t    \"\"lambda:ListFunctions\"\",\n\t\t    \"\"lambda:ListTags\"\",\n\t\t    \"\"autoscaling:DescribeAutoScalingGroups\"\",\n\t\t    \"\"s3:ListAllMyBuckets\"\",\n\t\t    \"\"s3:ListBucket\"\",\n\t\t    \"\"s3:GetBucketLocation\"\",\n\t\t    \"\"s3:GetBucketTagging\"\",\n\t\t    \"\"ecs:ListServices\"\",\n\t\t    \"\"ecs:ListTasks\"\",\n\t\t    \"\"ecs:DescribeTasks\"\",\n\t\t    \"\"ecs:DescribeServices\"\",\n\t\t    \"\"ecs:ListClusters\"\",\n\t\t    \"\"ecs:DescribeClusters\"\",\n\t\t    \"\"ecs:ListTaskDefinitions\"\",\n\t\t    \"\"ecs:ListTagsForResource\"\",\n\t\t    \"\"apigateway:GET\"\",\n\t\t    \"\"cloudfront:ListDistributions\"\",\n\t\t    \"\"cloudfront:ListTagsForResource\"\",\n\t\t    \"\"tag:GetResources\"\",\n\t\t    \"\"es:ListDomainNames\"\",\n\t\t    \"\"es:DescribeElasticsearchDomain\"\"\n\t\t\t],\n\t\t\t\"\"Effect\"\": \"\"Allow\"\",\n\t\t\t\"\"Resource\"\": \"\"*\"\"\n\t\t}\n\t]\n}\n\",\n        });\n        var sfx_read_attach = new Aws.Iam.RolePolicyAttachment(\"sfx-read-attach\", new Aws.Iam.RolePolicyAttachmentArgs\n        {\n            Role = awsSfxRole.Name,\n            PolicyArn = awsReadPermissions.Arn,\n        });\n        var awsMyteam = new SignalFx.Aws.Integration(\"awsMyteam\", new SignalFx.Aws.IntegrationArgs\n        {\n            Enabled = true,\n            IntegrationId = awsMyteamExtern.Id,\n            ExternalId = awsMyteamExtern.ExternalId,\n            RoleArn = awsSfxRole.Arn,\n            Regions = \n            {\n                \"us-east-1\",\n            },\n            PollRate = 300,\n            ImportCloudWatch = true,\n            EnableAwsUsage = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws\"\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsMyteamExtern, err := aws.NewExternalIntegration(ctx, \"awsMyteamExtern\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsignalfxAssumePolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{\n\t\t\tStatements: iam.GetPolicyDocumentStatementArray{\n\t\t\t\t\u0026iam.GetPolicyDocumentStatementArgs{\n\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"sts:AssumeRole\"),\n\t\t\t\t\t},\n\t\t\t\t\tPrincipals: iam.GetPolicyDocumentStatementPrincipalArray{\n\t\t\t\t\t\t\u0026iam.GetPolicyDocumentStatementPrincipalArgs{\n\t\t\t\t\t\t\tType: pulumi.String(\"AWS\"),\n\t\t\t\t\t\t\tIdentifiers: pulumi.StringArray{\n\t\t\t\t\t\t\t\tawsMyteamExtern.SignalfxAwsAccount,\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tConditions: iam.GetPolicyDocumentStatementConditionArray{\n\t\t\t\t\t\t\u0026iam.GetPolicyDocumentStatementConditionArgs{\n\t\t\t\t\t\t\tTest:     pulumi.String(\"StringEquals\"),\n\t\t\t\t\t\t\tVariable: pulumi.String(\"sts:ExternalId\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tawsMyteamExtern.ExternalId,\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tawsSfxRole, err := iam.NewRole(ctx, \"awsSfxRole\", \u0026iam.RoleArgs{\n\t\t\tDescription: pulumi.String(\"signalfx integration to read out data and send it to signalfxs aws account\"),\n\t\t\tAssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {\n\t\t\t\treturn signalfxAssumePolicy.Json, nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tawsReadPermissions, err := iam.NewPolicy(ctx, \"awsReadPermissions\", \u0026iam.PolicyArgs{\n\t\t\tDescription: pulumi.String(\"farts\"),\n\t\t\tPolicy: pulumi.Any(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v\", \"{\\n\", \"\t\\\"Version\\\": \\\"2012-10-17\\\",\\n\", \"\t\\\"Statement\\\": [\\n\", \"\t\t{\\n\", \"\t\t\t\\\"Action\\\": [\\n\", \"\t\t\t\t\\\"dynamodb:ListTables\\\",\\n\", \"\t\t    \\\"dynamodb:DescribeTable\\\",\\n\", \"\t\t    \\\"dynamodb:ListTagsOfResource\\\",\\n\", \"\t\t    \\\"ec2:DescribeInstances\\\",\\n\", \"\t\t    \\\"ec2:DescribeInstanceStatus\\\",\\n\", \"\t\t    \\\"ec2:DescribeVolumes\\\",\\n\", \"\t\t    \\\"ec2:DescribeReservedInstances\\\",\\n\", \"\t\t    \\\"ec2:DescribeReservedInstancesModifications\\\",\\n\", \"\t\t    \\\"ec2:DescribeTags\\\",\\n\", \"\t\t    \\\"organizations:DescribeOrganization\\\",\\n\", \"\t\t    \\\"cloudwatch:ListMetrics\\\",\\n\", \"\t\t    \\\"cloudwatch:GetMetricData\\\",\\n\", \"\t\t    \\\"cloudwatch:GetMetricStatistics\\\",\\n\", \"\t\t    \\\"cloudwatch:DescribeAlarms\\\",\\n\", \"\t\t    \\\"sqs:ListQueues\\\",\\n\", \"\t\t    \\\"sqs:GetQueueAttributes\\\",\\n\", \"\t\t    \\\"sqs:ListQueueTags\\\",\\n\", \"\t\t    \\\"elasticmapreduce:ListClusters\\\",\\n\", \"\t\t    \\\"elasticmapreduce:DescribeCluster\\\",\\n\", \"\t\t    \\\"kinesis:ListShards\\\",\\n\", \"\t\t    \\\"kinesis:ListStreams\\\",\\n\", \"\t\t    \\\"kinesis:DescribeStream\\\",\\n\", \"\t\t    \\\"kinesis:ListTagsForStream\\\",\\n\", \"\t\t    \\\"rds:DescribeDBInstances\\\",\\n\", \"\t\t    \\\"rds:ListTagsForResource\\\",\\n\", \"\t\t    \\\"elasticloadbalancing:DescribeLoadBalancers\\\",\\n\", \"\t\t    \\\"elasticloadbalancing:DescribeTags\\\",\\n\", \"\t\t    \\\"elasticache:describeCacheClusters\\\",\\n\", \"\t\t    \\\"redshift:DescribeClusters\\\",\\n\", \"\t\t    \\\"lambda:GetAlias\\\",\\n\", \"\t\t    \\\"lambda:ListFunctions\\\",\\n\", \"\t\t    \\\"lambda:ListTags\\\",\\n\", \"\t\t    \\\"autoscaling:DescribeAutoScalingGroups\\\",\\n\", \"\t\t    \\\"s3:ListAllMyBuckets\\\",\\n\", \"\t\t    \\\"s3:ListBucket\\\",\\n\", \"\t\t    \\\"s3:GetBucketLocation\\\",\\n\", \"\t\t    \\\"s3:GetBucketTagging\\\",\\n\", \"\t\t    \\\"ecs:ListServices\\\",\\n\", \"\t\t    \\\"ecs:ListTasks\\\",\\n\", \"\t\t    \\\"ecs:DescribeTasks\\\",\\n\", \"\t\t    \\\"ecs:DescribeServices\\\",\\n\", \"\t\t    \\\"ecs:ListClusters\\\",\\n\", \"\t\t    \\\"ecs:DescribeClusters\\\",\\n\", \"\t\t    \\\"ecs:ListTaskDefinitions\\\",\\n\", \"\t\t    \\\"ecs:ListTagsForResource\\\",\\n\", \"\t\t    \\\"apigateway:GET\\\",\\n\", \"\t\t    \\\"cloudfront:ListDistributions\\\",\\n\", \"\t\t    \\\"cloudfront:ListTagsForResource\\\",\\n\", \"\t\t    \\\"tag:GetResources\\\",\\n\", \"\t\t    \\\"es:ListDomainNames\\\",\\n\", \"\t\t    \\\"es:DescribeElasticsearchDomain\\\"\\n\", \"\t\t\t],\\n\", \"\t\t\t\\\"Effect\\\": \\\"Allow\\\",\\n\", \"\t\t\t\\\"Resource\\\": \\\"*\\\"\\n\", \"\t\t}\\n\", \"\t]\\n\", \"}\\n\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewRolePolicyAttachment(ctx, \"sfx-read-attach\", \u0026iam.RolePolicyAttachmentArgs{\n\t\t\tRole:      awsSfxRole.Name,\n\t\t\tPolicyArn: awsReadPermissions.Arn,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewIntegration(ctx, \"awsMyteam\", \u0026aws.IntegrationArgs{\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tIntegrationId: awsMyteamExtern.ID(),\n\t\t\tExternalId:    awsMyteamExtern.ExternalId,\n\t\t\tRoleArn:       awsSfxRole.Arn,\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t\tPollRate:         pulumi.Int(300),\n\t\t\tImportCloudWatch: pulumi.Bool(true),\n\t\t\tEnableAwsUsage:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "SignalFx AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with SignalFx support for your realm's AWS account id.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst awsMyteamExtern = new signalfx.aws.ExternalIntegration(\"awsMyteamExtern\", {});\nconst signalfxAssumePolicy = aws.iam.getPolicyDocumentOutput({\n    statements: [{\n        actions: [\"sts:AssumeRole\"],\n        principals: [{\n            type: \"AWS\",\n            identifiers: [awsMyteamExtern.signalfxAwsAccount],\n        }],\n        conditions: [{\n            test: \"StringEquals\",\n            variable: \"sts:ExternalId\",\n            values: [awsMyteamExtern.externalId],\n        }],\n    }],\n});\nconst awsSplunkRole = new aws.iam.Role(\"awsSplunkRole\", {\n    description: \"signalfx integration to read out data and send it to signalfxs aws account\",\n    assumeRolePolicy: signalfxAssumePolicy.apply(signalfxAssumePolicy =\u003e signalfxAssumePolicy.json),\n});\nconst awsSplunkPolicy = new aws.iam.Policy(\"awsSplunkPolicy\", {\n    description: \"AWS permissions required by the Splunk Observability Cloud\",\n    policy: `{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"apigateway:GET\",\n        \"autoscaling:DescribeAutoScalingGroups\",\n        \"cloudfront:GetDistributionConfig\",\n        \"cloudfront:ListDistributions\",\n        \"cloudfront:ListTagsForResource\",\n        \"cloudwatch:DescribeAlarms\",\n        \"cloudwatch:GetMetricData\",\n        \"cloudwatch:GetMetricStatistics\",\n        \"cloudwatch:ListMetrics\",\n        \"directconnect:DescribeConnections\",\n        \"dynamodb:DescribeTable\",\n        \"dynamodb:ListTables\",\n        \"dynamodb:ListTagsOfResource\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeInstanceStatus\",\n        \"ec2:DescribeRegions\",\n        \"ec2:DescribeReservedInstances\",\n        \"ec2:DescribeReservedInstancesModifications\",\n        \"ec2:DescribeTags\",\n        \"ec2:DescribeVolumes\",\n        \"ecs:DescribeClusters\",\n        \"ecs:DescribeServices\",\n        \"ecs:DescribeTasks\",\n        \"ecs:ListClusters\",\n        \"ecs:ListServices\",\n        \"ecs:ListTagsForResource\",\n        \"ecs:ListTaskDefinitions\",\n        \"ecs:ListTasks\",\n        \"elasticache:DescribeCacheClusters\",\n        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n        \"elasticloadbalancing:DescribeLoadBalancers\",\n        \"elasticloadbalancing:DescribeTags\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticmapreduce:DescribeCluster\",\n        \"elasticmapreduce:ListClusters\",\n        \"es:DescribeElasticsearchDomain\",\n        \"es:ListDomainNames\",\n        \"kinesis:DescribeStream\",\n        \"kinesis:ListShards\",\n        \"kinesis:ListStreams\",\n        \"kinesis:ListTagsForStream\",\n        \"lambda:GetAlias\",\n        \"lambda:ListFunctions\",\n        \"lambda:ListTags\",\n        \"logs:DeleteSubscriptionFilter\",\n        \"logs:DescribeLogGroups\",\n        \"logs:DescribeSubscriptionFilters\",\n        \"logs:PutSubscriptionFilter\",\n        \"organizations:DescribeOrganization\",\n        \"rds:DescribeDBClusters\",\n        \"rds:DescribeDBInstances\",\n        \"rds:ListTagsForResource\",\n        \"redshift:DescribeClusters\",\n        \"redshift:DescribeLoggingStatus\",\n        \"s3:GetBucketLocation\",\n        \"s3:GetBucketLogging\",\n        \"s3:GetBucketNotification\",\n        \"s3:GetBucketTagging\",\n        \"s3:ListAllMyBuckets\",\n        \"s3:ListBucket\",\n        \"s3:PutBucketNotification\",\n        \"sqs:GetQueueAttributes\",\n        \"sqs:ListQueues\",\n        \"sqs:ListQueueTags\",\n        \"states:ListStateMachines\",\n        \"tag:GetResources\",\n        \"workspaces:DescribeWorkspaces\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}\n`,\n});\nconst splunkRolePolicyAttach = new aws.iam.RolePolicyAttachment(\"splunkRolePolicyAttach\", {\n    role: awsSplunkRole.name,\n    policyArn: awsSplunkPolicy.arn,\n});\nconst awsMyteam = new signalfx.aws.Integration(\"awsMyteam\", {\n    enabled: true,\n    integrationId: awsMyteamExtern.id,\n    externalId: awsMyteamExtern.externalId,\n    roleArn: awsSplunkRole.arn,\n    regions: [\"us-east-1\"],\n    pollRate: 300,\n    importCloudWatch: true,\n    enableAwsUsage: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_signalfx as signalfx\n\naws_myteam_extern = signalfx.aws.ExternalIntegration(\"awsMyteamExtern\")\nsignalfx_assume_policy = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(\n    actions=[\"sts:AssumeRole\"],\n    principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(\n        type=\"AWS\",\n        identifiers=[aws_myteam_extern.signalfx_aws_account],\n    )],\n    conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(\n        test=\"StringEquals\",\n        variable=\"sts:ExternalId\",\n        values=[aws_myteam_extern.external_id],\n    )],\n)])\naws_splunk_role = aws.iam.Role(\"awsSplunkRole\",\n    description=\"signalfx integration to read out data and send it to signalfxs aws account\",\n    assume_role_policy=signalfx_assume_policy.json)\naws_splunk_policy = aws.iam.Policy(\"awsSplunkPolicy\",\n    description=\"AWS permissions required by the Splunk Observability Cloud\",\n    policy=\"\"\"{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"apigateway:GET\",\n        \"autoscaling:DescribeAutoScalingGroups\",\n        \"cloudfront:GetDistributionConfig\",\n        \"cloudfront:ListDistributions\",\n        \"cloudfront:ListTagsForResource\",\n        \"cloudwatch:DescribeAlarms\",\n        \"cloudwatch:GetMetricData\",\n        \"cloudwatch:GetMetricStatistics\",\n        \"cloudwatch:ListMetrics\",\n        \"directconnect:DescribeConnections\",\n        \"dynamodb:DescribeTable\",\n        \"dynamodb:ListTables\",\n        \"dynamodb:ListTagsOfResource\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeInstanceStatus\",\n        \"ec2:DescribeRegions\",\n        \"ec2:DescribeReservedInstances\",\n        \"ec2:DescribeReservedInstancesModifications\",\n        \"ec2:DescribeTags\",\n        \"ec2:DescribeVolumes\",\n        \"ecs:DescribeClusters\",\n        \"ecs:DescribeServices\",\n        \"ecs:DescribeTasks\",\n        \"ecs:ListClusters\",\n        \"ecs:ListServices\",\n        \"ecs:ListTagsForResource\",\n        \"ecs:ListTaskDefinitions\",\n        \"ecs:ListTasks\",\n        \"elasticache:DescribeCacheClusters\",\n        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n        \"elasticloadbalancing:DescribeLoadBalancers\",\n        \"elasticloadbalancing:DescribeTags\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticmapreduce:DescribeCluster\",\n        \"elasticmapreduce:ListClusters\",\n        \"es:DescribeElasticsearchDomain\",\n        \"es:ListDomainNames\",\n        \"kinesis:DescribeStream\",\n        \"kinesis:ListShards\",\n        \"kinesis:ListStreams\",\n        \"kinesis:ListTagsForStream\",\n        \"lambda:GetAlias\",\n        \"lambda:ListFunctions\",\n        \"lambda:ListTags\",\n        \"logs:DeleteSubscriptionFilter\",\n        \"logs:DescribeLogGroups\",\n        \"logs:DescribeSubscriptionFilters\",\n        \"logs:PutSubscriptionFilter\",\n        \"organizations:DescribeOrganization\",\n        \"rds:DescribeDBClusters\",\n        \"rds:DescribeDBInstances\",\n        \"rds:ListTagsForResource\",\n        \"redshift:DescribeClusters\",\n        \"redshift:DescribeLoggingStatus\",\n        \"s3:GetBucketLocation\",\n        \"s3:GetBucketLogging\",\n        \"s3:GetBucketNotification\",\n        \"s3:GetBucketTagging\",\n        \"s3:ListAllMyBuckets\",\n        \"s3:ListBucket\",\n        \"s3:PutBucketNotification\",\n        \"sqs:GetQueueAttributes\",\n        \"sqs:ListQueues\",\n        \"sqs:ListQueueTags\",\n        \"states:ListStateMachines\",\n        \"tag:GetResources\",\n        \"workspaces:DescribeWorkspaces\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}\n\"\"\")\nsplunk_role_policy_attach = aws.iam.RolePolicyAttachment(\"splunkRolePolicyAttach\",\n    role=aws_splunk_role.name,\n    policy_arn=aws_splunk_policy.arn)\naws_myteam = signalfx.aws.Integration(\"awsMyteam\",\n    enabled=True,\n    integration_id=aws_myteam_extern.id,\n    external_id=aws_myteam_extern.external_id,\n    role_arn=aws_splunk_role.arn,\n    regions=[\"us-east-1\"],\n    poll_rate=300,\n    import_cloud_watch=True,\n    enable_aws_usage=True)\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration(\"awsMyteamExtern\", new SignalFx.Aws.ExternalIntegrationArgs\n        {\n        });\n        var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.Invoke(new Aws.Iam.GetPolicyDocumentInvokeArgs\n        {\n            Statements = \n            {\n                new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs\n                {\n                    Actions = \n                    {\n                        \"sts:AssumeRole\",\n                    },\n                    Principals = \n                    {\n                        new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs\n                        {\n                            Type = \"AWS\",\n                            Identifiers = \n                            {\n                                awsMyteamExtern.SignalfxAwsAccount,\n                            },\n                        },\n                    },\n                    Conditions = \n                    {\n                        new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs\n                        {\n                            Test = \"StringEquals\",\n                            Variable = \"sts:ExternalId\",\n                            Values = \n                            {\n                                awsMyteamExtern.ExternalId,\n                            },\n                        },\n                    },\n                },\n            },\n        });\n        var awsSplunkRole = new Aws.Iam.Role(\"awsSplunkRole\", new Aws.Iam.RoleArgs\n        {\n            Description = \"signalfx integration to read out data and send it to signalfxs aws account\",\n            AssumeRolePolicy = signalfxAssumePolicy.Apply(signalfxAssumePolicy =\u003e signalfxAssumePolicy.Json),\n        });\n        var awsSplunkPolicy = new Aws.Iam.Policy(\"awsSplunkPolicy\", new Aws.Iam.PolicyArgs\n        {\n            Description = \"AWS permissions required by the Splunk Observability Cloud\",\n            Policy = @\"{\n  \"\"Version\"\": \"\"2012-10-17\"\",\n  \"\"Statement\"\": [\n    {\n      \"\"Effect\"\": \"\"Allow\"\",\n      \"\"Action\"\": [\n        \"\"apigateway:GET\"\",\n        \"\"autoscaling:DescribeAutoScalingGroups\"\",\n        \"\"cloudfront:GetDistributionConfig\"\",\n        \"\"cloudfront:ListDistributions\"\",\n        \"\"cloudfront:ListTagsForResource\"\",\n        \"\"cloudwatch:DescribeAlarms\"\",\n        \"\"cloudwatch:GetMetricData\"\",\n        \"\"cloudwatch:GetMetricStatistics\"\",\n        \"\"cloudwatch:ListMetrics\"\",\n        \"\"directconnect:DescribeConnections\"\",\n        \"\"dynamodb:DescribeTable\"\",\n        \"\"dynamodb:ListTables\"\",\n        \"\"dynamodb:ListTagsOfResource\"\",\n        \"\"ec2:DescribeInstances\"\",\n        \"\"ec2:DescribeInstanceStatus\"\",\n        \"\"ec2:DescribeRegions\"\",\n        \"\"ec2:DescribeReservedInstances\"\",\n        \"\"ec2:DescribeReservedInstancesModifications\"\",\n        \"\"ec2:DescribeTags\"\",\n        \"\"ec2:DescribeVolumes\"\",\n        \"\"ecs:DescribeClusters\"\",\n        \"\"ecs:DescribeServices\"\",\n        \"\"ecs:DescribeTasks\"\",\n        \"\"ecs:ListClusters\"\",\n        \"\"ecs:ListServices\"\",\n        \"\"ecs:ListTagsForResource\"\",\n        \"\"ecs:ListTaskDefinitions\"\",\n        \"\"ecs:ListTasks\"\",\n        \"\"elasticache:DescribeCacheClusters\"\",\n        \"\"elasticloadbalancing:DescribeLoadBalancerAttributes\"\",\n        \"\"elasticloadbalancing:DescribeLoadBalancers\"\",\n        \"\"elasticloadbalancing:DescribeTags\"\",\n        \"\"elasticloadbalancing:DescribeTargetGroups\"\",\n        \"\"elasticmapreduce:DescribeCluster\"\",\n        \"\"elasticmapreduce:ListClusters\"\",\n        \"\"es:DescribeElasticsearchDomain\"\",\n        \"\"es:ListDomainNames\"\",\n        \"\"kinesis:DescribeStream\"\",\n        \"\"kinesis:ListShards\"\",\n        \"\"kinesis:ListStreams\"\",\n        \"\"kinesis:ListTagsForStream\"\",\n        \"\"lambda:GetAlias\"\",\n        \"\"lambda:ListFunctions\"\",\n        \"\"lambda:ListTags\"\",\n        \"\"logs:DeleteSubscriptionFilter\"\",\n        \"\"logs:DescribeLogGroups\"\",\n        \"\"logs:DescribeSubscriptionFilters\"\",\n        \"\"logs:PutSubscriptionFilter\"\",\n        \"\"organizations:DescribeOrganization\"\",\n        \"\"rds:DescribeDBClusters\"\",\n        \"\"rds:DescribeDBInstances\"\",\n        \"\"rds:ListTagsForResource\"\",\n        \"\"redshift:DescribeClusters\"\",\n        \"\"redshift:DescribeLoggingStatus\"\",\n        \"\"s3:GetBucketLocation\"\",\n        \"\"s3:GetBucketLogging\"\",\n        \"\"s3:GetBucketNotification\"\",\n        \"\"s3:GetBucketTagging\"\",\n        \"\"s3:ListAllMyBuckets\"\",\n        \"\"s3:ListBucket\"\",\n        \"\"s3:PutBucketNotification\"\",\n        \"\"sqs:GetQueueAttributes\"\",\n        \"\"sqs:ListQueues\"\",\n        \"\"sqs:ListQueueTags\"\",\n        \"\"states:ListStateMachines\"\",\n        \"\"tag:GetResources\"\",\n        \"\"workspaces:DescribeWorkspaces\"\"\n      ],\n      \"\"Resource\"\": \"\"*\"\"\n    }\n  ]\n}\n\",\n        });\n        var splunkRolePolicyAttach = new Aws.Iam.RolePolicyAttachment(\"splunkRolePolicyAttach\", new Aws.Iam.RolePolicyAttachmentArgs\n        {\n            Role = awsSplunkRole.Name,\n            PolicyArn = awsSplunkPolicy.Arn,\n        });\n        var awsMyteam = new SignalFx.Aws.Integration(\"awsMyteam\", new SignalFx.Aws.IntegrationArgs\n        {\n            Enabled = true,\n            IntegrationId = awsMyteamExtern.Id,\n            ExternalId = awsMyteamExtern.ExternalId,\n            RoleArn = awsSplunkRole.Arn,\n            Regions = \n            {\n                \"us-east-1\",\n            },\n            PollRate = 300,\n            ImportCloudWatch = true,\n            EnableAwsUsage = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws\"\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsMyteamExtern, err := aws.NewExternalIntegration(ctx, \"awsMyteamExtern\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tsignalfxAssumePolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{\n\t\t\tStatements: iam.GetPolicyDocumentStatementArray{\n\t\t\t\t\u0026iam.GetPolicyDocumentStatementArgs{\n\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"sts:AssumeRole\"),\n\t\t\t\t\t},\n\t\t\t\t\tPrincipals: iam.GetPolicyDocumentStatementPrincipalArray{\n\t\t\t\t\t\t\u0026iam.GetPolicyDocumentStatementPrincipalArgs{\n\t\t\t\t\t\t\tType: pulumi.String(\"AWS\"),\n\t\t\t\t\t\t\tIdentifiers: pulumi.StringArray{\n\t\t\t\t\t\t\t\tawsMyteamExtern.SignalfxAwsAccount,\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tConditions: iam.GetPolicyDocumentStatementConditionArray{\n\t\t\t\t\t\t\u0026iam.GetPolicyDocumentStatementConditionArgs{\n\t\t\t\t\t\t\tTest:     pulumi.String(\"StringEquals\"),\n\t\t\t\t\t\t\tVariable: pulumi.String(\"sts:ExternalId\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tawsMyteamExtern.ExternalId,\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tawsSplunkRole, err := iam.NewRole(ctx, \"awsSplunkRole\", \u0026iam.RoleArgs{\n\t\t\tDescription: pulumi.String(\"signalfx integration to read out data and send it to signalfxs aws account\"),\n\t\t\tAssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {\n\t\t\t\treturn signalfxAssumePolicy.Json, nil\n\t\t\t}).(pulumi.StringOutput),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tawsSplunkPolicy, err := iam.NewPolicy(ctx, \"awsSplunkPolicy\", \u0026iam.PolicyArgs{\n\t\t\tDescription: pulumi.String(\"AWS permissions required by the Splunk Observability Cloud\"),\n\t\t\tPolicy:      pulumi.Any(fmt.Sprintf(\"%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v\", \"{\\n\", \"  \\\"Version\\\": \\\"2012-10-17\\\",\\n\", \"  \\\"Statement\\\": [\\n\", \"    {\\n\", \"      \\\"Effect\\\": \\\"Allow\\\",\\n\", \"      \\\"Action\\\": [\\n\", \"        \\\"apigateway:GET\\\",\\n\", \"        \\\"autoscaling:DescribeAutoScalingGroups\\\",\\n\", \"        \\\"cloudfront:GetDistributionConfig\\\",\\n\", \"        \\\"cloudfront:ListDistributions\\\",\\n\", \"        \\\"cloudfront:ListTagsForResource\\\",\\n\", \"        \\\"cloudwatch:DescribeAlarms\\\",\\n\", \"        \\\"cloudwatch:GetMetricData\\\",\\n\", \"        \\\"cloudwatch:GetMetricStatistics\\\",\\n\", \"        \\\"cloudwatch:ListMetrics\\\",\\n\", \"        \\\"directconnect:DescribeConnections\\\",\\n\", \"        \\\"dynamodb:DescribeTable\\\",\\n\", \"        \\\"dynamodb:ListTables\\\",\\n\", \"        \\\"dynamodb:ListTagsOfResource\\\",\\n\", \"        \\\"ec2:DescribeInstances\\\",\\n\", \"        \\\"ec2:DescribeInstanceStatus\\\",\\n\", \"        \\\"ec2:DescribeRegions\\\",\\n\", \"        \\\"ec2:DescribeReservedInstances\\\",\\n\", \"        \\\"ec2:DescribeReservedInstancesModifications\\\",\\n\", \"        \\\"ec2:DescribeTags\\\",\\n\", \"        \\\"ec2:DescribeVolumes\\\",\\n\", \"        \\\"ecs:DescribeClusters\\\",\\n\", \"        \\\"ecs:DescribeServices\\\",\\n\", \"        \\\"ecs:DescribeTasks\\\",\\n\", \"        \\\"ecs:ListClusters\\\",\\n\", \"        \\\"ecs:ListServices\\\",\\n\", \"        \\\"ecs:ListTagsForResource\\\",\\n\", \"        \\\"ecs:ListTaskDefinitions\\\",\\n\", \"        \\\"ecs:ListTasks\\\",\\n\", \"        \\\"elasticache:DescribeCacheClusters\\\",\\n\", \"        \\\"elasticloadbalancing:DescribeLoadBalancerAttributes\\\",\\n\", \"        \\\"elasticloadbalancing:DescribeLoadBalancers\\\",\\n\", \"        \\\"elasticloadbalancing:DescribeTags\\\",\\n\", \"        \\\"elasticloadbalancing:DescribeTargetGroups\\\",\\n\", \"        \\\"elasticmapreduce:DescribeCluster\\\",\\n\", \"        \\\"elasticmapreduce:ListClusters\\\",\\n\", \"        \\\"es:DescribeElasticsearchDomain\\\",\\n\", \"        \\\"es:ListDomainNames\\\",\\n\", \"        \\\"kinesis:DescribeStream\\\",\\n\", \"        \\\"kinesis:ListShards\\\",\\n\", \"        \\\"kinesis:ListStreams\\\",\\n\", \"        \\\"kinesis:ListTagsForStream\\\",\\n\", \"        \\\"lambda:GetAlias\\\",\\n\", \"        \\\"lambda:ListFunctions\\\",\\n\", \"        \\\"lambda:ListTags\\\",\\n\", \"        \\\"logs:DeleteSubscriptionFilter\\\",\\n\", \"        \\\"logs:DescribeLogGroups\\\",\\n\", \"        \\\"logs:DescribeSubscriptionFilters\\\",\\n\", \"        \\\"logs:PutSubscriptionFilter\\\",\\n\", \"        \\\"organizations:DescribeOrganization\\\",\\n\", \"        \\\"rds:DescribeDBClusters\\\",\\n\", \"        \\\"rds:DescribeDBInstances\\\",\\n\", \"        \\\"rds:ListTagsForResource\\\",\\n\", \"        \\\"redshift:DescribeClusters\\\",\\n\", \"        \\\"redshift:DescribeLoggingStatus\\\",\\n\", \"        \\\"s3:GetBucketLocation\\\",\\n\", \"        \\\"s3:GetBucketLogging\\\",\\n\", \"        \\\"s3:GetBucketNotification\\\",\\n\", \"        \\\"s3:GetBucketTagging\\\",\\n\", \"        \\\"s3:ListAllMyBuckets\\\",\\n\", \"        \\\"s3:ListBucket\\\",\\n\", \"        \\\"s3:PutBucketNotification\\\",\\n\", \"        \\\"sqs:GetQueueAttributes\\\",\\n\", \"        \\\"sqs:ListQueues\\\",\\n\", \"        \\\"sqs:ListQueueTags\\\",\\n\", \"        \\\"states:ListStateMachines\\\",\\n\", \"        \\\"tag:GetResources\\\",\\n\", \"        \\\"workspaces:DescribeWorkspaces\\\"\\n\", \"      ],\\n\", \"      \\\"Resource\\\": \\\"*\\\"\\n\", \"    }\\n\", \"  ]\\n\", \"}\\n\")),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewRolePolicyAttachment(ctx, \"splunkRolePolicyAttach\", \u0026iam.RolePolicyAttachmentArgs{\n\t\t\tRole:      awsSplunkRole.Name,\n\t\t\tPolicyArn: awsSplunkPolicy.Arn,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewIntegration(ctx, \"awsMyteam\", \u0026aws.IntegrationArgs{\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tIntegrationId: awsMyteamExtern.ID(),\n\t\t\tExternalId:    awsMyteamExtern.ExternalId,\n\t\t\tRoleArn:       awsSplunkRole.Arn,\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t\tPollRate:         pulumi.Int(300),\n\t\t\tImportCloudWatch: pulumi.Bool(true),\n\t\t\tEnableAwsUsage:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "externalId": {
                     "type": "string",
@@ -2160,7 +2334,7 @@
             }
         },
         "signalfx:aws/integration:Integration": {
-            "description": "SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\n// This resource returns an account id in `external_id`…\nconst awsMyteamExternal = new signalfx.aws.ExternalIntegration(\"awsMyteamExternal\", {});\n// Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`\nconst awsSfxRole = new aws.iam.Role(\"awsSfxRole\", {});\n// Stuff here that uses the external and account ID\nconst awsMyteam = new signalfx.aws.Integration(\"awsMyteam\", {\n    enabled: true,\n    integrationId: awsMyteamExternal.id,\n    externalId: awsMyteamExternal.externalId,\n    roleArn: awsSfxRole.arn,\n    regions: [\"us-east-1\"],\n    pollRate: 300,\n    importCloudWatch: true,\n    enableAwsUsage: true,\n    customNamespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"fart\",\n    }],\n    namespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"AWS/EC2\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_signalfx as signalfx\n\n# This resource returns an account id in `external_id`…\naws_myteam_external = signalfx.aws.ExternalIntegration(\"awsMyteamExternal\")\n# Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`\naws_sfx_role = aws.iam.Role(\"awsSfxRole\")\n# Stuff here that uses the external and account ID\naws_myteam = signalfx.aws.Integration(\"awsMyteam\",\n    enabled=True,\n    integration_id=aws_myteam_external.id,\n    external_id=aws_myteam_external.external_id,\n    role_arn=aws_sfx_role.arn,\n    regions=[\"us-east-1\"],\n    poll_rate=300,\n    import_cloud_watch=True,\n    enable_aws_usage=True,\n    custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"fart\",\n    )],\n    namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"AWS/EC2\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // This resource returns an account id in `external_id`…\n        var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration(\"awsMyteamExternal\", new SignalFx.Aws.ExternalIntegrationArgs\n        {\n        });\n        // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`\n        var awsSfxRole = new Aws.Iam.Role(\"awsSfxRole\", new Aws.Iam.RoleArgs\n        {\n        });\n        // Stuff here that uses the external and account ID\n        var awsMyteam = new SignalFx.Aws.Integration(\"awsMyteam\", new SignalFx.Aws.IntegrationArgs\n        {\n            Enabled = true,\n            IntegrationId = awsMyteamExternal.Id,\n            ExternalId = awsMyteamExternal.ExternalId,\n            RoleArn = awsSfxRole.Arn,\n            Regions = \n            {\n                \"us-east-1\",\n            },\n            PollRate = 300,\n            ImportCloudWatch = true,\n            EnableAwsUsage = true,\n            CustomNamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"fart\",\n                },\n            },\n            NamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"AWS/EC2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsMyteamExternal, err := aws.NewExternalIntegration(ctx, \"awsMyteamExternal\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tawsSfxRole, err := iam.NewRole(ctx, \"awsSfxRole\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewIntegration(ctx, \"awsMyteam\", \u0026aws.IntegrationArgs{\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tIntegrationId: awsMyteamExternal.ID(),\n\t\t\tExternalId:    awsMyteamExternal.ExternalId,\n\t\t\tRoleArn:       awsSfxRole.Arn,\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t\tPollRate:         pulumi.Int(300),\n\t\t\tImportCloudWatch: pulumi.Bool(true),\n\t\t\tEnableAwsUsage:   pulumi.Bool(true),\n\t\t\tCustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationCustomNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"fart\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"AWS/EC2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Service Names\n\n\u003e **NOTE** You can use the data source \"signalfx.aws.getServices\" to specify all services.\n",
+            "description": "SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\n// This resource returns an account id in `external_id`…\nconst awsMyteamExternal = new signalfx.aws.ExternalIntegration(\"awsMyteamExternal\", {});\n// Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`\nconst awsSfxRole = new aws.iam.Role(\"awsSfxRole\", {});\n// Stuff here that uses the external and account ID\nconst awsMyteam = new signalfx.aws.Integration(\"awsMyteam\", {\n    enabled: true,\n    integrationId: awsMyteamExternal.id,\n    externalId: awsMyteamExternal.externalId,\n    roleArn: awsSfxRole.arn,\n    regions: [\"us-east-1\"],\n    pollRate: 300,\n    importCloudWatch: true,\n    enableAwsUsage: true,\n    customNamespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"my-custom-namespace\",\n    }],\n    namespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"AWS/EC2\",\n    }],\n    metricStatsToSyncs: [{\n        namespace: \"AWS/EC2\",\n        metric: \"NetworkPacketsIn\",\n        stats: [\"upper\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_signalfx as signalfx\n\n# This resource returns an account id in `external_id`…\naws_myteam_external = signalfx.aws.ExternalIntegration(\"awsMyteamExternal\")\n# Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`\naws_sfx_role = aws.iam.Role(\"awsSfxRole\")\n# Stuff here that uses the external and account ID\naws_myteam = signalfx.aws.Integration(\"awsMyteam\",\n    enabled=True,\n    integration_id=aws_myteam_external.id,\n    external_id=aws_myteam_external.external_id,\n    role_arn=aws_sfx_role.arn,\n    regions=[\"us-east-1\"],\n    poll_rate=300,\n    import_cloud_watch=True,\n    enable_aws_usage=True,\n    custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"my-custom-namespace\",\n    )],\n    namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"AWS/EC2\",\n    )],\n    metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(\n        namespace=\"AWS/EC2\",\n        metric=\"NetworkPacketsIn\",\n        stats=[\"upper\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // This resource returns an account id in `external_id`…\n        var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration(\"awsMyteamExternal\", new SignalFx.Aws.ExternalIntegrationArgs\n        {\n        });\n        // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`\n        var awsSfxRole = new Aws.Iam.Role(\"awsSfxRole\", new Aws.Iam.RoleArgs\n        {\n        });\n        // Stuff here that uses the external and account ID\n        var awsMyteam = new SignalFx.Aws.Integration(\"awsMyteam\", new SignalFx.Aws.IntegrationArgs\n        {\n            Enabled = true,\n            IntegrationId = awsMyteamExternal.Id,\n            ExternalId = awsMyteamExternal.ExternalId,\n            RoleArn = awsSfxRole.Arn,\n            Regions = \n            {\n                \"us-east-1\",\n            },\n            PollRate = 300,\n            ImportCloudWatch = true,\n            EnableAwsUsage = true,\n            CustomNamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"my-custom-namespace\",\n                },\n            },\n            NamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"AWS/EC2\",\n                },\n            },\n            MetricStatsToSyncs = \n            {\n                new SignalFx.Aws.Inputs.IntegrationMetricStatsToSyncArgs\n                {\n                    Namespace = \"AWS/EC2\",\n                    Metric = \"NetworkPacketsIn\",\n                    Stats = \n                    {\n                        \"upper\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsMyteamExternal, err := aws.NewExternalIntegration(ctx, \"awsMyteamExternal\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tawsSfxRole, err := iam.NewRole(ctx, \"awsSfxRole\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewIntegration(ctx, \"awsMyteam\", \u0026aws.IntegrationArgs{\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tIntegrationId: awsMyteamExternal.ID(),\n\t\t\tExternalId:    awsMyteamExternal.ExternalId,\n\t\t\tRoleArn:       awsSfxRole.Arn,\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t\tPollRate:         pulumi.Int(300),\n\t\t\tImportCloudWatch: pulumi.Bool(true),\n\t\t\tEnableAwsUsage:   pulumi.Bool(true),\n\t\t\tCustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationCustomNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"my-custom-namespace\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"AWS/EC2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMetricStatsToSyncs: aws.IntegrationMetricStatsToSyncArray{\n\t\t\t\t\u0026aws.IntegrationMetricStatsToSyncArgs{\n\t\t\t\t\tNamespace: pulumi.String(\"AWS/EC2\"),\n\t\t\t\t\tMetric:    pulumi.String(\"NetworkPacketsIn\"),\n\t\t\t\t\tStats: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"upper\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Service Names\n\n\u003e **NOTE** You can use the data source \"signalfx.aws.getServices\" to specify all services.\n",
             "properties": {
                 "customCloudwatchNamespaces": {
                     "type": "array",
@@ -2208,6 +2382,13 @@
                     "type": "string",
                     "description": "If you specify `auth_method = \\\"SecurityToken\\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).\n"
                 },
+                "metricStatsToSyncs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync"
+                    },
+                    "description": "Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.\n"
+                },
                 "namedToken": {
                     "type": "string",
                     "description": "A named token to use for ingest\n"
@@ -2221,7 +2402,7 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "AWS poll rate (in seconds). Value between `60` and `300`.\n"
+                    "description": "AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
                 },
                 "regions": {
                     "type": "array",
@@ -2307,6 +2488,13 @@
                     "type": "string",
                     "description": "If you specify `auth_method = \\\"SecurityToken\\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).\n"
                 },
+                "metricStatsToSyncs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync"
+                    },
+                    "description": "Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.\n"
+                },
                 "namedToken": {
                     "type": "string",
                     "description": "A named token to use for ingest\n"
@@ -2320,7 +2508,7 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "AWS poll rate (in seconds). Value between `60` and `300`.\n"
+                    "description": "AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
                 },
                 "regions": {
                     "type": "array",
@@ -2406,6 +2594,13 @@
                         "type": "string",
                         "description": "If you specify `auth_method = \\\"SecurityToken\\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).\n"
                     },
+                    "metricStatsToSyncs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync"
+                        },
+                        "description": "Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.\n"
+                    },
                     "namedToken": {
                         "type": "string",
                         "description": "A named token to use for ingest\n"
@@ -2419,7 +2614,7 @@
                     },
                     "pollRate": {
                         "type": "integer",
-                        "description": "AWS poll rate (in seconds). Value between `60` and `300`.\n"
+                        "description": "AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
                     },
                     "regions": {
                         "type": "array",
@@ -2456,7 +2651,7 @@
             }
         },
         "signalfx:aws/tokenIntegration:TokenIntegration": {
-            "description": "SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst awsMyteamToken = new signalfx.aws.TokenIntegration(\"awsMyteamToken\", {});\n// Make yourself an AWS IAM role here\nconst awsSfxRole = new aws.iam.Role(\"awsSfxRole\", {});\n// Stuff here that uses the external and account ID\nconst awsMyteam = new signalfx.aws.Integration(\"awsMyteam\", {\n    enabled: true,\n    integrationId: awsMyteamToken.id,\n    token: \"put_your_token_here\",\n    key: \"put_your_key_here\",\n    regions: [\"us-east-1\"],\n    pollRate: 300,\n    importCloudWatch: true,\n    enableAwsUsage: true,\n    customNamespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"fart\",\n    }],\n    namespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"AWS/EC2\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_signalfx as signalfx\n\naws_myteam_token = signalfx.aws.TokenIntegration(\"awsMyteamToken\")\n# Make yourself an AWS IAM role here\naws_sfx_role = aws.iam.Role(\"awsSfxRole\")\n# Stuff here that uses the external and account ID\naws_myteam = signalfx.aws.Integration(\"awsMyteam\",\n    enabled=True,\n    integration_id=aws_myteam_token.id,\n    token=\"put_your_token_here\",\n    key=\"put_your_key_here\",\n    regions=[\"us-east-1\"],\n    poll_rate=300,\n    import_cloud_watch=True,\n    enable_aws_usage=True,\n    custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"fart\",\n    )],\n    namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"AWS/EC2\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var awsMyteamToken = new SignalFx.Aws.TokenIntegration(\"awsMyteamToken\", new SignalFx.Aws.TokenIntegrationArgs\n        {\n        });\n        // Make yourself an AWS IAM role here\n        var awsSfxRole = new Aws.Iam.Role(\"awsSfxRole\", new Aws.Iam.RoleArgs\n        {\n        });\n        // Stuff here that uses the external and account ID\n        var awsMyteam = new SignalFx.Aws.Integration(\"awsMyteam\", new SignalFx.Aws.IntegrationArgs\n        {\n            Enabled = true,\n            IntegrationId = awsMyteamToken.Id,\n            Token = \"put_your_token_here\",\n            Key = \"put_your_key_here\",\n            Regions = \n            {\n                \"us-east-1\",\n            },\n            PollRate = 300,\n            ImportCloudWatch = true,\n            EnableAwsUsage = true,\n            CustomNamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"fart\",\n                },\n            },\n            NamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"AWS/EC2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsMyteamToken, err := aws.NewTokenIntegration(ctx, \"awsMyteamToken\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewRole(ctx, \"awsSfxRole\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewIntegration(ctx, \"awsMyteam\", \u0026aws.IntegrationArgs{\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tIntegrationId: awsMyteamToken.ID(),\n\t\t\tToken:         pulumi.String(\"put_your_token_here\"),\n\t\t\tKey:           pulumi.String(\"put_your_key_here\"),\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t\tPollRate:         pulumi.Int(300),\n\t\t\tImportCloudWatch: pulumi.Bool(true),\n\t\t\tEnableAwsUsage:   pulumi.Bool(true),\n\t\t\tCustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationCustomNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"fart\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"AWS/EC2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).\n\n\u003e **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst awsMyteamToken = new signalfx.aws.TokenIntegration(\"awsMyteamToken\", {});\n// Make yourself an AWS IAM role here\nconst awsSfxRole = new aws.iam.Role(\"awsSfxRole\", {});\n// Stuff here that uses the external and account ID\nconst awsMyteam = new signalfx.aws.Integration(\"awsMyteam\", {\n    enabled: true,\n    integrationId: awsMyteamToken.id,\n    token: \"put_your_token_here\",\n    key: \"put_your_key_here\",\n    regions: [\"us-east-1\"],\n    pollRate: 300,\n    importCloudWatch: true,\n    enableAwsUsage: true,\n    customNamespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"my-custom-namespace\",\n    }],\n    namespaceSyncRules: [{\n        defaultAction: \"Exclude\",\n        filterAction: \"Include\",\n        filterSource: \"filter('code', '200')\",\n        namespace: \"AWS/EC2\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_signalfx as signalfx\n\naws_myteam_token = signalfx.aws.TokenIntegration(\"awsMyteamToken\")\n# Make yourself an AWS IAM role here\naws_sfx_role = aws.iam.Role(\"awsSfxRole\")\n# Stuff here that uses the external and account ID\naws_myteam = signalfx.aws.Integration(\"awsMyteam\",\n    enabled=True,\n    integration_id=aws_myteam_token.id,\n    token=\"put_your_token_here\",\n    key=\"put_your_key_here\",\n    regions=[\"us-east-1\"],\n    poll_rate=300,\n    import_cloud_watch=True,\n    enable_aws_usage=True,\n    custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"my-custom-namespace\",\n    )],\n    namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(\n        default_action=\"Exclude\",\n        filter_action=\"Include\",\n        filter_source=\"filter('code', '200')\",\n        namespace=\"AWS/EC2\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var awsMyteamToken = new SignalFx.Aws.TokenIntegration(\"awsMyteamToken\", new SignalFx.Aws.TokenIntegrationArgs\n        {\n        });\n        // Make yourself an AWS IAM role here\n        var awsSfxRole = new Aws.Iam.Role(\"awsSfxRole\", new Aws.Iam.RoleArgs\n        {\n        });\n        // Stuff here that uses the external and account ID\n        var awsMyteam = new SignalFx.Aws.Integration(\"awsMyteam\", new SignalFx.Aws.IntegrationArgs\n        {\n            Enabled = true,\n            IntegrationId = awsMyteamToken.Id,\n            Token = \"put_your_token_here\",\n            Key = \"put_your_key_here\",\n            Regions = \n            {\n                \"us-east-1\",\n            },\n            PollRate = 300,\n            ImportCloudWatch = true,\n            EnableAwsUsage = true,\n            CustomNamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"my-custom-namespace\",\n                },\n            },\n            NamespaceSyncRules = \n            {\n                new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs\n                {\n                    DefaultAction = \"Exclude\",\n                    FilterAction = \"Include\",\n                    FilterSource = \"filter('code', '200')\",\n                    Namespace = \"AWS/EC2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam\"\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tawsMyteamToken, err := aws.NewTokenIntegration(ctx, \"awsMyteamToken\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewRole(ctx, \"awsSfxRole\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewIntegration(ctx, \"awsMyteam\", \u0026aws.IntegrationArgs{\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tIntegrationId: awsMyteamToken.ID(),\n\t\t\tToken:         pulumi.String(\"put_your_token_here\"),\n\t\t\tKey:           pulumi.String(\"put_your_key_here\"),\n\t\t\tRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t},\n\t\t\tPollRate:         pulumi.Int(300),\n\t\t\tImportCloudWatch: pulumi.Bool(true),\n\t\t\tEnableAwsUsage:   pulumi.Bool(true),\n\t\t\tCustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationCustomNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"my-custom-namespace\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tNamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{\n\t\t\t\t\u0026aws.IntegrationNamespaceSyncRuleArgs{\n\t\t\t\t\tDefaultAction: pulumi.String(\"Exclude\"),\n\t\t\t\t\tFilterAction:  pulumi.String(\"Include\"),\n\t\t\t\t\tFilterSource:  pulumi.String(\"filter('code', '200')\"),\n\t\t\t\t\tNamespace:     pulumi.String(\"AWS/EC2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "name": {
                     "type": "string",
@@ -2502,8 +2697,15 @@
             }
         },
         "signalfx:azure/integration:Integration": {
-            "description": "SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst azureMyteam = new signalfx.azure.Integration(\"azure_myteam\", {\n    appId: \"YYY\",\n    // Optional\n    customNamespacesPerServices: [{\n        namespaces: [\n            \"monitoringAgent\",\n            \"customNamespace\",\n        ],\n        service: \"Microsoft.Compute/virtualMachines\",\n    }],\n    enabled: true,\n    environment: \"azure\",\n    pollRate: 300,\n    secretKey: \"XXX\",\n    services: [\"microsoft.sql/servers/elasticpools\"],\n    subscriptions: [\"sub-guid-here\"],\n    tenantId: \"ZZZ\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nazure_myteam = signalfx.azure.Integration(\"azureMyteam\",\n    app_id=\"YYY\",\n    custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(\n        namespaces=[\n            \"monitoringAgent\",\n            \"customNamespace\",\n        ],\n        service=\"Microsoft.Compute/virtualMachines\",\n    )],\n    enabled=True,\n    environment=\"azure\",\n    poll_rate=300,\n    secret_key=\"XXX\",\n    services=[\"microsoft.sql/servers/elasticpools\"],\n    subscriptions=[\"sub-guid-here\"],\n    tenant_id=\"ZZZ\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var azureMyteam = new SignalFx.Azure.Integration(\"azureMyteam\", new SignalFx.Azure.IntegrationArgs\n        {\n            AppId = \"YYY\",\n            CustomNamespacesPerServices = \n            {\n                new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs\n                {\n                    Namespaces = \n                    {\n                        \"monitoringAgent\",\n                        \"customNamespace\",\n                    },\n                    Service = \"Microsoft.Compute/virtualMachines\",\n                },\n            },\n            Enabled = true,\n            Environment = \"azure\",\n            PollRate = 300,\n            SecretKey = \"XXX\",\n            Services = \n            {\n                \"microsoft.sql/servers/elasticpools\",\n            },\n            Subscriptions = \n            {\n                \"sub-guid-here\",\n            },\n            TenantId = \"ZZZ\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewIntegration(ctx, \"azureMyteam\", \u0026azure.IntegrationArgs{\n\t\t\tAppId: pulumi.String(\"YYY\"),\n\t\t\tCustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{\n\t\t\t\t\u0026azure.IntegrationCustomNamespacesPerServiceArgs{\n\t\t\t\t\tNamespaces: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"monitoringAgent\"),\n\t\t\t\t\t\tpulumi.String(\"customNamespace\"),\n\t\t\t\t\t},\n\t\t\t\t\tService: pulumi.String(\"Microsoft.Compute/virtualMachines\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tEnvironment: pulumi.String(\"azure\"),\n\t\t\tPollRate:    pulumi.Int(300),\n\t\t\tSecretKey:   pulumi.String(\"XXX\"),\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"microsoft.sql/servers/elasticpools\"),\n\t\t\t},\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sub-guid-here\"),\n\t\t\t},\n\t\t\tTenantId: pulumi.String(\"ZZZ\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Service Names\n\n\u003e **NOTE** You can use the data source \"signalfx.azure.getServices\" to specify all services.\n",
+            "description": "SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst azureMyteam = new signalfx.azure.Integration(\"azure_myteam\", {\n    // Optional\n    additionalServices: [\n        \"some/service\",\n        \"another/service\",\n    ],\n    appId: \"YYY\",\n    // Optional\n    customNamespacesPerServices: [{\n        namespaces: [\n            \"monitoringAgent\",\n            \"customNamespace\",\n        ],\n        service: \"Microsoft.Compute/virtualMachines\",\n    }],\n    enabled: true,\n    environment: \"azure\",\n    pollRate: 300,\n    resourceFilterRules: [\n        // Optional\n        {\n            filter: {\n                source: \"filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\",\n            },\n        },\n        {\n            filter: {\n                source: \"filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\",\n            },\n        },\n    ],\n    secretKey: \"XXX\",\n    services: [\"microsoft.sql/servers/elasticpools\"],\n    subscriptions: [\"sub-guid-here\"],\n    tenantId: \"ZZZ\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nazure_myteam = signalfx.azure.Integration(\"azureMyteam\",\n    additional_services=[\n        \"some/service\",\n        \"another/service\",\n    ],\n    app_id=\"YYY\",\n    custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(\n        namespaces=[\n            \"monitoringAgent\",\n            \"customNamespace\",\n        ],\n        service=\"Microsoft.Compute/virtualMachines\",\n    )],\n    enabled=True,\n    environment=\"azure\",\n    poll_rate=300,\n    resource_filter_rules=[\n        signalfx.azure.IntegrationResourceFilterRuleArgs(\n            filter=signalfx.azure.IntegrationResourceFilterRuleFilterArgs(\n                source=\"filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\",\n            ),\n        ),\n        signalfx.azure.IntegrationResourceFilterRuleArgs(\n            filter=signalfx.azure.IntegrationResourceFilterRuleFilterArgs(\n                source=\"filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\",\n            ),\n        ),\n    ],\n    secret_key=\"XXX\",\n    services=[\"microsoft.sql/servers/elasticpools\"],\n    subscriptions=[\"sub-guid-here\"],\n    tenant_id=\"ZZZ\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var azureMyteam = new SignalFx.Azure.Integration(\"azureMyteam\", new SignalFx.Azure.IntegrationArgs\n        {\n            AdditionalServices = \n            {\n                \"some/service\",\n                \"another/service\",\n            },\n            AppId = \"YYY\",\n            CustomNamespacesPerServices = \n            {\n                new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs\n                {\n                    Namespaces = \n                    {\n                        \"monitoringAgent\",\n                        \"customNamespace\",\n                    },\n                    Service = \"Microsoft.Compute/virtualMachines\",\n                },\n            },\n            Enabled = true,\n            Environment = \"azure\",\n            PollRate = 300,\n            ResourceFilterRules = \n            {\n                new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs\n                {\n                    Filter = new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleFilterArgs\n                    {\n                        Source = \"filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\",\n                    },\n                },\n                new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs\n                {\n                    Filter = new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleFilterArgs\n                    {\n                        Source = \"filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\",\n                    },\n                },\n            },\n            SecretKey = \"XXX\",\n            Services = \n            {\n                \"microsoft.sql/servers/elasticpools\",\n            },\n            Subscriptions = \n            {\n                \"sub-guid-here\",\n            },\n            TenantId = \"ZZZ\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/azure\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azure.NewIntegration(ctx, \"azureMyteam\", \u0026azure.IntegrationArgs{\n\t\t\tAdditionalServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"some/service\"),\n\t\t\t\tpulumi.String(\"another/service\"),\n\t\t\t},\n\t\t\tAppId: pulumi.String(\"YYY\"),\n\t\t\tCustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{\n\t\t\t\t\u0026azure.IntegrationCustomNamespacesPerServiceArgs{\n\t\t\t\t\tNamespaces: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"monitoringAgent\"),\n\t\t\t\t\t\tpulumi.String(\"customNamespace\"),\n\t\t\t\t\t},\n\t\t\t\t\tService: pulumi.String(\"Microsoft.Compute/virtualMachines\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tEnvironment: pulumi.String(\"azure\"),\n\t\t\tPollRate:    pulumi.Int(300),\n\t\t\tResourceFilterRules: azure.IntegrationResourceFilterRuleArray{\n\t\t\t\t\u0026azure.IntegrationResourceFilterRuleArgs{\n\t\t\t\t\tFilter: \u0026azure.IntegrationResourceFilterRuleFilterArgs{\n\t\t\t\t\t\tSource: pulumi.String(\"filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t\u0026azure.IntegrationResourceFilterRuleArgs{\n\t\t\t\t\tFilter: \u0026azure.IntegrationResourceFilterRuleFilterArgs{\n\t\t\t\t\t\tSource: pulumi.String(\"filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSecretKey: pulumi.String(\"XXX\"),\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"microsoft.sql/servers/elasticpools\"),\n\t\t\t},\n\t\t\tSubscriptions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"sub-guid-here\"),\n\t\t\t},\n\t\t\tTenantId: pulumi.String(\"ZZZ\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Service Names\n\n\u003e **NOTE** You can use the data source \"signalfx.azure.getServices\" to specify all services.\n",
             "properties": {
+                "additionalServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Additional Azure resource types that you want to sync with Observability Cloud.\n"
+                },
                 "appId": {
                     "type": "string",
                     "description": "Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.\n"
@@ -2533,7 +2735,14 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
+                    "description": "Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
+                },
+                "resourceFilterRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:azure/IntegrationResourceFilterRule:IntegrationResourceFilterRule"
+                    },
+                    "description": "List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form\nfilter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are\nlimited to tags and must start with the azure_tag_ prefix..\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -2572,6 +2781,13 @@
                 "tenantId"
             ],
             "inputProperties": {
+                "additionalServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Additional Azure resource types that you want to sync with Observability Cloud.\n"
+                },
                 "appId": {
                     "type": "string",
                     "description": "Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.\n"
@@ -2601,7 +2817,14 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
+                    "description": "Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
+                },
+                "resourceFilterRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:azure/IntegrationResourceFilterRule:IntegrationResourceFilterRule"
+                    },
+                    "description": "List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form\nfilter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are\nlimited to tags and must start with the azure_tag_ prefix..\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -2641,6 +2864,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Integration resources.\n",
                 "properties": {
+                    "additionalServices": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Additional Azure resource types that you want to sync with Observability Cloud.\n"
+                    },
                     "appId": {
                         "type": "string",
                         "description": "Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.\n"
@@ -2670,7 +2900,14 @@
                     },
                     "pollRate": {
                         "type": "integer",
-                        "description": "AWS poll rate (in seconds). One of `60` or `300`.\n"
+                        "description": "Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
+                    },
+                    "resourceFilterRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:azure/IntegrationResourceFilterRule:IntegrationResourceFilterRule"
+                        },
+                        "description": "List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form\nfilter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are\nlimited to tags and must start with the azure_tag_ prefix..\n"
                     },
                     "secretKey": {
                         "type": "string",
@@ -2703,7 +2940,7 @@
             }
         },
         "signalfx:gcp/integration:Integration": {
-            "description": "SignalFx GCP Integration\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fs from \"fs\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst gcpMyteam = new signalfx.gcp.Integration(\"gcp_myteam\", {\n    enabled: true,\n    pollRate: 300000,\n    projectServiceKeys: [\n        {\n            projectId: \"gcp_project_id_1\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_1.json\", \"utf-8\"),\n        },\n        {\n            projectId: \"gcp_project_id_2\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_2.json\", \"utf-8\"),\n        },\n    ],\n    services: [\"compute\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\ngcp_myteam = signalfx.gcp.Integration(\"gcpMyteam\",\n    enabled=True,\n    poll_rate=300000,\n    project_service_keys=[\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_1\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_1.json\"),\n        ),\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_2\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_2.json\"),\n        ),\n    ],\n    services=[\"compute\"])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var gcpMyteam = new SignalFx.Gcp.Integration(\"gcpMyteam\", new SignalFx.Gcp.IntegrationArgs\n        {\n            Enabled = true,\n            PollRate = 300000,\n            ProjectServiceKeys = \n            {\n                new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n                {\n                    ProjectId = \"gcp_project_id_1\",\n                    ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_1.json\"),\n                },\n                new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n                {\n                    ProjectId = \"gcp_project_id_2\",\n                    ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_2.json\"),\n                },\n            },\n            Services = \n            {\n                \"compute\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"io/ioutil\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/gcp\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := ioutil.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gcp.NewIntegration(ctx, \"gcpMyteam\", \u0026gcp.IntegrationArgs{\n\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\tPollRate: pulumi.Int(300000),\n\t\t\tProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_1\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_1.json\"),\n\t\t\t\t},\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_2\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_2.json\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"compute\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "SignalFx GCP Integration\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fs from \"fs\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst gcpMyteam = new signalfx.gcp.Integration(\"gcp_myteam\", {\n    enabled: true,\n    pollRate: 300,\n    projectServiceKeys: [\n        {\n            projectId: \"gcp_project_id_1\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_1.json\", \"utf-8\"),\n        },\n        {\n            projectId: \"gcp_project_id_2\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_2.json\", \"utf-8\"),\n        },\n    ],\n    services: [\"compute\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\ngcp_myteam = signalfx.gcp.Integration(\"gcpMyteam\",\n    enabled=True,\n    poll_rate=300,\n    project_service_keys=[\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_1\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_1.json\"),\n        ),\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_2\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_2.json\"),\n        ),\n    ],\n    services=[\"compute\"])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var gcpMyteam = new SignalFx.Gcp.Integration(\"gcpMyteam\", new SignalFx.Gcp.IntegrationArgs\n        {\n            Enabled = true,\n            PollRate = 300,\n            ProjectServiceKeys = \n            {\n                new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n                {\n                    ProjectId = \"gcp_project_id_1\",\n                    ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_1.json\"),\n                },\n                new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n                {\n                    ProjectId = \"gcp_project_id_2\",\n                    ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_2.json\"),\n                },\n            },\n            Services = \n            {\n                \"compute\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"io/ioutil\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/gcp\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := ioutil.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gcp.NewIntegration(ctx, \"gcpMyteam\", \u0026gcp.IntegrationArgs{\n\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\tPollRate: pulumi.Int(300),\n\t\t\tProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_1\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_1.json\"),\n\t\t\t\t},\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_2\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_2.json\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"compute\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -2719,7 +2956,7 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).\n"
+                    "description": "GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
                 },
                 "projectServiceKeys": {
                     "type": "array",
@@ -2733,14 +2970,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.\n"
+                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.\n"
                 },
                 "whitelists": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Compute Metadata Whitelist\n"
+                    "description": "[Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).\n"
                 }
             },
             "required": [
@@ -2762,7 +2999,7 @@
                 },
                 "pollRate": {
                     "type": "integer",
-                    "description": "GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).\n"
+                    "description": "GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
                 },
                 "projectServiceKeys": {
                     "type": "array",
@@ -2776,14 +3013,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.\n"
+                    "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.\n"
                 },
                 "whitelists": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Compute Metadata Whitelist\n"
+                    "description": "[Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).\n"
                 }
             },
             "requiredInputs": [
@@ -2806,7 +3043,7 @@
                     },
                     "pollRate": {
                         "type": "integer",
-                        "description": "GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).\n"
+                        "description": "GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.\n"
                     },
                     "projectServiceKeys": {
                         "type": "array",
@@ -2820,14 +3057,14 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.\n"
+                        "description": "GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.\n"
                     },
                     "whitelists": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Compute Metadata Whitelist\n"
+                        "description": "[Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).\n"
                     }
                 },
                 "type": "object"
@@ -2869,7 +3106,6 @@
             "required": [
                 "description",
                 "effectiveStartTime",
-                "filters",
                 "startTime"
             ],
             "inputProperties": {
@@ -2902,7 +3138,6 @@
             },
             "requiredInputs": [
                 "description",
-                "filters",
                 "startTime"
             ],
             "stateInputs": {
@@ -2948,14 +3183,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
+                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.\n",
+                    "deprecationMessage": "Please use permissions_* fields now"
                 },
                 "authorizedWriterUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
+                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.\n",
+                    "deprecationMessage": "Please use permissions fields now"
                 },
                 "charts": {
                     "type": "array",
@@ -3020,6 +3257,9 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard.\n"
+                },
+                "permissions": {
+                    "$ref": "#/types/signalfx:index/DashboardPermissions:DashboardPermissions"
                 },
                 "selectedEventOverlays": {
                     "type": "array",
@@ -3058,6 +3298,7 @@
             "required": [
                 "dashboardGroup",
                 "name",
+                "permissions",
                 "url"
             ],
             "inputProperties": {
@@ -3066,14 +3307,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
+                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.\n",
+                    "deprecationMessage": "Please use permissions_* fields now"
                 },
                 "authorizedWriterUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
+                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.\n",
+                    "deprecationMessage": "Please use permissions fields now"
                 },
                 "charts": {
                     "type": "array",
@@ -3138,6 +3381,9 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard.\n"
+                },
+                "permissions": {
+                    "$ref": "#/types/signalfx:index/DashboardPermissions:DashboardPermissions"
                 },
                 "selectedEventOverlays": {
                     "type": "array",
@@ -3180,14 +3426,16 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
+                        "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.\n",
+                        "deprecationMessage": "Please use permissions_* fields now"
                     },
                     "authorizedWriterUsers": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
+                        "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.\n",
+                        "deprecationMessage": "Please use permissions fields now"
                     },
                     "charts": {
                         "type": "array",
@@ -3253,6 +3501,9 @@
                         "type": "string",
                         "description": "Name of the dashboard.\n"
                     },
+                    "permissions": {
+                        "$ref": "#/types/signalfx:index/DashboardPermissions:DashboardPermissions"
+                    },
                     "selectedEventOverlays": {
                         "type": "array",
                         "items": {
@@ -3291,21 +3542,23 @@
             }
         },
         "signalfx:index/dashboardGroup:DashboardGroup": {
-            "description": "In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.\n\n\u003e **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mydashboardgroup0 = new signalfx.DashboardGroup(\"mydashboardgroup0\", {\n    description: \"Cool dashboard group\",\n    authorizedWriterTeams: [signalfx_team.mycoolteam.id],\n    authorizedWriterUsers: [\"abc123\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmydashboardgroup0 = signalfx.DashboardGroup(\"mydashboardgroup0\",\n    description=\"Cool dashboard group\",\n    authorized_writer_teams=[signalfx_team[\"mycoolteam\"][\"id\"]],\n    authorized_writer_users=[\"abc123\"])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mydashboardgroup0 = new SignalFx.DashboardGroup(\"mydashboardgroup0\", new SignalFx.DashboardGroupArgs\n        {\n            Description = \"Cool dashboard group\",\n            AuthorizedWriterTeams = \n            {\n                signalfx_team.Mycoolteam.Id,\n            },\n            AuthorizedWriterUsers = \n            {\n                \"abc123\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDashboardGroup(ctx, \"mydashboardgroup0\", \u0026signalfx.DashboardGroupArgs{\n\t\t\tDescription: pulumi.String(\"Cool dashboard group\"),\n\t\t\tAuthorizedWriterTeams: pulumi.StringArray{\n\t\t\t\tpulumi.Any(signalfx_team.Mycoolteam.Id),\n\t\t\t},\n\t\t\tAuthorizedWriterUsers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"abc123\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### With Mirrored Dashboards\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mydashboardgroupWithmirrors = new signalfx.DashboardGroup(\"mydashboardgroupWithmirrors\", {\n    description: \"Cool dashboard group\",\n    dashboards: [{\n        dashboardId: signalfx_dashboard.gc_dashboard.id,\n        nameOverride: \"GC For My Service\",\n        descriptionOverride: \"Garbage Collection dashboard maintained by JVM team\",\n        filterOverrides: [{\n            property: \"service\",\n            values: [\"myservice\"],\n            negated: false,\n        }],\n        variableOverrides: [{\n            property: \"region\",\n            values: [\"us-west1\"],\n            valuesSuggesteds: [\n                \"us-west-1\",\n                \"us-east-1\",\n            ],\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmydashboardgroup_withmirrors = signalfx.DashboardGroup(\"mydashboardgroupWithmirrors\",\n    description=\"Cool dashboard group\",\n    dashboards=[signalfx.DashboardGroupDashboardArgs(\n        dashboard_id=signalfx_dashboard[\"gc_dashboard\"][\"id\"],\n        name_override=\"GC For My Service\",\n        description_override=\"Garbage Collection dashboard maintained by JVM team\",\n        filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(\n            property=\"service\",\n            values=[\"myservice\"],\n            negated=False,\n        )],\n        variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(\n            property=\"region\",\n            values=[\"us-west1\"],\n            values_suggesteds=[\n                \"us-west-1\",\n                \"us-east-1\",\n            ],\n        )],\n    )])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup(\"mydashboardgroupWithmirrors\", new SignalFx.DashboardGroupArgs\n        {\n            Description = \"Cool dashboard group\",\n            Dashboards = \n            {\n                new SignalFx.Inputs.DashboardGroupDashboardArgs\n                {\n                    DashboardId = signalfx_dashboard.Gc_dashboard.Id,\n                    NameOverride = \"GC For My Service\",\n                    DescriptionOverride = \"Garbage Collection dashboard maintained by JVM team\",\n                    FilterOverrides = \n                    {\n                        new SignalFx.Inputs.DashboardGroupDashboardFilterOverrideArgs\n                        {\n                            Property = \"service\",\n                            Values = \n                            {\n                                \"myservice\",\n                            },\n                            Negated = false,\n                        },\n                    },\n                    VariableOverrides = \n                    {\n                        new SignalFx.Inputs.DashboardGroupDashboardVariableOverrideArgs\n                        {\n                            Property = \"region\",\n                            Values = \n                            {\n                                \"us-west1\",\n                            },\n                            ValuesSuggesteds = \n                            {\n                                \"us-west-1\",\n                                \"us-east-1\",\n                            },\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDashboardGroup(ctx, \"mydashboardgroupWithmirrors\", \u0026signalfx.DashboardGroupArgs{\n\t\t\tDescription: pulumi.String(\"Cool dashboard group\"),\n\t\t\tDashboards: DashboardGroupDashboardArray{\n\t\t\t\t\u0026DashboardGroupDashboardArgs{\n\t\t\t\t\tDashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),\n\t\t\t\t\tNameOverride:        pulumi.String(\"GC For My Service\"),\n\t\t\t\t\tDescriptionOverride: pulumi.String(\"Garbage Collection dashboard maintained by JVM team\"),\n\t\t\t\t\tFilterOverrides: DashboardGroupDashboardFilterOverrideArray{\n\t\t\t\t\t\t\u0026DashboardGroupDashboardFilterOverrideArgs{\n\t\t\t\t\t\t\tProperty: pulumi.String(\"service\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"myservice\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tNegated: pulumi.Bool(false),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tVariableOverrides: DashboardGroupDashboardVariableOverrideArray{\n\t\t\t\t\t\t\u0026DashboardGroupDashboardVariableOverrideArgs{\n\t\t\t\t\t\t\tProperty: pulumi.String(\"region\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"us-west1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tValuesSuggesteds: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"us-west-1\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.\n\n\u003e **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mydashboardgroup0 = new signalfx.DashboardGroup(\"mydashboardgroup0\", {\n    description: \"Cool dashboard group\",\n    authorizedWriterTeams: [signalfx_team.mycoolteam.id],\n    authorizedWriterUsers: [\"abc123\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmydashboardgroup0 = signalfx.DashboardGroup(\"mydashboardgroup0\",\n    description=\"Cool dashboard group\",\n    authorized_writer_teams=[signalfx_team[\"mycoolteam\"][\"id\"]],\n    authorized_writer_users=[\"abc123\"])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mydashboardgroup0 = new SignalFx.DashboardGroup(\"mydashboardgroup0\", new SignalFx.DashboardGroupArgs\n        {\n            Description = \"Cool dashboard group\",\n            AuthorizedWriterTeams = \n            {\n                signalfx_team.Mycoolteam.Id,\n            },\n            AuthorizedWriterUsers = \n            {\n                \"abc123\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDashboardGroup(ctx, \"mydashboardgroup0\", \u0026signalfx.DashboardGroupArgs{\n\t\t\tDescription: pulumi.String(\"Cool dashboard group\"),\n\t\t\tAuthorizedWriterTeams: pulumi.StringArray{\n\t\t\t\tpulumi.Any(signalfx_team.Mycoolteam.Id),\n\t\t\t},\n\t\t\tAuthorizedWriterUsers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"abc123\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### With Permissions\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mydashboardgroupWithpermissions = new signalfx.DashboardGroup(\"mydashboardgroup_withpermissions\", {\n    description: \"Cool dashboard group\",\n    permissions: [\n        // You can add up to 25 of entries for permission configurations. \n        // Make sure your account supports this feature!\n        {\n            actions: [\"READ\"],\n            principalId: \"abc123\",\n            principalType: \"ORG\",\n        },\n        {\n            actions: [\n                \"READ\",\n                \"WRITE\",\n            ],\n            principalId: \"abc456\",\n            principalType: \"USER\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmydashboardgroup_withpermissions = signalfx.DashboardGroup(\"mydashboardgroupWithpermissions\",\n    description=\"Cool dashboard group\",\n    permissions=[\n        signalfx.DashboardGroupPermissionArgs(\n            actions=[\"READ\"],\n            principal_id=\"abc123\",\n            principal_type=\"ORG\",\n        ),\n        signalfx.DashboardGroupPermissionArgs(\n            actions=[\n                \"READ\",\n                \"WRITE\",\n            ],\n            principal_id=\"abc456\",\n            principal_type=\"USER\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mydashboardgroupWithpermissions = new SignalFx.DashboardGroup(\"mydashboardgroupWithpermissions\", new SignalFx.DashboardGroupArgs\n        {\n            Description = \"Cool dashboard group\",\n            Permissions = \n            {\n                new SignalFx.Inputs.DashboardGroupPermissionArgs\n                {\n                    Actions = \n                    {\n                        \"READ\",\n                    },\n                    PrincipalId = \"abc123\",\n                    PrincipalType = \"ORG\",\n                },\n                new SignalFx.Inputs.DashboardGroupPermissionArgs\n                {\n                    Actions = \n                    {\n                        \"READ\",\n                        \"WRITE\",\n                    },\n                    PrincipalId = \"abc456\",\n                    PrincipalType = \"USER\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDashboardGroup(ctx, \"mydashboardgroupWithpermissions\", \u0026signalfx.DashboardGroupArgs{\n\t\t\tDescription: pulumi.String(\"Cool dashboard group\"),\n\t\t\tPermissions: DashboardGroupPermissionArray{\n\t\t\t\t\u0026DashboardGroupPermissionArgs{\n\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"READ\"),\n\t\t\t\t\t},\n\t\t\t\t\tPrincipalId:   pulumi.String(\"abc123\"),\n\t\t\t\t\tPrincipalType: pulumi.String(\"ORG\"),\n\t\t\t\t},\n\t\t\t\t\u0026DashboardGroupPermissionArgs{\n\t\t\t\t\tActions: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"READ\"),\n\t\t\t\t\t\tpulumi.String(\"WRITE\"),\n\t\t\t\t\t},\n\t\t\t\t\tPrincipalId:   pulumi.String(\"abc456\"),\n\t\t\t\t\tPrincipalType: pulumi.String(\"USER\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n{{% /example %}}\n{{% example %}}\n### With Mirrored Dashboards\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mydashboardgroupWithmirrors = new signalfx.DashboardGroup(\"mydashboardgroupWithmirrors\", {\n    description: \"Cool dashboard group\",\n    dashboards: [{\n        dashboardId: signalfx_dashboard.gc_dashboard.id,\n        nameOverride: \"GC For My Service\",\n        descriptionOverride: \"Garbage Collection dashboard maintained by JVM team\",\n        filterOverrides: [{\n            property: \"service\",\n            values: [\"myservice\"],\n            negated: false,\n        }],\n        variableOverrides: [{\n            property: \"region\",\n            values: [\"us-west1\"],\n            valuesSuggesteds: [\n                \"us-west-1\",\n                \"us-east-1\",\n            ],\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmydashboardgroup_withmirrors = signalfx.DashboardGroup(\"mydashboardgroupWithmirrors\",\n    description=\"Cool dashboard group\",\n    dashboards=[signalfx.DashboardGroupDashboardArgs(\n        dashboard_id=signalfx_dashboard[\"gc_dashboard\"][\"id\"],\n        name_override=\"GC For My Service\",\n        description_override=\"Garbage Collection dashboard maintained by JVM team\",\n        filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(\n            property=\"service\",\n            values=[\"myservice\"],\n            negated=False,\n        )],\n        variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(\n            property=\"region\",\n            values=[\"us-west1\"],\n            values_suggesteds=[\n                \"us-west-1\",\n                \"us-east-1\",\n            ],\n        )],\n    )])\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup(\"mydashboardgroupWithmirrors\", new SignalFx.DashboardGroupArgs\n        {\n            Description = \"Cool dashboard group\",\n            Dashboards = \n            {\n                new SignalFx.Inputs.DashboardGroupDashboardArgs\n                {\n                    DashboardId = signalfx_dashboard.Gc_dashboard.Id,\n                    NameOverride = \"GC For My Service\",\n                    DescriptionOverride = \"Garbage Collection dashboard maintained by JVM team\",\n                    FilterOverrides = \n                    {\n                        new SignalFx.Inputs.DashboardGroupDashboardFilterOverrideArgs\n                        {\n                            Property = \"service\",\n                            Values = \n                            {\n                                \"myservice\",\n                            },\n                            Negated = false,\n                        },\n                    },\n                    VariableOverrides = \n                    {\n                        new SignalFx.Inputs.DashboardGroupDashboardVariableOverrideArgs\n                        {\n                            Property = \"region\",\n                            Values = \n                            {\n                                \"us-west1\",\n                            },\n                            ValuesSuggesteds = \n                            {\n                                \"us-west-1\",\n                                \"us-east-1\",\n                            },\n                        },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewDashboardGroup(ctx, \"mydashboardgroupWithmirrors\", \u0026signalfx.DashboardGroupArgs{\n\t\t\tDescription: pulumi.String(\"Cool dashboard group\"),\n\t\t\tDashboards: DashboardGroupDashboardArray{\n\t\t\t\t\u0026DashboardGroupDashboardArgs{\n\t\t\t\t\tDashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),\n\t\t\t\t\tNameOverride:        pulumi.String(\"GC For My Service\"),\n\t\t\t\t\tDescriptionOverride: pulumi.String(\"Garbage Collection dashboard maintained by JVM team\"),\n\t\t\t\t\tFilterOverrides: DashboardGroupDashboardFilterOverrideArray{\n\t\t\t\t\t\t\u0026DashboardGroupDashboardFilterOverrideArgs{\n\t\t\t\t\t\t\tProperty: pulumi.String(\"service\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"myservice\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tNegated: pulumi.Bool(false),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tVariableOverrides: DashboardGroupDashboardVariableOverrideArray{\n\t\t\t\t\t\t\u0026DashboardGroupDashboardVariableOverrideArgs{\n\t\t\t\t\t\t\tProperty: pulumi.String(\"region\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"us-west1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tValuesSuggesteds: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"us-west-1\"),\n\t\t\t\t\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "authorizedWriterTeams": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
+                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.\n",
+                    "deprecationMessage": "Please use permissions field now"
                 },
                 "authorizedWriterUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
+                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.\n",
+                    "deprecationMessage": "Please use permissions field now"
                 },
                 "dashboards": {
                     "type": "array",
@@ -3327,6 +3580,13 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard group.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/DashboardGroupPermission:DashboardGroupPermission"
+                    },
+                    "description": "The custom access control list for this dashboard\n"
                 },
                 "teams": {
                     "type": "array",
@@ -3337,7 +3597,8 @@
                 }
             },
             "required": [
-                "name"
+                "name",
+                "permissions"
             ],
             "inputProperties": {
                 "authorizedWriterTeams": {
@@ -3345,14 +3606,16 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
+                    "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.\n",
+                    "deprecationMessage": "Please use permissions field now"
                 },
                 "authorizedWriterUsers": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
+                    "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.\n",
+                    "deprecationMessage": "Please use permissions field now"
                 },
                 "dashboards": {
                     "type": "array",
@@ -3374,6 +3637,13 @@
                 "name": {
                     "type": "string",
                     "description": "Name of the dashboard group.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/DashboardGroupPermission:DashboardGroupPermission"
+                    },
+                    "description": "The custom access control list for this dashboard\n"
                 },
                 "teams": {
                     "type": "array",
@@ -3391,14 +3661,16 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).\n"
+                        "description": "Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.\n",
+                        "deprecationMessage": "Please use permissions field now"
                     },
                     "authorizedWriterUsers": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).\n"
+                        "description": "User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.\n",
+                        "deprecationMessage": "Please use permissions field now"
                     },
                     "dashboards": {
                         "type": "array",
@@ -3420,6 +3692,13 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the dashboard group.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:index/DashboardGroupPermission:DashboardGroupPermission"
+                        },
+                        "description": "The custom access control list for this dashboard\n"
                     },
                     "teams": {
                         "type": "array",
@@ -3861,7 +4140,7 @@
             }
         },
         "signalfx:index/eventFeedChart:EventFeedChart": {
-            "description": "Displays a listing of events as a widget in a dashboard.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mynote0 = new signalfx.EventFeedChart(\"mynote0\", {\n    description: \"Lorem ipsum dolor sit amet\",\n    programText: \"A = events(eventType='Fart Testing').publish(label='A')\",\n    vizOptions: [{\n        color: \"orange\",\n        label: \"A\",\n    }],\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Displays a listing of events as a widget in a dashboard.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mynote0 = new signalfx.EventFeedChart(\"mynote0\", {\n    description: \"Lorem ipsum dolor sit amet\",\n    programText: \"A = events(eventType='My Event Type').publish(label='A')\",\n    vizOptions: [{\n        color: \"orange\",\n        label: \"A\",\n    }],\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "description": {
                     "type": "string",
@@ -5762,7 +6041,7 @@
             }
         },
         "signalfx:opsgenie/integration:Integration": {
-            "description": "SignalFx Opsgenie integration.\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst opgenieMyteam = new signalfx.opsgenie.Integration(\"opgenie_myteam\", {\n    apiKey: \"farts\",\n    apiUrl: \"https://api.opsgenie.com\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nopgenie_myteam = signalfx.opsgenie.Integration(\"opgenieMyteam\",\n    api_key=\"farts\",\n    api_url=\"https://api.opsgenie.com\",\n    enabled=True)\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var opgenieMyteam = new SignalFx.Opsgenie.Integration(\"opgenieMyteam\", new SignalFx.Opsgenie.IntegrationArgs\n        {\n            ApiKey = \"farts\",\n            ApiUrl = \"https://api.opsgenie.com\",\n            Enabled = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/opsgenie\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := opsgenie.NewIntegration(ctx, \"opgenieMyteam\", \u0026opsgenie.IntegrationArgs{\n\t\t\tApiKey:  pulumi.String(\"farts\"),\n\t\t\tApiUrl:  pulumi.String(\"https://api.opsgenie.com\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "SignalFx Opsgenie integration.\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst opgenieMyteam = new signalfx.opsgenie.Integration(\"opgenie_myteam\", {\n    apiKey: \"my-key\",\n    apiUrl: \"https://api.opsgenie.com\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nopgenie_myteam = signalfx.opsgenie.Integration(\"opgenieMyteam\",\n    api_key=\"my-key\",\n    api_url=\"https://api.opsgenie.com\",\n    enabled=True)\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var opgenieMyteam = new SignalFx.Opsgenie.Integration(\"opgenieMyteam\", new SignalFx.Opsgenie.IntegrationArgs\n        {\n            ApiKey = \"my-key\",\n            ApiUrl = \"https://api.opsgenie.com\",\n            Enabled = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/opsgenie\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := opsgenie.NewIntegration(ctx, \"opgenieMyteam\", \u0026opsgenie.IntegrationArgs{\n\t\t\tApiKey:  pulumi.String(\"my-key\"),\n\t\t\tApiUrl:  pulumi.String(\"https://api.opsgenie.com\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "apiKey": {
                     "type": "string",
@@ -5882,6 +6161,130 @@
                     "name": {
                         "type": "string",
                         "description": "Name of the integration.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:servicenow/integration:Integration": {
+            "description": "Observability Cloud ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/Observability/admin/notif-services/servicenow.html).\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst serviceNowMyteam = new signalfx.servicenow.Integration(\"service_now_myteam\", {\n    alertResolvedPayloadTemplate: \"{\\\"close_notes\\\": \\\"{{{messageTitle}}} (customized close msg)\\\"}\",\n    alertTriggeredPayloadTemplate: \"{\\\"short_description\\\": \\\"{{{messageTitle}}} (customized)\\\"}\",\n    enabled: false,\n    instanceName: \"myinst.service-now.com\",\n    issueType: \"Incident\",\n    password: \"youd0ntsee1t\",\n    username: \"thisis_me\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nservice_now_myteam = signalfx.servicenow.Integration(\"serviceNowMyteam\",\n    alert_resolved_payload_template=\"{\\\"close_notes\\\": \\\"{{{messageTitle}}} (customized close msg)\\\"}\",\n    alert_triggered_payload_template=\"{\\\"short_description\\\": \\\"{{{messageTitle}}} (customized)\\\"}\",\n    enabled=False,\n    instance_name=\"myinst.service-now.com\",\n    issue_type=\"Incident\",\n    password=\"youd0ntsee1t\",\n    username=\"thisis_me\")\n```\n```csharp\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var serviceNowMyteam = new SignalFx.ServiceNow.Integration(\"serviceNowMyteam\", new SignalFx.ServiceNow.IntegrationArgs\n        {\n            AlertResolvedPayloadTemplate = \"{\\\"close_notes\\\": \\\"{{{messageTitle}}} (customized close msg)\\\"}\",\n            AlertTriggeredPayloadTemplate = \"{\\\"short_description\\\": \\\"{{{messageTitle}}} (customized)\\\"}\",\n            Enabled = false,\n            InstanceName = \"myinst.service-now.com\",\n            IssueType = \"Incident\",\n            Password = \"youd0ntsee1t\",\n            Username = \"thisis_me\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/servicenow\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := servicenow.NewIntegration(ctx, \"serviceNowMyteam\", \u0026servicenow.IntegrationArgs{\n\t\t\tAlertResolvedPayloadTemplate:  pulumi.String(\"{\\\"close_notes\\\": \\\"{{{messageTitle}}} (customized close msg)\\\"}\"),\n\t\t\tAlertTriggeredPayloadTemplate: pulumi.String(\"{\\\"short_description\\\": \\\"{{{messageTitle}}} (customized)\\\"}\"),\n\t\t\tEnabled:                       pulumi.Bool(false),\n\t\t\tInstanceName:                  pulumi.String(\"myinst.service-now.com\"),\n\t\t\tIssueType:                     pulumi.String(\"Incident\"),\n\t\t\tPassword:                      pulumi.String(\"youd0ntsee1t\"),\n\t\t\tUsername:                      pulumi.String(\"thisis_me\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "alertResolvedPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.\n"
+                },
+                "alertTriggeredPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the integration is enabled.\n"
+                },
+                "instanceName": {
+                    "type": "string",
+                    "description": "Name of the ServiceNow instance, for example `myinst.service-now.com`.\n"
+                },
+                "issueType": {
+                    "type": "string",
+                    "description": "The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the integration.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password used to authenticate the ServiceNow integration.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name used to authenticate the ServiceNow integration.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "instanceName",
+                "issueType",
+                "name",
+                "password",
+                "username"
+            ],
+            "inputProperties": {
+                "alertResolvedPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.\n"
+                },
+                "alertTriggeredPayloadTemplate": {
+                    "type": "string",
+                    "description": "A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the integration is enabled.\n"
+                },
+                "instanceName": {
+                    "type": "string",
+                    "description": "Name of the ServiceNow instance, for example `myinst.service-now.com`.\n"
+                },
+                "issueType": {
+                    "type": "string",
+                    "description": "The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the integration.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password used to authenticate the ServiceNow integration.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name used to authenticate the ServiceNow integration.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "instanceName",
+                "issueType",
+                "password",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Integration resources.\n",
+                "properties": {
+                    "alertResolvedPayloadTemplate": {
+                        "type": "string",
+                        "description": "A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.\n"
+                    },
+                    "alertTriggeredPayloadTemplate": {
+                        "type": "string",
+                        "description": "A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the integration is enabled.\n"
+                    },
+                    "instanceName": {
+                        "type": "string",
+                        "description": "Name of the ServiceNow instance, for example `myinst.service-now.com`.\n"
+                    },
+                    "issueType": {
+                        "type": "string",
+                        "description": "The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the integration.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "Password used to authenticate the ServiceNow integration.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "User name used to authenticate the ServiceNow integration.\n"
                     }
                 },
                 "type": "object"
@@ -6263,6 +6666,7 @@
                 "jira": "Jira",
                 "opsgenie": "Opsgenie",
                 "pagerduty": "PagerDuty",
+                "servicenow": "ServiceNow",
                 "signalfx": "SignalFx",
                 "slack": "Slack",
                 "victorops": "VictorOps"

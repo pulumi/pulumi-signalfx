@@ -128,7 +128,7 @@ class TokenIntegration(pulumi.CustomResource):
                 default_action="Exclude",
                 filter_action="Include",
                 filter_source="filter('code', '200')",
-                namespace="fart",
+                namespace="my-custom-namespace",
             )],
             namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
                 default_action="Exclude",
@@ -179,7 +179,7 @@ class TokenIntegration(pulumi.CustomResource):
                 default_action="Exclude",
                 filter_action="Include",
                 filter_source="filter('code', '200')",
-                namespace="fart",
+                namespace="my-custom-namespace",
             )],
             namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
                 default_action="Exclude",

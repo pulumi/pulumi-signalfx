@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const gcpMyteam = new signalfx.gcp.Integration("gcp_myteam", {
  *     enabled: true,
- *     pollRate: 300000,
+ *     pollRate: 300,
  *     projectServiceKeys: [
  *         {
  *             projectId: "gcp_project_id_1",
@@ -75,7 +75,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly namedToken!: pulumi.Output<string | undefined>;
     /**
-     * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+     * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
@@ -83,11 +83,11 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly projectServiceKeys!: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
     /**
-     * Compute Metadata Whitelist
+     * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
      */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
@@ -146,7 +146,7 @@ export interface IntegrationState {
      */
     namedToken?: pulumi.Input<string>;
     /**
-     * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+     * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
     /**
@@ -154,11 +154,11 @@ export interface IntegrationState {
      */
     projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Compute Metadata Whitelist
+     * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -180,7 +180,7 @@ export interface IntegrationArgs {
      */
     namedToken?: pulumi.Input<string>;
     /**
-     * GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+     * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
     /**
@@ -188,11 +188,11 @@ export interface IntegrationArgs {
      */
     projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Compute Metadata Whitelist
+     * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

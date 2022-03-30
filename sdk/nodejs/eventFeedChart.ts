@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const mynote0 = new signalfx.EventFeedChart("mynote0", {
  *     description: "Lorem ipsum dolor sit amet",
- *     programText: "A = events(eventType='Fart Testing').publish(label='A')",
+ *     programText: "A = events(eventType='My Event Type').publish(label='A')",
  *     vizOptions: [{
  *         color: "orange",
  *         label: "A",

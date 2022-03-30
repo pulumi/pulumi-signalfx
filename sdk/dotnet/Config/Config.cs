@@ -54,7 +54,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<string?> _customAppUrl = new __Value<string?>(() => __config.Get("customAppUrl"));
         /// <summary>
-        /// Application URL for your SignalFx org, often customzied for organizations using SSO
+        /// Application URL for your SignalFx org, often customized for organizations using SSO
         /// </summary>
         public static string? CustomAppUrl
         {

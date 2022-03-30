@@ -42,6 +42,45 @@ import (
 // 	})
 // }
 // ```
+// ### With Permissions
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithpermissions", &signalfx.DashboardGroupArgs{
+// 			Description: pulumi.String("Cool dashboard group"),
+// 			Permissions: DashboardGroupPermissionArray{
+// 				&DashboardGroupPermissionArgs{
+// 					Actions: pulumi.StringArray{
+// 						pulumi.String("READ"),
+// 					},
+// 					PrincipalId:   pulumi.String("abc123"),
+// 					PrincipalType: pulumi.String("ORG"),
+// 				},
+// 				&DashboardGroupPermissionArgs{
+// 					Actions: pulumi.StringArray{
+// 						pulumi.String("READ"),
+// 						pulumi.String("WRITE"),
+// 					},
+// 					PrincipalId:   pulumi.String("abc456"),
+// 					PrincipalType: pulumi.String("USER"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### With Mirrored Dashboards
 //
 // ```go
@@ -95,9 +134,13 @@ import (
 type DashboardGroup struct {
 	pulumi.CustomResourceState
 
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterTeams pulumi.StringArrayOutput `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards DashboardGroupDashboardArrayOutput `pulumi:"dashboards"`
@@ -106,6 +149,8 @@ type DashboardGroup struct {
 	ImportQualifiers DashboardGroupImportQualifierArrayOutput `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The custom access control list for this dashboard
+	Permissions DashboardGroupPermissionArrayOutput `pulumi:"permissions"`
 	// Team IDs to associate the dashboard group to.
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
 }
@@ -139,9 +184,13 @@ func GetDashboardGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DashboardGroup resources.
 type dashboardGroupState struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards []DashboardGroupDashboard `pulumi:"dashboards"`
@@ -150,14 +199,20 @@ type dashboardGroupState struct {
 	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
+	// The custom access control list for this dashboard
+	Permissions []DashboardGroupPermission `pulumi:"permissions"`
 	// Team IDs to associate the dashboard group to.
 	Teams []string `pulumi:"teams"`
 }
 
 type DashboardGroupState struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards DashboardGroupDashboardArrayInput
@@ -166,6 +221,8 @@ type DashboardGroupState struct {
 	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
+	// The custom access control list for this dashboard
+	Permissions DashboardGroupPermissionArrayInput
 	// Team IDs to associate the dashboard group to.
 	Teams pulumi.StringArrayInput
 }
@@ -175,9 +232,13 @@ func (DashboardGroupState) ElementType() reflect.Type {
 }
 
 type dashboardGroupArgs struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards []DashboardGroupDashboard `pulumi:"dashboards"`
@@ -186,15 +247,21 @@ type dashboardGroupArgs struct {
 	ImportQualifiers []DashboardGroupImportQualifier `pulumi:"importQualifiers"`
 	// Name of the dashboard group.
 	Name *string `pulumi:"name"`
+	// The custom access control list for this dashboard
+	Permissions []DashboardGroupPermission `pulumi:"permissions"`
 	// Team IDs to associate the dashboard group to.
 	Teams []string `pulumi:"teams"`
 }
 
 // The set of arguments for constructing a DashboardGroup resource.
 type DashboardGroupArgs struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+	//
+	// Deprecated: Please use permissions field now
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Dashboards DashboardGroupDashboardArrayInput
@@ -203,6 +270,8 @@ type DashboardGroupArgs struct {
 	ImportQualifiers DashboardGroupImportQualifierArrayInput
 	// Name of the dashboard group.
 	Name pulumi.StringPtrInput
+	// The custom access control list for this dashboard
+	Permissions DashboardGroupPermissionArrayInput
 	// Team IDs to associate the dashboard group to.
 	Teams pulumi.StringArrayInput
 }

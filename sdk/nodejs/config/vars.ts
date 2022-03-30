@@ -30,7 +30,7 @@ Object.defineProperty(exports, "authToken", {
 });
 
 /**
- * Application URL for your SignalFx org, often customzied for organizations using SSO
+ * Application URL for your SignalFx org, often customized for organizations using SSO
  */
 export declare const customAppUrl: string | undefined;
 Object.defineProperty(exports, "customAppUrl", {

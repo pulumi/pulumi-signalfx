@@ -28,7 +28,7 @@ namespace Pulumi.SignalFx.Gcp
     ///         var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new SignalFx.Gcp.IntegrationArgs
     ///         {
     ///             Enabled = true,
-    ///             PollRate = 300000,
+    ///             PollRate = 300,
     ///             ProjectServiceKeys = 
     ///             {
     ///                 new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
@@ -74,7 +74,7 @@ namespace Pulumi.SignalFx.Gcp
         public Output<string?> NamedToken { get; private set; } = null!;
 
         /// <summary>
-        /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        /// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         /// </summary>
         [Output("pollRate")]
         public Output<int?> PollRate { get; private set; } = null!;
@@ -86,13 +86,13 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
 
         /// <summary>
-        /// Compute Metadata Whitelist
+        /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         /// </summary>
         [Output("whitelists")]
         public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.SignalFx.Gcp
         public Input<string>? NamedToken { get; set; }
 
         /// <summary>
-        /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        /// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         /// </summary>
         public InputList<string> Services
         {
@@ -195,7 +195,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Compute Metadata Whitelist
+        /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         /// </summary>
         public InputList<string> Whitelists
         {
@@ -229,7 +229,7 @@ namespace Pulumi.SignalFx.Gcp
         public Input<string>? NamedToken { get; set; }
 
         /// <summary>
-        /// GCP integration poll rate in seconds. Can be set to either 60 or 300 (1 minute or 5 minutes).
+        /// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         /// </summary>
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }
@@ -250,7 +250,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valid values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         /// </summary>
         public InputList<string> Services
         {
@@ -262,7 +262,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _whitelists;
 
         /// <summary>
-        /// Compute Metadata Whitelist
+        /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         /// </summary>
         public InputList<string> Whitelists
         {

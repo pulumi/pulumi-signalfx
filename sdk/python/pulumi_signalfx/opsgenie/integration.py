@@ -174,7 +174,7 @@ class Integration(pulumi.CustomResource):
         import pulumi_signalfx as signalfx
 
         opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
-            api_key="farts",
+            api_key="my-key",
             api_url="https://api.opsgenie.com",
             enabled=True)
         ```
@@ -204,7 +204,7 @@ class Integration(pulumi.CustomResource):
         import pulumi_signalfx as signalfx
 
         opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
-            api_key="farts",
+            api_key="my-key",
             api_url="https://api.opsgenie.com",
             enabled=True)
         ```

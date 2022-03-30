@@ -17,6 +17,11 @@ import * as utilities from "../utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const azureMyteam = new signalfx.azure.Integration("azure_myteam", {
+ *     // Optional
+ *     additionalServices: [
+ *         "some/service",
+ *         "another/service",
+ *     ],
  *     appId: "YYY",
  *     // Optional
  *     customNamespacesPerServices: [{
@@ -29,6 +34,19 @@ import * as utilities from "../utilities";
  *     enabled: true,
  *     environment: "azure",
  *     pollRate: 300,
+ *     resourceFilterRules: [
+ *         // Optional
+ *         {
+ *             filter: {
+ *                 source: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+ *             },
+ *         },
+ *         {
+ *             filter: {
+ *                 source: "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
+ *             },
+ *         },
+ *     ],
  *     secretKey: "XXX",
  *     services: ["microsoft.sql/servers/elasticpools"],
  *     subscriptions: ["sub-guid-here"],
@@ -68,6 +86,10 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
+     * Additional Azure resource types that you want to sync with Observability Cloud.
+     */
+    public readonly additionalServices!: pulumi.Output<string[] | undefined>;
+    /**
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
     public readonly appId!: pulumi.Output<string>;
@@ -92,9 +114,15 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly namedToken!: pulumi.Output<string | undefined>;
     /**
-     * AWS poll rate (in seconds). One of `60` or `300`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
+    /**
+     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+     * limited to tags and must start with the azure_tag_ prefix..
+     */
+    public readonly resourceFilterRules!: pulumi.Output<outputs.azure.IntegrationResourceFilterRule[] | undefined>;
     /**
      * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
@@ -129,6 +157,7 @@ export class Integration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
+            resourceInputs["additionalServices"] = state ? state.additionalServices : undefined;
             resourceInputs["appId"] = state ? state.appId : undefined;
             resourceInputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
@@ -136,6 +165,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedToken"] = state ? state.namedToken : undefined;
             resourceInputs["pollRate"] = state ? state.pollRate : undefined;
+            resourceInputs["resourceFilterRules"] = state ? state.resourceFilterRules : undefined;
             resourceInputs["secretKey"] = state ? state.secretKey : undefined;
             resourceInputs["services"] = state ? state.services : undefined;
             resourceInputs["subscriptions"] = state ? state.subscriptions : undefined;
@@ -161,6 +191,7 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.tenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenantId'");
             }
+            resourceInputs["additionalServices"] = args ? args.additionalServices : undefined;
             resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -168,6 +199,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
+            resourceInputs["resourceFilterRules"] = args ? args.resourceFilterRules : undefined;
             resourceInputs["secretKey"] = args ? args.secretKey : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["subscriptions"] = args ? args.subscriptions : undefined;
@@ -183,6 +215,10 @@ export class Integration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Integration resources.
  */
 export interface IntegrationState {
+    /**
+     * Additional Azure resource types that you want to sync with Observability Cloud.
+     */
+    additionalServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
@@ -208,9 +244,15 @@ export interface IntegrationState {
      */
     namedToken?: pulumi.Input<string>;
     /**
-     * AWS poll rate (in seconds). One of `60` or `300`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
+    /**
+     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+     * limited to tags and must start with the azure_tag_ prefix..
+     */
+    resourceFilterRules?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationResourceFilterRule>[]>;
     /**
      * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */
@@ -238,6 +280,10 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
+     * Additional Azure resource types that you want to sync with Observability Cloud.
+     */
+    additionalServices?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      */
     appId: pulumi.Input<string>;
@@ -262,9 +308,15 @@ export interface IntegrationArgs {
      */
     namedToken?: pulumi.Input<string>;
     /**
-     * AWS poll rate (in seconds). One of `60` or `300`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
+    /**
+     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+     * limited to tags and must start with the azure_tag_ prefix..
+     */
+    resourceFilterRules?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationResourceFilterRule>[]>;
     /**
      * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      */

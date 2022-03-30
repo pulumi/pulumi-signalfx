@@ -32,6 +32,7 @@ import * as gcp from "./gcp";
 import * as jira from "./jira";
 import * as opsgenie from "./opsgenie";
 import * as pagerduty from "./pagerduty";
+import * as servicenow from "./servicenow";
 import * as slack from "./slack";
 import * as types from "./types";
 import * as victorops from "./victorops";
@@ -44,6 +45,7 @@ export {
     jira,
     opsgenie,
     pagerduty,
+    servicenow,
     slack,
     types,
     victorops,

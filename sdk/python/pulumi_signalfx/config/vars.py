@@ -31,7 +31,7 @@ class _ExportableConfig(types.ModuleType):
     @property
     def custom_app_url(self) -> Optional[str]:
         """
-        Application URL for your SignalFx org, often customzied for organizations using SSO
+        Application URL for your SignalFx org, often customized for organizations using SSO
         """
         return __config__.get('customAppUrl')
 

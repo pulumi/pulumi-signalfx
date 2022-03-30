@@ -147,7 +147,7 @@ namespace Pulumi.SignalFx
             set => _detectors = value;
         }
 
-        [Input("filters", required: true)]
+        [Input("filters")]
         private InputList<Inputs.AlertMutingRuleFilterArgs>? _filters;
 
         /// <summary>

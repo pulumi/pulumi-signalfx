@@ -25,6 +25,7 @@ class IntegrationArgs:
                  external_id: Optional[pulumi.Input[str]] = None,
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -46,9 +47,10 @@ class IntegrationArgs:
         :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -74,6 +76,8 @@ class IntegrationArgs:
             pulumi.set(__self__, "import_cloud_watch", import_cloud_watch)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if metric_stats_to_syncs is not None:
+            pulumi.set(__self__, "metric_stats_to_syncs", metric_stats_to_syncs)
         if named_token is not None:
             pulumi.set(__self__, "named_token", named_token)
         if namespace_sync_rules is not None:
@@ -214,6 +218,18 @@ class IntegrationArgs:
         pulumi.set(self, "key", value)
 
     @property
+    @pulumi.getter(name="metricStatsToSyncs")
+    def metric_stats_to_syncs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]]:
+        """
+        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        """
+        return pulumi.get(self, "metric_stats_to_syncs")
+
+    @metric_stats_to_syncs.setter
+    def metric_stats_to_syncs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]]):
+        pulumi.set(self, "metric_stats_to_syncs", value)
+
+    @property
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
@@ -241,7 +257,7 @@ class IntegrationArgs:
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        AWS poll rate (in seconds). Value between `60` and `300`.
+        AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -335,6 +351,7 @@ class _IntegrationState:
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -356,9 +373,10 @@ class _IntegrationState:
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -386,6 +404,8 @@ class _IntegrationState:
             pulumi.set(__self__, "integration_id", integration_id)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if metric_stats_to_syncs is not None:
+            pulumi.set(__self__, "metric_stats_to_syncs", metric_stats_to_syncs)
         if named_token is not None:
             pulumi.set(__self__, "named_token", named_token)
         if namespace_sync_rules is not None:
@@ -526,6 +546,18 @@ class _IntegrationState:
         pulumi.set(self, "key", value)
 
     @property
+    @pulumi.getter(name="metricStatsToSyncs")
+    def metric_stats_to_syncs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]]:
+        """
+        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        """
+        return pulumi.get(self, "metric_stats_to_syncs")
+
+    @metric_stats_to_syncs.setter
+    def metric_stats_to_syncs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]]):
+        pulumi.set(self, "metric_stats_to_syncs", value)
+
+    @property
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
@@ -553,7 +585,7 @@ class _IntegrationState:
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        AWS poll rate (in seconds). Value between `60` and `300`.
+        AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -649,6 +681,7 @@ class Integration(pulumi.CustomResource):
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -691,13 +724,18 @@ class Integration(pulumi.CustomResource):
                 default_action="Exclude",
                 filter_action="Include",
                 filter_source="filter('code', '200')",
-                namespace="fart",
+                namespace="my-custom-namespace",
             )],
             namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
                 default_action="Exclude",
                 filter_action="Include",
                 filter_source="filter('code', '200')",
                 namespace="AWS/EC2",
+            )],
+            metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(
+                namespace="AWS/EC2",
+                metric="NetworkPacketsIn",
+                stats=["upper"],
             )])
         ```
         ## Service Names
@@ -716,9 +754,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -764,13 +803,18 @@ class Integration(pulumi.CustomResource):
                 default_action="Exclude",
                 filter_action="Include",
                 filter_source="filter('code', '200')",
-                namespace="fart",
+                namespace="my-custom-namespace",
             )],
             namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
                 default_action="Exclude",
                 filter_action="Include",
                 filter_source="filter('code', '200')",
                 namespace="AWS/EC2",
+            )],
+            metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(
+                namespace="AWS/EC2",
+                metric="NetworkPacketsIn",
+                stats=["upper"],
             )])
         ```
         ## Service Names
@@ -802,6 +846,7 @@ class Integration(pulumi.CustomResource):
                  import_cloud_watch: Optional[pulumi.Input[bool]] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
+                 metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -837,6 +882,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'integration_id'")
             __props__.__dict__["integration_id"] = integration_id
             __props__.__dict__["key"] = key
+            __props__.__dict__["metric_stats_to_syncs"] = metric_stats_to_syncs
             __props__.__dict__["named_token"] = named_token
             __props__.__dict__["namespace_sync_rules"] = namespace_sync_rules
             __props__.__dict__["poll_rate"] = poll_rate
@@ -866,6 +912,7 @@ class Integration(pulumi.CustomResource):
             import_cloud_watch: Optional[pulumi.Input[bool]] = None,
             integration_id: Optional[pulumi.Input[str]] = None,
             key: Optional[pulumi.Input[str]] = None,
+            metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]]] = None,
             named_token: Optional[pulumi.Input[str]] = None,
             namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]]] = None,
             poll_rate: Optional[pulumi.Input[int]] = None,
@@ -892,9 +939,10 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
         :param pulumi.Input[str] key: If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `300`.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that SignalFx should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
@@ -916,6 +964,7 @@ class Integration(pulumi.CustomResource):
         __props__.__dict__["import_cloud_watch"] = import_cloud_watch
         __props__.__dict__["integration_id"] = integration_id
         __props__.__dict__["key"] = key
+        __props__.__dict__["metric_stats_to_syncs"] = metric_stats_to_syncs
         __props__.__dict__["named_token"] = named_token
         __props__.__dict__["namespace_sync_rules"] = namespace_sync_rules
         __props__.__dict__["poll_rate"] = poll_rate
@@ -1008,6 +1057,14 @@ class Integration(pulumi.CustomResource):
         return pulumi.get(self, "key")
 
     @property
+    @pulumi.getter(name="metricStatsToSyncs")
+    def metric_stats_to_syncs(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationMetricStatsToSync']]]:
+        """
+        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        """
+        return pulumi.get(self, "metric_stats_to_syncs")
+
+    @property
     @pulumi.getter(name="namedToken")
     def named_token(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1027,7 +1084,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> pulumi.Output[Optional[int]]:
         """
-        AWS poll rate (in seconds). Value between `60` and `300`.
+        AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         """
         return pulumi.get(self, "poll_rate")
 

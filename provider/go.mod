@@ -9,7 +9,7 @@ require (
 	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20200914150050-df1863718382
 )
 
-replace github.com/splunk-terraform/terraform-provider-signalfx => github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20220316125310-4e2783bcc85a
+replace github.com/splunk-terraform/terraform-provider-signalfx => github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20220329183112-559fc8c45047
 
 replace github.com/hashicorp/go-getter => github.com/hashicorp/go-getter v1.4.0
 

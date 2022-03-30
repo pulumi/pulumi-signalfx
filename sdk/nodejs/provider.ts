@@ -34,7 +34,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly authToken!: pulumi.Output<string | undefined>;
     /**
-     * Application URL for your SignalFx org, often customzied for organizations using SSO
+     * Application URL for your SignalFx org, often customized for organizations using SSO
      */
     public readonly customAppUrl!: pulumi.Output<string | undefined>;
 
@@ -72,7 +72,7 @@ export interface ProviderArgs {
      */
     authToken?: pulumi.Input<string>;
     /**
-     * Application URL for your SignalFx org, often customzied for organizations using SSO
+     * Application URL for your SignalFx org, often customized for organizations using SSO
      */
     customAppUrl?: pulumi.Input<string>;
     /**

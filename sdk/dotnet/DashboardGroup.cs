@@ -40,6 +40,46 @@ namespace Pulumi.SignalFx
     /// 
     /// }
     /// ```
+    /// ### With Permissions
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mydashboardgroupWithpermissions = new SignalFx.DashboardGroup("mydashboardgroupWithpermissions", new SignalFx.DashboardGroupArgs
+    ///         {
+    ///             Description = "Cool dashboard group",
+    ///             Permissions = 
+    ///             {
+    ///                 new SignalFx.Inputs.DashboardGroupPermissionArgs
+    ///                 {
+    ///                     Actions = 
+    ///                     {
+    ///                         "READ",
+    ///                     },
+    ///                     PrincipalId = "abc123",
+    ///                     PrincipalType = "ORG",
+    ///                 },
+    ///                 new SignalFx.Inputs.DashboardGroupPermissionArgs
+    ///                 {
+    ///                     Actions = 
+    ///                     {
+    ///                         "READ",
+    ///                         "WRITE",
+    ///                     },
+    ///                     PrincipalId = "abc456",
+    ///                     PrincipalType = "USER",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### With Mirrored Dashboards
     /// 
     /// ```csharp
@@ -100,13 +140,13 @@ namespace Pulumi.SignalFx
     public partial class DashboardGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         /// </summary>
         [Output("authorizedWriterTeams")]
         public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         /// </summary>
         [Output("authorizedWriterUsers")]
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
@@ -131,6 +171,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The custom access control list for this dashboard
+        /// </summary>
+        [Output("permissions")]
+        public Output<ImmutableArray<Outputs.DashboardGroupPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
         /// Team IDs to associate the dashboard group to.
@@ -188,8 +234,9 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         /// </summary>
+        [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterTeams
         {
             get => _authorizedWriterTeams ?? (_authorizedWriterTeams = new InputList<string>());
@@ -200,8 +247,9 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         /// </summary>
+        [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterUsers
         {
             get => _authorizedWriterUsers ?? (_authorizedWriterUsers = new InputList<string>());
@@ -240,6 +288,18 @@ namespace Pulumi.SignalFx
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("permissions")]
+        private InputList<Inputs.DashboardGroupPermissionArgs>? _permissions;
+
+        /// <summary>
+        /// The custom access control list for this dashboard
+        /// </summary>
+        public InputList<Inputs.DashboardGroupPermissionArgs> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<Inputs.DashboardGroupPermissionArgs>());
+            set => _permissions = value;
+        }
+
         [Input("teams")]
         private InputList<string>? _teams;
 
@@ -263,8 +323,9 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         /// </summary>
+        [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterTeams
         {
             get => _authorizedWriterTeams ?? (_authorizedWriterTeams = new InputList<string>());
@@ -275,8 +336,9 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         /// </summary>
+        [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterUsers
         {
             get => _authorizedWriterUsers ?? (_authorizedWriterUsers = new InputList<string>());
@@ -314,6 +376,18 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("permissions")]
+        private InputList<Inputs.DashboardGroupPermissionGetArgs>? _permissions;
+
+        /// <summary>
+        /// The custom access control list for this dashboard
+        /// </summary>
+        public InputList<Inputs.DashboardGroupPermissionGetArgs> Permissions
+        {
+            get => _permissions ?? (_permissions = new InputList<Inputs.DashboardGroupPermissionGetArgs>());
+            set => _permissions = value;
+        }
 
         [Input("teams")]
         private InputList<string>? _teams;

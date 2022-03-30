@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *         defaultAction: "Exclude",
  *         filterAction: "Include",
  *         filterSource: "filter('code', '200')",
- *         namespace: "fart",
+ *         namespace: "my-custom-namespace",
  *     }],
  *     namespaceSyncRules: [{
  *         defaultAction: "Exclude",

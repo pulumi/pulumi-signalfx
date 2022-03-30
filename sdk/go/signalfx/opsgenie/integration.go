@@ -28,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := opsgenie.NewIntegration(ctx, "opgenieMyteam", &opsgenie.IntegrationArgs{
-// 			ApiKey:  pulumi.String("farts"),
+// 			ApiKey:  pulumi.String("my-key"),
 // 			ApiUrl:  pulumi.String("https://api.opsgenie.com"),
 // 			Enabled: pulumi.Bool(true),
 // 		})

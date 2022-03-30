@@ -14,9 +14,13 @@ import (
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams pulumi.StringArrayOutput `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts DashboardChartArrayOutput `pulumi:"charts"`
@@ -39,7 +43,8 @@ type Dashboard struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids DashboardGridArrayOutput `pulumi:"grids"`
 	// Name of the dashboard.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name        pulumi.StringOutput        `pulumi:"name"`
+	Permissions DashboardPermissionsOutput `pulumi:"permissions"`
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayOutput `pulumi:"selectedEventOverlays"`
 	// Seconds since epoch. Used for visualization.
@@ -86,9 +91,13 @@ func GetDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dashboard resources.
 type dashboardState struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts []DashboardChart `pulumi:"charts"`
@@ -111,7 +120,8 @@ type dashboardState struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids []DashboardGrid `pulumi:"grids"`
 	// Name of the dashboard.
-	Name *string `pulumi:"name"`
+	Name        *string               `pulumi:"name"`
+	Permissions *DashboardPermissions `pulumi:"permissions"`
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays []DashboardSelectedEventOverlay `pulumi:"selectedEventOverlays"`
 	// Seconds since epoch. Used for visualization.
@@ -127,9 +137,13 @@ type dashboardState struct {
 }
 
 type DashboardState struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts DashboardChartArrayInput
@@ -152,7 +166,8 @@ type DashboardState struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids DashboardGridArrayInput
 	// Name of the dashboard.
-	Name pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Permissions DashboardPermissionsPtrInput
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayInput
 	// Seconds since epoch. Used for visualization.
@@ -172,9 +187,13 @@ func (DashboardState) ElementType() reflect.Type {
 }
 
 type dashboardArgs struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts []DashboardChart `pulumi:"charts"`
@@ -197,7 +216,8 @@ type dashboardArgs struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids []DashboardGrid `pulumi:"grids"`
 	// Name of the dashboard.
-	Name *string `pulumi:"name"`
+	Name        *string               `pulumi:"name"`
+	Permissions *DashboardPermissions `pulumi:"permissions"`
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays []DashboardSelectedEventOverlay `pulumi:"selectedEventOverlays"`
 	// Seconds since epoch. Used for visualization.
@@ -212,9 +232,13 @@ type dashboardArgs struct {
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	//
+	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// Chart ID and layout information for the charts in the dashboard.
 	Charts DashboardChartArrayInput
@@ -237,7 +261,8 @@ type DashboardArgs struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids DashboardGridArrayInput
 	// Name of the dashboard.
-	Name pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Permissions DashboardPermissionsPtrInput
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayInput
 	// Seconds since epoch. Used for visualization.

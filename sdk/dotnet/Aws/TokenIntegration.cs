@@ -55,7 +55,7 @@ namespace Pulumi.SignalFx.Aws
     ///                     DefaultAction = "Exclude",
     ///                     FilterAction = "Include",
     ///                     FilterSource = "filter('code', '200')",
-    ///                     Namespace = "fart",
+    ///                     Namespace = "my-custom-namespace",
     ///                 },
     ///             },
     ///             NamespaceSyncRules = 

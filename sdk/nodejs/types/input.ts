@@ -207,6 +207,41 @@ export interface DashboardGroupImportQualifierFilter {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface DashboardGroupPermission {
+    /**
+     * Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the user, team, or organization for which you're granting permissions.
+     */
+    principalId: pulumi.Input<string>;
+    /**
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+     */
+    principalType: pulumi.Input<string>;
+}
+
+export interface DashboardPermissions {
+    acls?: pulumi.Input<pulumi.Input<inputs.DashboardPermissionsAcl>[]>;
+    parent?: pulumi.Input<string>;
+}
+
+export interface DashboardPermissionsAcl {
+    /**
+     * Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * ID of the user, team, or organization for which you're granting permissions.
+     */
+    principalId: pulumi.Input<string>;
+    /**
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+     */
+    principalType: pulumi.Input<string>;
+}
+
 export interface DashboardSelectedEventOverlay {
     /**
      * Search term used to choose the events shown in the overlay.
@@ -398,12 +433,12 @@ export interface GetAwsServicesService {
     name: string;
 }
 
-export interface GetAzureServicesServiceArgs {
-    name: pulumi.Input<string>;
-}
-
 export interface GetAzureServicesService {
     name: string;
+}
+
+export interface GetAzureServicesServiceArgs {
+    name: pulumi.Input<string>;
 }
 
 export interface HeatmapChartColorRange {
@@ -744,6 +779,7 @@ export interface WebhookIntegrationHeader {
      */
     headerValue: pulumi.Input<string>;
 }
+
 export namespace aws {
     export interface GetServicesService {
         name: string;
@@ -767,9 +803,24 @@ export namespace aws {
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS namespace having AWS metric that you want to pick statistics for
          */
         namespace: pulumi.Input<string>;
+    }
+
+    export interface IntegrationMetricStatsToSync {
+        /**
+         * AWS metric that you want to pick statistics for
+         */
+        metric: pulumi.Input<string>;
+        /**
+         * An AWS namespace having AWS metric that you want to pick statistics for
+         */
+        namespace: pulumi.Input<string>;
+        /**
+         * AWS statistics you want to collect
+         */
+        stats: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface IntegrationNamespaceSyncRule {
@@ -786,7 +837,7 @@ export namespace aws {
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS namespace having AWS metric that you want to pick statistics for
          */
         namespace: pulumi.Input<string>;
     }
@@ -810,6 +861,14 @@ export namespace azure {
          * The name of the service.
          */
         service: pulumi.Input<string>;
+    }
+
+    export interface IntegrationResourceFilterRule {
+        filter: pulumi.Input<inputs.azure.IntegrationResourceFilterRuleFilter>;
+    }
+
+    export interface IntegrationResourceFilterRuleFilter {
+        source: pulumi.Input<string>;
     }
 }
 

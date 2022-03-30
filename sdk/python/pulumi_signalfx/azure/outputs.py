@@ -7,9 +7,12 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'IntegrationCustomNamespacesPerService',
+    'IntegrationResourceFilterRule',
+    'IntegrationResourceFilterRuleFilter',
     'GetServicesServiceResult',
 ]
 
@@ -40,6 +43,30 @@ class IntegrationCustomNamespacesPerService(dict):
         The name of the service.
         """
         return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class IntegrationResourceFilterRule(dict):
+    def __init__(__self__, *,
+                 filter: 'outputs.IntegrationResourceFilterRuleFilter'):
+        pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> 'outputs.IntegrationResourceFilterRuleFilter':
+        return pulumi.get(self, "filter")
+
+
+@pulumi.output_type
+class IntegrationResourceFilterRuleFilter(dict):
+    def __init__(__self__, *,
+                 source: str):
+        pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        return pulumi.get(self, "source")
 
 
 @pulumi.output_type

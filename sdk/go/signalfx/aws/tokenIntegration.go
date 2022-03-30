@@ -53,7 +53,7 @@ import (
 // 					DefaultAction: pulumi.String("Exclude"),
 // 					FilterAction:  pulumi.String("Include"),
 // 					FilterSource:  pulumi.String("filter('code', '200')"),
-// 					Namespace:     pulumi.String("fart"),
+// 					Namespace:     pulumi.String("my-custom-namespace"),
 // 				},
 // 			},
 // 			NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{

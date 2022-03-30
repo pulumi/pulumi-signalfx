@@ -29,6 +29,7 @@ class DashboardArgs:
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
                  grids: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input['DashboardPermissionsArgs']] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -37,8 +38,8 @@ class DashboardArgs:
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column number for the layout.
@@ -56,7 +57,13 @@ class DashboardArgs:
         """
         pulumi.set(__self__, "dashboard_group", dashboard_group)
         if authorized_writer_teams is not None:
+            warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
+        if authorized_writer_teams is not None:
             pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+        if authorized_writer_users is not None:
+            warnings.warn("""Please use permissions fields now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
         if authorized_writer_users is not None:
             pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
         if charts is not None:
@@ -81,6 +88,8 @@ class DashboardArgs:
             pulumi.set(__self__, "grids", grids)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if selected_event_overlays is not None:
             pulumi.set(__self__, "selected_event_overlays", selected_event_overlays)
         if start_time is not None:
@@ -108,7 +117,7 @@ class DashboardArgs:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -120,7 +129,7 @@ class DashboardArgs:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -255,6 +264,15 @@ class DashboardArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input['DashboardPermissionsArgs']]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input['DashboardPermissionsArgs']]):
+        pulumi.set(self, "permissions", value)
+
+    @property
     @pulumi.getter(name="selectedEventOverlays")
     def selected_event_overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]:
         """
@@ -332,6 +350,7 @@ class _DashboardState:
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
                  grids: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input['DashboardPermissionsArgs']] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -340,8 +359,8 @@ class _DashboardState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column number for the layout.
@@ -360,7 +379,13 @@ class _DashboardState:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
         if authorized_writer_teams is not None:
+            warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
+        if authorized_writer_teams is not None:
             pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+        if authorized_writer_users is not None:
+            warnings.warn("""Please use permissions fields now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
         if authorized_writer_users is not None:
             pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
         if charts is not None:
@@ -387,6 +412,8 @@ class _DashboardState:
             pulumi.set(__self__, "grids", grids)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if selected_event_overlays is not None:
             pulumi.set(__self__, "selected_event_overlays", selected_event_overlays)
         if start_time is not None:
@@ -404,7 +431,7 @@ class _DashboardState:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -416,7 +443,7 @@ class _DashboardState:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -563,6 +590,15 @@ class _DashboardState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input['DashboardPermissionsArgs']]:
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input['DashboardPermissionsArgs']]):
+        pulumi.set(self, "permissions", value)
+
+    @property
     @pulumi.getter(name="selectedEventOverlays")
     def selected_event_overlays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]]:
         """
@@ -654,6 +690,7 @@ class Dashboard(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
                  grids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[pulumi.InputType['DashboardPermissionsArgs']]] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -664,8 +701,8 @@ class Dashboard(pulumi.CustomResource):
         Create a Dashboard resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
@@ -719,6 +756,7 @@ class Dashboard(pulumi.CustomResource):
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
                  grids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[pulumi.InputType['DashboardPermissionsArgs']]] = None,
                  selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -736,7 +774,13 @@ class Dashboard(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DashboardArgs.__new__(DashboardArgs)
 
+            if authorized_writer_teams is not None and not opts.urn:
+                warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
+                pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
             __props__.__dict__["authorized_writer_teams"] = authorized_writer_teams
+            if authorized_writer_users is not None and not opts.urn:
+                warnings.warn("""Please use permissions fields now""", DeprecationWarning)
+                pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
             __props__.__dict__["authorized_writer_users"] = authorized_writer_users
             __props__.__dict__["charts"] = charts
             __props__.__dict__["charts_resolution"] = charts_resolution
@@ -752,6 +796,7 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["filters"] = filters
             __props__.__dict__["grids"] = grids
             __props__.__dict__["name"] = name
+            __props__.__dict__["permissions"] = permissions
             __props__.__dict__["selected_event_overlays"] = selected_event_overlays
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["tags"] = tags
@@ -782,6 +827,7 @@ class Dashboard(pulumi.CustomResource):
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
             grids: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            permissions: Optional[pulumi.Input[pulumi.InputType['DashboardPermissionsArgs']]] = None,
             selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -795,8 +841,8 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
@@ -832,6 +878,7 @@ class Dashboard(pulumi.CustomResource):
         __props__.__dict__["filters"] = filters
         __props__.__dict__["grids"] = grids
         __props__.__dict__["name"] = name
+        __props__.__dict__["permissions"] = permissions
         __props__.__dict__["selected_event_overlays"] = selected_event_overlays
         __props__.__dict__["start_time"] = start_time
         __props__.__dict__["tags"] = tags
@@ -844,7 +891,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -852,7 +899,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -945,6 +992,11 @@ class Dashboard(pulumi.CustomResource):
         Name of the dashboard.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Output['outputs.DashboardPermissions']:
+        return pulumi.get(self, "permissions")
 
     @property
     @pulumi.getter(name="selectedEventOverlays")

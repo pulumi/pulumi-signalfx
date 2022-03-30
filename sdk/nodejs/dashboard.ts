@@ -34,11 +34,15 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     *
+     * @deprecated Please use permissions_* fields now
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     *
+     * @deprecated Please use permissions fields now
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
@@ -83,6 +87,7 @@ export class Dashboard extends pulumi.CustomResource {
      * Name of the dashboard.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly permissions!: pulumi.Output<outputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
      */
@@ -135,6 +140,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["grids"] = state ? state.grids : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
             resourceInputs["selectedEventOverlays"] = state ? state.selectedEventOverlays : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -160,6 +166,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["grids"] = args ? args.grids : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
             resourceInputs["selectedEventOverlays"] = args ? args.selectedEventOverlays : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -177,11 +184,15 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     *
+     * @deprecated Please use permissions_* fields now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     *
+     * @deprecated Please use permissions fields now
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -226,6 +237,7 @@ export interface DashboardState {
      * Name of the dashboard.
      */
     name?: pulumi.Input<string>;
+    permissions?: pulumi.Input<inputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
      */
@@ -257,11 +269,15 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`).
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     *
+     * @deprecated Please use permissions_* fields now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     *
+     * @deprecated Please use permissions fields now
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -306,6 +322,7 @@ export interface DashboardArgs {
      * Name of the dashboard.
      */
     name?: pulumi.Input<string>;
+    permissions?: pulumi.Input<inputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
      */

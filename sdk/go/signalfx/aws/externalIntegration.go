@@ -62,7 +62,7 @@ import (
 // 				},
 // 			},
 // 		}, nil)
-// 		awsSfxRole, err := iam.NewRole(ctx, "awsSfxRole", &iam.RoleArgs{
+// 		awsSplunkRole, err := iam.NewRole(ctx, "awsSplunkRole", &iam.RoleArgs{
 // 			Description: pulumi.String("signalfx integration to read out data and send it to signalfxs aws account"),
 // 			AssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {
 // 				return signalfxAssumePolicy.Json, nil
@@ -71,16 +71,16 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		awsReadPermissions, err := iam.NewPolicy(ctx, "awsReadPermissions", &iam.PolicyArgs{
-// 			Description: pulumi.String("farts"),
-// 			Policy: pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "	\"Version\": \"2012-10-17\",\n", "	\"Statement\": [\n", "		{\n", "			\"Action\": [\n", "				\"dynamodb:ListTables\",\n", "		    \"dynamodb:DescribeTable\",\n", "		    \"dynamodb:ListTagsOfResource\",\n", "		    \"ec2:DescribeInstances\",\n", "		    \"ec2:DescribeInstanceStatus\",\n", "		    \"ec2:DescribeVolumes\",\n", "		    \"ec2:DescribeReservedInstances\",\n", "		    \"ec2:DescribeReservedInstancesModifications\",\n", "		    \"ec2:DescribeTags\",\n", "		    \"organizations:DescribeOrganization\",\n", "		    \"cloudwatch:ListMetrics\",\n", "		    \"cloudwatch:GetMetricData\",\n", "		    \"cloudwatch:GetMetricStatistics\",\n", "		    \"cloudwatch:DescribeAlarms\",\n", "		    \"sqs:ListQueues\",\n", "		    \"sqs:GetQueueAttributes\",\n", "		    \"sqs:ListQueueTags\",\n", "		    \"elasticmapreduce:ListClusters\",\n", "		    \"elasticmapreduce:DescribeCluster\",\n", "		    \"kinesis:ListShards\",\n", "		    \"kinesis:ListStreams\",\n", "		    \"kinesis:DescribeStream\",\n", "		    \"kinesis:ListTagsForStream\",\n", "		    \"rds:DescribeDBInstances\",\n", "		    \"rds:ListTagsForResource\",\n", "		    \"elasticloadbalancing:DescribeLoadBalancers\",\n", "		    \"elasticloadbalancing:DescribeTags\",\n", "		    \"elasticache:describeCacheClusters\",\n", "		    \"redshift:DescribeClusters\",\n", "		    \"lambda:GetAlias\",\n", "		    \"lambda:ListFunctions\",\n", "		    \"lambda:ListTags\",\n", "		    \"autoscaling:DescribeAutoScalingGroups\",\n", "		    \"s3:ListAllMyBuckets\",\n", "		    \"s3:ListBucket\",\n", "		    \"s3:GetBucketLocation\",\n", "		    \"s3:GetBucketTagging\",\n", "		    \"ecs:ListServices\",\n", "		    \"ecs:ListTasks\",\n", "		    \"ecs:DescribeTasks\",\n", "		    \"ecs:DescribeServices\",\n", "		    \"ecs:ListClusters\",\n", "		    \"ecs:DescribeClusters\",\n", "		    \"ecs:ListTaskDefinitions\",\n", "		    \"ecs:ListTagsForResource\",\n", "		    \"apigateway:GET\",\n", "		    \"cloudfront:ListDistributions\",\n", "		    \"cloudfront:ListTagsForResource\",\n", "		    \"tag:GetResources\",\n", "		    \"es:ListDomainNames\",\n", "		    \"es:DescribeElasticsearchDomain\"\n", "			],\n", "			\"Effect\": \"Allow\",\n", "			\"Resource\": \"*\"\n", "		}\n", "	]\n", "}\n")),
+// 		awsSplunkPolicy, err := iam.NewPolicy(ctx, "awsSplunkPolicy", &iam.PolicyArgs{
+// 			Description: pulumi.String("AWS permissions required by the Splunk Observability Cloud"),
+// 			Policy:      pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Effect\": \"Allow\",\n", "      \"Action\": [\n", "        \"apigateway:GET\",\n", "        \"autoscaling:DescribeAutoScalingGroups\",\n", "        \"cloudfront:GetDistributionConfig\",\n", "        \"cloudfront:ListDistributions\",\n", "        \"cloudfront:ListTagsForResource\",\n", "        \"cloudwatch:DescribeAlarms\",\n", "        \"cloudwatch:GetMetricData\",\n", "        \"cloudwatch:GetMetricStatistics\",\n", "        \"cloudwatch:ListMetrics\",\n", "        \"directconnect:DescribeConnections\",\n", "        \"dynamodb:DescribeTable\",\n", "        \"dynamodb:ListTables\",\n", "        \"dynamodb:ListTagsOfResource\",\n", "        \"ec2:DescribeInstances\",\n", "        \"ec2:DescribeInstanceStatus\",\n", "        \"ec2:DescribeRegions\",\n", "        \"ec2:DescribeReservedInstances\",\n", "        \"ec2:DescribeReservedInstancesModifications\",\n", "        \"ec2:DescribeTags\",\n", "        \"ec2:DescribeVolumes\",\n", "        \"ecs:DescribeClusters\",\n", "        \"ecs:DescribeServices\",\n", "        \"ecs:DescribeTasks\",\n", "        \"ecs:ListClusters\",\n", "        \"ecs:ListServices\",\n", "        \"ecs:ListTagsForResource\",\n", "        \"ecs:ListTaskDefinitions\",\n", "        \"ecs:ListTasks\",\n", "        \"elasticache:DescribeCacheClusters\",\n", "        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n", "        \"elasticloadbalancing:DescribeLoadBalancers\",\n", "        \"elasticloadbalancing:DescribeTags\",\n", "        \"elasticloadbalancing:DescribeTargetGroups\",\n", "        \"elasticmapreduce:DescribeCluster\",\n", "        \"elasticmapreduce:ListClusters\",\n", "        \"es:DescribeElasticsearchDomain\",\n", "        \"es:ListDomainNames\",\n", "        \"kinesis:DescribeStream\",\n", "        \"kinesis:ListShards\",\n", "        \"kinesis:ListStreams\",\n", "        \"kinesis:ListTagsForStream\",\n", "        \"lambda:GetAlias\",\n", "        \"lambda:ListFunctions\",\n", "        \"lambda:ListTags\",\n", "        \"logs:DeleteSubscriptionFilter\",\n", "        \"logs:DescribeLogGroups\",\n", "        \"logs:DescribeSubscriptionFilters\",\n", "        \"logs:PutSubscriptionFilter\",\n", "        \"organizations:DescribeOrganization\",\n", "        \"rds:DescribeDBClusters\",\n", "        \"rds:DescribeDBInstances\",\n", "        \"rds:ListTagsForResource\",\n", "        \"redshift:DescribeClusters\",\n", "        \"redshift:DescribeLoggingStatus\",\n", "        \"s3:GetBucketLocation\",\n", "        \"s3:GetBucketLogging\",\n", "        \"s3:GetBucketNotification\",\n", "        \"s3:GetBucketTagging\",\n", "        \"s3:ListAllMyBuckets\",\n", "        \"s3:ListBucket\",\n", "        \"s3:PutBucketNotification\",\n", "        \"sqs:GetQueueAttributes\",\n", "        \"sqs:ListQueues\",\n", "        \"sqs:ListQueueTags\",\n", "        \"states:ListStateMachines\",\n", "        \"tag:GetResources\",\n", "        \"workspaces:DescribeWorkspaces\"\n", "      ],\n", "      \"Resource\": \"*\"\n", "    }\n", "  ]\n", "}\n")),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "sfx-read-attach", &iam.RolePolicyAttachmentArgs{
-// 			Role:      awsSfxRole.Name,
-// 			PolicyArn: awsReadPermissions.Arn,
+// 		_, err = iam.NewRolePolicyAttachment(ctx, "splunkRolePolicyAttach", &iam.RolePolicyAttachmentArgs{
+// 			Role:      awsSplunkRole.Name,
+// 			PolicyArn: awsSplunkPolicy.Arn,
 // 		})
 // 		if err != nil {
 // 			return err
@@ -89,7 +89,7 @@ import (
 // 			Enabled:       pulumi.Bool(true),
 // 			IntegrationId: awsMyteamExtern.ID(),
 // 			ExternalId:    awsMyteamExtern.ExternalId,
-// 			RoleArn:       awsSfxRole.Arn,
+// 			RoleArn:       awsSplunkRole.Arn,
 // 			Regions: pulumi.StringArray{
 // 				pulumi.String("us-east-1"),
 // 			},

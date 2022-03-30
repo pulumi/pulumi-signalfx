@@ -36,15 +36,16 @@ const (
 	mainPkg = "signalfx"
 
 	// modules:
-	mainMod      = "index"
-	awsMod       = "Aws"
-	azureMod     = "Azure"
-	gcpMod       = "Gcp"
-	jiraMod      = "Jira"
-	opsgenieMod  = "Opsgenie"
-	pagerdutyMod = "PagerDuty"
-	slackMod     = "Slack"
-	victoropsMod = "VictorOps"
+	mainMod       = "index"
+	awsMod        = "Aws"
+	azureMod      = "Azure"
+	gcpMod        = "Gcp"
+	jiraMod       = "Jira"
+	opsgenieMod   = "Opsgenie"
+	pagerdutyMod  = "PagerDuty"
+	slackMod      = "Slack"
+	victoropsMod  = "VictorOps"
+	serviceNowMod = "ServiceNow"
 )
 
 var namespaceMap = map[string]string{
@@ -122,6 +123,8 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_victor_ops_integration": {Tok: makeResource(victoropsMod, "Integration")},
 
 			"signalfx_jira_integration": {Tok: makeResource(jiraMod, "Integration")},
+
+			"signalfx_service_now_integration": {Tok: makeResource(serviceNowMod, "Integration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"signalfx_dimension_values": {Tok: makeDataSource(mainMod, "getDimensionValues")},

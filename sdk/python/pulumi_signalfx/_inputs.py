@@ -21,6 +21,9 @@ __all__ = [
     'DashboardGroupDashboardVariableOverrideArgs',
     'DashboardGroupImportQualifierArgs',
     'DashboardGroupImportQualifierFilterArgs',
+    'DashboardGroupPermissionArgs',
+    'DashboardPermissionsArgs',
+    'DashboardPermissionsAclArgs',
     'DashboardSelectedEventOverlayArgs',
     'DashboardSelectedEventOverlaySourceArgs',
     'DashboardVariableArgs',
@@ -807,6 +810,141 @@ class DashboardGroupImportQualifierFilterArgs:
     @property.setter
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class DashboardGroupPermissionArgs:
+    def __init__(__self__, *,
+                 principal_id: pulumi.Input[str],
+                 principal_type: pulumi.Input[str],
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] principal_id: ID of the user, team, or organization for which you're granting permissions.
+        :param pulumi.Input[str] principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        """
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_type", principal_type)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> pulumi.Input[str]:
+        """
+        ID of the user, team, or organization for which you're granting permissions.
+        """
+        return pulumi.get(self, "principal_id")
+
+    @principal_id.setter
+    def principal_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal_id", value)
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> pulumi.Input[str]:
+        """
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        """
+        return pulumi.get(self, "principal_type")
+
+    @principal_type.setter
+    def principal_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal_type", value)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+
+@pulumi.input_type
+class DashboardPermissionsArgs:
+    def __init__(__self__, *,
+                 acls: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None):
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter
+    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]]:
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]]):
+        pulumi.set(self, "acls", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+
+@pulumi.input_type
+class DashboardPermissionsAclArgs:
+    def __init__(__self__, *,
+                 principal_id: pulumi.Input[str],
+                 principal_type: pulumi.Input[str],
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] principal_id: ID of the user, team, or organization for which you're granting permissions.
+        :param pulumi.Input[str] principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+        """
+        pulumi.set(__self__, "principal_id", principal_id)
+        pulumi.set(__self__, "principal_type", principal_type)
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter(name="principalId")
+    def principal_id(self) -> pulumi.Input[str]:
+        """
+        ID of the user, team, or organization for which you're granting permissions.
+        """
+        return pulumi.get(self, "principal_id")
+
+    @principal_id.setter
+    def principal_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal_id", value)
+
+    @property
+    @pulumi.getter(name="principalType")
+    def principal_type(self) -> pulumi.Input[str]:
+        """
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        """
+        return pulumi.get(self, "principal_type")
+
+    @principal_type.setter
+    def principal_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal_type", value)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
 
 
 @pulumi.input_type

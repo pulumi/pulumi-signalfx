@@ -47,6 +47,8 @@
         "pagerduty/index.ts",
         "pagerduty/integration.ts",
         "provider.ts",
+        "servicenow/index.ts",
+        "servicenow/integration.ts",
         "singleValueChart.ts",
         "slack/index.ts",
         "slack/integration.ts",

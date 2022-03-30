@@ -21,18 +21,26 @@ class DashboardGroupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DashboardGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: The custom access control list for this dashboard
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
         if authorized_writer_teams is not None:
+            warnings.warn("""Please use permissions field now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
+        if authorized_writer_teams is not None:
             pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+        if authorized_writer_users is not None:
+            warnings.warn("""Please use permissions field now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
         if authorized_writer_users is not None:
             pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
         if dashboards is not None:
@@ -43,6 +51,8 @@ class DashboardGroupArgs:
             pulumi.set(__self__, "import_qualifiers", import_qualifiers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if teams is not None:
             pulumi.set(__self__, "teams", teams)
 
@@ -50,7 +60,7 @@ class DashboardGroupArgs:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -62,7 +72,7 @@ class DashboardGroupArgs:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -114,6 +124,18 @@ class DashboardGroupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
+        """
+        The custom access control list for this dashboard
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
 
     @property
     @pulumi.getter
@@ -137,18 +159,26 @@ class _DashboardGroupState:
                  description: Optional[pulumi.Input[str]] = None,
                  import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DashboardGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: The custom access control list for this dashboard
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
         if authorized_writer_teams is not None:
+            warnings.warn("""Please use permissions field now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
+        if authorized_writer_teams is not None:
             pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+        if authorized_writer_users is not None:
+            warnings.warn("""Please use permissions field now""", DeprecationWarning)
+            pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
         if authorized_writer_users is not None:
             pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
         if dashboards is not None:
@@ -159,6 +189,8 @@ class _DashboardGroupState:
             pulumi.set(__self__, "import_qualifiers", import_qualifiers)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
         if teams is not None:
             pulumi.set(__self__, "teams", teams)
 
@@ -166,7 +198,7 @@ class _DashboardGroupState:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -178,7 +210,7 @@ class _DashboardGroupState:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -230,6 +262,18 @@ class _DashboardGroupState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
+        """
+        The custom access control list for this dashboard
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]):
+        pulumi.set(self, "permissions", value)
 
     @property
     @pulumi.getter
@@ -255,6 +299,7 @@ class DashboardGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -272,6 +317,30 @@ class DashboardGroup(pulumi.CustomResource):
             description="Cool dashboard group",
             authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
             authorized_writer_users=["abc123"])
+        ```
+        ### With Permissions
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroupWithpermissions",
+            description="Cool dashboard group",
+            permissions=[
+                signalfx.DashboardGroupPermissionArgs(
+                    actions=["READ"],
+                    principal_id="abc123",
+                    principal_type="ORG",
+                ),
+                signalfx.DashboardGroupPermissionArgs(
+                    actions=[
+                        "READ",
+                        "WRITE",
+                    ],
+                    principal_id="abc456",
+                    principal_type="USER",
+                ),
+            ])
         ```
         ### With Mirrored Dashboards
 
@@ -303,11 +372,12 @@ class DashboardGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]] permissions: The custom access control list for this dashboard
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
         ...
@@ -331,6 +401,30 @@ class DashboardGroup(pulumi.CustomResource):
             description="Cool dashboard group",
             authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
             authorized_writer_users=["abc123"])
+        ```
+        ### With Permissions
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroupWithpermissions",
+            description="Cool dashboard group",
+            permissions=[
+                signalfx.DashboardGroupPermissionArgs(
+                    actions=["READ"],
+                    principal_id="abc123",
+                    principal_type="ORG",
+                ),
+                signalfx.DashboardGroupPermissionArgs(
+                    actions=[
+                        "READ",
+                        "WRITE",
+                    ],
+                    principal_id="abc456",
+                    principal_type="USER",
+                ),
+            ])
         ```
         ### With Mirrored Dashboards
 
@@ -381,6 +475,7 @@ class DashboardGroup(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]]] = None,
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
@@ -394,12 +489,19 @@ class DashboardGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DashboardGroupArgs.__new__(DashboardGroupArgs)
 
+            if authorized_writer_teams is not None and not opts.urn:
+                warnings.warn("""Please use permissions field now""", DeprecationWarning)
+                pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
             __props__.__dict__["authorized_writer_teams"] = authorized_writer_teams
+            if authorized_writer_users is not None and not opts.urn:
+                warnings.warn("""Please use permissions field now""", DeprecationWarning)
+                pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
             __props__.__dict__["authorized_writer_users"] = authorized_writer_users
             __props__.__dict__["dashboards"] = dashboards
             __props__.__dict__["description"] = description
             __props__.__dict__["import_qualifiers"] = import_qualifiers
             __props__.__dict__["name"] = name
+            __props__.__dict__["permissions"] = permissions
             __props__.__dict__["teams"] = teams
         super(DashboardGroup, __self__).__init__(
             'signalfx:index/dashboardGroup:DashboardGroup',
@@ -417,6 +519,7 @@ class DashboardGroup(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupImportQualifierArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]]] = None,
             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'DashboardGroup':
         """
         Get an existing DashboardGroup resource's state with the given name, id, and optional extra
@@ -425,11 +528,12 @@ class DashboardGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[str] description: Description of the dashboard group.
         :param pulumi.Input[str] name: Name of the dashboard group.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]] permissions: The custom access control list for this dashboard
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -442,6 +546,7 @@ class DashboardGroup(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["import_qualifiers"] = import_qualifiers
         __props__.__dict__["name"] = name
+        __props__.__dict__["permissions"] = permissions
         __props__.__dict__["teams"] = teams
         return DashboardGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -449,7 +554,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`).
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -457,7 +562,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -489,6 +594,14 @@ class DashboardGroup(pulumi.CustomResource):
         Name of the dashboard group.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> pulumi.Output[Sequence['outputs.DashboardGroupPermission']]:
+        """
+        The custom access control list for this dashboard
+        """
+        return pulumi.get(self, "permissions")
 
     @property
     @pulumi.getter
