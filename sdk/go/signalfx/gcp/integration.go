@@ -13,7 +13,7 @@ import (
 
 // SignalFx GCP Integration
 //
-// > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
 // ## Example Usage
 //
@@ -68,7 +68,7 @@ type Integration struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A named token to use for ingest
+	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
 	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
 	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
@@ -116,7 +116,7 @@ type integrationState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
-	// A named token to use for ingest
+	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
 	NamedToken *string `pulumi:"namedToken"`
 	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
@@ -133,7 +133,7 @@ type IntegrationState struct {
 	Enabled pulumi.BoolPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
-	// A named token to use for ingest
+	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
 	NamedToken pulumi.StringPtrInput
 	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
@@ -154,7 +154,7 @@ type integrationArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
-	// A named token to use for ingest
+	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
 	NamedToken *string `pulumi:"namedToken"`
 	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
@@ -172,7 +172,7 @@ type IntegrationArgs struct {
 	Enabled pulumi.BoolInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
-	// A named token to use for ingest
+	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
 	NamedToken pulumi.StringPtrInput
 	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput

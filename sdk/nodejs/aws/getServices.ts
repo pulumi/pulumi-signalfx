@@ -5,22 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of AWS service names.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const awsServices = signalfx.aws.getServices({});
- * // Leaves out most of the integration bits, see the docs
- * // for signalfx_aws_integration for more
- * // …
- * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {services: [awsServices.then(awsServices => awsServices.services)].map(__item => __item?.name)});
- * ```
- */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};
     if (!opts) {

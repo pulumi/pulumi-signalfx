@@ -870,6 +870,10 @@ class DashboardPermissionsArgs:
     def __init__(__self__, *,
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]] = None,
                  parent: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]] acls: List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+        :param pulumi.Input[str] parent: ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+        """
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if parent is not None:
@@ -878,6 +882,9 @@ class DashboardPermissionsArgs:
     @property
     @pulumi.getter
     def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]]:
+        """
+        List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+        """
         return pulumi.get(self, "acls")
 
     @acls.setter
@@ -887,6 +894,9 @@ class DashboardPermissionsArgs:
     @property
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter

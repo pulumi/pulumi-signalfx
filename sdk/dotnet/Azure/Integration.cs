@@ -12,7 +12,7 @@ namespace Pulumi.SignalFx.Azure
     /// <summary>
     /// SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
     /// 
-    /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example Usage
     /// 
@@ -123,7 +123,7 @@ namespace Pulumi.SignalFx.Azure
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A named token to use for ingest
+        /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Output("namedToken")]
         public Output<string?> NamedToken { get; private set; } = null!;
@@ -267,7 +267,7 @@ namespace Pulumi.SignalFx.Azure
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A named token to use for ingest
+        /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Input("namedToken")]
         public Input<string>? NamedToken { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.SignalFx.Azure
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A named token to use for ingest
+        /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Input("namedToken")]
         public Input<string>? NamedToken { get; set; }

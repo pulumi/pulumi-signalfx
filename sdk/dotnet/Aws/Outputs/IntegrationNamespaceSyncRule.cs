@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Aws.Outputs
         /// </summary>
         public readonly string? FilterSource;
         /// <summary>
-        /// An AWS namespace having AWS metric that you want to pick statistics for
+        /// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         /// </summary>
         public readonly string Namespace;
 

@@ -223,7 +223,13 @@ export interface DashboardGroupPermission {
 }
 
 export interface DashboardPermissions {
+    /**
+     * List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+     */
     acls?: outputs.DashboardPermissionsAcl[];
+    /**
+     * ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+     */
     parent?: string;
 }
 
@@ -791,7 +797,7 @@ export namespace aws {
          */
         filterSource?: string;
         /**
-         * An AWS namespace having AWS metric that you want to pick statistics for
+         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: string;
     }
@@ -802,7 +808,7 @@ export namespace aws {
          */
         metric: string;
         /**
-         * An AWS namespace having AWS metric that you want to pick statistics for
+         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: string;
         /**
@@ -825,7 +831,7 @@ export namespace aws {
          */
         filterSource?: string;
         /**
-         * An AWS namespace having AWS metric that you want to pick statistics for
+         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: string;
     }

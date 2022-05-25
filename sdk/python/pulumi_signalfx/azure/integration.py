@@ -41,7 +41,7 @@ class IntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]] custom_namespaces_per_services: Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
                filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
@@ -195,7 +195,7 @@ class IntegrationArgs:
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
-        A named token to use for ingest
+        Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 
@@ -267,7 +267,7 @@ class _IntegrationState:
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
                filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
@@ -383,7 +383,7 @@ class _IntegrationState:
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
-        A named token to use for ingest
+        Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 
@@ -501,7 +501,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example Usage
 
@@ -554,7 +554,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationResourceFilterRuleArgs']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
                filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
@@ -574,7 +574,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example Usage
 
@@ -723,7 +723,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] environment: What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationResourceFilterRuleArgs']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
                filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
@@ -806,7 +806,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="namedToken")
     def named_token(self) -> pulumi.Output[Optional[str]]:
         """
-        A named token to use for ingest
+        Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 

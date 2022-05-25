@@ -34,13 +34,13 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions_* fields now
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions fields now
      */
@@ -87,6 +87,9 @@ export class Dashboard extends pulumi.CustomResource {
      * Name of the dashboard.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     */
     public readonly permissions!: pulumi.Output<outputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
@@ -184,13 +187,13 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions_* fields now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions fields now
      */
@@ -237,6 +240,9 @@ export interface DashboardState {
      * Name of the dashboard.
      */
     name?: pulumi.Input<string>;
+    /**
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     */
     permissions?: pulumi.Input<inputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
@@ -269,13 +275,13 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions_* fields now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions fields now
      */
@@ -322,6 +328,9 @@ export interface DashboardArgs {
      * Name of the dashboard.
      */
     name?: pulumi.Input<string>;
+    /**
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     */
     permissions?: pulumi.Input<inputs.DashboardPermissions>;
     /**
      * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.

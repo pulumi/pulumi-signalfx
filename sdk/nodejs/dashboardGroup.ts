@@ -107,13 +107,13 @@ export class DashboardGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
@@ -132,7 +132,7 @@ export class DashboardGroup extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The custom access control list for this dashboard
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
     public readonly permissions!: pulumi.Output<outputs.DashboardGroupPermission[]>;
     /**
@@ -182,13 +182,13 @@ export class DashboardGroup extends pulumi.CustomResource {
  */
 export interface DashboardGroupState {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
@@ -207,7 +207,7 @@ export interface DashboardGroupState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The custom access control list for this dashboard
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.DashboardGroupPermission>[]>;
     /**
@@ -221,13 +221,13 @@ export interface DashboardGroupState {
  */
 export interface DashboardGroupArgs {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` instead.
+     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
      *
      * @deprecated Please use permissions field now
      */
@@ -246,7 +246,7 @@ export interface DashboardGroupArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The custom access control list for this dashboard
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.DashboardGroupPermission>[]>;
     /**

@@ -38,8 +38,8 @@ class DashboardArgs:
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column number for the layout.
@@ -49,6 +49,7 @@ class DashboardArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]] filters: Filter to apply to the charts when displaying the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]] grids: Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         :param pulumi.Input[str] name: Name of the dashboard.
+        :param pulumi.Input['DashboardPermissionsArgs'] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
@@ -117,7 +118,7 @@ class DashboardArgs:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -129,7 +130,7 @@ class DashboardArgs:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -266,6 +267,9 @@ class DashboardArgs:
     @property
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input['DashboardPermissionsArgs']]:
+        """
+        [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -359,8 +363,8 @@ class _DashboardState:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         Input properties used for looking up and filtering Dashboard resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column number for the layout.
@@ -371,6 +375,7 @@ class _DashboardState:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]] filters: Filter to apply to the charts when displaying the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]] grids: Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         :param pulumi.Input[str] name: Name of the dashboard.
+        :param pulumi.Input['DashboardPermissionsArgs'] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
@@ -431,7 +436,7 @@ class _DashboardState:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -443,7 +448,7 @@ class _DashboardState:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -592,6 +597,9 @@ class _DashboardState:
     @property
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input['DashboardPermissionsArgs']]:
+        """
+        [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
@@ -701,8 +709,8 @@ class Dashboard(pulumi.CustomResource):
         Create a Dashboard resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
@@ -713,6 +721,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] filters: Filter to apply to the charts when displaying the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]] grids: Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         :param pulumi.Input[str] name: Name of the dashboard.
+        :param pulumi.Input[pulumi.InputType['DashboardPermissionsArgs']] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
@@ -841,8 +850,8 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
@@ -853,6 +862,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] filters: Filter to apply to the charts when displaying the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGridArgs']]]] grids: Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         :param pulumi.Input[str] name: Name of the dashboard.
+        :param pulumi.Input[pulumi.InputType['DashboardPermissionsArgs']] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardSelectedEventOverlayArgs']]]] selected_event_overlays: Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags of the dashboard.
@@ -891,7 +901,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -899,7 +909,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions_acl` or `permissions_parent` instead.
+        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -996,6 +1006,9 @@ class Dashboard(pulumi.CustomResource):
     @property
     @pulumi.getter
     def permissions(self) -> pulumi.Output['outputs.DashboardPermissions']:
+        """
+        [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        """
         return pulumi.get(self, "permissions")
 
     @property

@@ -26,7 +26,7 @@ class IntegrationArgs:
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
@@ -74,7 +74,7 @@ class IntegrationArgs:
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
-        A named token to use for ingest
+        Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 
@@ -145,7 +145,7 @@ class _IntegrationState:
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
@@ -194,7 +194,7 @@ class _IntegrationState:
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
-        A named token to use for ingest
+        Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 
@@ -267,7 +267,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx GCP Integration
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example Usage
 
@@ -295,7 +295,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
@@ -310,7 +310,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx GCP Integration
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example Usage
 
@@ -403,7 +403,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
@@ -442,7 +442,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="namedToken")
     def named_token(self) -> pulumi.Output[Optional[str]]:
         """
-        A named token to use for ingest
+        Name of the org token to be used for data ingestion. If not specified then default access token is used.
         """
         return pulumi.get(self, "named_token")
 

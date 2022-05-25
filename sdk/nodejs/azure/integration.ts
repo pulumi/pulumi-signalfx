@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 /**
  * SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
  *
- * > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example Usage
  *
@@ -110,7 +110,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
     public readonly namedToken!: pulumi.Output<string | undefined>;
     /**
@@ -240,7 +240,7 @@ export interface IntegrationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
     namedToken?: pulumi.Input<string>;
     /**
@@ -304,7 +304,7 @@ export interface IntegrationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
     namedToken?: pulumi.Input<string>;
     /**

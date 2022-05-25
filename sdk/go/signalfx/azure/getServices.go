@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get a list of Azure service names.
 func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	var rv GetServicesResult
 	err := ctx.Invoke("signalfx:azure/getServices:getServices", args, &rv, opts...)
