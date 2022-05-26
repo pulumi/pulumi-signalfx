@@ -165,9 +165,15 @@ func Provider() tfbridge.ProviderInfo {
 	}
 
 	prov.RenameDataSource("signalfx_aws_services", makeDataSource(mainMod, "getAwsServices"),
-		makeDataSource(awsMod, "getServices"), mainMod, awsMod, nil)
+		makeDataSource(awsMod, "getServices"), mainMod, awsMod, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Markdown: []byte(" "),
+			}})
 	prov.RenameDataSource("signalfx_azure_services", makeDataSource(mainMod, "getAzureServices"),
-		makeDataSource(azureMod, "getServices"), mainMod, azureMod, nil)
+		makeDataSource(azureMod, "getServices"), mainMod, azureMod, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Markdown: []byte(" "),
+			}})
 
 	prov.SetAutonaming(255, "-")
 

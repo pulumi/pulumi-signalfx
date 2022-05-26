@@ -17,7 +17,7 @@ type IntegrationCustomNamespaceSyncRule struct {
 	FilterAction *string `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS namespace having AWS metric that you want to pick statistics for
+	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -39,7 +39,7 @@ type IntegrationCustomNamespaceSyncRuleArgs struct {
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS namespace having AWS metric that you want to pick statistics for
+	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -109,7 +109,7 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) FilterSource() pulumi.StringPt
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS namespace having AWS metric that you want to pick statistics for
+// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationCustomNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -137,7 +137,7 @@ func (o IntegrationCustomNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) 
 type IntegrationMetricStatsToSync struct {
 	// AWS metric that you want to pick statistics for
 	Metric string `pulumi:"metric"`
-	// An AWS namespace having AWS metric that you want to pick statistics for
+	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 	Namespace string `pulumi:"namespace"`
 	// AWS statistics you want to collect
 	Stats []string `pulumi:"stats"`
@@ -157,7 +157,7 @@ type IntegrationMetricStatsToSyncInput interface {
 type IntegrationMetricStatsToSyncArgs struct {
 	// AWS metric that you want to pick statistics for
 	Metric pulumi.StringInput `pulumi:"metric"`
-	// An AWS namespace having AWS metric that you want to pick statistics for
+	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// AWS statistics you want to collect
 	Stats pulumi.StringArrayInput `pulumi:"stats"`
@@ -219,7 +219,7 @@ func (o IntegrationMetricStatsToSyncOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-// An AWS namespace having AWS metric that you want to pick statistics for
+// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationMetricStatsToSyncOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -256,7 +256,7 @@ type IntegrationNamespaceSyncRule struct {
 	FilterAction *string `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS namespace having AWS metric that you want to pick statistics for
+	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -278,7 +278,7 @@ type IntegrationNamespaceSyncRuleArgs struct {
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
 	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS namespace having AWS metric that you want to pick statistics for
+	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -348,7 +348,7 @@ func (o IntegrationNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS namespace having AWS metric that you want to pick statistics for
+// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }

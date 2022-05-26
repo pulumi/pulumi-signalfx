@@ -57,20 +57,7 @@ class AwaitableGetServicesResult(GetServicesResult):
 def get_services(services: Optional[Sequence[pulumi.InputType['GetServicesServiceArgs']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
-    Use this data source to get a list of Azure service names.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    azure_services = signalfx.azure.get_services()
-    # Leaves out most of the integration bits, see the docs
-    # for signalfx_azure_integration for more
-    # …
-    azure_myteam = signalfx.azure.Integration("azureMyteam", services=[__item.name for __item in [azure_services.services]])
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['services'] = services
@@ -89,19 +76,6 @@ def get_services(services: Optional[Sequence[pulumi.InputType['GetServicesServic
 def get_services_output(services: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetServicesServiceArgs']]]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
     """
-    Use this data source to get a list of Azure service names.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    azure_services = signalfx.azure.get_services()
-    # Leaves out most of the integration bits, see the docs
-    # for signalfx_azure_integration for more
-    # …
-    azure_myteam = signalfx.azure.Integration("azureMyteam", services=[__item.name for __item in [azure_services.services]])
-    ```
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -12,7 +12,7 @@ namespace Pulumi.SignalFx.Aws
     /// <summary>
     /// SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
     /// 
-    /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator].(https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
     /// 
@@ -154,13 +154,13 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         /// </summary>
         [Output("metricStatsToSyncs")]
         public Output<ImmutableArray<Outputs.IntegrationMetricStatsToSync>> MetricStatsToSyncs { get; private set; } = null!;
 
         /// <summary>
-        /// A named token to use for ingest
+        /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Output("namedToken")]
         public Output<string?> NamedToken { get; private set; } = null!;
@@ -194,6 +194,12 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        /// </summary>
+        [Output("syncCustomNamespacesOnly")]
+        public Output<bool?> SyncCustomNamespacesOnly { get; private set; } = null!;
 
         /// <summary>
         /// If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
@@ -335,7 +341,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationMetricStatsToSyncArgs>? _metricStatsToSyncs;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         /// </summary>
         public InputList<Inputs.IntegrationMetricStatsToSyncArgs> MetricStatsToSyncs
         {
@@ -344,7 +350,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// A named token to use for ingest
+        /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Input("namedToken")]
         public Input<string>? NamedToken { get; set; }
@@ -396,6 +402,12 @@ namespace Pulumi.SignalFx.Aws
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
+
+        /// <summary>
+        /// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        /// </summary>
+        [Input("syncCustomNamespacesOnly")]
+        public Input<bool>? SyncCustomNamespacesOnly { get; set; }
 
         /// <summary>
         /// If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
@@ -498,7 +510,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>? _metricStatsToSyncs;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics. If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
         /// </summary>
         public InputList<Inputs.IntegrationMetricStatsToSyncGetArgs> MetricStatsToSyncs
         {
@@ -507,7 +519,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// A named token to use for ingest
+        /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
         /// </summary>
         [Input("namedToken")]
         public Input<string>? NamedToken { get; set; }
@@ -559,6 +571,12 @@ namespace Pulumi.SignalFx.Aws
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
+
+        /// <summary>
+        /// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        /// </summary>
+        [Input("syncCustomNamespacesOnly")]
+        public Input<bool>? SyncCustomNamespacesOnly { get; set; }
 
         /// <summary>
         /// If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).

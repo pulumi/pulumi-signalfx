@@ -44,7 +44,7 @@ class IntegrationCustomNamespaceSyncRule(dict):
                  filter_action: Optional[str] = None,
                  filter_source: Optional[str] = None):
         """
-        :param str namespace: An AWS namespace having AWS metric that you want to pick statistics for
+        :param str namespace: An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         :param str default_action: Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         :param str filter_action: Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         :param str filter_source: Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
@@ -61,7 +61,7 @@ class IntegrationCustomNamespaceSyncRule(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        An AWS namespace having AWS metric that you want to pick statistics for
+        An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         """
         return pulumi.get(self, "namespace")
 
@@ -98,7 +98,7 @@ class IntegrationMetricStatsToSync(dict):
                  stats: Sequence[str]):
         """
         :param str metric: AWS metric that you want to pick statistics for
-        :param str namespace: An AWS namespace having AWS metric that you want to pick statistics for
+        :param str namespace: An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         :param Sequence[str] stats: AWS statistics you want to collect
         """
         pulumi.set(__self__, "metric", metric)
@@ -117,7 +117,7 @@ class IntegrationMetricStatsToSync(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        An AWS namespace having AWS metric that you want to pick statistics for
+        An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         """
         return pulumi.get(self, "namespace")
 
@@ -159,7 +159,7 @@ class IntegrationNamespaceSyncRule(dict):
                  filter_action: Optional[str] = None,
                  filter_source: Optional[str] = None):
         """
-        :param str namespace: An AWS namespace having AWS metric that you want to pick statistics for
+        :param str namespace: An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         :param str default_action: Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         :param str filter_action: Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         :param str filter_source: Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
@@ -176,7 +176,7 @@ class IntegrationNamespaceSyncRule(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        An AWS namespace having AWS metric that you want to pick statistics for
+        An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
         """
         return pulumi.get(self, "namespace")
 

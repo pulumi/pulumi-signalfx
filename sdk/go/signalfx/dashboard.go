@@ -14,11 +14,11 @@ import (
 type Dashboard struct {
 	pulumi.CustomResourceState
 
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams pulumi.StringArrayOutput `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
@@ -43,7 +43,8 @@ type Dashboard struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids DashboardGridArrayOutput `pulumi:"grids"`
 	// Name of the dashboard.
-	Name        pulumi.StringOutput        `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Permissions DashboardPermissionsOutput `pulumi:"permissions"`
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayOutput `pulumi:"selectedEventOverlays"`
@@ -91,11 +92,11 @@ func GetDashboard(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dashboard resources.
 type dashboardState struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
@@ -120,7 +121,8 @@ type dashboardState struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids []DashboardGrid `pulumi:"grids"`
 	// Name of the dashboard.
-	Name        *string               `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Permissions *DashboardPermissions `pulumi:"permissions"`
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays []DashboardSelectedEventOverlay `pulumi:"selectedEventOverlays"`
@@ -137,11 +139,11 @@ type dashboardState struct {
 }
 
 type DashboardState struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers pulumi.StringArrayInput
@@ -166,7 +168,8 @@ type DashboardState struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids DashboardGridArrayInput
 	// Name of the dashboard.
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Permissions DashboardPermissionsPtrInput
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayInput
@@ -187,11 +190,11 @@ func (DashboardState) ElementType() reflect.Type {
 }
 
 type dashboardArgs struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
@@ -216,7 +219,8 @@ type dashboardArgs struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids []DashboardGrid `pulumi:"grids"`
 	// Name of the dashboard.
-	Name        *string               `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Permissions *DashboardPermissions `pulumi:"permissions"`
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays []DashboardSelectedEventOverlay `pulumi:"selectedEventOverlays"`
@@ -232,11 +236,11 @@ type dashboardArgs struct {
 
 // The set of arguments for constructing a Dashboard resource.
 type DashboardArgs struct {
-	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions_* fields now
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissionsAcl` or `permissionsParent` instead.
+	// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
 	//
 	// Deprecated: Please use permissions fields now
 	AuthorizedWriterUsers pulumi.StringArrayInput
@@ -261,7 +265,8 @@ type DashboardArgs struct {
 	// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
 	Grids DashboardGridArrayInput
 	// Name of the dashboard.
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
 	Permissions DashboardPermissionsPtrInput
 	// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
 	SelectedEventOverlays DashboardSelectedEventOverlayArrayInput

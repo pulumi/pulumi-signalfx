@@ -1569,8 +1569,10 @@ func (o DashboardGroupPermissionArrayOutput) Index(i pulumi.IntInput) DashboardG
 }
 
 type DashboardPermissions struct {
-	Acls   []DashboardPermissionsAcl `pulumi:"acls"`
-	Parent *string                   `pulumi:"parent"`
+	// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+	Acls []DashboardPermissionsAcl `pulumi:"acls"`
+	// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+	Parent *string `pulumi:"parent"`
 }
 
 // DashboardPermissionsInput is an input type that accepts DashboardPermissionsArgs and DashboardPermissionsOutput values.
@@ -1585,8 +1587,10 @@ type DashboardPermissionsInput interface {
 }
 
 type DashboardPermissionsArgs struct {
-	Acls   DashboardPermissionsAclArrayInput `pulumi:"acls"`
-	Parent pulumi.StringPtrInput             `pulumi:"parent"`
+	// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+	Acls DashboardPermissionsAclArrayInput `pulumi:"acls"`
+	// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
 }
 
 func (DashboardPermissionsArgs) ElementType() reflect.Type {
@@ -1666,10 +1670,12 @@ func (o DashboardPermissionsOutput) ToDashboardPermissionsPtrOutputWithContext(c
 	}).(DashboardPermissionsPtrOutput)
 }
 
+// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
 func (o DashboardPermissionsOutput) Acls() DashboardPermissionsAclArrayOutput {
 	return o.ApplyT(func(v DashboardPermissions) []DashboardPermissionsAcl { return v.Acls }).(DashboardPermissionsAclArrayOutput)
 }
 
+// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
 func (o DashboardPermissionsOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPermissions) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
@@ -1698,6 +1704,7 @@ func (o DashboardPermissionsPtrOutput) Elem() DashboardPermissionsOutput {
 	}).(DashboardPermissionsOutput)
 }
 
+// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
 func (o DashboardPermissionsPtrOutput) Acls() DashboardPermissionsAclArrayOutput {
 	return o.ApplyT(func(v *DashboardPermissions) []DashboardPermissionsAcl {
 		if v == nil {
@@ -1707,6 +1714,7 @@ func (o DashboardPermissionsPtrOutput) Acls() DashboardPermissionsAclArrayOutput
 	}).(DashboardPermissionsAclArrayOutput)
 }
 
+// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
 func (o DashboardPermissionsPtrOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPermissions) *string {
 		if v == nil {

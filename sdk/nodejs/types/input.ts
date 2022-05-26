@@ -223,7 +223,13 @@ export interface DashboardGroupPermission {
 }
 
 export interface DashboardPermissions {
+    /**
+     * List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+     */
     acls?: pulumi.Input<pulumi.Input<inputs.DashboardPermissionsAcl>[]>;
+    /**
+     * ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
+     */
     parent?: pulumi.Input<string>;
 }
 
@@ -803,7 +809,7 @@ export namespace aws {
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS namespace having AWS metric that you want to pick statistics for
+         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: pulumi.Input<string>;
     }
@@ -814,7 +820,7 @@ export namespace aws {
          */
         metric: pulumi.Input<string>;
         /**
-         * An AWS namespace having AWS metric that you want to pick statistics for
+         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: pulumi.Input<string>;
         /**
@@ -837,7 +843,7 @@ export namespace aws {
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS namespace having AWS metric that you want to pick statistics for
+         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
          */
         namespace: pulumi.Input<string>;
     }

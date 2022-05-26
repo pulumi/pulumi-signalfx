@@ -722,8 +722,8 @@ github.com/pulumi/pulumi/sdk/v3 v3.30.0 h1:0X5gSUS3x82XzenpCCW8EdJrmOzoQqHSdQd0O
 github.com/pulumi/pulumi/sdk/v3 v3.30.0/go.mod h1:hGo/+AL1L4sPL9Ukd/i5bNFM3WHs3dHcA+GKEW7M3RA=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Dik4Qe/+xguB8JagPyXNlbOnRiXGmq/PSPQTGunYnTk=
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20220329183112-559fc8c45047 h1:zLOMJ6Bs2oUCuYFV8IcBK5eA4eCosXmjt5lK4iHkdwQ=
-github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20220329183112-559fc8c45047/go.mod h1:P5d/XE/MgCHzXP7+5NW3TWsaAGf4bYkvGwSXl6MGtoE=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20220525204257-3f666fa9fd4b h1:yLPLf7pHvZbAJ+dQiKYNP+8SP7KobW5D3ir78PbhENw=
+github.com/pulumi/terraform-provider-signalfx v1.9.2-0.20220525204257-3f666fa9fd4b/go.mod h1:qxSMOSJqCOvsF6MuWx4ylavSL4nzfYiejOABAl7n+lI=
 github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
@@ -758,8 +758,8 @@ github.com/signalfx/golib/v3 v3.3.37 h1:CvL6Q8hySjm7D82P039qH2lFWJvBa18IJdAwa4LH
 github.com/signalfx/golib/v3 v3.3.37/go.mod h1:zH70SVnrzVUqDmUFEwDk1HSwS71Pi2w3bSsNpnOtYuQ=
 github.com/signalfx/gomemcache v0.0.0-20180823214636-4f7ef64c72a9/go.mod h1:Ytb8KfCSyuwy/VILnROdgCvbQLA5ch0nkbG7lKT0BXw=
 github.com/signalfx/sapm-proto v0.4.0/go.mod h1:x3gtwJ1GRejtkghB4nYpwixh2zqJrLbPU959ZNhM0Fk=
-github.com/signalfx/signalfx-go v1.12.0 h1:M5++mfoK9rkIzvWaZyiSLfHD0deMlM5ZWiShftNe8l4=
-github.com/signalfx/signalfx-go v1.12.0/go.mod h1:YhPTMdQJDfphcRBdk+9acbbAw1gYY7z5BIHUWzLmGlA=
+github.com/signalfx/signalfx-go v1.19.0 h1:ZjHL7DRLsKfM1j87q0FjqVMx3zxYfd5zyRg2Kx0Nbec=
+github.com/signalfx/signalfx-go v1.19.0/go.mod h1:YhPTMdQJDfphcRBdk+9acbbAw1gYY7z5BIHUWzLmGlA=
 github.com/sirupsen/logrus v1.0.4-0.20170822132746-89742aefa4b2/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.1/go.mod h1:ni0Sbl8bgC9z8RoU9G6nDWqqs/fq4eDPysMBDgk/93Q=
