@@ -15,56 +15,55 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // A global link to SignalFx dashboard.
+    ///     var myDataLink = new SignalFx.DataLink("myDataLink", new()
     ///     {
-    ///         // A global link to SignalFx dashboard.
-    ///         var myDataLink = new SignalFx.DataLink("myDataLink", new SignalFx.DataLinkArgs
+    ///         PropertyName = "pname",
+    ///         PropertyValue = "pvalue",
+    ///         TargetSignalfxDashboards = new[]
     ///         {
-    ///             PropertyName = "pname",
-    ///             PropertyValue = "pvalue",
-    ///             TargetSignalfxDashboards = 
+    ///             new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs
     ///             {
-    ///                 new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs
-    ///                 {
-    ///                     IsDefault = true,
-    ///                     Name = "sfx_dash",
-    ///                     DashboardGroupId = signalfx_dashboard_group.Mydashboardgroup0.Id,
-    ///                     DashboardId = signalfx_dashboard.Mydashboard0.Id,
-    ///                 },
+    ///                 IsDefault = true,
+    ///                 Name = "sfx_dash",
+    ///                 DashboardGroupId = signalfx_dashboard_group.Mydashboardgroup0.Id,
+    ///                 DashboardId = signalfx_dashboard.Mydashboard0.Id,
     ///             },
-    ///         });
-    ///         // A dashboard-specific link to an external URL
-    ///         var myDataLinkDash = new SignalFx.DataLink("myDataLinkDash", new SignalFx.DataLinkArgs
-    ///         {
-    ///             ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,
-    ///             PropertyName = "pname2",
-    ///             PropertyValue = "pvalue",
-    ///             TargetExternalUrls = 
-    ///             {
-    ///                 new SignalFx.Inputs.DataLinkTargetExternalUrlArgs
-    ///                 {
-    ///                     Name = "ex_url",
-    ///                     TimeFormat = "ISO8601",
-    ///                     Url = "https://www.example.com",
-    ///                     PropertyKeyMapping = 
-    ///                     {
-    ///                         { "foo", "bar" },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     // A dashboard-specific link to an external URL
+    ///     var myDataLinkDash = new SignalFx.DataLink("myDataLinkDash", new()
+    ///     {
+    ///         ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,
+    ///         PropertyName = "pname2",
+    ///         PropertyValue = "pvalue",
+    ///         TargetExternalUrls = new[]
+    ///         {
+    ///             new SignalFx.Inputs.DataLinkTargetExternalUrlArgs
+    ///             {
+    ///                 Name = "ex_url",
+    ///                 TimeFormat = "ISO8601",
+    ///                 Url = "https://www.example.com",
+    ///                 PropertyKeyMapping = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/dataLink:DataLink")]
-    public partial class DataLink : Pulumi.CustomResource
+    public partial class DataLink : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
@@ -146,7 +145,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class DataLinkArgs : Pulumi.ResourceArgs
+    public sealed class DataLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
@@ -205,9 +204,10 @@ namespace Pulumi.SignalFx
         public DataLinkArgs()
         {
         }
+        public static new DataLinkArgs Empty => new DataLinkArgs();
     }
 
-    public sealed class DataLinkState : Pulumi.ResourceArgs
+    public sealed class DataLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
@@ -266,5 +266,6 @@ namespace Pulumi.SignalFx
         public DataLinkState()
         {
         }
+        public static new DataLinkState Empty => new DataLinkState();
     }
 }

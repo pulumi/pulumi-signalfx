@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Gcp.Inputs
 {
 
-    public sealed class GetServicesServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetServicesServiceArgs : global::Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SignalFx.Gcp.Inputs
         public GetServicesServiceArgs()
         {
         }
+        public static new GetServicesServiceArgs Empty => new GetServicesServiceArgs();
     }
 }

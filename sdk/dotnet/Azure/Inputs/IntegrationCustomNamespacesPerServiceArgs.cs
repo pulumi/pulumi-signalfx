@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Azure.Inputs
 {
 
-    public sealed class IntegrationCustomNamespacesPerServiceArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationCustomNamespacesPerServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("namespaces", required: true)]
         private InputList<string>? _namespaces;
@@ -33,5 +33,6 @@ namespace Pulumi.SignalFx.Azure.Inputs
         public IntegrationCustomNamespacesPerServiceArgs()
         {
         }
+        public static new IntegrationCustomNamespacesPerServiceArgs Empty => new IntegrationCustomNamespacesPerServiceArgs();
     }
 }

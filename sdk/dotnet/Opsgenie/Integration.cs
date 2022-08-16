@@ -17,26 +17,24 @@ namespace Pulumi.SignalFx.Opsgenie
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var opgenieMyteam = new SignalFx.Opsgenie.Integration("opgenieMyteam", new()
     ///     {
-    ///         var opgenieMyteam = new SignalFx.Opsgenie.Integration("opgenieMyteam", new SignalFx.Opsgenie.IntegrationArgs
-    ///         {
-    ///             ApiKey = "my-key",
-    ///             ApiUrl = "https://api.opsgenie.com",
-    ///             Enabled = true,
-    ///         });
-    ///     }
+    ///         ApiKey = "my-key",
+    ///         ApiUrl = "https://api.opsgenie.com",
+    ///         Enabled = true,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:opsgenie/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API key
@@ -106,7 +104,7 @@ namespace Pulumi.SignalFx.Opsgenie
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API key
@@ -135,9 +133,10 @@ namespace Pulumi.SignalFx.Opsgenie
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API key
@@ -166,5 +165,6 @@ namespace Pulumi.SignalFx.Opsgenie
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

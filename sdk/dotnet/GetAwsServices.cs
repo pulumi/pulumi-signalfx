@@ -20,7 +20,7 @@ namespace Pulumi.SignalFx
     }
 
 
-    public sealed class GetAwsServicesArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsServicesArgs : global::Pulumi.InvokeArgs
     {
         [Input("services")]
         private List<Inputs.GetAwsServicesServiceArgs>? _services;
@@ -33,9 +33,10 @@ namespace Pulumi.SignalFx
         public GetAwsServicesArgs()
         {
         }
+        public static new GetAwsServicesArgs Empty => new GetAwsServicesArgs();
     }
 
-    public sealed class GetAwsServicesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("services")]
         private InputList<Inputs.GetAwsServicesServiceInputArgs>? _services;
@@ -48,6 +49,7 @@ namespace Pulumi.SignalFx
         public GetAwsServicesInvokeArgs()
         {
         }
+        public static new GetAwsServicesInvokeArgs Empty => new GetAwsServicesInvokeArgs();
     }
 
 

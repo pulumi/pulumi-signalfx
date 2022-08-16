@@ -17,43 +17,41 @@ namespace Pulumi.SignalFx.Gcp
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new()
     ///     {
-    ///         var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new SignalFx.Gcp.IntegrationArgs
+    ///         Enabled = true,
+    ///         PollRate = 300,
+    ///         ProjectServiceKeys = new[]
     ///         {
-    ///             Enabled = true,
-    ///             PollRate = 300,
-    ///             ProjectServiceKeys = 
+    ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
     ///             {
-    ///                 new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
-    ///                 {
-    ///                     ProjectId = "gcp_project_id_1",
-    ///                     ProjectKey = File.ReadAllText("/path/to/gcp_credentials_1.json"),
-    ///                 },
-    ///                 new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
-    ///                 {
-    ///                     ProjectId = "gcp_project_id_2",
-    ///                     ProjectKey = File.ReadAllText("/path/to/gcp_credentials_2.json"),
-    ///                 },
+    ///                 ProjectId = "gcp_project_id_1",
+    ///                 ProjectKey = File.ReadAllText("/path/to/gcp_credentials_1.json"),
     ///             },
-    ///             Services = 
+    ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
     ///             {
-    ///                 "compute",
+    ///                 ProjectId = "gcp_project_id_2",
+    ///                 ProjectKey = File.ReadAllText("/path/to/gcp_credentials_2.json"),
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///         Services = new[]
+    ///         {
+    ///             "compute",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:gcp/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -90,6 +88,12 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
+
+        /// <summary>
+        /// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        /// </summary>
+        [Output("useMetricSourceProjectForQuota")]
+        public Output<bool?> UseMetricSourceProjectForQuota { get; private set; } = null!;
 
         /// <summary>
         /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
@@ -141,7 +145,7 @@ namespace Pulumi.SignalFx.Gcp
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -191,6 +195,12 @@ namespace Pulumi.SignalFx.Gcp
             set => _services = value;
         }
 
+        /// <summary>
+        /// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        /// </summary>
+        [Input("useMetricSourceProjectForQuota")]
+        public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
+
         [Input("whitelists")]
         private InputList<string>? _whitelists;
 
@@ -206,9 +216,10 @@ namespace Pulumi.SignalFx.Gcp
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -258,6 +269,12 @@ namespace Pulumi.SignalFx.Gcp
             set => _services = value;
         }
 
+        /// <summary>
+        /// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+        /// </summary>
+        [Input("useMetricSourceProjectForQuota")]
+        public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
+
         [Input("whitelists")]
         private InputList<string>? _whitelists;
 
@@ -273,5 +290,6 @@ namespace Pulumi.SignalFx.Gcp
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

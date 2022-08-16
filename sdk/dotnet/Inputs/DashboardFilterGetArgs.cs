@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, this variable will also match data that doesn't have this property at all.
@@ -45,5 +45,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardFilterGetArgs()
         {
         }
+        public static new DashboardFilterGetArgs Empty => new DashboardFilterGetArgs();
     }
 }

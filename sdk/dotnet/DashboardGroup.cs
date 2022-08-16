@@ -17,127 +17,121 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new()
     ///     {
-    ///         var mydashboardgroup0 = new SignalFx.DashboardGroup("mydashboardgroup0", new SignalFx.DashboardGroupArgs
+    ///         Description = "Cool dashboard group",
+    ///         AuthorizedWriterTeams = new[]
     ///         {
-    ///             Description = "Cool dashboard group",
-    ///             AuthorizedWriterTeams = 
-    ///             {
-    ///                 signalfx_team.Mycoolteam.Id,
-    ///             },
-    ///             AuthorizedWriterUsers = 
-    ///             {
-    ///                 "abc123",
-    ///             },
-    ///         });
-    ///     }
+    ///             signalfx_team.Mycoolteam.Id,
+    ///         },
+    ///         AuthorizedWriterUsers = new[]
+    ///         {
+    ///             "abc123",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### With Permissions
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydashboardgroupWithpermissions = new SignalFx.DashboardGroup("mydashboardgroupWithpermissions", new()
     ///     {
-    ///         var mydashboardgroupWithpermissions = new SignalFx.DashboardGroup("mydashboardgroupWithpermissions", new SignalFx.DashboardGroupArgs
+    ///         Description = "Cool dashboard group",
+    ///         Permissions = new[]
     ///         {
-    ///             Description = "Cool dashboard group",
-    ///             Permissions = 
+    ///             new SignalFx.Inputs.DashboardGroupPermissionArgs
     ///             {
-    ///                 new SignalFx.Inputs.DashboardGroupPermissionArgs
+    ///                 Actions = new[]
     ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "READ",
-    ///                     },
-    ///                     PrincipalId = "abc123",
-    ///                     PrincipalType = "ORG",
+    ///                     "READ",
     ///                 },
-    ///                 new SignalFx.Inputs.DashboardGroupPermissionArgs
-    ///                 {
-    ///                     Actions = 
-    ///                     {
-    ///                         "READ",
-    ///                         "WRITE",
-    ///                     },
-    ///                     PrincipalId = "abc456",
-    ///                     PrincipalType = "USER",
-    ///                 },
+    ///                 PrincipalId = "abc123",
+    ///                 PrincipalType = "ORG",
     ///             },
-    ///         });
-    ///     }
+    ///             new SignalFx.Inputs.DashboardGroupPermissionArgs
+    ///             {
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "READ",
+    ///                     "WRITE",
+    ///                 },
+    ///                 PrincipalId = "abc456",
+    ///                 PrincipalType = "USER",
+    ///             },
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ### With Mirrored Dashboards
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup("mydashboardgroupWithmirrors", new()
     ///     {
-    ///         var mydashboardgroupWithmirrors = new SignalFx.DashboardGroup("mydashboardgroupWithmirrors", new SignalFx.DashboardGroupArgs
+    ///         Description = "Cool dashboard group",
+    ///         Dashboards = new[]
     ///         {
-    ///             Description = "Cool dashboard group",
-    ///             Dashboards = 
+    ///             new SignalFx.Inputs.DashboardGroupDashboardArgs
     ///             {
-    ///                 new SignalFx.Inputs.DashboardGroupDashboardArgs
+    ///                 DashboardId = signalfx_dashboard.Gc_dashboard.Id,
+    ///                 NameOverride = "GC For My Service",
+    ///                 DescriptionOverride = "Garbage Collection dashboard maintained by JVM team",
+    ///                 FilterOverrides = new[]
     ///                 {
-    ///                     DashboardId = signalfx_dashboard.Gc_dashboard.Id,
-    ///                     NameOverride = "GC For My Service",
-    ///                     DescriptionOverride = "Garbage Collection dashboard maintained by JVM team",
-    ///                     FilterOverrides = 
+    ///                     new SignalFx.Inputs.DashboardGroupDashboardFilterOverrideArgs
     ///                     {
-    ///                         new SignalFx.Inputs.DashboardGroupDashboardFilterOverrideArgs
+    ///                         Property = "service",
+    ///                         Values = new[]
     ///                         {
-    ///                             Property = "service",
-    ///                             Values = 
-    ///                             {
-    ///                                 "myservice",
-    ///                             },
-    ///                             Negated = false,
+    ///                             "myservice",
     ///                         },
+    ///                         Negated = false,
     ///                     },
-    ///                     VariableOverrides = 
+    ///                 },
+    ///                 VariableOverrides = new[]
+    ///                 {
+    ///                     new SignalFx.Inputs.DashboardGroupDashboardVariableOverrideArgs
     ///                     {
-    ///                         new SignalFx.Inputs.DashboardGroupDashboardVariableOverrideArgs
+    ///                         Property = "region",
+    ///                         Values = new[]
     ///                         {
-    ///                             Property = "region",
-    ///                             Values = 
-    ///                             {
-    ///                                 "us-west1",
-    ///                             },
-    ///                             ValuesSuggesteds = 
-    ///                             {
-    ///                                 "us-west-1",
-    ///                                 "us-east-1",
-    ///                             },
+    ///                             "us-west1",
+    ///                         },
+    ///                         ValuesSuggesteds = new[]
+    ///                         {
+    ///                             "us-west-1",
+    ///                             "us-east-1",
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/dashboardGroup:DashboardGroup")]
-    public partial class DashboardGroup : Pulumi.CustomResource
+    public partial class DashboardGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -228,7 +222,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class DashboardGroupArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorizedWriterTeams")]
         private InputList<string>? _authorizedWriterTeams;
@@ -315,9 +309,10 @@ namespace Pulumi.SignalFx
         public DashboardGroupArgs()
         {
         }
+        public static new DashboardGroupArgs Empty => new DashboardGroupArgs();
     }
 
-    public sealed class DashboardGroupState : Pulumi.ResourceArgs
+    public sealed class DashboardGroupState : global::Pulumi.ResourceArgs
     {
         [Input("authorizedWriterTeams")]
         private InputList<string>? _authorizedWriterTeams;
@@ -404,5 +399,6 @@ namespace Pulumi.SignalFx
         public DashboardGroupState()
         {
         }
+        public static new DashboardGroupState Empty => new DashboardGroupState();
     }
 }

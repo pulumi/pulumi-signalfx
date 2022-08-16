@@ -21,47 +21,50 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
-// 			AxisLeft: &TimeChartAxisLeftArgs{
-// 				Label:        pulumi.String("CPU Total Idle"),
-// 				LowWatermark: pulumi.Float64(1000),
-// 			},
-// 			LegendOptionsFields: TimeChartLegendOptionsFieldArray{
-// 				&TimeChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(false),
-// 					Property: pulumi.String("collector"),
-// 				},
-// 				&TimeChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(false),
-// 					Property: pulumi.String("hostname"),
-// 				},
-// 			},
-// 			PlotType:        pulumi.String("LineChart"),
-// 			ProgramText:     pulumi.String(fmt.Sprintf("%v%v", "data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n", "\n")),
-// 			ShowDataMarkers: pulumi.Bool(true),
-// 			TimeRange:       pulumi.Int(3600),
-// 			VizOptions: TimeChartVizOptionArray{
-// 				&TimeChartVizOptionArgs{
-// 					Axis:  pulumi.String("left"),
-// 					Color: pulumi.String("orange"),
-// 					Label: pulumi.String("CPU Idle"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
+//				AxisLeft: &TimeChartAxisLeftArgs{
+//					Label:        pulumi.String("CPU Total Idle"),
+//					LowWatermark: pulumi.Float64(1000),
+//				},
+//				LegendOptionsFields: TimeChartLegendOptionsFieldArray{
+//					&TimeChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(false),
+//						Property: pulumi.String("collector"),
+//					},
+//					&TimeChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(false),
+//						Property: pulumi.String("hostname"),
+//					},
+//				},
+//				PlotType:        pulumi.String("LineChart"),
+//				ProgramText:     pulumi.String(fmt.Sprintf("data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n\n")),
+//				ShowDataMarkers: pulumi.Bool(true),
+//				TimeRange:       pulumi.Int(3600),
+//				VizOptions: TimeChartVizOptionArray{
+//					&TimeChartVizOptionArgs{
+//						Axis:  pulumi.String("left"),
+//						Color: pulumi.String("orange"),
+//						Label: pulumi.String("CPU Idle"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type TimeChart struct {
 	pulumi.CustomResourceState
@@ -438,7 +441,7 @@ func (i *TimeChart) ToTimeChartOutputWithContext(ctx context.Context) TimeChartO
 // TimeChartArrayInput is an input type that accepts TimeChartArray and TimeChartArrayOutput values.
 // You can construct a concrete instance of `TimeChartArrayInput` via:
 //
-//          TimeChartArray{ TimeChartArgs{...} }
+//	TimeChartArray{ TimeChartArgs{...} }
 type TimeChartArrayInput interface {
 	pulumi.Input
 
@@ -463,7 +466,7 @@ func (i TimeChartArray) ToTimeChartArrayOutputWithContext(ctx context.Context) T
 // TimeChartMapInput is an input type that accepts TimeChartMap and TimeChartMapOutput values.
 // You can construct a concrete instance of `TimeChartMapInput` via:
 //
-//          TimeChartMap{ "key": TimeChartArgs{...} }
+//	TimeChartMap{ "key": TimeChartArgs{...} }
 type TimeChartMapInput interface {
 	pulumi.Input
 
@@ -497,6 +500,150 @@ func (o TimeChartOutput) ToTimeChartOutput() TimeChartOutput {
 
 func (o TimeChartOutput) ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput {
 	return o
+}
+
+// Force the chart to display zero on the y-axes, even if none of the data is near zero.
+func (o TimeChartOutput) AxesIncludeZero() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.AxesIncludeZero }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+func (o TimeChartOutput) AxesPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.AxesPrecision }).(pulumi.IntPtrOutput)
+}
+
+// Set of axis options.
+func (o TimeChartOutput) AxisLeft() TimeChartAxisLeftPtrOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChartAxisLeftPtrOutput { return v.AxisLeft }).(TimeChartAxisLeftPtrOutput)
+}
+
+// Set of axis options.
+func (o TimeChartOutput) AxisRight() TimeChartAxisRightPtrOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChartAxisRightPtrOutput { return v.AxisRight }).(TimeChartAxisRightPtrOutput)
+}
+
+// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+func (o TimeChartOutput) ColorBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
+}
+
+// Description of the chart.
+func (o TimeChartOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+func (o TimeChartOutput) DisableSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o TimeChartOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
+// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+func (o TimeChartOutput) EventOptions() TimeChartEventOptionArrayOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChartEventOptionArrayOutput { return v.EventOptions }).(TimeChartEventOptionArrayOutput)
+}
+
+// Only used when `plotType` is `"Histogram"`. Histogram specific options.
+func (o TimeChartOutput) HistogramOptions() TimeChartHistogramOptionArrayOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChartHistogramOptionArrayOutput { return v.HistogramOptions }).(TimeChartHistogramOptionArrayOutput)
+}
+
+// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+//
+// Deprecated: Please use legend_options_fields
+func (o TimeChartOutput) LegendFieldsToHides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringArrayOutput { return v.LegendFieldsToHides }).(pulumi.StringArrayOutput)
+}
+
+// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+func (o TimeChartOutput) LegendOptionsFields() TimeChartLegendOptionsFieldArrayOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChartLegendOptionsFieldArrayOutput { return v.LegendOptionsFields }).(TimeChartLegendOptionsFieldArrayOutput)
+}
+
+// How long (in seconds) to wait for late datapoints.
+func (o TimeChartOutput) MaxDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
+}
+
+// The minimum resolution (in seconds) to use for computing the underlying program.
+func (o TimeChartOutput) MinimumResolution() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.MinimumResolution }).(pulumi.IntPtrOutput)
+}
+
+// Name of the chart.
+func (o TimeChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
+func (o TimeChartOutput) OnChartLegendDimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.OnChartLegendDimension }).(pulumi.StringPtrOutput)
+}
+
+// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+func (o TimeChartOutput) PlotType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.PlotType }).(pulumi.StringPtrOutput)
+}
+
+// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+func (o TimeChartOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+func (o TimeChartOutput) ShowDataMarkers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.ShowDataMarkers }).(pulumi.BoolPtrOutput)
+}
+
+// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+func (o TimeChartOutput) ShowEventLines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.ShowEventLines }).(pulumi.BoolPtrOutput)
+}
+
+// Whether area and bar charts in the visualization should be stacked. `false` by default.
+func (o TimeChartOutput) Stacked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.Stacked }).(pulumi.BoolPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o TimeChartOutput) StartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// Tags associated with the chart
+//
+// Deprecated: signalfx_time_chart.tags is being removed in the next release
+func (o TimeChartOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+func (o TimeChartOutput) TimeRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
+}
+
+// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+func (o TimeChartOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+func (o TimeChartOutput) UnitPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the chart.
+func (o TimeChartOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *TimeChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Plot-level customization options, associated with a publish statement.
+func (o TimeChartOutput) VizOptions() TimeChartVizOptionArrayOutput {
+	return o.ApplyT(func(v *TimeChart) TimeChartVizOptionArrayOutput { return v.VizOptions }).(TimeChartVizOptionArrayOutput)
 }
 
 type TimeChartArrayOutput struct{ *pulumi.OutputState }

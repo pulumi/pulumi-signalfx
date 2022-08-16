@@ -20,7 +20,7 @@ type IntegrationCustomNamespacesPerService struct {
 // IntegrationCustomNamespacesPerServiceInput is an input type that accepts IntegrationCustomNamespacesPerServiceArgs and IntegrationCustomNamespacesPerServiceOutput values.
 // You can construct a concrete instance of `IntegrationCustomNamespacesPerServiceInput` via:
 //
-//          IntegrationCustomNamespacesPerServiceArgs{...}
+//	IntegrationCustomNamespacesPerServiceArgs{...}
 type IntegrationCustomNamespacesPerServiceInput interface {
 	pulumi.Input
 
@@ -50,7 +50,7 @@ func (i IntegrationCustomNamespacesPerServiceArgs) ToIntegrationCustomNamespaces
 // IntegrationCustomNamespacesPerServiceArrayInput is an input type that accepts IntegrationCustomNamespacesPerServiceArray and IntegrationCustomNamespacesPerServiceArrayOutput values.
 // You can construct a concrete instance of `IntegrationCustomNamespacesPerServiceArrayInput` via:
 //
-//          IntegrationCustomNamespacesPerServiceArray{ IntegrationCustomNamespacesPerServiceArgs{...} }
+//	IntegrationCustomNamespacesPerServiceArray{ IntegrationCustomNamespacesPerServiceArgs{...} }
 type IntegrationCustomNamespacesPerServiceArrayInput interface {
 	pulumi.Input
 
@@ -123,7 +123,7 @@ type IntegrationResourceFilterRule struct {
 // IntegrationResourceFilterRuleInput is an input type that accepts IntegrationResourceFilterRuleArgs and IntegrationResourceFilterRuleOutput values.
 // You can construct a concrete instance of `IntegrationResourceFilterRuleInput` via:
 //
-//          IntegrationResourceFilterRuleArgs{...}
+//	IntegrationResourceFilterRuleArgs{...}
 type IntegrationResourceFilterRuleInput interface {
 	pulumi.Input
 
@@ -150,7 +150,7 @@ func (i IntegrationResourceFilterRuleArgs) ToIntegrationResourceFilterRuleOutput
 // IntegrationResourceFilterRuleArrayInput is an input type that accepts IntegrationResourceFilterRuleArray and IntegrationResourceFilterRuleArrayOutput values.
 // You can construct a concrete instance of `IntegrationResourceFilterRuleArrayInput` via:
 //
-//          IntegrationResourceFilterRuleArray{ IntegrationResourceFilterRuleArgs{...} }
+//	IntegrationResourceFilterRuleArray{ IntegrationResourceFilterRuleArgs{...} }
 type IntegrationResourceFilterRuleArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +217,7 @@ type IntegrationResourceFilterRuleFilter struct {
 // IntegrationResourceFilterRuleFilterInput is an input type that accepts IntegrationResourceFilterRuleFilterArgs and IntegrationResourceFilterRuleFilterOutput values.
 // You can construct a concrete instance of `IntegrationResourceFilterRuleFilterInput` via:
 //
-//          IntegrationResourceFilterRuleFilterArgs{...}
+//	IntegrationResourceFilterRuleFilterArgs{...}
 type IntegrationResourceFilterRuleFilterInput interface {
 	pulumi.Input
 
@@ -266,7 +266,7 @@ type GetServicesService struct {
 // GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
 // You can construct a concrete instance of `GetServicesServiceInput` via:
 //
-//          GetServicesServiceArgs{...}
+//	GetServicesServiceArgs{...}
 type GetServicesServiceInput interface {
 	pulumi.Input
 
@@ -293,7 +293,7 @@ func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx contex
 // GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
 // You can construct a concrete instance of `GetServicesServiceArrayInput` via:
 //
-//          GetServicesServiceArray{ GetServicesServiceArgs{...} }
+//	GetServicesServiceArray{ GetServicesServiceArgs{...} }
 type GetServicesServiceArrayInput interface {
 	pulumi.Input
 

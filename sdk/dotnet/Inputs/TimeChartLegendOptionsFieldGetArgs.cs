@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class TimeChartLegendOptionsFieldGetArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartLegendOptionsFieldGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True or False depending on if you want the property to be shown or hidden.
@@ -27,5 +27,6 @@ namespace Pulumi.SignalFx.Inputs
         public TimeChartLegendOptionsFieldGetArgs()
         {
         }
+        public static new TimeChartLegendOptionsFieldGetArgs Empty => new TimeChartLegendOptionsFieldGetArgs();
     }
 }

@@ -106,6 +106,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
+     * If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+     */
+    public readonly importAzureMonitor!: pulumi.Output<boolean | undefined>;
+    /**
      * Name of the integration.
      */
     public readonly name!: pulumi.Output<string>;
@@ -162,6 +166,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["customNamespacesPerServices"] = state ? state.customNamespacesPerServices : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
+            resourceInputs["importAzureMonitor"] = state ? state.importAzureMonitor : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedToken"] = state ? state.namedToken : undefined;
             resourceInputs["pollRate"] = state ? state.pollRate : undefined;
@@ -196,6 +201,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["importAzureMonitor"] = args ? args.importAzureMonitor : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
@@ -235,6 +241,10 @@ export interface IntegrationState {
      * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
     environment?: pulumi.Input<string>;
+    /**
+     * If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+     */
+    importAzureMonitor?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
@@ -299,6 +309,10 @@ export interface IntegrationArgs {
      * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
     environment?: pulumi.Input<string>;
+    /**
+     * If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+     */
+    importAzureMonitor?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */

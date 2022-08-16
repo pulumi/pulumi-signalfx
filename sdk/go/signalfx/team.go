@@ -22,31 +22,34 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewTeam(ctx, "myteam0", &signalfx.TeamArgs{
-// 			Description: pulumi.String("Super great team no jerks definitely"),
-// 			Members: pulumi.StringArray{
-// 				pulumi.String("userid1"),
-// 				pulumi.String("userid2"),
-// 			},
-// 			NotificationsCriticals: pulumi.StringArray{
-// 				pulumi.String("PagerDuty,credentialId"),
-// 			},
-// 			NotificationsInfos: pulumi.StringArray{
-// 				pulumi.String("Email,notify@example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewTeam(ctx, "myteam0", &signalfx.TeamArgs{
+//				Description: pulumi.String("Super great team no jerks definitely"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("userid1"),
+//					pulumi.String("userid2"),
+//				},
+//				NotificationsCriticals: pulumi.StringArray{
+//					pulumi.String("PagerDuty,credentialId"),
+//				},
+//				NotificationsInfos: pulumi.StringArray{
+//					pulumi.String("Email,notify@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Team struct {
 	pulumi.CustomResourceState
@@ -220,7 +223,7 @@ func (i *Team) ToTeamOutputWithContext(ctx context.Context) TeamOutput {
 // TeamArrayInput is an input type that accepts TeamArray and TeamArrayOutput values.
 // You can construct a concrete instance of `TeamArrayInput` via:
 //
-//          TeamArray{ TeamArgs{...} }
+//	TeamArray{ TeamArgs{...} }
 type TeamArrayInput interface {
 	pulumi.Input
 
@@ -245,7 +248,7 @@ func (i TeamArray) ToTeamArrayOutputWithContext(ctx context.Context) TeamArrayOu
 // TeamMapInput is an input type that accepts TeamMap and TeamMapOutput values.
 // You can construct a concrete instance of `TeamMapInput` via:
 //
-//          TeamMap{ "key": TeamArgs{...} }
+//	TeamMap{ "key": TeamArgs{...} }
 type TeamMapInput interface {
 	pulumi.Input
 
@@ -279,6 +282,56 @@ func (o TeamOutput) ToTeamOutput() TeamOutput {
 
 func (o TeamOutput) ToTeamOutputWithContext(ctx context.Context) TeamOutput {
 	return o
+}
+
+// Description of the team.
+func (o TeamOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of user IDs to include in the team.
+func (o TeamOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// Name of the team.
+func (o TeamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Where to send notifications for critical alerts
+func (o TeamOutput) NotificationsCriticals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsCriticals }).(pulumi.StringArrayOutput)
+}
+
+// Where to send notifications for default alerts
+func (o TeamOutput) NotificationsDefaults() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsDefaults }).(pulumi.StringArrayOutput)
+}
+
+// Where to send notifications for info alerts
+func (o TeamOutput) NotificationsInfos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsInfos }).(pulumi.StringArrayOutput)
+}
+
+// Where to send notifications for major alerts
+func (o TeamOutput) NotificationsMajors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsMajors }).(pulumi.StringArrayOutput)
+}
+
+// Where to send notifications for minor alerts
+func (o TeamOutput) NotificationsMinors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsMinors }).(pulumi.StringArrayOutput)
+}
+
+// Where to send notifications for warning alerts
+func (o TeamOutput) NotificationsWarnings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsWarnings }).(pulumi.StringArrayOutput)
+}
+
+// The URL of the team.
+func (o TeamOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type TeamArrayOutput struct{ *pulumi.OutputState }

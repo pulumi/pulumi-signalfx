@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DetectorVizOptionArgs : Pulumi.ResourceArgs
+    public sealed class DetectorVizOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
@@ -46,5 +46,6 @@ namespace Pulumi.SignalFx.Inputs
         public DetectorVizOptionArgs()
         {
         }
+        public static new DetectorVizOptionArgs Empty => new DetectorVizOptionArgs();
     }
 }

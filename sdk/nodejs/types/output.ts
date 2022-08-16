@@ -875,3 +875,18 @@ export namespace gcp {
     }
 
 }
+
+export namespace logs {
+    export interface ListChartColumn {
+        /**
+         * Name of the chart.
+         */
+        name: string;
+    }
+
+    export interface ListChartSortOption {
+        descending: boolean;
+        field: string;
+    }
+
+}

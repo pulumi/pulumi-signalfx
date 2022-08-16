@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class TimeChartAxisRightGetArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartAxisRightGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A line to draw as a high watermark.
@@ -65,5 +65,6 @@ namespace Pulumi.SignalFx.Inputs
         public TimeChartAxisRightGetArgs()
         {
         }
+        public static new TimeChartAxisRightGetArgs Empty => new TimeChartAxisRightGetArgs();
     }
 }

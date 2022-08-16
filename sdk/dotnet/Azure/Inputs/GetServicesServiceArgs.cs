@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Azure.Inputs
 {
 
-    public sealed class GetServicesServiceInputArgs : Pulumi.ResourceArgs
+    public sealed class GetServicesServiceInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SignalFx.Azure.Inputs
         public GetServicesServiceInputArgs()
         {
         }
+        public static new GetServicesServiceInputArgs Empty => new GetServicesServiceInputArgs();
     }
 }

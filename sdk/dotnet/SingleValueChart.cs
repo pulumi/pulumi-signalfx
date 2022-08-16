@@ -17,33 +17,31 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new()
     ///     {
-    ///         var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new SignalFx.SingleValueChartArgs
-    ///         {
-    ///             ColorBy = "Dimension",
-    ///             Description = "Very cool Single Value Chart",
-    ///             IsTimestampHidden = true,
-    ///             MaxDelay = 2,
-    ///             MaxPrecision = 2,
-    ///             ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    ///         ColorBy = "Dimension",
+    ///         Description = "Very cool Single Value Chart",
+    ///         IsTimestampHidden = true,
+    ///         MaxDelay = 2,
+    ///         MaxPrecision = 2,
+    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
     /// data(""cpu.total.idle"", filter=myfilters).publish()
     /// 
     /// ",
-    ///             RefreshInterval = 1,
-    ///         });
-    ///     }
+    ///         RefreshInterval = 1,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/singleValueChart:SingleValueChart")]
-    public partial class SingleValueChart : Pulumi.CustomResource
+    public partial class SingleValueChart : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -179,7 +177,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class SingleValueChartArgs : Pulumi.ResourceArgs
+    public sealed class SingleValueChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -280,9 +278,10 @@ namespace Pulumi.SignalFx
         public SingleValueChartArgs()
         {
         }
+        public static new SingleValueChartArgs Empty => new SingleValueChartArgs();
     }
 
-    public sealed class SingleValueChartState : Pulumi.ResourceArgs
+    public sealed class SingleValueChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -389,5 +388,6 @@ namespace Pulumi.SignalFx
         public SingleValueChartState()
         {
         }
+        public static new SingleValueChartState Empty => new SingleValueChartState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Aws.Inputs
 {
 
-    public sealed class IntegrationMetricStatsToSyncGetArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationMetricStatsToSyncGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS metric that you want to pick statistics for
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Aws.Inputs
         public IntegrationMetricStatsToSyncGetArgs()
         {
         }
+        public static new IntegrationMetricStatsToSyncGetArgs Empty => new IntegrationMetricStatsToSyncGetArgs();
     }
 }

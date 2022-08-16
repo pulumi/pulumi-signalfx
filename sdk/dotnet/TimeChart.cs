@@ -17,56 +17,54 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mychart0 = new SignalFx.TimeChart("mychart0", new()
     ///     {
-    ///         var mychart0 = new SignalFx.TimeChart("mychart0", new SignalFx.TimeChartArgs
+    ///         AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
     ///         {
-    ///             AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
+    ///             Label = "CPU Total Idle",
+    ///             LowWatermark = 1000,
+    ///         },
+    ///         LegendOptionsFields = new[]
+    ///         {
+    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
     ///             {
-    ///                 Label = "CPU Total Idle",
-    ///                 LowWatermark = 1000,
+    ///                 Enabled = false,
+    ///                 Property = "collector",
     ///             },
-    ///             LegendOptionsFields = 
+    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
     ///             {
-    ///                 new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = false,
-    ///                     Property = "collector",
-    ///                 },
-    ///                 new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = false,
-    ///                     Property = "hostname",
-    ///                 },
+    ///                 Enabled = false,
+    ///                 Property = "hostname",
     ///             },
-    ///             PlotType = "LineChart",
-    ///             ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
+    ///         },
+    ///         PlotType = "LineChart",
+    ///         ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
     /// 
     /// ",
-    ///             ShowDataMarkers = true,
-    ///             TimeRange = 3600,
-    ///             VizOptions = 
+    ///         ShowDataMarkers = true,
+    ///         TimeRange = 3600,
+    ///         VizOptions = new[]
+    ///         {
+    ///             new SignalFx.Inputs.TimeChartVizOptionArgs
     ///             {
-    ///                 new SignalFx.Inputs.TimeChartVizOptionArgs
-    ///                 {
-    ///                     Axis = "left",
-    ///                     Color = "orange",
-    ///                     Label = "CPU Idle",
-    ///                 },
+    ///                 Axis = "left",
+    ///                 Color = "orange",
+    ///                 Label = "CPU Idle",
     ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/timeChart:TimeChart")]
-    public partial class TimeChart : Pulumi.CustomResource
+    public partial class TimeChart : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -280,7 +278,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class TimeChartArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -485,9 +483,10 @@ namespace Pulumi.SignalFx
         public TimeChartArgs()
         {
         }
+        public static new TimeChartArgs Empty => new TimeChartArgs();
     }
 
-    public sealed class TimeChartState : Pulumi.ResourceArgs
+    public sealed class TimeChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -698,5 +697,6 @@ namespace Pulumi.SignalFx
         public TimeChartState()
         {
         }
+        public static new TimeChartState Empty => new TimeChartState();
     }
 }

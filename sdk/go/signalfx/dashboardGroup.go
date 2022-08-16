@@ -20,27 +20,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
-// 			Description: pulumi.String("Cool dashboard group"),
-// 			AuthorizedWriterTeams: pulumi.StringArray{
-// 				pulumi.Any(signalfx_team.Mycoolteam.Id),
-// 			},
-// 			AuthorizedWriterUsers: pulumi.StringArray{
-// 				pulumi.String("abc123"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
+//				Description: pulumi.String("Cool dashboard group"),
+//				AuthorizedWriterTeams: pulumi.StringArray{
+//					pulumi.Any(signalfx_team.Mycoolteam.Id),
+//				},
+//				AuthorizedWriterUsers: pulumi.StringArray{
+//					pulumi.String("abc123"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### With Permissions
 //
@@ -48,38 +51,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithpermissions", &signalfx.DashboardGroupArgs{
-// 			Description: pulumi.String("Cool dashboard group"),
-// 			Permissions: DashboardGroupPermissionArray{
-// 				&DashboardGroupPermissionArgs{
-// 					Actions: pulumi.StringArray{
-// 						pulumi.String("READ"),
-// 					},
-// 					PrincipalId:   pulumi.String("abc123"),
-// 					PrincipalType: pulumi.String("ORG"),
-// 				},
-// 				&DashboardGroupPermissionArgs{
-// 					Actions: pulumi.StringArray{
-// 						pulumi.String("READ"),
-// 						pulumi.String("WRITE"),
-// 					},
-// 					PrincipalId:   pulumi.String("abc456"),
-// 					PrincipalType: pulumi.String("USER"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithpermissions", &signalfx.DashboardGroupArgs{
+//				Description: pulumi.String("Cool dashboard group"),
+//				Permissions: DashboardGroupPermissionArray{
+//					&DashboardGroupPermissionArgs{
+//						Actions: pulumi.StringArray{
+//							pulumi.String("READ"),
+//						},
+//						PrincipalId:   pulumi.String("abc123"),
+//						PrincipalType: pulumi.String("ORG"),
+//					},
+//					&DashboardGroupPermissionArgs{
+//						Actions: pulumi.StringArray{
+//							pulumi.String("READ"),
+//							pulumi.String("WRITE"),
+//						},
+//						PrincipalId:   pulumi.String("abc456"),
+//						PrincipalType: pulumi.String("USER"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### With Mirrored Dashboards
 //
@@ -87,49 +93,52 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithmirrors", &signalfx.DashboardGroupArgs{
-// 			Description: pulumi.String("Cool dashboard group"),
-// 			Dashboards: DashboardGroupDashboardArray{
-// 				&DashboardGroupDashboardArgs{
-// 					DashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),
-// 					NameOverride:        pulumi.String("GC For My Service"),
-// 					DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
-// 					FilterOverrides: DashboardGroupDashboardFilterOverrideArray{
-// 						&DashboardGroupDashboardFilterOverrideArgs{
-// 							Property: pulumi.String("service"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String("myservice"),
-// 							},
-// 							Negated: pulumi.Bool(false),
-// 						},
-// 					},
-// 					VariableOverrides: DashboardGroupDashboardVariableOverrideArray{
-// 						&DashboardGroupDashboardVariableOverrideArgs{
-// 							Property: pulumi.String("region"),
-// 							Values: pulumi.StringArray{
-// 								pulumi.String("us-west1"),
-// 							},
-// 							ValuesSuggesteds: pulumi.StringArray{
-// 								pulumi.String("us-west-1"),
-// 								pulumi.String("us-east-1"),
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithmirrors", &signalfx.DashboardGroupArgs{
+//				Description: pulumi.String("Cool dashboard group"),
+//				Dashboards: DashboardGroupDashboardArray{
+//					&DashboardGroupDashboardArgs{
+//						DashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),
+//						NameOverride:        pulumi.String("GC For My Service"),
+//						DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
+//						FilterOverrides: DashboardGroupDashboardFilterOverrideArray{
+//							&DashboardGroupDashboardFilterOverrideArgs{
+//								Property: pulumi.String("service"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("myservice"),
+//								},
+//								Negated: pulumi.Bool(false),
+//							},
+//						},
+//						VariableOverrides: DashboardGroupDashboardVariableOverrideArray{
+//							&DashboardGroupDashboardVariableOverrideArgs{
+//								Property: pulumi.String("region"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("us-west1"),
+//								},
+//								ValuesSuggesteds: pulumi.StringArray{
+//									pulumi.String("us-west-1"),
+//									pulumi.String("us-east-1"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type DashboardGroup struct {
 	pulumi.CustomResourceState
@@ -302,7 +311,7 @@ func (i *DashboardGroup) ToDashboardGroupOutputWithContext(ctx context.Context) 
 // DashboardGroupArrayInput is an input type that accepts DashboardGroupArray and DashboardGroupArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupArrayInput` via:
 //
-//          DashboardGroupArray{ DashboardGroupArgs{...} }
+//	DashboardGroupArray{ DashboardGroupArgs{...} }
 type DashboardGroupArrayInput interface {
 	pulumi.Input
 
@@ -327,7 +336,7 @@ func (i DashboardGroupArray) ToDashboardGroupArrayOutputWithContext(ctx context.
 // DashboardGroupMapInput is an input type that accepts DashboardGroupMap and DashboardGroupMapOutput values.
 // You can construct a concrete instance of `DashboardGroupMapInput` via:
 //
-//          DashboardGroupMap{ "key": DashboardGroupArgs{...} }
+//	DashboardGroupMap{ "key": DashboardGroupArgs{...} }
 type DashboardGroupMapInput interface {
 	pulumi.Input
 
@@ -361,6 +370,49 @@ func (o DashboardGroupOutput) ToDashboardGroupOutput() DashboardGroupOutput {
 
 func (o DashboardGroupOutput) ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput {
 	return o
+}
+
+// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+//
+// Deprecated: Please use permissions field now
+func (o DashboardGroupOutput) AuthorizedWriterTeams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DashboardGroup) pulumi.StringArrayOutput { return v.AuthorizedWriterTeams }).(pulumi.StringArrayOutput)
+}
+
+// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+//
+// Deprecated: Please use permissions field now
+func (o DashboardGroupOutput) AuthorizedWriterUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DashboardGroup) pulumi.StringArrayOutput { return v.AuthorizedWriterUsers }).(pulumi.StringArrayOutput)
+}
+
+// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+func (o DashboardGroupOutput) Dashboards() DashboardGroupDashboardArrayOutput {
+	return o.ApplyT(func(v *DashboardGroup) DashboardGroupDashboardArrayOutput { return v.Dashboards }).(DashboardGroupDashboardArrayOutput)
+}
+
+// Description of the dashboard group.
+func (o DashboardGroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DashboardGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardGroupOutput) ImportQualifiers() DashboardGroupImportQualifierArrayOutput {
+	return o.ApplyT(func(v *DashboardGroup) DashboardGroupImportQualifierArrayOutput { return v.ImportQualifiers }).(DashboardGroupImportQualifierArrayOutput)
+}
+
+// Name of the dashboard group.
+func (o DashboardGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DashboardGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+func (o DashboardGroupOutput) Permissions() DashboardGroupPermissionArrayOutput {
+	return o.ApplyT(func(v *DashboardGroup) DashboardGroupPermissionArrayOutput { return v.Permissions }).(DashboardGroupPermissionArrayOutput)
+}
+
+// Team IDs to associate the dashboard group to.
+func (o DashboardGroupOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DashboardGroup) pulumi.StringArrayOutput { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
 type DashboardGroupArrayOutput struct{ *pulumi.OutputState }

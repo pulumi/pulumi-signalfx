@@ -18,34 +18,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewOrgToken(ctx, "myteamkey0", &signalfx.OrgTokenArgs{
-// 			Description: pulumi.String("My team's rad key"),
-// 			HostOrUsageLimits: &OrgTokenHostOrUsageLimitsArgs{
-// 				ContainerLimit:                      pulumi.Int(200),
-// 				ContainerNotificationThreshold:      pulumi.Int(180),
-// 				CustomMetricsLimit:                  pulumi.Int(1000),
-// 				CustomMetricsNotificationThreshold:  pulumi.Int(900),
-// 				HighResMetricsLimit:                 pulumi.Int(1000),
-// 				HighResMetricsNotificationThreshold: pulumi.Int(900),
-// 				HostLimit:                           pulumi.Int(100),
-// 				HostNotificationThreshold:           pulumi.Int(90),
-// 			},
-// 			Notifications: pulumi.StringArray{
-// 				pulumi.String("Email,foo-alerts@bar.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewOrgToken(ctx, "myteamkey0", &signalfx.OrgTokenArgs{
+//				Description: pulumi.String("My team's rad key"),
+//				HostOrUsageLimits: &OrgTokenHostOrUsageLimitsArgs{
+//					ContainerLimit:                      pulumi.Int(200),
+//					ContainerNotificationThreshold:      pulumi.Int(180),
+//					CustomMetricsLimit:                  pulumi.Int(1000),
+//					CustomMetricsNotificationThreshold:  pulumi.Int(900),
+//					HighResMetricsLimit:                 pulumi.Int(1000),
+//					HighResMetricsNotificationThreshold: pulumi.Int(900),
+//					HostLimit:                           pulumi.Int(100),
+//					HostNotificationThreshold:           pulumi.Int(90),
+//				},
+//				Notifications: pulumi.StringArray{
+//					pulumi.String("Email,foo-alerts@bar.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type OrgToken struct {
 	pulumi.CustomResourceState
@@ -204,7 +207,7 @@ func (i *OrgToken) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutp
 // OrgTokenArrayInput is an input type that accepts OrgTokenArray and OrgTokenArrayOutput values.
 // You can construct a concrete instance of `OrgTokenArrayInput` via:
 //
-//          OrgTokenArray{ OrgTokenArgs{...} }
+//	OrgTokenArray{ OrgTokenArgs{...} }
 type OrgTokenArrayInput interface {
 	pulumi.Input
 
@@ -229,7 +232,7 @@ func (i OrgTokenArray) ToOrgTokenArrayOutputWithContext(ctx context.Context) Org
 // OrgTokenMapInput is an input type that accepts OrgTokenMap and OrgTokenMapOutput values.
 // You can construct a concrete instance of `OrgTokenMapInput` via:
 //
-//          OrgTokenMap{ "key": OrgTokenArgs{...} }
+//	OrgTokenMap{ "key": OrgTokenArgs{...} }
 type OrgTokenMapInput interface {
 	pulumi.Input
 
@@ -263,6 +266,47 @@ func (o OrgTokenOutput) ToOrgTokenOutput() OrgTokenOutput {
 
 func (o OrgTokenOutput) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
 	return o
+}
+
+// Authentication scope, ex: INGEST, API, RUM ... (Optional)
+func (o OrgTokenOutput) AuthScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrgToken) pulumi.StringArrayOutput { return v.AuthScopes }).(pulumi.StringArrayOutput)
+}
+
+// Description of the token.
+func (o OrgTokenOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrgToken) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+func (o OrgTokenOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OrgToken) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify DPM-based limits for this token.
+func (o OrgTokenOutput) DpmLimits() OrgTokenDpmLimitsPtrOutput {
+	return o.ApplyT(func(v *OrgToken) OrgTokenDpmLimitsPtrOutput { return v.DpmLimits }).(OrgTokenDpmLimitsPtrOutput)
+}
+
+// Specify Usage-based limits for this token.
+func (o OrgTokenOutput) HostOrUsageLimits() OrgTokenHostOrUsageLimitsPtrOutput {
+	return o.ApplyT(func(v *OrgToken) OrgTokenHostOrUsageLimitsPtrOutput { return v.HostOrUsageLimits }).(OrgTokenHostOrUsageLimitsPtrOutput)
+}
+
+// Name of the token.
+func (o OrgTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrgToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of strings specifying where notifications will be sent when an incident occurs. See
+// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+func (o OrgTokenOutput) Notifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrgToken) pulumi.StringArrayOutput { return v.Notifications }).(pulumi.StringArrayOutput)
+}
+
+// The secret token created by the API. You cannot set this value.
+func (o OrgTokenOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrgToken) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }
 
 type OrgTokenArrayOutput struct{ *pulumi.OutputState }

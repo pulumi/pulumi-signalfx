@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class TimeChartVizOptionArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartVizOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Y-axis associated with values for this plot. Must be either `right` or `left`.
@@ -58,5 +58,6 @@ namespace Pulumi.SignalFx.Inputs
         public TimeChartVizOptionArgs()
         {
         }
+        public static new TimeChartVizOptionArgs Empty => new TimeChartVizOptionArgs();
     }
 }

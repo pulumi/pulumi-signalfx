@@ -21,84 +21,77 @@ namespace Pulumi.SignalFx
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var config = new Config();
+    ///     var clusters = config.GetObject&lt;dynamic&gt;("clusters") ?? new[]
     ///     {
-    ///         var config = new Config();
-    ///         var clusters = config.GetObject&lt;dynamic&gt;("clusters") ?? 
+    ///         "clusterA",
+    ///         "clusterB",
+    ///     };
+    ///     var applicationDelay = new List&lt;SignalFx.Detector&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; clusters.Length; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new()
     ///         {
-    ///             "clusterA",
-    ///             "clusterB",
-    ///         };
-    ///         var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///         for (var rangeIndex = 0; rangeIndex &lt; clusters.Length; rangeIndex++)
-    ///         {
-    ///             var range = new { Value = rangeIndex };
-    ///             applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new SignalFx.DetectorArgs
+    ///             Description = $"your application is slow - {clusters[range.Value]}",
+    ///             MaxDelay = 30,
+    ///             Tags = new[]
     ///             {
-    ///                 Description = $"your application is slow - {clusters[range.Value]}",
-    ///                 MaxDelay = 30,
-    ///                 Tags = 
-    ///                 {
-    ///                     "app-backend",
-    ///                     "staging",
-    ///                 },
-    ///                 AuthorizedWriterTeams = 
-    ///                 {
-    ///                     signalfx_team.Mycoolteam.Id,
-    ///                 },
-    ///                 AuthorizedWriterUsers = 
-    ///                 {
-    ///                     "abc123",
-    ///                 },
-    ///                 ProgramText = @$"signal = data('app.delay', filter('cluster','{clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
+    ///                 "app-backend",
+    ///                 "staging",
+    ///             },
+    ///             AuthorizedWriterTeams = new[]
+    ///             {
+    ///                 signalfx_team.Mycoolteam.Id,
+    ///             },
+    ///             AuthorizedWriterUsers = new[]
+    ///             {
+    ///                 "abc123",
+    ///             },
+    ///             ProgramText = @$"signal = data('app.delay', filter('cluster','{clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
     /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
     /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
     /// ",
-    ///                 Rules = 
+    ///             Rules = new[]
+    ///             {
+    ///                 new SignalFx.Inputs.DetectorRuleArgs
     ///                 {
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
+    ///                     Description = "maximum &gt; 60 for 5m",
+    ///                     Severity = "Warning",
+    ///                     DetectLabel = "Processing old messages 5m",
+    ///                     Notifications = new[]
     ///                     {
-    ///                         Description = "maximum &gt; 60 for 5m",
-    ///                         Severity = "Warning",
-    ///                         DetectLabel = "Processing old messages 5m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Email,foo-alerts@bar.com",
-    ///                         },
-    ///                     },
-    ///                     new SignalFx.Inputs.DetectorRuleArgs
-    ///                     {
-    ///                         Description = "maximum &gt; 60 for 30m",
-    ///                         Severity = "Critical",
-    ///                         DetectLabel = "Processing old messages 30m",
-    ///                         Notifications = 
-    ///                         {
-    ///                             "Email,foo-alerts@bar.com",
-    ///                         },
+    ///                         "Email,foo-alerts@bar.com",
     ///                     },
     ///                 },
-    ///             }));
-    ///         }
+    ///                 new SignalFx.Inputs.DetectorRuleArgs
+    ///                 {
+    ///                     Description = "maximum &gt; 60 for 30m",
+    ///                     Severity = "Critical",
+    ///                     DetectLabel = "Processing old messages 30m",
+    ///                     Notifications = new[]
+    ///                     {
+    ///                         "Email,foo-alerts@bar.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
     ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// ## Notification Format
     /// 
     /// As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
@@ -106,15 +99,12 @@ namespace Pulumi.SignalFx
     /// ### Email
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### Jira
@@ -122,15 +112,12 @@ namespace Pulumi.SignalFx
     /// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### Opsgenie
@@ -138,29 +125,23 @@ namespace Pulumi.SignalFx
     /// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### PagerDuty
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### Slack
@@ -168,15 +149,12 @@ namespace Pulumi.SignalFx
     /// Exclude the `#` on the channel name!
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### Team
@@ -184,15 +162,12 @@ namespace Pulumi.SignalFx
     /// Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### TeamEmail
@@ -200,29 +175,23 @@ namespace Pulumi.SignalFx
     /// Sends an email to every member of a team.
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### VictorOps
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ### Webhook
@@ -231,28 +200,22 @@ namespace Pulumi.SignalFx
     /// 
     /// You can either configure a Webhook to use an existing integration's credential id:
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// or configure one inline:
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///     }
-    /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -264,7 +227,7 @@ namespace Pulumi.SignalFx
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/detector:Detector")]
-    public partial class Detector : Pulumi.CustomResource
+    public partial class Detector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
@@ -430,7 +393,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class DetectorArgs : Pulumi.ResourceArgs
+    public sealed class DetectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorizedWriterTeams")]
         private InputList<string>? _authorizedWriterTeams;
@@ -579,9 +542,10 @@ namespace Pulumi.SignalFx
         public DetectorArgs()
         {
         }
+        public static new DetectorArgs Empty => new DetectorArgs();
     }
 
-    public sealed class DetectorState : Pulumi.ResourceArgs
+    public sealed class DetectorState : global::Pulumi.ResourceArgs
     {
         [Input("authorizedWriterTeams")]
         private InputList<string>? _authorizedWriterTeams;
@@ -748,5 +712,6 @@ namespace Pulumi.SignalFx
         public DetectorState()
         {
         }
+        public static new DetectorState Empty => new DetectorState();
     }
 }

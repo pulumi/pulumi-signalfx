@@ -20,7 +20,7 @@ namespace Pulumi.SignalFx
     }
 
 
-    public sealed class GetAzureServicesArgs : Pulumi.InvokeArgs
+    public sealed class GetAzureServicesArgs : global::Pulumi.InvokeArgs
     {
         [Input("services")]
         private List<Inputs.GetAzureServicesServiceArgs>? _services;
@@ -33,9 +33,10 @@ namespace Pulumi.SignalFx
         public GetAzureServicesArgs()
         {
         }
+        public static new GetAzureServicesArgs Empty => new GetAzureServicesArgs();
     }
 
-    public sealed class GetAzureServicesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAzureServicesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("services")]
         private InputList<Inputs.GetAzureServicesServiceInputArgs>? _services;
@@ -48,6 +49,7 @@ namespace Pulumi.SignalFx
         public GetAzureServicesInvokeArgs()
         {
         }
+        public static new GetAzureServicesInvokeArgs Empty => new GetAzureServicesInvokeArgs();
     }
 
 

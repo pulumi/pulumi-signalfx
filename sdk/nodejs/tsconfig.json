@@ -40,6 +40,8 @@
         "jira/index.ts",
         "jira/integration.ts",
         "listChart.ts",
+        "logs/index.ts",
+        "logs/listChart.ts",
         "opsgenie/index.ts",
         "opsgenie/integration.ts",
         "orgToken.ts",

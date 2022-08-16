@@ -23,64 +23,67 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awsMyteamExternal, err := aws.NewExternalIntegration(ctx, "awsMyteamExternal", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		awsSfxRole, err := iam.NewRole(ctx, "awsSfxRole", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
-// 			Enabled:       pulumi.Bool(true),
-// 			IntegrationId: awsMyteamExternal.ID(),
-// 			ExternalId:    awsMyteamExternal.ExternalId,
-// 			RoleArn:       awsSfxRole.Arn,
-// 			Regions: pulumi.StringArray{
-// 				pulumi.String("us-east-1"),
-// 			},
-// 			PollRate:         pulumi.Int(300),
-// 			ImportCloudWatch: pulumi.Bool(true),
-// 			EnableAwsUsage:   pulumi.Bool(true),
-// 			CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
-// 				&aws.IntegrationCustomNamespaceSyncRuleArgs{
-// 					DefaultAction: pulumi.String("Exclude"),
-// 					FilterAction:  pulumi.String("Include"),
-// 					FilterSource:  pulumi.String("filter('code', '200')"),
-// 					Namespace:     pulumi.String("my-custom-namespace"),
-// 				},
-// 			},
-// 			NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
-// 				&aws.IntegrationNamespaceSyncRuleArgs{
-// 					DefaultAction: pulumi.String("Exclude"),
-// 					FilterAction:  pulumi.String("Include"),
-// 					FilterSource:  pulumi.String("filter('code', '200')"),
-// 					Namespace:     pulumi.String("AWS/EC2"),
-// 				},
-// 			},
-// 			MetricStatsToSyncs: aws.IntegrationMetricStatsToSyncArray{
-// 				&aws.IntegrationMetricStatsToSyncArgs{
-// 					Namespace: pulumi.String("AWS/EC2"),
-// 					Metric:    pulumi.String("NetworkPacketsIn"),
-// 					Stats: pulumi.StringArray{
-// 						pulumi.String("upper"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awsMyteamExternal, err := aws.NewExternalIntegration(ctx, "awsMyteamExternal", nil)
+//			if err != nil {
+//				return err
+//			}
+//			awsSfxRole, err := iam.NewRole(ctx, "awsSfxRole", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
+//				Enabled:       pulumi.Bool(true),
+//				IntegrationId: awsMyteamExternal.ID(),
+//				ExternalId:    awsMyteamExternal.ExternalId,
+//				RoleArn:       awsSfxRole.Arn,
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//				},
+//				PollRate:         pulumi.Int(300),
+//				ImportCloudWatch: pulumi.Bool(true),
+//				EnableAwsUsage:   pulumi.Bool(true),
+//				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
+//					&aws.IntegrationCustomNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("my-custom-namespace"),
+//					},
+//				},
+//				NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
+//					&aws.IntegrationNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("AWS/EC2"),
+//					},
+//				},
+//				MetricStatsToSyncs: aws.IntegrationMetricStatsToSyncArray{
+//					&aws.IntegrationMetricStatsToSyncArgs{
+//						Namespace: pulumi.String("AWS/EC2"),
+//						Metric:    pulumi.String("NetworkPacketsIn"),
+//						Stats: pulumi.StringArray{
+//							pulumi.String("upper"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Service Names
 //
@@ -377,7 +380,7 @@ func (i *Integration) ToIntegrationOutputWithContext(ctx context.Context) Integr
 // IntegrationArrayInput is an input type that accepts IntegrationArray and IntegrationArrayOutput values.
 // You can construct a concrete instance of `IntegrationArrayInput` via:
 //
-//          IntegrationArray{ IntegrationArgs{...} }
+//	IntegrationArray{ IntegrationArgs{...} }
 type IntegrationArrayInput interface {
 	pulumi.Input
 
@@ -402,7 +405,7 @@ func (i IntegrationArray) ToIntegrationArrayOutputWithContext(ctx context.Contex
 // IntegrationMapInput is an input type that accepts IntegrationMap and IntegrationMapOutput values.
 // You can construct a concrete instance of `IntegrationMapInput` via:
 //
-//          IntegrationMap{ "key": IntegrationArgs{...} }
+//	IntegrationMap{ "key": IntegrationArgs{...} }
 type IntegrationMapInput interface {
 	pulumi.Input
 
@@ -436,6 +439,111 @@ func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
 
 func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return o
+}
+
+// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
+func (o IntegrationOutput) CustomCloudwatchNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.CustomCloudwatchNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `customCloudwatchNamespaces` property.
+func (o IntegrationOutput) CustomNamespaceSyncRules() IntegrationCustomNamespaceSyncRuleArrayOutput {
+	return o.ApplyT(func(v *Integration) IntegrationCustomNamespaceSyncRuleArrayOutput { return v.CustomNamespaceSyncRules }).(IntegrationCustomNamespaceSyncRuleArrayOutput)
+}
+
+// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
+func (o IntegrationOutput) EnableAwsUsage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.EnableAwsUsage }).(pulumi.BoolPtrOutput)
+}
+
+// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+func (o IntegrationOutput) EnableCheckLargeVolume() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.EnableCheckLargeVolume }).(pulumi.BoolPtrOutput)
+}
+
+// Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+func (o IntegrationOutput) EnableLogsSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.EnableLogsSync }).(pulumi.BoolOutput)
+}
+
+// Whether the integration is enabled.
+func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The `externalId` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
+func (o IntegrationOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
+// Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
+func (o IntegrationOutput) ImportCloudWatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportCloudWatch }).(pulumi.BoolPtrOutput)
+}
+
+// The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+func (o IntegrationOutput) IntegrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.IntegrationId }).(pulumi.StringOutput)
+}
+
+// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+func (o IntegrationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+func (o IntegrationOutput) MetricStatsToSyncs() IntegrationMetricStatsToSyncArrayOutput {
+	return o.ApplyT(func(v *Integration) IntegrationMetricStatsToSyncArrayOutput { return v.MetricStatsToSyncs }).(IntegrationMetricStatsToSyncArrayOutput)
+}
+
+// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+func (o IntegrationOutput) NamedToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.NamedToken }).(pulumi.StringPtrOutput)
+}
+
+// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
+func (o IntegrationOutput) NamespaceSyncRules() IntegrationNamespaceSyncRuleArrayOutput {
+	return o.ApplyT(func(v *Integration) IntegrationNamespaceSyncRuleArrayOutput { return v.NamespaceSyncRules }).(IntegrationNamespaceSyncRuleArrayOutput)
+}
+
+// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+func (o IntegrationOutput) PollRate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.PollRate }).(pulumi.IntPtrOutput)
+}
+
+// List of AWS regions that SignalFx should monitor.
+func (o IntegrationOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+func (o IntegrationOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespaceSyncRule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `customNamespaceSyncRule` above). Defaults to `false`.
+func (o IntegrationOutput) SyncCustomNamespacesOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.SyncCustomNamespacesOnly }).(pulumi.BoolPtrOutput)
+}
+
+// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+func (o IntegrationOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+func (o IntegrationOutput) UseGetMetricDataMethod() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseGetMetricDataMethod }).(pulumi.BoolPtrOutput)
+}
+
+// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+func (o IntegrationOutput) UseMetricStreamsSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.UseMetricStreamsSync }).(pulumi.BoolOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

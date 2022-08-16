@@ -87,6 +87,10 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
     /**
+     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+     */
+    public readonly useMetricSourceProjectForQuota!: pulumi.Output<boolean | undefined>;
+    /**
      * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
      */
     public readonly whitelists!: pulumi.Output<string[] | undefined>;
@@ -110,6 +114,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["pollRate"] = state ? state.pollRate : undefined;
             resourceInputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
             resourceInputs["services"] = state ? state.services : undefined;
+            resourceInputs["useMetricSourceProjectForQuota"] = state ? state.useMetricSourceProjectForQuota : undefined;
             resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
@@ -122,6 +127,7 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
             resourceInputs["projectServiceKeys"] = args ? args.projectServiceKeys : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
+            resourceInputs["useMetricSourceProjectForQuota"] = args ? args.useMetricSourceProjectForQuota : undefined;
             resourceInputs["whitelists"] = args ? args.whitelists : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -158,6 +164,10 @@ export interface IntegrationState {
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+     */
+    useMetricSourceProjectForQuota?: pulumi.Input<boolean>;
+    /**
      * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
      */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -191,6 +201,10 @@ export interface IntegrationArgs {
      * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+     */
+    useMetricSourceProjectForQuota?: pulumi.Input<boolean>;
     /**
      * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
      */

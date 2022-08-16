@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Azure.Inputs
 {
 
-    public sealed class IntegrationResourceFilterRuleFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationResourceFilterRuleFilterGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SignalFx.Azure.Inputs
         public IntegrationResourceFilterRuleFilterGetArgs()
         {
         }
+        public static new IntegrationResourceFilterRuleFilterGetArgs Empty => new IntegrationResourceFilterRuleFilterGetArgs();
     }
 }

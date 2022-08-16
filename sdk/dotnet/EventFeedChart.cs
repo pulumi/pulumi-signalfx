@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx
     /// Displays a listing of events as a widget in a dashboard.
     /// </summary>
     [SignalFxResourceType("signalfx:index/eventFeedChart:EventFeedChart")]
-    public partial class EventFeedChart : Pulumi.CustomResource
+    public partial class EventFeedChart : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the text note.
@@ -101,7 +101,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class EventFeedChartArgs : Pulumi.ResourceArgs
+    public sealed class EventFeedChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the text note.
@@ -142,9 +142,10 @@ namespace Pulumi.SignalFx
         public EventFeedChartArgs()
         {
         }
+        public static new EventFeedChartArgs Empty => new EventFeedChartArgs();
     }
 
-    public sealed class EventFeedChartState : Pulumi.ResourceArgs
+    public sealed class EventFeedChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the text note.
@@ -191,5 +192,6 @@ namespace Pulumi.SignalFx
         public EventFeedChartState()
         {
         }
+        public static new EventFeedChartState Empty => new EventFeedChartState();
     }
 }

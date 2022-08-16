@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class WebhookIntegrationHeaderArgs : Pulumi.ResourceArgs
+    public sealed class WebhookIntegrationHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of the header to send
@@ -27,5 +27,6 @@ namespace Pulumi.SignalFx.Inputs
         public WebhookIntegrationHeaderArgs()
         {
         }
+        public static new WebhookIntegrationHeaderArgs Empty => new WebhookIntegrationHeaderArgs();
     }
 }

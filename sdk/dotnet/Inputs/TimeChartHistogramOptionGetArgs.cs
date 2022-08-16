@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class TimeChartHistogramOptionGetArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartHistogramOptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
@@ -21,5 +21,6 @@ namespace Pulumi.SignalFx.Inputs
         public TimeChartHistogramOptionGetArgs()
         {
         }
+        public static new TimeChartHistogramOptionGetArgs Empty => new TimeChartHistogramOptionGetArgs();
     }
 }

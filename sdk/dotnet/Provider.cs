@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [SignalFxResourceType("pulumi:providers:signalfx")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// API URL for your SignalFx org, may include a realm
@@ -62,7 +62,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// API URL for your SignalFx org, may include a realm
@@ -91,5 +91,6 @@ namespace Pulumi.SignalFx
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

@@ -15,62 +15,60 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new()
     ///     {
-    ///         var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new SignalFx.HeatmapChartArgs
+    ///         ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs
     ///         {
-    ///             ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs
+    ///             Color = "#ff0000",
+    ///             MaxValue = 100,
+    ///             MinValue = 0,
+    ///         },
+    ///         ColorScales = new[]
+    ///         {
+    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
     ///             {
-    ///                 Color = "#ff0000",
-    ///                 MaxValue = 100,
-    ///                 MinValue = 0,
+    ///                 Color = "green",
+    ///                 Gte = 99,
     ///             },
-    ///             ColorScales = 
+    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
     ///             {
-    ///                 new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///                 {
-    ///                     Color = "green",
-    ///                     Gte = 99,
-    ///                 },
-    ///                 new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///                 {
-    ///                     Color = "yellow",
-    ///                     Gte = 95,
-    ///                     Lt = 99,
-    ///                 },
-    ///                 new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///                 {
-    ///                     Color = "red",
-    ///                     Lt = 95,
-    ///                 },
+    ///                 Color = "yellow",
+    ///                 Gte = 95,
+    ///                 Lt = 99,
     ///             },
-    ///             Description = "Very cool Heatmap",
-    ///             DisableSampling = true,
-    ///             GroupBies = 
+    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
     ///             {
-    ///                 "hostname",
-    ///                 "host",
+    ///                 Color = "red",
+    ///                 Lt = 95,
     ///             },
-    ///             HideTimestamp = true,
-    ///             ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    ///         },
+    ///         Description = "Very cool Heatmap",
+    ///         DisableSampling = true,
+    ///         GroupBies = new[]
+    ///         {
+    ///             "hostname",
+    ///             "host",
+    ///         },
+    ///         HideTimestamp = true,
+    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
     /// data(""cpu.total.idle"", filter=myfilters).publish()
     /// 
     /// ",
-    ///             SortBy = "+host",
-    ///             Timezone = "Europe/Paris",
-    ///         });
-    ///     }
+    ///         SortBy = "+host",
+    ///         Timezone = "Europe/Paris",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/heatmapChart:HeatmapChart")]
-    public partial class HeatmapChart : Pulumi.CustomResource
+    public partial class HeatmapChart : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -206,7 +204,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class HeatmapChartArgs : Pulumi.ResourceArgs
+    public sealed class HeatmapChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -307,9 +305,10 @@ namespace Pulumi.SignalFx
         public HeatmapChartArgs()
         {
         }
+        public static new HeatmapChartArgs Empty => new HeatmapChartArgs();
     }
 
-    public sealed class HeatmapChartState : Pulumi.ResourceArgs
+    public sealed class HeatmapChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -416,5 +415,6 @@ namespace Pulumi.SignalFx
         public HeatmapChartState()
         {
         }
+        public static new HeatmapChartState Empty => new HeatmapChartState();
     }
 }

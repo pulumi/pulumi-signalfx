@@ -19,38 +19,36 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var roolMooterOne = new SignalFx.AlertMutingRule("roolMooterOne", new()
     ///     {
-    ///         var roolMooterOne = new SignalFx.AlertMutingRule("roolMooterOne", new SignalFx.AlertMutingRuleArgs
+    ///         Description = "mooted it NEW",
+    ///         StartTime = 1573063243,
+    ///         StopTime = 0,
+    ///         Detectors = new[]
     ///         {
-    ///             Description = "mooted it NEW",
-    ///             StartTime = 1573063243,
-    ///             StopTime = 0,
-    ///             Detectors = 
+    ///             signalfx_detector.Some_detector_id,
+    ///         },
+    ///         Filters = new[]
+    ///         {
+    ///             new SignalFx.Inputs.AlertMutingRuleFilterArgs
     ///             {
-    ///                 signalfx_detector.Some_detector_id,
+    ///                 Property = "foo",
+    ///                 PropertyValue = "bar",
     ///             },
-    ///             Filters = 
-    ///             {
-    ///                 new SignalFx.Inputs.AlertMutingRuleFilterArgs
-    ///                 {
-    ///                     Property = "foo",
-    ///                     PropertyValue = "bar",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/alertMutingRule:AlertMutingRule")]
-    public partial class AlertMutingRule : Pulumi.CustomResource
+    public partial class AlertMutingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description for this muting rule
@@ -129,7 +127,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class AlertMutingRuleArgs : Pulumi.ResourceArgs
+    public sealed class AlertMutingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description for this muting rule
@@ -176,9 +174,10 @@ namespace Pulumi.SignalFx
         public AlertMutingRuleArgs()
         {
         }
+        public static new AlertMutingRuleArgs Empty => new AlertMutingRuleArgs();
     }
 
-    public sealed class AlertMutingRuleState : Pulumi.ResourceArgs
+    public sealed class AlertMutingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description for this muting rule
@@ -228,5 +227,6 @@ namespace Pulumi.SignalFx
         public AlertMutingRuleState()
         {
         }
+        public static new AlertMutingRuleState Empty => new AlertMutingRuleState();
     }
 }

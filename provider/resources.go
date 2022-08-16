@@ -41,6 +41,7 @@ const (
 	azureMod      = "Azure"
 	gcpMod        = "Gcp"
 	jiraMod       = "Jira"
+	logsMod       = "Logs"
 	opsgenieMod   = "Opsgenie"
 	pagerdutyMod  = "PagerDuty"
 	slackMod      = "Slack"
@@ -105,6 +106,13 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_alert_muting_rule":   {Tok: makeResource(mainMod, "AlertMutingRule")},
 			"signalfx_data_link":           {Tok: makeResource(mainMod, "DataLink")},
 			"signalfx_webhook_integration": {Tok: makeResource(mainMod, "WebhookIntegration")},
+
+			"signalfx_logs_list_chart": {
+				Tok: makeResource(logsMod, "ListChart"),
+				Docs: &tfbridge.DocInfo{
+					Source: "list_chart.html.markdown",
+				},
+			},
 
 			"signalfx_aws_external_integration": {Tok: makeResource(awsMod, "ExternalIntegration")},
 			"signalfx_aws_integration":          {Tok: makeResource(awsMod, "Integration")},

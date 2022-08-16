@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardEventOverlayArgs : Pulumi.ResourceArgs
+    public sealed class DashboardEventOverlayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
@@ -57,5 +57,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardEventOverlayArgs()
         {
         }
+        public static new DashboardEventOverlayArgs Empty => new DashboardEventOverlayArgs();
     }
 }

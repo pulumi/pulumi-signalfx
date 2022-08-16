@@ -19,63 +19,59 @@ namespace Pulumi.SignalFx.Aws
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var awsMyteamToken = new SignalFx.Aws.TokenIntegration("awsMyteamToken", new SignalFx.Aws.TokenIntegrationArgs
-    ///         {
-    ///         });
-    ///         // Make yourself an AWS IAM role here
-    ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///         });
-    ///         // Stuff here that uses the external and account ID
-    ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
-    ///         {
-    ///             Enabled = true,
-    ///             IntegrationId = awsMyteamToken.Id,
-    ///             Token = "put_your_token_here",
-    ///             Key = "put_your_key_here",
-    ///             Regions = 
-    ///             {
-    ///                 "us-east-1",
-    ///             },
-    ///             PollRate = 300,
-    ///             ImportCloudWatch = true,
-    ///             EnableAwsUsage = true,
-    ///             CustomNamespaceSyncRules = 
-    ///             {
-    ///                 new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
-    ///                 {
-    ///                     DefaultAction = "Exclude",
-    ///                     FilterAction = "Include",
-    ///                     FilterSource = "filter('code', '200')",
-    ///                     Namespace = "my-custom-namespace",
-    ///                 },
-    ///             },
-    ///             NamespaceSyncRules = 
-    ///             {
-    ///                 new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
-    ///                 {
-    ///                     DefaultAction = "Exclude",
-    ///                     FilterAction = "Include",
-    ///                     FilterSource = "filter('code', '200')",
-    ///                     Namespace = "AWS/EC2",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var awsMyteamToken = new SignalFx.Aws.TokenIntegration("awsMyteamToken");
     /// 
-    /// }
+    ///     // Make yourself an AWS IAM role here
+    ///     var awsSfxRole = new Aws.Iam.Role("awsSfxRole");
+    /// 
+    ///     // Stuff here that uses the external and account ID
+    ///     var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new()
+    ///     {
+    ///         Enabled = true,
+    ///         IntegrationId = awsMyteamToken.Id,
+    ///         Token = "put_your_token_here",
+    ///         Key = "put_your_key_here",
+    ///         Regions = new[]
+    ///         {
+    ///             "us-east-1",
+    ///         },
+    ///         PollRate = 300,
+    ///         ImportCloudWatch = true,
+    ///         EnableAwsUsage = true,
+    ///         CustomNamespaceSyncRules = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
+    ///             {
+    ///                 DefaultAction = "Exclude",
+    ///                 FilterAction = "Include",
+    ///                 FilterSource = "filter('code', '200')",
+    ///                 Namespace = "my-custom-namespace",
+    ///             },
+    ///         },
+    ///         NamespaceSyncRules = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
+    ///             {
+    ///                 DefaultAction = "Exclude",
+    ///                 FilterAction = "Include",
+    ///                 FilterSource = "filter('code', '200')",
+    ///                 Namespace = "AWS/EC2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:aws/tokenIntegration:TokenIntegration")]
-    public partial class TokenIntegration : Pulumi.CustomResource
+    public partial class TokenIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The name of this integration
@@ -139,7 +135,7 @@ namespace Pulumi.SignalFx.Aws
         }
     }
 
-    public sealed class TokenIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class TokenIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of this integration
@@ -150,9 +146,10 @@ namespace Pulumi.SignalFx.Aws
         public TokenIntegrationArgs()
         {
         }
+        public static new TokenIntegrationArgs Empty => new TokenIntegrationArgs();
     }
 
-    public sealed class TokenIntegrationState : Pulumi.ResourceArgs
+    public sealed class TokenIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of this integration
@@ -175,5 +172,6 @@ namespace Pulumi.SignalFx.Aws
         public TokenIntegrationState()
         {
         }
+        public static new TokenIntegrationState Empty => new TokenIntegrationState();
     }
 }

@@ -19,52 +19,55 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewHeatmapChart(ctx, "myheatmapchart0", &signalfx.HeatmapChartArgs{
-// 			ColorRange: &HeatmapChartColorRangeArgs{
-// 				Color:    pulumi.String("#ff0000"),
-// 				MaxValue: pulumi.Float64(100),
-// 				MinValue: pulumi.Float64(0),
-// 			},
-// 			ColorScales: HeatmapChartColorScaleArray{
-// 				&HeatmapChartColorScaleArgs{
-// 					Color: pulumi.String("green"),
-// 					Gte:   pulumi.Float64(99),
-// 				},
-// 				&HeatmapChartColorScaleArgs{
-// 					Color: pulumi.String("yellow"),
-// 					Gte:   pulumi.Float64(95),
-// 					Lt:    pulumi.Float64(99),
-// 				},
-// 				&HeatmapChartColorScaleArgs{
-// 					Color: pulumi.String("red"),
-// 					Lt:    pulumi.Float64(95),
-// 				},
-// 			},
-// 			Description:     pulumi.String("Very cool Heatmap"),
-// 			DisableSampling: pulumi.Bool(true),
-// 			GroupBies: pulumi.StringArray{
-// 				pulumi.String("hostname"),
-// 				pulumi.String("host"),
-// 			},
-// 			HideTimestamp: pulumi.Bool(true),
-// 			ProgramText:   pulumi.String(fmt.Sprintf("%v%v%v", "myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\n", "data(\"cpu.total.idle\", filter=myfilters).publish()\n", "\n")),
-// 			SortBy:        pulumi.String("+host"),
-// 			Timezone:      pulumi.String("Europe/Paris"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewHeatmapChart(ctx, "myheatmapchart0", &signalfx.HeatmapChartArgs{
+//				ColorRange: &HeatmapChartColorRangeArgs{
+//					Color:    pulumi.String("#ff0000"),
+//					MaxValue: pulumi.Float64(100),
+//					MinValue: pulumi.Float64(0),
+//				},
+//				ColorScales: HeatmapChartColorScaleArray{
+//					&HeatmapChartColorScaleArgs{
+//						Color: pulumi.String("green"),
+//						Gte:   pulumi.Float64(99),
+//					},
+//					&HeatmapChartColorScaleArgs{
+//						Color: pulumi.String("yellow"),
+//						Gte:   pulumi.Float64(95),
+//						Lt:    pulumi.Float64(99),
+//					},
+//					&HeatmapChartColorScaleArgs{
+//						Color: pulumi.String("red"),
+//						Lt:    pulumi.Float64(95),
+//					},
+//				},
+//				Description:     pulumi.String("Very cool Heatmap"),
+//				DisableSampling: pulumi.Bool(true),
+//				GroupBies: pulumi.StringArray{
+//					pulumi.String("hostname"),
+//					pulumi.String("host"),
+//				},
+//				HideTimestamp: pulumi.Bool(true),
+//				ProgramText:   pulumi.String(fmt.Sprintf("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n")),
+//				SortBy:        pulumi.String("+host"),
+//				Timezone:      pulumi.String("Europe/Paris"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type HeatmapChart struct {
 	pulumi.CustomResourceState
@@ -291,7 +294,7 @@ func (i *HeatmapChart) ToHeatmapChartOutputWithContext(ctx context.Context) Heat
 // HeatmapChartArrayInput is an input type that accepts HeatmapChartArray and HeatmapChartArrayOutput values.
 // You can construct a concrete instance of `HeatmapChartArrayInput` via:
 //
-//          HeatmapChartArray{ HeatmapChartArgs{...} }
+//	HeatmapChartArray{ HeatmapChartArgs{...} }
 type HeatmapChartArrayInput interface {
 	pulumi.Input
 
@@ -316,7 +319,7 @@ func (i HeatmapChartArray) ToHeatmapChartArrayOutputWithContext(ctx context.Cont
 // HeatmapChartMapInput is an input type that accepts HeatmapChartMap and HeatmapChartMapOutput values.
 // You can construct a concrete instance of `HeatmapChartMapInput` via:
 //
-//          HeatmapChartMap{ "key": HeatmapChartArgs{...} }
+//	HeatmapChartMap{ "key": HeatmapChartArgs{...} }
 type HeatmapChartMapInput interface {
 	pulumi.Input
 
@@ -350,6 +353,81 @@ func (o HeatmapChartOutput) ToHeatmapChartOutput() HeatmapChartOutput {
 
 func (o HeatmapChartOutput) ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput {
 	return o
+}
+
+// Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+func (o HeatmapChartOutput) ColorRange() HeatmapChartColorRangePtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) HeatmapChartColorRangePtrOutput { return v.ColorRange }).(HeatmapChartColorRangePtrOutput)
+}
+
+// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `colorScale { gt = 60, color = "blue" } colorScale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+func (o HeatmapChartOutput) ColorScales() HeatmapChartColorScaleArrayOutput {
+	return o.ApplyT(func(v *HeatmapChart) HeatmapChartColorScaleArrayOutput { return v.ColorScales }).(HeatmapChartColorScaleArrayOutput)
+}
+
+// Description of the chart.
+func (o HeatmapChartOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+func (o HeatmapChartOutput) DisableSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
+}
+
+// Properties to group by in the heatmap (in nesting order).
+func (o HeatmapChartOutput) GroupBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringArrayOutput { return v.GroupBies }).(pulumi.StringArrayOutput)
+}
+
+// Whether to show the timestamp in the chart. `false` by default.
+func (o HeatmapChartOutput) HideTimestamp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.BoolPtrOutput { return v.HideTimestamp }).(pulumi.BoolPtrOutput)
+}
+
+// How long (in seconds) to wait for late datapoints.
+func (o HeatmapChartOutput) MaxDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
+}
+
+// The minimum resolution (in seconds) to use for computing the underlying program.
+func (o HeatmapChartOutput) MinimumResolution() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.IntPtrOutput { return v.MinimumResolution }).(pulumi.IntPtrOutput)
+}
+
+// Name of the chart.
+func (o HeatmapChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Signalflow program text for the chart. More info at <https://developers.signalfx.com/docs/signalflow-overview>.
+func (o HeatmapChartOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// How often (in seconds) to refresh the values of the heatmap.
+func (o HeatmapChartOutput) RefreshInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
+}
+
+// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+func (o HeatmapChartOutput) SortBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringPtrOutput { return v.SortBy }).(pulumi.StringPtrOutput)
+}
+
+// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+func (o HeatmapChartOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+func (o HeatmapChartOutput) UnitPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the chart.
+func (o HeatmapChartOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *HeatmapChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type HeatmapChartArrayOutput struct{ *pulumi.OutputState }

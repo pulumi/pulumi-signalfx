@@ -15,39 +15,37 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myteamkey0 = new SignalFx.OrgToken("myteamkey0", new()
     ///     {
-    ///         var myteamkey0 = new SignalFx.OrgToken("myteamkey0", new SignalFx.OrgTokenArgs
+    ///         Description = "My team's rad key",
+    ///         HostOrUsageLimits = new SignalFx.Inputs.OrgTokenHostOrUsageLimitsArgs
     ///         {
-    ///             Description = "My team's rad key",
-    ///             HostOrUsageLimits = new SignalFx.Inputs.OrgTokenHostOrUsageLimitsArgs
-    ///             {
-    ///                 ContainerLimit = 200,
-    ///                 ContainerNotificationThreshold = 180,
-    ///                 CustomMetricsLimit = 1000,
-    ///                 CustomMetricsNotificationThreshold = 900,
-    ///                 HighResMetricsLimit = 1000,
-    ///                 HighResMetricsNotificationThreshold = 900,
-    ///                 HostLimit = 100,
-    ///                 HostNotificationThreshold = 90,
-    ///             },
-    ///             Notifications = 
-    ///             {
-    ///                 "Email,foo-alerts@bar.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             ContainerLimit = 200,
+    ///             ContainerNotificationThreshold = 180,
+    ///             CustomMetricsLimit = 1000,
+    ///             CustomMetricsNotificationThreshold = 900,
+    ///             HighResMetricsLimit = 1000,
+    ///             HighResMetricsNotificationThreshold = 900,
+    ///             HostLimit = 100,
+    ///             HostNotificationThreshold = 90,
+    ///         },
+    ///         Notifications = new[]
+    ///         {
+    ///             "Email,foo-alerts@bar.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/orgToken:OrgToken")]
-    public partial class OrgToken : Pulumi.CustomResource
+    public partial class OrgToken : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication scope, ex: INGEST, API, RUM ... (Optional)
@@ -142,7 +140,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class OrgTokenArgs : Pulumi.ResourceArgs
+    public sealed class OrgTokenArgs : global::Pulumi.ResourceArgs
     {
         [Input("authScopes")]
         private InputList<string>? _authScopes;
@@ -202,9 +200,10 @@ namespace Pulumi.SignalFx
         public OrgTokenArgs()
         {
         }
+        public static new OrgTokenArgs Empty => new OrgTokenArgs();
     }
 
-    public sealed class OrgTokenState : Pulumi.ResourceArgs
+    public sealed class OrgTokenState : global::Pulumi.ResourceArgs
     {
         [Input("authScopes")]
         private InputList<string>? _authScopes;
@@ -270,5 +269,6 @@ namespace Pulumi.SignalFx
         public OrgTokenState()
         {
         }
+        public static new OrgTokenState Empty => new OrgTokenState();
     }
 }

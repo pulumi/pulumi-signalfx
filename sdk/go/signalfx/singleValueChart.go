@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewSingleValueChart(ctx, "mysvchart0", &signalfx.SingleValueChartArgs{
-// 			ColorBy:           pulumi.String("Dimension"),
-// 			Description:       pulumi.String("Very cool Single Value Chart"),
-// 			IsTimestampHidden: pulumi.Bool(true),
-// 			MaxDelay:          pulumi.Int(2),
-// 			MaxPrecision:      pulumi.Int(2),
-// 			ProgramText:       pulumi.String(fmt.Sprintf("%v%v%v", "myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\n", "data(\"cpu.total.idle\", filter=myfilters).publish()\n", "\n")),
-// 			RefreshInterval:   pulumi.Int(1),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewSingleValueChart(ctx, "mysvchart0", &signalfx.SingleValueChartArgs{
+//				ColorBy:           pulumi.String("Dimension"),
+//				Description:       pulumi.String("Very cool Single Value Chart"),
+//				IsTimestampHidden: pulumi.Bool(true),
+//				MaxDelay:          pulumi.Int(2),
+//				MaxPrecision:      pulumi.Int(2),
+//				ProgramText:       pulumi.String(fmt.Sprintf("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n")),
+//				RefreshInterval:   pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type SingleValueChart struct {
 	pulumi.CustomResourceState
@@ -270,7 +273,7 @@ func (i *SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Conte
 // SingleValueChartArrayInput is an input type that accepts SingleValueChartArray and SingleValueChartArrayOutput values.
 // You can construct a concrete instance of `SingleValueChartArrayInput` via:
 //
-//          SingleValueChartArray{ SingleValueChartArgs{...} }
+//	SingleValueChartArray{ SingleValueChartArgs{...} }
 type SingleValueChartArrayInput interface {
 	pulumi.Input
 
@@ -295,7 +298,7 @@ func (i SingleValueChartArray) ToSingleValueChartArrayOutputWithContext(ctx cont
 // SingleValueChartMapInput is an input type that accepts SingleValueChartMap and SingleValueChartMapOutput values.
 // You can construct a concrete instance of `SingleValueChartMapInput` via:
 //
-//          SingleValueChartMap{ "key": SingleValueChartArgs{...} }
+//	SingleValueChartMap{ "key": SingleValueChartArgs{...} }
 type SingleValueChartMapInput interface {
 	pulumi.Input
 
@@ -329,6 +332,81 @@ func (o SingleValueChartOutput) ToSingleValueChartOutput() SingleValueChartOutpu
 
 func (o SingleValueChartOutput) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
 	return o
+}
+
+// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+func (o SingleValueChartOutput) ColorBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
+}
+
+// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+func (o SingleValueChartOutput) ColorScales() SingleValueChartColorScaleArrayOutput {
+	return o.ApplyT(func(v *SingleValueChart) SingleValueChartColorScaleArrayOutput { return v.ColorScales }).(SingleValueChartColorScaleArrayOutput)
+}
+
+// Description of the chart.
+func (o SingleValueChartOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to hide the timestamp in the chart. `false` by default.
+func (o SingleValueChartOutput) IsTimestampHidden() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.BoolPtrOutput { return v.IsTimestampHidden }).(pulumi.BoolPtrOutput)
+}
+
+// How long (in seconds) to wait for late datapoints
+func (o SingleValueChartOutput) MaxDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
+}
+
+// The maximum precision to for value displayed.
+func (o SingleValueChartOutput) MaxPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.IntPtrOutput { return v.MaxPrecision }).(pulumi.IntPtrOutput)
+}
+
+// Name of the chart.
+func (o SingleValueChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+func (o SingleValueChartOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// How often (in seconds) to refresh the value.
+func (o SingleValueChartOutput) RefreshInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
+}
+
+// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+func (o SingleValueChartOutput) SecondaryVisualization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.SecondaryVisualization }).(pulumi.StringPtrOutput)
+}
+
+// Whether to show a trend line below the current value. `false` by default.
+func (o SingleValueChartOutput) ShowSparkLine() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.BoolPtrOutput { return v.ShowSparkLine }).(pulumi.BoolPtrOutput)
+}
+
+// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+func (o SingleValueChartOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+func (o SingleValueChartOutput) UnitPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the chart.
+func (o SingleValueChartOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *SingleValueChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Plot-level customization options, associated with a publish statement.
+func (o SingleValueChartOutput) VizOptions() SingleValueChartVizOptionArrayOutput {
+	return o.ApplyT(func(v *SingleValueChart) SingleValueChartVizOptionArrayOutput { return v.VizOptions }).(SingleValueChartVizOptionArrayOutput)
 }
 
 type SingleValueChartArrayOutput struct{ *pulumi.OutputState }

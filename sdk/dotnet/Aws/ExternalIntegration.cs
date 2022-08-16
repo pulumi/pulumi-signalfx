@@ -19,62 +19,62 @@ namespace Pulumi.SignalFx.Aws
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration("awsMyteamExtern");
+    /// 
+    ///     var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.Invoke(new()
     ///     {
-    ///         var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration("awsMyteamExtern", new SignalFx.Aws.ExternalIntegrationArgs
+    ///         Statements = new[]
     ///         {
-    ///         });
-    ///         var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.Invoke(new Aws.Iam.GetPolicyDocumentInvokeArgs
-    ///         {
-    ///             Statements = 
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
     ///             {
-    ///                 new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///                 Actions = new[]
     ///                 {
-    ///                     Actions = 
+    ///                     "sts:AssumeRole",
+    ///                 },
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
     ///                     {
-    ///                         "sts:AssumeRole",
-    ///                     },
-    ///                     Principals = 
-    ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                         Type = "AWS",
+    ///                         Identifiers = new[]
     ///                         {
-    ///                             Type = "AWS",
-    ///                             Identifiers = 
-    ///                             {
-    ///                                 awsMyteamExtern.SignalfxAwsAccount,
-    ///                             },
+    ///                             awsMyteamExtern.SignalfxAwsAccount,
     ///                         },
     ///                     },
-    ///                     Conditions = 
+    ///                 },
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
     ///                     {
-    ///                         new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+    ///                         Test = "StringEquals",
+    ///                         Variable = "sts:ExternalId",
+    ///                         Values = new[]
     ///                         {
-    ///                             Test = "StringEquals",
-    ///                             Variable = "sts:ExternalId",
-    ///                             Values = 
-    ///                             {
-    ///                                 awsMyteamExtern.ExternalId,
-    ///                             },
+    ///                             awsMyteamExtern.ExternalId,
     ///                         },
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///         var awsSplunkRole = new Aws.Iam.Role("awsSplunkRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///             Description = "signalfx integration to read out data and send it to signalfxs aws account",
-    ///             AssumeRolePolicy = signalfxAssumePolicy.Apply(signalfxAssumePolicy =&gt; signalfxAssumePolicy.Json),
-    ///         });
-    ///         var awsSplunkPolicy = new Aws.Iam.Policy("awsSplunkPolicy", new Aws.Iam.PolicyArgs
-    ///         {
-    ///             Description = "AWS permissions required by the Splunk Observability Cloud",
-    ///             Policy = @"{
+    ///         },
+    ///     });
+    /// 
+    ///     var awsSplunkRole = new Aws.Iam.Role("awsSplunkRole", new()
+    ///     {
+    ///         Description = "signalfx integration to read out data and send it to signalfxs aws account",
+    ///         AssumeRolePolicy = signalfxAssumePolicy.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var awsSplunkPolicy = new Aws.Iam.Policy("awsSplunkPolicy", new()
+    ///     {
+    ///         Description = "AWS permissions required by the Splunk Observability Cloud",
+    ///         PolicyDocument = @"{
     ///   ""Version"": ""2012-10-17"",
     ///   ""Statement"": [
     ///     {
@@ -153,33 +153,34 @@ namespace Pulumi.SignalFx.Aws
     ///   ]
     /// }
     /// ",
-    ///         });
-    ///         var splunkRolePolicyAttach = new Aws.Iam.RolePolicyAttachment("splunkRolePolicyAttach", new Aws.Iam.RolePolicyAttachmentArgs
-    ///         {
-    ///             Role = awsSplunkRole.Name,
-    ///             PolicyArn = awsSplunkPolicy.Arn,
-    ///         });
-    ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
-    ///         {
-    ///             Enabled = true,
-    ///             IntegrationId = awsMyteamExtern.Id,
-    ///             ExternalId = awsMyteamExtern.ExternalId,
-    ///             RoleArn = awsSplunkRole.Arn,
-    ///             Regions = 
-    ///             {
-    ///                 "us-east-1",
-    ///             },
-    ///             PollRate = 300,
-    ///             ImportCloudWatch = true,
-    ///             EnableAwsUsage = true,
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    ///     var splunkRolePolicyAttach = new Aws.Iam.RolePolicyAttachment("splunkRolePolicyAttach", new()
+    ///     {
+    ///         Role = awsSplunkRole.Name,
+    ///         PolicyArn = awsSplunkPolicy.Arn,
+    ///     });
+    /// 
+    ///     var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new()
+    ///     {
+    ///         Enabled = true,
+    ///         IntegrationId = awsMyteamExtern.Id,
+    ///         ExternalId = awsMyteamExtern.ExternalId,
+    ///         RoleArn = awsSplunkRole.Arn,
+    ///         Regions = new[]
+    ///         {
+    ///             "us-east-1",
+    ///         },
+    ///         PollRate = 300,
+    ///         ImportCloudWatch = true,
+    ///         EnableAwsUsage = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:aws/externalIntegration:ExternalIntegration")]
-    public partial class ExternalIntegration : Pulumi.CustomResource
+    public partial class ExternalIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The external ID to use with your IAM role and with `signalfx.aws.Integration`.
@@ -243,7 +244,7 @@ namespace Pulumi.SignalFx.Aws
         }
     }
 
-    public sealed class ExternalIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class ExternalIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of this integration
@@ -254,9 +255,10 @@ namespace Pulumi.SignalFx.Aws
         public ExternalIntegrationArgs()
         {
         }
+        public static new ExternalIntegrationArgs Empty => new ExternalIntegrationArgs();
     }
 
-    public sealed class ExternalIntegrationState : Pulumi.ResourceArgs
+    public sealed class ExternalIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The external ID to use with your IAM role and with `signalfx.aws.Integration`.
@@ -279,5 +281,6 @@ namespace Pulumi.SignalFx.Aws
         public ExternalIntegrationState()
         {
         }
+        public static new ExternalIntegrationState Empty => new ExternalIntegrationState();
     }
 }

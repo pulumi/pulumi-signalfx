@@ -157,7 +157,7 @@ func (i *EventFeedChart) ToEventFeedChartOutputWithContext(ctx context.Context) 
 // EventFeedChartArrayInput is an input type that accepts EventFeedChartArray and EventFeedChartArrayOutput values.
 // You can construct a concrete instance of `EventFeedChartArrayInput` via:
 //
-//          EventFeedChartArray{ EventFeedChartArgs{...} }
+//	EventFeedChartArray{ EventFeedChartArgs{...} }
 type EventFeedChartArrayInput interface {
 	pulumi.Input
 
@@ -182,7 +182,7 @@ func (i EventFeedChartArray) ToEventFeedChartArrayOutputWithContext(ctx context.
 // EventFeedChartMapInput is an input type that accepts EventFeedChartMap and EventFeedChartMapOutput values.
 // You can construct a concrete instance of `EventFeedChartMapInput` via:
 //
-//          EventFeedChartMap{ "key": EventFeedChartArgs{...} }
+//	EventFeedChartMap{ "key": EventFeedChartArgs{...} }
 type EventFeedChartMapInput interface {
 	pulumi.Input
 
@@ -216,6 +216,41 @@ func (o EventFeedChartOutput) ToEventFeedChartOutput() EventFeedChartOutput {
 
 func (o EventFeedChartOutput) ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput {
 	return o
+}
+
+// Description of the text note.
+func (o EventFeedChartOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o EventFeedChartOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
+// Name of the text note.
+func (o EventFeedChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+func (o EventFeedChartOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o EventFeedChartOutput) StartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+func (o EventFeedChartOutput) TimeRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
+}
+
+// The URL of the chart.
+func (o EventFeedChartOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventFeedChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type EventFeedChartArrayOutput struct{ *pulumi.OutputState }

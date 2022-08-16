@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardGroupImportQualifierArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGroupImportQualifierArgs : global::Pulumi.ResourceArgs
     {
         [Input("filters")]
         private InputList<Inputs.DashboardGroupImportQualifierFilterArgs>? _filters;
@@ -26,5 +26,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardGroupImportQualifierArgs()
         {
         }
+        public static new DashboardGroupImportQualifierArgs Empty => new DashboardGroupImportQualifierArgs();
     }
 }

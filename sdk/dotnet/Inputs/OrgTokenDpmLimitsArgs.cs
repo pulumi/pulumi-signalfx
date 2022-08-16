@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class OrgTokenDpmLimitsArgs : Pulumi.ResourceArgs
+    public sealed class OrgTokenDpmLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
@@ -27,5 +27,6 @@ namespace Pulumi.SignalFx.Inputs
         public OrgTokenDpmLimitsArgs()
         {
         }
+        public static new OrgTokenDpmLimitsArgs Empty => new OrgTokenDpmLimitsArgs();
     }
 }

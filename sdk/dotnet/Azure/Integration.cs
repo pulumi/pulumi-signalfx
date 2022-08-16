@@ -17,74 +17,72 @@ namespace Pulumi.SignalFx.Azure
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new()
     ///     {
-    ///         var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new SignalFx.Azure.IntegrationArgs
+    ///         AdditionalServices = new[]
     ///         {
-    ///             AdditionalServices = 
+    ///             "some/service",
+    ///             "another/service",
+    ///         },
+    ///         AppId = "YYY",
+    ///         CustomNamespacesPerServices = new[]
+    ///         {
+    ///             new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs
     ///             {
-    ///                 "some/service",
-    ///                 "another/service",
-    ///             },
-    ///             AppId = "YYY",
-    ///             CustomNamespacesPerServices = 
-    ///             {
-    ///                 new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs
+    ///                 Namespaces = new[]
     ///                 {
-    ///                     Namespaces = 
-    ///                     {
-    ///                         "monitoringAgent",
-    ///                         "customNamespace",
-    ///                     },
-    ///                     Service = "Microsoft.Compute/virtualMachines",
+    ///                     "monitoringAgent",
+    ///                     "customNamespace",
+    ///                 },
+    ///                 Service = "Microsoft.Compute/virtualMachines",
+    ///             },
+    ///         },
+    ///         Enabled = true,
+    ///         Environment = "azure",
+    ///         PollRate = 300,
+    ///         ResourceFilterRules = new[]
+    ///         {
+    ///             new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
+    ///             {
+    ///                 Filter = new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleFilterArgs
+    ///                 {
+    ///                     Source = "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
     ///                 },
     ///             },
-    ///             Enabled = true,
-    ///             Environment = "azure",
-    ///             PollRate = 300,
-    ///             ResourceFilterRules = 
+    ///             new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
     ///             {
-    ///                 new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
+    ///                 Filter = new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleFilterArgs
     ///                 {
-    ///                     Filter = new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleFilterArgs
-    ///                     {
-    ///                         Source = "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-    ///                     },
-    ///                 },
-    ///                 new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
-    ///                 {
-    ///                     Filter = new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleFilterArgs
-    ///                     {
-    ///                         Source = "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-    ///                     },
+    ///                     Source = "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
     ///                 },
     ///             },
-    ///             SecretKey = "XXX",
-    ///             Services = 
-    ///             {
-    ///                 "microsoft.sql/servers/elasticpools",
-    ///             },
-    ///             Subscriptions = 
-    ///             {
-    ///                 "sub-guid-here",
-    ///             },
-    ///             TenantId = "ZZZ",
-    ///         });
-    ///     }
+    ///         },
+    ///         SecretKey = "XXX",
+    ///         Services = new[]
+    ///         {
+    ///             "microsoft.sql/servers/elasticpools",
+    ///         },
+    ///         Subscriptions = new[]
+    ///         {
+    ///             "sub-guid-here",
+    ///         },
+    ///         TenantId = "ZZZ",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// ## Service Names
     /// 
     /// &gt; **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.
     /// </summary>
     [SignalFxResourceType("signalfx:azure/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Additional Azure resource types that you want to sync with Observability Cloud.
@@ -115,6 +113,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
+
+        /// <summary>
+        /// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+        /// </summary>
+        [Output("importAzureMonitor")]
+        public Output<bool?> ImportAzureMonitor { get; private set; } = null!;
 
         /// <summary>
         /// Name of the integration.
@@ -216,7 +220,7 @@ namespace Pulumi.SignalFx.Azure
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalServices")]
         private InputList<string>? _additionalServices;
@@ -259,6 +263,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
+
+        /// <summary>
+        /// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+        /// </summary>
+        [Input("importAzureMonitor")]
+        public Input<bool>? ImportAzureMonitor { get; set; }
 
         /// <summary>
         /// Name of the integration.
@@ -337,9 +347,10 @@ namespace Pulumi.SignalFx.Azure
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         [Input("additionalServices")]
         private InputList<string>? _additionalServices;
@@ -382,6 +393,12 @@ namespace Pulumi.SignalFx.Azure
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
+
+        /// <summary>
+        /// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+        /// </summary>
+        [Input("importAzureMonitor")]
+        public Input<bool>? ImportAzureMonitor { get; set; }
 
         /// <summary>
         /// Name of the integration.
@@ -460,5 +477,6 @@ namespace Pulumi.SignalFx.Azure
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

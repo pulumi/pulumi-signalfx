@@ -21,54 +21,57 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewListChart(ctx, "mylistchart0", &signalfx.ListChartArgs{
-// 			ColorBy:           pulumi.String("Metric"),
-// 			Description:       pulumi.String("Very cool List Chart"),
-// 			DisableSampling:   pulumi.Bool(true),
-// 			HideMissingValues: pulumi.Bool(true),
-// 			LegendOptionsFields: ListChartLegendOptionsFieldArray{
-// 				&ListChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(false),
-// 					Property: pulumi.String("collector"),
-// 				},
-// 				&ListChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(true),
-// 					Property: pulumi.String("cluster_name"),
-// 				},
-// 				&ListChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(true),
-// 					Property: pulumi.String("role"),
-// 				},
-// 				&ListChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(false),
-// 					Property: pulumi.String("collector"),
-// 				},
-// 				&ListChartLegendOptionsFieldArgs{
-// 					Enabled:  pulumi.Bool(false),
-// 					Property: pulumi.String("host"),
-// 				},
-// 			},
-// 			MaxDelay:        pulumi.Int(2),
-// 			MaxPrecision:    pulumi.Int(2),
-// 			ProgramText:     pulumi.String(fmt.Sprintf("%v%v%v", "myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\n", "data(\"cpu.total.idle\", filter=myfilters).publish()\n", "\n")),
-// 			RefreshInterval: pulumi.Int(1),
-// 			SortBy:          pulumi.String("-value"),
-// 			Timezone:        pulumi.String("Europe/Paris"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewListChart(ctx, "mylistchart0", &signalfx.ListChartArgs{
+//				ColorBy:           pulumi.String("Metric"),
+//				Description:       pulumi.String("Very cool List Chart"),
+//				DisableSampling:   pulumi.Bool(true),
+//				HideMissingValues: pulumi.Bool(true),
+//				LegendOptionsFields: ListChartLegendOptionsFieldArray{
+//					&ListChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(false),
+//						Property: pulumi.String("collector"),
+//					},
+//					&ListChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(true),
+//						Property: pulumi.String("cluster_name"),
+//					},
+//					&ListChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(true),
+//						Property: pulumi.String("role"),
+//					},
+//					&ListChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(false),
+//						Property: pulumi.String("collector"),
+//					},
+//					&ListChartLegendOptionsFieldArgs{
+//						Enabled:  pulumi.Bool(false),
+//						Property: pulumi.String("host"),
+//					},
+//				},
+//				MaxDelay:        pulumi.Int(2),
+//				MaxPrecision:    pulumi.Int(2),
+//				ProgramText:     pulumi.String(fmt.Sprintf("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n")),
+//				RefreshInterval: pulumi.Int(1),
+//				SortBy:          pulumi.String("-value"),
+//				Timezone:        pulumi.String("Europe/Paris"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ListChart struct {
 	pulumi.CustomResourceState
@@ -365,7 +368,7 @@ func (i *ListChart) ToListChartOutputWithContext(ctx context.Context) ListChartO
 // ListChartArrayInput is an input type that accepts ListChartArray and ListChartArrayOutput values.
 // You can construct a concrete instance of `ListChartArrayInput` via:
 //
-//          ListChartArray{ ListChartArgs{...} }
+//	ListChartArray{ ListChartArgs{...} }
 type ListChartArrayInput interface {
 	pulumi.Input
 
@@ -390,7 +393,7 @@ func (i ListChartArray) ToListChartArrayOutputWithContext(ctx context.Context) L
 // ListChartMapInput is an input type that accepts ListChartMap and ListChartMapOutput values.
 // You can construct a concrete instance of `ListChartMapInput` via:
 //
-//          ListChartMap{ "key": ListChartArgs{...} }
+//	ListChartMap{ "key": ListChartArgs{...} }
 type ListChartMapInput interface {
 	pulumi.Input
 
@@ -424,6 +427,113 @@ func (o ListChartOutput) ToListChartOutput() ListChartOutput {
 
 func (o ListChartOutput) ToListChartOutputWithContext(ctx context.Context) ListChartOutput {
 	return o
+}
+
+// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+func (o ListChartOutput) ColorBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
+}
+
+// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+func (o ListChartOutput) ColorScales() ListChartColorScaleArrayOutput {
+	return o.ApplyT(func(v *ListChart) ListChartColorScaleArrayOutput { return v.ColorScales }).(ListChartColorScaleArrayOutput)
+}
+
+// Description of the chart.
+func (o ListChartOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+func (o ListChartOutput) DisableSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o ListChartOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
+// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+func (o ListChartOutput) HideMissingValues() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.BoolPtrOutput { return v.HideMissingValues }).(pulumi.BoolPtrOutput)
+}
+
+// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+//
+// Deprecated: Please use legend_options_fields
+func (o ListChartOutput) LegendFieldsToHides() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringArrayOutput { return v.LegendFieldsToHides }).(pulumi.StringArrayOutput)
+}
+
+// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+func (o ListChartOutput) LegendOptionsFields() ListChartLegendOptionsFieldArrayOutput {
+	return o.ApplyT(func(v *ListChart) ListChartLegendOptionsFieldArrayOutput { return v.LegendOptionsFields }).(ListChartLegendOptionsFieldArrayOutput)
+}
+
+// How long (in seconds) to wait for late datapoints.
+func (o ListChartOutput) MaxDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of digits to display when rounding values up or down.
+func (o ListChartOutput) MaxPrecision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.MaxPrecision }).(pulumi.IntPtrOutput)
+}
+
+// Name of the chart.
+func (o ListChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+func (o ListChartOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// How often (in seconds) to refresh the values of the list.
+func (o ListChartOutput) RefreshInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
+}
+
+// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+func (o ListChartOutput) SecondaryVisualization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.SecondaryVisualization }).(pulumi.StringPtrOutput)
+}
+
+// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+func (o ListChartOutput) SortBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.SortBy }).(pulumi.StringPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o ListChartOutput) StartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+func (o ListChartOutput) TimeRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
+}
+
+// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+func (o ListChartOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+func (o ListChartOutput) UnitPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the chart.
+func (o ListChartOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Plot-level customization options, associated with a publish statement.
+func (o ListChartOutput) VizOptions() ListChartVizOptionArrayOutput {
+	return o.ApplyT(func(v *ListChart) ListChartVizOptionArrayOutput { return v.VizOptions }).(ListChartVizOptionArrayOutput)
 }
 
 type ListChartArrayOutput struct{ *pulumi.OutputState }

@@ -17,30 +17,28 @@ namespace Pulumi.SignalFx.ServiceNow
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var serviceNowMyteam = new SignalFx.ServiceNow.Integration("serviceNowMyteam", new()
     ///     {
-    ///         var serviceNowMyteam = new SignalFx.ServiceNow.Integration("serviceNowMyteam", new SignalFx.ServiceNow.IntegrationArgs
-    ///         {
-    ///             AlertResolvedPayloadTemplate = "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
-    ///             AlertTriggeredPayloadTemplate = "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
-    ///             Enabled = false,
-    ///             InstanceName = "myinst.service-now.com",
-    ///             IssueType = "Incident",
-    ///             Password = "youd0ntsee1t",
-    ///             Username = "thisis_me",
-    ///         });
-    ///     }
+    ///         AlertResolvedPayloadTemplate = "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
+    ///         AlertTriggeredPayloadTemplate = "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
+    ///         Enabled = false,
+    ///         InstanceName = "myinst.service-now.com",
+    ///         IssueType = "Incident",
+    ///         Password = "youd0ntsee1t",
+    ///         Username = "thisis_me",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:servicenow/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -134,7 +132,7 @@ namespace Pulumi.SignalFx.ServiceNow
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -187,9 +185,10 @@ namespace Pulumi.SignalFx.ServiceNow
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -242,5 +241,6 @@ namespace Pulumi.SignalFx.ServiceNow
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

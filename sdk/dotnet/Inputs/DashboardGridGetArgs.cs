@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardGridGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGridGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("chartIds", required: true)]
         private InputList<string>? _chartIds;
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardGridGetArgs()
         {
         }
+        public static new DashboardGridGetArgs Empty => new DashboardGridGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardGroupDashboardArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGroupDashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dashboard id to mirror
@@ -53,5 +53,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardGroupDashboardArgs()
         {
         }
+        public static new DashboardGroupDashboardArgs Empty => new DashboardGroupDashboardArgs();
     }
 }

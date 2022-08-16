@@ -17,64 +17,62 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mylistchart0 = new SignalFx.ListChart("mylistchart0", new()
     ///     {
-    ///         var mylistchart0 = new SignalFx.ListChart("mylistchart0", new SignalFx.ListChartArgs
+    ///         ColorBy = "Metric",
+    ///         Description = "Very cool List Chart",
+    ///         DisableSampling = true,
+    ///         HideMissingValues = true,
+    ///         LegendOptionsFields = new[]
     ///         {
-    ///             ColorBy = "Metric",
-    ///             Description = "Very cool List Chart",
-    ///             DisableSampling = true,
-    ///             HideMissingValues = true,
-    ///             LegendOptionsFields = 
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
     ///             {
-    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = false,
-    ///                     Property = "collector",
-    ///                 },
-    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Property = "cluster_name",
-    ///                 },
-    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = true,
-    ///                     Property = "role",
-    ///                 },
-    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = false,
-    ///                     Property = "collector",
-    ///                 },
-    ///                 new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///                 {
-    ///                     Enabled = false,
-    ///                     Property = "host",
-    ///                 },
+    ///                 Enabled = false,
+    ///                 Property = "collector",
     ///             },
-    ///             MaxDelay = 2,
-    ///             MaxPrecision = 2,
-    ///             ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Property = "cluster_name",
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Property = "role",
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Enabled = false,
+    ///                 Property = "collector",
+    ///             },
+    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Enabled = false,
+    ///                 Property = "host",
+    ///             },
+    ///         },
+    ///         MaxDelay = 2,
+    ///         MaxPrecision = 2,
+    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
     /// data(""cpu.total.idle"", filter=myfilters).publish()
     /// 
     /// ",
-    ///             RefreshInterval = 1,
-    ///             SortBy = "-value",
-    ///             Timezone = "Europe/Paris",
-    ///         });
-    ///     }
+    ///         RefreshInterval = 1,
+    ///         SortBy = "-value",
+    ///         Timezone = "Europe/Paris",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/listChart:ListChart")]
-    public partial class ListChart : Pulumi.CustomResource
+    public partial class ListChart : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -246,7 +244,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class ListChartArgs : Pulumi.ResourceArgs
+    public sealed class ListChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -396,9 +394,10 @@ namespace Pulumi.SignalFx
         public ListChartArgs()
         {
         }
+        public static new ListChartArgs Empty => new ListChartArgs();
     }
 
-    public sealed class ListChartState : Pulumi.ResourceArgs
+    public sealed class ListChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -554,5 +553,6 @@ namespace Pulumi.SignalFx
         public ListChartState()
         {
         }
+        public static new ListChartState Empty => new ListChartState();
     }
 }

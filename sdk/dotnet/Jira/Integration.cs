@@ -17,32 +17,30 @@ namespace Pulumi.SignalFx.Jira
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var jiraMyteamXX = new SignalFx.Jira.Integration("jiraMyteamXX", new()
     ///     {
-    ///         var jiraMyteamXX = new SignalFx.Jira.Integration("jiraMyteamXX", new SignalFx.Jira.IntegrationArgs
-    ///         {
-    ///             AssigneeDisplayName = "Testy Testerson",
-    ///             AssigneeName = "testytesterson",
-    ///             AuthMethod = "UsernameAndPassword",
-    ///             BaseUrl = "https://www.example.com",
-    ///             Enabled = false,
-    ///             IssueType = "Story",
-    ///             Password = "paasword",
-    ///             ProjectKey = "TEST",
-    ///             Username = "yoosername",
-    ///         });
-    ///     }
+    ///         AssigneeDisplayName = "Testy Testerson",
+    ///         AssigneeName = "testytesterson",
+    ///         AuthMethod = "UsernameAndPassword",
+    ///         BaseUrl = "https://www.example.com",
+    ///         Enabled = false,
+    ///         IssueType = "Story",
+    ///         Password = "paasword",
+    ///         ProjectKey = "TEST",
+    ///         Username = "yoosername",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:jira/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API token for the user email
@@ -160,7 +158,7 @@ namespace Pulumi.SignalFx.Jira
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API token for the user email
@@ -237,9 +235,10 @@ namespace Pulumi.SignalFx.Jira
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API token for the user email
@@ -316,5 +315,6 @@ namespace Pulumi.SignalFx.Jira
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

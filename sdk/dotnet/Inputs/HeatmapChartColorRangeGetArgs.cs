@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class HeatmapChartColorRangeGetArgs : Pulumi.ResourceArgs
+    public sealed class HeatmapChartColorRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -33,5 +33,6 @@ namespace Pulumi.SignalFx.Inputs
         public HeatmapChartColorRangeGetArgs()
         {
         }
+        public static new HeatmapChartColorRangeGetArgs Empty => new HeatmapChartColorRangeGetArgs();
     }
 }

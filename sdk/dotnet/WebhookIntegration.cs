@@ -13,9 +13,36 @@ namespace Pulumi.SignalFx
     /// SignalFx Webhook integration.
     /// 
     /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var webhookMyteam = new SignalFx.WebhookIntegration("webhookMyteam", new()
+    ///     {
+    ///         Enabled = true,
+    ///         Headers = new[]
+    ///         {
+    ///             new SignalFx.Inputs.WebhookIntegrationHeaderArgs
+    ///             {
+    ///                 HeaderKey = "some_header",
+    ///                 HeaderValue = "value_for_that_header",
+    ///             },
+    ///         },
+    ///         SharedSecret = "abc1234",
+    ///         Url = "https://www.example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/webhookIntegration:WebhookIntegration")]
-    public partial class WebhookIntegration : Pulumi.CustomResource
+    public partial class WebhookIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -88,7 +115,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class WebhookIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class WebhookIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -126,9 +153,10 @@ namespace Pulumi.SignalFx
         public WebhookIntegrationArgs()
         {
         }
+        public static new WebhookIntegrationArgs Empty => new WebhookIntegrationArgs();
     }
 
-    public sealed class WebhookIntegrationState : Pulumi.ResourceArgs
+    public sealed class WebhookIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -166,5 +194,6 @@ namespace Pulumi.SignalFx
         public WebhookIntegrationState()
         {
         }
+        public static new WebhookIntegrationState Empty => new WebhookIntegrationState();
     }
 }

@@ -23,14 +23,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
@@ -41,14 +44,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Jira
@@ -59,14 +65,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Opsgenie
@@ -77,14 +86,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### PagerDuty
@@ -93,14 +105,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Slack
@@ -111,14 +126,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Team
@@ -129,14 +147,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### TeamEmail
@@ -147,14 +168,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### VictorOps
@@ -163,14 +187,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ### Webhook
@@ -182,14 +209,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // or configure one inline:
@@ -197,14 +227,17 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -212,7 +245,9 @@ import (
 // Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
 //
 // ```sh
-//  $ pulumi import signalfx:index/detector:Detector application_delay abc123
+//
+//	$ pulumi import signalfx:index/detector:Detector application_delay abc123
+//
 // ```
 type Detector struct {
 	pulumi.CustomResourceState
@@ -488,7 +523,7 @@ func (i *Detector) ToDetectorOutputWithContext(ctx context.Context) DetectorOutp
 // DetectorArrayInput is an input type that accepts DetectorArray and DetectorArrayOutput values.
 // You can construct a concrete instance of `DetectorArrayInput` via:
 //
-//          DetectorArray{ DetectorArgs{...} }
+//	DetectorArray{ DetectorArgs{...} }
 type DetectorArrayInput interface {
 	pulumi.Input
 
@@ -513,7 +548,7 @@ func (i DetectorArray) ToDetectorArrayOutputWithContext(ctx context.Context) Det
 // DetectorMapInput is an input type that accepts DetectorMap and DetectorMapOutput values.
 // You can construct a concrete instance of `DetectorMapInput` via:
 //
-//          DetectorMap{ "key": DetectorArgs{...} }
+//	DetectorMap{ "key": DetectorArgs{...} }
 type DetectorMapInput interface {
 	pulumi.Input
 
@@ -547,6 +582,106 @@ func (o DetectorOutput) ToDetectorOutput() DetectorOutput {
 
 func (o DetectorOutput) ToDetectorOutputWithContext(ctx context.Context) DetectorOutput {
 	return o
+}
+
+// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+func (o DetectorOutput) AuthorizedWriterTeams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.AuthorizedWriterTeams }).(pulumi.StringArrayOutput)
+}
+
+// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+func (o DetectorOutput) AuthorizedWriterUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.AuthorizedWriterUsers }).(pulumi.StringArrayOutput)
+}
+
+// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+func (o DetectorOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+func (o DetectorOutput) DisableSampling() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o DetectorOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
+// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+func (o DetectorOutput) LabelResolutions() pulumi.IntMapOutput {
+	return o.ApplyT(func(v *Detector) pulumi.IntMapOutput { return v.LabelResolutions }).(pulumi.IntMapOutput)
+}
+
+// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+func (o DetectorOutput) MaxDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
+}
+
+// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+func (o DetectorOutput) MinDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.MinDelay }).(pulumi.IntPtrOutput)
+}
+
+// Name of the detector.
+func (o DetectorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+func (o DetectorOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// Set of rules used for alerting.
+func (o DetectorOutput) Rules() DetectorRuleArrayOutput {
+	return o.ApplyT(func(v *Detector) DetectorRuleArrayOutput { return v.Rules }).(DetectorRuleArrayOutput)
+}
+
+// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+func (o DetectorOutput) ShowDataMarkers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.ShowDataMarkers }).(pulumi.BoolPtrOutput)
+}
+
+// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+func (o DetectorOutput) ShowEventLines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.ShowEventLines }).(pulumi.BoolPtrOutput)
+}
+
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+func (o DetectorOutput) StartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// Tags associated with the detector.
+func (o DetectorOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Team IDs to associate the detector to.
+func (o DetectorOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
+// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+func (o DetectorOutput) TimeRange() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
+}
+
+// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+func (o DetectorOutput) Timezone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the detector.
+func (o DetectorOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Plot-level customization options, associated with a publish statement.
+func (o DetectorOutput) VizOptions() DetectorVizOptionArrayOutput {
+	return o.ApplyT(func(v *Detector) DetectorVizOptionArrayOutput { return v.VizOptions }).(DetectorVizOptionArrayOutput)
 }
 
 type DetectorArrayOutput struct{ *pulumi.OutputState }

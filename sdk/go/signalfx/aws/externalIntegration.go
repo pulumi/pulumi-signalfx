@@ -22,87 +22,170 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
-// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awsMyteamExtern, err := aws.NewExternalIntegration(ctx, "awsMyteamExtern", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		signalfxAssumePolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
-// 			Statements: iam.GetPolicyDocumentStatementArray{
-// 				&iam.GetPolicyDocumentStatementArgs{
-// 					Actions: pulumi.StringArray{
-// 						pulumi.String("sts:AssumeRole"),
-// 					},
-// 					Principals: iam.GetPolicyDocumentStatementPrincipalArray{
-// 						&iam.GetPolicyDocumentStatementPrincipalArgs{
-// 							Type: pulumi.String("AWS"),
-// 							Identifiers: pulumi.StringArray{
-// 								awsMyteamExtern.SignalfxAwsAccount,
-// 							},
-// 						},
-// 					},
-// 					Conditions: iam.GetPolicyDocumentStatementConditionArray{
-// 						&iam.GetPolicyDocumentStatementConditionArgs{
-// 							Test:     pulumi.String("StringEquals"),
-// 							Variable: pulumi.String("sts:ExternalId"),
-// 							Values: pulumi.StringArray{
-// 								awsMyteamExtern.ExternalId,
-// 							},
-// 						},
-// 					},
-// 				},
-// 			},
-// 		}, nil)
-// 		awsSplunkRole, err := iam.NewRole(ctx, "awsSplunkRole", &iam.RoleArgs{
-// 			Description: pulumi.String("signalfx integration to read out data and send it to signalfxs aws account"),
-// 			AssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {
-// 				return signalfxAssumePolicy.Json, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		awsSplunkPolicy, err := iam.NewPolicy(ctx, "awsSplunkPolicy", &iam.PolicyArgs{
-// 			Description: pulumi.String("AWS permissions required by the Splunk Observability Cloud"),
-// 			Policy:      pulumi.Any(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"Version\": \"2012-10-17\",\n", "  \"Statement\": [\n", "    {\n", "      \"Effect\": \"Allow\",\n", "      \"Action\": [\n", "        \"apigateway:GET\",\n", "        \"autoscaling:DescribeAutoScalingGroups\",\n", "        \"cloudfront:GetDistributionConfig\",\n", "        \"cloudfront:ListDistributions\",\n", "        \"cloudfront:ListTagsForResource\",\n", "        \"cloudwatch:DescribeAlarms\",\n", "        \"cloudwatch:GetMetricData\",\n", "        \"cloudwatch:GetMetricStatistics\",\n", "        \"cloudwatch:ListMetrics\",\n", "        \"directconnect:DescribeConnections\",\n", "        \"dynamodb:DescribeTable\",\n", "        \"dynamodb:ListTables\",\n", "        \"dynamodb:ListTagsOfResource\",\n", "        \"ec2:DescribeInstances\",\n", "        \"ec2:DescribeInstanceStatus\",\n", "        \"ec2:DescribeRegions\",\n", "        \"ec2:DescribeReservedInstances\",\n", "        \"ec2:DescribeReservedInstancesModifications\",\n", "        \"ec2:DescribeTags\",\n", "        \"ec2:DescribeVolumes\",\n", "        \"ecs:DescribeClusters\",\n", "        \"ecs:DescribeServices\",\n", "        \"ecs:DescribeTasks\",\n", "        \"ecs:ListClusters\",\n", "        \"ecs:ListServices\",\n", "        \"ecs:ListTagsForResource\",\n", "        \"ecs:ListTaskDefinitions\",\n", "        \"ecs:ListTasks\",\n", "        \"elasticache:DescribeCacheClusters\",\n", "        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n", "        \"elasticloadbalancing:DescribeLoadBalancers\",\n", "        \"elasticloadbalancing:DescribeTags\",\n", "        \"elasticloadbalancing:DescribeTargetGroups\",\n", "        \"elasticmapreduce:DescribeCluster\",\n", "        \"elasticmapreduce:ListClusters\",\n", "        \"es:DescribeElasticsearchDomain\",\n", "        \"es:ListDomainNames\",\n", "        \"kinesis:DescribeStream\",\n", "        \"kinesis:ListShards\",\n", "        \"kinesis:ListStreams\",\n", "        \"kinesis:ListTagsForStream\",\n", "        \"lambda:GetAlias\",\n", "        \"lambda:ListFunctions\",\n", "        \"lambda:ListTags\",\n", "        \"logs:DeleteSubscriptionFilter\",\n", "        \"logs:DescribeLogGroups\",\n", "        \"logs:DescribeSubscriptionFilters\",\n", "        \"logs:PutSubscriptionFilter\",\n", "        \"organizations:DescribeOrganization\",\n", "        \"rds:DescribeDBClusters\",\n", "        \"rds:DescribeDBInstances\",\n", "        \"rds:ListTagsForResource\",\n", "        \"redshift:DescribeClusters\",\n", "        \"redshift:DescribeLoggingStatus\",\n", "        \"s3:GetBucketLocation\",\n", "        \"s3:GetBucketLogging\",\n", "        \"s3:GetBucketNotification\",\n", "        \"s3:GetBucketTagging\",\n", "        \"s3:ListAllMyBuckets\",\n", "        \"s3:ListBucket\",\n", "        \"s3:PutBucketNotification\",\n", "        \"sqs:GetQueueAttributes\",\n", "        \"sqs:ListQueues\",\n", "        \"sqs:ListQueueTags\",\n", "        \"states:ListStateMachines\",\n", "        \"tag:GetResources\",\n", "        \"workspaces:DescribeWorkspaces\"\n", "      ],\n", "      \"Resource\": \"*\"\n", "    }\n", "  ]\n", "}\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRolePolicyAttachment(ctx, "splunkRolePolicyAttach", &iam.RolePolicyAttachmentArgs{
-// 			Role:      awsSplunkRole.Name,
-// 			PolicyArn: awsSplunkPolicy.Arn,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
-// 			Enabled:       pulumi.Bool(true),
-// 			IntegrationId: awsMyteamExtern.ID(),
-// 			ExternalId:    awsMyteamExtern.ExternalId,
-// 			RoleArn:       awsSplunkRole.Arn,
-// 			Regions: pulumi.StringArray{
-// 				pulumi.String("us-east-1"),
-// 			},
-// 			PollRate:         pulumi.Int(300),
-// 			ImportCloudWatch: pulumi.Bool(true),
-// 			EnableAwsUsage:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awsMyteamExtern, err := aws.NewExternalIntegration(ctx, "awsMyteamExtern", nil)
+//			if err != nil {
+//				return err
+//			}
+//			signalfxAssumePolicy := iam.GetPolicyDocumentOutput(ctx, iam.GetPolicyDocumentOutputArgs{
+//				Statements: iam.GetPolicyDocumentStatementArray{
+//					&iam.GetPolicyDocumentStatementArgs{
+//						Actions: pulumi.StringArray{
+//							pulumi.String("sts:AssumeRole"),
+//						},
+//						Principals: iam.GetPolicyDocumentStatementPrincipalArray{
+//							&iam.GetPolicyDocumentStatementPrincipalArgs{
+//								Type: pulumi.String("AWS"),
+//								Identifiers: pulumi.StringArray{
+//									awsMyteamExtern.SignalfxAwsAccount,
+//								},
+//							},
+//						},
+//						Conditions: iam.GetPolicyDocumentStatementConditionArray{
+//							&iam.GetPolicyDocumentStatementConditionArgs{
+//								Test:     pulumi.String("StringEquals"),
+//								Variable: pulumi.String("sts:ExternalId"),
+//								Values: pulumi.StringArray{
+//									awsMyteamExtern.ExternalId,
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, nil)
+//			awsSplunkRole, err := iam.NewRole(ctx, "awsSplunkRole", &iam.RoleArgs{
+//				Description: pulumi.String("signalfx integration to read out data and send it to signalfxs aws account"),
+//				AssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {
+//					return signalfxAssumePolicy.Json, nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			awsSplunkPolicy, err := iam.NewPolicy(ctx, "awsSplunkPolicy", &iam.PolicyArgs{
+//				Description: pulumi.String("AWS permissions required by the Splunk Observability Cloud"),
+//				Policy: pulumi.Any(fmt.Sprintf(`{
+//	  "Version": "2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Effect": "Allow",
+//	      "Action": [
+//	        "apigateway:GET",
+//	        "autoscaling:DescribeAutoScalingGroups",
+//	        "cloudfront:GetDistributionConfig",
+//	        "cloudfront:ListDistributions",
+//	        "cloudfront:ListTagsForResource",
+//	        "cloudwatch:DescribeAlarms",
+//	        "cloudwatch:GetMetricData",
+//	        "cloudwatch:GetMetricStatistics",
+//	        "cloudwatch:ListMetrics",
+//	        "directconnect:DescribeConnections",
+//	        "dynamodb:DescribeTable",
+//	        "dynamodb:ListTables",
+//	        "dynamodb:ListTagsOfResource",
+//	        "ec2:DescribeInstances",
+//	        "ec2:DescribeInstanceStatus",
+//	        "ec2:DescribeRegions",
+//	        "ec2:DescribeReservedInstances",
+//	        "ec2:DescribeReservedInstancesModifications",
+//	        "ec2:DescribeTags",
+//	        "ec2:DescribeVolumes",
+//	        "ecs:DescribeClusters",
+//	        "ecs:DescribeServices",
+//	        "ecs:DescribeTasks",
+//	        "ecs:ListClusters",
+//	        "ecs:ListServices",
+//	        "ecs:ListTagsForResource",
+//	        "ecs:ListTaskDefinitions",
+//	        "ecs:ListTasks",
+//	        "elasticache:DescribeCacheClusters",
+//	        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+//	        "elasticloadbalancing:DescribeLoadBalancers",
+//	        "elasticloadbalancing:DescribeTags",
+//	        "elasticloadbalancing:DescribeTargetGroups",
+//	        "elasticmapreduce:DescribeCluster",
+//	        "elasticmapreduce:ListClusters",
+//	        "es:DescribeElasticsearchDomain",
+//	        "es:ListDomainNames",
+//	        "kinesis:DescribeStream",
+//	        "kinesis:ListShards",
+//	        "kinesis:ListStreams",
+//	        "kinesis:ListTagsForStream",
+//	        "lambda:GetAlias",
+//	        "lambda:ListFunctions",
+//	        "lambda:ListTags",
+//	        "logs:DeleteSubscriptionFilter",
+//	        "logs:DescribeLogGroups",
+//	        "logs:DescribeSubscriptionFilters",
+//	        "logs:PutSubscriptionFilter",
+//	        "organizations:DescribeOrganization",
+//	        "rds:DescribeDBClusters",
+//	        "rds:DescribeDBInstances",
+//	        "rds:ListTagsForResource",
+//	        "redshift:DescribeClusters",
+//	        "redshift:DescribeLoggingStatus",
+//	        "s3:GetBucketLocation",
+//	        "s3:GetBucketLogging",
+//	        "s3:GetBucketNotification",
+//	        "s3:GetBucketTagging",
+//	        "s3:ListAllMyBuckets",
+//	        "s3:ListBucket",
+//	        "s3:PutBucketNotification",
+//	        "sqs:GetQueueAttributes",
+//	        "sqs:ListQueues",
+//	        "sqs:ListQueueTags",
+//	        "states:ListStateMachines",
+//	        "tag:GetResources",
+//	        "workspaces:DescribeWorkspaces"
+//	      ],
+//	      "Resource": "*"
+//	    }
+//	  ]
+//	}
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRolePolicyAttachment(ctx, "splunkRolePolicyAttach", &iam.RolePolicyAttachmentArgs{
+//				Role:      awsSplunkRole.Name,
+//				PolicyArn: awsSplunkPolicy.Arn,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
+//				Enabled:       pulumi.Bool(true),
+//				IntegrationId: awsMyteamExtern.ID(),
+//				ExternalId:    awsMyteamExtern.ExternalId,
+//				RoleArn:       awsSplunkRole.Arn,
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//				},
+//				PollRate:         pulumi.Int(300),
+//				ImportCloudWatch: pulumi.Bool(true),
+//				EnableAwsUsage:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type ExternalIntegration struct {
 	pulumi.CustomResourceState
@@ -202,7 +285,7 @@ func (i *ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context
 // ExternalIntegrationArrayInput is an input type that accepts ExternalIntegrationArray and ExternalIntegrationArrayOutput values.
 // You can construct a concrete instance of `ExternalIntegrationArrayInput` via:
 //
-//          ExternalIntegrationArray{ ExternalIntegrationArgs{...} }
+//	ExternalIntegrationArray{ ExternalIntegrationArgs{...} }
 type ExternalIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +310,7 @@ func (i ExternalIntegrationArray) ToExternalIntegrationArrayOutputWithContext(ct
 // ExternalIntegrationMapInput is an input type that accepts ExternalIntegrationMap and ExternalIntegrationMapOutput values.
 // You can construct a concrete instance of `ExternalIntegrationMapInput` via:
 //
-//          ExternalIntegrationMap{ "key": ExternalIntegrationArgs{...} }
+//	ExternalIntegrationMap{ "key": ExternalIntegrationArgs{...} }
 type ExternalIntegrationMapInput interface {
 	pulumi.Input
 
@@ -261,6 +344,21 @@ func (o ExternalIntegrationOutput) ToExternalIntegrationOutput() ExternalIntegra
 
 func (o ExternalIntegrationOutput) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
 	return o
+}
+
+// The external ID to use with your IAM role and with `aws.Integration`.
+func (o ExternalIntegrationOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalIntegration) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// The name of this integration
+func (o ExternalIntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+func (o ExternalIntegrationOutput) SignalfxAwsAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalIntegration) pulumi.StringOutput { return v.SignalfxAwsAccount }).(pulumi.StringOutput)
 }
 
 type ExternalIntegrationArrayOutput struct{ *pulumi.OutputState }
