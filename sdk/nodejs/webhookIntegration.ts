@@ -16,13 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const webhookMyteam = new signalfx.WebhookResource("webhook_myteam", {
+ * const webhookMyteam = new signalfx.WebhookIntegration("webhook_myteam", {
  *     enabled: true,
  *     headers: [{
  *         headerKey: "some_header",
  *         headerValue: "value_for_that_header",
  *     }],
- *     name: "Webhook - My Team",
  *     sharedSecret: "abc1234",
  *     url: "https://www.example.com",
  * });

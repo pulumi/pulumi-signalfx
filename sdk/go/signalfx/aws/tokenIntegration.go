@@ -22,55 +22,58 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		awsMyteamToken, err := aws.NewTokenIntegration(ctx, "awsMyteamToken", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = iam.NewRole(ctx, "awsSfxRole", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
-// 			Enabled:       pulumi.Bool(true),
-// 			IntegrationId: awsMyteamToken.ID(),
-// 			Token:         pulumi.String("put_your_token_here"),
-// 			Key:           pulumi.String("put_your_key_here"),
-// 			Regions: pulumi.StringArray{
-// 				pulumi.String("us-east-1"),
-// 			},
-// 			PollRate:         pulumi.Int(300),
-// 			ImportCloudWatch: pulumi.Bool(true),
-// 			EnableAwsUsage:   pulumi.Bool(true),
-// 			CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
-// 				&aws.IntegrationCustomNamespaceSyncRuleArgs{
-// 					DefaultAction: pulumi.String("Exclude"),
-// 					FilterAction:  pulumi.String("Include"),
-// 					FilterSource:  pulumi.String("filter('code', '200')"),
-// 					Namespace:     pulumi.String("my-custom-namespace"),
-// 				},
-// 			},
-// 			NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
-// 				&aws.IntegrationNamespaceSyncRuleArgs{
-// 					DefaultAction: pulumi.String("Exclude"),
-// 					FilterAction:  pulumi.String("Include"),
-// 					FilterSource:  pulumi.String("filter('code', '200')"),
-// 					Namespace:     pulumi.String("AWS/EC2"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awsMyteamToken, err := aws.NewTokenIntegration(ctx, "awsMyteamToken", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRole(ctx, "awsSfxRole", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
+//				Enabled:       pulumi.Bool(true),
+//				IntegrationId: awsMyteamToken.ID(),
+//				Token:         pulumi.String("put_your_token_here"),
+//				Key:           pulumi.String("put_your_key_here"),
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//				},
+//				PollRate:         pulumi.Int(300),
+//				ImportCloudWatch: pulumi.Bool(true),
+//				EnableAwsUsage:   pulumi.Bool(true),
+//				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
+//					&aws.IntegrationCustomNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("my-custom-namespace"),
+//					},
+//				},
+//				NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
+//					&aws.IntegrationNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("AWS/EC2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type TokenIntegration struct {
 	pulumi.CustomResourceState
@@ -170,7 +173,7 @@ func (i *TokenIntegration) ToTokenIntegrationOutputWithContext(ctx context.Conte
 // TokenIntegrationArrayInput is an input type that accepts TokenIntegrationArray and TokenIntegrationArrayOutput values.
 // You can construct a concrete instance of `TokenIntegrationArrayInput` via:
 //
-//          TokenIntegrationArray{ TokenIntegrationArgs{...} }
+//	TokenIntegrationArray{ TokenIntegrationArgs{...} }
 type TokenIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -195,7 +198,7 @@ func (i TokenIntegrationArray) ToTokenIntegrationArrayOutputWithContext(ctx cont
 // TokenIntegrationMapInput is an input type that accepts TokenIntegrationMap and TokenIntegrationMapOutput values.
 // You can construct a concrete instance of `TokenIntegrationMapInput` via:
 //
-//          TokenIntegrationMap{ "key": TokenIntegrationArgs{...} }
+//	TokenIntegrationMap{ "key": TokenIntegrationArgs{...} }
 type TokenIntegrationMapInput interface {
 	pulumi.Input
 
@@ -229,6 +232,21 @@ func (o TokenIntegrationOutput) ToTokenIntegrationOutput() TokenIntegrationOutpu
 
 func (o TokenIntegrationOutput) ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput {
 	return o
+}
+
+// The name of this integration
+func (o TokenIntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+func (o TokenIntegrationOutput) SignalfxAwsAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.SignalfxAwsAccount }).(pulumi.StringOutput)
+}
+
+// The SignalFx-generated AWS token to use with an AWS integration.
+func (o TokenIntegrationOutput) TokenId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }
 
 type TokenIntegrationArrayOutput struct{ *pulumi.OutputState }

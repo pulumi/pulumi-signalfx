@@ -29,7 +29,7 @@ namespace Pulumi.SignalFx
     }
 
 
-    public sealed class GetDimensionValuesArgs : Pulumi.InvokeArgs
+    public sealed class GetDimensionValuesArgs : global::Pulumi.InvokeArgs
     {
         [Input("query", required: true)]
         public string Query { get; set; } = null!;
@@ -37,9 +37,10 @@ namespace Pulumi.SignalFx
         public GetDimensionValuesArgs()
         {
         }
+        public static new GetDimensionValuesArgs Empty => new GetDimensionValuesArgs();
     }
 
-    public sealed class GetDimensionValuesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDimensionValuesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
@@ -47,6 +48,7 @@ namespace Pulumi.SignalFx
         public GetDimensionValuesInvokeArgs()
         {
         }
+        public static new GetDimensionValuesInvokeArgs Empty => new GetDimensionValuesInvokeArgs();
     }
 
 

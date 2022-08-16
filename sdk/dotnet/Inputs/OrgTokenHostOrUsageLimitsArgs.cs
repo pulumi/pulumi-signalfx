@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class OrgTokenHostOrUsageLimitsArgs : Pulumi.ResourceArgs
+    public sealed class OrgTokenHostOrUsageLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Max number of Docker containers that can use this token
@@ -63,5 +63,6 @@ namespace Pulumi.SignalFx.Inputs
         public OrgTokenHostOrUsageLimitsArgs()
         {
         }
+        public static new OrgTokenHostOrUsageLimitsArgs Empty => new OrgTokenHostOrUsageLimitsArgs();
     }
 }

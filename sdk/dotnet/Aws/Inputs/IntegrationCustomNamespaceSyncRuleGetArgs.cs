@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Aws.Inputs
 {
 
-    public sealed class IntegrationCustomNamespaceSyncRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationCustomNamespaceSyncRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Aws.Inputs
         public IntegrationCustomNamespaceSyncRuleGetArgs()
         {
         }
+        public static new IntegrationCustomNamespaceSyncRuleGetArgs Empty => new IntegrationCustomNamespaceSyncRuleGetArgs();
     }
 }

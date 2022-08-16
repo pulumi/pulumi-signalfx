@@ -18,48 +18,51 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewDataLink(ctx, "myDataLink", &signalfx.DataLinkArgs{
-// 			PropertyName:  pulumi.String("pname"),
-// 			PropertyValue: pulumi.String("pvalue"),
-// 			TargetSignalfxDashboards: DataLinkTargetSignalfxDashboardArray{
-// 				&DataLinkTargetSignalfxDashboardArgs{
-// 					IsDefault:        pulumi.Bool(true),
-// 					Name:             pulumi.String("sfx_dash"),
-// 					DashboardGroupId: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),
-// 					DashboardId:      pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = signalfx.NewDataLink(ctx, "myDataLinkDash", &signalfx.DataLinkArgs{
-// 			ContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
-// 			PropertyName:       pulumi.String("pname2"),
-// 			PropertyValue:      pulumi.String("pvalue"),
-// 			TargetExternalUrls: DataLinkTargetExternalUrlArray{
-// 				&DataLinkTargetExternalUrlArgs{
-// 					Name:       pulumi.String("ex_url"),
-// 					TimeFormat: pulumi.String("ISO8601"),
-// 					Url:        pulumi.String("https://www.example.com"),
-// 					PropertyKeyMapping: pulumi.StringMap{
-// 						"foo": pulumi.String("bar"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDataLink(ctx, "myDataLink", &signalfx.DataLinkArgs{
+//				PropertyName:  pulumi.String("pname"),
+//				PropertyValue: pulumi.String("pvalue"),
+//				TargetSignalfxDashboards: DataLinkTargetSignalfxDashboardArray{
+//					&DataLinkTargetSignalfxDashboardArgs{
+//						IsDefault:        pulumi.Bool(true),
+//						Name:             pulumi.String("sfx_dash"),
+//						DashboardGroupId: pulumi.Any(signalfx_dashboard_group.Mydashboardgroup0.Id),
+//						DashboardId:      pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = signalfx.NewDataLink(ctx, "myDataLinkDash", &signalfx.DataLinkArgs{
+//				ContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
+//				PropertyName:       pulumi.String("pname2"),
+//				PropertyValue:      pulumi.String("pvalue"),
+//				TargetExternalUrls: DataLinkTargetExternalUrlArray{
+//					&DataLinkTargetExternalUrlArgs{
+//						Name:       pulumi.String("ex_url"),
+//						TimeFormat: pulumi.String("ISO8601"),
+//						Url:        pulumi.String("https://www.example.com"),
+//						PropertyKeyMapping: pulumi.StringMap{
+//							"foo": pulumi.String("bar"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type DataLink struct {
 	pulumi.CustomResourceState
@@ -197,7 +200,7 @@ func (i *DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutp
 // DataLinkArrayInput is an input type that accepts DataLinkArray and DataLinkArrayOutput values.
 // You can construct a concrete instance of `DataLinkArrayInput` via:
 //
-//          DataLinkArray{ DataLinkArgs{...} }
+//	DataLinkArray{ DataLinkArgs{...} }
 type DataLinkArrayInput interface {
 	pulumi.Input
 
@@ -222,7 +225,7 @@ func (i DataLinkArray) ToDataLinkArrayOutputWithContext(ctx context.Context) Dat
 // DataLinkMapInput is an input type that accepts DataLinkMap and DataLinkMapOutput values.
 // You can construct a concrete instance of `DataLinkMapInput` via:
 //
-//          DataLinkMap{ "key": DataLinkArgs{...} }
+//	DataLinkMap{ "key": DataLinkArgs{...} }
 type DataLinkMapInput interface {
 	pulumi.Input
 
@@ -256,6 +259,36 @@ func (o DataLinkOutput) ToDataLinkOutput() DataLinkOutput {
 
 func (o DataLinkOutput) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
 	return o
+}
+
+// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+func (o DataLinkOutput) ContextDashboardId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.ContextDashboardId }).(pulumi.StringPtrOutput)
+}
+
+// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
+func (o DataLinkOutput) PropertyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyName }).(pulumi.StringPtrOutput)
+}
+
+// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
+func (o DataLinkOutput) PropertyValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyValue }).(pulumi.StringPtrOutput)
+}
+
+// Link to an external URL
+func (o DataLinkOutput) TargetExternalUrls() DataLinkTargetExternalUrlArrayOutput {
+	return o.ApplyT(func(v *DataLink) DataLinkTargetExternalUrlArrayOutput { return v.TargetExternalUrls }).(DataLinkTargetExternalUrlArrayOutput)
+}
+
+// Link to a SignalFx dashboard
+func (o DataLinkOutput) TargetSignalfxDashboards() DataLinkTargetSignalfxDashboardArrayOutput {
+	return o.ApplyT(func(v *DataLink) DataLinkTargetSignalfxDashboardArrayOutput { return v.TargetSignalfxDashboards }).(DataLinkTargetSignalfxDashboardArrayOutput)
+}
+
+// Link to an external URL
+func (o DataLinkOutput) TargetSplunks() DataLinkTargetSplunkArrayOutput {
+	return o.ApplyT(func(v *DataLink) DataLinkTargetSplunkArrayOutput { return v.TargetSplunks }).(DataLinkTargetSplunkArrayOutput)
 }
 
 type DataLinkArrayOutput struct{ *pulumi.OutputState }

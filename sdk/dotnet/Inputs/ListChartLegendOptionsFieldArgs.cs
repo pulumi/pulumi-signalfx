@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class ListChartLegendOptionsFieldArgs : Pulumi.ResourceArgs
+    public sealed class ListChartLegendOptionsFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True or False depending on if you want the property to be shown or hidden.
@@ -27,5 +27,6 @@ namespace Pulumi.SignalFx.Inputs
         public ListChartLegendOptionsFieldArgs()
         {
         }
+        public static new ListChartLegendOptionsFieldArgs Empty => new ListChartLegendOptionsFieldArgs();
     }
 }

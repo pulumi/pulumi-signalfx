@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DataLinkTargetSplunkArgs : Pulumi.ResourceArgs
+    public sealed class DataLinkTargetSplunkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
@@ -33,5 +33,6 @@ namespace Pulumi.SignalFx.Inputs
         public DataLinkTargetSplunkArgs()
         {
         }
+        public static new DataLinkTargetSplunkArgs Empty => new DataLinkTargetSplunkArgs();
     }
 }

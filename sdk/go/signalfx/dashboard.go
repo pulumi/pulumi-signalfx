@@ -306,7 +306,7 @@ func (i *Dashboard) ToDashboardOutputWithContext(ctx context.Context) DashboardO
 // DashboardArrayInput is an input type that accepts DashboardArray and DashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardArrayInput` via:
 //
-//          DashboardArray{ DashboardArgs{...} }
+//	DashboardArray{ DashboardArgs{...} }
 type DashboardArrayInput interface {
 	pulumi.Input
 
@@ -331,7 +331,7 @@ func (i DashboardArray) ToDashboardArrayOutputWithContext(ctx context.Context) D
 // DashboardMapInput is an input type that accepts DashboardMap and DashboardMapOutput values.
 // You can construct a concrete instance of `DashboardMapInput` via:
 //
-//          DashboardMap{ "key": DashboardArgs{...} }
+//	DashboardMap{ "key": DashboardArgs{...} }
 type DashboardMapInput interface {
 	pulumi.Input
 
@@ -365,6 +365,113 @@ func (o DashboardOutput) ToDashboardOutput() DashboardOutput {
 
 func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) DashboardOutput {
 	return o
+}
+
+// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+//
+// Deprecated: Please use permissions_* fields now
+func (o DashboardOutput) AuthorizedWriterTeams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringArrayOutput { return v.AuthorizedWriterTeams }).(pulumi.StringArrayOutput)
+}
+
+// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+//
+// Deprecated: Please use permissions fields now
+func (o DashboardOutput) AuthorizedWriterUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringArrayOutput { return v.AuthorizedWriterUsers }).(pulumi.StringArrayOutput)
+}
+
+// Chart ID and layout information for the charts in the dashboard.
+func (o DashboardOutput) Charts() DashboardChartArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardChartArrayOutput { return v.Charts }).(DashboardChartArrayOutput)
+}
+
+// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+func (o DashboardOutput) ChartsResolution() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.ChartsResolution }).(pulumi.StringPtrOutput)
+}
+
+// Column number for the layout.
+func (o DashboardOutput) Columns() DashboardColumnArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardColumnArrayOutput { return v.Columns }).(DashboardColumnArrayOutput)
+}
+
+// The ID of the dashboard group that contains the dashboard.
+func (o DashboardOutput) DashboardGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DashboardGroup }).(pulumi.StringOutput)
+}
+
+// Variable description.
+func (o DashboardOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardOutput) DiscoveryOptionsQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.DiscoveryOptionsQuery }).(pulumi.StringPtrOutput)
+}
+
+func (o DashboardOutput) DiscoveryOptionsSelectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringArrayOutput { return v.DiscoveryOptionsSelectors }).(pulumi.StringArrayOutput)
+}
+
+// Seconds since epoch. Used for visualization.
+func (o DashboardOutput) EndTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
+}
+
+// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
+func (o DashboardOutput) EventOverlays() DashboardEventOverlayArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardEventOverlayArrayOutput { return v.EventOverlays }).(DashboardEventOverlayArrayOutput)
+}
+
+// Filter to apply to the charts when displaying the dashboard.
+func (o DashboardOutput) Filters() DashboardFilterArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardFilterArrayOutput { return v.Filters }).(DashboardFilterArrayOutput)
+}
+
+// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
+func (o DashboardOutput) Grids() DashboardGridArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardGridArrayOutput { return v.Grids }).(DashboardGridArrayOutput)
+}
+
+// Name of the dashboard.
+func (o DashboardOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+func (o DashboardOutput) Permissions() DashboardPermissionsOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardPermissionsOutput { return v.Permissions }).(DashboardPermissionsOutput)
+}
+
+// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
+func (o DashboardOutput) SelectedEventOverlays() DashboardSelectedEventOverlayArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardSelectedEventOverlayArrayOutput { return v.SelectedEventOverlays }).(DashboardSelectedEventOverlayArrayOutput)
+}
+
+// Seconds since epoch. Used for visualization.
+func (o DashboardOutput) StartTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
+}
+
+// Tags of the dashboard.
+func (o DashboardOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
+func (o DashboardOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.TimeRange }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the dashboard.
+func (o DashboardOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// Dashboard variable to apply to each chart in the dashboard.
+func (o DashboardOutput) Variables() DashboardVariableArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardVariableArrayOutput { return v.Variables }).(DashboardVariableArrayOutput)
 }
 
 type DashboardArrayOutput struct{ *pulumi.OutputState }

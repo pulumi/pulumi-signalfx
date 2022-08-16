@@ -23,32 +23,35 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewAlertMutingRule(ctx, "roolMooterOne", &signalfx.AlertMutingRuleArgs{
-// 			Description: pulumi.String("mooted it NEW"),
-// 			StartTime:   pulumi.Int(1573063243),
-// 			StopTime:    pulumi.Int(0),
-// 			Detectors: pulumi.StringArray{
-// 				pulumi.Any(signalfx_detector.Some_detector_id),
-// 			},
-// 			Filters: AlertMutingRuleFilterArray{
-// 				&AlertMutingRuleFilterArgs{
-// 					Property:      pulumi.String("foo"),
-// 					PropertyValue: pulumi.String("bar"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewAlertMutingRule(ctx, "roolMooterOne", &signalfx.AlertMutingRuleArgs{
+//				Description: pulumi.String("mooted it NEW"),
+//				StartTime:   pulumi.Int(1573063243),
+//				StopTime:    pulumi.Int(0),
+//				Detectors: pulumi.StringArray{
+//					pulumi.Any(signalfx_detector.Some_detector_id),
+//				},
+//				Filters: AlertMutingRuleFilterArray{
+//					&AlertMutingRuleFilterArgs{
+//						Property:      pulumi.String("foo"),
+//						PropertyValue: pulumi.String("bar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type AlertMutingRule struct {
 	pulumi.CustomResourceState
@@ -185,7 +188,7 @@ func (i *AlertMutingRule) ToAlertMutingRuleOutputWithContext(ctx context.Context
 // AlertMutingRuleArrayInput is an input type that accepts AlertMutingRuleArray and AlertMutingRuleArrayOutput values.
 // You can construct a concrete instance of `AlertMutingRuleArrayInput` via:
 //
-//          AlertMutingRuleArray{ AlertMutingRuleArgs{...} }
+//	AlertMutingRuleArray{ AlertMutingRuleArgs{...} }
 type AlertMutingRuleArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +213,7 @@ func (i AlertMutingRuleArray) ToAlertMutingRuleArrayOutputWithContext(ctx contex
 // AlertMutingRuleMapInput is an input type that accepts AlertMutingRuleMap and AlertMutingRuleMapOutput values.
 // You can construct a concrete instance of `AlertMutingRuleMapInput` via:
 //
-//          AlertMutingRuleMap{ "key": AlertMutingRuleArgs{...} }
+//	AlertMutingRuleMap{ "key": AlertMutingRuleArgs{...} }
 type AlertMutingRuleMapInput interface {
 	pulumi.Input
 
@@ -244,6 +247,35 @@ func (o AlertMutingRuleOutput) ToAlertMutingRuleOutput() AlertMutingRuleOutput {
 
 func (o AlertMutingRuleOutput) ToAlertMutingRuleOutputWithContext(ctx context.Context) AlertMutingRuleOutput {
 	return o
+}
+
+// The description for this muting rule
+func (o AlertMutingRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AlertMutingRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+func (o AlertMutingRuleOutput) Detectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertMutingRule) pulumi.StringArrayOutput { return v.Detectors }).(pulumi.StringArrayOutput)
+}
+
+func (o AlertMutingRuleOutput) EffectiveStartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntOutput { return v.EffectiveStartTime }).(pulumi.IntOutput)
+}
+
+// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+func (o AlertMutingRuleOutput) Filters() AlertMutingRuleFilterArrayOutput {
+	return o.ApplyT(func(v *AlertMutingRule) AlertMutingRuleFilterArrayOutput { return v.Filters }).(AlertMutingRuleFilterArrayOutput)
+}
+
+// Starting time of an alert muting rule as a Unit time stamp in seconds.
+func (o AlertMutingRuleOutput) StartTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntOutput { return v.StartTime }).(pulumi.IntOutput)
+}
+
+// Stop time of an alert muting rule as a Unix time stamp in seconds.
+func (o AlertMutingRuleOutput) StopTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntPtrOutput { return v.StopTime }).(pulumi.IntPtrOutput)
 }
 
 type AlertMutingRuleArrayOutput struct{ *pulumi.OutputState }

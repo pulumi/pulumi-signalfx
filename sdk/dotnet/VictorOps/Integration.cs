@@ -17,25 +17,23 @@ namespace Pulumi.SignalFx.VictorOps
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var vioctorOpsMyteam = new SignalFx.VictorOps.Integration("vioctorOpsMyteam", new()
     ///     {
-    ///         var vioctorOpsMyteam = new SignalFx.VictorOps.Integration("vioctorOpsMyteam", new SignalFx.VictorOps.IntegrationArgs
-    ///         {
-    ///             Enabled = true,
-    ///             PostUrl = "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
-    ///         });
-    ///     }
+    ///         Enabled = true,
+    ///         PostUrl = "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:victorops/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -99,7 +97,7 @@ namespace Pulumi.SignalFx.VictorOps
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -122,9 +120,10 @@ namespace Pulumi.SignalFx.VictorOps
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -147,5 +146,6 @@ namespace Pulumi.SignalFx.VictorOps
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

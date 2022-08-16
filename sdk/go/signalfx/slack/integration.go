@@ -21,22 +21,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/slack"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/slack"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := slack.NewIntegration(ctx, "slackMyteam", &slack.IntegrationArgs{
-// 			Enabled:    pulumi.Bool(true),
-// 			WebhookUrl: pulumi.String("http://example.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := slack.NewIntegration(ctx, "slackMyteam", &slack.IntegrationArgs{
+//				Enabled:    pulumi.Bool(true),
+//				WebhookUrl: pulumi.String("http://example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Integration struct {
 	pulumi.CustomResourceState
@@ -150,7 +153,7 @@ func (i *Integration) ToIntegrationOutputWithContext(ctx context.Context) Integr
 // IntegrationArrayInput is an input type that accepts IntegrationArray and IntegrationArrayOutput values.
 // You can construct a concrete instance of `IntegrationArrayInput` via:
 //
-//          IntegrationArray{ IntegrationArgs{...} }
+//	IntegrationArray{ IntegrationArgs{...} }
 type IntegrationArrayInput interface {
 	pulumi.Input
 
@@ -175,7 +178,7 @@ func (i IntegrationArray) ToIntegrationArrayOutputWithContext(ctx context.Contex
 // IntegrationMapInput is an input type that accepts IntegrationMap and IntegrationMapOutput values.
 // You can construct a concrete instance of `IntegrationMapInput` via:
 //
-//          IntegrationMap{ "key": IntegrationArgs{...} }
+//	IntegrationMap{ "key": IntegrationArgs{...} }
 type IntegrationMapInput interface {
 	pulumi.Input
 
@@ -209,6 +212,21 @@ func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
 
 func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return o
+}
+
+// Whether the integration is enabled.
+func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of the integration.
+func (o IntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Slack incoming webhook URL.
+func (o IntegrationOutput) WebhookUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.WebhookUrl }).(pulumi.StringOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

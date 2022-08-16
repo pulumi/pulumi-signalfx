@@ -431,12 +431,12 @@ export interface DetectorVizOption {
     valueUnit?: pulumi.Input<string>;
 }
 
-export interface GetAwsServicesServiceArgs {
-    name: pulumi.Input<string>;
-}
-
 export interface GetAwsServicesService {
     name: string;
+}
+
+export interface GetAwsServicesServiceArgs {
+    name: pulumi.Input<string>;
 }
 
 export interface GetAzureServicesService {
@@ -785,7 +785,6 @@ export interface WebhookIntegrationHeader {
      */
     headerValue: pulumi.Input<string>;
 }
-
 export namespace aws {
     export interface GetServicesService {
         name: string;
@@ -890,5 +889,19 @@ export namespace gcp {
     export interface IntegrationProjectServiceKey {
         projectId: pulumi.Input<string>;
         projectKey: pulumi.Input<string>;
+    }
+}
+
+export namespace logs {
+    export interface ListChartColumn {
+        /**
+         * Name of the chart.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface ListChartSortOption {
+        descending: pulumi.Input<boolean>;
+        field: pulumi.Input<string>;
     }
 }

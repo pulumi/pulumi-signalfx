@@ -19,24 +19,45 @@ import (
 // package main
 //
 // import (
-// 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := signalfx.NewTextChart(ctx, "mynote0", &signalfx.TextChartArgs{
-// 			Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
-// 			Markdown:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "    1. First ordered list item\n", "    2. Another item\n", "      * Unordered sub-list.\n", "    1. Actual numbers don't matter, just that it's a number\n", "      1. Ordered sub-list\n", "    4. And another item.\n", "\n", "       You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).\n", "\n", "       To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅\n", "       Note that this line is separate, but within the same paragraph.⋅⋅\n", "       (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)\n", "\n", "    * Unordered list can use asterisks\n", "    - Or minuses\n", "    + Or pluses\n", "\n")),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewTextChart(ctx, "mynote0", &signalfx.TextChartArgs{
+//				Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
+//				Markdown: pulumi.String(fmt.Sprintf(`    1. First ordered list item
+//	    2. Another item
+//	      * Unordered sub-list.
+//	    1. Actual numbers don't matter, just that it's a number
+//	      1. Ordered sub-list
+//	    4. And another item.
+//
+//	       You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+//
+//	       To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+//	       Note that this line is separate, but within the same paragraph.⋅⋅
+//	       (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+//
+//	    * Unordered list can use asterisks
+//	    - Or minuses
+//	    + Or pluses
+//
+// `)),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type TextChart struct {
 	pulumi.CustomResourceState
@@ -153,7 +174,7 @@ func (i *TextChart) ToTextChartOutputWithContext(ctx context.Context) TextChartO
 // TextChartArrayInput is an input type that accepts TextChartArray and TextChartArrayOutput values.
 // You can construct a concrete instance of `TextChartArrayInput` via:
 //
-//          TextChartArray{ TextChartArgs{...} }
+//	TextChartArray{ TextChartArgs{...} }
 type TextChartArrayInput interface {
 	pulumi.Input
 
@@ -178,7 +199,7 @@ func (i TextChartArray) ToTextChartArrayOutputWithContext(ctx context.Context) T
 // TextChartMapInput is an input type that accepts TextChartMap and TextChartMapOutput values.
 // You can construct a concrete instance of `TextChartMapInput` via:
 //
-//          TextChartMap{ "key": TextChartArgs{...} }
+//	TextChartMap{ "key": TextChartArgs{...} }
 type TextChartMapInput interface {
 	pulumi.Input
 
@@ -212,6 +233,26 @@ func (o TextChartOutput) ToTextChartOutput() TextChartOutput {
 
 func (o TextChartOutput) ToTextChartOutputWithContext(ctx context.Context) TextChartOutput {
 	return o
+}
+
+// Description of the text note.
+func (o TextChartOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TextChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Markdown text to display.
+func (o TextChartOutput) Markdown() pulumi.StringOutput {
+	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Markdown }).(pulumi.StringOutput)
+}
+
+// Name of the text note.
+func (o TextChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the chart.
+func (o TextChartOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type TextChartArrayOutput struct{ *pulumi.OutputState }

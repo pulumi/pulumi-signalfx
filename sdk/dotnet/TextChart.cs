@@ -15,17 +15,16 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var mynote0 = new SignalFx.TextChart("mynote0", new()
     ///     {
-    ///         var mynote0 = new SignalFx.TextChart("mynote0", new SignalFx.TextChartArgs
-    ///         {
-    ///             Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-    ///             Markdown = @"    1. First ordered list item
+    ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+    ///         Markdown = @"    1. First ordered list item
     ///     2. Another item
     ///       * Unordered sub-list.
     ///     1. Actual numbers don't matter, just that it's a number
@@ -43,14 +42,13 @@ namespace Pulumi.SignalFx
     ///     + Or pluses
     /// 
     /// ",
-    ///         });
-    ///     }
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/textChart:TextChart")]
-    public partial class TextChart : Pulumi.CustomResource
+    public partial class TextChart : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the text note.
@@ -120,7 +118,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class TextChartArgs : Pulumi.ResourceArgs
+    public sealed class TextChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the text note.
@@ -143,9 +141,10 @@ namespace Pulumi.SignalFx
         public TextChartArgs()
         {
         }
+        public static new TextChartArgs Empty => new TextChartArgs();
     }
 
-    public sealed class TextChartState : Pulumi.ResourceArgs
+    public sealed class TextChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the text note.
@@ -174,5 +173,6 @@ namespace Pulumi.SignalFx
         public TextChartState()
         {
         }
+        public static new TextChartState Empty => new TextChartState();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardChartArgs : Pulumi.ResourceArgs
+    public sealed class DashboardChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the chart to display.
@@ -45,5 +45,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardChartArgs()
         {
         }
+        public static new DashboardChartArgs Empty => new DashboardChartArgs();
     }
 }

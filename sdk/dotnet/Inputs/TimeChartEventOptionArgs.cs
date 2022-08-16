@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class TimeChartEventOptionArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartEventOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
@@ -33,5 +33,6 @@ namespace Pulumi.SignalFx.Inputs
         public TimeChartEventOptionArgs()
         {
         }
+        public static new TimeChartEventOptionArgs Empty => new TimeChartEventOptionArgs();
     }
 }

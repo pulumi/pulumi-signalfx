@@ -100,6 +100,21 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// API URL for your SignalFx org, may include a realm
+func (o ProviderOutput) ApiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUrl }).(pulumi.StringPtrOutput)
+}
+
+// SignalFx auth token
+func (o ProviderOutput) AuthToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthToken }).(pulumi.StringPtrOutput)
+}
+
+// Application URL for your SignalFx org, often customized for organizations using SSO
+func (o ProviderOutput) CustomAppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomAppUrl }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

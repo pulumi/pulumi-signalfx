@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DataLinkTargetExternalUrlArgs : Pulumi.ResourceArgs
+    public sealed class DataLinkTargetExternalUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
@@ -51,5 +51,6 @@ namespace Pulumi.SignalFx.Inputs
         public DataLinkTargetExternalUrlArgs()
         {
         }
+        public static new DataLinkTargetExternalUrlArgs Empty => new DataLinkTargetExternalUrlArgs();
     }
 }

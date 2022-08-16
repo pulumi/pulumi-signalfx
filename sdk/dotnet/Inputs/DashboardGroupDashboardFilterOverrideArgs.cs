@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardGroupDashboardFilterOverrideArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGroupDashboardFilterOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardGroupDashboardFilterOverrideArgs()
         {
         }
+        public static new DashboardGroupDashboardFilterOverrideArgs Empty => new DashboardGroupDashboardFilterOverrideArgs();
     }
 }

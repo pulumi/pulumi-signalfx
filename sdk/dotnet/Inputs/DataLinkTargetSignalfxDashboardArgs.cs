@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DataLinkTargetSignalfxDashboardArgs : Pulumi.ResourceArgs
+    public sealed class DataLinkTargetSignalfxDashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// SignalFx-assigned ID of the dashboard link target's dashboard group
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Inputs
         public DataLinkTargetSignalfxDashboardArgs()
         {
         }
+        public static new DataLinkTargetSignalfxDashboardArgs Empty => new DataLinkTargetSignalfxDashboardArgs();
     }
 }

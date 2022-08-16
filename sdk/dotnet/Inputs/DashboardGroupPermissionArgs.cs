@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardGroupPermissionArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGroupPermissionArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
         private InputList<string>? _actions;
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardGroupPermissionArgs()
         {
         }
+        public static new DashboardGroupPermissionArgs Empty => new DashboardGroupPermissionArgs();
     }
 }

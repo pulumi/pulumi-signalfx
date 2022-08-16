@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class TimeChartAxisRightWatermarkGetArgs : Pulumi.ResourceArgs
+    public sealed class TimeChartAxisRightWatermarkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label used in the publish statement that displays the event query you want to customize.
@@ -24,5 +24,6 @@ namespace Pulumi.SignalFx.Inputs
         public TimeChartAxisRightWatermarkGetArgs()
         {
         }
+        public static new TimeChartAxisRightWatermarkGetArgs Empty => new TimeChartAxisRightWatermarkGetArgs();
     }
 }

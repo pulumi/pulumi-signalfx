@@ -17,25 +17,23 @@ namespace Pulumi.SignalFx.Slack
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var slackMyteam = new SignalFx.Slack.Integration("slackMyteam", new()
     ///     {
-    ///         var slackMyteam = new SignalFx.Slack.Integration("slackMyteam", new SignalFx.Slack.IntegrationArgs
-    ///         {
-    ///             Enabled = true,
-    ///             WebhookUrl = "http://example.com",
-    ///         });
-    ///     }
+    ///         Enabled = true,
+    ///         WebhookUrl = "http://example.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:slack/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -99,7 +97,7 @@ namespace Pulumi.SignalFx.Slack
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -122,9 +120,10 @@ namespace Pulumi.SignalFx.Slack
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the integration is enabled.
@@ -147,5 +146,6 @@ namespace Pulumi.SignalFx.Slack
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

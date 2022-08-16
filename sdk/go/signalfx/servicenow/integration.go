@@ -21,27 +21,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/servicenow"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/servicenow"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := servicenow.NewIntegration(ctx, "serviceNowMyteam", &servicenow.IntegrationArgs{
-// 			AlertResolvedPayloadTemplate:  pulumi.String("{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}"),
-// 			AlertTriggeredPayloadTemplate: pulumi.String("{\"short_description\": \"{{{messageTitle}}} (customized)\"}"),
-// 			Enabled:                       pulumi.Bool(false),
-// 			InstanceName:                  pulumi.String("myinst.service-now.com"),
-// 			IssueType:                     pulumi.String("Incident"),
-// 			Password:                      pulumi.String("youd0ntsee1t"),
-// 			Username:                      pulumi.String("thisis_me"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := servicenow.NewIntegration(ctx, "serviceNowMyteam", &servicenow.IntegrationArgs{
+//				AlertResolvedPayloadTemplate:  pulumi.String("{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}"),
+//				AlertTriggeredPayloadTemplate: pulumi.String("{\"short_description\": \"{{{messageTitle}}} (customized)\"}"),
+//				Enabled:                       pulumi.Bool(false),
+//				InstanceName:                  pulumi.String("myinst.service-now.com"),
+//				IssueType:                     pulumi.String("Incident"),
+//				Password:                      pulumi.String("youd0ntsee1t"),
+//				Username:                      pulumi.String("thisis_me"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Integration struct {
 	pulumi.CustomResourceState
@@ -214,7 +217,7 @@ func (i *Integration) ToIntegrationOutputWithContext(ctx context.Context) Integr
 // IntegrationArrayInput is an input type that accepts IntegrationArray and IntegrationArrayOutput values.
 // You can construct a concrete instance of `IntegrationArrayInput` via:
 //
-//          IntegrationArray{ IntegrationArgs{...} }
+//	IntegrationArray{ IntegrationArgs{...} }
 type IntegrationArrayInput interface {
 	pulumi.Input
 
@@ -239,7 +242,7 @@ func (i IntegrationArray) ToIntegrationArrayOutputWithContext(ctx context.Contex
 // IntegrationMapInput is an input type that accepts IntegrationMap and IntegrationMapOutput values.
 // You can construct a concrete instance of `IntegrationMapInput` via:
 //
-//          IntegrationMap{ "key": IntegrationArgs{...} }
+//	IntegrationMap{ "key": IntegrationArgs{...} }
 type IntegrationMapInput interface {
 	pulumi.Input
 
@@ -273,6 +276,46 @@ func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
 
 func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return o
+}
+
+// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+func (o IntegrationOutput) AlertResolvedPayloadTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AlertResolvedPayloadTemplate }).(pulumi.StringPtrOutput)
+}
+
+// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+func (o IntegrationOutput) AlertTriggeredPayloadTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AlertTriggeredPayloadTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Whether the integration is enabled.
+func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of the ServiceNow instance, for example `myinst.service-now.com`.
+func (o IntegrationOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
+func (o IntegrationOutput) IssueType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.IssueType }).(pulumi.StringOutput)
+}
+
+// Name of the integration.
+func (o IntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password used to authenticate the ServiceNow integration.
+func (o IntegrationOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// User name used to authenticate the ServiceNow integration.
+func (o IntegrationOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

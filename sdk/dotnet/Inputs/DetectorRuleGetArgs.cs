@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DetectorRuleGetArgs : Pulumi.ResourceArgs
+    public sealed class DetectorRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
@@ -75,5 +75,6 @@ namespace Pulumi.SignalFx.Inputs
         public DetectorRuleGetArgs()
         {
         }
+        public static new DetectorRuleGetArgs Empty => new DetectorRuleGetArgs();
     }
 }

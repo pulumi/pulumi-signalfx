@@ -19,20 +19,18 @@ namespace Pulumi.SignalFx.PagerDuty
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SignalFx = Pulumi.SignalFx;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var pdIntegration = SignalFx.PagerDuty.GetIntegration.Invoke(new()
         ///     {
-        ///         var pdIntegration = Output.Create(SignalFx.PagerDuty.GetIntegration.InvokeAsync(new SignalFx.PagerDuty.GetIntegrationArgs
-        ///         {
-        ///             Name = "PD-Integration",
-        ///         }));
-        ///     }
+        ///         Name = "PD-Integration",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -48,20 +46,18 @@ namespace Pulumi.SignalFx.PagerDuty
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using SignalFx = Pulumi.SignalFx;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var pdIntegration = SignalFx.PagerDuty.GetIntegration.Invoke(new()
         ///     {
-        ///         var pdIntegration = Output.Create(SignalFx.PagerDuty.GetIntegration.InvokeAsync(new SignalFx.PagerDuty.GetIntegrationArgs
-        ///         {
-        ///             Name = "PD-Integration",
-        ///         }));
-        ///     }
+        ///         Name = "PD-Integration",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -71,7 +67,7 @@ namespace Pulumi.SignalFx.PagerDuty
     }
 
 
-    public sealed class GetIntegrationArgs : Pulumi.InvokeArgs
+    public sealed class GetIntegrationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specify the exact name of the desired PagerDuty integration
@@ -82,9 +78,10 @@ namespace Pulumi.SignalFx.PagerDuty
         public GetIntegrationArgs()
         {
         }
+        public static new GetIntegrationArgs Empty => new GetIntegrationArgs();
     }
 
-    public sealed class GetIntegrationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIntegrationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specify the exact name of the desired PagerDuty integration
@@ -95,6 +92,7 @@ namespace Pulumi.SignalFx.PagerDuty
         public GetIntegrationInvokeArgs()
         {
         }
+        public static new GetIntegrationInvokeArgs Empty => new GetIntegrationInvokeArgs();
     }
 
 

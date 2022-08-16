@@ -30,6 +30,7 @@ import * as azure from "./azure";
 import * as config from "./config";
 import * as gcp from "./gcp";
 import * as jira from "./jira";
+import * as logs from "./logs";
 import * as opsgenie from "./opsgenie";
 import * as pagerduty from "./pagerduty";
 import * as servicenow from "./servicenow";
@@ -43,6 +44,7 @@ export {
     config,
     gcp,
     jira,
+    logs,
     opsgenie,
     pagerduty,
     servicenow,

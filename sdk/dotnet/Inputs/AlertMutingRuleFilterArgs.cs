@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class AlertMutingRuleFilterArgs : Pulumi.ResourceArgs
+    public sealed class AlertMutingRuleFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines if this is a "not" filter. Defaults to `false`.
@@ -33,5 +33,6 @@ namespace Pulumi.SignalFx.Inputs
         public AlertMutingRuleFilterArgs()
         {
         }
+        public static new AlertMutingRuleFilterArgs Empty => new AlertMutingRuleFilterArgs();
     }
 }

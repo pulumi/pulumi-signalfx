@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardGroupDashboardVariableOverrideArgs : Pulumi.ResourceArgs
+    public sealed class DashboardGroupDashboardVariableOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A metric time series dimension or property name.
@@ -45,5 +45,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardGroupDashboardVariableOverrideArgs()
         {
         }
+        public static new DashboardGroupDashboardVariableOverrideArgs Empty => new DashboardGroupDashboardVariableOverrideArgs();
     }
 }

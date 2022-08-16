@@ -21,57 +21,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/azure"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/azure"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azure.NewIntegration(ctx, "azureMyteam", &azure.IntegrationArgs{
-// 			AdditionalServices: pulumi.StringArray{
-// 				pulumi.String("some/service"),
-// 				pulumi.String("another/service"),
-// 			},
-// 			AppId: pulumi.String("YYY"),
-// 			CustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{
-// 				&azure.IntegrationCustomNamespacesPerServiceArgs{
-// 					Namespaces: pulumi.StringArray{
-// 						pulumi.String("monitoringAgent"),
-// 						pulumi.String("customNamespace"),
-// 					},
-// 					Service: pulumi.String("Microsoft.Compute/virtualMachines"),
-// 				},
-// 			},
-// 			Enabled:     pulumi.Bool(true),
-// 			Environment: pulumi.String("azure"),
-// 			PollRate:    pulumi.Int(300),
-// 			ResourceFilterRules: azure.IntegrationResourceFilterRuleArray{
-// 				&azure.IntegrationResourceFilterRuleArgs{
-// 					Filter: &azure.IntegrationResourceFilterRuleFilterArgs{
-// 						Source: pulumi.String("filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
-// 					},
-// 				},
-// 				&azure.IntegrationResourceFilterRuleArgs{
-// 					Filter: &azure.IntegrationResourceFilterRuleFilterArgs{
-// 						Source: pulumi.String("filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
-// 					},
-// 				},
-// 			},
-// 			SecretKey: pulumi.String("XXX"),
-// 			Services: pulumi.StringArray{
-// 				pulumi.String("microsoft.sql/servers/elasticpools"),
-// 			},
-// 			Subscriptions: pulumi.StringArray{
-// 				pulumi.String("sub-guid-here"),
-// 			},
-// 			TenantId: pulumi.String("ZZZ"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azure.NewIntegration(ctx, "azureMyteam", &azure.IntegrationArgs{
+//				AdditionalServices: pulumi.StringArray{
+//					pulumi.String("some/service"),
+//					pulumi.String("another/service"),
+//				},
+//				AppId: pulumi.String("YYY"),
+//				CustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{
+//					&azure.IntegrationCustomNamespacesPerServiceArgs{
+//						Namespaces: pulumi.StringArray{
+//							pulumi.String("monitoringAgent"),
+//							pulumi.String("customNamespace"),
+//						},
+//						Service: pulumi.String("Microsoft.Compute/virtualMachines"),
+//					},
+//				},
+//				Enabled:     pulumi.Bool(true),
+//				Environment: pulumi.String("azure"),
+//				PollRate:    pulumi.Int(300),
+//				ResourceFilterRules: azure.IntegrationResourceFilterRuleArray{
+//					&azure.IntegrationResourceFilterRuleArgs{
+//						Filter: &azure.IntegrationResourceFilterRuleFilterArgs{
+//							Source: pulumi.String("filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
+//						},
+//					},
+//					&azure.IntegrationResourceFilterRuleArgs{
+//						Filter: &azure.IntegrationResourceFilterRuleFilterArgs{
+//							Source: pulumi.String("filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
+//						},
+//					},
+//				},
+//				SecretKey: pulumi.String("XXX"),
+//				Services: pulumi.StringArray{
+//					pulumi.String("microsoft.sql/servers/elasticpools"),
+//				},
+//				Subscriptions: pulumi.StringArray{
+//					pulumi.String("sub-guid-here"),
+//				},
+//				TenantId: pulumi.String("ZZZ"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ## Service Names
 //
@@ -89,6 +92,8 @@ type Integration struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
+	// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+	ImportAzureMonitor pulumi.BoolPtrOutput `pulumi:"importAzureMonitor"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -168,6 +173,8 @@ type integrationState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
 	Environment *string `pulumi:"environment"`
+	// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+	ImportAzureMonitor *bool `pulumi:"importAzureMonitor"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -201,6 +208,8 @@ type IntegrationState struct {
 	Enabled pulumi.BoolPtrInput
 	// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
 	Environment pulumi.StringPtrInput
+	// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+	ImportAzureMonitor pulumi.BoolPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -238,6 +247,8 @@ type integrationArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
 	Environment *string `pulumi:"environment"`
+	// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+	ImportAzureMonitor *bool `pulumi:"importAzureMonitor"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -272,6 +283,8 @@ type IntegrationArgs struct {
 	Enabled pulumi.BoolInput
 	// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
 	Environment pulumi.StringPtrInput
+	// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+	ImportAzureMonitor pulumi.BoolPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -320,7 +333,7 @@ func (i *Integration) ToIntegrationOutputWithContext(ctx context.Context) Integr
 // IntegrationArrayInput is an input type that accepts IntegrationArray and IntegrationArrayOutput values.
 // You can construct a concrete instance of `IntegrationArrayInput` via:
 //
-//          IntegrationArray{ IntegrationArgs{...} }
+//	IntegrationArray{ IntegrationArgs{...} }
 type IntegrationArrayInput interface {
 	pulumi.Input
 
@@ -345,7 +358,7 @@ func (i IntegrationArray) ToIntegrationArrayOutputWithContext(ctx context.Contex
 // IntegrationMapInput is an input type that accepts IntegrationMap and IntegrationMapOutput values.
 // You can construct a concrete instance of `IntegrationMapInput` via:
 //
-//          IntegrationMap{ "key": IntegrationArgs{...} }
+//	IntegrationMap{ "key": IntegrationArgs{...} }
 type IntegrationMapInput interface {
 	pulumi.Input
 
@@ -379,6 +392,85 @@ func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
 
 func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return o
+}
+
+// Additional Azure resource types that you want to sync with Observability Cloud.
+func (o IntegrationOutput) AdditionalServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.AdditionalServices }).(pulumi.StringArrayOutput)
+}
+
+// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+func (o IntegrationOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+func (o IntegrationOutput) CustomNamespacesPerServices() IntegrationCustomNamespacesPerServiceArrayOutput {
+	return o.ApplyT(func(v *Integration) IntegrationCustomNamespacesPerServiceArrayOutput {
+		return v.CustomNamespacesPerServices
+	}).(IntegrationCustomNamespacesPerServiceArrayOutput)
+}
+
+// Whether the integration is enabled.
+func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
+func (o IntegrationOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+func (o IntegrationOutput) ImportAzureMonitor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportAzureMonitor }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the integration.
+func (o IntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+func (o IntegrationOutput) NamedToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.NamedToken }).(pulumi.StringPtrOutput)
+}
+
+// Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+func (o IntegrationOutput) PollRate() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.PollRate }).(pulumi.IntPtrOutput)
+}
+
+// List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+// filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
+// limited to tags and must start with the azure_tag_ prefix..
+func (o IntegrationOutput) ResourceFilterRules() IntegrationResourceFilterRuleArrayOutput {
+	return o.ApplyT(func(v *Integration) IntegrationResourceFilterRuleArrayOutput { return v.ResourceFilterRules }).(IntegrationResourceFilterRuleArrayOutput)
+}
+
+// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+func (o IntegrationOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// List of Azure subscriptions that SignalFx should monitor.
+func (o IntegrationOutput) Subscriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Subscriptions }).(pulumi.StringArrayOutput)
+}
+
+// If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+func (o IntegrationOutput) SyncGuestOsNamespaces() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.SyncGuestOsNamespaces }).(pulumi.BoolPtrOutput)
+}
+
+// Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+func (o IntegrationOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

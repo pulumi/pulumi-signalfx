@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardSelectedEventOverlayArgs : Pulumi.ResourceArgs
+    public sealed class DashboardSelectedEventOverlayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Search term used to choose the events shown in the overlay.
@@ -39,5 +39,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardSelectedEventOverlayArgs()
         {
         }
+        public static new DashboardSelectedEventOverlayArgs Empty => new DashboardSelectedEventOverlayArgs();
     }
 }

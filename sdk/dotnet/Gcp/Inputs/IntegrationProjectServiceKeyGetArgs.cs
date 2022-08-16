@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Gcp.Inputs
 {
 
-    public sealed class IntegrationProjectServiceKeyGetArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationProjectServiceKeyGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -21,5 +21,6 @@ namespace Pulumi.SignalFx.Gcp.Inputs
         public IntegrationProjectServiceKeyGetArgs()
         {
         }
+        public static new IntegrationProjectServiceKeyGetArgs Empty => new IntegrationProjectServiceKeyGetArgs();
     }
 }

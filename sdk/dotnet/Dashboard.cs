@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     [SignalFxResourceType("signalfx:index/dashboard:Dashboard")]
-    public partial class Dashboard : Pulumi.CustomResource
+    public partial class Dashboard : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -176,7 +176,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class DashboardArgs : Pulumi.ResourceArgs
+    public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorizedWriterTeams")]
         private InputList<string>? _authorizedWriterTeams;
@@ -362,9 +362,10 @@ namespace Pulumi.SignalFx
         public DashboardArgs()
         {
         }
+        public static new DashboardArgs Empty => new DashboardArgs();
     }
 
-    public sealed class DashboardState : Pulumi.ResourceArgs
+    public sealed class DashboardState : global::Pulumi.ResourceArgs
     {
         [Input("authorizedWriterTeams")]
         private InputList<string>? _authorizedWriterTeams;
@@ -556,5 +557,6 @@ namespace Pulumi.SignalFx
         public DashboardState()
         {
         }
+        public static new DashboardState Empty => new DashboardState();
     }
 }

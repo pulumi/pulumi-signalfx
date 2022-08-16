@@ -21,29 +21,32 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/jira"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/jira"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := jira.NewIntegration(ctx, "jiraMyteamXX", &jira.IntegrationArgs{
-// 			AssigneeDisplayName: pulumi.String("Testy Testerson"),
-// 			AssigneeName:        pulumi.String("testytesterson"),
-// 			AuthMethod:          pulumi.String("UsernameAndPassword"),
-// 			BaseUrl:             pulumi.String("https://www.example.com"),
-// 			Enabled:             pulumi.Bool(false),
-// 			IssueType:           pulumi.String("Story"),
-// 			Password:            pulumi.String("paasword"),
-// 			ProjectKey:          pulumi.String("TEST"),
-// 			Username:            pulumi.String("yoosername"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := jira.NewIntegration(ctx, "jiraMyteamXX", &jira.IntegrationArgs{
+//				AssigneeDisplayName: pulumi.String("Testy Testerson"),
+//				AssigneeName:        pulumi.String("testytesterson"),
+//				AuthMethod:          pulumi.String("UsernameAndPassword"),
+//				BaseUrl:             pulumi.String("https://www.example.com"),
+//				Enabled:             pulumi.Bool(false),
+//				IssueType:           pulumi.String("Story"),
+//				Password:            pulumi.String("paasword"),
+//				ProjectKey:          pulumi.String("TEST"),
+//				Username:            pulumi.String("yoosername"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type Integration struct {
 	pulumi.CustomResourceState
@@ -259,7 +262,7 @@ func (i *Integration) ToIntegrationOutputWithContext(ctx context.Context) Integr
 // IntegrationArrayInput is an input type that accepts IntegrationArray and IntegrationArrayOutput values.
 // You can construct a concrete instance of `IntegrationArrayInput` via:
 //
-//          IntegrationArray{ IntegrationArgs{...} }
+//	IntegrationArray{ IntegrationArgs{...} }
 type IntegrationArrayInput interface {
 	pulumi.Input
 
@@ -284,7 +287,7 @@ func (i IntegrationArray) ToIntegrationArrayOutputWithContext(ctx context.Contex
 // IntegrationMapInput is an input type that accepts IntegrationMap and IntegrationMapOutput values.
 // You can construct a concrete instance of `IntegrationMapInput` via:
 //
-//          IntegrationMap{ "key": IntegrationArgs{...} }
+//	IntegrationMap{ "key": IntegrationArgs{...} }
 type IntegrationMapInput interface {
 	pulumi.Input
 
@@ -318,6 +321,66 @@ func (o IntegrationOutput) ToIntegrationOutput() IntegrationOutput {
 
 func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) IntegrationOutput {
 	return o
+}
+
+// The API token for the user email
+func (o IntegrationOutput) ApiToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
+}
+
+// Jira display name for the assignee.
+func (o IntegrationOutput) AssigneeDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AssigneeDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Jira user name for the assignee.
+func (o IntegrationOutput) AssigneeName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AssigneeName }).(pulumi.StringOutput)
+}
+
+// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+func (o IntegrationOutput) AuthMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
+}
+
+// Base URL of the Jira instance that's integrated with SignalFx.
+func (o IntegrationOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.BaseUrl }).(pulumi.StringOutput)
+}
+
+// Whether the integration is enabled.
+func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+func (o IntegrationOutput) IssueType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.IssueType }).(pulumi.StringOutput)
+}
+
+// Name of the integration.
+func (o IntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Password used to authenticate the Jira integration.
+func (o IntegrationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+func (o IntegrationOutput) ProjectKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
+}
+
+// Email address used to authenticate the Jira integration.
+func (o IntegrationOutput) UserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.UserEmail }).(pulumi.StringPtrOutput)
+}
+
+// User name used to authenticate the Jira integration.
+func (o IntegrationOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

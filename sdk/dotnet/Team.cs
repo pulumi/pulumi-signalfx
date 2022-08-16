@@ -19,37 +19,35 @@ namespace Pulumi.SignalFx
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myteam0 = new SignalFx.Team("myteam0", new()
     ///     {
-    ///         var myteam0 = new SignalFx.Team("myteam0", new SignalFx.TeamArgs
+    ///         Description = "Super great team no jerks definitely",
+    ///         Members = new[]
     ///         {
-    ///             Description = "Super great team no jerks definitely",
-    ///             Members = 
-    ///             {
-    ///                 "userid1",
-    ///                 "userid2",
-    ///             },
-    ///             NotificationsCriticals = 
-    ///             {
-    ///                 "PagerDuty,credentialId",
-    ///             },
-    ///             NotificationsInfos = 
-    ///             {
-    ///                 "Email,notify@example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "userid1",
+    ///             "userid2",
+    ///         },
+    ///         NotificationsCriticals = new[]
+    ///         {
+    ///             "PagerDuty,credentialId",
+    ///         },
+    ///         NotificationsInfos = new[]
+    ///         {
+    ///             "Email,notify@example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/team:Team")]
-    public partial class Team : Pulumi.CustomResource
+    public partial class Team : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Description of the team.
@@ -155,7 +153,7 @@ namespace Pulumi.SignalFx
         }
     }
 
-    public sealed class TeamArgs : Pulumi.ResourceArgs
+    public sealed class TeamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the team.
@@ -256,9 +254,10 @@ namespace Pulumi.SignalFx
         public TeamArgs()
         {
         }
+        public static new TeamArgs Empty => new TeamArgs();
     }
 
-    public sealed class TeamState : Pulumi.ResourceArgs
+    public sealed class TeamState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the team.
@@ -365,5 +364,6 @@ namespace Pulumi.SignalFx
         public TeamState()
         {
         }
+        public static new TeamState Empty => new TeamState();
     }
 }

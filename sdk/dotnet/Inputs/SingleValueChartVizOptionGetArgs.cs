@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class SingleValueChartVizOptionGetArgs : Pulumi.ResourceArgs
+    public sealed class SingleValueChartVizOptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -46,5 +46,6 @@ namespace Pulumi.SignalFx.Inputs
         public SingleValueChartVizOptionGetArgs()
         {
         }
+        public static new SingleValueChartVizOptionGetArgs Empty => new SingleValueChartVizOptionGetArgs();
     }
 }

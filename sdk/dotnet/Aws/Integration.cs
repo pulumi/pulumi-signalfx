@@ -19,79 +19,75 @@ namespace Pulumi.SignalFx.Aws
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Aws = Pulumi.Aws;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         // This resource returns an account id in `external_id`…
-    ///         var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration("awsMyteamExternal", new SignalFx.Aws.ExternalIntegrationArgs
-    ///         {
-    ///         });
-    ///         // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-    ///         var awsSfxRole = new Aws.Iam.Role("awsSfxRole", new Aws.Iam.RoleArgs
-    ///         {
-    ///         });
-    ///         // Stuff here that uses the external and account ID
-    ///         var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new SignalFx.Aws.IntegrationArgs
-    ///         {
-    ///             Enabled = true,
-    ///             IntegrationId = awsMyteamExternal.Id,
-    ///             ExternalId = awsMyteamExternal.ExternalId,
-    ///             RoleArn = awsSfxRole.Arn,
-    ///             Regions = 
-    ///             {
-    ///                 "us-east-1",
-    ///             },
-    ///             PollRate = 300,
-    ///             ImportCloudWatch = true,
-    ///             EnableAwsUsage = true,
-    ///             CustomNamespaceSyncRules = 
-    ///             {
-    ///                 new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
-    ///                 {
-    ///                     DefaultAction = "Exclude",
-    ///                     FilterAction = "Include",
-    ///                     FilterSource = "filter('code', '200')",
-    ///                     Namespace = "my-custom-namespace",
-    ///                 },
-    ///             },
-    ///             NamespaceSyncRules = 
-    ///             {
-    ///                 new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
-    ///                 {
-    ///                     DefaultAction = "Exclude",
-    ///                     FilterAction = "Include",
-    ///                     FilterSource = "filter('code', '200')",
-    ///                     Namespace = "AWS/EC2",
-    ///                 },
-    ///             },
-    ///             MetricStatsToSyncs = 
-    ///             {
-    ///                 new SignalFx.Aws.Inputs.IntegrationMetricStatsToSyncArgs
-    ///                 {
-    ///                     Namespace = "AWS/EC2",
-    ///                     Metric = "NetworkPacketsIn",
-    ///                     Stats = 
-    ///                     {
-    ///                         "upper",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     // This resource returns an account id in `external_id`…
+    ///     var awsMyteamExternal = new SignalFx.Aws.ExternalIntegration("awsMyteamExternal");
     /// 
-    /// }
+    ///     // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
+    ///     var awsSfxRole = new Aws.Iam.Role("awsSfxRole");
+    /// 
+    ///     // Stuff here that uses the external and account ID
+    ///     var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new()
+    ///     {
+    ///         Enabled = true,
+    ///         IntegrationId = awsMyteamExternal.Id,
+    ///         ExternalId = awsMyteamExternal.ExternalId,
+    ///         RoleArn = awsSfxRole.Arn,
+    ///         Regions = new[]
+    ///         {
+    ///             "us-east-1",
+    ///         },
+    ///         PollRate = 300,
+    ///         ImportCloudWatch = true,
+    ///         EnableAwsUsage = true,
+    ///         CustomNamespaceSyncRules = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationCustomNamespaceSyncRuleArgs
+    ///             {
+    ///                 DefaultAction = "Exclude",
+    ///                 FilterAction = "Include",
+    ///                 FilterSource = "filter('code', '200')",
+    ///                 Namespace = "my-custom-namespace",
+    ///             },
+    ///         },
+    ///         NamespaceSyncRules = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationNamespaceSyncRuleArgs
+    ///             {
+    ///                 DefaultAction = "Exclude",
+    ///                 FilterAction = "Include",
+    ///                 FilterSource = "filter('code', '200')",
+    ///                 Namespace = "AWS/EC2",
+    ///             },
+    ///         },
+    ///         MetricStatsToSyncs = new[]
+    ///         {
+    ///             new SignalFx.Aws.Inputs.IntegrationMetricStatsToSyncArgs
+    ///             {
+    ///                 Namespace = "AWS/EC2",
+    ///                 Metric = "NetworkPacketsIn",
+    ///                 Stats = new[]
+    ///                 {
+    ///                     "upper",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// ## Service Names
     /// 
     /// &gt; **NOTE** You can use the data source "signalfx.aws.getServices" to specify all services.
     /// </summary>
     [SignalFxResourceType("signalfx:aws/integration:Integration")]
-    public partial class Integration : Pulumi.CustomResource
+    public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
@@ -263,7 +259,7 @@ namespace Pulumi.SignalFx.Aws
         }
     }
 
-    public sealed class IntegrationArgs : Pulumi.ResourceArgs
+    public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         [Input("customCloudwatchNamespaces")]
         private InputList<string>? _customCloudwatchNamespaces;
@@ -430,9 +426,10 @@ namespace Pulumi.SignalFx.Aws
         public IntegrationArgs()
         {
         }
+        public static new IntegrationArgs Empty => new IntegrationArgs();
     }
 
-    public sealed class IntegrationState : Pulumi.ResourceArgs
+    public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         [Input("customCloudwatchNamespaces")]
         private InputList<string>? _customCloudwatchNamespaces;
@@ -599,5 +596,6 @@ namespace Pulumi.SignalFx.Aws
         public IntegrationState()
         {
         }
+        public static new IntegrationState Empty => new IntegrationState();
     }
 }

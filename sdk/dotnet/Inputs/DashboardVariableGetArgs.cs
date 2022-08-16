@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DashboardVariableGetArgs : Pulumi.ResourceArgs
+    public sealed class DashboardVariableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
@@ -81,5 +81,6 @@ namespace Pulumi.SignalFx.Inputs
         public DashboardVariableGetArgs()
         {
         }
+        public static new DashboardVariableGetArgs Empty => new DashboardVariableGetArgs();
     }
 }

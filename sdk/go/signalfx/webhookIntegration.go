@@ -14,6 +14,40 @@ import (
 // SignalFx Webhook integration.
 //
 // > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewWebhookIntegration(ctx, "webhookMyteam", &signalfx.WebhookIntegrationArgs{
+//				Enabled: pulumi.Bool(true),
+//				Headers: WebhookIntegrationHeaderArray{
+//					&WebhookIntegrationHeaderArgs{
+//						HeaderKey:   pulumi.String("some_header"),
+//						HeaderValue: pulumi.String("value_for_that_header"),
+//					},
+//				},
+//				SharedSecret: pulumi.String("abc1234"),
+//				Url:          pulumi.String("https://www.example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type WebhookIntegration struct {
 	pulumi.CustomResourceState
 
@@ -138,7 +172,7 @@ func (i *WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.C
 // WebhookIntegrationArrayInput is an input type that accepts WebhookIntegrationArray and WebhookIntegrationArrayOutput values.
 // You can construct a concrete instance of `WebhookIntegrationArrayInput` via:
 //
-//          WebhookIntegrationArray{ WebhookIntegrationArgs{...} }
+//	WebhookIntegrationArray{ WebhookIntegrationArgs{...} }
 type WebhookIntegrationArrayInput interface {
 	pulumi.Input
 
@@ -163,7 +197,7 @@ func (i WebhookIntegrationArray) ToWebhookIntegrationArrayOutputWithContext(ctx 
 // WebhookIntegrationMapInput is an input type that accepts WebhookIntegrationMap and WebhookIntegrationMapOutput values.
 // You can construct a concrete instance of `WebhookIntegrationMapInput` via:
 //
-//          WebhookIntegrationMap{ "key": WebhookIntegrationArgs{...} }
+//	WebhookIntegrationMap{ "key": WebhookIntegrationArgs{...} }
 type WebhookIntegrationMapInput interface {
 	pulumi.Input
 
@@ -197,6 +231,30 @@ func (o WebhookIntegrationOutput) ToWebhookIntegrationOutput() WebhookIntegratio
 
 func (o WebhookIntegrationOutput) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
 	return o
+}
+
+// Whether the integration is enabled.
+func (o WebhookIntegrationOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WebhookIntegration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// A header to send with the request
+func (o WebhookIntegrationOutput) Headers() WebhookIntegrationHeaderArrayOutput {
+	return o.ApplyT(func(v *WebhookIntegration) WebhookIntegrationHeaderArrayOutput { return v.Headers }).(WebhookIntegrationHeaderArrayOutput)
+}
+
+// Name of the integration.
+func (o WebhookIntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WebhookIntegrationOutput) SharedSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringPtrOutput { return v.SharedSecret }).(pulumi.StringPtrOutput)
+}
+
+// The URL to request
+func (o WebhookIntegrationOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type WebhookIntegrationArrayOutput struct{ *pulumi.OutputState }

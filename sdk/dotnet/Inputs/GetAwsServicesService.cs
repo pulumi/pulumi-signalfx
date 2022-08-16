@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class GetAwsServicesServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetAwsServicesServiceArgs : global::Pulumi.InvokeArgs
     {
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -18,5 +18,6 @@ namespace Pulumi.SignalFx.Inputs
         public GetAwsServicesServiceArgs()
         {
         }
+        public static new GetAwsServicesServiceArgs Empty => new GetAwsServicesServiceArgs();
     }
 }
