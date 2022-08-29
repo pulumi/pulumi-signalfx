@@ -6,9 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * This chart type displays current data values in a list format.
- *
- * The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+ * You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
  *
  * ## Example Usage
  *
@@ -16,47 +14,40 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const mylistchart0 = new signalfx.ListChart("mylistchart0", {
- *     colorBy: "Metric",
- *     description: "Very cool List Chart",
- *     disableSampling: true,
- *     hideMissingValues: true,
- *     legendOptionsFields: [
+ * const myLogView = new signalfx.logs.View("my_log_view", {
+ *     columns: [
  *         {
- *             enabled: false,
- *             property: "collector",
+ *             name: "severity",
  *         },
  *         {
- *             enabled: true,
- *             property: "cluster_name",
+ *             name: "time",
  *         },
  *         {
- *             enabled: true,
- *             property: "role",
+ *             name: "amount.currency_code",
  *         },
  *         {
- *             enabled: false,
- *             property: "collector",
+ *             name: "amount.nanos",
  *         },
  *         {
- *             enabled: false,
- *             property: "host",
+ *             name: "amount.units",
+ *         },
+ *         {
+ *             name: "message",
  *         },
  *     ],
- *     maxDelay: 2,
- *     maxPrecision: 2,
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
- * `,
- *     refreshInterval: 1,
- *     sortBy: "-value",
- *     timezone: "Europe/Paris",
+ *     description: "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+ *     programText: "logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n",
+ *     sortOptions: [{
+ *         descending: false,
+ *         field: "severity",
+ *     }],
+ *     timeRange: 900,
  * });
  * ```
  */
-export class ListChart extends pulumi.CustomResource {
+export class View extends pulumi.CustomResource {
     /**
-     * Get an existing ListChart resource's state with the given name, ID, and optional extra
+     * Get an existing View resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -64,34 +55,34 @@ export class ListChart extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ListChartState, opts?: pulumi.CustomResourceOptions): ListChart {
-        return new ListChart(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ViewState, opts?: pulumi.CustomResourceOptions): View {
+        return new View(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'signalfx:logs/listChart:ListChart';
+    public static readonly __pulumiType = 'signalfx:logs/view:View';
 
     /**
-     * Returns true if the given object is an instance of ListChart.  This is designed to work even
+     * Returns true if the given object is an instance of View.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ListChart {
+    public static isInstance(obj: any): obj is View {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ListChart.__pulumiType;
+        return obj['__pulumiType'] === View.__pulumiType;
     }
 
     /**
-     * Column configuration
+     * The column headers to show on the log view.
      */
-    public readonly columns!: pulumi.Output<outputs.logs.ListChartColumn[] | undefined>;
+    public readonly columns!: pulumi.Output<outputs.logs.ViewColumn[] | undefined>;
     /**
-     * default connection that the dashboard uses
+     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
     public readonly defaultConnection!: pulumi.Output<string | undefined>;
     /**
-     * Description of the chart.
+     * Description of the log view.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -99,43 +90,43 @@ export class ListChart extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * Name of the chart.
+     * Name of the log view.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
      */
     public readonly programText!: pulumi.Output<string>;
     /**
-     * Sorting options configuration
+     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    public readonly sortOptions!: pulumi.Output<outputs.logs.ListChartSortOption[] | undefined>;
+    public readonly sortOptions!: pulumi.Output<outputs.logs.ViewSortOption[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     * From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
-     * The URL of the chart.
+     * The URL of the log view.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
-     * Create a ListChart resource with the given unique name, arguments, and options.
+     * Create a View resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ListChartArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ListChartArgs | ListChartState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ViewArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ViewArgs | ViewState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ListChartState | undefined;
+            const state = argsOrState as ViewState | undefined;
             resourceInputs["columns"] = state ? state.columns : undefined;
             resourceInputs["defaultConnection"] = state ? state.defaultConnection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -147,7 +138,7 @@ export class ListChart extends pulumi.CustomResource {
             resourceInputs["timeRange"] = state ? state.timeRange : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
-            const args = argsOrState as ListChartArgs | undefined;
+            const args = argsOrState as ViewArgs | undefined;
             if ((!args || args.programText === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'programText'");
             }
@@ -163,24 +154,24 @@ export class ListChart extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ListChart.__pulumiType, name, resourceInputs, opts);
+        super(View.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ListChart resources.
+ * Input properties used for looking up and filtering View resources.
  */
-export interface ListChartState {
+export interface ViewState {
     /**
-     * Column configuration
+     * The column headers to show on the log view.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.logs.ListChartColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.logs.ViewColumn>[]>;
     /**
-     * default connection that the dashboard uses
+     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
     defaultConnection?: pulumi.Input<string>;
     /**
-     * Description of the chart.
+     * Description of the log view.
      */
     description?: pulumi.Input<string>;
     /**
@@ -188,45 +179,45 @@ export interface ListChartState {
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Name of the chart.
+     * Name of the log view.
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
      */
     programText?: pulumi.Input<string>;
     /**
-     * Sorting options configuration
+     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    sortOptions?: pulumi.Input<pulumi.Input<inputs.logs.ListChartSortOption>[]>;
+    sortOptions?: pulumi.Input<pulumi.Input<inputs.logs.ViewSortOption>[]>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     * From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     timeRange?: pulumi.Input<number>;
     /**
-     * The URL of the chart.
+     * The URL of the log view.
      */
     url?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a ListChart resource.
+ * The set of arguments for constructing a View resource.
  */
-export interface ListChartArgs {
+export interface ViewArgs {
     /**
-     * Column configuration
+     * The column headers to show on the log view.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.logs.ListChartColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.logs.ViewColumn>[]>;
     /**
-     * default connection that the dashboard uses
+     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
     defaultConnection?: pulumi.Input<string>;
     /**
-     * Description of the chart.
+     * Description of the log view.
      */
     description?: pulumi.Input<string>;
     /**
@@ -234,23 +225,23 @@ export interface ListChartArgs {
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Name of the chart.
+     * Name of the log view.
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
      */
     programText: pulumi.Input<string>;
     /**
-     * Sorting options configuration
+     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    sortOptions?: pulumi.Input<pulumi.Input<inputs.logs.ListChartSortOption>[]>;
+    sortOptions?: pulumi.Input<pulumi.Input<inputs.logs.ViewSortOption>[]>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     * From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     timeRange?: pulumi.Input<number>;
 }

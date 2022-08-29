@@ -107,12 +107,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_data_link":           {Tok: makeResource(mainMod, "DataLink")},
 			"signalfx_webhook_integration": {Tok: makeResource(mainMod, "WebhookIntegration")},
 
-			"signalfx_logs_list_chart": {
-				Tok: makeResource(logsMod, "ListChart"),
-				Docs: &tfbridge.DocInfo{
-					Source: "list_chart.html.markdown",
-				},
-			},
+			"signalfx_log_view": {Tok: makeResource(logsMod, "View")},
 
 			"signalfx_aws_external_integration": {Tok: makeResource(awsMod, "ExternalIntegration")},
 			"signalfx_aws_integration":          {Tok: makeResource(awsMod, "Integration")},

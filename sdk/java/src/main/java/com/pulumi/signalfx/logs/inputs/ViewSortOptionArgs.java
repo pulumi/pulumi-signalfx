@@ -10,9 +10,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class ListChartSortOptionArgs extends com.pulumi.resources.ResourceArgs {
+public final class ViewSortOptionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ListChartSortOptionArgs Empty = new ListChartSortOptionArgs();
+    public static final ViewSortOptionArgs Empty = new ViewSortOptionArgs();
 
     @Import(name="descending", required=true)
     private Output<Boolean> descending;
@@ -28,9 +28,9 @@ public final class ListChartSortOptionArgs extends com.pulumi.resources.Resource
         return this.field;
     }
 
-    private ListChartSortOptionArgs() {}
+    private ViewSortOptionArgs() {}
 
-    private ListChartSortOptionArgs(ListChartSortOptionArgs $) {
+    private ViewSortOptionArgs(ViewSortOptionArgs $) {
         this.descending = $.descending;
         this.field = $.field;
     }
@@ -38,19 +38,19 @@ public final class ListChartSortOptionArgs extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ListChartSortOptionArgs defaults) {
+    public static Builder builder(ViewSortOptionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ListChartSortOptionArgs $;
+        private ViewSortOptionArgs $;
 
         public Builder() {
-            $ = new ListChartSortOptionArgs();
+            $ = new ViewSortOptionArgs();
         }
 
-        public Builder(ListChartSortOptionArgs defaults) {
-            $ = new ListChartSortOptionArgs(Objects.requireNonNull(defaults));
+        public Builder(ViewSortOptionArgs defaults) {
+            $ = new ViewSortOptionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder descending(Output<Boolean> descending) {
@@ -71,7 +71,7 @@ public final class ListChartSortOptionArgs extends com.pulumi.resources.Resource
             return field(Output.of(field));
         }
 
-        public ListChartSortOptionArgs build() {
+        public ViewSortOptionArgs build() {
             $.descending = Objects.requireNonNull($.descending, "expected parameter 'descending' to be non-null");
             $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
             return $;

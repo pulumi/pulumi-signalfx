@@ -10,9 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Logs
 {
     /// <summary>
-    /// This chart type displays current data values in a list format.
-    /// 
-    /// The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+    /// You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
     /// 
     /// ## Example Usage
     /// 
@@ -23,71 +21,70 @@ namespace Pulumi.SignalFx.Logs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mylistchart0 = new SignalFx.ListChart("mylistchart0", new()
+    ///     var myLogView = new SignalFx.Logs.View("myLogView", new()
     ///     {
-    ///         ColorBy = "Metric",
-    ///         Description = "Very cool List Chart",
-    ///         DisableSampling = true,
-    ///         HideMissingValues = true,
-    ///         LegendOptionsFields = new[]
+    ///         Columns = new[]
     ///         {
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             new SignalFx.Logs.Inputs.ViewColumnArgs
     ///             {
-    ///                 Enabled = false,
-    ///                 Property = "collector",
+    ///                 Name = "severity",
     ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             new SignalFx.Logs.Inputs.ViewColumnArgs
     ///             {
-    ///                 Enabled = true,
-    ///                 Property = "cluster_name",
+    ///                 Name = "time",
     ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             new SignalFx.Logs.Inputs.ViewColumnArgs
     ///             {
-    ///                 Enabled = true,
-    ///                 Property = "role",
+    ///                 Name = "amount.currency_code",
     ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             new SignalFx.Logs.Inputs.ViewColumnArgs
     ///             {
-    ///                 Enabled = false,
-    ///                 Property = "collector",
+    ///                 Name = "amount.nanos",
     ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
+    ///             new SignalFx.Logs.Inputs.ViewColumnArgs
     ///             {
-    ///                 Enabled = false,
-    ///                 Property = "host",
+    ///                 Name = "amount.units",
+    ///             },
+    ///             new SignalFx.Logs.Inputs.ViewColumnArgs
+    ///             {
+    ///                 Name = "message",
     ///             },
     ///         },
-    ///         MaxDelay = 2,
-    ///         MaxPrecision = 2,
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
+    ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+    ///         ProgramText = @"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
     /// 
     /// ",
-    ///         RefreshInterval = 1,
-    ///         SortBy = "-value",
-    ///         Timezone = "Europe/Paris",
+    ///         SortOptions = new[]
+    ///         {
+    ///             new SignalFx.Logs.Inputs.ViewSortOptionArgs
+    ///             {
+    ///                 Descending = false,
+    ///                 Field = "severity",
+    ///             },
+    ///         },
+    ///         TimeRange = 900,
     ///     });
     /// 
     /// });
     /// ```
     /// </summary>
-    [SignalFxResourceType("signalfx:logs/listChart:ListChart")]
-    public partial class ListChart : global::Pulumi.CustomResource
+    [SignalFxResourceType("signalfx:logs/view:View")]
+    public partial class View : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Column configuration
+        /// The column headers to show on the log view.
         /// </summary>
         [Output("columns")]
-        public Output<ImmutableArray<Outputs.ListChartColumn>> Columns { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ViewColumn>> Columns { get; private set; } = null!;
 
         /// <summary>
-        /// default connection that the dashboard uses
+        /// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         /// </summary>
         [Output("defaultConnection")]
         public Output<string?> DefaultConnection { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the chart.
+        /// Description of the log view.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -99,22 +96,22 @@ namespace Pulumi.SignalFx.Logs
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the chart.
+        /// Name of the log view.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
 
         /// <summary>
-        /// Sorting options configuration
+        /// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         /// </summary>
         [Output("sortOptions")]
-        public Output<ImmutableArray<Outputs.ListChartSortOption>> SortOptions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ViewSortOption>> SortOptions { get; private set; } = null!;
 
         /// <summary>
         /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -123,32 +120,32 @@ namespace Pulumi.SignalFx.Logs
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the chart.
+        /// The URL of the log view.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a ListChart resource with the given unique name, arguments, and options.
+        /// Create a View resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ListChart(string name, ListChartArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:logs/listChart:ListChart", name, args ?? new ListChartArgs(), MakeResourceOptions(options, ""))
+        public View(string name, ViewArgs args, CustomResourceOptions? options = null)
+            : base("signalfx:logs/view:View", name, args ?? new ViewArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ListChart(string name, Input<string> id, ListChartState? state = null, CustomResourceOptions? options = null)
-            : base("signalfx:logs/listChart:ListChart", name, state, MakeResourceOptions(options, id))
+        private View(string name, Input<string> id, ViewState? state = null, CustomResourceOptions? options = null)
+            : base("signalfx:logs/view:View", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -164,7 +161,7 @@ namespace Pulumi.SignalFx.Logs
             return merged;
         }
         /// <summary>
-        /// Get an existing ListChart resource's state with the given name, ID, and optional extra
+        /// Get an existing View resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -172,34 +169,34 @@ namespace Pulumi.SignalFx.Logs
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ListChart Get(string name, Input<string> id, ListChartState? state = null, CustomResourceOptions? options = null)
+        public static View Get(string name, Input<string> id, ViewState? state = null, CustomResourceOptions? options = null)
         {
-            return new ListChart(name, id, state, options);
+            return new View(name, id, state, options);
         }
     }
 
-    public sealed class ListChartArgs : global::Pulumi.ResourceArgs
+    public sealed class ViewArgs : global::Pulumi.ResourceArgs
     {
         [Input("columns")]
-        private InputList<Inputs.ListChartColumnArgs>? _columns;
+        private InputList<Inputs.ViewColumnArgs>? _columns;
 
         /// <summary>
-        /// Column configuration
+        /// The column headers to show on the log view.
         /// </summary>
-        public InputList<Inputs.ListChartColumnArgs> Columns
+        public InputList<Inputs.ViewColumnArgs> Columns
         {
-            get => _columns ?? (_columns = new InputList<Inputs.ListChartColumnArgs>());
+            get => _columns ?? (_columns = new InputList<Inputs.ViewColumnArgs>());
             set => _columns = value;
         }
 
         /// <summary>
-        /// default connection that the dashboard uses
+        /// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         /// </summary>
         [Input("defaultConnection")]
         public Input<string>? DefaultConnection { get; set; }
 
         /// <summary>
-        /// Description of the chart.
+        /// Description of the log view.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -211,26 +208,26 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of the chart.
+        /// Name of the log view.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
 
         [Input("sortOptions")]
-        private InputList<Inputs.ListChartSortOptionArgs>? _sortOptions;
+        private InputList<Inputs.ViewSortOptionArgs>? _sortOptions;
 
         /// <summary>
-        /// Sorting options configuration
+        /// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         /// </summary>
-        public InputList<Inputs.ListChartSortOptionArgs> SortOptions
+        public InputList<Inputs.ViewSortOptionArgs> SortOptions
         {
-            get => _sortOptions ?? (_sortOptions = new InputList<Inputs.ListChartSortOptionArgs>());
+            get => _sortOptions ?? (_sortOptions = new InputList<Inputs.ViewSortOptionArgs>());
             set => _sortOptions = value;
         }
 
@@ -241,39 +238,39 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
-        public ListChartArgs()
+        public ViewArgs()
         {
         }
-        public static new ListChartArgs Empty => new ListChartArgs();
+        public static new ViewArgs Empty => new ViewArgs();
     }
 
-    public sealed class ListChartState : global::Pulumi.ResourceArgs
+    public sealed class ViewState : global::Pulumi.ResourceArgs
     {
         [Input("columns")]
-        private InputList<Inputs.ListChartColumnGetArgs>? _columns;
+        private InputList<Inputs.ViewColumnGetArgs>? _columns;
 
         /// <summary>
-        /// Column configuration
+        /// The column headers to show on the log view.
         /// </summary>
-        public InputList<Inputs.ListChartColumnGetArgs> Columns
+        public InputList<Inputs.ViewColumnGetArgs> Columns
         {
-            get => _columns ?? (_columns = new InputList<Inputs.ListChartColumnGetArgs>());
+            get => _columns ?? (_columns = new InputList<Inputs.ViewColumnGetArgs>());
             set => _columns = value;
         }
 
         /// <summary>
-        /// default connection that the dashboard uses
+        /// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         /// </summary>
         [Input("defaultConnection")]
         public Input<string>? DefaultConnection { get; set; }
 
         /// <summary>
-        /// Description of the chart.
+        /// Description of the log view.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -285,26 +282,26 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of the chart.
+        /// Name of the log view.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
 
         [Input("sortOptions")]
-        private InputList<Inputs.ListChartSortOptionGetArgs>? _sortOptions;
+        private InputList<Inputs.ViewSortOptionGetArgs>? _sortOptions;
 
         /// <summary>
-        /// Sorting options configuration
+        /// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         /// </summary>
-        public InputList<Inputs.ListChartSortOptionGetArgs> SortOptions
+        public InputList<Inputs.ViewSortOptionGetArgs> SortOptions
         {
-            get => _sortOptions ?? (_sortOptions = new InputList<Inputs.ListChartSortOptionGetArgs>());
+            get => _sortOptions ?? (_sortOptions = new InputList<Inputs.ViewSortOptionGetArgs>());
             set => _sortOptions = value;
         }
 
@@ -315,20 +312,20 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        /// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
-        /// The URL of the chart.
+        /// The URL of the log view.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
-        public ListChartState()
+        public ViewState()
         {
         }
-        public static new ListChartState Empty => new ListChartState();
+        public static new ViewState Empty => new ViewState();
     }
 }

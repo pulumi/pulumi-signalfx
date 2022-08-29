@@ -9,12 +9,12 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class ListChartSortOption {
+public final class ViewSortOption {
     private final Boolean descending;
     private final String field;
 
     @CustomType.Constructor
-    private ListChartSortOption(
+    private ViewSortOption(
         @CustomType.Parameter("descending") Boolean descending,
         @CustomType.Parameter("field") String field) {
         this.descending = descending;
@@ -32,7 +32,7 @@ public final class ListChartSortOption {
         return new Builder();
     }
 
-    public static Builder builder(ListChartSortOption defaults) {
+    public static Builder builder(ViewSortOption defaults) {
         return new Builder(defaults);
     }
 
@@ -44,7 +44,7 @@ public final class ListChartSortOption {
     	      // Empty
         }
 
-        public Builder(ListChartSortOption defaults) {
+        public Builder(ViewSortOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descending = defaults.descending;
     	      this.field = defaults.field;
@@ -57,8 +57,8 @@ public final class ListChartSortOption {
         public Builder field(String field) {
             this.field = Objects.requireNonNull(field);
             return this;
-        }        public ListChartSortOption build() {
-            return new ListChartSortOption(descending, field);
+        }        public ViewSortOption build() {
+            return new ViewSortOption(descending, field);
         }
     }
 }

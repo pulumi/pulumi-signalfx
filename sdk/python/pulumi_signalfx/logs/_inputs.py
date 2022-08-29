@@ -10,16 +10,16 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'ListChartColumnArgs',
-    'ListChartSortOptionArgs',
+    'ViewColumnArgs',
+    'ViewSortOptionArgs',
 ]
 
 @pulumi.input_type
-class ListChartColumnArgs:
+class ViewColumnArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] name: Name of the chart.
+        :param pulumi.Input[str] name: Name of the log view.
         """
         pulumi.set(__self__, "name", name)
 
@@ -27,7 +27,7 @@ class ListChartColumnArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the chart.
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -37,7 +37,7 @@ class ListChartColumnArgs:
 
 
 @pulumi.input_type
-class ListChartSortOptionArgs:
+class ViewSortOptionArgs:
     def __init__(__self__, *,
                  descending: pulumi.Input[bool],
                  field: pulumi.Input[str]):

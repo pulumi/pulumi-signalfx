@@ -41,7 +41,7 @@
         "jira/integration.ts",
         "listChart.ts",
         "logs/index.ts",
-        "logs/listChart.ts",
+        "logs/view.ts",
         "opsgenie/index.ts",
         "opsgenie/integration.ts",
         "orgToken.ts",

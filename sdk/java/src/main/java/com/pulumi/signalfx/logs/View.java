@@ -8,10 +8,10 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.signalfx.Utilities;
-import com.pulumi.signalfx.logs.ListChartArgs;
-import com.pulumi.signalfx.logs.inputs.ListChartState;
-import com.pulumi.signalfx.logs.outputs.ListChartColumn;
-import com.pulumi.signalfx.logs.outputs.ListChartSortOption;
+import com.pulumi.signalfx.logs.ViewArgs;
+import com.pulumi.signalfx.logs.inputs.ViewState;
+import com.pulumi.signalfx.logs.outputs.ViewColumn;
+import com.pulumi.signalfx.logs.outputs.ViewSortOption;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -19,9 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This chart type displays current data values in a list format.
- * 
- * The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+ * You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
  * 
  * ## Example Usage
  * ```java
@@ -30,9 +28,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.ListChart;
- * import com.pulumi.signalfx.ListChartArgs;
- * import com.pulumi.signalfx.inputs.ListChartLegendOptionsFieldArgs;
+ * import com.pulumi.signalfx.logs.View;
+ * import com.pulumi.signalfx.logs.ViewArgs;
+ * import com.pulumi.signalfx.logs.inputs.ViewColumnArgs;
+ * import com.pulumi.signalfx.logs.inputs.ViewSortOptionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,42 +45,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mylistchart0 = new ListChart(&#34;mylistchart0&#34;, ListChartArgs.builder()        
- *             .colorBy(&#34;Metric&#34;)
- *             .description(&#34;Very cool List Chart&#34;)
- *             .disableSampling(true)
- *             .hideMissingValues(true)
- *             .legendOptionsFields(            
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;collector&#34;)
+ *         var myLogView = new View(&#34;myLogView&#34;, ViewArgs.builder()        
+ *             .columns(            
+ *                 ViewColumnArgs.builder()
+ *                     .name(&#34;severity&#34;)
  *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(true)
- *                     .property(&#34;cluster_name&#34;)
+ *                 ViewColumnArgs.builder()
+ *                     .name(&#34;time&#34;)
  *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(true)
- *                     .property(&#34;role&#34;)
+ *                 ViewColumnArgs.builder()
+ *                     .name(&#34;amount.currency_code&#34;)
  *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;collector&#34;)
+ *                 ViewColumnArgs.builder()
+ *                     .name(&#34;amount.nanos&#34;)
  *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;host&#34;)
+ *                 ViewColumnArgs.builder()
+ *                     .name(&#34;amount.units&#34;)
+ *                     .build(),
+ *                 ViewColumnArgs.builder()
+ *                     .name(&#34;message&#34;)
  *                     .build())
- *             .maxDelay(2)
- *             .maxPrecision(2)
+ *             .description(&#34;Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis&#34;)
  *             .programText(&#34;&#34;&#34;
- * myfilters = filter(&#34;cluster_name&#34;, &#34;prod&#34;) and filter(&#34;role&#34;, &#34;search&#34;)
- * data(&#34;cpu.total.idle&#34;, filter=myfilters).publish()
+ * logs(filter=field(&#39;message&#39;) == &#39;Transaction processed&#39; and field(&#39;service.name&#39;) == &#39;paymentservice&#39;).publish()
  * 
  *             &#34;&#34;&#34;)
- *             .refreshInterval(1)
- *             .sortBy(&#34;-value&#34;)
- *             .timezone(&#34;Europe/Paris&#34;)
+ *             .sortOptions(ViewSortOptionArgs.builder()
+ *                 .descending(false)
+ *                 .field(&#34;severity&#34;)
+ *                 .build())
+ *             .timeRange(900)
  *             .build());
  * 
  *     }
@@ -89,45 +82,45 @@ import javax.annotation.Nullable;
  * ```
  * 
  */
-@ResourceType(type="signalfx:logs/listChart:ListChart")
-public class ListChart extends com.pulumi.resources.CustomResource {
+@ResourceType(type="signalfx:logs/view:View")
+public class View extends com.pulumi.resources.CustomResource {
     /**
-     * Column configuration
+     * The column headers to show on the log view.
      * 
      */
-    @Export(name="columns", type=List.class, parameters={ListChartColumn.class})
-    private Output</* @Nullable */ List<ListChartColumn>> columns;
+    @Export(name="columns", type=List.class, parameters={ViewColumn.class})
+    private Output</* @Nullable */ List<ViewColumn>> columns;
 
     /**
-     * @return Column configuration
+     * @return The column headers to show on the log view.
      * 
      */
-    public Output<Optional<List<ListChartColumn>>> columns() {
+    public Output<Optional<List<ViewColumn>>> columns() {
         return Codegen.optional(this.columns);
     }
     /**
-     * default connection that the dashboard uses
+     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      * 
      */
     @Export(name="defaultConnection", type=String.class, parameters={})
     private Output</* @Nullable */ String> defaultConnection;
 
     /**
-     * @return default connection that the dashboard uses
+     * @return The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      * 
      */
     public Output<Optional<String>> defaultConnection() {
         return Codegen.optional(this.defaultConnection);
     }
     /**
-     * Description of the chart.
+     * Description of the log view.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart.
+     * @return Description of the log view.
      * 
      */
     public Output<Optional<String>> description() {
@@ -148,45 +141,45 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.endTime);
     }
     /**
-     * Name of the chart.
+     * Name of the log view.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return Name of the chart.
+     * @return Name of the log view.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
      * 
      */
     @Export(name="programText", type=String.class, parameters={})
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * Sorting options configuration
+     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      * 
      */
-    @Export(name="sortOptions", type=List.class, parameters={ListChartSortOption.class})
-    private Output</* @Nullable */ List<ListChartSortOption>> sortOptions;
+    @Export(name="sortOptions", type=List.class, parameters={ViewSortOption.class})
+    private Output</* @Nullable */ List<ViewSortOption>> sortOptions;
 
     /**
-     * @return Sorting options configuration
+     * @return The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      * 
      */
-    public Output<Optional<List<ListChartSortOption>>> sortOptions() {
+    public Output<Optional<List<ViewSortOption>>> sortOptions() {
         return Codegen.optional(this.sortOptions);
     }
     /**
@@ -204,28 +197,28 @@ public class ListChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startTime);
     }
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
     @Export(name="timeRange", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * @return From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
     public Output<Optional<Integer>> timeRange() {
         return Codegen.optional(this.timeRange);
     }
     /**
-     * The URL of the chart.
+     * The URL of the log view.
      * 
      */
     @Export(name="url", type=String.class, parameters={})
     private Output<String> url;
 
     /**
-     * @return The URL of the chart.
+     * @return The URL of the log view.
      * 
      */
     public Output<String> url() {
@@ -236,15 +229,15 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ListChart(String name) {
-        this(name, ListChartArgs.Empty);
+    public View(String name) {
+        this(name, ViewArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ListChart(String name, ListChartArgs args) {
+    public View(String name, ViewArgs args) {
         this(name, args, null);
     }
     /**
@@ -253,12 +246,12 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ListChart(String name, ListChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:logs/listChart:ListChart", name, args == null ? ListChartArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public View(String name, ViewArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:logs/view:View", name, args == null ? ViewArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ListChart(String name, Output<String> id, @Nullable ListChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:logs/listChart:ListChart", name, state, makeResourceOptions(options, id));
+    private View(String name, Output<String> id, @Nullable ViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:logs/view:View", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -277,7 +270,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ListChart get(String name, Output<String> id, @Nullable ListChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new ListChart(name, id, state, options);
+    public static View get(String name, Output<String> id, @Nullable ViewState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new View(name, id, state, options);
     }
 }

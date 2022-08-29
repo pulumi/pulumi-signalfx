@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Logs.Inputs
 {
 
-    public sealed class ListChartColumnGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ViewColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the chart.
+        /// Name of the log view.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        public ListChartColumnGetArgs()
+        public ViewColumnArgs()
         {
         }
-        public static new ListChartColumnGetArgs Empty => new ListChartColumnGetArgs();
+        public static new ViewColumnArgs Empty => new ViewColumnArgs();
     }
 }

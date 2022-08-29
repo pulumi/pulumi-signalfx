@@ -10,210 +10,210 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type ListChartColumn struct {
-	// Name of the chart.
+type ViewColumn struct {
+	// Name of the log view.
 	Name string `pulumi:"name"`
 }
 
-// ListChartColumnInput is an input type that accepts ListChartColumnArgs and ListChartColumnOutput values.
-// You can construct a concrete instance of `ListChartColumnInput` via:
+// ViewColumnInput is an input type that accepts ViewColumnArgs and ViewColumnOutput values.
+// You can construct a concrete instance of `ViewColumnInput` via:
 //
-//	ListChartColumnArgs{...}
-type ListChartColumnInput interface {
+//	ViewColumnArgs{...}
+type ViewColumnInput interface {
 	pulumi.Input
 
-	ToListChartColumnOutput() ListChartColumnOutput
-	ToListChartColumnOutputWithContext(context.Context) ListChartColumnOutput
+	ToViewColumnOutput() ViewColumnOutput
+	ToViewColumnOutputWithContext(context.Context) ViewColumnOutput
 }
 
-type ListChartColumnArgs struct {
-	// Name of the chart.
+type ViewColumnArgs struct {
+	// Name of the log view.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (ListChartColumnArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListChartColumn)(nil)).Elem()
+func (ViewColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewColumn)(nil)).Elem()
 }
 
-func (i ListChartColumnArgs) ToListChartColumnOutput() ListChartColumnOutput {
-	return i.ToListChartColumnOutputWithContext(context.Background())
+func (i ViewColumnArgs) ToViewColumnOutput() ViewColumnOutput {
+	return i.ToViewColumnOutputWithContext(context.Background())
 }
 
-func (i ListChartColumnArgs) ToListChartColumnOutputWithContext(ctx context.Context) ListChartColumnOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListChartColumnOutput)
+func (i ViewColumnArgs) ToViewColumnOutputWithContext(ctx context.Context) ViewColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewColumnOutput)
 }
 
-// ListChartColumnArrayInput is an input type that accepts ListChartColumnArray and ListChartColumnArrayOutput values.
-// You can construct a concrete instance of `ListChartColumnArrayInput` via:
+// ViewColumnArrayInput is an input type that accepts ViewColumnArray and ViewColumnArrayOutput values.
+// You can construct a concrete instance of `ViewColumnArrayInput` via:
 //
-//	ListChartColumnArray{ ListChartColumnArgs{...} }
-type ListChartColumnArrayInput interface {
+//	ViewColumnArray{ ViewColumnArgs{...} }
+type ViewColumnArrayInput interface {
 	pulumi.Input
 
-	ToListChartColumnArrayOutput() ListChartColumnArrayOutput
-	ToListChartColumnArrayOutputWithContext(context.Context) ListChartColumnArrayOutput
+	ToViewColumnArrayOutput() ViewColumnArrayOutput
+	ToViewColumnArrayOutputWithContext(context.Context) ViewColumnArrayOutput
 }
 
-type ListChartColumnArray []ListChartColumnInput
+type ViewColumnArray []ViewColumnInput
 
-func (ListChartColumnArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListChartColumn)(nil)).Elem()
+func (ViewColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewColumn)(nil)).Elem()
 }
 
-func (i ListChartColumnArray) ToListChartColumnArrayOutput() ListChartColumnArrayOutput {
-	return i.ToListChartColumnArrayOutputWithContext(context.Background())
+func (i ViewColumnArray) ToViewColumnArrayOutput() ViewColumnArrayOutput {
+	return i.ToViewColumnArrayOutputWithContext(context.Background())
 }
 
-func (i ListChartColumnArray) ToListChartColumnArrayOutputWithContext(ctx context.Context) ListChartColumnArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListChartColumnArrayOutput)
+func (i ViewColumnArray) ToViewColumnArrayOutputWithContext(ctx context.Context) ViewColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewColumnArrayOutput)
 }
 
-type ListChartColumnOutput struct{ *pulumi.OutputState }
+type ViewColumnOutput struct{ *pulumi.OutputState }
 
-func (ListChartColumnOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListChartColumn)(nil)).Elem()
+func (ViewColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewColumn)(nil)).Elem()
 }
 
-func (o ListChartColumnOutput) ToListChartColumnOutput() ListChartColumnOutput {
+func (o ViewColumnOutput) ToViewColumnOutput() ViewColumnOutput {
 	return o
 }
 
-func (o ListChartColumnOutput) ToListChartColumnOutputWithContext(ctx context.Context) ListChartColumnOutput {
+func (o ViewColumnOutput) ToViewColumnOutputWithContext(ctx context.Context) ViewColumnOutput {
 	return o
 }
 
-// Name of the chart.
-func (o ListChartColumnOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ListChartColumn) string { return v.Name }).(pulumi.StringOutput)
+// Name of the log view.
+func (o ViewColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ViewColumn) string { return v.Name }).(pulumi.StringOutput)
 }
 
-type ListChartColumnArrayOutput struct{ *pulumi.OutputState }
+type ViewColumnArrayOutput struct{ *pulumi.OutputState }
 
-func (ListChartColumnArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListChartColumn)(nil)).Elem()
+func (ViewColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewColumn)(nil)).Elem()
 }
 
-func (o ListChartColumnArrayOutput) ToListChartColumnArrayOutput() ListChartColumnArrayOutput {
+func (o ViewColumnArrayOutput) ToViewColumnArrayOutput() ViewColumnArrayOutput {
 	return o
 }
 
-func (o ListChartColumnArrayOutput) ToListChartColumnArrayOutputWithContext(ctx context.Context) ListChartColumnArrayOutput {
+func (o ViewColumnArrayOutput) ToViewColumnArrayOutputWithContext(ctx context.Context) ViewColumnArrayOutput {
 	return o
 }
 
-func (o ListChartColumnArrayOutput) Index(i pulumi.IntInput) ListChartColumnOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListChartColumn {
-		return vs[0].([]ListChartColumn)[vs[1].(int)]
-	}).(ListChartColumnOutput)
+func (o ViewColumnArrayOutput) Index(i pulumi.IntInput) ViewColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ViewColumn {
+		return vs[0].([]ViewColumn)[vs[1].(int)]
+	}).(ViewColumnOutput)
 }
 
-type ListChartSortOption struct {
+type ViewSortOption struct {
 	Descending bool   `pulumi:"descending"`
 	Field      string `pulumi:"field"`
 }
 
-// ListChartSortOptionInput is an input type that accepts ListChartSortOptionArgs and ListChartSortOptionOutput values.
-// You can construct a concrete instance of `ListChartSortOptionInput` via:
+// ViewSortOptionInput is an input type that accepts ViewSortOptionArgs and ViewSortOptionOutput values.
+// You can construct a concrete instance of `ViewSortOptionInput` via:
 //
-//	ListChartSortOptionArgs{...}
-type ListChartSortOptionInput interface {
+//	ViewSortOptionArgs{...}
+type ViewSortOptionInput interface {
 	pulumi.Input
 
-	ToListChartSortOptionOutput() ListChartSortOptionOutput
-	ToListChartSortOptionOutputWithContext(context.Context) ListChartSortOptionOutput
+	ToViewSortOptionOutput() ViewSortOptionOutput
+	ToViewSortOptionOutputWithContext(context.Context) ViewSortOptionOutput
 }
 
-type ListChartSortOptionArgs struct {
+type ViewSortOptionArgs struct {
 	Descending pulumi.BoolInput   `pulumi:"descending"`
 	Field      pulumi.StringInput `pulumi:"field"`
 }
 
-func (ListChartSortOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListChartSortOption)(nil)).Elem()
+func (ViewSortOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewSortOption)(nil)).Elem()
 }
 
-func (i ListChartSortOptionArgs) ToListChartSortOptionOutput() ListChartSortOptionOutput {
-	return i.ToListChartSortOptionOutputWithContext(context.Background())
+func (i ViewSortOptionArgs) ToViewSortOptionOutput() ViewSortOptionOutput {
+	return i.ToViewSortOptionOutputWithContext(context.Background())
 }
 
-func (i ListChartSortOptionArgs) ToListChartSortOptionOutputWithContext(ctx context.Context) ListChartSortOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListChartSortOptionOutput)
+func (i ViewSortOptionArgs) ToViewSortOptionOutputWithContext(ctx context.Context) ViewSortOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewSortOptionOutput)
 }
 
-// ListChartSortOptionArrayInput is an input type that accepts ListChartSortOptionArray and ListChartSortOptionArrayOutput values.
-// You can construct a concrete instance of `ListChartSortOptionArrayInput` via:
+// ViewSortOptionArrayInput is an input type that accepts ViewSortOptionArray and ViewSortOptionArrayOutput values.
+// You can construct a concrete instance of `ViewSortOptionArrayInput` via:
 //
-//	ListChartSortOptionArray{ ListChartSortOptionArgs{...} }
-type ListChartSortOptionArrayInput interface {
+//	ViewSortOptionArray{ ViewSortOptionArgs{...} }
+type ViewSortOptionArrayInput interface {
 	pulumi.Input
 
-	ToListChartSortOptionArrayOutput() ListChartSortOptionArrayOutput
-	ToListChartSortOptionArrayOutputWithContext(context.Context) ListChartSortOptionArrayOutput
+	ToViewSortOptionArrayOutput() ViewSortOptionArrayOutput
+	ToViewSortOptionArrayOutputWithContext(context.Context) ViewSortOptionArrayOutput
 }
 
-type ListChartSortOptionArray []ListChartSortOptionInput
+type ViewSortOptionArray []ViewSortOptionInput
 
-func (ListChartSortOptionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListChartSortOption)(nil)).Elem()
+func (ViewSortOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewSortOption)(nil)).Elem()
 }
 
-func (i ListChartSortOptionArray) ToListChartSortOptionArrayOutput() ListChartSortOptionArrayOutput {
-	return i.ToListChartSortOptionArrayOutputWithContext(context.Background())
+func (i ViewSortOptionArray) ToViewSortOptionArrayOutput() ViewSortOptionArrayOutput {
+	return i.ToViewSortOptionArrayOutputWithContext(context.Background())
 }
 
-func (i ListChartSortOptionArray) ToListChartSortOptionArrayOutputWithContext(ctx context.Context) ListChartSortOptionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ListChartSortOptionArrayOutput)
+func (i ViewSortOptionArray) ToViewSortOptionArrayOutputWithContext(ctx context.Context) ViewSortOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ViewSortOptionArrayOutput)
 }
 
-type ListChartSortOptionOutput struct{ *pulumi.OutputState }
+type ViewSortOptionOutput struct{ *pulumi.OutputState }
 
-func (ListChartSortOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ListChartSortOption)(nil)).Elem()
+func (ViewSortOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ViewSortOption)(nil)).Elem()
 }
 
-func (o ListChartSortOptionOutput) ToListChartSortOptionOutput() ListChartSortOptionOutput {
+func (o ViewSortOptionOutput) ToViewSortOptionOutput() ViewSortOptionOutput {
 	return o
 }
 
-func (o ListChartSortOptionOutput) ToListChartSortOptionOutputWithContext(ctx context.Context) ListChartSortOptionOutput {
+func (o ViewSortOptionOutput) ToViewSortOptionOutputWithContext(ctx context.Context) ViewSortOptionOutput {
 	return o
 }
 
-func (o ListChartSortOptionOutput) Descending() pulumi.BoolOutput {
-	return o.ApplyT(func(v ListChartSortOption) bool { return v.Descending }).(pulumi.BoolOutput)
+func (o ViewSortOptionOutput) Descending() pulumi.BoolOutput {
+	return o.ApplyT(func(v ViewSortOption) bool { return v.Descending }).(pulumi.BoolOutput)
 }
 
-func (o ListChartSortOptionOutput) Field() pulumi.StringOutput {
-	return o.ApplyT(func(v ListChartSortOption) string { return v.Field }).(pulumi.StringOutput)
+func (o ViewSortOptionOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v ViewSortOption) string { return v.Field }).(pulumi.StringOutput)
 }
 
-type ListChartSortOptionArrayOutput struct{ *pulumi.OutputState }
+type ViewSortOptionArrayOutput struct{ *pulumi.OutputState }
 
-func (ListChartSortOptionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ListChartSortOption)(nil)).Elem()
+func (ViewSortOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ViewSortOption)(nil)).Elem()
 }
 
-func (o ListChartSortOptionArrayOutput) ToListChartSortOptionArrayOutput() ListChartSortOptionArrayOutput {
+func (o ViewSortOptionArrayOutput) ToViewSortOptionArrayOutput() ViewSortOptionArrayOutput {
 	return o
 }
 
-func (o ListChartSortOptionArrayOutput) ToListChartSortOptionArrayOutputWithContext(ctx context.Context) ListChartSortOptionArrayOutput {
+func (o ViewSortOptionArrayOutput) ToViewSortOptionArrayOutputWithContext(ctx context.Context) ViewSortOptionArrayOutput {
 	return o
 }
 
-func (o ListChartSortOptionArrayOutput) Index(i pulumi.IntInput) ListChartSortOptionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListChartSortOption {
-		return vs[0].([]ListChartSortOption)[vs[1].(int)]
-	}).(ListChartSortOptionOutput)
+func (o ViewSortOptionArrayOutput) Index(i pulumi.IntInput) ViewSortOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ViewSortOption {
+		return vs[0].([]ViewSortOption)[vs[1].(int)]
+	}).(ViewSortOptionOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ListChartColumnInput)(nil)).Elem(), ListChartColumnArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListChartColumnArrayInput)(nil)).Elem(), ListChartColumnArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListChartSortOptionInput)(nil)).Elem(), ListChartSortOptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ListChartSortOptionArrayInput)(nil)).Elem(), ListChartSortOptionArray{})
-	pulumi.RegisterOutputType(ListChartColumnOutput{})
-	pulumi.RegisterOutputType(ListChartColumnArrayOutput{})
-	pulumi.RegisterOutputType(ListChartSortOptionOutput{})
-	pulumi.RegisterOutputType(ListChartSortOptionArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewColumnInput)(nil)).Elem(), ViewColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewColumnArrayInput)(nil)).Elem(), ViewColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewSortOptionInput)(nil)).Elem(), ViewSortOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ViewSortOptionArrayInput)(nil)).Elem(), ViewSortOptionArray{})
+	pulumi.RegisterOutputType(ViewColumnOutput{})
+	pulumi.RegisterOutputType(ViewColumnArrayOutput{})
+	pulumi.RegisterOutputType(ViewSortOptionOutput{})
+	pulumi.RegisterOutputType(ViewSortOptionArrayOutput{})
 }

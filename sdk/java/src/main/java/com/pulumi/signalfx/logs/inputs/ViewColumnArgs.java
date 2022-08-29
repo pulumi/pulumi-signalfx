@@ -9,51 +9,51 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class ListChartColumnArgs extends com.pulumi.resources.ResourceArgs {
+public final class ViewColumnArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ListChartColumnArgs Empty = new ListChartColumnArgs();
+    public static final ViewColumnArgs Empty = new ViewColumnArgs();
 
     /**
-     * Name of the chart.
+     * Name of the log view.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the chart.
+     * @return Name of the log view.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
-    private ListChartColumnArgs() {}
+    private ViewColumnArgs() {}
 
-    private ListChartColumnArgs(ListChartColumnArgs $) {
+    private ViewColumnArgs(ViewColumnArgs $) {
         this.name = $.name;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ListChartColumnArgs defaults) {
+    public static Builder builder(ViewColumnArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ListChartColumnArgs $;
+        private ViewColumnArgs $;
 
         public Builder() {
-            $ = new ListChartColumnArgs();
+            $ = new ViewColumnArgs();
         }
 
-        public Builder(ListChartColumnArgs defaults) {
-            $ = new ListChartColumnArgs(Objects.requireNonNull(defaults));
+        public Builder(ViewColumnArgs defaults) {
+            $ = new ViewColumnArgs(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param name Name of the chart.
+         * @param name Name of the log view.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class ListChartColumnArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name Name of the chart.
+         * @param name Name of the log view.
          * 
          * @return builder
          * 
@@ -73,7 +73,7 @@ public final class ListChartColumnArgs extends com.pulumi.resources.ResourceArgs
             return name(Output.of(name));
         }
 
-        public ListChartColumnArgs build() {
+        public ViewColumnArgs build() {
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
