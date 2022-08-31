@@ -877,14 +877,14 @@ export namespace gcp {
 }
 
 export namespace logs {
-    export interface ListChartColumn {
+    export interface ViewColumn {
         /**
-         * Name of the chart.
+         * Name of the log view.
          */
         name: string;
     }
 
-    export interface ListChartSortOption {
+    export interface ViewSortOption {
         descending: boolean;
         field: string;
     }

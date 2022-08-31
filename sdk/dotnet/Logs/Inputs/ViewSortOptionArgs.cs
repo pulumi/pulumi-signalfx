@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Logs.Inputs
 {
 
-    public sealed class ListChartSortOptionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ViewSortOptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("descending", required: true)]
         public Input<bool> Descending { get; set; } = null!;
@@ -18,9 +18,9 @@ namespace Pulumi.SignalFx.Logs.Inputs
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 
-        public ListChartSortOptionGetArgs()
+        public ViewSortOptionArgs()
         {
         }
-        public static new ListChartSortOptionGetArgs Empty => new ListChartSortOptionGetArgs();
+        public static new ViewSortOptionArgs Empty => new ViewSortOptionArgs();
     }
 }

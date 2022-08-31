@@ -228,10 +228,10 @@ _utilities.register(
  },
  {
   "pkg": "signalfx",
-  "mod": "logs/listChart",
+  "mod": "logs/view",
   "fqn": "pulumi_signalfx.logs",
   "classes": {
-   "signalfx:logs/listChart:ListChart": "ListChart"
+   "signalfx:logs/view:View": "View"
   }
  },
  {

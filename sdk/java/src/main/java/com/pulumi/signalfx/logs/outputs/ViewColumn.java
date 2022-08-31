@@ -8,20 +8,20 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class ListChartColumn {
+public final class ViewColumn {
     /**
-     * @return Name of the chart.
+     * @return Name of the log view.
      * 
      */
     private final String name;
 
     @CustomType.Constructor
-    private ListChartColumn(@CustomType.Parameter("name") String name) {
+    private ViewColumn(@CustomType.Parameter("name") String name) {
         this.name = name;
     }
 
     /**
-     * @return Name of the chart.
+     * @return Name of the log view.
      * 
      */
     public String name() {
@@ -32,7 +32,7 @@ public final class ListChartColumn {
         return new Builder();
     }
 
-    public static Builder builder(ListChartColumn defaults) {
+    public static Builder builder(ViewColumn defaults) {
         return new Builder(defaults);
     }
 
@@ -43,7 +43,7 @@ public final class ListChartColumn {
     	      // Empty
         }
 
-        public Builder(ListChartColumn defaults) {
+        public Builder(ViewColumn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
@@ -51,8 +51,8 @@ public final class ListChartColumn {
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public ListChartColumn build() {
-            return new ListChartColumn(name);
+        }        public ViewColumn build() {
+            return new ViewColumn(name);
         }
     }
 }

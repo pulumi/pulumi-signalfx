@@ -2297,11 +2297,11 @@
                 "name"
             ]
         },
-        "signalfx:logs/ListChartColumn:ListChartColumn": {
+        "signalfx:logs/ViewColumn:ViewColumn": {
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Name of the chart.\n",
+                    "description": "Name of the log view.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2314,7 +2314,7 @@
                 "name"
             ]
         },
-        "signalfx:logs/ListChartSortOption:ListChartSortOption": {
+        "signalfx:logs/ViewSortOption:ViewSortOption": {
             "properties": {
                 "descending": {
                     "type": "boolean",
@@ -6184,23 +6184,23 @@
                 "type": "object"
             }
         },
-        "signalfx:logs/listChart:ListChart": {
-            "description": "This chart type displays current data values in a list format.\n\nThe name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst mylistchart0 = new signalfx.ListChart(\"mylistchart0\", {\n    colorBy: \"Metric\",\n    description: \"Very cool List Chart\",\n    disableSampling: true,\n    hideMissingValues: true,\n    legendOptionsFields: [\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: true,\n            property: \"cluster_name\",\n        },\n        {\n            enabled: true,\n            property: \"role\",\n        },\n        {\n            enabled: false,\n            property: \"collector\",\n        },\n        {\n            enabled: false,\n            property: \"host\",\n        },\n    ],\n    maxDelay: 2,\n    maxPrecision: 2,\n    programText: `myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n`,\n    refreshInterval: 1,\n    sortBy: \"-value\",\n    timezone: \"Europe/Paris\",\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmylistchart0 = signalfx.ListChart(\"mylistchart0\",\n    color_by=\"Metric\",\n    description=\"Very cool List Chart\",\n    disable_sampling=True,\n    hide_missing_values=True,\n    legend_options_fields=[\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"cluster_name\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=True,\n            property=\"role\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"collector\",\n        ),\n        signalfx.ListChartLegendOptionsFieldArgs(\n            enabled=False,\n            property=\"host\",\n        ),\n    ],\n    max_delay=2,\n    max_precision=2,\n    program_text=\"\"\"myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n\"\"\",\n    refresh_interval=1,\n    sort_by=\"-value\",\n    timezone=\"Europe/Paris\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mylistchart0 = new SignalFx.ListChart(\"mylistchart0\", new()\n    {\n        ColorBy = \"Metric\",\n        Description = \"Very cool List Chart\",\n        DisableSampling = true,\n        HideMissingValues = true,\n        LegendOptionsFields = new[]\n        {\n            new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n            {\n                Enabled = false,\n                Property = \"collector\",\n            },\n            new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n            {\n                Enabled = true,\n                Property = \"cluster_name\",\n            },\n            new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n            {\n                Enabled = true,\n                Property = \"role\",\n            },\n            new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n            {\n                Enabled = false,\n                Property = \"collector\",\n            },\n            new SignalFx.Inputs.ListChartLegendOptionsFieldArgs\n            {\n                Enabled = false,\n                Property = \"host\",\n            },\n        },\n        MaxDelay = 2,\n        MaxPrecision = 2,\n        ProgramText = @\"myfilters = filter(\"\"cluster_name\"\", \"\"prod\"\") and filter(\"\"role\"\", \"\"search\"\")\ndata(\"\"cpu.total.idle\"\", filter=myfilters).publish()\n\n\",\n        RefreshInterval = 1,\n        SortBy = \"-value\",\n        Timezone = \"Europe/Paris\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := signalfx.NewListChart(ctx, \"mylistchart0\", \u0026signalfx.ListChartArgs{\n\t\t\tColorBy:           pulumi.String(\"Metric\"),\n\t\t\tDescription:       pulumi.String(\"Very cool List Chart\"),\n\t\t\tDisableSampling:   pulumi.Bool(true),\n\t\t\tHideMissingValues: pulumi.Bool(true),\n\t\t\tLegendOptionsFields: ListChartLegendOptionsFieldArray{\n\t\t\t\t\u0026ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"cluster_name\"),\n\t\t\t\t},\n\t\t\t\t\u0026ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\tProperty: pulumi.String(\"role\"),\n\t\t\t\t},\n\t\t\t\t\u0026ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"collector\"),\n\t\t\t\t},\n\t\t\t\t\u0026ListChartLegendOptionsFieldArgs{\n\t\t\t\t\tEnabled:  pulumi.Bool(false),\n\t\t\t\t\tProperty: pulumi.String(\"host\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tMaxDelay:        pulumi.Int(2),\n\t\t\tMaxPrecision:    pulumi.Int(2),\n\t\t\tProgramText:     pulumi.String(fmt.Sprintf(\"myfilters = filter(\\\"cluster_name\\\", \\\"prod\\\") and filter(\\\"role\\\", \\\"search\\\")\\ndata(\\\"cpu.total.idle\\\", filter=myfilters).publish()\\n\\n\")),\n\t\t\tRefreshInterval: pulumi.Int(1),\n\t\t\tSortBy:          pulumi.String(\"-value\"),\n\t\t\tTimezone:        pulumi.String(\"Europe/Paris\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.ListChart;\nimport com.pulumi.signalfx.ListChartArgs;\nimport com.pulumi.signalfx.inputs.ListChartLegendOptionsFieldArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mylistchart0 = new ListChart(\"mylistchart0\", ListChartArgs.builder()        \n            .colorBy(\"Metric\")\n            .description(\"Very cool List Chart\")\n            .disableSampling(true)\n            .hideMissingValues(true)\n            .legendOptionsFields(            \n                ListChartLegendOptionsFieldArgs.builder()\n                    .enabled(false)\n                    .property(\"collector\")\n                    .build(),\n                ListChartLegendOptionsFieldArgs.builder()\n                    .enabled(true)\n                    .property(\"cluster_name\")\n                    .build(),\n                ListChartLegendOptionsFieldArgs.builder()\n                    .enabled(true)\n                    .property(\"role\")\n                    .build(),\n                ListChartLegendOptionsFieldArgs.builder()\n                    .enabled(false)\n                    .property(\"collector\")\n                    .build(),\n                ListChartLegendOptionsFieldArgs.builder()\n                    .enabled(false)\n                    .property(\"host\")\n                    .build())\n            .maxDelay(2)\n            .maxPrecision(2)\n            .programText(\"\"\"\nmyfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n            \"\"\")\n            .refreshInterval(1)\n            .sortBy(\"-value\")\n            .timezone(\"Europe/Paris\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mylistchart0:\n    type: signalfx:ListChart\n    properties:\n      colorBy: Metric\n      description: Very cool List Chart\n      disableSampling: true\n      hideMissingValues: true\n      legendOptionsFields:\n        - enabled: false\n          property: collector\n        - enabled: true\n          property: cluster_name\n        - enabled: true\n          property: role\n        - enabled: false\n          property: collector\n        - enabled: false\n          property: host\n      maxDelay: 2\n      maxPrecision: 2\n      programText: |+\n        myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\n        data(\"cpu.total.idle\", filter=myfilters).publish()\n\n      refreshInterval: 1\n      sortBy: -value\n      timezone: Europe/Paris\n```\n{{% /example %}}\n{{% /examples %}}",
+        "signalfx:logs/view:View": {
+            "description": "You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myLogView = new signalfx.logs.View(\"my_log_view\", {\n    columns: [\n        {\n            name: \"severity\",\n        },\n        {\n            name: \"time\",\n        },\n        {\n            name: \"amount.currency_code\",\n        },\n        {\n            name: \"amount.nanos\",\n        },\n        {\n            name: \"amount.units\",\n        },\n        {\n            name: \"message\",\n        },\n    ],\n    description: \"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\",\n    programText: \"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n\",\n    sortOptions: [{\n        descending: false,\n        field: \"severity\",\n    }],\n    timeRange: 900,\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmy_log_view = signalfx.logs.View(\"myLogView\",\n    columns=[\n        signalfx.logs.ViewColumnArgs(\n            name=\"severity\",\n        ),\n        signalfx.logs.ViewColumnArgs(\n            name=\"time\",\n        ),\n        signalfx.logs.ViewColumnArgs(\n            name=\"amount.currency_code\",\n        ),\n        signalfx.logs.ViewColumnArgs(\n            name=\"amount.nanos\",\n        ),\n        signalfx.logs.ViewColumnArgs(\n            name=\"amount.units\",\n        ),\n        signalfx.logs.ViewColumnArgs(\n            name=\"message\",\n        ),\n    ],\n    description=\"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\",\n    program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n\"\"\",\n    sort_options=[signalfx.logs.ViewSortOptionArgs(\n        descending=False,\n        field=\"severity\",\n    )],\n    time_range=900)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myLogView = new SignalFx.Logs.View(\"myLogView\", new()\n    {\n        Columns = new[]\n        {\n            new SignalFx.Logs.Inputs.ViewColumnArgs\n            {\n                Name = \"severity\",\n            },\n            new SignalFx.Logs.Inputs.ViewColumnArgs\n            {\n                Name = \"time\",\n            },\n            new SignalFx.Logs.Inputs.ViewColumnArgs\n            {\n                Name = \"amount.currency_code\",\n            },\n            new SignalFx.Logs.Inputs.ViewColumnArgs\n            {\n                Name = \"amount.nanos\",\n            },\n            new SignalFx.Logs.Inputs.ViewColumnArgs\n            {\n                Name = \"amount.units\",\n            },\n            new SignalFx.Logs.Inputs.ViewColumnArgs\n            {\n                Name = \"message\",\n            },\n        },\n        Description = \"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\",\n        ProgramText = @\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n\",\n        SortOptions = new[]\n        {\n            new SignalFx.Logs.Inputs.ViewSortOptionArgs\n            {\n                Descending = false,\n                Field = \"severity\",\n            },\n        },\n        TimeRange = 900,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/logs\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := logs.NewView(ctx, \"myLogView\", \u0026logs.ViewArgs{\n\t\t\tColumns: logs.ViewColumnArray{\n\t\t\t\t\u0026logs.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"severity\"),\n\t\t\t\t},\n\t\t\t\t\u0026logs.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"time\"),\n\t\t\t\t},\n\t\t\t\t\u0026logs.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"amount.currency_code\"),\n\t\t\t\t},\n\t\t\t\t\u0026logs.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"amount.nanos\"),\n\t\t\t\t},\n\t\t\t\t\u0026logs.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"amount.units\"),\n\t\t\t\t},\n\t\t\t\t\u0026logs.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"message\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\"),\n\t\t\tProgramText: pulumi.String(fmt.Sprintf(\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n\\n\")),\n\t\t\tSortOptions: logs.ViewSortOptionArray{\n\t\t\t\t\u0026logs.ViewSortOptionArgs{\n\t\t\t\t\tDescending: pulumi.Bool(false),\n\t\t\t\t\tField:      pulumi.String(\"severity\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTimeRange: pulumi.Int(900),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.logs.View;\nimport com.pulumi.signalfx.logs.ViewArgs;\nimport com.pulumi.signalfx.logs.inputs.ViewColumnArgs;\nimport com.pulumi.signalfx.logs.inputs.ViewSortOptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myLogView = new View(\"myLogView\", ViewArgs.builder()        \n            .columns(            \n                ViewColumnArgs.builder()\n                    .name(\"severity\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"time\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"amount.currency_code\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"amount.nanos\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"amount.units\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"message\")\n                    .build())\n            .description(\"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\")\n            .programText(\"\"\"\nlogs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n            \"\"\")\n            .sortOptions(ViewSortOptionArgs.builder()\n                .descending(false)\n                .field(\"severity\")\n                .build())\n            .timeRange(900)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myLogView:\n    type: signalfx:logs:View\n    properties:\n      columns:\n        - name: severity\n        - name: time\n        - name: amount.currency_code\n        - name: amount.nanos\n        - name: amount.units\n        - name: message\n      description: Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\n      programText: |+\n        logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n      sortOptions:\n        - descending: false\n          field: severity\n      timeRange: 900\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "columns": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/signalfx:logs/ListChartColumn:ListChartColumn"
+                        "$ref": "#/types/signalfx:logs/ViewColumn:ViewColumn"
                     },
-                    "description": "Column configuration\n"
+                    "description": "The column headers to show on the log view.\n"
                 },
                 "defaultConnection": {
                     "type": "string",
-                    "description": "default connection that the dashboard uses\n"
+                    "description": "The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description of the chart.\n"
+                    "description": "Description of the log view.\n"
                 },
                 "endTime": {
                     "type": "integer",
@@ -6208,18 +6208,18 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the chart.\n"
+                    "description": "Name of the log view.\n"
                 },
                 "programText": {
                     "type": "string",
-                    "description": "Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).\n"
+                    "description": "Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.\n"
                 },
                 "sortOptions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/signalfx:logs/ListChartSortOption:ListChartSortOption"
+                        "$ref": "#/types/signalfx:logs/ViewSortOption:ViewSortOption"
                     },
-                    "description": "Sorting options configuration\n"
+                    "description": "The sorting options configuration to specify if the log view table needs to be sorted in a particular field.\n"
                 },
                 "startTime": {
                     "type": "integer",
@@ -6227,11 +6227,11 @@
                 },
                 "timeRange": {
                     "type": "integer",
-                    "description": "How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.\n"
+                    "description": "From when to display data. SignalFx time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
                 },
                 "url": {
                     "type": "string",
-                    "description": "The URL of the chart.\n"
+                    "description": "The URL of the log view.\n"
                 }
             },
             "required": [
@@ -6243,17 +6243,17 @@
                 "columns": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/signalfx:logs/ListChartColumn:ListChartColumn"
+                        "$ref": "#/types/signalfx:logs/ViewColumn:ViewColumn"
                     },
-                    "description": "Column configuration\n"
+                    "description": "The column headers to show on the log view.\n"
                 },
                 "defaultConnection": {
                     "type": "string",
-                    "description": "default connection that the dashboard uses\n"
+                    "description": "The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description of the chart.\n"
+                    "description": "Description of the log view.\n"
                 },
                 "endTime": {
                     "type": "integer",
@@ -6261,18 +6261,18 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the chart.\n"
+                    "description": "Name of the log view.\n"
                 },
                 "programText": {
                     "type": "string",
-                    "description": "Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).\n"
+                    "description": "Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.\n"
                 },
                 "sortOptions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/signalfx:logs/ListChartSortOption:ListChartSortOption"
+                        "$ref": "#/types/signalfx:logs/ViewSortOption:ViewSortOption"
                     },
-                    "description": "Sorting options configuration\n"
+                    "description": "The sorting options configuration to specify if the log view table needs to be sorted in a particular field.\n"
                 },
                 "startTime": {
                     "type": "integer",
@@ -6280,29 +6280,29 @@
                 },
                 "timeRange": {
                     "type": "integer",
-                    "description": "How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.\n"
+                    "description": "From when to display data. SignalFx time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
                 }
             },
             "requiredInputs": [
                 "programText"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering ListChart resources.\n",
+                "description": "Input properties used for looking up and filtering View resources.\n",
                 "properties": {
                     "columns": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/signalfx:logs/ListChartColumn:ListChartColumn"
+                            "$ref": "#/types/signalfx:logs/ViewColumn:ViewColumn"
                         },
-                        "description": "Column configuration\n"
+                        "description": "The column headers to show on the log view.\n"
                     },
                     "defaultConnection": {
                         "type": "string",
-                        "description": "default connection that the dashboard uses\n"
+                        "description": "The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "Description of the chart.\n"
+                        "description": "Description of the log view.\n"
                     },
                     "endTime": {
                         "type": "integer",
@@ -6310,18 +6310,18 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the chart.\n"
+                        "description": "Name of the log view.\n"
                     },
                     "programText": {
                         "type": "string",
-                        "description": "Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).\n"
+                        "description": "Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.\n"
                     },
                     "sortOptions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/signalfx:logs/ListChartSortOption:ListChartSortOption"
+                            "$ref": "#/types/signalfx:logs/ViewSortOption:ViewSortOption"
                         },
-                        "description": "Sorting options configuration\n"
+                        "description": "The sorting options configuration to specify if the log view table needs to be sorted in a particular field.\n"
                     },
                     "startTime": {
                         "type": "integer",
@@ -6329,11 +6329,11 @@
                     },
                     "timeRange": {
                         "type": "integer",
-                        "description": "How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.\n"
+                        "description": "From when to display data. SignalFx time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
                     },
                     "url": {
                         "type": "string",
-                        "description": "The URL of the chart.\n"
+                        "description": "The URL of the log view.\n"
                     }
                 },
                 "type": "object"

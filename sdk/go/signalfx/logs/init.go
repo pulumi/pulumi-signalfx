@@ -21,8 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "signalfx:logs/listChart:ListChart":
-		r = &ListChart{}
+	case "signalfx:logs/view:View":
+		r = &View{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +38,7 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"signalfx",
-		"logs/listChart",
+		"logs/view",
 		&module{version},
 	)
 }

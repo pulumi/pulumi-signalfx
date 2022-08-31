@@ -11,19 +11,17 @@ namespace Pulumi.SignalFx.Logs.Outputs
 {
 
     [OutputType]
-    public sealed class ListChartSortOption
+    public sealed class ViewColumn
     {
-        public readonly bool Descending;
-        public readonly string Field;
+        /// <summary>
+        /// Name of the log view.
+        /// </summary>
+        public readonly string Name;
 
         [OutputConstructor]
-        private ListChartSortOption(
-            bool descending,
-
-            string field)
+        private ViewColumn(string name)
         {
-            Descending = descending;
-            Field = field;
+            Name = name;
         }
     }
 }

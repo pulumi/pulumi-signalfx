@@ -893,14 +893,14 @@ export namespace gcp {
 }
 
 export namespace logs {
-    export interface ListChartColumn {
+    export interface ViewColumn {
         /**
-         * Name of the chart.
+         * Name of the log view.
          */
         name: pulumi.Input<string>;
     }
 
-    export interface ListChartSortOption {
+    export interface ViewSortOption {
         descending: pulumi.Input<boolean>;
         field: pulumi.Input<string>;
     }

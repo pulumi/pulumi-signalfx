@@ -11,31 +11,31 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ListChartArgs', 'ListChart']
+__all__ = ['ViewArgs', 'View']
 
 @pulumi.input_type
-class ListChartArgs:
+class ViewArgs:
     def __init__(__self__, *,
                  program_text: pulumi.Input[str],
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]] = None,
                  default_connection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]]] = None,
+                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None):
         """
-        The set of arguments for constructing a ListChart resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart.
+        The set of arguments for constructing a View resource.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]] sort_options: Sorting options configuration
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         pulumi.set(__self__, "program_text", program_text)
         if columns is not None:
@@ -59,7 +59,7 @@ class ListChartArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         """
         return pulumi.get(self, "program_text")
 
@@ -69,21 +69,21 @@ class ListChartArgs:
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]]]:
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]]:
         """
-        Column configuration
+        The column headers to show on the log view.
         """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]]]):
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @property
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> Optional[pulumi.Input[str]]:
         """
-        default connection that the dashboard uses
+        The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         """
         return pulumi.get(self, "default_connection")
 
@@ -95,7 +95,7 @@ class ListChartArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart.
+        Description of the log view.
         """
         return pulumi.get(self, "description")
 
@@ -119,7 +119,7 @@ class ListChartArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart.
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -129,14 +129,14 @@ class ListChartArgs:
 
     @property
     @pulumi.getter(name="sortOptions")
-    def sort_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]]]:
+    def sort_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]]:
         """
-        Sorting options configuration
+        The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         """
         return pulumi.get(self, "sort_options")
 
     @sort_options.setter
-    def sort_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]]]):
+    def sort_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]]):
         pulumi.set(self, "sort_options", value)
 
     @property
@@ -155,7 +155,7 @@ class ListChartArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
@@ -165,30 +165,30 @@ class ListChartArgs:
 
 
 @pulumi.input_type
-class _ListChartState:
+class _ViewState:
     def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]] = None,
                  default_connection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]]] = None,
+                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering ListChart resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart.
+        Input properties used for looking up and filtering View resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]] sort_options: Sorting options configuration
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] url: The URL of the log view.
         """
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
@@ -213,21 +213,21 @@ class _ListChartState:
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]]]:
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]]:
         """
-        Column configuration
+        The column headers to show on the log view.
         """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColumnArgs']]]]):
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]]):
         pulumi.set(self, "columns", value)
 
     @property
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> Optional[pulumi.Input[str]]:
         """
-        default connection that the dashboard uses
+        The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         """
         return pulumi.get(self, "default_connection")
 
@@ -239,7 +239,7 @@ class _ListChartState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart.
+        Description of the log view.
         """
         return pulumi.get(self, "description")
 
@@ -263,7 +263,7 @@ class _ListChartState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart.
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -275,7 +275,7 @@ class _ListChartState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         """
         return pulumi.get(self, "program_text")
 
@@ -285,14 +285,14 @@ class _ListChartState:
 
     @property
     @pulumi.getter(name="sortOptions")
-    def sort_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]]]:
+    def sort_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]]:
         """
-        Sorting options configuration
+        The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         """
         return pulumi.get(self, "sort_options")
 
     @sort_options.setter
-    def sort_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartSortOptionArgs']]]]):
+    def sort_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]]):
         pulumi.set(self, "sort_options", value)
 
     @property
@@ -311,7 +311,7 @@ class _ListChartState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
@@ -323,7 +323,7 @@ class _ListChartState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the chart.
+        The URL of the log view.
         """
         return pulumi.get(self, "url")
 
@@ -332,25 +332,23 @@ class _ListChartState:
         pulumi.set(self, "url", value)
 
 
-class ListChart(pulumi.CustomResource):
+class View(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColumnArgs']]]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]]] = None,
                  default_connection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartSortOptionArgs']]]]] = None,
+                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        This chart type displays current data values in a list format.
-
-        The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+        You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
 
         ## Example Usage
 
@@ -358,66 +356,58 @@ class ListChart(pulumi.CustomResource):
         import pulumi
         import pulumi_signalfx as signalfx
 
-        mylistchart0 = signalfx.ListChart("mylistchart0",
-            color_by="Metric",
-            description="Very cool List Chart",
-            disable_sampling=True,
-            hide_missing_values=True,
-            legend_options_fields=[
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
+        my_log_view = signalfx.logs.View("myLogView",
+            columns=[
+                signalfx.logs.ViewColumnArgs(
+                    name="severity",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="cluster_name",
+                signalfx.logs.ViewColumnArgs(
+                    name="time",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="role",
+                signalfx.logs.ViewColumnArgs(
+                    name="amount.currency_code",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
+                signalfx.logs.ViewColumnArgs(
+                    name="amount.nanos",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="host",
+                signalfx.logs.ViewColumnArgs(
+                    name="amount.units",
+                ),
+                signalfx.logs.ViewColumnArgs(
+                    name="message",
                 ),
             ],
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
 
         \"\"\",
-            refresh_interval=1,
-            sort_by="-value",
-            timezone="Europe/Paris")
+            sort_options=[signalfx.logs.ViewSortOptionArgs(
+                descending=False,
+                field="severity",
+            )],
+            time_range=900)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColumnArgs']]]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartSortOptionArgs']]]] sort_options: Sorting options configuration
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ListChartArgs,
+                 args: ViewArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This chart type displays current data values in a list format.
-
-        The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+        You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
 
         ## Example Usage
 
@@ -425,51 +415,45 @@ class ListChart(pulumi.CustomResource):
         import pulumi
         import pulumi_signalfx as signalfx
 
-        mylistchart0 = signalfx.ListChart("mylistchart0",
-            color_by="Metric",
-            description="Very cool List Chart",
-            disable_sampling=True,
-            hide_missing_values=True,
-            legend_options_fields=[
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
+        my_log_view = signalfx.logs.View("myLogView",
+            columns=[
+                signalfx.logs.ViewColumnArgs(
+                    name="severity",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="cluster_name",
+                signalfx.logs.ViewColumnArgs(
+                    name="time",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="role",
+                signalfx.logs.ViewColumnArgs(
+                    name="amount.currency_code",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
+                signalfx.logs.ViewColumnArgs(
+                    name="amount.nanos",
                 ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="host",
+                signalfx.logs.ViewColumnArgs(
+                    name="amount.units",
+                ),
+                signalfx.logs.ViewColumnArgs(
+                    name="message",
                 ),
             ],
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
 
         \"\"\",
-            refresh_interval=1,
-            sort_by="-value",
-            timezone="Europe/Paris")
+            sort_options=[signalfx.logs.ViewSortOptionArgs(
+                descending=False,
+                field="severity",
+            )],
+            time_range=900)
         ```
 
         :param str resource_name: The name of the resource.
-        :param ListChartArgs args: The arguments to use to populate this resource's properties.
+        :param ViewArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ListChartArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ViewArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -478,13 +462,13 @@ class ListChart(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColumnArgs']]]]] = None,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]]] = None,
                  default_connection: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
-                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartSortOptionArgs']]]]] = None,
+                 sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -494,7 +478,7 @@ class ListChart(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ListChartArgs.__new__(ListChartArgs)
+            __props__ = ViewArgs.__new__(ViewArgs)
 
             __props__.__dict__["columns"] = columns
             __props__.__dict__["default_connection"] = default_connection
@@ -508,8 +492,8 @@ class ListChart(pulumi.CustomResource):
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["url"] = None
-        super(ListChart, __self__).__init__(
-            'signalfx:logs/listChart:ListChart',
+        super(View, __self__).__init__(
+            'signalfx:logs/view:View',
             resource_name,
             __props__,
             opts)
@@ -518,37 +502,37 @@ class ListChart(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColumnArgs']]]]] = None,
+            columns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]]] = None,
             default_connection: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
-            sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartSortOptionArgs']]]]] = None,
+            sort_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]]] = None,
             start_time: Optional[pulumi.Input[int]] = None,
             time_range: Optional[pulumi.Input[int]] = None,
-            url: Optional[pulumi.Input[str]] = None) -> 'ListChart':
+            url: Optional[pulumi.Input[str]] = None) -> 'View':
         """
-        Get an existing ListChart resource's state with the given name, id, and optional extra
+        Get an existing View resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartColumnArgs']]]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ListChartSortOptionArgs']]]] sort_options: Sorting options configuration
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] url: The URL of the log view.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _ListChartState.__new__(_ListChartState)
+        __props__ = _ViewState.__new__(_ViewState)
 
         __props__.__dict__["columns"] = columns
         __props__.__dict__["default_connection"] = default_connection
@@ -560,13 +544,13 @@ class ListChart(pulumi.CustomResource):
         __props__.__dict__["start_time"] = start_time
         __props__.__dict__["time_range"] = time_range
         __props__.__dict__["url"] = url
-        return ListChart(resource_name, opts=opts, __props__=__props__)
+        return View(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def columns(self) -> pulumi.Output[Optional[Sequence['outputs.ListChartColumn']]]:
+    def columns(self) -> pulumi.Output[Optional[Sequence['outputs.ViewColumn']]]:
         """
-        Column configuration
+        The column headers to show on the log view.
         """
         return pulumi.get(self, "columns")
 
@@ -574,7 +558,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> pulumi.Output[Optional[str]]:
         """
-        default connection that the dashboard uses
+        The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         """
         return pulumi.get(self, "default_connection")
 
@@ -582,7 +566,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the chart.
+        Description of the log view.
         """
         return pulumi.get(self, "description")
 
@@ -598,7 +582,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the chart.
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -606,15 +590,15 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         """
         return pulumi.get(self, "program_text")
 
     @property
     @pulumi.getter(name="sortOptions")
-    def sort_options(self) -> pulumi.Output[Optional[Sequence['outputs.ListChartSortOption']]]:
+    def sort_options(self) -> pulumi.Output[Optional[Sequence['outputs.ViewSortOption']]]:
         """
-        Sorting options configuration
+        The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         """
         return pulumi.get(self, "sort_options")
 
@@ -630,7 +614,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output[Optional[int]]:
         """
-        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
@@ -638,7 +622,7 @@ class ListChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL of the chart.
+        The URL of the log view.
         """
         return pulumi.get(self, "url")
 
