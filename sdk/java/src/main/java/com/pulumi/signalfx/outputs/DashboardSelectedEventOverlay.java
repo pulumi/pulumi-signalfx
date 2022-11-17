@@ -17,28 +17,19 @@ public final class DashboardSelectedEventOverlay {
      * @return Search term used to choose the events shown in the overlay.
      * 
      */
-    private final String signal;
+    private String signal;
     /**
      * @return Each element specifies a filter to use against the signal specified in the `signal`.
      * 
      */
-    private final @Nullable List<DashboardSelectedEventOverlaySource> sources;
+    private @Nullable List<DashboardSelectedEventOverlaySource> sources;
     /**
      * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private DashboardSelectedEventOverlay(
-        @CustomType.Parameter("signal") String signal,
-        @CustomType.Parameter("sources") @Nullable List<DashboardSelectedEventOverlaySource> sources,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.signal = signal;
-        this.sources = sources;
-        this.type = type;
-    }
-
+    private DashboardSelectedEventOverlay() {}
     /**
      * @return Search term used to choose the events shown in the overlay.
      * 
@@ -68,16 +59,12 @@ public final class DashboardSelectedEventOverlay {
     public static Builder builder(DashboardSelectedEventOverlay defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String signal;
         private @Nullable List<DashboardSelectedEventOverlaySource> sources;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardSelectedEventOverlay defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.signal = defaults.signal;
@@ -85,10 +72,12 @@ public final class DashboardSelectedEventOverlay {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder signal(String signal) {
             this.signal = Objects.requireNonNull(signal);
             return this;
         }
+        @CustomType.Setter
         public Builder sources(@Nullable List<DashboardSelectedEventOverlaySource> sources) {
             this.sources = sources;
             return this;
@@ -96,11 +85,17 @@ public final class DashboardSelectedEventOverlay {
         public Builder sources(DashboardSelectedEventOverlaySource... sources) {
             return sources(List.of(sources));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public DashboardSelectedEventOverlay build() {
-            return new DashboardSelectedEventOverlay(signal, sources, type);
+        }
+        public DashboardSelectedEventOverlay build() {
+            final var o = new DashboardSelectedEventOverlay();
+            o.signal = signal;
+            o.sources = sources;
+            o.type = type;
+            return o;
         }
     }
 }

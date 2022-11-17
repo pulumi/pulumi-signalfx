@@ -15,35 +15,24 @@ public final class IntegrationNamespaceSyncRule {
      * @return Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
-    private final @Nullable String defaultAction;
+    private @Nullable String defaultAction;
     /**
      * @return Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
-    private final @Nullable String filterAction;
+    private @Nullable String filterAction;
     /**
      * @return Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
      * 
      */
-    private final @Nullable String filterSource;
+    private @Nullable String filterSource;
     /**
      * @return An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
      * 
      */
-    private final String namespace;
+    private String namespace;
 
-    @CustomType.Constructor
-    private IntegrationNamespaceSyncRule(
-        @CustomType.Parameter("defaultAction") @Nullable String defaultAction,
-        @CustomType.Parameter("filterAction") @Nullable String filterAction,
-        @CustomType.Parameter("filterSource") @Nullable String filterSource,
-        @CustomType.Parameter("namespace") String namespace) {
-        this.defaultAction = defaultAction;
-        this.filterAction = filterAction;
-        this.filterSource = filterSource;
-        this.namespace = namespace;
-    }
-
+    private IntegrationNamespaceSyncRule() {}
     /**
      * @return Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
@@ -80,17 +69,13 @@ public final class IntegrationNamespaceSyncRule {
     public static Builder builder(IntegrationNamespaceSyncRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String defaultAction;
         private @Nullable String filterAction;
         private @Nullable String filterSource;
         private String namespace;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IntegrationNamespaceSyncRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultAction = defaults.defaultAction;
@@ -99,23 +84,33 @@ public final class IntegrationNamespaceSyncRule {
     	      this.namespace = defaults.namespace;
         }
 
+        @CustomType.Setter
         public Builder defaultAction(@Nullable String defaultAction) {
             this.defaultAction = defaultAction;
             return this;
         }
+        @CustomType.Setter
         public Builder filterAction(@Nullable String filterAction) {
             this.filterAction = filterAction;
             return this;
         }
+        @CustomType.Setter
         public Builder filterSource(@Nullable String filterSource) {
             this.filterSource = filterSource;
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
-        }        public IntegrationNamespaceSyncRule build() {
-            return new IntegrationNamespaceSyncRule(defaultAction, filterAction, filterSource, namespace);
+        }
+        public IntegrationNamespaceSyncRule build() {
+            final var o = new IntegrationNamespaceSyncRule();
+            o.defaultAction = defaultAction;
+            o.filterAction = filterAction;
+            o.filterSource = filterSource;
+            o.namespace = namespace;
+            return o;
         }
     }
 }

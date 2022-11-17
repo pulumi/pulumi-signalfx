@@ -16,42 +16,29 @@ public final class DataLinkTargetExternalUrl {
      * @return The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
      * 
      */
-    private final @Nullable String minimumTimeWindow;
+    private @Nullable String minimumTimeWindow;
     /**
      * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
      * 
      */
-    private final @Nullable Map<String,String> propertyKeyMapping;
+    private @Nullable Map<String,String> propertyKeyMapping;
     /**
      * @return [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
-    private final @Nullable String timeFormat;
+    private @Nullable String timeFormat;
     /**
      * @return URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
      * 
      */
-    private final String url;
+    private String url;
 
-    @CustomType.Constructor
-    private DataLinkTargetExternalUrl(
-        @CustomType.Parameter("minimumTimeWindow") @Nullable String minimumTimeWindow,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("propertyKeyMapping") @Nullable Map<String,String> propertyKeyMapping,
-        @CustomType.Parameter("timeFormat") @Nullable String timeFormat,
-        @CustomType.Parameter("url") String url) {
-        this.minimumTimeWindow = minimumTimeWindow;
-        this.name = name;
-        this.propertyKeyMapping = propertyKeyMapping;
-        this.timeFormat = timeFormat;
-        this.url = url;
-    }
-
+    private DataLinkTargetExternalUrl() {}
     /**
      * @return The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
      * 
@@ -95,18 +82,14 @@ public final class DataLinkTargetExternalUrl {
     public static Builder builder(DataLinkTargetExternalUrl defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String minimumTimeWindow;
         private String name;
         private @Nullable Map<String,String> propertyKeyMapping;
         private @Nullable String timeFormat;
         private String url;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataLinkTargetExternalUrl defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.minimumTimeWindow = defaults.minimumTimeWindow;
@@ -116,27 +99,39 @@ public final class DataLinkTargetExternalUrl {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
         public Builder minimumTimeWindow(@Nullable String minimumTimeWindow) {
             this.minimumTimeWindow = minimumTimeWindow;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder propertyKeyMapping(@Nullable Map<String,String> propertyKeyMapping) {
             this.propertyKeyMapping = propertyKeyMapping;
             return this;
         }
+        @CustomType.Setter
         public Builder timeFormat(@Nullable String timeFormat) {
             this.timeFormat = timeFormat;
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
-        }        public DataLinkTargetExternalUrl build() {
-            return new DataLinkTargetExternalUrl(minimumTimeWindow, name, propertyKeyMapping, timeFormat, url);
+        }
+        public DataLinkTargetExternalUrl build() {
+            final var o = new DataLinkTargetExternalUrl();
+            o.minimumTimeWindow = minimumTimeWindow;
+            o.name = name;
+            o.propertyKeyMapping = propertyKeyMapping;
+            o.timeFormat = timeFormat;
+            o.url = url;
+            return o;
         }
     }
 }

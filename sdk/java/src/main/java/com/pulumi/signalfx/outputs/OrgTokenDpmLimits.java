@@ -15,21 +15,14 @@ public final class OrgTokenDpmLimits {
      * @return The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
      * 
      */
-    private final Integer dpmLimit;
+    private Integer dpmLimit;
     /**
      * @return DPM level at which SignalFx sends the notification for this token. If you don&#39;t specify a notification, SignalFx sends the generic notification.
      * 
      */
-    private final @Nullable Integer dpmNotificationThreshold;
+    private @Nullable Integer dpmNotificationThreshold;
 
-    @CustomType.Constructor
-    private OrgTokenDpmLimits(
-        @CustomType.Parameter("dpmLimit") Integer dpmLimit,
-        @CustomType.Parameter("dpmNotificationThreshold") @Nullable Integer dpmNotificationThreshold) {
-        this.dpmLimit = dpmLimit;
-        this.dpmNotificationThreshold = dpmNotificationThreshold;
-    }
-
+    private OrgTokenDpmLimits() {}
     /**
      * @return The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
      * 
@@ -52,30 +45,32 @@ public final class OrgTokenDpmLimits {
     public static Builder builder(OrgTokenDpmLimits defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer dpmLimit;
         private @Nullable Integer dpmNotificationThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrgTokenDpmLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dpmLimit = defaults.dpmLimit;
     	      this.dpmNotificationThreshold = defaults.dpmNotificationThreshold;
         }
 
+        @CustomType.Setter
         public Builder dpmLimit(Integer dpmLimit) {
             this.dpmLimit = Objects.requireNonNull(dpmLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder dpmNotificationThreshold(@Nullable Integer dpmNotificationThreshold) {
             this.dpmNotificationThreshold = dpmNotificationThreshold;
             return this;
-        }        public OrgTokenDpmLimits build() {
-            return new OrgTokenDpmLimits(dpmLimit, dpmNotificationThreshold);
+        }
+        public OrgTokenDpmLimits build() {
+            final var o = new OrgTokenDpmLimits();
+            o.dpmLimit = dpmLimit;
+            o.dpmNotificationThreshold = dpmNotificationThreshold;
+            return o;
         }
     }
 }

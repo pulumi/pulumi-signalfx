@@ -15,28 +15,19 @@ public final class DashboardGroupDashboardVariableOverride {
      * @return A metric time series dimension or property name.
      * 
      */
-    private final String property;
+    private String property;
     /**
      * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
     /**
      * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
-    private final @Nullable List<String> valuesSuggesteds;
+    private @Nullable List<String> valuesSuggesteds;
 
-    @CustomType.Constructor
-    private DashboardGroupDashboardVariableOverride(
-        @CustomType.Parameter("property") String property,
-        @CustomType.Parameter("values") @Nullable List<String> values,
-        @CustomType.Parameter("valuesSuggesteds") @Nullable List<String> valuesSuggesteds) {
-        this.property = property;
-        this.values = values;
-        this.valuesSuggesteds = valuesSuggesteds;
-    }
-
+    private DashboardGroupDashboardVariableOverride() {}
     /**
      * @return A metric time series dimension or property name.
      * 
@@ -66,16 +57,12 @@ public final class DashboardGroupDashboardVariableOverride {
     public static Builder builder(DashboardGroupDashboardVariableOverride defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String property;
         private @Nullable List<String> values;
         private @Nullable List<String> valuesSuggesteds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardGroupDashboardVariableOverride defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.property = defaults.property;
@@ -83,10 +70,12 @@ public final class DashboardGroupDashboardVariableOverride {
     	      this.valuesSuggesteds = defaults.valuesSuggesteds;
         }
 
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
@@ -94,14 +83,20 @@ public final class DashboardGroupDashboardVariableOverride {
         public Builder values(String... values) {
             return values(List.of(values));
         }
+        @CustomType.Setter
         public Builder valuesSuggesteds(@Nullable List<String> valuesSuggesteds) {
             this.valuesSuggesteds = valuesSuggesteds;
             return this;
         }
         public Builder valuesSuggesteds(String... valuesSuggesteds) {
             return valuesSuggesteds(List.of(valuesSuggesteds));
-        }        public DashboardGroupDashboardVariableOverride build() {
-            return new DashboardGroupDashboardVariableOverride(property, values, valuesSuggesteds);
+        }
+        public DashboardGroupDashboardVariableOverride build() {
+            final var o = new DashboardGroupDashboardVariableOverride();
+            o.property = property;
+            o.values = values;
+            o.valuesSuggesteds = valuesSuggesteds;
+            return o;
         }
     }
 }

@@ -17,70 +17,49 @@ public final class DetectorRule {
      * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return A detect label which matches a detect label within `program_text`.
      * 
      */
-    private final String detectLabel;
+    private String detectLabel;
     /**
      * @return When true, notifications and events will not be generated for the detect label. `false` by default.
      * 
      */
-    private final @Nullable Boolean disabled;
+    private @Nullable Boolean disabled;
     /**
      * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
      * 
      */
-    private final @Nullable List<String> notifications;
+    private @Nullable List<String> notifications;
     /**
      * @return Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
      * 
      */
-    private final @Nullable String parameterizedBody;
+    private @Nullable String parameterizedBody;
     /**
      * @return Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
      * 
      */
-    private final @Nullable String parameterizedSubject;
+    private @Nullable String parameterizedSubject;
     /**
      * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
-    private final @Nullable String runbookUrl;
+    private @Nullable String runbookUrl;
     /**
      * @return The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
      * 
      */
-    private final String severity;
+    private String severity;
     /**
      * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
-    private final @Nullable String tip;
+    private @Nullable String tip;
 
-    @CustomType.Constructor
-    private DetectorRule(
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("detectLabel") String detectLabel,
-        @CustomType.Parameter("disabled") @Nullable Boolean disabled,
-        @CustomType.Parameter("notifications") @Nullable List<String> notifications,
-        @CustomType.Parameter("parameterizedBody") @Nullable String parameterizedBody,
-        @CustomType.Parameter("parameterizedSubject") @Nullable String parameterizedSubject,
-        @CustomType.Parameter("runbookUrl") @Nullable String runbookUrl,
-        @CustomType.Parameter("severity") String severity,
-        @CustomType.Parameter("tip") @Nullable String tip) {
-        this.description = description;
-        this.detectLabel = detectLabel;
-        this.disabled = disabled;
-        this.notifications = notifications;
-        this.parameterizedBody = parameterizedBody;
-        this.parameterizedSubject = parameterizedSubject;
-        this.runbookUrl = runbookUrl;
-        this.severity = severity;
-        this.tip = tip;
-    }
-
+    private DetectorRule() {}
     /**
      * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      * 
@@ -152,7 +131,7 @@ public final class DetectorRule {
     public static Builder builder(DetectorRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String description;
         private String detectLabel;
@@ -163,11 +142,7 @@ public final class DetectorRule {
         private @Nullable String runbookUrl;
         private String severity;
         private @Nullable String tip;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DetectorRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -181,18 +156,22 @@ public final class DetectorRule {
     	      this.tip = defaults.tip;
         }
 
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder detectLabel(String detectLabel) {
             this.detectLabel = Objects.requireNonNull(detectLabel);
             return this;
         }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
             this.disabled = disabled;
             return this;
         }
+        @CustomType.Setter
         public Builder notifications(@Nullable List<String> notifications) {
             this.notifications = notifications;
             return this;
@@ -200,27 +179,43 @@ public final class DetectorRule {
         public Builder notifications(String... notifications) {
             return notifications(List.of(notifications));
         }
+        @CustomType.Setter
         public Builder parameterizedBody(@Nullable String parameterizedBody) {
             this.parameterizedBody = parameterizedBody;
             return this;
         }
+        @CustomType.Setter
         public Builder parameterizedSubject(@Nullable String parameterizedSubject) {
             this.parameterizedSubject = parameterizedSubject;
             return this;
         }
+        @CustomType.Setter
         public Builder runbookUrl(@Nullable String runbookUrl) {
             this.runbookUrl = runbookUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder severity(String severity) {
             this.severity = Objects.requireNonNull(severity);
             return this;
         }
+        @CustomType.Setter
         public Builder tip(@Nullable String tip) {
             this.tip = tip;
             return this;
-        }        public DetectorRule build() {
-            return new DetectorRule(description, detectLabel, disabled, notifications, parameterizedBody, parameterizedSubject, runbookUrl, severity, tip);
+        }
+        public DetectorRule build() {
+            final var o = new DetectorRule();
+            o.description = description;
+            o.detectLabel = detectLabel;
+            o.disabled = disabled;
+            o.notifications = notifications;
+            o.parameterizedBody = parameterizedBody;
+            o.parameterizedSubject = parameterizedSubject;
+            o.runbookUrl = runbookUrl;
+            o.severity = severity;
+            o.tip = tip;
+            return o;
         }
     }
 }

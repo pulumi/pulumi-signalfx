@@ -16,21 +16,14 @@ public final class TimeChartLegendOptionsField {
      * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
-    private final String property;
+    private String property;
 
-    @CustomType.Constructor
-    private TimeChartLegendOptionsField(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("property") String property) {
-        this.enabled = enabled;
-        this.property = property;
-    }
-
+    private TimeChartLegendOptionsField() {}
     /**
      * @return True or False depending on if you want the property to be shown or hidden.
      * 
@@ -53,30 +46,32 @@ public final class TimeChartLegendOptionsField {
     public static Builder builder(TimeChartLegendOptionsField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private String property;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TimeChartLegendOptionsField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.property = defaults.property;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
-        }        public TimeChartLegendOptionsField build() {
-            return new TimeChartLegendOptionsField(enabled, property);
+        }
+        public TimeChartLegendOptionsField build() {
+            final var o = new TimeChartLegendOptionsField();
+            o.enabled = enabled;
+            o.property = property;
+            return o;
         }
     }
 }

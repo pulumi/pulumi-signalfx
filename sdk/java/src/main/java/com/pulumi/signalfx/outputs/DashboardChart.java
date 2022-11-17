@@ -16,42 +16,29 @@ public final class DashboardChart {
      * @return ID of the chart to display.
      * 
      */
-    private final String chartId;
+    private String chartId;
     /**
      * @return Column number for the layout.
      * 
      */
-    private final @Nullable Integer column;
+    private @Nullable Integer column;
     /**
      * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
      * 
      */
-    private final @Nullable Integer height;
+    private @Nullable Integer height;
     /**
      * @return The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      * 
      */
-    private final @Nullable Integer row;
+    private @Nullable Integer row;
     /**
      * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
-    private final @Nullable Integer width;
+    private @Nullable Integer width;
 
-    @CustomType.Constructor
-    private DashboardChart(
-        @CustomType.Parameter("chartId") String chartId,
-        @CustomType.Parameter("column") @Nullable Integer column,
-        @CustomType.Parameter("height") @Nullable Integer height,
-        @CustomType.Parameter("row") @Nullable Integer row,
-        @CustomType.Parameter("width") @Nullable Integer width) {
-        this.chartId = chartId;
-        this.column = column;
-        this.height = height;
-        this.row = row;
-        this.width = width;
-    }
-
+    private DashboardChart() {}
     /**
      * @return ID of the chart to display.
      * 
@@ -95,18 +82,14 @@ public final class DashboardChart {
     public static Builder builder(DashboardChart defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String chartId;
         private @Nullable Integer column;
         private @Nullable Integer height;
         private @Nullable Integer row;
         private @Nullable Integer width;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardChart defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chartId = defaults.chartId;
@@ -116,27 +99,39 @@ public final class DashboardChart {
     	      this.width = defaults.width;
         }
 
+        @CustomType.Setter
         public Builder chartId(String chartId) {
             this.chartId = Objects.requireNonNull(chartId);
             return this;
         }
+        @CustomType.Setter
         public Builder column(@Nullable Integer column) {
             this.column = column;
             return this;
         }
+        @CustomType.Setter
         public Builder height(@Nullable Integer height) {
             this.height = height;
             return this;
         }
+        @CustomType.Setter
         public Builder row(@Nullable Integer row) {
             this.row = row;
             return this;
         }
+        @CustomType.Setter
         public Builder width(@Nullable Integer width) {
             this.width = width;
             return this;
-        }        public DashboardChart build() {
-            return new DashboardChart(chartId, column, height, row, width);
+        }
+        public DashboardChart build() {
+            final var o = new DashboardChart();
+            o.chartId = chartId;
+            o.column = column;
+            o.height = height;
+            o.row = row;
+            o.width = width;
+            return o;
         }
     }
 }

@@ -15,28 +15,19 @@ public final class DashboardGroupPermission {
      * @return Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
      * 
      */
-    private final @Nullable List<String> actions;
+    private @Nullable List<String> actions;
     /**
      * @return ID of the user, team, or organization for which you&#39;re granting permissions.
      * 
      */
-    private final String principalId;
+    private String principalId;
     /**
      * @return Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
      * 
      */
-    private final String principalType;
+    private String principalType;
 
-    @CustomType.Constructor
-    private DashboardGroupPermission(
-        @CustomType.Parameter("actions") @Nullable List<String> actions,
-        @CustomType.Parameter("principalId") String principalId,
-        @CustomType.Parameter("principalType") String principalType) {
-        this.actions = actions;
-        this.principalId = principalId;
-        this.principalType = principalType;
-    }
-
+    private DashboardGroupPermission() {}
     /**
      * @return Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
      * 
@@ -66,16 +57,12 @@ public final class DashboardGroupPermission {
     public static Builder builder(DashboardGroupPermission defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> actions;
         private String principalId;
         private String principalType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardGroupPermission defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
@@ -83,6 +70,7 @@ public final class DashboardGroupPermission {
     	      this.principalType = defaults.principalType;
         }
 
+        @CustomType.Setter
         public Builder actions(@Nullable List<String> actions) {
             this.actions = actions;
             return this;
@@ -90,15 +78,22 @@ public final class DashboardGroupPermission {
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
+        @CustomType.Setter
         public Builder principalId(String principalId) {
             this.principalId = Objects.requireNonNull(principalId);
             return this;
         }
+        @CustomType.Setter
         public Builder principalType(String principalType) {
             this.principalType = Objects.requireNonNull(principalType);
             return this;
-        }        public DashboardGroupPermission build() {
-            return new DashboardGroupPermission(actions, principalId, principalType);
+        }
+        public DashboardGroupPermission build() {
+            final var o = new DashboardGroupPermission();
+            o.actions = actions;
+            o.principalId = principalId;
+            o.principalType = principalType;
+            return o;
         }
     }
 }

@@ -16,35 +16,24 @@ public final class DataLinkTargetSignalfxDashboard {
      * @return SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
      * 
      */
-    private final String dashboardGroupId;
+    private String dashboardGroupId;
     /**
      * @return SignalFx-assigned ID of the dashboard link target
      * 
      */
-    private final String dashboardId;
+    private String dashboardId;
     /**
      * @return Flag that designates a target as the default for a data link object. `true` by default
      * 
      */
-    private final @Nullable Boolean isDefault;
+    private @Nullable Boolean isDefault;
     /**
      * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
      * 
      */
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private DataLinkTargetSignalfxDashboard(
-        @CustomType.Parameter("dashboardGroupId") String dashboardGroupId,
-        @CustomType.Parameter("dashboardId") String dashboardId,
-        @CustomType.Parameter("isDefault") @Nullable Boolean isDefault,
-        @CustomType.Parameter("name") String name) {
-        this.dashboardGroupId = dashboardGroupId;
-        this.dashboardId = dashboardId;
-        this.isDefault = isDefault;
-        this.name = name;
-    }
-
+    private DataLinkTargetSignalfxDashboard() {}
     /**
      * @return SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
      * 
@@ -81,17 +70,13 @@ public final class DataLinkTargetSignalfxDashboard {
     public static Builder builder(DataLinkTargetSignalfxDashboard defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dashboardGroupId;
         private String dashboardId;
         private @Nullable Boolean isDefault;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataLinkTargetSignalfxDashboard defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dashboardGroupId = defaults.dashboardGroupId;
@@ -100,23 +85,33 @@ public final class DataLinkTargetSignalfxDashboard {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder dashboardGroupId(String dashboardGroupId) {
             this.dashboardGroupId = Objects.requireNonNull(dashboardGroupId);
             return this;
         }
+        @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
             this.dashboardId = Objects.requireNonNull(dashboardId);
             return this;
         }
+        @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
             this.isDefault = isDefault;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public DataLinkTargetSignalfxDashboard build() {
-            return new DataLinkTargetSignalfxDashboard(dashboardGroupId, dashboardId, isDefault, name);
+        }
+        public DataLinkTargetSignalfxDashboard build() {
+            final var o = new DataLinkTargetSignalfxDashboard();
+            o.dashboardGroupId = dashboardGroupId;
+            o.dashboardId = dashboardId;
+            o.isDefault = isDefault;
+            o.name = name;
+            return o;
         }
     }
 }

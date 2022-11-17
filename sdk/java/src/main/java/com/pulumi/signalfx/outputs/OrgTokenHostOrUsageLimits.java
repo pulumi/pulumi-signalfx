@@ -15,63 +15,44 @@ public final class OrgTokenHostOrUsageLimits {
      * @return Max number of Docker containers that can use this token
      * 
      */
-    private final @Nullable Integer containerLimit;
+    private @Nullable Integer containerLimit;
     /**
      * @return Notification threshold for Docker containers
      * 
      */
-    private final @Nullable Integer containerNotificationThreshold;
+    private @Nullable Integer containerNotificationThreshold;
     /**
      * @return Max number of custom metrics that can be sent with this token
      * 
      */
-    private final @Nullable Integer customMetricsLimit;
+    private @Nullable Integer customMetricsLimit;
     /**
      * @return Notification threshold for custom metrics
      * 
      */
-    private final @Nullable Integer customMetricsNotificationThreshold;
+    private @Nullable Integer customMetricsNotificationThreshold;
     /**
      * @return Max number of hi-res metrics that can be sent with this toke
      * 
      */
-    private final @Nullable Integer highResMetricsLimit;
+    private @Nullable Integer highResMetricsLimit;
     /**
      * @return Notification threshold for hi-res metrics
      * 
      */
-    private final @Nullable Integer highResMetricsNotificationThreshold;
+    private @Nullable Integer highResMetricsNotificationThreshold;
     /**
      * @return Max number of hosts that can use this token
      * 
      */
-    private final @Nullable Integer hostLimit;
+    private @Nullable Integer hostLimit;
     /**
      * @return Notification threshold for hosts
      * 
      */
-    private final @Nullable Integer hostNotificationThreshold;
+    private @Nullable Integer hostNotificationThreshold;
 
-    @CustomType.Constructor
-    private OrgTokenHostOrUsageLimits(
-        @CustomType.Parameter("containerLimit") @Nullable Integer containerLimit,
-        @CustomType.Parameter("containerNotificationThreshold") @Nullable Integer containerNotificationThreshold,
-        @CustomType.Parameter("customMetricsLimit") @Nullable Integer customMetricsLimit,
-        @CustomType.Parameter("customMetricsNotificationThreshold") @Nullable Integer customMetricsNotificationThreshold,
-        @CustomType.Parameter("highResMetricsLimit") @Nullable Integer highResMetricsLimit,
-        @CustomType.Parameter("highResMetricsNotificationThreshold") @Nullable Integer highResMetricsNotificationThreshold,
-        @CustomType.Parameter("hostLimit") @Nullable Integer hostLimit,
-        @CustomType.Parameter("hostNotificationThreshold") @Nullable Integer hostNotificationThreshold) {
-        this.containerLimit = containerLimit;
-        this.containerNotificationThreshold = containerNotificationThreshold;
-        this.customMetricsLimit = customMetricsLimit;
-        this.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
-        this.highResMetricsLimit = highResMetricsLimit;
-        this.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
-        this.hostLimit = hostLimit;
-        this.hostNotificationThreshold = hostNotificationThreshold;
-    }
-
+    private OrgTokenHostOrUsageLimits() {}
     /**
      * @return Max number of Docker containers that can use this token
      * 
@@ -136,7 +117,7 @@ public final class OrgTokenHostOrUsageLimits {
     public static Builder builder(OrgTokenHostOrUsageLimits defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer containerLimit;
         private @Nullable Integer containerNotificationThreshold;
@@ -146,11 +127,7 @@ public final class OrgTokenHostOrUsageLimits {
         private @Nullable Integer highResMetricsNotificationThreshold;
         private @Nullable Integer hostLimit;
         private @Nullable Integer hostNotificationThreshold;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(OrgTokenHostOrUsageLimits defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.containerLimit = defaults.containerLimit;
@@ -163,39 +140,57 @@ public final class OrgTokenHostOrUsageLimits {
     	      this.hostNotificationThreshold = defaults.hostNotificationThreshold;
         }
 
+        @CustomType.Setter
         public Builder containerLimit(@Nullable Integer containerLimit) {
             this.containerLimit = containerLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder containerNotificationThreshold(@Nullable Integer containerNotificationThreshold) {
             this.containerNotificationThreshold = containerNotificationThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder customMetricsLimit(@Nullable Integer customMetricsLimit) {
             this.customMetricsLimit = customMetricsLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder customMetricsNotificationThreshold(@Nullable Integer customMetricsNotificationThreshold) {
             this.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder highResMetricsLimit(@Nullable Integer highResMetricsLimit) {
             this.highResMetricsLimit = highResMetricsLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder highResMetricsNotificationThreshold(@Nullable Integer highResMetricsNotificationThreshold) {
             this.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
             return this;
         }
+        @CustomType.Setter
         public Builder hostLimit(@Nullable Integer hostLimit) {
             this.hostLimit = hostLimit;
             return this;
         }
+        @CustomType.Setter
         public Builder hostNotificationThreshold(@Nullable Integer hostNotificationThreshold) {
             this.hostNotificationThreshold = hostNotificationThreshold;
             return this;
-        }        public OrgTokenHostOrUsageLimits build() {
-            return new OrgTokenHostOrUsageLimits(containerLimit, containerNotificationThreshold, customMetricsLimit, customMetricsNotificationThreshold, highResMetricsLimit, highResMetricsNotificationThreshold, hostLimit, hostNotificationThreshold);
+        }
+        public OrgTokenHostOrUsageLimits build() {
+            final var o = new OrgTokenHostOrUsageLimits();
+            o.containerLimit = containerLimit;
+            o.containerNotificationThreshold = containerNotificationThreshold;
+            o.customMetricsLimit = customMetricsLimit;
+            o.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
+            o.highResMetricsLimit = highResMetricsLimit;
+            o.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
+            o.hostLimit = hostLimit;
+            o.hostNotificationThreshold = hostNotificationThreshold;
+            return o;
         }
     }
 }

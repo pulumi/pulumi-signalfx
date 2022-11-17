@@ -17,28 +17,19 @@ public final class DashboardSelectedEventOverlaySource {
      * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean negated;
+    private @Nullable Boolean negated;
     /**
      * @return The name of a dimension to filter against.
      * 
      */
-    private final String property;
+    private String property;
     /**
      * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private DashboardSelectedEventOverlaySource(
-        @CustomType.Parameter("negated") @Nullable Boolean negated,
-        @CustomType.Parameter("property") String property,
-        @CustomType.Parameter("values") List<String> values) {
-        this.negated = negated;
-        this.property = property;
-        this.values = values;
-    }
-
+    private DashboardSelectedEventOverlaySource() {}
     /**
      * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
@@ -68,16 +59,12 @@ public final class DashboardSelectedEventOverlaySource {
     public static Builder builder(DashboardSelectedEventOverlaySource defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean negated;
         private String property;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardSelectedEventOverlaySource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.negated = defaults.negated;
@@ -85,22 +72,30 @@ public final class DashboardSelectedEventOverlaySource {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder negated(@Nullable Boolean negated) {
             this.negated = negated;
             return this;
         }
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public DashboardSelectedEventOverlaySource build() {
-            return new DashboardSelectedEventOverlaySource(negated, property, values);
+        }
+        public DashboardSelectedEventOverlaySource build() {
+            final var o = new DashboardSelectedEventOverlaySource();
+            o.negated = negated;
+            o.property = property;
+            o.values = values;
+            return o;
         }
     }
 }

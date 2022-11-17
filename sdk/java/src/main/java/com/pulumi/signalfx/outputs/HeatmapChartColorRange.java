@@ -16,28 +16,19 @@ public final class HeatmapChartColorRange {
      * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
-    private final String color;
+    private String color;
     /**
      * @return The maximum value within the coloring range.
      * 
      */
-    private final @Nullable Double maxValue;
+    private @Nullable Double maxValue;
     /**
      * @return The minimum value within the coloring range.
      * 
      */
-    private final @Nullable Double minValue;
+    private @Nullable Double minValue;
 
-    @CustomType.Constructor
-    private HeatmapChartColorRange(
-        @CustomType.Parameter("color") String color,
-        @CustomType.Parameter("maxValue") @Nullable Double maxValue,
-        @CustomType.Parameter("minValue") @Nullable Double minValue) {
-        this.color = color;
-        this.maxValue = maxValue;
-        this.minValue = minValue;
-    }
-
+    private HeatmapChartColorRange() {}
     /**
      * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
@@ -67,16 +58,12 @@ public final class HeatmapChartColorRange {
     public static Builder builder(HeatmapChartColorRange defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String color;
         private @Nullable Double maxValue;
         private @Nullable Double minValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HeatmapChartColorRange defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.color = defaults.color;
@@ -84,19 +71,27 @@ public final class HeatmapChartColorRange {
     	      this.minValue = defaults.minValue;
         }
 
+        @CustomType.Setter
         public Builder color(String color) {
             this.color = Objects.requireNonNull(color);
             return this;
         }
+        @CustomType.Setter
         public Builder maxValue(@Nullable Double maxValue) {
             this.maxValue = maxValue;
             return this;
         }
+        @CustomType.Setter
         public Builder minValue(@Nullable Double minValue) {
             this.minValue = minValue;
             return this;
-        }        public HeatmapChartColorRange build() {
-            return new HeatmapChartColorRange(color, maxValue, minValue);
+        }
+        public HeatmapChartColorRange build() {
+            final var o = new HeatmapChartColorRange();
+            o.color = color;
+            o.maxValue = maxValue;
+            o.minValue = minValue;
+            return o;
         }
     }
 }
