@@ -15,56 +15,37 @@ public final class TimeChartVizOption {
      * @return Y-axis associated with values for this plot. Must be either `right` or `left`.
      * 
      */
-    private final @Nullable String axis;
+    private @Nullable String axis;
     /**
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
-    private final @Nullable String color;
+    private @Nullable String color;
     /**
      * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
-    private final String label;
+    private String label;
     /**
      * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
      * 
      */
-    private final @Nullable String plotType;
-    private final @Nullable String valuePrefix;
-    private final @Nullable String valueSuffix;
+    private @Nullable String plotType;
+    private @Nullable String valuePrefix;
+    private @Nullable String valueSuffix;
     /**
      * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
-    private final @Nullable String valueUnit;
+    private @Nullable String valueUnit;
 
-    @CustomType.Constructor
-    private TimeChartVizOption(
-        @CustomType.Parameter("axis") @Nullable String axis,
-        @CustomType.Parameter("color") @Nullable String color,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("label") String label,
-        @CustomType.Parameter("plotType") @Nullable String plotType,
-        @CustomType.Parameter("valuePrefix") @Nullable String valuePrefix,
-        @CustomType.Parameter("valueSuffix") @Nullable String valueSuffix,
-        @CustomType.Parameter("valueUnit") @Nullable String valueUnit) {
-        this.axis = axis;
-        this.color = color;
-        this.displayName = displayName;
-        this.label = label;
-        this.plotType = plotType;
-        this.valuePrefix = valuePrefix;
-        this.valueSuffix = valueSuffix;
-        this.valueUnit = valueUnit;
-    }
-
+    private TimeChartVizOption() {}
     /**
      * @return Y-axis associated with values for this plot. Must be either `right` or `left`.
      * 
@@ -122,7 +103,7 @@ public final class TimeChartVizOption {
     public static Builder builder(TimeChartVizOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String axis;
         private @Nullable String color;
@@ -132,11 +113,7 @@ public final class TimeChartVizOption {
         private @Nullable String valuePrefix;
         private @Nullable String valueSuffix;
         private @Nullable String valueUnit;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TimeChartVizOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.axis = defaults.axis;
@@ -149,39 +126,57 @@ public final class TimeChartVizOption {
     	      this.valueUnit = defaults.valueUnit;
         }
 
+        @CustomType.Setter
         public Builder axis(@Nullable String axis) {
             this.axis = axis;
             return this;
         }
+        @CustomType.Setter
         public Builder color(@Nullable String color) {
             this.color = color;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
         }
+        @CustomType.Setter
         public Builder plotType(@Nullable String plotType) {
             this.plotType = plotType;
             return this;
         }
+        @CustomType.Setter
         public Builder valuePrefix(@Nullable String valuePrefix) {
             this.valuePrefix = valuePrefix;
             return this;
         }
+        @CustomType.Setter
         public Builder valueSuffix(@Nullable String valueSuffix) {
             this.valueSuffix = valueSuffix;
             return this;
         }
+        @CustomType.Setter
         public Builder valueUnit(@Nullable String valueUnit) {
             this.valueUnit = valueUnit;
             return this;
-        }        public TimeChartVizOption build() {
-            return new TimeChartVizOption(axis, color, displayName, label, plotType, valuePrefix, valueSuffix, valueUnit);
+        }
+        public TimeChartVizOption build() {
+            final var o = new TimeChartVizOption();
+            o.axis = axis;
+            o.color = color;
+            o.displayName = displayName;
+            o.label = label;
+            o.plotType = plotType;
+            o.valuePrefix = valuePrefix;
+            o.valueSuffix = valueSuffix;
+            o.valueUnit = valueUnit;
+            return o;
         }
     }
 }

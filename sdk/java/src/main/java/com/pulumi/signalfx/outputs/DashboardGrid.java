@@ -17,28 +17,19 @@ public final class DashboardGrid {
      * @return List of IDs of the charts to display.
      * 
      */
-    private final List<String> chartIds;
+    private List<String> chartIds;
     /**
      * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
      * 
      */
-    private final @Nullable Integer height;
+    private @Nullable Integer height;
     /**
      * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
-    private final @Nullable Integer width;
+    private @Nullable Integer width;
 
-    @CustomType.Constructor
-    private DashboardGrid(
-        @CustomType.Parameter("chartIds") List<String> chartIds,
-        @CustomType.Parameter("height") @Nullable Integer height,
-        @CustomType.Parameter("width") @Nullable Integer width) {
-        this.chartIds = chartIds;
-        this.height = height;
-        this.width = width;
-    }
-
+    private DashboardGrid() {}
     /**
      * @return List of IDs of the charts to display.
      * 
@@ -68,16 +59,12 @@ public final class DashboardGrid {
     public static Builder builder(DashboardGrid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> chartIds;
         private @Nullable Integer height;
         private @Nullable Integer width;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardGrid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.chartIds = defaults.chartIds;
@@ -85,6 +72,7 @@ public final class DashboardGrid {
     	      this.width = defaults.width;
         }
 
+        @CustomType.Setter
         public Builder chartIds(List<String> chartIds) {
             this.chartIds = Objects.requireNonNull(chartIds);
             return this;
@@ -92,15 +80,22 @@ public final class DashboardGrid {
         public Builder chartIds(String... chartIds) {
             return chartIds(List.of(chartIds));
         }
+        @CustomType.Setter
         public Builder height(@Nullable Integer height) {
             this.height = height;
             return this;
         }
+        @CustomType.Setter
         public Builder width(@Nullable Integer width) {
             this.width = width;
             return this;
-        }        public DashboardGrid build() {
-            return new DashboardGrid(chartIds, height, width);
+        }
+        public DashboardGrid build() {
+            final var o = new DashboardGrid();
+            o.chartIds = chartIds;
+            o.height = height;
+            o.width = width;
+            return o;
         }
     }
 }

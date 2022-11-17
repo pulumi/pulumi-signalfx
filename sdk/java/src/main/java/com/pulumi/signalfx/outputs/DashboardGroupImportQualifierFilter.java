@@ -17,28 +17,19 @@ public final class DashboardGroupImportQualifierFilter {
      * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean negated;
+    private @Nullable Boolean negated;
     /**
      * @return A metric time series dimension or property name.
      * 
      */
-    private final String property;
+    private String property;
     /**
      * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private DashboardGroupImportQualifierFilter(
-        @CustomType.Parameter("negated") @Nullable Boolean negated,
-        @CustomType.Parameter("property") String property,
-        @CustomType.Parameter("values") List<String> values) {
-        this.negated = negated;
-        this.property = property;
-        this.values = values;
-    }
-
+    private DashboardGroupImportQualifierFilter() {}
     /**
      * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
@@ -68,16 +59,12 @@ public final class DashboardGroupImportQualifierFilter {
     public static Builder builder(DashboardGroupImportQualifierFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean negated;
         private String property;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardGroupImportQualifierFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.negated = defaults.negated;
@@ -85,22 +72,30 @@ public final class DashboardGroupImportQualifierFilter {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder negated(@Nullable Boolean negated) {
             this.negated = negated;
             return this;
         }
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public DashboardGroupImportQualifierFilter build() {
-            return new DashboardGroupImportQualifierFilter(negated, property, values);
+        }
+        public DashboardGroupImportQualifierFilter build() {
+            final var o = new DashboardGroupImportQualifierFilter();
+            o.negated = negated;
+            o.property = property;
+            o.values = values;
+            return o;
         }
     }
 }

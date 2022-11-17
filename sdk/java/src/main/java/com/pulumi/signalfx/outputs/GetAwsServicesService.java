@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAwsServicesService {
-    private final String name;
+    private String name;
 
-    @CustomType.Constructor
-    private GetAwsServicesService(@CustomType.Parameter("name") String name) {
-        this.name = name;
-    }
-
+    private GetAwsServicesService() {}
     public String name() {
         return this.name;
     }
@@ -27,24 +23,24 @@ public final class GetAwsServicesService {
     public static Builder builder(GetAwsServicesService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsServicesService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetAwsServicesService build() {
-            return new GetAwsServicesService(name);
+        }
+        public GetAwsServicesService build() {
+            final var o = new GetAwsServicesService();
+            o.name = name;
+            return o;
         }
     }
 }

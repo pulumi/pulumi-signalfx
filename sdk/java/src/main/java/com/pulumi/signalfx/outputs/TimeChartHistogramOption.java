@@ -15,13 +15,9 @@ public final class TimeChartHistogramOption {
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
      * 
      */
-    private final @Nullable String colorTheme;
+    private @Nullable String colorTheme;
 
-    @CustomType.Constructor
-    private TimeChartHistogramOption(@CustomType.Parameter("colorTheme") @Nullable String colorTheme) {
-        this.colorTheme = colorTheme;
-    }
-
+    private TimeChartHistogramOption() {}
     /**
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
      * 
@@ -37,24 +33,24 @@ public final class TimeChartHistogramOption {
     public static Builder builder(TimeChartHistogramOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String colorTheme;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TimeChartHistogramOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.colorTheme = defaults.colorTheme;
         }
 
+        @CustomType.Setter
         public Builder colorTheme(@Nullable String colorTheme) {
             this.colorTheme = colorTheme;
             return this;
-        }        public TimeChartHistogramOption build() {
-            return new TimeChartHistogramOption(colorTheme);
+        }
+        public TimeChartHistogramOption build() {
+            final var o = new TimeChartHistogramOption();
+            o.colorTheme = colorTheme;
+            return o;
         }
     }
 }

@@ -15,28 +15,19 @@ public final class TimeChartEventOption {
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
-    private final @Nullable String color;
+    private @Nullable String color;
     /**
      * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
-    private final String label;
+    private String label;
 
-    @CustomType.Constructor
-    private TimeChartEventOption(
-        @CustomType.Parameter("color") @Nullable String color,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("label") String label) {
-        this.color = color;
-        this.displayName = displayName;
-        this.label = label;
-    }
-
+    private TimeChartEventOption() {}
     /**
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
@@ -66,16 +57,12 @@ public final class TimeChartEventOption {
     public static Builder builder(TimeChartEventOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String color;
         private @Nullable String displayName;
         private String label;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TimeChartEventOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.color = defaults.color;
@@ -83,19 +70,27 @@ public final class TimeChartEventOption {
     	      this.label = defaults.label;
         }
 
+        @CustomType.Setter
         public Builder color(@Nullable String color) {
             this.color = color;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder label(String label) {
             this.label = Objects.requireNonNull(label);
             return this;
-        }        public TimeChartEventOption build() {
-            return new TimeChartEventOption(color, displayName, label);
+        }
+        public TimeChartEventOption build() {
+            final var o = new TimeChartEventOption();
+            o.color = color;
+            o.displayName = displayName;
+            o.label = label;
+            return o;
         }
     }
 }

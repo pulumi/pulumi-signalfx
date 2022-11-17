@@ -17,21 +17,14 @@ public final class DashboardPermissions {
      * @return List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      * 
      */
-    private final @Nullable List<DashboardPermissionsAcl> acls;
+    private @Nullable List<DashboardPermissionsAcl> acls;
     /**
      * @return ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      * 
      */
-    private final @Nullable String parent;
+    private @Nullable String parent;
 
-    @CustomType.Constructor
-    private DashboardPermissions(
-        @CustomType.Parameter("acls") @Nullable List<DashboardPermissionsAcl> acls,
-        @CustomType.Parameter("parent") @Nullable String parent) {
-        this.acls = acls;
-        this.parent = parent;
-    }
-
+    private DashboardPermissions() {}
     /**
      * @return List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      * 
@@ -54,21 +47,18 @@ public final class DashboardPermissions {
     public static Builder builder(DashboardPermissions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DashboardPermissionsAcl> acls;
         private @Nullable String parent;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardPermissions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.acls = defaults.acls;
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
         public Builder acls(@Nullable List<DashboardPermissionsAcl> acls) {
             this.acls = acls;
             return this;
@@ -76,11 +66,16 @@ public final class DashboardPermissions {
         public Builder acls(DashboardPermissionsAcl... acls) {
             return acls(List.of(acls));
         }
+        @CustomType.Setter
         public Builder parent(@Nullable String parent) {
             this.parent = parent;
             return this;
-        }        public DashboardPermissions build() {
-            return new DashboardPermissions(acls, parent);
+        }
+        public DashboardPermissions build() {
+            final var o = new DashboardPermissions();
+            o.acls = acls;
+            o.parent = parent;
+            return o;
         }
     }
 }

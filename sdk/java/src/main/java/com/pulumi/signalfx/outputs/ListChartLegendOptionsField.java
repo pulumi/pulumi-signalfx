@@ -16,21 +16,14 @@ public final class ListChartLegendOptionsField {
      * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
      * 
      */
-    private final String property;
+    private String property;
 
-    @CustomType.Constructor
-    private ListChartLegendOptionsField(
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("property") String property) {
-        this.enabled = enabled;
-        this.property = property;
-    }
-
+    private ListChartLegendOptionsField() {}
     /**
      * @return True or False depending on if you want the property to be shown or hidden.
      * 
@@ -53,30 +46,32 @@ public final class ListChartLegendOptionsField {
     public static Builder builder(ListChartLegendOptionsField defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
         private String property;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ListChartLegendOptionsField defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.property = defaults.property;
         }
 
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
-        }        public ListChartLegendOptionsField build() {
-            return new ListChartLegendOptionsField(enabled, property);
+        }
+        public ListChartLegendOptionsField build() {
+            final var o = new ListChartLegendOptionsField();
+            o.enabled = enabled;
+            o.property = property;
+            return o;
         }
     }
 }

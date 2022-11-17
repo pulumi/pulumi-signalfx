@@ -16,17 +16,10 @@ public final class TimeChartAxisLeftWatermark {
      * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
-    private final @Nullable String label;
-    private final Double value;
+    private @Nullable String label;
+    private Double value;
 
-    @CustomType.Constructor
-    private TimeChartAxisLeftWatermark(
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("value") Double value) {
-        this.label = label;
-        this.value = value;
-    }
-
+    private TimeChartAxisLeftWatermark() {}
     /**
      * @return Label used in the publish statement that displays the event query you want to customize.
      * 
@@ -45,30 +38,32 @@ public final class TimeChartAxisLeftWatermark {
     public static Builder builder(TimeChartAxisLeftWatermark defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String label;
         private Double value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TimeChartAxisLeftWatermark defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.label = defaults.label;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder value(Double value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public TimeChartAxisLeftWatermark build() {
-            return new TimeChartAxisLeftWatermark(label, value);
+        }
+        public TimeChartAxisLeftWatermark build() {
+            final var o = new TimeChartAxisLeftWatermark();
+            o.label = label;
+            o.value = value;
+            return o;
         }
     }
 }

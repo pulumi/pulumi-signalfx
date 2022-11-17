@@ -16,17 +16,10 @@ public final class GetServicesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetServicesService> services;
+    private String id;
+    private @Nullable List<GetServicesService> services;
 
-    @CustomType.Constructor
-    private GetServicesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("services") @Nullable List<GetServicesService> services) {
-        this.id = id;
-        this.services = services;
-    }
-
+    private GetServicesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -45,33 +38,35 @@ public final class GetServicesResult {
     public static Builder builder(GetServicesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable List<GetServicesService> services;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.services = defaults.services;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder services(@Nullable List<GetServicesService> services) {
             this.services = services;
             return this;
         }
         public Builder services(GetServicesService... services) {
             return services(List.of(services));
-        }        public GetServicesResult build() {
-            return new GetServicesResult(id, services);
+        }
+        public GetServicesResult build() {
+            final var o = new GetServicesResult();
+            o.id = id;
+            o.services = services;
+            return o;
         }
     }
 }

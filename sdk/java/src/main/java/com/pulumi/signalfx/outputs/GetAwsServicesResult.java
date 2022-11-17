@@ -16,17 +16,10 @@ public final class GetAwsServicesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable List<GetAwsServicesService> services;
+    private String id;
+    private @Nullable List<GetAwsServicesService> services;
 
-    @CustomType.Constructor
-    private GetAwsServicesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("services") @Nullable List<GetAwsServicesService> services) {
-        this.id = id;
-        this.services = services;
-    }
-
+    private GetAwsServicesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -45,33 +38,35 @@ public final class GetAwsServicesResult {
     public static Builder builder(GetAwsServicesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable List<GetAwsServicesService> services;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetAwsServicesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.services = defaults.services;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder services(@Nullable List<GetAwsServicesService> services) {
             this.services = services;
             return this;
         }
         public Builder services(GetAwsServicesService... services) {
             return services(List.of(services));
-        }        public GetAwsServicesResult build() {
-            return new GetAwsServicesResult(id, services);
+        }
+        public GetAwsServicesResult build() {
+            final var o = new GetAwsServicesResult();
+            o.id = id;
+            o.services = services;
+            return o;
         }
     }
 }

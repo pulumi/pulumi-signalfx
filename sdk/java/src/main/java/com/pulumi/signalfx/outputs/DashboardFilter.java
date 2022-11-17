@@ -17,35 +17,24 @@ public final class DashboardFilter {
      * @return If true, this variable will also match data that doesn&#39;t have this property at all.
      * 
      */
-    private final @Nullable Boolean applyIfExist;
+    private @Nullable Boolean applyIfExist;
     /**
      * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean negated;
+    private @Nullable Boolean negated;
     /**
      * @return The name of a dimension to filter against.
      * 
      */
-    private final String property;
+    private String property;
     /**
      * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
-    private final List<String> values;
+    private List<String> values;
 
-    @CustomType.Constructor
-    private DashboardFilter(
-        @CustomType.Parameter("applyIfExist") @Nullable Boolean applyIfExist,
-        @CustomType.Parameter("negated") @Nullable Boolean negated,
-        @CustomType.Parameter("property") String property,
-        @CustomType.Parameter("values") List<String> values) {
-        this.applyIfExist = applyIfExist;
-        this.negated = negated;
-        this.property = property;
-        this.values = values;
-    }
-
+    private DashboardFilter() {}
     /**
      * @return If true, this variable will also match data that doesn&#39;t have this property at all.
      * 
@@ -82,17 +71,13 @@ public final class DashboardFilter {
     public static Builder builder(DashboardFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean applyIfExist;
         private @Nullable Boolean negated;
         private String property;
         private List<String> values;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applyIfExist = defaults.applyIfExist;
@@ -101,26 +86,36 @@ public final class DashboardFilter {
     	      this.values = defaults.values;
         }
 
+        @CustomType.Setter
         public Builder applyIfExist(@Nullable Boolean applyIfExist) {
             this.applyIfExist = applyIfExist;
             return this;
         }
+        @CustomType.Setter
         public Builder negated(@Nullable Boolean negated) {
             this.negated = negated;
             return this;
         }
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
         }
+        @CustomType.Setter
         public Builder values(List<String> values) {
             this.values = Objects.requireNonNull(values);
             return this;
         }
         public Builder values(String... values) {
             return values(List.of(values));
-        }        public DashboardFilter build() {
-            return new DashboardFilter(applyIfExist, negated, property, values);
+        }
+        public DashboardFilter build() {
+            final var o = new DashboardFilter();
+            o.applyIfExist = applyIfExist;
+            o.negated = negated;
+            o.property = property;
+            o.values = values;
+            return o;
         }
     }
 }

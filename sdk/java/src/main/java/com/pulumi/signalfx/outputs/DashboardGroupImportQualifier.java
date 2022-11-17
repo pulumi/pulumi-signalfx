@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupImportQualifier {
-    private final @Nullable List<DashboardGroupImportQualifierFilter> filters;
-    private final @Nullable String metric;
+    private @Nullable List<DashboardGroupImportQualifierFilter> filters;
+    private @Nullable String metric;
 
-    @CustomType.Constructor
-    private DashboardGroupImportQualifier(
-        @CustomType.Parameter("filters") @Nullable List<DashboardGroupImportQualifierFilter> filters,
-        @CustomType.Parameter("metric") @Nullable String metric) {
-        this.filters = filters;
-        this.metric = metric;
-    }
-
+    private DashboardGroupImportQualifier() {}
     public List<DashboardGroupImportQualifierFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
@@ -38,21 +31,18 @@ public final class DashboardGroupImportQualifier {
     public static Builder builder(DashboardGroupImportQualifier defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<DashboardGroupImportQualifierFilter> filters;
         private @Nullable String metric;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardGroupImportQualifier defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filters = defaults.filters;
     	      this.metric = defaults.metric;
         }
 
+        @CustomType.Setter
         public Builder filters(@Nullable List<DashboardGroupImportQualifierFilter> filters) {
             this.filters = filters;
             return this;
@@ -60,11 +50,16 @@ public final class DashboardGroupImportQualifier {
         public Builder filters(DashboardGroupImportQualifierFilter... filters) {
             return filters(List.of(filters));
         }
+        @CustomType.Setter
         public Builder metric(@Nullable String metric) {
             this.metric = metric;
             return this;
-        }        public DashboardGroupImportQualifier build() {
-            return new DashboardGroupImportQualifier(filters, metric);
+        }
+        public DashboardGroupImportQualifier build() {
+            final var o = new DashboardGroupImportQualifier();
+            o.filters = filters;
+            o.metric = metric;
+            return o;
         }
     }
 }

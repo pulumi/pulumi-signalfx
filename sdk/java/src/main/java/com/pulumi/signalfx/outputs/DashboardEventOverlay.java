@@ -18,49 +18,34 @@ public final class DashboardEventOverlay {
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
-    private final @Nullable String color;
+    private @Nullable String color;
     /**
      * @return Text shown in the dropdown when selecting this overlay from the menu.
      * 
      */
-    private final @Nullable String label;
+    private @Nullable String label;
     /**
      * @return Show a vertical line for the event. `false` by default.
      * 
      */
-    private final @Nullable Boolean line;
+    private @Nullable Boolean line;
     /**
      * @return Search term used to choose the events shown in the overlay.
      * 
      */
-    private final String signal;
+    private String signal;
     /**
      * @return Each element specifies a filter to use against the signal specified in the `signal`.
      * 
      */
-    private final @Nullable List<DashboardEventOverlaySource> sources;
+    private @Nullable List<DashboardEventOverlaySource> sources;
     /**
      * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private DashboardEventOverlay(
-        @CustomType.Parameter("color") @Nullable String color,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("line") @Nullable Boolean line,
-        @CustomType.Parameter("signal") String signal,
-        @CustomType.Parameter("sources") @Nullable List<DashboardEventOverlaySource> sources,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.color = color;
-        this.label = label;
-        this.line = line;
-        this.signal = signal;
-        this.sources = sources;
-        this.type = type;
-    }
-
+    private DashboardEventOverlay() {}
     /**
      * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
@@ -111,7 +96,7 @@ public final class DashboardEventOverlay {
     public static Builder builder(DashboardEventOverlay defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String color;
         private @Nullable String label;
@@ -119,11 +104,7 @@ public final class DashboardEventOverlay {
         private String signal;
         private @Nullable List<DashboardEventOverlaySource> sources;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardEventOverlay defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.color = defaults.color;
@@ -134,22 +115,27 @@ public final class DashboardEventOverlay {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder color(@Nullable String color) {
             this.color = color;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder line(@Nullable Boolean line) {
             this.line = line;
             return this;
         }
+        @CustomType.Setter
         public Builder signal(String signal) {
             this.signal = Objects.requireNonNull(signal);
             return this;
         }
+        @CustomType.Setter
         public Builder sources(@Nullable List<DashboardEventOverlaySource> sources) {
             this.sources = sources;
             return this;
@@ -157,11 +143,20 @@ public final class DashboardEventOverlay {
         public Builder sources(DashboardEventOverlaySource... sources) {
             return sources(List.of(sources));
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public DashboardEventOverlay build() {
-            return new DashboardEventOverlay(color, label, line, signal, sources, type);
+        }
+        public DashboardEventOverlay build() {
+            final var o = new DashboardEventOverlay();
+            o.color = color;
+            o.label = label;
+            o.line = line;
+            o.signal = signal;
+            o.sources = sources;
+            o.type = type;
+            return o;
         }
     }
 }

@@ -9,13 +9,9 @@ import java.util.Objects;
 
 @CustomType
 public final class IntegrationResourceFilterRule {
-    private final IntegrationResourceFilterRuleFilter filter;
+    private IntegrationResourceFilterRuleFilter filter;
 
-    @CustomType.Constructor
-    private IntegrationResourceFilterRule(@CustomType.Parameter("filter") IntegrationResourceFilterRuleFilter filter) {
-        this.filter = filter;
-    }
-
+    private IntegrationResourceFilterRule() {}
     public IntegrationResourceFilterRuleFilter filter() {
         return this.filter;
     }
@@ -27,24 +23,24 @@ public final class IntegrationResourceFilterRule {
     public static Builder builder(IntegrationResourceFilterRule defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private IntegrationResourceFilterRuleFilter filter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IntegrationResourceFilterRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
         }
 
+        @CustomType.Setter
         public Builder filter(IntegrationResourceFilterRuleFilter filter) {
             this.filter = Objects.requireNonNull(filter);
             return this;
-        }        public IntegrationResourceFilterRule build() {
-            return new IntegrationResourceFilterRule(filter);
+        }
+        public IntegrationResourceFilterRule build() {
+            final var o = new IntegrationResourceFilterRule();
+            o.filter = filter;
+            return o;
         }
     }
 }

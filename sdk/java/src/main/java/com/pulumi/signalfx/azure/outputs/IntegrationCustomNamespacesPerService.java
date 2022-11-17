@@ -14,21 +14,14 @@ public final class IntegrationCustomNamespacesPerService {
      * @return The additional namespaces.
      * 
      */
-    private final List<String> namespaces;
+    private List<String> namespaces;
     /**
      * @return The name of the service.
      * 
      */
-    private final String service;
+    private String service;
 
-    @CustomType.Constructor
-    private IntegrationCustomNamespacesPerService(
-        @CustomType.Parameter("namespaces") List<String> namespaces,
-        @CustomType.Parameter("service") String service) {
-        this.namespaces = namespaces;
-        this.service = service;
-    }
-
+    private IntegrationCustomNamespacesPerService() {}
     /**
      * @return The additional namespaces.
      * 
@@ -51,21 +44,18 @@ public final class IntegrationCustomNamespacesPerService {
     public static Builder builder(IntegrationCustomNamespacesPerService defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> namespaces;
         private String service;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IntegrationCustomNamespacesPerService defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespaces = defaults.namespaces;
     	      this.service = defaults.service;
         }
 
+        @CustomType.Setter
         public Builder namespaces(List<String> namespaces) {
             this.namespaces = Objects.requireNonNull(namespaces);
             return this;
@@ -73,11 +63,16 @@ public final class IntegrationCustomNamespacesPerService {
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
-        }        public IntegrationCustomNamespacesPerService build() {
-            return new IntegrationCustomNamespacesPerService(namespaces, service);
+        }
+        public IntegrationCustomNamespacesPerService build() {
+            final var o = new IntegrationCustomNamespacesPerService();
+            o.namespaces = namespaces;
+            o.service = service;
+            return o;
         }
     }
 }

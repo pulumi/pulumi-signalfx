@@ -17,70 +17,49 @@ public final class DashboardVariable {
      * @return An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
      * 
      */
-    private final String alias;
+    private String alias;
     /**
      * @return If true, this variable will also match data that doesn&#39;t have this property at all.
      * 
      */
-    private final @Nullable Boolean applyIfExist;
+    private @Nullable Boolean applyIfExist;
     /**
      * @return Variable description.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return The name of a dimension to filter against.
      * 
      */
-    private final String property;
+    private String property;
     /**
      * @return If `true`, this variable will only apply to charts that have a filter for the property.
      * 
      */
-    private final @Nullable Boolean replaceOnly;
+    private @Nullable Boolean replaceOnly;
     /**
      * @return If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
-    private final @Nullable Boolean restrictedSuggestions;
+    private @Nullable Boolean restrictedSuggestions;
     /**
      * @return Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
      * 
      */
-    private final @Nullable Boolean valueRequired;
+    private @Nullable Boolean valueRequired;
     /**
      * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
-    private final @Nullable List<String> values;
+    private @Nullable List<String> values;
     /**
      * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
-    private final @Nullable List<String> valuesSuggesteds;
+    private @Nullable List<String> valuesSuggesteds;
 
-    @CustomType.Constructor
-    private DashboardVariable(
-        @CustomType.Parameter("alias") String alias,
-        @CustomType.Parameter("applyIfExist") @Nullable Boolean applyIfExist,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("property") String property,
-        @CustomType.Parameter("replaceOnly") @Nullable Boolean replaceOnly,
-        @CustomType.Parameter("restrictedSuggestions") @Nullable Boolean restrictedSuggestions,
-        @CustomType.Parameter("valueRequired") @Nullable Boolean valueRequired,
-        @CustomType.Parameter("values") @Nullable List<String> values,
-        @CustomType.Parameter("valuesSuggesteds") @Nullable List<String> valuesSuggesteds) {
-        this.alias = alias;
-        this.applyIfExist = applyIfExist;
-        this.description = description;
-        this.property = property;
-        this.replaceOnly = replaceOnly;
-        this.restrictedSuggestions = restrictedSuggestions;
-        this.valueRequired = valueRequired;
-        this.values = values;
-        this.valuesSuggesteds = valuesSuggesteds;
-    }
-
+    private DashboardVariable() {}
     /**
      * @return An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
      * 
@@ -152,7 +131,7 @@ public final class DashboardVariable {
     public static Builder builder(DashboardVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String alias;
         private @Nullable Boolean applyIfExist;
@@ -163,11 +142,7 @@ public final class DashboardVariable {
         private @Nullable Boolean valueRequired;
         private @Nullable List<String> values;
         private @Nullable List<String> valuesSuggesteds;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alias = defaults.alias;
@@ -181,34 +156,42 @@ public final class DashboardVariable {
     	      this.valuesSuggesteds = defaults.valuesSuggesteds;
         }
 
+        @CustomType.Setter
         public Builder alias(String alias) {
             this.alias = Objects.requireNonNull(alias);
             return this;
         }
+        @CustomType.Setter
         public Builder applyIfExist(@Nullable Boolean applyIfExist) {
             this.applyIfExist = applyIfExist;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder property(String property) {
             this.property = Objects.requireNonNull(property);
             return this;
         }
+        @CustomType.Setter
         public Builder replaceOnly(@Nullable Boolean replaceOnly) {
             this.replaceOnly = replaceOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder restrictedSuggestions(@Nullable Boolean restrictedSuggestions) {
             this.restrictedSuggestions = restrictedSuggestions;
             return this;
         }
+        @CustomType.Setter
         public Builder valueRequired(@Nullable Boolean valueRequired) {
             this.valueRequired = valueRequired;
             return this;
         }
+        @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
             this.values = values;
             return this;
@@ -216,14 +199,26 @@ public final class DashboardVariable {
         public Builder values(String... values) {
             return values(List.of(values));
         }
+        @CustomType.Setter
         public Builder valuesSuggesteds(@Nullable List<String> valuesSuggesteds) {
             this.valuesSuggesteds = valuesSuggesteds;
             return this;
         }
         public Builder valuesSuggesteds(String... valuesSuggesteds) {
             return valuesSuggesteds(List.of(valuesSuggesteds));
-        }        public DashboardVariable build() {
-            return new DashboardVariable(alias, applyIfExist, description, property, replaceOnly, restrictedSuggestions, valueRequired, values, valuesSuggesteds);
+        }
+        public DashboardVariable build() {
+            final var o = new DashboardVariable();
+            o.alias = alias;
+            o.applyIfExist = applyIfExist;
+            o.description = description;
+            o.property = property;
+            o.replaceOnly = replaceOnly;
+            o.restrictedSuggestions = restrictedSuggestions;
+            o.valueRequired = valueRequired;
+            o.values = values;
+            o.valuesSuggesteds = valuesSuggesteds;
+            return o;
         }
     }
 }

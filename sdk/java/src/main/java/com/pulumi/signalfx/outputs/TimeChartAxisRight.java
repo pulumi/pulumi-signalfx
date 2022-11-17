@@ -18,59 +18,40 @@ public final class TimeChartAxisRight {
      * @return A line to draw as a high watermark.
      * 
      */
-    private final @Nullable Double highWatermark;
+    private @Nullable Double highWatermark;
     /**
      * @return A label to attach to the high watermark line.
      * 
      */
-    private final @Nullable String highWatermarkLabel;
+    private @Nullable String highWatermarkLabel;
     /**
      * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
-    private final @Nullable String label;
+    private @Nullable String label;
     /**
      * @return A line to draw as a low watermark.
      * 
      */
-    private final @Nullable Double lowWatermark;
+    private @Nullable Double lowWatermark;
     /**
      * @return A label to attach to the low watermark line.
      * 
      */
-    private final @Nullable String lowWatermarkLabel;
+    private @Nullable String lowWatermarkLabel;
     /**
      * @return The maximum value for the right axis.
      * 
      */
-    private final @Nullable Double maxValue;
+    private @Nullable Double maxValue;
     /**
      * @return The minimum value for the right axis.
      * 
      */
-    private final @Nullable Double minValue;
-    private final @Nullable List<TimeChartAxisRightWatermark> watermarks;
+    private @Nullable Double minValue;
+    private @Nullable List<TimeChartAxisRightWatermark> watermarks;
 
-    @CustomType.Constructor
-    private TimeChartAxisRight(
-        @CustomType.Parameter("highWatermark") @Nullable Double highWatermark,
-        @CustomType.Parameter("highWatermarkLabel") @Nullable String highWatermarkLabel,
-        @CustomType.Parameter("label") @Nullable String label,
-        @CustomType.Parameter("lowWatermark") @Nullable Double lowWatermark,
-        @CustomType.Parameter("lowWatermarkLabel") @Nullable String lowWatermarkLabel,
-        @CustomType.Parameter("maxValue") @Nullable Double maxValue,
-        @CustomType.Parameter("minValue") @Nullable Double minValue,
-        @CustomType.Parameter("watermarks") @Nullable List<TimeChartAxisRightWatermark> watermarks) {
-        this.highWatermark = highWatermark;
-        this.highWatermarkLabel = highWatermarkLabel;
-        this.label = label;
-        this.lowWatermark = lowWatermark;
-        this.lowWatermarkLabel = lowWatermarkLabel;
-        this.maxValue = maxValue;
-        this.minValue = minValue;
-        this.watermarks = watermarks;
-    }
-
+    private TimeChartAxisRight() {}
     /**
      * @return A line to draw as a high watermark.
      * 
@@ -131,7 +112,7 @@ public final class TimeChartAxisRight {
     public static Builder builder(TimeChartAxisRight defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Double highWatermark;
         private @Nullable String highWatermarkLabel;
@@ -141,11 +122,7 @@ public final class TimeChartAxisRight {
         private @Nullable Double maxValue;
         private @Nullable Double minValue;
         private @Nullable List<TimeChartAxisRightWatermark> watermarks;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(TimeChartAxisRight defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.highWatermark = defaults.highWatermark;
@@ -158,42 +135,60 @@ public final class TimeChartAxisRight {
     	      this.watermarks = defaults.watermarks;
         }
 
+        @CustomType.Setter
         public Builder highWatermark(@Nullable Double highWatermark) {
             this.highWatermark = highWatermark;
             return this;
         }
+        @CustomType.Setter
         public Builder highWatermarkLabel(@Nullable String highWatermarkLabel) {
             this.highWatermarkLabel = highWatermarkLabel;
             return this;
         }
+        @CustomType.Setter
         public Builder label(@Nullable String label) {
             this.label = label;
             return this;
         }
+        @CustomType.Setter
         public Builder lowWatermark(@Nullable Double lowWatermark) {
             this.lowWatermark = lowWatermark;
             return this;
         }
+        @CustomType.Setter
         public Builder lowWatermarkLabel(@Nullable String lowWatermarkLabel) {
             this.lowWatermarkLabel = lowWatermarkLabel;
             return this;
         }
+        @CustomType.Setter
         public Builder maxValue(@Nullable Double maxValue) {
             this.maxValue = maxValue;
             return this;
         }
+        @CustomType.Setter
         public Builder minValue(@Nullable Double minValue) {
             this.minValue = minValue;
             return this;
         }
+        @CustomType.Setter
         public Builder watermarks(@Nullable List<TimeChartAxisRightWatermark> watermarks) {
             this.watermarks = watermarks;
             return this;
         }
         public Builder watermarks(TimeChartAxisRightWatermark... watermarks) {
             return watermarks(List.of(watermarks));
-        }        public TimeChartAxisRight build() {
-            return new TimeChartAxisRight(highWatermark, highWatermarkLabel, label, lowWatermark, lowWatermarkLabel, maxValue, minValue, watermarks);
+        }
+        public TimeChartAxisRight build() {
+            final var o = new TimeChartAxisRight();
+            o.highWatermark = highWatermark;
+            o.highWatermarkLabel = highWatermarkLabel;
+            o.label = label;
+            o.lowWatermark = lowWatermark;
+            o.lowWatermarkLabel = lowWatermarkLabel;
+            o.maxValue = maxValue;
+            o.minValue = minValue;
+            o.watermarks = watermarks;
+            return o;
         }
     }
 }

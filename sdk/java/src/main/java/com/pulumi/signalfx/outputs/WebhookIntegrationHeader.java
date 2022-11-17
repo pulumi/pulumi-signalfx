@@ -13,21 +13,14 @@ public final class WebhookIntegrationHeader {
      * @return The key of the header to send
      * 
      */
-    private final String headerKey;
+    private String headerKey;
     /**
      * @return The value of the header to send
      * 
      */
-    private final String headerValue;
+    private String headerValue;
 
-    @CustomType.Constructor
-    private WebhookIntegrationHeader(
-        @CustomType.Parameter("headerKey") String headerKey,
-        @CustomType.Parameter("headerValue") String headerValue) {
-        this.headerKey = headerKey;
-        this.headerValue = headerValue;
-    }
-
+    private WebhookIntegrationHeader() {}
     /**
      * @return The key of the header to send
      * 
@@ -50,30 +43,32 @@ public final class WebhookIntegrationHeader {
     public static Builder builder(WebhookIntegrationHeader defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String headerKey;
         private String headerValue;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(WebhookIntegrationHeader defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.headerKey = defaults.headerKey;
     	      this.headerValue = defaults.headerValue;
         }
 
+        @CustomType.Setter
         public Builder headerKey(String headerKey) {
             this.headerKey = Objects.requireNonNull(headerKey);
             return this;
         }
+        @CustomType.Setter
         public Builder headerValue(String headerValue) {
             this.headerValue = Objects.requireNonNull(headerValue);
             return this;
-        }        public WebhookIntegrationHeader build() {
-            return new WebhookIntegrationHeader(headerKey, headerValue);
+        }
+        public WebhookIntegrationHeader build() {
+            final var o = new WebhookIntegrationHeader();
+            o.headerKey = headerKey;
+            o.headerValue = headerValue;
+            return o;
         }
     }
 }

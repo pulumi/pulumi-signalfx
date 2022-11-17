@@ -18,38 +18,25 @@ public final class DashboardGroupDashboard {
      * @return The dashboard id to mirror
      * 
      */
-    private final String dashboardId;
+    private String dashboardId;
     /**
      * @return The description that will override the original dashboards&#39;s description.
      * 
      */
-    private final @Nullable String descriptionOverride;
+    private @Nullable String descriptionOverride;
     /**
      * @return The description that will override the original dashboards&#39;s description.
      * 
      */
-    private final @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides;
+    private @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides;
     /**
      * @return The name that will override the original dashboards&#39;s name.
      * 
      */
-    private final @Nullable String nameOverride;
-    private final @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides;
+    private @Nullable String nameOverride;
+    private @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides;
 
-    @CustomType.Constructor
-    private DashboardGroupDashboard(
-        @CustomType.Parameter("dashboardId") String dashboardId,
-        @CustomType.Parameter("descriptionOverride") @Nullable String descriptionOverride,
-        @CustomType.Parameter("filterOverrides") @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides,
-        @CustomType.Parameter("nameOverride") @Nullable String nameOverride,
-        @CustomType.Parameter("variableOverrides") @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides) {
-        this.dashboardId = dashboardId;
-        this.descriptionOverride = descriptionOverride;
-        this.filterOverrides = filterOverrides;
-        this.nameOverride = nameOverride;
-        this.variableOverrides = variableOverrides;
-    }
-
+    private DashboardGroupDashboard() {}
     /**
      * @return The dashboard id to mirror
      * 
@@ -89,18 +76,14 @@ public final class DashboardGroupDashboard {
     public static Builder builder(DashboardGroupDashboard defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String dashboardId;
         private @Nullable String descriptionOverride;
         private @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides;
         private @Nullable String nameOverride;
         private @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DashboardGroupDashboard defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dashboardId = defaults.dashboardId;
@@ -110,14 +93,17 @@ public final class DashboardGroupDashboard {
     	      this.variableOverrides = defaults.variableOverrides;
         }
 
+        @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
             this.dashboardId = Objects.requireNonNull(dashboardId);
             return this;
         }
+        @CustomType.Setter
         public Builder descriptionOverride(@Nullable String descriptionOverride) {
             this.descriptionOverride = descriptionOverride;
             return this;
         }
+        @CustomType.Setter
         public Builder filterOverrides(@Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides) {
             this.filterOverrides = filterOverrides;
             return this;
@@ -125,18 +111,27 @@ public final class DashboardGroupDashboard {
         public Builder filterOverrides(DashboardGroupDashboardFilterOverride... filterOverrides) {
             return filterOverrides(List.of(filterOverrides));
         }
+        @CustomType.Setter
         public Builder nameOverride(@Nullable String nameOverride) {
             this.nameOverride = nameOverride;
             return this;
         }
+        @CustomType.Setter
         public Builder variableOverrides(@Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides) {
             this.variableOverrides = variableOverrides;
             return this;
         }
         public Builder variableOverrides(DashboardGroupDashboardVariableOverride... variableOverrides) {
             return variableOverrides(List.of(variableOverrides));
-        }        public DashboardGroupDashboard build() {
-            return new DashboardGroupDashboard(dashboardId, descriptionOverride, filterOverrides, nameOverride, variableOverrides);
+        }
+        public DashboardGroupDashboard build() {
+            final var o = new DashboardGroupDashboard();
+            o.dashboardId = dashboardId;
+            o.descriptionOverride = descriptionOverride;
+            o.filterOverrides = filterOverrides;
+            o.nameOverride = nameOverride;
+            o.variableOverrides = variableOverrides;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class DataLinkTargetSplunk {
      * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
      * 
      */
-    private final @Nullable Map<String,String> propertyKeyMapping;
+    private @Nullable Map<String,String> propertyKeyMapping;
 
-    @CustomType.Constructor
-    private DataLinkTargetSplunk(
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("propertyKeyMapping") @Nullable Map<String,String> propertyKeyMapping) {
-        this.name = name;
-        this.propertyKeyMapping = propertyKeyMapping;
-    }
-
+    private DataLinkTargetSplunk() {}
     /**
      * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
      * 
@@ -52,30 +45,32 @@ public final class DataLinkTargetSplunk {
     public static Builder builder(DataLinkTargetSplunk defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String name;
         private @Nullable Map<String,String> propertyKeyMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(DataLinkTargetSplunk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.propertyKeyMapping = defaults.propertyKeyMapping;
         }
 
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder propertyKeyMapping(@Nullable Map<String,String> propertyKeyMapping) {
             this.propertyKeyMapping = propertyKeyMapping;
             return this;
-        }        public DataLinkTargetSplunk build() {
-            return new DataLinkTargetSplunk(name, propertyKeyMapping);
+        }
+        public DataLinkTargetSplunk build() {
+            final var o = new DataLinkTargetSplunk();
+            o.name = name;
+            o.propertyKeyMapping = propertyKeyMapping;
+            return o;
         }
     }
 }

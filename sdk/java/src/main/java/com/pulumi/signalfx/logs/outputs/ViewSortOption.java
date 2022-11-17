@@ -10,17 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class ViewSortOption {
-    private final Boolean descending;
-    private final String field;
+    private Boolean descending;
+    private String field;
 
-    @CustomType.Constructor
-    private ViewSortOption(
-        @CustomType.Parameter("descending") Boolean descending,
-        @CustomType.Parameter("field") String field) {
-        this.descending = descending;
-        this.field = field;
-    }
-
+    private ViewSortOption() {}
     public Boolean descending() {
         return this.descending;
     }
@@ -35,30 +28,32 @@ public final class ViewSortOption {
     public static Builder builder(ViewSortOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean descending;
         private String field;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ViewSortOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.descending = defaults.descending;
     	      this.field = defaults.field;
         }
 
+        @CustomType.Setter
         public Builder descending(Boolean descending) {
             this.descending = Objects.requireNonNull(descending);
             return this;
         }
+        @CustomType.Setter
         public Builder field(String field) {
             this.field = Objects.requireNonNull(field);
             return this;
-        }        public ViewSortOption build() {
-            return new ViewSortOption(descending, field);
+        }
+        public ViewSortOption build() {
+            final var o = new ViewSortOption();
+            o.descending = descending;
+            o.field = field;
+            return o;
         }
     }
 }

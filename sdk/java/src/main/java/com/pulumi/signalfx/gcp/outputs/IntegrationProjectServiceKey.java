@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class IntegrationProjectServiceKey {
-    private final String projectId;
-    private final String projectKey;
+    private String projectId;
+    private String projectKey;
 
-    @CustomType.Constructor
-    private IntegrationProjectServiceKey(
-        @CustomType.Parameter("projectId") String projectId,
-        @CustomType.Parameter("projectKey") String projectKey) {
-        this.projectId = projectId;
-        this.projectKey = projectKey;
-    }
-
+    private IntegrationProjectServiceKey() {}
     public String projectId() {
         return this.projectId;
     }
@@ -34,30 +27,32 @@ public final class IntegrationProjectServiceKey {
     public static Builder builder(IntegrationProjectServiceKey defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String projectId;
         private String projectKey;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IntegrationProjectServiceKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.projectId = defaults.projectId;
     	      this.projectKey = defaults.projectKey;
         }
 
+        @CustomType.Setter
         public Builder projectId(String projectId) {
             this.projectId = Objects.requireNonNull(projectId);
             return this;
         }
+        @CustomType.Setter
         public Builder projectKey(String projectKey) {
             this.projectKey = Objects.requireNonNull(projectKey);
             return this;
-        }        public IntegrationProjectServiceKey build() {
-            return new IntegrationProjectServiceKey(projectId, projectKey);
+        }
+        public IntegrationProjectServiceKey build() {
+            final var o = new IntegrationProjectServiceKey();
+            o.projectId = projectId;
+            o.projectKey = projectKey;
+            return o;
         }
     }
 }
