@@ -377,14 +377,18 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.useGetMetricDataMethod);
     }
     /**
-     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
+     * Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.&lt;br&gt;
+     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      * 
      */
     @Export(name="useMetricStreamsSync", type=Boolean.class, parameters={})
     private Output<Boolean> useMetricStreamsSync;
 
     /**
-     * @return Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.
+     * @return Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
+     * Note that this requires the inclusion of `&#34;cloudwatch:ListMetricStreams&#34;`,`&#34;cloudwatch:GetMetricStream&#34;`, `&#34;cloudwatch:PutMetricStream&#34;`, `&#34;cloudwatch:DeleteMetricStream&#34;`, `&#34;cloudwatch:StartMetricStreams&#34;`, `&#34;cloudwatch:StopMetricStreams&#34;` and `&#34;iam:PassRole&#34;` permissions.&lt;br&gt;
+     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      * 
      */
     public Output<Boolean> useMetricStreamsSync() {
@@ -423,6 +427,10 @@ public class Integration extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "externalId",
+                "key"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

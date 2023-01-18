@@ -36,11 +36,14 @@ public final class TimeChartVizOption {
      * 
      */
     private @Nullable String plotType;
+    /**
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     */
     private @Nullable String valuePrefix;
     private @Nullable String valueSuffix;
     /**
      * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     private @Nullable String valueUnit;
@@ -81,6 +84,10 @@ public final class TimeChartVizOption {
     public Optional<String> plotType() {
         return Optional.ofNullable(this.plotType);
     }
+    /**
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     */
     public Optional<String> valuePrefix() {
         return Optional.ofNullable(this.valuePrefix);
     }
@@ -89,7 +96,6 @@ public final class TimeChartVizOption {
     }
     /**
      * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<String> valueUnit() {

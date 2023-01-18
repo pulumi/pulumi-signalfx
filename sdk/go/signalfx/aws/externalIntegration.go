@@ -25,7 +25,6 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
 //	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -66,9 +65,9 @@ import (
 //			}, nil)
 //			awsSplunkRole, err := iam.NewRole(ctx, "awsSplunkRole", &iam.RoleArgs{
 //				Description: pulumi.String("signalfx integration to read out data and send it to signalfxs aws account"),
-//				AssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (string, error) {
-//					return signalfxAssumePolicy.Json, nil
-//				}).(pulumi.StringOutput),
+//				AssumeRolePolicy: signalfxAssumePolicy.ApplyT(func(signalfxAssumePolicy iam.GetPolicyDocumentResult) (*string, error) {
+//					return &signalfxAssumePolicy.Json, nil
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -205,6 +204,11 @@ func NewExternalIntegration(ctx *pulumi.Context,
 		args = &ExternalIntegrationArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"externalId",
+		"signalfxAwsAccount",
+	})
+	opts = append(opts, secrets)
 	var resource ExternalIntegration
 	err := ctx.RegisterResource("signalfx:aws/externalIntegration:ExternalIntegration", name, args, &resource, opts...)
 	if err != nil {

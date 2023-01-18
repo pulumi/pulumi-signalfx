@@ -36,10 +36,10 @@ import (
 //				StartTime:   pulumi.Int(1573063243),
 //				StopTime:    pulumi.Int(0),
 //				Detectors: pulumi.StringArray{
-//					pulumi.Any(signalfx_detector.Some_detector_id),
+//					signalfx_detector.Some_detector_id,
 //				},
-//				Filters: AlertMutingRuleFilterArray{
-//					&AlertMutingRuleFilterArgs{
+//				Filters: signalfx.AlertMutingRuleFilterArray{
+//					&signalfx.AlertMutingRuleFilterArgs{
 //						Property:      pulumi.String("foo"),
 //						PropertyValue: pulumi.String("bar"),
 //					},

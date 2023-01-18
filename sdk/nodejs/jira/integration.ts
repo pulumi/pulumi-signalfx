@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const jiraMyteamXX = new signalfx.jira.Integration("jira_myteamXX", {
+ * const jiraMyteamXX = new signalfx.jira.Integration("jiraMyteamXX", {
  *     assigneeDisplayName: "Testy Testerson",
  *     assigneeName: "testytesterson",
  *     authMethod: "UsernameAndPassword",
@@ -150,7 +150,7 @@ export class Integration extends pulumi.CustomResource {
             if ((!args || args.projectKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectKey'");
             }
-            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
+            resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
             resourceInputs["assigneeDisplayName"] = args ? args.assigneeDisplayName : undefined;
             resourceInputs["assigneeName"] = args ? args.assigneeName : undefined;
             resourceInputs["authMethod"] = args ? args.authMethod : undefined;
@@ -158,12 +158,14 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["issueType"] = args ? args.issueType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["projectKey"] = args ? args.projectKey : undefined;
             resourceInputs["userEmail"] = args ? args.userEmail : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["apiToken", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }

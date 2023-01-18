@@ -5,10 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./view";
+export { ViewArgs, ViewState } from "./view";
+export type View = import("./view").View;
+export const View: typeof import("./view").View = null as any;
+utilities.lazyLoad(exports, ["View"], () => require("./view"));
 
-// Import resources to register:
-import { View } from "./view";
 
 const _module = {
     version: utilities.getVersion(),

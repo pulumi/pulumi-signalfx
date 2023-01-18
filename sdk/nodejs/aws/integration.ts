@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -165,7 +166,9 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly useGetMetricDataMethod!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+     * Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      */
     public readonly useMetricStreamsSync!: pulumi.Output<boolean>;
 
@@ -217,10 +220,10 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["enableCheckLargeVolume"] = args ? args.enableCheckLargeVolume : undefined;
             resourceInputs["enableLogsSync"] = args ? args.enableLogsSync : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["externalId"] = args?.externalId ? pulumi.secret(args.externalId) : undefined;
             resourceInputs["importCloudWatch"] = args ? args.importCloudWatch : undefined;
             resourceInputs["integrationId"] = args ? args.integrationId : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["key"] = args?.key ? pulumi.secret(args.key) : undefined;
             resourceInputs["metricStatsToSyncs"] = args ? args.metricStatsToSyncs : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["namespaceSyncRules"] = args ? args.namespaceSyncRules : undefined;
@@ -234,6 +237,8 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["useMetricStreamsSync"] = args ? args.useMetricStreamsSync : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["externalId", "key"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -323,7 +328,9 @@ export interface IntegrationState {
      */
     useGetMetricDataMethod?: pulumi.Input<boolean>;
     /**
-     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+     * Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      */
     useMetricStreamsSync?: pulumi.Input<boolean>;
 }
@@ -413,7 +420,9 @@ export interface IntegrationArgs {
      */
     useGetMetricDataMethod?: pulumi.Input<boolean>;
     /**
-     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+     * Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+     * Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+     * Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
      */
     useMetricStreamsSync?: pulumi.Input<boolean>;
 }

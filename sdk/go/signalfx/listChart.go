@@ -36,24 +36,24 @@ import (
 //				Description:       pulumi.String("Very cool List Chart"),
 //				DisableSampling:   pulumi.Bool(true),
 //				HideMissingValues: pulumi.Bool(true),
-//				LegendOptionsFields: ListChartLegendOptionsFieldArray{
-//					&ListChartLegendOptionsFieldArgs{
+//				LegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{
+//					&signalfx.ListChartLegendOptionsFieldArgs{
 //						Enabled:  pulumi.Bool(false),
 //						Property: pulumi.String("collector"),
 //					},
-//					&ListChartLegendOptionsFieldArgs{
+//					&signalfx.ListChartLegendOptionsFieldArgs{
 //						Enabled:  pulumi.Bool(true),
 //						Property: pulumi.String("cluster_name"),
 //					},
-//					&ListChartLegendOptionsFieldArgs{
+//					&signalfx.ListChartLegendOptionsFieldArgs{
 //						Enabled:  pulumi.Bool(true),
 //						Property: pulumi.String("role"),
 //					},
-//					&ListChartLegendOptionsFieldArgs{
+//					&signalfx.ListChartLegendOptionsFieldArgs{
 //						Enabled:  pulumi.Bool(false),
 //						Property: pulumi.String("collector"),
 //					},
-//					&ListChartLegendOptionsFieldArgs{
+//					&signalfx.ListChartLegendOptionsFieldArgs{
 //						Enabled:  pulumi.Bool(false),
 //						Property: pulumi.String("host"),
 //					},

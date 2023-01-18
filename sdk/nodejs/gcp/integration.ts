@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -17,17 +18,17 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const gcpMyteam = new signalfx.gcp.Integration("gcp_myteam", {
+ * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {
  *     enabled: true,
  *     pollRate: 300,
  *     projectServiceKeys: [
  *         {
  *             projectId: "gcp_project_id_1",
- *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json", "utf-8"),
+ *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json"),
  *         },
  *         {
  *             projectId: "gcp_project_id_2",
- *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json", "utf-8"),
+ *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json"),
  *         },
  *     ],
  *     services: ["compute"],
@@ -66,6 +67,11 @@ export class Integration extends pulumi.CustomResource {
      * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
+    /**
+     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     */
+    public readonly importGcpMetrics!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the integration.
      */
@@ -109,6 +115,7 @@ export class Integration extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IntegrationState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["importGcpMetrics"] = state ? state.importGcpMetrics : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namedToken"] = state ? state.namedToken : undefined;
             resourceInputs["pollRate"] = state ? state.pollRate : undefined;
@@ -122,15 +129,18 @@ export class Integration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'enabled'");
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["importGcpMetrics"] = args ? args.importGcpMetrics : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
-            resourceInputs["projectServiceKeys"] = args ? args.projectServiceKeys : undefined;
+            resourceInputs["projectServiceKeys"] = args?.projectServiceKeys ? pulumi.secret(args.projectServiceKeys) : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["useMetricSourceProjectForQuota"] = args ? args.useMetricSourceProjectForQuota : undefined;
             resourceInputs["whitelists"] = args ? args.whitelists : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["projectServiceKeys"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -143,6 +153,11 @@ export interface IntegrationState {
      * Whether the integration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     */
+    importGcpMetrics?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */
@@ -181,6 +196,11 @@ export interface IntegrationArgs {
      * Whether the integration is enabled.
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     */
+    importGcpMetrics?: pulumi.Input<boolean>;
     /**
      * Name of the integration.
      */

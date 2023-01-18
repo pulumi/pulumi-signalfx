@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -28,11 +29,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const mydashboardgroupWithpermissions = new signalfx.DashboardGroup("mydashboardgroup_withpermissions", {
+ * const mydashboardgroupWithpermissions = new signalfx.DashboardGroup("mydashboardgroupWithpermissions", {
  *     description: "Cool dashboard group",
  *     permissions: [
- *         // You can add up to 25 of entries for permission configurations. 
- *         // Make sure your account supports this feature!
  *         {
  *             actions: ["READ"],
  *             principalId: "abc123",

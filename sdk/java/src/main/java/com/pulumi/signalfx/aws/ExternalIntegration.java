@@ -11,6 +11,7 @@ import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.aws.ExternalIntegrationArgs;
 import com.pulumi.signalfx.aws.inputs.ExternalIntegrationState;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -255,6 +256,10 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "externalId",
+                "signalfxAwsAccount"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -110,6 +110,8 @@ export class TokenIntegration extends pulumi.CustomResource {
             resourceInputs["tokenId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["signalfxAwsAccount", "tokenId"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(TokenIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }

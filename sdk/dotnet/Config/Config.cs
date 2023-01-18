@@ -30,7 +30,7 @@ namespace Pulumi.SignalFx
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("signalfx");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("signalfx");
 
         private static readonly __Value<string?> _apiUrl = new __Value<string?>(() => __config.Get("apiUrl"));
         /// <summary>

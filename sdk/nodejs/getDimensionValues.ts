@@ -10,11 +10,8 @@ import * as utilities from "./utilities";
  * > **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `forEach` that big in SignalFx. This is negotiable.
  */
 export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetDimensionValuesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:index/getDimensionValues:getDimensionValues", {
         "query": args.query,
     }, opts);
@@ -38,9 +35,13 @@ export interface GetDimensionValuesResult {
     readonly query: string;
     readonly values: string[];
 }
-
+/**
+ * Use this data source to get a list of dimension values matching the provided query.
+ *
+ * > **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `forEach` that big in SignalFx. This is negotiable.
+ */
 export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDimensionValuesResult> {
-    return pulumi.output(args).apply(a => getDimensionValues(a, opts))
+    return pulumi.output(args).apply((a: any) => getDimensionValues(a, opts))
 }
 
 /**

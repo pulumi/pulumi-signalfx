@@ -100,6 +100,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_list_chart":          {Tok: makeResource(mainMod, "ListChart")},
 			"signalfx_org_token":           {Tok: makeResource(mainMod, "OrgToken")},
 			"signalfx_single_value_chart":  {Tok: makeResource(mainMod, "SingleValueChart")},
+			"signalfx_table_chart":         {Tok: makeResource(mainMod, "TableChart")},
 			"signalfx_team":                {Tok: makeResource(mainMod, "Team")},
 			"signalfx_text_chart":          {Tok: makeResource(mainMod, "TextChart")},
 			"signalfx_time_chart":          {Tok: makeResource(mainMod, "TimeChart")},

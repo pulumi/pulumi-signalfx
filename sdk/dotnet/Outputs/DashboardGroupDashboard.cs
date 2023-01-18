@@ -13,6 +13,7 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardGroupDashboard
     {
+        public readonly string? ConfigId;
         /// <summary>
         /// The dashboard id to mirror
         /// </summary>
@@ -33,6 +34,8 @@ namespace Pulumi.SignalFx.Outputs
 
         [OutputConstructor]
         private DashboardGroupDashboard(
+            string? configId,
+
             string dashboardId,
 
             string? descriptionOverride,
@@ -43,6 +46,7 @@ namespace Pulumi.SignalFx.Outputs
 
             ImmutableArray<Outputs.DashboardGroupDashboardVariableOverride> variableOverrides)
         {
+            ConfigId = configId;
             DashboardId = dashboardId;
             DescriptionOverride = descriptionOverride;
             FilterOverrides = filterOverrides;

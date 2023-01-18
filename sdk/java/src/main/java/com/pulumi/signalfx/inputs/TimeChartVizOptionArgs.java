@@ -90,9 +90,17 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.plotType);
     }
 
+    /**
+     * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
+    /**
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     */
     public Optional<Output<String>> valuePrefix() {
         return Optional.ofNullable(this.valuePrefix);
     }
@@ -106,7 +114,6 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     @Import(name="valueUnit")
@@ -114,7 +121,6 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<Output<String>> valueUnit() {
@@ -257,11 +263,23 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
             return plotType(Output.of(plotType));
         }
 
+        /**
+         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valuePrefix(@Nullable Output<String> valuePrefix) {
             $.valuePrefix = valuePrefix;
             return this;
         }
 
+        /**
+         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valuePrefix(String valuePrefix) {
             return valuePrefix(Output.of(valuePrefix));
         }
@@ -277,7 +295,6 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-         * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 
@@ -289,7 +306,6 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-         * * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 

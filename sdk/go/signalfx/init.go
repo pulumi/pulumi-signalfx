@@ -40,6 +40,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrgToken{}
 	case "signalfx:index/singleValueChart:SingleValueChart":
 		r = &SingleValueChart{}
+	case "signalfx:index/tableChart:TableChart":
+		r = &TableChart{}
 	case "signalfx:index/team:Team":
 		r = &Team{}
 	case "signalfx:index/textChart:TextChart":
@@ -124,6 +126,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"signalfx",
 		"index/singleValueChart",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"signalfx",
+		"index/tableChart",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

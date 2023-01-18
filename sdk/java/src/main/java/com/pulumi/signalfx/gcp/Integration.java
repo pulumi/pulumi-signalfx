@@ -83,6 +83,22 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
+     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     * 
+     */
+    @Export(name="importGcpMetrics", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> importGcpMetrics;
+
+    /**
+     * @return If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     * 
+     */
+    public Output<Optional<Boolean>> importGcpMetrics() {
+        return Codegen.optional(this.importGcpMetrics);
+    }
+    /**
      * Name of the integration.
      * 
      */
@@ -213,6 +229,9 @@ public class Integration extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "projectServiceKeys"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

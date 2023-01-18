@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const serviceNowMyteam = new signalfx.servicenow.Integration("service_now_myteam", {
+ * const serviceNowMyteam = new signalfx.servicenow.Integration("serviceNowMyteam", {
  *     alertResolvedPayloadTemplate: "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
  *     alertTriggeredPayloadTemplate: "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
  *     enabled: false,
@@ -131,10 +131,12 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["issueType"] = args ? args.issueType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }

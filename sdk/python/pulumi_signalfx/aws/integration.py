@@ -59,7 +59,9 @@ class IntegrationArgs:
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "integration_id", integration_id)
@@ -346,7 +348,9 @@ class IntegrationArgs:
     @pulumi.getter(name="useMetricStreamsSync")
     def use_metric_streams_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+        Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+        Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         return pulumi.get(self, "use_metric_streams_sync")
 
@@ -401,7 +405,9 @@ class _IntegrationState:
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         if custom_cloudwatch_namespaces is not None:
             pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
@@ -690,7 +696,9 @@ class _IntegrationState:
     @pulumi.getter(name="useMetricStreamsSync")
     def use_metric_streams_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+        Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+        Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         return pulumi.get(self, "use_metric_streams_sync")
 
@@ -798,7 +806,9 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         ...
     @overload
@@ -909,12 +919,12 @@ class Integration(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
-            __props__.__dict__["external_id"] = external_id
+            __props__.__dict__["external_id"] = None if external_id is None else pulumi.Output.secret(external_id)
             __props__.__dict__["import_cloud_watch"] = import_cloud_watch
             if integration_id is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_id'")
             __props__.__dict__["integration_id"] = integration_id
-            __props__.__dict__["key"] = key
+            __props__.__dict__["key"] = None if key is None else pulumi.Output.secret(key)
             __props__.__dict__["metric_stats_to_syncs"] = metric_stats_to_syncs
             __props__.__dict__["named_token"] = named_token
             __props__.__dict__["namespace_sync_rules"] = namespace_sync_rules
@@ -926,6 +936,8 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["token"] = token
             __props__.__dict__["use_get_metric_data_method"] = use_get_metric_data_method
             __props__.__dict__["use_metric_streams_sync"] = use_metric_streams_sync
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["externalId", "key"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:aws/integration:Integration',
             resource_name,
@@ -984,7 +996,9 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
         :param pulumi.Input[bool] use_get_metric_data_method: Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1177,7 +1191,9 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="useMetricStreamsSync")
     def use_metric_streams_sync(self) -> pulumi.Output[bool]:
         """
-        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+        Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+        Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
         return pulumi.get(self, "use_metric_streams_sync")
 

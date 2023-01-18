@@ -386,6 +386,8 @@ class ExternalIntegration(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["external_id"] = None
             __props__.__dict__["signalfx_aws_account"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["externalId", "signalfxAwsAccount"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ExternalIntegration, __self__).__init__(
             'signalfx:aws/externalIntegration:ExternalIntegration',
             resource_name,

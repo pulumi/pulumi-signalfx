@@ -202,11 +202,13 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
-            __props__.__dict__["api_key"] = api_key
+            __props__.__dict__["api_key"] = None if api_key is None else pulumi.Output.secret(api_key)
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["name"] = name
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:pagerduty/integration:Integration',
             resource_name,

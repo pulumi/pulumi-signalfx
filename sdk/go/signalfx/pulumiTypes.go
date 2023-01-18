@@ -879,6 +879,7 @@ func (o DashboardGridArrayOutput) Index(i pulumi.IntInput) DashboardGridOutput {
 }
 
 type DashboardGroupDashboard struct {
+	ConfigId *string `pulumi:"configId"`
 	// The dashboard id to mirror
 	DashboardId string `pulumi:"dashboardId"`
 	// The description that will override the original dashboards's description.
@@ -902,6 +903,7 @@ type DashboardGroupDashboardInput interface {
 }
 
 type DashboardGroupDashboardArgs struct {
+	ConfigId pulumi.StringPtrInput `pulumi:"configId"`
 	// The dashboard id to mirror
 	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
 	// The description that will override the original dashboards's description.
@@ -962,6 +964,10 @@ func (o DashboardGroupDashboardOutput) ToDashboardGroupDashboardOutput() Dashboa
 
 func (o DashboardGroupDashboardOutput) ToDashboardGroupDashboardOutputWithContext(ctx context.Context) DashboardGroupDashboardOutput {
 	return o
+}
+
+func (o DashboardGroupDashboardOutput) ConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
 }
 
 // The dashboard id to mirror
@@ -2776,11 +2782,11 @@ type DetectorVizOption struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label       string  `pulumi:"label"`
+	Label string `pulumi:"label"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -2801,11 +2807,11 @@ type DetectorVizOptionArgs struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label       pulumi.StringInput    `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -2875,6 +2881,7 @@ func (o DetectorVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v DetectorVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o DetectorVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -2884,7 +2891,6 @@ func (o DetectorVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o DetectorVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -3462,11 +3468,11 @@ type ListChartVizOption struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label       string  `pulumi:"label"`
+	Label string `pulumi:"label"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -3487,11 +3493,11 @@ type ListChartVizOptionArgs struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label       pulumi.StringInput    `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -3561,6 +3567,7 @@ func (o ListChartVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o ListChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -3570,7 +3577,6 @@ func (o ListChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o ListChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -4160,11 +4166,11 @@ type SingleValueChartVizOption struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label       string  `pulumi:"label"`
+	Label string `pulumi:"label"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -4185,11 +4191,11 @@ type SingleValueChartVizOptionArgs struct {
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label       pulumi.StringInput    `pulumi:"label"`
+	Label pulumi.StringInput `pulumi:"label"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -4259,6 +4265,7 @@ func (o SingleValueChartVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
+// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o SingleValueChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -4268,7 +4275,6 @@ func (o SingleValueChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o SingleValueChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -4291,6 +4297,124 @@ func (o SingleValueChartVizOptionArrayOutput) Index(i pulumi.IntInput) SingleVal
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SingleValueChartVizOption {
 		return vs[0].([]SingleValueChartVizOption)[vs[1].(int)]
 	}).(SingleValueChartVizOptionOutput)
+}
+
+type TableChartVizOption struct {
+	DisplayName *string `pulumi:"displayName"`
+	Label       string  `pulumi:"label"`
+	ValuePrefix *string `pulumi:"valuePrefix"`
+	ValueSuffix *string `pulumi:"valueSuffix"`
+	ValueUnit   *string `pulumi:"valueUnit"`
+}
+
+// TableChartVizOptionInput is an input type that accepts TableChartVizOptionArgs and TableChartVizOptionOutput values.
+// You can construct a concrete instance of `TableChartVizOptionInput` via:
+//
+//	TableChartVizOptionArgs{...}
+type TableChartVizOptionInput interface {
+	pulumi.Input
+
+	ToTableChartVizOptionOutput() TableChartVizOptionOutput
+	ToTableChartVizOptionOutputWithContext(context.Context) TableChartVizOptionOutput
+}
+
+type TableChartVizOptionArgs struct {
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	Label       pulumi.StringInput    `pulumi:"label"`
+	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
+	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
+	ValueUnit   pulumi.StringPtrInput `pulumi:"valueUnit"`
+}
+
+func (TableChartVizOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableChartVizOption)(nil)).Elem()
+}
+
+func (i TableChartVizOptionArgs) ToTableChartVizOptionOutput() TableChartVizOptionOutput {
+	return i.ToTableChartVizOptionOutputWithContext(context.Background())
+}
+
+func (i TableChartVizOptionArgs) ToTableChartVizOptionOutputWithContext(ctx context.Context) TableChartVizOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableChartVizOptionOutput)
+}
+
+// TableChartVizOptionArrayInput is an input type that accepts TableChartVizOptionArray and TableChartVizOptionArrayOutput values.
+// You can construct a concrete instance of `TableChartVizOptionArrayInput` via:
+//
+//	TableChartVizOptionArray{ TableChartVizOptionArgs{...} }
+type TableChartVizOptionArrayInput interface {
+	pulumi.Input
+
+	ToTableChartVizOptionArrayOutput() TableChartVizOptionArrayOutput
+	ToTableChartVizOptionArrayOutputWithContext(context.Context) TableChartVizOptionArrayOutput
+}
+
+type TableChartVizOptionArray []TableChartVizOptionInput
+
+func (TableChartVizOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableChartVizOption)(nil)).Elem()
+}
+
+func (i TableChartVizOptionArray) ToTableChartVizOptionArrayOutput() TableChartVizOptionArrayOutput {
+	return i.ToTableChartVizOptionArrayOutputWithContext(context.Background())
+}
+
+func (i TableChartVizOptionArray) ToTableChartVizOptionArrayOutputWithContext(ctx context.Context) TableChartVizOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableChartVizOptionArrayOutput)
+}
+
+type TableChartVizOptionOutput struct{ *pulumi.OutputState }
+
+func (TableChartVizOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableChartVizOption)(nil)).Elem()
+}
+
+func (o TableChartVizOptionOutput) ToTableChartVizOptionOutput() TableChartVizOptionOutput {
+	return o
+}
+
+func (o TableChartVizOptionOutput) ToTableChartVizOptionOutputWithContext(ctx context.Context) TableChartVizOptionOutput {
+	return o
+}
+
+func (o TableChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o TableChartVizOptionOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v TableChartVizOption) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o TableChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
+}
+
+func (o TableChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
+}
+
+func (o TableChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
+}
+
+type TableChartVizOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (TableChartVizOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableChartVizOption)(nil)).Elem()
+}
+
+func (o TableChartVizOptionArrayOutput) ToTableChartVizOptionArrayOutput() TableChartVizOptionArrayOutput {
+	return o
+}
+
+func (o TableChartVizOptionArrayOutput) ToTableChartVizOptionArrayOutputWithContext(ctx context.Context) TableChartVizOptionArrayOutput {
+	return o
+}
+
+func (o TableChartVizOptionArrayOutput) Index(i pulumi.IntInput) TableChartVizOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableChartVizOption {
+		return vs[0].([]TableChartVizOption)[vs[1].(int)]
+	}).(TableChartVizOptionOutput)
 }
 
 type TimeChartAxisLeft struct {
@@ -5359,11 +5483,11 @@ type TimeChartVizOption struct {
 	// Label used in the publish statement that displays the event query you want to customize.
 	Label string `pulumi:"label"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-	PlotType    *string `pulumi:"plotType"`
+	PlotType *string `pulumi:"plotType"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -5388,11 +5512,11 @@ type TimeChartVizOptionArgs struct {
 	// Label used in the publish statement that displays the event query you want to customize.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-	PlotType    pulumi.StringPtrInput `pulumi:"plotType"`
+	PlotType pulumi.StringPtrInput `pulumi:"plotType"`
+	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -5472,6 +5596,7 @@ func (o TimeChartVizOptionOutput) PlotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.PlotType }).(pulumi.StringPtrOutput)
 }
 
+// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o TimeChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -5481,7 +5606,6 @@ func (o TimeChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 }
 
 // A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-// * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o TimeChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -5865,6 +5989,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartColorScaleArrayInput)(nil)).Elem(), SingleValueChartColorScaleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartVizOptionInput)(nil)).Elem(), SingleValueChartVizOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartVizOptionArrayInput)(nil)).Elem(), SingleValueChartVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableChartVizOptionInput)(nil)).Elem(), TableChartVizOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableChartVizOptionArrayInput)(nil)).Elem(), TableChartVizOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftInput)(nil)).Elem(), TimeChartAxisLeftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftPtrInput)(nil)).Elem(), TimeChartAxisLeftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftWatermarkInput)(nil)).Elem(), TimeChartAxisLeftWatermarkArgs{})
@@ -5951,6 +6077,8 @@ func init() {
 	pulumi.RegisterOutputType(SingleValueChartColorScaleArrayOutput{})
 	pulumi.RegisterOutputType(SingleValueChartVizOptionOutput{})
 	pulumi.RegisterOutputType(SingleValueChartVizOptionArrayOutput{})
+	pulumi.RegisterOutputType(TableChartVizOptionOutput{})
+	pulumi.RegisterOutputType(TableChartVizOptionArrayOutput{})
 	pulumi.RegisterOutputType(TimeChartAxisLeftOutput{})
 	pulumi.RegisterOutputType(TimeChartAxisLeftPtrOutput{})
 	pulumi.RegisterOutputType(TimeChartAxisLeftWatermarkOutput{})

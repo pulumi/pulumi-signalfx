@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -16,14 +17,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const azureMyteam = new signalfx.azure.Integration("azure_myteam", {
- *     // Optional
+ * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {
  *     additionalServices: [
  *         "some/service",
  *         "another/service",
  *     ],
  *     appId: "YYY",
- *     // Optional
  *     customNamespacesPerServices: [{
  *         namespaces: [
  *             "monitoringAgent",
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  *     environment: "azure",
  *     pollRate: 300,
  *     resourceFilterRules: [
- *         // Optional
  *         {
  *             filter: {
  *                 source: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
@@ -197,22 +195,24 @@ export class Integration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tenantId'");
             }
             resourceInputs["additionalServices"] = args ? args.additionalServices : undefined;
-            resourceInputs["appId"] = args ? args.appId : undefined;
+            resourceInputs["appId"] = args?.appId ? pulumi.secret(args.appId) : undefined;
             resourceInputs["customNamespacesPerServices"] = args ? args.customNamespacesPerServices : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["environment"] = args?.environment ? pulumi.secret(args.environment) : undefined;
             resourceInputs["importAzureMonitor"] = args ? args.importAzureMonitor : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namedToken"] = args ? args.namedToken : undefined;
             resourceInputs["pollRate"] = args ? args.pollRate : undefined;
             resourceInputs["resourceFilterRules"] = args ? args.resourceFilterRules : undefined;
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["subscriptions"] = args ? args.subscriptions : undefined;
             resourceInputs["syncGuestOsNamespaces"] = args ? args.syncGuestOsNamespaces : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["appId", "environment", "secretKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }

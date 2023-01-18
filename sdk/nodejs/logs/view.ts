@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const myLogView = new signalfx.logs.View("my_log_view", {
+ * const myLogView = new signalfx.logs.View("myLogView", {
  *     columns: [
  *         {
  *             name: "severity",
@@ -36,7 +37,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     description: "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
- *     programText: "logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n",
+ *     programText: `logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+ *
+ * `,
  *     sortOptions: [{
  *         descending: false,
  *         field: "severity",

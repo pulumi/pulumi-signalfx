@@ -25,7 +25,7 @@ public final class GcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.signalfx.gcp.GcpFunctions;
-     * import com.pulumi.signalfx.aws.inputs.GetServicesArgs;
+     * import com.pulumi.signalfx.gcp.inputs.GetServicesArgs;
      * import com.pulumi.signalfx.gcp.Integration;
      * import com.pulumi.signalfx.gcp.IntegrationArgs;
      * import java.util.List;
@@ -66,7 +66,7 @@ public final class GcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.signalfx.gcp.GcpFunctions;
-     * import com.pulumi.signalfx.aws.inputs.GetServicesArgs;
+     * import com.pulumi.signalfx.gcp.inputs.GetServicesArgs;
      * import com.pulumi.signalfx.gcp.Integration;
      * import com.pulumi.signalfx.gcp.IntegrationArgs;
      * import java.util.List;
@@ -107,7 +107,7 @@ public final class GcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.signalfx.gcp.GcpFunctions;
-     * import com.pulumi.signalfx.aws.inputs.GetServicesArgs;
+     * import com.pulumi.signalfx.gcp.inputs.GetServicesArgs;
      * import com.pulumi.signalfx.gcp.Integration;
      * import com.pulumi.signalfx.gcp.IntegrationArgs;
      * import java.util.List;
@@ -148,7 +148,7 @@ public final class GcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.signalfx.gcp.GcpFunctions;
-     * import com.pulumi.signalfx.aws.inputs.GetServicesArgs;
+     * import com.pulumi.signalfx.gcp.inputs.GetServicesArgs;
      * import com.pulumi.signalfx.gcp.Integration;
      * import com.pulumi.signalfx.gcp.IntegrationArgs;
      * import java.util.List;
@@ -189,7 +189,7 @@ public final class GcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.signalfx.gcp.GcpFunctions;
-     * import com.pulumi.signalfx.aws.inputs.GetServicesArgs;
+     * import com.pulumi.signalfx.gcp.inputs.GetServicesArgs;
      * import com.pulumi.signalfx.gcp.Integration;
      * import com.pulumi.signalfx.gcp.IntegrationArgs;
      * import java.util.List;
@@ -230,7 +230,7 @@ public final class GcpFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.signalfx.gcp.GcpFunctions;
-     * import com.pulumi.signalfx.aws.inputs.GetServicesArgs;
+     * import com.pulumi.signalfx.gcp.inputs.GetServicesArgs;
      * import com.pulumi.signalfx.gcp.Integration;
      * import com.pulumi.signalfx.gcp.IntegrationArgs;
      * import java.util.List;

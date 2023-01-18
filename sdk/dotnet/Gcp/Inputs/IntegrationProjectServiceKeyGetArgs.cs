@@ -16,7 +16,16 @@ namespace Pulumi.SignalFx.Gcp.Inputs
         public Input<string> ProjectId { get; set; } = null!;
 
         [Input("projectKey", required: true)]
-        public Input<string> ProjectKey { get; set; } = null!;
+        private Input<string>? _projectKey;
+        public Input<string>? ProjectKey
+        {
+            get => _projectKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _projectKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public IntegrationProjectServiceKeyGetArgs()
         {

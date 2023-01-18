@@ -60,6 +60,13 @@ namespace Pulumi.SignalFx.Gcp
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
+        /// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+        /// to true.
+        /// </summary>
+        [Output("importGcpMetrics")]
+        public Output<bool?> ImportGcpMetrics { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the integration.
         /// </summary>
         [Output("name")]
@@ -124,6 +131,10 @@ namespace Pulumi.SignalFx.Gcp
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "projectServiceKeys",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -154,6 +165,13 @@ namespace Pulumi.SignalFx.Gcp
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
+        /// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+        /// to true.
+        /// </summary>
+        [Input("importGcpMetrics")]
+        public Input<bool>? ImportGcpMetrics { get; set; }
+
+        /// <summary>
         /// Name of the integration.
         /// </summary>
         [Input("name")]
@@ -180,7 +198,11 @@ namespace Pulumi.SignalFx.Gcp
         public InputList<Inputs.IntegrationProjectServiceKeyArgs> ProjectServiceKeys
         {
             get => _projectServiceKeys ?? (_projectServiceKeys = new InputList<Inputs.IntegrationProjectServiceKeyArgs>());
-            set => _projectServiceKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.IntegrationProjectServiceKeyArgs>());
+                _projectServiceKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("services")]
@@ -228,6 +250,13 @@ namespace Pulumi.SignalFx.Gcp
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+        /// to true.
+        /// </summary>
+        [Input("importGcpMetrics")]
+        public Input<bool>? ImportGcpMetrics { get; set; }
+
+        /// <summary>
         /// Name of the integration.
         /// </summary>
         [Input("name")]
@@ -254,7 +283,11 @@ namespace Pulumi.SignalFx.Gcp
         public InputList<Inputs.IntegrationProjectServiceKeyGetArgs> ProjectServiceKeys
         {
             get => _projectServiceKeys ?? (_projectServiceKeys = new InputList<Inputs.IntegrationProjectServiceKeyGetArgs>());
-            set => _projectServiceKeys = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.IntegrationProjectServiceKeyGetArgs>());
+                _projectServiceKeys = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         [Input("services")]

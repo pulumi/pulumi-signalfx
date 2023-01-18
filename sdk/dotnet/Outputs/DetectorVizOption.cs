@@ -25,11 +25,13 @@ namespace Pulumi.SignalFx.Outputs
         /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// </summary>
         public readonly string? ValuePrefix;
         public readonly string? ValueSuffix;
         /// <summary>
         /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         public readonly string? ValueUnit;
 

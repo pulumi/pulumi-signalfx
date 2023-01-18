@@ -210,7 +210,9 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> UseGetMetricDataMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
+        /// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt;
+        /// Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         /// </summary>
         [Output("useMetricStreamsSync")]
         public Output<bool> UseMetricStreamsSync { get; private set; } = null!;
@@ -238,6 +240,11 @@ namespace Pulumi.SignalFx.Aws
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "externalId",
+                    "key",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -309,11 +316,21 @@ namespace Pulumi.SignalFx.Aws
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        [Input("externalId")]
+        private Input<string>? _externalId;
+
         /// <summary>
         /// The `external_id` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
         /// </summary>
-        [Input("externalId")]
-        public Input<string>? ExternalId { get; set; }
+        public Input<string>? ExternalId
+        {
+            get => _externalId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _externalId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
@@ -327,11 +344,21 @@ namespace Pulumi.SignalFx.Aws
         [Input("integrationId", required: true)]
         public Input<string> IntegrationId { get; set; } = null!;
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("metricStatsToSyncs")]
         private InputList<Inputs.IntegrationMetricStatsToSyncArgs>? _metricStatsToSyncs;
@@ -418,7 +445,9 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? UseGetMetricDataMethod { get; set; }
 
         /// <summary>
-        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
+        /// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt;
+        /// Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         /// </summary>
         [Input("useMetricStreamsSync")]
         public Input<bool>? UseMetricStreamsSync { get; set; }
@@ -479,11 +508,21 @@ namespace Pulumi.SignalFx.Aws
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("externalId")]
+        private Input<string>? _externalId;
+
         /// <summary>
         /// The `external_id` property from one of a `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`
         /// </summary>
-        [Input("externalId")]
-        public Input<string>? ExternalId { get; set; }
+        public Input<string>? ExternalId
+        {
+            get => _externalId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _externalId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
@@ -497,11 +536,21 @@ namespace Pulumi.SignalFx.Aws
         [Input("integrationId")]
         public Input<string>? IntegrationId { get; set; }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
         /// If you specify `auth_method = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("metricStatsToSyncs")]
         private InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>? _metricStatsToSyncs;
@@ -588,7 +637,9 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? UseGetMetricDataMethod { get; set; }
 
         /// <summary>
-        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics. Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.
+        /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
+        /// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.&lt;br&gt;
+        /// Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         /// </summary>
         [Input("useMetricStreamsSync")]
         public Input<bool>? UseMetricStreamsSync { get; set; }

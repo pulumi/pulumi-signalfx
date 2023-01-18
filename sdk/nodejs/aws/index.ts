@@ -5,15 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./externalIntegration";
-export * from "./getServices";
-export * from "./integration";
-export * from "./tokenIntegration";
+export { ExternalIntegrationArgs, ExternalIntegrationState } from "./externalIntegration";
+export type ExternalIntegration = import("./externalIntegration").ExternalIntegration;
+export const ExternalIntegration: typeof import("./externalIntegration").ExternalIntegration = null as any;
+utilities.lazyLoad(exports, ["ExternalIntegration"], () => require("./externalIntegration"));
 
-// Import resources to register:
-import { ExternalIntegration } from "./externalIntegration";
-import { Integration } from "./integration";
-import { TokenIntegration } from "./tokenIntegration";
+export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./getServices";
+export const getServices: typeof import("./getServices").getServices = null as any;
+export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getServices","getServicesOutput"], () => require("./getServices"));
+
+export { IntegrationArgs, IntegrationState } from "./integration";
+export type Integration = import("./integration").Integration;
+export const Integration: typeof import("./integration").Integration = null as any;
+utilities.lazyLoad(exports, ["Integration"], () => require("./integration"));
+
+export { TokenIntegrationArgs, TokenIntegrationState } from "./tokenIntegration";
+export type TokenIntegration = import("./tokenIntegration").TokenIntegration;
+export const TokenIntegration: typeof import("./tokenIntegration").TokenIntegration = null as any;
+utilities.lazyLoad(exports, ["TokenIntegration"], () => require("./tokenIntegration"));
+
 
 const _module = {
     version: utilities.getVersion(),

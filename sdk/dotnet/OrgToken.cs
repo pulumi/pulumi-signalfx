@@ -119,6 +119,10 @@ namespace Pulumi.SignalFx
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -260,11 +264,21 @@ namespace Pulumi.SignalFx
             set => _notifications = value;
         }
 
+        [Input("secret")]
+        private Input<string>? _secret;
+
         /// <summary>
         /// The secret token created by the API. You cannot set this value.
         /// </summary>
-        [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public OrgTokenState()
         {

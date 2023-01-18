@@ -31,7 +31,7 @@ import (
 //			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
 //				Description: pulumi.String("Cool dashboard group"),
 //				AuthorizedWriterTeams: pulumi.StringArray{
-//					pulumi.Any(signalfx_team.Mycoolteam.Id),
+//					signalfx_team.Mycoolteam.Id,
 //				},
 //				AuthorizedWriterUsers: pulumi.StringArray{
 //					pulumi.String("abc123"),
@@ -61,15 +61,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithpermissions", &signalfx.DashboardGroupArgs{
 //				Description: pulumi.String("Cool dashboard group"),
-//				Permissions: DashboardGroupPermissionArray{
-//					&DashboardGroupPermissionArgs{
+//				Permissions: signalfx.DashboardGroupPermissionArray{
+//					&signalfx.DashboardGroupPermissionArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("READ"),
 //						},
 //						PrincipalId:   pulumi.String("abc123"),
 //						PrincipalType: pulumi.String("ORG"),
 //					},
-//					&DashboardGroupPermissionArgs{
+//					&signalfx.DashboardGroupPermissionArgs{
 //						Actions: pulumi.StringArray{
 //							pulumi.String("READ"),
 //							pulumi.String("WRITE"),
@@ -103,13 +103,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithmirrors", &signalfx.DashboardGroupArgs{
 //				Description: pulumi.String("Cool dashboard group"),
-//				Dashboards: DashboardGroupDashboardArray{
-//					&DashboardGroupDashboardArgs{
+//				Dashboards: signalfx.DashboardGroupDashboardArray{
+//					&signalfx.DashboardGroupDashboardArgs{
 //						DashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),
 //						NameOverride:        pulumi.String("GC For My Service"),
 //						DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
-//						FilterOverrides: DashboardGroupDashboardFilterOverrideArray{
-//							&DashboardGroupDashboardFilterOverrideArgs{
+//						FilterOverrides: signalfx.DashboardGroupDashboardFilterOverrideArray{
+//							&signalfx.DashboardGroupDashboardFilterOverrideArgs{
 //								Property: pulumi.String("service"),
 //								Values: pulumi.StringArray{
 //									pulumi.String("myservice"),
@@ -117,8 +117,8 @@ import (
 //								Negated: pulumi.Bool(false),
 //							},
 //						},
-//						VariableOverrides: DashboardGroupDashboardVariableOverrideArray{
-//							&DashboardGroupDashboardVariableOverrideArgs{
+//						VariableOverrides: signalfx.DashboardGroupDashboardVariableOverrideArray{
+//							&signalfx.DashboardGroupDashboardVariableOverrideArgs{
 //								Property: pulumi.String("region"),
 //								Values: pulumi.StringArray{
 //									pulumi.String("us-west1"),

@@ -42,6 +42,7 @@ __all__ = [
     'OrgTokenHostOrUsageLimitsArgs',
     'SingleValueChartColorScaleArgs',
     'SingleValueChartVizOptionArgs',
+    'TableChartVizOptionArgs',
     'TimeChartAxisLeftArgs',
     'TimeChartAxisLeftWatermarkArgs',
     'TimeChartAxisRightArgs',
@@ -546,6 +547,7 @@ class DashboardGridArgs:
 class DashboardGroupDashboardArgs:
     def __init__(__self__, *,
                  dashboard_id: pulumi.Input[str],
+                 config_id: Optional[pulumi.Input[str]] = None,
                  description_override: Optional[pulumi.Input[str]] = None,
                  filter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]]] = None,
                  name_override: Optional[pulumi.Input[str]] = None,
@@ -557,6 +559,8 @@ class DashboardGroupDashboardArgs:
         :param pulumi.Input[str] name_override: The name that will override the original dashboards's name.
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if config_id is not None:
+            pulumi.set(__self__, "config_id", config_id)
         if description_override is not None:
             pulumi.set(__self__, "description_override", description_override)
         if filter_overrides is not None:
@@ -577,6 +581,15 @@ class DashboardGroupDashboardArgs:
     @dashboard_id.setter
     def dashboard_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dashboard_id", value)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter(name="descriptionOverride")
@@ -1567,8 +1580,8 @@ class DetectorVizOptionArgs:
         :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-               * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -1621,6 +1634,9 @@ class DetectorVizOptionArgs:
     @property
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
         return pulumi.get(self, "value_prefix")
 
     @value_prefix.setter
@@ -1641,7 +1657,6 @@ class DetectorVizOptionArgs:
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
         A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         return pulumi.get(self, "value_unit")
 
@@ -1927,8 +1942,8 @@ class ListChartVizOptionArgs:
         :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-               * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -1981,6 +1996,9 @@ class ListChartVizOptionArgs:
     @property
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
         return pulumi.get(self, "value_prefix")
 
     @value_prefix.setter
@@ -2001,7 +2019,6 @@ class ListChartVizOptionArgs:
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
         A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         return pulumi.get(self, "value_unit")
 
@@ -2282,8 +2299,8 @@ class SingleValueChartVizOptionArgs:
         :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-               * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -2336,6 +2353,9 @@ class SingleValueChartVizOptionArgs:
     @property
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
         return pulumi.get(self, "value_prefix")
 
     @value_prefix.setter
@@ -2356,8 +2376,71 @@ class SingleValueChartVizOptionArgs:
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
         A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
+        return pulumi.get(self, "value_unit")
+
+    @value_unit.setter
+    def value_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_unit", value)
+
+
+@pulumi.input_type
+class TableChartVizOptionArgs:
+    def __init__(__self__, *,
+                 label: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 value_prefix: Optional[pulumi.Input[str]] = None,
+                 value_suffix: Optional[pulumi.Input[str]] = None,
+                 value_unit: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "label", label)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if value_prefix is not None:
+            pulumi.set(__self__, "value_prefix", value_prefix)
+        if value_suffix is not None:
+            pulumi.set(__self__, "value_suffix", value_suffix)
+        if value_unit is not None:
+            pulumi.set(__self__, "value_unit", value_unit)
+
+    @property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="valuePrefix")
+    def value_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value_prefix")
+
+    @value_prefix.setter
+    def value_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_prefix", value)
+
+    @property
+    @pulumi.getter(name="valueSuffix")
+    def value_suffix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value_suffix")
+
+    @value_suffix.setter
+    def value_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value_suffix", value)
+
+    @property
+    @pulumi.getter(name="valueUnit")
+    def value_unit(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "value_unit")
 
     @value_unit.setter
@@ -2827,8 +2910,8 @@ class TimeChartVizOptionArgs:
         :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-               * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         pulumi.set(__self__, "label", label)
         if axis is not None:
@@ -2909,6 +2992,9 @@ class TimeChartVizOptionArgs:
     @property
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        """
         return pulumi.get(self, "value_prefix")
 
     @value_prefix.setter
@@ -2929,7 +3015,6 @@ class TimeChartVizOptionArgs:
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
         A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         return pulumi.get(self, "value_unit")
 

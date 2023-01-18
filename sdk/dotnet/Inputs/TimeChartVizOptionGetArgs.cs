@@ -42,6 +42,9 @@ namespace Pulumi.SignalFx.Inputs
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
 
+        /// <summary>
+        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }
 
@@ -50,7 +53,6 @@ namespace Pulumi.SignalFx.Inputs
 
         /// <summary>
         /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-        /// * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         [Input("valueUnit")]
         public Input<string>? ValueUnit { get; set; }

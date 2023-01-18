@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export * from "./getIntegration";
-export * from "./integration";
+export { GetIntegrationArgs, GetIntegrationResult, GetIntegrationOutputArgs } from "./getIntegration";
+export const getIntegration: typeof import("./getIntegration").getIntegration = null as any;
+export const getIntegrationOutput: typeof import("./getIntegration").getIntegrationOutput = null as any;
+utilities.lazyLoad(exports, ["getIntegration","getIntegrationOutput"], () => require("./getIntegration"));
 
-// Import resources to register:
-import { Integration } from "./integration";
+export { IntegrationArgs, IntegrationState } from "./integration";
+export type Integration = import("./integration").Integration;
+export const Integration: typeof import("./integration").Integration = null as any;
+utilities.lazyLoad(exports, ["Integration"], () => require("./integration"));
+
 
 const _module = {
     version: utilities.getVersion(),

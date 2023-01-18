@@ -2,16 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:azure/getServices:getServices", {
         "services": args.services,
     }, opts);
@@ -34,9 +32,8 @@ export interface GetServicesResult {
     readonly id: string;
     readonly services?: outputs.azure.GetServicesService[];
 }
-
 export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
-    return pulumi.output(args).apply(a => getServices(a, opts))
+    return pulumi.output(args).apply((a: any) => getServices(a, opts))
 }
 
 /**

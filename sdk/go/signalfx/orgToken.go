@@ -28,7 +28,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewOrgToken(ctx, "myteamkey0", &signalfx.OrgTokenArgs{
 //				Description: pulumi.String("My team's rad key"),
-//				HostOrUsageLimits: &OrgTokenHostOrUsageLimitsArgs{
+//				HostOrUsageLimits: &signalfx.OrgTokenHostOrUsageLimitsArgs{
 //					ContainerLimit:                      pulumi.Int(200),
 //					ContainerNotificationThreshold:      pulumi.Int(180),
 //					CustomMetricsLimit:                  pulumi.Int(1000),
@@ -79,6 +79,10 @@ func NewOrgToken(ctx *pulumi.Context,
 		args = &OrgTokenArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secret",
+	})
+	opts = append(opts, secrets)
 	var resource OrgToken
 	err := ctx.RegisterResource("signalfx:index/orgToken:OrgToken", name, args, &resource, opts...)
 	if err != nil {
