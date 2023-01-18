@@ -19,6 +19,7 @@ from .list_chart import *
 from .org_token import *
 from .provider import *
 from .single_value_chart import *
+from .table_chart import *
 from .team import *
 from .text_chart import *
 from .time_chart import *
@@ -184,6 +185,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx",
   "classes": {
    "signalfx:index/singleValueChart:SingleValueChart": "SingleValueChart"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "index/tableChart",
+  "fqn": "pulumi_signalfx",
+  "classes": {
+   "signalfx:index/tableChart:TableChart": "TableChart"
   }
  },
  {

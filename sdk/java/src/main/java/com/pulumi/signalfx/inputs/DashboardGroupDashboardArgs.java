@@ -18,6 +18,13 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
 
     public static final DashboardGroupDashboardArgs Empty = new DashboardGroupDashboardArgs();
 
+    @Import(name="configId")
+    private @Nullable Output<String> configId;
+
+    public Optional<Output<String>> configId() {
+        return Optional.ofNullable(this.configId);
+    }
+
     /**
      * The dashboard id to mirror
      * 
@@ -88,6 +95,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     private DashboardGroupDashboardArgs() {}
 
     private DashboardGroupDashboardArgs(DashboardGroupDashboardArgs $) {
+        this.configId = $.configId;
         this.dashboardId = $.dashboardId;
         this.descriptionOverride = $.descriptionOverride;
         this.filterOverrides = $.filterOverrides;
@@ -111,6 +119,15 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
 
         public Builder(DashboardGroupDashboardArgs defaults) {
             $ = new DashboardGroupDashboardArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder configId(@Nullable Output<String> configId) {
+            $.configId = configId;
+            return this;
+        }
+
+        public Builder configId(String configId) {
+            return configId(Output.of(configId));
         }
 
         /**

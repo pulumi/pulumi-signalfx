@@ -18,11 +18,21 @@ namespace Pulumi.SignalFx.Inputs
         [Input("headerKey", required: true)]
         public Input<string> HeaderKey { get; set; } = null!;
 
+        [Input("headerValue", required: true)]
+        private Input<string>? _headerValue;
+
         /// <summary>
         /// The value of the header to send
         /// </summary>
-        [Input("headerValue", required: true)]
-        public Input<string> HeaderValue { get; set; } = null!;
+        public Input<string>? HeaderValue
+        {
+            get => _headerValue;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _headerValue = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public WebhookIntegrationHeaderGetArgs()
         {

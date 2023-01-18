@@ -5,24 +5,101 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./alertMutingRule";
-export * from "./dashboard";
-export * from "./dashboardGroup";
-export * from "./dataLink";
-export * from "./detector";
-export * from "./eventFeedChart";
-export * from "./getAwsServices";
-export * from "./getAzureServices";
-export * from "./getDimensionValues";
-export * from "./heatmapChart";
-export * from "./listChart";
-export * from "./orgToken";
-export * from "./provider";
-export * from "./singleValueChart";
-export * from "./team";
-export * from "./textChart";
-export * from "./timeChart";
-export * from "./webhookIntegration";
+export { AlertMutingRuleArgs, AlertMutingRuleState } from "./alertMutingRule";
+export type AlertMutingRule = import("./alertMutingRule").AlertMutingRule;
+export const AlertMutingRule: typeof import("./alertMutingRule").AlertMutingRule = null as any;
+utilities.lazyLoad(exports, ["AlertMutingRule"], () => require("./alertMutingRule"));
+
+export { DashboardArgs, DashboardState } from "./dashboard";
+export type Dashboard = import("./dashboard").Dashboard;
+export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
+utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
+
+export { DashboardGroupArgs, DashboardGroupState } from "./dashboardGroup";
+export type DashboardGroup = import("./dashboardGroup").DashboardGroup;
+export const DashboardGroup: typeof import("./dashboardGroup").DashboardGroup = null as any;
+utilities.lazyLoad(exports, ["DashboardGroup"], () => require("./dashboardGroup"));
+
+export { DataLinkArgs, DataLinkState } from "./dataLink";
+export type DataLink = import("./dataLink").DataLink;
+export const DataLink: typeof import("./dataLink").DataLink = null as any;
+utilities.lazyLoad(exports, ["DataLink"], () => require("./dataLink"));
+
+export { DetectorArgs, DetectorState } from "./detector";
+export type Detector = import("./detector").Detector;
+export const Detector: typeof import("./detector").Detector = null as any;
+utilities.lazyLoad(exports, ["Detector"], () => require("./detector"));
+
+export { EventFeedChartArgs, EventFeedChartState } from "./eventFeedChart";
+export type EventFeedChart = import("./eventFeedChart").EventFeedChart;
+export const EventFeedChart: typeof import("./eventFeedChart").EventFeedChart = null as any;
+utilities.lazyLoad(exports, ["EventFeedChart"], () => require("./eventFeedChart"));
+
+export { GetAwsServicesArgs, GetAwsServicesResult, GetAwsServicesOutputArgs } from "./getAwsServices";
+export const getAwsServices: typeof import("./getAwsServices").getAwsServices = null as any;
+export const getAwsServicesOutput: typeof import("./getAwsServices").getAwsServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getAwsServices","getAwsServicesOutput"], () => require("./getAwsServices"));
+
+export { GetAzureServicesArgs, GetAzureServicesResult, GetAzureServicesOutputArgs } from "./getAzureServices";
+export const getAzureServices: typeof import("./getAzureServices").getAzureServices = null as any;
+export const getAzureServicesOutput: typeof import("./getAzureServices").getAzureServicesOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureServices","getAzureServicesOutput"], () => require("./getAzureServices"));
+
+export { GetDimensionValuesArgs, GetDimensionValuesResult, GetDimensionValuesOutputArgs } from "./getDimensionValues";
+export const getDimensionValues: typeof import("./getDimensionValues").getDimensionValues = null as any;
+export const getDimensionValuesOutput: typeof import("./getDimensionValues").getDimensionValuesOutput = null as any;
+utilities.lazyLoad(exports, ["getDimensionValues","getDimensionValuesOutput"], () => require("./getDimensionValues"));
+
+export { HeatmapChartArgs, HeatmapChartState } from "./heatmapChart";
+export type HeatmapChart = import("./heatmapChart").HeatmapChart;
+export const HeatmapChart: typeof import("./heatmapChart").HeatmapChart = null as any;
+utilities.lazyLoad(exports, ["HeatmapChart"], () => require("./heatmapChart"));
+
+export { ListChartArgs, ListChartState } from "./listChart";
+export type ListChart = import("./listChart").ListChart;
+export const ListChart: typeof import("./listChart").ListChart = null as any;
+utilities.lazyLoad(exports, ["ListChart"], () => require("./listChart"));
+
+export { OrgTokenArgs, OrgTokenState } from "./orgToken";
+export type OrgToken = import("./orgToken").OrgToken;
+export const OrgToken: typeof import("./orgToken").OrgToken = null as any;
+utilities.lazyLoad(exports, ["OrgToken"], () => require("./orgToken"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { SingleValueChartArgs, SingleValueChartState } from "./singleValueChart";
+export type SingleValueChart = import("./singleValueChart").SingleValueChart;
+export const SingleValueChart: typeof import("./singleValueChart").SingleValueChart = null as any;
+utilities.lazyLoad(exports, ["SingleValueChart"], () => require("./singleValueChart"));
+
+export { TableChartArgs, TableChartState } from "./tableChart";
+export type TableChart = import("./tableChart").TableChart;
+export const TableChart: typeof import("./tableChart").TableChart = null as any;
+utilities.lazyLoad(exports, ["TableChart"], () => require("./tableChart"));
+
+export { TeamArgs, TeamState } from "./team";
+export type Team = import("./team").Team;
+export const Team: typeof import("./team").Team = null as any;
+utilities.lazyLoad(exports, ["Team"], () => require("./team"));
+
+export { TextChartArgs, TextChartState } from "./textChart";
+export type TextChart = import("./textChart").TextChart;
+export const TextChart: typeof import("./textChart").TextChart = null as any;
+utilities.lazyLoad(exports, ["TextChart"], () => require("./textChart"));
+
+export { TimeChartArgs, TimeChartState } from "./timeChart";
+export type TimeChart = import("./timeChart").TimeChart;
+export const TimeChart: typeof import("./timeChart").TimeChart = null as any;
+utilities.lazyLoad(exports, ["TimeChart"], () => require("./timeChart"));
+
+export { WebhookIntegrationArgs, WebhookIntegrationState } from "./webhookIntegration";
+export type WebhookIntegration = import("./webhookIntegration").WebhookIntegration;
+export const WebhookIntegration: typeof import("./webhookIntegration").WebhookIntegration = null as any;
+utilities.lazyLoad(exports, ["WebhookIntegration"], () => require("./webhookIntegration"));
+
 
 // Export sub-modules:
 import * as aws from "./aws";
@@ -53,22 +130,6 @@ export {
     victorops,
 };
 
-// Import resources to register:
-import { AlertMutingRule } from "./alertMutingRule";
-import { Dashboard } from "./dashboard";
-import { DashboardGroup } from "./dashboardGroup";
-import { DataLink } from "./dataLink";
-import { Detector } from "./detector";
-import { EventFeedChart } from "./eventFeedChart";
-import { HeatmapChart } from "./heatmapChart";
-import { ListChart } from "./listChart";
-import { OrgToken } from "./orgToken";
-import { SingleValueChart } from "./singleValueChart";
-import { Team } from "./team";
-import { TextChart } from "./textChart";
-import { TimeChart } from "./timeChart";
-import { WebhookIntegration } from "./webhookIntegration";
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
@@ -93,6 +154,8 @@ const _module = {
                 return new OrgToken(name, <any>undefined, { urn })
             case "signalfx:index/singleValueChart:SingleValueChart":
                 return new SingleValueChart(name, <any>undefined, { urn })
+            case "signalfx:index/tableChart:TableChart":
+                return new TableChart(name, <any>undefined, { urn })
             case "signalfx:index/team:Team":
                 return new Team(name, <any>undefined, { urn })
             case "signalfx:index/textChart:TextChart":
@@ -116,13 +179,11 @@ pulumi.runtime.registerResourceModule("signalfx", "index/heatmapChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/listChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/orgToken", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/singleValueChart", _module)
+pulumi.runtime.registerResourceModule("signalfx", "index/tableChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/team", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/textChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/timeChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/webhookIntegration", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("signalfx", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

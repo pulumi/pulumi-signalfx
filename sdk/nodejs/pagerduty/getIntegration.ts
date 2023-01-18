@@ -13,17 +13,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const pdIntegration = pulumi.output(signalfx.pagerduty.getIntegration({
+ * const pdIntegration = signalfx.pagerduty.getIntegration({
  *     name: "PD-Integration",
- * }));
+ * });
  * ```
  */
 export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:pagerduty/getIntegration:getIntegration", {
         "name": args.name,
     }, opts);
@@ -56,9 +53,22 @@ export interface GetIntegrationResult {
      */
     readonly name: string;
 }
-
+/**
+ * Use this data source to get information on an existing PagerDuty integration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const pdIntegration = signalfx.pagerduty.getIntegration({
+ *     name: "PD-Integration",
+ * });
+ * ```
+ */
 export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationResult> {
-    return pulumi.output(args).apply(a => getIntegration(a, opts))
+    return pulumi.output(args).apply((a: any) => getIntegration(a, opts))
 }
 
 /**

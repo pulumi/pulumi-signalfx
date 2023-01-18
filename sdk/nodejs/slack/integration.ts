@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const slackMyteam = new signalfx.slack.Integration("slack_myteam", {
+ * const slackMyteam = new signalfx.slack.Integration("slackMyteam", {
  *     enabled: true,
  *     webhookUrl: "http://example.com",
  * });
@@ -88,9 +88,11 @@ export class Integration extends pulumi.CustomResource {
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["webhookUrl"] = args ? args.webhookUrl : undefined;
+            resourceInputs["webhookUrl"] = args?.webhookUrl ? pulumi.secret(args.webhookUrl) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["webhookUrl"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Integration.__pulumiType, name, resourceInputs, opts);
     }
 }

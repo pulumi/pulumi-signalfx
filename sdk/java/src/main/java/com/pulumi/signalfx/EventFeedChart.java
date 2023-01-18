@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
  * Displays a listing of events as a widget in a dashboard.
  * 
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 

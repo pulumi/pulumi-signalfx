@@ -76,6 +76,10 @@ namespace Pulumi.SignalFx.Slack
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "webhookUrl",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -111,11 +115,21 @@ namespace Pulumi.SignalFx.Slack
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("webhookUrl", required: true)]
+        private Input<string>? _webhookUrl;
+
         /// <summary>
         /// Slack incoming webhook URL.
         /// </summary>
-        [Input("webhookUrl", required: true)]
-        public Input<string> WebhookUrl { get; set; } = null!;
+        public Input<string>? WebhookUrl
+        {
+            get => _webhookUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webhookUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public IntegrationArgs()
         {
@@ -137,11 +151,21 @@ namespace Pulumi.SignalFx.Slack
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("webhookUrl")]
+        private Input<string>? _webhookUrl;
+
         /// <summary>
         /// Slack incoming webhook URL.
         /// </summary>
-        [Input("webhookUrl")]
-        public Input<string>? WebhookUrl { get; set; }
+        public Input<string>? WebhookUrl
+        {
+            get => _webhookUrl;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _webhookUrl = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public IntegrationState()
         {

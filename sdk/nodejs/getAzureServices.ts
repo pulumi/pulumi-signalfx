@@ -2,18 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /** @deprecated signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices */
 export function getAzureServices(args?: GetAzureServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureServicesResult> {
     pulumi.log.warn("getAzureServices is deprecated: signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices")
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:index/getAzureServices:getAzureServices", {
         "services": args.services,
     }, opts);
@@ -36,9 +34,9 @@ export interface GetAzureServicesResult {
     readonly id: string;
     readonly services?: outputs.GetAzureServicesService[];
 }
-
+/** @deprecated signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices */
 export function getAzureServicesOutput(args?: GetAzureServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureServicesResult> {
-    return pulumi.output(args).apply(a => getAzureServices(a, opts))
+    return pulumi.output(args).apply((a: any) => getAzureServices(a, opts))
 }
 
 /**

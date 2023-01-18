@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const webhookMyteam = new signalfx.WebhookIntegration("webhook_myteam", {
+ * const webhookMyteam = new signalfx.WebhookIntegration("webhookMyteam", {
  *     enabled: true,
  *     headers: [{
  *         headerKey: "some_header",
@@ -97,12 +98,14 @@ export class WebhookIntegration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'enabled'");
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["headers"] = args ? args.headers : undefined;
+            resourceInputs["headers"] = args?.headers ? pulumi.secret(args.headers) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["sharedSecret"] = args ? args.sharedSecret : undefined;
+            resourceInputs["sharedSecret"] = args?.sharedSecret ? pulumi.secret(args.sharedSecret) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["headers", "sharedSecret"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(WebhookIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }

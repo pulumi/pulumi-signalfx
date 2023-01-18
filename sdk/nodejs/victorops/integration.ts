@@ -15,9 +15,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
  *
- * const vioctorOpsMyteam = new signalfx.victorops.Integration("vioctor_ops_myteam", {
+ * const vioctorOpsMyteam = new signalfx.victorops.Integration("vioctorOpsMyteam", {
  *     enabled: true,
- *     postUrl: "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
+ *     postUrl: `https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key`,
  * });
  * ```
  */

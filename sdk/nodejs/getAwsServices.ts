@@ -2,18 +2,16 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /** @deprecated signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices */
 export function getAwsServices(args?: GetAwsServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsServicesResult> {
     pulumi.log.warn("getAwsServices is deprecated: signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices")
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("signalfx:index/getAwsServices:getAwsServices", {
         "services": args.services,
     }, opts);
@@ -36,9 +34,9 @@ export interface GetAwsServicesResult {
     readonly id: string;
     readonly services?: outputs.GetAwsServicesService[];
 }
-
+/** @deprecated signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices */
 export function getAwsServicesOutput(args?: GetAwsServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsServicesResult> {
-    return pulumi.output(args).apply(a => getAwsServices(a, opts))
+    return pulumi.output(args).apply((a: any) => getAwsServices(a, opts))
 }
 
 /**

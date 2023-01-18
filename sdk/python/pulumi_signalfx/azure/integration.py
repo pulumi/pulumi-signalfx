@@ -696,12 +696,12 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["additional_services"] = additional_services
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
-            __props__.__dict__["app_id"] = app_id
+            __props__.__dict__["app_id"] = None if app_id is None else pulumi.Output.secret(app_id)
             __props__.__dict__["custom_namespaces_per_services"] = custom_namespaces_per_services
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
-            __props__.__dict__["environment"] = environment
+            __props__.__dict__["environment"] = None if environment is None else pulumi.Output.secret(environment)
             __props__.__dict__["import_azure_monitor"] = import_azure_monitor
             __props__.__dict__["name"] = name
             __props__.__dict__["named_token"] = named_token
@@ -709,7 +709,7 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["resource_filter_rules"] = resource_filter_rules
             if secret_key is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_key'")
-            __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
             if services is None and not opts.urn:
                 raise TypeError("Missing required property 'services'")
             __props__.__dict__["services"] = services
@@ -720,6 +720,8 @@ class Integration(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["appId", "environment", "secretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:azure/integration:Integration',
             resource_name,

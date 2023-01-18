@@ -93,6 +93,11 @@ func NewTokenIntegration(ctx *pulumi.Context,
 		args = &TokenIntegrationArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"signalfxAwsAccount",
+		"tokenId",
+	})
+	opts = append(opts, secrets)
 	var resource TokenIntegration
 	err := ctx.RegisterResource("signalfx:aws/tokenIntegration:TokenIntegration", name, args, &resource, opts...)
 	if err != nil {

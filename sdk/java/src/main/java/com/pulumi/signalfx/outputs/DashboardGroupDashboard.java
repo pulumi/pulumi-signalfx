@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupDashboard {
+    private @Nullable String configId;
     /**
      * @return The dashboard id to mirror
      * 
@@ -37,6 +38,9 @@ public final class DashboardGroupDashboard {
     private @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides;
 
     private DashboardGroupDashboard() {}
+    public Optional<String> configId() {
+        return Optional.ofNullable(this.configId);
+    }
     /**
      * @return The dashboard id to mirror
      * 
@@ -78,6 +82,7 @@ public final class DashboardGroupDashboard {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String configId;
         private String dashboardId;
         private @Nullable String descriptionOverride;
         private @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides;
@@ -86,6 +91,7 @@ public final class DashboardGroupDashboard {
         public Builder() {}
         public Builder(DashboardGroupDashboard defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.configId = defaults.configId;
     	      this.dashboardId = defaults.dashboardId;
     	      this.descriptionOverride = defaults.descriptionOverride;
     	      this.filterOverrides = defaults.filterOverrides;
@@ -93,6 +99,11 @@ public final class DashboardGroupDashboard {
     	      this.variableOverrides = defaults.variableOverrides;
         }
 
+        @CustomType.Setter
+        public Builder configId(@Nullable String configId) {
+            this.configId = configId;
+            return this;
+        }
         @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
             this.dashboardId = Objects.requireNonNull(dashboardId);
@@ -126,6 +137,7 @@ public final class DashboardGroupDashboard {
         }
         public DashboardGroupDashboard build() {
             final var o = new DashboardGroupDashboard();
+            o.configId = configId;
             o.dashboardId = dashboardId;
             o.descriptionOverride = descriptionOverride;
             o.filterOverrides = filterOverrides;

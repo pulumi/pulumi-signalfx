@@ -13,10 +13,10 @@ namespace Pulumi.SignalFx
     public static class GetAwsServices
     {
         public static Task<GetAwsServicesResult> InvokeAsync(GetAwsServicesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesArgs(), options.WithDefaults());
 
         public static Output<GetAwsServicesResult> Invoke(GetAwsServicesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAwsServicesResult>("signalfx:index/getAwsServices:getAwsServices", args ?? new GetAwsServicesInvokeArgs(), options.WithDefaults());
     }
 
 

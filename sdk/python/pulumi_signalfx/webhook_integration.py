@@ -278,10 +278,12 @@ class WebhookIntegration(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
-            __props__.__dict__["headers"] = headers
+            __props__.__dict__["headers"] = None if headers is None else pulumi.Output.secret(headers)
             __props__.__dict__["name"] = name
-            __props__.__dict__["shared_secret"] = shared_secret
+            __props__.__dict__["shared_secret"] = None if shared_secret is None else pulumi.Output.secret(shared_secret)
             __props__.__dict__["url"] = url
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["headers", "sharedSecret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(WebhookIntegration, __self__).__init__(
             'signalfx:index/webhookIntegration:WebhookIntegration',
             resource_name,

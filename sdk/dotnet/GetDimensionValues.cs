@@ -17,7 +17,7 @@ namespace Pulumi.SignalFx
         /// &gt; **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.
         /// </summary>
         public static Task<GetDimensionValuesResult> InvokeAsync(GetDimensionValuesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get a list of dimension values matching the provided query.
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx
         /// &gt; **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.
         /// </summary>
         public static Output<GetDimensionValuesResult> Invoke(GetDimensionValuesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());
     }
 
 

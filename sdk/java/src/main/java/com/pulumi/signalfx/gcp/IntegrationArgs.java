@@ -35,6 +35,23 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     * 
+     */
+    @Import(name="importGcpMetrics")
+    private @Nullable Output<Boolean> importGcpMetrics;
+
+    /**
+     * @return If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+     * to true.
+     * 
+     */
+    public Optional<Output<Boolean>> importGcpMetrics() {
+        return Optional.ofNullable(this.importGcpMetrics);
+    }
+
+    /**
      * Name of the integration.
      * 
      */
@@ -143,6 +160,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
     private IntegrationArgs(IntegrationArgs $) {
         this.enabled = $.enabled;
+        this.importGcpMetrics = $.importGcpMetrics;
         this.name = $.name;
         this.namedToken = $.namedToken;
         this.pollRate = $.pollRate;
@@ -189,6 +207,29 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param importGcpMetrics If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+         * to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importGcpMetrics(@Nullable Output<Boolean> importGcpMetrics) {
+            $.importGcpMetrics = importGcpMetrics;
+            return this;
+        }
+
+        /**
+         * @param importGcpMetrics If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+         * to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder importGcpMetrics(Boolean importGcpMetrics) {
+            return importGcpMetrics(Output.of(importGcpMetrics));
         }
 
         /**

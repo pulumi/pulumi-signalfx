@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AlertMutingRuleFilter {
     /**
@@ -138,6 +139,7 @@ export interface DashboardGrid {
 }
 
 export interface DashboardGroupDashboard {
+    configId?: pulumi.Input<string>;
     /**
      * The dashboard id to mirror
      */
@@ -422,11 +424,13 @@ export interface DetectorVizOption {
      * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
+    /**
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     */
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
      * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valueUnit?: pulumi.Input<string>;
 }
@@ -532,11 +536,13 @@ export interface ListChartVizOption {
      * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
+    /**
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     */
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
      * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valueUnit?: pulumi.Input<string>;
 }
@@ -623,12 +629,22 @@ export interface SingleValueChartVizOption {
      * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
+    /**
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     */
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
      * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
+    valueUnit?: pulumi.Input<string>;
+}
+
+export interface TableChartVizOption {
+    displayName?: pulumi.Input<string>;
+    label: pulumi.Input<string>;
+    valuePrefix?: pulumi.Input<string>;
+    valueSuffix?: pulumi.Input<string>;
     valueUnit?: pulumi.Input<string>;
 }
 
@@ -766,11 +782,13 @@ export interface TimeChartVizOption {
      * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
      */
     plotType?: pulumi.Input<string>;
+    /**
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     */
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
      * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valueUnit?: pulumi.Input<string>;
 }

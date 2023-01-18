@@ -102,6 +102,17 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.ProjectKey == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectKey'")
 	}
+	if args.ApiToken != nil {
+		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringPtrInput)
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"apiToken",
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Integration
 	err := ctx.RegisterResource("signalfx:jira/integration:Integration", name, args, &resource, opts...)
 	if err != nil {

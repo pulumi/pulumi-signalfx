@@ -199,6 +199,12 @@ namespace Pulumi.SignalFx.Azure
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "appId",
+                    "environment",
+                    "secretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -234,11 +240,21 @@ namespace Pulumi.SignalFx.Azure
             set => _additionalServices = value;
         }
 
+        [Input("appId", required: true)]
+        private Input<string>? _appId;
+
         /// <summary>
         /// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
         /// </summary>
-        [Input("appId", required: true)]
-        public Input<string> AppId { get; set; } = null!;
+        public Input<string>? AppId
+        {
+            get => _appId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _appId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("customNamespacesPerServices")]
         private InputList<Inputs.IntegrationCustomNamespacesPerServiceArgs>? _customNamespacesPerServices;
@@ -258,11 +274,21 @@ namespace Pulumi.SignalFx.Azure
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        [Input("environment")]
+        private Input<string>? _environment;
+
         /// <summary>
         /// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         /// </summary>
-        [Input("environment")]
-        public Input<string>? Environment { get; set; }
+        public Input<string>? Environment
+        {
+            get => _environment;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _environment = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
@@ -302,11 +328,21 @@ namespace Pulumi.SignalFx.Azure
             set => _resourceFilterRules = value;
         }
 
+        [Input("secretKey", required: true)]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("services", required: true)]
         private InputList<string>? _services;
@@ -364,11 +400,21 @@ namespace Pulumi.SignalFx.Azure
             set => _additionalServices = value;
         }
 
+        [Input("appId")]
+        private Input<string>? _appId;
+
         /// <summary>
         /// Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
         /// </summary>
-        [Input("appId")]
-        public Input<string>? AppId { get; set; }
+        public Input<string>? AppId
+        {
+            get => _appId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _appId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("customNamespacesPerServices")]
         private InputList<Inputs.IntegrationCustomNamespacesPerServiceGetArgs>? _customNamespacesPerServices;
@@ -388,11 +434,21 @@ namespace Pulumi.SignalFx.Azure
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("environment")]
+        private Input<string>? _environment;
+
         /// <summary>
         /// What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
         /// </summary>
-        [Input("environment")]
-        public Input<string>? Environment { get; set; }
+        public Input<string>? Environment
+        {
+            get => _environment;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _environment = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
@@ -432,11 +488,21 @@ namespace Pulumi.SignalFx.Azure
             set => _resourceFilterRules = value;
         }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("services")]
         private InputList<string>? _services;

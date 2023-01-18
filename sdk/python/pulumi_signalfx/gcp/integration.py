@@ -17,6 +17,7 @@ __all__ = ['IntegrationArgs', 'Integration']
 class IntegrationArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
+                 import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -27,6 +28,8 @@ class IntegrationArgs:
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+               to true.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
@@ -36,6 +39,8 @@ class IntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         pulumi.set(__self__, "enabled", enabled)
+        if import_gcp_metrics is not None:
+            pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_token is not None:
@@ -62,6 +67,19 @@ class IntegrationArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="importGcpMetrics")
+    def import_gcp_metrics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+        to true.
+        """
+        return pulumi.get(self, "import_gcp_metrics")
+
+    @import_gcp_metrics.setter
+    def import_gcp_metrics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_gcp_metrics", value)
 
     @property
     @pulumi.getter
@@ -152,6 +170,7 @@ class IntegrationArgs:
 class _IntegrationState:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -162,6 +181,8 @@ class _IntegrationState:
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+               to true.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
@@ -172,6 +193,8 @@ class _IntegrationState:
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if import_gcp_metrics is not None:
+            pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_token is not None:
@@ -198,6 +221,19 @@ class _IntegrationState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="importGcpMetrics")
+    def import_gcp_metrics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+        to true.
+        """
+        return pulumi.get(self, "import_gcp_metrics")
+
+    @import_gcp_metrics.setter
+    def import_gcp_metrics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "import_gcp_metrics", value)
 
     @property
     @pulumi.getter
@@ -290,6 +326,7 @@ class Integration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -328,6 +365,8 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+               to true.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
@@ -385,6 +424,7 @@ class Integration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
@@ -404,13 +444,16 @@ class Integration(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
             __props__.__dict__["name"] = name
             __props__.__dict__["named_token"] = named_token
             __props__.__dict__["poll_rate"] = poll_rate
-            __props__.__dict__["project_service_keys"] = project_service_keys
+            __props__.__dict__["project_service_keys"] = None if project_service_keys is None else pulumi.Output.secret(project_service_keys)
             __props__.__dict__["services"] = services
             __props__.__dict__["use_metric_source_project_for_quota"] = use_metric_source_project_for_quota
             __props__.__dict__["whitelists"] = whitelists
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["projectServiceKeys"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:gcp/integration:Integration',
             resource_name,
@@ -422,6 +465,7 @@ class Integration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_token: Optional[pulumi.Input[str]] = None,
             poll_rate: Optional[pulumi.Input[int]] = None,
@@ -437,6 +481,8 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+               to true.
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
@@ -450,6 +496,7 @@ class Integration(pulumi.CustomResource):
         __props__ = _IntegrationState.__new__(_IntegrationState)
 
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
         __props__.__dict__["name"] = name
         __props__.__dict__["named_token"] = named_token
         __props__.__dict__["poll_rate"] = poll_rate
@@ -466,6 +513,15 @@ class Integration(pulumi.CustomResource):
         Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="importGcpMetrics")
+    def import_gcp_metrics(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+        to true.
+        """
+        return pulumi.get(self, "import_gcp_metrics")
 
     @property
     @pulumi.getter

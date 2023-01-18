@@ -65,6 +65,13 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.WebhookUrl == nil {
 		return nil, errors.New("invalid value for required argument 'WebhookUrl'")
 	}
+	if args.WebhookUrl != nil {
+		args.WebhookUrl = pulumi.ToSecret(args.WebhookUrl).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"webhookUrl",
+	})
+	opts = append(opts, secrets)
 	var resource Integration
 	err := ctx.RegisterResource("signalfx:slack/integration:Integration", name, args, &resource, opts...)
 	if err != nil {

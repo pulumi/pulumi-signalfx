@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -21,7 +22,6 @@ import * as utilities from "./utilities";
  *         minValue: 0,
  *     },
  *     colorScales: [
- *         // You can only use one of color_range or color_scale!
  *         {
  *             color: "green",
  *             gte: 99,
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *         {
  *             color: "yellow",
  *             gte: 95,
- *             lt: 99, // This ensures terraform recognizes that we cover the range 95-99
+ *             lt: 99,
  *         },
  *         {
  *             color: "red",
@@ -45,6 +45,7 @@ import * as utilities from "./utilities";
  *     hideTimestamp: true,
  *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
  * data("cpu.total.idle", filter=myfilters).publish()
+ *
  * `,
  *     sortBy: "+host",
  *     timezone: "Europe/Paris",

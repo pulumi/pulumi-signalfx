@@ -390,6 +390,8 @@ class OrgToken(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications
             __props__.__dict__["secret"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secret"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(OrgToken, __self__).__init__(
             'signalfx:index/orgToken:OrgToken',
             resource_name,

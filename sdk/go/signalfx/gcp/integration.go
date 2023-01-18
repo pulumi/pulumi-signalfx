@@ -69,6 +69,9 @@ type Integration struct {
 
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
+	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+	// to true.
+	ImportGcpMetrics pulumi.BoolPtrOutput `pulumi:"importGcpMetrics"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -95,6 +98,13 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
+	if args.ProjectServiceKeys != nil {
+		args.ProjectServiceKeys = pulumi.ToSecret(args.ProjectServiceKeys).(IntegrationProjectServiceKeyArrayInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"projectServiceKeys",
+	})
+	opts = append(opts, secrets)
 	var resource Integration
 	err := ctx.RegisterResource("signalfx:gcp/integration:Integration", name, args, &resource, opts...)
 	if err != nil {
@@ -119,6 +129,9 @@ func GetIntegration(ctx *pulumi.Context,
 type integrationState struct {
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+	// to true.
+	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -138,6 +151,9 @@ type integrationState struct {
 type IntegrationState struct {
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
+	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+	// to true.
+	ImportGcpMetrics pulumi.BoolPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -161,6 +177,9 @@ func (IntegrationState) ElementType() reflect.Type {
 type integrationArgs struct {
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
+	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+	// to true.
+	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -181,6 +200,9 @@ type integrationArgs struct {
 type IntegrationArgs struct {
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
+	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+	// to true.
+	ImportGcpMetrics pulumi.BoolPtrInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -287,6 +309,12 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 // Whether the integration is enabled.
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
+// to true.
+func (o IntegrationOutput) ImportGcpMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportGcpMetrics }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the integration.

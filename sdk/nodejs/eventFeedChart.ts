@@ -6,22 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Displays a listing of events as a widget in a dashboard.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mynote0 = new signalfx.EventFeedChart("mynote0", {
- *     description: "Lorem ipsum dolor sit amet",
- *     programText: "A = events(eventType='My Event Type').publish(label='A')",
- *     vizOptions: [{
- *         color: "orange",
- *         label: "A",
- *     }],
- * });
- * ```
  */
 export class EventFeedChart extends pulumi.CustomResource {
     /**

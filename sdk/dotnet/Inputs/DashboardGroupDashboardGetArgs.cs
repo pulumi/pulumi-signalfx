@@ -12,6 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardGroupDashboardGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("configId")]
+        public Input<string>? ConfigId { get; set; }
+
         /// <summary>
         /// The dashboard id to mirror
         /// </summary>

@@ -199,6 +199,8 @@ export class ExternalIntegration extends pulumi.CustomResource {
             resourceInputs["signalfxAwsAccount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["externalId", "signalfxAwsAccount"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ExternalIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }

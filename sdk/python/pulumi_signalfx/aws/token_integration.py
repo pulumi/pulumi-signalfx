@@ -218,6 +218,8 @@ class TokenIntegration(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["signalfx_aws_account"] = None
             __props__.__dict__["token_id"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["signalfxAwsAccount", "tokenId"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(TokenIntegration, __self__).__init__(
             'signalfx:aws/tokenIntegration:TokenIntegration',
             resource_name,

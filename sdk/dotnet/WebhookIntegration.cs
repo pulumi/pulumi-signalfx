@@ -94,6 +94,11 @@ namespace Pulumi.SignalFx
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "headers",
+                    "sharedSecret",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -132,7 +137,11 @@ namespace Pulumi.SignalFx
         public InputList<Inputs.WebhookIntegrationHeaderArgs> Headers
         {
             get => _headers ?? (_headers = new InputList<Inputs.WebhookIntegrationHeaderArgs>());
-            set => _headers = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.WebhookIntegrationHeaderArgs>());
+                _headers = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -142,7 +151,16 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         [Input("sharedSecret")]
-        public Input<string>? SharedSecret { get; set; }
+        private Input<string>? _sharedSecret;
+        public Input<string>? SharedSecret
+        {
+            get => _sharedSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharedSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URL to request
@@ -173,7 +191,11 @@ namespace Pulumi.SignalFx
         public InputList<Inputs.WebhookIntegrationHeaderGetArgs> Headers
         {
             get => _headers ?? (_headers = new InputList<Inputs.WebhookIntegrationHeaderGetArgs>());
-            set => _headers = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.WebhookIntegrationHeaderGetArgs>());
+                _headers = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
@@ -183,7 +205,16 @@ namespace Pulumi.SignalFx
         public Input<string>? Name { get; set; }
 
         [Input("sharedSecret")]
-        public Input<string>? SharedSecret { get; set; }
+        private Input<string>? _sharedSecret;
+        public Input<string>? SharedSecret
+        {
+            get => _sharedSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _sharedSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The URL to request

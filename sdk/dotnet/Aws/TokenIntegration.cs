@@ -114,6 +114,11 @@ namespace Pulumi.SignalFx.Aws
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "signalfxAwsAccount",
+                    "tokenId",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -157,17 +162,37 @@ namespace Pulumi.SignalFx.Aws
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("signalfxAwsAccount")]
+        private Input<string>? _signalfxAwsAccount;
+
         /// <summary>
         /// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
         /// </summary>
-        [Input("signalfxAwsAccount")]
-        public Input<string>? SignalfxAwsAccount { get; set; }
+        public Input<string>? SignalfxAwsAccount
+        {
+            get => _signalfxAwsAccount;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _signalfxAwsAccount = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("tokenId")]
+        private Input<string>? _tokenId;
 
         /// <summary>
         /// The SignalFx-generated AWS token to use with an AWS integration.
         /// </summary>
-        [Input("tokenId")]
-        public Input<string>? TokenId { get; set; }
+        public Input<string>? TokenId
+        {
+            get => _tokenId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _tokenId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TokenIntegrationState()
         {

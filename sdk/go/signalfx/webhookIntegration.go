@@ -31,8 +31,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := signalfx.NewWebhookIntegration(ctx, "webhookMyteam", &signalfx.WebhookIntegrationArgs{
 //				Enabled: pulumi.Bool(true),
-//				Headers: WebhookIntegrationHeaderArray{
-//					&WebhookIntegrationHeaderArgs{
+//				Headers: signalfx.WebhookIntegrationHeaderArray{
+//					&signalfx.WebhookIntegrationHeaderArgs{
 //						HeaderKey:   pulumi.String("some_header"),
 //						HeaderValue: pulumi.String("value_for_that_header"),
 //					},
@@ -72,6 +72,17 @@ func NewWebhookIntegration(ctx *pulumi.Context,
 	if args.Enabled == nil {
 		return nil, errors.New("invalid value for required argument 'Enabled'")
 	}
+	if args.Headers != nil {
+		args.Headers = pulumi.ToSecret(args.Headers).(WebhookIntegrationHeaderArrayInput)
+	}
+	if args.SharedSecret != nil {
+		args.SharedSecret = pulumi.ToSecret(args.SharedSecret).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"headers",
+		"sharedSecret",
+	})
+	opts = append(opts, secrets)
 	var resource WebhookIntegration
 	err := ctx.RegisterResource("signalfx:index/webhookIntegration:WebhookIntegration", name, args, &resource, opts...)
 	if err != nil {

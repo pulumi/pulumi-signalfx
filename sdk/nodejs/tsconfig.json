@@ -54,6 +54,7 @@
         "singleValueChart.ts",
         "slack/index.ts",
         "slack/integration.ts",
+        "tableChart.ts",
         "team.ts",
         "textChart.ts",
         "timeChart.ts",

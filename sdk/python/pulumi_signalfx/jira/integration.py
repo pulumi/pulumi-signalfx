@@ -526,7 +526,7 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
-            __props__.__dict__["api_token"] = api_token
+            __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
             __props__.__dict__["assignee_display_name"] = assignee_display_name
             if assignee_name is None and not opts.urn:
                 raise TypeError("Missing required property 'assignee_name'")
@@ -544,12 +544,14 @@ class Integration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'issue_type'")
             __props__.__dict__["issue_type"] = issue_type
             __props__.__dict__["name"] = name
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if project_key is None and not opts.urn:
                 raise TypeError("Missing required property 'project_key'")
             __props__.__dict__["project_key"] = project_key
             __props__.__dict__["user_email"] = user_email
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["apiToken", "password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
             'signalfx:jira/integration:Integration',
             resource_name,

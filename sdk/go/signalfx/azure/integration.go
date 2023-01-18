@@ -141,6 +141,21 @@ func NewIntegration(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
+	if args.AppId != nil {
+		args.AppId = pulumi.ToSecret(args.AppId).(pulumi.StringInput)
+	}
+	if args.Environment != nil {
+		args.Environment = pulumi.ToSecret(args.Environment).(pulumi.StringPtrInput)
+	}
+	if args.SecretKey != nil {
+		args.SecretKey = pulumi.ToSecret(args.SecretKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"appId",
+		"environment",
+		"secretKey",
+	})
+	opts = append(opts, secrets)
 	var resource Integration
 	err := ctx.RegisterResource("signalfx:azure/integration:Integration", name, args, &resource, opts...)
 	if err != nil {
