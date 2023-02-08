@@ -15,6 +15,13 @@ public final class TableChartVizOptionArgs extends com.pulumi.resources.Resource
 
     public static final TableChartVizOptionArgs Empty = new TableChartVizOptionArgs();
 
+    @Import(name="color")
+    private @Nullable Output<String> color;
+
+    public Optional<Output<String>> color() {
+        return Optional.ofNullable(this.color);
+    }
+
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
@@ -53,6 +60,7 @@ public final class TableChartVizOptionArgs extends com.pulumi.resources.Resource
     private TableChartVizOptionArgs() {}
 
     private TableChartVizOptionArgs(TableChartVizOptionArgs $) {
+        this.color = $.color;
         this.displayName = $.displayName;
         this.label = $.label;
         this.valuePrefix = $.valuePrefix;
@@ -76,6 +84,15 @@ public final class TableChartVizOptionArgs extends com.pulumi.resources.Resource
 
         public Builder(TableChartVizOptionArgs defaults) {
             $ = new TableChartVizOptionArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder color(@Nullable Output<String> color) {
+            $.color = color;
+            return this;
+        }
+
+        public Builder color(String color) {
+            return color(Output.of(color));
         }
 
         public Builder displayName(@Nullable Output<String> displayName) {

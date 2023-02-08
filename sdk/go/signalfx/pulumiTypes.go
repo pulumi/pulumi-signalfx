@@ -4300,6 +4300,7 @@ func (o SingleValueChartVizOptionArrayOutput) Index(i pulumi.IntInput) SingleVal
 }
 
 type TableChartVizOption struct {
+	Color       *string `pulumi:"color"`
 	DisplayName *string `pulumi:"displayName"`
 	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
@@ -4319,6 +4320,7 @@ type TableChartVizOptionInput interface {
 }
 
 type TableChartVizOptionArgs struct {
+	Color       pulumi.StringPtrInput `pulumi:"color"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
@@ -4375,6 +4377,10 @@ func (o TableChartVizOptionOutput) ToTableChartVizOptionOutput() TableChartVizOp
 
 func (o TableChartVizOptionOutput) ToTableChartVizOptionOutputWithContext(ctx context.Context) TableChartVizOptionOutput {
 	return o
+}
+
+func (o TableChartVizOptionOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
 func (o TableChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {

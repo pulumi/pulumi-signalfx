@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TableChartVizOption {
+    private @Nullable String color;
     private @Nullable String displayName;
     private String label;
     private @Nullable String valuePrefix;
@@ -18,6 +19,9 @@ public final class TableChartVizOption {
     private @Nullable String valueUnit;
 
     private TableChartVizOption() {}
+    public Optional<String> color() {
+        return Optional.ofNullable(this.color);
+    }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
@@ -43,6 +47,7 @@ public final class TableChartVizOption {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String color;
         private @Nullable String displayName;
         private String label;
         private @Nullable String valuePrefix;
@@ -51,6 +56,7 @@ public final class TableChartVizOption {
         public Builder() {}
         public Builder(TableChartVizOption defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.color = defaults.color;
     	      this.displayName = defaults.displayName;
     	      this.label = defaults.label;
     	      this.valuePrefix = defaults.valuePrefix;
@@ -58,6 +64,11 @@ public final class TableChartVizOption {
     	      this.valueUnit = defaults.valueUnit;
         }
 
+        @CustomType.Setter
+        public Builder color(@Nullable String color) {
+            this.color = color;
+            return this;
+        }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
@@ -85,6 +96,7 @@ public final class TableChartVizOption {
         }
         public TableChartVizOption build() {
             final var o = new TableChartVizOption();
+            o.color = color;
             o.displayName = displayName;
             o.label = label;
             o.valuePrefix = valuePrefix;

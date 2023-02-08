@@ -641,6 +641,7 @@ export interface SingleValueChartVizOption {
 }
 
 export interface TableChartVizOption {
+    color?: pulumi.Input<string>;
     displayName?: pulumi.Input<string>;
     label: pulumi.Input<string>;
     valuePrefix?: pulumi.Input<string>;

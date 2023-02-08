@@ -69,6 +69,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:gcp/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
+     * List of additional GCP service domain names that you want to monitor
+     * 
+     */
+    @Export(name="customMetricTypeDomains", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> customMetricTypeDomains;
+
+    /**
+     * @return List of additional GCP service domain names that you want to monitor
+     * 
+     */
+    public Output<Optional<List<String>>> customMetricTypeDomains() {
+        return Codegen.optional(this.customMetricTypeDomains);
+    }
+    /**
      * Whether the integration is enabled.
      * 
      */
@@ -97,6 +111,20 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> importGcpMetrics() {
         return Codegen.optional(this.importGcpMetrics);
+    }
+    /**
+     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     */
+    @Export(name="includeLists", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> includeLists;
+
+    /**
+     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     */
+    public Output<Optional<List<String>>> includeLists() {
+        return Codegen.optional(this.includeLists);
     }
     /**
      * Name of the integration.
@@ -181,20 +209,6 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> useMetricSourceProjectForQuota() {
         return Codegen.optional(this.useMetricSourceProjectForQuota);
-    }
-    /**
-     * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-     * 
-     */
-    @Export(name="whitelists", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> whitelists;
-
-    /**
-     * @return [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-     * 
-     */
-    public Output<Optional<List<String>>> whitelists() {
-        return Codegen.optional(this.whitelists);
     }
 
     /**

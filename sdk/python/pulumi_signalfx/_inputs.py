@@ -2388,11 +2388,14 @@ class SingleValueChartVizOptionArgs:
 class TableChartVizOptionArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[str],
+                 color: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  value_prefix: Optional[pulumi.Input[str]] = None,
                  value_suffix: Optional[pulumi.Input[str]] = None,
                  value_unit: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "label", label)
+        if color is not None:
+            pulumi.set(__self__, "color", color)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if value_prefix is not None:
@@ -2410,6 +2413,15 @@ class TableChartVizOptionArgs:
     @label.setter
     def label(self, value: pulumi.Input[str]):
         pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def color(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "color")
+
+    @color.setter
+    def color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "color", value)
 
     @property
     @pulumi.getter(name="displayName")

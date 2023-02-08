@@ -17,30 +17,36 @@ __all__ = ['IntegrationArgs', 'Integration']
 class IntegrationArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
+                 custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
+                 include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
                to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         pulumi.set(__self__, "enabled", enabled)
+        if custom_metric_type_domains is not None:
+            pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if import_gcp_metrics is not None:
             pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
+        if include_lists is not None:
+            pulumi.set(__self__, "include_lists", include_lists)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_token is not None:
@@ -53,8 +59,6 @@ class IntegrationArgs:
             pulumi.set(__self__, "services", services)
         if use_metric_source_project_for_quota is not None:
             pulumi.set(__self__, "use_metric_source_project_for_quota", use_metric_source_project_for_quota)
-        if whitelists is not None:
-            pulumi.set(__self__, "whitelists", whitelists)
 
     @property
     @pulumi.getter
@@ -69,6 +73,18 @@ class IntegrationArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="customMetricTypeDomains")
+    def custom_metric_type_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of additional GCP service domain names that you want to monitor
+        """
+        return pulumi.get(self, "custom_metric_type_domains")
+
+    @custom_metric_type_domains.setter
+    def custom_metric_type_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_metric_type_domains", value)
+
+    @property
     @pulumi.getter(name="importGcpMetrics")
     def import_gcp_metrics(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -80,6 +96,18 @@ class IntegrationArgs:
     @import_gcp_metrics.setter
     def import_gcp_metrics(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "import_gcp_metrics", value)
+
+    @property
+    @pulumi.getter(name="includeLists")
+    def include_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        """
+        return pulumi.get(self, "include_lists")
+
+    @include_lists.setter
+    def include_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_lists", value)
 
     @property
     @pulumi.getter
@@ -153,48 +181,42 @@ class IntegrationArgs:
     def use_metric_source_project_for_quota(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_metric_source_project_for_quota", value)
 
-    @property
-    @pulumi.getter
-    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-        """
-        return pulumi.get(self, "whitelists")
-
-    @whitelists.setter
-    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "whitelists", value)
-
 
 @pulumi.input_type
 class _IntegrationState:
     def __init__(__self__, *,
+                 custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
+                 include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
                to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
+        if custom_metric_type_domains is not None:
+            pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if import_gcp_metrics is not None:
             pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
+        if include_lists is not None:
+            pulumi.set(__self__, "include_lists", include_lists)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if named_token is not None:
@@ -207,8 +229,18 @@ class _IntegrationState:
             pulumi.set(__self__, "services", services)
         if use_metric_source_project_for_quota is not None:
             pulumi.set(__self__, "use_metric_source_project_for_quota", use_metric_source_project_for_quota)
-        if whitelists is not None:
-            pulumi.set(__self__, "whitelists", whitelists)
+
+    @property
+    @pulumi.getter(name="customMetricTypeDomains")
+    def custom_metric_type_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of additional GCP service domain names that you want to monitor
+        """
+        return pulumi.get(self, "custom_metric_type_domains")
+
+    @custom_metric_type_domains.setter
+    def custom_metric_type_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_metric_type_domains", value)
 
     @property
     @pulumi.getter
@@ -236,6 +268,18 @@ class _IntegrationState:
         pulumi.set(self, "import_gcp_metrics", value)
 
     @property
+    @pulumi.getter(name="includeLists")
+    def include_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        """
+        return pulumi.get(self, "include_lists")
+
+    @include_lists.setter
+    def include_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_lists", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -307,33 +351,22 @@ class _IntegrationState:
     def use_metric_source_project_for_quota(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_metric_source_project_for_quota", value)
 
-    @property
-    @pulumi.getter
-    def whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-        """
-        return pulumi.get(self, "whitelists")
-
-    @whitelists.setter
-    def whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "whitelists", value)
-
 
 class Integration(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
+                 include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         SignalFx GCP Integration
@@ -364,16 +397,17 @@ class Integration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
                to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         ...
     @overload
@@ -423,15 +457,16 @@ class Integration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
+                 include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_token: Optional[pulumi.Input[str]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
                  project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-                 whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -441,17 +476,18 @@ class Integration(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IntegrationArgs.__new__(IntegrationArgs)
 
+            __props__.__dict__["custom_metric_type_domains"] = custom_metric_type_domains
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
+            __props__.__dict__["include_lists"] = include_lists
             __props__.__dict__["name"] = name
             __props__.__dict__["named_token"] = named_token
             __props__.__dict__["poll_rate"] = poll_rate
             __props__.__dict__["project_service_keys"] = None if project_service_keys is None else pulumi.Output.secret(project_service_keys)
             __props__.__dict__["services"] = services
             __props__.__dict__["use_metric_source_project_for_quota"] = use_metric_source_project_for_quota
-            __props__.__dict__["whitelists"] = whitelists
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["projectServiceKeys"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Integration, __self__).__init__(
@@ -464,15 +500,16 @@ class Integration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
+            include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             named_token: Optional[pulumi.Input[str]] = None,
             poll_rate: Optional[pulumi.Input[int]] = None,
             project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]]] = None,
             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-            whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Integration':
+            use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None) -> 'Integration':
         """
         Get an existing Integration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -480,31 +517,41 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
                to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationProjectServiceKeyArgs']]]] project_service_keys: GCP projects to add.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] whitelists: [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _IntegrationState.__new__(_IntegrationState)
 
+        __props__.__dict__["custom_metric_type_domains"] = custom_metric_type_domains
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["import_gcp_metrics"] = import_gcp_metrics
+        __props__.__dict__["include_lists"] = include_lists
         __props__.__dict__["name"] = name
         __props__.__dict__["named_token"] = named_token
         __props__.__dict__["poll_rate"] = poll_rate
         __props__.__dict__["project_service_keys"] = project_service_keys
         __props__.__dict__["services"] = services
         __props__.__dict__["use_metric_source_project_for_quota"] = use_metric_source_project_for_quota
-        __props__.__dict__["whitelists"] = whitelists
         return Integration(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="customMetricTypeDomains")
+    def custom_metric_type_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of additional GCP service domain names that you want to monitor
+        """
+        return pulumi.get(self, "custom_metric_type_domains")
 
     @property
     @pulumi.getter
@@ -522,6 +569,14 @@ class Integration(pulumi.CustomResource):
         to true.
         """
         return pulumi.get(self, "import_gcp_metrics")
+
+    @property
+    @pulumi.getter(name="includeLists")
+    def include_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        """
+        return pulumi.get(self, "include_lists")
 
     @property
     @pulumi.getter
@@ -570,12 +625,4 @@ class Integration(pulumi.CustomResource):
         When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         """
         return pulumi.get(self, "use_metric_source_project_for_quota")
-
-    @property
-    @pulumi.getter
-    def whitelists(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-        """
-        return pulumi.get(self, "whitelists")
 

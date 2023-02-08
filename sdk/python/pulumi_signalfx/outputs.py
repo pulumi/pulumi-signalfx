@@ -2280,11 +2280,14 @@ class TableChartVizOption(dict):
 
     def __init__(__self__, *,
                  label: str,
+                 color: Optional[str] = None,
                  display_name: Optional[str] = None,
                  value_prefix: Optional[str] = None,
                  value_suffix: Optional[str] = None,
                  value_unit: Optional[str] = None):
         pulumi.set(__self__, "label", label)
+        if color is not None:
+            pulumi.set(__self__, "color", color)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if value_prefix is not None:
@@ -2298,6 +2301,11 @@ class TableChartVizOption(dict):
     @pulumi.getter
     def label(self) -> str:
         return pulumi.get(self, "label")
+
+    @property
+    @pulumi.getter
+    def color(self) -> Optional[str]:
+        return pulumi.get(self, "color")
 
     @property
     @pulumi.getter(name="displayName")
