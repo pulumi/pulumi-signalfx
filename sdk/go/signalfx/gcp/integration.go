@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/gcp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -30,7 +30,7 @@ import (
 // )
 //
 //	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := ioutil.ReadFile(path)
+//		data, err := os.ReadFile(path)
 //		if err != nil {
 //			panic(err.Error())
 //		}
@@ -67,11 +67,15 @@ import (
 type Integration struct {
 	pulumi.CustomResourceState
 
+	// List of additional GCP service domain names that you want to monitor
+	CustomMetricTypeDomains pulumi.StringArrayOutput `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
 	// to true.
 	ImportGcpMetrics pulumi.BoolPtrOutput `pulumi:"importGcpMetrics"`
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	IncludeLists pulumi.StringArrayOutput `pulumi:"includeLists"`
 	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -84,8 +88,6 @@ type Integration struct {
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrOutput `pulumi:"useMetricSourceProjectForQuota"`
-	// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -127,11 +129,15 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
+	// List of additional GCP service domain names that you want to monitor
+	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
 	// to true.
 	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	IncludeLists []string `pulumi:"includeLists"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -144,16 +150,18 @@ type integrationState struct {
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
-	// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-	Whitelists []string `pulumi:"whitelists"`
 }
 
 type IntegrationState struct {
+	// List of additional GCP service domain names that you want to monitor
+	CustomMetricTypeDomains pulumi.StringArrayInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
 	// to true.
 	ImportGcpMetrics pulumi.BoolPtrInput
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	IncludeLists pulumi.StringArrayInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -166,8 +174,6 @@ type IntegrationState struct {
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
-	// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-	Whitelists pulumi.StringArrayInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -175,11 +181,15 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
+	// List of additional GCP service domain names that you want to monitor
+	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
 	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
 	// to true.
 	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	IncludeLists []string `pulumi:"includeLists"`
 	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -192,17 +202,19 @@ type integrationArgs struct {
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
-	// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-	Whitelists []string `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
+	// List of additional GCP service domain names that you want to monitor
+	CustomMetricTypeDomains pulumi.StringArrayInput
 	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
 	// If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
 	// to true.
 	ImportGcpMetrics pulumi.BoolPtrInput
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	IncludeLists pulumi.StringArrayInput
 	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -215,8 +227,6 @@ type IntegrationArgs struct {
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
-	// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-	Whitelists pulumi.StringArrayInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
@@ -306,6 +316,11 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// List of additional GCP service domain names that you want to monitor
+func (o IntegrationOutput) CustomMetricTypeDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.CustomMetricTypeDomains }).(pulumi.StringArrayOutput)
+}
+
 // Whether the integration is enabled.
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
@@ -315,6 +330,11 @@ func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 // to true.
 func (o IntegrationOutput) ImportGcpMetrics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportGcpMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+func (o IntegrationOutput) IncludeLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.IncludeLists }).(pulumi.StringArrayOutput)
 }
 
 // Name of the integration.
@@ -345,11 +365,6 @@ func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
 // When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 func (o IntegrationOutput) UseMetricSourceProjectForQuota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseMetricSourceProjectForQuota }).(pulumi.BoolPtrOutput)
-}
-
-// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-func (o IntegrationOutput) Whitelists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Whitelists }).(pulumi.StringArrayOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

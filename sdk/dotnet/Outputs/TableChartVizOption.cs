@@ -13,6 +13,7 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TableChartVizOption
     {
+        public readonly string? Color;
         public readonly string? DisplayName;
         public readonly string Label;
         public readonly string? ValuePrefix;
@@ -21,6 +22,8 @@ namespace Pulumi.SignalFx.Outputs
 
         [OutputConstructor]
         private TableChartVizOption(
+            string? color,
+
             string? displayName,
 
             string label,
@@ -31,6 +34,7 @@ namespace Pulumi.SignalFx.Outputs
 
             string? valueUnit)
         {
+            Color = color;
             DisplayName = displayName;
             Label = label;
             ValuePrefix = valuePrefix;

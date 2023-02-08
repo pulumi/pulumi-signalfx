@@ -1899,6 +1899,14 @@
         },
         "signalfx:index/TableChartVizOption:TableChartVizOption": {
             "properties": {
+                "color": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "displayName": {
                     "type": "string",
                     "language": {
@@ -3158,8 +3166,15 @@
             }
         },
         "signalfx:gcp/integration:Integration": {
-            "description": "SignalFx GCP Integration\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fs from \"fs\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst gcpMyteam = new signalfx.gcp.Integration(\"gcpMyteam\", {\n    enabled: true,\n    pollRate: 300,\n    projectServiceKeys: [\n        {\n            projectId: \"gcp_project_id_1\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_1.json\"),\n        },\n        {\n            projectId: \"gcp_project_id_2\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_2.json\"),\n        },\n    ],\n    services: [\"compute\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\ngcp_myteam = signalfx.gcp.Integration(\"gcpMyteam\",\n    enabled=True,\n    poll_rate=300,\n    project_service_keys=[\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_1\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_1.json\"),\n        ),\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_2\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_2.json\"),\n        ),\n    ],\n    services=[\"compute\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.IO;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gcpMyteam = new SignalFx.Gcp.Integration(\"gcpMyteam\", new()\n    {\n        Enabled = true,\n        PollRate = 300,\n        ProjectServiceKeys = new[]\n        {\n            new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n            {\n                ProjectId = \"gcp_project_id_1\",\n                ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_1.json\"),\n            },\n            new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n            {\n                ProjectId = \"gcp_project_id_2\",\n                ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_2.json\"),\n            },\n        },\n        Services = new[]\n        {\n            \"compute\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"io/ioutil\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/gcp\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := ioutil.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gcp.NewIntegration(ctx, \"gcpMyteam\", \u0026gcp.IntegrationArgs{\n\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\tPollRate: pulumi.Int(300),\n\t\t\tProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_1\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_1.json\"),\n\t\t\t\t},\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_2\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_2.json\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"compute\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.gcp.Integration;\nimport com.pulumi.signalfx.gcp.IntegrationArgs;\nimport com.pulumi.signalfx.gcp.inputs.IntegrationProjectServiceKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gcpMyteam = new Integration(\"gcpMyteam\", IntegrationArgs.builder()        \n            .enabled(true)\n            .pollRate(300)\n            .projectServiceKeys(            \n                IntegrationProjectServiceKeyArgs.builder()\n                    .projectId(\"gcp_project_id_1\")\n                    .projectKey(Files.readString(Paths.get(\"/path/to/gcp_credentials_1.json\")))\n                    .build(),\n                IntegrationProjectServiceKeyArgs.builder()\n                    .projectId(\"gcp_project_id_2\")\n                    .projectKey(Files.readString(Paths.get(\"/path/to/gcp_credentials_2.json\")))\n                    .build())\n            .services(\"compute\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gcpMyteam:\n    type: signalfx:gcp:Integration\n    properties:\n      enabled: true\n      pollRate: 300\n      projectServiceKeys:\n        - projectId: gcp_project_id_1\n          projectKey:\n            fn::readFile: /path/to/gcp_credentials_1.json\n        - projectId: gcp_project_id_2\n          projectKey:\n            fn::readFile: /path/to/gcp_credentials_2.json\n      services:\n        - compute\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "SignalFx GCP Integration\n\n\u003e **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as fs from \"fs\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst gcpMyteam = new signalfx.gcp.Integration(\"gcpMyteam\", {\n    enabled: true,\n    pollRate: 300,\n    projectServiceKeys: [\n        {\n            projectId: \"gcp_project_id_1\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_1.json\"),\n        },\n        {\n            projectId: \"gcp_project_id_2\",\n            projectKey: fs.readFileSync(\"/path/to/gcp_credentials_2.json\"),\n        },\n    ],\n    services: [\"compute\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\ngcp_myteam = signalfx.gcp.Integration(\"gcpMyteam\",\n    enabled=True,\n    poll_rate=300,\n    project_service_keys=[\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_1\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_1.json\"),\n        ),\n        signalfx.gcp.IntegrationProjectServiceKeyArgs(\n            project_id=\"gcp_project_id_2\",\n            project_key=(lambda path: open(path).read())(\"/path/to/gcp_credentials_2.json\"),\n        ),\n    ],\n    services=[\"compute\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.IO;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gcpMyteam = new SignalFx.Gcp.Integration(\"gcpMyteam\", new()\n    {\n        Enabled = true,\n        PollRate = 300,\n        ProjectServiceKeys = new[]\n        {\n            new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n            {\n                ProjectId = \"gcp_project_id_1\",\n                ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_1.json\"),\n            },\n            new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs\n            {\n                ProjectId = \"gcp_project_id_2\",\n                ProjectKey = File.ReadAllText(\"/path/to/gcp_credentials_2.json\"),\n            },\n        },\n        Services = new[]\n        {\n            \"compute\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"os\"\n\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/gcp\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := os.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := gcp.NewIntegration(ctx, \"gcpMyteam\", \u0026gcp.IntegrationArgs{\n\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\tPollRate: pulumi.Int(300),\n\t\t\tProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_1\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_1.json\"),\n\t\t\t\t},\n\t\t\t\t\u0026gcp.IntegrationProjectServiceKeyArgs{\n\t\t\t\t\tProjectId:  pulumi.String(\"gcp_project_id_2\"),\n\t\t\t\t\tProjectKey: readFileOrPanic(\"/path/to/gcp_credentials_2.json\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tServices: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"compute\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.gcp.Integration;\nimport com.pulumi.signalfx.gcp.IntegrationArgs;\nimport com.pulumi.signalfx.gcp.inputs.IntegrationProjectServiceKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gcpMyteam = new Integration(\"gcpMyteam\", IntegrationArgs.builder()        \n            .enabled(true)\n            .pollRate(300)\n            .projectServiceKeys(            \n                IntegrationProjectServiceKeyArgs.builder()\n                    .projectId(\"gcp_project_id_1\")\n                    .projectKey(Files.readString(Paths.get(\"/path/to/gcp_credentials_1.json\")))\n                    .build(),\n                IntegrationProjectServiceKeyArgs.builder()\n                    .projectId(\"gcp_project_id_2\")\n                    .projectKey(Files.readString(Paths.get(\"/path/to/gcp_credentials_2.json\")))\n                    .build())\n            .services(\"compute\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gcpMyteam:\n    type: signalfx:gcp:Integration\n    properties:\n      enabled: true\n      pollRate: 300\n      projectServiceKeys:\n        - projectId: gcp_project_id_1\n          projectKey:\n            fn::readFile: /path/to/gcp_credentials_1.json\n        - projectId: gcp_project_id_2\n          projectKey:\n            fn::readFile: /path/to/gcp_credentials_2.json\n      services:\n        - compute\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "customMetricTypeDomains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of additional GCP service domain names that you want to monitor\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -3167,6 +3182,13 @@
                 "importGcpMetrics": {
                     "type": "boolean",
                     "description": "If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults\nto true.\n"
+                },
+                "includeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "[Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).\n"
                 },
                 "name": {
                     "type": "string",
@@ -3198,13 +3220,6 @@
                 "useMetricSourceProjectForQuota": {
                     "type": "boolean",
                     "description": "When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.\n"
-                },
-                "whitelists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "[Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).\n"
                 }
             },
             "required": [
@@ -3212,6 +3227,13 @@
                 "name"
             ],
             "inputProperties": {
+                "customMetricTypeDomains": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of additional GCP service domain names that you want to monitor\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the integration is enabled.\n"
@@ -3219,6 +3241,13 @@
                 "importGcpMetrics": {
                     "type": "boolean",
                     "description": "If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults\nto true.\n"
+                },
+                "includeLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "[Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).\n"
                 },
                 "name": {
                     "type": "string",
@@ -3251,13 +3280,6 @@
                 "useMetricSourceProjectForQuota": {
                     "type": "boolean",
                     "description": "When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.\n"
-                },
-                "whitelists": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "[Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).\n"
                 }
             },
             "requiredInputs": [
@@ -3266,6 +3288,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Integration resources.\n",
                 "properties": {
+                    "customMetricTypeDomains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of additional GCP service domain names that you want to monitor\n"
+                    },
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the integration is enabled.\n"
@@ -3273,6 +3302,13 @@
                     "importGcpMetrics": {
                         "type": "boolean",
                         "description": "If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults\nto true.\n"
+                    },
+                    "includeLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "[Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).\n"
                     },
                     "name": {
                         "type": "string",
@@ -3305,13 +3341,6 @@
                     "useMetricSourceProjectForQuota": {
                         "type": "boolean",
                         "description": "When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.\n"
-                    },
-                    "whitelists": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "[Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).\n"
                     }
                 },
                 "type": "object"
@@ -7131,6 +7160,7 @@
             }
         },
         "signalfx:index/getAwsServices:getAwsServices": {
+            "deprecationMessage": "signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices",
             "inputs": {
                 "description": "A collection of arguments for invoking getAwsServices.\n",
                 "properties": {
@@ -7161,10 +7191,10 @@
                 "required": [
                     "id"
                 ]
-            },
-            "deprecationMessage": "signalfx.getAwsServices has been deprecated in favor of signalfx.aws.getServices"
+            }
         },
         "signalfx:index/getAzureServices:getAzureServices": {
+            "deprecationMessage": "signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices",
             "inputs": {
                 "description": "A collection of arguments for invoking getAzureServices.\n",
                 "properties": {
@@ -7195,8 +7225,7 @@
                 "required": [
                     "id"
                 ]
-            },
-            "deprecationMessage": "signalfx.getAzureServices has been deprecated in favor of signalfx.azure.getServices"
+            }
         },
         "signalfx:index/getDimensionValues:getDimensionValues": {
             "description": "Use this data source to get a list of dimension values matching the provided query.\n\n\u003e **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.\n",

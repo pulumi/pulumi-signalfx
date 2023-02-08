@@ -54,6 +54,12 @@ namespace Pulumi.SignalFx.Gcp
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of additional GCP service domain names that you want to monitor
+        /// </summary>
+        [Output("customMetricTypeDomains")]
+        public Output<ImmutableArray<string>> CustomMetricTypeDomains { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
         [Output("enabled")]
@@ -65,6 +71,12 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("importGcpMetrics")]
         public Output<bool?> ImportGcpMetrics { get; private set; } = null!;
+
+        /// <summary>
+        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        /// </summary>
+        [Output("includeLists")]
+        public Output<ImmutableArray<string>> IncludeLists { get; private set; } = null!;
 
         /// <summary>
         /// Name of the integration.
@@ -101,12 +113,6 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("useMetricSourceProjectForQuota")]
         public Output<bool?> UseMetricSourceProjectForQuota { get; private set; } = null!;
-
-        /// <summary>
-        /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-        /// </summary>
-        [Output("whitelists")]
-        public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
 
         /// <summary>
@@ -158,6 +164,18 @@ namespace Pulumi.SignalFx.Gcp
 
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customMetricTypeDomains")]
+        private InputList<string>? _customMetricTypeDomains;
+
+        /// <summary>
+        /// List of additional GCP service domain names that you want to monitor
+        /// </summary>
+        public InputList<string> CustomMetricTypeDomains
+        {
+            get => _customMetricTypeDomains ?? (_customMetricTypeDomains = new InputList<string>());
+            set => _customMetricTypeDomains = value;
+        }
+
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
@@ -170,6 +188,18 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("importGcpMetrics")]
         public Input<bool>? ImportGcpMetrics { get; set; }
+
+        [Input("includeLists")]
+        private InputList<string>? _includeLists;
+
+        /// <summary>
+        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        /// </summary>
+        public InputList<string> IncludeLists
+        {
+            get => _includeLists ?? (_includeLists = new InputList<string>());
+            set => _includeLists = value;
+        }
 
         /// <summary>
         /// Name of the integration.
@@ -223,18 +253,6 @@ namespace Pulumi.SignalFx.Gcp
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
 
-        [Input("whitelists")]
-        private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-        /// </summary>
-        public InputList<string> Whitelists
-        {
-            get => _whitelists ?? (_whitelists = new InputList<string>());
-            set => _whitelists = value;
-        }
-
         public IntegrationArgs()
         {
         }
@@ -243,6 +261,18 @@ namespace Pulumi.SignalFx.Gcp
 
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
+        [Input("customMetricTypeDomains")]
+        private InputList<string>? _customMetricTypeDomains;
+
+        /// <summary>
+        /// List of additional GCP service domain names that you want to monitor
+        /// </summary>
+        public InputList<string> CustomMetricTypeDomains
+        {
+            get => _customMetricTypeDomains ?? (_customMetricTypeDomains = new InputList<string>());
+            set => _customMetricTypeDomains = value;
+        }
+
         /// <summary>
         /// Whether the integration is enabled.
         /// </summary>
@@ -255,6 +285,18 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("importGcpMetrics")]
         public Input<bool>? ImportGcpMetrics { get; set; }
+
+        [Input("includeLists")]
+        private InputList<string>? _includeLists;
+
+        /// <summary>
+        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        /// </summary>
+        public InputList<string> IncludeLists
+        {
+            get => _includeLists ?? (_includeLists = new InputList<string>());
+            set => _includeLists = value;
+        }
 
         /// <summary>
         /// Name of the integration.
@@ -307,18 +349,6 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
-
-        [Input("whitelists")]
-        private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-        /// </summary>
-        public InputList<string> Whitelists
-        {
-            get => _whitelists ?? (_whitelists = new InputList<string>());
-            set => _whitelists = value;
-        }
 
         public IntegrationState()
         {

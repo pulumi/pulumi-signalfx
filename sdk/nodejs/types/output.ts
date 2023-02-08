@@ -633,6 +633,7 @@ export interface SingleValueChartVizOption {
 }
 
 export interface TableChartVizOption {
+    color?: string;
     displayName?: string;
     label: string;
     valuePrefix?: string;

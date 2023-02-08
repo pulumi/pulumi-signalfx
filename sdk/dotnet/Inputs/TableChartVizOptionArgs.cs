@@ -12,6 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TableChartVizOptionArgs : global::Pulumi.ResourceArgs
     {
+        [Input("color")]
+        public Input<string>? Color { get; set; }
+
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 

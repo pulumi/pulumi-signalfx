@@ -20,6 +20,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
+     * List of additional GCP service domain names that you want to monitor
+     * 
+     */
+    @Import(name="customMetricTypeDomains")
+    private @Nullable Output<List<String>> customMetricTypeDomains;
+
+    /**
+     * @return List of additional GCP service domain names that you want to monitor
+     * 
+     */
+    public Optional<Output<List<String>>> customMetricTypeDomains() {
+        return Optional.ofNullable(this.customMetricTypeDomains);
+    }
+
+    /**
      * Whether the integration is enabled.
      * 
      */
@@ -49,6 +64,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> importGcpMetrics() {
         return Optional.ofNullable(this.importGcpMetrics);
+    }
+
+    /**
+     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     */
+    @Import(name="includeLists")
+    private @Nullable Output<List<String>> includeLists;
+
+    /**
+     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     */
+    public Optional<Output<List<String>>> includeLists() {
+        return Optional.ofNullable(this.includeLists);
     }
 
     /**
@@ -141,33 +171,19 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.useMetricSourceProjectForQuota);
     }
 
-    /**
-     * [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-     * 
-     */
-    @Import(name="whitelists")
-    private @Nullable Output<List<String>> whitelists;
-
-    /**
-     * @return [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-     * 
-     */
-    public Optional<Output<List<String>>> whitelists() {
-        return Optional.ofNullable(this.whitelists);
-    }
-
     private IntegrationArgs() {}
 
     private IntegrationArgs(IntegrationArgs $) {
+        this.customMetricTypeDomains = $.customMetricTypeDomains;
         this.enabled = $.enabled;
         this.importGcpMetrics = $.importGcpMetrics;
+        this.includeLists = $.includeLists;
         this.name = $.name;
         this.namedToken = $.namedToken;
         this.pollRate = $.pollRate;
         this.projectServiceKeys = $.projectServiceKeys;
         this.services = $.services;
         this.useMetricSourceProjectForQuota = $.useMetricSourceProjectForQuota;
-        this.whitelists = $.whitelists;
     }
 
     public static Builder builder() {
@@ -186,6 +202,37 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(IntegrationArgs defaults) {
             $ = new IntegrationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetricTypeDomains(@Nullable Output<List<String>> customMetricTypeDomains) {
+            $.customMetricTypeDomains = customMetricTypeDomains;
+            return this;
+        }
+
+        /**
+         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetricTypeDomains(List<String> customMetricTypeDomains) {
+            return customMetricTypeDomains(Output.of(customMetricTypeDomains));
+        }
+
+        /**
+         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMetricTypeDomains(String... customMetricTypeDomains) {
+            return customMetricTypeDomains(List.of(customMetricTypeDomains));
         }
 
         /**
@@ -230,6 +277,37 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder importGcpMetrics(Boolean importGcpMetrics) {
             return importGcpMetrics(Output.of(importGcpMetrics));
+        }
+
+        /**
+         * @param includeLists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeLists(@Nullable Output<List<String>> includeLists) {
+            $.includeLists = includeLists;
+            return this;
+        }
+
+        /**
+         * @param includeLists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeLists(List<String> includeLists) {
+            return includeLists(Output.of(includeLists));
+        }
+
+        /**
+         * @param includeLists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeLists(String... includeLists) {
+            return includeLists(List.of(includeLists));
         }
 
         /**
@@ -376,37 +454,6 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder useMetricSourceProjectForQuota(Boolean useMetricSourceProjectForQuota) {
             return useMetricSourceProjectForQuota(Output.of(useMetricSourceProjectForQuota));
-        }
-
-        /**
-         * @param whitelists [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder whitelists(@Nullable Output<List<String>> whitelists) {
-            $.whitelists = whitelists;
-            return this;
-        }
-
-        /**
-         * @param whitelists [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder whitelists(List<String> whitelists) {
-            return whitelists(Output.of(whitelists));
-        }
-
-        /**
-         * @param whitelists [Compute Metadata Whitelist](https://docs.splunk.com/Observability/infrastructure/navigators/gcp.html#compute-engine-instance).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder whitelists(String... whitelists) {
-            return whitelists(List.of(whitelists));
         }
 
         public IntegrationArgs build() {
