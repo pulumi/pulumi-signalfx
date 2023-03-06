@@ -75,6 +75,18 @@
                 "type": "string",
                 "description": "Application URL for your SignalFx org, often customized for organizations using SSO\n"
             },
+            "retryMaxAttempts": {
+                "type": "integer",
+                "description": "Max retries for a single HTTP call. Defaults to 4\n"
+            },
+            "retryWaitMaxSeconds": {
+                "type": "integer",
+                "description": "Maximum retry wait for a single HTTP call in seconds. Defaults to 30\n"
+            },
+            "retryWaitMinSeconds": {
+                "type": "integer",
+                "description": "Minimum retry wait for a single HTTP call in seconds. Defaults to 1\n"
+            },
             "timeoutSeconds": {
                 "type": "integer",
                 "description": "Timeout duration for a single HTTP call in seconds. Defaults to 120\n"
@@ -1680,6 +1692,188 @@
                 "label"
             ]
         },
+        "signalfx:index/MetricRulesetAggregationRule:MetricRulesetAggregationRule": {
+            "properties": {
+                "aggregators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetAggregationRuleAggregator:MetricRulesetAggregationRuleAggregator"
+                    },
+                    "description": "Aggregator object\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "When false, this rule will not generate aggregated MTSs\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "matchers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetAggregationRuleMatcher:MetricRulesetAggregationRuleMatcher"
+                    },
+                    "description": "Matcher object\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "aggregators",
+                "enabled",
+                "matchers"
+            ]
+        },
+        "signalfx:index/MetricRulesetAggregationRuleAggregator:MetricRulesetAggregationRuleAggregator": {
+            "properties": {
+                "dimensions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of dimensions to either be kept or dropped in the new aggregated MTSs\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dropDimensions": {
+                    "type": "boolean",
+                    "description": "when true, the specified dimensions will be dropped from the aggregated MTSs\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "outputName": {
+                    "type": "string",
+                    "description": "name of the new aggregated metric\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of aggregator. Must always be \"rollup\"\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dimensions",
+                "dropDimensions",
+                "outputName",
+                "type"
+            ]
+        },
+        "signalfx:index/MetricRulesetAggregationRuleMatcher:MetricRulesetAggregationRuleMatcher": {
+            "properties": {
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetAggregationRuleMatcherFilter:MetricRulesetAggregationRuleMatcherFilter"
+                    },
+                    "description": "List of filters to filter the set of input MTSs\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of aggregator. Must always be \"rollup\"\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "signalfx:index/MetricRulesetAggregationRuleMatcherFilter:MetricRulesetAggregationRuleMatcherFilter": {
+            "properties": {
+                "not": {
+                    "type": "boolean",
+                    "description": "When true, this filter will match all values not matching the property_values\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "property": {
+                    "type": "string",
+                    "description": "Name of the dimension\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "propertyValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Value of the dimension\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "not",
+                "property",
+                "propertyValues"
+            ]
+        },
+        "signalfx:index/MetricRulesetRoutingRule:MetricRulesetRoutingRule": {
+            "properties": {
+                "destination": {
+                    "type": "string",
+                    "description": "end destination of the input metric\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "destination"
+            ]
+        },
         "signalfx:index/OrgTokenDpmLimits:OrgTokenDpmLimits": {
             "properties": {
                 "dpmLimit": {
@@ -2433,6 +2627,18 @@
                 "type": "string",
                 "description": "Application URL for your SignalFx org, often customized for organizations using SSO\n"
             },
+            "retryMaxAttempts": {
+                "type": "integer",
+                "description": "Max retries for a single HTTP call. Defaults to 4\n"
+            },
+            "retryWaitMaxSeconds": {
+                "type": "integer",
+                "description": "Maximum retry wait for a single HTTP call in seconds. Defaults to 30\n"
+            },
+            "retryWaitMinSeconds": {
+                "type": "integer",
+                "description": "Minimum retry wait for a single HTTP call in seconds. Defaults to 1\n"
+            },
             "timeoutSeconds": {
                 "type": "integer",
                 "description": "Timeout duration for a single HTTP call in seconds. Defaults to 120\n"
@@ -2450,6 +2656,18 @@
             "customAppUrl": {
                 "type": "string",
                 "description": "Application URL for your SignalFx org, often customized for organizations using SSO\n"
+            },
+            "retryMaxAttempts": {
+                "type": "integer",
+                "description": "Max retries for a single HTTP call. Defaults to 4\n"
+            },
+            "retryWaitMaxSeconds": {
+                "type": "integer",
+                "description": "Maximum retry wait for a single HTTP call in seconds. Defaults to 30\n"
+            },
+            "retryWaitMinSeconds": {
+                "type": "integer",
+                "description": "Minimum retry wait for a single HTTP call in seconds. Defaults to 1\n"
             },
             "timeoutSeconds": {
                 "type": "integer",
@@ -5039,6 +5257,126 @@
                             "$ref": "#/types/signalfx:index/ListChartVizOption:ListChartVizOption"
                         },
                         "description": "Plot-level customization options, associated with a publish statement.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:index/metricRuleset:MetricRuleset": {
+            "description": "Provides an Observability Cloud resource for managing metric rulesets\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.MetricRuleset;\nimport com.pulumi.signalfx.MetricRulesetArgs;\nimport com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleArgs;\nimport com.pulumi.signalfx.inputs.MetricRulesetRoutingRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var cpuUtilizationMetricRuleset = new MetricRuleset(\"cpuUtilizationMetricRuleset\", MetricRulesetArgs.builder()        \n            .aggregationRules(MetricRulesetAggregationRuleArgs.builder()\n                .aggregators(MetricRulesetAggregationRuleAggregatorArgs.builder()\n                    .dimensions(\"service\")\n                    .dropDimensions(false)\n                    .outputName(\"cpu.utilization.by.service.agg\")\n                    .type(\"rollup\")\n                    .build())\n                .enabled(true)\n                .matchers(MetricRulesetAggregationRuleMatcherArgs.builder()\n                    .filters(MetricRulesetAggregationRuleMatcherFilterArgs.builder()\n                        .not(false)\n                        .property(\"realm\")\n                        .propertyValue(\"us-east-1\")\n                        .build())\n                    .type(\"dimension\")\n                    .build())\n                .build())\n            .metricName(\"cpu.utilization\")\n            .routingRule(MetricRulesetRoutingRuleArgs.builder()\n                .destination(\"RealTime\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  cpuUtilizationMetricRuleset:\n    type: signalfx:MetricRuleset\n    properties:\n      aggregationRules:\n        - aggregators:\n            - dimensions:\n                - service\n              dropDimensions: false\n              outputName: cpu.utilization.by.service.agg\n              type: rollup\n          enabled: true\n          matchers:\n            - filters:\n                - not: false\n                  property: realm\n                  propertyValue:\n                    - us-east-1\n              type: dimension\n      metricName: cpu.utilization\n      routingRule:\n        destination: RealTime\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "aggregationRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetAggregationRule:MetricRulesetAggregationRule"
+                    },
+                    "description": "List of aggregation rules for the metric\n"
+                },
+                "created": {
+                    "type": "string",
+                    "description": "Timestamp of when the metric ruleset was created\n"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "ID of the creator of the metric ruleset\n"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Timestamp of when the metric ruleset was last updated\n"
+                },
+                "lastUpdatedBy": {
+                    "type": "string",
+                    "description": "ID of user who last updated the metric ruleset\n"
+                },
+                "lastUpdatedByName": {
+                    "type": "string",
+                    "description": "Name of user who last updated this metric ruleset\n"
+                },
+                "metricName": {
+                    "type": "string",
+                    "description": "Name of the input metric\n"
+                },
+                "routingRule": {
+                    "$ref": "#/types/signalfx:index/MetricRulesetRoutingRule:MetricRulesetRoutingRule",
+                    "description": "Routing Rule object\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the ruleset\n"
+                }
+            },
+            "required": [
+                "created",
+                "creator",
+                "lastUpdated",
+                "lastUpdatedBy",
+                "lastUpdatedByName",
+                "metricName",
+                "routingRule",
+                "version"
+            ],
+            "inputProperties": {
+                "aggregationRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetAggregationRule:MetricRulesetAggregationRule"
+                    },
+                    "description": "List of aggregation rules for the metric\n"
+                },
+                "metricName": {
+                    "type": "string",
+                    "description": "Name of the input metric\n"
+                },
+                "routingRule": {
+                    "$ref": "#/types/signalfx:index/MetricRulesetRoutingRule:MetricRulesetRoutingRule",
+                    "description": "Routing Rule object\n"
+                }
+            },
+            "requiredInputs": [
+                "metricName",
+                "routingRule"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MetricRuleset resources.\n",
+                "properties": {
+                    "aggregationRules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:index/MetricRulesetAggregationRule:MetricRulesetAggregationRule"
+                        },
+                        "description": "List of aggregation rules for the metric\n"
+                    },
+                    "created": {
+                        "type": "string",
+                        "description": "Timestamp of when the metric ruleset was created\n"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "description": "ID of the creator of the metric ruleset\n"
+                    },
+                    "lastUpdated": {
+                        "type": "string",
+                        "description": "Timestamp of when the metric ruleset was last updated\n"
+                    },
+                    "lastUpdatedBy": {
+                        "type": "string",
+                        "description": "ID of user who last updated the metric ruleset\n"
+                    },
+                    "lastUpdatedByName": {
+                        "type": "string",
+                        "description": "Name of user who last updated this metric ruleset\n"
+                    },
+                    "metricName": {
+                        "type": "string",
+                        "description": "Name of the input metric\n"
+                    },
+                    "routingRule": {
+                        "$ref": "#/types/signalfx:index/MetricRulesetRoutingRule:MetricRulesetRoutingRule",
+                        "description": "Routing Rule object\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Version of the ruleset\n"
                     }
                 },
                 "type": "object"

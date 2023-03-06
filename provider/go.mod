@@ -4,9 +4,9 @@ go 1.19
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.15.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.39.3
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.41.0
 	github.com/pulumi/pulumi/sdk/v3 v3.53.1
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20230131190027-78c2db70d415
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20230301183810-fd1fdcf972f4
 )
 
 replace (
@@ -194,7 +194,7 @@ require (
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/signalfx/golib/v3 v3.3.37 // indirect
-	github.com/signalfx/signalfx-go v1.26.0 // indirect
+	github.com/signalfx/signalfx-go v1.28.0 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect

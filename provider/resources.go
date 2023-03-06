@@ -23,10 +23,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-signalfx/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
 )
 
@@ -107,6 +109,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_alert_muting_rule":   {Tok: makeResource(mainMod, "AlertMutingRule")},
 			"signalfx_data_link":           {Tok: makeResource(mainMod, "DataLink")},
 			"signalfx_webhook_integration": {Tok: makeResource(mainMod, "WebhookIntegration")},
+			"signalfx_metric_ruleset":      {Tok: makeResource(mainMod, "MetricRuleset")},
 
 			"signalfx_log_view": {Tok: makeResource(logsMod, "View")},
 
@@ -178,6 +181,37 @@ func Provider() tfbridge.ProviderInfo {
 			Docs: &tfbridge.DocInfo{
 				Markdown: []byte(" "),
 			}})
+
+	mappedMods := map[string]string{
+		"aws":         "Aws",
+		"azure":       "Azure",
+		"gcp":         "Gcp",
+		"jira":        "Jira",
+		"log":         "Logs",
+		"opsgenie":    "Opsgenie",
+		"pagerduty":   "PagerDuty",
+		"service_now": "ServiceNow",
+		"slack":       "Slack",
+		"victor_ops":  "VictorOps",
+	}
+
+	mappedModKeys := make([]string, 0, len(mappedMods))
+	for k := range mappedMods {
+		mappedModKeys = append(mappedModKeys, k)
+	}
+
+	moduleNameMap := make(map[string]string, len(mappedMods))
+	for _, v := range mappedMods {
+		moduleNameMap[strings.ToLower(v)] = v
+	}
+
+	err := x.ComputeDefaults(&prov, x.TokensKnownModules("signalfx_", mainMod, mappedModKeys,
+		func(mod, name string) (string, error) {
+			m, ok := moduleNameMap[strings.ToLower(mod)]
+			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
+			return makeResource(m, name).String(), nil
+		}))
+	contract.AssertNoError(err)
 
 	prov.SetAutonaming(255, "-")
 
