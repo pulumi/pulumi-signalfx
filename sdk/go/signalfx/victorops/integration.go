@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,8 +22,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/victorops"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := victorops.NewIntegration(ctx, "vioctorOpsMyteam", &victorops.IntegrationArgs{
 //				Enabled: pulumi.Bool(true),
-//				PostUrl: pulumi.String(fmt.Sprintf("https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")),
+//				PostUrl: pulumi.String("https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key"),
 //			})
 //			if err != nil {
 //				return err

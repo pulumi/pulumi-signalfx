@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -60,7 +58,7 @@ import (
 //				},
 //				MaxDelay:        pulumi.Int(2),
 //				MaxPrecision:    pulumi.Int(2),
-//				ProgramText:     pulumi.String(fmt.Sprintf("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n")),
+//				ProgramText:     pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n"),
 //				RefreshInterval: pulumi.Int(1),
 //				SortBy:          pulumi.String("-value"),
 //				Timezone:        pulumi.String("Europe/Paris"),

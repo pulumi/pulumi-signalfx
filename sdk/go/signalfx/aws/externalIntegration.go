@@ -23,8 +23,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -74,87 +72,7 @@ import (
 //			}
 //			awsSplunkPolicy, err := iam.NewPolicy(ctx, "awsSplunkPolicy", &iam.PolicyArgs{
 //				Description: pulumi.String("AWS permissions required by the Splunk Observability Cloud"),
-//				Policy: pulumi.Any(fmt.Sprintf(`{
-//	  "Version": "2012-10-17",
-//	  "Statement": [
-//	    {
-//	      "Effect": "Allow",
-//	      "Action": [
-//	        "apigateway:GET",
-//	        "autoscaling:DescribeAutoScalingGroups",
-//	        "cloudfront:GetDistributionConfig",
-//	        "cloudfront:ListDistributions",
-//	        "cloudfront:ListTagsForResource",
-//	        "cloudwatch:DescribeAlarms",
-//	        "cloudwatch:GetMetricData",
-//	        "cloudwatch:GetMetricStatistics",
-//	        "cloudwatch:ListMetrics",
-//	        "directconnect:DescribeConnections",
-//	        "dynamodb:DescribeTable",
-//	        "dynamodb:ListTables",
-//	        "dynamodb:ListTagsOfResource",
-//	        "ec2:DescribeInstances",
-//	        "ec2:DescribeInstanceStatus",
-//	        "ec2:DescribeRegions",
-//	        "ec2:DescribeReservedInstances",
-//	        "ec2:DescribeReservedInstancesModifications",
-//	        "ec2:DescribeTags",
-//	        "ec2:DescribeVolumes",
-//	        "ecs:DescribeClusters",
-//	        "ecs:DescribeServices",
-//	        "ecs:DescribeTasks",
-//	        "ecs:ListClusters",
-//	        "ecs:ListServices",
-//	        "ecs:ListTagsForResource",
-//	        "ecs:ListTaskDefinitions",
-//	        "ecs:ListTasks",
-//	        "elasticache:DescribeCacheClusters",
-//	        "elasticloadbalancing:DescribeLoadBalancerAttributes",
-//	        "elasticloadbalancing:DescribeLoadBalancers",
-//	        "elasticloadbalancing:DescribeTags",
-//	        "elasticloadbalancing:DescribeTargetGroups",
-//	        "elasticmapreduce:DescribeCluster",
-//	        "elasticmapreduce:ListClusters",
-//	        "es:DescribeElasticsearchDomain",
-//	        "es:ListDomainNames",
-//	        "kinesis:DescribeStream",
-//	        "kinesis:ListShards",
-//	        "kinesis:ListStreams",
-//	        "kinesis:ListTagsForStream",
-//	        "lambda:GetAlias",
-//	        "lambda:ListFunctions",
-//	        "lambda:ListTags",
-//	        "logs:DeleteSubscriptionFilter",
-//	        "logs:DescribeLogGroups",
-//	        "logs:DescribeSubscriptionFilters",
-//	        "logs:PutSubscriptionFilter",
-//	        "organizations:DescribeOrganization",
-//	        "rds:DescribeDBClusters",
-//	        "rds:DescribeDBInstances",
-//	        "rds:ListTagsForResource",
-//	        "redshift:DescribeClusters",
-//	        "redshift:DescribeLoggingStatus",
-//	        "s3:GetBucketLocation",
-//	        "s3:GetBucketLogging",
-//	        "s3:GetBucketNotification",
-//	        "s3:GetBucketTagging",
-//	        "s3:ListAllMyBuckets",
-//	        "s3:ListBucket",
-//	        "s3:PutBucketNotification",
-//	        "sqs:GetQueueAttributes",
-//	        "sqs:ListQueues",
-//	        "sqs:ListQueueTags",
-//	        "states:ListStateMachines",
-//	        "tag:GetResources",
-//	        "workspaces:DescribeWorkspaces"
-//	      ],
-//	      "Resource": "*"
-//	    }
-//	  ]
-//	}
-//
-// `)),
-//
+//				Policy:      pulumi.Any("{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"apigateway:GET\",\n        \"autoscaling:DescribeAutoScalingGroups\",\n        \"cloudfront:GetDistributionConfig\",\n        \"cloudfront:ListDistributions\",\n        \"cloudfront:ListTagsForResource\",\n        \"cloudwatch:DescribeAlarms\",\n        \"cloudwatch:GetMetricData\",\n        \"cloudwatch:GetMetricStatistics\",\n        \"cloudwatch:ListMetrics\",\n        \"directconnect:DescribeConnections\",\n        \"dynamodb:DescribeTable\",\n        \"dynamodb:ListTables\",\n        \"dynamodb:ListTagsOfResource\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeInstanceStatus\",\n        \"ec2:DescribeRegions\",\n        \"ec2:DescribeReservedInstances\",\n        \"ec2:DescribeReservedInstancesModifications\",\n        \"ec2:DescribeTags\",\n        \"ec2:DescribeVolumes\",\n        \"ecs:DescribeClusters\",\n        \"ecs:DescribeServices\",\n        \"ecs:DescribeTasks\",\n        \"ecs:ListClusters\",\n        \"ecs:ListServices\",\n        \"ecs:ListTagsForResource\",\n        \"ecs:ListTaskDefinitions\",\n        \"ecs:ListTasks\",\n        \"elasticache:DescribeCacheClusters\",\n        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n        \"elasticloadbalancing:DescribeLoadBalancers\",\n        \"elasticloadbalancing:DescribeTags\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticmapreduce:DescribeCluster\",\n        \"elasticmapreduce:ListClusters\",\n        \"es:DescribeElasticsearchDomain\",\n        \"es:ListDomainNames\",\n        \"kinesis:DescribeStream\",\n        \"kinesis:ListShards\",\n        \"kinesis:ListStreams\",\n        \"kinesis:ListTagsForStream\",\n        \"lambda:GetAlias\",\n        \"lambda:ListFunctions\",\n        \"lambda:ListTags\",\n        \"logs:DeleteSubscriptionFilter\",\n        \"logs:DescribeLogGroups\",\n        \"logs:DescribeSubscriptionFilters\",\n        \"logs:PutSubscriptionFilter\",\n        \"organizations:DescribeOrganization\",\n        \"rds:DescribeDBClusters\",\n        \"rds:DescribeDBInstances\",\n        \"rds:ListTagsForResource\",\n        \"redshift:DescribeClusters\",\n        \"redshift:DescribeLoggingStatus\",\n        \"s3:GetBucketLocation\",\n        \"s3:GetBucketLogging\",\n        \"s3:GetBucketNotification\",\n        \"s3:GetBucketTagging\",\n        \"s3:ListAllMyBuckets\",\n        \"s3:ListBucket\",\n        \"s3:PutBucketNotification\",\n        \"sqs:GetQueueAttributes\",\n        \"sqs:ListQueues\",\n        \"sqs:ListQueueTags\",\n        \"states:ListStateMachines\",\n        \"tag:GetResources\",\n        \"workspaces:DescribeWorkspaces\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}\n"),
 //			})
 //			if err != nil {
 //				return err
