@@ -23,10 +23,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-signalfx/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
 )
 
@@ -179,6 +181,19 @@ func Provider() tfbridge.ProviderInfo {
 				Markdown: []byte(" "),
 			}})
 
+	err := x.ComputeDefaults(&prov, x.TokensKnownModules("signalfx_", mainMod, []string{
+		"aws_",
+		"azure_",
+		"gcp_",
+		"jira_",
+		"logs_",
+		"opsgenie_",
+		"pagerduty_",
+		"slack_",
+		"victorops_",
+		"servicenow_",
+	}, x.MakeStandardToken(mainPkg)))
+	contract.AssertNoError(err)
 	prov.SetAutonaming(255, "-")
 
 	return prov
