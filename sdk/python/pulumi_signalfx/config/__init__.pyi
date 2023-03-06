@@ -24,6 +24,21 @@ customAppUrl: Optional[str]
 Application URL for your SignalFx org, often customized for organizations using SSO
 """
 
+retryMaxAttempts: Optional[int]
+"""
+Max retries for a single HTTP call. Defaults to 4
+"""
+
+retryWaitMaxSeconds: Optional[int]
+"""
+Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+"""
+
+retryWaitMinSeconds: Optional[int]
+"""
+Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+"""
+
 timeoutSeconds: Optional[int]
 """
 Timeout duration for a single HTTP call in seconds. Defaults to 120

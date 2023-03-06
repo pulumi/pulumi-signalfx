@@ -38,6 +38,11 @@ __all__ = [
     'ListChartColorScaleArgs',
     'ListChartLegendOptionsFieldArgs',
     'ListChartVizOptionArgs',
+    'MetricRulesetAggregationRuleArgs',
+    'MetricRulesetAggregationRuleAggregatorArgs',
+    'MetricRulesetAggregationRuleMatcherArgs',
+    'MetricRulesetAggregationRuleMatcherFilterArgs',
+    'MetricRulesetRoutingRuleArgs',
     'OrgTokenDpmLimitsArgs',
     'OrgTokenHostOrUsageLimitsArgs',
     'SingleValueChartColorScaleArgs',
@@ -2025,6 +2030,249 @@ class ListChartVizOptionArgs:
     @value_unit.setter
     def value_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value_unit", value)
+
+
+@pulumi.input_type
+class MetricRulesetAggregationRuleArgs:
+    def __init__(__self__, *,
+                 aggregators: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]],
+                 enabled: pulumi.Input[bool],
+                 matchers: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]] aggregators: Aggregator object
+        :param pulumi.Input[bool] enabled: When false, this rule will not generate aggregated MTSs
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]] matchers: Matcher object
+        """
+        pulumi.set(__self__, "aggregators", aggregators)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "matchers", matchers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def aggregators(self) -> pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]]:
+        """
+        Aggregator object
+        """
+        return pulumi.get(self, "aggregators")
+
+    @aggregators.setter
+    def aggregators(self, value: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]]):
+        pulumi.set(self, "aggregators", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        When false, this rule will not generate aggregated MTSs
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def matchers(self) -> pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]]:
+        """
+        Matcher object
+        """
+        return pulumi.get(self, "matchers")
+
+    @matchers.setter
+    def matchers(self, value: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]]):
+        pulumi.set(self, "matchers", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class MetricRulesetAggregationRuleAggregatorArgs:
+    def __init__(__self__, *,
+                 dimensions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 drop_dimensions: pulumi.Input[bool],
+                 output_name: pulumi.Input[str],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: List of dimensions to either be kept or dropped in the new aggregated MTSs
+        :param pulumi.Input[bool] drop_dimensions: when true, the specified dimensions will be dropped from the aggregated MTSs
+        :param pulumi.Input[str] output_name: name of the new aggregated metric
+        :param pulumi.Input[str] type: Type of aggregator. Must always be "rollup"
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "drop_dimensions", drop_dimensions)
+        pulumi.set(__self__, "output_name", output_name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of dimensions to either be kept or dropped in the new aggregated MTSs
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="dropDimensions")
+    def drop_dimensions(self) -> pulumi.Input[bool]:
+        """
+        when true, the specified dimensions will be dropped from the aggregated MTSs
+        """
+        return pulumi.get(self, "drop_dimensions")
+
+    @drop_dimensions.setter
+    def drop_dimensions(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "drop_dimensions", value)
+
+    @property
+    @pulumi.getter(name="outputName")
+    def output_name(self) -> pulumi.Input[str]:
+        """
+        name of the new aggregated metric
+        """
+        return pulumi.get(self, "output_name")
+
+    @output_name.setter
+    def output_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "output_name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of aggregator. Must always be "rollup"
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class MetricRulesetAggregationRuleMatcherArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]]] = None):
+        """
+        :param pulumi.Input[str] type: Type of aggregator. Must always be "rollup"
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]] filters: List of filters to filter the set of input MTSs
+        """
+        pulumi.set(__self__, "type", type)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of aggregator. Must always be "rollup"
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]]]:
+        """
+        List of filters to filter the set of input MTSs
+        """
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]]]):
+        pulumi.set(self, "filters", value)
+
+
+@pulumi.input_type
+class MetricRulesetAggregationRuleMatcherFilterArgs:
+    def __init__(__self__, *,
+                 not_: pulumi.Input[bool],
+                 property: pulumi.Input[str],
+                 property_values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[bool] not_: When true, this filter will match all values not matching the property_values
+        :param pulumi.Input[str] property: Name of the dimension
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] property_values: Value of the dimension
+        """
+        pulumi.set(__self__, "not_", not_)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "property_values", property_values)
+
+    @property
+    @pulumi.getter(name="not")
+    def not_(self) -> pulumi.Input[bool]:
+        """
+        When true, this filter will match all values not matching the property_values
+        """
+        return pulumi.get(self, "not_")
+
+    @not_.setter
+    def not_(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "not_", value)
+
+    @property
+    @pulumi.getter(name="propertyValues")
+    def property_values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Value of the dimension
+        """
+        return pulumi.get(self, "property_values")
+
+    @property_values.setter
+    def property_values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "property_values", value)
+
+    @property
+    @pulumi.getter
+    def property(self) -> pulumi.Input[str]:
+        """
+        Name of the dimension
+        """
+        return pulumi.get(self, "property")
+
+    @property.setter
+    def property(self, value: pulumi.Input[str]):
+        pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class MetricRulesetRoutingRuleArgs:
+    def __init__(__self__, *,
+                 destination: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] destination: end destination of the input metric
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        """
+        end destination of the input metric
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
 
 @pulumi.input_type

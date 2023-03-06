@@ -39,6 +39,11 @@ __all__ = [
     'ListChartColorScale',
     'ListChartLegendOptionsField',
     'ListChartVizOption',
+    'MetricRulesetAggregationRule',
+    'MetricRulesetAggregationRuleAggregator',
+    'MetricRulesetAggregationRuleMatcher',
+    'MetricRulesetAggregationRuleMatcherFilter',
+    'MetricRulesetRoutingRule',
     'OrgTokenDpmLimits',
     'OrgTokenHostOrUsageLimits',
     'SingleValueChartColorScale',
@@ -1905,6 +1910,231 @@ class ListChartVizOption(dict):
         A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
+
+
+@pulumi.output_type
+class MetricRulesetAggregationRule(dict):
+    def __init__(__self__, *,
+                 aggregators: Sequence['outputs.MetricRulesetAggregationRuleAggregator'],
+                 enabled: bool,
+                 matchers: Sequence['outputs.MetricRulesetAggregationRuleMatcher'],
+                 name: Optional[str] = None):
+        """
+        :param Sequence['MetricRulesetAggregationRuleAggregatorArgs'] aggregators: Aggregator object
+        :param bool enabled: When false, this rule will not generate aggregated MTSs
+        :param Sequence['MetricRulesetAggregationRuleMatcherArgs'] matchers: Matcher object
+        """
+        pulumi.set(__self__, "aggregators", aggregators)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "matchers", matchers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def aggregators(self) -> Sequence['outputs.MetricRulesetAggregationRuleAggregator']:
+        """
+        Aggregator object
+        """
+        return pulumi.get(self, "aggregators")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        When false, this rule will not generate aggregated MTSs
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def matchers(self) -> Sequence['outputs.MetricRulesetAggregationRuleMatcher']:
+        """
+        Matcher object
+        """
+        return pulumi.get(self, "matchers")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class MetricRulesetAggregationRuleAggregator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dropDimensions":
+            suggest = "drop_dimensions"
+        elif key == "outputName":
+            suggest = "output_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricRulesetAggregationRuleAggregator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricRulesetAggregationRuleAggregator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricRulesetAggregationRuleAggregator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dimensions: Sequence[str],
+                 drop_dimensions: bool,
+                 output_name: str,
+                 type: str):
+        """
+        :param Sequence[str] dimensions: List of dimensions to either be kept or dropped in the new aggregated MTSs
+        :param bool drop_dimensions: when true, the specified dimensions will be dropped from the aggregated MTSs
+        :param str output_name: name of the new aggregated metric
+        :param str type: Type of aggregator. Must always be "rollup"
+        """
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "drop_dimensions", drop_dimensions)
+        pulumi.set(__self__, "output_name", output_name)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Sequence[str]:
+        """
+        List of dimensions to either be kept or dropped in the new aggregated MTSs
+        """
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="dropDimensions")
+    def drop_dimensions(self) -> bool:
+        """
+        when true, the specified dimensions will be dropped from the aggregated MTSs
+        """
+        return pulumi.get(self, "drop_dimensions")
+
+    @property
+    @pulumi.getter(name="outputName")
+    def output_name(self) -> str:
+        """
+        name of the new aggregated metric
+        """
+        return pulumi.get(self, "output_name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of aggregator. Must always be "rollup"
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class MetricRulesetAggregationRuleMatcher(dict):
+    def __init__(__self__, *,
+                 type: str,
+                 filters: Optional[Sequence['outputs.MetricRulesetAggregationRuleMatcherFilter']] = None):
+        """
+        :param str type: Type of aggregator. Must always be "rollup"
+        :param Sequence['MetricRulesetAggregationRuleMatcherFilterArgs'] filters: List of filters to filter the set of input MTSs
+        """
+        pulumi.set(__self__, "type", type)
+        if filters is not None:
+            pulumi.set(__self__, "filters", filters)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of aggregator. Must always be "rollup"
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Optional[Sequence['outputs.MetricRulesetAggregationRuleMatcherFilter']]:
+        """
+        List of filters to filter the set of input MTSs
+        """
+        return pulumi.get(self, "filters")
+
+
+@pulumi.output_type
+class MetricRulesetAggregationRuleMatcherFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "not":
+            suggest = "not_"
+        elif key == "propertyValues":
+            suggest = "property_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricRulesetAggregationRuleMatcherFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricRulesetAggregationRuleMatcherFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricRulesetAggregationRuleMatcherFilter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 not_: bool,
+                 property: str,
+                 property_values: Sequence[str]):
+        """
+        :param bool not_: When true, this filter will match all values not matching the property_values
+        :param str property: Name of the dimension
+        :param Sequence[str] property_values: Value of the dimension
+        """
+        pulumi.set(__self__, "not_", not_)
+        pulumi.set(__self__, "property", property)
+        pulumi.set(__self__, "property_values", property_values)
+
+    @property
+    @pulumi.getter(name="not")
+    def not_(self) -> bool:
+        """
+        When true, this filter will match all values not matching the property_values
+        """
+        return pulumi.get(self, "not_")
+
+    @property
+    @pulumi.getter(name="propertyValues")
+    def property_values(self) -> Sequence[str]:
+        """
+        Value of the dimension
+        """
+        return pulumi.get(self, "property_values")
+
+    @property
+    @pulumi.getter
+    def property(self) -> str:
+        """
+        Name of the dimension
+        """
+        return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class MetricRulesetRoutingRule(dict):
+    def __init__(__self__, *,
+                 destination: str):
+        """
+        :param str destination: end destination of the input metric
+        """
+        pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> str:
+        """
+        end destination of the input metric
+        """
+        return pulumi.get(self, "destination")
 
 
 @pulumi.output_type

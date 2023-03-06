@@ -33,6 +33,27 @@ public final class Config {
         return Codegen.stringProp("customAppUrl").config(config).get();
     }
 /**
+ * Max retries for a single HTTP call. Defaults to 4
+ * 
+ */
+    public Optional<Integer> retryMaxAttempts() {
+        return Codegen.integerProp("retryMaxAttempts").config(config).get();
+    }
+/**
+ * Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+ * 
+ */
+    public Optional<Integer> retryWaitMaxSeconds() {
+        return Codegen.integerProp("retryWaitMaxSeconds").config(config).get();
+    }
+/**
+ * Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+ * 
+ */
+    public Optional<Integer> retryWaitMinSeconds() {
+        return Codegen.integerProp("retryWaitMinSeconds").config(config).get();
+    }
+/**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120
  * 
  */

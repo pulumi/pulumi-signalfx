@@ -62,6 +62,36 @@ namespace Pulumi.SignalFx
             set => _customAppUrl.Set(value);
         }
 
+        private static readonly __Value<int?> _retryMaxAttempts = new __Value<int?>(() => __config.GetInt32("retryMaxAttempts"));
+        /// <summary>
+        /// Max retries for a single HTTP call. Defaults to 4
+        /// </summary>
+        public static int? RetryMaxAttempts
+        {
+            get => _retryMaxAttempts.Get();
+            set => _retryMaxAttempts.Set(value);
+        }
+
+        private static readonly __Value<int?> _retryWaitMaxSeconds = new __Value<int?>(() => __config.GetInt32("retryWaitMaxSeconds"));
+        /// <summary>
+        /// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+        /// </summary>
+        public static int? RetryWaitMaxSeconds
+        {
+            get => _retryWaitMaxSeconds.Get();
+            set => _retryWaitMaxSeconds.Set(value);
+        }
+
+        private static readonly __Value<int?> _retryWaitMinSeconds = new __Value<int?>(() => __config.GetInt32("retryWaitMinSeconds"));
+        /// <summary>
+        /// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+        /// </summary>
+        public static int? RetryWaitMinSeconds
+        {
+            get => _retryWaitMinSeconds.Get();
+            set => _retryWaitMinSeconds.Set(value);
+        }
+
         private static readonly __Value<int?> _timeoutSeconds = new __Value<int?>(() => __config.GetInt32("timeoutSeconds"));
         /// <summary>
         /// Timeout duration for a single HTTP call in seconds. Defaults to 120

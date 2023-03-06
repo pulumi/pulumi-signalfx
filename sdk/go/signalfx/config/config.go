@@ -23,6 +23,21 @@ func GetCustomAppUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:customAppUrl")
 }
 
+// Max retries for a single HTTP call. Defaults to 4
+func GetRetryMaxAttempts(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "signalfx:retryMaxAttempts")
+}
+
+// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+func GetRetryWaitMaxSeconds(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "signalfx:retryWaitMaxSeconds")
+}
+
+// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+func GetRetryWaitMinSeconds(ctx *pulumi.Context) int {
+	return config.GetInt(ctx, "signalfx:retryWaitMinSeconds")
+}
+
 // Timeout duration for a single HTTP call in seconds. Defaults to 120
 func GetTimeoutSeconds(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "signalfx:timeoutSeconds")

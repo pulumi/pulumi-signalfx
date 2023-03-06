@@ -539,6 +539,74 @@ export interface ListChartVizOption {
     valueUnit?: string;
 }
 
+export interface MetricRulesetAggregationRule {
+    /**
+     * Aggregator object
+     */
+    aggregators: outputs.MetricRulesetAggregationRuleAggregator[];
+    /**
+     * When false, this rule will not generate aggregated MTSs
+     */
+    enabled: boolean;
+    /**
+     * Matcher object
+     */
+    matchers: outputs.MetricRulesetAggregationRuleMatcher[];
+    name?: string;
+}
+
+export interface MetricRulesetAggregationRuleAggregator {
+    /**
+     * List of dimensions to either be kept or dropped in the new aggregated MTSs
+     */
+    dimensions: string[];
+    /**
+     * when true, the specified dimensions will be dropped from the aggregated MTSs
+     */
+    dropDimensions: boolean;
+    /**
+     * name of the new aggregated metric
+     */
+    outputName: string;
+    /**
+     * Type of aggregator. Must always be "rollup"
+     */
+    type: string;
+}
+
+export interface MetricRulesetAggregationRuleMatcher {
+    /**
+     * List of filters to filter the set of input MTSs
+     */
+    filters?: outputs.MetricRulesetAggregationRuleMatcherFilter[];
+    /**
+     * Type of aggregator. Must always be "rollup"
+     */
+    type: string;
+}
+
+export interface MetricRulesetAggregationRuleMatcherFilter {
+    /**
+     * When true, this filter will match all values not matching the property_values
+     */
+    not: boolean;
+    /**
+     * Name of the dimension
+     */
+    property: string;
+    /**
+     * Value of the dimension
+     */
+    propertyValues: string[];
+}
+
+export interface MetricRulesetRoutingRule {
+    /**
+     * end destination of the input metric
+     */
+    destination: string;
+}
+
 export interface OrgTokenDpmLimits {
     /**
      * The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.

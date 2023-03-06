@@ -3601,6 +3601,611 @@ func (o ListChartVizOptionArrayOutput) Index(i pulumi.IntInput) ListChartVizOpti
 	}).(ListChartVizOptionOutput)
 }
 
+type MetricRulesetAggregationRule struct {
+	// Aggregator object
+	Aggregators []MetricRulesetAggregationRuleAggregator `pulumi:"aggregators"`
+	// When false, this rule will not generate aggregated MTSs
+	Enabled bool `pulumi:"enabled"`
+	// Matcher object
+	Matchers []MetricRulesetAggregationRuleMatcher `pulumi:"matchers"`
+	Name     *string                               `pulumi:"name"`
+}
+
+// MetricRulesetAggregationRuleInput is an input type that accepts MetricRulesetAggregationRuleArgs and MetricRulesetAggregationRuleOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleInput` via:
+//
+//	MetricRulesetAggregationRuleArgs{...}
+type MetricRulesetAggregationRuleInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleOutput() MetricRulesetAggregationRuleOutput
+	ToMetricRulesetAggregationRuleOutputWithContext(context.Context) MetricRulesetAggregationRuleOutput
+}
+
+type MetricRulesetAggregationRuleArgs struct {
+	// Aggregator object
+	Aggregators MetricRulesetAggregationRuleAggregatorArrayInput `pulumi:"aggregators"`
+	// When false, this rule will not generate aggregated MTSs
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Matcher object
+	Matchers MetricRulesetAggregationRuleMatcherArrayInput `pulumi:"matchers"`
+	Name     pulumi.StringPtrInput                         `pulumi:"name"`
+}
+
+func (MetricRulesetAggregationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRule)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleArgs) ToMetricRulesetAggregationRuleOutput() MetricRulesetAggregationRuleOutput {
+	return i.ToMetricRulesetAggregationRuleOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleArgs) ToMetricRulesetAggregationRuleOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleOutput)
+}
+
+// MetricRulesetAggregationRuleArrayInput is an input type that accepts MetricRulesetAggregationRuleArray and MetricRulesetAggregationRuleArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleArrayInput` via:
+//
+//	MetricRulesetAggregationRuleArray{ MetricRulesetAggregationRuleArgs{...} }
+type MetricRulesetAggregationRuleArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleArrayOutput() MetricRulesetAggregationRuleArrayOutput
+	ToMetricRulesetAggregationRuleArrayOutputWithContext(context.Context) MetricRulesetAggregationRuleArrayOutput
+}
+
+type MetricRulesetAggregationRuleArray []MetricRulesetAggregationRuleInput
+
+func (MetricRulesetAggregationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRule)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleArray) ToMetricRulesetAggregationRuleArrayOutput() MetricRulesetAggregationRuleArrayOutput {
+	return i.ToMetricRulesetAggregationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleArray) ToMetricRulesetAggregationRuleArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleArrayOutput)
+}
+
+type MetricRulesetAggregationRuleOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRule)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleOutput) ToMetricRulesetAggregationRuleOutput() MetricRulesetAggregationRuleOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleOutput) ToMetricRulesetAggregationRuleOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleOutput {
+	return o
+}
+
+// Aggregator object
+func (o MetricRulesetAggregationRuleOutput) Aggregators() MetricRulesetAggregationRuleAggregatorArrayOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRule) []MetricRulesetAggregationRuleAggregator { return v.Aggregators }).(MetricRulesetAggregationRuleAggregatorArrayOutput)
+}
+
+// When false, this rule will not generate aggregated MTSs
+func (o MetricRulesetAggregationRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Matcher object
+func (o MetricRulesetAggregationRuleOutput) Matchers() MetricRulesetAggregationRuleMatcherArrayOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRule) []MetricRulesetAggregationRuleMatcher { return v.Matchers }).(MetricRulesetAggregationRuleMatcherArrayOutput)
+}
+
+func (o MetricRulesetAggregationRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MetricRulesetAggregationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRule)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleArrayOutput) ToMetricRulesetAggregationRuleArrayOutput() MetricRulesetAggregationRuleArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleArrayOutput) ToMetricRulesetAggregationRuleArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetAggregationRule {
+		return vs[0].([]MetricRulesetAggregationRule)[vs[1].(int)]
+	}).(MetricRulesetAggregationRuleOutput)
+}
+
+type MetricRulesetAggregationRuleAggregator struct {
+	// List of dimensions to either be kept or dropped in the new aggregated MTSs
+	Dimensions []string `pulumi:"dimensions"`
+	// when true, the specified dimensions will be dropped from the aggregated MTSs
+	DropDimensions bool `pulumi:"dropDimensions"`
+	// name of the new aggregated metric
+	OutputName string `pulumi:"outputName"`
+	// Type of aggregator. Must always be "rollup"
+	Type string `pulumi:"type"`
+}
+
+// MetricRulesetAggregationRuleAggregatorInput is an input type that accepts MetricRulesetAggregationRuleAggregatorArgs and MetricRulesetAggregationRuleAggregatorOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleAggregatorInput` via:
+//
+//	MetricRulesetAggregationRuleAggregatorArgs{...}
+type MetricRulesetAggregationRuleAggregatorInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleAggregatorOutput() MetricRulesetAggregationRuleAggregatorOutput
+	ToMetricRulesetAggregationRuleAggregatorOutputWithContext(context.Context) MetricRulesetAggregationRuleAggregatorOutput
+}
+
+type MetricRulesetAggregationRuleAggregatorArgs struct {
+	// List of dimensions to either be kept or dropped in the new aggregated MTSs
+	Dimensions pulumi.StringArrayInput `pulumi:"dimensions"`
+	// when true, the specified dimensions will be dropped from the aggregated MTSs
+	DropDimensions pulumi.BoolInput `pulumi:"dropDimensions"`
+	// name of the new aggregated metric
+	OutputName pulumi.StringInput `pulumi:"outputName"`
+	// Type of aggregator. Must always be "rollup"
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MetricRulesetAggregationRuleAggregatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRuleAggregator)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleAggregatorArgs) ToMetricRulesetAggregationRuleAggregatorOutput() MetricRulesetAggregationRuleAggregatorOutput {
+	return i.ToMetricRulesetAggregationRuleAggregatorOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleAggregatorArgs) ToMetricRulesetAggregationRuleAggregatorOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleAggregatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleAggregatorOutput)
+}
+
+// MetricRulesetAggregationRuleAggregatorArrayInput is an input type that accepts MetricRulesetAggregationRuleAggregatorArray and MetricRulesetAggregationRuleAggregatorArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleAggregatorArrayInput` via:
+//
+//	MetricRulesetAggregationRuleAggregatorArray{ MetricRulesetAggregationRuleAggregatorArgs{...} }
+type MetricRulesetAggregationRuleAggregatorArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleAggregatorArrayOutput() MetricRulesetAggregationRuleAggregatorArrayOutput
+	ToMetricRulesetAggregationRuleAggregatorArrayOutputWithContext(context.Context) MetricRulesetAggregationRuleAggregatorArrayOutput
+}
+
+type MetricRulesetAggregationRuleAggregatorArray []MetricRulesetAggregationRuleAggregatorInput
+
+func (MetricRulesetAggregationRuleAggregatorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRuleAggregator)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleAggregatorArray) ToMetricRulesetAggregationRuleAggregatorArrayOutput() MetricRulesetAggregationRuleAggregatorArrayOutput {
+	return i.ToMetricRulesetAggregationRuleAggregatorArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleAggregatorArray) ToMetricRulesetAggregationRuleAggregatorArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleAggregatorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleAggregatorArrayOutput)
+}
+
+type MetricRulesetAggregationRuleAggregatorOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleAggregatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRuleAggregator)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleAggregatorOutput) ToMetricRulesetAggregationRuleAggregatorOutput() MetricRulesetAggregationRuleAggregatorOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleAggregatorOutput) ToMetricRulesetAggregationRuleAggregatorOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleAggregatorOutput {
+	return o
+}
+
+// List of dimensions to either be kept or dropped in the new aggregated MTSs
+func (o MetricRulesetAggregationRuleAggregatorOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
+}
+
+// when true, the specified dimensions will be dropped from the aggregated MTSs
+func (o MetricRulesetAggregationRuleAggregatorOutput) DropDimensions() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) bool { return v.DropDimensions }).(pulumi.BoolOutput)
+}
+
+// name of the new aggregated metric
+func (o MetricRulesetAggregationRuleAggregatorOutput) OutputName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) string { return v.OutputName }).(pulumi.StringOutput)
+}
+
+// Type of aggregator. Must always be "rollup"
+func (o MetricRulesetAggregationRuleAggregatorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MetricRulesetAggregationRuleAggregatorArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleAggregatorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRuleAggregator)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleAggregatorArrayOutput) ToMetricRulesetAggregationRuleAggregatorArrayOutput() MetricRulesetAggregationRuleAggregatorArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleAggregatorArrayOutput) ToMetricRulesetAggregationRuleAggregatorArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleAggregatorArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleAggregatorArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleAggregatorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetAggregationRuleAggregator {
+		return vs[0].([]MetricRulesetAggregationRuleAggregator)[vs[1].(int)]
+	}).(MetricRulesetAggregationRuleAggregatorOutput)
+}
+
+type MetricRulesetAggregationRuleMatcher struct {
+	// List of filters to filter the set of input MTSs
+	Filters []MetricRulesetAggregationRuleMatcherFilter `pulumi:"filters"`
+	// Type of aggregator. Must always be "rollup"
+	Type string `pulumi:"type"`
+}
+
+// MetricRulesetAggregationRuleMatcherInput is an input type that accepts MetricRulesetAggregationRuleMatcherArgs and MetricRulesetAggregationRuleMatcherOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleMatcherInput` via:
+//
+//	MetricRulesetAggregationRuleMatcherArgs{...}
+type MetricRulesetAggregationRuleMatcherInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleMatcherOutput() MetricRulesetAggregationRuleMatcherOutput
+	ToMetricRulesetAggregationRuleMatcherOutputWithContext(context.Context) MetricRulesetAggregationRuleMatcherOutput
+}
+
+type MetricRulesetAggregationRuleMatcherArgs struct {
+	// List of filters to filter the set of input MTSs
+	Filters MetricRulesetAggregationRuleMatcherFilterArrayInput `pulumi:"filters"`
+	// Type of aggregator. Must always be "rollup"
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (MetricRulesetAggregationRuleMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRuleMatcher)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleMatcherArgs) ToMetricRulesetAggregationRuleMatcherOutput() MetricRulesetAggregationRuleMatcherOutput {
+	return i.ToMetricRulesetAggregationRuleMatcherOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleMatcherArgs) ToMetricRulesetAggregationRuleMatcherOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherOutput)
+}
+
+// MetricRulesetAggregationRuleMatcherArrayInput is an input type that accepts MetricRulesetAggregationRuleMatcherArray and MetricRulesetAggregationRuleMatcherArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleMatcherArrayInput` via:
+//
+//	MetricRulesetAggregationRuleMatcherArray{ MetricRulesetAggregationRuleMatcherArgs{...} }
+type MetricRulesetAggregationRuleMatcherArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleMatcherArrayOutput() MetricRulesetAggregationRuleMatcherArrayOutput
+	ToMetricRulesetAggregationRuleMatcherArrayOutputWithContext(context.Context) MetricRulesetAggregationRuleMatcherArrayOutput
+}
+
+type MetricRulesetAggregationRuleMatcherArray []MetricRulesetAggregationRuleMatcherInput
+
+func (MetricRulesetAggregationRuleMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRuleMatcher)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleMatcherArray) ToMetricRulesetAggregationRuleMatcherArrayOutput() MetricRulesetAggregationRuleMatcherArrayOutput {
+	return i.ToMetricRulesetAggregationRuleMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleMatcherArray) ToMetricRulesetAggregationRuleMatcherArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherArrayOutput)
+}
+
+type MetricRulesetAggregationRuleMatcherOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRuleMatcher)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleMatcherOutput) ToMetricRulesetAggregationRuleMatcherOutput() MetricRulesetAggregationRuleMatcherOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleMatcherOutput) ToMetricRulesetAggregationRuleMatcherOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherOutput {
+	return o
+}
+
+// List of filters to filter the set of input MTSs
+func (o MetricRulesetAggregationRuleMatcherOutput) Filters() MetricRulesetAggregationRuleMatcherFilterArrayOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcher) []MetricRulesetAggregationRuleMatcherFilter {
+		return v.Filters
+	}).(MetricRulesetAggregationRuleMatcherFilterArrayOutput)
+}
+
+// Type of aggregator. Must always be "rollup"
+func (o MetricRulesetAggregationRuleMatcherOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type MetricRulesetAggregationRuleMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRuleMatcher)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleMatcherArrayOutput) ToMetricRulesetAggregationRuleMatcherArrayOutput() MetricRulesetAggregationRuleMatcherArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleMatcherArrayOutput) ToMetricRulesetAggregationRuleMatcherArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleMatcherArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetAggregationRuleMatcher {
+		return vs[0].([]MetricRulesetAggregationRuleMatcher)[vs[1].(int)]
+	}).(MetricRulesetAggregationRuleMatcherOutput)
+}
+
+type MetricRulesetAggregationRuleMatcherFilter struct {
+	// When true, this filter will match all values not matching the property_values
+	Not bool `pulumi:"not"`
+	// Name of the dimension
+	Property string `pulumi:"property"`
+	// Value of the dimension
+	PropertyValues []string `pulumi:"propertyValues"`
+}
+
+// MetricRulesetAggregationRuleMatcherFilterInput is an input type that accepts MetricRulesetAggregationRuleMatcherFilterArgs and MetricRulesetAggregationRuleMatcherFilterOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleMatcherFilterInput` via:
+//
+//	MetricRulesetAggregationRuleMatcherFilterArgs{...}
+type MetricRulesetAggregationRuleMatcherFilterInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleMatcherFilterOutput() MetricRulesetAggregationRuleMatcherFilterOutput
+	ToMetricRulesetAggregationRuleMatcherFilterOutputWithContext(context.Context) MetricRulesetAggregationRuleMatcherFilterOutput
+}
+
+type MetricRulesetAggregationRuleMatcherFilterArgs struct {
+	// When true, this filter will match all values not matching the property_values
+	Not pulumi.BoolInput `pulumi:"not"`
+	// Name of the dimension
+	Property pulumi.StringInput `pulumi:"property"`
+	// Value of the dimension
+	PropertyValues pulumi.StringArrayInput `pulumi:"propertyValues"`
+}
+
+func (MetricRulesetAggregationRuleMatcherFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilter)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleMatcherFilterArgs) ToMetricRulesetAggregationRuleMatcherFilterOutput() MetricRulesetAggregationRuleMatcherFilterOutput {
+	return i.ToMetricRulesetAggregationRuleMatcherFilterOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleMatcherFilterArgs) ToMetricRulesetAggregationRuleMatcherFilterOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherFilterOutput)
+}
+
+// MetricRulesetAggregationRuleMatcherFilterArrayInput is an input type that accepts MetricRulesetAggregationRuleMatcherFilterArray and MetricRulesetAggregationRuleMatcherFilterArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetAggregationRuleMatcherFilterArrayInput` via:
+//
+//	MetricRulesetAggregationRuleMatcherFilterArray{ MetricRulesetAggregationRuleMatcherFilterArgs{...} }
+type MetricRulesetAggregationRuleMatcherFilterArrayInput interface {
+	pulumi.Input
+
+	ToMetricRulesetAggregationRuleMatcherFilterArrayOutput() MetricRulesetAggregationRuleMatcherFilterArrayOutput
+	ToMetricRulesetAggregationRuleMatcherFilterArrayOutputWithContext(context.Context) MetricRulesetAggregationRuleMatcherFilterArrayOutput
+}
+
+type MetricRulesetAggregationRuleMatcherFilterArray []MetricRulesetAggregationRuleMatcherFilterInput
+
+func (MetricRulesetAggregationRuleMatcherFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRuleMatcherFilter)(nil)).Elem()
+}
+
+func (i MetricRulesetAggregationRuleMatcherFilterArray) ToMetricRulesetAggregationRuleMatcherFilterArrayOutput() MetricRulesetAggregationRuleMatcherFilterArrayOutput {
+	return i.ToMetricRulesetAggregationRuleMatcherFilterArrayOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetAggregationRuleMatcherFilterArray) ToMetricRulesetAggregationRuleMatcherFilterArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherFilterArrayOutput)
+}
+
+type MetricRulesetAggregationRuleMatcherFilterOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleMatcherFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilter)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleMatcherFilterOutput) ToMetricRulesetAggregationRuleMatcherFilterOutput() MetricRulesetAggregationRuleMatcherFilterOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleMatcherFilterOutput) ToMetricRulesetAggregationRuleMatcherFilterOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherFilterOutput {
+	return o
+}
+
+// When true, this filter will match all values not matching the property_values
+func (o MetricRulesetAggregationRuleMatcherFilterOutput) Not() pulumi.BoolOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcherFilter) bool { return v.Not }).(pulumi.BoolOutput)
+}
+
+// Name of the dimension
+func (o MetricRulesetAggregationRuleMatcherFilterOutput) Property() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcherFilter) string { return v.Property }).(pulumi.StringOutput)
+}
+
+// Value of the dimension
+func (o MetricRulesetAggregationRuleMatcherFilterOutput) PropertyValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcherFilter) []string { return v.PropertyValues }).(pulumi.StringArrayOutput)
+}
+
+type MetricRulesetAggregationRuleMatcherFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetAggregationRuleMatcherFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetAggregationRuleMatcherFilter)(nil)).Elem()
+}
+
+func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) ToMetricRulesetAggregationRuleMatcherFilterArrayOutput() MetricRulesetAggregationRuleMatcherFilterArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) ToMetricRulesetAggregationRuleMatcherFilterArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherFilterArrayOutput {
+	return o
+}
+
+func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleMatcherFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetAggregationRuleMatcherFilter {
+		return vs[0].([]MetricRulesetAggregationRuleMatcherFilter)[vs[1].(int)]
+	}).(MetricRulesetAggregationRuleMatcherFilterOutput)
+}
+
+type MetricRulesetRoutingRule struct {
+	// end destination of the input metric
+	Destination string `pulumi:"destination"`
+}
+
+// MetricRulesetRoutingRuleInput is an input type that accepts MetricRulesetRoutingRuleArgs and MetricRulesetRoutingRuleOutput values.
+// You can construct a concrete instance of `MetricRulesetRoutingRuleInput` via:
+//
+//	MetricRulesetRoutingRuleArgs{...}
+type MetricRulesetRoutingRuleInput interface {
+	pulumi.Input
+
+	ToMetricRulesetRoutingRuleOutput() MetricRulesetRoutingRuleOutput
+	ToMetricRulesetRoutingRuleOutputWithContext(context.Context) MetricRulesetRoutingRuleOutput
+}
+
+type MetricRulesetRoutingRuleArgs struct {
+	// end destination of the input metric
+	Destination pulumi.StringInput `pulumi:"destination"`
+}
+
+func (MetricRulesetRoutingRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetRoutingRule)(nil)).Elem()
+}
+
+func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRuleOutput() MetricRulesetRoutingRuleOutput {
+	return i.ToMetricRulesetRoutingRuleOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRuleOutputWithContext(ctx context.Context) MetricRulesetRoutingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleOutput)
+}
+
+func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
+	return i.ToMetricRulesetRoutingRulePtrOutputWithContext(context.Background())
+}
+
+func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleOutput).ToMetricRulesetRoutingRulePtrOutputWithContext(ctx)
+}
+
+// MetricRulesetRoutingRulePtrInput is an input type that accepts MetricRulesetRoutingRuleArgs, MetricRulesetRoutingRulePtr and MetricRulesetRoutingRulePtrOutput values.
+// You can construct a concrete instance of `MetricRulesetRoutingRulePtrInput` via:
+//
+//	        MetricRulesetRoutingRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricRulesetRoutingRulePtrInput interface {
+	pulumi.Input
+
+	ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput
+	ToMetricRulesetRoutingRulePtrOutputWithContext(context.Context) MetricRulesetRoutingRulePtrOutput
+}
+
+type metricRulesetRoutingRulePtrType MetricRulesetRoutingRuleArgs
+
+func MetricRulesetRoutingRulePtr(v *MetricRulesetRoutingRuleArgs) MetricRulesetRoutingRulePtrInput {
+	return (*metricRulesetRoutingRulePtrType)(v)
+}
+
+func (*metricRulesetRoutingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRulesetRoutingRule)(nil)).Elem()
+}
+
+func (i *metricRulesetRoutingRulePtrType) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
+	return i.ToMetricRulesetRoutingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *metricRulesetRoutingRulePtrType) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRulePtrOutput)
+}
+
+type MetricRulesetRoutingRuleOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetRoutingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricRulesetRoutingRule)(nil)).Elem()
+}
+
+func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutput() MetricRulesetRoutingRuleOutput {
+	return o
+}
+
+func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutputWithContext(ctx context.Context) MetricRulesetRoutingRuleOutput {
+	return o
+}
+
+func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
+	return o.ToMetricRulesetRoutingRulePtrOutputWithContext(context.Background())
+}
+
+func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRulesetRoutingRule) *MetricRulesetRoutingRule {
+		return &v
+	}).(MetricRulesetRoutingRulePtrOutput)
+}
+
+// end destination of the input metric
+func (o MetricRulesetRoutingRuleOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricRulesetRoutingRule) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+type MetricRulesetRoutingRulePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricRulesetRoutingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricRulesetRoutingRule)(nil)).Elem()
+}
+
+func (o MetricRulesetRoutingRulePtrOutput) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
+	return o
+}
+
+func (o MetricRulesetRoutingRulePtrOutput) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
+	return o
+}
+
+func (o MetricRulesetRoutingRulePtrOutput) Elem() MetricRulesetRoutingRuleOutput {
+	return o.ApplyT(func(v *MetricRulesetRoutingRule) MetricRulesetRoutingRule {
+		if v != nil {
+			return *v
+		}
+		var ret MetricRulesetRoutingRule
+		return ret
+	}).(MetricRulesetRoutingRuleOutput)
+}
+
+// end destination of the input metric
+func (o MetricRulesetRoutingRulePtrOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricRulesetRoutingRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Destination
+	}).(pulumi.StringPtrOutput)
+}
+
 type OrgTokenDpmLimits struct {
 	// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
 	DpmLimit int `pulumi:"dpmLimit"`
@@ -5987,6 +6592,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListChartLegendOptionsFieldArrayInput)(nil)).Elem(), ListChartLegendOptionsFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListChartVizOptionInput)(nil)).Elem(), ListChartVizOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListChartVizOptionArrayInput)(nil)).Elem(), ListChartVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleInput)(nil)).Elem(), MetricRulesetAggregationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleAggregatorInput)(nil)).Elem(), MetricRulesetAggregationRuleAggregatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleAggregatorArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleAggregatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilterInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilterArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRuleInput)(nil)).Elem(), MetricRulesetRoutingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRulePtrInput)(nil)).Elem(), MetricRulesetRoutingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsPtrInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenHostOrUsageLimitsInput)(nil)).Elem(), OrgTokenHostOrUsageLimitsArgs{})
@@ -6075,6 +6690,16 @@ func init() {
 	pulumi.RegisterOutputType(ListChartLegendOptionsFieldArrayOutput{})
 	pulumi.RegisterOutputType(ListChartVizOptionOutput{})
 	pulumi.RegisterOutputType(ListChartVizOptionArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleAggregatorOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleAggregatorArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherFilterOutput{})
+	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherFilterArrayOutput{})
+	pulumi.RegisterOutputType(MetricRulesetRoutingRuleOutput{})
+	pulumi.RegisterOutputType(MetricRulesetRoutingRulePtrOutput{})
 	pulumi.RegisterOutputType(OrgTokenDpmLimitsOutput{})
 	pulumi.RegisterOutputType(OrgTokenDpmLimitsPtrOutput{})
 	pulumi.RegisterOutputType(OrgTokenHostOrUsageLimitsOutput{})

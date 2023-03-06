@@ -41,6 +41,39 @@ Object.defineProperty(exports, "customAppUrl", {
 });
 
 /**
+ * Max retries for a single HTTP call. Defaults to 4
+ */
+export declare const retryMaxAttempts: number | undefined;
+Object.defineProperty(exports, "retryMaxAttempts", {
+    get() {
+        return __config.getObject<number>("retryMaxAttempts");
+    },
+    enumerable: true,
+});
+
+/**
+ * Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+ */
+export declare const retryWaitMaxSeconds: number | undefined;
+Object.defineProperty(exports, "retryWaitMaxSeconds", {
+    get() {
+        return __config.getObject<number>("retryWaitMaxSeconds");
+    },
+    enumerable: true,
+});
+
+/**
+ * Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+ */
+export declare const retryWaitMinSeconds: number | undefined;
+Object.defineProperty(exports, "retryWaitMinSeconds", {
+    get() {
+        return __config.getObject<number>("retryWaitMinSeconds");
+    },
+    enumerable: true,
+});
+
+/**
  * Timeout duration for a single HTTP call in seconds. Defaults to 120
  */
 export declare const timeoutSeconds: number | undefined;

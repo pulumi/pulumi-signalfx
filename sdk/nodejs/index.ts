@@ -60,6 +60,11 @@ export type ListChart = import("./listChart").ListChart;
 export const ListChart: typeof import("./listChart").ListChart = null as any;
 utilities.lazyLoad(exports, ["ListChart"], () => require("./listChart"));
 
+export { MetricRulesetArgs, MetricRulesetState } from "./metricRuleset";
+export type MetricRuleset = import("./metricRuleset").MetricRuleset;
+export const MetricRuleset: typeof import("./metricRuleset").MetricRuleset = null as any;
+utilities.lazyLoad(exports, ["MetricRuleset"], () => require("./metricRuleset"));
+
 export { OrgTokenArgs, OrgTokenState } from "./orgToken";
 export type OrgToken = import("./orgToken").OrgToken;
 export const OrgToken: typeof import("./orgToken").OrgToken = null as any;
@@ -150,6 +155,8 @@ const _module = {
                 return new HeatmapChart(name, <any>undefined, { urn })
             case "signalfx:index/listChart:ListChart":
                 return new ListChart(name, <any>undefined, { urn })
+            case "signalfx:index/metricRuleset:MetricRuleset":
+                return new MetricRuleset(name, <any>undefined, { urn })
             case "signalfx:index/orgToken:OrgToken":
                 return new OrgToken(name, <any>undefined, { urn })
             case "signalfx:index/singleValueChart:SingleValueChart":
@@ -177,6 +184,7 @@ pulumi.runtime.registerResourceModule("signalfx", "index/detector", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/eventFeedChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/heatmapChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/listChart", _module)
+pulumi.runtime.registerResourceModule("signalfx", "index/metricRuleset", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/orgToken", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/singleValueChart", _module)
 pulumi.runtime.registerResourceModule("signalfx", "index/tableChart", _module)
