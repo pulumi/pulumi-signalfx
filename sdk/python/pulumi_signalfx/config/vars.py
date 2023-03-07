@@ -37,6 +37,27 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('customAppUrl')
 
     @property
+    def retry_max_attempts(self) -> Optional[int]:
+        """
+        Max retries for a single HTTP call. Defaults to 4
+        """
+        return __config__.get_int('retryMaxAttempts')
+
+    @property
+    def retry_wait_max_seconds(self) -> Optional[int]:
+        """
+        Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+        """
+        return __config__.get_int('retryWaitMaxSeconds')
+
+    @property
+    def retry_wait_min_seconds(self) -> Optional[int]:
+        """
+        Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+        """
+        return __config__.get_int('retryWaitMinSeconds')
+
+    @property
     def timeout_seconds(self) -> Optional[int]:
         """
         Timeout duration for a single HTTP call in seconds. Defaults to 120

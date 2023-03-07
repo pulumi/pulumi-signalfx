@@ -52,6 +52,9 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["apiUrl"] = args ? args.apiUrl : undefined;
             resourceInputs["authToken"] = args ? args.authToken : undefined;
             resourceInputs["customAppUrl"] = args ? args.customAppUrl : undefined;
+            resourceInputs["retryMaxAttempts"] = pulumi.output(args ? args.retryMaxAttempts : undefined).apply(JSON.stringify);
+            resourceInputs["retryWaitMaxSeconds"] = pulumi.output(args ? args.retryWaitMaxSeconds : undefined).apply(JSON.stringify);
+            resourceInputs["retryWaitMinSeconds"] = pulumi.output(args ? args.retryWaitMinSeconds : undefined).apply(JSON.stringify);
             resourceInputs["timeoutSeconds"] = pulumi.output(args ? args.timeoutSeconds : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -75,6 +78,18 @@ export interface ProviderArgs {
      * Application URL for your SignalFx org, often customized for organizations using SSO
      */
     customAppUrl?: pulumi.Input<string>;
+    /**
+     * Max retries for a single HTTP call. Defaults to 4
+     */
+    retryMaxAttempts?: pulumi.Input<number>;
+    /**
+     * Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+     */
+    retryWaitMaxSeconds?: pulumi.Input<number>;
+    /**
+     * Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+     */
+    retryWaitMinSeconds?: pulumi.Input<number>;
     /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      */

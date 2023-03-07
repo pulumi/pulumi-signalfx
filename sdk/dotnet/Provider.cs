@@ -83,6 +83,24 @@ namespace Pulumi.SignalFx
         public Input<string>? CustomAppUrl { get; set; }
 
         /// <summary>
+        /// Max retries for a single HTTP call. Defaults to 4
+        /// </summary>
+        [Input("retryMaxAttempts", json: true)]
+        public Input<int>? RetryMaxAttempts { get; set; }
+
+        /// <summary>
+        /// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+        /// </summary>
+        [Input("retryWaitMaxSeconds", json: true)]
+        public Input<int>? RetryWaitMaxSeconds { get; set; }
+
+        /// <summary>
+        /// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+        /// </summary>
+        [Input("retryWaitMinSeconds", json: true)]
+        public Input<int>? RetryWaitMinSeconds { get; set; }
+
+        /// <summary>
         /// Timeout duration for a single HTTP call in seconds. Defaults to 120
         /// </summary>
         [Input("timeoutSeconds", json: true)]

@@ -62,6 +62,51 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Max retries for a single HTTP call. Defaults to 4
+     * 
+     */
+    @Import(name="retryMaxAttempts", json=true)
+    private @Nullable Output<Integer> retryMaxAttempts;
+
+    /**
+     * @return Max retries for a single HTTP call. Defaults to 4
+     * 
+     */
+    public Optional<Output<Integer>> retryMaxAttempts() {
+        return Optional.ofNullable(this.retryMaxAttempts);
+    }
+
+    /**
+     * Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+     * 
+     */
+    @Import(name="retryWaitMaxSeconds", json=true)
+    private @Nullable Output<Integer> retryWaitMaxSeconds;
+
+    /**
+     * @return Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+     * 
+     */
+    public Optional<Output<Integer>> retryWaitMaxSeconds() {
+        return Optional.ofNullable(this.retryWaitMaxSeconds);
+    }
+
+    /**
+     * Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+     * 
+     */
+    @Import(name="retryWaitMinSeconds", json=true)
+    private @Nullable Output<Integer> retryWaitMinSeconds;
+
+    /**
+     * @return Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+     * 
+     */
+    public Optional<Output<Integer>> retryWaitMinSeconds() {
+        return Optional.ofNullable(this.retryWaitMinSeconds);
+    }
+
+    /**
      * Timeout duration for a single HTTP call in seconds. Defaults to 120
      * 
      */
@@ -82,6 +127,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.apiUrl = $.apiUrl;
         this.authToken = $.authToken;
         this.customAppUrl = $.customAppUrl;
+        this.retryMaxAttempts = $.retryMaxAttempts;
+        this.retryWaitMaxSeconds = $.retryWaitMaxSeconds;
+        this.retryWaitMinSeconds = $.retryWaitMinSeconds;
         this.timeoutSeconds = $.timeoutSeconds;
     }
 
@@ -164,6 +212,69 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customAppUrl(String customAppUrl) {
             return customAppUrl(Output.of(customAppUrl));
+        }
+
+        /**
+         * @param retryMaxAttempts Max retries for a single HTTP call. Defaults to 4
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryMaxAttempts(@Nullable Output<Integer> retryMaxAttempts) {
+            $.retryMaxAttempts = retryMaxAttempts;
+            return this;
+        }
+
+        /**
+         * @param retryMaxAttempts Max retries for a single HTTP call. Defaults to 4
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryMaxAttempts(Integer retryMaxAttempts) {
+            return retryMaxAttempts(Output.of(retryMaxAttempts));
+        }
+
+        /**
+         * @param retryWaitMaxSeconds Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryWaitMaxSeconds(@Nullable Output<Integer> retryWaitMaxSeconds) {
+            $.retryWaitMaxSeconds = retryWaitMaxSeconds;
+            return this;
+        }
+
+        /**
+         * @param retryWaitMaxSeconds Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryWaitMaxSeconds(Integer retryWaitMaxSeconds) {
+            return retryWaitMaxSeconds(Output.of(retryWaitMaxSeconds));
+        }
+
+        /**
+         * @param retryWaitMinSeconds Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryWaitMinSeconds(@Nullable Output<Integer> retryWaitMinSeconds) {
+            $.retryWaitMinSeconds = retryWaitMinSeconds;
+            return this;
+        }
+
+        /**
+         * @param retryWaitMinSeconds Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+         * 
+         * @return builder
+         * 
+         */
+        public Builder retryWaitMinSeconds(Integer retryWaitMinSeconds) {
+            return retryWaitMinSeconds(Output.of(retryWaitMinSeconds));
         }
 
         /**

@@ -547,6 +547,74 @@ export interface ListChartVizOption {
     valueUnit?: pulumi.Input<string>;
 }
 
+export interface MetricRulesetAggregationRule {
+    /**
+     * Aggregator object
+     */
+    aggregators: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleAggregator>[]>;
+    /**
+     * When false, this rule will not generate aggregated MTSs
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Matcher object
+     */
+    matchers: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleMatcher>[]>;
+    name?: pulumi.Input<string>;
+}
+
+export interface MetricRulesetAggregationRuleAggregator {
+    /**
+     * List of dimensions to either be kept or dropped in the new aggregated MTSs
+     */
+    dimensions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * when true, the specified dimensions will be dropped from the aggregated MTSs
+     */
+    dropDimensions: pulumi.Input<boolean>;
+    /**
+     * name of the new aggregated metric
+     */
+    outputName: pulumi.Input<string>;
+    /**
+     * Type of aggregator. Must always be "rollup"
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface MetricRulesetAggregationRuleMatcher {
+    /**
+     * List of filters to filter the set of input MTSs
+     */
+    filters?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleMatcherFilter>[]>;
+    /**
+     * Type of aggregator. Must always be "rollup"
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface MetricRulesetAggregationRuleMatcherFilter {
+    /**
+     * When true, this filter will match all values not matching the property_values
+     */
+    not: pulumi.Input<boolean>;
+    /**
+     * Name of the dimension
+     */
+    property: pulumi.Input<string>;
+    /**
+     * Value of the dimension
+     */
+    propertyValues: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MetricRulesetRoutingRule {
+    /**
+     * end destination of the input metric
+     */
+    destination: pulumi.Input<string>;
+}
+
 export interface OrgTokenDpmLimits {
     /**
      * The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.

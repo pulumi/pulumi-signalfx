@@ -16,6 +16,7 @@ from .get_azure_services import *
 from .get_dimension_values import *
 from .heatmap_chart import *
 from .list_chart import *
+from .metric_ruleset import *
 from .org_token import *
 from .provider import *
 from .single_value_chart import *
@@ -169,6 +170,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx",
   "classes": {
    "signalfx:index/listChart:ListChart": "ListChart"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "index/metricRuleset",
+  "fqn": "pulumi_signalfx",
+  "classes": {
+   "signalfx:index/metricRuleset:MetricRuleset": "MetricRuleset"
   }
  },
  {

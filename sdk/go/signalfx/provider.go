@@ -47,6 +47,12 @@ type providerArgs struct {
 	AuthToken *string `pulumi:"authToken"`
 	// Application URL for your SignalFx org, often customized for organizations using SSO
 	CustomAppUrl *string `pulumi:"customAppUrl"`
+	// Max retries for a single HTTP call. Defaults to 4
+	RetryMaxAttempts *int `pulumi:"retryMaxAttempts"`
+	// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+	RetryWaitMaxSeconds *int `pulumi:"retryWaitMaxSeconds"`
+	// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+	RetryWaitMinSeconds *int `pulumi:"retryWaitMinSeconds"`
 	// Timeout duration for a single HTTP call in seconds. Defaults to 120
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
@@ -59,6 +65,12 @@ type ProviderArgs struct {
 	AuthToken pulumi.StringPtrInput
 	// Application URL for your SignalFx org, often customized for organizations using SSO
 	CustomAppUrl pulumi.StringPtrInput
+	// Max retries for a single HTTP call. Defaults to 4
+	RetryMaxAttempts pulumi.IntPtrInput
+	// Maximum retry wait for a single HTTP call in seconds. Defaults to 30
+	RetryWaitMaxSeconds pulumi.IntPtrInput
+	// Minimum retry wait for a single HTTP call in seconds. Defaults to 1
+	RetryWaitMinSeconds pulumi.IntPtrInput
 	// Timeout duration for a single HTTP call in seconds. Defaults to 120
 	TimeoutSeconds pulumi.IntPtrInput
 }
