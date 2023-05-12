@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * // Leaves out most of the integration bits, see the docs
  * // for signalfx_gcp_integration for more
  * // …
- * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {services: [gcpServices.then(gcpServices => gcpServices.services)].map(__item => __item?.name)});
+ * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {services: gcpServices.then(gcpServices => gcpServices.services.map(__item => __item.name))});
  * ```
  */
 export function getServices(args?: GetServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicesResult> {
@@ -61,7 +61,7 @@ export interface GetServicesResult {
  * // Leaves out most of the integration bits, see the docs
  * // for signalfx_gcp_integration for more
  * // …
- * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {services: [gcpServices.then(gcpServices => gcpServices.services)].map(__item => __item?.name)});
+ * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {services: gcpServices.then(gcpServices => gcpServices.services.map(__item => __item.name))});
  * ```
  */
 export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {

@@ -70,7 +70,7 @@ def get_services(services: Optional[Sequence[pulumi.InputType['GetServicesServic
     # Leaves out most of the integration bits, see the docs
     # for signalfx_gcp_integration for more
     # …
-    gcp_myteam = signalfx.gcp.Integration("gcpMyteam", services=[__item.name for __item in [gcp_services.services]])
+    gcp_myteam = signalfx.gcp.Integration("gcpMyteam", services=[__item.name for __item in gcp_services.services])
     ```
     """
     __args__ = dict()
@@ -99,7 +99,7 @@ def get_services_output(services: Optional[pulumi.Input[Optional[Sequence[pulumi
     # Leaves out most of the integration bits, see the docs
     # for signalfx_gcp_integration for more
     # …
-    gcp_myteam = signalfx.gcp.Integration("gcpMyteam", services=[__item.name for __item in [gcp_services.services]])
+    gcp_myteam = signalfx.gcp.Integration("gcpMyteam", services=[__item.name for __item in gcp_services.services])
     ```
     """
     ...

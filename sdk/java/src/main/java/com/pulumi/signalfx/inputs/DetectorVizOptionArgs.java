@@ -63,12 +63,32 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
     /**
      * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
+     * **Notes**
+     * 
+     * It is highly recommended that you use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+     * 
+     * `max_delay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+     * 
+     * `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
+     * 
+     * See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
+     * 
      */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
     /**
      * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     * **Notes**
+     * 
+     * It is highly recommended that you use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+     * 
+     * `max_delay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+     * 
+     * `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
+     * 
+     * See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
      * 
      */
     public Optional<Output<String>> valuePrefix() {
@@ -192,6 +212,16 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
+         * **Notes**
+         * 
+         * It is highly recommended that you use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+         * 
+         * `max_delay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+         * 
+         * `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
+         * 
+         * See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
+         * 
          * @return builder
          * 
          */
@@ -202,6 +232,16 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * 
+         * **Notes**
+         * 
+         * It is highly recommended that you use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+         * 
+         * `max_delay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+         * 
+         * `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
+         * 
+         * See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
          * 
          * @return builder
          * 

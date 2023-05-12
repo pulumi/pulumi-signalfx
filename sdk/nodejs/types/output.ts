@@ -426,6 +426,16 @@ export interface DetectorVizOption {
     label: string;
     /**
      * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     *
+     * **Notes**
+     *
+     * It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+     *
+     * `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+     *
+     * `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
+     *
+     * See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
      */
     valuePrefix?: string;
     valueSuffix?: string;

@@ -151,16 +151,14 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
      * 
      */
     @Export(name="notifications", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> notifications;
 
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * @return Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
      * 
      */
     public Output<Optional<List<String>>> notifications() {

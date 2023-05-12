@@ -117,14 +117,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="includeLists", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> includeLists;
+    private Output<List<String>> includeLists;
 
     /**
      * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      * 
      */
-    public Output<Optional<List<String>>> includeLists() {
-        return Codegen.optional(this.includeLists);
+    public Output<List<String>> includeLists() {
+        return this.includeLists;
     }
     /**
      * Name of the integration.
@@ -209,6 +209,24 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> useMetricSourceProjectForQuota() {
         return Codegen.optional(this.useMetricSourceProjectForQuota);
+    }
+    /**
+     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     * @deprecated
+     * Please use include_list instead
+     * 
+     */
+    @Deprecated /* Please use include_list instead */
+    @Export(name="whitelists", type=List.class, parameters={String.class})
+    private Output<List<String>> whitelists;
+
+    /**
+     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     */
+    public Output<List<String>> whitelists() {
+        return this.whitelists;
     }
 
     /**

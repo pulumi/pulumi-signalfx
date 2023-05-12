@@ -352,7 +352,7 @@ class DashboardGroup(pulumi.CustomResource):
         mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
             description="Cool dashboard group",
             dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
+                dashboard_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 name_override="GC For My Service",
                 description_override="Garbage Collection dashboard maintained by JVM team",
                 filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
@@ -436,7 +436,7 @@ class DashboardGroup(pulumi.CustomResource):
         mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
             description="Cool dashboard group",
             dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
+                dashboard_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                 name_override="GC For My Service",
                 description_override="Garbage Collection dashboard maintained by JVM team",
                 filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(

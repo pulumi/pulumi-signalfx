@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +19,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/logs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -51,7 +49,7 @@ import (
 //					},
 //				},
 //				Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
-//				ProgramText: pulumi.String(fmt.Sprintf("logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n")),
+//				ProgramText: pulumi.String("logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n"),
 //				SortOptions: logs.ViewSortOptionArray{
 //					&logs.ViewSortOptionArgs{
 //						Descending: pulumi.Bool(false),
