@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +88,10 @@ type Integration struct {
 	Services pulumi.StringArrayOutput `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrOutput `pulumi:"useMetricSourceProjectForQuota"`
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	//
+	// Deprecated: Please use include_list instead
+	Whitelists pulumi.StringArrayOutput `pulumi:"whitelists"`
 }
 
 // NewIntegration registers a new resource with the given unique name, arguments, and options.
@@ -150,6 +154,10 @@ type integrationState struct {
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	//
+	// Deprecated: Please use include_list instead
+	Whitelists []string `pulumi:"whitelists"`
 }
 
 type IntegrationState struct {
@@ -174,6 +182,10 @@ type IntegrationState struct {
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	//
+	// Deprecated: Please use include_list instead
+	Whitelists pulumi.StringArrayInput
 }
 
 func (IntegrationState) ElementType() reflect.Type {
@@ -202,6 +214,10 @@ type integrationArgs struct {
 	Services []string `pulumi:"services"`
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	//
+	// Deprecated: Please use include_list instead
+	Whitelists []string `pulumi:"whitelists"`
 }
 
 // The set of arguments for constructing a Integration resource.
@@ -227,6 +243,10 @@ type IntegrationArgs struct {
 	Services pulumi.StringArrayInput
 	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
+	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	//
+	// Deprecated: Please use include_list instead
+	Whitelists pulumi.StringArrayInput
 }
 
 func (IntegrationArgs) ElementType() reflect.Type {
@@ -365,6 +385,13 @@ func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
 // When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
 func (o IntegrationOutput) UseMetricSourceProjectForQuota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseMetricSourceProjectForQuota }).(pulumi.BoolPtrOutput)
+}
+
+// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+//
+// Deprecated: Please use include_list instead
+func (o IntegrationOutput) Whitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Whitelists }).(pulumi.StringArrayOutput)
 }
 
 type IntegrationArrayOutput struct{ *pulumi.OutputState }

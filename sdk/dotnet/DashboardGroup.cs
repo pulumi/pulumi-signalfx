@@ -18,6 +18,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
@@ -42,6 +43,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
@@ -80,6 +82,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 

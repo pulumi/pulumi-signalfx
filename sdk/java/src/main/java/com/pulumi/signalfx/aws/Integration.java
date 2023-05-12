@@ -365,7 +365,11 @@ public class Integration extends com.pulumi.resources.CustomResource {
     /**
      * Enable the use of Amazon&#39;s `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `&#34;cloudwatch:GetMetricData&#34;` permission.
      * 
+     * @deprecated
+     * This field will be removed
+     * 
      */
+    @Deprecated /* This field will be removed */
     @Export(name="useGetMetricDataMethod", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> useGetMetricDataMethod;
 

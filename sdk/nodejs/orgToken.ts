@@ -84,8 +84,7 @@ export class OrgToken extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
      */
     public readonly notifications!: pulumi.Output<string[] | undefined>;
     /**
@@ -161,8 +160,7 @@ export interface OrgTokenState {
      */
     name?: pulumi.Input<string>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -200,8 +198,7 @@ export interface OrgTokenArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
 }

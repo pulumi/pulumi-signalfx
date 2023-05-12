@@ -100,6 +100,9 @@ class IntegrationArgs:
         if token is not None:
             pulumi.set(__self__, "token", token)
         if use_get_metric_data_method is not None:
+            warnings.warn("""This field will be removed""", DeprecationWarning)
+            pulumi.log.warn("""use_get_metric_data_method is deprecated: This field will be removed""")
+        if use_get_metric_data_method is not None:
             pulumi.set(__self__, "use_get_metric_data_method", use_get_metric_data_method)
         if use_metric_streams_sync is not None:
             pulumi.set(__self__, "use_metric_streams_sync", use_metric_streams_sync)
@@ -448,6 +451,9 @@ class _IntegrationState:
         if token is not None:
             pulumi.set(__self__, "token", token)
         if use_get_metric_data_method is not None:
+            warnings.warn("""This field will be removed""", DeprecationWarning)
+            pulumi.log.warn("""use_get_metric_data_method is deprecated: This field will be removed""")
+        if use_get_metric_data_method is not None:
             pulumi.set(__self__, "use_get_metric_data_method", use_get_metric_data_method)
         if use_metric_streams_sync is not None:
             pulumi.set(__self__, "use_metric_streams_sync", use_metric_streams_sync)
@@ -782,7 +788,7 @@ class Integration(pulumi.CustomResource):
         ```
         ## Service Names
 
-        > **NOTE** You can use the data source _aws_get_services_ to specify all services.
+        > **NOTE** You can use the data source "aws_get_services" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -864,7 +870,7 @@ class Integration(pulumi.CustomResource):
         ```
         ## Service Names
 
-        > **NOTE** You can use the data source _aws_get_services_ to specify all services.
+        > **NOTE** You can use the data source "aws_get_services" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -934,6 +940,9 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["services"] = services
             __props__.__dict__["sync_custom_namespaces_only"] = sync_custom_namespaces_only
             __props__.__dict__["token"] = token
+            if use_get_metric_data_method is not None and not opts.urn:
+                warnings.warn("""This field will be removed""", DeprecationWarning)
+                pulumi.log.warn("""use_get_metric_data_method is deprecated: This field will be removed""")
             __props__.__dict__["use_get_metric_data_method"] = use_get_metric_data_method
             __props__.__dict__["use_metric_streams_sync"] = use_metric_streams_sync
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["externalId", "key"])

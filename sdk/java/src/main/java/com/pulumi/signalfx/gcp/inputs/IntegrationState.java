@@ -171,6 +171,29 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.useMetricSourceProjectForQuota);
     }
 
+    /**
+     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     * @deprecated
+     * Please use include_list instead
+     * 
+     */
+    @Deprecated /* Please use include_list instead */
+    @Import(name="whitelists")
+    private @Nullable Output<List<String>> whitelists;
+
+    /**
+     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+     * 
+     * @deprecated
+     * Please use include_list instead
+     * 
+     */
+    @Deprecated /* Please use include_list instead */
+    public Optional<Output<List<String>>> whitelists() {
+        return Optional.ofNullable(this.whitelists);
+    }
+
     private IntegrationState() {}
 
     private IntegrationState(IntegrationState $) {
@@ -184,6 +207,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         this.projectServiceKeys = $.projectServiceKeys;
         this.services = $.services;
         this.useMetricSourceProjectForQuota = $.useMetricSourceProjectForQuota;
+        this.whitelists = $.whitelists;
     }
 
     public static Builder builder() {
@@ -454,6 +478,49 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder useMetricSourceProjectForQuota(Boolean useMetricSourceProjectForQuota) {
             return useMetricSourceProjectForQuota(Output.of(useMetricSourceProjectForQuota));
+        }
+
+        /**
+         * @param whitelists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Please use include_list instead
+         * 
+         */
+        @Deprecated /* Please use include_list instead */
+        public Builder whitelists(@Nullable Output<List<String>> whitelists) {
+            $.whitelists = whitelists;
+            return this;
+        }
+
+        /**
+         * @param whitelists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Please use include_list instead
+         * 
+         */
+        @Deprecated /* Please use include_list instead */
+        public Builder whitelists(List<String> whitelists) {
+            return whitelists(Output.of(whitelists));
+        }
+
+        /**
+         * @param whitelists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Please use include_list instead
+         * 
+         */
+        @Deprecated /* Please use include_list instead */
+        public Builder whitelists(String... whitelists) {
+            return whitelists(List.of(whitelists));
         }
 
         public IntegrationState build() {

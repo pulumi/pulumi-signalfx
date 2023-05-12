@@ -18,6 +18,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
@@ -87,6 +88,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -100,6 +102,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -113,6 +116,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -126,6 +130,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -137,6 +142,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -150,6 +156,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -163,6 +170,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -176,6 +184,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -187,6 +196,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -201,6 +211,7 @@ namespace Pulumi.SignalFx
     /// You can either configure a Webhook to use an existing integration's credential id:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -211,6 +222,7 @@ namespace Pulumi.SignalFx
     /// or configure one inline:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

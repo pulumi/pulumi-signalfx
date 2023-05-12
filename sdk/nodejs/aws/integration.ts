@@ -163,6 +163,8 @@ export class Integration extends pulumi.CustomResource {
     public readonly token!: pulumi.Output<string | undefined>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+     *
+     * @deprecated This field will be removed
      */
     public readonly useGetMetricDataMethod!: pulumi.Output<boolean | undefined>;
     /**
@@ -325,6 +327,8 @@ export interface IntegrationState {
     token?: pulumi.Input<string>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+     *
+     * @deprecated This field will be removed
      */
     useGetMetricDataMethod?: pulumi.Input<boolean>;
     /**
@@ -417,6 +421,8 @@ export interface IntegrationArgs {
     token?: pulumi.Input<string>;
     /**
      * Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+     *
+     * @deprecated This field will be removed
      */
     useGetMetricDataMethod?: pulumi.Input<boolean>;
     /**

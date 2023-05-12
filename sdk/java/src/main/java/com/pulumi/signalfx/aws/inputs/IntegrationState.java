@@ -309,14 +309,22 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Enable the use of Amazon&#39;s `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `&#34;cloudwatch:GetMetricData&#34;` permission.
      * 
+     * @deprecated
+     * This field will be removed
+     * 
      */
+    @Deprecated /* This field will be removed */
     @Import(name="useGetMetricDataMethod")
     private @Nullable Output<Boolean> useGetMetricDataMethod;
 
     /**
      * @return Enable the use of Amazon&#39;s `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `&#34;cloudwatch:GetMetricData&#34;` permission.
      * 
+     * @deprecated
+     * This field will be removed
+     * 
      */
+    @Deprecated /* This field will be removed */
     public Optional<Output<Boolean>> useGetMetricDataMethod() {
         return Optional.ofNullable(this.useGetMetricDataMethod);
     }
@@ -848,7 +856,11 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will be removed
+         * 
          */
+        @Deprecated /* This field will be removed */
         public Builder useGetMetricDataMethod(@Nullable Output<Boolean> useGetMetricDataMethod) {
             $.useGetMetricDataMethod = useGetMetricDataMethod;
             return this;
@@ -859,7 +871,11 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field will be removed
+         * 
          */
+        @Deprecated /* This field will be removed */
         public Builder useGetMetricDataMethod(Boolean useGetMetricDataMethod) {
             return useGetMetricDataMethod(Output.of(useGetMetricDataMethod));
         }

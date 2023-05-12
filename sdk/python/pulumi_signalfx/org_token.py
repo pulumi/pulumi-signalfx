@@ -31,8 +31,7 @@ class OrgTokenArgs:
         :param pulumi.Input['OrgTokenDpmLimitsArgs'] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input['OrgTokenHostOrUsageLimitsArgs'] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         """
         if auth_scopes is not None:
             pulumi.set(__self__, "auth_scopes", auth_scopes)
@@ -125,8 +124,7 @@ class OrgTokenArgs:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See
-        https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
@@ -154,8 +152,7 @@ class _OrgTokenState:
         :param pulumi.Input['OrgTokenDpmLimitsArgs'] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input['OrgTokenHostOrUsageLimitsArgs'] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
         """
         if auth_scopes is not None:
@@ -251,8 +248,7 @@ class _OrgTokenState:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See
-        https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
@@ -318,8 +314,7 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input[pulumi.InputType['OrgTokenHostOrUsageLimitsArgs']] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         """
         ...
     @overload
@@ -423,8 +418,7 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']] dpm_limits: Specify DPM-based limits for this token.
         :param pulumi.Input[pulumi.InputType['OrgTokenHostOrUsageLimitsArgs']] host_or_usage_limits: Specify Usage-based limits for this token.
         :param pulumi.Input[str] name: Name of the token.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -493,8 +487,7 @@ class OrgToken(pulumi.CustomResource):
     @pulumi.getter
     def notifications(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See
-        https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 

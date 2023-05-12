@@ -211,7 +211,7 @@ func Provider() tfbridge.ProviderInfo {
 			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
 			return makeResource(m, name).String(), nil
 		}))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to compute defaults")
 
 	prov.SetAutonaming(255, "-")
 

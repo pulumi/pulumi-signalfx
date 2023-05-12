@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,6 @@ import (
 // package main
 //
 // import (
-//
-//	"fmt"
 //
 //	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -47,7 +45,7 @@ import (
 //					},
 //				},
 //				PlotType:        pulumi.String("LineChart"),
-//				ProgramText:     pulumi.String(fmt.Sprintf("data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n\n")),
+//				ProgramText:     pulumi.String("data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n\n"),
 //				ShowDataMarkers: pulumi.Bool(true),
 //				TimeRange:       pulumi.Int(3600),
 //				VizOptions: signalfx.TimeChartVizOptionArray{

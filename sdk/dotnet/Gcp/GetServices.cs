@@ -33,10 +33,7 @@ namespace Pulumi.SignalFx.Gcp
         ///     // …
         ///     var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new()
         ///     {
-        ///         Services = new[]
-        ///         {
-        ///             gcpServices.Apply(getServicesResult =&gt; getServicesResult.Services),
-        ///         }.Select(__item =&gt; __item?.Name).ToList(),
+        ///         Services = gcpServices.Apply(getServicesResult =&gt; getServicesResult.Services).Select(__item =&gt; __item.Name).ToList(),
         ///     });
         /// 
         /// });
@@ -69,10 +66,7 @@ namespace Pulumi.SignalFx.Gcp
         ///     // …
         ///     var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new()
         ///     {
-        ///         Services = new[]
-        ///         {
-        ///             gcpServices.Apply(getServicesResult =&gt; getServicesResult.Services),
-        ///         }.Select(__item =&gt; __item?.Name).ToList(),
+        ///         Services = gcpServices.Apply(getServicesResult =&gt; getServicesResult.Services).Select(__item =&gt; __item.Name).ToList(),
         ///     });
         /// 
         /// });

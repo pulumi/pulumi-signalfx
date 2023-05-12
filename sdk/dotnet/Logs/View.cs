@@ -16,6 +16,7 @@ namespace Pulumi.SignalFx.Logs
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 

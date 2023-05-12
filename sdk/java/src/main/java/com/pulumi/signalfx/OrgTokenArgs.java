@@ -110,16 +110,14 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<List<String>> notifications;
 
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * @return Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
      * 
      */
     public Optional<Output<List<String>>> notifications() {
@@ -293,8 +291,7 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See
-         * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * @param notifications Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
          * 
          * @return builder
          * 
@@ -305,8 +302,7 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See
-         * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * @param notifications Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
          * 
          * @return builder
          * 
@@ -316,8 +312,7 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See
-         * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * @param notifications Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
          * 
          * @return builder
          * 

@@ -2784,6 +2784,16 @@ type DetectorVizOption struct {
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 	Label string `pulumi:"label"`
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	//
+	// **Notes**
+	//
+	// It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+	//
+	// `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+	//
+	// `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
+	//
+	// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -2809,6 +2819,16 @@ type DetectorVizOptionArgs struct {
 	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 	Label pulumi.StringInput `pulumi:"label"`
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	//
+	// **Notes**
+	//
+	// It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+	//
+	// `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+	//
+	// `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
+	//
+	// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
 	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
@@ -2882,6 +2902,16 @@ func (o DetectorVizOptionOutput) Label() pulumi.StringOutput {
 }
 
 // , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+//
+// **Notes**
+//
+// It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
+//
+// `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
+//
+// `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
+//
+// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
 func (o DetectorVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }

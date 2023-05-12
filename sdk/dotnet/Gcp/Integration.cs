@@ -19,6 +19,7 @@ namespace Pulumi.SignalFx.Gcp
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using SignalFx = Pulumi.SignalFx;
     /// 
@@ -113,6 +114,12 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("useMetricSourceProjectForQuota")]
         public Output<bool?> UseMetricSourceProjectForQuota { get; private set; } = null!;
+
+        /// <summary>
+        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        /// </summary>
+        [Output("whitelists")]
+        public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
 
         /// <summary>
@@ -253,6 +260,19 @@ namespace Pulumi.SignalFx.Gcp
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
 
+        [Input("whitelists")]
+        private InputList<string>? _whitelists;
+
+        /// <summary>
+        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        /// </summary>
+        [Obsolete(@"Please use include_list instead")]
+        public InputList<string> Whitelists
+        {
+            get => _whitelists ?? (_whitelists = new InputList<string>());
+            set => _whitelists = value;
+        }
+
         public IntegrationArgs()
         {
         }
@@ -349,6 +369,19 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
+
+        [Input("whitelists")]
+        private InputList<string>? _whitelists;
+
+        /// <summary>
+        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+        /// </summary>
+        [Obsolete(@"Please use include_list instead")]
+        public InputList<string> Whitelists
+        {
+            get => _whitelists ?? (_whitelists = new InputList<string>());
+            set => _whitelists = value;
+        }
 
         public IntegrationState()
         {

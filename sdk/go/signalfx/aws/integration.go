@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +130,8 @@ type Integration struct {
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	//
+	// Deprecated: This field will be removed
 	UseGetMetricDataMethod pulumi.BoolPtrOutput `pulumi:"useGetMetricDataMethod"`
 	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
 	// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
@@ -222,6 +224,8 @@ type integrationState struct {
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token *string `pulumi:"token"`
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	//
+	// Deprecated: This field will be removed
 	UseGetMetricDataMethod *bool `pulumi:"useGetMetricDataMethod"`
 	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
 	// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
@@ -269,6 +273,8 @@ type IntegrationState struct {
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token pulumi.StringPtrInput
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	//
+	// Deprecated: This field will be removed
 	UseGetMetricDataMethod pulumi.BoolPtrInput
 	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
 	// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
@@ -320,6 +326,8 @@ type integrationArgs struct {
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token *string `pulumi:"token"`
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	//
+	// Deprecated: This field will be removed
 	UseGetMetricDataMethod *bool `pulumi:"useGetMetricDataMethod"`
 	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
 	// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
@@ -368,6 +376,8 @@ type IntegrationArgs struct {
 	// If you specify `authMethod = \"SecurityToken\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
 	Token pulumi.StringPtrInput
 	// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+	//
+	// Deprecated: This field will be removed
 	UseGetMetricDataMethod pulumi.BoolPtrInput
 	// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
 	// Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
@@ -558,6 +568,8 @@ func (o IntegrationOutput) Token() pulumi.StringPtrOutput {
 }
 
 // Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
+//
+// Deprecated: This field will be removed
 func (o IntegrationOutput) UseGetMetricDataMethod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseGetMetricDataMethod }).(pulumi.BoolPtrOutput)
 }
