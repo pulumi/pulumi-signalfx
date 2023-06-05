@@ -15,6 +15,78 @@ import (
 //
 // > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			clusters := []string{
+//				"clusterA",
+//				"clusterB",
+//			}
+//			if param := cfg.GetBool("clusters"); param != nil {
+//				clusters = param
+//			}
+//			var applicationDelay []*signalfx.Detector
+//			for index := 0; index < len(clusters); index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := signalfx.NewDetector(ctx, fmt.Sprintf("applicationDelay-%v", key0), &signalfx.DetectorArgs{
+//					Description: pulumi.String(fmt.Sprintf("your application is slow - %v", clusters[val0])),
+//					MaxDelay:    pulumi.Int(30),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("app-backend"),
+//						pulumi.String("staging"),
+//					},
+//					AuthorizedWriterTeams: pulumi.StringArray{
+//						signalfx_team.Mycoolteam.Id,
+//					},
+//					AuthorizedWriterUsers: pulumi.StringArray{
+//						pulumi.String("abc123"),
+//					},
+//					ProgramText: pulumi.String(fmt.Sprintf("signal = data('app.delay', filter('cluster','%v'), extrapolation='last_value', maxExtrapolations=5).max()\ndetect(when(signal > 60, '5m')).publish('Processing old messages 5m')\ndetect(when(signal > 60, '30m')).publish('Processing old messages 30m')\n", clusters[val0])),
+//					Rules: signalfx.DetectorRuleArray{
+//						&signalfx.DetectorRuleArgs{
+//							Description: pulumi.String("maximum > 60 for 5m"),
+//							Severity:    pulumi.String("Warning"),
+//							DetectLabel: pulumi.String("Processing old messages 5m"),
+//							Notifications: pulumi.StringArray{
+//								pulumi.String("Email,foo-alerts@bar.com"),
+//							},
+//						},
+//						&signalfx.DetectorRuleArgs{
+//							Description: pulumi.String("maximum > 60 for 30m"),
+//							Severity:    pulumi.String("Critical"),
+//							DetectLabel: pulumi.String("Processing old messages 30m"),
+//							Notifications: pulumi.StringArray{
+//								pulumi.String("Email,foo-alerts@bar.com"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				applicationDelay = append(applicationDelay, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Notification Format
 //
 // As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:

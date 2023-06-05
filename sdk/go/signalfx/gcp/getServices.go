@@ -11,6 +11,33 @@ import (
 )
 
 // Use this data source to get a list of GCP service names.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/gcp"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// gcpServices, err := gcp.GetServices(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// _, err = gcp.NewIntegration(ctx, "gcpMyteam", &gcp.IntegrationArgs{
+// Services: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-signalfx:gcp-getServices:getServices.pp:7,14-41),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 func GetServices(ctx *pulumi.Context, args *GetServicesArgs, opts ...pulumi.InvokeOption) (*GetServicesResult, error) {
 	var rv GetServicesResult
 	err := ctx.Invoke("signalfx:gcp/getServices:getServices", args, &rv, opts...)
