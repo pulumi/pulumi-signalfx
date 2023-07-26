@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -139,6 +140,7 @@ func NewTimeChart(ctx *pulumi.Context,
 	if args.ProgramText == nil {
 		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TimeChart
 	err := ctx.RegisterResource("signalfx:index/timeChart:TimeChart", name, args, &resource, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type IntegrationProjectServiceKey struct {
 	ProjectId  string `pulumi:"projectId"`
@@ -110,107 +113,9 @@ func (o IntegrationProjectServiceKeyArrayOutput) Index(i pulumi.IntInput) Integr
 	}).(IntegrationProjectServiceKeyOutput)
 }
 
-type GetServicesService struct {
-	Name string `pulumi:"name"`
-}
-
-// GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
-// You can construct a concrete instance of `GetServicesServiceInput` via:
-//
-//	GetServicesServiceArgs{...}
-type GetServicesServiceInput interface {
-	pulumi.Input
-
-	ToGetServicesServiceOutput() GetServicesServiceOutput
-	ToGetServicesServiceOutputWithContext(context.Context) GetServicesServiceOutput
-}
-
-type GetServicesServiceArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetServicesServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
-}
-
-func (i GetServicesServiceArgs) ToGetServicesServiceOutput() GetServicesServiceOutput {
-	return i.ToGetServicesServiceOutputWithContext(context.Background())
-}
-
-func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceOutput)
-}
-
-// GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
-// You can construct a concrete instance of `GetServicesServiceArrayInput` via:
-//
-//	GetServicesServiceArray{ GetServicesServiceArgs{...} }
-type GetServicesServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput
-	ToGetServicesServiceArrayOutputWithContext(context.Context) GetServicesServiceArrayOutput
-}
-
-type GetServicesServiceArray []GetServicesServiceInput
-
-func (GetServicesServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
-}
-
-func (i GetServicesServiceArray) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
-	return i.ToGetServicesServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetServicesServiceArray) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceArrayOutput)
-}
-
-type GetServicesServiceOutput struct{ *pulumi.OutputState }
-
-func (GetServicesServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
-}
-
-func (o GetServicesServiceOutput) ToGetServicesServiceOutput() GetServicesServiceOutput {
-	return o
-}
-
-func (o GetServicesServiceOutput) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
-	return o
-}
-
-func (o GetServicesServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetServicesServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServicesServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
-}
-
-func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesService {
-		return vs[0].([]GetServicesService)[vs[1].(int)]
-	}).(GetServicesServiceOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectServiceKeyInput)(nil)).Elem(), IntegrationProjectServiceKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationProjectServiceKeyArrayInput)(nil)).Elem(), IntegrationProjectServiceKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterOutputType(IntegrationProjectServiceKeyOutput{})
 	pulumi.RegisterOutputType(IntegrationProjectServiceKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetServicesServiceOutput{})
-	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 }

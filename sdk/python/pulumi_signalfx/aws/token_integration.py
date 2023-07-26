@@ -44,7 +44,7 @@ class _TokenIntegrationState:
         """
         Input properties used for looking up and filtering TokenIntegration resources.
         :param pulumi.Input[str] name: The name of this integration
-        :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
         :param pulumi.Input[str] token_id: The SignalFx-generated AWS token to use with an AWS integration.
         """
         if name is not None:
@@ -70,7 +70,7 @@ class _TokenIntegrationState:
     @pulumi.getter(name="signalfxAwsAccount")
     def signalfx_aws_account(self) -> Optional[pulumi.Input[str]]:
         """
-        The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
         """
         return pulumi.get(self, "signalfx_aws_account")
 
@@ -99,9 +99,9 @@ class TokenIntegration(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
+        Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 
@@ -150,9 +150,9 @@ class TokenIntegration(pulumi.CustomResource):
                  args: Optional[TokenIntegrationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
+        Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 
@@ -241,7 +241,7 @@ class TokenIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
-        :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        :param pulumi.Input[str] signalfx_aws_account: The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
         :param pulumi.Input[str] token_id: The SignalFx-generated AWS token to use with an AWS integration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -265,7 +265,7 @@ class TokenIntegration(pulumi.CustomResource):
     @pulumi.getter(name="signalfxAwsAccount")
     def signalfx_aws_account(self) -> pulumi.Output[str]:
         """
-        The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+        The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
         """
         return pulumi.get(self, "signalfx_aws_account")
 

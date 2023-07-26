@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 //
 // > **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `forEach` that big in SignalFx. This is negotiable.
 func GetDimensionValues(ctx *pulumi.Context, args *GetDimensionValuesArgs, opts ...pulumi.InvokeOption) (*GetDimensionValuesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDimensionValuesResult
 	err := ctx.Invoke("signalfx:index/getDimensionValues:getDimensionValues", args, &rv, opts...)
 	if err != nil {

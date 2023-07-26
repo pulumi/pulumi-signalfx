@@ -121,6 +121,9 @@ class DashboardArgs:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
+
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
@@ -133,6 +136,9 @@ class DashboardArgs:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions fields now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
+
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
@@ -439,6 +445,9 @@ class _DashboardState:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
+
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
@@ -451,6 +460,9 @@ class _DashboardState:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions fields now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
+
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
@@ -901,6 +913,9 @@ class Dashboard(pulumi.CustomResource):
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
+
         return pulumi.get(self, "authorized_writer_teams")
 
     @property
@@ -909,6 +924,9 @@ class Dashboard(pulumi.CustomResource):
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions fields now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
+
         return pulumi.get(self, "authorized_writer_users")
 
     @property

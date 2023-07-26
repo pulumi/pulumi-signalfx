@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * SignalFx GCP Integration
  *
- * > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example Usage
  *
@@ -79,7 +79,7 @@ export class Integration extends pulumi.CustomResource {
     /**
      * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      */
-    public readonly includeLists!: pulumi.Output<string[]>;
+    public readonly includeLists!: pulumi.Output<string[] | undefined>;
     /**
      * Name of the integration.
      */
@@ -97,19 +97,13 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly projectServiceKeys!: pulumi.Output<outputs.gcp.IntegrationProjectServiceKey[] | undefined>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
     public readonly services!: pulumi.Output<string[] | undefined>;
     /**
      * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      */
     public readonly useMetricSourceProjectForQuota!: pulumi.Output<boolean | undefined>;
-    /**
-     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     *
-     * @deprecated Please use include_list instead
-     */
-    public readonly whitelists!: pulumi.Output<string[]>;
 
     /**
      * Create a Integration resource with the given unique name, arguments, and options.
@@ -134,7 +128,6 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["projectServiceKeys"] = state ? state.projectServiceKeys : undefined;
             resourceInputs["services"] = state ? state.services : undefined;
             resourceInputs["useMetricSourceProjectForQuota"] = state ? state.useMetricSourceProjectForQuota : undefined;
-            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as IntegrationArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -150,7 +143,6 @@ export class Integration extends pulumi.CustomResource {
             resourceInputs["projectServiceKeys"] = args?.projectServiceKeys ? pulumi.secret(args.projectServiceKeys) : undefined;
             resourceInputs["services"] = args ? args.services : undefined;
             resourceInputs["useMetricSourceProjectForQuota"] = args ? args.useMetricSourceProjectForQuota : undefined;
-            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["projectServiceKeys"] };
@@ -197,19 +189,13 @@ export interface IntegrationState {
      */
     projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      */
     useMetricSourceProjectForQuota?: pulumi.Input<boolean>;
-    /**
-     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     *
-     * @deprecated Please use include_list instead
-     */
-    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -250,17 +236,11 @@ export interface IntegrationArgs {
      */
     projectServiceKeys?: pulumi.Input<pulumi.Input<inputs.gcp.IntegrationProjectServiceKey>[]>;
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      */
     useMetricSourceProjectForQuota?: pulumi.Input<boolean>;
-    /**
-     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     *
-     * @deprecated Please use include_list instead
-     */
-    whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

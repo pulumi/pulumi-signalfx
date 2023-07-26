@@ -7,17 +7,20 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+var _ = internal.GetEnvOrDefault
+
 type IntegrationCustomNamespaceSyncRule struct {
-	// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction *string `pulumi:"defaultAction"`
-	// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction *string `pulumi:"filterAction"`
-	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -33,13 +36,13 @@ type IntegrationCustomNamespaceSyncRuleInput interface {
 }
 
 type IntegrationCustomNamespaceSyncRuleArgs struct {
-	// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
-	// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
-	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -94,22 +97,22 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) ToIntegrationCustomNamespaceSy
 	return o
 }
 
-// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationCustomNamespaceSyncRuleOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
-// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationCustomNamespaceSyncRuleOutput) FilterAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
 }
 
-// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 func (o IntegrationCustomNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 func (o IntegrationCustomNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -137,7 +140,7 @@ func (o IntegrationCustomNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) 
 type IntegrationMetricStatsToSync struct {
 	// AWS metric that you want to pick statistics for
 	Metric string `pulumi:"metric"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 	Namespace string `pulumi:"namespace"`
 	// AWS statistics you want to collect
 	Stats []string `pulumi:"stats"`
@@ -157,7 +160,7 @@ type IntegrationMetricStatsToSyncInput interface {
 type IntegrationMetricStatsToSyncArgs struct {
 	// AWS metric that you want to pick statistics for
 	Metric pulumi.StringInput `pulumi:"metric"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// AWS statistics you want to collect
 	Stats pulumi.StringArrayInput `pulumi:"stats"`
@@ -219,7 +222,7 @@ func (o IntegrationMetricStatsToSyncOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 func (o IntegrationMetricStatsToSyncOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -250,13 +253,13 @@ func (o IntegrationMetricStatsToSyncArrayOutput) Index(i pulumi.IntInput) Integr
 }
 
 type IntegrationNamespaceSyncRule struct {
-	// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction *string `pulumi:"defaultAction"`
-	// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction *string `pulumi:"filterAction"`
-	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -272,13 +275,13 @@ type IntegrationNamespaceSyncRuleInput interface {
 }
 
 type IntegrationNamespaceSyncRuleArgs struct {
-	// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
-	// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
-	// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -333,22 +336,22 @@ func (o IntegrationNamespaceSyncRuleOutput) ToIntegrationNamespaceSyncRuleOutput
 	return o
 }
 
-// Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationNamespaceSyncRuleOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
-// Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationNamespaceSyncRuleOutput) FilterAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
 }
 
-// Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 func (o IntegrationNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
 func (o IntegrationNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -373,100 +376,6 @@ func (o IntegrationNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) Integr
 	}).(IntegrationNamespaceSyncRuleOutput)
 }
 
-type GetServicesService struct {
-	Name string `pulumi:"name"`
-}
-
-// GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
-// You can construct a concrete instance of `GetServicesServiceInput` via:
-//
-//	GetServicesServiceArgs{...}
-type GetServicesServiceInput interface {
-	pulumi.Input
-
-	ToGetServicesServiceOutput() GetServicesServiceOutput
-	ToGetServicesServiceOutputWithContext(context.Context) GetServicesServiceOutput
-}
-
-type GetServicesServiceArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetServicesServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
-}
-
-func (i GetServicesServiceArgs) ToGetServicesServiceOutput() GetServicesServiceOutput {
-	return i.ToGetServicesServiceOutputWithContext(context.Background())
-}
-
-func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceOutput)
-}
-
-// GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
-// You can construct a concrete instance of `GetServicesServiceArrayInput` via:
-//
-//	GetServicesServiceArray{ GetServicesServiceArgs{...} }
-type GetServicesServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput
-	ToGetServicesServiceArrayOutputWithContext(context.Context) GetServicesServiceArrayOutput
-}
-
-type GetServicesServiceArray []GetServicesServiceInput
-
-func (GetServicesServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
-}
-
-func (i GetServicesServiceArray) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
-	return i.ToGetServicesServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetServicesServiceArray) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceArrayOutput)
-}
-
-type GetServicesServiceOutput struct{ *pulumi.OutputState }
-
-func (GetServicesServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
-}
-
-func (o GetServicesServiceOutput) ToGetServicesServiceOutput() GetServicesServiceOutput {
-	return o
-}
-
-func (o GetServicesServiceOutput) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
-	return o
-}
-
-func (o GetServicesServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetServicesServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServicesServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
-}
-
-func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesService {
-		return vs[0].([]GetServicesService)[vs[1].(int)]
-	}).(GetServicesServiceOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespaceSyncRuleInput)(nil)).Elem(), IntegrationCustomNamespaceSyncRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespaceSyncRuleArrayInput)(nil)).Elem(), IntegrationCustomNamespaceSyncRuleArray{})
@@ -474,14 +383,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationMetricStatsToSyncArrayInput)(nil)).Elem(), IntegrationMetricStatsToSyncArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNamespaceSyncRuleInput)(nil)).Elem(), IntegrationNamespaceSyncRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationNamespaceSyncRuleArrayInput)(nil)).Elem(), IntegrationNamespaceSyncRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespaceSyncRuleOutput{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespaceSyncRuleArrayOutput{})
 	pulumi.RegisterOutputType(IntegrationMetricStatsToSyncOutput{})
 	pulumi.RegisterOutputType(IntegrationMetricStatsToSyncArrayOutput{})
 	pulumi.RegisterOutputType(IntegrationNamespaceSyncRuleOutput{})
 	pulumi.RegisterOutputType(IntegrationNamespaceSyncRuleArrayOutput{})
-	pulumi.RegisterOutputType(GetServicesServiceOutput{})
-	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 }

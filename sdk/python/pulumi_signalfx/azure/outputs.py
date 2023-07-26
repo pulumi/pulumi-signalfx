@@ -8,13 +8,10 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
-from . import outputs
 
 __all__ = [
     'IntegrationCustomNamespacesPerService',
     'IntegrationResourceFilterRule',
-    'IntegrationResourceFilterRuleFilter',
-    'GetServicesServiceResult',
 ]
 
 @pulumi.output_type
@@ -48,37 +45,36 @@ class IntegrationCustomNamespacesPerService(dict):
 
 @pulumi.output_type
 class IntegrationResourceFilterRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterSource":
+            suggest = "filter_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationResourceFilterRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationResourceFilterRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationResourceFilterRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 filter: 'outputs.IntegrationResourceFilterRuleFilter'):
-        pulumi.set(__self__, "filter", filter)
+                 filter_source: str):
+        """
+        :param str filter_source: Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
+        pulumi.set(__self__, "filter_source", filter_source)
 
     @property
-    @pulumi.getter
-    def filter(self) -> 'outputs.IntegrationResourceFilterRuleFilter':
-        return pulumi.get(self, "filter")
-
-
-@pulumi.output_type
-class IntegrationResourceFilterRuleFilter(dict):
-    def __init__(__self__, *,
-                 source: str):
-        pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def source(self) -> str:
-        return pulumi.get(self, "source")
-
-
-@pulumi.output_type
-class GetServicesServiceResult(dict):
-    def __init__(__self__, *,
-                 name: str):
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
+    @pulumi.getter(name="filterSource")
+    def filter_source(self) -> str:
+        """
+        Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
+        return pulumi.get(self, "filter_source")
 
 

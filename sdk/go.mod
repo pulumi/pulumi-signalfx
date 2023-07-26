@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-signalfx/sdk/v5
+module github.com/pulumi/pulumi-signalfx/sdk/v6
 
 go 1.19
 

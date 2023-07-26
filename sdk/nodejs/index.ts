@@ -35,16 +35,6 @@ export type EventFeedChart = import("./eventFeedChart").EventFeedChart;
 export const EventFeedChart: typeof import("./eventFeedChart").EventFeedChart = null as any;
 utilities.lazyLoad(exports, ["EventFeedChart"], () => require("./eventFeedChart"));
 
-export { GetAwsServicesArgs, GetAwsServicesResult, GetAwsServicesOutputArgs } from "./getAwsServices";
-export const getAwsServices: typeof import("./getAwsServices").getAwsServices = null as any;
-export const getAwsServicesOutput: typeof import("./getAwsServices").getAwsServicesOutput = null as any;
-utilities.lazyLoad(exports, ["getAwsServices","getAwsServicesOutput"], () => require("./getAwsServices"));
-
-export { GetAzureServicesArgs, GetAzureServicesResult, GetAzureServicesOutputArgs } from "./getAzureServices";
-export const getAzureServices: typeof import("./getAzureServices").getAzureServices = null as any;
-export const getAzureServicesOutput: typeof import("./getAzureServices").getAzureServicesOutput = null as any;
-utilities.lazyLoad(exports, ["getAzureServices","getAzureServicesOutput"], () => require("./getAzureServices"));
-
 export { GetDimensionValuesArgs, GetDimensionValuesResult, GetDimensionValuesOutputArgs } from "./getDimensionValues";
 export const getDimensionValues: typeof import("./getDimensionValues").getDimensionValues = null as any;
 export const getDimensionValuesOutput: typeof import("./getDimensionValues").getDimensionValuesOutput = null as any;

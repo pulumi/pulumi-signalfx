@@ -13,7 +13,6 @@ __all__ = [
     'IntegrationCustomNamespaceSyncRuleArgs',
     'IntegrationMetricStatsToSyncArgs',
     'IntegrationNamespaceSyncRuleArgs',
-    'GetServicesServiceArgs',
 ]
 
 @pulumi.input_type
@@ -24,10 +23,10 @@ class IntegrationCustomNamespaceSyncRuleArgs:
                  filter_action: Optional[pulumi.Input[str]] = None,
                  filter_source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        :param pulumi.Input[str] default_action: Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        :param pulumi.Input[str] filter_action: Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        :param pulumi.Input[str] filter_source: Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        :param pulumi.Input[str] default_action: Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+        :param pulumi.Input[str] filter_action: Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+        :param pulumi.Input[str] filter_source: Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         """
         pulumi.set(__self__, "namespace", namespace)
         if default_action is not None:
@@ -41,7 +40,7 @@ class IntegrationCustomNamespaceSyncRuleArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
         """
         return pulumi.get(self, "namespace")
 
@@ -53,7 +52,7 @@ class IntegrationCustomNamespaceSyncRuleArgs:
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+        Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         """
         return pulumi.get(self, "default_action")
 
@@ -65,7 +64,7 @@ class IntegrationCustomNamespaceSyncRuleArgs:
     @pulumi.getter(name="filterAction")
     def filter_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+        Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         """
         return pulumi.get(self, "filter_action")
 
@@ -77,7 +76,7 @@ class IntegrationCustomNamespaceSyncRuleArgs:
     @pulumi.getter(name="filterSource")
     def filter_source(self) -> Optional[pulumi.Input[str]]:
         """
-        Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+        Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         """
         return pulumi.get(self, "filter_source")
 
@@ -94,7 +93,7 @@ class IntegrationMetricStatsToSyncArgs:
                  stats: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] metric: AWS metric that you want to pick statistics for
-        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stats: AWS statistics you want to collect
         """
         pulumi.set(__self__, "metric", metric)
@@ -117,7 +116,7 @@ class IntegrationMetricStatsToSyncArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
         """
         return pulumi.get(self, "namespace")
 
@@ -146,10 +145,10 @@ class IntegrationNamespaceSyncRuleArgs:
                  filter_action: Optional[pulumi.Input[str]] = None,
                  filter_source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
-        :param pulumi.Input[str] default_action: Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
-        :param pulumi.Input[str] filter_action: Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
-        :param pulumi.Input[str] filter_source: Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        :param pulumi.Input[str] default_action: Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+        :param pulumi.Input[str] filter_action: Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+        :param pulumi.Input[str] filter_source: Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         """
         pulumi.set(__self__, "namespace", namespace)
         if default_action is not None:
@@ -163,7 +162,7 @@ class IntegrationNamespaceSyncRuleArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
         """
         return pulumi.get(self, "namespace")
 
@@ -175,7 +174,7 @@ class IntegrationNamespaceSyncRuleArgs:
     @pulumi.getter(name="defaultAction")
     def default_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+        Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         """
         return pulumi.get(self, "default_action")
 
@@ -187,7 +186,7 @@ class IntegrationNamespaceSyncRuleArgs:
     @pulumi.getter(name="filterAction")
     def filter_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+        Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         """
         return pulumi.get(self, "filter_action")
 
@@ -199,28 +198,12 @@ class IntegrationNamespaceSyncRuleArgs:
     @pulumi.getter(name="filterSource")
     def filter_source(self) -> Optional[pulumi.Input[str]]:
         """
-        Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+        Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         """
         return pulumi.get(self, "filter_source")
 
     @filter_source.setter
     def filter_source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "filter_source", value)
-
-
-@pulumi.input_type
-class GetServicesServiceArgs:
-    def __init__(__self__, *,
-                 name: str):
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
 
 

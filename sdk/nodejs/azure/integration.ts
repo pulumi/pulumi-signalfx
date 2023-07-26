@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
  *
- * > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example Usage
  *
@@ -35,14 +35,10 @@ import * as utilities from "../utilities";
  *     pollRate: 300,
  *     resourceFilterRules: [
  *         {
- *             filter: {
- *                 source: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
- *             },
+ *             filterSource: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
  *         },
  *         {
- *             filter: {
- *                 source: "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
- *             },
+ *             filterSource: "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
  *         },
  *     ],
  *     secretKey: "XXX",
@@ -51,9 +47,6 @@ import * as utilities from "../utilities";
  *     tenantId: "ZZZ",
  * });
  * ```
- * ## Service Names
- *
- * > **NOTE** You can use the data source "signalfx.azure.getServices" to specify all services.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -120,9 +113,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      */
     public readonly resourceFilterRules!: pulumi.Output<outputs.azure.IntegrationResourceFilterRule[] | undefined>;
     /**
@@ -130,7 +121,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly secretKey!: pulumi.Output<string>;
     /**
-     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
     public readonly services!: pulumi.Output<string[]>;
     /**
@@ -258,9 +249,7 @@ export interface IntegrationState {
      */
     pollRate?: pulumi.Input<number>;
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      */
     resourceFilterRules?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationResourceFilterRule>[]>;
     /**
@@ -268,7 +257,7 @@ export interface IntegrationState {
      */
     secretKey?: pulumi.Input<string>;
     /**
-     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -326,9 +315,7 @@ export interface IntegrationArgs {
      */
     pollRate?: pulumi.Input<number>;
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      */
     resourceFilterRules?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationResourceFilterRule>[]>;
     /**
@@ -336,7 +323,7 @@ export interface IntegrationArgs {
      */
     secretKey: pulumi.Input<string>;
     /**
-     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
     services: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -11,7 +11,6 @@ from .. import _utilities
 
 __all__ = [
     'IntegrationProjectServiceKey',
-    'GetServicesServiceResult',
 ]
 
 @pulumi.output_type
@@ -50,17 +49,5 @@ class IntegrationProjectServiceKey(dict):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> str:
         return pulumi.get(self, "project_key")
-
-
-@pulumi.output_type
-class GetServicesServiceResult(dict):
-    def __init__(__self__, *,
-                 name: str):
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
 
 

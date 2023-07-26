@@ -440,25 +440,9 @@ export interface DetectorVizOption {
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
-}
-
-export interface GetAwsServicesService {
-    name: string;
-}
-
-export interface GetAwsServicesServiceArgs {
-    name: pulumi.Input<string>;
-}
-
-export interface GetAzureServicesService {
-    name: string;
-}
-
-export interface GetAzureServicesServiceArgs {
-    name: pulumi.Input<string>;
 }
 
 export interface HeatmapChartColorRange {
@@ -552,7 +536,7 @@ export interface ListChartVizOption {
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
@@ -570,6 +554,9 @@ export interface MetricRulesetAggregationRule {
      * Matcher object
      */
     matchers: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleMatcher>[]>;
+    /**
+     * name of the aggregation rule
+     */
     name?: pulumi.Input<string>;
 }
 
@@ -620,7 +607,7 @@ export interface MetricRulesetAggregationRuleMatcherFilter {
 
 export interface MetricRulesetRoutingRule {
     /**
-     * end destination of the input metric
+     * end destination of the input metric. Must be `RealTime` or `Drop`
      */
     destination: pulumi.Input<string>;
 }
@@ -713,7 +700,7 @@ export interface SingleValueChartVizOption {
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
@@ -867,7 +854,7 @@ export interface TimeChartVizOption {
     valuePrefix?: pulumi.Input<string>;
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
@@ -883,29 +870,21 @@ export interface WebhookIntegrationHeader {
     headerValue: pulumi.Input<string>;
 }
 export namespace aws {
-    export interface GetServicesService {
-        name: string;
-    }
-
-    export interface GetServicesServiceArgs {
-        name: pulumi.Input<string>;
-    }
-
     export interface IntegrationCustomNamespaceSyncRule {
         /**
-         * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+         * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
         defaultAction?: pulumi.Input<string>;
         /**
-         * Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+         * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
         filterAction?: pulumi.Input<string>;
         /**
-         * Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          */
         namespace: pulumi.Input<string>;
     }
@@ -916,7 +895,7 @@ export namespace aws {
          */
         metric: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          */
         namespace: pulumi.Input<string>;
         /**
@@ -927,33 +906,25 @@ export namespace aws {
 
     export interface IntegrationNamespaceSyncRule {
         /**
-         * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+         * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
         defaultAction?: pulumi.Input<string>;
         /**
-         * Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+         * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
         filterAction?: pulumi.Input<string>;
         /**
-         * Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          */
         namespace: pulumi.Input<string>;
     }
 }
 
 export namespace azure {
-    export interface GetServicesService {
-        name: string;
-    }
-
-    export interface GetServicesServiceArgs {
-        name: pulumi.Input<string>;
-    }
-
     export interface IntegrationCustomNamespacesPerService {
         /**
          * The additional namespaces.
@@ -966,23 +937,14 @@ export namespace azure {
     }
 
     export interface IntegrationResourceFilterRule {
-        filter: pulumi.Input<inputs.azure.IntegrationResourceFilterRuleFilter>;
-    }
-
-    export interface IntegrationResourceFilterRuleFilter {
-        source: pulumi.Input<string>;
+        /**
+         * Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+         */
+        filterSource: pulumi.Input<string>;
     }
 }
 
 export namespace gcp {
-    export interface GetServicesService {
-        name: string;
-    }
-
-    export interface GetServicesServiceArgs {
-        name: pulumi.Input<string>;
-    }
-
     export interface IntegrationProjectServiceKey {
         projectId: pulumi.Input<string>;
         projectKey: pulumi.Input<string>;

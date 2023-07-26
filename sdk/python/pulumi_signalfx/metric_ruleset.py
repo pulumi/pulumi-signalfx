@@ -17,16 +17,16 @@ __all__ = ['MetricRulesetArgs', 'MetricRuleset']
 class MetricRulesetArgs:
     def __init__(__self__, *,
                  metric_name: pulumi.Input[str],
-                 routing_rule: pulumi.Input['MetricRulesetRoutingRuleArgs'],
+                 routing_rules: pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]],
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None):
         """
         The set of arguments for constructing a MetricRuleset resource.
         :param pulumi.Input[str] metric_name: Name of the input metric
-        :param pulumi.Input['MetricRulesetRoutingRuleArgs'] routing_rule: Routing Rule object
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
         """
         pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "routing_rule", routing_rule)
+        pulumi.set(__self__, "routing_rules", routing_rules)
         if aggregation_rules is not None:
             pulumi.set(__self__, "aggregation_rules", aggregation_rules)
 
@@ -43,16 +43,16 @@ class MetricRulesetArgs:
         pulumi.set(self, "metric_name", value)
 
     @property
-    @pulumi.getter(name="routingRule")
-    def routing_rule(self) -> pulumi.Input['MetricRulesetRoutingRuleArgs']:
+    @pulumi.getter(name="routingRules")
+    def routing_rules(self) -> pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]:
         """
         Routing Rule object
         """
-        return pulumi.get(self, "routing_rule")
+        return pulumi.get(self, "routing_rules")
 
-    @routing_rule.setter
-    def routing_rule(self, value: pulumi.Input['MetricRulesetRoutingRuleArgs']):
-        pulumi.set(self, "routing_rule", value)
+    @routing_rules.setter
+    def routing_rules(self, value: pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]):
+        pulumi.set(self, "routing_rules", value)
 
     @property
     @pulumi.getter(name="aggregationRules")
@@ -77,7 +77,7 @@ class _MetricRulesetState:
                  last_updated_by: Optional[pulumi.Input[str]] = None,
                  last_updated_by_name: Optional[pulumi.Input[str]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
-                 routing_rule: Optional[pulumi.Input['MetricRulesetRoutingRuleArgs']] = None,
+                 routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleset resources.
@@ -88,7 +88,7 @@ class _MetricRulesetState:
         :param pulumi.Input[str] last_updated_by: ID of user who last updated the metric ruleset
         :param pulumi.Input[str] last_updated_by_name: Name of user who last updated this metric ruleset
         :param pulumi.Input[str] metric_name: Name of the input metric
-        :param pulumi.Input['MetricRulesetRoutingRuleArgs'] routing_rule: Routing Rule object
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[str] version: Version of the ruleset
         """
         if aggregation_rules is not None:
@@ -105,8 +105,8 @@ class _MetricRulesetState:
             pulumi.set(__self__, "last_updated_by_name", last_updated_by_name)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
-        if routing_rule is not None:
-            pulumi.set(__self__, "routing_rule", routing_rule)
+        if routing_rules is not None:
+            pulumi.set(__self__, "routing_rules", routing_rules)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -195,16 +195,16 @@ class _MetricRulesetState:
         pulumi.set(self, "metric_name", value)
 
     @property
-    @pulumi.getter(name="routingRule")
-    def routing_rule(self) -> Optional[pulumi.Input['MetricRulesetRoutingRuleArgs']]:
+    @pulumi.getter(name="routingRules")
+    def routing_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]]:
         """
         Routing Rule object
         """
-        return pulumi.get(self, "routing_rule")
+        return pulumi.get(self, "routing_rules")
 
-    @routing_rule.setter
-    def routing_rule(self, value: Optional[pulumi.Input['MetricRulesetRoutingRuleArgs']]):
-        pulumi.set(self, "routing_rule", value)
+    @routing_rules.setter
+    def routing_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]]):
+        pulumi.set(self, "routing_rules", value)
 
     @property
     @pulumi.getter
@@ -226,16 +226,18 @@ class MetricRuleset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
-                 routing_rule: Optional[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]] = None,
+                 routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]]] = None,
                  __props__=None):
         """
         Provides an Observability Cloud resource for managing metric rulesets
+
+        > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]] aggregation_rules: List of aggregation rules for the metric
         :param pulumi.Input[str] metric_name: Name of the input metric
-        :param pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']] routing_rule: Routing Rule object
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]] routing_rules: Routing Rule object
         """
         ...
     @overload
@@ -245,6 +247,8 @@ class MetricRuleset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an Observability Cloud resource for managing metric rulesets
+
+        > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         :param str resource_name: The name of the resource.
         :param MetricRulesetArgs args: The arguments to use to populate this resource's properties.
@@ -263,7 +267,7 @@ class MetricRuleset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
-                 routing_rule: Optional[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]] = None,
+                 routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -277,9 +281,9 @@ class MetricRuleset(pulumi.CustomResource):
             if metric_name is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_name'")
             __props__.__dict__["metric_name"] = metric_name
-            if routing_rule is None and not opts.urn:
-                raise TypeError("Missing required property 'routing_rule'")
-            __props__.__dict__["routing_rule"] = routing_rule
+            if routing_rules is None and not opts.urn:
+                raise TypeError("Missing required property 'routing_rules'")
+            __props__.__dict__["routing_rules"] = routing_rules
             __props__.__dict__["created"] = None
             __props__.__dict__["creator"] = None
             __props__.__dict__["last_updated"] = None
@@ -303,7 +307,7 @@ class MetricRuleset(pulumi.CustomResource):
             last_updated_by: Optional[pulumi.Input[str]] = None,
             last_updated_by_name: Optional[pulumi.Input[str]] = None,
             metric_name: Optional[pulumi.Input[str]] = None,
-            routing_rule: Optional[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]] = None,
+            routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'MetricRuleset':
         """
         Get an existing MetricRuleset resource's state with the given name, id, and optional extra
@@ -319,7 +323,7 @@ class MetricRuleset(pulumi.CustomResource):
         :param pulumi.Input[str] last_updated_by: ID of user who last updated the metric ruleset
         :param pulumi.Input[str] last_updated_by_name: Name of user who last updated this metric ruleset
         :param pulumi.Input[str] metric_name: Name of the input metric
-        :param pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']] routing_rule: Routing Rule object
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]] routing_rules: Routing Rule object
         :param pulumi.Input[str] version: Version of the ruleset
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -333,7 +337,7 @@ class MetricRuleset(pulumi.CustomResource):
         __props__.__dict__["last_updated_by"] = last_updated_by
         __props__.__dict__["last_updated_by_name"] = last_updated_by_name
         __props__.__dict__["metric_name"] = metric_name
-        __props__.__dict__["routing_rule"] = routing_rule
+        __props__.__dict__["routing_rules"] = routing_rules
         __props__.__dict__["version"] = version
         return MetricRuleset(resource_name, opts=opts, __props__=__props__)
 
@@ -394,12 +398,12 @@ class MetricRuleset(pulumi.CustomResource):
         return pulumi.get(self, "metric_name")
 
     @property
-    @pulumi.getter(name="routingRule")
-    def routing_rule(self) -> pulumi.Output['outputs.MetricRulesetRoutingRule']:
+    @pulumi.getter(name="routingRules")
+    def routing_rules(self) -> pulumi.Output[Sequence['outputs.MetricRulesetRoutingRule']]:
         """
         Routing Rule object
         """
-        return pulumi.get(self, "routing_rule")
+        return pulumi.get(self, "routing_rules")
 
     @property
     @pulumi.getter

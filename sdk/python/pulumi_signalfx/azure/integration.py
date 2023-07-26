@@ -36,7 +36,7 @@ class IntegrationArgs:
         :param pulumi.Input[str] app_id: Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
@@ -46,9 +46,7 @@ class IntegrationArgs:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-               filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-               limited to tags and must start with the azure_tag_ prefix..
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         """
         pulumi.set(__self__, "app_id", app_id)
@@ -116,7 +114,7 @@ class IntegrationArgs:
     @pulumi.getter
     def services(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         """
         return pulumi.get(self, "services")
 
@@ -236,9 +234,7 @@ class IntegrationArgs:
     @pulumi.getter(name="resourceFilterRules")
     def resource_filter_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]:
         """
-        List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-        filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-        limited to tags and must start with the azure_tag_ prefix..
+        List of rules for filtering Azure resources by their tags.
         """
         return pulumi.get(self, "resource_filter_rules")
 
@@ -288,11 +284,9 @@ class _IntegrationState:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-               filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-               limited to tags and must start with the azure_tag_ prefix..
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -440,9 +434,7 @@ class _IntegrationState:
     @pulumi.getter(name="resourceFilterRules")
     def resource_filter_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]]:
         """
-        List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-        filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-        limited to tags and must start with the azure_tag_ prefix..
+        List of rules for filtering Azure resources by their tags.
         """
         return pulumi.get(self, "resource_filter_rules")
 
@@ -466,7 +458,7 @@ class _IntegrationState:
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         """
         return pulumi.get(self, "services")
 
@@ -535,7 +527,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example Usage
 
@@ -561,14 +553,10 @@ class Integration(pulumi.CustomResource):
             poll_rate=300,
             resource_filter_rules=[
                 signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter=signalfx.azure.IntegrationResourceFilterRuleFilterArgs(
-                        source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                    ),
+                    filter_source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
                 ),
                 signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter=signalfx.azure.IntegrationResourceFilterRuleFilterArgs(
-                        source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                    ),
+                    filter_source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
                 ),
             ],
             secret_key="XXX",
@@ -576,9 +564,6 @@ class Integration(pulumi.CustomResource):
             subscriptions=["sub-guid-here"],
             tenant_id="ZZZ")
         ```
-        ## Service Names
-
-        > **NOTE** You can use the data source "azure_get_services" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -591,11 +576,9 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationResourceFilterRuleArgs']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-               filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-               limited to tags and must start with the azure_tag_ prefix..
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationResourceFilterRuleArgs']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -609,7 +592,7 @@ class Integration(pulumi.CustomResource):
         """
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 
-        > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example Usage
 
@@ -635,14 +618,10 @@ class Integration(pulumi.CustomResource):
             poll_rate=300,
             resource_filter_rules=[
                 signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter=signalfx.azure.IntegrationResourceFilterRuleFilterArgs(
-                        source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                    ),
+                    filter_source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
                 ),
                 signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter=signalfx.azure.IntegrationResourceFilterRuleFilterArgs(
-                        source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                    ),
+                    filter_source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
                 ),
             ],
             secret_key="XXX",
@@ -650,9 +629,6 @@ class Integration(pulumi.CustomResource):
             subscriptions=["sub-guid-here"],
             tenant_id="ZZZ")
         ```
-        ## Service Names
-
-        > **NOTE** You can use the data source "azure_get_services" to specify all services.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -763,11 +739,9 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[int] poll_rate: Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationResourceFilterRuleArgs']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-               filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-               limited to tags and must start with the azure_tag_ prefix..
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationResourceFilterRuleArgs']]]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[str] secret_key: Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriptions: List of Azure subscriptions that SignalFx should monitor.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
@@ -869,9 +843,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="resourceFilterRules")
     def resource_filter_rules(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationResourceFilterRule']]]:
         """
-        List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-        filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-        limited to tags and must start with the azure_tag_ prefix..
+        List of rules for filtering Azure resources by their tags.
         """
         return pulumi.get(self, "resource_filter_rules")
 
@@ -887,7 +859,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def services(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
         """
         return pulumi.get(self, "services")
 

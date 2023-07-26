@@ -7,14 +7,15 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SignalFx AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
+// Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 //
-// > **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
-// > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with SignalFx support for your realm's AWS account id.
+// > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with Splunk Observability support for your realm's AWS account id.
 //
 // ## Example Usage
 //
@@ -72,7 +73,87 @@ import (
 //			}
 //			awsSplunkPolicy, err := iam.NewPolicy(ctx, "awsSplunkPolicy", &iam.PolicyArgs{
 //				Description: pulumi.String("AWS permissions required by the Splunk Observability Cloud"),
-//				Policy:      pulumi.Any("{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"apigateway:GET\",\n        \"autoscaling:DescribeAutoScalingGroups\",\n        \"cloudfront:GetDistributionConfig\",\n        \"cloudfront:ListDistributions\",\n        \"cloudfront:ListTagsForResource\",\n        \"cloudwatch:DescribeAlarms\",\n        \"cloudwatch:GetMetricData\",\n        \"cloudwatch:GetMetricStatistics\",\n        \"cloudwatch:ListMetrics\",\n        \"directconnect:DescribeConnections\",\n        \"dynamodb:DescribeTable\",\n        \"dynamodb:ListTables\",\n        \"dynamodb:ListTagsOfResource\",\n        \"ec2:DescribeInstances\",\n        \"ec2:DescribeInstanceStatus\",\n        \"ec2:DescribeRegions\",\n        \"ec2:DescribeReservedInstances\",\n        \"ec2:DescribeReservedInstancesModifications\",\n        \"ec2:DescribeTags\",\n        \"ec2:DescribeVolumes\",\n        \"ecs:DescribeClusters\",\n        \"ecs:DescribeServices\",\n        \"ecs:DescribeTasks\",\n        \"ecs:ListClusters\",\n        \"ecs:ListServices\",\n        \"ecs:ListTagsForResource\",\n        \"ecs:ListTaskDefinitions\",\n        \"ecs:ListTasks\",\n        \"elasticache:DescribeCacheClusters\",\n        \"elasticloadbalancing:DescribeLoadBalancerAttributes\",\n        \"elasticloadbalancing:DescribeLoadBalancers\",\n        \"elasticloadbalancing:DescribeTags\",\n        \"elasticloadbalancing:DescribeTargetGroups\",\n        \"elasticmapreduce:DescribeCluster\",\n        \"elasticmapreduce:ListClusters\",\n        \"es:DescribeElasticsearchDomain\",\n        \"es:ListDomainNames\",\n        \"kinesis:DescribeStream\",\n        \"kinesis:ListShards\",\n        \"kinesis:ListStreams\",\n        \"kinesis:ListTagsForStream\",\n        \"lambda:GetAlias\",\n        \"lambda:ListFunctions\",\n        \"lambda:ListTags\",\n        \"logs:DeleteSubscriptionFilter\",\n        \"logs:DescribeLogGroups\",\n        \"logs:DescribeSubscriptionFilters\",\n        \"logs:PutSubscriptionFilter\",\n        \"organizations:DescribeOrganization\",\n        \"rds:DescribeDBClusters\",\n        \"rds:DescribeDBInstances\",\n        \"rds:ListTagsForResource\",\n        \"redshift:DescribeClusters\",\n        \"redshift:DescribeLoggingStatus\",\n        \"s3:GetBucketLocation\",\n        \"s3:GetBucketLogging\",\n        \"s3:GetBucketNotification\",\n        \"s3:GetBucketTagging\",\n        \"s3:ListAllMyBuckets\",\n        \"s3:ListBucket\",\n        \"s3:PutBucketNotification\",\n        \"sqs:GetQueueAttributes\",\n        \"sqs:ListQueues\",\n        \"sqs:ListQueueTags\",\n        \"states:ListStateMachines\",\n        \"tag:GetResources\",\n        \"workspaces:DescribeWorkspaces\"\n      ],\n      \"Resource\": \"*\"\n    }\n  ]\n}\n"),
+//				Policy: pulumi.Any(`{
+//	  "Version": "2012-10-17",
+//	  "Statement": [
+//	    {
+//	      "Effect": "Allow",
+//	      "Action": [
+//	        "apigateway:GET",
+//	        "autoscaling:DescribeAutoScalingGroups",
+//	        "cloudfront:GetDistributionConfig",
+//	        "cloudfront:ListDistributions",
+//	        "cloudfront:ListTagsForResource",
+//	        "cloudwatch:DescribeAlarms",
+//	        "cloudwatch:GetMetricData",
+//	        "cloudwatch:GetMetricStatistics",
+//	        "cloudwatch:ListMetrics",
+//	        "directconnect:DescribeConnections",
+//	        "dynamodb:DescribeTable",
+//	        "dynamodb:ListTables",
+//	        "dynamodb:ListTagsOfResource",
+//	        "ec2:DescribeInstances",
+//	        "ec2:DescribeInstanceStatus",
+//	        "ec2:DescribeRegions",
+//	        "ec2:DescribeReservedInstances",
+//	        "ec2:DescribeReservedInstancesModifications",
+//	        "ec2:DescribeTags",
+//	        "ec2:DescribeVolumes",
+//	        "ecs:DescribeClusters",
+//	        "ecs:DescribeServices",
+//	        "ecs:DescribeTasks",
+//	        "ecs:ListClusters",
+//	        "ecs:ListServices",
+//	        "ecs:ListTagsForResource",
+//	        "ecs:ListTaskDefinitions",
+//	        "ecs:ListTasks",
+//	        "elasticache:DescribeCacheClusters",
+//	        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+//	        "elasticloadbalancing:DescribeLoadBalancers",
+//	        "elasticloadbalancing:DescribeTags",
+//	        "elasticloadbalancing:DescribeTargetGroups",
+//	        "elasticmapreduce:DescribeCluster",
+//	        "elasticmapreduce:ListClusters",
+//	        "es:DescribeElasticsearchDomain",
+//	        "es:ListDomainNames",
+//	        "kinesis:DescribeStream",
+//	        "kinesis:ListShards",
+//	        "kinesis:ListStreams",
+//	        "kinesis:ListTagsForStream",
+//	        "lambda:GetAlias",
+//	        "lambda:ListFunctions",
+//	        "lambda:ListTags",
+//	        "logs:DeleteSubscriptionFilter",
+//	        "logs:DescribeLogGroups",
+//	        "logs:DescribeSubscriptionFilters",
+//	        "logs:PutSubscriptionFilter",
+//	        "organizations:DescribeOrganization",
+//	        "rds:DescribeDBClusters",
+//	        "rds:DescribeDBInstances",
+//	        "rds:ListTagsForResource",
+//	        "redshift:DescribeClusters",
+//	        "redshift:DescribeLoggingStatus",
+//	        "s3:GetBucketLocation",
+//	        "s3:GetBucketLogging",
+//	        "s3:GetBucketNotification",
+//	        "s3:GetBucketTagging",
+//	        "s3:ListAllMyBuckets",
+//	        "s3:ListBucket",
+//	        "s3:PutBucketNotification",
+//	        "sqs:GetQueueAttributes",
+//	        "sqs:ListQueues",
+//	        "sqs:ListQueueTags",
+//	        "states:ListStateMachines",
+//	        "tag:GetResources",
+//	        "workspaces:DescribeWorkspaces"
+//	      ],
+//	      "Resource": "*"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -111,7 +192,7 @@ type ExternalIntegration struct {
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// The name of this integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
 	SignalfxAwsAccount pulumi.StringOutput `pulumi:"signalfxAwsAccount"`
 }
 
@@ -127,6 +208,7 @@ func NewExternalIntegration(ctx *pulumi.Context,
 		"signalfxAwsAccount",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ExternalIntegration
 	err := ctx.RegisterResource("signalfx:aws/externalIntegration:ExternalIntegration", name, args, &resource, opts...)
 	if err != nil {
@@ -153,7 +235,7 @@ type externalIntegrationState struct {
 	ExternalId *string `pulumi:"externalId"`
 	// The name of this integration
 	Name *string `pulumi:"name"`
-	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
 	SignalfxAwsAccount *string `pulumi:"signalfxAwsAccount"`
 }
 
@@ -162,7 +244,7 @@ type ExternalIntegrationState struct {
 	ExternalId pulumi.StringPtrInput
 	// The name of this integration
 	Name pulumi.StringPtrInput
-	// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
 	SignalfxAwsAccount pulumi.StringPtrInput
 }
 
@@ -278,7 +360,7 @@ func (o ExternalIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
 func (o ExternalIntegrationOutput) SignalfxAwsAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalIntegration) pulumi.StringOutput { return v.SignalfxAwsAccount }).(pulumi.StringOutput)
 }

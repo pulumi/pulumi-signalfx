@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // API URL for your SignalFx org, may include a realm
 func GetApiUrl(ctx *pulumi.Context) string {

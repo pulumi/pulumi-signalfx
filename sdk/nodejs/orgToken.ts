@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Manage SignalFx org tokens.
  *
+ * > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ *
  * ## Example Usage
  *
  * ```typescript
