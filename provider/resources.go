@@ -22,7 +22,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -193,7 +193,7 @@ func Provider() tfbridge.ProviderInfo {
 		moduleNameMap[strings.ToLower(v)] = v
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensKnownModules("signalfx_", mainMod, mappedModKeys,
+	err := prov.ComputeTokens(tfbridgetokens.KnownModules("signalfx_", mainMod, mappedModKeys,
 		func(mod, name string) (string, error) {
 			m, ok := moduleNameMap[strings.ToLower(mod)]
 			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
