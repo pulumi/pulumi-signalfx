@@ -30,6 +30,10 @@ public final class MetricRulesetAggregationRule {
      * 
      */
     private List<MetricRulesetAggregationRuleMatcher> matchers;
+    /**
+     * @return name of the aggregation rule
+     * 
+     */
     private @Nullable String name;
 
     private MetricRulesetAggregationRule() {}
@@ -54,6 +58,10 @@ public final class MetricRulesetAggregationRule {
     public List<MetricRulesetAggregationRuleMatcher> matchers() {
         return this.matchers;
     }
+    /**
+     * @return name of the aggregation rule
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

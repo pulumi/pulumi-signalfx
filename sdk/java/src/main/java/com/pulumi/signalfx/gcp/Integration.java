@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 /**
  * SignalFx GCP Integration
  * 
- * &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
+ * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example Usage
  * ```java
@@ -117,14 +117,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="includeLists", type=List.class, parameters={String.class})
-    private Output<List<String>> includeLists;
+    private Output</* @Nullable */ List<String>> includeLists;
 
     /**
      * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      * 
      */
-    public Output<List<String>> includeLists() {
-        return this.includeLists;
+    public Output<Optional<List<String>>> includeLists() {
+        return Codegen.optional(this.includeLists);
     }
     /**
      * Name of the integration.
@@ -183,14 +183,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectServiceKeys);
     }
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     @Export(name="services", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> services;
 
     /**
-     * @return GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * @return GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     public Output<Optional<List<String>>> services() {
@@ -209,24 +209,6 @@ public class Integration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> useMetricSourceProjectForQuota() {
         return Codegen.optional(this.useMetricSourceProjectForQuota);
-    }
-    /**
-     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     * 
-     * @deprecated
-     * Please use include_list instead
-     * 
-     */
-    @Deprecated /* Please use include_list instead */
-    @Export(name="whitelists", type=List.class, parameters={String.class})
-    private Output<List<String>> whitelists;
-
-    /**
-     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     * 
-     */
-    public Output<List<String>> whitelists() {
-        return this.whitelists;
     }
 
     /**

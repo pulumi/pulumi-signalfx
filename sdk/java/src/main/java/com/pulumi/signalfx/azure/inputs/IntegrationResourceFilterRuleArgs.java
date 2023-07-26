@@ -5,7 +5,7 @@ package com.pulumi.signalfx.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.signalfx.azure.inputs.IntegrationResourceFilterRuleFilterArgs;
+import java.lang.String;
 import java.util.Objects;
 
 
@@ -13,17 +13,25 @@ public final class IntegrationResourceFilterRuleArgs extends com.pulumi.resource
 
     public static final IntegrationResourceFilterRuleArgs Empty = new IntegrationResourceFilterRuleArgs();
 
-    @Import(name="filter", required=true)
-    private Output<IntegrationResourceFilterRuleFilterArgs> filter;
+    /**
+     * Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+     * 
+     */
+    @Import(name="filterSource", required=true)
+    private Output<String> filterSource;
 
-    public Output<IntegrationResourceFilterRuleFilterArgs> filter() {
-        return this.filter;
+    /**
+     * @return Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+     * 
+     */
+    public Output<String> filterSource() {
+        return this.filterSource;
     }
 
     private IntegrationResourceFilterRuleArgs() {}
 
     private IntegrationResourceFilterRuleArgs(IntegrationResourceFilterRuleArgs $) {
-        this.filter = $.filter;
+        this.filterSource = $.filterSource;
     }
 
     public static Builder builder() {
@@ -44,17 +52,29 @@ public final class IntegrationResourceFilterRuleArgs extends com.pulumi.resource
             $ = new IntegrationResourceFilterRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder filter(Output<IntegrationResourceFilterRuleFilterArgs> filter) {
-            $.filter = filter;
+        /**
+         * @param filterSource Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterSource(Output<String> filterSource) {
+            $.filterSource = filterSource;
             return this;
         }
 
-        public Builder filter(IntegrationResourceFilterRuleFilterArgs filter) {
-            return filter(Output.of(filter));
+        /**
+         * @param filterSource Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterSource(String filterSource) {
+            return filterSource(Output.of(filterSource));
         }
 
         public IntegrationResourceFilterRuleArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            $.filterSource = Objects.requireNonNull($.filterSource, "expected parameter 'filterSource' to be non-null");
             return $;
         }
     }

@@ -11,6 +11,8 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// Provides an Observability Cloud resource for managing metric rulesets
+    /// 
+    /// &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// </summary>
     [SignalFxResourceType("signalfx:index/metricRuleset:MetricRuleset")]
     public partial class MetricRuleset : global::Pulumi.CustomResource
@@ -60,8 +62,8 @@ namespace Pulumi.SignalFx
         /// <summary>
         /// Routing Rule object
         /// </summary>
-        [Output("routingRule")]
-        public Output<Outputs.MetricRulesetRoutingRule> RoutingRule { get; private set; } = null!;
+        [Output("routingRules")]
+        public Output<ImmutableArray<Outputs.MetricRulesetRoutingRule>> RoutingRules { get; private set; } = null!;
 
         /// <summary>
         /// Version of the ruleset
@@ -133,11 +135,17 @@ namespace Pulumi.SignalFx
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
 
+        [Input("routingRules", required: true)]
+        private InputList<Inputs.MetricRulesetRoutingRuleArgs>? _routingRules;
+
         /// <summary>
         /// Routing Rule object
         /// </summary>
-        [Input("routingRule", required: true)]
-        public Input<Inputs.MetricRulesetRoutingRuleArgs> RoutingRule { get; set; } = null!;
+        public InputList<Inputs.MetricRulesetRoutingRuleArgs> RoutingRules
+        {
+            get => _routingRules ?? (_routingRules = new InputList<Inputs.MetricRulesetRoutingRuleArgs>());
+            set => _routingRules = value;
+        }
 
         public MetricRulesetArgs()
         {
@@ -195,11 +203,17 @@ namespace Pulumi.SignalFx
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
 
+        [Input("routingRules")]
+        private InputList<Inputs.MetricRulesetRoutingRuleGetArgs>? _routingRules;
+
         /// <summary>
         /// Routing Rule object
         /// </summary>
-        [Input("routingRule")]
-        public Input<Inputs.MetricRulesetRoutingRuleGetArgs>? RoutingRule { get; set; }
+        public InputList<Inputs.MetricRulesetRoutingRuleGetArgs> RoutingRules
+        {
+            get => _routingRules ?? (_routingRules = new InputList<Inputs.MetricRulesetRoutingRuleGetArgs>());
+            set => _routingRules = value;
+        }
 
         /// <summary>
         /// Version of the ruleset

@@ -12,7 +12,7 @@ namespace Pulumi.SignalFx.Gcp
     /// <summary>
     /// SignalFx GCP Integration
     /// 
-    /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example Usage
     /// 
@@ -104,7 +104,7 @@ namespace Pulumi.SignalFx.Gcp
         public Output<ImmutableArray<Outputs.IntegrationProjectServiceKey>> ProjectServiceKeys { get; private set; } = null!;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
@@ -114,12 +114,6 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Output("useMetricSourceProjectForQuota")]
         public Output<bool?> UseMetricSourceProjectForQuota { get; private set; } = null!;
-
-        /// <summary>
-        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-        /// </summary>
-        [Output("whitelists")]
-        public Output<ImmutableArray<string>> Whitelists { get; private set; } = null!;
 
 
         /// <summary>
@@ -246,7 +240,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         /// </summary>
         public InputList<string> Services
         {
@@ -259,19 +253,6 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
-
-        [Input("whitelists")]
-        private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-        /// </summary>
-        [Obsolete(@"Please use include_list instead")]
-        public InputList<string> Whitelists
-        {
-            get => _whitelists ?? (_whitelists = new InputList<string>());
-            set => _whitelists = value;
-        }
 
         public IntegrationArgs()
         {
@@ -356,7 +337,7 @@ namespace Pulumi.SignalFx.Gcp
         private InputList<string>? _services;
 
         /// <summary>
-        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+        /// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         /// </summary>
         public InputList<string> Services
         {
@@ -369,19 +350,6 @@ namespace Pulumi.SignalFx.Gcp
         /// </summary>
         [Input("useMetricSourceProjectForQuota")]
         public Input<bool>? UseMetricSourceProjectForQuota { get; set; }
-
-        [Input("whitelists")]
-        private InputList<string>? _whitelists;
-
-        /// <summary>
-        /// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-        /// </summary>
-        [Obsolete(@"Please use include_list instead")]
-        public InputList<string> Whitelists
-        {
-            get => _whitelists ?? (_whitelists = new InputList<string>());
-            set => _whitelists = value;
-        }
 
         public IntegrationState()
         {

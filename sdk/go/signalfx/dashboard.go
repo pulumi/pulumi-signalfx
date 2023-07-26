@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/internal"
+	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 

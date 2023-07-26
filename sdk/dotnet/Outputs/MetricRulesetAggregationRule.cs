@@ -25,6 +25,9 @@ namespace Pulumi.SignalFx.Outputs
         /// Matcher object
         /// </summary>
         public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleMatcher> Matchers;
+        /// <summary>
+        /// name of the aggregation rule
+        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Aws
 {
     /// <summary>
-    /// SignalFx AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
+    /// Splunk Observability AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
     /// 
-    /// &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with one of either `signalfx.aws.ExternalIntegration` or `signalfx.aws.TokenIntegration`.
     /// 
@@ -83,33 +83,37 @@ namespace Pulumi.SignalFx.Aws
     /// 
     /// });
     /// ```
-    /// ## Service Names
-    /// 
-    /// &gt; **NOTE** You can use the data source "signalfx.aws.getServices" to specify all services.
     /// </summary>
     [SignalFxResourceType("signalfx:aws/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
+        /// The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
+        /// `signalfx_aws_token_integration` to define this
+        /// </summary>
+        [Output("authMethod")]
+        public Output<string> AuthMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
         /// </summary>
         [Output("customCloudwatchNamespaces")]
         public Output<ImmutableArray<string>> CustomCloudwatchNamespaces { get; private set; } = null!;
 
         /// <summary>
-        /// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+        /// Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         /// </summary>
         [Output("customNamespaceSyncRules")]
         public Output<ImmutableArray<Outputs.IntegrationCustomNamespaceSyncRule>> CustomNamespaceSyncRules { get; private set; } = null!;
 
         /// <summary>
-        /// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
+        /// Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
         /// </summary>
         [Output("enableAwsUsage")]
         public Output<bool?> EnableAwsUsage { get; private set; } = null!;
 
         /// <summary>
-        /// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        /// Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
         /// </summary>
         [Output("enableCheckLargeVolume")]
         public Output<bool?> EnableCheckLargeVolume { get; private set; } = null!;
@@ -133,7 +137,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> ExternalId { get; private set; } = null!;
 
         /// <summary>
-        /// Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
+        /// Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
         /// </summary>
         [Output("importCloudWatch")]
         public Output<bool?> ImportCloudWatch { get; private set; } = null!;
@@ -151,10 +155,16 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
         /// </summary>
         [Output("metricStatsToSyncs")]
         public Output<ImmutableArray<Outputs.IntegrationMetricStatsToSync>> MetricStatsToSyncs { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of the integration.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -163,7 +173,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> NamedToken { get; private set; } = null!;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
+        /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         /// </summary>
         [Output("namespaceSyncRules")]
         public Output<ImmutableArray<Outputs.IntegrationNamespaceSyncRule>> NamespaceSyncRules { get; private set; } = null!;
@@ -175,7 +185,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<int?> PollRate { get; private set; } = null!;
 
         /// <summary>
-        /// List of AWS regions that SignalFx should monitor.
+        /// List of AWS regions that Splunk Observability should monitor.
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
@@ -187,13 +197,13 @@ namespace Pulumi.SignalFx.Aws
         public Output<string?> RoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        /// List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         /// </summary>
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        /// Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         /// </summary>
         [Output("syncCustomNamespacesOnly")]
         public Output<bool?> SyncCustomNamespacesOnly { get; private set; } = null!;
@@ -203,12 +213,6 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
-
-        /// <summary>
-        /// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        /// </summary>
-        [Output("useGetMetricDataMethod")]
-        public Output<bool?> UseGetMetricDataMethod { get; private set; } = null!;
 
         /// <summary>
         /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
@@ -273,7 +277,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<string>? _customCloudwatchNamespaces;
 
         /// <summary>
-        /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
+        /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
         /// </summary>
         public InputList<string> CustomCloudwatchNamespaces
         {
@@ -285,7 +289,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationCustomNamespaceSyncRuleArgs>? _customNamespaceSyncRules;
 
         /// <summary>
-        /// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+        /// Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         /// </summary>
         public InputList<Inputs.IntegrationCustomNamespaceSyncRuleArgs> CustomNamespaceSyncRules
         {
@@ -294,13 +298,13 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
+        /// Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
         /// </summary>
         [Input("enableAwsUsage")]
         public Input<bool>? EnableAwsUsage { get; set; }
 
         /// <summary>
-        /// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        /// Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
         /// </summary>
         [Input("enableCheckLargeVolume")]
         public Input<bool>? EnableCheckLargeVolume { get; set; }
@@ -334,7 +338,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
+        /// Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
         /// </summary>
         [Input("importCloudWatch")]
         public Input<bool>? ImportCloudWatch { get; set; }
@@ -365,7 +369,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationMetricStatsToSyncArgs>? _metricStatsToSyncs;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
         /// </summary>
         public InputList<Inputs.IntegrationMetricStatsToSyncArgs> MetricStatsToSyncs
         {
@@ -383,7 +387,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationNamespaceSyncRuleArgs>? _namespaceSyncRules;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
+        /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         /// </summary>
         public InputList<Inputs.IntegrationNamespaceSyncRuleArgs> NamespaceSyncRules
         {
@@ -401,7 +405,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<string>? _regions;
 
         /// <summary>
-        /// List of AWS regions that SignalFx should monitor.
+        /// List of AWS regions that Splunk Observability should monitor.
         /// </summary>
         public InputList<string> Regions
         {
@@ -419,7 +423,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<string>? _services;
 
         /// <summary>
-        /// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        /// List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         /// </summary>
         public InputList<string> Services
         {
@@ -428,7 +432,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        /// Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         /// </summary>
         [Input("syncCustomNamespacesOnly")]
         public Input<bool>? SyncCustomNamespacesOnly { get; set; }
@@ -438,12 +442,6 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
-
-        /// <summary>
-        /// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        /// </summary>
-        [Input("useGetMetricDataMethod")]
-        public Input<bool>? UseGetMetricDataMethod { get; set; }
 
         /// <summary>
         /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;
@@ -461,11 +459,18 @@ namespace Pulumi.SignalFx.Aws
 
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
+        /// `signalfx_aws_token_integration` to define this
+        /// </summary>
+        [Input("authMethod")]
+        public Input<string>? AuthMethod { get; set; }
+
         [Input("customCloudwatchNamespaces")]
         private InputList<string>? _customCloudwatchNamespaces;
 
         /// <summary>
-        /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; SignalFx imports the metrics so you can monitor them.
+        /// List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
         /// </summary>
         public InputList<string> CustomCloudwatchNamespaces
         {
@@ -477,7 +482,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationCustomNamespaceSyncRuleGetArgs>? _customNamespaceSyncRules;
 
         /// <summary>
-        /// Each element controls the data collected by SignalFx for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+        /// Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         /// </summary>
         public InputList<Inputs.IntegrationCustomNamespaceSyncRuleGetArgs> CustomNamespaceSyncRules
         {
@@ -486,13 +491,13 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Flag that controls how SignalFx imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, SignalFx imports the metrics.
+        /// Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
         /// </summary>
         [Input("enableAwsUsage")]
         public Input<bool>? EnableAwsUsage { get; set; }
 
         /// <summary>
-        /// Controls how SignalFx checks for large amounts of data for this AWS integration. If `true`, SignalFx monitors the amount of data coming in from the integration.
+        /// Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
         /// </summary>
         [Input("enableCheckLargeVolume")]
         public Input<bool>? EnableCheckLargeVolume { get; set; }
@@ -526,7 +531,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Flag that controls how SignalFx imports Cloud Watch metrics. If true, SignalFx imports Cloud Watch metrics from AWS.
+        /// Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
         /// </summary>
         [Input("importCloudWatch")]
         public Input<bool>? ImportCloudWatch { get; set; }
@@ -557,13 +562,19 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>? _metricStatsToSyncs;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that SignalFx collects for this metric. If you specify this property, SignalFx retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, SignalFx retrieves the AWS standard set of statistics.
+        /// Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
         /// </summary>
         public InputList<Inputs.IntegrationMetricStatsToSyncGetArgs> MetricStatsToSyncs
         {
             get => _metricStatsToSyncs ?? (_metricStatsToSyncs = new InputList<Inputs.IntegrationMetricStatsToSyncGetArgs>());
             set => _metricStatsToSyncs = value;
         }
+
+        /// <summary>
+        /// Name of the integration.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -575,7 +586,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<Inputs.IntegrationNamespaceSyncRuleGetArgs>? _namespaceSyncRules;
 
         /// <summary>
-        /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that SignalFx collects for the namespace. Conflicts with the `services` property. If you don't specify either property, SignalFx syncs all data in all AWS namespaces.
+        /// Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         /// </summary>
         public InputList<Inputs.IntegrationNamespaceSyncRuleGetArgs> NamespaceSyncRules
         {
@@ -593,7 +604,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<string>? _regions;
 
         /// <summary>
-        /// List of AWS regions that SignalFx should monitor.
+        /// List of AWS regions that Splunk Observability should monitor.
         /// </summary>
         public InputList<string> Regions
         {
@@ -611,7 +622,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<string>? _services;
 
         /// <summary>
-        /// List of AWS services that you want SignalFx to monitor. Each element is a string designating an AWS service. Conflicts with `namespace_sync_rule`. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+        /// List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         /// </summary>
         public InputList<string> Services
         {
@@ -620,7 +631,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Indicates that SignalFx should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        /// Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
         /// </summary>
         [Input("syncCustomNamespacesOnly")]
         public Input<bool>? SyncCustomNamespacesOnly { get; set; }
@@ -630,12 +641,6 @@ namespace Pulumi.SignalFx.Aws
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
-
-        /// <summary>
-        /// Enable the use of Amazon's `GetMetricData` for collecting metrics. Note that this requires the inclusion of the `"cloudwatch:GetMetricData"` permission.
-        /// </summary>
-        [Input("useGetMetricDataMethod")]
-        public Input<bool>? UseGetMetricDataMethod { get; set; }
 
         /// <summary>
         /// Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.&lt;br&gt;

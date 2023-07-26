@@ -16,7 +16,7 @@ public final class IntegrationMetricStatsToSync {
      */
     private String metric;
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
      * 
      */
     private String namespace;
@@ -35,7 +35,7 @@ public final class IntegrationMetricStatsToSync {
         return this.metric;
     }
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
      * 
      */
     public String namespace() {

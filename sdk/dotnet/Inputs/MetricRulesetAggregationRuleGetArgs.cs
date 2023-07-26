@@ -42,6 +42,9 @@ namespace Pulumi.SignalFx.Inputs
             set => _matchers = value;
         }
 
+        /// <summary>
+        /// name of the aggregation rule
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

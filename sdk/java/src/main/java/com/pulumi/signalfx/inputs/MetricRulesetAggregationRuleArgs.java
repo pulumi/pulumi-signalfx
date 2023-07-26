@@ -64,9 +64,17 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         return this.matchers;
     }
 
+    /**
+     * name of the aggregation rule
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return name of the aggregation rule
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -181,11 +189,23 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
             return matchers(List.of(matchers));
         }
 
+        /**
+         * @param name name of the aggregation rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name name of the aggregation rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

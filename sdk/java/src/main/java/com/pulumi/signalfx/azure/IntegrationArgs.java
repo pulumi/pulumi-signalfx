@@ -156,18 +156,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      * 
      */
     @Import(name="resourceFilterRules")
     private @Nullable Output<List<IntegrationResourceFilterRuleArgs>> resourceFilterRules;
 
     /**
-     * @return List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * @return List of rules for filtering Azure resources by their tags.
      * 
      */
     public Optional<Output<List<IntegrationResourceFilterRuleArgs>>> resourceFilterRules() {
@@ -190,14 +186,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
     @Import(name="services", required=true)
     private Output<List<String>> services;
 
     /**
-     * @return List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * @return List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
     public Output<List<String>> services() {
@@ -497,9 +493,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceFilterRules List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-         * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-         * limited to tags and must start with the azure_tag_ prefix..
+         * @param resourceFilterRules List of rules for filtering Azure resources by their tags.
          * 
          * @return builder
          * 
@@ -510,9 +504,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceFilterRules List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-         * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-         * limited to tags and must start with the azure_tag_ prefix..
+         * @param resourceFilterRules List of rules for filtering Azure resources by their tags.
          * 
          * @return builder
          * 
@@ -522,9 +514,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceFilterRules List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-         * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-         * limited to tags and must start with the azure_tag_ prefix..
+         * @param resourceFilterRules List of rules for filtering Azure resources by their tags.
          * 
          * @return builder
          * 
@@ -555,7 +545,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
          * 
          * @return builder
          * 
@@ -566,7 +556,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
          * 
          * @return builder
          * 
@@ -576,7 +566,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
          * 
          * @return builder
          * 

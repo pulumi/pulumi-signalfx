@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Provides an Observability Cloud resource for managing metric rulesets
  * 
+ * &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
+ * 
  * ## Example Usage
  * 
  * ```java
@@ -62,9 +64,10 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .type(&#34;dimension&#34;)
  *                     .build())
+ *                 .name(&#34;cpu.utilization by service rule&#34;)
  *                 .build())
  *             .metricName(&#34;cpu.utilization&#34;)
- *             .routingRule(MetricRulesetRoutingRuleArgs.builder()
+ *             .routingRules(MetricRulesetRoutingRuleArgs.builder()
  *                 .destination(&#34;RealTime&#34;)
  *                 .build())
  *             .build());
@@ -178,15 +181,15 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Routing Rule object
      * 
      */
-    @Export(name="routingRule", type=MetricRulesetRoutingRule.class, parameters={})
-    private Output<MetricRulesetRoutingRule> routingRule;
+    @Export(name="routingRules", type=List.class, parameters={MetricRulesetRoutingRule.class})
+    private Output<List<MetricRulesetRoutingRule>> routingRules;
 
     /**
      * @return Routing Rule object
      * 
      */
-    public Output<MetricRulesetRoutingRule> routingRule() {
-        return this.routingRule;
+    public Output<List<MetricRulesetRoutingRule>> routingRules() {
+        return this.routingRules;
     }
     /**
      * Version of the ruleset

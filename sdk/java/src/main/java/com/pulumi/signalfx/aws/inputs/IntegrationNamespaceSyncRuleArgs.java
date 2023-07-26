@@ -16,14 +16,14 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
     public static final IntegrationNamespaceSyncRuleArgs Empty = new IntegrationNamespaceSyncRuleArgs();
 
     /**
-     * Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     @Import(name="defaultAction")
     private @Nullable Output<String> defaultAction;
 
     /**
-     * @return Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * @return Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     public Optional<Output<String>> defaultAction() {
@@ -31,14 +31,14 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     @Import(name="filterAction")
     private @Nullable Output<String> filterAction;
 
     /**
-     * @return Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+     * @return Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
      * 
      */
     public Optional<Output<String>> filterAction() {
@@ -46,14 +46,14 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+     * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
      * 
      */
     @Import(name="filterSource")
     private @Nullable Output<String> filterSource;
 
     /**
-     * @return Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+     * @return Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
      * 
      */
     public Optional<Output<String>> filterSource() {
@@ -61,14 +61,14 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+     * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
      * 
      */
     public Output<String> namespace() {
@@ -103,7 +103,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultAction Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+         * @param defaultAction Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param defaultAction Controls the SignalFx default behavior for processing data from an AWS namespace. If you do specify a filter, use this property to control how SignalFx treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+         * @param defaultAction Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn&#39;t match the filter. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param filterAction Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+         * @param filterAction Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param filterAction Controls how SignalFx processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
+         * @param filterAction Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `&#34;Include&#34;` or `&#34;Exclude&#34;`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param filterSource Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * @param filterSource Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param filterSource Expression that selects the data that SignalFx should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * @param filterSource Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class IntegrationNamespaceSyncRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          * 
          * @return builder
          * 
