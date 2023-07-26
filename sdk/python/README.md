@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fsignalfx.svg)](https://www.npmjs.com/package/@pulumi/signalfx)
 [![Python version](https://badge.fury.io/py/pulumi-signalfx.svg)](https://pypi.org/project/pulumi-signalfx)
 [![NuGet version](https://badge.fury.io/nu/pulumi.signalfx.svg)](https://badge.fury.io/nu/pulumi.signalfx)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-signalfx/sdk/v5/go)](https://pkg.go.dev/github.com/pulumi/pulumi-signalfx/sdk/v5/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-signalfx/sdk/v6/go)](https://pkg.go.dev/github.com/pulumi/pulumi-signalfx/sdk/v6/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-signalfx/blob/master/LICENSE)
 
 # SignalFx Resource Provider
@@ -35,7 +35,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-signalfx/sdk/v5
+    $ go get github.com/pulumi/pulumi-signalfx/sdk/v6
 
 ### .NET
 

@@ -63,6 +63,9 @@ class DashboardGroupArgs:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions field now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
+
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
@@ -75,6 +78,9 @@ class DashboardGroupArgs:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions field now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
+
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
@@ -201,6 +207,9 @@ class _DashboardGroupState:
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions field now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
+
         return pulumi.get(self, "authorized_writer_teams")
 
     @authorized_writer_teams.setter
@@ -213,6 +222,9 @@ class _DashboardGroupState:
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions field now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
+
         return pulumi.get(self, "authorized_writer_users")
 
     @authorized_writer_users.setter
@@ -308,6 +320,8 @@ class DashboardGroup(pulumi.CustomResource):
 
         > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 
+        > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
         ## Example Usage
 
         ```python
@@ -352,7 +366,7 @@ class DashboardGroup(pulumi.CustomResource):
         mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
             description="Cool dashboard group",
             dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
                 name_override="GC For My Service",
                 description_override="Garbage Collection dashboard maintained by JVM team",
                 filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
@@ -392,6 +406,8 @@ class DashboardGroup(pulumi.CustomResource):
 
         > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 
+        > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
         ## Example Usage
 
         ```python
@@ -436,7 +452,7 @@ class DashboardGroup(pulumi.CustomResource):
         mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
             description="Cool dashboard group",
             dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
                 name_override="GC For My Service",
                 description_override="Garbage Collection dashboard maintained by JVM team",
                 filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
@@ -554,6 +570,9 @@ class DashboardGroup(pulumi.CustomResource):
         """
         Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions field now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
+
         return pulumi.get(self, "authorized_writer_teams")
 
     @property
@@ -562,6 +581,9 @@ class DashboardGroup(pulumi.CustomResource):
         """
         User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         """
+        warnings.warn("""Please use permissions field now""", DeprecationWarning)
+        pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
+
         return pulumi.get(self, "authorized_writer_users")
 
     @property

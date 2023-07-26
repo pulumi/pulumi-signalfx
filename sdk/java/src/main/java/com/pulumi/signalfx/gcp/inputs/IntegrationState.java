@@ -142,14 +142,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+     * @return GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -171,29 +171,6 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.useMetricSourceProjectForQuota);
     }
 
-    /**
-     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     * 
-     * @deprecated
-     * Please use include_list instead
-     * 
-     */
-    @Deprecated /* Please use include_list instead */
-    @Import(name="whitelists")
-    private @Nullable Output<List<String>> whitelists;
-
-    /**
-     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-     * 
-     * @deprecated
-     * Please use include_list instead
-     * 
-     */
-    @Deprecated /* Please use include_list instead */
-    public Optional<Output<List<String>>> whitelists() {
-        return Optional.ofNullable(this.whitelists);
-    }
-
     private IntegrationState() {}
 
     private IntegrationState(IntegrationState $) {
@@ -207,7 +184,6 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         this.projectServiceKeys = $.projectServiceKeys;
         this.services = $.services;
         this.useMetricSourceProjectForQuota = $.useMetricSourceProjectForQuota;
-        this.whitelists = $.whitelists;
     }
 
     public static Builder builder() {
@@ -429,7 +405,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
          * 
@@ -440,7 +416,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
          * 
@@ -450,7 +426,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See the documentation for [Creating Integrations](https://dev.splunk.com/observability/reference/api/integrations/latest#endpoint-create-integration) for valid values.
+         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
          * 
@@ -478,49 +454,6 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder useMetricSourceProjectForQuota(Boolean useMetricSourceProjectForQuota) {
             return useMetricSourceProjectForQuota(Output.of(useMetricSourceProjectForQuota));
-        }
-
-        /**
-         * @param whitelists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Please use include_list instead
-         * 
-         */
-        @Deprecated /* Please use include_list instead */
-        public Builder whitelists(@Nullable Output<List<String>> whitelists) {
-            $.whitelists = whitelists;
-            return this;
-        }
-
-        /**
-         * @param whitelists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Please use include_list instead
-         * 
-         */
-        @Deprecated /* Please use include_list instead */
-        public Builder whitelists(List<String> whitelists) {
-            return whitelists(Output.of(whitelists));
-        }
-
-        /**
-         * @param whitelists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Please use include_list instead
-         * 
-         */
-        @Deprecated /* Please use include_list instead */
-        public Builder whitelists(String... whitelists) {
-            return whitelists(List.of(whitelists));
         }
 
         public IntegrationState build() {

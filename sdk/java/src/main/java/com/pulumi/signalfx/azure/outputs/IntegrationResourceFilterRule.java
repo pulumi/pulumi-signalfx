@@ -4,16 +4,24 @@
 package com.pulumi.signalfx.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.signalfx.azure.outputs.IntegrationResourceFilterRuleFilter;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class IntegrationResourceFilterRule {
-    private IntegrationResourceFilterRuleFilter filter;
+    /**
+     * @return Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+     * 
+     */
+    private String filterSource;
 
     private IntegrationResourceFilterRule() {}
-    public IntegrationResourceFilterRuleFilter filter() {
-        return this.filter;
+    /**
+     * @return Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+     * 
+     */
+    public String filterSource() {
+        return this.filterSource;
     }
 
     public static Builder builder() {
@@ -25,21 +33,21 @@ public final class IntegrationResourceFilterRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private IntegrationResourceFilterRuleFilter filter;
+        private String filterSource;
         public Builder() {}
         public Builder(IntegrationResourceFilterRule defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.filter = defaults.filter;
+    	      this.filterSource = defaults.filterSource;
         }
 
         @CustomType.Setter
-        public Builder filter(IntegrationResourceFilterRuleFilter filter) {
-            this.filter = Objects.requireNonNull(filter);
+        public Builder filterSource(String filterSource) {
+            this.filterSource = Objects.requireNonNull(filterSource);
             return this;
         }
         public IntegrationResourceFilterRule build() {
             final var o = new IntegrationResourceFilterRule();
-            o.filter = filter;
+            o.filterSource = filterSource;
             return o;
         }
     }

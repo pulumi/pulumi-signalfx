@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * Provides an Observability Cloud resource for managing metric rulesets
+ *
+ * > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  */
 export class MetricRuleset extends pulumi.CustomResource {
     /**
@@ -68,7 +70,7 @@ export class MetricRuleset extends pulumi.CustomResource {
     /**
      * Routing Rule object
      */
-    public readonly routingRule!: pulumi.Output<outputs.MetricRulesetRoutingRule>;
+    public readonly routingRules!: pulumi.Output<outputs.MetricRulesetRoutingRule[]>;
     /**
      * Version of the ruleset
      */
@@ -94,19 +96,19 @@ export class MetricRuleset extends pulumi.CustomResource {
             resourceInputs["lastUpdatedBy"] = state ? state.lastUpdatedBy : undefined;
             resourceInputs["lastUpdatedByName"] = state ? state.lastUpdatedByName : undefined;
             resourceInputs["metricName"] = state ? state.metricName : undefined;
-            resourceInputs["routingRule"] = state ? state.routingRule : undefined;
+            resourceInputs["routingRules"] = state ? state.routingRules : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as MetricRulesetArgs | undefined;
             if ((!args || args.metricName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricName'");
             }
-            if ((!args || args.routingRule === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'routingRule'");
+            if ((!args || args.routingRules === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'routingRules'");
             }
             resourceInputs["aggregationRules"] = args ? args.aggregationRules : undefined;
             resourceInputs["metricName"] = args ? args.metricName : undefined;
-            resourceInputs["routingRule"] = args ? args.routingRule : undefined;
+            resourceInputs["routingRules"] = args ? args.routingRules : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["lastUpdated"] = undefined /*out*/;
@@ -154,7 +156,7 @@ export interface MetricRulesetState {
     /**
      * Routing Rule object
      */
-    routingRule?: pulumi.Input<inputs.MetricRulesetRoutingRule>;
+    routingRules?: pulumi.Input<pulumi.Input<inputs.MetricRulesetRoutingRule>[]>;
     /**
      * Version of the ruleset
      */
@@ -176,5 +178,5 @@ export interface MetricRulesetArgs {
     /**
      * Routing Rule object
      */
-    routingRule: pulumi.Input<inputs.MetricRulesetRoutingRule>;
+    routingRules: pulumi.Input<pulumi.Input<inputs.MetricRulesetRoutingRule>[]>;
 }

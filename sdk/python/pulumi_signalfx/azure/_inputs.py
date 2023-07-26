@@ -12,8 +12,6 @@ from .. import _utilities
 __all__ = [
     'IntegrationCustomNamespacesPerServiceArgs',
     'IntegrationResourceFilterRuleArgs',
-    'IntegrationResourceFilterRuleFilterArgs',
-    'GetServicesServiceArgs',
 ]
 
 @pulumi.input_type
@@ -56,48 +54,22 @@ class IntegrationCustomNamespacesPerServiceArgs:
 @pulumi.input_type
 class IntegrationResourceFilterRuleArgs:
     def __init__(__self__, *,
-                 filter: pulumi.Input['IntegrationResourceFilterRuleFilterArgs']):
-        pulumi.set(__self__, "filter", filter)
+                 filter_source: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] filter_source: Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
+        pulumi.set(__self__, "filter_source", filter_source)
 
     @property
-    @pulumi.getter
-    def filter(self) -> pulumi.Input['IntegrationResourceFilterRuleFilterArgs']:
-        return pulumi.get(self, "filter")
+    @pulumi.getter(name="filterSource")
+    def filter_source(self) -> pulumi.Input[str]:
+        """
+        Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
+        return pulumi.get(self, "filter_source")
 
-    @filter.setter
-    def filter(self, value: pulumi.Input['IntegrationResourceFilterRuleFilterArgs']):
-        pulumi.set(self, "filter", value)
-
-
-@pulumi.input_type
-class IntegrationResourceFilterRuleFilterArgs:
-    def __init__(__self__, *,
-                 source: pulumi.Input[str]):
-        pulumi.set(__self__, "source", source)
-
-    @property
-    @pulumi.getter
-    def source(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: pulumi.Input[str]):
-        pulumi.set(self, "source", value)
-
-
-@pulumi.input_type
-class GetServicesServiceArgs:
-    def __init__(__self__, *,
-                 name: str):
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
+    @filter_source.setter
+    def filter_source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_source", value)
 
 

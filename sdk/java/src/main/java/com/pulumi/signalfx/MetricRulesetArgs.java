@@ -52,15 +52,15 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
      * Routing Rule object
      * 
      */
-    @Import(name="routingRule", required=true)
-    private Output<MetricRulesetRoutingRuleArgs> routingRule;
+    @Import(name="routingRules", required=true)
+    private Output<List<MetricRulesetRoutingRuleArgs>> routingRules;
 
     /**
      * @return Routing Rule object
      * 
      */
-    public Output<MetricRulesetRoutingRuleArgs> routingRule() {
-        return this.routingRule;
+    public Output<List<MetricRulesetRoutingRuleArgs>> routingRules() {
+        return this.routingRules;
     }
 
     private MetricRulesetArgs() {}
@@ -68,7 +68,7 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
     private MetricRulesetArgs(MetricRulesetArgs $) {
         this.aggregationRules = $.aggregationRules;
         this.metricName = $.metricName;
-        this.routingRule = $.routingRule;
+        this.routingRules = $.routingRules;
     }
 
     public static Builder builder() {
@@ -142,29 +142,39 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routingRule Routing Rule object
+         * @param routingRules Routing Rule object
          * 
          * @return builder
          * 
          */
-        public Builder routingRule(Output<MetricRulesetRoutingRuleArgs> routingRule) {
-            $.routingRule = routingRule;
+        public Builder routingRules(Output<List<MetricRulesetRoutingRuleArgs>> routingRules) {
+            $.routingRules = routingRules;
             return this;
         }
 
         /**
-         * @param routingRule Routing Rule object
+         * @param routingRules Routing Rule object
          * 
          * @return builder
          * 
          */
-        public Builder routingRule(MetricRulesetRoutingRuleArgs routingRule) {
-            return routingRule(Output.of(routingRule));
+        public Builder routingRules(List<MetricRulesetRoutingRuleArgs> routingRules) {
+            return routingRules(Output.of(routingRules));
+        }
+
+        /**
+         * @param routingRules Routing Rule object
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingRules(MetricRulesetRoutingRuleArgs... routingRules) {
+            return routingRules(List.of(routingRules));
         }
 
         public MetricRulesetArgs build() {
             $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.routingRule = Objects.requireNonNull($.routingRule, "expected parameter 'routingRule' to be non-null");
+            $.routingRules = Objects.requireNonNull($.routingRules, "expected parameter 'routingRules' to be non-null");
             return $;
         }
     }

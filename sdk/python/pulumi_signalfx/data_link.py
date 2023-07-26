@@ -249,8 +249,8 @@ class DataLink(pulumi.CustomResource):
             target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
                 is_default=True,
                 name="sfx_dash",
-                dashboard_group_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                dashboard_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
+                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
             )])
         # A dashboard-specific link to an external URL
         my_data_link_dash = signalfx.DataLink("myDataLinkDash",
@@ -298,8 +298,8 @@ class DataLink(pulumi.CustomResource):
             target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
                 is_default=True,
                 name="sfx_dash",
-                dashboard_group_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                dashboard_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
+                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
             )])
         # A dashboard-specific link to an external URL
         my_data_link_dash = signalfx.DataLink("myDataLinkDash",

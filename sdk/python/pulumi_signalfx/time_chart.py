@@ -271,6 +271,9 @@ class TimeChartArgs:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
+        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
+        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
+
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
@@ -403,6 +406,9 @@ class TimeChartArgs:
         """
         Tags associated with the chart
         """
+        warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
+        pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
+
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -709,6 +715,9 @@ class _TimeChartState:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
+        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
+        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
+
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
@@ -853,6 +862,9 @@ class _TimeChartState:
         """
         Tags associated with the chart
         """
+        warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
+        pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
+
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1348,6 +1360,9 @@ class TimeChart(pulumi.CustomResource):
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
+        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
+        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
+
         return pulumi.get(self, "legend_fields_to_hides")
 
     @property
@@ -1444,6 +1459,9 @@ class TimeChart(pulumi.CustomResource):
         """
         Tags associated with the chart
         """
+        warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
+        pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
+
         return pulumi.get(self, "tags")
 
     @property

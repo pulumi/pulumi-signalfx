@@ -15,8 +15,8 @@
 package main
 
 import (
-	signalfx "github.com/pulumi/pulumi-signalfx/provider/v5"
-	"github.com/pulumi/pulumi-signalfx/provider/v5/pkg/version"
+	signalfx "github.com/pulumi/pulumi-signalfx/provider/v6"
+	"github.com/pulumi/pulumi-signalfx/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 

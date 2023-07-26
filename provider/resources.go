@@ -20,12 +20,11 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-signalfx/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-signalfx/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -81,7 +80,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(signalfx.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(signalfx.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:                    p,
 		Name:                 "signalfx",
@@ -171,17 +170,6 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	prov.RenameDataSource("signalfx_aws_services", makeDataSource(mainMod, "getAwsServices"),
-		makeDataSource(awsMod, "getServices"), mainMod, awsMod, &tfbridge.DataSourceInfo{
-			Docs: &tfbridge.DocInfo{
-				Markdown: []byte(" "),
-			}})
-	prov.RenameDataSource("signalfx_azure_services", makeDataSource(mainMod, "getAzureServices"),
-		makeDataSource(azureMod, "getServices"), mainMod, azureMod, &tfbridge.DataSourceInfo{
-			Docs: &tfbridge.DocInfo{
-				Markdown: []byte(" "),
-			}})
-
 	mappedMods := map[string]string{
 		"aws":         "Aws",
 		"azure":       "Azure",
@@ -205,7 +193,7 @@ func Provider() tfbridge.ProviderInfo {
 		moduleNameMap[strings.ToLower(v)] = v
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensKnownModules("signalfx_", mainMod, mappedModKeys,
+	err := prov.ComputeTokens(tfbridgetokens.KnownModules("signalfx_", mainMod, mappedModKeys,
 		func(mod, name string) (string, error) {
 			m, ok := moduleNameMap[strings.ToLower(mod)]
 			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))

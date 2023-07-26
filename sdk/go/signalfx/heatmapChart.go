@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -112,6 +113,7 @@ func NewHeatmapChart(ctx *pulumi.Context,
 	if args.ProgramText == nil {
 		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HeatmapChart
 	err := ctx.RegisterResource("signalfx:index/heatmapChart:HeatmapChart", name, args, &resource, opts...)
 	if err != nil {

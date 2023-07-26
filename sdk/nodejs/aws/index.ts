@@ -10,11 +10,6 @@ export type ExternalIntegration = import("./externalIntegration").ExternalIntegr
 export const ExternalIntegration: typeof import("./externalIntegration").ExternalIntegration = null as any;
 utilities.lazyLoad(exports, ["ExternalIntegration"], () => require("./externalIntegration"));
 
-export { GetServicesArgs, GetServicesResult, GetServicesOutputArgs } from "./getServices";
-export const getServices: typeof import("./getServices").getServices = null as any;
-export const getServicesOutput: typeof import("./getServices").getServicesOutput = null as any;
-utilities.lazyLoad(exports, ["getServices","getServicesOutput"], () => require("./getServices"));
-
 export { IntegrationArgs, IntegrationState } from "./integration";
 export type Integration = import("./integration").Integration;
 export const Integration: typeof import("./integration").Integration = null as any;

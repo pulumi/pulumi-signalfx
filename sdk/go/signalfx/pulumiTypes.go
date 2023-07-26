@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AlertMutingRuleFilter struct {
 	// Determines if this is a "not" filter. Defaults to `false`.
@@ -2796,7 +2799,7 @@ type DetectorVizOption struct {
 	// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -2831,7 +2834,7 @@ type DetectorVizOptionArgs struct {
 	// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -2920,7 +2923,7 @@ func (o DetectorVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o DetectorVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -3502,7 +3505,7 @@ type ListChartVizOption struct {
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -3527,7 +3530,7 @@ type ListChartVizOptionArgs struct {
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -3606,7 +3609,7 @@ func (o ListChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o ListChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -3638,7 +3641,8 @@ type MetricRulesetAggregationRule struct {
 	Enabled bool `pulumi:"enabled"`
 	// Matcher object
 	Matchers []MetricRulesetAggregationRuleMatcher `pulumi:"matchers"`
-	Name     *string                               `pulumi:"name"`
+	// name of the aggregation rule
+	Name *string `pulumi:"name"`
 }
 
 // MetricRulesetAggregationRuleInput is an input type that accepts MetricRulesetAggregationRuleArgs and MetricRulesetAggregationRuleOutput values.
@@ -3659,7 +3663,8 @@ type MetricRulesetAggregationRuleArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Matcher object
 	Matchers MetricRulesetAggregationRuleMatcherArrayInput `pulumi:"matchers"`
-	Name     pulumi.StringPtrInput                         `pulumi:"name"`
+	// name of the aggregation rule
+	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (MetricRulesetAggregationRuleArgs) ElementType() reflect.Type {
@@ -3728,6 +3733,7 @@ func (o MetricRulesetAggregationRuleOutput) Matchers() MetricRulesetAggregationR
 	return o.ApplyT(func(v MetricRulesetAggregationRule) []MetricRulesetAggregationRuleMatcher { return v.Matchers }).(MetricRulesetAggregationRuleMatcherArrayOutput)
 }
 
+// name of the aggregation rule
 func (o MetricRulesetAggregationRuleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRule) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4100,7 +4106,7 @@ func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) Index(i pulumi.Int
 }
 
 type MetricRulesetRoutingRule struct {
-	// end destination of the input metric
+	// end destination of the input metric. Must be `RealTime` or `Drop`
 	Destination string `pulumi:"destination"`
 }
 
@@ -4116,7 +4122,7 @@ type MetricRulesetRoutingRuleInput interface {
 }
 
 type MetricRulesetRoutingRuleArgs struct {
-	// end destination of the input metric
+	// end destination of the input metric. Must be `RealTime` or `Drop`
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -4132,45 +4138,29 @@ func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleOutput)
 }
 
-func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
-	return i.ToMetricRulesetRoutingRulePtrOutputWithContext(context.Background())
-}
-
-func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleOutput).ToMetricRulesetRoutingRulePtrOutputWithContext(ctx)
-}
-
-// MetricRulesetRoutingRulePtrInput is an input type that accepts MetricRulesetRoutingRuleArgs, MetricRulesetRoutingRulePtr and MetricRulesetRoutingRulePtrOutput values.
-// You can construct a concrete instance of `MetricRulesetRoutingRulePtrInput` via:
+// MetricRulesetRoutingRuleArrayInput is an input type that accepts MetricRulesetRoutingRuleArray and MetricRulesetRoutingRuleArrayOutput values.
+// You can construct a concrete instance of `MetricRulesetRoutingRuleArrayInput` via:
 //
-//	        MetricRulesetRoutingRuleArgs{...}
-//
-//	or:
-//
-//	        nil
-type MetricRulesetRoutingRulePtrInput interface {
+//	MetricRulesetRoutingRuleArray{ MetricRulesetRoutingRuleArgs{...} }
+type MetricRulesetRoutingRuleArrayInput interface {
 	pulumi.Input
 
-	ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput
-	ToMetricRulesetRoutingRulePtrOutputWithContext(context.Context) MetricRulesetRoutingRulePtrOutput
+	ToMetricRulesetRoutingRuleArrayOutput() MetricRulesetRoutingRuleArrayOutput
+	ToMetricRulesetRoutingRuleArrayOutputWithContext(context.Context) MetricRulesetRoutingRuleArrayOutput
 }
 
-type metricRulesetRoutingRulePtrType MetricRulesetRoutingRuleArgs
+type MetricRulesetRoutingRuleArray []MetricRulesetRoutingRuleInput
 
-func MetricRulesetRoutingRulePtr(v *MetricRulesetRoutingRuleArgs) MetricRulesetRoutingRulePtrInput {
-	return (*metricRulesetRoutingRulePtrType)(v)
+func (MetricRulesetRoutingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetRoutingRule)(nil)).Elem()
 }
 
-func (*metricRulesetRoutingRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricRulesetRoutingRule)(nil)).Elem()
+func (i MetricRulesetRoutingRuleArray) ToMetricRulesetRoutingRuleArrayOutput() MetricRulesetRoutingRuleArrayOutput {
+	return i.ToMetricRulesetRoutingRuleArrayOutputWithContext(context.Background())
 }
 
-func (i *metricRulesetRoutingRulePtrType) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
-	return i.ToMetricRulesetRoutingRulePtrOutputWithContext(context.Background())
-}
-
-func (i *metricRulesetRoutingRulePtrType) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRulePtrOutput)
+func (i MetricRulesetRoutingRuleArray) ToMetricRulesetRoutingRuleArrayOutputWithContext(ctx context.Context) MetricRulesetRoutingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleArrayOutput)
 }
 
 type MetricRulesetRoutingRuleOutput struct{ *pulumi.OutputState }
@@ -4187,53 +4177,29 @@ func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutputWithCont
 	return o
 }
 
-func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
-	return o.ToMetricRulesetRoutingRulePtrOutputWithContext(context.Background())
-}
-
-func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricRulesetRoutingRule) *MetricRulesetRoutingRule {
-		return &v
-	}).(MetricRulesetRoutingRulePtrOutput)
-}
-
-// end destination of the input metric
+// end destination of the input metric. Must be `RealTime` or `Drop`
 func (o MetricRulesetRoutingRuleOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetRoutingRule) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-type MetricRulesetRoutingRulePtrOutput struct{ *pulumi.OutputState }
+type MetricRulesetRoutingRuleArrayOutput struct{ *pulumi.OutputState }
 
-func (MetricRulesetRoutingRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MetricRulesetRoutingRule)(nil)).Elem()
+func (MetricRulesetRoutingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricRulesetRoutingRule)(nil)).Elem()
 }
 
-func (o MetricRulesetRoutingRulePtrOutput) ToMetricRulesetRoutingRulePtrOutput() MetricRulesetRoutingRulePtrOutput {
+func (o MetricRulesetRoutingRuleArrayOutput) ToMetricRulesetRoutingRuleArrayOutput() MetricRulesetRoutingRuleArrayOutput {
 	return o
 }
 
-func (o MetricRulesetRoutingRulePtrOutput) ToMetricRulesetRoutingRulePtrOutputWithContext(ctx context.Context) MetricRulesetRoutingRulePtrOutput {
+func (o MetricRulesetRoutingRuleArrayOutput) ToMetricRulesetRoutingRuleArrayOutputWithContext(ctx context.Context) MetricRulesetRoutingRuleArrayOutput {
 	return o
 }
 
-func (o MetricRulesetRoutingRulePtrOutput) Elem() MetricRulesetRoutingRuleOutput {
-	return o.ApplyT(func(v *MetricRulesetRoutingRule) MetricRulesetRoutingRule {
-		if v != nil {
-			return *v
-		}
-		var ret MetricRulesetRoutingRule
-		return ret
+func (o MetricRulesetRoutingRuleArrayOutput) Index(i pulumi.IntInput) MetricRulesetRoutingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricRulesetRoutingRule {
+		return vs[0].([]MetricRulesetRoutingRule)[vs[1].(int)]
 	}).(MetricRulesetRoutingRuleOutput)
-}
-
-// end destination of the input metric
-func (o MetricRulesetRoutingRulePtrOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MetricRulesetRoutingRule) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Destination
-	}).(pulumi.StringPtrOutput)
 }
 
 type OrgTokenDpmLimits struct {
@@ -4805,7 +4771,7 @@ type SingleValueChartVizOption struct {
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -4830,7 +4796,7 @@ type SingleValueChartVizOptionArgs struct {
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -4909,7 +4875,7 @@ func (o SingleValueChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o SingleValueChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -6128,7 +6094,7 @@ type TimeChartVizOption struct {
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit *string `pulumi:"valueUnit"`
 }
 
@@ -6157,7 +6123,7 @@ type TimeChartVizOptionArgs struct {
 	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
@@ -6246,7 +6212,7 @@ func (o TimeChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o TimeChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -6377,194 +6343,6 @@ func (o WebhookIntegrationHeaderArrayOutput) Index(i pulumi.IntInput) WebhookInt
 	}).(WebhookIntegrationHeaderOutput)
 }
 
-type GetAwsServicesService struct {
-	Name string `pulumi:"name"`
-}
-
-// GetAwsServicesServiceInput is an input type that accepts GetAwsServicesServiceArgs and GetAwsServicesServiceOutput values.
-// You can construct a concrete instance of `GetAwsServicesServiceInput` via:
-//
-//	GetAwsServicesServiceArgs{...}
-type GetAwsServicesServiceInput interface {
-	pulumi.Input
-
-	ToGetAwsServicesServiceOutput() GetAwsServicesServiceOutput
-	ToGetAwsServicesServiceOutputWithContext(context.Context) GetAwsServicesServiceOutput
-}
-
-type GetAwsServicesServiceArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetAwsServicesServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAwsServicesService)(nil)).Elem()
-}
-
-func (i GetAwsServicesServiceArgs) ToGetAwsServicesServiceOutput() GetAwsServicesServiceOutput {
-	return i.ToGetAwsServicesServiceOutputWithContext(context.Background())
-}
-
-func (i GetAwsServicesServiceArgs) ToGetAwsServicesServiceOutputWithContext(ctx context.Context) GetAwsServicesServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAwsServicesServiceOutput)
-}
-
-// GetAwsServicesServiceArrayInput is an input type that accepts GetAwsServicesServiceArray and GetAwsServicesServiceArrayOutput values.
-// You can construct a concrete instance of `GetAwsServicesServiceArrayInput` via:
-//
-//	GetAwsServicesServiceArray{ GetAwsServicesServiceArgs{...} }
-type GetAwsServicesServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetAwsServicesServiceArrayOutput() GetAwsServicesServiceArrayOutput
-	ToGetAwsServicesServiceArrayOutputWithContext(context.Context) GetAwsServicesServiceArrayOutput
-}
-
-type GetAwsServicesServiceArray []GetAwsServicesServiceInput
-
-func (GetAwsServicesServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAwsServicesService)(nil)).Elem()
-}
-
-func (i GetAwsServicesServiceArray) ToGetAwsServicesServiceArrayOutput() GetAwsServicesServiceArrayOutput {
-	return i.ToGetAwsServicesServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetAwsServicesServiceArray) ToGetAwsServicesServiceArrayOutputWithContext(ctx context.Context) GetAwsServicesServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAwsServicesServiceArrayOutput)
-}
-
-type GetAwsServicesServiceOutput struct{ *pulumi.OutputState }
-
-func (GetAwsServicesServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAwsServicesService)(nil)).Elem()
-}
-
-func (o GetAwsServicesServiceOutput) ToGetAwsServicesServiceOutput() GetAwsServicesServiceOutput {
-	return o
-}
-
-func (o GetAwsServicesServiceOutput) ToGetAwsServicesServiceOutputWithContext(ctx context.Context) GetAwsServicesServiceOutput {
-	return o
-}
-
-func (o GetAwsServicesServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAwsServicesService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetAwsServicesServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAwsServicesServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAwsServicesService)(nil)).Elem()
-}
-
-func (o GetAwsServicesServiceArrayOutput) ToGetAwsServicesServiceArrayOutput() GetAwsServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetAwsServicesServiceArrayOutput) ToGetAwsServicesServiceArrayOutputWithContext(ctx context.Context) GetAwsServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetAwsServicesServiceArrayOutput) Index(i pulumi.IntInput) GetAwsServicesServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAwsServicesService {
-		return vs[0].([]GetAwsServicesService)[vs[1].(int)]
-	}).(GetAwsServicesServiceOutput)
-}
-
-type GetAzureServicesService struct {
-	Name string `pulumi:"name"`
-}
-
-// GetAzureServicesServiceInput is an input type that accepts GetAzureServicesServiceArgs and GetAzureServicesServiceOutput values.
-// You can construct a concrete instance of `GetAzureServicesServiceInput` via:
-//
-//	GetAzureServicesServiceArgs{...}
-type GetAzureServicesServiceInput interface {
-	pulumi.Input
-
-	ToGetAzureServicesServiceOutput() GetAzureServicesServiceOutput
-	ToGetAzureServicesServiceOutputWithContext(context.Context) GetAzureServicesServiceOutput
-}
-
-type GetAzureServicesServiceArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetAzureServicesServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAzureServicesService)(nil)).Elem()
-}
-
-func (i GetAzureServicesServiceArgs) ToGetAzureServicesServiceOutput() GetAzureServicesServiceOutput {
-	return i.ToGetAzureServicesServiceOutputWithContext(context.Background())
-}
-
-func (i GetAzureServicesServiceArgs) ToGetAzureServicesServiceOutputWithContext(ctx context.Context) GetAzureServicesServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAzureServicesServiceOutput)
-}
-
-// GetAzureServicesServiceArrayInput is an input type that accepts GetAzureServicesServiceArray and GetAzureServicesServiceArrayOutput values.
-// You can construct a concrete instance of `GetAzureServicesServiceArrayInput` via:
-//
-//	GetAzureServicesServiceArray{ GetAzureServicesServiceArgs{...} }
-type GetAzureServicesServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetAzureServicesServiceArrayOutput() GetAzureServicesServiceArrayOutput
-	ToGetAzureServicesServiceArrayOutputWithContext(context.Context) GetAzureServicesServiceArrayOutput
-}
-
-type GetAzureServicesServiceArray []GetAzureServicesServiceInput
-
-func (GetAzureServicesServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAzureServicesService)(nil)).Elem()
-}
-
-func (i GetAzureServicesServiceArray) ToGetAzureServicesServiceArrayOutput() GetAzureServicesServiceArrayOutput {
-	return i.ToGetAzureServicesServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetAzureServicesServiceArray) ToGetAzureServicesServiceArrayOutputWithContext(ctx context.Context) GetAzureServicesServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAzureServicesServiceArrayOutput)
-}
-
-type GetAzureServicesServiceOutput struct{ *pulumi.OutputState }
-
-func (GetAzureServicesServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAzureServicesService)(nil)).Elem()
-}
-
-func (o GetAzureServicesServiceOutput) ToGetAzureServicesServiceOutput() GetAzureServicesServiceOutput {
-	return o
-}
-
-func (o GetAzureServicesServiceOutput) ToGetAzureServicesServiceOutputWithContext(ctx context.Context) GetAzureServicesServiceOutput {
-	return o
-}
-
-func (o GetAzureServicesServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAzureServicesService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetAzureServicesServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAzureServicesServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAzureServicesService)(nil)).Elem()
-}
-
-func (o GetAzureServicesServiceArrayOutput) ToGetAzureServicesServiceArrayOutput() GetAzureServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetAzureServicesServiceArrayOutput) ToGetAzureServicesServiceArrayOutputWithContext(ctx context.Context) GetAzureServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetAzureServicesServiceArrayOutput) Index(i pulumi.IntInput) GetAzureServicesServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAzureServicesService {
-		return vs[0].([]GetAzureServicesService)[vs[1].(int)]
-	}).(GetAzureServicesServiceOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleFilterInput)(nil)).Elem(), AlertMutingRuleFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleFilterArrayInput)(nil)).Elem(), AlertMutingRuleFilterArray{})
@@ -6631,7 +6409,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilterInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetAggregationRuleMatcherFilterArrayInput)(nil)).Elem(), MetricRulesetAggregationRuleMatcherFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRuleInput)(nil)).Elem(), MetricRulesetRoutingRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRulePtrInput)(nil)).Elem(), MetricRulesetRoutingRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricRulesetRoutingRuleArrayInput)(nil)).Elem(), MetricRulesetRoutingRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenDpmLimitsPtrInput)(nil)).Elem(), OrgTokenDpmLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrgTokenHostOrUsageLimitsInput)(nil)).Elem(), OrgTokenHostOrUsageLimitsArgs{})
@@ -6660,10 +6438,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartVizOptionArrayInput)(nil)).Elem(), TimeChartVizOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationHeaderInput)(nil)).Elem(), WebhookIntegrationHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationHeaderArrayInput)(nil)).Elem(), WebhookIntegrationHeaderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsServicesServiceInput)(nil)).Elem(), GetAwsServicesServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAwsServicesServiceArrayInput)(nil)).Elem(), GetAwsServicesServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureServicesServiceInput)(nil)).Elem(), GetAzureServicesServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAzureServicesServiceArrayInput)(nil)).Elem(), GetAzureServicesServiceArray{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterOutput{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterArrayOutput{})
 	pulumi.RegisterOutputType(DashboardChartOutput{})
@@ -6729,7 +6503,7 @@ func init() {
 	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherFilterOutput{})
 	pulumi.RegisterOutputType(MetricRulesetAggregationRuleMatcherFilterArrayOutput{})
 	pulumi.RegisterOutputType(MetricRulesetRoutingRuleOutput{})
-	pulumi.RegisterOutputType(MetricRulesetRoutingRulePtrOutput{})
+	pulumi.RegisterOutputType(MetricRulesetRoutingRuleArrayOutput{})
 	pulumi.RegisterOutputType(OrgTokenDpmLimitsOutput{})
 	pulumi.RegisterOutputType(OrgTokenDpmLimitsPtrOutput{})
 	pulumi.RegisterOutputType(OrgTokenHostOrUsageLimitsOutput{})
@@ -6758,8 +6532,4 @@ func init() {
 	pulumi.RegisterOutputType(TimeChartVizOptionArrayOutput{})
 	pulumi.RegisterOutputType(WebhookIntegrationHeaderOutput{})
 	pulumi.RegisterOutputType(WebhookIntegrationHeaderArrayOutput{})
-	pulumi.RegisterOutputType(GetAwsServicesServiceOutput{})
-	pulumi.RegisterOutputType(GetAwsServicesServiceArrayOutput{})
-	pulumi.RegisterOutputType(GetAzureServicesServiceOutput{})
-	pulumi.RegisterOutputType(GetAzureServicesServiceArrayOutput{})
 }

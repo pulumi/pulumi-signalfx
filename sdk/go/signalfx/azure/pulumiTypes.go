@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type IntegrationCustomNamespacesPerService struct {
 	// The additional namespaces.
@@ -117,7 +120,8 @@ func (o IntegrationCustomNamespacesPerServiceArrayOutput) Index(i pulumi.IntInpu
 }
 
 type IntegrationResourceFilterRule struct {
-	Filter IntegrationResourceFilterRuleFilter `pulumi:"filter"`
+	// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+	FilterSource string `pulumi:"filterSource"`
 }
 
 // IntegrationResourceFilterRuleInput is an input type that accepts IntegrationResourceFilterRuleArgs and IntegrationResourceFilterRuleOutput values.
@@ -132,7 +136,8 @@ type IntegrationResourceFilterRuleInput interface {
 }
 
 type IntegrationResourceFilterRuleArgs struct {
-	Filter IntegrationResourceFilterRuleFilterInput `pulumi:"filter"`
+	// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+	FilterSource pulumi.StringInput `pulumi:"filterSource"`
 }
 
 func (IntegrationResourceFilterRuleArgs) ElementType() reflect.Type {
@@ -186,8 +191,9 @@ func (o IntegrationResourceFilterRuleOutput) ToIntegrationResourceFilterRuleOutp
 	return o
 }
 
-func (o IntegrationResourceFilterRuleOutput) Filter() IntegrationResourceFilterRuleFilterOutput {
-	return o.ApplyT(func(v IntegrationResourceFilterRule) IntegrationResourceFilterRuleFilter { return v.Filter }).(IntegrationResourceFilterRuleFilterOutput)
+// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+func (o IntegrationResourceFilterRuleOutput) FilterSource() pulumi.StringOutput {
+	return o.ApplyT(func(v IntegrationResourceFilterRule) string { return v.FilterSource }).(pulumi.StringOutput)
 }
 
 type IntegrationResourceFilterRuleArrayOutput struct{ *pulumi.OutputState }
@@ -210,162 +216,13 @@ func (o IntegrationResourceFilterRuleArrayOutput) Index(i pulumi.IntInput) Integ
 	}).(IntegrationResourceFilterRuleOutput)
 }
 
-type IntegrationResourceFilterRuleFilter struct {
-	Source string `pulumi:"source"`
-}
-
-// IntegrationResourceFilterRuleFilterInput is an input type that accepts IntegrationResourceFilterRuleFilterArgs and IntegrationResourceFilterRuleFilterOutput values.
-// You can construct a concrete instance of `IntegrationResourceFilterRuleFilterInput` via:
-//
-//	IntegrationResourceFilterRuleFilterArgs{...}
-type IntegrationResourceFilterRuleFilterInput interface {
-	pulumi.Input
-
-	ToIntegrationResourceFilterRuleFilterOutput() IntegrationResourceFilterRuleFilterOutput
-	ToIntegrationResourceFilterRuleFilterOutputWithContext(context.Context) IntegrationResourceFilterRuleFilterOutput
-}
-
-type IntegrationResourceFilterRuleFilterArgs struct {
-	Source pulumi.StringInput `pulumi:"source"`
-}
-
-func (IntegrationResourceFilterRuleFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationResourceFilterRuleFilter)(nil)).Elem()
-}
-
-func (i IntegrationResourceFilterRuleFilterArgs) ToIntegrationResourceFilterRuleFilterOutput() IntegrationResourceFilterRuleFilterOutput {
-	return i.ToIntegrationResourceFilterRuleFilterOutputWithContext(context.Background())
-}
-
-func (i IntegrationResourceFilterRuleFilterArgs) ToIntegrationResourceFilterRuleFilterOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResourceFilterRuleFilterOutput)
-}
-
-type IntegrationResourceFilterRuleFilterOutput struct{ *pulumi.OutputState }
-
-func (IntegrationResourceFilterRuleFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntegrationResourceFilterRuleFilter)(nil)).Elem()
-}
-
-func (o IntegrationResourceFilterRuleFilterOutput) ToIntegrationResourceFilterRuleFilterOutput() IntegrationResourceFilterRuleFilterOutput {
-	return o
-}
-
-func (o IntegrationResourceFilterRuleFilterOutput) ToIntegrationResourceFilterRuleFilterOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleFilterOutput {
-	return o
-}
-
-func (o IntegrationResourceFilterRuleFilterOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v IntegrationResourceFilterRuleFilter) string { return v.Source }).(pulumi.StringOutput)
-}
-
-type GetServicesService struct {
-	Name string `pulumi:"name"`
-}
-
-// GetServicesServiceInput is an input type that accepts GetServicesServiceArgs and GetServicesServiceOutput values.
-// You can construct a concrete instance of `GetServicesServiceInput` via:
-//
-//	GetServicesServiceArgs{...}
-type GetServicesServiceInput interface {
-	pulumi.Input
-
-	ToGetServicesServiceOutput() GetServicesServiceOutput
-	ToGetServicesServiceOutputWithContext(context.Context) GetServicesServiceOutput
-}
-
-type GetServicesServiceArgs struct {
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (GetServicesServiceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
-}
-
-func (i GetServicesServiceArgs) ToGetServicesServiceOutput() GetServicesServiceOutput {
-	return i.ToGetServicesServiceOutputWithContext(context.Background())
-}
-
-func (i GetServicesServiceArgs) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceOutput)
-}
-
-// GetServicesServiceArrayInput is an input type that accepts GetServicesServiceArray and GetServicesServiceArrayOutput values.
-// You can construct a concrete instance of `GetServicesServiceArrayInput` via:
-//
-//	GetServicesServiceArray{ GetServicesServiceArgs{...} }
-type GetServicesServiceArrayInput interface {
-	pulumi.Input
-
-	ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput
-	ToGetServicesServiceArrayOutputWithContext(context.Context) GetServicesServiceArrayOutput
-}
-
-type GetServicesServiceArray []GetServicesServiceInput
-
-func (GetServicesServiceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
-}
-
-func (i GetServicesServiceArray) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
-	return i.ToGetServicesServiceArrayOutputWithContext(context.Background())
-}
-
-func (i GetServicesServiceArray) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicesServiceArrayOutput)
-}
-
-type GetServicesServiceOutput struct{ *pulumi.OutputState }
-
-func (GetServicesServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicesService)(nil)).Elem()
-}
-
-func (o GetServicesServiceOutput) ToGetServicesServiceOutput() GetServicesServiceOutput {
-	return o
-}
-
-func (o GetServicesServiceOutput) ToGetServicesServiceOutputWithContext(ctx context.Context) GetServicesServiceOutput {
-	return o
-}
-
-func (o GetServicesServiceOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicesService) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type GetServicesServiceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServicesServiceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicesService)(nil)).Elem()
-}
-
-func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutput() GetServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetServicesServiceArrayOutput) ToGetServicesServiceArrayOutputWithContext(ctx context.Context) GetServicesServiceArrayOutput {
-	return o
-}
-
-func (o GetServicesServiceArrayOutput) Index(i pulumi.IntInput) GetServicesServiceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicesService {
-		return vs[0].([]GetServicesService)[vs[1].(int)]
-	}).(GetServicesServiceOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespacesPerServiceInput)(nil)).Elem(), IntegrationCustomNamespacesPerServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationCustomNamespacesPerServiceArrayInput)(nil)).Elem(), IntegrationCustomNamespacesPerServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationResourceFilterRuleInput)(nil)).Elem(), IntegrationResourceFilterRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationResourceFilterRuleArrayInput)(nil)).Elem(), IntegrationResourceFilterRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IntegrationResourceFilterRuleFilterInput)(nil)).Elem(), IntegrationResourceFilterRuleFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceInput)(nil)).Elem(), GetServicesServiceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServicesServiceArrayInput)(nil)).Elem(), GetServicesServiceArray{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespacesPerServiceOutput{})
 	pulumi.RegisterOutputType(IntegrationCustomNamespacesPerServiceArrayOutput{})
 	pulumi.RegisterOutputType(IntegrationResourceFilterRuleOutput{})
 	pulumi.RegisterOutputType(IntegrationResourceFilterRuleArrayOutput{})
-	pulumi.RegisterOutputType(IntegrationResourceFilterRuleFilterOutput{})
-	pulumi.RegisterOutputType(GetServicesServiceOutput{})
-	pulumi.RegisterOutputType(GetServicesServiceArrayOutput{})
 }

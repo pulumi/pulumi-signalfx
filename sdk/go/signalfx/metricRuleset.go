@@ -8,10 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides an Observability Cloud resource for managing metric rulesets
+//
+// > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 type MetricRuleset struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +33,7 @@ type MetricRuleset struct {
 	// Name of the input metric
 	MetricName pulumi.StringOutput `pulumi:"metricName"`
 	// Routing Rule object
-	RoutingRule MetricRulesetRoutingRuleOutput `pulumi:"routingRule"`
+	RoutingRules MetricRulesetRoutingRuleArrayOutput `pulumi:"routingRules"`
 	// Version of the ruleset
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -45,9 +48,10 @@ func NewMetricRuleset(ctx *pulumi.Context,
 	if args.MetricName == nil {
 		return nil, errors.New("invalid value for required argument 'MetricName'")
 	}
-	if args.RoutingRule == nil {
-		return nil, errors.New("invalid value for required argument 'RoutingRule'")
+	if args.RoutingRules == nil {
+		return nil, errors.New("invalid value for required argument 'RoutingRules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetricRuleset
 	err := ctx.RegisterResource("signalfx:index/metricRuleset:MetricRuleset", name, args, &resource, opts...)
 	if err != nil {
@@ -85,7 +89,7 @@ type metricRulesetState struct {
 	// Name of the input metric
 	MetricName *string `pulumi:"metricName"`
 	// Routing Rule object
-	RoutingRule *MetricRulesetRoutingRule `pulumi:"routingRule"`
+	RoutingRules []MetricRulesetRoutingRule `pulumi:"routingRules"`
 	// Version of the ruleset
 	Version *string `pulumi:"version"`
 }
@@ -106,7 +110,7 @@ type MetricRulesetState struct {
 	// Name of the input metric
 	MetricName pulumi.StringPtrInput
 	// Routing Rule object
-	RoutingRule MetricRulesetRoutingRulePtrInput
+	RoutingRules MetricRulesetRoutingRuleArrayInput
 	// Version of the ruleset
 	Version pulumi.StringPtrInput
 }
@@ -121,7 +125,7 @@ type metricRulesetArgs struct {
 	// Name of the input metric
 	MetricName string `pulumi:"metricName"`
 	// Routing Rule object
-	RoutingRule MetricRulesetRoutingRule `pulumi:"routingRule"`
+	RoutingRules []MetricRulesetRoutingRule `pulumi:"routingRules"`
 }
 
 // The set of arguments for constructing a MetricRuleset resource.
@@ -131,7 +135,7 @@ type MetricRulesetArgs struct {
 	// Name of the input metric
 	MetricName pulumi.StringInput
 	// Routing Rule object
-	RoutingRule MetricRulesetRoutingRuleInput
+	RoutingRules MetricRulesetRoutingRuleArrayInput
 }
 
 func (MetricRulesetArgs) ElementType() reflect.Type {
@@ -257,8 +261,8 @@ func (o MetricRulesetOutput) MetricName() pulumi.StringOutput {
 }
 
 // Routing Rule object
-func (o MetricRulesetOutput) RoutingRule() MetricRulesetRoutingRuleOutput {
-	return o.ApplyT(func(v *MetricRuleset) MetricRulesetRoutingRuleOutput { return v.RoutingRule }).(MetricRulesetRoutingRuleOutput)
+func (o MetricRulesetOutput) RoutingRules() MetricRulesetRoutingRuleArrayOutput {
+	return o.ApplyT(func(v *MetricRuleset) MetricRulesetRoutingRuleArrayOutput { return v.RoutingRules }).(MetricRulesetRoutingRuleArrayOutput)
 }
 
 // Version of the ruleset

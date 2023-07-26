@@ -15,9 +15,9 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * SignalFx AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
+ * Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
  * 
- * &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
  * &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
  * 
@@ -96,14 +96,14 @@ public class TokenIntegration extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
      * 
      */
     @Export(name="signalfxAwsAccount", type=String.class, parameters={})
     private Output<String> signalfxAwsAccount;
 
     /**
-     * @return The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+     * @return The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
      * 
      */
     public Output<String> signalfxAwsAccount() {

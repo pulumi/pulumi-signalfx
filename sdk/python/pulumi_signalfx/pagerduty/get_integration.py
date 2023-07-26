@@ -91,9 +91,9 @@ def get_integration(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('signalfx:pagerduty/getIntegration:getIntegration', __args__, opts=opts, typ=GetIntegrationResult).value
 
     return AwaitableGetIntegrationResult(
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        name=__ret__.name)
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_integration)

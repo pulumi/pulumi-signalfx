@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
 /**
  * SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
  * 
- * &gt; **NOTE** When managing integrations use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
+ * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example Usage
  * ```java
@@ -35,7 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.signalfx.azure.IntegrationArgs;
  * import com.pulumi.signalfx.azure.inputs.IntegrationCustomNamespacesPerServiceArgs;
  * import com.pulumi.signalfx.azure.inputs.IntegrationResourceFilterRuleArgs;
- * import com.pulumi.signalfx.azure.inputs.IntegrationResourceFilterRuleFilterArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -65,14 +64,10 @@ import javax.annotation.Nullable;
  *             .pollRate(300)
  *             .resourceFilterRules(            
  *                 IntegrationResourceFilterRuleArgs.builder()
- *                     .filter(IntegrationResourceFilterRuleFilterArgs.builder()
- *                         .source(&#34;filter(&#39;azure_tag_service&#39;, &#39;payment&#39;) and (filter(&#39;azure_tag_env&#39;, &#39;prod-us&#39;) or filter(&#39;azure_tag_env&#39;, &#39;prod-eu&#39;))&#34;)
- *                         .build())
+ *                     .filterSource(&#34;filter(&#39;azure_tag_service&#39;, &#39;payment&#39;) and (filter(&#39;azure_tag_env&#39;, &#39;prod-us&#39;) or filter(&#39;azure_tag_env&#39;, &#39;prod-eu&#39;))&#34;)
  *                     .build(),
  *                 IntegrationResourceFilterRuleArgs.builder()
- *                     .filter(IntegrationResourceFilterRuleFilterArgs.builder()
- *                         .source(&#34;filter(&#39;azure_tag_service&#39;, &#39;notification&#39;) and (filter(&#39;azure_tag_env&#39;, &#39;prod-us&#39;) or filter(&#39;azure_tag_env&#39;, &#39;prod-eu&#39;))&#34;)
- *                         .build())
+ *                     .filterSource(&#34;filter(&#39;azure_tag_service&#39;, &#39;notification&#39;) and (filter(&#39;azure_tag_env&#39;, &#39;prod-us&#39;) or filter(&#39;azure_tag_env&#39;, &#39;prod-eu&#39;))&#34;)
  *                     .build())
  *             .secretKey(&#34;XXX&#34;)
  *             .services(&#34;microsoft.sql/servers/elasticpools&#34;)
@@ -83,9 +78,6 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Service Names
- * 
- * &gt; **NOTE** You can use the data source &#34;signalfx.azure.getServices&#34; to specify all services.
  * 
  */
 @ResourceType(type="signalfx:azure/integration:Integration")
@@ -217,18 +209,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pollRate);
     }
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      * 
      */
     @Export(name="resourceFilterRules", type=List.class, parameters={IntegrationResourceFilterRule.class})
     private Output</* @Nullable */ List<IntegrationResourceFilterRule>> resourceFilterRules;
 
     /**
-     * @return List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * @return List of rules for filtering Azure resources by their tags.
      * 
      */
     public Output<Optional<List<IntegrationResourceFilterRule>>> resourceFilterRules() {
@@ -249,14 +237,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.secretKey;
     }
     /**
-     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
     @Export(name="services", type=List.class, parameters={String.class})
     private Output<List<String>> services;
 
     /**
-     * @return List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. See the documentation for [Creating Integrations](https://developers.signalfx.com/integrations_reference.html#operation/Create%20Integration) for valida values.
+     * @return List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
     public Output<List<String>> services() {

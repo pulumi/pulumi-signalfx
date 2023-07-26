@@ -46,14 +46,14 @@ public final class ExternalIntegrationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
      * 
      */
     @Import(name="signalfxAwsAccount")
     private @Nullable Output<String> signalfxAwsAccount;
 
     /**
-     * @return The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+     * @return The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
      * 
      */
     public Optional<Output<String>> signalfxAwsAccount() {
@@ -129,7 +129,7 @@ public final class ExternalIntegrationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param signalfxAwsAccount The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+         * @param signalfxAwsAccount The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ExternalIntegrationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param signalfxAwsAccount The AWS Account ARN to use with your policies/roles, provided by SignalFx.
+         * @param signalfxAwsAccount The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
          * 
          * @return builder
          * 

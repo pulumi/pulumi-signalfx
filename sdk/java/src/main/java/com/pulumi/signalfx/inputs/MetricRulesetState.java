@@ -127,15 +127,15 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
      * Routing Rule object
      * 
      */
-    @Import(name="routingRule")
-    private @Nullable Output<MetricRulesetRoutingRuleArgs> routingRule;
+    @Import(name="routingRules")
+    private @Nullable Output<List<MetricRulesetRoutingRuleArgs>> routingRules;
 
     /**
      * @return Routing Rule object
      * 
      */
-    public Optional<Output<MetricRulesetRoutingRuleArgs>> routingRule() {
-        return Optional.ofNullable(this.routingRule);
+    public Optional<Output<List<MetricRulesetRoutingRuleArgs>>> routingRules() {
+        return Optional.ofNullable(this.routingRules);
     }
 
     /**
@@ -163,7 +163,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         this.lastUpdatedBy = $.lastUpdatedBy;
         this.lastUpdatedByName = $.lastUpdatedByName;
         this.metricName = $.metricName;
-        this.routingRule = $.routingRule;
+        this.routingRules = $.routingRules;
         this.version = $.version;
     }
 
@@ -343,24 +343,34 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routingRule Routing Rule object
+         * @param routingRules Routing Rule object
          * 
          * @return builder
          * 
          */
-        public Builder routingRule(@Nullable Output<MetricRulesetRoutingRuleArgs> routingRule) {
-            $.routingRule = routingRule;
+        public Builder routingRules(@Nullable Output<List<MetricRulesetRoutingRuleArgs>> routingRules) {
+            $.routingRules = routingRules;
             return this;
         }
 
         /**
-         * @param routingRule Routing Rule object
+         * @param routingRules Routing Rule object
          * 
          * @return builder
          * 
          */
-        public Builder routingRule(MetricRulesetRoutingRuleArgs routingRule) {
-            return routingRule(Output.of(routingRule));
+        public Builder routingRules(List<MetricRulesetRoutingRuleArgs> routingRules) {
+            return routingRules(Output.of(routingRules));
+        }
+
+        /**
+         * @param routingRules Routing Rule object
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingRules(MetricRulesetRoutingRuleArgs... routingRules) {
+            return routingRules(List.of(routingRules));
         }
 
         /**

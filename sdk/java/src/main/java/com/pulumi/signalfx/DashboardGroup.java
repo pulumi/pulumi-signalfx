@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won&#39;t show any of yours dashboard groups.
  * 
+ * &gt; **NOTE** When you want to &#34;Change or remove write permissions for a user other than yourself&#34; regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;

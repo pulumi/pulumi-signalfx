@@ -75,9 +75,9 @@ def get_dimension_values(query: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('signalfx:index/getDimensionValues:getDimensionValues', __args__, opts=opts, typ=GetDimensionValuesResult).value
 
     return AwaitableGetDimensionValuesResult(
-        id=__ret__.id,
-        query=__ret__.query,
-        values=__ret__.values)
+        id=pulumi.get(__ret__, 'id'),
+        query=pulumi.get(__ret__, 'query'),
+        values=pulumi.get(__ret__, 'values'))
 
 
 @_utilities.lift_output_func(get_dimension_values)

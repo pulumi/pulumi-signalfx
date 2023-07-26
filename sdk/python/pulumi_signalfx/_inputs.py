@@ -57,8 +57,6 @@ __all__ = [
     'TimeChartLegendOptionsFieldArgs',
     'TimeChartVizOptionArgs',
     'WebhookIntegrationHeaderArgs',
-    'GetAwsServicesServiceArgs',
-    'GetAzureServicesServiceArgs',
 ]
 
 @pulumi.input_type
@@ -1596,7 +1594,7 @@ class DetectorVizOptionArgs:
                `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
                
                See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -1681,7 +1679,7 @@ class DetectorVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -1968,7 +1966,7 @@ class ListChartVizOptionArgs:
         :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -2043,7 +2041,7 @@ class ListChartVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -2063,6 +2061,7 @@ class MetricRulesetAggregationRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]] aggregators: Aggregator object
         :param pulumi.Input[bool] enabled: When false, this rule will not generate aggregated MTSs
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]] matchers: Matcher object
+        :param pulumi.Input[str] name: name of the aggregation rule
         """
         pulumi.set(__self__, "aggregators", aggregators)
         pulumi.set(__self__, "enabled", enabled)
@@ -2109,6 +2108,9 @@ class MetricRulesetAggregationRuleArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        name of the aggregation rule
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2278,7 +2280,7 @@ class MetricRulesetRoutingRuleArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] destination: end destination of the input metric
+        :param pulumi.Input[str] destination: end destination of the input metric. Must be `RealTime` or `Drop`
         """
         pulumi.set(__self__, "destination", destination)
 
@@ -2286,7 +2288,7 @@ class MetricRulesetRoutingRuleArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        end destination of the input metric
+        end destination of the input metric. Must be `RealTime` or `Drop`
         """
         return pulumi.get(self, "destination")
 
@@ -2568,7 +2570,7 @@ class SingleValueChartVizOptionArgs:
         :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -2643,7 +2645,7 @@ class SingleValueChartVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -3191,7 +3193,7 @@ class TimeChartVizOptionArgs:
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if axis is not None:
@@ -3294,7 +3296,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gigibyte, Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -3338,37 +3340,5 @@ class WebhookIntegrationHeaderArgs:
     @header_value.setter
     def header_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "header_value", value)
-
-
-@pulumi.input_type
-class GetAwsServicesServiceArgs:
-    def __init__(__self__, *,
-                 name: str):
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class GetAzureServicesServiceArgs:
-    def __init__(__self__, *,
-                 name: str):
-        pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: str):
-        pulumi.set(self, "name", value)
 
 

@@ -30,14 +30,14 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
     }
 
     /**
-     * An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+     * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
      * 
      */
     public Output<String> namespace() {
@@ -107,7 +107,7 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with SignalFx. See the AWS documentation on publishing metrics for more information.
+         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
          * 
          * @return builder
          * 

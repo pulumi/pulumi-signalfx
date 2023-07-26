@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-signalfx/sdk/v5/go/signalfx/logs"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/logs"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -101,6 +102,7 @@ func NewView(ctx *pulumi.Context,
 	if args.ProgramText == nil {
 		return nil, errors.New("invalid value for required argument 'ProgramText'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource View
 	err := ctx.RegisterResource("signalfx:logs/view:View", name, args, &resource, opts...)
 	if err != nil {
