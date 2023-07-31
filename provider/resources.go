@@ -42,7 +42,7 @@ const (
 	azureMod      = "Azure"
 	gcpMod        = "Gcp"
 	jiraMod       = "Jira"
-	logsMod       = "Logs"
+	logsMod       = "Log"
 	opsgenieMod   = "Opsgenie"
 	pagerdutyMod  = "PagerDuty"
 	slackMod      = "Slack"
@@ -175,7 +175,7 @@ func Provider() tfbridge.ProviderInfo {
 		"azure":       "Azure",
 		"gcp":         "Gcp",
 		"jira":        "Jira",
-		"log":         "Logs",
+		"log":         "Log",
 		"opsgenie":    "Opsgenie",
 		"pagerduty":   "PagerDuty",
 		"service_now": "ServiceNow",
