@@ -955,7 +955,7 @@ export namespace gcp {
 
 }
 
-export namespace logs {
+export namespace log {
     export interface ViewColumn {
         /**
          * Name of the log view.

@@ -20,14 +20,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     @Import(name="customMetricTypeDomains")
     private @Nullable Output<List<String>> customMetricTypeDomains;
 
     /**
-     * @return List of additional GCP service domain names that you want to monitor
+     * @return List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     public Optional<Output<List<String>>> customMetricTypeDomains() {
@@ -50,16 +50,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     @Import(name="importGcpMetrics")
     private @Nullable Output<Boolean> importGcpMetrics;
 
     /**
-     * @return If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * @return If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> importGcpMetrics() {
@@ -205,7 +203,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * @param customMetricTypeDomains List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
          * 
          * @return builder
          * 
@@ -216,7 +214,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * @param customMetricTypeDomains List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
          * 
          * @return builder
          * 
@@ -226,7 +224,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * @param customMetricTypeDomains List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
          * 
          * @return builder
          * 
@@ -257,8 +255,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importGcpMetrics If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-         * to true.
+         * @param importGcpMetrics If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
          * 
          * @return builder
          * 
@@ -269,8 +266,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importGcpMetrics If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-         * to true.
+         * @param importGcpMetrics If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
          * 
          * @return builder
          * 
