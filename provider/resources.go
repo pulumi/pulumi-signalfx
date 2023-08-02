@@ -45,7 +45,7 @@ const (
 	azureMod      = "Azure"
 	gcpMod        = "Gcp"
 	jiraMod       = "Jira"
-	logsMod       = "Logs"
+	logsMod       = "Log"
 	opsgenieMod   = "Opsgenie"
 	pagerdutyMod  = "PagerDuty"
 	slackMod      = "Slack"

@@ -1468,6 +1468,33 @@
                 "descending",
                 "field"
             ]
+        },
+        "signalfx:logs/ViewColumn:ViewColumn": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the log view.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "signalfx:logs/ViewSortOption:ViewSortOption": {
+            "properties": {
+                "descending": {
+                    "type": "boolean"
+                },
+                "field": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "descending",
+                "field"
+            ]
         }
     },
     "provider": {
@@ -6003,7 +6030,168 @@
                     }
                 },
                 "type": "object"
-            }
+            },
+            "aliases": [
+                {
+                    "type": "signalfx:logs/view:View"
+                }
+            ]
+        },
+        "signalfx:logs/view:View": {
+            "description": "You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst myLogView = new signalfx.log.View(\"myLogView\", {\n    columns: [\n        {\n            name: \"severity\",\n        },\n        {\n            name: \"time\",\n        },\n        {\n            name: \"amount.currency_code\",\n        },\n        {\n            name: \"amount.nanos\",\n        },\n        {\n            name: \"amount.units\",\n        },\n        {\n            name: \"message\",\n        },\n    ],\n    description: \"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\",\n    programText: `logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n`,\n    sortOptions: [{\n        descending: false,\n        field: \"severity\",\n    }],\n    timeRange: 900,\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nmy_log_view = signalfx.log.View(\"myLogView\",\n    columns=[\n        signalfx.log.ViewColumnArgs(\n            name=\"severity\",\n        ),\n        signalfx.log.ViewColumnArgs(\n            name=\"time\",\n        ),\n        signalfx.log.ViewColumnArgs(\n            name=\"amount.currency_code\",\n        ),\n        signalfx.log.ViewColumnArgs(\n            name=\"amount.nanos\",\n        ),\n        signalfx.log.ViewColumnArgs(\n            name=\"amount.units\",\n        ),\n        signalfx.log.ViewColumnArgs(\n            name=\"message\",\n        ),\n    ],\n    description=\"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\",\n    program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n\"\"\",\n    sort_options=[signalfx.log.ViewSortOptionArgs(\n        descending=False,\n        field=\"severity\",\n    )],\n    time_range=900)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myLogView = new SignalFx.Log.View(\"myLogView\", new()\n    {\n        Columns = new[]\n        {\n            new SignalFx.Log.Inputs.ViewColumnArgs\n            {\n                Name = \"severity\",\n            },\n            new SignalFx.Log.Inputs.ViewColumnArgs\n            {\n                Name = \"time\",\n            },\n            new SignalFx.Log.Inputs.ViewColumnArgs\n            {\n                Name = \"amount.currency_code\",\n            },\n            new SignalFx.Log.Inputs.ViewColumnArgs\n            {\n                Name = \"amount.nanos\",\n            },\n            new SignalFx.Log.Inputs.ViewColumnArgs\n            {\n                Name = \"amount.units\",\n            },\n            new SignalFx.Log.Inputs.ViewColumnArgs\n            {\n                Name = \"message\",\n            },\n        },\n        Description = \"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\",\n        ProgramText = @\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n\",\n        SortOptions = new[]\n        {\n            new SignalFx.Log.Inputs.ViewSortOptionArgs\n            {\n                Descending = false,\n                Field = \"severity\",\n            },\n        },\n        TimeRange = 900,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/log\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := log.NewView(ctx, \"myLogView\", \u0026log.ViewArgs{\n\t\t\tColumns: log.ViewColumnArray{\n\t\t\t\t\u0026log.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"severity\"),\n\t\t\t\t},\n\t\t\t\t\u0026log.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"time\"),\n\t\t\t\t},\n\t\t\t\t\u0026log.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"amount.currency_code\"),\n\t\t\t\t},\n\t\t\t\t\u0026log.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"amount.nanos\"),\n\t\t\t\t},\n\t\t\t\t\u0026log.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"amount.units\"),\n\t\t\t\t},\n\t\t\t\t\u0026log.ViewColumnArgs{\n\t\t\t\t\tName: pulumi.String(\"message\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\"),\n\t\t\tProgramText: pulumi.String(\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\\n\\n\"),\n\t\t\tSortOptions: log.ViewSortOptionArray{\n\t\t\t\t\u0026log.ViewSortOptionArgs{\n\t\t\t\t\tDescending: pulumi.Bool(false),\n\t\t\t\t\tField:      pulumi.String(\"severity\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTimeRange: pulumi.Int(900),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.log.View;\nimport com.pulumi.signalfx.log.ViewArgs;\nimport com.pulumi.signalfx.log.inputs.ViewColumnArgs;\nimport com.pulumi.signalfx.log.inputs.ViewSortOptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myLogView = new View(\"myLogView\", ViewArgs.builder()        \n            .columns(            \n                ViewColumnArgs.builder()\n                    .name(\"severity\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"time\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"amount.currency_code\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"amount.nanos\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"amount.units\")\n                    .build(),\n                ViewColumnArgs.builder()\n                    .name(\"message\")\n                    .build())\n            .description(\"Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\")\n            .programText(\"\"\"\nlogs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n            \"\"\")\n            .sortOptions(ViewSortOptionArgs.builder()\n                .descending(false)\n                .field(\"severity\")\n                .build())\n            .timeRange(900)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myLogView:\n    type: signalfx:log:View\n    properties:\n      columns:\n        - name: severity\n        - name: time\n        - name: amount.currency_code\n        - name: amount.nanos\n        - name: amount.units\n        - name: message\n      description: Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis\n      programText: |+\n        logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n      sortOptions:\n        - descending: false\n          field: severity\n      timeRange: 900\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:logs/ViewColumn:ViewColumn"
+                    },
+                    "description": "The column headers to show on the log view.\n"
+                },
+                "defaultConnection": {
+                    "type": "string",
+                    "description": "The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the log view.\n"
+                },
+                "endTime": {
+                    "type": "integer",
+                    "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the log view.\n"
+                },
+                "programText": {
+                    "type": "string",
+                    "description": "Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.\n"
+                },
+                "sortOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:logs/ViewSortOption:ViewSortOption"
+                    },
+                    "description": "The sorting options configuration to specify if the log view table needs to be sorted in a particular field.\n"
+                },
+                "startTime": {
+                    "type": "integer",
+                    "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "timeRange": {
+                    "type": "integer",
+                    "description": "From when to display data. SignalFx time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the log view.\n"
+                }
+            },
+            "required": [
+                "name",
+                "programText",
+                "url"
+            ],
+            "inputProperties": {
+                "columns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:logs/ViewColumn:ViewColumn"
+                    },
+                    "description": "The column headers to show on the log view.\n"
+                },
+                "defaultConnection": {
+                    "type": "string",
+                    "description": "The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the log view.\n"
+                },
+                "endTime": {
+                    "type": "integer",
+                    "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the log view.\n"
+                },
+                "programText": {
+                    "type": "string",
+                    "description": "Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.\n"
+                },
+                "sortOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:logs/ViewSortOption:ViewSortOption"
+                    },
+                    "description": "The sorting options configuration to specify if the log view table needs to be sorted in a particular field.\n"
+                },
+                "startTime": {
+                    "type": "integer",
+                    "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                },
+                "timeRange": {
+                    "type": "integer",
+                    "description": "From when to display data. SignalFx time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
+                }
+            },
+            "requiredInputs": [
+                "programText"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering View resources.\n",
+                "properties": {
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:logs/ViewColumn:ViewColumn"
+                        },
+                        "description": "The column headers to show on the log view.\n"
+                    },
+                    "defaultConnection": {
+                        "type": "string",
+                        "description": "The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the log view.\n"
+                    },
+                    "endTime": {
+                        "type": "integer",
+                        "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the log view.\n"
+                    },
+                    "programText": {
+                        "type": "string",
+                        "description": "Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.\n"
+                    },
+                    "sortOptions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/signalfx:logs/ViewSortOption:ViewSortOption"
+                        },
+                        "description": "The sorting options configuration to specify if the log view table needs to be sorted in a particular field.\n"
+                    },
+                    "startTime": {
+                        "type": "integer",
+                        "description": "Seconds since epoch. Used for visualization. Conflicts with `time_range`.\n"
+                    },
+                    "timeRange": {
+                        "type": "integer",
+                        "description": "From when to display data. SignalFx time syntax (e.g. `\"-5m\"`, `\"-1h\"`). Conflicts with `start_time` and `end_time`.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL of the log view.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "deprecationMessage": "signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View"
         },
         "signalfx:opsgenie/integration:Integration": {
             "description": "SignalFx Opsgenie integration.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as signalfx from \"@pulumi/signalfx\";\n\nconst opgenieMyteam = new signalfx.opsgenie.Integration(\"opgenieMyteam\", {\n    apiKey: \"my-key\",\n    apiUrl: \"https://api.opsgenie.com\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_signalfx as signalfx\n\nopgenie_myteam = signalfx.opsgenie.Integration(\"opgenieMyteam\",\n    api_key=\"my-key\",\n    api_url=\"https://api.opsgenie.com\",\n    enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SignalFx = Pulumi.SignalFx;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var opgenieMyteam = new SignalFx.Opsgenie.Integration(\"opgenieMyteam\", new()\n    {\n        ApiKey = \"my-key\",\n        ApiUrl = \"https://api.opsgenie.com\",\n        Enabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/opsgenie\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := opsgenie.NewIntegration(ctx, \"opgenieMyteam\", \u0026opsgenie.IntegrationArgs{\n\t\t\tApiKey:  pulumi.String(\"my-key\"),\n\t\t\tApiUrl:  pulumi.String(\"https://api.opsgenie.com\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.opsgenie.Integration;\nimport com.pulumi.signalfx.opsgenie.IntegrationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var opgenieMyteam = new Integration(\"opgenieMyteam\", IntegrationArgs.builder()        \n            .apiKey(\"my-key\")\n            .apiUrl(\"https://api.opsgenie.com\")\n            .enabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  opgenieMyteam:\n    type: signalfx:opsgenie:Integration\n    properties:\n      apiKey: my-key\n      apiUrl: https://api.opsgenie.com\n      enabled: true\n```\n{{% /example %}}\n{{% /examples %}}",
