@@ -38,6 +38,8 @@
         "log/index.ts",
         "log/timeline.ts",
         "log/view.ts",
+        "logs/index.ts",
+        "logs/view.ts",
         "metricRuleset.ts",
         "opsgenie/index.ts",
         "opsgenie/integration.ts",

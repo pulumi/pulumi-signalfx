@@ -969,3 +969,18 @@ export namespace log {
     }
 
 }
+
+export namespace logs {
+    export interface ViewColumn {
+        /**
+         * Name of the log view.
+         */
+        name: string;
+    }
+
+    export interface ViewSortOption {
+        descending: boolean;
+        field: string;
+    }
+
+}

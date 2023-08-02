@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SignalFx.Log
+namespace Pulumi.SignalFx.Logs
 {
     /// <summary>
     /// You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
@@ -69,7 +69,8 @@ namespace Pulumi.SignalFx.Log
     /// });
     /// ```
     /// </summary>
-    [SignalFxResourceType("signalfx:log/view:View")]
+    [Obsolete(@"signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View")]
+    [SignalFxResourceType("signalfx:logs/view:View")]
     public partial class View : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -141,12 +142,12 @@ namespace Pulumi.SignalFx.Log
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public View(string name, ViewArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:log/view:View", name, args ?? new ViewArgs(), MakeResourceOptions(options, ""))
+            : base("signalfx:logs/view:View", name, args ?? new ViewArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private View(string name, Input<string> id, ViewState? state = null, CustomResourceOptions? options = null)
-            : base("signalfx:log/view:View", name, state, MakeResourceOptions(options, id))
+            : base("signalfx:logs/view:View", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -155,10 +156,6 @@ namespace Pulumi.SignalFx.Log
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                Aliases =
-                {
-                    new global::Pulumi.Alias { Type = "signalfx:logs/view:View"},
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

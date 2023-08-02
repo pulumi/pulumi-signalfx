@@ -40,6 +40,8 @@ if typing.TYPE_CHECKING:
     jira = __jira
     import pulumi_signalfx.log as __log
     log = __log
+    import pulumi_signalfx.logs as __logs
+    logs = __logs
     import pulumi_signalfx.opsgenie as __opsgenie
     opsgenie = __opsgenie
     import pulumi_signalfx.pagerduty as __pagerduty
@@ -57,6 +59,7 @@ else:
     gcp = _utilities.lazy_import('pulumi_signalfx.gcp')
     jira = _utilities.lazy_import('pulumi_signalfx.jira')
     log = _utilities.lazy_import('pulumi_signalfx.log')
+    logs = _utilities.lazy_import('pulumi_signalfx.logs')
     opsgenie = _utilities.lazy_import('pulumi_signalfx.opsgenie')
     pagerduty = _utilities.lazy_import('pulumi_signalfx.pagerduty')
     servicenow = _utilities.lazy_import('pulumi_signalfx.servicenow')
@@ -256,6 +259,14 @@ _utilities.register(
   "fqn": "pulumi_signalfx.log",
   "classes": {
    "signalfx:log/view:View": "View"
+  }
+ },
+ {
+  "pkg": "signalfx",
+  "mod": "logs/view",
+  "fqn": "pulumi_signalfx.logs",
+  "classes": {
+   "signalfx:logs/view:View": "View"
   }
  },
  {

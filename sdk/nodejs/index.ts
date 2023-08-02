@@ -103,6 +103,7 @@ import * as config from "./config";
 import * as gcp from "./gcp";
 import * as jira from "./jira";
 import * as log from "./log";
+import * as logs from "./logs";
 import * as opsgenie from "./opsgenie";
 import * as pagerduty from "./pagerduty";
 import * as servicenow from "./servicenow";
@@ -117,6 +118,7 @@ export {
     gcp,
     jira,
     log,
+    logs,
     opsgenie,
     pagerduty,
     servicenow,
