@@ -47,7 +47,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var gcpMyteam = new Integration(&#34;gcpMyteam&#34;, IntegrationArgs.builder()        
+ *             .customMetricTypeDomains(&#34;istio.io&#34;)
  *             .enabled(true)
+ *             .importGcpMetrics(true)
  *             .pollRate(300)
  *             .projectServiceKeys(            
  *                 IntegrationProjectServiceKeyArgs.builder()
@@ -69,14 +71,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:gcp/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     @Export(name="customMetricTypeDomains", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> customMetricTypeDomains;
 
     /**
-     * @return List of additional GCP service domain names that you want to monitor
+     * @return List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     public Output<Optional<List<String>>> customMetricTypeDomains() {
@@ -97,16 +99,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     @Export(name="importGcpMetrics", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> importGcpMetrics;
 
     /**
-     * @return If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * @return If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     public Output<Optional<Boolean>> importGcpMetrics() {

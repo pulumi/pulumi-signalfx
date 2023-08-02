@@ -332,12 +332,7 @@ class _ViewState:
         pulumi.set(self, "url", value)
 
 
-warnings.warn("""signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View""", DeprecationWarning)
-
-
 class View(pulumi.CustomResource):
-    warnings.warn("""signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View""", DeprecationWarning)
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -477,7 +472,6 @@ class View(pulumi.CustomResource):
                  start_time: Optional[pulumi.Input[int]] = None,
                  time_range: Optional[pulumi.Input[int]] = None,
                  __props__=None):
-        pulumi.log.warn("""View is deprecated: signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -498,8 +492,10 @@ class View(pulumi.CustomResource):
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["url"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="signalfx:logs/view:View")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(View, __self__).__init__(
-            'signalfx:logs/view:View',
+            'signalfx:log/view:View',
             resource_name,
             __props__,
             opts)

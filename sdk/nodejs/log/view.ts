@@ -47,8 +47,6 @@ import * as utilities from "../utilities";
  *     timeRange: 900,
  * });
  * ```
- *
- * @deprecated signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View
  */
 export class View extends pulumi.CustomResource {
     /**
@@ -61,12 +59,11 @@ export class View extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ViewState, opts?: pulumi.CustomResourceOptions): View {
-        pulumi.log.warn("View is deprecated: signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View")
         return new View(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'signalfx:logs/view:View';
+    public static readonly __pulumiType = 'signalfx:log/view:View';
 
     /**
      * Returns true if the given object is an instance of View.  This is designed to work even
@@ -82,7 +79,7 @@ export class View extends pulumi.CustomResource {
     /**
      * The column headers to show on the log view.
      */
-    public readonly columns!: pulumi.Output<outputs.logs.ViewColumn[] | undefined>;
+    public readonly columns!: pulumi.Output<outputs.log.ViewColumn[] | undefined>;
     /**
      * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
@@ -106,7 +103,7 @@ export class View extends pulumi.CustomResource {
     /**
      * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    public readonly sortOptions!: pulumi.Output<outputs.logs.ViewSortOption[] | undefined>;
+    public readonly sortOptions!: pulumi.Output<outputs.log.ViewSortOption[] | undefined>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
@@ -127,11 +124,8 @@ export class View extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View */
     constructor(name: string, args: ViewArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View */
     constructor(name: string, argsOrState?: ViewArgs | ViewState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("View is deprecated: signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -163,6 +157,8 @@ export class View extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "signalfx:logs/view:View" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(View.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -174,7 +170,7 @@ export interface ViewState {
     /**
      * The column headers to show on the log view.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.logs.ViewColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[]>;
     /**
      * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
@@ -198,7 +194,7 @@ export interface ViewState {
     /**
      * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    sortOptions?: pulumi.Input<pulumi.Input<inputs.logs.ViewSortOption>[]>;
+    sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[]>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
@@ -220,7 +216,7 @@ export interface ViewArgs {
     /**
      * The column headers to show on the log view.
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.logs.ViewColumn>[]>;
+    columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[]>;
     /**
      * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
@@ -244,7 +240,7 @@ export interface ViewArgs {
     /**
      * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      */
-    sortOptions?: pulumi.Input<pulumi.Input<inputs.logs.ViewSortOption>[]>;
+    sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[]>;
     /**
      * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */

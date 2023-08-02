@@ -7,10 +7,11 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SignalFx.Logs
+namespace Pulumi.SignalFx.Log
 {
     /// <summary>
-    /// You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+    /// You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
+    /// A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
     /// 
     /// ## Example Usage
     /// 
@@ -22,71 +23,29 @@ namespace Pulumi.SignalFx.Logs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myLogView = new SignalFx.Log.View("myLogView", new()
+    ///     var myLogTimeline = new SignalFx.Log.Timeline("myLogTimeline", new()
     ///     {
-    ///         Columns = new[]
-    ///         {
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "severity",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "time",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "amount.currency_code",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "amount.nanos",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "amount.units",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "message",
-    ///             },
-    ///         },
     ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
     ///         ProgramText = @"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
     /// 
     /// ",
-    ///         SortOptions = new[]
-    ///         {
-    ///             new SignalFx.Log.Inputs.ViewSortOptionArgs
-    ///             {
-    ///                 Descending = false,
-    ///                 Field = "severity",
-    ///             },
-    ///         },
     ///         TimeRange = 900,
     ///     });
     /// 
     /// });
     /// ```
     /// </summary>
-    [Obsolete(@"signalfx.logs/view.View has been deprecated in favor of signalfx.log/view.View")]
-    [SignalFxResourceType("signalfx:logs/view:View")]
-    public partial class View : global::Pulumi.CustomResource
+    [SignalFxResourceType("signalfx:log/timeline:Timeline")]
+    public partial class Timeline : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The column headers to show on the log view.
-        /// </summary>
-        [Output("columns")]
-        public Output<ImmutableArray<Outputs.ViewColumn>> Columns { get; private set; } = null!;
-
-        /// <summary>
-        /// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        /// The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         /// </summary>
         [Output("defaultConnection")]
         public Output<string?> DefaultConnection { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the log view.
+        /// Description of the log timeline.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -98,22 +57,16 @@ namespace Pulumi.SignalFx.Logs
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the log view.
+        /// Name of the log timeline.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
-
-        /// <summary>
-        /// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
-        /// </summary>
-        [Output("sortOptions")]
-        public Output<ImmutableArray<Outputs.ViewSortOption>> SortOptions { get; private set; } = null!;
 
         /// <summary>
         /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -128,26 +81,26 @@ namespace Pulumi.SignalFx.Logs
         public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the log view.
+        /// The URL of the log timeline.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a View resource with the given unique name, arguments, and options.
+        /// Create a Timeline resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public View(string name, ViewArgs args, CustomResourceOptions? options = null)
-            : base("signalfx:logs/view:View", name, args ?? new ViewArgs(), MakeResourceOptions(options, ""))
+        public Timeline(string name, TimelineArgs args, CustomResourceOptions? options = null)
+            : base("signalfx:log/timeline:Timeline", name, args ?? new TimelineArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private View(string name, Input<string> id, ViewState? state = null, CustomResourceOptions? options = null)
-            : base("signalfx:logs/view:View", name, state, MakeResourceOptions(options, id))
+        private Timeline(string name, Input<string> id, TimelineState? state = null, CustomResourceOptions? options = null)
+            : base("signalfx:log/timeline:Timeline", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -163,7 +116,7 @@ namespace Pulumi.SignalFx.Logs
             return merged;
         }
         /// <summary>
-        /// Get an existing View resource's state with the given name, ID, and optional extra
+        /// Get an existing Timeline resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -171,34 +124,22 @@ namespace Pulumi.SignalFx.Logs
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static View Get(string name, Input<string> id, ViewState? state = null, CustomResourceOptions? options = null)
+        public static Timeline Get(string name, Input<string> id, TimelineState? state = null, CustomResourceOptions? options = null)
         {
-            return new View(name, id, state, options);
+            return new Timeline(name, id, state, options);
         }
     }
 
-    public sealed class ViewArgs : global::Pulumi.ResourceArgs
+    public sealed class TimelineArgs : global::Pulumi.ResourceArgs
     {
-        [Input("columns")]
-        private InputList<Inputs.ViewColumnArgs>? _columns;
-
         /// <summary>
-        /// The column headers to show on the log view.
-        /// </summary>
-        public InputList<Inputs.ViewColumnArgs> Columns
-        {
-            get => _columns ?? (_columns = new InputList<Inputs.ViewColumnArgs>());
-            set => _columns = value;
-        }
-
-        /// <summary>
-        /// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        /// The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         /// </summary>
         [Input("defaultConnection")]
         public Input<string>? DefaultConnection { get; set; }
 
         /// <summary>
-        /// Description of the log view.
+        /// Description of the log timeline.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -210,29 +151,17 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of the log view.
+        /// Name of the log timeline.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
 
-        [Input("sortOptions")]
-        private InputList<Inputs.ViewSortOptionArgs>? _sortOptions;
-
-        /// <summary>
-        /// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
-        /// </summary>
-        public InputList<Inputs.ViewSortOptionArgs> SortOptions
-        {
-            get => _sortOptions ?? (_sortOptions = new InputList<Inputs.ViewSortOptionArgs>());
-            set => _sortOptions = value;
-        }
-
         /// <summary>
         /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
@@ -245,34 +174,22 @@ namespace Pulumi.SignalFx.Logs
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
-        public ViewArgs()
+        public TimelineArgs()
         {
         }
-        public static new ViewArgs Empty => new ViewArgs();
+        public static new TimelineArgs Empty => new TimelineArgs();
     }
 
-    public sealed class ViewState : global::Pulumi.ResourceArgs
+    public sealed class TimelineState : global::Pulumi.ResourceArgs
     {
-        [Input("columns")]
-        private InputList<Inputs.ViewColumnGetArgs>? _columns;
-
         /// <summary>
-        /// The column headers to show on the log view.
-        /// </summary>
-        public InputList<Inputs.ViewColumnGetArgs> Columns
-        {
-            get => _columns ?? (_columns = new InputList<Inputs.ViewColumnGetArgs>());
-            set => _columns = value;
-        }
-
-        /// <summary>
-        /// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        /// The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         /// </summary>
         [Input("defaultConnection")]
         public Input<string>? DefaultConnection { get; set; }
 
         /// <summary>
-        /// Description of the log view.
+        /// Description of the log timeline.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -284,28 +201,16 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of the log view.
+        /// Name of the log timeline.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        /// Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
-
-        [Input("sortOptions")]
-        private InputList<Inputs.ViewSortOptionGetArgs>? _sortOptions;
-
-        /// <summary>
-        /// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
-        /// </summary>
-        public InputList<Inputs.ViewSortOptionGetArgs> SortOptions
-        {
-            get => _sortOptions ?? (_sortOptions = new InputList<Inputs.ViewSortOptionGetArgs>());
-            set => _sortOptions = value;
-        }
 
         /// <summary>
         /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -320,14 +225,14 @@ namespace Pulumi.SignalFx.Logs
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
-        /// The URL of the log view.
+        /// The URL of the log timeline.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 
-        public ViewState()
+        public TimelineState()
         {
         }
-        public static new ViewState Empty => new ViewState();
+        public static new TimelineState Empty => new TimelineState();
     }
 }

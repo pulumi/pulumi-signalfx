@@ -955,6 +955,21 @@ export namespace gcp {
 
 }
 
+export namespace log {
+    export interface ViewColumn {
+        /**
+         * Name of the log view.
+         */
+        name: string;
+    }
+
+    export interface ViewSortOption {
+        descending: boolean;
+        field: string;
+    }
+
+}
+
 export namespace logs {
     export interface ViewColumn {
         /**

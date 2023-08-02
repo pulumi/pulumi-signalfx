@@ -20,6 +20,9 @@ import (
 	"strings"
 	"unicode"
 
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
+
 	"github.com/pulumi/pulumi-signalfx/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -42,7 +45,7 @@ const (
 	azureMod      = "Azure"
 	gcpMod        = "Gcp"
 	jiraMod       = "Jira"
-	logsMod       = "Logs"
+	logsMod       = "Log"
 	opsgenieMod   = "Opsgenie"
 	pagerdutyMod  = "PagerDuty"
 	slackMod      = "Slack"
@@ -92,6 +95,8 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:            "splunk-terraform",
 		Config:               map[string]*tfbridge.SchemaInfo{},
 		PreConfigureCallback: preConfigureCallback,
+		Version:              version.Version,
+		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
 			"signalfx_dashboard_group":     {Tok: makeResource(mainMod, "DashboardGroup")},
@@ -175,7 +180,7 @@ func Provider() tfbridge.ProviderInfo {
 		"azure":       "Azure",
 		"gcp":         "Gcp",
 		"jira":        "Jira",
-		"log":         "Logs",
+		"log":         "Log",
 		"opsgenie":    "Opsgenie",
 		"pagerduty":   "PagerDuty",
 		"service_now": "ServiceNow",
@@ -200,8 +205,12 @@ func Provider() tfbridge.ProviderInfo {
 			return makeResource(m, name).String(), nil
 		}))
 	contract.AssertNoErrorf(err, "failed to compute defaults")
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-signalfx/bridge-metadata.json
+var metadata []byte

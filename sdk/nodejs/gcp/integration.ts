@@ -19,7 +19,9 @@ import * as utilities from "../utilities";
  * import * as signalfx from "@pulumi/signalfx";
  *
  * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {
+ *     customMetricTypeDomains: ["istio.io"],
  *     enabled: true,
+ *     importGcpMetrics: true,
  *     pollRate: 300,
  *     projectServiceKeys: [
  *         {
@@ -64,7 +66,7 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      */
     public readonly customMetricTypeDomains!: pulumi.Output<string[] | undefined>;
     /**
@@ -72,8 +74,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
     public readonly importGcpMetrics!: pulumi.Output<boolean | undefined>;
     /**
@@ -156,7 +157,7 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      */
     customMetricTypeDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -164,8 +165,7 @@ export interface IntegrationState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
     importGcpMetrics?: pulumi.Input<boolean>;
     /**
@@ -203,7 +203,7 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      */
     customMetricTypeDomains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -211,8 +211,7 @@ export interface IntegrationArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-     * to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
     importGcpMetrics?: pulumi.Input<boolean>;
     /**

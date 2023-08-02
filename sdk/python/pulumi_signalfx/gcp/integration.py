@@ -29,9 +29,8 @@ class IntegrationArgs:
         """
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
-        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-               to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -76,7 +75,7 @@ class IntegrationArgs:
     @pulumi.getter(name="customMetricTypeDomains")
     def custom_metric_type_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of additional GCP service domain names that you want to monitor
+        List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         """
         return pulumi.get(self, "custom_metric_type_domains")
 
@@ -88,8 +87,7 @@ class IntegrationArgs:
     @pulumi.getter(name="importGcpMetrics")
     def import_gcp_metrics(self) -> Optional[pulumi.Input[bool]]:
         """
-        If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-        to true.
+        If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         """
         return pulumi.get(self, "import_gcp_metrics")
 
@@ -197,10 +195,9 @@ class _IntegrationState:
                  use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-               to true.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -234,7 +231,7 @@ class _IntegrationState:
     @pulumi.getter(name="customMetricTypeDomains")
     def custom_metric_type_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of additional GCP service domain names that you want to monitor
+        List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         """
         return pulumi.get(self, "custom_metric_type_domains")
 
@@ -258,8 +255,7 @@ class _IntegrationState:
     @pulumi.getter(name="importGcpMetrics")
     def import_gcp_metrics(self) -> Optional[pulumi.Input[bool]]:
         """
-        If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-        to true.
+        If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         """
         return pulumi.get(self, "import_gcp_metrics")
 
@@ -380,7 +376,9 @@ class Integration(pulumi.CustomResource):
         import pulumi_signalfx as signalfx
 
         gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
+            custom_metric_type_domains=["istio.io"],
             enabled=True,
+            import_gcp_metrics=True,
             poll_rate=300,
             project_service_keys=[
                 signalfx.gcp.IntegrationProjectServiceKeyArgs(
@@ -397,10 +395,9 @@ class Integration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-               to true.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -427,7 +424,9 @@ class Integration(pulumi.CustomResource):
         import pulumi_signalfx as signalfx
 
         gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
+            custom_metric_type_domains=["istio.io"],
             enabled=True,
+            import_gcp_metrics=True,
             poll_rate=300,
             project_service_keys=[
                 signalfx.gcp.IntegrationProjectServiceKeyArgs(
@@ -517,10 +516,9 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that you want to monitor
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[bool] import_gcp_metrics: If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-               to true.
+        :param pulumi.Input[bool] import_gcp_metrics: If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_lists: [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
@@ -549,7 +547,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="customMetricTypeDomains")
     def custom_metric_type_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of additional GCP service domain names that you want to monitor
+        List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
         """
         return pulumi.get(self, "custom_metric_type_domains")
 
@@ -565,8 +563,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="importGcpMetrics")
     def import_gcp_metrics(self) -> pulumi.Output[Optional[bool]]:
         """
-        If enabled, SignalFx will sync also Google Cloud Metrics data. If disabled, SignalFx will import only metadata. Defaults
-        to true.
+        If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
         """
         return pulumi.get(self, "import_gcp_metrics")
 

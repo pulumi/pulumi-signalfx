@@ -102,6 +102,7 @@ import * as azure from "./azure";
 import * as config from "./config";
 import * as gcp from "./gcp";
 import * as jira from "./jira";
+import * as log from "./log";
 import * as logs from "./logs";
 import * as opsgenie from "./opsgenie";
 import * as pagerduty from "./pagerduty";
@@ -116,6 +117,7 @@ export {
     config,
     gcp,
     jira,
+    log,
     logs,
     opsgenie,
     pagerduty,
