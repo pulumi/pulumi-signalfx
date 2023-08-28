@@ -69,7 +69,7 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      * The description for this muting rule
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -83,7 +83,7 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      * 
      */
-    @Export(name="detectors", type=List.class, parameters={String.class})
+    @Export(name="detectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> detectors;
 
     /**
@@ -93,7 +93,7 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> detectors() {
         return Codegen.optional(this.detectors);
     }
-    @Export(name="effectiveStartTime", type=Integer.class, parameters={})
+    @Export(name="effectiveStartTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> effectiveStartTime;
 
     public Output<Integer> effectiveStartTime() {
@@ -103,7 +103,7 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      * 
      */
-    @Export(name="filters", type=List.class, parameters={AlertMutingRuleFilter.class})
+    @Export(name="filters", refs={List.class,AlertMutingRuleFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertMutingRuleFilter>> filters;
 
     /**
@@ -117,7 +117,7 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      * 
      */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> startTime;
 
     /**
@@ -131,7 +131,7 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      * Stop time of an alert muting rule as a Unix time stamp in seconds.
      * 
      */
-    @Export(name="stopTime", type=Integer.class, parameters={})
+    @Export(name="stopTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stopTime;
 
     /**

@@ -386,7 +386,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
      * 
      */
-    @Export(name="authorizedWriterTeams", type=List.class, parameters={String.class})
+    @Export(name="authorizedWriterTeams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
@@ -400,7 +400,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
      * 
      */
-    @Export(name="authorizedWriterUsers", type=List.class, parameters={String.class})
+    @Export(name="authorizedWriterUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
@@ -414,7 +414,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -428,7 +428,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      * 
      */
-    @Export(name="disableSampling", type=Boolean.class, parameters={})
+    @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
@@ -442,7 +442,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="endTime", type=Integer.class, parameters={})
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
@@ -456,7 +456,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
      * 
      */
-    @Export(name="labelResolutions", type=Map.class, parameters={String.class, Integer.class})
+    @Export(name="labelResolutions", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> labelResolutions;
 
     /**
@@ -470,7 +470,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
      * 
      */
-    @Export(name="maxDelay", type=Integer.class, parameters={})
+    @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
@@ -484,7 +484,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
      * 
      */
-    @Export(name="minDelay", type=Integer.class, parameters={})
+    @Export(name="minDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDelay;
 
     /**
@@ -498,7 +498,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Name of the detector.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -512,7 +512,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -526,7 +526,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Set of rules used for alerting.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={DetectorRule.class})
+    @Export(name="rules", refs={List.class,DetectorRule.class}, tree="[0,1]")
     private Output<List<DetectorRule>> rules;
 
     /**
@@ -540,7 +540,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
      * 
      */
-    @Export(name="showDataMarkers", type=Boolean.class, parameters={})
+    @Export(name="showDataMarkers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showDataMarkers;
 
     /**
@@ -554,7 +554,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
      * 
      */
-    @Export(name="showEventLines", type=Boolean.class, parameters={})
+    @Export(name="showEventLines", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showEventLines;
 
     /**
@@ -568,7 +568,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
@@ -582,7 +582,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Tags associated with the detector.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -596,7 +596,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Team IDs to associate the detector to.
      * 
      */
-    @Export(name="teams", type=List.class, parameters={String.class})
+    @Export(name="teams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> teams;
 
     /**
@@ -610,7 +610,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
      * 
      */
-    @Export(name="timeRange", type=Integer.class, parameters={})
+    @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
@@ -624,7 +624,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -638,7 +638,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * The URL of the detector.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -652,7 +652,7 @@ public class Detector extends com.pulumi.resources.CustomResource {
      * Plot-level customization options, associated with a publish statement.
      * 
      */
-    @Export(name="vizOptions", type=List.class, parameters={DetectorVizOption.class})
+    @Export(name="vizOptions", refs={List.class,DetectorVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DetectorVizOption>> vizOptions;
 
     /**

@@ -66,7 +66,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * The API token for the user email
      * 
      */
-    @Export(name="apiToken", type=String.class, parameters={})
+    @Export(name="apiToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiToken;
 
     /**
@@ -80,7 +80,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Jira display name for the assignee.
      * 
      */
-    @Export(name="assigneeDisplayName", type=String.class, parameters={})
+    @Export(name="assigneeDisplayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> assigneeDisplayName;
 
     /**
@@ -94,7 +94,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Jira user name for the assignee.
      * 
      */
-    @Export(name="assigneeName", type=String.class, parameters={})
+    @Export(name="assigneeName", refs={String.class}, tree="[0]")
     private Output<String> assigneeName;
 
     /**
@@ -108,7 +108,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
      * 
      */
-    @Export(name="authMethod", type=String.class, parameters={})
+    @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
@@ -122,7 +122,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Base URL of the Jira instance that&#39;s integrated with SignalFx.
      * 
      */
-    @Export(name="baseUrl", type=String.class, parameters={})
+    @Export(name="baseUrl", refs={String.class}, tree="[0]")
     private Output<String> baseUrl;
 
     /**
@@ -136,7 +136,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Whether the integration is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -150,7 +150,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
      * 
      */
-    @Export(name="issueType", type=String.class, parameters={})
+    @Export(name="issueType", refs={String.class}, tree="[0]")
     private Output<String> issueType;
 
     /**
@@ -164,7 +164,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -178,7 +178,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Password used to authenticate the Jira integration.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -192,7 +192,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      * 
      */
-    @Export(name="projectKey", type=String.class, parameters={})
+    @Export(name="projectKey", refs={String.class}, tree="[0]")
     private Output<String> projectKey;
 
     /**
@@ -206,7 +206,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Email address used to authenticate the Jira integration.
      * 
      */
-    @Export(name="userEmail", type=String.class, parameters={})
+    @Export(name="userEmail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userEmail;
 
     /**
@@ -220,7 +220,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * User name used to authenticate the Jira integration.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**

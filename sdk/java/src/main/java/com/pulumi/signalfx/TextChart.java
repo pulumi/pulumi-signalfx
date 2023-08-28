@@ -73,7 +73,7 @@ public class TextChart extends com.pulumi.resources.CustomResource {
      * Description of the text note.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -87,7 +87,7 @@ public class TextChart extends com.pulumi.resources.CustomResource {
      * Markdown text to display.
      * 
      */
-    @Export(name="markdown", type=String.class, parameters={})
+    @Export(name="markdown", refs={String.class}, tree="[0]")
     private Output<String> markdown;
 
     /**
@@ -101,7 +101,7 @@ public class TextChart extends com.pulumi.resources.CustomResource {
      * Name of the text note.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class TextChart extends com.pulumi.resources.CustomResource {
      * The URL of the chart.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

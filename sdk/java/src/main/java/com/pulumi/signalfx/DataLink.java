@@ -79,7 +79,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
      * 
      */
-    @Export(name="contextDashboardId", type=String.class, parameters={})
+    @Export(name="contextDashboardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contextDashboardId;
 
     /**
@@ -93,7 +93,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
      * 
      */
-    @Export(name="propertyName", type=String.class, parameters={})
+    @Export(name="propertyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> propertyName;
 
     /**
@@ -107,7 +107,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
      * 
      */
-    @Export(name="propertyValue", type=String.class, parameters={})
+    @Export(name="propertyValue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> propertyValue;
 
     /**
@@ -121,7 +121,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * Link to an external URL
      * 
      */
-    @Export(name="targetExternalUrls", type=List.class, parameters={DataLinkTargetExternalUrl.class})
+    @Export(name="targetExternalUrls", refs={List.class,DataLinkTargetExternalUrl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataLinkTargetExternalUrl>> targetExternalUrls;
 
     /**
@@ -135,7 +135,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * Link to a SignalFx dashboard
      * 
      */
-    @Export(name="targetSignalfxDashboards", type=List.class, parameters={DataLinkTargetSignalfxDashboard.class})
+    @Export(name="targetSignalfxDashboards", refs={List.class,DataLinkTargetSignalfxDashboard.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataLinkTargetSignalfxDashboard>> targetSignalfxDashboards;
 
     /**
@@ -149,7 +149,7 @@ public class DataLink extends com.pulumi.resources.CustomResource {
      * Link to an external URL
      * 
      */
-    @Export(name="targetSplunks", type=List.class, parameters={DataLinkTargetSplunk.class})
+    @Export(name="targetSplunks", refs={List.class,DataLinkTargetSplunk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataLinkTargetSplunk>> targetSplunks;
 
     /**

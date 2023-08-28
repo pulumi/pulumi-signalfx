@@ -66,7 +66,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * Whether the integration is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -80,7 +80,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * A header to send with the request
      * 
      */
-    @Export(name="headers", type=List.class, parameters={WebhookIntegrationHeader.class})
+    @Export(name="headers", refs={List.class,WebhookIntegrationHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WebhookIntegrationHeader>> headers;
 
     /**
@@ -94,7 +94,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * Name of the integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -104,7 +104,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="sharedSecret", type=String.class, parameters={})
+    @Export(name="sharedSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharedSecret;
 
     public Output<Optional<String>> sharedSecret() {
@@ -114,7 +114,7 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      * The URL to request
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**

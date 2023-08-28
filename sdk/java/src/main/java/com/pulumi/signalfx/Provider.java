@@ -26,7 +26,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * API URL for your SignalFx org, may include a realm
      * 
      */
-    @Export(name="apiUrl", type=String.class, parameters={})
+    @Export(name="apiUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiUrl;
 
     /**
@@ -40,7 +40,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * SignalFx auth token
      * 
      */
-    @Export(name="authToken", type=String.class, parameters={})
+    @Export(name="authToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authToken;
 
     /**
@@ -54,7 +54,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Application URL for your SignalFx org, often customized for organizations using SSO
      * 
      */
-    @Export(name="customAppUrl", type=String.class, parameters={})
+    @Export(name="customAppUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customAppUrl;
 
     /**

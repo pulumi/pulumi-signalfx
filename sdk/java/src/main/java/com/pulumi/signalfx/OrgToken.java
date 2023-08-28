@@ -72,7 +72,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Authentication scope, ex: INGEST, API, RUM ... (Optional)
      * 
      */
-    @Export(name="authScopes", type=List.class, parameters={String.class})
+    @Export(name="authScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> authScopes;
 
     /**
@@ -86,7 +86,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Description of the token.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -114,7 +114,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Specify DPM-based limits for this token.
      * 
      */
-    @Export(name="dpmLimits", type=OrgTokenDpmLimits.class, parameters={})
+    @Export(name="dpmLimits", refs={OrgTokenDpmLimits.class}, tree="[0]")
     private Output</* @Nullable */ OrgTokenDpmLimits> dpmLimits;
 
     /**
@@ -128,7 +128,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Specify Usage-based limits for this token.
      * 
      */
-    @Export(name="hostOrUsageLimits", type=OrgTokenHostOrUsageLimits.class, parameters={})
+    @Export(name="hostOrUsageLimits", refs={OrgTokenHostOrUsageLimits.class}, tree="[0]")
     private Output</* @Nullable */ OrgTokenHostOrUsageLimits> hostOrUsageLimits;
 
     /**
@@ -142,7 +142,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Name of the token.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -156,7 +156,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
      * 
      */
-    @Export(name="notifications", type=List.class, parameters={String.class})
+    @Export(name="notifications", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notifications;
 
     /**
@@ -170,7 +170,7 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
      * The secret token created by the API. You cannot set this value.
      * 
      */
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**

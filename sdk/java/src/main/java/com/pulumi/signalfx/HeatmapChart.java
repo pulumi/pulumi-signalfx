@@ -92,7 +92,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      * 
      */
-    @Export(name="colorRange", type=HeatmapChartColorRange.class, parameters={})
+    @Export(name="colorRange", refs={HeatmapChartColorRange.class}, tree="[0]")
     private Output</* @Nullable */ HeatmapChartColorRange> colorRange;
 
     /**
@@ -106,7 +106,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      * 
      */
-    @Export(name="colorScales", type=List.class, parameters={HeatmapChartColorScale.class})
+    @Export(name="colorScales", refs={List.class,HeatmapChartColorScale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HeatmapChartColorScale>> colorScales;
 
     /**
@@ -120,7 +120,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Description of the chart.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -134,7 +134,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      * 
      */
-    @Export(name="disableSampling", type=Boolean.class, parameters={})
+    @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
@@ -148,7 +148,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Properties to group by in the heatmap (in nesting order).
      * 
      */
-    @Export(name="groupBies", type=List.class, parameters={String.class})
+    @Export(name="groupBies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupBies;
 
     /**
@@ -162,7 +162,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Whether to show the timestamp in the chart. `false` by default.
      * 
      */
-    @Export(name="hideTimestamp", type=Boolean.class, parameters={})
+    @Export(name="hideTimestamp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hideTimestamp;
 
     /**
@@ -176,7 +176,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait for late datapoints.
      * 
      */
-    @Export(name="maxDelay", type=Integer.class, parameters={})
+    @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
@@ -190,7 +190,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * The minimum resolution (in seconds) to use for computing the underlying program.
      * 
      */
-    @Export(name="minimumResolution", type=Integer.class, parameters={})
+    @Export(name="minimumResolution", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumResolution;
 
     /**
@@ -204,7 +204,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Name of the chart.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -218,7 +218,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -232,7 +232,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * How often (in seconds) to refresh the values of the heatmap.
      * 
      */
-    @Export(name="refreshInterval", type=Integer.class, parameters={})
+    @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
@@ -246,7 +246,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      * 
      */
-    @Export(name="sortBy", type=String.class, parameters={})
+    @Export(name="sortBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sortBy;
 
     /**
@@ -260,7 +260,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -274,7 +274,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
-    @Export(name="unitPrefix", type=String.class, parameters={})
+    @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
@@ -288,7 +288,7 @@ public class HeatmapChart extends com.pulumi.resources.CustomResource {
      * The URL of the chart.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

@@ -232,18 +232,18 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of AWS regions that Splunk Observability should monitor.
+     * List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      * 
      */
-    @Import(name="regions")
-    private @Nullable Output<List<String>> regions;
+    @Import(name="regions", required=true)
+    private Output<List<String>> regions;
 
     /**
-     * @return List of AWS regions that Splunk Observability should monitor.
+     * @return List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      * 
      */
-    public Optional<Output<List<String>>> regions() {
-        return Optional.ofNullable(this.regions);
+    public Output<List<String>> regions() {
+        return this.regions;
     }
 
     /**
@@ -703,18 +703,18 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions List of AWS regions that Splunk Observability should monitor.
+         * @param regions List of AWS regions that Splunk Observability should monitor. It cannot be empty.
          * 
          * @return builder
          * 
          */
-        public Builder regions(@Nullable Output<List<String>> regions) {
+        public Builder regions(Output<List<String>> regions) {
             $.regions = regions;
             return this;
         }
 
         /**
-         * @param regions List of AWS regions that Splunk Observability should monitor.
+         * @param regions List of AWS regions that Splunk Observability should monitor. It cannot be empty.
          * 
          * @return builder
          * 
@@ -724,7 +724,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions List of AWS regions that Splunk Observability should monitor.
+         * @param regions List of AWS regions that Splunk Observability should monitor. It cannot be empty.
          * 
          * @return builder
          * 
@@ -855,6 +855,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         public IntegrationArgs build() {
             $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
             $.integrationId = Objects.requireNonNull($.integrationId, "expected parameter 'integrationId' to be non-null");
+            $.regions = Objects.requireNonNull($.regions, "expected parameter 'regions' to be non-null");
             return $;
         }
     }

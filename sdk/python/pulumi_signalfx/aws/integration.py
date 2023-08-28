@@ -18,6 +18,7 @@ class IntegrationArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  integration_id: pulumi.Input[str],
+                 regions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
                  enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -30,7 +31,6 @@ class IntegrationArgs:
                  named_token: Optional[pulumi.Input[str]] = None,
                  namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]] = None,
                  poll_rate: Optional[pulumi.Input[int]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sync_custom_namespaces_only: Optional[pulumi.Input[bool]] = None,
@@ -40,6 +40,7 @@ class IntegrationArgs:
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
         :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
@@ -52,7 +53,6 @@ class IntegrationArgs:
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
@@ -63,6 +63,7 @@ class IntegrationArgs:
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "integration_id", integration_id)
+        pulumi.set(__self__, "regions", regions)
         if custom_cloudwatch_namespaces is not None:
             pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
         if custom_namespace_sync_rules is not None:
@@ -87,8 +88,6 @@ class IntegrationArgs:
             pulumi.set(__self__, "namespace_sync_rules", namespace_sync_rules)
         if poll_rate is not None:
             pulumi.set(__self__, "poll_rate", poll_rate)
-        if regions is not None:
-            pulumi.set(__self__, "regions", regions)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if services is not None:
@@ -123,6 +122,18 @@ class IntegrationArgs:
     @integration_id.setter
     def integration_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "integration_id", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of AWS regions that Splunk Observability should monitor. It cannot be empty.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "regions", value)
 
     @property
     @pulumi.getter(name="customCloudwatchNamespaces")
@@ -269,18 +280,6 @@ class IntegrationArgs:
         pulumi.set(self, "poll_rate", value)
 
     @property
-    @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of AWS regions that Splunk Observability should monitor.
-        """
-        return pulumi.get(self, "regions")
-
-    @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "regions", value)
-
-    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
@@ -387,7 +386,7 @@ class _IntegrationState:
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
@@ -638,7 +637,7 @@ class _IntegrationState:
     @pulumi.getter
     def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of AWS regions that Splunk Observability should monitor.
+        List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         """
         return pulumi.get(self, "regions")
 
@@ -798,7 +797,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
@@ -922,6 +921,8 @@ class Integration(pulumi.CustomResource):
             __props__.__dict__["named_token"] = named_token
             __props__.__dict__["namespace_sync_rules"] = namespace_sync_rules
             __props__.__dict__["poll_rate"] = poll_rate
+            if regions is None and not opts.urn:
+                raise TypeError("Missing required property 'regions'")
             __props__.__dict__["regions"] = regions
             __props__.__dict__["role_arn"] = role_arn
             __props__.__dict__["services"] = services
@@ -988,7 +989,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
@@ -1156,9 +1157,9 @@ class Integration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def regions(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of AWS regions that Splunk Observability should monitor.
+        List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         """
         return pulumi.get(self, "regions")
 

@@ -64,7 +64,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Description of the team.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -78,7 +78,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * List of user IDs to include in the team.
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> members;
 
     /**
@@ -92,7 +92,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Name of the team.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -106,7 +106,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Where to send notifications for critical alerts
      * 
      */
-    @Export(name="notificationsCriticals", type=List.class, parameters={String.class})
+    @Export(name="notificationsCriticals", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsCriticals;
 
     /**
@@ -120,7 +120,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Where to send notifications for default alerts
      * 
      */
-    @Export(name="notificationsDefaults", type=List.class, parameters={String.class})
+    @Export(name="notificationsDefaults", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsDefaults;
 
     /**
@@ -134,7 +134,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Where to send notifications for info alerts
      * 
      */
-    @Export(name="notificationsInfos", type=List.class, parameters={String.class})
+    @Export(name="notificationsInfos", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsInfos;
 
     /**
@@ -148,7 +148,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Where to send notifications for major alerts
      * 
      */
-    @Export(name="notificationsMajors", type=List.class, parameters={String.class})
+    @Export(name="notificationsMajors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsMajors;
 
     /**
@@ -162,7 +162,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Where to send notifications for minor alerts
      * 
      */
-    @Export(name="notificationsMinors", type=List.class, parameters={String.class})
+    @Export(name="notificationsMinors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsMinors;
 
     /**
@@ -176,7 +176,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * Where to send notifications for warning alerts
      * 
      */
-    @Export(name="notificationsWarnings", type=List.class, parameters={String.class})
+    @Export(name="notificationsWarnings", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsWarnings;
 
     /**
@@ -190,7 +190,7 @@ public class Team extends com.pulumi.resources.CustomResource {
      * The URL of the team.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

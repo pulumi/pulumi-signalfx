@@ -185,7 +185,7 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      * The external ID to use with your IAM role and with `signalfx.aws.Integration`.
      * 
      */
-    @Export(name="externalId", type=String.class, parameters={})
+    @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output<String> externalId;
 
     /**
@@ -199,7 +199,7 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      * The name of this integration
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -213,7 +213,7 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
      * 
      */
-    @Export(name="signalfxAwsAccount", type=String.class, parameters={})
+    @Export(name="signalfxAwsAccount", refs={String.class}, tree="[0]")
     private Output<String> signalfxAwsAccount;
 
     /**

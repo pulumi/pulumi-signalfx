@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/internal"
+	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -26,7 +26,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
-//	"github.com/pulumi/pulumi-signalfx/sdk/v6/go/signalfx/aws"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/aws"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -122,7 +122,7 @@ type Integration struct {
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayOutput `pulumi:"namespaceSyncRules"`
 	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
-	// List of AWS regions that Splunk Observability should monitor.
+	// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
@@ -150,6 +150,9 @@ func NewIntegration(ctx *pulumi.Context,
 	}
 	if args.IntegrationId == nil {
 		return nil, errors.New("invalid value for required argument 'IntegrationId'")
+	}
+	if args.Regions == nil {
+		return nil, errors.New("invalid value for required argument 'Regions'")
 	}
 	if args.ExternalId != nil {
 		args.ExternalId = pulumi.ToSecret(args.ExternalId).(pulumi.StringPtrInput)
@@ -218,7 +221,7 @@ type integrationState struct {
 	NamespaceSyncRules []IntegrationNamespaceSyncRule `pulumi:"namespaceSyncRules"`
 	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
-	// List of AWS regions that Splunk Observability should monitor.
+	// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
 	Regions []string `pulumi:"regions"`
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn *string `pulumi:"roleArn"`
@@ -268,7 +271,7 @@ type IntegrationState struct {
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayInput
 	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
-	// List of AWS regions that Splunk Observability should monitor.
+	// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
 	Regions pulumi.StringArrayInput
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn pulumi.StringPtrInput
@@ -317,7 +320,7 @@ type integrationArgs struct {
 	NamespaceSyncRules []IntegrationNamespaceSyncRule `pulumi:"namespaceSyncRules"`
 	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate *int `pulumi:"pollRate"`
-	// List of AWS regions that Splunk Observability should monitor.
+	// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
 	Regions []string `pulumi:"regions"`
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn *string `pulumi:"roleArn"`
@@ -363,7 +366,7 @@ type IntegrationArgs struct {
 	NamespaceSyncRules IntegrationNamespaceSyncRuleArrayInput
 	// AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
 	PollRate pulumi.IntPtrInput
-	// List of AWS regions that Splunk Observability should monitor.
+	// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
 	Regions pulumi.StringArrayInput
 	// Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
 	RoleArn pulumi.StringPtrInput
@@ -547,7 +550,7 @@ func (o IntegrationOutput) PollRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.PollRate }).(pulumi.IntPtrOutput)
 }
 
-// List of AWS regions that Splunk Observability should monitor.
+// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
 func (o IntegrationOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
