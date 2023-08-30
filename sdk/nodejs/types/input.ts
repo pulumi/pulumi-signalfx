@@ -964,17 +964,3 @@ export namespace log {
         field: pulumi.Input<string>;
     }
 }
-
-export namespace logs {
-    export interface ViewColumn {
-        /**
-         * Name of the log view.
-         */
-        name: pulumi.Input<string>;
-    }
-
-    export interface ViewSortOption {
-        descending: pulumi.Input<boolean>;
-        field: pulumi.Input<string>;
-    }
-}

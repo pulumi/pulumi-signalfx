@@ -58,7 +58,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Whether the integration is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -72,7 +72,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -86,7 +86,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Victor Ops REST API URL.
      * 
      */
-    @Export(name="postUrl", type=String.class, parameters={})
+    @Export(name="postUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> postUrl;
 
     /**

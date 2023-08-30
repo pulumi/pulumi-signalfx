@@ -158,7 +158,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Please use permissions field now */
-    @Export(name="authorizedWriterTeams", type=List.class, parameters={String.class})
+    @Export(name="authorizedWriterTeams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
@@ -176,7 +176,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Please use permissions field now */
-    @Export(name="authorizedWriterUsers", type=List.class, parameters={String.class})
+    @Export(name="authorizedWriterUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
@@ -190,7 +190,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      * 
      */
-    @Export(name="dashboards", type=List.class, parameters={DashboardGroupDashboard.class})
+    @Export(name="dashboards", refs={List.class,DashboardGroupDashboard.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardGroupDashboard>> dashboards;
 
     /**
@@ -204,7 +204,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * Description of the dashboard group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -214,7 +214,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="importQualifiers", type=List.class, parameters={DashboardGroupImportQualifier.class})
+    @Export(name="importQualifiers", refs={List.class,DashboardGroupImportQualifier.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardGroupImportQualifier>> importQualifiers;
 
     public Output<Optional<List<DashboardGroupImportQualifier>>> importQualifiers() {
@@ -224,7 +224,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * Name of the dashboard group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -238,7 +238,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={DashboardGroupPermission.class})
+    @Export(name="permissions", refs={List.class,DashboardGroupPermission.class}, tree="[0,1]")
     private Output<List<DashboardGroupPermission>> permissions;
 
     /**
@@ -252,7 +252,7 @@ public class DashboardGroup extends com.pulumi.resources.CustomResource {
      * Team IDs to associate the dashboard group to.
      * 
      */
-    @Export(name="teams", type=List.class, parameters={String.class})
+    @Export(name="teams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> teams;
 
     /**

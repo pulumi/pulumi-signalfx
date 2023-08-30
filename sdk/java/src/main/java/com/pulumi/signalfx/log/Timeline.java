@@ -61,7 +61,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      * 
      */
-    @Export(name="defaultConnection", type=String.class, parameters={})
+    @Export(name="defaultConnection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultConnection;
 
     /**
@@ -75,7 +75,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * Description of the log timeline.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -89,7 +89,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="endTime", type=Integer.class, parameters={})
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
@@ -103,7 +103,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * Name of the log timeline.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -117,7 +117,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -131,7 +131,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
@@ -145,7 +145,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
-    @Export(name="timeRange", type=Integer.class, parameters={})
+    @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
@@ -159,7 +159,7 @@ public class Timeline extends com.pulumi.resources.CustomResource {
      * The URL of the log timeline.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

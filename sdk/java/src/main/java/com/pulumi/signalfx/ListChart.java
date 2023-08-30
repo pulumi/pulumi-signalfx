@@ -97,7 +97,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Must be one of `&#34;Scale&#34;`, `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
-    @Export(name="colorBy", type=String.class, parameters={})
+    @Export(name="colorBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> colorBy;
 
     /**
@@ -111,7 +111,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      * 
      */
-    @Export(name="colorScales", type=List.class, parameters={ListChartColorScale.class})
+    @Export(name="colorScales", refs={List.class,ListChartColorScale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListChartColorScale>> colorScales;
 
     /**
@@ -125,7 +125,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Description of the chart.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -139,7 +139,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      * 
      */
-    @Export(name="disableSampling", type=Boolean.class, parameters={})
+    @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
@@ -153,7 +153,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="endTime", type=Integer.class, parameters={})
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
@@ -167,7 +167,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      * 
      */
-    @Export(name="hideMissingValues", type=Boolean.class, parameters={})
+    @Export(name="hideMissingValues", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hideMissingValues;
 
     /**
@@ -185,7 +185,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Please use legend_options_fields */
-    @Export(name="legendFieldsToHides", type=List.class, parameters={String.class})
+    @Export(name="legendFieldsToHides", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 
     /**
@@ -199,7 +199,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
      * 
      */
-    @Export(name="legendOptionsFields", type=List.class, parameters={ListChartLegendOptionsField.class})
+    @Export(name="legendOptionsFields", refs={List.class,ListChartLegendOptionsField.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListChartLegendOptionsField>> legendOptionsFields;
 
     /**
@@ -213,7 +213,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait for late datapoints.
      * 
      */
-    @Export(name="maxDelay", type=Integer.class, parameters={})
+    @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
@@ -227,7 +227,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Maximum number of digits to display when rounding values up or down.
      * 
      */
-    @Export(name="maxPrecision", type=Integer.class, parameters={})
+    @Export(name="maxPrecision", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPrecision;
 
     /**
@@ -241,7 +241,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Name of the chart.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -255,7 +255,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -269,7 +269,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * How often (in seconds) to refresh the values of the list.
      * 
      */
-    @Export(name="refreshInterval", type=Integer.class, parameters={})
+    @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
@@ -283,7 +283,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
      * 
      */
-    @Export(name="secondaryVisualization", type=String.class, parameters={})
+    @Export(name="secondaryVisualization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryVisualization;
 
     /**
@@ -297,7 +297,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
      * 
      */
-    @Export(name="sortBy", type=String.class, parameters={})
+    @Export(name="sortBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sortBy;
 
     /**
@@ -311,7 +311,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
@@ -325,7 +325,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */
-    @Export(name="timeRange", type=Integer.class, parameters={})
+    @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
@@ -339,7 +339,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -353,7 +353,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
-    @Export(name="unitPrefix", type=String.class, parameters={})
+    @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
@@ -367,7 +367,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * The URL of the chart.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -381,7 +381,7 @@ public class ListChart extends com.pulumi.resources.CustomResource {
      * Plot-level customization options, associated with a publish statement.
      * 
      */
-    @Export(name="vizOptions", type=List.class, parameters={ListChartVizOption.class})
+    @Export(name="vizOptions", refs={List.class,ListChartVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ListChartVizOption>> vizOptions;
 
     /**

@@ -86,7 +86,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Additional Azure resource types that you want to sync with Observability Cloud.
      * 
      */
-    @Export(name="additionalServices", type=List.class, parameters={String.class})
+    @Export(name="additionalServices", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalServices;
 
     /**
@@ -100,7 +100,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -114,7 +114,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      * 
      */
-    @Export(name="customNamespacesPerServices", type=List.class, parameters={IntegrationCustomNamespacesPerService.class})
+    @Export(name="customNamespacesPerServices", refs={List.class,IntegrationCustomNamespacesPerService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationCustomNamespacesPerService>> customNamespacesPerServices;
 
     /**
@@ -128,7 +128,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Whether the integration is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -142,7 +142,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environment;
 
     /**
@@ -156,7 +156,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
      * 
      */
-    @Export(name="importAzureMonitor", type=Boolean.class, parameters={})
+    @Export(name="importAzureMonitor", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> importAzureMonitor;
 
     /**
@@ -170,7 +170,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -184,7 +184,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
-    @Export(name="namedToken", type=String.class, parameters={})
+    @Export(name="namedToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namedToken;
 
     /**
@@ -198,7 +198,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
-    @Export(name="pollRate", type=Integer.class, parameters={})
+    @Export(name="pollRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pollRate;
 
     /**
@@ -212,7 +212,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * List of rules for filtering Azure resources by their tags.
      * 
      */
-    @Export(name="resourceFilterRules", type=List.class, parameters={IntegrationResourceFilterRule.class})
+    @Export(name="resourceFilterRules", refs={List.class,IntegrationResourceFilterRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationResourceFilterRule>> resourceFilterRules;
 
     /**
@@ -226,7 +226,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      * 
      */
-    @Export(name="secretKey", type=String.class, parameters={})
+    @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output<String> secretKey;
 
     /**
@@ -240,7 +240,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
-    @Export(name="services", type=List.class, parameters={String.class})
+    @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> services;
 
     /**
@@ -254,7 +254,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * List of Azure subscriptions that SignalFx should monitor.
      * 
      */
-    @Export(name="subscriptions", type=List.class, parameters={String.class})
+    @Export(name="subscriptions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> subscriptions;
 
     /**
@@ -268,7 +268,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      * 
      */
-    @Export(name="syncGuestOsNamespaces", type=Boolean.class, parameters={})
+    @Export(name="syncGuestOsNamespaces", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncGuestOsNamespaces;
 
     /**
@@ -282,7 +282,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
      * 
      */
-    @Export(name="tenantId", type=String.class, parameters={})
+    @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**

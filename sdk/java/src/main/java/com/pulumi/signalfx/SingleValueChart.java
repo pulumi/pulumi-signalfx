@@ -71,7 +71,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
-    @Export(name="colorBy", type=String.class, parameters={})
+    @Export(name="colorBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> colorBy;
 
     /**
@@ -85,7 +85,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      * 
      */
-    @Export(name="colorScales", type=List.class, parameters={SingleValueChartColorScale.class})
+    @Export(name="colorScales", refs={List.class,SingleValueChartColorScale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SingleValueChartColorScale>> colorScales;
 
     /**
@@ -99,7 +99,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Description of the chart.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Whether to hide the timestamp in the chart. `false` by default.
      * 
      */
-    @Export(name="isTimestampHidden", type=Boolean.class, parameters={})
+    @Export(name="isTimestampHidden", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isTimestampHidden;
 
     /**
@@ -127,7 +127,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait for late datapoints
      * 
      */
-    @Export(name="maxDelay", type=Integer.class, parameters={})
+    @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
@@ -141,7 +141,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * The maximum precision to for value displayed.
      * 
      */
-    @Export(name="maxPrecision", type=Integer.class, parameters={})
+    @Export(name="maxPrecision", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPrecision;
 
     /**
@@ -155,7 +155,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Name of the chart.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -169,7 +169,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -183,7 +183,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * How often (in seconds) to refresh the value.
      * 
      */
-    @Export(name="refreshInterval", type=Integer.class, parameters={})
+    @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
@@ -197,7 +197,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
      * 
      */
-    @Export(name="secondaryVisualization", type=String.class, parameters={})
+    @Export(name="secondaryVisualization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryVisualization;
 
     /**
@@ -211,7 +211,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Whether to show a trend line below the current value. `false` by default.
      * 
      */
-    @Export(name="showSparkLine", type=Boolean.class, parameters={})
+    @Export(name="showSparkLine", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showSparkLine;
 
     /**
@@ -225,7 +225,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -239,7 +239,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
      * 
      */
-    @Export(name="unitPrefix", type=String.class, parameters={})
+    @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
@@ -253,7 +253,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * The URL of the chart.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -267,7 +267,7 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
      * Plot-level customization options, associated with a publish statement.
      * 
      */
-    @Export(name="vizOptions", type=List.class, parameters={SingleValueChartVizOption.class})
+    @Export(name="vizOptions", refs={List.class,SingleValueChartVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SingleValueChartVizOption>> vizOptions;
 
     /**

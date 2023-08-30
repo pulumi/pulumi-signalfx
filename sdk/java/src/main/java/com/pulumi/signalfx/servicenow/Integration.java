@@ -64,7 +64,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
      * 
      */
-    @Export(name="alertResolvedPayloadTemplate", type=String.class, parameters={})
+    @Export(name="alertResolvedPayloadTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertResolvedPayloadTemplate;
 
     /**
@@ -78,7 +78,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
      * 
      */
-    @Export(name="alertTriggeredPayloadTemplate", type=String.class, parameters={})
+    @Export(name="alertTriggeredPayloadTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertTriggeredPayloadTemplate;
 
     /**
@@ -92,7 +92,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Whether the integration is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -106,7 +106,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the ServiceNow instance, for example `myinst.service-now.com`.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -120,7 +120,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
      * 
      */
-    @Export(name="issueType", type=String.class, parameters={})
+    @Export(name="issueType", refs={String.class}, tree="[0]")
     private Output<String> issueType;
 
     /**
@@ -134,7 +134,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -148,7 +148,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Password used to authenticate the ServiceNow integration.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -162,7 +162,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * User name used to authenticate the ServiceNow integration.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

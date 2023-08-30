@@ -185,7 +185,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<int?> PollRate { get; private set; } = null!;
 
         /// <summary>
-        /// List of AWS regions that Splunk Observability should monitor.
+        /// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
@@ -401,11 +401,11 @@ namespace Pulumi.SignalFx.Aws
         [Input("pollRate")]
         public Input<int>? PollRate { get; set; }
 
-        [Input("regions")]
+        [Input("regions", required: true)]
         private InputList<string>? _regions;
 
         /// <summary>
-        /// List of AWS regions that Splunk Observability should monitor.
+        /// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         /// </summary>
         public InputList<string> Regions
         {
@@ -604,7 +604,7 @@ namespace Pulumi.SignalFx.Aws
         private InputList<string>? _regions;
 
         /// <summary>
-        /// List of AWS regions that Splunk Observability should monitor.
+        /// List of AWS regions that Splunk Observability should monitor. It cannot be empty.
         /// </summary>
         public InputList<string> Regions
         {

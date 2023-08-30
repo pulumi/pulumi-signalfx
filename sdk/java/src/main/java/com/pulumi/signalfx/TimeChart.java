@@ -92,7 +92,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Force the chart to display zero on the y-axes, even if none of the data is near zero.
      * 
      */
-    @Export(name="axesIncludeZero", type=Boolean.class, parameters={})
+    @Export(name="axesIncludeZero", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> axesIncludeZero;
 
     /**
@@ -106,7 +106,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
      * 
      */
-    @Export(name="axesPrecision", type=Integer.class, parameters={})
+    @Export(name="axesPrecision", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> axesPrecision;
 
     /**
@@ -120,7 +120,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Set of axis options.
      * 
      */
-    @Export(name="axisLeft", type=TimeChartAxisLeft.class, parameters={})
+    @Export(name="axisLeft", refs={TimeChartAxisLeft.class}, tree="[0]")
     private Output</* @Nullable */ TimeChartAxisLeft> axisLeft;
 
     /**
@@ -134,7 +134,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Set of axis options.
      * 
      */
-    @Export(name="axisRight", type=TimeChartAxisRight.class, parameters={})
+    @Export(name="axisRight", refs={TimeChartAxisRight.class}, tree="[0]")
     private Output</* @Nullable */ TimeChartAxisRight> axisRight;
 
     /**
@@ -148,7 +148,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
-    @Export(name="colorBy", type=String.class, parameters={})
+    @Export(name="colorBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> colorBy;
 
     /**
@@ -162,7 +162,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Description of the chart.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -176,7 +176,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
      * 
      */
-    @Export(name="disableSampling", type=Boolean.class, parameters={})
+    @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
@@ -190,7 +190,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="endTime", type=Integer.class, parameters={})
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
@@ -204,7 +204,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
      * 
      */
-    @Export(name="eventOptions", type=List.class, parameters={TimeChartEventOption.class})
+    @Export(name="eventOptions", refs={List.class,TimeChartEventOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartEventOption>> eventOptions;
 
     /**
@@ -218,7 +218,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
      * 
      */
-    @Export(name="histogramOptions", type=List.class, parameters={TimeChartHistogramOption.class})
+    @Export(name="histogramOptions", refs={List.class,TimeChartHistogramOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartHistogramOption>> histogramOptions;
 
     /**
@@ -236,7 +236,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Please use legend_options_fields */
-    @Export(name="legendFieldsToHides", type=List.class, parameters={String.class})
+    @Export(name="legendFieldsToHides", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 
     /**
@@ -250,7 +250,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
      * 
      */
-    @Export(name="legendOptionsFields", type=List.class, parameters={TimeChartLegendOptionsField.class})
+    @Export(name="legendOptionsFields", refs={List.class,TimeChartLegendOptionsField.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartLegendOptionsField>> legendOptionsFields;
 
     /**
@@ -264,7 +264,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait for late datapoints.
      * 
      */
-    @Export(name="maxDelay", type=Integer.class, parameters={})
+    @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
@@ -278,7 +278,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * The minimum resolution (in seconds) to use for computing the underlying program.
      * 
      */
-    @Export(name="minimumResolution", type=Integer.class, parameters={})
+    @Export(name="minimumResolution", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumResolution;
 
     /**
@@ -292,7 +292,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Name of the chart.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -306,7 +306,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
      * 
      */
-    @Export(name="onChartLegendDimension", type=String.class, parameters={})
+    @Export(name="onChartLegendDimension", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onChartLegendDimension;
 
     /**
@@ -320,7 +320,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
      * 
      */
-    @Export(name="plotType", type=String.class, parameters={})
+    @Export(name="plotType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plotType;
 
     /**
@@ -334,7 +334,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -348,7 +348,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
      * 
      */
-    @Export(name="showDataMarkers", type=Boolean.class, parameters={})
+    @Export(name="showDataMarkers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showDataMarkers;
 
     /**
@@ -362,7 +362,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
      * 
      */
-    @Export(name="showEventLines", type=Boolean.class, parameters={})
+    @Export(name="showEventLines", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showEventLines;
 
     /**
@@ -376,7 +376,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Whether area and bar charts in the visualization should be stacked. `false` by default.
      * 
      */
-    @Export(name="stacked", type=Boolean.class, parameters={})
+    @Export(name="stacked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> stacked;
 
     /**
@@ -390,7 +390,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
@@ -408,7 +408,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* signalfx_time_chart.tags is being removed in the next release */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -422,7 +422,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */
-    @Export(name="timeRange", type=Integer.class, parameters={})
+    @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
@@ -436,7 +436,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `&#34;UTC&#34;` by default.
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -450,7 +450,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
-    @Export(name="unitPrefix", type=String.class, parameters={})
+    @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
@@ -464,7 +464,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * The URL of the chart.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -478,7 +478,7 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
      * Plot-level customization options, associated with a publish statement.
      * 
      */
-    @Export(name="vizOptions", type=List.class, parameters={TimeChartVizOption.class})
+    @Export(name="vizOptions", refs={List.class,TimeChartVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartVizOption>> vizOptions;
 
     /**

@@ -83,7 +83,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * List of aggregation rules for the metric
      * 
      */
-    @Export(name="aggregationRules", type=List.class, parameters={MetricRulesetAggregationRule.class})
+    @Export(name="aggregationRules", refs={List.class,MetricRulesetAggregationRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MetricRulesetAggregationRule>> aggregationRules;
 
     /**
@@ -97,7 +97,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Timestamp of when the metric ruleset was created
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -111,7 +111,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * ID of the creator of the metric ruleset
      * 
      */
-    @Export(name="creator", type=String.class, parameters={})
+    @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
     /**
@@ -125,7 +125,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Timestamp of when the metric ruleset was last updated
      * 
      */
-    @Export(name="lastUpdated", type=String.class, parameters={})
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
     private Output<String> lastUpdated;
 
     /**
@@ -139,7 +139,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * ID of user who last updated the metric ruleset
      * 
      */
-    @Export(name="lastUpdatedBy", type=String.class, parameters={})
+    @Export(name="lastUpdatedBy", refs={String.class}, tree="[0]")
     private Output<String> lastUpdatedBy;
 
     /**
@@ -153,7 +153,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Name of user who last updated this metric ruleset
      * 
      */
-    @Export(name="lastUpdatedByName", type=String.class, parameters={})
+    @Export(name="lastUpdatedByName", refs={String.class}, tree="[0]")
     private Output<String> lastUpdatedByName;
 
     /**
@@ -167,7 +167,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Name of the input metric
      * 
      */
-    @Export(name="metricName", type=String.class, parameters={})
+    @Export(name="metricName", refs={String.class}, tree="[0]")
     private Output<String> metricName;
 
     /**
@@ -181,7 +181,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Routing Rule object
      * 
      */
-    @Export(name="routingRules", type=List.class, parameters={MetricRulesetRoutingRule.class})
+    @Export(name="routingRules", refs={List.class,MetricRulesetRoutingRule.class}, tree="[0,1]")
     private Output<List<MetricRulesetRoutingRule>> routingRules;
 
     /**
@@ -195,7 +195,7 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
      * Version of the ruleset
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

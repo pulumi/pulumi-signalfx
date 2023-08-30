@@ -148,9 +148,9 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
-     * List of AWS regions that Splunk Observability should monitor.
+     * List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      */
-    public readonly regions!: pulumi.Output<string[] | undefined>;
+    public readonly regions!: pulumi.Output<string[]>;
     /**
      * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */
@@ -216,6 +216,9 @@ export class Integration extends pulumi.CustomResource {
             }
             if ((!args || args.integrationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'integrationId'");
+            }
+            if ((!args || args.regions === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'regions'");
             }
             resourceInputs["customCloudwatchNamespaces"] = args ? args.customCloudwatchNamespaces : undefined;
             resourceInputs["customNamespaceSyncRules"] = args ? args.customNamespaceSyncRules : undefined;
@@ -317,7 +320,7 @@ export interface IntegrationState {
      */
     pollRate?: pulumi.Input<number>;
     /**
-     * List of AWS regions that Splunk Observability should monitor.
+     * List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -405,9 +408,9 @@ export interface IntegrationArgs {
      */
     pollRate?: pulumi.Input<number>;
     /**
-     * List of AWS regions that Splunk Observability should monitor.
+     * List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
      */

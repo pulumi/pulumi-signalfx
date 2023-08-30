@@ -89,7 +89,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * The column headers to show on the log view.
      * 
      */
-    @Export(name="columns", type=List.class, parameters={ViewColumn.class})
+    @Export(name="columns", refs={List.class,ViewColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ViewColumn>> columns;
 
     /**
@@ -103,7 +103,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      * 
      */
-    @Export(name="defaultConnection", type=String.class, parameters={})
+    @Export(name="defaultConnection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultConnection;
 
     /**
@@ -117,7 +117,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * Description of the log view.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -131,7 +131,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="endTime", type=Integer.class, parameters={})
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
@@ -145,7 +145,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * Name of the log view.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -159,7 +159,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -173,7 +173,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
      * 
      */
-    @Export(name="sortOptions", type=List.class, parameters={ViewSortOption.class})
+    @Export(name="sortOptions", refs={List.class,ViewSortOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ViewSortOption>> sortOptions;
 
     /**
@@ -187,7 +187,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
@@ -201,7 +201,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
-    @Export(name="timeRange", type=Integer.class, parameters={})
+    @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
@@ -215,7 +215,7 @@ public class View extends com.pulumi.resources.CustomResource {
      * The URL of the log view.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

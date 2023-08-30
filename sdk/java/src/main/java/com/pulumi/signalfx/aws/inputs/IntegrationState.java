@@ -264,14 +264,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of AWS regions that Splunk Observability should monitor.
+     * List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      * 
      */
     @Import(name="regions")
     private @Nullable Output<List<String>> regions;
 
     /**
-     * @return List of AWS regions that Splunk Observability should monitor.
+     * @return List of AWS regions that Splunk Observability should monitor. It cannot be empty.
      * 
      */
     public Optional<Output<List<String>>> regions() {
@@ -781,7 +781,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions List of AWS regions that Splunk Observability should monitor.
+         * @param regions List of AWS regions that Splunk Observability should monitor. It cannot be empty.
          * 
          * @return builder
          * 
@@ -792,7 +792,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions List of AWS regions that Splunk Observability should monitor.
+         * @param regions List of AWS regions that Splunk Observability should monitor. It cannot be empty.
          * 
          * @return builder
          * 
@@ -802,7 +802,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions List of AWS regions that Splunk Observability should monitor.
+         * @param regions List of AWS regions that Splunk Observability should monitor. It cannot be empty.
          * 
          * @return builder
          * 

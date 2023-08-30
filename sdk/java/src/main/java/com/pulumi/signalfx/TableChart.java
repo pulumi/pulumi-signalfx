@@ -62,7 +62,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * Description of the table chart.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -76,7 +76,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      * 
      */
-    @Export(name="disableSampling", type=Boolean.class, parameters={})
+    @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
@@ -90,7 +90,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * Dimension to group by
      * 
      */
-    @Export(name="groupBies", type=List.class, parameters={String.class})
+    @Export(name="groupBies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupBies;
 
     /**
@@ -104,7 +104,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * (false by default) Whether to show the timestamp in the chart
      * 
      */
-    @Export(name="hideTimestamp", type=Boolean.class, parameters={})
+    @Export(name="hideTimestamp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hideTimestamp;
 
     /**
@@ -118,7 +118,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * How long (in seconds) to wait for late datapoints
      * 
      */
-    @Export(name="maxDelay", type=Integer.class, parameters={})
+    @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
@@ -132,7 +132,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * The minimum resolution (in seconds) to use for computing the underlying program
      * 
      */
-    @Export(name="minimumResolution", type=Integer.class, parameters={})
+    @Export(name="minimumResolution", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumResolution;
 
     /**
@@ -146,7 +146,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * Name of the table chart.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -160,7 +160,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * The SignalFlow for your Data Table Chart
      * 
      */
-    @Export(name="programText", type=String.class, parameters={})
+    @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
@@ -174,7 +174,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * How often (in seconds) to refresh the values of the Table
      * 
      */
-    @Export(name="refreshInterval", type=Integer.class, parameters={})
+    @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
@@ -188,7 +188,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
@@ -202,7 +202,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
-    @Export(name="unitPrefix", type=String.class, parameters={})
+    @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
@@ -216,7 +216,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * The URL of the chart.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -230,7 +230,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * Plot-level customization options, associated with a publish statement
      * 
      */
-    @Export(name="vizOptions", type=List.class, parameters={TableChartVizOption.class})
+    @Export(name="vizOptions", refs={List.class,TableChartVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TableChartVizOption>> vizOptions;
 
     /**

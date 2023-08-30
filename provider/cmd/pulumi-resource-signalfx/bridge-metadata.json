@@ -3,7 +3,7 @@
         "resources": {
             "signalfx_alert_muting_rule": {
                 "current": "signalfx:index/alertMutingRule:AlertMutingRule",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "detectors": {
                         "maxItemsOne": false
@@ -15,11 +15,11 @@
             },
             "signalfx_aws_external_integration": {
                 "current": "signalfx:aws/externalIntegration:ExternalIntegration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_aws_integration": {
                 "current": "signalfx:aws/integration:Integration",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "custom_cloudwatch_namespaces": {
                         "maxItemsOne": false
@@ -50,11 +50,11 @@
             },
             "signalfx_aws_token_integration": {
                 "current": "signalfx:aws/tokenIntegration:TokenIntegration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_azure_integration": {
                 "current": "signalfx:azure/integration:Integration",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "additional_services": {
                         "maxItemsOne": false
@@ -82,7 +82,7 @@
             },
             "signalfx_dashboard": {
                 "current": "signalfx:index/dashboard:Dashboard",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "authorized_writer_teams": {
                         "maxItemsOne": false
@@ -197,7 +197,7 @@
             },
             "signalfx_dashboard_group": {
                 "current": "signalfx:index/dashboardGroup:DashboardGroup",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "authorized_writer_teams": {
                         "maxItemsOne": false
@@ -269,7 +269,7 @@
             },
             "signalfx_data_link": {
                 "current": "signalfx:index/dataLink:DataLink",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "target_external_url": {
                         "maxItemsOne": false
@@ -284,7 +284,7 @@
             },
             "signalfx_detector": {
                 "current": "signalfx:index/detector:Detector",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "authorized_writer_teams": {
                         "maxItemsOne": false
@@ -315,11 +315,11 @@
             },
             "signalfx_event_feed_chart": {
                 "current": "signalfx:index/eventFeedChart:EventFeedChart",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_gcp_integration": {
                 "current": "signalfx:gcp/integration:Integration",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "custom_metric_type_domains": {
                         "maxItemsOne": false
@@ -337,7 +337,7 @@
             },
             "signalfx_heatmap_chart": {
                 "current": "signalfx:index/heatmapChart:HeatmapChart",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "color_range": {
                         "maxItemsOne": true
@@ -352,11 +352,11 @@
             },
             "signalfx_jira_integration": {
                 "current": "signalfx:jira/integration:Integration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_list_chart": {
                 "current": "signalfx:index/listChart:ListChart",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "color_scale": {
                         "maxItemsOne": false
@@ -374,7 +374,7 @@
             },
             "signalfx_log_timeline": {
                 "current": "signalfx:log/timeline:Timeline",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_log_view": {
                 "current": "signalfx:log/view:View",
@@ -385,7 +385,7 @@
                         "majorVersion": 6
                     }
                 ],
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "columns": {
                         "maxItemsOne": false
@@ -397,7 +397,7 @@
             },
             "signalfx_metric_ruleset": {
                 "current": "signalfx:index/metricRuleset:MetricRuleset",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "aggregation_rules": {
                         "maxItemsOne": false,
@@ -440,11 +440,11 @@
             },
             "signalfx_opsgenie_integration": {
                 "current": "signalfx:opsgenie/integration:Integration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_org_token": {
                 "current": "signalfx:index/orgToken:OrgToken",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "auth_scopes": {
                         "maxItemsOne": false
@@ -462,15 +462,15 @@
             },
             "signalfx_pagerduty_integration": {
                 "current": "signalfx:pagerduty/integration:Integration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_service_now_integration": {
                 "current": "signalfx:servicenow/integration:Integration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_single_value_chart": {
                 "current": "signalfx:index/singleValueChart:SingleValueChart",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "color_scale": {
                         "maxItemsOne": false
@@ -482,11 +482,11 @@
             },
             "signalfx_slack_integration": {
                 "current": "signalfx:slack/integration:Integration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_table_chart": {
                 "current": "signalfx:index/tableChart:TableChart",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "group_by": {
                         "maxItemsOne": false
@@ -498,7 +498,7 @@
             },
             "signalfx_team": {
                 "current": "signalfx:index/team:Team",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "members": {
                         "maxItemsOne": false
@@ -525,11 +525,11 @@
             },
             "signalfx_text_chart": {
                 "current": "signalfx:index/textChart:TextChart",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_time_chart": {
                 "current": "signalfx:index/timeChart:TimeChart",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "axis_left": {
                         "maxItemsOne": true,
@@ -573,11 +573,11 @@
             },
             "signalfx_victor_ops_integration": {
                 "current": "signalfx:victorops/integration:Integration",
-                "majorVersion": 6
+                "majorVersion": 7
             },
             "signalfx_webhook_integration": {
                 "current": "signalfx:index/webhookIntegration:WebhookIntegration",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "headers": {
                         "maxItemsOne": false
@@ -588,7 +588,7 @@
         "datasources": {
             "signalfx_dimension_values": {
                 "current": "signalfx:index/getDimensionValues:getDimensionValues",
-                "majorVersion": 6,
+                "majorVersion": 7,
                 "fields": {
                     "values": {
                         "maxItemsOne": false
@@ -601,7 +601,7 @@
             },
             "signalfx_pagerduty_integration": {
                 "current": "signalfx:pagerduty/getIntegration:getIntegration",
-                "majorVersion": 6
+                "majorVersion": 7
             }
         }
     },
@@ -631,7 +631,6 @@
             "signalfx:jira/integration:Integration": "signalfx_jira_integration",
             "signalfx:log/timeline:Timeline": "signalfx_log_timeline",
             "signalfx:log/view:View": "signalfx_log_view",
-            "signalfx:logs/view:View": "signalfx_log_view_legacy",
             "signalfx:opsgenie/integration:Integration": "signalfx_opsgenie_integration",
             "signalfx:pagerduty/integration:Integration": "signalfx_pagerduty_integration",
             "signalfx:servicenow/integration:Integration": "signalfx_service_now_integration",
@@ -1053,14 +1052,6 @@
                 "timeRange": "time_range"
             },
             "signalfx:log/view:View": {
-                "defaultConnection": "default_connection",
-                "endTime": "end_time",
-                "programText": "program_text",
-                "sortOptions": "sort_options",
-                "startTime": "start_time",
-                "timeRange": "time_range"
-            },
-            "signalfx:logs/view:View": {
                 "defaultConnection": "default_connection",
                 "endTime": "end_time",
                 "programText": "program_text",

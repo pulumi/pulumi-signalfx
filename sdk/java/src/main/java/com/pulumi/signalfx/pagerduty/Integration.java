@@ -59,7 +59,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * PagerDuty API key.
      * 
      */
-    @Export(name="apiKey", type=String.class, parameters={})
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiKey;
 
     /**
@@ -73,7 +73,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Whether the integration is enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -87,7 +87,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * Name of the integration.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
