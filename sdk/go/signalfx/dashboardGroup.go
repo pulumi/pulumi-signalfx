@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
@@ -312,6 +313,12 @@ func (i *DashboardGroup) ToDashboardGroupOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupOutput)
 }
 
+func (i *DashboardGroup) ToOutput(ctx context.Context) pulumix.Output[*DashboardGroup] {
+	return pulumix.Output[*DashboardGroup]{
+		OutputState: i.ToDashboardGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DashboardGroupArrayInput is an input type that accepts DashboardGroupArray and DashboardGroupArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupArrayInput` via:
 //
@@ -335,6 +342,12 @@ func (i DashboardGroupArray) ToDashboardGroupArrayOutput() DashboardGroupArrayOu
 
 func (i DashboardGroupArray) ToDashboardGroupArrayOutputWithContext(ctx context.Context) DashboardGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupArrayOutput)
+}
+
+func (i DashboardGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*DashboardGroup] {
+	return pulumix.Output[[]*DashboardGroup]{
+		OutputState: i.ToDashboardGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DashboardGroupMapInput is an input type that accepts DashboardGroupMap and DashboardGroupMapOutput values.
@@ -362,6 +375,12 @@ func (i DashboardGroupMap) ToDashboardGroupMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupMapOutput)
 }
 
+func (i DashboardGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DashboardGroup] {
+	return pulumix.Output[map[string]*DashboardGroup]{
+		OutputState: i.ToDashboardGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DashboardGroupOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupOutput) ElementType() reflect.Type {
@@ -374,6 +393,12 @@ func (o DashboardGroupOutput) ToDashboardGroupOutput() DashboardGroupOutput {
 
 func (o DashboardGroupOutput) ToDashboardGroupOutputWithContext(ctx context.Context) DashboardGroupOutput {
 	return o
+}
+
+func (o DashboardGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*DashboardGroup] {
+	return pulumix.Output[*DashboardGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
@@ -433,6 +458,12 @@ func (o DashboardGroupArrayOutput) ToDashboardGroupArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o DashboardGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DashboardGroup] {
+	return pulumix.Output[[]*DashboardGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DashboardGroupArrayOutput) Index(i pulumi.IntInput) DashboardGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DashboardGroup {
 		return vs[0].([]*DashboardGroup)[vs[1].(int)]
@@ -451,6 +482,12 @@ func (o DashboardGroupMapOutput) ToDashboardGroupMapOutput() DashboardGroupMapOu
 
 func (o DashboardGroupMapOutput) ToDashboardGroupMapOutputWithContext(ctx context.Context) DashboardGroupMapOutput {
 	return o
+}
+
+func (o DashboardGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DashboardGroup] {
+	return pulumix.Output[map[string]*DashboardGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DashboardGroupMapOutput) MapIndex(k pulumi.StringInput) DashboardGroupOutput {

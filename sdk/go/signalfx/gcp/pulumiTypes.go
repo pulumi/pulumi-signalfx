@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i IntegrationProjectServiceKeyArgs) ToIntegrationProjectServiceKeyOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectServiceKeyOutput)
 }
 
+func (i IntegrationProjectServiceKeyArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationProjectServiceKey] {
+	return pulumix.Output[IntegrationProjectServiceKey]{
+		OutputState: i.ToIntegrationProjectServiceKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationProjectServiceKeyArrayInput is an input type that accepts IntegrationProjectServiceKeyArray and IntegrationProjectServiceKeyArrayOutput values.
 // You can construct a concrete instance of `IntegrationProjectServiceKeyArrayInput` via:
 //
@@ -71,6 +78,12 @@ func (i IntegrationProjectServiceKeyArray) ToIntegrationProjectServiceKeyArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationProjectServiceKeyArrayOutput)
 }
 
+func (i IntegrationProjectServiceKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationProjectServiceKey] {
+	return pulumix.Output[[]IntegrationProjectServiceKey]{
+		OutputState: i.ToIntegrationProjectServiceKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationProjectServiceKeyOutput struct{ *pulumi.OutputState }
 
 func (IntegrationProjectServiceKeyOutput) ElementType() reflect.Type {
@@ -83,6 +96,12 @@ func (o IntegrationProjectServiceKeyOutput) ToIntegrationProjectServiceKeyOutput
 
 func (o IntegrationProjectServiceKeyOutput) ToIntegrationProjectServiceKeyOutputWithContext(ctx context.Context) IntegrationProjectServiceKeyOutput {
 	return o
+}
+
+func (o IntegrationProjectServiceKeyOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationProjectServiceKey] {
+	return pulumix.Output[IntegrationProjectServiceKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationProjectServiceKeyOutput) ProjectId() pulumi.StringOutput {
@@ -105,6 +124,12 @@ func (o IntegrationProjectServiceKeyArrayOutput) ToIntegrationProjectServiceKeyA
 
 func (o IntegrationProjectServiceKeyArrayOutput) ToIntegrationProjectServiceKeyArrayOutputWithContext(ctx context.Context) IntegrationProjectServiceKeyArrayOutput {
 	return o
+}
+
+func (o IntegrationProjectServiceKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationProjectServiceKey] {
+	return pulumix.Output[[]IntegrationProjectServiceKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationProjectServiceKeyArrayOutput) Index(i pulumi.IntInput) IntegrationProjectServiceKeyOutput {

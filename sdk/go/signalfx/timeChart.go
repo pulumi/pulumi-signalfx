@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
@@ -438,6 +439,12 @@ func (i *TimeChart) ToTimeChartOutputWithContext(ctx context.Context) TimeChartO
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartOutput)
 }
 
+func (i *TimeChart) ToOutput(ctx context.Context) pulumix.Output[*TimeChart] {
+	return pulumix.Output[*TimeChart]{
+		OutputState: i.ToTimeChartOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TimeChartArrayInput is an input type that accepts TimeChartArray and TimeChartArrayOutput values.
 // You can construct a concrete instance of `TimeChartArrayInput` via:
 //
@@ -461,6 +468,12 @@ func (i TimeChartArray) ToTimeChartArrayOutput() TimeChartArrayOutput {
 
 func (i TimeChartArray) ToTimeChartArrayOutputWithContext(ctx context.Context) TimeChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartArrayOutput)
+}
+
+func (i TimeChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*TimeChart] {
+	return pulumix.Output[[]*TimeChart]{
+		OutputState: i.ToTimeChartArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TimeChartMapInput is an input type that accepts TimeChartMap and TimeChartMapOutput values.
@@ -488,6 +501,12 @@ func (i TimeChartMap) ToTimeChartMapOutputWithContext(ctx context.Context) TimeC
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartMapOutput)
 }
 
+func (i TimeChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TimeChart] {
+	return pulumix.Output[map[string]*TimeChart]{
+		OutputState: i.ToTimeChartMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TimeChartOutput struct{ *pulumi.OutputState }
 
 func (TimeChartOutput) ElementType() reflect.Type {
@@ -500,6 +519,12 @@ func (o TimeChartOutput) ToTimeChartOutput() TimeChartOutput {
 
 func (o TimeChartOutput) ToTimeChartOutputWithContext(ctx context.Context) TimeChartOutput {
 	return o
+}
+
+func (o TimeChartOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeChart] {
+	return pulumix.Output[*TimeChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -660,6 +685,12 @@ func (o TimeChartArrayOutput) ToTimeChartArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TimeChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TimeChart] {
+	return pulumix.Output[[]*TimeChart]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TimeChartArrayOutput) Index(i pulumi.IntInput) TimeChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TimeChart {
 		return vs[0].([]*TimeChart)[vs[1].(int)]
@@ -678,6 +709,12 @@ func (o TimeChartMapOutput) ToTimeChartMapOutput() TimeChartMapOutput {
 
 func (o TimeChartMapOutput) ToTimeChartMapOutputWithContext(ctx context.Context) TimeChartMapOutput {
 	return o
+}
+
+func (o TimeChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TimeChart] {
+	return pulumix.Output[map[string]*TimeChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimeChartMapOutput) MapIndex(k pulumi.StringInput) TimeChartOutput {

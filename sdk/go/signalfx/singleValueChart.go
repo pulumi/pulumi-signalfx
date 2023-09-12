@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
@@ -270,6 +271,12 @@ func (i *SingleValueChart) ToSingleValueChartOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartOutput)
 }
 
+func (i *SingleValueChart) ToOutput(ctx context.Context) pulumix.Output[*SingleValueChart] {
+	return pulumix.Output[*SingleValueChart]{
+		OutputState: i.ToSingleValueChartOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SingleValueChartArrayInput is an input type that accepts SingleValueChartArray and SingleValueChartArrayOutput values.
 // You can construct a concrete instance of `SingleValueChartArrayInput` via:
 //
@@ -293,6 +300,12 @@ func (i SingleValueChartArray) ToSingleValueChartArrayOutput() SingleValueChartA
 
 func (i SingleValueChartArray) ToSingleValueChartArrayOutputWithContext(ctx context.Context) SingleValueChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartArrayOutput)
+}
+
+func (i SingleValueChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*SingleValueChart] {
+	return pulumix.Output[[]*SingleValueChart]{
+		OutputState: i.ToSingleValueChartArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SingleValueChartMapInput is an input type that accepts SingleValueChartMap and SingleValueChartMapOutput values.
@@ -320,6 +333,12 @@ func (i SingleValueChartMap) ToSingleValueChartMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartMapOutput)
 }
 
+func (i SingleValueChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SingleValueChart] {
+	return pulumix.Output[map[string]*SingleValueChart]{
+		OutputState: i.ToSingleValueChartMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SingleValueChartOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartOutput) ElementType() reflect.Type {
@@ -332,6 +351,12 @@ func (o SingleValueChartOutput) ToSingleValueChartOutput() SingleValueChartOutpu
 
 func (o SingleValueChartOutput) ToSingleValueChartOutputWithContext(ctx context.Context) SingleValueChartOutput {
 	return o
+}
+
+func (o SingleValueChartOutput) ToOutput(ctx context.Context) pulumix.Output[*SingleValueChart] {
+	return pulumix.Output[*SingleValueChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -423,6 +448,12 @@ func (o SingleValueChartArrayOutput) ToSingleValueChartArrayOutputWithContext(ct
 	return o
 }
 
+func (o SingleValueChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SingleValueChart] {
+	return pulumix.Output[[]*SingleValueChart]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SingleValueChartArrayOutput) Index(i pulumi.IntInput) SingleValueChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SingleValueChart {
 		return vs[0].([]*SingleValueChart)[vs[1].(int)]
@@ -441,6 +472,12 @@ func (o SingleValueChartMapOutput) ToSingleValueChartMapOutput() SingleValueChar
 
 func (o SingleValueChartMapOutput) ToSingleValueChartMapOutputWithContext(ctx context.Context) SingleValueChartMapOutput {
 	return o
+}
+
+func (o SingleValueChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SingleValueChart] {
+	return pulumix.Output[map[string]*SingleValueChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SingleValueChartMapOutput) MapIndex(k pulumi.StringInput) SingleValueChartOutput {

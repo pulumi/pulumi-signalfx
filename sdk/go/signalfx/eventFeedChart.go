@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Displays a listing of events as a widget in a dashboard.
@@ -156,6 +157,12 @@ func (i *EventFeedChart) ToEventFeedChartOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartOutput)
 }
 
+func (i *EventFeedChart) ToOutput(ctx context.Context) pulumix.Output[*EventFeedChart] {
+	return pulumix.Output[*EventFeedChart]{
+		OutputState: i.ToEventFeedChartOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EventFeedChartArrayInput is an input type that accepts EventFeedChartArray and EventFeedChartArrayOutput values.
 // You can construct a concrete instance of `EventFeedChartArrayInput` via:
 //
@@ -179,6 +186,12 @@ func (i EventFeedChartArray) ToEventFeedChartArrayOutput() EventFeedChartArrayOu
 
 func (i EventFeedChartArray) ToEventFeedChartArrayOutputWithContext(ctx context.Context) EventFeedChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartArrayOutput)
+}
+
+func (i EventFeedChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*EventFeedChart] {
+	return pulumix.Output[[]*EventFeedChart]{
+		OutputState: i.ToEventFeedChartArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EventFeedChartMapInput is an input type that accepts EventFeedChartMap and EventFeedChartMapOutput values.
@@ -206,6 +219,12 @@ func (i EventFeedChartMap) ToEventFeedChartMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EventFeedChartMapOutput)
 }
 
+func (i EventFeedChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EventFeedChart] {
+	return pulumix.Output[map[string]*EventFeedChart]{
+		OutputState: i.ToEventFeedChartMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EventFeedChartOutput struct{ *pulumi.OutputState }
 
 func (EventFeedChartOutput) ElementType() reflect.Type {
@@ -218,6 +237,12 @@ func (o EventFeedChartOutput) ToEventFeedChartOutput() EventFeedChartOutput {
 
 func (o EventFeedChartOutput) ToEventFeedChartOutputWithContext(ctx context.Context) EventFeedChartOutput {
 	return o
+}
+
+func (o EventFeedChartOutput) ToOutput(ctx context.Context) pulumix.Output[*EventFeedChart] {
+	return pulumix.Output[*EventFeedChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Description of the text note.
@@ -269,6 +294,12 @@ func (o EventFeedChartArrayOutput) ToEventFeedChartArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o EventFeedChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EventFeedChart] {
+	return pulumix.Output[[]*EventFeedChart]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EventFeedChartArrayOutput) Index(i pulumi.IntInput) EventFeedChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EventFeedChart {
 		return vs[0].([]*EventFeedChart)[vs[1].(int)]
@@ -287,6 +318,12 @@ func (o EventFeedChartMapOutput) ToEventFeedChartMapOutput() EventFeedChartMapOu
 
 func (o EventFeedChartMapOutput) ToEventFeedChartMapOutputWithContext(ctx context.Context) EventFeedChartMapOutput {
 	return o
+}
+
+func (o EventFeedChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EventFeedChart] {
+	return pulumix.Output[map[string]*EventFeedChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EventFeedChartMapOutput) MapIndex(k pulumi.StringInput) EventFeedChartOutput {

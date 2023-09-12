@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
@@ -195,6 +196,12 @@ func (i *Timeline) ToTimelineOutputWithContext(ctx context.Context) TimelineOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TimelineOutput)
 }
 
+func (i *Timeline) ToOutput(ctx context.Context) pulumix.Output[*Timeline] {
+	return pulumix.Output[*Timeline]{
+		OutputState: i.ToTimelineOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TimelineArrayInput is an input type that accepts TimelineArray and TimelineArrayOutput values.
 // You can construct a concrete instance of `TimelineArrayInput` via:
 //
@@ -218,6 +225,12 @@ func (i TimelineArray) ToTimelineArrayOutput() TimelineArrayOutput {
 
 func (i TimelineArray) ToTimelineArrayOutputWithContext(ctx context.Context) TimelineArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TimelineArrayOutput)
+}
+
+func (i TimelineArray) ToOutput(ctx context.Context) pulumix.Output[[]*Timeline] {
+	return pulumix.Output[[]*Timeline]{
+		OutputState: i.ToTimelineArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TimelineMapInput is an input type that accepts TimelineMap and TimelineMapOutput values.
@@ -245,6 +258,12 @@ func (i TimelineMap) ToTimelineMapOutputWithContext(ctx context.Context) Timelin
 	return pulumi.ToOutputWithContext(ctx, i).(TimelineMapOutput)
 }
 
+func (i TimelineMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Timeline] {
+	return pulumix.Output[map[string]*Timeline]{
+		OutputState: i.ToTimelineMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TimelineOutput struct{ *pulumi.OutputState }
 
 func (TimelineOutput) ElementType() reflect.Type {
@@ -257,6 +276,12 @@ func (o TimelineOutput) ToTimelineOutput() TimelineOutput {
 
 func (o TimelineOutput) ToTimelineOutputWithContext(ctx context.Context) TimelineOutput {
 	return o
+}
+
+func (o TimelineOutput) ToOutput(ctx context.Context) pulumix.Output[*Timeline] {
+	return pulumix.Output[*Timeline]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
@@ -313,6 +338,12 @@ func (o TimelineArrayOutput) ToTimelineArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o TimelineArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Timeline] {
+	return pulumix.Output[[]*Timeline]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TimelineArrayOutput) Index(i pulumi.IntInput) TimelineOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Timeline {
 		return vs[0].([]*Timeline)[vs[1].(int)]
@@ -331,6 +362,12 @@ func (o TimelineMapOutput) ToTimelineMapOutput() TimelineMapOutput {
 
 func (o TimelineMapOutput) ToTimelineMapOutputWithContext(ctx context.Context) TimelineMapOutput {
 	return o
+}
+
+func (o TimelineMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Timeline] {
+	return pulumix.Output[map[string]*Timeline]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TimelineMapOutput) MapIndex(k pulumi.StringInput) TimelineOutput {

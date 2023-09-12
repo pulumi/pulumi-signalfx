@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Observability Cloud resource for managing metric rulesets
@@ -161,6 +162,12 @@ func (i *MetricRuleset) ToMetricRulesetOutputWithContext(ctx context.Context) Me
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetOutput)
 }
 
+func (i *MetricRuleset) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleset] {
+	return pulumix.Output[*MetricRuleset]{
+		OutputState: i.ToMetricRulesetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // MetricRulesetArrayInput is an input type that accepts MetricRulesetArray and MetricRulesetArrayOutput values.
 // You can construct a concrete instance of `MetricRulesetArrayInput` via:
 //
@@ -184,6 +191,12 @@ func (i MetricRulesetArray) ToMetricRulesetArrayOutput() MetricRulesetArrayOutpu
 
 func (i MetricRulesetArray) ToMetricRulesetArrayOutputWithContext(ctx context.Context) MetricRulesetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetArrayOutput)
+}
+
+func (i MetricRulesetArray) ToOutput(ctx context.Context) pulumix.Output[[]*MetricRuleset] {
+	return pulumix.Output[[]*MetricRuleset]{
+		OutputState: i.ToMetricRulesetArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // MetricRulesetMapInput is an input type that accepts MetricRulesetMap and MetricRulesetMapOutput values.
@@ -211,6 +224,12 @@ func (i MetricRulesetMap) ToMetricRulesetMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetMapOutput)
 }
 
+func (i MetricRulesetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricRuleset] {
+	return pulumix.Output[map[string]*MetricRuleset]{
+		OutputState: i.ToMetricRulesetMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type MetricRulesetOutput struct{ *pulumi.OutputState }
 
 func (MetricRulesetOutput) ElementType() reflect.Type {
@@ -223,6 +242,12 @@ func (o MetricRulesetOutput) ToMetricRulesetOutput() MetricRulesetOutput {
 
 func (o MetricRulesetOutput) ToMetricRulesetOutputWithContext(ctx context.Context) MetricRulesetOutput {
 	return o
+}
+
+func (o MetricRulesetOutput) ToOutput(ctx context.Context) pulumix.Output[*MetricRuleset] {
+	return pulumix.Output[*MetricRuleset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of aggregation rules for the metric
@@ -284,6 +309,12 @@ func (o MetricRulesetArrayOutput) ToMetricRulesetArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o MetricRulesetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MetricRuleset] {
+	return pulumix.Output[[]*MetricRuleset]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o MetricRulesetArrayOutput) Index(i pulumi.IntInput) MetricRulesetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MetricRuleset {
 		return vs[0].([]*MetricRuleset)[vs[1].(int)]
@@ -302,6 +333,12 @@ func (o MetricRulesetMapOutput) ToMetricRulesetMapOutput() MetricRulesetMapOutpu
 
 func (o MetricRulesetMapOutput) ToMetricRulesetMapOutputWithContext(ctx context.Context) MetricRulesetMapOutput {
 	return o
+}
+
+func (o MetricRulesetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MetricRuleset] {
+	return pulumix.Output[map[string]*MetricRuleset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o MetricRulesetMapOutput) MapIndex(k pulumi.StringInput) MetricRulesetOutput {

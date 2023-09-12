@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -46,6 +47,12 @@ func (i ViewColumnArgs) ToViewColumnOutputWithContext(ctx context.Context) ViewC
 	return pulumi.ToOutputWithContext(ctx, i).(ViewColumnOutput)
 }
 
+func (i ViewColumnArgs) ToOutput(ctx context.Context) pulumix.Output[ViewColumn] {
+	return pulumix.Output[ViewColumn]{
+		OutputState: i.ToViewColumnOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ViewColumnArrayInput is an input type that accepts ViewColumnArray and ViewColumnArrayOutput values.
 // You can construct a concrete instance of `ViewColumnArrayInput` via:
 //
@@ -71,6 +78,12 @@ func (i ViewColumnArray) ToViewColumnArrayOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ViewColumnArrayOutput)
 }
 
+func (i ViewColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]ViewColumn] {
+	return pulumix.Output[[]ViewColumn]{
+		OutputState: i.ToViewColumnArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ViewColumnOutput struct{ *pulumi.OutputState }
 
 func (ViewColumnOutput) ElementType() reflect.Type {
@@ -83,6 +96,12 @@ func (o ViewColumnOutput) ToViewColumnOutput() ViewColumnOutput {
 
 func (o ViewColumnOutput) ToViewColumnOutputWithContext(ctx context.Context) ViewColumnOutput {
 	return o
+}
+
+func (o ViewColumnOutput) ToOutput(ctx context.Context) pulumix.Output[ViewColumn] {
+	return pulumix.Output[ViewColumn]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Name of the log view.
@@ -102,6 +121,12 @@ func (o ViewColumnArrayOutput) ToViewColumnArrayOutput() ViewColumnArrayOutput {
 
 func (o ViewColumnArrayOutput) ToViewColumnArrayOutputWithContext(ctx context.Context) ViewColumnArrayOutput {
 	return o
+}
+
+func (o ViewColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ViewColumn] {
+	return pulumix.Output[[]ViewColumn]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ViewColumnArrayOutput) Index(i pulumi.IntInput) ViewColumnOutput {
@@ -143,6 +168,12 @@ func (i ViewSortOptionArgs) ToViewSortOptionOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ViewSortOptionOutput)
 }
 
+func (i ViewSortOptionArgs) ToOutput(ctx context.Context) pulumix.Output[ViewSortOption] {
+	return pulumix.Output[ViewSortOption]{
+		OutputState: i.ToViewSortOptionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ViewSortOptionArrayInput is an input type that accepts ViewSortOptionArray and ViewSortOptionArrayOutput values.
 // You can construct a concrete instance of `ViewSortOptionArrayInput` via:
 //
@@ -168,6 +199,12 @@ func (i ViewSortOptionArray) ToViewSortOptionArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ViewSortOptionArrayOutput)
 }
 
+func (i ViewSortOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]ViewSortOption] {
+	return pulumix.Output[[]ViewSortOption]{
+		OutputState: i.ToViewSortOptionArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ViewSortOptionOutput struct{ *pulumi.OutputState }
 
 func (ViewSortOptionOutput) ElementType() reflect.Type {
@@ -180,6 +217,12 @@ func (o ViewSortOptionOutput) ToViewSortOptionOutput() ViewSortOptionOutput {
 
 func (o ViewSortOptionOutput) ToViewSortOptionOutputWithContext(ctx context.Context) ViewSortOptionOutput {
 	return o
+}
+
+func (o ViewSortOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ViewSortOption] {
+	return pulumix.Output[ViewSortOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ViewSortOptionOutput) Descending() pulumi.BoolOutput {
@@ -202,6 +245,12 @@ func (o ViewSortOptionArrayOutput) ToViewSortOptionArrayOutput() ViewSortOptionA
 
 func (o ViewSortOptionArrayOutput) ToViewSortOptionArrayOutputWithContext(ctx context.Context) ViewSortOptionArrayOutput {
 	return o
+}
+
+func (o ViewSortOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ViewSortOption] {
+	return pulumix.Output[[]ViewSortOption]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ViewSortOptionArrayOutput) Index(i pulumi.IntInput) ViewSortOptionOutput {
