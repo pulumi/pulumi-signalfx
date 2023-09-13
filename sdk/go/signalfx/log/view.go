@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
@@ -246,6 +247,12 @@ func (i *View) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ViewOutput)
 }
 
+func (i *View) ToOutput(ctx context.Context) pulumix.Output[*View] {
+	return pulumix.Output[*View]{
+		OutputState: i.ToViewOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ViewArrayInput is an input type that accepts ViewArray and ViewArrayOutput values.
 // You can construct a concrete instance of `ViewArrayInput` via:
 //
@@ -269,6 +276,12 @@ func (i ViewArray) ToViewArrayOutput() ViewArrayOutput {
 
 func (i ViewArray) ToViewArrayOutputWithContext(ctx context.Context) ViewArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ViewArrayOutput)
+}
+
+func (i ViewArray) ToOutput(ctx context.Context) pulumix.Output[[]*View] {
+	return pulumix.Output[[]*View]{
+		OutputState: i.ToViewArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ViewMapInput is an input type that accepts ViewMap and ViewMapOutput values.
@@ -296,6 +309,12 @@ func (i ViewMap) ToViewMapOutputWithContext(ctx context.Context) ViewMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ViewMapOutput)
 }
 
+func (i ViewMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*View] {
+	return pulumix.Output[map[string]*View]{
+		OutputState: i.ToViewMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ViewOutput struct{ *pulumi.OutputState }
 
 func (ViewOutput) ElementType() reflect.Type {
@@ -308,6 +327,12 @@ func (o ViewOutput) ToViewOutput() ViewOutput {
 
 func (o ViewOutput) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return o
+}
+
+func (o ViewOutput) ToOutput(ctx context.Context) pulumix.Output[*View] {
+	return pulumix.Output[*View]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The column headers to show on the log view.
@@ -374,6 +399,12 @@ func (o ViewArrayOutput) ToViewArrayOutputWithContext(ctx context.Context) ViewA
 	return o
 }
 
+func (o ViewArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*View] {
+	return pulumix.Output[[]*View]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ViewArrayOutput) Index(i pulumi.IntInput) ViewOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *View {
 		return vs[0].([]*View)[vs[1].(int)]
@@ -392,6 +423,12 @@ func (o ViewMapOutput) ToViewMapOutput() ViewMapOutput {
 
 func (o ViewMapOutput) ToViewMapOutputWithContext(ctx context.Context) ViewMapOutput {
 	return o
+}
+
+func (o ViewMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*View] {
+	return pulumix.Output[map[string]*View]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ViewMapOutput) MapIndex(k pulumi.StringInput) ViewOutput {

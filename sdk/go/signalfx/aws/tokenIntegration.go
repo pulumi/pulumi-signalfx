@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
@@ -177,6 +178,12 @@ func (i *TokenIntegration) ToTokenIntegrationOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationOutput)
 }
 
+func (i *TokenIntegration) ToOutput(ctx context.Context) pulumix.Output[*TokenIntegration] {
+	return pulumix.Output[*TokenIntegration]{
+		OutputState: i.ToTokenIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TokenIntegrationArrayInput is an input type that accepts TokenIntegrationArray and TokenIntegrationArrayOutput values.
 // You can construct a concrete instance of `TokenIntegrationArrayInput` via:
 //
@@ -200,6 +207,12 @@ func (i TokenIntegrationArray) ToTokenIntegrationArrayOutput() TokenIntegrationA
 
 func (i TokenIntegrationArray) ToTokenIntegrationArrayOutputWithContext(ctx context.Context) TokenIntegrationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationArrayOutput)
+}
+
+func (i TokenIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TokenIntegration] {
+	return pulumix.Output[[]*TokenIntegration]{
+		OutputState: i.ToTokenIntegrationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TokenIntegrationMapInput is an input type that accepts TokenIntegrationMap and TokenIntegrationMapOutput values.
@@ -227,6 +240,12 @@ func (i TokenIntegrationMap) ToTokenIntegrationMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TokenIntegrationMapOutput)
 }
 
+func (i TokenIntegrationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TokenIntegration] {
+	return pulumix.Output[map[string]*TokenIntegration]{
+		OutputState: i.ToTokenIntegrationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TokenIntegrationOutput struct{ *pulumi.OutputState }
 
 func (TokenIntegrationOutput) ElementType() reflect.Type {
@@ -239,6 +258,12 @@ func (o TokenIntegrationOutput) ToTokenIntegrationOutput() TokenIntegrationOutpu
 
 func (o TokenIntegrationOutput) ToTokenIntegrationOutputWithContext(ctx context.Context) TokenIntegrationOutput {
 	return o
+}
+
+func (o TokenIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[*TokenIntegration] {
+	return pulumix.Output[*TokenIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of this integration
@@ -270,6 +295,12 @@ func (o TokenIntegrationArrayOutput) ToTokenIntegrationArrayOutputWithContext(ct
 	return o
 }
 
+func (o TokenIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TokenIntegration] {
+	return pulumix.Output[[]*TokenIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TokenIntegrationArrayOutput) Index(i pulumi.IntInput) TokenIntegrationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TokenIntegration {
 		return vs[0].([]*TokenIntegration)[vs[1].(int)]
@@ -288,6 +319,12 @@ func (o TokenIntegrationMapOutput) ToTokenIntegrationMapOutput() TokenIntegratio
 
 func (o TokenIntegrationMapOutput) ToTokenIntegrationMapOutputWithContext(ctx context.Context) TokenIntegrationMapOutput {
 	return o
+}
+
+func (o TokenIntegrationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TokenIntegration] {
+	return pulumix.Output[map[string]*TokenIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TokenIntegrationMapOutput) MapIndex(k pulumi.StringInput) TokenIntegrationOutput {

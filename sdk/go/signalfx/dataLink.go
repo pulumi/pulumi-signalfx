@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
@@ -199,6 +200,12 @@ func (i *DataLink) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkOutput)
 }
 
+func (i *DataLink) ToOutput(ctx context.Context) pulumix.Output[*DataLink] {
+	return pulumix.Output[*DataLink]{
+		OutputState: i.ToDataLinkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DataLinkArrayInput is an input type that accepts DataLinkArray and DataLinkArrayOutput values.
 // You can construct a concrete instance of `DataLinkArrayInput` via:
 //
@@ -222,6 +229,12 @@ func (i DataLinkArray) ToDataLinkArrayOutput() DataLinkArrayOutput {
 
 func (i DataLinkArray) ToDataLinkArrayOutputWithContext(ctx context.Context) DataLinkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkArrayOutput)
+}
+
+func (i DataLinkArray) ToOutput(ctx context.Context) pulumix.Output[[]*DataLink] {
+	return pulumix.Output[[]*DataLink]{
+		OutputState: i.ToDataLinkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DataLinkMapInput is an input type that accepts DataLinkMap and DataLinkMapOutput values.
@@ -249,6 +262,12 @@ func (i DataLinkMap) ToDataLinkMapOutputWithContext(ctx context.Context) DataLin
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkMapOutput)
 }
 
+func (i DataLinkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataLink] {
+	return pulumix.Output[map[string]*DataLink]{
+		OutputState: i.ToDataLinkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DataLinkOutput struct{ *pulumi.OutputState }
 
 func (DataLinkOutput) ElementType() reflect.Type {
@@ -261,6 +280,12 @@ func (o DataLinkOutput) ToDataLinkOutput() DataLinkOutput {
 
 func (o DataLinkOutput) ToDataLinkOutputWithContext(ctx context.Context) DataLinkOutput {
 	return o
+}
+
+func (o DataLinkOutput) ToOutput(ctx context.Context) pulumix.Output[*DataLink] {
+	return pulumix.Output[*DataLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 // If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
@@ -307,6 +332,12 @@ func (o DataLinkArrayOutput) ToDataLinkArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o DataLinkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DataLink] {
+	return pulumix.Output[[]*DataLink]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DataLinkArrayOutput) Index(i pulumi.IntInput) DataLinkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DataLink {
 		return vs[0].([]*DataLink)[vs[1].(int)]
@@ -325,6 +356,12 @@ func (o DataLinkMapOutput) ToDataLinkMapOutput() DataLinkMapOutput {
 
 func (o DataLinkMapOutput) ToDataLinkMapOutputWithContext(ctx context.Context) DataLinkMapOutput {
 	return o
+}
+
+func (o DataLinkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DataLink] {
+	return pulumix.Output[map[string]*DataLink]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DataLinkMapOutput) MapIndex(k pulumi.StringInput) DataLinkOutput {

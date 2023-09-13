@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -58,6 +59,12 @@ func (i IntegrationCustomNamespaceSyncRuleArgs) ToIntegrationCustomNamespaceSync
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespaceSyncRuleOutput)
 }
 
+func (i IntegrationCustomNamespaceSyncRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationCustomNamespaceSyncRule] {
+	return pulumix.Output[IntegrationCustomNamespaceSyncRule]{
+		OutputState: i.ToIntegrationCustomNamespaceSyncRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationCustomNamespaceSyncRuleArrayInput is an input type that accepts IntegrationCustomNamespaceSyncRuleArray and IntegrationCustomNamespaceSyncRuleArrayOutput values.
 // You can construct a concrete instance of `IntegrationCustomNamespaceSyncRuleArrayInput` via:
 //
@@ -83,6 +90,12 @@ func (i IntegrationCustomNamespaceSyncRuleArray) ToIntegrationCustomNamespaceSyn
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespaceSyncRuleArrayOutput)
 }
 
+func (i IntegrationCustomNamespaceSyncRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationCustomNamespaceSyncRule] {
+	return pulumix.Output[[]IntegrationCustomNamespaceSyncRule]{
+		OutputState: i.ToIntegrationCustomNamespaceSyncRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationCustomNamespaceSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (IntegrationCustomNamespaceSyncRuleOutput) ElementType() reflect.Type {
@@ -95,6 +108,12 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) ToIntegrationCustomNamespaceSy
 
 func (o IntegrationCustomNamespaceSyncRuleOutput) ToIntegrationCustomNamespaceSyncRuleOutputWithContext(ctx context.Context) IntegrationCustomNamespaceSyncRuleOutput {
 	return o
+}
+
+func (o IntegrationCustomNamespaceSyncRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationCustomNamespaceSyncRule] {
+	return pulumix.Output[IntegrationCustomNamespaceSyncRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
@@ -129,6 +148,12 @@ func (o IntegrationCustomNamespaceSyncRuleArrayOutput) ToIntegrationCustomNamesp
 
 func (o IntegrationCustomNamespaceSyncRuleArrayOutput) ToIntegrationCustomNamespaceSyncRuleArrayOutputWithContext(ctx context.Context) IntegrationCustomNamespaceSyncRuleArrayOutput {
 	return o
+}
+
+func (o IntegrationCustomNamespaceSyncRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationCustomNamespaceSyncRule] {
+	return pulumix.Output[[]IntegrationCustomNamespaceSyncRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationCustomNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) IntegrationCustomNamespaceSyncRuleOutput {
@@ -178,6 +203,12 @@ func (i IntegrationMetricStatsToSyncArgs) ToIntegrationMetricStatsToSyncOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMetricStatsToSyncOutput)
 }
 
+func (i IntegrationMetricStatsToSyncArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationMetricStatsToSync] {
+	return pulumix.Output[IntegrationMetricStatsToSync]{
+		OutputState: i.ToIntegrationMetricStatsToSyncOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationMetricStatsToSyncArrayInput is an input type that accepts IntegrationMetricStatsToSyncArray and IntegrationMetricStatsToSyncArrayOutput values.
 // You can construct a concrete instance of `IntegrationMetricStatsToSyncArrayInput` via:
 //
@@ -203,6 +234,12 @@ func (i IntegrationMetricStatsToSyncArray) ToIntegrationMetricStatsToSyncArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationMetricStatsToSyncArrayOutput)
 }
 
+func (i IntegrationMetricStatsToSyncArray) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationMetricStatsToSync] {
+	return pulumix.Output[[]IntegrationMetricStatsToSync]{
+		OutputState: i.ToIntegrationMetricStatsToSyncArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationMetricStatsToSyncOutput struct{ *pulumi.OutputState }
 
 func (IntegrationMetricStatsToSyncOutput) ElementType() reflect.Type {
@@ -215,6 +252,12 @@ func (o IntegrationMetricStatsToSyncOutput) ToIntegrationMetricStatsToSyncOutput
 
 func (o IntegrationMetricStatsToSyncOutput) ToIntegrationMetricStatsToSyncOutputWithContext(ctx context.Context) IntegrationMetricStatsToSyncOutput {
 	return o
+}
+
+func (o IntegrationMetricStatsToSyncOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationMetricStatsToSync] {
+	return pulumix.Output[IntegrationMetricStatsToSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AWS metric that you want to pick statistics for
@@ -244,6 +287,12 @@ func (o IntegrationMetricStatsToSyncArrayOutput) ToIntegrationMetricStatsToSyncA
 
 func (o IntegrationMetricStatsToSyncArrayOutput) ToIntegrationMetricStatsToSyncArrayOutputWithContext(ctx context.Context) IntegrationMetricStatsToSyncArrayOutput {
 	return o
+}
+
+func (o IntegrationMetricStatsToSyncArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationMetricStatsToSync] {
+	return pulumix.Output[[]IntegrationMetricStatsToSync]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationMetricStatsToSyncArrayOutput) Index(i pulumi.IntInput) IntegrationMetricStatsToSyncOutput {
@@ -297,6 +346,12 @@ func (i IntegrationNamespaceSyncRuleArgs) ToIntegrationNamespaceSyncRuleOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationNamespaceSyncRuleOutput)
 }
 
+func (i IntegrationNamespaceSyncRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationNamespaceSyncRule] {
+	return pulumix.Output[IntegrationNamespaceSyncRule]{
+		OutputState: i.ToIntegrationNamespaceSyncRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // IntegrationNamespaceSyncRuleArrayInput is an input type that accepts IntegrationNamespaceSyncRuleArray and IntegrationNamespaceSyncRuleArrayOutput values.
 // You can construct a concrete instance of `IntegrationNamespaceSyncRuleArrayInput` via:
 //
@@ -322,6 +377,12 @@ func (i IntegrationNamespaceSyncRuleArray) ToIntegrationNamespaceSyncRuleArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationNamespaceSyncRuleArrayOutput)
 }
 
+func (i IntegrationNamespaceSyncRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationNamespaceSyncRule] {
+	return pulumix.Output[[]IntegrationNamespaceSyncRule]{
+		OutputState: i.ToIntegrationNamespaceSyncRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type IntegrationNamespaceSyncRuleOutput struct{ *pulumi.OutputState }
 
 func (IntegrationNamespaceSyncRuleOutput) ElementType() reflect.Type {
@@ -334,6 +395,12 @@ func (o IntegrationNamespaceSyncRuleOutput) ToIntegrationNamespaceSyncRuleOutput
 
 func (o IntegrationNamespaceSyncRuleOutput) ToIntegrationNamespaceSyncRuleOutputWithContext(ctx context.Context) IntegrationNamespaceSyncRuleOutput {
 	return o
+}
+
+func (o IntegrationNamespaceSyncRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationNamespaceSyncRule] {
+	return pulumix.Output[IntegrationNamespaceSyncRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
@@ -368,6 +435,12 @@ func (o IntegrationNamespaceSyncRuleArrayOutput) ToIntegrationNamespaceSyncRuleA
 
 func (o IntegrationNamespaceSyncRuleArrayOutput) ToIntegrationNamespaceSyncRuleArrayOutputWithContext(ctx context.Context) IntegrationNamespaceSyncRuleArrayOutput {
 	return o
+}
+
+func (o IntegrationNamespaceSyncRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationNamespaceSyncRule] {
+	return pulumix.Output[[]IntegrationNamespaceSyncRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o IntegrationNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) IntegrationNamespaceSyncRuleOutput {

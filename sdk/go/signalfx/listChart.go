@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This chart type displays current data values in a list format.
@@ -365,6 +366,12 @@ func (i *ListChart) ToListChartOutputWithContext(ctx context.Context) ListChartO
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartOutput)
 }
 
+func (i *ListChart) ToOutput(ctx context.Context) pulumix.Output[*ListChart] {
+	return pulumix.Output[*ListChart]{
+		OutputState: i.ToListChartOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListChartArrayInput is an input type that accepts ListChartArray and ListChartArrayOutput values.
 // You can construct a concrete instance of `ListChartArrayInput` via:
 //
@@ -388,6 +395,12 @@ func (i ListChartArray) ToListChartArrayOutput() ListChartArrayOutput {
 
 func (i ListChartArray) ToListChartArrayOutputWithContext(ctx context.Context) ListChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartArrayOutput)
+}
+
+func (i ListChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListChart] {
+	return pulumix.Output[[]*ListChart]{
+		OutputState: i.ToListChartArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ListChartMapInput is an input type that accepts ListChartMap and ListChartMapOutput values.
@@ -415,6 +428,12 @@ func (i ListChartMap) ToListChartMapOutputWithContext(ctx context.Context) ListC
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartMapOutput)
 }
 
+func (i ListChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListChart] {
+	return pulumix.Output[map[string]*ListChart]{
+		OutputState: i.ToListChartMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListChartOutput struct{ *pulumi.OutputState }
 
 func (ListChartOutput) ElementType() reflect.Type {
@@ -427,6 +446,12 @@ func (o ListChartOutput) ToListChartOutput() ListChartOutput {
 
 func (o ListChartOutput) ToListChartOutputWithContext(ctx context.Context) ListChartOutput {
 	return o
+}
+
+func (o ListChartOutput) ToOutput(ctx context.Context) pulumix.Output[*ListChart] {
+	return pulumix.Output[*ListChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -550,6 +575,12 @@ func (o ListChartArrayOutput) ToListChartArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ListChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListChart] {
+	return pulumix.Output[[]*ListChart]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ListChartArrayOutput) Index(i pulumi.IntInput) ListChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListChart {
 		return vs[0].([]*ListChart)[vs[1].(int)]
@@ -568,6 +599,12 @@ func (o ListChartMapOutput) ToListChartMapOutput() ListChartMapOutput {
 
 func (o ListChartMapOutput) ToListChartMapOutputWithContext(ctx context.Context) ListChartMapOutput {
 	return o
+}
+
+func (o ListChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListChart] {
+	return pulumix.Output[map[string]*ListChart]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListChartMapOutput) MapIndex(k pulumi.StringInput) ListChartOutput {

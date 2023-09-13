@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a SignalFx detector resource. This can be used to create and manage detectors.
@@ -596,6 +597,12 @@ func (i *Detector) ToDetectorOutputWithContext(ctx context.Context) DetectorOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorOutput)
 }
 
+func (i *Detector) ToOutput(ctx context.Context) pulumix.Output[*Detector] {
+	return pulumix.Output[*Detector]{
+		OutputState: i.ToDetectorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DetectorArrayInput is an input type that accepts DetectorArray and DetectorArrayOutput values.
 // You can construct a concrete instance of `DetectorArrayInput` via:
 //
@@ -619,6 +626,12 @@ func (i DetectorArray) ToDetectorArrayOutput() DetectorArrayOutput {
 
 func (i DetectorArray) ToDetectorArrayOutputWithContext(ctx context.Context) DetectorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorArrayOutput)
+}
+
+func (i DetectorArray) ToOutput(ctx context.Context) pulumix.Output[[]*Detector] {
+	return pulumix.Output[[]*Detector]{
+		OutputState: i.ToDetectorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DetectorMapInput is an input type that accepts DetectorMap and DetectorMapOutput values.
@@ -646,6 +659,12 @@ func (i DetectorMap) ToDetectorMapOutputWithContext(ctx context.Context) Detecto
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorMapOutput)
 }
 
+func (i DetectorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Detector] {
+	return pulumix.Output[map[string]*Detector]{
+		OutputState: i.ToDetectorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DetectorOutput struct{ *pulumi.OutputState }
 
 func (DetectorOutput) ElementType() reflect.Type {
@@ -658,6 +677,12 @@ func (o DetectorOutput) ToDetectorOutput() DetectorOutput {
 
 func (o DetectorOutput) ToDetectorOutputWithContext(ctx context.Context) DetectorOutput {
 	return o
+}
+
+func (o DetectorOutput) ToOutput(ctx context.Context) pulumix.Output[*Detector] {
+	return pulumix.Output[*Detector]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
@@ -774,6 +799,12 @@ func (o DetectorArrayOutput) ToDetectorArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o DetectorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Detector] {
+	return pulumix.Output[[]*Detector]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DetectorArrayOutput) Index(i pulumi.IntInput) DetectorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Detector {
 		return vs[0].([]*Detector)[vs[1].(int)]
@@ -792,6 +823,12 @@ func (o DetectorMapOutput) ToDetectorMapOutput() DetectorMapOutput {
 
 func (o DetectorMapOutput) ToDetectorMapOutputWithContext(ctx context.Context) DetectorMapOutput {
 	return o
+}
+
+func (o DetectorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Detector] {
+	return pulumix.Output[map[string]*Detector]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DetectorMapOutput) MapIndex(k pulumi.StringInput) DetectorOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // SignalFx Webhook integration.
@@ -182,6 +183,12 @@ func (i *WebhookIntegration) ToWebhookIntegrationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationOutput)
 }
 
+func (i *WebhookIntegration) ToOutput(ctx context.Context) pulumix.Output[*WebhookIntegration] {
+	return pulumix.Output[*WebhookIntegration]{
+		OutputState: i.ToWebhookIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebhookIntegrationArrayInput is an input type that accepts WebhookIntegrationArray and WebhookIntegrationArrayOutput values.
 // You can construct a concrete instance of `WebhookIntegrationArrayInput` via:
 //
@@ -205,6 +212,12 @@ func (i WebhookIntegrationArray) ToWebhookIntegrationArrayOutput() WebhookIntegr
 
 func (i WebhookIntegrationArray) ToWebhookIntegrationArrayOutputWithContext(ctx context.Context) WebhookIntegrationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationArrayOutput)
+}
+
+func (i WebhookIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebhookIntegration] {
+	return pulumix.Output[[]*WebhookIntegration]{
+		OutputState: i.ToWebhookIntegrationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebhookIntegrationMapInput is an input type that accepts WebhookIntegrationMap and WebhookIntegrationMapOutput values.
@@ -232,6 +245,12 @@ func (i WebhookIntegrationMap) ToWebhookIntegrationMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationMapOutput)
 }
 
+func (i WebhookIntegrationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebhookIntegration] {
+	return pulumix.Output[map[string]*WebhookIntegration]{
+		OutputState: i.ToWebhookIntegrationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebhookIntegrationOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationOutput) ElementType() reflect.Type {
@@ -244,6 +263,12 @@ func (o WebhookIntegrationOutput) ToWebhookIntegrationOutput() WebhookIntegratio
 
 func (o WebhookIntegrationOutput) ToWebhookIntegrationOutputWithContext(ctx context.Context) WebhookIntegrationOutput {
 	return o
+}
+
+func (o WebhookIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[*WebhookIntegration] {
+	return pulumix.Output[*WebhookIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether the integration is enabled.
@@ -284,6 +309,12 @@ func (o WebhookIntegrationArrayOutput) ToWebhookIntegrationArrayOutputWithContex
 	return o
 }
 
+func (o WebhookIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebhookIntegration] {
+	return pulumix.Output[[]*WebhookIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebhookIntegrationArrayOutput) Index(i pulumi.IntInput) WebhookIntegrationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebhookIntegration {
 		return vs[0].([]*WebhookIntegration)[vs[1].(int)]
@@ -302,6 +333,12 @@ func (o WebhookIntegrationMapOutput) ToWebhookIntegrationMapOutput() WebhookInte
 
 func (o WebhookIntegrationMapOutput) ToWebhookIntegrationMapOutputWithContext(ctx context.Context) WebhookIntegrationMapOutput {
 	return o
+}
+
+func (o WebhookIntegrationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebhookIntegration] {
+	return pulumix.Output[map[string]*WebhookIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebhookIntegrationMapOutput) MapIndex(k pulumi.StringInput) WebhookIntegrationOutput {
