@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,48 +59,95 @@ class ListChartArgs:
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
-        pulumi.set(__self__, "program_text", program_text)
+        ListChartArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            program_text=program_text,
+            color_by=color_by,
+            color_scales=color_scales,
+            description=description,
+            disable_sampling=disable_sampling,
+            end_time=end_time,
+            hide_missing_values=hide_missing_values,
+            legend_fields_to_hides=legend_fields_to_hides,
+            legend_options_fields=legend_options_fields,
+            max_delay=max_delay,
+            max_precision=max_precision,
+            name=name,
+            refresh_interval=refresh_interval,
+            secondary_visualization=secondary_visualization,
+            sort_by=sort_by,
+            start_time=start_time,
+            time_range=time_range,
+            timezone=timezone,
+            unit_prefix=unit_prefix,
+            viz_options=viz_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             program_text: pulumi.Input[str],
+             color_by: Optional[pulumi.Input[str]] = None,
+             color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_sampling: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             hide_missing_values: Optional[pulumi.Input[bool]] = None,
+             legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartLegendOptionsFieldArgs']]]] = None,
+             max_delay: Optional[pulumi.Input[int]] = None,
+             max_precision: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             refresh_interval: Optional[pulumi.Input[int]] = None,
+             secondary_visualization: Optional[pulumi.Input[str]] = None,
+             sort_by: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             unit_prefix: Optional[pulumi.Input[str]] = None,
+             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("program_text", program_text)
         if color_by is not None:
-            pulumi.set(__self__, "color_by", color_by)
+            _setter("color_by", color_by)
         if color_scales is not None:
-            pulumi.set(__self__, "color_scales", color_scales)
+            _setter("color_scales", color_scales)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_sampling is not None:
-            pulumi.set(__self__, "disable_sampling", disable_sampling)
+            _setter("disable_sampling", disable_sampling)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if hide_missing_values is not None:
-            pulumi.set(__self__, "hide_missing_values", hide_missing_values)
+            _setter("hide_missing_values", hide_missing_values)
         if legend_fields_to_hides is not None:
             warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
             pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
         if legend_fields_to_hides is not None:
-            pulumi.set(__self__, "legend_fields_to_hides", legend_fields_to_hides)
+            _setter("legend_fields_to_hides", legend_fields_to_hides)
         if legend_options_fields is not None:
-            pulumi.set(__self__, "legend_options_fields", legend_options_fields)
+            _setter("legend_options_fields", legend_options_fields)
         if max_delay is not None:
-            pulumi.set(__self__, "max_delay", max_delay)
+            _setter("max_delay", max_delay)
         if max_precision is not None:
-            pulumi.set(__self__, "max_precision", max_precision)
+            _setter("max_precision", max_precision)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if refresh_interval is not None:
-            pulumi.set(__self__, "refresh_interval", refresh_interval)
+            _setter("refresh_interval", refresh_interval)
         if secondary_visualization is not None:
-            pulumi.set(__self__, "secondary_visualization", secondary_visualization)
+            _setter("secondary_visualization", secondary_visualization)
         if sort_by is not None:
-            pulumi.set(__self__, "sort_by", sort_by)
+            _setter("sort_by", sort_by)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if unit_prefix is not None:
-            pulumi.set(__self__, "unit_prefix", unit_prefix)
+            _setter("unit_prefix", unit_prefix)
         if viz_options is not None:
-            pulumi.set(__self__, "viz_options", viz_options)
+            _setter("viz_options", viz_options)
 
     @property
     @pulumi.getter(name="programText")
@@ -394,51 +441,100 @@ class _ListChartState:
         :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
+        _ListChartState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color_by=color_by,
+            color_scales=color_scales,
+            description=description,
+            disable_sampling=disable_sampling,
+            end_time=end_time,
+            hide_missing_values=hide_missing_values,
+            legend_fields_to_hides=legend_fields_to_hides,
+            legend_options_fields=legend_options_fields,
+            max_delay=max_delay,
+            max_precision=max_precision,
+            name=name,
+            program_text=program_text,
+            refresh_interval=refresh_interval,
+            secondary_visualization=secondary_visualization,
+            sort_by=sort_by,
+            start_time=start_time,
+            time_range=time_range,
+            timezone=timezone,
+            unit_prefix=unit_prefix,
+            url=url,
+            viz_options=viz_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color_by: Optional[pulumi.Input[str]] = None,
+             color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_sampling: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             hide_missing_values: Optional[pulumi.Input[bool]] = None,
+             legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartLegendOptionsFieldArgs']]]] = None,
+             max_delay: Optional[pulumi.Input[int]] = None,
+             max_precision: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             program_text: Optional[pulumi.Input[str]] = None,
+             refresh_interval: Optional[pulumi.Input[int]] = None,
+             secondary_visualization: Optional[pulumi.Input[str]] = None,
+             sort_by: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             unit_prefix: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if color_by is not None:
-            pulumi.set(__self__, "color_by", color_by)
+            _setter("color_by", color_by)
         if color_scales is not None:
-            pulumi.set(__self__, "color_scales", color_scales)
+            _setter("color_scales", color_scales)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_sampling is not None:
-            pulumi.set(__self__, "disable_sampling", disable_sampling)
+            _setter("disable_sampling", disable_sampling)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if hide_missing_values is not None:
-            pulumi.set(__self__, "hide_missing_values", hide_missing_values)
+            _setter("hide_missing_values", hide_missing_values)
         if legend_fields_to_hides is not None:
             warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
             pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
         if legend_fields_to_hides is not None:
-            pulumi.set(__self__, "legend_fields_to_hides", legend_fields_to_hides)
+            _setter("legend_fields_to_hides", legend_fields_to_hides)
         if legend_options_fields is not None:
-            pulumi.set(__self__, "legend_options_fields", legend_options_fields)
+            _setter("legend_options_fields", legend_options_fields)
         if max_delay is not None:
-            pulumi.set(__self__, "max_delay", max_delay)
+            _setter("max_delay", max_delay)
         if max_precision is not None:
-            pulumi.set(__self__, "max_precision", max_precision)
+            _setter("max_precision", max_precision)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if program_text is not None:
-            pulumi.set(__self__, "program_text", program_text)
+            _setter("program_text", program_text)
         if refresh_interval is not None:
-            pulumi.set(__self__, "refresh_interval", refresh_interval)
+            _setter("refresh_interval", refresh_interval)
         if secondary_visualization is not None:
-            pulumi.set(__self__, "secondary_visualization", secondary_visualization)
+            _setter("secondary_visualization", secondary_visualization)
         if sort_by is not None:
-            pulumi.set(__self__, "sort_by", sort_by)
+            _setter("sort_by", sort_by)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if unit_prefix is not None:
-            pulumi.set(__self__, "unit_prefix", unit_prefix)
+            _setter("unit_prefix", unit_prefix)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if viz_options is not None:
-            pulumi.set(__self__, "viz_options", viz_options)
+            _setter("viz_options", viz_options)
 
     @property
     @pulumi.getter(name="colorBy")
@@ -859,6 +955,10 @@ class ListChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -899,9 +999,6 @@ class ListChart(pulumi.CustomResource):
             __props__.__dict__["disable_sampling"] = disable_sampling
             __props__.__dict__["end_time"] = end_time
             __props__.__dict__["hide_missing_values"] = hide_missing_values
-            if legend_fields_to_hides is not None and not opts.urn:
-                warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-                pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
             __props__.__dict__["legend_fields_to_hides"] = legend_fields_to_hides
             __props__.__dict__["legend_options_fields"] = legend_options_fields
             __props__.__dict__["max_delay"] = max_delay

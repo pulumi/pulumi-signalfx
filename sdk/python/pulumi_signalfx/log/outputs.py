@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -21,7 +21,16 @@ class ViewColumn(dict):
         """
         :param str name: Name of the log view.
         """
-        pulumi.set(__self__, "name", name)
+        ViewColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -37,8 +46,19 @@ class ViewSortOption(dict):
     def __init__(__self__, *,
                  descending: bool,
                  field: str):
-        pulumi.set(__self__, "descending", descending)
-        pulumi.set(__self__, "field", field)
+        ViewSortOption._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            descending=descending,
+            field=field,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             descending: bool,
+             field: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("descending", descending)
+        _setter("field", field)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,8 +23,19 @@ class IntegrationCustomNamespacesPerService(dict):
         :param Sequence[str] namespaces: The additional namespaces.
         :param str service: The name of the service.
         """
-        pulumi.set(__self__, "namespaces", namespaces)
-        pulumi.set(__self__, "service", service)
+        IntegrationCustomNamespacesPerService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespaces=namespaces,
+            service=service,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespaces: Sequence[str],
+             service: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespaces", namespaces)
+        _setter("service", service)
 
     @property
     @pulumi.getter
@@ -67,7 +78,16 @@ class IntegrationResourceFilterRule(dict):
         """
         :param str filter_source: Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
         """
-        pulumi.set(__self__, "filter_source", filter_source)
+        IntegrationResourceFilterRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filter_source=filter_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filter_source: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filter_source", filter_source)
 
     @property
     @pulumi.getter(name="filterSource")

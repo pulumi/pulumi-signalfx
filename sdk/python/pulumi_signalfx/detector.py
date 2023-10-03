@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,40 +55,83 @@ class DetectorArgs:
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
-        pulumi.set(__self__, "program_text", program_text)
-        pulumi.set(__self__, "rules", rules)
+        DetectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            program_text=program_text,
+            rules=rules,
+            authorized_writer_teams=authorized_writer_teams,
+            authorized_writer_users=authorized_writer_users,
+            description=description,
+            disable_sampling=disable_sampling,
+            end_time=end_time,
+            max_delay=max_delay,
+            min_delay=min_delay,
+            name=name,
+            show_data_markers=show_data_markers,
+            show_event_lines=show_event_lines,
+            start_time=start_time,
+            tags=tags,
+            teams=teams,
+            time_range=time_range,
+            timezone=timezone,
+            viz_options=viz_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             program_text: pulumi.Input[str],
+             rules: pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]],
+             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_sampling: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             max_delay: Optional[pulumi.Input[int]] = None,
+             min_delay: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             show_data_markers: Optional[pulumi.Input[bool]] = None,
+             show_event_lines: Optional[pulumi.Input[bool]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("program_text", program_text)
+        _setter("rules", rules)
         if authorized_writer_teams is not None:
-            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+            _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
-            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+            _setter("authorized_writer_users", authorized_writer_users)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_sampling is not None:
-            pulumi.set(__self__, "disable_sampling", disable_sampling)
+            _setter("disable_sampling", disable_sampling)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if max_delay is not None:
-            pulumi.set(__self__, "max_delay", max_delay)
+            _setter("max_delay", max_delay)
         if min_delay is not None:
-            pulumi.set(__self__, "min_delay", min_delay)
+            _setter("min_delay", min_delay)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if show_data_markers is not None:
-            pulumi.set(__self__, "show_data_markers", show_data_markers)
+            _setter("show_data_markers", show_data_markers)
         if show_event_lines is not None:
-            pulumi.set(__self__, "show_event_lines", show_event_lines)
+            _setter("show_event_lines", show_event_lines)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if viz_options is not None:
-            pulumi.set(__self__, "viz_options", viz_options)
+            _setter("viz_options", viz_options)
 
     @property
     @pulumi.getter(name="programText")
@@ -353,46 +396,93 @@ class _DetectorState:
         :param pulumi.Input[str] url: The URL of the detector.
         :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
+        _DetectorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_writer_teams=authorized_writer_teams,
+            authorized_writer_users=authorized_writer_users,
+            description=description,
+            disable_sampling=disable_sampling,
+            end_time=end_time,
+            label_resolutions=label_resolutions,
+            max_delay=max_delay,
+            min_delay=min_delay,
+            name=name,
+            program_text=program_text,
+            rules=rules,
+            show_data_markers=show_data_markers,
+            show_event_lines=show_event_lines,
+            start_time=start_time,
+            tags=tags,
+            teams=teams,
+            time_range=time_range,
+            timezone=timezone,
+            url=url,
+            viz_options=viz_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_sampling: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
+             max_delay: Optional[pulumi.Input[int]] = None,
+             min_delay: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             program_text: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]] = None,
+             show_data_markers: Optional[pulumi.Input[bool]] = None,
+             show_event_lines: Optional[pulumi.Input[bool]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_writer_teams is not None:
-            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+            _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
-            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+            _setter("authorized_writer_users", authorized_writer_users)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_sampling is not None:
-            pulumi.set(__self__, "disable_sampling", disable_sampling)
+            _setter("disable_sampling", disable_sampling)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if label_resolutions is not None:
-            pulumi.set(__self__, "label_resolutions", label_resolutions)
+            _setter("label_resolutions", label_resolutions)
         if max_delay is not None:
-            pulumi.set(__self__, "max_delay", max_delay)
+            _setter("max_delay", max_delay)
         if min_delay is not None:
-            pulumi.set(__self__, "min_delay", min_delay)
+            _setter("min_delay", min_delay)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if program_text is not None:
-            pulumi.set(__self__, "program_text", program_text)
+            _setter("program_text", program_text)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if show_data_markers is not None:
-            pulumi.set(__self__, "show_data_markers", show_data_markers)
+            _setter("show_data_markers", show_data_markers)
         if show_event_lines is not None:
-            pulumi.set(__self__, "show_event_lines", show_event_lines)
+            _setter("show_event_lines", show_event_lines)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if viz_options is not None:
-            pulumi.set(__self__, "viz_options", viz_options)
+            _setter("viz_options", viz_options)
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
@@ -976,6 +1066,10 @@ class Detector(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DetectorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

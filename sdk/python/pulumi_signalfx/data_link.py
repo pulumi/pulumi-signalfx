@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,18 +31,37 @@ class DataLinkArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]] target_signalfx_dashboards: Link to a SignalFx dashboard
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]] target_splunks: Link to an external URL
         """
+        DataLinkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            context_dashboard_id=context_dashboard_id,
+            property_name=property_name,
+            property_value=property_value,
+            target_external_urls=target_external_urls,
+            target_signalfx_dashboards=target_signalfx_dashboards,
+            target_splunks=target_splunks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             context_dashboard_id: Optional[pulumi.Input[str]] = None,
+             property_name: Optional[pulumi.Input[str]] = None,
+             property_value: Optional[pulumi.Input[str]] = None,
+             target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]]] = None,
+             target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]]] = None,
+             target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if context_dashboard_id is not None:
-            pulumi.set(__self__, "context_dashboard_id", context_dashboard_id)
+            _setter("context_dashboard_id", context_dashboard_id)
         if property_name is not None:
-            pulumi.set(__self__, "property_name", property_name)
+            _setter("property_name", property_name)
         if property_value is not None:
-            pulumi.set(__self__, "property_value", property_value)
+            _setter("property_value", property_value)
         if target_external_urls is not None:
-            pulumi.set(__self__, "target_external_urls", target_external_urls)
+            _setter("target_external_urls", target_external_urls)
         if target_signalfx_dashboards is not None:
-            pulumi.set(__self__, "target_signalfx_dashboards", target_signalfx_dashboards)
+            _setter("target_signalfx_dashboards", target_signalfx_dashboards)
         if target_splunks is not None:
-            pulumi.set(__self__, "target_splunks", target_splunks)
+            _setter("target_splunks", target_splunks)
 
     @property
     @pulumi.getter(name="contextDashboardId")
@@ -135,18 +154,37 @@ class _DataLinkState:
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]] target_signalfx_dashboards: Link to a SignalFx dashboard
         :param pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]] target_splunks: Link to an external URL
         """
+        _DataLinkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            context_dashboard_id=context_dashboard_id,
+            property_name=property_name,
+            property_value=property_value,
+            target_external_urls=target_external_urls,
+            target_signalfx_dashboards=target_signalfx_dashboards,
+            target_splunks=target_splunks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             context_dashboard_id: Optional[pulumi.Input[str]] = None,
+             property_name: Optional[pulumi.Input[str]] = None,
+             property_value: Optional[pulumi.Input[str]] = None,
+             target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]]] = None,
+             target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]]] = None,
+             target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if context_dashboard_id is not None:
-            pulumi.set(__self__, "context_dashboard_id", context_dashboard_id)
+            _setter("context_dashboard_id", context_dashboard_id)
         if property_name is not None:
-            pulumi.set(__self__, "property_name", property_name)
+            _setter("property_name", property_name)
         if property_value is not None:
-            pulumi.set(__self__, "property_value", property_value)
+            _setter("property_value", property_value)
         if target_external_urls is not None:
-            pulumi.set(__self__, "target_external_urls", target_external_urls)
+            _setter("target_external_urls", target_external_urls)
         if target_signalfx_dashboards is not None:
-            pulumi.set(__self__, "target_signalfx_dashboards", target_signalfx_dashboards)
+            _setter("target_signalfx_dashboards", target_signalfx_dashboards)
         if target_splunks is not None:
-            pulumi.set(__self__, "target_splunks", target_splunks)
+            _setter("target_splunks", target_splunks)
 
     @property
     @pulumi.getter(name="contextDashboardId")
@@ -326,6 +364,10 @@ class DataLink(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataLinkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

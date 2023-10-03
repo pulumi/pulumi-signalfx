@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,30 +49,67 @@ class IntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]] resource_filter_rules: List of rules for filtering Azure resources by their tags.
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "secret_key", secret_key)
-        pulumi.set(__self__, "services", services)
-        pulumi.set(__self__, "subscriptions", subscriptions)
-        pulumi.set(__self__, "tenant_id", tenant_id)
+        IntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            enabled=enabled,
+            secret_key=secret_key,
+            services=services,
+            subscriptions=subscriptions,
+            tenant_id=tenant_id,
+            additional_services=additional_services,
+            custom_namespaces_per_services=custom_namespaces_per_services,
+            environment=environment,
+            import_azure_monitor=import_azure_monitor,
+            name=name,
+            named_token=named_token,
+            poll_rate=poll_rate,
+            resource_filter_rules=resource_filter_rules,
+            sync_guest_os_namespaces=sync_guest_os_namespaces,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: pulumi.Input[str],
+             enabled: pulumi.Input[bool],
+             secret_key: pulumi.Input[str],
+             services: pulumi.Input[Sequence[pulumi.Input[str]]],
+             subscriptions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             tenant_id: pulumi.Input[str],
+             additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             import_azure_monitor: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             named_token: Optional[pulumi.Input[str]] = None,
+             poll_rate: Optional[pulumi.Input[int]] = None,
+             resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
+             sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("enabled", enabled)
+        _setter("secret_key", secret_key)
+        _setter("services", services)
+        _setter("subscriptions", subscriptions)
+        _setter("tenant_id", tenant_id)
         if additional_services is not None:
-            pulumi.set(__self__, "additional_services", additional_services)
+            _setter("additional_services", additional_services)
         if custom_namespaces_per_services is not None:
-            pulumi.set(__self__, "custom_namespaces_per_services", custom_namespaces_per_services)
+            _setter("custom_namespaces_per_services", custom_namespaces_per_services)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if import_azure_monitor is not None:
-            pulumi.set(__self__, "import_azure_monitor", import_azure_monitor)
+            _setter("import_azure_monitor", import_azure_monitor)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if named_token is not None:
-            pulumi.set(__self__, "named_token", named_token)
+            _setter("named_token", named_token)
         if poll_rate is not None:
-            pulumi.set(__self__, "poll_rate", poll_rate)
+            _setter("poll_rate", poll_rate)
         if resource_filter_rules is not None:
-            pulumi.set(__self__, "resource_filter_rules", resource_filter_rules)
+            _setter("resource_filter_rules", resource_filter_rules)
         if sync_guest_os_namespaces is not None:
-            pulumi.set(__self__, "sync_guest_os_namespaces", sync_guest_os_namespaces)
+            _setter("sync_guest_os_namespaces", sync_guest_os_namespaces)
 
     @property
     @pulumi.getter(name="appId")
@@ -291,36 +328,73 @@ class _IntegrationState:
         :param pulumi.Input[bool] sync_guest_os_namespaces: If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
         :param pulumi.Input[str] tenant_id: Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
         """
+        _IntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_services=additional_services,
+            app_id=app_id,
+            custom_namespaces_per_services=custom_namespaces_per_services,
+            enabled=enabled,
+            environment=environment,
+            import_azure_monitor=import_azure_monitor,
+            name=name,
+            named_token=named_token,
+            poll_rate=poll_rate,
+            resource_filter_rules=resource_filter_rules,
+            secret_key=secret_key,
+            services=services,
+            subscriptions=subscriptions,
+            sync_guest_os_namespaces=sync_guest_os_namespaces,
+            tenant_id=tenant_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             app_id: Optional[pulumi.Input[str]] = None,
+             custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             import_azure_monitor: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             named_token: Optional[pulumi.Input[str]] = None,
+             poll_rate: Optional[pulumi.Input[int]] = None,
+             resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_services is not None:
-            pulumi.set(__self__, "additional_services", additional_services)
+            _setter("additional_services", additional_services)
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if custom_namespaces_per_services is not None:
-            pulumi.set(__self__, "custom_namespaces_per_services", custom_namespaces_per_services)
+            _setter("custom_namespaces_per_services", custom_namespaces_per_services)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if import_azure_monitor is not None:
-            pulumi.set(__self__, "import_azure_monitor", import_azure_monitor)
+            _setter("import_azure_monitor", import_azure_monitor)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if named_token is not None:
-            pulumi.set(__self__, "named_token", named_token)
+            _setter("named_token", named_token)
         if poll_rate is not None:
-            pulumi.set(__self__, "poll_rate", poll_rate)
+            _setter("poll_rate", poll_rate)
         if resource_filter_rules is not None:
-            pulumi.set(__self__, "resource_filter_rules", resource_filter_rules)
+            _setter("resource_filter_rules", resource_filter_rules)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if subscriptions is not None:
-            pulumi.set(__self__, "subscriptions", subscriptions)
+            _setter("subscriptions", subscriptions)
         if sync_guest_os_namespaces is not None:
-            pulumi.set(__self__, "sync_guest_os_namespaces", sync_guest_os_namespaces)
+            _setter("sync_guest_os_namespaces", sync_guest_os_namespaces)
         if tenant_id is not None:
-            pulumi.set(__self__, "tenant_id", tenant_id)
+            _setter("tenant_id", tenant_id)
 
     @property
     @pulumi.getter(name="additionalServices")
@@ -640,6 +714,10 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

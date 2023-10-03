@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,15 +28,32 @@ class WebhookIntegrationArgs:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
         """
-        pulumi.set(__self__, "enabled", enabled)
+        WebhookIntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            headers=headers,
+            name=name,
+            shared_secret=shared_secret,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: pulumi.Input[bool],
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             shared_secret: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if shared_secret is not None:
-            pulumi.set(__self__, "shared_secret", shared_secret)
+            _setter("shared_secret", shared_secret)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -111,16 +128,33 @@ class _WebhookIntegrationState:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] url: The URL to request
         """
+        _WebhookIntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            headers=headers,
+            name=name,
+            shared_secret=shared_secret,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             shared_secret: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if shared_secret is not None:
-            pulumi.set(__self__, "shared_secret", shared_secret)
+            _setter("shared_secret", shared_secret)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -256,6 +290,10 @@ class WebhookIntegration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebhookIntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

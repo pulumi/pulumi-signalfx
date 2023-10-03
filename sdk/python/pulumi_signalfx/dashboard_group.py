@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -34,28 +34,51 @@ class DashboardGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
+        DashboardGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_writer_teams=authorized_writer_teams,
+            authorized_writer_users=authorized_writer_users,
+            dashboards=dashboards,
+            description=description,
+            import_qualifiers=import_qualifiers,
+            name=name,
+            permissions=permissions,
+            teams=teams,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
         if authorized_writer_teams is not None:
-            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+            _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
         if authorized_writer_users is not None:
-            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+            _setter("authorized_writer_users", authorized_writer_users)
         if dashboards is not None:
-            pulumi.set(__self__, "dashboards", dashboards)
+            _setter("dashboards", dashboards)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if import_qualifiers is not None:
-            pulumi.set(__self__, "import_qualifiers", import_qualifiers)
+            _setter("import_qualifiers", import_qualifiers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
@@ -178,28 +201,51 @@ class _DashboardGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
         """
+        _DashboardGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_writer_teams=authorized_writer_teams,
+            authorized_writer_users=authorized_writer_users,
+            dashboards=dashboards,
+            description=description,
+            import_qualifiers=import_qualifiers,
+            name=name,
+            permissions=permissions,
+            teams=teams,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             import_qualifiers: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
+             teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
         if authorized_writer_teams is not None:
-            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+            _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
         if authorized_writer_users is not None:
-            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+            _setter("authorized_writer_users", authorized_writer_users)
         if dashboards is not None:
-            pulumi.set(__self__, "dashboards", dashboards)
+            _setter("dashboards", dashboards)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if import_qualifiers is not None:
-            pulumi.set(__self__, "import_qualifiers", import_qualifiers)
+            _setter("import_qualifiers", import_qualifiers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if teams is not None:
-            pulumi.set(__self__, "teams", teams)
+            _setter("teams", teams)
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
@@ -481,6 +527,10 @@ class DashboardGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DashboardGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -503,13 +553,7 @@ class DashboardGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DashboardGroupArgs.__new__(DashboardGroupArgs)
 
-            if authorized_writer_teams is not None and not opts.urn:
-                warnings.warn("""Please use permissions field now""", DeprecationWarning)
-                pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
             __props__.__dict__["authorized_writer_teams"] = authorized_writer_teams
-            if authorized_writer_users is not None and not opts.urn:
-                warnings.warn("""Please use permissions field now""", DeprecationWarning)
-                pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
             __props__.__dict__["authorized_writer_users"] = authorized_writer_users
             __props__.__dict__["dashboards"] = dashboards
             __props__.__dict__["description"] = description

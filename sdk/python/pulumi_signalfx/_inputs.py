@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -70,10 +70,23 @@ class AlertMutingRuleFilterArgs:
         :param pulumi.Input[str] property_value: The property value to filter.
         :param pulumi.Input[bool] negated: Determines if this is a "not" filter. Defaults to `false`.
         """
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "property_value", property_value)
+        AlertMutingRuleFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            property_value=property_value,
+            negated=negated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             property_value: pulumi.Input[str],
+             negated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
+        _setter("property_value", property_value)
         if negated is not None:
-            pulumi.set(__self__, "negated", negated)
+            _setter("negated", negated)
 
     @property
     @pulumi.getter(name="propertyValue")
@@ -127,15 +140,32 @@ class DashboardChartArgs:
         :param pulumi.Input[int] row: The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
         :param pulumi.Input[int] width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
-        pulumi.set(__self__, "chart_id", chart_id)
+        DashboardChartArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chart_id=chart_id,
+            column=column,
+            height=height,
+            row=row,
+            width=width,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chart_id: pulumi.Input[str],
+             column: Optional[pulumi.Input[int]] = None,
+             height: Optional[pulumi.Input[int]] = None,
+             row: Optional[pulumi.Input[int]] = None,
+             width: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chart_id", chart_id)
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if height is not None:
-            pulumi.set(__self__, "height", height)
+            _setter("height", height)
         if row is not None:
-            pulumi.set(__self__, "row", row)
+            _setter("row", row)
         if width is not None:
-            pulumi.set(__self__, "width", width)
+            _setter("width", width)
 
     @property
     @pulumi.getter(name="chartId")
@@ -211,13 +241,28 @@ class DashboardColumnArgs:
         :param pulumi.Input[int] height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
         :param pulumi.Input[int] width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
-        pulumi.set(__self__, "chart_ids", chart_ids)
+        DashboardColumnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chart_ids=chart_ids,
+            column=column,
+            height=height,
+            width=width,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chart_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             column: Optional[pulumi.Input[int]] = None,
+             height: Optional[pulumi.Input[int]] = None,
+             width: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chart_ids", chart_ids)
         if column is not None:
-            pulumi.set(__self__, "column", column)
+            _setter("column", column)
         if height is not None:
-            pulumi.set(__self__, "height", height)
+            _setter("height", height)
         if width is not None:
-            pulumi.set(__self__, "width", width)
+            _setter("width", width)
 
     @property
     @pulumi.getter(name="chartIds")
@@ -285,17 +330,36 @@ class DashboardEventOverlayArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlaySourceArgs']]] sources: Each element specifies a filter to use against the signal specified in the `signal`.
         :param pulumi.Input[str] type: Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
-        pulumi.set(__self__, "signal", signal)
+        DashboardEventOverlayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            signal=signal,
+            color=color,
+            label=label,
+            line=line,
+            sources=sources,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             signal: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             line: Optional[pulumi.Input[bool]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlaySourceArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("signal", signal)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if line is not None:
-            pulumi.set(__self__, "line", line)
+            _setter("line", line)
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -381,10 +445,23 @@ class DashboardEventOverlaySourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param pulumi.Input[bool] negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "values", values)
+        DashboardEventOverlaySourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            values=values,
+            negated=negated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             negated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
+        _setter("values", values)
         if negated is not None:
-            pulumi.set(__self__, "negated", negated)
+            _setter("negated", negated)
 
     @property
     @pulumi.getter
@@ -436,12 +513,27 @@ class DashboardFilterArgs:
         :param pulumi.Input[bool] apply_if_exist: If true, this variable will also match data that doesn't have this property at all.
         :param pulumi.Input[bool] negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "values", values)
+        DashboardFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            values=values,
+            apply_if_exist=apply_if_exist,
+            negated=negated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             apply_if_exist: Optional[pulumi.Input[bool]] = None,
+             negated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
+        _setter("values", values)
         if apply_if_exist is not None:
-            pulumi.set(__self__, "apply_if_exist", apply_if_exist)
+            _setter("apply_if_exist", apply_if_exist)
         if negated is not None:
-            pulumi.set(__self__, "negated", negated)
+            _setter("negated", negated)
 
     @property
     @pulumi.getter
@@ -503,11 +595,24 @@ class DashboardGridArgs:
         :param pulumi.Input[int] height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
         :param pulumi.Input[int] width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
-        pulumi.set(__self__, "chart_ids", chart_ids)
+        DashboardGridArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chart_ids=chart_ids,
+            height=height,
+            width=width,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chart_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             height: Optional[pulumi.Input[int]] = None,
+             width: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chart_ids", chart_ids)
         if height is not None:
-            pulumi.set(__self__, "height", height)
+            _setter("height", height)
         if width is not None:
-            pulumi.set(__self__, "width", width)
+            _setter("width", width)
 
     @property
     @pulumi.getter(name="chartIds")
@@ -561,17 +666,36 @@ class DashboardGroupDashboardArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]] filter_overrides: The description that will override the original dashboards's description.
         :param pulumi.Input[str] name_override: The name that will override the original dashboards's name.
         """
-        pulumi.set(__self__, "dashboard_id", dashboard_id)
+        DashboardGroupDashboardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_id=dashboard_id,
+            config_id=config_id,
+            description_override=description_override,
+            filter_overrides=filter_overrides,
+            name_override=name_override,
+            variable_overrides=variable_overrides,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_id: pulumi.Input[str],
+             config_id: Optional[pulumi.Input[str]] = None,
+             description_override: Optional[pulumi.Input[str]] = None,
+             filter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]]] = None,
+             name_override: Optional[pulumi.Input[str]] = None,
+             variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardVariableOverrideArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dashboard_id", dashboard_id)
         if config_id is not None:
-            pulumi.set(__self__, "config_id", config_id)
+            _setter("config_id", config_id)
         if description_override is not None:
-            pulumi.set(__self__, "description_override", description_override)
+            _setter("description_override", description_override)
         if filter_overrides is not None:
-            pulumi.set(__self__, "filter_overrides", filter_overrides)
+            _setter("filter_overrides", filter_overrides)
         if name_override is not None:
-            pulumi.set(__self__, "name_override", name_override)
+            _setter("name_override", name_override)
         if variable_overrides is not None:
-            pulumi.set(__self__, "variable_overrides", variable_overrides)
+            _setter("variable_overrides", variable_overrides)
 
     @property
     @pulumi.getter(name="dashboardId")
@@ -651,10 +775,23 @@ class DashboardGroupDashboardFilterOverrideArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
         :param pulumi.Input[bool] negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "values", values)
+        DashboardGroupDashboardFilterOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            values=values,
+            negated=negated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             negated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
+        _setter("values", values)
         if negated is not None:
-            pulumi.set(__self__, "negated", negated)
+            _setter("negated", negated)
 
     @property
     @pulumi.getter
@@ -704,11 +841,24 @@ class DashboardGroupDashboardVariableOverrideArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
-        pulumi.set(__self__, "property", property)
+        DashboardGroupDashboardVariableOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            values=values,
+            values_suggesteds=values_suggesteds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             values_suggesteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
         if values_suggesteds is not None:
-            pulumi.set(__self__, "values_suggesteds", values_suggesteds)
+            _setter("values_suggesteds", values_suggesteds)
 
     @property
     @pulumi.getter
@@ -752,10 +902,21 @@ class DashboardGroupImportQualifierArgs:
     def __init__(__self__, *,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierFilterArgs']]]] = None,
                  metric: Optional[pulumi.Input[str]] = None):
+        DashboardGroupImportQualifierArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filters=filters,
+            metric=metric,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupImportQualifierFilterArgs']]]] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if metric is not None:
-            pulumi.set(__self__, "metric", metric)
+            _setter("metric", metric)
 
     @property
     @pulumi.getter
@@ -787,10 +948,23 @@ class DashboardGroupImportQualifierFilterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: (Optional) List of of strings (which will be treated as an OR filter on the property).
         :param pulumi.Input[bool] negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "values", values)
+        DashboardGroupImportQualifierFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            values=values,
+            negated=negated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             negated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
+        _setter("values", values)
         if negated is not None:
-            pulumi.set(__self__, "negated", negated)
+            _setter("negated", negated)
 
     @property
     @pulumi.getter
@@ -840,10 +1014,23 @@ class DashboardGroupPermissionArgs:
         :param pulumi.Input[str] principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
         """
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "principal_type", principal_type)
+        DashboardGroupPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            principal_id=principal_id,
+            principal_type=principal_type,
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             principal_id: pulumi.Input[str],
+             principal_type: pulumi.Input[str],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("principal_id", principal_id)
+        _setter("principal_type", principal_type)
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter(name="principalId")
@@ -891,10 +1078,21 @@ class DashboardPermissionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]] acls: List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
         :param pulumi.Input[str] parent: ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
         """
+        DashboardPermissionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acls=acls,
+            parent=parent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acls: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]] = None,
+             parent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acls is not None:
-            pulumi.set(__self__, "acls", acls)
+            _setter("acls", acls)
         if parent is not None:
-            pulumi.set(__self__, "parent", parent)
+            _setter("parent", parent)
 
     @property
     @pulumi.getter
@@ -932,10 +1130,23 @@ class DashboardPermissionsAclArgs:
         :param pulumi.Input[str] principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
         """
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "principal_type", principal_type)
+        DashboardPermissionsAclArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            principal_id=principal_id,
+            principal_type=principal_type,
+            actions=actions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             principal_id: pulumi.Input[str],
+             principal_type: pulumi.Input[str],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("principal_id", principal_id)
+        _setter("principal_type", principal_type)
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
 
     @property
     @pulumi.getter(name="principalId")
@@ -985,11 +1196,24 @@ class DashboardSelectedEventOverlayArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgs']]] sources: Each element specifies a filter to use against the signal specified in the `signal`.
         :param pulumi.Input[str] type: Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
-        pulumi.set(__self__, "signal", signal)
+        DashboardSelectedEventOverlayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            signal=signal,
+            sources=sources,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             signal: pulumi.Input[str],
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgs']]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("signal", signal)
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1039,10 +1263,23 @@ class DashboardSelectedEventOverlaySourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param pulumi.Input[bool] negated: If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         """
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "values", values)
+        DashboardSelectedEventOverlaySourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            values=values,
+            negated=negated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             negated: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
+        _setter("values", values)
         if negated is not None:
-            pulumi.set(__self__, "negated", negated)
+            _setter("negated", negated)
 
     @property
     @pulumi.getter
@@ -1104,22 +1341,47 @@ class DashboardVariableArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list of values to be used with the `property`, they will be combined via `OR`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "property", property)
+        DashboardVariableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            property=property,
+            apply_if_exist=apply_if_exist,
+            description=description,
+            replace_only=replace_only,
+            restricted_suggestions=restricted_suggestions,
+            value_required=value_required,
+            values=values,
+            values_suggesteds=values_suggesteds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: pulumi.Input[str],
+             property: pulumi.Input[str],
+             apply_if_exist: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             replace_only: Optional[pulumi.Input[bool]] = None,
+             restricted_suggestions: Optional[pulumi.Input[bool]] = None,
+             value_required: Optional[pulumi.Input[bool]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             values_suggesteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias", alias)
+        _setter("property", property)
         if apply_if_exist is not None:
-            pulumi.set(__self__, "apply_if_exist", apply_if_exist)
+            _setter("apply_if_exist", apply_if_exist)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if replace_only is not None:
-            pulumi.set(__self__, "replace_only", replace_only)
+            _setter("replace_only", replace_only)
         if restricted_suggestions is not None:
-            pulumi.set(__self__, "restricted_suggestions", restricted_suggestions)
+            _setter("restricted_suggestions", restricted_suggestions)
         if value_required is not None:
-            pulumi.set(__self__, "value_required", value_required)
+            _setter("value_required", value_required)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
         if values_suggesteds is not None:
-            pulumi.set(__self__, "values_suggesteds", values_suggesteds)
+            _setter("values_suggesteds", values_suggesteds)
 
     @property
     @pulumi.getter
@@ -1245,14 +1507,31 @@ class DataLinkTargetExternalUrlArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] property_key_mapping: Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
         :param pulumi.Input[str] time_format: [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "url", url)
+        DataLinkTargetExternalUrlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            url=url,
+            minimum_time_window=minimum_time_window,
+            property_key_mapping=property_key_mapping,
+            time_format=time_format,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             url: pulumi.Input[str],
+             minimum_time_window: Optional[pulumi.Input[str]] = None,
+             property_key_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             time_format: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("url", url)
         if minimum_time_window is not None:
-            pulumi.set(__self__, "minimum_time_window", minimum_time_window)
+            _setter("minimum_time_window", minimum_time_window)
         if property_key_mapping is not None:
-            pulumi.set(__self__, "property_key_mapping", property_key_mapping)
+            _setter("property_key_mapping", property_key_mapping)
         if time_format is not None:
-            pulumi.set(__self__, "time_format", time_format)
+            _setter("time_format", time_format)
 
     @property
     @pulumi.getter
@@ -1328,11 +1607,26 @@ class DataLinkTargetSignalfxDashboardArgs:
         :param pulumi.Input[str] name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
         :param pulumi.Input[bool] is_default: Flag that designates a target as the default for a data link object. `true` by default
         """
-        pulumi.set(__self__, "dashboard_group_id", dashboard_group_id)
-        pulumi.set(__self__, "dashboard_id", dashboard_id)
-        pulumi.set(__self__, "name", name)
+        DataLinkTargetSignalfxDashboardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_group_id=dashboard_group_id,
+            dashboard_id=dashboard_id,
+            name=name,
+            is_default=is_default,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_group_id: pulumi.Input[str],
+             dashboard_id: pulumi.Input[str],
+             name: pulumi.Input[str],
+             is_default: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dashboard_group_id", dashboard_group_id)
+        _setter("dashboard_id", dashboard_id)
+        _setter("name", name)
         if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
+            _setter("is_default", is_default)
 
     @property
     @pulumi.getter(name="dashboardGroupId")
@@ -1392,9 +1686,20 @@ class DataLinkTargetSplunkArgs:
         :param pulumi.Input[str] name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] property_key_mapping: Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
         """
-        pulumi.set(__self__, "name", name)
+        DataLinkTargetSplunkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            property_key_mapping=property_key_mapping,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             property_key_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if property_key_mapping is not None:
-            pulumi.set(__self__, "property_key_mapping", property_key_mapping)
+            _setter("property_key_mapping", property_key_mapping)
 
     @property
     @pulumi.getter
@@ -1444,22 +1749,47 @@ class DetectorRuleArgs:
         :param pulumi.Input[str] runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         :param pulumi.Input[str] tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
-        pulumi.set(__self__, "detect_label", detect_label)
-        pulumi.set(__self__, "severity", severity)
+        DetectorRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            detect_label=detect_label,
+            severity=severity,
+            description=description,
+            disabled=disabled,
+            notifications=notifications,
+            parameterized_body=parameterized_body,
+            parameterized_subject=parameterized_subject,
+            runbook_url=runbook_url,
+            tip=tip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             detect_label: pulumi.Input[str],
+             severity: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             parameterized_body: Optional[pulumi.Input[str]] = None,
+             parameterized_subject: Optional[pulumi.Input[str]] = None,
+             runbook_url: Optional[pulumi.Input[str]] = None,
+             tip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("detect_label", detect_label)
+        _setter("severity", severity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if notifications is not None:
-            pulumi.set(__self__, "notifications", notifications)
+            _setter("notifications", notifications)
         if parameterized_body is not None:
-            pulumi.set(__self__, "parameterized_body", parameterized_body)
+            _setter("parameterized_body", parameterized_body)
         if parameterized_subject is not None:
-            pulumi.set(__self__, "parameterized_subject", parameterized_subject)
+            _setter("parameterized_subject", parameterized_subject)
         if runbook_url is not None:
-            pulumi.set(__self__, "runbook_url", runbook_url)
+            _setter("runbook_url", runbook_url)
         if tip is not None:
-            pulumi.set(__self__, "tip", tip)
+            _setter("tip", tip)
 
     @property
     @pulumi.getter(name="detectLabel")
@@ -1596,17 +1926,36 @@ class DetectorVizOptionArgs:
                See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
-        pulumi.set(__self__, "label", label)
+        DetectorVizOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            color=color,
+            display_name=display_name,
+            value_prefix=value_prefix,
+            value_suffix=value_suffix,
+            value_unit=value_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             value_prefix: Optional[pulumi.Input[str]] = None,
+             value_suffix: Optional[pulumi.Input[str]] = None,
+             value_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if value_prefix is not None:
-            pulumi.set(__self__, "value_prefix", value_prefix)
+            _setter("value_prefix", value_prefix)
         if value_suffix is not None:
-            pulumi.set(__self__, "value_suffix", value_suffix)
+            _setter("value_suffix", value_suffix)
         if value_unit is not None:
-            pulumi.set(__self__, "value_unit", value_unit)
+            _setter("value_unit", value_unit)
 
     @property
     @pulumi.getter
@@ -1699,11 +2048,24 @@ class HeatmapChartColorRangeArgs:
         :param pulumi.Input[float] max_value: The maximum value within the coloring range.
         :param pulumi.Input[float] min_value: The minimum value within the coloring range.
         """
-        pulumi.set(__self__, "color", color)
+        HeatmapChartColorRangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color=color,
+            max_value=max_value,
+            min_value=min_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color: pulumi.Input[str],
+             max_value: Optional[pulumi.Input[float]] = None,
+             min_value: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("color", color)
         if max_value is not None:
-            pulumi.set(__self__, "max_value", max_value)
+            _setter("max_value", max_value)
         if min_value is not None:
-            pulumi.set(__self__, "min_value", min_value)
+            _setter("min_value", min_value)
 
     @property
     @pulumi.getter
@@ -1757,15 +2119,32 @@ class HeatmapChartColorScaleArgs:
         :param pulumi.Input[float] lt: Indicates the upper threshold non-inclusive value for this range.
         :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range.
         """
-        pulumi.set(__self__, "color", color)
+        HeatmapChartColorScaleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color=color,
+            gt=gt,
+            gte=gte,
+            lt=lt,
+            lte=lte,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color: pulumi.Input[str],
+             gt: Optional[pulumi.Input[float]] = None,
+             gte: Optional[pulumi.Input[float]] = None,
+             lt: Optional[pulumi.Input[float]] = None,
+             lte: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("color", color)
         if gt is not None:
-            pulumi.set(__self__, "gt", gt)
+            _setter("gt", gt)
         if gte is not None:
-            pulumi.set(__self__, "gte", gte)
+            _setter("gte", gte)
         if lt is not None:
-            pulumi.set(__self__, "lt", lt)
+            _setter("lt", lt)
         if lte is not None:
-            pulumi.set(__self__, "lte", lte)
+            _setter("lte", lte)
 
     @property
     @pulumi.getter
@@ -1843,15 +2222,32 @@ class ListChartColorScaleArgs:
         :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range.
         :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range.
         """
-        pulumi.set(__self__, "color", color)
+        ListChartColorScaleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color=color,
+            gt=gt,
+            gte=gte,
+            lt=lt,
+            lte=lte,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color: pulumi.Input[str],
+             gt: Optional[pulumi.Input[float]] = None,
+             gte: Optional[pulumi.Input[float]] = None,
+             lt: Optional[pulumi.Input[float]] = None,
+             lte: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("color", color)
         if gt is not None:
-            pulumi.set(__self__, "gt", gt)
+            _setter("gt", gt)
         if gte is not None:
-            pulumi.set(__self__, "gte", gte)
+            _setter("gte", gte)
         if lt is not None:
-            pulumi.set(__self__, "lt", lt)
+            _setter("lt", lt)
         if lte is not None:
-            pulumi.set(__self__, "lte", lte)
+            _setter("lte", lte)
 
     @property
     @pulumi.getter
@@ -1923,9 +2319,20 @@ class ListChartLegendOptionsFieldArgs:
         :param pulumi.Input[str] property: The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
         :param pulumi.Input[bool] enabled: True or False depending on if you want the property to be shown or hidden.
         """
-        pulumi.set(__self__, "property", property)
+        ListChartLegendOptionsFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -1968,17 +2375,36 @@ class ListChartVizOptionArgs:
         :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
-        pulumi.set(__self__, "label", label)
+        ListChartVizOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            color=color,
+            display_name=display_name,
+            value_prefix=value_prefix,
+            value_suffix=value_suffix,
+            value_unit=value_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             value_prefix: Optional[pulumi.Input[str]] = None,
+             value_suffix: Optional[pulumi.Input[str]] = None,
+             value_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if value_prefix is not None:
-            pulumi.set(__self__, "value_prefix", value_prefix)
+            _setter("value_prefix", value_prefix)
         if value_suffix is not None:
-            pulumi.set(__self__, "value_suffix", value_suffix)
+            _setter("value_suffix", value_suffix)
         if value_unit is not None:
-            pulumi.set(__self__, "value_unit", value_unit)
+            _setter("value_unit", value_unit)
 
     @property
     @pulumi.getter
@@ -2063,11 +2489,26 @@ class MetricRulesetAggregationRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]] matchers: Matcher object
         :param pulumi.Input[str] name: name of the aggregation rule
         """
-        pulumi.set(__self__, "aggregators", aggregators)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "matchers", matchers)
+        MetricRulesetAggregationRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregators=aggregators,
+            enabled=enabled,
+            matchers=matchers,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregators: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]],
+             enabled: pulumi.Input[bool],
+             matchers: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("aggregators", aggregators)
+        _setter("enabled", enabled)
+        _setter("matchers", matchers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2131,10 +2572,25 @@ class MetricRulesetAggregationRuleAggregatorArgs:
         :param pulumi.Input[str] output_name: name of the new aggregated metric
         :param pulumi.Input[str] type: Type of aggregator. Must always be "rollup"
         """
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "drop_dimensions", drop_dimensions)
-        pulumi.set(__self__, "output_name", output_name)
-        pulumi.set(__self__, "type", type)
+        MetricRulesetAggregationRuleAggregatorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dimensions=dimensions,
+            drop_dimensions=drop_dimensions,
+            output_name=output_name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dimensions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             drop_dimensions: pulumi.Input[bool],
+             output_name: pulumi.Input[str],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dimensions", dimensions)
+        _setter("drop_dimensions", drop_dimensions)
+        _setter("output_name", output_name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -2194,9 +2650,20 @@ class MetricRulesetAggregationRuleMatcherArgs:
         :param pulumi.Input[str] type: Type of aggregator. Must always be "rollup"
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]] filters: List of filters to filter the set of input MTSs
         """
-        pulumi.set(__self__, "type", type)
+        MetricRulesetAggregationRuleMatcherArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            filters=filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherFilterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
 
     @property
     @pulumi.getter
@@ -2234,9 +2701,22 @@ class MetricRulesetAggregationRuleMatcherFilterArgs:
         :param pulumi.Input[str] property: Name of the dimension
         :param pulumi.Input[Sequence[pulumi.Input[str]]] property_values: Value of the dimension
         """
-        pulumi.set(__self__, "not_", not_)
-        pulumi.set(__self__, "property", property)
-        pulumi.set(__self__, "property_values", property_values)
+        MetricRulesetAggregationRuleMatcherFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            not_=not_,
+            property=property,
+            property_values=property_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             not_: pulumi.Input[bool],
+             property: pulumi.Input[str],
+             property_values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("not_", not_)
+        _setter("property", property)
+        _setter("property_values", property_values)
 
     @property
     @pulumi.getter(name="not")
@@ -2282,7 +2762,16 @@ class MetricRulesetRoutingRuleArgs:
         """
         :param pulumi.Input[str] destination: end destination of the input metric. Must be `RealTime` or `Drop`
         """
-        pulumi.set(__self__, "destination", destination)
+        MetricRulesetRoutingRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination=destination,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination", destination)
 
     @property
     @pulumi.getter
@@ -2306,9 +2795,20 @@ class OrgTokenDpmLimitsArgs:
         :param pulumi.Input[int] dpm_limit: The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
         :param pulumi.Input[int] dpm_notification_threshold: DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
         """
-        pulumi.set(__self__, "dpm_limit", dpm_limit)
+        OrgTokenDpmLimitsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dpm_limit=dpm_limit,
+            dpm_notification_threshold=dpm_notification_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dpm_limit: pulumi.Input[int],
+             dpm_notification_threshold: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dpm_limit", dpm_limit)
         if dpm_notification_threshold is not None:
-            pulumi.set(__self__, "dpm_notification_threshold", dpm_notification_threshold)
+            _setter("dpm_notification_threshold", dpm_notification_threshold)
 
     @property
     @pulumi.getter(name="dpmLimit")
@@ -2356,22 +2856,45 @@ class OrgTokenHostOrUsageLimitsArgs:
         :param pulumi.Input[int] host_limit: Max number of hosts that can use this token
         :param pulumi.Input[int] host_notification_threshold: Notification threshold for hosts
         """
+        OrgTokenHostOrUsageLimitsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_limit=container_limit,
+            container_notification_threshold=container_notification_threshold,
+            custom_metrics_limit=custom_metrics_limit,
+            custom_metrics_notification_threshold=custom_metrics_notification_threshold,
+            high_res_metrics_limit=high_res_metrics_limit,
+            high_res_metrics_notification_threshold=high_res_metrics_notification_threshold,
+            host_limit=host_limit,
+            host_notification_threshold=host_notification_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_limit: Optional[pulumi.Input[int]] = None,
+             container_notification_threshold: Optional[pulumi.Input[int]] = None,
+             custom_metrics_limit: Optional[pulumi.Input[int]] = None,
+             custom_metrics_notification_threshold: Optional[pulumi.Input[int]] = None,
+             high_res_metrics_limit: Optional[pulumi.Input[int]] = None,
+             high_res_metrics_notification_threshold: Optional[pulumi.Input[int]] = None,
+             host_limit: Optional[pulumi.Input[int]] = None,
+             host_notification_threshold: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if container_limit is not None:
-            pulumi.set(__self__, "container_limit", container_limit)
+            _setter("container_limit", container_limit)
         if container_notification_threshold is not None:
-            pulumi.set(__self__, "container_notification_threshold", container_notification_threshold)
+            _setter("container_notification_threshold", container_notification_threshold)
         if custom_metrics_limit is not None:
-            pulumi.set(__self__, "custom_metrics_limit", custom_metrics_limit)
+            _setter("custom_metrics_limit", custom_metrics_limit)
         if custom_metrics_notification_threshold is not None:
-            pulumi.set(__self__, "custom_metrics_notification_threshold", custom_metrics_notification_threshold)
+            _setter("custom_metrics_notification_threshold", custom_metrics_notification_threshold)
         if high_res_metrics_limit is not None:
-            pulumi.set(__self__, "high_res_metrics_limit", high_res_metrics_limit)
+            _setter("high_res_metrics_limit", high_res_metrics_limit)
         if high_res_metrics_notification_threshold is not None:
-            pulumi.set(__self__, "high_res_metrics_notification_threshold", high_res_metrics_notification_threshold)
+            _setter("high_res_metrics_notification_threshold", high_res_metrics_notification_threshold)
         if host_limit is not None:
-            pulumi.set(__self__, "host_limit", host_limit)
+            _setter("host_limit", host_limit)
         if host_notification_threshold is not None:
-            pulumi.set(__self__, "host_notification_threshold", host_notification_threshold)
+            _setter("host_notification_threshold", host_notification_threshold)
 
     @property
     @pulumi.getter(name="containerLimit")
@@ -2485,15 +3008,32 @@ class SingleValueChartColorScaleArgs:
         :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range.
         :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range.
         """
-        pulumi.set(__self__, "color", color)
+        SingleValueChartColorScaleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color=color,
+            gt=gt,
+            gte=gte,
+            lt=lt,
+            lte=lte,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color: pulumi.Input[str],
+             gt: Optional[pulumi.Input[float]] = None,
+             gte: Optional[pulumi.Input[float]] = None,
+             lt: Optional[pulumi.Input[float]] = None,
+             lte: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("color", color)
         if gt is not None:
-            pulumi.set(__self__, "gt", gt)
+            _setter("gt", gt)
         if gte is not None:
-            pulumi.set(__self__, "gte", gte)
+            _setter("gte", gte)
         if lt is not None:
-            pulumi.set(__self__, "lt", lt)
+            _setter("lt", lt)
         if lte is not None:
-            pulumi.set(__self__, "lte", lte)
+            _setter("lte", lte)
 
     @property
     @pulumi.getter
@@ -2572,17 +3112,36 @@ class SingleValueChartVizOptionArgs:
         :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
-        pulumi.set(__self__, "label", label)
+        SingleValueChartVizOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            color=color,
+            display_name=display_name,
+            value_prefix=value_prefix,
+            value_suffix=value_suffix,
+            value_unit=value_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             value_prefix: Optional[pulumi.Input[str]] = None,
+             value_suffix: Optional[pulumi.Input[str]] = None,
+             value_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if value_prefix is not None:
-            pulumi.set(__self__, "value_prefix", value_prefix)
+            _setter("value_prefix", value_prefix)
         if value_suffix is not None:
-            pulumi.set(__self__, "value_suffix", value_suffix)
+            _setter("value_suffix", value_suffix)
         if value_unit is not None:
-            pulumi.set(__self__, "value_unit", value_unit)
+            _setter("value_unit", value_unit)
 
     @property
     @pulumi.getter
@@ -2663,17 +3222,36 @@ class TableChartVizOptionArgs:
                  value_prefix: Optional[pulumi.Input[str]] = None,
                  value_suffix: Optional[pulumi.Input[str]] = None,
                  value_unit: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "label", label)
+        TableChartVizOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            color=color,
+            display_name=display_name,
+            value_prefix=value_prefix,
+            value_suffix=value_suffix,
+            value_unit=value_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             value_prefix: Optional[pulumi.Input[str]] = None,
+             value_suffix: Optional[pulumi.Input[str]] = None,
+             value_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if value_prefix is not None:
-            pulumi.set(__self__, "value_prefix", value_prefix)
+            _setter("value_prefix", value_prefix)
         if value_suffix is not None:
-            pulumi.set(__self__, "value_suffix", value_suffix)
+            _setter("value_suffix", value_suffix)
         if value_unit is not None:
-            pulumi.set(__self__, "value_unit", value_unit)
+            _setter("value_unit", value_unit)
 
     @property
     @pulumi.getter
@@ -2750,22 +3328,45 @@ class TimeChartAxisLeftArgs:
         :param pulumi.Input[float] max_value: The maximum value for the right axis.
         :param pulumi.Input[float] min_value: The minimum value for the right axis.
         """
+        TimeChartAxisLeftArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            high_watermark=high_watermark,
+            high_watermark_label=high_watermark_label,
+            label=label,
+            low_watermark=low_watermark,
+            low_watermark_label=low_watermark_label,
+            max_value=max_value,
+            min_value=min_value,
+            watermarks=watermarks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             high_watermark: Optional[pulumi.Input[float]] = None,
+             high_watermark_label: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             low_watermark: Optional[pulumi.Input[float]] = None,
+             low_watermark_label: Optional[pulumi.Input[str]] = None,
+             max_value: Optional[pulumi.Input[float]] = None,
+             min_value: Optional[pulumi.Input[float]] = None,
+             watermarks: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartAxisLeftWatermarkArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if high_watermark is not None:
-            pulumi.set(__self__, "high_watermark", high_watermark)
+            _setter("high_watermark", high_watermark)
         if high_watermark_label is not None:
-            pulumi.set(__self__, "high_watermark_label", high_watermark_label)
+            _setter("high_watermark_label", high_watermark_label)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if low_watermark is not None:
-            pulumi.set(__self__, "low_watermark", low_watermark)
+            _setter("low_watermark", low_watermark)
         if low_watermark_label is not None:
-            pulumi.set(__self__, "low_watermark_label", low_watermark_label)
+            _setter("low_watermark_label", low_watermark_label)
         if max_value is not None:
-            pulumi.set(__self__, "max_value", max_value)
+            _setter("max_value", max_value)
         if min_value is not None:
-            pulumi.set(__self__, "min_value", min_value)
+            _setter("min_value", min_value)
         if watermarks is not None:
-            pulumi.set(__self__, "watermarks", watermarks)
+            _setter("watermarks", watermarks)
 
     @property
     @pulumi.getter(name="highWatermark")
@@ -2869,9 +3470,20 @@ class TimeChartAxisLeftWatermarkArgs:
         """
         :param pulumi.Input[str] label: Label used in the publish statement that displays the event query you want to customize.
         """
-        pulumi.set(__self__, "value", value)
+        TimeChartAxisLeftWatermarkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            label=label,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: pulumi.Input[float],
+             label: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
 
     @property
     @pulumi.getter
@@ -2915,22 +3527,45 @@ class TimeChartAxisRightArgs:
         :param pulumi.Input[float] max_value: The maximum value for the right axis.
         :param pulumi.Input[float] min_value: The minimum value for the right axis.
         """
+        TimeChartAxisRightArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            high_watermark=high_watermark,
+            high_watermark_label=high_watermark_label,
+            label=label,
+            low_watermark=low_watermark,
+            low_watermark_label=low_watermark_label,
+            max_value=max_value,
+            min_value=min_value,
+            watermarks=watermarks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             high_watermark: Optional[pulumi.Input[float]] = None,
+             high_watermark_label: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
+             low_watermark: Optional[pulumi.Input[float]] = None,
+             low_watermark_label: Optional[pulumi.Input[str]] = None,
+             max_value: Optional[pulumi.Input[float]] = None,
+             min_value: Optional[pulumi.Input[float]] = None,
+             watermarks: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartAxisRightWatermarkArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if high_watermark is not None:
-            pulumi.set(__self__, "high_watermark", high_watermark)
+            _setter("high_watermark", high_watermark)
         if high_watermark_label is not None:
-            pulumi.set(__self__, "high_watermark_label", high_watermark_label)
+            _setter("high_watermark_label", high_watermark_label)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
         if low_watermark is not None:
-            pulumi.set(__self__, "low_watermark", low_watermark)
+            _setter("low_watermark", low_watermark)
         if low_watermark_label is not None:
-            pulumi.set(__self__, "low_watermark_label", low_watermark_label)
+            _setter("low_watermark_label", low_watermark_label)
         if max_value is not None:
-            pulumi.set(__self__, "max_value", max_value)
+            _setter("max_value", max_value)
         if min_value is not None:
-            pulumi.set(__self__, "min_value", min_value)
+            _setter("min_value", min_value)
         if watermarks is not None:
-            pulumi.set(__self__, "watermarks", watermarks)
+            _setter("watermarks", watermarks)
 
     @property
     @pulumi.getter(name="highWatermark")
@@ -3034,9 +3669,20 @@ class TimeChartAxisRightWatermarkArgs:
         """
         :param pulumi.Input[str] label: Label used in the publish statement that displays the event query you want to customize.
         """
-        pulumi.set(__self__, "value", value)
+        TimeChartAxisRightWatermarkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            value=value,
+            label=label,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             value: pulumi.Input[float],
+             label: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("value", value)
         if label is not None:
-            pulumi.set(__self__, "label", label)
+            _setter("label", label)
 
     @property
     @pulumi.getter
@@ -3071,11 +3717,24 @@ class TimeChartEventOptionArgs:
         :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         """
-        pulumi.set(__self__, "label", label)
+        TimeChartEventOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            color=color,
+            display_name=display_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             color: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
 
     @property
     @pulumi.getter
@@ -3121,8 +3780,17 @@ class TimeChartHistogramOptionArgs:
         """
         :param pulumi.Input[str] color_theme: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
         """
+        TimeChartHistogramOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            color_theme=color_theme,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             color_theme: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if color_theme is not None:
-            pulumi.set(__self__, "color_theme", color_theme)
+            _setter("color_theme", color_theme)
 
     @property
     @pulumi.getter(name="colorTheme")
@@ -3146,9 +3814,20 @@ class TimeChartLegendOptionsFieldArgs:
         :param pulumi.Input[str] property: The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         :param pulumi.Input[bool] enabled: True or False depending on if you want the property to be shown or hidden.
         """
-        pulumi.set(__self__, "property", property)
+        TimeChartLegendOptionsFieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property=property,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property", property)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -3195,21 +3874,44 @@ class TimeChartVizOptionArgs:
         :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
-        pulumi.set(__self__, "label", label)
+        TimeChartVizOptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label=label,
+            axis=axis,
+            color=color,
+            display_name=display_name,
+            plot_type=plot_type,
+            value_prefix=value_prefix,
+            value_suffix=value_suffix,
+            value_unit=value_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label: pulumi.Input[str],
+             axis: Optional[pulumi.Input[str]] = None,
+             color: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             plot_type: Optional[pulumi.Input[str]] = None,
+             value_prefix: Optional[pulumi.Input[str]] = None,
+             value_suffix: Optional[pulumi.Input[str]] = None,
+             value_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label", label)
         if axis is not None:
-            pulumi.set(__self__, "axis", axis)
+            _setter("axis", axis)
         if color is not None:
-            pulumi.set(__self__, "color", color)
+            _setter("color", color)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if plot_type is not None:
-            pulumi.set(__self__, "plot_type", plot_type)
+            _setter("plot_type", plot_type)
         if value_prefix is not None:
-            pulumi.set(__self__, "value_prefix", value_prefix)
+            _setter("value_prefix", value_prefix)
         if value_suffix is not None:
-            pulumi.set(__self__, "value_suffix", value_suffix)
+            _setter("value_suffix", value_suffix)
         if value_unit is not None:
-            pulumi.set(__self__, "value_unit", value_unit)
+            _setter("value_unit", value_unit)
 
     @property
     @pulumi.getter
@@ -3314,8 +4016,19 @@ class WebhookIntegrationHeaderArgs:
         :param pulumi.Input[str] header_key: The key of the header to send
         :param pulumi.Input[str] header_value: The value of the header to send
         """
-        pulumi.set(__self__, "header_key", header_key)
-        pulumi.set(__self__, "header_value", header_value)
+        WebhookIntegrationHeaderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            header_key=header_key,
+            header_value=header_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             header_key: pulumi.Input[str],
+             header_value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("header_key", header_key)
+        _setter("header_value", header_value)
 
     @property
     @pulumi.getter(name="headerKey")
