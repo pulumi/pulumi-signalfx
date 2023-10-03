@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TeamArgs', 'Team']
@@ -35,24 +35,49 @@ class TeamArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_minors: Where to send notifications for minor alerts
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
         """
+        TeamArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            members=members,
+            name=name,
+            notifications_criticals=notifications_criticals,
+            notifications_defaults=notifications_defaults,
+            notifications_infos=notifications_infos,
+            notifications_majors=notifications_majors,
+            notifications_minors=notifications_minors,
+            notifications_warnings=notifications_warnings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notifications_criticals is not None:
-            pulumi.set(__self__, "notifications_criticals", notifications_criticals)
+            _setter("notifications_criticals", notifications_criticals)
         if notifications_defaults is not None:
-            pulumi.set(__self__, "notifications_defaults", notifications_defaults)
+            _setter("notifications_defaults", notifications_defaults)
         if notifications_infos is not None:
-            pulumi.set(__self__, "notifications_infos", notifications_infos)
+            _setter("notifications_infos", notifications_infos)
         if notifications_majors is not None:
-            pulumi.set(__self__, "notifications_majors", notifications_majors)
+            _setter("notifications_majors", notifications_majors)
         if notifications_minors is not None:
-            pulumi.set(__self__, "notifications_minors", notifications_minors)
+            _setter("notifications_minors", notifications_minors)
         if notifications_warnings is not None:
-            pulumi.set(__self__, "notifications_warnings", notifications_warnings)
+            _setter("notifications_warnings", notifications_warnings)
 
     @property
     @pulumi.getter
@@ -189,26 +214,53 @@ class _TeamState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications_warnings: Where to send notifications for warning alerts
         :param pulumi.Input[str] url: The URL of the team.
         """
+        _TeamState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            members=members,
+            name=name,
+            notifications_criticals=notifications_criticals,
+            notifications_defaults=notifications_defaults,
+            notifications_infos=notifications_infos,
+            notifications_majors=notifications_majors,
+            notifications_minors=notifications_minors,
+            notifications_warnings=notifications_warnings,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notifications_criticals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_defaults: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if members is not None:
-            pulumi.set(__self__, "members", members)
+            _setter("members", members)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notifications_criticals is not None:
-            pulumi.set(__self__, "notifications_criticals", notifications_criticals)
+            _setter("notifications_criticals", notifications_criticals)
         if notifications_defaults is not None:
-            pulumi.set(__self__, "notifications_defaults", notifications_defaults)
+            _setter("notifications_defaults", notifications_defaults)
         if notifications_infos is not None:
-            pulumi.set(__self__, "notifications_infos", notifications_infos)
+            _setter("notifications_infos", notifications_infos)
         if notifications_majors is not None:
-            pulumi.set(__self__, "notifications_majors", notifications_majors)
+            _setter("notifications_majors", notifications_majors)
         if notifications_minors is not None:
-            pulumi.set(__self__, "notifications_minors", notifications_minors)
+            _setter("notifications_minors", notifications_minors)
         if notifications_warnings is not None:
-            pulumi.set(__self__, "notifications_warnings", notifications_warnings)
+            _setter("notifications_warnings", notifications_warnings)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -420,6 +472,10 @@ class Team(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

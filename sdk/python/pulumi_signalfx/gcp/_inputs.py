@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -18,8 +18,19 @@ class IntegrationProjectServiceKeyArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[str],
                  project_key: pulumi.Input[str]):
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "project_key", project_key)
+        IntegrationProjectServiceKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            project_key=project_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             project_key: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_id", project_id)
+        _setter("project_key", project_key)
 
     @property
     @pulumi.getter(name="projectId")

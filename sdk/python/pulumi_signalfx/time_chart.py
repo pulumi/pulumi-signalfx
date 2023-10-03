@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -73,65 +73,126 @@ class TimeChartArgs:
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
-        pulumi.set(__self__, "program_text", program_text)
+        TimeChartArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            program_text=program_text,
+            axes_include_zero=axes_include_zero,
+            axes_precision=axes_precision,
+            axis_left=axis_left,
+            axis_right=axis_right,
+            color_by=color_by,
+            description=description,
+            disable_sampling=disable_sampling,
+            end_time=end_time,
+            event_options=event_options,
+            histogram_options=histogram_options,
+            legend_fields_to_hides=legend_fields_to_hides,
+            legend_options_fields=legend_options_fields,
+            max_delay=max_delay,
+            minimum_resolution=minimum_resolution,
+            name=name,
+            on_chart_legend_dimension=on_chart_legend_dimension,
+            plot_type=plot_type,
+            show_data_markers=show_data_markers,
+            show_event_lines=show_event_lines,
+            stacked=stacked,
+            start_time=start_time,
+            tags=tags,
+            time_range=time_range,
+            timezone=timezone,
+            unit_prefix=unit_prefix,
+            viz_options=viz_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             program_text: pulumi.Input[str],
+             axes_include_zero: Optional[pulumi.Input[bool]] = None,
+             axes_precision: Optional[pulumi.Input[int]] = None,
+             axis_left: Optional[pulumi.Input['TimeChartAxisLeftArgs']] = None,
+             axis_right: Optional[pulumi.Input['TimeChartAxisRightArgs']] = None,
+             color_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_sampling: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             event_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
+             histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
+             legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
+             max_delay: Optional[pulumi.Input[int]] = None,
+             minimum_resolution: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             on_chart_legend_dimension: Optional[pulumi.Input[str]] = None,
+             plot_type: Optional[pulumi.Input[str]] = None,
+             show_data_markers: Optional[pulumi.Input[bool]] = None,
+             show_event_lines: Optional[pulumi.Input[bool]] = None,
+             stacked: Optional[pulumi.Input[bool]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             unit_prefix: Optional[pulumi.Input[str]] = None,
+             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("program_text", program_text)
         if axes_include_zero is not None:
-            pulumi.set(__self__, "axes_include_zero", axes_include_zero)
+            _setter("axes_include_zero", axes_include_zero)
         if axes_precision is not None:
-            pulumi.set(__self__, "axes_precision", axes_precision)
+            _setter("axes_precision", axes_precision)
         if axis_left is not None:
-            pulumi.set(__self__, "axis_left", axis_left)
+            _setter("axis_left", axis_left)
         if axis_right is not None:
-            pulumi.set(__self__, "axis_right", axis_right)
+            _setter("axis_right", axis_right)
         if color_by is not None:
-            pulumi.set(__self__, "color_by", color_by)
+            _setter("color_by", color_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_sampling is not None:
-            pulumi.set(__self__, "disable_sampling", disable_sampling)
+            _setter("disable_sampling", disable_sampling)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if event_options is not None:
-            pulumi.set(__self__, "event_options", event_options)
+            _setter("event_options", event_options)
         if histogram_options is not None:
-            pulumi.set(__self__, "histogram_options", histogram_options)
+            _setter("histogram_options", histogram_options)
         if legend_fields_to_hides is not None:
             warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
             pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
         if legend_fields_to_hides is not None:
-            pulumi.set(__self__, "legend_fields_to_hides", legend_fields_to_hides)
+            _setter("legend_fields_to_hides", legend_fields_to_hides)
         if legend_options_fields is not None:
-            pulumi.set(__self__, "legend_options_fields", legend_options_fields)
+            _setter("legend_options_fields", legend_options_fields)
         if max_delay is not None:
-            pulumi.set(__self__, "max_delay", max_delay)
+            _setter("max_delay", max_delay)
         if minimum_resolution is not None:
-            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
+            _setter("minimum_resolution", minimum_resolution)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if on_chart_legend_dimension is not None:
-            pulumi.set(__self__, "on_chart_legend_dimension", on_chart_legend_dimension)
+            _setter("on_chart_legend_dimension", on_chart_legend_dimension)
         if plot_type is not None:
-            pulumi.set(__self__, "plot_type", plot_type)
+            _setter("plot_type", plot_type)
         if show_data_markers is not None:
-            pulumi.set(__self__, "show_data_markers", show_data_markers)
+            _setter("show_data_markers", show_data_markers)
         if show_event_lines is not None:
-            pulumi.set(__self__, "show_event_lines", show_event_lines)
+            _setter("show_event_lines", show_event_lines)
         if stacked is not None:
-            pulumi.set(__self__, "stacked", stacked)
+            _setter("stacked", stacked)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
             warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
             pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if unit_prefix is not None:
-            pulumi.set(__self__, "unit_prefix", unit_prefix)
+            _setter("unit_prefix", unit_prefix)
         if viz_options is not None:
-            pulumi.set(__self__, "viz_options", viz_options)
+            _setter("viz_options", viz_options)
 
     @property
     @pulumi.getter(name="programText")
@@ -526,68 +587,131 @@ class _TimeChartState:
         :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
+        _TimeChartState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            axes_include_zero=axes_include_zero,
+            axes_precision=axes_precision,
+            axis_left=axis_left,
+            axis_right=axis_right,
+            color_by=color_by,
+            description=description,
+            disable_sampling=disable_sampling,
+            end_time=end_time,
+            event_options=event_options,
+            histogram_options=histogram_options,
+            legend_fields_to_hides=legend_fields_to_hides,
+            legend_options_fields=legend_options_fields,
+            max_delay=max_delay,
+            minimum_resolution=minimum_resolution,
+            name=name,
+            on_chart_legend_dimension=on_chart_legend_dimension,
+            plot_type=plot_type,
+            program_text=program_text,
+            show_data_markers=show_data_markers,
+            show_event_lines=show_event_lines,
+            stacked=stacked,
+            start_time=start_time,
+            tags=tags,
+            time_range=time_range,
+            timezone=timezone,
+            unit_prefix=unit_prefix,
+            url=url,
+            viz_options=viz_options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             axes_include_zero: Optional[pulumi.Input[bool]] = None,
+             axes_precision: Optional[pulumi.Input[int]] = None,
+             axis_left: Optional[pulumi.Input['TimeChartAxisLeftArgs']] = None,
+             axis_right: Optional[pulumi.Input['TimeChartAxisRightArgs']] = None,
+             color_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_sampling: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             event_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]] = None,
+             histogram_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]] = None,
+             legend_fields_to_hides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             legend_options_fields: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]] = None,
+             max_delay: Optional[pulumi.Input[int]] = None,
+             minimum_resolution: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             on_chart_legend_dimension: Optional[pulumi.Input[str]] = None,
+             plot_type: Optional[pulumi.Input[str]] = None,
+             program_text: Optional[pulumi.Input[str]] = None,
+             show_data_markers: Optional[pulumi.Input[bool]] = None,
+             show_event_lines: Optional[pulumi.Input[bool]] = None,
+             stacked: Optional[pulumi.Input[bool]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             unit_prefix: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if axes_include_zero is not None:
-            pulumi.set(__self__, "axes_include_zero", axes_include_zero)
+            _setter("axes_include_zero", axes_include_zero)
         if axes_precision is not None:
-            pulumi.set(__self__, "axes_precision", axes_precision)
+            _setter("axes_precision", axes_precision)
         if axis_left is not None:
-            pulumi.set(__self__, "axis_left", axis_left)
+            _setter("axis_left", axis_left)
         if axis_right is not None:
-            pulumi.set(__self__, "axis_right", axis_right)
+            _setter("axis_right", axis_right)
         if color_by is not None:
-            pulumi.set(__self__, "color_by", color_by)
+            _setter("color_by", color_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_sampling is not None:
-            pulumi.set(__self__, "disable_sampling", disable_sampling)
+            _setter("disable_sampling", disable_sampling)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if event_options is not None:
-            pulumi.set(__self__, "event_options", event_options)
+            _setter("event_options", event_options)
         if histogram_options is not None:
-            pulumi.set(__self__, "histogram_options", histogram_options)
+            _setter("histogram_options", histogram_options)
         if legend_fields_to_hides is not None:
             warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
             pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
         if legend_fields_to_hides is not None:
-            pulumi.set(__self__, "legend_fields_to_hides", legend_fields_to_hides)
+            _setter("legend_fields_to_hides", legend_fields_to_hides)
         if legend_options_fields is not None:
-            pulumi.set(__self__, "legend_options_fields", legend_options_fields)
+            _setter("legend_options_fields", legend_options_fields)
         if max_delay is not None:
-            pulumi.set(__self__, "max_delay", max_delay)
+            _setter("max_delay", max_delay)
         if minimum_resolution is not None:
-            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
+            _setter("minimum_resolution", minimum_resolution)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if on_chart_legend_dimension is not None:
-            pulumi.set(__self__, "on_chart_legend_dimension", on_chart_legend_dimension)
+            _setter("on_chart_legend_dimension", on_chart_legend_dimension)
         if plot_type is not None:
-            pulumi.set(__self__, "plot_type", plot_type)
+            _setter("plot_type", plot_type)
         if program_text is not None:
-            pulumi.set(__self__, "program_text", program_text)
+            _setter("program_text", program_text)
         if show_data_markers is not None:
-            pulumi.set(__self__, "show_data_markers", show_data_markers)
+            _setter("show_data_markers", show_data_markers)
         if show_event_lines is not None:
-            pulumi.set(__self__, "show_event_lines", show_event_lines)
+            _setter("show_event_lines", show_event_lines)
         if stacked is not None:
-            pulumi.set(__self__, "stacked", stacked)
+            _setter("stacked", stacked)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
             warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
             pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if unit_prefix is not None:
-            pulumi.set(__self__, "unit_prefix", unit_prefix)
+            _setter("unit_prefix", unit_prefix)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if viz_options is not None:
-            pulumi.set(__self__, "viz_options", viz_options)
+            _setter("viz_options", viz_options)
 
     @property
     @pulumi.getter(name="axesIncludeZero")
@@ -1089,6 +1213,10 @@ class TimeChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TimeChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1132,7 +1260,17 @@ class TimeChart(pulumi.CustomResource):
 
             __props__.__dict__["axes_include_zero"] = axes_include_zero
             __props__.__dict__["axes_precision"] = axes_precision
+            if axis_left is not None and not isinstance(axis_left, TimeChartAxisLeftArgs):
+                axis_left = axis_left or {}
+                def _setter(key, value):
+                    axis_left[key] = value
+                TimeChartAxisLeftArgs._configure(_setter, **axis_left)
             __props__.__dict__["axis_left"] = axis_left
+            if axis_right is not None and not isinstance(axis_right, TimeChartAxisRightArgs):
+                axis_right = axis_right or {}
+                def _setter(key, value):
+                    axis_right[key] = value
+                TimeChartAxisRightArgs._configure(_setter, **axis_right)
             __props__.__dict__["axis_right"] = axis_right
             __props__.__dict__["color_by"] = color_by
             __props__.__dict__["description"] = description
@@ -1140,9 +1278,6 @@ class TimeChart(pulumi.CustomResource):
             __props__.__dict__["end_time"] = end_time
             __props__.__dict__["event_options"] = event_options
             __props__.__dict__["histogram_options"] = histogram_options
-            if legend_fields_to_hides is not None and not opts.urn:
-                warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-                pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
             __props__.__dict__["legend_fields_to_hides"] = legend_fields_to_hides
             __props__.__dict__["legend_options_fields"] = legend_options_fields
             __props__.__dict__["max_delay"] = max_delay
@@ -1157,9 +1292,6 @@ class TimeChart(pulumi.CustomResource):
             __props__.__dict__["show_event_lines"] = show_event_lines
             __props__.__dict__["stacked"] = stacked
             __props__.__dict__["start_time"] = start_time
-            if tags is not None and not opts.urn:
-                warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
-                pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
             __props__.__dict__["tags"] = tags
             __props__.__dict__["time_range"] = time_range
             __props__.__dict__["timezone"] = timezone

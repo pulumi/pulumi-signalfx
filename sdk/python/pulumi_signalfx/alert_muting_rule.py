@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,14 +29,31 @@ class AlertMutingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
         :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "start_time", start_time)
+        AlertMutingRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            start_time=start_time,
+            detectors=detectors,
+            filters=filters,
+            stop_time=stop_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             start_time: pulumi.Input[int],
+             detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
+             stop_time: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("start_time", start_time)
         if detectors is not None:
-            pulumi.set(__self__, "detectors", detectors)
+            _setter("detectors", detectors)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if stop_time is not None:
-            pulumi.set(__self__, "stop_time", stop_time)
+            _setter("stop_time", stop_time)
 
     @property
     @pulumi.getter
@@ -116,18 +133,37 @@ class _AlertMutingRuleState:
         :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
         :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
         """
+        _AlertMutingRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            detectors=detectors,
+            effective_start_time=effective_start_time,
+            filters=filters,
+            start_time=start_time,
+            stop_time=stop_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             effective_start_time: Optional[pulumi.Input[int]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             stop_time: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if detectors is not None:
-            pulumi.set(__self__, "detectors", detectors)
+            _setter("detectors", detectors)
         if effective_start_time is not None:
-            pulumi.set(__self__, "effective_start_time", effective_start_time)
+            _setter("effective_start_time", effective_start_time)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if stop_time is not None:
-            pulumi.set(__self__, "stop_time", stop_time)
+            _setter("stop_time", stop_time)
 
     @property
     @pulumi.getter
@@ -282,6 +318,10 @@ class AlertMutingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlertMutingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

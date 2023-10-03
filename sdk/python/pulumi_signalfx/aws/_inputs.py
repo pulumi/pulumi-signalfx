@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,13 +28,28 @@ class IntegrationCustomNamespaceSyncRuleArgs:
         :param pulumi.Input[str] filter_action: Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         :param pulumi.Input[str] filter_source: Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         """
-        pulumi.set(__self__, "namespace", namespace)
+        IntegrationCustomNamespaceSyncRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            default_action=default_action,
+            filter_action=filter_action,
+            filter_source=filter_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: pulumi.Input[str],
+             default_action: Optional[pulumi.Input[str]] = None,
+             filter_action: Optional[pulumi.Input[str]] = None,
+             filter_source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace", namespace)
         if default_action is not None:
-            pulumi.set(__self__, "default_action", default_action)
+            _setter("default_action", default_action)
         if filter_action is not None:
-            pulumi.set(__self__, "filter_action", filter_action)
+            _setter("filter_action", filter_action)
         if filter_source is not None:
-            pulumi.set(__self__, "filter_source", filter_source)
+            _setter("filter_source", filter_source)
 
     @property
     @pulumi.getter
@@ -96,9 +111,22 @@ class IntegrationMetricStatsToSyncArgs:
         :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stats: AWS statistics you want to collect
         """
-        pulumi.set(__self__, "metric", metric)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "stats", stats)
+        IntegrationMetricStatsToSyncArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric=metric,
+            namespace=namespace,
+            stats=stats,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric: pulumi.Input[str],
+             namespace: pulumi.Input[str],
+             stats: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric", metric)
+        _setter("namespace", namespace)
+        _setter("stats", stats)
 
     @property
     @pulumi.getter
@@ -150,13 +178,28 @@ class IntegrationNamespaceSyncRuleArgs:
         :param pulumi.Input[str] filter_action: Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         :param pulumi.Input[str] filter_source: Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
         """
-        pulumi.set(__self__, "namespace", namespace)
+        IntegrationNamespaceSyncRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace=namespace,
+            default_action=default_action,
+            filter_action=filter_action,
+            filter_source=filter_source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace: pulumi.Input[str],
+             default_action: Optional[pulumi.Input[str]] = None,
+             filter_action: Optional[pulumi.Input[str]] = None,
+             filter_source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace", namespace)
         if default_action is not None:
-            pulumi.set(__self__, "default_action", default_action)
+            _setter("default_action", default_action)
         if filter_action is not None:
-            pulumi.set(__self__, "filter_action", filter_action)
+            _setter("filter_action", filter_action)
         if filter_source is not None:
-            pulumi.set(__self__, "filter_source", filter_source)
+            _setter("filter_source", filter_source)
 
     @property
     @pulumi.getter
