@@ -11,62 +11,6 @@ namespace Pulumi.SignalFx
 {
     /// <summary>
     /// This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new()
-    ///     {
-    ///         ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs
-    ///         {
-    ///             Color = "#ff0000",
-    ///             MaxValue = 100,
-    ///             MinValue = 0,
-    ///         },
-    ///         ColorScales = new[]
-    ///         {
-    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///             {
-    ///                 Color = "green",
-    ///                 Gte = 99,
-    ///             },
-    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///             {
-    ///                 Color = "yellow",
-    ///                 Gte = 95,
-    ///                 Lt = 99,
-    ///             },
-    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///             {
-    ///                 Color = "red",
-    ///                 Lt = 95,
-    ///             },
-    ///         },
-    ///         Description = "Very cool Heatmap",
-    ///         DisableSampling = true,
-    ///         GroupBies = new[]
-    ///         {
-    ///             "hostname",
-    ///             "host",
-    ///         },
-    ///         HideTimestamp = true,
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
-    /// 
-    /// ",
-    ///         SortBy = "+host",
-    ///         Timezone = "Europe/Paris",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/heatmapChart:HeatmapChart")]
     public partial class HeatmapChart : global::Pulumi.CustomResource

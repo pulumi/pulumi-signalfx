@@ -45,9 +45,19 @@ class IntegrationProjectServiceKey(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             project_id: str,
-             project_key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             project_id: Optional[str] = None,
+             project_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if project_id is None:
+            raise TypeError("Missing 'project_id' argument")
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if project_key is None:
+            raise TypeError("Missing 'project_key' argument")
+
         _setter("project_id", project_id)
         _setter("project_key", project_key)
 

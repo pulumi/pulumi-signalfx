@@ -39,12 +39,18 @@ class WebhookIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              shared_secret: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if shared_secret is None and 'sharedSecret' in kwargs:
+            shared_secret = kwargs['sharedSecret']
+
         _setter("enabled", enabled)
         if headers is not None:
             _setter("headers", headers)
@@ -144,7 +150,11 @@ class _WebhookIntegrationState:
              name: Optional[pulumi.Input[str]] = None,
              shared_secret: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if shared_secret is None and 'sharedSecret' in kwargs:
+            shared_secret = kwargs['sharedSecret']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if headers is not None:
@@ -230,22 +240,6 @@ class WebhookIntegration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        webhook_myteam = signalfx.WebhookIntegration("webhookMyteam",
-            enabled=True,
-            headers=[signalfx.WebhookIntegrationHeaderArgs(
-                header_key="some_header",
-                header_value="value_for_that_header",
-            )],
-            shared_secret="abc1234",
-            url="https://www.example.com")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
@@ -263,22 +257,6 @@ class WebhookIntegration(pulumi.CustomResource):
         SignalFx Webhook integration.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        webhook_myteam = signalfx.WebhookIntegration("webhookMyteam",
-            enabled=True,
-            headers=[signalfx.WebhookIntegrationHeaderArgs(
-                header_key="some_header",
-                header_value="value_for_that_header",
-            )],
-            shared_secret="abc1234",
-            url="https://www.example.com")
-        ```
 
         :param str resource_name: The name of the resource.
         :param WebhookIntegrationArgs args: The arguments to use to populate this resource's properties.

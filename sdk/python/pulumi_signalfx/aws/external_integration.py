@@ -27,7 +27,9 @@ class ExternalIntegrationArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -68,7 +70,13 @@ class _ExternalIntegrationState:
              external_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              signalfx_aws_account: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if signalfx_aws_account is None and 'signalfxAwsAccount' in kwargs:
+            signalfx_aws_account = kwargs['signalfxAwsAccount']
+
         if external_id is not None:
             _setter("external_id", external_id)
         if name is not None:
@@ -127,124 +135,6 @@ class ExternalIntegration(pulumi.CustomResource):
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with Splunk Observability support for your realm's AWS account id.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_signalfx as signalfx
-
-        aws_myteam_extern = signalfx.aws.ExternalIntegration("awsMyteamExtern")
-        signalfx_assume_policy = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=[aws_myteam_extern.signalfx_aws_account],
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringEquals",
-                variable="sts:ExternalId",
-                values=[aws_myteam_extern.external_id],
-            )],
-        )])
-        aws_splunk_role = aws.iam.Role("awsSplunkRole",
-            description="signalfx integration to read out data and send it to signalfxs aws account",
-            assume_role_policy=signalfx_assume_policy.json)
-        aws_splunk_policy = aws.iam.Policy("awsSplunkPolicy",
-            description="AWS permissions required by the Splunk Observability Cloud",
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "apigateway:GET",
-                "autoscaling:DescribeAutoScalingGroups",
-                "cloudfront:GetDistributionConfig",
-                "cloudfront:ListDistributions",
-                "cloudfront:ListTagsForResource",
-                "cloudwatch:DescribeAlarms",
-                "cloudwatch:GetMetricData",
-                "cloudwatch:GetMetricStatistics",
-                "cloudwatch:ListMetrics",
-                "directconnect:DescribeConnections",
-                "dynamodb:DescribeTable",
-                "dynamodb:ListTables",
-                "dynamodb:ListTagsOfResource",
-                "ec2:DescribeInstances",
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeRegions",
-                "ec2:DescribeReservedInstances",
-                "ec2:DescribeReservedInstancesModifications",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumes",
-                "ecs:DescribeClusters",
-                "ecs:DescribeServices",
-                "ecs:DescribeTasks",
-                "ecs:ListClusters",
-                "ecs:ListServices",
-                "ecs:ListTagsForResource",
-                "ecs:ListTaskDefinitions",
-                "ecs:ListTasks",
-                "elasticache:DescribeCacheClusters",
-                "elasticloadbalancing:DescribeLoadBalancerAttributes",
-                "elasticloadbalancing:DescribeLoadBalancers",
-                "elasticloadbalancing:DescribeTags",
-                "elasticloadbalancing:DescribeTargetGroups",
-                "elasticmapreduce:DescribeCluster",
-                "elasticmapreduce:ListClusters",
-                "es:DescribeElasticsearchDomain",
-                "es:ListDomainNames",
-                "kinesis:DescribeStream",
-                "kinesis:ListShards",
-                "kinesis:ListStreams",
-                "kinesis:ListTagsForStream",
-                "lambda:GetAlias",
-                "lambda:ListFunctions",
-                "lambda:ListTags",
-                "logs:DeleteSubscriptionFilter",
-                "logs:DescribeLogGroups",
-                "logs:DescribeSubscriptionFilters",
-                "logs:PutSubscriptionFilter",
-                "organizations:DescribeOrganization",
-                "rds:DescribeDBClusters",
-                "rds:DescribeDBInstances",
-                "rds:ListTagsForResource",
-                "redshift:DescribeClusters",
-                "redshift:DescribeLoggingStatus",
-                "s3:GetBucketLocation",
-                "s3:GetBucketLogging",
-                "s3:GetBucketNotification",
-                "s3:GetBucketTagging",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:PutBucketNotification",
-                "sqs:GetQueueAttributes",
-                "sqs:ListQueues",
-                "sqs:ListQueueTags",
-                "states:ListStateMachines",
-                "tag:GetResources",
-                "workspaces:DescribeWorkspaces"
-              ],
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        splunk_role_policy_attach = aws.iam.RolePolicyAttachment("splunkRolePolicyAttach",
-            role=aws_splunk_role.name,
-            policy_arn=aws_splunk_policy.arn)
-        aws_myteam = signalfx.aws.Integration("awsMyteam",
-            enabled=True,
-            integration_id=aws_myteam_extern.id,
-            external_id=aws_myteam_extern.external_id,
-            role_arn=aws_splunk_role.arn,
-            regions=["us-east-1"],
-            poll_rate=300,
-            import_cloud_watch=True,
-            enable_aws_usage=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of this integration
@@ -261,124 +151,6 @@ class ExternalIntegration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`. Check with Splunk Observability support for your realm's AWS account id.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_signalfx as signalfx
-
-        aws_myteam_extern = signalfx.aws.ExternalIntegration("awsMyteamExtern")
-        signalfx_assume_policy = aws.iam.get_policy_document_output(statements=[aws.iam.GetPolicyDocumentStatementArgs(
-            actions=["sts:AssumeRole"],
-            principals=[aws.iam.GetPolicyDocumentStatementPrincipalArgs(
-                type="AWS",
-                identifiers=[aws_myteam_extern.signalfx_aws_account],
-            )],
-            conditions=[aws.iam.GetPolicyDocumentStatementConditionArgs(
-                test="StringEquals",
-                variable="sts:ExternalId",
-                values=[aws_myteam_extern.external_id],
-            )],
-        )])
-        aws_splunk_role = aws.iam.Role("awsSplunkRole",
-            description="signalfx integration to read out data and send it to signalfxs aws account",
-            assume_role_policy=signalfx_assume_policy.json)
-        aws_splunk_policy = aws.iam.Policy("awsSplunkPolicy",
-            description="AWS permissions required by the Splunk Observability Cloud",
-            policy=\"\"\"{
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "apigateway:GET",
-                "autoscaling:DescribeAutoScalingGroups",
-                "cloudfront:GetDistributionConfig",
-                "cloudfront:ListDistributions",
-                "cloudfront:ListTagsForResource",
-                "cloudwatch:DescribeAlarms",
-                "cloudwatch:GetMetricData",
-                "cloudwatch:GetMetricStatistics",
-                "cloudwatch:ListMetrics",
-                "directconnect:DescribeConnections",
-                "dynamodb:DescribeTable",
-                "dynamodb:ListTables",
-                "dynamodb:ListTagsOfResource",
-                "ec2:DescribeInstances",
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeRegions",
-                "ec2:DescribeReservedInstances",
-                "ec2:DescribeReservedInstancesModifications",
-                "ec2:DescribeTags",
-                "ec2:DescribeVolumes",
-                "ecs:DescribeClusters",
-                "ecs:DescribeServices",
-                "ecs:DescribeTasks",
-                "ecs:ListClusters",
-                "ecs:ListServices",
-                "ecs:ListTagsForResource",
-                "ecs:ListTaskDefinitions",
-                "ecs:ListTasks",
-                "elasticache:DescribeCacheClusters",
-                "elasticloadbalancing:DescribeLoadBalancerAttributes",
-                "elasticloadbalancing:DescribeLoadBalancers",
-                "elasticloadbalancing:DescribeTags",
-                "elasticloadbalancing:DescribeTargetGroups",
-                "elasticmapreduce:DescribeCluster",
-                "elasticmapreduce:ListClusters",
-                "es:DescribeElasticsearchDomain",
-                "es:ListDomainNames",
-                "kinesis:DescribeStream",
-                "kinesis:ListShards",
-                "kinesis:ListStreams",
-                "kinesis:ListTagsForStream",
-                "lambda:GetAlias",
-                "lambda:ListFunctions",
-                "lambda:ListTags",
-                "logs:DeleteSubscriptionFilter",
-                "logs:DescribeLogGroups",
-                "logs:DescribeSubscriptionFilters",
-                "logs:PutSubscriptionFilter",
-                "organizations:DescribeOrganization",
-                "rds:DescribeDBClusters",
-                "rds:DescribeDBInstances",
-                "rds:ListTagsForResource",
-                "redshift:DescribeClusters",
-                "redshift:DescribeLoggingStatus",
-                "s3:GetBucketLocation",
-                "s3:GetBucketLogging",
-                "s3:GetBucketNotification",
-                "s3:GetBucketTagging",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:PutBucketNotification",
-                "sqs:GetQueueAttributes",
-                "sqs:ListQueues",
-                "sqs:ListQueueTags",
-                "states:ListStateMachines",
-                "tag:GetResources",
-                "workspaces:DescribeWorkspaces"
-              ],
-              "Resource": "*"
-            }
-          ]
-        }
-        \"\"\")
-        splunk_role_policy_attach = aws.iam.RolePolicyAttachment("splunkRolePolicyAttach",
-            role=aws_splunk_role.name,
-            policy_arn=aws_splunk_policy.arn)
-        aws_myteam = signalfx.aws.Integration("awsMyteam",
-            enabled=True,
-            integration_id=aws_myteam_extern.id,
-            external_id=aws_myteam_extern.external_id,
-            role_arn=aws_splunk_role.arn,
-            regions=["us-east-1"],
-            poll_rate=300,
-            import_cloud_watch=True,
-            enable_aws_usage=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param ExternalIntegrationArgs args: The arguments to use to populate this resource's properties.

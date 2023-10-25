@@ -49,7 +49,21 @@ class DataLinkArgs:
              target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]]] = None,
              target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]]] = None,
              target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if context_dashboard_id is None and 'contextDashboardId' in kwargs:
+            context_dashboard_id = kwargs['contextDashboardId']
+        if property_name is None and 'propertyName' in kwargs:
+            property_name = kwargs['propertyName']
+        if property_value is None and 'propertyValue' in kwargs:
+            property_value = kwargs['propertyValue']
+        if target_external_urls is None and 'targetExternalUrls' in kwargs:
+            target_external_urls = kwargs['targetExternalUrls']
+        if target_signalfx_dashboards is None and 'targetSignalfxDashboards' in kwargs:
+            target_signalfx_dashboards = kwargs['targetSignalfxDashboards']
+        if target_splunks is None and 'targetSplunks' in kwargs:
+            target_splunks = kwargs['targetSplunks']
+
         if context_dashboard_id is not None:
             _setter("context_dashboard_id", context_dashboard_id)
         if property_name is not None:
@@ -172,7 +186,21 @@ class _DataLinkState:
              target_external_urls: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetExternalUrlArgs']]]] = None,
              target_signalfx_dashboards: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSignalfxDashboardArgs']]]] = None,
              target_splunks: Optional[pulumi.Input[Sequence[pulumi.Input['DataLinkTargetSplunkArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if context_dashboard_id is None and 'contextDashboardId' in kwargs:
+            context_dashboard_id = kwargs['contextDashboardId']
+        if property_name is None and 'propertyName' in kwargs:
+            property_name = kwargs['propertyName']
+        if property_value is None and 'propertyValue' in kwargs:
+            property_value = kwargs['propertyValue']
+        if target_external_urls is None and 'targetExternalUrls' in kwargs:
+            target_external_urls = kwargs['targetExternalUrls']
+        if target_signalfx_dashboards is None and 'targetSignalfxDashboards' in kwargs:
+            target_signalfx_dashboards = kwargs['targetSignalfxDashboards']
+        if target_splunks is None and 'targetSplunks' in kwargs:
+            target_splunks = kwargs['targetSplunks']
+
         if context_dashboard_id is not None:
             _setter("context_dashboard_id", context_dashboard_id)
         if property_name is not None:
@@ -274,37 +302,6 @@ class DataLink(pulumi.CustomResource):
         """
         Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        # A global link to SignalFx dashboard.
-        my_data_link = signalfx.DataLink("myDataLink",
-            property_name="pname",
-            property_value="pvalue",
-            target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
-                is_default=True,
-                name="sfx_dash",
-                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
-                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            )])
-        # A dashboard-specific link to an external URL
-        my_data_link_dash = signalfx.DataLink("myDataLinkDash",
-            context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            property_name="pname2",
-            property_value="pvalue",
-            target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(
-                name="ex_url",
-                time_format="ISO8601",
-                url="https://www.example.com",
-                property_key_mapping={
-                    "foo": "bar",
-                },
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] context_dashboard_id: If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
@@ -322,37 +319,6 @@ class DataLink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        # A global link to SignalFx dashboard.
-        my_data_link = signalfx.DataLink("myDataLink",
-            property_name="pname",
-            property_value="pvalue",
-            target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
-                is_default=True,
-                name="sfx_dash",
-                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
-                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            )])
-        # A dashboard-specific link to an external URL
-        my_data_link_dash = signalfx.DataLink("myDataLinkDash",
-            context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            property_name="pname2",
-            property_value="pvalue",
-            target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(
-                name="ex_url",
-                time_format="ISO8601",
-                url="https://www.example.com",
-                property_key_mapping={
-                    "foo": "bar",
-                },
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param DataLinkArgs args: The arguments to use to populate this resource's properties.

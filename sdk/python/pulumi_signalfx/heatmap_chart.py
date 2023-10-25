@@ -67,7 +67,7 @@ class HeatmapChartArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
+             program_text: Optional[pulumi.Input[str]] = None,
              color_range: Optional[pulumi.Input['HeatmapChartColorRangeArgs']] = None,
              color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,33 @@ class HeatmapChartArgs:
              sort_by: Optional[pulumi.Input[str]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
              unit_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if color_range is None and 'colorRange' in kwargs:
+            color_range = kwargs['colorRange']
+        if color_scales is None and 'colorScales' in kwargs:
+            color_scales = kwargs['colorScales']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if group_bies is None and 'groupBies' in kwargs:
+            group_bies = kwargs['groupBies']
+        if hide_timestamp is None and 'hideTimestamp' in kwargs:
+            hide_timestamp = kwargs['hideTimestamp']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if minimum_resolution is None and 'minimumResolution' in kwargs:
+            minimum_resolution = kwargs['minimumResolution']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if sort_by is None and 'sortBy' in kwargs:
+            sort_by = kwargs['sortBy']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+
         _setter("program_text", program_text)
         if color_range is not None:
             _setter("color_range", color_range)
@@ -351,7 +377,31 @@ class _HeatmapChartState:
              timezone: Optional[pulumi.Input[str]] = None,
              unit_prefix: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color_range is None and 'colorRange' in kwargs:
+            color_range = kwargs['colorRange']
+        if color_scales is None and 'colorScales' in kwargs:
+            color_scales = kwargs['colorScales']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if group_bies is None and 'groupBies' in kwargs:
+            group_bies = kwargs['groupBies']
+        if hide_timestamp is None and 'hideTimestamp' in kwargs:
+            hide_timestamp = kwargs['hideTimestamp']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if minimum_resolution is None and 'minimumResolution' in kwargs:
+            minimum_resolution = kwargs['minimumResolution']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if sort_by is None and 'sortBy' in kwargs:
+            sort_by = kwargs['sortBy']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+
         if color_range is not None:
             _setter("color_range", color_range)
         if color_scales is not None:
@@ -587,48 +637,6 @@ class HeatmapChart(pulumi.CustomResource):
         """
         This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
-            color_range=signalfx.HeatmapChartColorRangeArgs(
-                color="#ff0000",
-                max_value=100,
-                min_value=0,
-            ),
-            color_scales=[
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="green",
-                    gte=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="yellow",
-                    gte=95,
-                    lt=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="red",
-                    lt=95,
-                ),
-            ],
-            description="Very cool Heatmap",
-            disable_sampling=True,
-            group_bies=[
-                "hostname",
-                "host",
-            ],
-            hide_timestamp=True,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            sort_by="+host",
-            timezone="Europe/Paris")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -654,48 +662,6 @@ class HeatmapChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
-            color_range=signalfx.HeatmapChartColorRangeArgs(
-                color="#ff0000",
-                max_value=100,
-                min_value=0,
-            ),
-            color_scales=[
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="green",
-                    gte=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="yellow",
-                    gte=95,
-                    lt=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="red",
-                    lt=95,
-                ),
-            ],
-            description="Very cool Heatmap",
-            disable_sampling=True,
-            group_bies=[
-                "hostname",
-                "host",
-            ],
-            hide_timestamp=True,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            sort_by="+host",
-            timezone="Europe/Paris")
-        ```
 
         :param str resource_name: The name of the resource.
         :param HeatmapChartArgs args: The arguments to use to populate this resource's properties.
@@ -739,11 +705,7 @@ class HeatmapChart(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HeatmapChartArgs.__new__(HeatmapChartArgs)
 
-            if color_range is not None and not isinstance(color_range, HeatmapChartColorRangeArgs):
-                color_range = color_range or {}
-                def _setter(key, value):
-                    color_range[key] = value
-                HeatmapChartColorRangeArgs._configure(_setter, **color_range)
+            color_range = _utilities.configure(color_range, HeatmapChartColorRangeArgs, True)
             __props__.__dict__["color_range"] = color_range
             __props__.__dict__["color_scales"] = color_scales
             __props__.__dict__["description"] = description

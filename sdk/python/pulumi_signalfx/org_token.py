@@ -53,7 +53,15 @@ class OrgTokenArgs:
              host_or_usage_limits: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_scopes is None and 'authScopes' in kwargs:
+            auth_scopes = kwargs['authScopes']
+        if dpm_limits is None and 'dpmLimits' in kwargs:
+            dpm_limits = kwargs['dpmLimits']
+        if host_or_usage_limits is None and 'hostOrUsageLimits' in kwargs:
+            host_or_usage_limits = kwargs['hostOrUsageLimits']
+
         if auth_scopes is not None:
             _setter("auth_scopes", auth_scopes)
         if description is not None:
@@ -198,7 +206,15 @@ class _OrgTokenState:
              name: Optional[pulumi.Input[str]] = None,
              notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_scopes is None and 'authScopes' in kwargs:
+            auth_scopes = kwargs['authScopes']
+        if dpm_limits is None and 'dpmLimits' in kwargs:
+            dpm_limits = kwargs['dpmLimits']
+        if host_or_usage_limits is None and 'hostOrUsageLimits' in kwargs:
+            host_or_usage_limits = kwargs['hostOrUsageLimits']
+
         if auth_scopes is not None:
             _setter("auth_scopes", auth_scopes)
         if description is not None:
@@ -331,27 +347,6 @@ class OrgToken(pulumi.CustomResource):
 
         > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myteamkey0 = signalfx.OrgToken("myteamkey0",
-            description="My team's rad key",
-            host_or_usage_limits=signalfx.OrgTokenHostOrUsageLimitsArgs(
-                container_limit=200,
-                container_notification_threshold=180,
-                custom_metrics_limit=1000,
-                custom_metrics_notification_threshold=900,
-                high_res_metrics_limit=1000,
-                high_res_metrics_notification_threshold=900,
-                host_limit=100,
-                host_notification_threshold=90,
-            ),
-            notifications=["Email,foo-alerts@bar.com"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
@@ -372,27 +367,6 @@ class OrgToken(pulumi.CustomResource):
         Manage SignalFx org tokens.
 
         > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myteamkey0 = signalfx.OrgToken("myteamkey0",
-            description="My team's rad key",
-            host_or_usage_limits=signalfx.OrgTokenHostOrUsageLimitsArgs(
-                container_limit=200,
-                container_notification_threshold=180,
-                custom_metrics_limit=1000,
-                custom_metrics_notification_threshold=900,
-                high_res_metrics_limit=1000,
-                high_res_metrics_notification_threshold=900,
-                host_limit=100,
-                host_notification_threshold=90,
-            ),
-            notifications=["Email,foo-alerts@bar.com"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param OrgTokenArgs args: The arguments to use to populate this resource's properties.
@@ -432,17 +406,9 @@ class OrgToken(pulumi.CustomResource):
             __props__.__dict__["auth_scopes"] = auth_scopes
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
-            if dpm_limits is not None and not isinstance(dpm_limits, OrgTokenDpmLimitsArgs):
-                dpm_limits = dpm_limits or {}
-                def _setter(key, value):
-                    dpm_limits[key] = value
-                OrgTokenDpmLimitsArgs._configure(_setter, **dpm_limits)
+            dpm_limits = _utilities.configure(dpm_limits, OrgTokenDpmLimitsArgs, True)
             __props__.__dict__["dpm_limits"] = dpm_limits
-            if host_or_usage_limits is not None and not isinstance(host_or_usage_limits, OrgTokenHostOrUsageLimitsArgs):
-                host_or_usage_limits = host_or_usage_limits or {}
-                def _setter(key, value):
-                    host_or_usage_limits[key] = value
-                OrgTokenHostOrUsageLimitsArgs._configure(_setter, **host_or_usage_limits)
+            host_or_usage_limits = _utilities.configure(host_or_usage_limits, OrgTokenHostOrUsageLimitsArgs, True)
             __props__.__dict__["host_or_usage_limits"] = host_or_usage_limits
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications

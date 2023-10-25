@@ -73,15 +73,6 @@ def get_integration(name: Optional[str] = None,
     """
     Use this data source to get information on an existing PagerDuty integration.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    pd_integration = signalfx.pagerduty.get_integration(name="PD-Integration")
-    ```
-
 
     :param str name: Specify the exact name of the desired PagerDuty integration
     """
@@ -101,15 +92,6 @@ def get_integration_output(name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIntegrationResult]:
     """
     Use this data source to get information on an existing PagerDuty integration.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_signalfx as signalfx
-
-    pd_integration = signalfx.pagerduty.get_integration(name="PD-Integration")
-    ```
 
 
     :param str name: Specify the exact name of the desired PagerDuty integration

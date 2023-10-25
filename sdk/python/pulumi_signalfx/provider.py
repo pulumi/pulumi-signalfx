@@ -51,7 +51,23 @@ class ProviderArgs:
              retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
              retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+        if auth_token is None and 'authToken' in kwargs:
+            auth_token = kwargs['authToken']
+        if custom_app_url is None and 'customAppUrl' in kwargs:
+            custom_app_url = kwargs['customAppUrl']
+        if retry_max_attempts is None and 'retryMaxAttempts' in kwargs:
+            retry_max_attempts = kwargs['retryMaxAttempts']
+        if retry_wait_max_seconds is None and 'retryWaitMaxSeconds' in kwargs:
+            retry_wait_max_seconds = kwargs['retryWaitMaxSeconds']
+        if retry_wait_min_seconds is None and 'retryWaitMinSeconds' in kwargs:
+            retry_wait_min_seconds = kwargs['retryWaitMinSeconds']
+        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if api_url is not None:
             _setter("api_url", api_url)
         if auth_token is not None:

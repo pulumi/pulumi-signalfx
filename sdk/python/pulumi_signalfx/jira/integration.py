@@ -59,19 +59,49 @@ class IntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             assignee_name: pulumi.Input[str],
-             auth_method: pulumi.Input[str],
-             base_url: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             issue_type: pulumi.Input[str],
-             project_key: pulumi.Input[str],
+             assignee_name: Optional[pulumi.Input[str]] = None,
+             auth_method: Optional[pulumi.Input[str]] = None,
+             base_url: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             issue_type: Optional[pulumi.Input[str]] = None,
+             project_key: Optional[pulumi.Input[str]] = None,
              api_token: Optional[pulumi.Input[str]] = None,
              assignee_display_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assignee_name is None and 'assigneeName' in kwargs:
+            assignee_name = kwargs['assigneeName']
+        if assignee_name is None:
+            raise TypeError("Missing 'assignee_name' argument")
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method is None:
+            raise TypeError("Missing 'auth_method' argument")
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if issue_type is None:
+            raise TypeError("Missing 'issue_type' argument")
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if project_key is None:
+            raise TypeError("Missing 'project_key' argument")
+        if api_token is None and 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if assignee_display_name is None and 'assigneeDisplayName' in kwargs:
+            assignee_display_name = kwargs['assigneeDisplayName']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         _setter("assignee_name", assignee_name)
         _setter("auth_method", auth_method)
         _setter("base_url", base_url)
@@ -296,7 +326,25 @@ class _IntegrationState:
              project_key: Optional[pulumi.Input[str]] = None,
              user_email: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_token is None and 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if assignee_display_name is None and 'assigneeDisplayName' in kwargs:
+            assignee_display_name = kwargs['assigneeDisplayName']
+        if assignee_name is None and 'assigneeName' in kwargs:
+            assignee_name = kwargs['assigneeName']
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         if api_token is not None:
             _setter("api_token", api_token)
         if assignee_display_name is not None:
@@ -490,24 +538,6 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        jira_myteam_xx = signalfx.jira.Integration("jiraMyteamXX",
-            assignee_display_name="Testy Testerson",
-            assignee_name="testytesterson",
-            auth_method="UsernameAndPassword",
-            base_url="https://www.example.com",
-            enabled=False,
-            issue_type="Story",
-            password="paasword",
-            project_key="TEST",
-            username="yoosername")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_token: The API token for the user email
@@ -533,24 +563,6 @@ class Integration(pulumi.CustomResource):
         SignalFx Jira integrations. For help with this integration see [Integration with Jira](https://docs.signalfx.com/en/latest/admin-guide/integrate-notifications.html#integrate-with-jira).
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        jira_myteam_xx = signalfx.jira.Integration("jiraMyteamXX",
-            assignee_display_name="Testy Testerson",
-            assignee_name="testytesterson",
-            auth_method="UsernameAndPassword",
-            base_url="https://www.example.com",
-            enabled=False,
-            issue_type="Story",
-            password="paasword",
-            project_key="TEST",
-            username="yoosername")
-        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

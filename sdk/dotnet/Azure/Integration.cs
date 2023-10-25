@@ -13,65 +13,6 @@ namespace Pulumi.SignalFx.Azure
     /// SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
     /// 
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new()
-    ///     {
-    ///         AdditionalServices = new[]
-    ///         {
-    ///             "some/service",
-    ///             "another/service",
-    ///         },
-    ///         AppId = "YYY",
-    ///         CustomNamespacesPerServices = new[]
-    ///         {
-    ///             new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs
-    ///             {
-    ///                 Namespaces = new[]
-    ///                 {
-    ///                     "monitoringAgent",
-    ///                     "customNamespace",
-    ///                 },
-    ///                 Service = "Microsoft.Compute/virtualMachines",
-    ///             },
-    ///         },
-    ///         Enabled = true,
-    ///         Environment = "azure",
-    ///         PollRate = 300,
-    ///         ResourceFilterRules = new[]
-    ///         {
-    ///             new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
-    ///             {
-    ///                 FilterSource = "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-    ///             },
-    ///             new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
-    ///             {
-    ///                 FilterSource = "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-    ///             },
-    ///         },
-    ///         SecretKey = "XXX",
-    ///         Services = new[]
-    ///         {
-    ///             "microsoft.sql/servers/elasticpools",
-    ///         },
-    ///         Subscriptions = new[]
-    ///         {
-    ///             "sub-guid-here",
-    ///         },
-    ///         TenantId = "ZZZ",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:azure/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

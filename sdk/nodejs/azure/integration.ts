@@ -10,43 +10,6 @@ import * as utilities from "../utilities";
  * SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
  *
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {
- *     additionalServices: [
- *         "some/service",
- *         "another/service",
- *     ],
- *     appId: "YYY",
- *     customNamespacesPerServices: [{
- *         namespaces: [
- *             "monitoringAgent",
- *             "customNamespace",
- *         ],
- *         service: "Microsoft.Compute/virtualMachines",
- *     }],
- *     enabled: true,
- *     environment: "azure",
- *     pollRate: 300,
- *     resourceFilterRules: [
- *         {
- *             filterSource: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
- *         },
- *         {
- *             filterSource: "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
- *         },
- *     ],
- *     secretKey: "XXX",
- *     services: ["microsoft.sql/servers/elasticpools"],
- *     subscriptions: ["sub-guid-here"],
- *     tenantId: "ZZZ",
- * });
- * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

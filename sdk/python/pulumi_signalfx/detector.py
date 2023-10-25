@@ -79,8 +79,8 @@ class DetectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
-             rules: pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]],
+             program_text: Optional[pulumi.Input[str]] = None,
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]] = None,
              authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,37 @@ class DetectorArgs:
              time_range: Optional[pulumi.Input[int]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if rules is None:
+            raise TypeError("Missing 'rules' argument")
+        if authorized_writer_teams is None and 'authorizedWriterTeams' in kwargs:
+            authorized_writer_teams = kwargs['authorizedWriterTeams']
+        if authorized_writer_users is None and 'authorizedWriterUsers' in kwargs:
+            authorized_writer_users = kwargs['authorizedWriterUsers']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if min_delay is None and 'minDelay' in kwargs:
+            min_delay = kwargs['minDelay']
+        if show_data_markers is None and 'showDataMarkers' in kwargs:
+            show_data_markers = kwargs['showDataMarkers']
+        if show_event_lines is None and 'showEventLines' in kwargs:
+            show_event_lines = kwargs['showEventLines']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         _setter("program_text", program_text)
         _setter("rules", rules)
         if authorized_writer_teams is not None:
@@ -442,7 +472,35 @@ class _DetectorState:
              timezone: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_writer_teams is None and 'authorizedWriterTeams' in kwargs:
+            authorized_writer_teams = kwargs['authorizedWriterTeams']
+        if authorized_writer_users is None and 'authorizedWriterUsers' in kwargs:
+            authorized_writer_users = kwargs['authorizedWriterUsers']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if label_resolutions is None and 'labelResolutions' in kwargs:
+            label_resolutions = kwargs['labelResolutions']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if min_delay is None and 'minDelay' in kwargs:
+            min_delay = kwargs['minDelay']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if show_data_markers is None and 'showDataMarkers' in kwargs:
+            show_data_markers = kwargs['showDataMarkers']
+        if show_event_lines is None and 'showEventLines' in kwargs:
+            show_event_lines = kwargs['showEventLines']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         if authorized_writer_teams is not None:
             _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
@@ -756,131 +814,6 @@ class Detector(pulumi.CustomResource):
 
         > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding detectors, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        config = pulumi.Config()
-        clusters = config.get_object("clusters")
-        if clusters is None:
-            clusters = [
-                "clusterA",
-                "clusterB",
-            ]
-        application_delay = []
-        for range in [{"value": i} for i in range(0, len(clusters))]:
-            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
-                description=f"your application is slow - {clusters[range['value']]}",
-                max_delay=30,
-                tags=[
-                    "app-backend",
-                    "staging",
-                ],
-                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-                authorized_writer_users=["abc123"],
-                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
-        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
-        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
-        \"\"\",
-                rules=[
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 5m",
-                        severity="Warning",
-                        detect_label="Processing old messages 5m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 30m",
-                        severity="Critical",
-                        detect_label="Processing old messages 30m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                ]))
-        ```
-        ## Notification Format
-
-        As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
-
-        ```python
-        import pulumi
-        ```
-
-        This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
-
-        ### Email
-
-        ```python
-        import pulumi
-        ```
-
-        ### Jira
-
-        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
-
-        ```python
-        import pulumi
-        ```
-
-        ### Opsgenie
-
-        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
-
-        ```python
-        import pulumi
-        ```
-
-        ### PagerDuty
-
-        ```python
-        import pulumi
-        ```
-
-        ### Slack
-
-        Exclude the `#` on the channel name!
-
-        ```python
-        import pulumi
-        ```
-
-        ### Team
-
-        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
-
-        ```python
-        import pulumi
-        ```
-
-        ### TeamEmail
-
-        Sends an email to every member of a team.
-
-        ```python
-        import pulumi
-        ```
-
-        ### VictorOps
-
-        ```python
-        import pulumi
-        ```
-
-        ### Webhook
-
-        > **NOTE** You need to include all the commas even if you only use a credential id below.
-
-        You can either configure a Webhook to use an existing integration's credential id:
-        ```python
-        import pulumi
-        ```
-
-        or configure one inline:
-        ```python
-        import pulumi
-        ```
-
         ## Import
 
         Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
@@ -922,131 +855,6 @@ class Detector(pulumi.CustomResource):
         > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 
         > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding detectors, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        config = pulumi.Config()
-        clusters = config.get_object("clusters")
-        if clusters is None:
-            clusters = [
-                "clusterA",
-                "clusterB",
-            ]
-        application_delay = []
-        for range in [{"value": i} for i in range(0, len(clusters))]:
-            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
-                description=f"your application is slow - {clusters[range['value']]}",
-                max_delay=30,
-                tags=[
-                    "app-backend",
-                    "staging",
-                ],
-                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-                authorized_writer_users=["abc123"],
-                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
-        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
-        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
-        \"\"\",
-                rules=[
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 5m",
-                        severity="Warning",
-                        detect_label="Processing old messages 5m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 30m",
-                        severity="Critical",
-                        detect_label="Processing old messages 30m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                ]))
-        ```
-        ## Notification Format
-
-        As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
-
-        ```python
-        import pulumi
-        ```
-
-        This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
-
-        ### Email
-
-        ```python
-        import pulumi
-        ```
-
-        ### Jira
-
-        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
-
-        ```python
-        import pulumi
-        ```
-
-        ### Opsgenie
-
-        Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
-
-        ```python
-        import pulumi
-        ```
-
-        ### PagerDuty
-
-        ```python
-        import pulumi
-        ```
-
-        ### Slack
-
-        Exclude the `#` on the channel name!
-
-        ```python
-        import pulumi
-        ```
-
-        ### Team
-
-        Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
-
-        ```python
-        import pulumi
-        ```
-
-        ### TeamEmail
-
-        Sends an email to every member of a team.
-
-        ```python
-        import pulumi
-        ```
-
-        ### VictorOps
-
-        ```python
-        import pulumi
-        ```
-
-        ### Webhook
-
-        > **NOTE** You need to include all the commas even if you only use a credential id below.
-
-        You can either configure a Webhook to use an existing integration's credential id:
-        ```python
-        import pulumi
-        ```
-
-        or configure one inline:
-        ```python
-        import pulumi
-        ```
 
         ## Import
 

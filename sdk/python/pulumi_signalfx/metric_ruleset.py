@@ -34,10 +34,22 @@ class MetricRulesetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric_name: pulumi.Input[str],
-             routing_rules: pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]],
+             metric_name: Optional[pulumi.Input[str]] = None,
+             routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]] = None,
              aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if metric_name is None and 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if routing_rules is None and 'routingRules' in kwargs:
+            routing_rules = kwargs['routingRules']
+        if routing_rules is None:
+            raise TypeError("Missing 'routing_rules' argument")
+        if aggregation_rules is None and 'aggregationRules' in kwargs:
+            aggregation_rules = kwargs['aggregationRules']
+
         _setter("metric_name", metric_name)
         _setter("routing_rules", routing_rules)
         if aggregation_rules is not None:
@@ -128,7 +140,21 @@ class _MetricRulesetState:
              metric_name: Optional[pulumi.Input[str]] = None,
              routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aggregation_rules is None and 'aggregationRules' in kwargs:
+            aggregation_rules = kwargs['aggregationRules']
+        if last_updated is None and 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if last_updated_by is None and 'lastUpdatedBy' in kwargs:
+            last_updated_by = kwargs['lastUpdatedBy']
+        if last_updated_by_name is None and 'lastUpdatedByName' in kwargs:
+            last_updated_by_name = kwargs['lastUpdatedByName']
+        if metric_name is None and 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if routing_rules is None and 'routingRules' in kwargs:
+            routing_rules = kwargs['routingRules']
+
         if aggregation_rules is not None:
             _setter("aggregation_rules", aggregation_rules)
         if created is not None:

@@ -55,7 +55,7 @@ class IntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
              include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -65,7 +65,25 @@ class IntegrationArgs:
              project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
              services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if custom_metric_type_domains is None and 'customMetricTypeDomains' in kwargs:
+            custom_metric_type_domains = kwargs['customMetricTypeDomains']
+        if import_gcp_metrics is None and 'importGcpMetrics' in kwargs:
+            import_gcp_metrics = kwargs['importGcpMetrics']
+        if include_lists is None and 'includeLists' in kwargs:
+            include_lists = kwargs['includeLists']
+        if named_token is None and 'namedToken' in kwargs:
+            named_token = kwargs['namedToken']
+        if poll_rate is None and 'pollRate' in kwargs:
+            poll_rate = kwargs['pollRate']
+        if project_service_keys is None and 'projectServiceKeys' in kwargs:
+            project_service_keys = kwargs['projectServiceKeys']
+        if use_metric_source_project_for_quota is None and 'useMetricSourceProjectForQuota' in kwargs:
+            use_metric_source_project_for_quota = kwargs['useMetricSourceProjectForQuota']
+
         _setter("enabled", enabled)
         if custom_metric_type_domains is not None:
             _setter("custom_metric_type_domains", custom_metric_type_domains)
@@ -259,7 +277,23 @@ class _IntegrationState:
              project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
              services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if custom_metric_type_domains is None and 'customMetricTypeDomains' in kwargs:
+            custom_metric_type_domains = kwargs['customMetricTypeDomains']
+        if import_gcp_metrics is None and 'importGcpMetrics' in kwargs:
+            import_gcp_metrics = kwargs['importGcpMetrics']
+        if include_lists is None and 'includeLists' in kwargs:
+            include_lists = kwargs['includeLists']
+        if named_token is None and 'namedToken' in kwargs:
+            named_token = kwargs['namedToken']
+        if poll_rate is None and 'pollRate' in kwargs:
+            poll_rate = kwargs['pollRate']
+        if project_service_keys is None and 'projectServiceKeys' in kwargs:
+            project_service_keys = kwargs['projectServiceKeys']
+        if use_metric_source_project_for_quota is None and 'useMetricSourceProjectForQuota' in kwargs:
+            use_metric_source_project_for_quota = kwargs['useMetricSourceProjectForQuota']
+
         if custom_metric_type_domains is not None:
             _setter("custom_metric_type_domains", custom_metric_type_domains)
         if enabled is not None:
@@ -423,30 +457,6 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
-            custom_metric_type_domains=["istio.io"],
-            enabled=True,
-            import_gcp_metrics=True,
-            poll_rate=300,
-            project_service_keys=[
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_1",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
-                ),
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_2",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
-                ),
-            ],
-            services=["compute"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_metric_type_domains: List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
@@ -470,30 +480,6 @@ class Integration(pulumi.CustomResource):
         SignalFx GCP Integration
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
-            custom_metric_type_domains=["istio.io"],
-            enabled=True,
-            import_gcp_metrics=True,
-            poll_rate=300,
-            project_service_keys=[
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_1",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
-                ),
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_2",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
-                ),
-            ],
-            services=["compute"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

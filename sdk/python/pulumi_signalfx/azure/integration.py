@@ -70,12 +70,12 @@ class IntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             app_id: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             secret_key: pulumi.Input[str],
-             services: pulumi.Input[Sequence[pulumi.Input[str]]],
-             subscriptions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             tenant_id: pulumi.Input[str],
+             app_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tenant_id: Optional[pulumi.Input[str]] = None,
              additional_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              custom_namespaces_per_services: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespacesPerServiceArgs']]]] = None,
              environment: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,41 @@ class IntegrationArgs:
              poll_rate: Optional[pulumi.Input[int]] = None,
              resource_filter_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationResourceFilterRuleArgs']]]] = None,
              sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if app_id is None:
+            raise TypeError("Missing 'app_id' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if secret_key is None:
+            raise TypeError("Missing 'secret_key' argument")
+        if services is None:
+            raise TypeError("Missing 'services' argument")
+        if subscriptions is None:
+            raise TypeError("Missing 'subscriptions' argument")
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+        if tenant_id is None:
+            raise TypeError("Missing 'tenant_id' argument")
+        if additional_services is None and 'additionalServices' in kwargs:
+            additional_services = kwargs['additionalServices']
+        if custom_namespaces_per_services is None and 'customNamespacesPerServices' in kwargs:
+            custom_namespaces_per_services = kwargs['customNamespacesPerServices']
+        if import_azure_monitor is None and 'importAzureMonitor' in kwargs:
+            import_azure_monitor = kwargs['importAzureMonitor']
+        if named_token is None and 'namedToken' in kwargs:
+            named_token = kwargs['namedToken']
+        if poll_rate is None and 'pollRate' in kwargs:
+            poll_rate = kwargs['pollRate']
+        if resource_filter_rules is None and 'resourceFilterRules' in kwargs:
+            resource_filter_rules = kwargs['resourceFilterRules']
+        if sync_guest_os_namespaces is None and 'syncGuestOsNamespaces' in kwargs:
+            sync_guest_os_namespaces = kwargs['syncGuestOsNamespaces']
+
         _setter("app_id", app_id)
         _setter("enabled", enabled)
         _setter("secret_key", secret_key)
@@ -364,7 +398,29 @@ class _IntegrationState:
              subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sync_guest_os_namespaces: Optional[pulumi.Input[bool]] = None,
              tenant_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if additional_services is None and 'additionalServices' in kwargs:
+            additional_services = kwargs['additionalServices']
+        if app_id is None and 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if custom_namespaces_per_services is None and 'customNamespacesPerServices' in kwargs:
+            custom_namespaces_per_services = kwargs['customNamespacesPerServices']
+        if import_azure_monitor is None and 'importAzureMonitor' in kwargs:
+            import_azure_monitor = kwargs['importAzureMonitor']
+        if named_token is None and 'namedToken' in kwargs:
+            named_token = kwargs['namedToken']
+        if poll_rate is None and 'pollRate' in kwargs:
+            poll_rate = kwargs['pollRate']
+        if resource_filter_rules is None and 'resourceFilterRules' in kwargs:
+            resource_filter_rules = kwargs['resourceFilterRules']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if sync_guest_os_namespaces is None and 'syncGuestOsNamespaces' in kwargs:
+            sync_guest_os_namespaces = kwargs['syncGuestOsNamespaces']
+        if tenant_id is None and 'tenantId' in kwargs:
+            tenant_id = kwargs['tenantId']
+
         if additional_services is not None:
             _setter("additional_services", additional_services)
         if app_id is not None:
@@ -603,42 +659,6 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        azure_myteam = signalfx.azure.Integration("azureMyteam",
-            additional_services=[
-                "some/service",
-                "another/service",
-            ],
-            app_id="YYY",
-            custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(
-                namespaces=[
-                    "monitoringAgent",
-                    "customNamespace",
-                ],
-                service="Microsoft.Compute/virtualMachines",
-            )],
-            enabled=True,
-            environment="azure",
-            poll_rate=300,
-            resource_filter_rules=[
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-            ],
-            secret_key="XXX",
-            services=["microsoft.sql/servers/elasticpools"],
-            subscriptions=["sub-guid-here"],
-            tenant_id="ZZZ")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_services: Additional Azure resource types that you want to sync with Observability Cloud.
@@ -667,42 +687,6 @@ class Integration(pulumi.CustomResource):
         SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        azure_myteam = signalfx.azure.Integration("azureMyteam",
-            additional_services=[
-                "some/service",
-                "another/service",
-            ],
-            app_id="YYY",
-            custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(
-                namespaces=[
-                    "monitoringAgent",
-                    "customNamespace",
-                ],
-                service="Microsoft.Compute/virtualMachines",
-            )],
-            enabled=True,
-            environment="azure",
-            poll_rate=300,
-            resource_filter_rules=[
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-            ],
-            secret_key="XXX",
-            services=["microsoft.sql/servers/elasticpools"],
-            subscriptions=["sub-guid-here"],
-            tenant_id="ZZZ")
-        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

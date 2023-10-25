@@ -32,10 +32,14 @@ class TextChartArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             markdown: pulumi.Input[str],
+             markdown: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if markdown is None:
+            raise TypeError("Missing 'markdown' argument")
+
         _setter("markdown", markdown)
         if description is not None:
             _setter("description", description)
@@ -107,7 +111,9 @@ class _TextChartState:
              markdown: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if markdown is not None:
@@ -178,34 +184,6 @@ class TextChart(pulumi.CustomResource):
         """
         This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mynote0 = signalfx.TextChart("mynote0",
-            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-            markdown=\"\"\"    1. First ordered list item
-            2. Another item
-              * Unordered sub-list.
-            1. Actual numbers don't matter, just that it's a number
-              1. Ordered sub-list
-            4. And another item.
-
-               You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-               To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-               Note that this line is separate, but within the same paragraph.⋅⋅
-               (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-            * Unordered list can use asterisks
-            - Or minuses
-            + Or pluses
-
-        \"\"\")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the text note.
@@ -220,34 +198,6 @@ class TextChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mynote0 = signalfx.TextChart("mynote0",
-            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-            markdown=\"\"\"    1. First ordered list item
-            2. Another item
-              * Unordered sub-list.
-            1. Actual numbers don't matter, just that it's a number
-              1. Ordered sub-list
-            4. And another item.
-
-               You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
-
-               To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
-               Note that this line is separate, but within the same paragraph.⋅⋅
-               (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
-
-            * Unordered list can use asterisks
-            - Or minuses
-            + Or pluses
-
-        \"\"\")
-        ```
 
         :param str resource_name: The name of the resource.
         :param TextChartArgs args: The arguments to use to populate this resource's properties.
