@@ -240,6 +240,22 @@ class WebhookIntegration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        webhook_myteam = signalfx.WebhookIntegration("webhookMyteam",
+            enabled=True,
+            headers=[signalfx.WebhookIntegrationHeaderArgs(
+                header_key="some_header",
+                header_value="value_for_that_header",
+            )],
+            shared_secret="abc1234",
+            url="https://www.example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
@@ -257,6 +273,22 @@ class WebhookIntegration(pulumi.CustomResource):
         SignalFx Webhook integration.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        webhook_myteam = signalfx.WebhookIntegration("webhookMyteam",
+            enabled=True,
+            headers=[signalfx.WebhookIntegrationHeaderArgs(
+                header_key="some_header",
+                header_value="value_for_that_header",
+            )],
+            shared_secret="abc1234",
+            url="https://www.example.com")
+        ```
 
         :param str resource_name: The name of the resource.
         :param WebhookIntegrationArgs args: The arguments to use to populate this resource's properties.

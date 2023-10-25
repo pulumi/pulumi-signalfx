@@ -15,6 +15,37 @@ namespace Pulumi.SignalFx
     /// You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
     /// 
     /// &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myteam0 = new SignalFx.Team("myteam0", new()
+    ///     {
+    ///         Description = "Super great team no jerks definitely",
+    ///         Members = new[]
+    ///         {
+    ///             "userid1",
+    ///             "userid2",
+    ///         },
+    ///         NotificationsCriticals = new[]
+    ///         {
+    ///             "PagerDuty,credentialId",
+    ///         },
+    ///         NotificationsInfos = new[]
+    ///         {
+    ///             "Email,notify@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/team:Team")]
     public partial class Team : global::Pulumi.CustomResource

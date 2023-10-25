@@ -17,6 +17,133 @@ import (
 // > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 //
 // > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroup0", &signalfx.DashboardGroupArgs{
+//				Description: pulumi.String("Cool dashboard group"),
+//				AuthorizedWriterTeams: pulumi.StringArray{
+//					signalfx_team.Mycoolteam.Id,
+//				},
+//				AuthorizedWriterUsers: pulumi.StringArray{
+//					pulumi.String("abc123"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### With Permissions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithpermissions", &signalfx.DashboardGroupArgs{
+//				Description: pulumi.String("Cool dashboard group"),
+//				Permissions: signalfx.DashboardGroupPermissionArray{
+//					&signalfx.DashboardGroupPermissionArgs{
+//						Actions: pulumi.StringArray{
+//							pulumi.String("READ"),
+//						},
+//						PrincipalId:   pulumi.String("abc123"),
+//						PrincipalType: pulumi.String("ORG"),
+//					},
+//					&signalfx.DashboardGroupPermissionArgs{
+//						Actions: pulumi.StringArray{
+//							pulumi.String("READ"),
+//							pulumi.String("WRITE"),
+//						},
+//						PrincipalId:   pulumi.String("abc456"),
+//						PrincipalType: pulumi.String("USER"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### With Mirrored Dashboards
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := signalfx.NewDashboardGroup(ctx, "mydashboardgroupWithmirrors", &signalfx.DashboardGroupArgs{
+//				Description: pulumi.String("Cool dashboard group"),
+//				Dashboards: signalfx.DashboardGroupDashboardArray{
+//					&signalfx.DashboardGroupDashboardArgs{
+//						DashboardId:         pulumi.Any(signalfx_dashboard.Gc_dashboard.Id),
+//						NameOverride:        pulumi.String("GC For My Service"),
+//						DescriptionOverride: pulumi.String("Garbage Collection dashboard maintained by JVM team"),
+//						FilterOverrides: signalfx.DashboardGroupDashboardFilterOverrideArray{
+//							&signalfx.DashboardGroupDashboardFilterOverrideArgs{
+//								Property: pulumi.String("service"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("myservice"),
+//								},
+//								Negated: pulumi.Bool(false),
+//							},
+//						},
+//						VariableOverrides: signalfx.DashboardGroupDashboardVariableOverrideArray{
+//							&signalfx.DashboardGroupDashboardVariableOverrideArgs{
+//								Property: pulumi.String("region"),
+//								Values: pulumi.StringArray{
+//									pulumi.String("us-west1"),
+//								},
+//								ValuesSuggesteds: pulumi.StringArray{
+//									pulumi.String("us-west-1"),
+//									pulumi.String("us-east-1"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DashboardGroup struct {
 	pulumi.CustomResourceState
 

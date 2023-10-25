@@ -433,6 +433,22 @@ class Team(pulumi.CustomResource):
 
         > **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteam0 = signalfx.Team("myteam0",
+            description="Super great team no jerks definitely",
+            members=[
+                "userid1",
+                "userid2",
+            ],
+            notifications_criticals=["PagerDuty,credentialId"],
+            notifications_infos=["Email,notify@example.com"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
@@ -457,6 +473,22 @@ class Team(pulumi.CustomResource):
         You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
 
         > **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteam0 = signalfx.Team("myteam0",
+            description="Super great team no jerks definitely",
+            members=[
+                "userid1",
+                "userid2",
+            ],
+            notifications_criticals=["PagerDuty,credentialId"],
+            notifications_infos=["Email,notify@example.com"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

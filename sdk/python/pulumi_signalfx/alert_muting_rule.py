@@ -271,6 +271,23 @@ class AlertMutingRule(pulumi.CustomResource):
 
         > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        rool_mooter_one = signalfx.AlertMutingRule("roolMooterOne",
+            description="mooted it NEW",
+            start_time=1573063243,
+            stop_time=0,
+            detectors=[signalfx_detector["some_detector_id"]],
+            filters=[signalfx.AlertMutingRuleFilterArgs(
+                property="foo",
+                property_value="bar",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for this muting rule
@@ -291,6 +308,23 @@ class AlertMutingRule(pulumi.CustomResource):
         > **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
 
         > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        rool_mooter_one = signalfx.AlertMutingRule("roolMooterOne",
+            description="mooted it NEW",
+            start_time=1573063243,
+            stop_time=0,
+            detectors=[signalfx_detector["some_detector_id"]],
+            filters=[signalfx.AlertMutingRuleFilterArgs(
+                property="foo",
+                property_value="bar",
+            )])
+        ```
 
         :param str resource_name: The name of the resource.
         :param AlertMutingRuleArgs args: The arguments to use to populate this resource's properties.

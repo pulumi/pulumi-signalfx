@@ -17,6 +17,66 @@ import (
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
 // > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/aws"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			awsMyteamToken, err := aws.NewTokenIntegration(ctx, "awsMyteamToken", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewRole(ctx, "awsSfxRole", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
+//				Enabled:       pulumi.Bool(true),
+//				IntegrationId: awsMyteamToken.ID(),
+//				Token:         pulumi.String("put_your_token_here"),
+//				Key:           pulumi.String("put_your_key_here"),
+//				Regions: pulumi.StringArray{
+//					pulumi.String("us-east-1"),
+//				},
+//				PollRate:         pulumi.Int(300),
+//				ImportCloudWatch: pulumi.Bool(true),
+//				EnableAwsUsage:   pulumi.Bool(true),
+//				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
+//					&aws.IntegrationCustomNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("my-custom-namespace"),
+//					},
+//				},
+//				NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
+//					&aws.IntegrationNamespaceSyncRuleArgs{
+//						DefaultAction: pulumi.String("Exclude"),
+//						FilterAction:  pulumi.String("Include"),
+//						FilterSource:  pulumi.String("filter('code', '200')"),
+//						Namespace:     pulumi.String("AWS/EC2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type TokenIntegration struct {
 	pulumi.CustomResourceState
 

@@ -432,6 +432,44 @@ class View(pulumi.CustomResource):
         """
         You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        my_log_view = signalfx.log.View("myLogView",
+            columns=[
+                signalfx.log.ViewColumnArgs(
+                    name="severity",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="time",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="amount.currency_code",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="amount.nanos",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="amount.units",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="message",
+                ),
+            ],
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+
+        \"\"\",
+            sort_options=[signalfx.log.ViewSortOptionArgs(
+                descending=False,
+                field="severity",
+            )],
+            time_range=900)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
@@ -452,6 +490,44 @@ class View(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        my_log_view = signalfx.log.View("myLogView",
+            columns=[
+                signalfx.log.ViewColumnArgs(
+                    name="severity",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="time",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="amount.currency_code",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="amount.nanos",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="amount.units",
+                ),
+                signalfx.log.ViewColumnArgs(
+                    name="message",
+                ),
+            ],
+            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
+            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
+
+        \"\"\",
+            sort_options=[signalfx.log.ViewSortOptionArgs(
+                descending=False,
+                field="severity",
+            )],
+            time_range=900)
+        ```
 
         :param str resource_name: The name of the resource.
         :param ViewArgs args: The arguments to use to populate this resource's properties.

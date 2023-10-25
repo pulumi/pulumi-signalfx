@@ -12,6 +12,72 @@ import * as utilities from "./utilities";
  * > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
  *
  * > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
+ *     description: "Cool dashboard group",
+ *     authorizedWriterTeams: [signalfx_team.mycoolteam.id],
+ *     authorizedWriterUsers: ["abc123"],
+ * });
+ * ```
+ * ### With Permissions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroupWithpermissions = new signalfx.DashboardGroup("mydashboardgroupWithpermissions", {
+ *     description: "Cool dashboard group",
+ *     permissions: [
+ *         {
+ *             actions: ["READ"],
+ *             principalId: "abc123",
+ *             principalType: "ORG",
+ *         },
+ *         {
+ *             actions: [
+ *                 "READ",
+ *                 "WRITE",
+ *             ],
+ *             principalId: "abc456",
+ *             principalType: "USER",
+ *         },
+ *     ],
+ * });
+ * ```
+ * ### With Mirrored Dashboards
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const mydashboardgroupWithmirrors = new signalfx.DashboardGroup("mydashboardgroupWithmirrors", {
+ *     description: "Cool dashboard group",
+ *     dashboards: [{
+ *         dashboardId: signalfx_dashboard.gc_dashboard.id,
+ *         nameOverride: "GC For My Service",
+ *         descriptionOverride: "Garbage Collection dashboard maintained by JVM team",
+ *         filterOverrides: [{
+ *             property: "service",
+ *             values: ["myservice"],
+ *             negated: false,
+ *         }],
+ *         variableOverrides: [{
+ *             property: "region",
+ *             values: ["us-west1"],
+ *             valuesSuggesteds: [
+ *                 "us-west-1",
+ *                 "us-east-1",
+ *             ],
+ *         }],
+ *     }],
+ * });
+ * ```
  */
 export class DashboardGroup extends pulumi.CustomResource {
     /**
