@@ -13,30 +13,6 @@ namespace Pulumi.SignalFx.ServiceNow
     /// Observability Cloud ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/Observability/admin/notif-services/servicenow.html).
     /// 
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var serviceNowMyteam = new SignalFx.ServiceNow.Integration("serviceNowMyteam", new()
-    ///     {
-    ///         AlertResolvedPayloadTemplate = "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
-    ///         AlertTriggeredPayloadTemplate = "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
-    ///         Enabled = false,
-    ///         InstanceName = "myinst.service-now.com",
-    ///         IssueType = "Incident",
-    ///         Password = "youd0ntsee1t",
-    ///         Username = "thisis_me",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:servicenow/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

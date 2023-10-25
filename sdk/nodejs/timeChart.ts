@@ -10,41 +10,6 @@ import * as utilities from "./utilities";
  * Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
  *
  * Time charts display data points over a period of time.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mychart0 = new signalfx.TimeChart("mychart0", {
- *     axisLeft: {
- *         label: "CPU Total Idle",
- *         lowWatermark: 1000,
- *     },
- *     legendOptionsFields: [
- *         {
- *             enabled: false,
- *             property: "collector",
- *         },
- *         {
- *             enabled: false,
- *             property: "hostname",
- *         },
- *     ],
- *     plotType: "LineChart",
- *     programText: `data("cpu.total.idle").publish(label="CPU Idle")
- *
- * `,
- *     showDataMarkers: true,
- *     timeRange: 3600,
- *     vizOptions: [{
- *         axis: "left",
- *         color: "orange",
- *         label: "CPU Idle",
- *     }],
- * });
- * ```
  */
 export class TimeChart extends pulumi.CustomResource {
     /**

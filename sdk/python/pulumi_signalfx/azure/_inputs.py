@@ -31,9 +31,15 @@ class IntegrationCustomNamespacesPerServiceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
-             service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if namespaces is None:
+            raise TypeError("Missing 'namespaces' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+
         _setter("namespaces", namespaces)
         _setter("service", service)
 
@@ -76,8 +82,14 @@ class IntegrationResourceFilterRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_source: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             filter_source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_source is None and 'filterSource' in kwargs:
+            filter_source = kwargs['filterSource']
+        if filter_source is None:
+            raise TypeError("Missing 'filter_source' argument")
+
         _setter("filter_source", filter_source)
 
     @property

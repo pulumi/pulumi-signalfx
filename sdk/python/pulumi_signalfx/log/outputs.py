@@ -28,8 +28,12 @@ class ViewColumn(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -54,9 +58,15 @@ class ViewSortOption(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             descending: bool,
-             field: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             descending: Optional[bool] = None,
+             field: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if descending is None:
+            raise TypeError("Missing 'descending' argument")
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+
         _setter("descending", descending)
         _setter("field", field)
 

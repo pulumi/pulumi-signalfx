@@ -47,15 +47,35 @@ class IntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             instance_name: pulumi.Input[str],
-             issue_type: pulumi.Input[str],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             issue_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
              alert_resolved_payload_template: Optional[pulumi.Input[str]] = None,
              alert_triggered_payload_template: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if instance_name is None:
+            raise TypeError("Missing 'instance_name' argument")
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if issue_type is None:
+            raise TypeError("Missing 'issue_type' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+        if username is None:
+            raise TypeError("Missing 'username' argument")
+        if alert_resolved_payload_template is None and 'alertResolvedPayloadTemplate' in kwargs:
+            alert_resolved_payload_template = kwargs['alertResolvedPayloadTemplate']
+        if alert_triggered_payload_template is None and 'alertTriggeredPayloadTemplate' in kwargs:
+            alert_triggered_payload_template = kwargs['alertTriggeredPayloadTemplate']
+
         _setter("enabled", enabled)
         _setter("instance_name", instance_name)
         _setter("issue_type", issue_type)
@@ -209,7 +229,17 @@ class _IntegrationState:
              name: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert_resolved_payload_template is None and 'alertResolvedPayloadTemplate' in kwargs:
+            alert_resolved_payload_template = kwargs['alertResolvedPayloadTemplate']
+        if alert_triggered_payload_template is None and 'alertTriggeredPayloadTemplate' in kwargs:
+            alert_triggered_payload_template = kwargs['alertTriggeredPayloadTemplate']
+        if instance_name is None and 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+
         if alert_resolved_payload_template is not None:
             _setter("alert_resolved_payload_template", alert_resolved_payload_template)
         if alert_triggered_payload_template is not None:
@@ -343,22 +373,6 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        service_now_myteam = signalfx.servicenow.Integration("serviceNowMyteam",
-            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}",
-            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
-            enabled=False,
-            instance_name="myinst.service-now.com",
-            issue_type="Incident",
-            password="youd0ntsee1t",
-            username="thisis_me")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_resolved_payload_template: A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -380,22 +394,6 @@ class Integration(pulumi.CustomResource):
         Observability Cloud ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/Observability/admin/notif-services/servicenow.html).
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        service_now_myteam = signalfx.servicenow.Integration("serviceNowMyteam",
-            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}",
-            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
-            enabled=False,
-            instance_name="myinst.service-now.com",
-            issue_type="Incident",
-            password="youd0ntsee1t",
-            username="thisis_me")
-        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

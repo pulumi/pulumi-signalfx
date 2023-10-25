@@ -15,45 +15,6 @@ import (
 // Manage SignalFx org tokens.
 //
 // > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := signalfx.NewOrgToken(ctx, "myteamkey0", &signalfx.OrgTokenArgs{
-//				Description: pulumi.String("My team's rad key"),
-//				HostOrUsageLimits: &signalfx.OrgTokenHostOrUsageLimitsArgs{
-//					ContainerLimit:                      pulumi.Int(200),
-//					ContainerNotificationThreshold:      pulumi.Int(180),
-//					CustomMetricsLimit:                  pulumi.Int(1000),
-//					CustomMetricsNotificationThreshold:  pulumi.Int(900),
-//					HighResMetricsLimit:                 pulumi.Int(1000),
-//					HighResMetricsNotificationThreshold: pulumi.Int(900),
-//					HostLimit:                           pulumi.Int(100),
-//					HostNotificationThreshold:           pulumi.Int(90),
-//				},
-//				Notifications: pulumi.StringArray{
-//					pulumi.String("Email,foo-alerts@bar.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type OrgToken struct {
 	pulumi.CustomResourceState
 

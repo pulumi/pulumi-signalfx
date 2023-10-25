@@ -67,7 +67,7 @@ class SingleValueChartArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
+             program_text: Optional[pulumi.Input[str]] = None,
              color_by: Optional[pulumi.Input[str]] = None,
              color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -81,7 +81,33 @@ class SingleValueChartArgs:
              timezone: Optional[pulumi.Input[str]] = None,
              unit_prefix: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if color_by is None and 'colorBy' in kwargs:
+            color_by = kwargs['colorBy']
+        if color_scales is None and 'colorScales' in kwargs:
+            color_scales = kwargs['colorScales']
+        if is_timestamp_hidden is None and 'isTimestampHidden' in kwargs:
+            is_timestamp_hidden = kwargs['isTimestampHidden']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if max_precision is None and 'maxPrecision' in kwargs:
+            max_precision = kwargs['maxPrecision']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if secondary_visualization is None and 'secondaryVisualization' in kwargs:
+            secondary_visualization = kwargs['secondaryVisualization']
+        if show_spark_line is None and 'showSparkLine' in kwargs:
+            show_spark_line = kwargs['showSparkLine']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         _setter("program_text", program_text)
         if color_by is not None:
             _setter("color_by", color_by)
@@ -351,7 +377,31 @@ class _SingleValueChartState:
              unit_prefix: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color_by is None and 'colorBy' in kwargs:
+            color_by = kwargs['colorBy']
+        if color_scales is None and 'colorScales' in kwargs:
+            color_scales = kwargs['colorScales']
+        if is_timestamp_hidden is None and 'isTimestampHidden' in kwargs:
+            is_timestamp_hidden = kwargs['isTimestampHidden']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if max_precision is None and 'maxPrecision' in kwargs:
+            max_precision = kwargs['maxPrecision']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if secondary_visualization is None and 'secondaryVisualization' in kwargs:
+            secondary_visualization = kwargs['secondaryVisualization']
+        if show_spark_line is None and 'showSparkLine' in kwargs:
+            show_spark_line = kwargs['showSparkLine']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         if color_by is not None:
             _setter("color_by", color_by)
         if color_scales is not None:
@@ -589,25 +639,6 @@ class SingleValueChart(pulumi.CustomResource):
 
         If the time period is in the past, the number represents the value of the metric near the end of the time period.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mysvchart0 = signalfx.SingleValueChart("mysvchart0",
-            color_by="Dimension",
-            description="Very cool Single Value Chart",
-            is_timestamp_hidden=True,
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            refresh_interval=1)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
@@ -635,25 +666,6 @@ class SingleValueChart(pulumi.CustomResource):
         This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
 
         If the time period is in the past, the number represents the value of the metric near the end of the time period.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mysvchart0 = signalfx.SingleValueChart("mysvchart0",
-            color_by="Dimension",
-            description="Very cool Single Value Chart",
-            is_timestamp_hidden=True,
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            refresh_interval=1)
-        ```
 
         :param str resource_name: The name of the resource.
         :param SingleValueChartArgs args: The arguments to use to populate this resource's properties.

@@ -44,14 +44,28 @@ class TimelineArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
+             program_text: Optional[pulumi.Input[str]] = None,
              default_connection: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              end_time: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[int]] = None,
              time_range: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if default_connection is None and 'defaultConnection' in kwargs:
+            default_connection = kwargs['defaultConnection']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         _setter("program_text", program_text)
         if default_connection is not None:
             _setter("default_connection", default_connection)
@@ -195,7 +209,19 @@ class _TimelineState:
              start_time: Optional[pulumi.Input[int]] = None,
              time_range: Optional[pulumi.Input[int]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_connection is None and 'defaultConnection' in kwargs:
+            default_connection = kwargs['defaultConnection']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if default_connection is not None:
             _setter("default_connection", default_connection)
         if description is not None:
@@ -327,20 +353,6 @@ class Timeline(pulumi.CustomResource):
         You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
         A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        my_log_timeline = signalfx.log.Timeline("myLogTimeline",
-            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
-
-        \"\"\",
-            time_range=900)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
@@ -360,20 +372,6 @@ class Timeline(pulumi.CustomResource):
         """
         You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
         A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        my_log_timeline = signalfx.log.Timeline("myLogTimeline",
-            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
-
-        \"\"\",
-            time_range=900)
-        ```
 
         :param str resource_name: The name of the resource.
         :param TimelineArgs args: The arguments to use to populate this resource's properties.

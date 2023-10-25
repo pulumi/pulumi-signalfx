@@ -106,7 +106,7 @@ class TimeChartArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
+             program_text: Optional[pulumi.Input[str]] = None,
              axes_include_zero: Optional[pulumi.Input[bool]] = None,
              axes_precision: Optional[pulumi.Input[int]] = None,
              axis_left: Optional[pulumi.Input['TimeChartAxisLeftArgs']] = None,
@@ -133,7 +133,55 @@ class TimeChartArgs:
              timezone: Optional[pulumi.Input[str]] = None,
              unit_prefix: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if axes_include_zero is None and 'axesIncludeZero' in kwargs:
+            axes_include_zero = kwargs['axesIncludeZero']
+        if axes_precision is None and 'axesPrecision' in kwargs:
+            axes_precision = kwargs['axesPrecision']
+        if axis_left is None and 'axisLeft' in kwargs:
+            axis_left = kwargs['axisLeft']
+        if axis_right is None and 'axisRight' in kwargs:
+            axis_right = kwargs['axisRight']
+        if color_by is None and 'colorBy' in kwargs:
+            color_by = kwargs['colorBy']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if event_options is None and 'eventOptions' in kwargs:
+            event_options = kwargs['eventOptions']
+        if histogram_options is None and 'histogramOptions' in kwargs:
+            histogram_options = kwargs['histogramOptions']
+        if legend_fields_to_hides is None and 'legendFieldsToHides' in kwargs:
+            legend_fields_to_hides = kwargs['legendFieldsToHides']
+        if legend_options_fields is None and 'legendOptionsFields' in kwargs:
+            legend_options_fields = kwargs['legendOptionsFields']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if minimum_resolution is None and 'minimumResolution' in kwargs:
+            minimum_resolution = kwargs['minimumResolution']
+        if on_chart_legend_dimension is None and 'onChartLegendDimension' in kwargs:
+            on_chart_legend_dimension = kwargs['onChartLegendDimension']
+        if plot_type is None and 'plotType' in kwargs:
+            plot_type = kwargs['plotType']
+        if show_data_markers is None and 'showDataMarkers' in kwargs:
+            show_data_markers = kwargs['showDataMarkers']
+        if show_event_lines is None and 'showEventLines' in kwargs:
+            show_event_lines = kwargs['showEventLines']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         _setter("program_text", program_text)
         if axes_include_zero is not None:
             _setter("axes_include_zero", axes_include_zero)
@@ -649,7 +697,53 @@ class _TimeChartState:
              unit_prefix: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if axes_include_zero is None and 'axesIncludeZero' in kwargs:
+            axes_include_zero = kwargs['axesIncludeZero']
+        if axes_precision is None and 'axesPrecision' in kwargs:
+            axes_precision = kwargs['axesPrecision']
+        if axis_left is None and 'axisLeft' in kwargs:
+            axis_left = kwargs['axisLeft']
+        if axis_right is None and 'axisRight' in kwargs:
+            axis_right = kwargs['axisRight']
+        if color_by is None and 'colorBy' in kwargs:
+            color_by = kwargs['colorBy']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if event_options is None and 'eventOptions' in kwargs:
+            event_options = kwargs['eventOptions']
+        if histogram_options is None and 'histogramOptions' in kwargs:
+            histogram_options = kwargs['histogramOptions']
+        if legend_fields_to_hides is None and 'legendFieldsToHides' in kwargs:
+            legend_fields_to_hides = kwargs['legendFieldsToHides']
+        if legend_options_fields is None and 'legendOptionsFields' in kwargs:
+            legend_options_fields = kwargs['legendOptionsFields']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if minimum_resolution is None and 'minimumResolution' in kwargs:
+            minimum_resolution = kwargs['minimumResolution']
+        if on_chart_legend_dimension is None and 'onChartLegendDimension' in kwargs:
+            on_chart_legend_dimension = kwargs['onChartLegendDimension']
+        if plot_type is None and 'plotType' in kwargs:
+            plot_type = kwargs['plotType']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if show_data_markers is None and 'showDataMarkers' in kwargs:
+            show_data_markers = kwargs['showDataMarkers']
+        if show_event_lines is None and 'showEventLines' in kwargs:
+            show_event_lines = kwargs['showEventLines']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         if axes_include_zero is not None:
             _setter("axes_include_zero", axes_include_zero)
         if axes_precision is not None:
@@ -1094,40 +1188,6 @@ class TimeChart(pulumi.CustomResource):
 
         Time charts display data points over a period of time.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mychart0 = signalfx.TimeChart("mychart0",
-            axis_left=signalfx.TimeChartAxisLeftArgs(
-                label="CPU Total Idle",
-                low_watermark=1000,
-            ),
-            legend_options_fields=[
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="hostname",
-                ),
-            ],
-            plot_type="LineChart",
-            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
-
-        \"\"\",
-            show_data_markers=True,
-            time_range=3600,
-            viz_options=[signalfx.TimeChartVizOptionArgs(
-                axis="left",
-                color="orange",
-                label="CPU Idle",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -1168,40 +1228,6 @@ class TimeChart(pulumi.CustomResource):
         Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
 
         Time charts display data points over a period of time.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mychart0 = signalfx.TimeChart("mychart0",
-            axis_left=signalfx.TimeChartAxisLeftArgs(
-                label="CPU Total Idle",
-                low_watermark=1000,
-            ),
-            legend_options_fields=[
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="hostname",
-                ),
-            ],
-            plot_type="LineChart",
-            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
-
-        \"\"\",
-            show_data_markers=True,
-            time_range=3600,
-            viz_options=[signalfx.TimeChartVizOptionArgs(
-                axis="left",
-                color="orange",
-                label="CPU Idle",
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param TimeChartArgs args: The arguments to use to populate this resource's properties.
@@ -1260,17 +1286,9 @@ class TimeChart(pulumi.CustomResource):
 
             __props__.__dict__["axes_include_zero"] = axes_include_zero
             __props__.__dict__["axes_precision"] = axes_precision
-            if axis_left is not None and not isinstance(axis_left, TimeChartAxisLeftArgs):
-                axis_left = axis_left or {}
-                def _setter(key, value):
-                    axis_left[key] = value
-                TimeChartAxisLeftArgs._configure(_setter, **axis_left)
+            axis_left = _utilities.configure(axis_left, TimeChartAxisLeftArgs, True)
             __props__.__dict__["axis_left"] = axis_left
-            if axis_right is not None and not isinstance(axis_right, TimeChartAxisRightArgs):
-                axis_right = axis_right or {}
-                def _setter(key, value):
-                    axis_right[key] = value
-                TimeChartAxisRightArgs._configure(_setter, **axis_right)
+            axis_right = _utilities.configure(axis_right, TimeChartAxisRightArgs, True)
             __props__.__dict__["axis_right"] = axis_right
             __props__.__dict__["color_by"] = color_by
             __props__.__dict__["description"] = description

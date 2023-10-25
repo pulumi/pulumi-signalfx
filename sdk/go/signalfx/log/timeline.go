@@ -15,34 +15,6 @@ import (
 
 // You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
 // A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/log"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewTimeline(ctx, "myLogTimeline", &log.TimelineArgs{
-//				Description: pulumi.String("Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis"),
-//				ProgramText: pulumi.String("logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()\n\n"),
-//				TimeRange:   pulumi.Int(900),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Timeline struct {
 	pulumi.CustomResourceState
 

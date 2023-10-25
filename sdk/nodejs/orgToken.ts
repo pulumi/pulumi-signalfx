@@ -10,28 +10,6 @@ import * as utilities from "./utilities";
  * Manage SignalFx org tokens.
  *
  * > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const myteamkey0 = new signalfx.OrgToken("myteamkey0", {
- *     description: "My team's rad key",
- *     hostOrUsageLimits: {
- *         containerLimit: 200,
- *         containerNotificationThreshold: 180,
- *         customMetricsLimit: 1000,
- *         customMetricsNotificationThreshold: 900,
- *         highResMetricsLimit: 1000,
- *         highResMetricsNotificationThreshold: 900,
- *         hostLimit: 100,
- *         hostNotificationThreshold: 90,
- *     },
- *     notifications: ["Email,foo-alerts@bar.com"],
- * });
- * ```
  */
 export class OrgToken extends pulumi.CustomResource {
     /**

@@ -40,12 +40,22 @@ class AlertMutingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             start_time: pulumi.Input[int],
+             description: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
              detectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
              stop_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if stop_time is None and 'stopTime' in kwargs:
+            stop_time = kwargs['stopTime']
+
         _setter("description", description)
         _setter("start_time", start_time)
         if detectors is not None:
@@ -151,7 +161,15 @@ class _AlertMutingRuleState:
              filters: Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]] = None,
              start_time: Optional[pulumi.Input[int]] = None,
              stop_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if effective_start_time is None and 'effectiveStartTime' in kwargs:
+            effective_start_time = kwargs['effectiveStartTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if stop_time is None and 'stopTime' in kwargs:
+            stop_time = kwargs['stopTime']
+
         if description is not None:
             _setter("description", description)
         if detectors is not None:
@@ -253,23 +271,6 @@ class AlertMutingRule(pulumi.CustomResource):
 
         > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        rool_mooter_one = signalfx.AlertMutingRule("roolMooterOne",
-            description="mooted it NEW",
-            start_time=1573063243,
-            stop_time=0,
-            detectors=[signalfx_detector["some_detector_id"]],
-            filters=[signalfx.AlertMutingRuleFilterArgs(
-                property="foo",
-                property_value="bar",
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for this muting rule
@@ -290,23 +291,6 @@ class AlertMutingRule(pulumi.CustomResource):
         > **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
 
         > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        rool_mooter_one = signalfx.AlertMutingRule("roolMooterOne",
-            description="mooted it NEW",
-            start_time=1573063243,
-            stop_time=0,
-            detectors=[signalfx_detector["some_detector_id"]],
-            filters=[signalfx.AlertMutingRuleFilterArgs(
-                property="foo",
-                property_value="bar",
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param AlertMutingRuleArgs args: The arguments to use to populate this resource's properties.

@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to get information on an existing PagerDuty integration.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/pagerduty"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pagerduty.LookupIntegration(ctx, &pagerduty.LookupIntegrationArgs{
-//				Name: "PD-Integration",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupIntegration(ctx *pulumi.Context, args *LookupIntegrationArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationResult

@@ -85,7 +85,7 @@ class ListChartArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
+             program_text: Optional[pulumi.Input[str]] = None,
              color_by: Optional[pulumi.Input[str]] = None,
              color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartColorScaleArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,45 @@ class ListChartArgs:
              timezone: Optional[pulumi.Input[str]] = None,
              unit_prefix: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if color_by is None and 'colorBy' in kwargs:
+            color_by = kwargs['colorBy']
+        if color_scales is None and 'colorScales' in kwargs:
+            color_scales = kwargs['colorScales']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if hide_missing_values is None and 'hideMissingValues' in kwargs:
+            hide_missing_values = kwargs['hideMissingValues']
+        if legend_fields_to_hides is None and 'legendFieldsToHides' in kwargs:
+            legend_fields_to_hides = kwargs['legendFieldsToHides']
+        if legend_options_fields is None and 'legendOptionsFields' in kwargs:
+            legend_options_fields = kwargs['legendOptionsFields']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if max_precision is None and 'maxPrecision' in kwargs:
+            max_precision = kwargs['maxPrecision']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if secondary_visualization is None and 'secondaryVisualization' in kwargs:
+            secondary_visualization = kwargs['secondaryVisualization']
+        if sort_by is None and 'sortBy' in kwargs:
+            sort_by = kwargs['sortBy']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         _setter("program_text", program_text)
         if color_by is not None:
             _setter("color_by", color_by)
@@ -489,7 +527,43 @@ class _ListChartState:
              unit_prefix: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['ListChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color_by is None and 'colorBy' in kwargs:
+            color_by = kwargs['colorBy']
+        if color_scales is None and 'colorScales' in kwargs:
+            color_scales = kwargs['colorScales']
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if hide_missing_values is None and 'hideMissingValues' in kwargs:
+            hide_missing_values = kwargs['hideMissingValues']
+        if legend_fields_to_hides is None and 'legendFieldsToHides' in kwargs:
+            legend_fields_to_hides = kwargs['legendFieldsToHides']
+        if legend_options_fields is None and 'legendOptionsFields' in kwargs:
+            legend_options_fields = kwargs['legendOptionsFields']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if max_precision is None and 'maxPrecision' in kwargs:
+            max_precision = kwargs['maxPrecision']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if secondary_visualization is None and 'secondaryVisualization' in kwargs:
+            secondary_visualization = kwargs['secondaryVisualization']
+        if sort_by is None and 'sortBy' in kwargs:
+            sort_by = kwargs['sortBy']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         if color_by is not None:
             _setter("color_by", color_by)
         if color_scales is not None:
@@ -823,50 +897,6 @@ class ListChart(pulumi.CustomResource):
 
         The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mylistchart0 = signalfx.ListChart("mylistchart0",
-            color_by="Metric",
-            description="Very cool List Chart",
-            disable_sampling=True,
-            hide_missing_values=True,
-            legend_options_fields=[
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="cluster_name",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="role",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="host",
-                ),
-            ],
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            refresh_interval=1,
-            sort_by="-value",
-            timezone="Europe/Paris")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
@@ -900,50 +930,6 @@ class ListChart(pulumi.CustomResource):
         This chart type displays current data values in a list format.
 
         The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mylistchart0 = signalfx.ListChart("mylistchart0",
-            color_by="Metric",
-            description="Very cool List Chart",
-            disable_sampling=True,
-            hide_missing_values=True,
-            legend_options_fields=[
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="cluster_name",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="role",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="host",
-                ),
-            ],
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            refresh_interval=1,
-            sort_by="-value",
-            timezone="Europe/Paris")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ListChartArgs args: The arguments to use to populate this resource's properties.

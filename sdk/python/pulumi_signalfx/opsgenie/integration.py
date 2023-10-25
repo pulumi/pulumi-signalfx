@@ -35,11 +35,21 @@ class IntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             api_key: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
+             api_key: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
              api_url: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_key is None:
+            raise TypeError("Missing 'api_key' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+
         _setter("api_key", api_key)
         _setter("enabled", enabled)
         if api_url is not None:
@@ -124,7 +134,13 @@ class _IntegrationState:
              api_url: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if api_key is None and 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if api_url is None and 'apiUrl' in kwargs:
+            api_url = kwargs['apiUrl']
+
         if api_key is not None:
             _setter("api_key", api_key)
         if api_url is not None:
@@ -198,18 +214,6 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
-            api_key="my-key",
-            api_url="https://api.opsgenie.com",
-            enabled=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key: The API key
@@ -227,18 +231,6 @@ class Integration(pulumi.CustomResource):
         SignalFx Opsgenie integration.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
-            api_key="my-key",
-            api_url="https://api.opsgenie.com",
-            enabled=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

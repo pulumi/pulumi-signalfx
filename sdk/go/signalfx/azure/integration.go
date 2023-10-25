@@ -16,64 +16,6 @@ import (
 // SignalFx Azure integrations. For help with this integration see [Monitoring Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure).
 //
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/azure"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azure.NewIntegration(ctx, "azureMyteam", &azure.IntegrationArgs{
-//				AdditionalServices: pulumi.StringArray{
-//					pulumi.String("some/service"),
-//					pulumi.String("another/service"),
-//				},
-//				AppId: pulumi.String("YYY"),
-//				CustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{
-//					&azure.IntegrationCustomNamespacesPerServiceArgs{
-//						Namespaces: pulumi.StringArray{
-//							pulumi.String("monitoringAgent"),
-//							pulumi.String("customNamespace"),
-//						},
-//						Service: pulumi.String("Microsoft.Compute/virtualMachines"),
-//					},
-//				},
-//				Enabled:     pulumi.Bool(true),
-//				Environment: pulumi.String("azure"),
-//				PollRate:    pulumi.Int(300),
-//				ResourceFilterRules: azure.IntegrationResourceFilterRuleArray{
-//					&azure.IntegrationResourceFilterRuleArgs{
-//						FilterSource: pulumi.String("filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
-//					},
-//					&azure.IntegrationResourceFilterRuleArgs{
-//						FilterSource: pulumi.String("filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
-//					},
-//				},
-//				SecretKey: pulumi.String("XXX"),
-//				Services: pulumi.StringArray{
-//					pulumi.String("microsoft.sql/servers/elasticpools"),
-//				},
-//				Subscriptions: pulumi.StringArray{
-//					pulumi.String("sub-guid-here"),
-//				},
-//				TenantId: pulumi.String("ZZZ"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Integration struct {
 	pulumi.CustomResourceState
 

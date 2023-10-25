@@ -61,7 +61,7 @@ class TableChartArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             program_text: pulumi.Input[str],
+             program_text: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disable_sampling: Optional[pulumi.Input[bool]] = None,
              group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -73,7 +73,29 @@ class TableChartArgs:
              timezone: Optional[pulumi.Input[str]] = None,
              unit_prefix: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if group_bies is None and 'groupBies' in kwargs:
+            group_bies = kwargs['groupBies']
+        if hide_timestamp is None and 'hideTimestamp' in kwargs:
+            hide_timestamp = kwargs['hideTimestamp']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if minimum_resolution is None and 'minimumResolution' in kwargs:
+            minimum_resolution = kwargs['minimumResolution']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         _setter("program_text", program_text)
         if description is not None:
             _setter("description", description)
@@ -307,7 +329,27 @@ class _TableChartState:
              unit_prefix: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if disable_sampling is None and 'disableSampling' in kwargs:
+            disable_sampling = kwargs['disableSampling']
+        if group_bies is None and 'groupBies' in kwargs:
+            group_bies = kwargs['groupBies']
+        if hide_timestamp is None and 'hideTimestamp' in kwargs:
+            hide_timestamp = kwargs['hideTimestamp']
+        if max_delay is None and 'maxDelay' in kwargs:
+            max_delay = kwargs['maxDelay']
+        if minimum_resolution is None and 'minimumResolution' in kwargs:
+            minimum_resolution = kwargs['minimumResolution']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if refresh_interval is None and 'refreshInterval' in kwargs:
+            refresh_interval = kwargs['refreshInterval']
+        if unit_prefix is None and 'unitPrefix' in kwargs:
+            unit_prefix = kwargs['unitPrefix']
+        if viz_options is None and 'vizOptions' in kwargs:
+            viz_options = kwargs['vizOptions']
+
         if description is not None:
             _setter("description", description)
         if disable_sampling is not None:
@@ -513,21 +555,6 @@ class TableChart(pulumi.CustomResource):
         """
         This special type of chart displays a Data Table. This Table can be grouped by a Dimension.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        # signalfx_list_chart.Logs-Exec_0:
-        table0 = signalfx.TableChart("table0",
-            description="beep",
-            disable_sampling=False,
-            group_bies=["ClusterName"],
-            max_delay=0,
-            program_text="A = data('cpu.usage.total').publish(label='CPU Total')")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the table chart.
@@ -551,21 +578,6 @@ class TableChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This special type of chart displays a Data Table. This Table can be grouped by a Dimension.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        # signalfx_list_chart.Logs-Exec_0:
-        table0 = signalfx.TableChart("table0",
-            description="beep",
-            disable_sampling=False,
-            group_bies=["ClusterName"],
-            max_delay=0,
-            program_text="A = data('cpu.usage.total').publish(label='CPU Total')")
-        ```
 
         :param str resource_name: The name of the resource.
         :param TableChartArgs args: The arguments to use to populate this resource's properties.

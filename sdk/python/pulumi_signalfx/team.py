@@ -59,7 +59,21 @@ class TeamArgs:
              notifications_majors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notifications_criticals is None and 'notificationsCriticals' in kwargs:
+            notifications_criticals = kwargs['notificationsCriticals']
+        if notifications_defaults is None and 'notificationsDefaults' in kwargs:
+            notifications_defaults = kwargs['notificationsDefaults']
+        if notifications_infos is None and 'notificationsInfos' in kwargs:
+            notifications_infos = kwargs['notificationsInfos']
+        if notifications_majors is None and 'notificationsMajors' in kwargs:
+            notifications_majors = kwargs['notificationsMajors']
+        if notifications_minors is None and 'notificationsMinors' in kwargs:
+            notifications_minors = kwargs['notificationsMinors']
+        if notifications_warnings is None and 'notificationsWarnings' in kwargs:
+            notifications_warnings = kwargs['notificationsWarnings']
+
         if description is not None:
             _setter("description", description)
         if members is not None:
@@ -240,7 +254,21 @@ class _TeamState:
              notifications_minors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              notifications_warnings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notifications_criticals is None and 'notificationsCriticals' in kwargs:
+            notifications_criticals = kwargs['notificationsCriticals']
+        if notifications_defaults is None and 'notificationsDefaults' in kwargs:
+            notifications_defaults = kwargs['notificationsDefaults']
+        if notifications_infos is None and 'notificationsInfos' in kwargs:
+            notifications_infos = kwargs['notificationsInfos']
+        if notifications_majors is None and 'notificationsMajors' in kwargs:
+            notifications_majors = kwargs['notificationsMajors']
+        if notifications_minors is None and 'notificationsMinors' in kwargs:
+            notifications_minors = kwargs['notificationsMinors']
+        if notifications_warnings is None and 'notificationsWarnings' in kwargs:
+            notifications_warnings = kwargs['notificationsWarnings']
+
         if description is not None:
             _setter("description", description)
         if members is not None:
@@ -405,22 +433,6 @@ class Team(pulumi.CustomResource):
 
         > **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myteam0 = signalfx.Team("myteam0",
-            description="Super great team no jerks definitely",
-            members=[
-                "userid1",
-                "userid2",
-            ],
-            notifications_criticals=["PagerDuty,credentialId"],
-            notifications_infos=["Email,notify@example.com"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the team.
@@ -445,22 +457,6 @@ class Team(pulumi.CustomResource):
         You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
 
         > **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myteam0 = signalfx.Team("myteam0",
-            description="Super great team no jerks definitely",
-            members=[
-                "userid1",
-                "userid2",
-            ],
-            notifications_criticals=["PagerDuty,credentialId"],
-            notifications_infos=["Email,notify@example.com"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param TeamArgs args: The arguments to use to populate this resource's properties.

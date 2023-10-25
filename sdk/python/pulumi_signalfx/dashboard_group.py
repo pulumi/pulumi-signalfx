@@ -56,7 +56,15 @@ class DashboardGroupArgs:
              name: Optional[pulumi.Input[str]] = None,
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_writer_teams is None and 'authorizedWriterTeams' in kwargs:
+            authorized_writer_teams = kwargs['authorizedWriterTeams']
+        if authorized_writer_users is None and 'authorizedWriterUsers' in kwargs:
+            authorized_writer_users = kwargs['authorizedWriterUsers']
+        if import_qualifiers is None and 'importQualifiers' in kwargs:
+            import_qualifiers = kwargs['importQualifiers']
+
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
@@ -223,7 +231,15 @@ class _DashboardGroupState:
              name: Optional[pulumi.Input[str]] = None,
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]] = None,
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authorized_writer_teams is None and 'authorizedWriterTeams' in kwargs:
+            authorized_writer_teams = kwargs['authorizedWriterTeams']
+        if authorized_writer_users is None and 'authorizedWriterUsers' in kwargs:
+            authorized_writer_users = kwargs['authorizedWriterUsers']
+        if import_qualifiers is None and 'importQualifiers' in kwargs:
+            import_qualifiers = kwargs['importQualifiers']
+
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
@@ -368,69 +384,6 @@ class DashboardGroup(pulumi.CustomResource):
 
         > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
-            description="Cool dashboard group",
-            authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-            authorized_writer_users=["abc123"])
-        ```
-        ### With Permissions
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroupWithpermissions",
-            description="Cool dashboard group",
-            permissions=[
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=["READ"],
-                    principal_id="abc123",
-                    principal_type="ORG",
-                ),
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=[
-                        "READ",
-                        "WRITE",
-                    ],
-                    principal_id="abc456",
-                    principal_type="USER",
-                ),
-            ])
-        ```
-        ### With Mirrored Dashboards
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
-            description="Cool dashboard group",
-            dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
-                name_override="GC For My Service",
-                description_override="Garbage Collection dashboard maintained by JVM team",
-                filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
-                    property="service",
-                    values=["myservice"],
-                    negated=False,
-                )],
-                variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(
-                    property="region",
-                    values=["us-west1"],
-                    values_suggesteds=[
-                        "us-west-1",
-                        "us-east-1",
-                    ],
-                )],
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
@@ -453,69 +406,6 @@ class DashboardGroup(pulumi.CustomResource):
         > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
 
         > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
-            description="Cool dashboard group",
-            authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-            authorized_writer_users=["abc123"])
-        ```
-        ### With Permissions
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroupWithpermissions",
-            description="Cool dashboard group",
-            permissions=[
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=["READ"],
-                    principal_id="abc123",
-                    principal_type="ORG",
-                ),
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=[
-                        "READ",
-                        "WRITE",
-                    ],
-                    principal_id="abc456",
-                    principal_type="USER",
-                ),
-            ])
-        ```
-        ### With Mirrored Dashboards
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
-            description="Cool dashboard group",
-            dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
-                name_override="GC For My Service",
-                description_override="Garbage Collection dashboard maintained by JVM team",
-                filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
-                    property="service",
-                    values=["myservice"],
-                    negated=False,
-                )],
-                variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(
-                    property="region",
-                    values=["us-west1"],
-                    values_suggesteds=[
-                        "us-west-1",
-                        "us-east-1",
-                    ],
-                )],
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param DashboardGroupArgs args: The arguments to use to populate this resource's properties.

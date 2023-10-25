@@ -87,9 +87,9 @@ class IntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             integration_id: pulumi.Input[str],
-             regions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             integration_id: Optional[pulumi.Input[str]] = None,
+             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
              enable_aws_usage: Optional[pulumi.Input[bool]] = None,
@@ -107,7 +107,45 @@ class IntegrationArgs:
              sync_custom_namespaces_only: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
              use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if integration_id is None and 'integrationId' in kwargs:
+            integration_id = kwargs['integrationId']
+        if integration_id is None:
+            raise TypeError("Missing 'integration_id' argument")
+        if regions is None:
+            raise TypeError("Missing 'regions' argument")
+        if custom_cloudwatch_namespaces is None and 'customCloudwatchNamespaces' in kwargs:
+            custom_cloudwatch_namespaces = kwargs['customCloudwatchNamespaces']
+        if custom_namespace_sync_rules is None and 'customNamespaceSyncRules' in kwargs:
+            custom_namespace_sync_rules = kwargs['customNamespaceSyncRules']
+        if enable_aws_usage is None and 'enableAwsUsage' in kwargs:
+            enable_aws_usage = kwargs['enableAwsUsage']
+        if enable_check_large_volume is None and 'enableCheckLargeVolume' in kwargs:
+            enable_check_large_volume = kwargs['enableCheckLargeVolume']
+        if enable_logs_sync is None and 'enableLogsSync' in kwargs:
+            enable_logs_sync = kwargs['enableLogsSync']
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if import_cloud_watch is None and 'importCloudWatch' in kwargs:
+            import_cloud_watch = kwargs['importCloudWatch']
+        if metric_stats_to_syncs is None and 'metricStatsToSyncs' in kwargs:
+            metric_stats_to_syncs = kwargs['metricStatsToSyncs']
+        if named_token is None and 'namedToken' in kwargs:
+            named_token = kwargs['namedToken']
+        if namespace_sync_rules is None and 'namespaceSyncRules' in kwargs:
+            namespace_sync_rules = kwargs['namespaceSyncRules']
+        if poll_rate is None and 'pollRate' in kwargs:
+            poll_rate = kwargs['pollRate']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if sync_custom_namespaces_only is None and 'syncCustomNamespacesOnly' in kwargs:
+            sync_custom_namespaces_only = kwargs['syncCustomNamespacesOnly']
+        if use_metric_streams_sync is None and 'useMetricStreamsSync' in kwargs:
+            use_metric_streams_sync = kwargs['useMetricStreamsSync']
+
         _setter("enabled", enabled)
         _setter("integration_id", integration_id)
         _setter("regions", regions)
@@ -492,7 +530,41 @@ class _IntegrationState:
              sync_custom_namespaces_only: Optional[pulumi.Input[bool]] = None,
              token: Optional[pulumi.Input[str]] = None,
              use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if custom_cloudwatch_namespaces is None and 'customCloudwatchNamespaces' in kwargs:
+            custom_cloudwatch_namespaces = kwargs['customCloudwatchNamespaces']
+        if custom_namespace_sync_rules is None and 'customNamespaceSyncRules' in kwargs:
+            custom_namespace_sync_rules = kwargs['customNamespaceSyncRules']
+        if enable_aws_usage is None and 'enableAwsUsage' in kwargs:
+            enable_aws_usage = kwargs['enableAwsUsage']
+        if enable_check_large_volume is None and 'enableCheckLargeVolume' in kwargs:
+            enable_check_large_volume = kwargs['enableCheckLargeVolume']
+        if enable_logs_sync is None and 'enableLogsSync' in kwargs:
+            enable_logs_sync = kwargs['enableLogsSync']
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if import_cloud_watch is None and 'importCloudWatch' in kwargs:
+            import_cloud_watch = kwargs['importCloudWatch']
+        if integration_id is None and 'integrationId' in kwargs:
+            integration_id = kwargs['integrationId']
+        if metric_stats_to_syncs is None and 'metricStatsToSyncs' in kwargs:
+            metric_stats_to_syncs = kwargs['metricStatsToSyncs']
+        if named_token is None and 'namedToken' in kwargs:
+            named_token = kwargs['namedToken']
+        if namespace_sync_rules is None and 'namespaceSyncRules' in kwargs:
+            namespace_sync_rules = kwargs['namespaceSyncRules']
+        if poll_rate is None and 'pollRate' in kwargs:
+            poll_rate = kwargs['pollRate']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if sync_custom_namespaces_only is None and 'syncCustomNamespacesOnly' in kwargs:
+            sync_custom_namespaces_only = kwargs['syncCustomNamespacesOnly']
+        if use_metric_streams_sync is None and 'useMetricStreamsSync' in kwargs:
+            use_metric_streams_sync = kwargs['useMetricStreamsSync']
+
         if auth_method is not None:
             _setter("auth_method", auth_method)
         if custom_cloudwatch_namespaces is not None:
@@ -839,46 +911,6 @@ class Integration(pulumi.CustomResource):
 
         > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_signalfx as signalfx
-
-        # This resource returns an account id in `external_id`…
-        aws_myteam_external = signalfx.aws.ExternalIntegration("awsMyteamExternal")
-        # Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-        aws_sfx_role = aws.iam.Role("awsSfxRole")
-        # Stuff here that uses the external and account ID
-        aws_myteam = signalfx.aws.Integration("awsMyteam",
-            enabled=True,
-            integration_id=aws_myteam_external.id,
-            external_id=aws_myteam_external.external_id,
-            role_arn=aws_sfx_role.arn,
-            regions=["us-east-1"],
-            poll_rate=300,
-            import_cloud_watch=True,
-            enable_aws_usage=True,
-            custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="my-custom-namespace",
-            )],
-            namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="AWS/EC2",
-            )],
-            metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(
-                namespace="AWS/EC2",
-                metric="NetworkPacketsIn",
-                stats=["upper"],
-            )])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
@@ -916,46 +948,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_signalfx as signalfx
-
-        # This resource returns an account id in `external_id`…
-        aws_myteam_external = signalfx.aws.ExternalIntegration("awsMyteamExternal")
-        # Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-        aws_sfx_role = aws.iam.Role("awsSfxRole")
-        # Stuff here that uses the external and account ID
-        aws_myteam = signalfx.aws.Integration("awsMyteam",
-            enabled=True,
-            integration_id=aws_myteam_external.id,
-            external_id=aws_myteam_external.external_id,
-            role_arn=aws_sfx_role.arn,
-            regions=["us-east-1"],
-            poll_rate=300,
-            import_cloud_watch=True,
-            enable_aws_usage=True,
-            custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="my-custom-namespace",
-            )],
-            namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="AWS/EC2",
-            )],
-            metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(
-                namespace="AWS/EC2",
-                metric="NetworkPacketsIn",
-                stats=["upper"],
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

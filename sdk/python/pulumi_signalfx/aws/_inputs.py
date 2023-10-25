@@ -38,11 +38,21 @@ class IntegrationCustomNamespaceSyncRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
              default_action: Optional[pulumi.Input[str]] = None,
              filter_action: Optional[pulumi.Input[str]] = None,
              filter_source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if default_action is None and 'defaultAction' in kwargs:
+            default_action = kwargs['defaultAction']
+        if filter_action is None and 'filterAction' in kwargs:
+            filter_action = kwargs['filterAction']
+        if filter_source is None and 'filterSource' in kwargs:
+            filter_source = kwargs['filterSource']
+
         _setter("namespace", namespace)
         if default_action is not None:
             _setter("default_action", default_action)
@@ -120,10 +130,18 @@ class IntegrationMetricStatsToSyncArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             metric: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             stats: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             metric: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             stats: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if metric is None:
+            raise TypeError("Missing 'metric' argument")
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if stats is None:
+            raise TypeError("Missing 'stats' argument")
+
         _setter("metric", metric)
         _setter("namespace", namespace)
         _setter("stats", stats)
@@ -188,11 +206,21 @@ class IntegrationNamespaceSyncRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             namespace: pulumi.Input[str],
+             namespace: Optional[pulumi.Input[str]] = None,
              default_action: Optional[pulumi.Input[str]] = None,
              filter_action: Optional[pulumi.Input[str]] = None,
              filter_source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if namespace is None:
+            raise TypeError("Missing 'namespace' argument")
+        if default_action is None and 'defaultAction' in kwargs:
+            default_action = kwargs['defaultAction']
+        if filter_action is None and 'filterAction' in kwargs:
+            filter_action = kwargs['filterAction']
+        if filter_source is None and 'filterSource' in kwargs:
+            filter_source = kwargs['filterSource']
+
         _setter("namespace", namespace)
         if default_action is not None:
             _setter("default_action", default_action)
