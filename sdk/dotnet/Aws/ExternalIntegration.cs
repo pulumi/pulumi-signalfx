@@ -15,6 +15,170 @@ namespace Pulumi.SignalFx.Aws
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`. Check with Splunk Observability support for your realm's AWS account id.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aws = Pulumi.Aws;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var awsMyteamExtern = new SignalFx.Aws.ExternalIntegration("awsMyteamExtern");
+    /// 
+    ///     var signalfxAssumePolicy = Aws.Iam.GetPolicyDocument.Invoke(new()
+    ///     {
+    ///         Statements = new[]
+    ///         {
+    ///             new Aws.Iam.Inputs.GetPolicyDocumentStatementInputArgs
+    ///             {
+    ///                 Actions = new[]
+    ///                 {
+    ///                     "sts:AssumeRole",
+    ///                 },
+    ///                 Principals = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementPrincipalInputArgs
+    ///                     {
+    ///                         Type = "AWS",
+    ///                         Identifiers = new[]
+    ///                         {
+    ///                             awsMyteamExtern.SignalfxAwsAccount,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Conditions = new[]
+    ///                 {
+    ///                     new Aws.Iam.Inputs.GetPolicyDocumentStatementConditionInputArgs
+    ///                     {
+    ///                         Test = "StringEquals",
+    ///                         Variable = "sts:ExternalId",
+    ///                         Values = new[]
+    ///                         {
+    ///                             awsMyteamExtern.ExternalId,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var awsSplunkRole = new Aws.Iam.Role("awsSplunkRole", new()
+    ///     {
+    ///         Description = "signalfx integration to read out data and send it to signalfxs aws account",
+    ///         AssumeRolePolicy = signalfxAssumePolicy.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Json),
+    ///     });
+    /// 
+    ///     var awsSplunkPolicy = new Aws.Iam.Policy("awsSplunkPolicy", new()
+    ///     {
+    ///         Description = "AWS permissions required by the Splunk Observability Cloud",
+    ///         PolicyDocument = @"{
+    ///   ""Version"": ""2012-10-17"",
+    ///   ""Statement"": [
+    ///     {
+    ///       ""Effect"": ""Allow"",
+    ///       ""Action"": [
+    ///         ""apigateway:GET"",
+    ///         ""autoscaling:DescribeAutoScalingGroups"",
+    ///         ""cloudfront:GetDistributionConfig"",
+    ///         ""cloudfront:ListDistributions"",
+    ///         ""cloudfront:ListTagsForResource"",
+    ///         ""cloudwatch:DescribeAlarms"",
+    ///         ""cloudwatch:GetMetricData"",
+    ///         ""cloudwatch:GetMetricStatistics"",
+    ///         ""cloudwatch:ListMetrics"",
+    ///         ""directconnect:DescribeConnections"",
+    ///         ""dynamodb:DescribeTable"",
+    ///         ""dynamodb:ListTables"",
+    ///         ""dynamodb:ListTagsOfResource"",
+    ///         ""ec2:DescribeInstances"",
+    ///         ""ec2:DescribeInstanceStatus"",
+    ///         ""ec2:DescribeRegions"",
+    ///         ""ec2:DescribeReservedInstances"",
+    ///         ""ec2:DescribeReservedInstancesModifications"",
+    ///         ""ec2:DescribeTags"",
+    ///         ""ec2:DescribeVolumes"",
+    ///         ""ecs:DescribeClusters"",
+    ///         ""ecs:DescribeServices"",
+    ///         ""ecs:DescribeTasks"",
+    ///         ""ecs:ListClusters"",
+    ///         ""ecs:ListServices"",
+    ///         ""ecs:ListTagsForResource"",
+    ///         ""ecs:ListTaskDefinitions"",
+    ///         ""ecs:ListTasks"",
+    ///         ""elasticache:DescribeCacheClusters"",
+    ///         ""elasticloadbalancing:DescribeLoadBalancerAttributes"",
+    ///         ""elasticloadbalancing:DescribeLoadBalancers"",
+    ///         ""elasticloadbalancing:DescribeTags"",
+    ///         ""elasticloadbalancing:DescribeTargetGroups"",
+    ///         ""elasticmapreduce:DescribeCluster"",
+    ///         ""elasticmapreduce:ListClusters"",
+    ///         ""es:DescribeElasticsearchDomain"",
+    ///         ""es:ListDomainNames"",
+    ///         ""kinesis:DescribeStream"",
+    ///         ""kinesis:ListShards"",
+    ///         ""kinesis:ListStreams"",
+    ///         ""kinesis:ListTagsForStream"",
+    ///         ""lambda:GetAlias"",
+    ///         ""lambda:ListFunctions"",
+    ///         ""lambda:ListTags"",
+    ///         ""logs:DeleteSubscriptionFilter"",
+    ///         ""logs:DescribeLogGroups"",
+    ///         ""logs:DescribeSubscriptionFilters"",
+    ///         ""logs:PutSubscriptionFilter"",
+    ///         ""organizations:DescribeOrganization"",
+    ///         ""rds:DescribeDBClusters"",
+    ///         ""rds:DescribeDBInstances"",
+    ///         ""rds:ListTagsForResource"",
+    ///         ""redshift:DescribeClusters"",
+    ///         ""redshift:DescribeLoggingStatus"",
+    ///         ""s3:GetBucketLocation"",
+    ///         ""s3:GetBucketLogging"",
+    ///         ""s3:GetBucketNotification"",
+    ///         ""s3:GetBucketTagging"",
+    ///         ""s3:ListAllMyBuckets"",
+    ///         ""s3:ListBucket"",
+    ///         ""s3:PutBucketNotification"",
+    ///         ""sqs:GetQueueAttributes"",
+    ///         ""sqs:ListQueues"",
+    ///         ""sqs:ListQueueTags"",
+    ///         ""states:ListStateMachines"",
+    ///         ""tag:GetResources"",
+    ///         ""workspaces:DescribeWorkspaces""
+    ///       ],
+    ///       ""Resource"": ""*""
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///     });
+    /// 
+    ///     var splunkRolePolicyAttach = new Aws.Iam.RolePolicyAttachment("splunkRolePolicyAttach", new()
+    ///     {
+    ///         Role = awsSplunkRole.Name,
+    ///         PolicyArn = awsSplunkPolicy.Arn,
+    ///     });
+    /// 
+    ///     var awsMyteam = new SignalFx.Aws.Integration("awsMyteam", new()
+    ///     {
+    ///         Enabled = true,
+    ///         IntegrationId = awsMyteamExtern.Id,
+    ///         ExternalId = awsMyteamExtern.ExternalId,
+    ///         RoleArn = awsSplunkRole.Arn,
+    ///         Regions = new[]
+    ///         {
+    ///             "us-east-1",
+    ///         },
+    ///         PollRate = 300,
+    ///         ImportCloudWatch = true,
+    ///         EnableAwsUsage = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:aws/externalIntegration:ExternalIntegration")]
     public partial class ExternalIntegration : global::Pulumi.CustomResource

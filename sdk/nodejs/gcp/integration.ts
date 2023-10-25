@@ -10,6 +10,32 @@ import * as utilities from "../utilities";
  * SignalFx GCP Integration
  *
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {
+ *     customMetricTypeDomains: ["istio.io"],
+ *     enabled: true,
+ *     importGcpMetrics: true,
+ *     pollRate: 300,
+ *     projectServiceKeys: [
+ *         {
+ *             projectId: "gcp_project_id_1",
+ *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json"),
+ *         },
+ *         {
+ *             projectId: "gcp_project_id_2",
+ *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json"),
+ *         },
+ *     ],
+ *     services: ["compute"],
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

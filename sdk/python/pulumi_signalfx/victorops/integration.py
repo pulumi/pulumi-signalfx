@@ -172,6 +172,17 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        vioctor_ops_myteam = signalfx.victorops.Integration("vioctorOpsMyteam",
+            enabled=True,
+            post_url="https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
@@ -188,6 +199,17 @@ class Integration(pulumi.CustomResource):
         SignalFx VictorOps integration.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        vioctor_ops_myteam = signalfx.victorops.Integration("vioctorOpsMyteam",
+            enabled=True,
+            post_url="https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

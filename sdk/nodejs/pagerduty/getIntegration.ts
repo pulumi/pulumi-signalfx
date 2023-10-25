@@ -6,6 +6,17 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get information on an existing PagerDuty integration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const pdIntegration = signalfx.pagerduty.getIntegration({
+ *     name: "PD-Integration",
+ * });
+ * ```
  */
 export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationResult> {
 
@@ -44,6 +55,17 @@ export interface GetIntegrationResult {
 }
 /**
  * Use this data source to get information on an existing PagerDuty integration.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const pdIntegration = signalfx.pagerduty.getIntegration({
+ *     name: "PD-Integration",
+ * });
+ * ```
  */
 export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationResult> {
     return pulumi.output(args).apply((a: any) => getIntegration(a, opts))

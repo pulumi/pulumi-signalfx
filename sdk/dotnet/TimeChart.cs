@@ -13,6 +13,56 @@ namespace Pulumi.SignalFx
     /// Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
     /// 
     /// Time charts display data points over a period of time.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mychart0 = new SignalFx.TimeChart("mychart0", new()
+    ///     {
+    ///         AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
+    ///         {
+    ///             Label = "CPU Total Idle",
+    ///             LowWatermark = 1000,
+    ///         },
+    ///         LegendOptionsFields = new[]
+    ///         {
+    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Enabled = false,
+    ///                 Property = "collector",
+    ///             },
+    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
+    ///             {
+    ///                 Enabled = false,
+    ///                 Property = "hostname",
+    ///             },
+    ///         },
+    ///         PlotType = "LineChart",
+    ///         ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
+    /// 
+    /// ",
+    ///         ShowDataMarkers = true,
+    ///         TimeRange = 3600,
+    ///         VizOptions = new[]
+    ///         {
+    ///             new SignalFx.Inputs.TimeChartVizOptionArgs
+    ///             {
+    ///                 Axis = "left",
+    ///                 Color = "orange",
+    ///                 Label = "CPU Idle",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/timeChart:TimeChart")]
     public partial class TimeChart : global::Pulumi.CustomResource

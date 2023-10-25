@@ -637,6 +637,48 @@ class HeatmapChart(pulumi.CustomResource):
         """
         This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
+            color_range=signalfx.HeatmapChartColorRangeArgs(
+                color="#ff0000",
+                max_value=100,
+                min_value=0,
+            ),
+            color_scales=[
+                signalfx.HeatmapChartColorScaleArgs(
+                    color="green",
+                    gte=99,
+                ),
+                signalfx.HeatmapChartColorScaleArgs(
+                    color="yellow",
+                    gte=95,
+                    lt=99,
+                ),
+                signalfx.HeatmapChartColorScaleArgs(
+                    color="red",
+                    lt=95,
+                ),
+            ],
+            description="Very cool Heatmap",
+            disable_sampling=True,
+            group_bies=[
+                "hostname",
+                "host",
+            ],
+            hide_timestamp=True,
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+
+        \"\"\",
+            sort_by="+host",
+            timezone="Europe/Paris")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HeatmapChartColorRangeArgs']] color_range: Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -662,6 +704,48 @@ class HeatmapChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
+            color_range=signalfx.HeatmapChartColorRangeArgs(
+                color="#ff0000",
+                max_value=100,
+                min_value=0,
+            ),
+            color_scales=[
+                signalfx.HeatmapChartColorScaleArgs(
+                    color="green",
+                    gte=99,
+                ),
+                signalfx.HeatmapChartColorScaleArgs(
+                    color="yellow",
+                    gte=95,
+                    lt=99,
+                ),
+                signalfx.HeatmapChartColorScaleArgs(
+                    color="red",
+                    lt=95,
+                ),
+            ],
+            description="Very cool Heatmap",
+            disable_sampling=True,
+            group_bies=[
+                "hostname",
+                "host",
+            ],
+            hide_timestamp=True,
+            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
+        data("cpu.total.idle", filter=myfilters).publish()
+
+        \"\"\",
+            sort_by="+host",
+            timezone="Europe/Paris")
+        ```
 
         :param str resource_name: The name of the resource.
         :param HeatmapChartArgs args: The arguments to use to populate this resource's properties.

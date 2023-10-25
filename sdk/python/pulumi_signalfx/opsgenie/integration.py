@@ -214,6 +214,18 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
+            api_key="my-key",
+            api_url="https://api.opsgenie.com",
+            enabled=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key: The API key
@@ -231,6 +243,18 @@ class Integration(pulumi.CustomResource):
         SignalFx Opsgenie integration.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        opgenie_myteam = signalfx.opsgenie.Integration("opgenieMyteam",
+            api_key="my-key",
+            api_url="https://api.opsgenie.com",
+            enabled=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

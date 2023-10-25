@@ -8,6 +8,39 @@ import * as utilities from "./utilities";
 
 /**
  * Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * // A global link to SignalFx dashboard.
+ * const myDataLink = new signalfx.DataLink("myDataLink", {
+ *     propertyName: "pname",
+ *     propertyValue: "pvalue",
+ *     targetSignalfxDashboards: [{
+ *         isDefault: true,
+ *         name: "sfx_dash",
+ *         dashboardGroupId: signalfx_dashboard_group.mydashboardgroup0.id,
+ *         dashboardId: signalfx_dashboard.mydashboard0.id,
+ *     }],
+ * });
+ * // A dashboard-specific link to an external URL
+ * const myDataLinkDash = new signalfx.DataLink("myDataLinkDash", {
+ *     contextDashboardId: signalfx_dashboard.mydashboard0.id,
+ *     propertyName: "pname2",
+ *     propertyValue: "pvalue",
+ *     targetExternalUrls: [{
+ *         name: "ex_url",
+ *         timeFormat: "ISO8601",
+ *         url: "https://www.example.com",
+ *         propertyKeyMapping: {
+ *             foo: "bar",
+ *         },
+ *     }],
+ * });
+ * ```
  */
 export class DataLink extends pulumi.CustomResource {
     /**

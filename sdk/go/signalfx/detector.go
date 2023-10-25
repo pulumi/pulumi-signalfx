@@ -19,6 +19,303 @@ import (
 //
 // > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding detectors, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			clusters := []string{
+//				"clusterA",
+//				"clusterB",
+//			}
+//			if param := cfg.GetBool("clusters"); param != nil {
+//				clusters = param
+//			}
+//			var applicationDelay []*signalfx.Detector
+//			for index := 0; index < len(clusters); index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := signalfx.NewDetector(ctx, fmt.Sprintf("applicationDelay-%v", key0), &signalfx.DetectorArgs{
+//					Description: pulumi.String(fmt.Sprintf("your application is slow - %v", clusters[val0])),
+//					MaxDelay:    pulumi.Int(30),
+//					Tags: pulumi.StringArray{
+//						pulumi.String("app-backend"),
+//						pulumi.String("staging"),
+//					},
+//					AuthorizedWriterTeams: pulumi.StringArray{
+//						signalfx_team.Mycoolteam.Id,
+//					},
+//					AuthorizedWriterUsers: pulumi.StringArray{
+//						pulumi.String("abc123"),
+//					},
+//					ProgramText: pulumi.String(fmt.Sprintf("signal = data('app.delay', filter('cluster','%v'), extrapolation='last_value', maxExtrapolations=5).max()\ndetect(when(signal > 60, '5m')).publish('Processing old messages 5m')\ndetect(when(signal > 60, '30m')).publish('Processing old messages 30m')\n", clusters[val0])),
+//					Rules: signalfx.DetectorRuleArray{
+//						&signalfx.DetectorRuleArgs{
+//							Description: pulumi.String("maximum > 60 for 5m"),
+//							Severity:    pulumi.String("Warning"),
+//							DetectLabel: pulumi.String("Processing old messages 5m"),
+//							Notifications: pulumi.StringArray{
+//								pulumi.String("Email,foo-alerts@bar.com"),
+//							},
+//						},
+//						&signalfx.DetectorRuleArgs{
+//							Description: pulumi.String("maximum > 60 for 30m"),
+//							Severity:    pulumi.String("Critical"),
+//							DetectLabel: pulumi.String("Processing old messages 30m"),
+//							Notifications: pulumi.StringArray{
+//								pulumi.String("Email,foo-alerts@bar.com"),
+//							},
+//						},
+//					},
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				applicationDelay = append(applicationDelay, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Notification Format
+//
+// As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+//
+// ### Email
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Jira
+//
+// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Opsgenie
+//
+// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### PagerDuty
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Slack
+//
+// Exclude the `#` on the channel name!
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Team
+//
+// Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### TeamEmail
+//
+// Sends an email to every member of a team.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### VictorOps
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Webhook
+//
+// > **NOTE** You need to include all the commas even if you only use a credential id below.
+//
+// You can either configure a Webhook to use an existing integration's credential id:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// or configure one inline:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.

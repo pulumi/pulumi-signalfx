@@ -15,6 +15,38 @@ namespace Pulumi.SignalFx
     /// &gt; **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
     /// 
     /// &gt; **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var roolMooterOne = new SignalFx.AlertMutingRule("roolMooterOne", new()
+    ///     {
+    ///         Description = "mooted it NEW",
+    ///         StartTime = 1573063243,
+    ///         StopTime = 0,
+    ///         Detectors = new[]
+    ///         {
+    ///             signalfx_detector.Some_detector_id,
+    ///         },
+    ///         Filters = new[]
+    ///         {
+    ///             new SignalFx.Inputs.AlertMutingRuleFilterArgs
+    ///             {
+    ///                 Property = "foo",
+    ///                 PropertyValue = "bar",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/alertMutingRule:AlertMutingRule")]
     public partial class AlertMutingRule : global::Pulumi.CustomResource

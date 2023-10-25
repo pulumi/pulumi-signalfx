@@ -13,6 +13,32 @@ namespace Pulumi.SignalFx.Jira
     /// SignalFx Jira integrations. For help with this integration see [Integration with Jira](https://docs.signalfx.com/en/latest/admin-guide/integrate-notifications.html#integrate-with-jira).
     /// 
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jiraMyteamXX = new SignalFx.Jira.Integration("jiraMyteamXX", new()
+    ///     {
+    ///         AssigneeDisplayName = "Testy Testerson",
+    ///         AssigneeName = "testytesterson",
+    ///         AuthMethod = "UsernameAndPassword",
+    ///         BaseUrl = "https://www.example.com",
+    ///         Enabled = false,
+    ///         IssueType = "Story",
+    ///         Password = "paasword",
+    ///         ProjectKey = "TEST",
+    ///         Username = "yoosername",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:jira/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

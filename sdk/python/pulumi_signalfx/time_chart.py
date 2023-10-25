@@ -1188,6 +1188,40 @@ class TimeChart(pulumi.CustomResource):
 
         Time charts display data points over a period of time.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mychart0 = signalfx.TimeChart("mychart0",
+            axis_left=signalfx.TimeChartAxisLeftArgs(
+                label="CPU Total Idle",
+                low_watermark=1000,
+            ),
+            legend_options_fields=[
+                signalfx.TimeChartLegendOptionsFieldArgs(
+                    enabled=False,
+                    property="collector",
+                ),
+                signalfx.TimeChartLegendOptionsFieldArgs(
+                    enabled=False,
+                    property="hostname",
+                ),
+            ],
+            plot_type="LineChart",
+            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
+
+        \"\"\",
+            show_data_markers=True,
+            time_range=3600,
+            viz_options=[signalfx.TimeChartVizOptionArgs(
+                axis="left",
+                color="orange",
+                label="CPU Idle",
+            )])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
@@ -1228,6 +1262,40 @@ class TimeChart(pulumi.CustomResource):
         Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
 
         Time charts display data points over a period of time.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        mychart0 = signalfx.TimeChart("mychart0",
+            axis_left=signalfx.TimeChartAxisLeftArgs(
+                label="CPU Total Idle",
+                low_watermark=1000,
+            ),
+            legend_options_fields=[
+                signalfx.TimeChartLegendOptionsFieldArgs(
+                    enabled=False,
+                    property="collector",
+                ),
+                signalfx.TimeChartLegendOptionsFieldArgs(
+                    enabled=False,
+                    property="hostname",
+                ),
+            ],
+            plot_type="LineChart",
+            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
+
+        \"\"\",
+            show_data_markers=True,
+            time_range=3600,
+            viz_options=[signalfx.TimeChartVizOptionArgs(
+                axis="left",
+                color="orange",
+                label="CPU Idle",
+            )])
+        ```
 
         :param str resource_name: The name of the resource.
         :param TimeChartArgs args: The arguments to use to populate this resource's properties.

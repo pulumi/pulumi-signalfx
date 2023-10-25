@@ -347,6 +347,27 @@ class OrgToken(pulumi.CustomResource):
 
         > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteamkey0 = signalfx.OrgToken("myteamkey0",
+            description="My team's rad key",
+            host_or_usage_limits=signalfx.OrgTokenHostOrUsageLimitsArgs(
+                container_limit=200,
+                container_notification_threshold=180,
+                custom_metrics_limit=1000,
+                custom_metrics_notification_threshold=900,
+                high_res_metrics_limit=1000,
+                high_res_metrics_notification_threshold=900,
+                host_limit=100,
+                host_notification_threshold=90,
+            ),
+            notifications=["Email,foo-alerts@bar.com"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
@@ -367,6 +388,27 @@ class OrgToken(pulumi.CustomResource):
         Manage SignalFx org tokens.
 
         > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        myteamkey0 = signalfx.OrgToken("myteamkey0",
+            description="My team's rad key",
+            host_or_usage_limits=signalfx.OrgTokenHostOrUsageLimitsArgs(
+                container_limit=200,
+                container_notification_threshold=180,
+                custom_metrics_limit=1000,
+                custom_metrics_notification_threshold=900,
+                high_res_metrics_limit=1000,
+                high_res_metrics_notification_threshold=900,
+                host_limit=100,
+                host_notification_threshold=90,
+            ),
+            notifications=["Email,foo-alerts@bar.com"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param OrgTokenArgs args: The arguments to use to populate this resource's properties.

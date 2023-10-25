@@ -8,6 +8,23 @@ import * as utilities from "../utilities";
  * Observability Cloud ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/Observability/admin/notif-services/servicenow.html).
  *
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as signalfx from "@pulumi/signalfx";
+ *
+ * const serviceNowMyteam = new signalfx.servicenow.Integration("serviceNowMyteam", {
+ *     alertResolvedPayloadTemplate: "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
+ *     alertTriggeredPayloadTemplate: "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
+ *     enabled: false,
+ *     instanceName: "myinst.service-now.com",
+ *     issueType: "Incident",
+ *     password: "youd0ntsee1t",
+ *     username: "thisis_me",
+ * });
+ * ```
  */
 export class Integration extends pulumi.CustomResource {
     /**

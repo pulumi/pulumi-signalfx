@@ -373,6 +373,22 @@ class Integration(pulumi.CustomResource):
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        service_now_myteam = signalfx.servicenow.Integration("serviceNowMyteam",
+            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}",
+            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
+            enabled=False,
+            instance_name="myinst.service-now.com",
+            issue_type="Incident",
+            password="youd0ntsee1t",
+            username="thisis_me")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alert_resolved_payload_template: A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
@@ -394,6 +410,22 @@ class Integration(pulumi.CustomResource):
         Observability Cloud ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/Observability/admin/notif-services/servicenow.html).
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_signalfx as signalfx
+
+        service_now_myteam = signalfx.servicenow.Integration("serviceNowMyteam",
+            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}",
+            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
+            enabled=False,
+            instance_name="myinst.service-now.com",
+            issue_type="Incident",
+            password="youd0ntsee1t",
+            username="thisis_me")
+        ```
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.

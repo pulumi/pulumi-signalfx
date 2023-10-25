@@ -13,6 +13,25 @@ namespace Pulumi.SignalFx.PagerDuty
     /// SignalFx PagerDuty integrations
     /// 
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SignalFx = Pulumi.SignalFx;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pagerdutyMyteam = new SignalFx.PagerDuty.Integration("pagerdutyMyteam", new()
+    ///     {
+    ///         ApiKey = "1234567890",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:pagerduty/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource

@@ -13,12 +13,56 @@ namespace Pulumi.SignalFx.PagerDuty
     {
         /// <summary>
         /// Use this data source to get information on an existing PagerDuty integration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pdIntegration = SignalFx.PagerDuty.GetIntegration.Invoke(new()
+        ///     {
+        ///         Name = "PD-Integration",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetIntegrationResult> InvokeAsync(GetIntegrationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get information on an existing PagerDuty integration.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SignalFx = Pulumi.SignalFx;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var pdIntegration = SignalFx.PagerDuty.GetIntegration.Invoke(new()
+        ///     {
+        ///         Name = "PD-Integration",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetIntegrationResult> Invoke(GetIntegrationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIntegrationResult>("signalfx:pagerduty/getIntegration:getIntegration", args ?? new GetIntegrationInvokeArgs(), options.WithDefaults());
