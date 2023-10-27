@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IntegrationArgs', 'Integration']
@@ -33,60 +33,17 @@ class IntegrationArgs:
         :param pulumi.Input[str] alert_triggered_payload_template: A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         :param pulumi.Input[str] name: Name of the integration.
         """
-        IntegrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            instance_name=instance_name,
-            issue_type=issue_type,
-            password=password,
-            username=username,
-            alert_resolved_payload_template=alert_resolved_payload_template,
-            alert_triggered_payload_template=alert_triggered_payload_template,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             issue_type: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             alert_resolved_payload_template: Optional[pulumi.Input[str]] = None,
-             alert_triggered_payload_template: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if instance_name is None:
-            raise TypeError("Missing 'instance_name' argument")
-        if issue_type is None and 'issueType' in kwargs:
-            issue_type = kwargs['issueType']
-        if issue_type is None:
-            raise TypeError("Missing 'issue_type' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-        if username is None:
-            raise TypeError("Missing 'username' argument")
-        if alert_resolved_payload_template is None and 'alertResolvedPayloadTemplate' in kwargs:
-            alert_resolved_payload_template = kwargs['alertResolvedPayloadTemplate']
-        if alert_triggered_payload_template is None and 'alertTriggeredPayloadTemplate' in kwargs:
-            alert_triggered_payload_template = kwargs['alertTriggeredPayloadTemplate']
-
-        _setter("enabled", enabled)
-        _setter("instance_name", instance_name)
-        _setter("issue_type", issue_type)
-        _setter("password", password)
-        _setter("username", username)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "issue_type", issue_type)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
         if alert_resolved_payload_template is not None:
-            _setter("alert_resolved_payload_template", alert_resolved_payload_template)
+            pulumi.set(__self__, "alert_resolved_payload_template", alert_resolved_payload_template)
         if alert_triggered_payload_template is not None:
-            _setter("alert_triggered_payload_template", alert_triggered_payload_template)
+            pulumi.set(__self__, "alert_triggered_payload_template", alert_triggered_payload_template)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -207,55 +164,22 @@ class _IntegrationState:
         :param pulumi.Input[str] password: Password used to authenticate the ServiceNow integration.
         :param pulumi.Input[str] username: User name used to authenticate the ServiceNow integration.
         """
-        _IntegrationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alert_resolved_payload_template=alert_resolved_payload_template,
-            alert_triggered_payload_template=alert_triggered_payload_template,
-            enabled=enabled,
-            instance_name=instance_name,
-            issue_type=issue_type,
-            name=name,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alert_resolved_payload_template: Optional[pulumi.Input[str]] = None,
-             alert_triggered_payload_template: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             instance_name: Optional[pulumi.Input[str]] = None,
-             issue_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alert_resolved_payload_template is None and 'alertResolvedPayloadTemplate' in kwargs:
-            alert_resolved_payload_template = kwargs['alertResolvedPayloadTemplate']
-        if alert_triggered_payload_template is None and 'alertTriggeredPayloadTemplate' in kwargs:
-            alert_triggered_payload_template = kwargs['alertTriggeredPayloadTemplate']
-        if instance_name is None and 'instanceName' in kwargs:
-            instance_name = kwargs['instanceName']
-        if issue_type is None and 'issueType' in kwargs:
-            issue_type = kwargs['issueType']
-
         if alert_resolved_payload_template is not None:
-            _setter("alert_resolved_payload_template", alert_resolved_payload_template)
+            pulumi.set(__self__, "alert_resolved_payload_template", alert_resolved_payload_template)
         if alert_triggered_payload_template is not None:
-            _setter("alert_triggered_payload_template", alert_triggered_payload_template)
+            pulumi.set(__self__, "alert_triggered_payload_template", alert_triggered_payload_template)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if instance_name is not None:
-            _setter("instance_name", instance_name)
+            pulumi.set(__self__, "instance_name", instance_name)
         if issue_type is not None:
-            _setter("issue_type", issue_type)
+            pulumi.set(__self__, "issue_type", issue_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="alertResolvedPayloadTemplate")
@@ -437,10 +361,6 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

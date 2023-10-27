@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,25 +23,8 @@ class IntegrationCustomNamespacesPerServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: The additional namespaces.
         :param pulumi.Input[str] service: The name of the service.
         """
-        IntegrationCustomNamespacesPerServiceArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            namespaces=namespaces,
-            service=service,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             service: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if namespaces is None:
-            raise TypeError("Missing 'namespaces' argument")
-        if service is None:
-            raise TypeError("Missing 'service' argument")
-
-        _setter("namespaces", namespaces)
-        _setter("service", service)
+        pulumi.set(__self__, "namespaces", namespaces)
+        pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
@@ -75,22 +58,7 @@ class IntegrationResourceFilterRuleArgs:
         """
         :param pulumi.Input[str] filter_source: Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
         """
-        IntegrationResourceFilterRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filter_source=filter_source,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filter_source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if filter_source is None and 'filterSource' in kwargs:
-            filter_source = kwargs['filterSource']
-        if filter_source is None:
-            raise TypeError("Missing 'filter_source' argument")
-
-        _setter("filter_source", filter_source)
+        pulumi.set(__self__, "filter_source", filter_source)
 
     @property
     @pulumi.getter(name="filterSource")

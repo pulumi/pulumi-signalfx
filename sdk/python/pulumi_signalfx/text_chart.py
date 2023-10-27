@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TextChartArgs', 'TextChart']
@@ -23,28 +23,11 @@ class TextChartArgs:
         :param pulumi.Input[str] description: Description of the text note.
         :param pulumi.Input[str] name: Name of the text note.
         """
-        TextChartArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            markdown=markdown,
-            description=description,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             markdown: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if markdown is None:
-            raise TypeError("Missing 'markdown' argument")
-
-        _setter("markdown", markdown)
+        pulumi.set(__self__, "markdown", markdown)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -97,31 +80,14 @@ class _TextChartState:
         :param pulumi.Input[str] name: Name of the text note.
         :param pulumi.Input[str] url: The URL of the chart.
         """
-        _TextChartState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            markdown=markdown,
-            name=name,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             markdown: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if markdown is not None:
-            _setter("markdown", markdown)
+            pulumi.set(__self__, "markdown", markdown)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -265,10 +231,6 @@ class TextChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TextChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
