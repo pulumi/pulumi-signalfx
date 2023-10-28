@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,82 +43,29 @@ class TableChartArgs:
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
         :param pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
         """
-        TableChartArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            program_text=program_text,
-            description=description,
-            disable_sampling=disable_sampling,
-            group_bies=group_bies,
-            hide_timestamp=hide_timestamp,
-            max_delay=max_delay,
-            minimum_resolution=minimum_resolution,
-            name=name,
-            refresh_interval=refresh_interval,
-            timezone=timezone,
-            unit_prefix=unit_prefix,
-            viz_options=viz_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             program_text: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_sampling: Optional[pulumi.Input[bool]] = None,
-             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             hide_timestamp: Optional[pulumi.Input[bool]] = None,
-             max_delay: Optional[pulumi.Input[int]] = None,
-             minimum_resolution: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             unit_prefix: Optional[pulumi.Input[str]] = None,
-             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if program_text is None:
-            raise TypeError("Missing 'program_text' argument")
-        if disable_sampling is None and 'disableSampling' in kwargs:
-            disable_sampling = kwargs['disableSampling']
-        if group_bies is None and 'groupBies' in kwargs:
-            group_bies = kwargs['groupBies']
-        if hide_timestamp is None and 'hideTimestamp' in kwargs:
-            hide_timestamp = kwargs['hideTimestamp']
-        if max_delay is None and 'maxDelay' in kwargs:
-            max_delay = kwargs['maxDelay']
-        if minimum_resolution is None and 'minimumResolution' in kwargs:
-            minimum_resolution = kwargs['minimumResolution']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if unit_prefix is None and 'unitPrefix' in kwargs:
-            unit_prefix = kwargs['unitPrefix']
-        if viz_options is None and 'vizOptions' in kwargs:
-            viz_options = kwargs['vizOptions']
-
-        _setter("program_text", program_text)
+        pulumi.set(__self__, "program_text", program_text)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_sampling is not None:
-            _setter("disable_sampling", disable_sampling)
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
         if group_bies is not None:
-            _setter("group_bies", group_bies)
+            pulumi.set(__self__, "group_bies", group_bies)
         if hide_timestamp is not None:
-            _setter("hide_timestamp", hide_timestamp)
+            pulumi.set(__self__, "hide_timestamp", hide_timestamp)
         if max_delay is not None:
-            _setter("max_delay", max_delay)
+            pulumi.set(__self__, "max_delay", max_delay)
         if minimum_resolution is not None:
-            _setter("minimum_resolution", minimum_resolution)
+            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
-            _setter("unit_prefix", unit_prefix)
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
         if viz_options is not None:
-            _setter("viz_options", viz_options)
+            pulumi.set(__self__, "viz_options", viz_options)
 
     @property
     @pulumi.getter(name="programText")
@@ -297,85 +244,32 @@ class _TableChartState:
         :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
         """
-        _TableChartState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            disable_sampling=disable_sampling,
-            group_bies=group_bies,
-            hide_timestamp=hide_timestamp,
-            max_delay=max_delay,
-            minimum_resolution=minimum_resolution,
-            name=name,
-            program_text=program_text,
-            refresh_interval=refresh_interval,
-            timezone=timezone,
-            unit_prefix=unit_prefix,
-            url=url,
-            viz_options=viz_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             disable_sampling: Optional[pulumi.Input[bool]] = None,
-             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             hide_timestamp: Optional[pulumi.Input[bool]] = None,
-             max_delay: Optional[pulumi.Input[int]] = None,
-             minimum_resolution: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             program_text: Optional[pulumi.Input[str]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             unit_prefix: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if disable_sampling is None and 'disableSampling' in kwargs:
-            disable_sampling = kwargs['disableSampling']
-        if group_bies is None and 'groupBies' in kwargs:
-            group_bies = kwargs['groupBies']
-        if hide_timestamp is None and 'hideTimestamp' in kwargs:
-            hide_timestamp = kwargs['hideTimestamp']
-        if max_delay is None and 'maxDelay' in kwargs:
-            max_delay = kwargs['maxDelay']
-        if minimum_resolution is None and 'minimumResolution' in kwargs:
-            minimum_resolution = kwargs['minimumResolution']
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if unit_prefix is None and 'unitPrefix' in kwargs:
-            unit_prefix = kwargs['unitPrefix']
-        if viz_options is None and 'vizOptions' in kwargs:
-            viz_options = kwargs['vizOptions']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_sampling is not None:
-            _setter("disable_sampling", disable_sampling)
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
         if group_bies is not None:
-            _setter("group_bies", group_bies)
+            pulumi.set(__self__, "group_bies", group_bies)
         if hide_timestamp is not None:
-            _setter("hide_timestamp", hide_timestamp)
+            pulumi.set(__self__, "hide_timestamp", hide_timestamp)
         if max_delay is not None:
-            _setter("max_delay", max_delay)
+            pulumi.set(__self__, "max_delay", max_delay)
         if minimum_resolution is not None:
-            _setter("minimum_resolution", minimum_resolution)
+            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if program_text is not None:
-            _setter("program_text", program_text)
+            pulumi.set(__self__, "program_text", program_text)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
-            _setter("unit_prefix", unit_prefix)
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if viz_options is not None:
-            _setter("viz_options", viz_options)
+            pulumi.set(__self__, "viz_options", viz_options)
 
     @property
     @pulumi.getter
@@ -619,10 +513,6 @@ class TableChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TableChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

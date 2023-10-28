@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -31,57 +31,20 @@ class ProviderArgs:
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
         :param pulumi.Input[int] timeout_seconds: Timeout duration for a single HTTP call in seconds. Defaults to 120
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_url=api_url,
-            auth_token=auth_token,
-            custom_app_url=custom_app_url,
-            retry_max_attempts=retry_max_attempts,
-            retry_wait_max_seconds=retry_wait_max_seconds,
-            retry_wait_min_seconds=retry_wait_min_seconds,
-            timeout_seconds=timeout_seconds,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_url: Optional[pulumi.Input[str]] = None,
-             auth_token: Optional[pulumi.Input[str]] = None,
-             custom_app_url: Optional[pulumi.Input[str]] = None,
-             retry_max_attempts: Optional[pulumi.Input[int]] = None,
-             retry_wait_max_seconds: Optional[pulumi.Input[int]] = None,
-             retry_wait_min_seconds: Optional[pulumi.Input[int]] = None,
-             timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_url is None and 'apiUrl' in kwargs:
-            api_url = kwargs['apiUrl']
-        if auth_token is None and 'authToken' in kwargs:
-            auth_token = kwargs['authToken']
-        if custom_app_url is None and 'customAppUrl' in kwargs:
-            custom_app_url = kwargs['customAppUrl']
-        if retry_max_attempts is None and 'retryMaxAttempts' in kwargs:
-            retry_max_attempts = kwargs['retryMaxAttempts']
-        if retry_wait_max_seconds is None and 'retryWaitMaxSeconds' in kwargs:
-            retry_wait_max_seconds = kwargs['retryWaitMaxSeconds']
-        if retry_wait_min_seconds is None and 'retryWaitMinSeconds' in kwargs:
-            retry_wait_min_seconds = kwargs['retryWaitMinSeconds']
-        if timeout_seconds is None and 'timeoutSeconds' in kwargs:
-            timeout_seconds = kwargs['timeoutSeconds']
-
         if api_url is not None:
-            _setter("api_url", api_url)
+            pulumi.set(__self__, "api_url", api_url)
         if auth_token is not None:
-            _setter("auth_token", auth_token)
+            pulumi.set(__self__, "auth_token", auth_token)
         if custom_app_url is not None:
-            _setter("custom_app_url", custom_app_url)
+            pulumi.set(__self__, "custom_app_url", custom_app_url)
         if retry_max_attempts is not None:
-            _setter("retry_max_attempts", retry_max_attempts)
+            pulumi.set(__self__, "retry_max_attempts", retry_max_attempts)
         if retry_wait_max_seconds is not None:
-            _setter("retry_wait_max_seconds", retry_wait_max_seconds)
+            pulumi.set(__self__, "retry_wait_max_seconds", retry_wait_max_seconds)
         if retry_wait_min_seconds is not None:
-            _setter("retry_wait_min_seconds", retry_wait_min_seconds)
+            pulumi.set(__self__, "retry_wait_min_seconds", retry_wait_min_seconds)
         if timeout_seconds is not None:
-            _setter("timeout_seconds", timeout_seconds)
+            pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -219,10 +182,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

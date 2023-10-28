@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,94 +47,33 @@ class HeatmapChartArgs:
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         """
-        HeatmapChartArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            program_text=program_text,
-            color_range=color_range,
-            color_scales=color_scales,
-            description=description,
-            disable_sampling=disable_sampling,
-            group_bies=group_bies,
-            hide_timestamp=hide_timestamp,
-            max_delay=max_delay,
-            minimum_resolution=minimum_resolution,
-            name=name,
-            refresh_interval=refresh_interval,
-            sort_by=sort_by,
-            timezone=timezone,
-            unit_prefix=unit_prefix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             program_text: Optional[pulumi.Input[str]] = None,
-             color_range: Optional[pulumi.Input['HeatmapChartColorRangeArgs']] = None,
-             color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_sampling: Optional[pulumi.Input[bool]] = None,
-             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             hide_timestamp: Optional[pulumi.Input[bool]] = None,
-             max_delay: Optional[pulumi.Input[int]] = None,
-             minimum_resolution: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             sort_by: Optional[pulumi.Input[str]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             unit_prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if program_text is None:
-            raise TypeError("Missing 'program_text' argument")
-        if color_range is None and 'colorRange' in kwargs:
-            color_range = kwargs['colorRange']
-        if color_scales is None and 'colorScales' in kwargs:
-            color_scales = kwargs['colorScales']
-        if disable_sampling is None and 'disableSampling' in kwargs:
-            disable_sampling = kwargs['disableSampling']
-        if group_bies is None and 'groupBies' in kwargs:
-            group_bies = kwargs['groupBies']
-        if hide_timestamp is None and 'hideTimestamp' in kwargs:
-            hide_timestamp = kwargs['hideTimestamp']
-        if max_delay is None and 'maxDelay' in kwargs:
-            max_delay = kwargs['maxDelay']
-        if minimum_resolution is None and 'minimumResolution' in kwargs:
-            minimum_resolution = kwargs['minimumResolution']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if sort_by is None and 'sortBy' in kwargs:
-            sort_by = kwargs['sortBy']
-        if unit_prefix is None and 'unitPrefix' in kwargs:
-            unit_prefix = kwargs['unitPrefix']
-
-        _setter("program_text", program_text)
+        pulumi.set(__self__, "program_text", program_text)
         if color_range is not None:
-            _setter("color_range", color_range)
+            pulumi.set(__self__, "color_range", color_range)
         if color_scales is not None:
-            _setter("color_scales", color_scales)
+            pulumi.set(__self__, "color_scales", color_scales)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_sampling is not None:
-            _setter("disable_sampling", disable_sampling)
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
         if group_bies is not None:
-            _setter("group_bies", group_bies)
+            pulumi.set(__self__, "group_bies", group_bies)
         if hide_timestamp is not None:
-            _setter("hide_timestamp", hide_timestamp)
+            pulumi.set(__self__, "hide_timestamp", hide_timestamp)
         if max_delay is not None:
-            _setter("max_delay", max_delay)
+            pulumi.set(__self__, "max_delay", max_delay)
         if minimum_resolution is not None:
-            _setter("minimum_resolution", minimum_resolution)
+            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if sort_by is not None:
-            _setter("sort_by", sort_by)
+            pulumi.set(__self__, "sort_by", sort_by)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
-            _setter("unit_prefix", unit_prefix)
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
 
     @property
     @pulumi.getter(name="programText")
@@ -341,97 +280,36 @@ class _HeatmapChartState:
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
         """
-        _HeatmapChartState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            color_range=color_range,
-            color_scales=color_scales,
-            description=description,
-            disable_sampling=disable_sampling,
-            group_bies=group_bies,
-            hide_timestamp=hide_timestamp,
-            max_delay=max_delay,
-            minimum_resolution=minimum_resolution,
-            name=name,
-            program_text=program_text,
-            refresh_interval=refresh_interval,
-            sort_by=sort_by,
-            timezone=timezone,
-            unit_prefix=unit_prefix,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             color_range: Optional[pulumi.Input['HeatmapChartColorRangeArgs']] = None,
-             color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['HeatmapChartColorScaleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_sampling: Optional[pulumi.Input[bool]] = None,
-             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             hide_timestamp: Optional[pulumi.Input[bool]] = None,
-             max_delay: Optional[pulumi.Input[int]] = None,
-             minimum_resolution: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             program_text: Optional[pulumi.Input[str]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             sort_by: Optional[pulumi.Input[str]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             unit_prefix: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if color_range is None and 'colorRange' in kwargs:
-            color_range = kwargs['colorRange']
-        if color_scales is None and 'colorScales' in kwargs:
-            color_scales = kwargs['colorScales']
-        if disable_sampling is None and 'disableSampling' in kwargs:
-            disable_sampling = kwargs['disableSampling']
-        if group_bies is None and 'groupBies' in kwargs:
-            group_bies = kwargs['groupBies']
-        if hide_timestamp is None and 'hideTimestamp' in kwargs:
-            hide_timestamp = kwargs['hideTimestamp']
-        if max_delay is None and 'maxDelay' in kwargs:
-            max_delay = kwargs['maxDelay']
-        if minimum_resolution is None and 'minimumResolution' in kwargs:
-            minimum_resolution = kwargs['minimumResolution']
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if sort_by is None and 'sortBy' in kwargs:
-            sort_by = kwargs['sortBy']
-        if unit_prefix is None and 'unitPrefix' in kwargs:
-            unit_prefix = kwargs['unitPrefix']
-
         if color_range is not None:
-            _setter("color_range", color_range)
+            pulumi.set(__self__, "color_range", color_range)
         if color_scales is not None:
-            _setter("color_scales", color_scales)
+            pulumi.set(__self__, "color_scales", color_scales)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_sampling is not None:
-            _setter("disable_sampling", disable_sampling)
+            pulumi.set(__self__, "disable_sampling", disable_sampling)
         if group_bies is not None:
-            _setter("group_bies", group_bies)
+            pulumi.set(__self__, "group_bies", group_bies)
         if hide_timestamp is not None:
-            _setter("hide_timestamp", hide_timestamp)
+            pulumi.set(__self__, "hide_timestamp", hide_timestamp)
         if max_delay is not None:
-            _setter("max_delay", max_delay)
+            pulumi.set(__self__, "max_delay", max_delay)
         if minimum_resolution is not None:
-            _setter("minimum_resolution", minimum_resolution)
+            pulumi.set(__self__, "minimum_resolution", minimum_resolution)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if program_text is not None:
-            _setter("program_text", program_text)
+            pulumi.set(__self__, "program_text", program_text)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if sort_by is not None:
-            _setter("sort_by", sort_by)
+            pulumi.set(__self__, "sort_by", sort_by)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
-            _setter("unit_prefix", unit_prefix)
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="colorRange")
@@ -757,10 +635,6 @@ class HeatmapChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HeatmapChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -789,7 +663,6 @@ class HeatmapChart(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HeatmapChartArgs.__new__(HeatmapChartArgs)
 
-            color_range = _utilities.configure(color_range, HeatmapChartColorRangeArgs, True)
             __props__.__dict__["color_range"] = color_range
             __props__.__dict__["color_scales"] = color_scales
             __props__.__dict__["description"] = description
