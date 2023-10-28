@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,70 +39,25 @@ class IntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         """
-        IntegrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            custom_metric_type_domains=custom_metric_type_domains,
-            import_gcp_metrics=import_gcp_metrics,
-            include_lists=include_lists,
-            name=name,
-            named_token=named_token,
-            poll_rate=poll_rate,
-            project_service_keys=project_service_keys,
-            services=services,
-            use_metric_source_project_for_quota=use_metric_source_project_for_quota,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
-             include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             named_token: Optional[pulumi.Input[str]] = None,
-             poll_rate: Optional[pulumi.Input[int]] = None,
-             project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
-             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if custom_metric_type_domains is None and 'customMetricTypeDomains' in kwargs:
-            custom_metric_type_domains = kwargs['customMetricTypeDomains']
-        if import_gcp_metrics is None and 'importGcpMetrics' in kwargs:
-            import_gcp_metrics = kwargs['importGcpMetrics']
-        if include_lists is None and 'includeLists' in kwargs:
-            include_lists = kwargs['includeLists']
-        if named_token is None and 'namedToken' in kwargs:
-            named_token = kwargs['namedToken']
-        if poll_rate is None and 'pollRate' in kwargs:
-            poll_rate = kwargs['pollRate']
-        if project_service_keys is None and 'projectServiceKeys' in kwargs:
-            project_service_keys = kwargs['projectServiceKeys']
-        if use_metric_source_project_for_quota is None and 'useMetricSourceProjectForQuota' in kwargs:
-            use_metric_source_project_for_quota = kwargs['useMetricSourceProjectForQuota']
-
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
         if custom_metric_type_domains is not None:
-            _setter("custom_metric_type_domains", custom_metric_type_domains)
+            pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if import_gcp_metrics is not None:
-            _setter("import_gcp_metrics", import_gcp_metrics)
+            pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
         if include_lists is not None:
-            _setter("include_lists", include_lists)
+            pulumi.set(__self__, "include_lists", include_lists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if named_token is not None:
-            _setter("named_token", named_token)
+            pulumi.set(__self__, "named_token", named_token)
         if poll_rate is not None:
-            _setter("poll_rate", poll_rate)
+            pulumi.set(__self__, "poll_rate", poll_rate)
         if project_service_keys is not None:
-            _setter("project_service_keys", project_service_keys)
+            pulumi.set(__self__, "project_service_keys", project_service_keys)
         if services is not None:
-            _setter("services", services)
+            pulumi.set(__self__, "services", services)
         if use_metric_source_project_for_quota is not None:
-            _setter("use_metric_source_project_for_quota", use_metric_source_project_for_quota)
+            pulumi.set(__self__, "use_metric_source_project_for_quota", use_metric_source_project_for_quota)
 
     @property
     @pulumi.getter
@@ -251,69 +206,26 @@ class _IntegrationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
         :param pulumi.Input[bool] use_metric_source_project_for_quota: When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
         """
-        _IntegrationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_metric_type_domains=custom_metric_type_domains,
-            enabled=enabled,
-            import_gcp_metrics=import_gcp_metrics,
-            include_lists=include_lists,
-            name=name,
-            named_token=named_token,
-            poll_rate=poll_rate,
-            project_service_keys=project_service_keys,
-            services=services,
-            use_metric_source_project_for_quota=use_metric_source_project_for_quota,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_metric_type_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             import_gcp_metrics: Optional[pulumi.Input[bool]] = None,
-             include_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             named_token: Optional[pulumi.Input[str]] = None,
-             poll_rate: Optional[pulumi.Input[int]] = None,
-             project_service_keys: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationProjectServiceKeyArgs']]]] = None,
-             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             use_metric_source_project_for_quota: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_metric_type_domains is None and 'customMetricTypeDomains' in kwargs:
-            custom_metric_type_domains = kwargs['customMetricTypeDomains']
-        if import_gcp_metrics is None and 'importGcpMetrics' in kwargs:
-            import_gcp_metrics = kwargs['importGcpMetrics']
-        if include_lists is None and 'includeLists' in kwargs:
-            include_lists = kwargs['includeLists']
-        if named_token is None and 'namedToken' in kwargs:
-            named_token = kwargs['namedToken']
-        if poll_rate is None and 'pollRate' in kwargs:
-            poll_rate = kwargs['pollRate']
-        if project_service_keys is None and 'projectServiceKeys' in kwargs:
-            project_service_keys = kwargs['projectServiceKeys']
-        if use_metric_source_project_for_quota is None and 'useMetricSourceProjectForQuota' in kwargs:
-            use_metric_source_project_for_quota = kwargs['useMetricSourceProjectForQuota']
-
         if custom_metric_type_domains is not None:
-            _setter("custom_metric_type_domains", custom_metric_type_domains)
+            pulumi.set(__self__, "custom_metric_type_domains", custom_metric_type_domains)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if import_gcp_metrics is not None:
-            _setter("import_gcp_metrics", import_gcp_metrics)
+            pulumi.set(__self__, "import_gcp_metrics", import_gcp_metrics)
         if include_lists is not None:
-            _setter("include_lists", include_lists)
+            pulumi.set(__self__, "include_lists", include_lists)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if named_token is not None:
-            _setter("named_token", named_token)
+            pulumi.set(__self__, "named_token", named_token)
         if poll_rate is not None:
-            _setter("poll_rate", poll_rate)
+            pulumi.set(__self__, "poll_rate", poll_rate)
         if project_service_keys is not None:
-            _setter("project_service_keys", project_service_keys)
+            pulumi.set(__self__, "project_service_keys", project_service_keys)
         if services is not None:
-            _setter("services", services)
+            pulumi.set(__self__, "services", services)
         if use_metric_source_project_for_quota is not None:
-            _setter("use_metric_source_project_for_quota", use_metric_source_project_for_quota)
+            pulumi.set(__self__, "use_metric_source_project_for_quota", use_metric_source_project_for_quota)
 
     @property
     @pulumi.getter(name="customMetricTypeDomains")
@@ -539,10 +451,6 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

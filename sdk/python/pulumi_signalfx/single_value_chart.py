@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,94 +47,33 @@ class SingleValueChartArgs:
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
-        SingleValueChartArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            program_text=program_text,
-            color_by=color_by,
-            color_scales=color_scales,
-            description=description,
-            is_timestamp_hidden=is_timestamp_hidden,
-            max_delay=max_delay,
-            max_precision=max_precision,
-            name=name,
-            refresh_interval=refresh_interval,
-            secondary_visualization=secondary_visualization,
-            show_spark_line=show_spark_line,
-            timezone=timezone,
-            unit_prefix=unit_prefix,
-            viz_options=viz_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             program_text: Optional[pulumi.Input[str]] = None,
-             color_by: Optional[pulumi.Input[str]] = None,
-             color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
-             max_delay: Optional[pulumi.Input[int]] = None,
-             max_precision: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             secondary_visualization: Optional[pulumi.Input[str]] = None,
-             show_spark_line: Optional[pulumi.Input[bool]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             unit_prefix: Optional[pulumi.Input[str]] = None,
-             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if program_text is None:
-            raise TypeError("Missing 'program_text' argument")
-        if color_by is None and 'colorBy' in kwargs:
-            color_by = kwargs['colorBy']
-        if color_scales is None and 'colorScales' in kwargs:
-            color_scales = kwargs['colorScales']
-        if is_timestamp_hidden is None and 'isTimestampHidden' in kwargs:
-            is_timestamp_hidden = kwargs['isTimestampHidden']
-        if max_delay is None and 'maxDelay' in kwargs:
-            max_delay = kwargs['maxDelay']
-        if max_precision is None and 'maxPrecision' in kwargs:
-            max_precision = kwargs['maxPrecision']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if secondary_visualization is None and 'secondaryVisualization' in kwargs:
-            secondary_visualization = kwargs['secondaryVisualization']
-        if show_spark_line is None and 'showSparkLine' in kwargs:
-            show_spark_line = kwargs['showSparkLine']
-        if unit_prefix is None and 'unitPrefix' in kwargs:
-            unit_prefix = kwargs['unitPrefix']
-        if viz_options is None and 'vizOptions' in kwargs:
-            viz_options = kwargs['vizOptions']
-
-        _setter("program_text", program_text)
+        pulumi.set(__self__, "program_text", program_text)
         if color_by is not None:
-            _setter("color_by", color_by)
+            pulumi.set(__self__, "color_by", color_by)
         if color_scales is not None:
-            _setter("color_scales", color_scales)
+            pulumi.set(__self__, "color_scales", color_scales)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if is_timestamp_hidden is not None:
-            _setter("is_timestamp_hidden", is_timestamp_hidden)
+            pulumi.set(__self__, "is_timestamp_hidden", is_timestamp_hidden)
         if max_delay is not None:
-            _setter("max_delay", max_delay)
+            pulumi.set(__self__, "max_delay", max_delay)
         if max_precision is not None:
-            _setter("max_precision", max_precision)
+            pulumi.set(__self__, "max_precision", max_precision)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if secondary_visualization is not None:
-            _setter("secondary_visualization", secondary_visualization)
+            pulumi.set(__self__, "secondary_visualization", secondary_visualization)
         if show_spark_line is not None:
-            _setter("show_spark_line", show_spark_line)
+            pulumi.set(__self__, "show_spark_line", show_spark_line)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
-            _setter("unit_prefix", unit_prefix)
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
         if viz_options is not None:
-            _setter("viz_options", viz_options)
+            pulumi.set(__self__, "viz_options", viz_options)
 
     @property
     @pulumi.getter(name="programText")
@@ -341,97 +280,36 @@ class _SingleValueChartState:
         :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
-        _SingleValueChartState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            color_by=color_by,
-            color_scales=color_scales,
-            description=description,
-            is_timestamp_hidden=is_timestamp_hidden,
-            max_delay=max_delay,
-            max_precision=max_precision,
-            name=name,
-            program_text=program_text,
-            refresh_interval=refresh_interval,
-            secondary_visualization=secondary_visualization,
-            show_spark_line=show_spark_line,
-            timezone=timezone,
-            unit_prefix=unit_prefix,
-            url=url,
-            viz_options=viz_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             color_by: Optional[pulumi.Input[str]] = None,
-             color_scales: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartColorScaleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
-             max_delay: Optional[pulumi.Input[int]] = None,
-             max_precision: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             program_text: Optional[pulumi.Input[str]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             secondary_visualization: Optional[pulumi.Input[str]] = None,
-             show_spark_line: Optional[pulumi.Input[bool]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             unit_prefix: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['SingleValueChartVizOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if color_by is None and 'colorBy' in kwargs:
-            color_by = kwargs['colorBy']
-        if color_scales is None and 'colorScales' in kwargs:
-            color_scales = kwargs['colorScales']
-        if is_timestamp_hidden is None and 'isTimestampHidden' in kwargs:
-            is_timestamp_hidden = kwargs['isTimestampHidden']
-        if max_delay is None and 'maxDelay' in kwargs:
-            max_delay = kwargs['maxDelay']
-        if max_precision is None and 'maxPrecision' in kwargs:
-            max_precision = kwargs['maxPrecision']
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if secondary_visualization is None and 'secondaryVisualization' in kwargs:
-            secondary_visualization = kwargs['secondaryVisualization']
-        if show_spark_line is None and 'showSparkLine' in kwargs:
-            show_spark_line = kwargs['showSparkLine']
-        if unit_prefix is None and 'unitPrefix' in kwargs:
-            unit_prefix = kwargs['unitPrefix']
-        if viz_options is None and 'vizOptions' in kwargs:
-            viz_options = kwargs['vizOptions']
-
         if color_by is not None:
-            _setter("color_by", color_by)
+            pulumi.set(__self__, "color_by", color_by)
         if color_scales is not None:
-            _setter("color_scales", color_scales)
+            pulumi.set(__self__, "color_scales", color_scales)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if is_timestamp_hidden is not None:
-            _setter("is_timestamp_hidden", is_timestamp_hidden)
+            pulumi.set(__self__, "is_timestamp_hidden", is_timestamp_hidden)
         if max_delay is not None:
-            _setter("max_delay", max_delay)
+            pulumi.set(__self__, "max_delay", max_delay)
         if max_precision is not None:
-            _setter("max_precision", max_precision)
+            pulumi.set(__self__, "max_precision", max_precision)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if program_text is not None:
-            _setter("program_text", program_text)
+            pulumi.set(__self__, "program_text", program_text)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if secondary_visualization is not None:
-            _setter("secondary_visualization", secondary_visualization)
+            pulumi.set(__self__, "secondary_visualization", secondary_visualization)
         if show_spark_line is not None:
-            _setter("show_spark_line", show_spark_line)
+            pulumi.set(__self__, "show_spark_line", show_spark_line)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
         if unit_prefix is not None:
-            _setter("unit_prefix", unit_prefix)
+            pulumi.set(__self__, "unit_prefix", unit_prefix)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if viz_options is not None:
-            _setter("viz_options", viz_options)
+            pulumi.set(__self__, "viz_options", viz_options)
 
     @property
     @pulumi.getter(name="colorBy")
@@ -715,10 +593,6 @@ class SingleValueChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SingleValueChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

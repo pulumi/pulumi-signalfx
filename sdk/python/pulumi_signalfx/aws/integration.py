@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -61,128 +61,43 @@ class IntegrationArgs:
                Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
                Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
-        IntegrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            integration_id=integration_id,
-            regions=regions,
-            custom_cloudwatch_namespaces=custom_cloudwatch_namespaces,
-            custom_namespace_sync_rules=custom_namespace_sync_rules,
-            enable_aws_usage=enable_aws_usage,
-            enable_check_large_volume=enable_check_large_volume,
-            enable_logs_sync=enable_logs_sync,
-            external_id=external_id,
-            import_cloud_watch=import_cloud_watch,
-            key=key,
-            metric_stats_to_syncs=metric_stats_to_syncs,
-            named_token=named_token,
-            namespace_sync_rules=namespace_sync_rules,
-            poll_rate=poll_rate,
-            role_arn=role_arn,
-            services=services,
-            sync_custom_namespaces_only=sync_custom_namespaces_only,
-            token=token,
-            use_metric_streams_sync=use_metric_streams_sync,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             integration_id: Optional[pulumi.Input[str]] = None,
-             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
-             enable_aws_usage: Optional[pulumi.Input[bool]] = None,
-             enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
-             enable_logs_sync: Optional[pulumi.Input[bool]] = None,
-             external_id: Optional[pulumi.Input[str]] = None,
-             import_cloud_watch: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]] = None,
-             named_token: Optional[pulumi.Input[str]] = None,
-             namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]] = None,
-             poll_rate: Optional[pulumi.Input[int]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             sync_custom_namespaces_only: Optional[pulumi.Input[bool]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if integration_id is None and 'integrationId' in kwargs:
-            integration_id = kwargs['integrationId']
-        if integration_id is None:
-            raise TypeError("Missing 'integration_id' argument")
-        if regions is None:
-            raise TypeError("Missing 'regions' argument")
-        if custom_cloudwatch_namespaces is None and 'customCloudwatchNamespaces' in kwargs:
-            custom_cloudwatch_namespaces = kwargs['customCloudwatchNamespaces']
-        if custom_namespace_sync_rules is None and 'customNamespaceSyncRules' in kwargs:
-            custom_namespace_sync_rules = kwargs['customNamespaceSyncRules']
-        if enable_aws_usage is None and 'enableAwsUsage' in kwargs:
-            enable_aws_usage = kwargs['enableAwsUsage']
-        if enable_check_large_volume is None and 'enableCheckLargeVolume' in kwargs:
-            enable_check_large_volume = kwargs['enableCheckLargeVolume']
-        if enable_logs_sync is None and 'enableLogsSync' in kwargs:
-            enable_logs_sync = kwargs['enableLogsSync']
-        if external_id is None and 'externalId' in kwargs:
-            external_id = kwargs['externalId']
-        if import_cloud_watch is None and 'importCloudWatch' in kwargs:
-            import_cloud_watch = kwargs['importCloudWatch']
-        if metric_stats_to_syncs is None and 'metricStatsToSyncs' in kwargs:
-            metric_stats_to_syncs = kwargs['metricStatsToSyncs']
-        if named_token is None and 'namedToken' in kwargs:
-            named_token = kwargs['namedToken']
-        if namespace_sync_rules is None and 'namespaceSyncRules' in kwargs:
-            namespace_sync_rules = kwargs['namespaceSyncRules']
-        if poll_rate is None and 'pollRate' in kwargs:
-            poll_rate = kwargs['pollRate']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if sync_custom_namespaces_only is None and 'syncCustomNamespacesOnly' in kwargs:
-            sync_custom_namespaces_only = kwargs['syncCustomNamespacesOnly']
-        if use_metric_streams_sync is None and 'useMetricStreamsSync' in kwargs:
-            use_metric_streams_sync = kwargs['useMetricStreamsSync']
-
-        _setter("enabled", enabled)
-        _setter("integration_id", integration_id)
-        _setter("regions", regions)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "integration_id", integration_id)
+        pulumi.set(__self__, "regions", regions)
         if custom_cloudwatch_namespaces is not None:
-            _setter("custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
+            pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
         if custom_namespace_sync_rules is not None:
-            _setter("custom_namespace_sync_rules", custom_namespace_sync_rules)
+            pulumi.set(__self__, "custom_namespace_sync_rules", custom_namespace_sync_rules)
         if enable_aws_usage is not None:
-            _setter("enable_aws_usage", enable_aws_usage)
+            pulumi.set(__self__, "enable_aws_usage", enable_aws_usage)
         if enable_check_large_volume is not None:
-            _setter("enable_check_large_volume", enable_check_large_volume)
+            pulumi.set(__self__, "enable_check_large_volume", enable_check_large_volume)
         if enable_logs_sync is not None:
-            _setter("enable_logs_sync", enable_logs_sync)
+            pulumi.set(__self__, "enable_logs_sync", enable_logs_sync)
         if external_id is not None:
-            _setter("external_id", external_id)
+            pulumi.set(__self__, "external_id", external_id)
         if import_cloud_watch is not None:
-            _setter("import_cloud_watch", import_cloud_watch)
+            pulumi.set(__self__, "import_cloud_watch", import_cloud_watch)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if metric_stats_to_syncs is not None:
-            _setter("metric_stats_to_syncs", metric_stats_to_syncs)
+            pulumi.set(__self__, "metric_stats_to_syncs", metric_stats_to_syncs)
         if named_token is not None:
-            _setter("named_token", named_token)
+            pulumi.set(__self__, "named_token", named_token)
         if namespace_sync_rules is not None:
-            _setter("namespace_sync_rules", namespace_sync_rules)
+            pulumi.set(__self__, "namespace_sync_rules", namespace_sync_rules)
         if poll_rate is not None:
-            _setter("poll_rate", poll_rate)
+            pulumi.set(__self__, "poll_rate", poll_rate)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if services is not None:
-            _setter("services", services)
+            pulumi.set(__self__, "services", services)
         if sync_custom_namespaces_only is not None:
-            _setter("sync_custom_namespaces_only", sync_custom_namespaces_only)
+            pulumi.set(__self__, "sync_custom_namespaces_only", sync_custom_namespaces_only)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if use_metric_streams_sync is not None:
-            _setter("use_metric_streams_sync", use_metric_streams_sync)
+            pulumi.set(__self__, "use_metric_streams_sync", use_metric_streams_sync)
 
     @property
     @pulumi.getter
@@ -480,135 +395,50 @@ class _IntegrationState:
                Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
                Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
         """
-        _IntegrationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_method=auth_method,
-            custom_cloudwatch_namespaces=custom_cloudwatch_namespaces,
-            custom_namespace_sync_rules=custom_namespace_sync_rules,
-            enable_aws_usage=enable_aws_usage,
-            enable_check_large_volume=enable_check_large_volume,
-            enable_logs_sync=enable_logs_sync,
-            enabled=enabled,
-            external_id=external_id,
-            import_cloud_watch=import_cloud_watch,
-            integration_id=integration_id,
-            key=key,
-            metric_stats_to_syncs=metric_stats_to_syncs,
-            name=name,
-            named_token=named_token,
-            namespace_sync_rules=namespace_sync_rules,
-            poll_rate=poll_rate,
-            regions=regions,
-            role_arn=role_arn,
-            services=services,
-            sync_custom_namespaces_only=sync_custom_namespaces_only,
-            token=token,
-            use_metric_streams_sync=use_metric_streams_sync,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_method: Optional[pulumi.Input[str]] = None,
-             custom_cloudwatch_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             custom_namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]] = None,
-             enable_aws_usage: Optional[pulumi.Input[bool]] = None,
-             enable_check_large_volume: Optional[pulumi.Input[bool]] = None,
-             enable_logs_sync: Optional[pulumi.Input[bool]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             external_id: Optional[pulumi.Input[str]] = None,
-             import_cloud_watch: Optional[pulumi.Input[bool]] = None,
-             integration_id: Optional[pulumi.Input[str]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             metric_stats_to_syncs: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             named_token: Optional[pulumi.Input[str]] = None,
-             namespace_sync_rules: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]] = None,
-             poll_rate: Optional[pulumi.Input[int]] = None,
-             regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             role_arn: Optional[pulumi.Input[str]] = None,
-             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             sync_custom_namespaces_only: Optional[pulumi.Input[bool]] = None,
-             token: Optional[pulumi.Input[str]] = None,
-             use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_method is None and 'authMethod' in kwargs:
-            auth_method = kwargs['authMethod']
-        if custom_cloudwatch_namespaces is None and 'customCloudwatchNamespaces' in kwargs:
-            custom_cloudwatch_namespaces = kwargs['customCloudwatchNamespaces']
-        if custom_namespace_sync_rules is None and 'customNamespaceSyncRules' in kwargs:
-            custom_namespace_sync_rules = kwargs['customNamespaceSyncRules']
-        if enable_aws_usage is None and 'enableAwsUsage' in kwargs:
-            enable_aws_usage = kwargs['enableAwsUsage']
-        if enable_check_large_volume is None and 'enableCheckLargeVolume' in kwargs:
-            enable_check_large_volume = kwargs['enableCheckLargeVolume']
-        if enable_logs_sync is None and 'enableLogsSync' in kwargs:
-            enable_logs_sync = kwargs['enableLogsSync']
-        if external_id is None and 'externalId' in kwargs:
-            external_id = kwargs['externalId']
-        if import_cloud_watch is None and 'importCloudWatch' in kwargs:
-            import_cloud_watch = kwargs['importCloudWatch']
-        if integration_id is None and 'integrationId' in kwargs:
-            integration_id = kwargs['integrationId']
-        if metric_stats_to_syncs is None and 'metricStatsToSyncs' in kwargs:
-            metric_stats_to_syncs = kwargs['metricStatsToSyncs']
-        if named_token is None and 'namedToken' in kwargs:
-            named_token = kwargs['namedToken']
-        if namespace_sync_rules is None and 'namespaceSyncRules' in kwargs:
-            namespace_sync_rules = kwargs['namespaceSyncRules']
-        if poll_rate is None and 'pollRate' in kwargs:
-            poll_rate = kwargs['pollRate']
-        if role_arn is None and 'roleArn' in kwargs:
-            role_arn = kwargs['roleArn']
-        if sync_custom_namespaces_only is None and 'syncCustomNamespacesOnly' in kwargs:
-            sync_custom_namespaces_only = kwargs['syncCustomNamespacesOnly']
-        if use_metric_streams_sync is None and 'useMetricStreamsSync' in kwargs:
-            use_metric_streams_sync = kwargs['useMetricStreamsSync']
-
         if auth_method is not None:
-            _setter("auth_method", auth_method)
+            pulumi.set(__self__, "auth_method", auth_method)
         if custom_cloudwatch_namespaces is not None:
-            _setter("custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
+            pulumi.set(__self__, "custom_cloudwatch_namespaces", custom_cloudwatch_namespaces)
         if custom_namespace_sync_rules is not None:
-            _setter("custom_namespace_sync_rules", custom_namespace_sync_rules)
+            pulumi.set(__self__, "custom_namespace_sync_rules", custom_namespace_sync_rules)
         if enable_aws_usage is not None:
-            _setter("enable_aws_usage", enable_aws_usage)
+            pulumi.set(__self__, "enable_aws_usage", enable_aws_usage)
         if enable_check_large_volume is not None:
-            _setter("enable_check_large_volume", enable_check_large_volume)
+            pulumi.set(__self__, "enable_check_large_volume", enable_check_large_volume)
         if enable_logs_sync is not None:
-            _setter("enable_logs_sync", enable_logs_sync)
+            pulumi.set(__self__, "enable_logs_sync", enable_logs_sync)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if external_id is not None:
-            _setter("external_id", external_id)
+            pulumi.set(__self__, "external_id", external_id)
         if import_cloud_watch is not None:
-            _setter("import_cloud_watch", import_cloud_watch)
+            pulumi.set(__self__, "import_cloud_watch", import_cloud_watch)
         if integration_id is not None:
-            _setter("integration_id", integration_id)
+            pulumi.set(__self__, "integration_id", integration_id)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if metric_stats_to_syncs is not None:
-            _setter("metric_stats_to_syncs", metric_stats_to_syncs)
+            pulumi.set(__self__, "metric_stats_to_syncs", metric_stats_to_syncs)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if named_token is not None:
-            _setter("named_token", named_token)
+            pulumi.set(__self__, "named_token", named_token)
         if namespace_sync_rules is not None:
-            _setter("namespace_sync_rules", namespace_sync_rules)
+            pulumi.set(__self__, "namespace_sync_rules", namespace_sync_rules)
         if poll_rate is not None:
-            _setter("poll_rate", poll_rate)
+            pulumi.set(__self__, "poll_rate", poll_rate)
         if regions is not None:
-            _setter("regions", regions)
+            pulumi.set(__self__, "regions", regions)
         if role_arn is not None:
-            _setter("role_arn", role_arn)
+            pulumi.set(__self__, "role_arn", role_arn)
         if services is not None:
-            _setter("services", services)
+            pulumi.set(__self__, "services", services)
         if sync_custom_namespaces_only is not None:
-            _setter("sync_custom_namespaces_only", sync_custom_namespaces_only)
+            pulumi.set(__self__, "sync_custom_namespaces_only", sync_custom_namespaces_only)
         if token is not None:
-            _setter("token", token)
+            pulumi.set(__self__, "token", token)
         if use_metric_streams_sync is not None:
-            _setter("use_metric_streams_sync", use_metric_streams_sync)
+            pulumi.set(__self__, "use_metric_streams_sync", use_metric_streams_sync)
 
     @property
     @pulumi.getter(name="authMethod")
@@ -1039,10 +869,6 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

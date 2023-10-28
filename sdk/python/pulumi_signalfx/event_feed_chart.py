@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['EventFeedChartArgs', 'EventFeedChart']
@@ -29,48 +29,17 @@ class EventFeedChartArgs:
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
-        EventFeedChartArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            program_text=program_text,
-            description=description,
-            end_time=end_time,
-            name=name,
-            start_time=start_time,
-            time_range=time_range,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             program_text: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             end_time: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[int]] = None,
-             time_range: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if program_text is None:
-            raise TypeError("Missing 'program_text' argument")
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if time_range is None and 'timeRange' in kwargs:
-            time_range = kwargs['timeRange']
-
-        _setter("program_text", program_text)
+        pulumi.set(__self__, "program_text", program_text)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if time_range is not None:
-            _setter("time_range", time_range)
+            pulumi.set(__self__, "time_range", time_range)
 
     @property
     @pulumi.getter(name="programText")
@@ -165,51 +134,20 @@ class _EventFeedChartState:
         :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] url: The URL of the chart.
         """
-        _EventFeedChartState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            end_time=end_time,
-            name=name,
-            program_text=program_text,
-            start_time=start_time,
-            time_range=time_range,
-            url=url,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             end_time: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             program_text: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[int]] = None,
-             time_range: Optional[pulumi.Input[int]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if end_time is None and 'endTime' in kwargs:
-            end_time = kwargs['endTime']
-        if program_text is None and 'programText' in kwargs:
-            program_text = kwargs['programText']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if time_range is None and 'timeRange' in kwargs:
-            time_range = kwargs['timeRange']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if end_time is not None:
-            _setter("end_time", end_time)
+            pulumi.set(__self__, "end_time", end_time)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if program_text is not None:
-            _setter("program_text", program_text)
+            pulumi.set(__self__, "program_text", program_text)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
         if time_range is not None:
-            _setter("time_range", time_range)
+            pulumi.set(__self__, "time_range", time_range)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
@@ -339,10 +277,6 @@ class EventFeedChart(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EventFeedChartArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
