@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IntegrationArgs', 'Integration']
@@ -23,10 +23,31 @@ class IntegrationArgs:
         :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
         :param pulumi.Input[str] name: Name of the integration.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "webhook_url", webhook_url)
+        IntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            webhook_url=webhook_url,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             webhook_url: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if webhook_url is None and 'webhookUrl' in kwargs:
+            webhook_url = kwargs['webhookUrl']
+        if webhook_url is None:
+            raise TypeError("Missing 'webhook_url' argument")
+
+        _setter("enabled", enabled)
+        _setter("webhook_url", webhook_url)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -77,12 +98,29 @@ class _IntegrationState:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
         """
+        _IntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            name=name,
+            webhook_url=webhook_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             webhook_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if webhook_url is None and 'webhookUrl' in kwargs:
+            webhook_url = kwargs['webhookUrl']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if webhook_url is not None:
-            pulumi.set(__self__, "webhook_url", webhook_url)
+            _setter("webhook_url", webhook_url)
 
     @property
     @pulumi.getter
@@ -184,6 +222,10 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

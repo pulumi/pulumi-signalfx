@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IntegrationArgs', 'Integration']
@@ -41,24 +41,85 @@ class IntegrationArgs:
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
         """
-        pulumi.set(__self__, "assignee_name", assignee_name)
-        pulumi.set(__self__, "auth_method", auth_method)
-        pulumi.set(__self__, "base_url", base_url)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "issue_type", issue_type)
-        pulumi.set(__self__, "project_key", project_key)
+        IntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assignee_name=assignee_name,
+            auth_method=auth_method,
+            base_url=base_url,
+            enabled=enabled,
+            issue_type=issue_type,
+            project_key=project_key,
+            api_token=api_token,
+            assignee_display_name=assignee_display_name,
+            name=name,
+            password=password,
+            user_email=user_email,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assignee_name: Optional[pulumi.Input[str]] = None,
+             auth_method: Optional[pulumi.Input[str]] = None,
+             base_url: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             issue_type: Optional[pulumi.Input[str]] = None,
+             project_key: Optional[pulumi.Input[str]] = None,
+             api_token: Optional[pulumi.Input[str]] = None,
+             assignee_display_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             user_email: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if assignee_name is None and 'assigneeName' in kwargs:
+            assignee_name = kwargs['assigneeName']
+        if assignee_name is None:
+            raise TypeError("Missing 'assignee_name' argument")
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if auth_method is None:
+            raise TypeError("Missing 'auth_method' argument")
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if base_url is None:
+            raise TypeError("Missing 'base_url' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if issue_type is None:
+            raise TypeError("Missing 'issue_type' argument")
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if project_key is None:
+            raise TypeError("Missing 'project_key' argument")
+        if api_token is None and 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if assignee_display_name is None and 'assigneeDisplayName' in kwargs:
+            assignee_display_name = kwargs['assigneeDisplayName']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
+        _setter("assignee_name", assignee_name)
+        _setter("auth_method", auth_method)
+        _setter("base_url", base_url)
+        _setter("enabled", enabled)
+        _setter("issue_type", issue_type)
+        _setter("project_key", project_key)
         if api_token is not None:
-            pulumi.set(__self__, "api_token", api_token)
+            _setter("api_token", api_token)
         if assignee_display_name is not None:
-            pulumi.set(__self__, "assignee_display_name", assignee_display_name)
+            _setter("assignee_display_name", assignee_display_name)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if user_email is not None:
-            pulumi.set(__self__, "user_email", user_email)
+            _setter("user_email", user_email)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="assigneeName")
@@ -235,30 +296,79 @@ class _IntegrationState:
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
         """
+        _IntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_token=api_token,
+            assignee_display_name=assignee_display_name,
+            assignee_name=assignee_name,
+            auth_method=auth_method,
+            base_url=base_url,
+            enabled=enabled,
+            issue_type=issue_type,
+            name=name,
+            password=password,
+            project_key=project_key,
+            user_email=user_email,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_token: Optional[pulumi.Input[str]] = None,
+             assignee_display_name: Optional[pulumi.Input[str]] = None,
+             assignee_name: Optional[pulumi.Input[str]] = None,
+             auth_method: Optional[pulumi.Input[str]] = None,
+             base_url: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             issue_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             project_key: Optional[pulumi.Input[str]] = None,
+             user_email: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if api_token is None and 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if assignee_display_name is None and 'assigneeDisplayName' in kwargs:
+            assignee_display_name = kwargs['assigneeDisplayName']
+        if assignee_name is None and 'assigneeName' in kwargs:
+            assignee_name = kwargs['assigneeName']
+        if auth_method is None and 'authMethod' in kwargs:
+            auth_method = kwargs['authMethod']
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+        if issue_type is None and 'issueType' in kwargs:
+            issue_type = kwargs['issueType']
+        if project_key is None and 'projectKey' in kwargs:
+            project_key = kwargs['projectKey']
+        if user_email is None and 'userEmail' in kwargs:
+            user_email = kwargs['userEmail']
+
         if api_token is not None:
-            pulumi.set(__self__, "api_token", api_token)
+            _setter("api_token", api_token)
         if assignee_display_name is not None:
-            pulumi.set(__self__, "assignee_display_name", assignee_display_name)
+            _setter("assignee_display_name", assignee_display_name)
         if assignee_name is not None:
-            pulumi.set(__self__, "assignee_name", assignee_name)
+            _setter("assignee_name", assignee_name)
         if auth_method is not None:
-            pulumi.set(__self__, "auth_method", auth_method)
+            _setter("auth_method", auth_method)
         if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
+            _setter("base_url", base_url)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if issue_type is not None:
-            pulumi.set(__self__, "issue_type", issue_type)
+            _setter("issue_type", issue_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if project_key is not None:
-            pulumi.set(__self__, "project_key", project_key)
+            _setter("project_key", project_key)
         if user_email is not None:
-            pulumi.set(__self__, "user_email", user_email)
+            _setter("user_email", user_email)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter(name="apiToken")
@@ -500,6 +610,10 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

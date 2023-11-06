@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -21,7 +21,20 @@ class ViewColumn(dict):
         """
         :param str name: Name of the log view.
         """
-        pulumi.set(__self__, "name", name)
+        ViewColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -37,8 +50,25 @@ class ViewSortOption(dict):
     def __init__(__self__, *,
                  descending: bool,
                  field: str):
-        pulumi.set(__self__, "descending", descending)
-        pulumi.set(__self__, "field", field)
+        ViewSortOption._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            descending=descending,
+            field=field,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             descending: Optional[bool] = None,
+             field: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if descending is None:
+            raise TypeError("Missing 'descending' argument")
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+
+        _setter("descending", descending)
+        _setter("field", field)
 
     @property
     @pulumi.getter

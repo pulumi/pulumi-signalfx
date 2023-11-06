@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TimelineArgs', 'Timeline']
@@ -31,19 +31,54 @@ class TimelineArgs:
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
-        pulumi.set(__self__, "program_text", program_text)
+        TimelineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            program_text=program_text,
+            default_connection=default_connection,
+            description=description,
+            end_time=end_time,
+            name=name,
+            start_time=start_time,
+            time_range=time_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             program_text: Optional[pulumi.Input[str]] = None,
+             default_connection: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if program_text is None:
+            raise TypeError("Missing 'program_text' argument")
+        if default_connection is None and 'defaultConnection' in kwargs:
+            default_connection = kwargs['defaultConnection']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
+        _setter("program_text", program_text)
         if default_connection is not None:
-            pulumi.set(__self__, "default_connection", default_connection)
+            _setter("default_connection", default_connection)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
 
     @property
     @pulumi.getter(name="programText")
@@ -152,22 +187,57 @@ class _TimelineState:
         :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         :param pulumi.Input[str] url: The URL of the log timeline.
         """
+        _TimelineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_connection=default_connection,
+            description=description,
+            end_time=end_time,
+            name=name,
+            program_text=program_text,
+            start_time=start_time,
+            time_range=time_range,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_connection: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             program_text: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             time_range: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if default_connection is None and 'defaultConnection' in kwargs:
+            default_connection = kwargs['defaultConnection']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if program_text is None and 'programText' in kwargs:
+            program_text = kwargs['programText']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if default_connection is not None:
-            pulumi.set(__self__, "default_connection", default_connection)
+            _setter("default_connection", default_connection)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if program_text is not None:
-            pulumi.set(__self__, "program_text", program_text)
+            _setter("program_text", program_text)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="defaultConnection")
@@ -341,6 +411,10 @@ class Timeline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TimelineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

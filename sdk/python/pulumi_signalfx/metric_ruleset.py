@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,35 @@ class MetricRulesetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
         """
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "routing_rules", routing_rules)
+        MetricRulesetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            routing_rules=routing_rules,
+            aggregation_rules=aggregation_rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: Optional[pulumi.Input[str]] = None,
+             routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]] = None,
+             aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if metric_name is None and 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if metric_name is None:
+            raise TypeError("Missing 'metric_name' argument")
+        if routing_rules is None and 'routingRules' in kwargs:
+            routing_rules = kwargs['routingRules']
+        if routing_rules is None:
+            raise TypeError("Missing 'routing_rules' argument")
+        if aggregation_rules is None and 'aggregationRules' in kwargs:
+            aggregation_rules = kwargs['aggregationRules']
+
+        _setter("metric_name", metric_name)
+        _setter("routing_rules", routing_rules)
         if aggregation_rules is not None:
-            pulumi.set(__self__, "aggregation_rules", aggregation_rules)
+            _setter("aggregation_rules", aggregation_rules)
 
     @property
     @pulumi.getter(name="metricName")
@@ -91,24 +116,63 @@ class _MetricRulesetState:
         :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[str] version: Version of the ruleset
         """
+        _MetricRulesetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregation_rules=aggregation_rules,
+            created=created,
+            creator=creator,
+            last_updated=last_updated,
+            last_updated_by=last_updated_by,
+            last_updated_by_name=last_updated_by_name,
+            metric_name=metric_name,
+            routing_rules=routing_rules,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None,
+             created: Optional[pulumi.Input[str]] = None,
+             creator: Optional[pulumi.Input[str]] = None,
+             last_updated: Optional[pulumi.Input[str]] = None,
+             last_updated_by: Optional[pulumi.Input[str]] = None,
+             last_updated_by_name: Optional[pulumi.Input[str]] = None,
+             metric_name: Optional[pulumi.Input[str]] = None,
+             routing_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aggregation_rules is None and 'aggregationRules' in kwargs:
+            aggregation_rules = kwargs['aggregationRules']
+        if last_updated is None and 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if last_updated_by is None and 'lastUpdatedBy' in kwargs:
+            last_updated_by = kwargs['lastUpdatedBy']
+        if last_updated_by_name is None and 'lastUpdatedByName' in kwargs:
+            last_updated_by_name = kwargs['lastUpdatedByName']
+        if metric_name is None and 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if routing_rules is None and 'routingRules' in kwargs:
+            routing_rules = kwargs['routingRules']
+
         if aggregation_rules is not None:
-            pulumi.set(__self__, "aggregation_rules", aggregation_rules)
+            _setter("aggregation_rules", aggregation_rules)
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if creator is not None:
-            pulumi.set(__self__, "creator", creator)
+            _setter("creator", creator)
         if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
+            _setter("last_updated", last_updated)
         if last_updated_by is not None:
-            pulumi.set(__self__, "last_updated_by", last_updated_by)
+            _setter("last_updated_by", last_updated_by)
         if last_updated_by_name is not None:
-            pulumi.set(__self__, "last_updated_by_name", last_updated_by_name)
+            _setter("last_updated_by_name", last_updated_by_name)
         if metric_name is not None:
-            pulumi.set(__self__, "metric_name", metric_name)
+            _setter("metric_name", metric_name)
         if routing_rules is not None:
-            pulumi.set(__self__, "routing_rules", routing_rules)
+            _setter("routing_rules", routing_rules)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="aggregationRules")
@@ -260,6 +324,10 @@ class MetricRuleset(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetricRulesetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

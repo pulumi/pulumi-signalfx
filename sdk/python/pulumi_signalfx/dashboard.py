@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,51 +57,124 @@ class DashboardArgs:
         :param pulumi.Input[str] time_range: The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
-        pulumi.set(__self__, "dashboard_group", dashboard_group)
+        DashboardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dashboard_group=dashboard_group,
+            authorized_writer_teams=authorized_writer_teams,
+            authorized_writer_users=authorized_writer_users,
+            charts=charts,
+            charts_resolution=charts_resolution,
+            columns=columns,
+            description=description,
+            discovery_options_query=discovery_options_query,
+            discovery_options_selectors=discovery_options_selectors,
+            end_time=end_time,
+            event_overlays=event_overlays,
+            filters=filters,
+            grids=grids,
+            name=name,
+            permissions=permissions,
+            selected_event_overlays=selected_event_overlays,
+            start_time=start_time,
+            tags=tags,
+            time_range=time_range,
+            variables=variables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dashboard_group: Optional[pulumi.Input[str]] = None,
+             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             charts: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]] = None,
+             charts_resolution: Optional[pulumi.Input[str]] = None,
+             columns: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             discovery_options_query: Optional[pulumi.Input[str]] = None,
+             discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
+             grids: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input['DashboardPermissionsArgs']] = None,
+             selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_range: Optional[pulumi.Input[str]] = None,
+             variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dashboard_group is None and 'dashboardGroup' in kwargs:
+            dashboard_group = kwargs['dashboardGroup']
+        if dashboard_group is None:
+            raise TypeError("Missing 'dashboard_group' argument")
+        if authorized_writer_teams is None and 'authorizedWriterTeams' in kwargs:
+            authorized_writer_teams = kwargs['authorizedWriterTeams']
+        if authorized_writer_users is None and 'authorizedWriterUsers' in kwargs:
+            authorized_writer_users = kwargs['authorizedWriterUsers']
+        if charts_resolution is None and 'chartsResolution' in kwargs:
+            charts_resolution = kwargs['chartsResolution']
+        if discovery_options_query is None and 'discoveryOptionsQuery' in kwargs:
+            discovery_options_query = kwargs['discoveryOptionsQuery']
+        if discovery_options_selectors is None and 'discoveryOptionsSelectors' in kwargs:
+            discovery_options_selectors = kwargs['discoveryOptionsSelectors']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if event_overlays is None and 'eventOverlays' in kwargs:
+            event_overlays = kwargs['eventOverlays']
+        if selected_event_overlays is None and 'selectedEventOverlays' in kwargs:
+            selected_event_overlays = kwargs['selectedEventOverlays']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
+        _setter("dashboard_group", dashboard_group)
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
         if authorized_writer_teams is not None:
-            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+            _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
             warnings.warn("""Please use permissions fields now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
         if authorized_writer_users is not None:
-            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+            _setter("authorized_writer_users", authorized_writer_users)
         if charts is not None:
-            pulumi.set(__self__, "charts", charts)
+            _setter("charts", charts)
         if charts_resolution is not None:
-            pulumi.set(__self__, "charts_resolution", charts_resolution)
+            _setter("charts_resolution", charts_resolution)
         if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+            _setter("columns", columns)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if discovery_options_query is not None:
-            pulumi.set(__self__, "discovery_options_query", discovery_options_query)
+            _setter("discovery_options_query", discovery_options_query)
         if discovery_options_selectors is not None:
-            pulumi.set(__self__, "discovery_options_selectors", discovery_options_selectors)
+            _setter("discovery_options_selectors", discovery_options_selectors)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if event_overlays is not None:
-            pulumi.set(__self__, "event_overlays", event_overlays)
+            _setter("event_overlays", event_overlays)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if grids is not None:
-            pulumi.set(__self__, "grids", grids)
+            _setter("grids", grids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if selected_event_overlays is not None:
-            pulumi.set(__self__, "selected_event_overlays", selected_event_overlays)
+            _setter("selected_event_overlays", selected_event_overlays)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if variables is not None:
-            pulumi.set(__self__, "variables", variables)
+            _setter("variables", variables)
 
     @property
     @pulumi.getter(name="dashboardGroup")
@@ -390,54 +463,127 @@ class _DashboardState:
         :param pulumi.Input[str] url: The URL of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: Dashboard variable to apply to each chart in the dashboard.
         """
+        _DashboardState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorized_writer_teams=authorized_writer_teams,
+            authorized_writer_users=authorized_writer_users,
+            charts=charts,
+            charts_resolution=charts_resolution,
+            columns=columns,
+            dashboard_group=dashboard_group,
+            description=description,
+            discovery_options_query=discovery_options_query,
+            discovery_options_selectors=discovery_options_selectors,
+            end_time=end_time,
+            event_overlays=event_overlays,
+            filters=filters,
+            grids=grids,
+            name=name,
+            permissions=permissions,
+            selected_event_overlays=selected_event_overlays,
+            start_time=start_time,
+            tags=tags,
+            time_range=time_range,
+            url=url,
+            variables=variables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             charts: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]]] = None,
+             charts_resolution: Optional[pulumi.Input[str]] = None,
+             columns: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]] = None,
+             dashboard_group: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             discovery_options_query: Optional[pulumi.Input[str]] = None,
+             discovery_options_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
+             grids: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGridArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input['DashboardPermissionsArgs']] = None,
+             selected_event_overlays: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlayArgs']]]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_range: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authorized_writer_teams is None and 'authorizedWriterTeams' in kwargs:
+            authorized_writer_teams = kwargs['authorizedWriterTeams']
+        if authorized_writer_users is None and 'authorizedWriterUsers' in kwargs:
+            authorized_writer_users = kwargs['authorizedWriterUsers']
+        if charts_resolution is None and 'chartsResolution' in kwargs:
+            charts_resolution = kwargs['chartsResolution']
+        if dashboard_group is None and 'dashboardGroup' in kwargs:
+            dashboard_group = kwargs['dashboardGroup']
+        if discovery_options_query is None and 'discoveryOptionsQuery' in kwargs:
+            discovery_options_query = kwargs['discoveryOptionsQuery']
+        if discovery_options_selectors is None and 'discoveryOptionsSelectors' in kwargs:
+            discovery_options_selectors = kwargs['discoveryOptionsSelectors']
+        if end_time is None and 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if event_overlays is None and 'eventOverlays' in kwargs:
+            event_overlays = kwargs['eventOverlays']
+        if selected_event_overlays is None and 'selectedEventOverlays' in kwargs:
+            selected_event_overlays = kwargs['selectedEventOverlays']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions_* fields now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions_* fields now""")
         if authorized_writer_teams is not None:
-            pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
+            _setter("authorized_writer_teams", authorized_writer_teams)
         if authorized_writer_users is not None:
             warnings.warn("""Please use permissions fields now""", DeprecationWarning)
             pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions fields now""")
         if authorized_writer_users is not None:
-            pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
+            _setter("authorized_writer_users", authorized_writer_users)
         if charts is not None:
-            pulumi.set(__self__, "charts", charts)
+            _setter("charts", charts)
         if charts_resolution is not None:
-            pulumi.set(__self__, "charts_resolution", charts_resolution)
+            _setter("charts_resolution", charts_resolution)
         if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+            _setter("columns", columns)
         if dashboard_group is not None:
-            pulumi.set(__self__, "dashboard_group", dashboard_group)
+            _setter("dashboard_group", dashboard_group)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if discovery_options_query is not None:
-            pulumi.set(__self__, "discovery_options_query", discovery_options_query)
+            _setter("discovery_options_query", discovery_options_query)
         if discovery_options_selectors is not None:
-            pulumi.set(__self__, "discovery_options_selectors", discovery_options_selectors)
+            _setter("discovery_options_selectors", discovery_options_selectors)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if event_overlays is not None:
-            pulumi.set(__self__, "event_overlays", event_overlays)
+            _setter("event_overlays", event_overlays)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if grids is not None:
-            pulumi.set(__self__, "grids", grids)
+            _setter("grids", grids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if selected_event_overlays is not None:
-            pulumi.set(__self__, "selected_event_overlays", selected_event_overlays)
+            _setter("selected_event_overlays", selected_event_overlays)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if variables is not None:
-            pulumi.set(__self__, "variables", variables)
+            _setter("variables", variables)
 
     @property
     @pulumi.getter(name="authorizedWriterTeams")
@@ -759,6 +905,10 @@ class Dashboard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DashboardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -809,6 +959,11 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["filters"] = filters
             __props__.__dict__["grids"] = grids
             __props__.__dict__["name"] = name
+            if permissions is not None and not isinstance(permissions, DashboardPermissionsArgs):
+                permissions = permissions or {}
+                def _setter(key, value):
+                    permissions[key] = value
+                DashboardPermissionsArgs._configure(_setter, **permissions)
             __props__.__dict__["permissions"] = permissions
             __props__.__dict__["selected_event_overlays"] = selected_event_overlays
             __props__.__dict__["start_time"] = start_time

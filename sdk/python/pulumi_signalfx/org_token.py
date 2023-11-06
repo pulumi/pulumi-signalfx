@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,20 +33,49 @@ class OrgTokenArgs:
         :param pulumi.Input[str] name: Name of the token.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         """
+        OrgTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_scopes=auth_scopes,
+            description=description,
+            disabled=disabled,
+            dpm_limits=dpm_limits,
+            host_or_usage_limits=host_or_usage_limits,
+            name=name,
+            notifications=notifications,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             dpm_limits: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']] = None,
+             host_or_usage_limits: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_scopes is None and 'authScopes' in kwargs:
+            auth_scopes = kwargs['authScopes']
+        if dpm_limits is None and 'dpmLimits' in kwargs:
+            dpm_limits = kwargs['dpmLimits']
+        if host_or_usage_limits is None and 'hostOrUsageLimits' in kwargs:
+            host_or_usage_limits = kwargs['hostOrUsageLimits']
+
         if auth_scopes is not None:
-            pulumi.set(__self__, "auth_scopes", auth_scopes)
+            _setter("auth_scopes", auth_scopes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if dpm_limits is not None:
-            pulumi.set(__self__, "dpm_limits", dpm_limits)
+            _setter("dpm_limits", dpm_limits)
         if host_or_usage_limits is not None:
-            pulumi.set(__self__, "host_or_usage_limits", host_or_usage_limits)
+            _setter("host_or_usage_limits", host_or_usage_limits)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notifications is not None:
-            pulumi.set(__self__, "notifications", notifications)
+            _setter("notifications", notifications)
 
     @property
     @pulumi.getter(name="authScopes")
@@ -155,22 +184,53 @@ class _OrgTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. Please consult the Notification Format laid out in detectors.
         :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
         """
+        _OrgTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_scopes=auth_scopes,
+            description=description,
+            disabled=disabled,
+            dpm_limits=dpm_limits,
+            host_or_usage_limits=host_or_usage_limits,
+            name=name,
+            notifications=notifications,
+            secret=secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             dpm_limits: Optional[pulumi.Input['OrgTokenDpmLimitsArgs']] = None,
+             host_or_usage_limits: Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_scopes is None and 'authScopes' in kwargs:
+            auth_scopes = kwargs['authScopes']
+        if dpm_limits is None and 'dpmLimits' in kwargs:
+            dpm_limits = kwargs['dpmLimits']
+        if host_or_usage_limits is None and 'hostOrUsageLimits' in kwargs:
+            host_or_usage_limits = kwargs['hostOrUsageLimits']
+
         if auth_scopes is not None:
-            pulumi.set(__self__, "auth_scopes", auth_scopes)
+            _setter("auth_scopes", auth_scopes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if dpm_limits is not None:
-            pulumi.set(__self__, "dpm_limits", dpm_limits)
+            _setter("dpm_limits", dpm_limits)
         if host_or_usage_limits is not None:
-            pulumi.set(__self__, "host_or_usage_limits", host_or_usage_limits)
+            _setter("host_or_usage_limits", host_or_usage_limits)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notifications is not None:
-            pulumi.set(__self__, "notifications", notifications)
+            _setter("notifications", notifications)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
 
     @property
     @pulumi.getter(name="authScopes")
@@ -360,6 +420,10 @@ class OrgToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrgTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -384,7 +448,17 @@ class OrgToken(pulumi.CustomResource):
             __props__.__dict__["auth_scopes"] = auth_scopes
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
+            if dpm_limits is not None and not isinstance(dpm_limits, OrgTokenDpmLimitsArgs):
+                dpm_limits = dpm_limits or {}
+                def _setter(key, value):
+                    dpm_limits[key] = value
+                OrgTokenDpmLimitsArgs._configure(_setter, **dpm_limits)
             __props__.__dict__["dpm_limits"] = dpm_limits
+            if host_or_usage_limits is not None and not isinstance(host_or_usage_limits, OrgTokenHostOrUsageLimitsArgs):
+                host_or_usage_limits = host_or_usage_limits or {}
+                def _setter(key, value):
+                    host_or_usage_limits[key] = value
+                OrgTokenHostOrUsageLimitsArgs._configure(_setter, **host_or_usage_limits)
             __props__.__dict__["host_or_usage_limits"] = host_or_usage_limits
             __props__.__dict__["name"] = name
             __props__.__dict__["notifications"] = notifications

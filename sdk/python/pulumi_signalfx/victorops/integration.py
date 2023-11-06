@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IntegrationArgs', 'Integration']
@@ -23,11 +23,30 @@ class IntegrationArgs:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] post_url: Victor Ops REST API URL.
         """
-        pulumi.set(__self__, "enabled", enabled)
+        IntegrationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            name=name,
+            post_url=post_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             post_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if post_url is None and 'postUrl' in kwargs:
+            post_url = kwargs['postUrl']
+
+        _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if post_url is not None:
-            pulumi.set(__self__, "post_url", post_url)
+            _setter("post_url", post_url)
 
     @property
     @pulumi.getter
@@ -78,12 +97,29 @@ class _IntegrationState:
         :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] post_url: Victor Ops REST API URL.
         """
+        _IntegrationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            name=name,
+            post_url=post_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             post_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if post_url is None and 'postUrl' in kwargs:
+            post_url = kwargs['postUrl']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if post_url is not None:
-            pulumi.set(__self__, "post_url", post_url)
+            _setter("post_url", post_url)
 
     @property
     @pulumi.getter
@@ -185,6 +221,10 @@ class Integration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
