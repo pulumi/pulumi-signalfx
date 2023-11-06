@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Splunk Observability AWS CloudWatch integrations using Role ARNs. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
@@ -287,12 +286,6 @@ func (i *ExternalIntegration) ToExternalIntegrationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationOutput)
 }
 
-func (i *ExternalIntegration) ToOutput(ctx context.Context) pulumix.Output[*ExternalIntegration] {
-	return pulumix.Output[*ExternalIntegration]{
-		OutputState: i.ToExternalIntegrationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ExternalIntegrationArrayInput is an input type that accepts ExternalIntegrationArray and ExternalIntegrationArrayOutput values.
 // You can construct a concrete instance of `ExternalIntegrationArrayInput` via:
 //
@@ -316,12 +309,6 @@ func (i ExternalIntegrationArray) ToExternalIntegrationArrayOutput() ExternalInt
 
 func (i ExternalIntegrationArray) ToExternalIntegrationArrayOutputWithContext(ctx context.Context) ExternalIntegrationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationArrayOutput)
-}
-
-func (i ExternalIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalIntegration] {
-	return pulumix.Output[[]*ExternalIntegration]{
-		OutputState: i.ToExternalIntegrationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ExternalIntegrationMapInput is an input type that accepts ExternalIntegrationMap and ExternalIntegrationMapOutput values.
@@ -349,12 +336,6 @@ func (i ExternalIntegrationMap) ToExternalIntegrationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalIntegrationMapOutput)
 }
 
-func (i ExternalIntegrationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalIntegration] {
-	return pulumix.Output[map[string]*ExternalIntegration]{
-		OutputState: i.ToExternalIntegrationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ExternalIntegrationOutput struct{ *pulumi.OutputState }
 
 func (ExternalIntegrationOutput) ElementType() reflect.Type {
@@ -367,12 +348,6 @@ func (o ExternalIntegrationOutput) ToExternalIntegrationOutput() ExternalIntegra
 
 func (o ExternalIntegrationOutput) ToExternalIntegrationOutputWithContext(ctx context.Context) ExternalIntegrationOutput {
 	return o
-}
-
-func (o ExternalIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[*ExternalIntegration] {
-	return pulumix.Output[*ExternalIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The external ID to use with your IAM role and with `aws.Integration`.
@@ -404,12 +379,6 @@ func (o ExternalIntegrationArrayOutput) ToExternalIntegrationArrayOutputWithCont
 	return o
 }
 
-func (o ExternalIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ExternalIntegration] {
-	return pulumix.Output[[]*ExternalIntegration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ExternalIntegrationArrayOutput) Index(i pulumi.IntInput) ExternalIntegrationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ExternalIntegration {
 		return vs[0].([]*ExternalIntegration)[vs[1].(int)]
@@ -428,12 +397,6 @@ func (o ExternalIntegrationMapOutput) ToExternalIntegrationMapOutput() ExternalI
 
 func (o ExternalIntegrationMapOutput) ToExternalIntegrationMapOutputWithContext(ctx context.Context) ExternalIntegrationMapOutput {
 	return o
-}
-
-func (o ExternalIntegrationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ExternalIntegration] {
-	return pulumix.Output[map[string]*ExternalIntegration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ExternalIntegrationMapOutput) MapIndex(k pulumi.StringInput) ExternalIntegrationOutput {

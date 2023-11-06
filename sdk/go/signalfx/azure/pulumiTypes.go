@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -51,12 +50,6 @@ func (i IntegrationCustomNamespacesPerServiceArgs) ToIntegrationCustomNamespaces
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespacesPerServiceOutput)
 }
 
-func (i IntegrationCustomNamespacesPerServiceArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationCustomNamespacesPerService] {
-	return pulumix.Output[IntegrationCustomNamespacesPerService]{
-		OutputState: i.ToIntegrationCustomNamespacesPerServiceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntegrationCustomNamespacesPerServiceArrayInput is an input type that accepts IntegrationCustomNamespacesPerServiceArray and IntegrationCustomNamespacesPerServiceArrayOutput values.
 // You can construct a concrete instance of `IntegrationCustomNamespacesPerServiceArrayInput` via:
 //
@@ -82,12 +75,6 @@ func (i IntegrationCustomNamespacesPerServiceArray) ToIntegrationCustomNamespace
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationCustomNamespacesPerServiceArrayOutput)
 }
 
-func (i IntegrationCustomNamespacesPerServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationCustomNamespacesPerService] {
-	return pulumix.Output[[]IntegrationCustomNamespacesPerService]{
-		OutputState: i.ToIntegrationCustomNamespacesPerServiceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationCustomNamespacesPerServiceOutput struct{ *pulumi.OutputState }
 
 func (IntegrationCustomNamespacesPerServiceOutput) ElementType() reflect.Type {
@@ -100,12 +87,6 @@ func (o IntegrationCustomNamespacesPerServiceOutput) ToIntegrationCustomNamespac
 
 func (o IntegrationCustomNamespacesPerServiceOutput) ToIntegrationCustomNamespacesPerServiceOutputWithContext(ctx context.Context) IntegrationCustomNamespacesPerServiceOutput {
 	return o
-}
-
-func (o IntegrationCustomNamespacesPerServiceOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationCustomNamespacesPerService] {
-	return pulumix.Output[IntegrationCustomNamespacesPerService]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The additional namespaces.
@@ -130,12 +111,6 @@ func (o IntegrationCustomNamespacesPerServiceArrayOutput) ToIntegrationCustomNam
 
 func (o IntegrationCustomNamespacesPerServiceArrayOutput) ToIntegrationCustomNamespacesPerServiceArrayOutputWithContext(ctx context.Context) IntegrationCustomNamespacesPerServiceArrayOutput {
 	return o
-}
-
-func (o IntegrationCustomNamespacesPerServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationCustomNamespacesPerService] {
-	return pulumix.Output[[]IntegrationCustomNamespacesPerService]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationCustomNamespacesPerServiceArrayOutput) Index(i pulumi.IntInput) IntegrationCustomNamespacesPerServiceOutput {
@@ -177,12 +152,6 @@ func (i IntegrationResourceFilterRuleArgs) ToIntegrationResourceFilterRuleOutput
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResourceFilterRuleOutput)
 }
 
-func (i IntegrationResourceFilterRuleArgs) ToOutput(ctx context.Context) pulumix.Output[IntegrationResourceFilterRule] {
-	return pulumix.Output[IntegrationResourceFilterRule]{
-		OutputState: i.ToIntegrationResourceFilterRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntegrationResourceFilterRuleArrayInput is an input type that accepts IntegrationResourceFilterRuleArray and IntegrationResourceFilterRuleArrayOutput values.
 // You can construct a concrete instance of `IntegrationResourceFilterRuleArrayInput` via:
 //
@@ -208,12 +177,6 @@ func (i IntegrationResourceFilterRuleArray) ToIntegrationResourceFilterRuleArray
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationResourceFilterRuleArrayOutput)
 }
 
-func (i IntegrationResourceFilterRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationResourceFilterRule] {
-	return pulumix.Output[[]IntegrationResourceFilterRule]{
-		OutputState: i.ToIntegrationResourceFilterRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationResourceFilterRuleOutput struct{ *pulumi.OutputState }
 
 func (IntegrationResourceFilterRuleOutput) ElementType() reflect.Type {
@@ -226,12 +189,6 @@ func (o IntegrationResourceFilterRuleOutput) ToIntegrationResourceFilterRuleOutp
 
 func (o IntegrationResourceFilterRuleOutput) ToIntegrationResourceFilterRuleOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleOutput {
 	return o
-}
-
-func (o IntegrationResourceFilterRuleOutput) ToOutput(ctx context.Context) pulumix.Output[IntegrationResourceFilterRule] {
-	return pulumix.Output[IntegrationResourceFilterRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
@@ -251,12 +208,6 @@ func (o IntegrationResourceFilterRuleArrayOutput) ToIntegrationResourceFilterRul
 
 func (o IntegrationResourceFilterRuleArrayOutput) ToIntegrationResourceFilterRuleArrayOutputWithContext(ctx context.Context) IntegrationResourceFilterRuleArrayOutput {
 	return o
-}
-
-func (o IntegrationResourceFilterRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]IntegrationResourceFilterRule] {
-	return pulumix.Output[[]IntegrationResourceFilterRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationResourceFilterRuleArrayOutput) Index(i pulumi.IntInput) IntegrationResourceFilterRuleOutput {

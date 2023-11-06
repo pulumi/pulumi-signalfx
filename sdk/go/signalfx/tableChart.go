@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This special type of chart displays a Data Table. This Table can be grouped by a Dimension.
@@ -249,12 +248,6 @@ func (i *TableChart) ToTableChartOutputWithContext(ctx context.Context) TableCha
 	return pulumi.ToOutputWithContext(ctx, i).(TableChartOutput)
 }
 
-func (i *TableChart) ToOutput(ctx context.Context) pulumix.Output[*TableChart] {
-	return pulumix.Output[*TableChart]{
-		OutputState: i.ToTableChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableChartArrayInput is an input type that accepts TableChartArray and TableChartArrayOutput values.
 // You can construct a concrete instance of `TableChartArrayInput` via:
 //
@@ -278,12 +271,6 @@ func (i TableChartArray) ToTableChartArrayOutput() TableChartArrayOutput {
 
 func (i TableChartArray) ToTableChartArrayOutputWithContext(ctx context.Context) TableChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableChartArrayOutput)
-}
-
-func (i TableChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*TableChart] {
-	return pulumix.Output[[]*TableChart]{
-		OutputState: i.ToTableChartArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TableChartMapInput is an input type that accepts TableChartMap and TableChartMapOutput values.
@@ -311,12 +298,6 @@ func (i TableChartMap) ToTableChartMapOutputWithContext(ctx context.Context) Tab
 	return pulumi.ToOutputWithContext(ctx, i).(TableChartMapOutput)
 }
 
-func (i TableChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableChart] {
-	return pulumix.Output[map[string]*TableChart]{
-		OutputState: i.ToTableChartMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableChartOutput struct{ *pulumi.OutputState }
 
 func (TableChartOutput) ElementType() reflect.Type {
@@ -329,12 +310,6 @@ func (o TableChartOutput) ToTableChartOutput() TableChartOutput {
 
 func (o TableChartOutput) ToTableChartOutputWithContext(ctx context.Context) TableChartOutput {
 	return o
-}
-
-func (o TableChartOutput) ToOutput(ctx context.Context) pulumix.Output[*TableChart] {
-	return pulumix.Output[*TableChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the table chart.
@@ -416,12 +391,6 @@ func (o TableChartArrayOutput) ToTableChartArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o TableChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TableChart] {
-	return pulumix.Output[[]*TableChart]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TableChartArrayOutput) Index(i pulumi.IntInput) TableChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TableChart {
 		return vs[0].([]*TableChart)[vs[1].(int)]
@@ -440,12 +409,6 @@ func (o TableChartMapOutput) ToTableChartMapOutput() TableChartMapOutput {
 
 func (o TableChartMapOutput) ToTableChartMapOutputWithContext(ctx context.Context) TableChartMapOutput {
 	return o
-}
-
-func (o TableChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TableChart] {
-	return pulumix.Output[map[string]*TableChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableChartMapOutput) MapIndex(k pulumi.StringInput) TableChartOutput {
