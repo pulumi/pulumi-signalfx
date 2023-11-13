@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
@@ -188,12 +187,6 @@ func (i *AlertMutingRule) ToAlertMutingRuleOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleOutput)
 }
 
-func (i *AlertMutingRule) ToOutput(ctx context.Context) pulumix.Output[*AlertMutingRule] {
-	return pulumix.Output[*AlertMutingRule]{
-		OutputState: i.ToAlertMutingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertMutingRuleArrayInput is an input type that accepts AlertMutingRuleArray and AlertMutingRuleArrayOutput values.
 // You can construct a concrete instance of `AlertMutingRuleArrayInput` via:
 //
@@ -217,12 +210,6 @@ func (i AlertMutingRuleArray) ToAlertMutingRuleArrayOutput() AlertMutingRuleArra
 
 func (i AlertMutingRuleArray) ToAlertMutingRuleArrayOutputWithContext(ctx context.Context) AlertMutingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleArrayOutput)
-}
-
-func (i AlertMutingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*AlertMutingRule] {
-	return pulumix.Output[[]*AlertMutingRule]{
-		OutputState: i.ToAlertMutingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AlertMutingRuleMapInput is an input type that accepts AlertMutingRuleMap and AlertMutingRuleMapOutput values.
@@ -250,12 +237,6 @@ func (i AlertMutingRuleMap) ToAlertMutingRuleMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleMapOutput)
 }
 
-func (i AlertMutingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlertMutingRule] {
-	return pulumix.Output[map[string]*AlertMutingRule]{
-		OutputState: i.ToAlertMutingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertMutingRuleOutput struct{ *pulumi.OutputState }
 
 func (AlertMutingRuleOutput) ElementType() reflect.Type {
@@ -268,12 +249,6 @@ func (o AlertMutingRuleOutput) ToAlertMutingRuleOutput() AlertMutingRuleOutput {
 
 func (o AlertMutingRuleOutput) ToAlertMutingRuleOutputWithContext(ctx context.Context) AlertMutingRuleOutput {
 	return o
-}
-
-func (o AlertMutingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*AlertMutingRule] {
-	return pulumix.Output[*AlertMutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description for this muting rule
@@ -319,12 +294,6 @@ func (o AlertMutingRuleArrayOutput) ToAlertMutingRuleArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o AlertMutingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AlertMutingRule] {
-	return pulumix.Output[[]*AlertMutingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AlertMutingRuleArrayOutput) Index(i pulumi.IntInput) AlertMutingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AlertMutingRule {
 		return vs[0].([]*AlertMutingRule)[vs[1].(int)]
@@ -343,12 +312,6 @@ func (o AlertMutingRuleMapOutput) ToAlertMutingRuleMapOutput() AlertMutingRuleMa
 
 func (o AlertMutingRuleMapOutput) ToAlertMutingRuleMapOutputWithContext(ctx context.Context) AlertMutingRuleMapOutput {
 	return o
-}
-
-func (o AlertMutingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AlertMutingRule] {
-	return pulumix.Output[map[string]*AlertMutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertMutingRuleMapOutput) MapIndex(k pulumi.StringInput) AlertMutingRuleOutput {
