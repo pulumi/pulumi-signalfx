@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manage SignalFx org tokens.
@@ -208,12 +207,6 @@ func (i *OrgToken) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenOutput)
 }
 
-func (i *OrgToken) ToOutput(ctx context.Context) pulumix.Output[*OrgToken] {
-	return pulumix.Output[*OrgToken]{
-		OutputState: i.ToOrgTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OrgTokenArrayInput is an input type that accepts OrgTokenArray and OrgTokenArrayOutput values.
 // You can construct a concrete instance of `OrgTokenArrayInput` via:
 //
@@ -237,12 +230,6 @@ func (i OrgTokenArray) ToOrgTokenArrayOutput() OrgTokenArrayOutput {
 
 func (i OrgTokenArray) ToOrgTokenArrayOutputWithContext(ctx context.Context) OrgTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenArrayOutput)
-}
-
-func (i OrgTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*OrgToken] {
-	return pulumix.Output[[]*OrgToken]{
-		OutputState: i.ToOrgTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OrgTokenMapInput is an input type that accepts OrgTokenMap and OrgTokenMapOutput values.
@@ -270,12 +257,6 @@ func (i OrgTokenMap) ToOrgTokenMapOutputWithContext(ctx context.Context) OrgToke
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenMapOutput)
 }
 
-func (i OrgTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrgToken] {
-	return pulumix.Output[map[string]*OrgToken]{
-		OutputState: i.ToOrgTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrgTokenOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenOutput) ElementType() reflect.Type {
@@ -288,12 +269,6 @@ func (o OrgTokenOutput) ToOrgTokenOutput() OrgTokenOutput {
 
 func (o OrgTokenOutput) ToOrgTokenOutputWithContext(ctx context.Context) OrgTokenOutput {
 	return o
-}
-
-func (o OrgTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*OrgToken] {
-	return pulumix.Output[*OrgToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authentication scope, ex: INGEST, API, RUM ... (Optional)
@@ -350,12 +325,6 @@ func (o OrgTokenArrayOutput) ToOrgTokenArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o OrgTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OrgToken] {
-	return pulumix.Output[[]*OrgToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OrgTokenArrayOutput) Index(i pulumi.IntInput) OrgTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OrgToken {
 		return vs[0].([]*OrgToken)[vs[1].(int)]
@@ -374,12 +343,6 @@ func (o OrgTokenMapOutput) ToOrgTokenMapOutput() OrgTokenMapOutput {
 
 func (o OrgTokenMapOutput) ToOrgTokenMapOutputWithContext(ctx context.Context) OrgTokenMapOutput {
 	return o
-}
-
-func (o OrgTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OrgToken] {
-	return pulumix.Output[map[string]*OrgToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrgTokenMapOutput) MapIndex(k pulumi.StringInput) OrgTokenOutput {

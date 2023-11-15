@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
@@ -172,12 +171,6 @@ func (i *TextChart) ToTextChartOutputWithContext(ctx context.Context) TextChartO
 	return pulumi.ToOutputWithContext(ctx, i).(TextChartOutput)
 }
 
-func (i *TextChart) ToOutput(ctx context.Context) pulumix.Output[*TextChart] {
-	return pulumix.Output[*TextChart]{
-		OutputState: i.ToTextChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TextChartArrayInput is an input type that accepts TextChartArray and TextChartArrayOutput values.
 // You can construct a concrete instance of `TextChartArrayInput` via:
 //
@@ -201,12 +194,6 @@ func (i TextChartArray) ToTextChartArrayOutput() TextChartArrayOutput {
 
 func (i TextChartArray) ToTextChartArrayOutputWithContext(ctx context.Context) TextChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TextChartArrayOutput)
-}
-
-func (i TextChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*TextChart] {
-	return pulumix.Output[[]*TextChart]{
-		OutputState: i.ToTextChartArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TextChartMapInput is an input type that accepts TextChartMap and TextChartMapOutput values.
@@ -234,12 +221,6 @@ func (i TextChartMap) ToTextChartMapOutputWithContext(ctx context.Context) TextC
 	return pulumi.ToOutputWithContext(ctx, i).(TextChartMapOutput)
 }
 
-func (i TextChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TextChart] {
-	return pulumix.Output[map[string]*TextChart]{
-		OutputState: i.ToTextChartMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TextChartOutput struct{ *pulumi.OutputState }
 
 func (TextChartOutput) ElementType() reflect.Type {
@@ -252,12 +233,6 @@ func (o TextChartOutput) ToTextChartOutput() TextChartOutput {
 
 func (o TextChartOutput) ToTextChartOutputWithContext(ctx context.Context) TextChartOutput {
 	return o
-}
-
-func (o TextChartOutput) ToOutput(ctx context.Context) pulumix.Output[*TextChart] {
-	return pulumix.Output[*TextChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description of the text note.
@@ -294,12 +269,6 @@ func (o TextChartArrayOutput) ToTextChartArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TextChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TextChart] {
-	return pulumix.Output[[]*TextChart]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TextChartArrayOutput) Index(i pulumi.IntInput) TextChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TextChart {
 		return vs[0].([]*TextChart)[vs[1].(int)]
@@ -318,12 +287,6 @@ func (o TextChartMapOutput) ToTextChartMapOutput() TextChartMapOutput {
 
 func (o TextChartMapOutput) ToTextChartMapOutputWithContext(ctx context.Context) TextChartMapOutput {
 	return o
-}
-
-func (o TextChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TextChart] {
-	return pulumix.Output[map[string]*TextChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TextChartMapOutput) MapIndex(k pulumi.StringInput) TextChartOutput {
