@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This chart type displays the specified plot in a heatmap fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
@@ -292,12 +291,6 @@ func (i *HeatmapChart) ToHeatmapChartOutputWithContext(ctx context.Context) Heat
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartOutput)
 }
 
-func (i *HeatmapChart) ToOutput(ctx context.Context) pulumix.Output[*HeatmapChart] {
-	return pulumix.Output[*HeatmapChart]{
-		OutputState: i.ToHeatmapChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HeatmapChartArrayInput is an input type that accepts HeatmapChartArray and HeatmapChartArrayOutput values.
 // You can construct a concrete instance of `HeatmapChartArrayInput` via:
 //
@@ -321,12 +314,6 @@ func (i HeatmapChartArray) ToHeatmapChartArrayOutput() HeatmapChartArrayOutput {
 
 func (i HeatmapChartArray) ToHeatmapChartArrayOutputWithContext(ctx context.Context) HeatmapChartArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartArrayOutput)
-}
-
-func (i HeatmapChartArray) ToOutput(ctx context.Context) pulumix.Output[[]*HeatmapChart] {
-	return pulumix.Output[[]*HeatmapChart]{
-		OutputState: i.ToHeatmapChartArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HeatmapChartMapInput is an input type that accepts HeatmapChartMap and HeatmapChartMapOutput values.
@@ -354,12 +341,6 @@ func (i HeatmapChartMap) ToHeatmapChartMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartMapOutput)
 }
 
-func (i HeatmapChartMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HeatmapChart] {
-	return pulumix.Output[map[string]*HeatmapChart]{
-		OutputState: i.ToHeatmapChartMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HeatmapChartOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartOutput) ElementType() reflect.Type {
@@ -372,12 +353,6 @@ func (o HeatmapChartOutput) ToHeatmapChartOutput() HeatmapChartOutput {
 
 func (o HeatmapChartOutput) ToHeatmapChartOutputWithContext(ctx context.Context) HeatmapChartOutput {
 	return o
-}
-
-func (o HeatmapChartOutput) ToOutput(ctx context.Context) pulumix.Output[*HeatmapChart] {
-	return pulumix.Output[*HeatmapChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Values and color for the color range. Example: `colorRange : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
@@ -469,12 +444,6 @@ func (o HeatmapChartArrayOutput) ToHeatmapChartArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o HeatmapChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HeatmapChart] {
-	return pulumix.Output[[]*HeatmapChart]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HeatmapChartArrayOutput) Index(i pulumi.IntInput) HeatmapChartOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HeatmapChart {
 		return vs[0].([]*HeatmapChart)[vs[1].(int)]
@@ -493,12 +462,6 @@ func (o HeatmapChartMapOutput) ToHeatmapChartMapOutput() HeatmapChartMapOutput {
 
 func (o HeatmapChartMapOutput) ToHeatmapChartMapOutputWithContext(ctx context.Context) HeatmapChartMapOutput {
 	return o
-}
-
-func (o HeatmapChartMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HeatmapChart] {
-	return pulumix.Output[map[string]*HeatmapChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeatmapChartMapOutput) MapIndex(k pulumi.StringInput) HeatmapChartOutput {

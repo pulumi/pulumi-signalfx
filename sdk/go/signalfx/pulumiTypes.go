@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -55,12 +54,6 @@ func (i AlertMutingRuleFilterArgs) ToAlertMutingRuleFilterOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleFilterOutput)
 }
 
-func (i AlertMutingRuleFilterArgs) ToOutput(ctx context.Context) pulumix.Output[AlertMutingRuleFilter] {
-	return pulumix.Output[AlertMutingRuleFilter]{
-		OutputState: i.ToAlertMutingRuleFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AlertMutingRuleFilterArrayInput is an input type that accepts AlertMutingRuleFilterArray and AlertMutingRuleFilterArrayOutput values.
 // You can construct a concrete instance of `AlertMutingRuleFilterArrayInput` via:
 //
@@ -86,12 +79,6 @@ func (i AlertMutingRuleFilterArray) ToAlertMutingRuleFilterArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleFilterArrayOutput)
 }
 
-func (i AlertMutingRuleFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]AlertMutingRuleFilter] {
-	return pulumix.Output[[]AlertMutingRuleFilter]{
-		OutputState: i.ToAlertMutingRuleFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AlertMutingRuleFilterOutput struct{ *pulumi.OutputState }
 
 func (AlertMutingRuleFilterOutput) ElementType() reflect.Type {
@@ -104,12 +91,6 @@ func (o AlertMutingRuleFilterOutput) ToAlertMutingRuleFilterOutput() AlertMuting
 
 func (o AlertMutingRuleFilterOutput) ToAlertMutingRuleFilterOutputWithContext(ctx context.Context) AlertMutingRuleFilterOutput {
 	return o
-}
-
-func (o AlertMutingRuleFilterOutput) ToOutput(ctx context.Context) pulumix.Output[AlertMutingRuleFilter] {
-	return pulumix.Output[AlertMutingRuleFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Determines if this is a "not" filter. Defaults to `false`.
@@ -139,12 +120,6 @@ func (o AlertMutingRuleFilterArrayOutput) ToAlertMutingRuleFilterArrayOutput() A
 
 func (o AlertMutingRuleFilterArrayOutput) ToAlertMutingRuleFilterArrayOutputWithContext(ctx context.Context) AlertMutingRuleFilterArrayOutput {
 	return o
-}
-
-func (o AlertMutingRuleFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]AlertMutingRuleFilter] {
-	return pulumix.Output[[]AlertMutingRuleFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AlertMutingRuleFilterArrayOutput) Index(i pulumi.IntInput) AlertMutingRuleFilterOutput {
@@ -202,12 +177,6 @@ func (i DashboardChartArgs) ToDashboardChartOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartOutput)
 }
 
-func (i DashboardChartArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardChart] {
-	return pulumix.Output[DashboardChart]{
-		OutputState: i.ToDashboardChartOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardChartArrayInput is an input type that accepts DashboardChartArray and DashboardChartArrayOutput values.
 // You can construct a concrete instance of `DashboardChartArrayInput` via:
 //
@@ -233,12 +202,6 @@ func (i DashboardChartArray) ToDashboardChartArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardChartArrayOutput)
 }
 
-func (i DashboardChartArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardChart] {
-	return pulumix.Output[[]DashboardChart]{
-		OutputState: i.ToDashboardChartArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardChartOutput struct{ *pulumi.OutputState }
 
 func (DashboardChartOutput) ElementType() reflect.Type {
@@ -251,12 +214,6 @@ func (o DashboardChartOutput) ToDashboardChartOutput() DashboardChartOutput {
 
 func (o DashboardChartOutput) ToDashboardChartOutputWithContext(ctx context.Context) DashboardChartOutput {
 	return o
-}
-
-func (o DashboardChartOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardChart] {
-	return pulumix.Output[DashboardChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 // ID of the chart to display.
@@ -296,12 +253,6 @@ func (o DashboardChartArrayOutput) ToDashboardChartArrayOutput() DashboardChartA
 
 func (o DashboardChartArrayOutput) ToDashboardChartArrayOutputWithContext(ctx context.Context) DashboardChartArrayOutput {
 	return o
-}
-
-func (o DashboardChartArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardChart] {
-	return pulumix.Output[[]DashboardChart]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardChartArrayOutput) Index(i pulumi.IntInput) DashboardChartOutput {
@@ -355,12 +306,6 @@ func (i DashboardColumnArgs) ToDashboardColumnOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardColumnOutput)
 }
 
-func (i DashboardColumnArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardColumn] {
-	return pulumix.Output[DashboardColumn]{
-		OutputState: i.ToDashboardColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardColumnArrayInput is an input type that accepts DashboardColumnArray and DashboardColumnArrayOutput values.
 // You can construct a concrete instance of `DashboardColumnArrayInput` via:
 //
@@ -386,12 +331,6 @@ func (i DashboardColumnArray) ToDashboardColumnArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardColumnArrayOutput)
 }
 
-func (i DashboardColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardColumn] {
-	return pulumix.Output[[]DashboardColumn]{
-		OutputState: i.ToDashboardColumnArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardColumnOutput struct{ *pulumi.OutputState }
 
 func (DashboardColumnOutput) ElementType() reflect.Type {
@@ -404,12 +343,6 @@ func (o DashboardColumnOutput) ToDashboardColumnOutput() DashboardColumnOutput {
 
 func (o DashboardColumnOutput) ToDashboardColumnOutputWithContext(ctx context.Context) DashboardColumnOutput {
 	return o
-}
-
-func (o DashboardColumnOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardColumn] {
-	return pulumix.Output[DashboardColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of IDs of the charts to display.
@@ -444,12 +377,6 @@ func (o DashboardColumnArrayOutput) ToDashboardColumnArrayOutput() DashboardColu
 
 func (o DashboardColumnArrayOutput) ToDashboardColumnArrayOutputWithContext(ctx context.Context) DashboardColumnArrayOutput {
 	return o
-}
-
-func (o DashboardColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardColumn] {
-	return pulumix.Output[[]DashboardColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardColumnArrayOutput) Index(i pulumi.IntInput) DashboardColumnOutput {
@@ -511,12 +438,6 @@ func (i DashboardEventOverlayArgs) ToDashboardEventOverlayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardEventOverlayOutput)
 }
 
-func (i DashboardEventOverlayArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardEventOverlay] {
-	return pulumix.Output[DashboardEventOverlay]{
-		OutputState: i.ToDashboardEventOverlayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardEventOverlayArrayInput is an input type that accepts DashboardEventOverlayArray and DashboardEventOverlayArrayOutput values.
 // You can construct a concrete instance of `DashboardEventOverlayArrayInput` via:
 //
@@ -542,12 +463,6 @@ func (i DashboardEventOverlayArray) ToDashboardEventOverlayArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardEventOverlayArrayOutput)
 }
 
-func (i DashboardEventOverlayArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardEventOverlay] {
-	return pulumix.Output[[]DashboardEventOverlay]{
-		OutputState: i.ToDashboardEventOverlayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardEventOverlayOutput struct{ *pulumi.OutputState }
 
 func (DashboardEventOverlayOutput) ElementType() reflect.Type {
@@ -560,12 +475,6 @@ func (o DashboardEventOverlayOutput) ToDashboardEventOverlayOutput() DashboardEv
 
 func (o DashboardEventOverlayOutput) ToDashboardEventOverlayOutputWithContext(ctx context.Context) DashboardEventOverlayOutput {
 	return o
-}
-
-func (o DashboardEventOverlayOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardEventOverlay] {
-	return pulumix.Output[DashboardEventOverlay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
@@ -610,12 +519,6 @@ func (o DashboardEventOverlayArrayOutput) ToDashboardEventOverlayArrayOutput() D
 
 func (o DashboardEventOverlayArrayOutput) ToDashboardEventOverlayArrayOutputWithContext(ctx context.Context) DashboardEventOverlayArrayOutput {
 	return o
-}
-
-func (o DashboardEventOverlayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardEventOverlay] {
-	return pulumix.Output[[]DashboardEventOverlay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardEventOverlayArrayOutput) Index(i pulumi.IntInput) DashboardEventOverlayOutput {
@@ -665,12 +568,6 @@ func (i DashboardEventOverlaySourceArgs) ToDashboardEventOverlaySourceOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardEventOverlaySourceOutput)
 }
 
-func (i DashboardEventOverlaySourceArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardEventOverlaySource] {
-	return pulumix.Output[DashboardEventOverlaySource]{
-		OutputState: i.ToDashboardEventOverlaySourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardEventOverlaySourceArrayInput is an input type that accepts DashboardEventOverlaySourceArray and DashboardEventOverlaySourceArrayOutput values.
 // You can construct a concrete instance of `DashboardEventOverlaySourceArrayInput` via:
 //
@@ -696,12 +593,6 @@ func (i DashboardEventOverlaySourceArray) ToDashboardEventOverlaySourceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardEventOverlaySourceArrayOutput)
 }
 
-func (i DashboardEventOverlaySourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardEventOverlaySource] {
-	return pulumix.Output[[]DashboardEventOverlaySource]{
-		OutputState: i.ToDashboardEventOverlaySourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardEventOverlaySourceOutput struct{ *pulumi.OutputState }
 
 func (DashboardEventOverlaySourceOutput) ElementType() reflect.Type {
@@ -714,12 +605,6 @@ func (o DashboardEventOverlaySourceOutput) ToDashboardEventOverlaySourceOutput()
 
 func (o DashboardEventOverlaySourceOutput) ToDashboardEventOverlaySourceOutputWithContext(ctx context.Context) DashboardEventOverlaySourceOutput {
 	return o
-}
-
-func (o DashboardEventOverlaySourceOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardEventOverlaySource] {
-	return pulumix.Output[DashboardEventOverlaySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
@@ -749,12 +634,6 @@ func (o DashboardEventOverlaySourceArrayOutput) ToDashboardEventOverlaySourceArr
 
 func (o DashboardEventOverlaySourceArrayOutput) ToDashboardEventOverlaySourceArrayOutputWithContext(ctx context.Context) DashboardEventOverlaySourceArrayOutput {
 	return o
-}
-
-func (o DashboardEventOverlaySourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardEventOverlaySource] {
-	return pulumix.Output[[]DashboardEventOverlaySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardEventOverlaySourceArrayOutput) Index(i pulumi.IntInput) DashboardEventOverlaySourceOutput {
@@ -808,12 +687,6 @@ func (i DashboardFilterArgs) ToDashboardFilterOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterOutput)
 }
 
-func (i DashboardFilterArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardFilter] {
-	return pulumix.Output[DashboardFilter]{
-		OutputState: i.ToDashboardFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardFilterArrayInput is an input type that accepts DashboardFilterArray and DashboardFilterArrayOutput values.
 // You can construct a concrete instance of `DashboardFilterArrayInput` via:
 //
@@ -839,12 +712,6 @@ func (i DashboardFilterArray) ToDashboardFilterArrayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterArrayOutput)
 }
 
-func (i DashboardFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardFilter] {
-	return pulumix.Output[[]DashboardFilter]{
-		OutputState: i.ToDashboardFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardFilterOutput struct{ *pulumi.OutputState }
 
 func (DashboardFilterOutput) ElementType() reflect.Type {
@@ -857,12 +724,6 @@ func (o DashboardFilterOutput) ToDashboardFilterOutput() DashboardFilterOutput {
 
 func (o DashboardFilterOutput) ToDashboardFilterOutputWithContext(ctx context.Context) DashboardFilterOutput {
 	return o
-}
-
-func (o DashboardFilterOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardFilter] {
-	return pulumix.Output[DashboardFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true, this variable will also match data that doesn't have this property at all.
@@ -897,12 +758,6 @@ func (o DashboardFilterArrayOutput) ToDashboardFilterArrayOutput() DashboardFilt
 
 func (o DashboardFilterArrayOutput) ToDashboardFilterArrayOutputWithContext(ctx context.Context) DashboardFilterArrayOutput {
 	return o
-}
-
-func (o DashboardFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardFilter] {
-	return pulumix.Output[[]DashboardFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardFilterArrayOutput) Index(i pulumi.IntInput) DashboardFilterOutput {
@@ -952,12 +807,6 @@ func (i DashboardGridArgs) ToDashboardGridOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGridOutput)
 }
 
-func (i DashboardGridArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGrid] {
-	return pulumix.Output[DashboardGrid]{
-		OutputState: i.ToDashboardGridOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGridArrayInput is an input type that accepts DashboardGridArray and DashboardGridArrayOutput values.
 // You can construct a concrete instance of `DashboardGridArrayInput` via:
 //
@@ -983,12 +832,6 @@ func (i DashboardGridArray) ToDashboardGridArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGridArrayOutput)
 }
 
-func (i DashboardGridArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGrid] {
-	return pulumix.Output[[]DashboardGrid]{
-		OutputState: i.ToDashboardGridArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGridOutput struct{ *pulumi.OutputState }
 
 func (DashboardGridOutput) ElementType() reflect.Type {
@@ -1001,12 +844,6 @@ func (o DashboardGridOutput) ToDashboardGridOutput() DashboardGridOutput {
 
 func (o DashboardGridOutput) ToDashboardGridOutputWithContext(ctx context.Context) DashboardGridOutput {
 	return o
-}
-
-func (o DashboardGridOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGrid] {
-	return pulumix.Output[DashboardGrid]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of IDs of the charts to display.
@@ -1036,12 +873,6 @@ func (o DashboardGridArrayOutput) ToDashboardGridArrayOutput() DashboardGridArra
 
 func (o DashboardGridArrayOutput) ToDashboardGridArrayOutputWithContext(ctx context.Context) DashboardGridArrayOutput {
 	return o
-}
-
-func (o DashboardGridArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGrid] {
-	return pulumix.Output[[]DashboardGrid]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGridArrayOutput) Index(i pulumi.IntInput) DashboardGridOutput {
@@ -1099,12 +930,6 @@ func (i DashboardGroupDashboardArgs) ToDashboardGroupDashboardOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardOutput)
 }
 
-func (i DashboardGroupDashboardArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupDashboard] {
-	return pulumix.Output[DashboardGroupDashboard]{
-		OutputState: i.ToDashboardGroupDashboardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGroupDashboardArrayInput is an input type that accepts DashboardGroupDashboardArray and DashboardGroupDashboardArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardArrayInput` via:
 //
@@ -1130,12 +955,6 @@ func (i DashboardGroupDashboardArray) ToDashboardGroupDashboardArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardArrayOutput)
 }
 
-func (i DashboardGroupDashboardArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupDashboard] {
-	return pulumix.Output[[]DashboardGroupDashboard]{
-		OutputState: i.ToDashboardGroupDashboardArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGroupDashboardOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardOutput) ElementType() reflect.Type {
@@ -1148,12 +967,6 @@ func (o DashboardGroupDashboardOutput) ToDashboardGroupDashboardOutput() Dashboa
 
 func (o DashboardGroupDashboardOutput) ToDashboardGroupDashboardOutputWithContext(ctx context.Context) DashboardGroupDashboardOutput {
 	return o
-}
-
-func (o DashboardGroupDashboardOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupDashboard] {
-	return pulumix.Output[DashboardGroupDashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupDashboardOutput) ConfigId() pulumi.StringPtrOutput {
@@ -1196,12 +1009,6 @@ func (o DashboardGroupDashboardArrayOutput) ToDashboardGroupDashboardArrayOutput
 
 func (o DashboardGroupDashboardArrayOutput) ToDashboardGroupDashboardArrayOutputWithContext(ctx context.Context) DashboardGroupDashboardArrayOutput {
 	return o
-}
-
-func (o DashboardGroupDashboardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupDashboard] {
-	return pulumix.Output[[]DashboardGroupDashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupDashboardArrayOutput) Index(i pulumi.IntInput) DashboardGroupDashboardOutput {
@@ -1251,12 +1058,6 @@ func (i DashboardGroupDashboardFilterOverrideArgs) ToDashboardGroupDashboardFilt
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardFilterOverrideOutput)
 }
 
-func (i DashboardGroupDashboardFilterOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupDashboardFilterOverride] {
-	return pulumix.Output[DashboardGroupDashboardFilterOverride]{
-		OutputState: i.ToDashboardGroupDashboardFilterOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGroupDashboardFilterOverrideArrayInput is an input type that accepts DashboardGroupDashboardFilterOverrideArray and DashboardGroupDashboardFilterOverrideArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardFilterOverrideArrayInput` via:
 //
@@ -1282,12 +1083,6 @@ func (i DashboardGroupDashboardFilterOverrideArray) ToDashboardGroupDashboardFil
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardFilterOverrideArrayOutput)
 }
 
-func (i DashboardGroupDashboardFilterOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupDashboardFilterOverride] {
-	return pulumix.Output[[]DashboardGroupDashboardFilterOverride]{
-		OutputState: i.ToDashboardGroupDashboardFilterOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGroupDashboardFilterOverrideOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardFilterOverrideOutput) ElementType() reflect.Type {
@@ -1300,12 +1095,6 @@ func (o DashboardGroupDashboardFilterOverrideOutput) ToDashboardGroupDashboardFi
 
 func (o DashboardGroupDashboardFilterOverrideOutput) ToDashboardGroupDashboardFilterOverrideOutputWithContext(ctx context.Context) DashboardGroupDashboardFilterOverrideOutput {
 	return o
-}
-
-func (o DashboardGroupDashboardFilterOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupDashboardFilterOverride] {
-	return pulumix.Output[DashboardGroupDashboardFilterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
@@ -1335,12 +1124,6 @@ func (o DashboardGroupDashboardFilterOverrideArrayOutput) ToDashboardGroupDashbo
 
 func (o DashboardGroupDashboardFilterOverrideArrayOutput) ToDashboardGroupDashboardFilterOverrideArrayOutputWithContext(ctx context.Context) DashboardGroupDashboardFilterOverrideArrayOutput {
 	return o
-}
-
-func (o DashboardGroupDashboardFilterOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupDashboardFilterOverride] {
-	return pulumix.Output[[]DashboardGroupDashboardFilterOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupDashboardFilterOverrideArrayOutput) Index(i pulumi.IntInput) DashboardGroupDashboardFilterOverrideOutput {
@@ -1390,12 +1173,6 @@ func (i DashboardGroupDashboardVariableOverrideArgs) ToDashboardGroupDashboardVa
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardVariableOverrideOutput)
 }
 
-func (i DashboardGroupDashboardVariableOverrideArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupDashboardVariableOverride] {
-	return pulumix.Output[DashboardGroupDashboardVariableOverride]{
-		OutputState: i.ToDashboardGroupDashboardVariableOverrideOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGroupDashboardVariableOverrideArrayInput is an input type that accepts DashboardGroupDashboardVariableOverrideArray and DashboardGroupDashboardVariableOverrideArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupDashboardVariableOverrideArrayInput` via:
 //
@@ -1421,12 +1198,6 @@ func (i DashboardGroupDashboardVariableOverrideArray) ToDashboardGroupDashboardV
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupDashboardVariableOverrideArrayOutput)
 }
 
-func (i DashboardGroupDashboardVariableOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupDashboardVariableOverride] {
-	return pulumix.Output[[]DashboardGroupDashboardVariableOverride]{
-		OutputState: i.ToDashboardGroupDashboardVariableOverrideArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGroupDashboardVariableOverrideOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupDashboardVariableOverrideOutput) ElementType() reflect.Type {
@@ -1439,12 +1210,6 @@ func (o DashboardGroupDashboardVariableOverrideOutput) ToDashboardGroupDashboard
 
 func (o DashboardGroupDashboardVariableOverrideOutput) ToDashboardGroupDashboardVariableOverrideOutputWithContext(ctx context.Context) DashboardGroupDashboardVariableOverrideOutput {
 	return o
-}
-
-func (o DashboardGroupDashboardVariableOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupDashboardVariableOverride] {
-	return pulumix.Output[DashboardGroupDashboardVariableOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A metric time series dimension or property name.
@@ -1474,12 +1239,6 @@ func (o DashboardGroupDashboardVariableOverrideArrayOutput) ToDashboardGroupDash
 
 func (o DashboardGroupDashboardVariableOverrideArrayOutput) ToDashboardGroupDashboardVariableOverrideArrayOutputWithContext(ctx context.Context) DashboardGroupDashboardVariableOverrideArrayOutput {
 	return o
-}
-
-func (o DashboardGroupDashboardVariableOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupDashboardVariableOverride] {
-	return pulumix.Output[[]DashboardGroupDashboardVariableOverride]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupDashboardVariableOverrideArrayOutput) Index(i pulumi.IntInput) DashboardGroupDashboardVariableOverrideOutput {
@@ -1521,12 +1280,6 @@ func (i DashboardGroupImportQualifierArgs) ToDashboardGroupImportQualifierOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierOutput)
 }
 
-func (i DashboardGroupImportQualifierArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupImportQualifier] {
-	return pulumix.Output[DashboardGroupImportQualifier]{
-		OutputState: i.ToDashboardGroupImportQualifierOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGroupImportQualifierArrayInput is an input type that accepts DashboardGroupImportQualifierArray and DashboardGroupImportQualifierArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupImportQualifierArrayInput` via:
 //
@@ -1552,12 +1305,6 @@ func (i DashboardGroupImportQualifierArray) ToDashboardGroupImportQualifierArray
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierArrayOutput)
 }
 
-func (i DashboardGroupImportQualifierArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupImportQualifier] {
-	return pulumix.Output[[]DashboardGroupImportQualifier]{
-		OutputState: i.ToDashboardGroupImportQualifierArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGroupImportQualifierOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupImportQualifierOutput) ElementType() reflect.Type {
@@ -1570,12 +1317,6 @@ func (o DashboardGroupImportQualifierOutput) ToDashboardGroupImportQualifierOutp
 
 func (o DashboardGroupImportQualifierOutput) ToDashboardGroupImportQualifierOutputWithContext(ctx context.Context) DashboardGroupImportQualifierOutput {
 	return o
-}
-
-func (o DashboardGroupImportQualifierOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupImportQualifier] {
-	return pulumix.Output[DashboardGroupImportQualifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupImportQualifierOutput) Filters() DashboardGroupImportQualifierFilterArrayOutput {
@@ -1598,12 +1339,6 @@ func (o DashboardGroupImportQualifierArrayOutput) ToDashboardGroupImportQualifie
 
 func (o DashboardGroupImportQualifierArrayOutput) ToDashboardGroupImportQualifierArrayOutputWithContext(ctx context.Context) DashboardGroupImportQualifierArrayOutput {
 	return o
-}
-
-func (o DashboardGroupImportQualifierArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupImportQualifier] {
-	return pulumix.Output[[]DashboardGroupImportQualifier]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupImportQualifierArrayOutput) Index(i pulumi.IntInput) DashboardGroupImportQualifierOutput {
@@ -1653,12 +1388,6 @@ func (i DashboardGroupImportQualifierFilterArgs) ToDashboardGroupImportQualifier
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierFilterOutput)
 }
 
-func (i DashboardGroupImportQualifierFilterArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupImportQualifierFilter] {
-	return pulumix.Output[DashboardGroupImportQualifierFilter]{
-		OutputState: i.ToDashboardGroupImportQualifierFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGroupImportQualifierFilterArrayInput is an input type that accepts DashboardGroupImportQualifierFilterArray and DashboardGroupImportQualifierFilterArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupImportQualifierFilterArrayInput` via:
 //
@@ -1684,12 +1413,6 @@ func (i DashboardGroupImportQualifierFilterArray) ToDashboardGroupImportQualifie
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupImportQualifierFilterArrayOutput)
 }
 
-func (i DashboardGroupImportQualifierFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupImportQualifierFilter] {
-	return pulumix.Output[[]DashboardGroupImportQualifierFilter]{
-		OutputState: i.ToDashboardGroupImportQualifierFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGroupImportQualifierFilterOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupImportQualifierFilterOutput) ElementType() reflect.Type {
@@ -1702,12 +1425,6 @@ func (o DashboardGroupImportQualifierFilterOutput) ToDashboardGroupImportQualifi
 
 func (o DashboardGroupImportQualifierFilterOutput) ToDashboardGroupImportQualifierFilterOutputWithContext(ctx context.Context) DashboardGroupImportQualifierFilterOutput {
 	return o
-}
-
-func (o DashboardGroupImportQualifierFilterOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupImportQualifierFilter] {
-	return pulumix.Output[DashboardGroupImportQualifierFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
@@ -1737,12 +1454,6 @@ func (o DashboardGroupImportQualifierFilterArrayOutput) ToDashboardGroupImportQu
 
 func (o DashboardGroupImportQualifierFilterArrayOutput) ToDashboardGroupImportQualifierFilterArrayOutputWithContext(ctx context.Context) DashboardGroupImportQualifierFilterArrayOutput {
 	return o
-}
-
-func (o DashboardGroupImportQualifierFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupImportQualifierFilter] {
-	return pulumix.Output[[]DashboardGroupImportQualifierFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupImportQualifierFilterArrayOutput) Index(i pulumi.IntInput) DashboardGroupImportQualifierFilterOutput {
@@ -1792,12 +1503,6 @@ func (i DashboardGroupPermissionArgs) ToDashboardGroupPermissionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupPermissionOutput)
 }
 
-func (i DashboardGroupPermissionArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupPermission] {
-	return pulumix.Output[DashboardGroupPermission]{
-		OutputState: i.ToDashboardGroupPermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardGroupPermissionArrayInput is an input type that accepts DashboardGroupPermissionArray and DashboardGroupPermissionArrayOutput values.
 // You can construct a concrete instance of `DashboardGroupPermissionArrayInput` via:
 //
@@ -1823,12 +1528,6 @@ func (i DashboardGroupPermissionArray) ToDashboardGroupPermissionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardGroupPermissionArrayOutput)
 }
 
-func (i DashboardGroupPermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupPermission] {
-	return pulumix.Output[[]DashboardGroupPermission]{
-		OutputState: i.ToDashboardGroupPermissionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardGroupPermissionOutput struct{ *pulumi.OutputState }
 
 func (DashboardGroupPermissionOutput) ElementType() reflect.Type {
@@ -1841,12 +1540,6 @@ func (o DashboardGroupPermissionOutput) ToDashboardGroupPermissionOutput() Dashb
 
 func (o DashboardGroupPermissionOutput) ToDashboardGroupPermissionOutputWithContext(ctx context.Context) DashboardGroupPermissionOutput {
 	return o
-}
-
-func (o DashboardGroupPermissionOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardGroupPermission] {
-	return pulumix.Output[DashboardGroupPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
@@ -1876,12 +1569,6 @@ func (o DashboardGroupPermissionArrayOutput) ToDashboardGroupPermissionArrayOutp
 
 func (o DashboardGroupPermissionArrayOutput) ToDashboardGroupPermissionArrayOutputWithContext(ctx context.Context) DashboardGroupPermissionArrayOutput {
 	return o
-}
-
-func (o DashboardGroupPermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardGroupPermission] {
-	return pulumix.Output[[]DashboardGroupPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardGroupPermissionArrayOutput) Index(i pulumi.IntInput) DashboardGroupPermissionOutput {
@@ -1927,12 +1614,6 @@ func (i DashboardPermissionsArgs) ToDashboardPermissionsOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsOutput)
 }
 
-func (i DashboardPermissionsArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardPermissions] {
-	return pulumix.Output[DashboardPermissions]{
-		OutputState: i.ToDashboardPermissionsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i DashboardPermissionsArgs) ToDashboardPermissionsPtrOutput() DashboardPermissionsPtrOutput {
 	return i.ToDashboardPermissionsPtrOutputWithContext(context.Background())
 }
@@ -1974,12 +1655,6 @@ func (i *dashboardPermissionsPtrType) ToDashboardPermissionsPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsPtrOutput)
 }
 
-func (i *dashboardPermissionsPtrType) ToOutput(ctx context.Context) pulumix.Output[*DashboardPermissions] {
-	return pulumix.Output[*DashboardPermissions]{
-		OutputState: i.ToDashboardPermissionsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardPermissionsOutput struct{ *pulumi.OutputState }
 
 func (DashboardPermissionsOutput) ElementType() reflect.Type {
@@ -2004,12 +1679,6 @@ func (o DashboardPermissionsOutput) ToDashboardPermissionsPtrOutputWithContext(c
 	}).(DashboardPermissionsPtrOutput)
 }
 
-func (o DashboardPermissionsOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPermissions] {
-	return pulumix.Output[DashboardPermissions]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
 func (o DashboardPermissionsOutput) Acls() DashboardPermissionsAclArrayOutput {
 	return o.ApplyT(func(v DashboardPermissions) []DashboardPermissionsAcl { return v.Acls }).(DashboardPermissionsAclArrayOutput)
@@ -2032,12 +1701,6 @@ func (o DashboardPermissionsPtrOutput) ToDashboardPermissionsPtrOutput() Dashboa
 
 func (o DashboardPermissionsPtrOutput) ToDashboardPermissionsPtrOutputWithContext(ctx context.Context) DashboardPermissionsPtrOutput {
 	return o
-}
-
-func (o DashboardPermissionsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*DashboardPermissions] {
-	return pulumix.Output[*DashboardPermissions]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardPermissionsPtrOutput) Elem() DashboardPermissionsOutput {
@@ -2111,12 +1774,6 @@ func (i DashboardPermissionsAclArgs) ToDashboardPermissionsAclOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsAclOutput)
 }
 
-func (i DashboardPermissionsAclArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardPermissionsAcl] {
-	return pulumix.Output[DashboardPermissionsAcl]{
-		OutputState: i.ToDashboardPermissionsAclOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardPermissionsAclArrayInput is an input type that accepts DashboardPermissionsAclArray and DashboardPermissionsAclArrayOutput values.
 // You can construct a concrete instance of `DashboardPermissionsAclArrayInput` via:
 //
@@ -2142,12 +1799,6 @@ func (i DashboardPermissionsAclArray) ToDashboardPermissionsAclArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardPermissionsAclArrayOutput)
 }
 
-func (i DashboardPermissionsAclArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardPermissionsAcl] {
-	return pulumix.Output[[]DashboardPermissionsAcl]{
-		OutputState: i.ToDashboardPermissionsAclArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardPermissionsAclOutput struct{ *pulumi.OutputState }
 
 func (DashboardPermissionsAclOutput) ElementType() reflect.Type {
@@ -2160,12 +1811,6 @@ func (o DashboardPermissionsAclOutput) ToDashboardPermissionsAclOutput() Dashboa
 
 func (o DashboardPermissionsAclOutput) ToDashboardPermissionsAclOutputWithContext(ctx context.Context) DashboardPermissionsAclOutput {
 	return o
-}
-
-func (o DashboardPermissionsAclOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardPermissionsAcl] {
-	return pulumix.Output[DashboardPermissionsAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
@@ -2195,12 +1840,6 @@ func (o DashboardPermissionsAclArrayOutput) ToDashboardPermissionsAclArrayOutput
 
 func (o DashboardPermissionsAclArrayOutput) ToDashboardPermissionsAclArrayOutputWithContext(ctx context.Context) DashboardPermissionsAclArrayOutput {
 	return o
-}
-
-func (o DashboardPermissionsAclArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardPermissionsAcl] {
-	return pulumix.Output[[]DashboardPermissionsAcl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardPermissionsAclArrayOutput) Index(i pulumi.IntInput) DashboardPermissionsAclOutput {
@@ -2250,12 +1889,6 @@ func (i DashboardSelectedEventOverlayArgs) ToDashboardSelectedEventOverlayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardSelectedEventOverlayOutput)
 }
 
-func (i DashboardSelectedEventOverlayArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardSelectedEventOverlay] {
-	return pulumix.Output[DashboardSelectedEventOverlay]{
-		OutputState: i.ToDashboardSelectedEventOverlayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardSelectedEventOverlayArrayInput is an input type that accepts DashboardSelectedEventOverlayArray and DashboardSelectedEventOverlayArrayOutput values.
 // You can construct a concrete instance of `DashboardSelectedEventOverlayArrayInput` via:
 //
@@ -2281,12 +1914,6 @@ func (i DashboardSelectedEventOverlayArray) ToDashboardSelectedEventOverlayArray
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardSelectedEventOverlayArrayOutput)
 }
 
-func (i DashboardSelectedEventOverlayArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardSelectedEventOverlay] {
-	return pulumix.Output[[]DashboardSelectedEventOverlay]{
-		OutputState: i.ToDashboardSelectedEventOverlayArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardSelectedEventOverlayOutput struct{ *pulumi.OutputState }
 
 func (DashboardSelectedEventOverlayOutput) ElementType() reflect.Type {
@@ -2299,12 +1926,6 @@ func (o DashboardSelectedEventOverlayOutput) ToDashboardSelectedEventOverlayOutp
 
 func (o DashboardSelectedEventOverlayOutput) ToDashboardSelectedEventOverlayOutputWithContext(ctx context.Context) DashboardSelectedEventOverlayOutput {
 	return o
-}
-
-func (o DashboardSelectedEventOverlayOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardSelectedEventOverlay] {
-	return pulumix.Output[DashboardSelectedEventOverlay]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Search term used to choose the events shown in the overlay.
@@ -2334,12 +1955,6 @@ func (o DashboardSelectedEventOverlayArrayOutput) ToDashboardSelectedEventOverla
 
 func (o DashboardSelectedEventOverlayArrayOutput) ToDashboardSelectedEventOverlayArrayOutputWithContext(ctx context.Context) DashboardSelectedEventOverlayArrayOutput {
 	return o
-}
-
-func (o DashboardSelectedEventOverlayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardSelectedEventOverlay] {
-	return pulumix.Output[[]DashboardSelectedEventOverlay]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardSelectedEventOverlayArrayOutput) Index(i pulumi.IntInput) DashboardSelectedEventOverlayOutput {
@@ -2389,12 +2004,6 @@ func (i DashboardSelectedEventOverlaySourceArgs) ToDashboardSelectedEventOverlay
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardSelectedEventOverlaySourceOutput)
 }
 
-func (i DashboardSelectedEventOverlaySourceArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardSelectedEventOverlaySource] {
-	return pulumix.Output[DashboardSelectedEventOverlaySource]{
-		OutputState: i.ToDashboardSelectedEventOverlaySourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardSelectedEventOverlaySourceArrayInput is an input type that accepts DashboardSelectedEventOverlaySourceArray and DashboardSelectedEventOverlaySourceArrayOutput values.
 // You can construct a concrete instance of `DashboardSelectedEventOverlaySourceArrayInput` via:
 //
@@ -2420,12 +2029,6 @@ func (i DashboardSelectedEventOverlaySourceArray) ToDashboardSelectedEventOverla
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardSelectedEventOverlaySourceArrayOutput)
 }
 
-func (i DashboardSelectedEventOverlaySourceArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardSelectedEventOverlaySource] {
-	return pulumix.Output[[]DashboardSelectedEventOverlaySource]{
-		OutputState: i.ToDashboardSelectedEventOverlaySourceArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardSelectedEventOverlaySourceOutput struct{ *pulumi.OutputState }
 
 func (DashboardSelectedEventOverlaySourceOutput) ElementType() reflect.Type {
@@ -2438,12 +2041,6 @@ func (o DashboardSelectedEventOverlaySourceOutput) ToDashboardSelectedEventOverl
 
 func (o DashboardSelectedEventOverlaySourceOutput) ToDashboardSelectedEventOverlaySourceOutputWithContext(ctx context.Context) DashboardSelectedEventOverlaySourceOutput {
 	return o
-}
-
-func (o DashboardSelectedEventOverlaySourceOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardSelectedEventOverlaySource] {
-	return pulumix.Output[DashboardSelectedEventOverlaySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
@@ -2473,12 +2070,6 @@ func (o DashboardSelectedEventOverlaySourceArrayOutput) ToDashboardSelectedEvent
 
 func (o DashboardSelectedEventOverlaySourceArrayOutput) ToDashboardSelectedEventOverlaySourceArrayOutputWithContext(ctx context.Context) DashboardSelectedEventOverlaySourceArrayOutput {
 	return o
-}
-
-func (o DashboardSelectedEventOverlaySourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardSelectedEventOverlaySource] {
-	return pulumix.Output[[]DashboardSelectedEventOverlaySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DashboardSelectedEventOverlaySourceArrayOutput) Index(i pulumi.IntInput) DashboardSelectedEventOverlaySourceOutput {
@@ -2552,12 +2143,6 @@ func (i DashboardVariableArgs) ToDashboardVariableOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardVariableOutput)
 }
 
-func (i DashboardVariableArgs) ToOutput(ctx context.Context) pulumix.Output[DashboardVariable] {
-	return pulumix.Output[DashboardVariable]{
-		OutputState: i.ToDashboardVariableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DashboardVariableArrayInput is an input type that accepts DashboardVariableArray and DashboardVariableArrayOutput values.
 // You can construct a concrete instance of `DashboardVariableArrayInput` via:
 //
@@ -2583,12 +2168,6 @@ func (i DashboardVariableArray) ToDashboardVariableArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DashboardVariableArrayOutput)
 }
 
-func (i DashboardVariableArray) ToOutput(ctx context.Context) pulumix.Output[[]DashboardVariable] {
-	return pulumix.Output[[]DashboardVariable]{
-		OutputState: i.ToDashboardVariableArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DashboardVariableOutput struct{ *pulumi.OutputState }
 
 func (DashboardVariableOutput) ElementType() reflect.Type {
@@ -2601,12 +2180,6 @@ func (o DashboardVariableOutput) ToDashboardVariableOutput() DashboardVariableOu
 
 func (o DashboardVariableOutput) ToDashboardVariableOutputWithContext(ctx context.Context) DashboardVariableOutput {
 	return o
-}
-
-func (o DashboardVariableOutput) ToOutput(ctx context.Context) pulumix.Output[DashboardVariable] {
-	return pulumix.Output[DashboardVariable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
@@ -2668,12 +2241,6 @@ func (o DashboardVariableArrayOutput) ToDashboardVariableArrayOutputWithContext(
 	return o
 }
 
-func (o DashboardVariableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DashboardVariable] {
-	return pulumix.Output[[]DashboardVariable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DashboardVariableArrayOutput) Index(i pulumi.IntInput) DashboardVariableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardVariable {
 		return vs[0].([]DashboardVariable)[vs[1].(int)]
@@ -2729,12 +2296,6 @@ func (i DataLinkTargetExternalUrlArgs) ToDataLinkTargetExternalUrlOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetExternalUrlOutput)
 }
 
-func (i DataLinkTargetExternalUrlArgs) ToOutput(ctx context.Context) pulumix.Output[DataLinkTargetExternalUrl] {
-	return pulumix.Output[DataLinkTargetExternalUrl]{
-		OutputState: i.ToDataLinkTargetExternalUrlOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLinkTargetExternalUrlArrayInput is an input type that accepts DataLinkTargetExternalUrlArray and DataLinkTargetExternalUrlArrayOutput values.
 // You can construct a concrete instance of `DataLinkTargetExternalUrlArrayInput` via:
 //
@@ -2760,12 +2321,6 @@ func (i DataLinkTargetExternalUrlArray) ToDataLinkTargetExternalUrlArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetExternalUrlArrayOutput)
 }
 
-func (i DataLinkTargetExternalUrlArray) ToOutput(ctx context.Context) pulumix.Output[[]DataLinkTargetExternalUrl] {
-	return pulumix.Output[[]DataLinkTargetExternalUrl]{
-		OutputState: i.ToDataLinkTargetExternalUrlArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataLinkTargetExternalUrlOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetExternalUrlOutput) ElementType() reflect.Type {
@@ -2778,12 +2333,6 @@ func (o DataLinkTargetExternalUrlOutput) ToDataLinkTargetExternalUrlOutput() Dat
 
 func (o DataLinkTargetExternalUrlOutput) ToDataLinkTargetExternalUrlOutputWithContext(ctx context.Context) DataLinkTargetExternalUrlOutput {
 	return o
-}
-
-func (o DataLinkTargetExternalUrlOutput) ToOutput(ctx context.Context) pulumix.Output[DataLinkTargetExternalUrl] {
-	return pulumix.Output[DataLinkTargetExternalUrl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
@@ -2823,12 +2372,6 @@ func (o DataLinkTargetExternalUrlArrayOutput) ToDataLinkTargetExternalUrlArrayOu
 
 func (o DataLinkTargetExternalUrlArrayOutput) ToDataLinkTargetExternalUrlArrayOutputWithContext(ctx context.Context) DataLinkTargetExternalUrlArrayOutput {
 	return o
-}
-
-func (o DataLinkTargetExternalUrlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataLinkTargetExternalUrl] {
-	return pulumix.Output[[]DataLinkTargetExternalUrl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLinkTargetExternalUrlArrayOutput) Index(i pulumi.IntInput) DataLinkTargetExternalUrlOutput {
@@ -2882,12 +2425,6 @@ func (i DataLinkTargetSignalfxDashboardArgs) ToDataLinkTargetSignalfxDashboardOu
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetSignalfxDashboardOutput)
 }
 
-func (i DataLinkTargetSignalfxDashboardArgs) ToOutput(ctx context.Context) pulumix.Output[DataLinkTargetSignalfxDashboard] {
-	return pulumix.Output[DataLinkTargetSignalfxDashboard]{
-		OutputState: i.ToDataLinkTargetSignalfxDashboardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLinkTargetSignalfxDashboardArrayInput is an input type that accepts DataLinkTargetSignalfxDashboardArray and DataLinkTargetSignalfxDashboardArrayOutput values.
 // You can construct a concrete instance of `DataLinkTargetSignalfxDashboardArrayInput` via:
 //
@@ -2913,12 +2450,6 @@ func (i DataLinkTargetSignalfxDashboardArray) ToDataLinkTargetSignalfxDashboardA
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetSignalfxDashboardArrayOutput)
 }
 
-func (i DataLinkTargetSignalfxDashboardArray) ToOutput(ctx context.Context) pulumix.Output[[]DataLinkTargetSignalfxDashboard] {
-	return pulumix.Output[[]DataLinkTargetSignalfxDashboard]{
-		OutputState: i.ToDataLinkTargetSignalfxDashboardArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataLinkTargetSignalfxDashboardOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetSignalfxDashboardOutput) ElementType() reflect.Type {
@@ -2931,12 +2462,6 @@ func (o DataLinkTargetSignalfxDashboardOutput) ToDataLinkTargetSignalfxDashboard
 
 func (o DataLinkTargetSignalfxDashboardOutput) ToDataLinkTargetSignalfxDashboardOutputWithContext(ctx context.Context) DataLinkTargetSignalfxDashboardOutput {
 	return o
-}
-
-func (o DataLinkTargetSignalfxDashboardOutput) ToOutput(ctx context.Context) pulumix.Output[DataLinkTargetSignalfxDashboard] {
-	return pulumix.Output[DataLinkTargetSignalfxDashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 // SignalFx-assigned ID of the dashboard link target's dashboard group
@@ -2971,12 +2496,6 @@ func (o DataLinkTargetSignalfxDashboardArrayOutput) ToDataLinkTargetSignalfxDash
 
 func (o DataLinkTargetSignalfxDashboardArrayOutput) ToDataLinkTargetSignalfxDashboardArrayOutputWithContext(ctx context.Context) DataLinkTargetSignalfxDashboardArrayOutput {
 	return o
-}
-
-func (o DataLinkTargetSignalfxDashboardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataLinkTargetSignalfxDashboard] {
-	return pulumix.Output[[]DataLinkTargetSignalfxDashboard]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLinkTargetSignalfxDashboardArrayOutput) Index(i pulumi.IntInput) DataLinkTargetSignalfxDashboardOutput {
@@ -3022,12 +2541,6 @@ func (i DataLinkTargetSplunkArgs) ToDataLinkTargetSplunkOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetSplunkOutput)
 }
 
-func (i DataLinkTargetSplunkArgs) ToOutput(ctx context.Context) pulumix.Output[DataLinkTargetSplunk] {
-	return pulumix.Output[DataLinkTargetSplunk]{
-		OutputState: i.ToDataLinkTargetSplunkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DataLinkTargetSplunkArrayInput is an input type that accepts DataLinkTargetSplunkArray and DataLinkTargetSplunkArrayOutput values.
 // You can construct a concrete instance of `DataLinkTargetSplunkArrayInput` via:
 //
@@ -3053,12 +2566,6 @@ func (i DataLinkTargetSplunkArray) ToDataLinkTargetSplunkArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DataLinkTargetSplunkArrayOutput)
 }
 
-func (i DataLinkTargetSplunkArray) ToOutput(ctx context.Context) pulumix.Output[[]DataLinkTargetSplunk] {
-	return pulumix.Output[[]DataLinkTargetSplunk]{
-		OutputState: i.ToDataLinkTargetSplunkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DataLinkTargetSplunkOutput struct{ *pulumi.OutputState }
 
 func (DataLinkTargetSplunkOutput) ElementType() reflect.Type {
@@ -3071,12 +2578,6 @@ func (o DataLinkTargetSplunkOutput) ToDataLinkTargetSplunkOutput() DataLinkTarge
 
 func (o DataLinkTargetSplunkOutput) ToDataLinkTargetSplunkOutputWithContext(ctx context.Context) DataLinkTargetSplunkOutput {
 	return o
-}
-
-func (o DataLinkTargetSplunkOutput) ToOutput(ctx context.Context) pulumix.Output[DataLinkTargetSplunk] {
-	return pulumix.Output[DataLinkTargetSplunk]{
-		OutputState: o.OutputState,
-	}
 }
 
 // User-assigned target name. Use this value to differentiate between the link targets for a data link object.
@@ -3101,12 +2602,6 @@ func (o DataLinkTargetSplunkArrayOutput) ToDataLinkTargetSplunkArrayOutput() Dat
 
 func (o DataLinkTargetSplunkArrayOutput) ToDataLinkTargetSplunkArrayOutputWithContext(ctx context.Context) DataLinkTargetSplunkArrayOutput {
 	return o
-}
-
-func (o DataLinkTargetSplunkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DataLinkTargetSplunk] {
-	return pulumix.Output[[]DataLinkTargetSplunk]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DataLinkTargetSplunkArrayOutput) Index(i pulumi.IntInput) DataLinkTargetSplunkOutput {
@@ -3180,12 +2675,6 @@ func (i DetectorRuleArgs) ToDetectorRuleOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorRuleOutput)
 }
 
-func (i DetectorRuleArgs) ToOutput(ctx context.Context) pulumix.Output[DetectorRule] {
-	return pulumix.Output[DetectorRule]{
-		OutputState: i.ToDetectorRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DetectorRuleArrayInput is an input type that accepts DetectorRuleArray and DetectorRuleArrayOutput values.
 // You can construct a concrete instance of `DetectorRuleArrayInput` via:
 //
@@ -3211,12 +2700,6 @@ func (i DetectorRuleArray) ToDetectorRuleArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorRuleArrayOutput)
 }
 
-func (i DetectorRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]DetectorRule] {
-	return pulumix.Output[[]DetectorRule]{
-		OutputState: i.ToDetectorRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DetectorRuleOutput struct{ *pulumi.OutputState }
 
 func (DetectorRuleOutput) ElementType() reflect.Type {
@@ -3229,12 +2712,6 @@ func (o DetectorRuleOutput) ToDetectorRuleOutput() DetectorRuleOutput {
 
 func (o DetectorRuleOutput) ToDetectorRuleOutputWithContext(ctx context.Context) DetectorRuleOutput {
 	return o
-}
-
-func (o DetectorRuleOutput) ToOutput(ctx context.Context) pulumix.Output[DetectorRule] {
-	return pulumix.Output[DetectorRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
@@ -3294,12 +2771,6 @@ func (o DetectorRuleArrayOutput) ToDetectorRuleArrayOutput() DetectorRuleArrayOu
 
 func (o DetectorRuleArrayOutput) ToDetectorRuleArrayOutputWithContext(ctx context.Context) DetectorRuleArrayOutput {
 	return o
-}
-
-func (o DetectorRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DetectorRule] {
-	return pulumix.Output[[]DetectorRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DetectorRuleArrayOutput) Index(i pulumi.IntInput) DetectorRuleOutput {
@@ -3379,12 +2850,6 @@ func (i DetectorVizOptionArgs) ToDetectorVizOptionOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorVizOptionOutput)
 }
 
-func (i DetectorVizOptionArgs) ToOutput(ctx context.Context) pulumix.Output[DetectorVizOption] {
-	return pulumix.Output[DetectorVizOption]{
-		OutputState: i.ToDetectorVizOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DetectorVizOptionArrayInput is an input type that accepts DetectorVizOptionArray and DetectorVizOptionArrayOutput values.
 // You can construct a concrete instance of `DetectorVizOptionArrayInput` via:
 //
@@ -3410,12 +2875,6 @@ func (i DetectorVizOptionArray) ToDetectorVizOptionArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(DetectorVizOptionArrayOutput)
 }
 
-func (i DetectorVizOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]DetectorVizOption] {
-	return pulumix.Output[[]DetectorVizOption]{
-		OutputState: i.ToDetectorVizOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DetectorVizOptionOutput struct{ *pulumi.OutputState }
 
 func (DetectorVizOptionOutput) ElementType() reflect.Type {
@@ -3428,12 +2887,6 @@ func (o DetectorVizOptionOutput) ToDetectorVizOptionOutput() DetectorVizOptionOu
 
 func (o DetectorVizOptionOutput) ToDetectorVizOptionOutputWithContext(ctx context.Context) DetectorVizOptionOutput {
 	return o
-}
-
-func (o DetectorVizOptionOutput) ToOutput(ctx context.Context) pulumix.Output[DetectorVizOption] {
-	return pulumix.Output[DetectorVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
@@ -3489,12 +2942,6 @@ func (o DetectorVizOptionArrayOutput) ToDetectorVizOptionArrayOutputWithContext(
 	return o
 }
 
-func (o DetectorVizOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DetectorVizOption] {
-	return pulumix.Output[[]DetectorVizOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DetectorVizOptionArrayOutput) Index(i pulumi.IntInput) DetectorVizOptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DetectorVizOption {
 		return vs[0].([]DetectorVizOption)[vs[1].(int)]
@@ -3542,12 +2989,6 @@ func (i HeatmapChartColorRangeArgs) ToHeatmapChartColorRangeOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartColorRangeOutput)
 }
 
-func (i HeatmapChartColorRangeArgs) ToOutput(ctx context.Context) pulumix.Output[HeatmapChartColorRange] {
-	return pulumix.Output[HeatmapChartColorRange]{
-		OutputState: i.ToHeatmapChartColorRangeOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i HeatmapChartColorRangeArgs) ToHeatmapChartColorRangePtrOutput() HeatmapChartColorRangePtrOutput {
 	return i.ToHeatmapChartColorRangePtrOutputWithContext(context.Background())
 }
@@ -3589,12 +3030,6 @@ func (i *heatmapChartColorRangePtrType) ToHeatmapChartColorRangePtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartColorRangePtrOutput)
 }
 
-func (i *heatmapChartColorRangePtrType) ToOutput(ctx context.Context) pulumix.Output[*HeatmapChartColorRange] {
-	return pulumix.Output[*HeatmapChartColorRange]{
-		OutputState: i.ToHeatmapChartColorRangePtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HeatmapChartColorRangeOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartColorRangeOutput) ElementType() reflect.Type {
@@ -3617,12 +3052,6 @@ func (o HeatmapChartColorRangeOutput) ToHeatmapChartColorRangePtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v HeatmapChartColorRange) *HeatmapChartColorRange {
 		return &v
 	}).(HeatmapChartColorRangePtrOutput)
-}
-
-func (o HeatmapChartColorRangeOutput) ToOutput(ctx context.Context) pulumix.Output[HeatmapChartColorRange] {
-	return pulumix.Output[HeatmapChartColorRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -3652,12 +3081,6 @@ func (o HeatmapChartColorRangePtrOutput) ToHeatmapChartColorRangePtrOutput() Hea
 
 func (o HeatmapChartColorRangePtrOutput) ToHeatmapChartColorRangePtrOutputWithContext(ctx context.Context) HeatmapChartColorRangePtrOutput {
 	return o
-}
-
-func (o HeatmapChartColorRangePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*HeatmapChartColorRange] {
-	return pulumix.Output[*HeatmapChartColorRange]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeatmapChartColorRangePtrOutput) Elem() HeatmapChartColorRangeOutput {
@@ -3749,12 +3172,6 @@ func (i HeatmapChartColorScaleArgs) ToHeatmapChartColorScaleOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartColorScaleOutput)
 }
 
-func (i HeatmapChartColorScaleArgs) ToOutput(ctx context.Context) pulumix.Output[HeatmapChartColorScale] {
-	return pulumix.Output[HeatmapChartColorScale]{
-		OutputState: i.ToHeatmapChartColorScaleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HeatmapChartColorScaleArrayInput is an input type that accepts HeatmapChartColorScaleArray and HeatmapChartColorScaleArrayOutput values.
 // You can construct a concrete instance of `HeatmapChartColorScaleArrayInput` via:
 //
@@ -3780,12 +3197,6 @@ func (i HeatmapChartColorScaleArray) ToHeatmapChartColorScaleArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(HeatmapChartColorScaleArrayOutput)
 }
 
-func (i HeatmapChartColorScaleArray) ToOutput(ctx context.Context) pulumix.Output[[]HeatmapChartColorScale] {
-	return pulumix.Output[[]HeatmapChartColorScale]{
-		OutputState: i.ToHeatmapChartColorScaleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HeatmapChartColorScaleOutput struct{ *pulumi.OutputState }
 
 func (HeatmapChartColorScaleOutput) ElementType() reflect.Type {
@@ -3798,12 +3209,6 @@ func (o HeatmapChartColorScaleOutput) ToHeatmapChartColorScaleOutput() HeatmapCh
 
 func (o HeatmapChartColorScaleOutput) ToHeatmapChartColorScaleOutputWithContext(ctx context.Context) HeatmapChartColorScaleOutput {
 	return o
-}
-
-func (o HeatmapChartColorScaleOutput) ToOutput(ctx context.Context) pulumix.Output[HeatmapChartColorScale] {
-	return pulumix.Output[HeatmapChartColorScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -3843,12 +3248,6 @@ func (o HeatmapChartColorScaleArrayOutput) ToHeatmapChartColorScaleArrayOutput()
 
 func (o HeatmapChartColorScaleArrayOutput) ToHeatmapChartColorScaleArrayOutputWithContext(ctx context.Context) HeatmapChartColorScaleArrayOutput {
 	return o
-}
-
-func (o HeatmapChartColorScaleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]HeatmapChartColorScale] {
-	return pulumix.Output[[]HeatmapChartColorScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HeatmapChartColorScaleArrayOutput) Index(i pulumi.IntInput) HeatmapChartColorScaleOutput {
@@ -3906,12 +3305,6 @@ func (i ListChartColorScaleArgs) ToListChartColorScaleOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartColorScaleOutput)
 }
 
-func (i ListChartColorScaleArgs) ToOutput(ctx context.Context) pulumix.Output[ListChartColorScale] {
-	return pulumix.Output[ListChartColorScale]{
-		OutputState: i.ToListChartColorScaleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListChartColorScaleArrayInput is an input type that accepts ListChartColorScaleArray and ListChartColorScaleArrayOutput values.
 // You can construct a concrete instance of `ListChartColorScaleArrayInput` via:
 //
@@ -3937,12 +3330,6 @@ func (i ListChartColorScaleArray) ToListChartColorScaleArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartColorScaleArrayOutput)
 }
 
-func (i ListChartColorScaleArray) ToOutput(ctx context.Context) pulumix.Output[[]ListChartColorScale] {
-	return pulumix.Output[[]ListChartColorScale]{
-		OutputState: i.ToListChartColorScaleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListChartColorScaleOutput struct{ *pulumi.OutputState }
 
 func (ListChartColorScaleOutput) ElementType() reflect.Type {
@@ -3955,12 +3342,6 @@ func (o ListChartColorScaleOutput) ToListChartColorScaleOutput() ListChartColorS
 
 func (o ListChartColorScaleOutput) ToListChartColorScaleOutputWithContext(ctx context.Context) ListChartColorScaleOutput {
 	return o
-}
-
-func (o ListChartColorScaleOutput) ToOutput(ctx context.Context) pulumix.Output[ListChartColorScale] {
-	return pulumix.Output[ListChartColorScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -4000,12 +3381,6 @@ func (o ListChartColorScaleArrayOutput) ToListChartColorScaleArrayOutput() ListC
 
 func (o ListChartColorScaleArrayOutput) ToListChartColorScaleArrayOutputWithContext(ctx context.Context) ListChartColorScaleArrayOutput {
 	return o
-}
-
-func (o ListChartColorScaleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ListChartColorScale] {
-	return pulumix.Output[[]ListChartColorScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListChartColorScaleArrayOutput) Index(i pulumi.IntInput) ListChartColorScaleOutput {
@@ -4051,12 +3426,6 @@ func (i ListChartLegendOptionsFieldArgs) ToListChartLegendOptionsFieldOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartLegendOptionsFieldOutput)
 }
 
-func (i ListChartLegendOptionsFieldArgs) ToOutput(ctx context.Context) pulumix.Output[ListChartLegendOptionsField] {
-	return pulumix.Output[ListChartLegendOptionsField]{
-		OutputState: i.ToListChartLegendOptionsFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListChartLegendOptionsFieldArrayInput is an input type that accepts ListChartLegendOptionsFieldArray and ListChartLegendOptionsFieldArrayOutput values.
 // You can construct a concrete instance of `ListChartLegendOptionsFieldArrayInput` via:
 //
@@ -4082,12 +3451,6 @@ func (i ListChartLegendOptionsFieldArray) ToListChartLegendOptionsFieldArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartLegendOptionsFieldArrayOutput)
 }
 
-func (i ListChartLegendOptionsFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]ListChartLegendOptionsField] {
-	return pulumix.Output[[]ListChartLegendOptionsField]{
-		OutputState: i.ToListChartLegendOptionsFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListChartLegendOptionsFieldOutput struct{ *pulumi.OutputState }
 
 func (ListChartLegendOptionsFieldOutput) ElementType() reflect.Type {
@@ -4100,12 +3463,6 @@ func (o ListChartLegendOptionsFieldOutput) ToListChartLegendOptionsFieldOutput()
 
 func (o ListChartLegendOptionsFieldOutput) ToListChartLegendOptionsFieldOutputWithContext(ctx context.Context) ListChartLegendOptionsFieldOutput {
 	return o
-}
-
-func (o ListChartLegendOptionsFieldOutput) ToOutput(ctx context.Context) pulumix.Output[ListChartLegendOptionsField] {
-	return pulumix.Output[ListChartLegendOptionsField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True or False depending on if you want the property to be shown or hidden.
@@ -4130,12 +3487,6 @@ func (o ListChartLegendOptionsFieldArrayOutput) ToListChartLegendOptionsFieldArr
 
 func (o ListChartLegendOptionsFieldArrayOutput) ToListChartLegendOptionsFieldArrayOutputWithContext(ctx context.Context) ListChartLegendOptionsFieldArrayOutput {
 	return o
-}
-
-func (o ListChartLegendOptionsFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ListChartLegendOptionsField] {
-	return pulumix.Output[[]ListChartLegendOptionsField]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) ListChartLegendOptionsFieldOutput {
@@ -4195,12 +3546,6 @@ func (i ListChartVizOptionArgs) ToListChartVizOptionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartVizOptionOutput)
 }
 
-func (i ListChartVizOptionArgs) ToOutput(ctx context.Context) pulumix.Output[ListChartVizOption] {
-	return pulumix.Output[ListChartVizOption]{
-		OutputState: i.ToListChartVizOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ListChartVizOptionArrayInput is an input type that accepts ListChartVizOptionArray and ListChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `ListChartVizOptionArrayInput` via:
 //
@@ -4226,12 +3571,6 @@ func (i ListChartVizOptionArray) ToListChartVizOptionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ListChartVizOptionArrayOutput)
 }
 
-func (i ListChartVizOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]ListChartVizOption] {
-	return pulumix.Output[[]ListChartVizOption]{
-		OutputState: i.ToListChartVizOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ListChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (ListChartVizOptionOutput) ElementType() reflect.Type {
@@ -4244,12 +3583,6 @@ func (o ListChartVizOptionOutput) ToListChartVizOptionOutput() ListChartVizOptio
 
 func (o ListChartVizOptionOutput) ToListChartVizOptionOutputWithContext(ctx context.Context) ListChartVizOptionOutput {
 	return o
-}
-
-func (o ListChartVizOptionOutput) ToOutput(ctx context.Context) pulumix.Output[ListChartVizOption] {
-	return pulumix.Output[ListChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -4293,12 +3626,6 @@ func (o ListChartVizOptionArrayOutput) ToListChartVizOptionArrayOutput() ListCha
 
 func (o ListChartVizOptionArrayOutput) ToListChartVizOptionArrayOutputWithContext(ctx context.Context) ListChartVizOptionArrayOutput {
 	return o
-}
-
-func (o ListChartVizOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]ListChartVizOption] {
-	return pulumix.Output[[]ListChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ListChartVizOptionArrayOutput) Index(i pulumi.IntInput) ListChartVizOptionOutput {
@@ -4352,12 +3679,6 @@ func (i MetricRulesetAggregationRuleArgs) ToMetricRulesetAggregationRuleOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleOutput)
 }
 
-func (i MetricRulesetAggregationRuleArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRule] {
-	return pulumix.Output[MetricRulesetAggregationRule]{
-		OutputState: i.ToMetricRulesetAggregationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRulesetAggregationRuleArrayInput is an input type that accepts MetricRulesetAggregationRuleArray and MetricRulesetAggregationRuleArrayOutput values.
 // You can construct a concrete instance of `MetricRulesetAggregationRuleArrayInput` via:
 //
@@ -4383,12 +3704,6 @@ func (i MetricRulesetAggregationRuleArray) ToMetricRulesetAggregationRuleArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleArrayOutput)
 }
 
-func (i MetricRulesetAggregationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRule] {
-	return pulumix.Output[[]MetricRulesetAggregationRule]{
-		OutputState: i.ToMetricRulesetAggregationRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricRulesetAggregationRuleOutput struct{ *pulumi.OutputState }
 
 func (MetricRulesetAggregationRuleOutput) ElementType() reflect.Type {
@@ -4401,12 +3716,6 @@ func (o MetricRulesetAggregationRuleOutput) ToMetricRulesetAggregationRuleOutput
 
 func (o MetricRulesetAggregationRuleOutput) ToMetricRulesetAggregationRuleOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRule] {
-	return pulumix.Output[MetricRulesetAggregationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Aggregator object
@@ -4441,12 +3750,6 @@ func (o MetricRulesetAggregationRuleArrayOutput) ToMetricRulesetAggregationRuleA
 
 func (o MetricRulesetAggregationRuleArrayOutput) ToMetricRulesetAggregationRuleArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleArrayOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRule] {
-	return pulumix.Output[[]MetricRulesetAggregationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesetAggregationRuleArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleOutput {
@@ -4500,12 +3803,6 @@ func (i MetricRulesetAggregationRuleAggregatorArgs) ToMetricRulesetAggregationRu
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleAggregatorOutput)
 }
 
-func (i MetricRulesetAggregationRuleAggregatorArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRuleAggregator] {
-	return pulumix.Output[MetricRulesetAggregationRuleAggregator]{
-		OutputState: i.ToMetricRulesetAggregationRuleAggregatorOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRulesetAggregationRuleAggregatorArrayInput is an input type that accepts MetricRulesetAggregationRuleAggregatorArray and MetricRulesetAggregationRuleAggregatorArrayOutput values.
 // You can construct a concrete instance of `MetricRulesetAggregationRuleAggregatorArrayInput` via:
 //
@@ -4531,12 +3828,6 @@ func (i MetricRulesetAggregationRuleAggregatorArray) ToMetricRulesetAggregationR
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleAggregatorArrayOutput)
 }
 
-func (i MetricRulesetAggregationRuleAggregatorArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRuleAggregator] {
-	return pulumix.Output[[]MetricRulesetAggregationRuleAggregator]{
-		OutputState: i.ToMetricRulesetAggregationRuleAggregatorArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricRulesetAggregationRuleAggregatorOutput struct{ *pulumi.OutputState }
 
 func (MetricRulesetAggregationRuleAggregatorOutput) ElementType() reflect.Type {
@@ -4549,12 +3840,6 @@ func (o MetricRulesetAggregationRuleAggregatorOutput) ToMetricRulesetAggregation
 
 func (o MetricRulesetAggregationRuleAggregatorOutput) ToMetricRulesetAggregationRuleAggregatorOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleAggregatorOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleAggregatorOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRuleAggregator] {
-	return pulumix.Output[MetricRulesetAggregationRuleAggregator]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of dimensions to either be kept or dropped in the new aggregated MTSs
@@ -4589,12 +3874,6 @@ func (o MetricRulesetAggregationRuleAggregatorArrayOutput) ToMetricRulesetAggreg
 
 func (o MetricRulesetAggregationRuleAggregatorArrayOutput) ToMetricRulesetAggregationRuleAggregatorArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleAggregatorArrayOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleAggregatorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRuleAggregator] {
-	return pulumix.Output[[]MetricRulesetAggregationRuleAggregator]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesetAggregationRuleAggregatorArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleAggregatorOutput {
@@ -4640,12 +3919,6 @@ func (i MetricRulesetAggregationRuleMatcherArgs) ToMetricRulesetAggregationRuleM
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherOutput)
 }
 
-func (i MetricRulesetAggregationRuleMatcherArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRuleMatcher] {
-	return pulumix.Output[MetricRulesetAggregationRuleMatcher]{
-		OutputState: i.ToMetricRulesetAggregationRuleMatcherOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRulesetAggregationRuleMatcherArrayInput is an input type that accepts MetricRulesetAggregationRuleMatcherArray and MetricRulesetAggregationRuleMatcherArrayOutput values.
 // You can construct a concrete instance of `MetricRulesetAggregationRuleMatcherArrayInput` via:
 //
@@ -4671,12 +3944,6 @@ func (i MetricRulesetAggregationRuleMatcherArray) ToMetricRulesetAggregationRule
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherArrayOutput)
 }
 
-func (i MetricRulesetAggregationRuleMatcherArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRuleMatcher] {
-	return pulumix.Output[[]MetricRulesetAggregationRuleMatcher]{
-		OutputState: i.ToMetricRulesetAggregationRuleMatcherArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricRulesetAggregationRuleMatcherOutput struct{ *pulumi.OutputState }
 
 func (MetricRulesetAggregationRuleMatcherOutput) ElementType() reflect.Type {
@@ -4689,12 +3956,6 @@ func (o MetricRulesetAggregationRuleMatcherOutput) ToMetricRulesetAggregationRul
 
 func (o MetricRulesetAggregationRuleMatcherOutput) ToMetricRulesetAggregationRuleMatcherOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleMatcherOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRuleMatcher] {
-	return pulumix.Output[MetricRulesetAggregationRuleMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of filters to filter the set of input MTSs
@@ -4721,12 +3982,6 @@ func (o MetricRulesetAggregationRuleMatcherArrayOutput) ToMetricRulesetAggregati
 
 func (o MetricRulesetAggregationRuleMatcherArrayOutput) ToMetricRulesetAggregationRuleMatcherArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherArrayOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleMatcherArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRuleMatcher] {
-	return pulumix.Output[[]MetricRulesetAggregationRuleMatcher]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesetAggregationRuleMatcherArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleMatcherOutput {
@@ -4776,12 +4031,6 @@ func (i MetricRulesetAggregationRuleMatcherFilterArgs) ToMetricRulesetAggregatio
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherFilterOutput)
 }
 
-func (i MetricRulesetAggregationRuleMatcherFilterArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRuleMatcherFilter] {
-	return pulumix.Output[MetricRulesetAggregationRuleMatcherFilter]{
-		OutputState: i.ToMetricRulesetAggregationRuleMatcherFilterOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRulesetAggregationRuleMatcherFilterArrayInput is an input type that accepts MetricRulesetAggregationRuleMatcherFilterArray and MetricRulesetAggregationRuleMatcherFilterArrayOutput values.
 // You can construct a concrete instance of `MetricRulesetAggregationRuleMatcherFilterArrayInput` via:
 //
@@ -4807,12 +4056,6 @@ func (i MetricRulesetAggregationRuleMatcherFilterArray) ToMetricRulesetAggregati
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetAggregationRuleMatcherFilterArrayOutput)
 }
 
-func (i MetricRulesetAggregationRuleMatcherFilterArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRuleMatcherFilter] {
-	return pulumix.Output[[]MetricRulesetAggregationRuleMatcherFilter]{
-		OutputState: i.ToMetricRulesetAggregationRuleMatcherFilterArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricRulesetAggregationRuleMatcherFilterOutput struct{ *pulumi.OutputState }
 
 func (MetricRulesetAggregationRuleMatcherFilterOutput) ElementType() reflect.Type {
@@ -4825,12 +4068,6 @@ func (o MetricRulesetAggregationRuleMatcherFilterOutput) ToMetricRulesetAggregat
 
 func (o MetricRulesetAggregationRuleMatcherFilterOutput) ToMetricRulesetAggregationRuleMatcherFilterOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherFilterOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleMatcherFilterOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetAggregationRuleMatcherFilter] {
-	return pulumix.Output[MetricRulesetAggregationRuleMatcherFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 // When true, this filter will match all values not matching the property_values
@@ -4860,12 +4097,6 @@ func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) ToMetricRulesetAgg
 
 func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) ToMetricRulesetAggregationRuleMatcherFilterArrayOutputWithContext(ctx context.Context) MetricRulesetAggregationRuleMatcherFilterArrayOutput {
 	return o
-}
-
-func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetAggregationRuleMatcherFilter] {
-	return pulumix.Output[[]MetricRulesetAggregationRuleMatcherFilter]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) Index(i pulumi.IntInput) MetricRulesetAggregationRuleMatcherFilterOutput {
@@ -4907,12 +4138,6 @@ func (i MetricRulesetRoutingRuleArgs) ToMetricRulesetRoutingRuleOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleOutput)
 }
 
-func (i MetricRulesetRoutingRuleArgs) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetRoutingRule] {
-	return pulumix.Output[MetricRulesetRoutingRule]{
-		OutputState: i.ToMetricRulesetRoutingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MetricRulesetRoutingRuleArrayInput is an input type that accepts MetricRulesetRoutingRuleArray and MetricRulesetRoutingRuleArrayOutput values.
 // You can construct a concrete instance of `MetricRulesetRoutingRuleArrayInput` via:
 //
@@ -4938,12 +4163,6 @@ func (i MetricRulesetRoutingRuleArray) ToMetricRulesetRoutingRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(MetricRulesetRoutingRuleArrayOutput)
 }
 
-func (i MetricRulesetRoutingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetRoutingRule] {
-	return pulumix.Output[[]MetricRulesetRoutingRule]{
-		OutputState: i.ToMetricRulesetRoutingRuleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MetricRulesetRoutingRuleOutput struct{ *pulumi.OutputState }
 
 func (MetricRulesetRoutingRuleOutput) ElementType() reflect.Type {
@@ -4956,12 +4175,6 @@ func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutput() Metri
 
 func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutputWithContext(ctx context.Context) MetricRulesetRoutingRuleOutput {
 	return o
-}
-
-func (o MetricRulesetRoutingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[MetricRulesetRoutingRule] {
-	return pulumix.Output[MetricRulesetRoutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // end destination of the input metric. Must be `RealTime` or `Drop`
@@ -4981,12 +4194,6 @@ func (o MetricRulesetRoutingRuleArrayOutput) ToMetricRulesetRoutingRuleArrayOutp
 
 func (o MetricRulesetRoutingRuleArrayOutput) ToMetricRulesetRoutingRuleArrayOutputWithContext(ctx context.Context) MetricRulesetRoutingRuleArrayOutput {
 	return o
-}
-
-func (o MetricRulesetRoutingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]MetricRulesetRoutingRule] {
-	return pulumix.Output[[]MetricRulesetRoutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MetricRulesetRoutingRuleArrayOutput) Index(i pulumi.IntInput) MetricRulesetRoutingRuleOutput {
@@ -5032,12 +4239,6 @@ func (i OrgTokenDpmLimitsArgs) ToOrgTokenDpmLimitsOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenDpmLimitsOutput)
 }
 
-func (i OrgTokenDpmLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[OrgTokenDpmLimits] {
-	return pulumix.Output[OrgTokenDpmLimits]{
-		OutputState: i.ToOrgTokenDpmLimitsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrgTokenDpmLimitsArgs) ToOrgTokenDpmLimitsPtrOutput() OrgTokenDpmLimitsPtrOutput {
 	return i.ToOrgTokenDpmLimitsPtrOutputWithContext(context.Background())
 }
@@ -5079,12 +4280,6 @@ func (i *orgTokenDpmLimitsPtrType) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenDpmLimitsPtrOutput)
 }
 
-func (i *orgTokenDpmLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrgTokenDpmLimits] {
-	return pulumix.Output[*OrgTokenDpmLimits]{
-		OutputState: i.ToOrgTokenDpmLimitsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrgTokenDpmLimitsOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenDpmLimitsOutput) ElementType() reflect.Type {
@@ -5109,12 +4304,6 @@ func (o OrgTokenDpmLimitsOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx con
 	}).(OrgTokenDpmLimitsPtrOutput)
 }
 
-func (o OrgTokenDpmLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[OrgTokenDpmLimits] {
-	return pulumix.Output[OrgTokenDpmLimits]{
-		OutputState: o.OutputState,
-	}
-}
-
 // The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
 func (o OrgTokenDpmLimitsOutput) DpmLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
@@ -5137,12 +4326,6 @@ func (o OrgTokenDpmLimitsPtrOutput) ToOrgTokenDpmLimitsPtrOutput() OrgTokenDpmLi
 
 func (o OrgTokenDpmLimitsPtrOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx context.Context) OrgTokenDpmLimitsPtrOutput {
 	return o
-}
-
-func (o OrgTokenDpmLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrgTokenDpmLimits] {
-	return pulumix.Output[*OrgTokenDpmLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrgTokenDpmLimitsPtrOutput) Elem() OrgTokenDpmLimitsOutput {
@@ -5236,12 +4419,6 @@ func (i OrgTokenHostOrUsageLimitsArgs) ToOrgTokenHostOrUsageLimitsOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenHostOrUsageLimitsOutput)
 }
 
-func (i OrgTokenHostOrUsageLimitsArgs) ToOutput(ctx context.Context) pulumix.Output[OrgTokenHostOrUsageLimits] {
-	return pulumix.Output[OrgTokenHostOrUsageLimits]{
-		OutputState: i.ToOrgTokenHostOrUsageLimitsOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i OrgTokenHostOrUsageLimitsArgs) ToOrgTokenHostOrUsageLimitsPtrOutput() OrgTokenHostOrUsageLimitsPtrOutput {
 	return i.ToOrgTokenHostOrUsageLimitsPtrOutputWithContext(context.Background())
 }
@@ -5283,12 +4460,6 @@ func (i *orgTokenHostOrUsageLimitsPtrType) ToOrgTokenHostOrUsageLimitsPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(OrgTokenHostOrUsageLimitsPtrOutput)
 }
 
-func (i *orgTokenHostOrUsageLimitsPtrType) ToOutput(ctx context.Context) pulumix.Output[*OrgTokenHostOrUsageLimits] {
-	return pulumix.Output[*OrgTokenHostOrUsageLimits]{
-		OutputState: i.ToOrgTokenHostOrUsageLimitsPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OrgTokenHostOrUsageLimitsOutput struct{ *pulumi.OutputState }
 
 func (OrgTokenHostOrUsageLimitsOutput) ElementType() reflect.Type {
@@ -5311,12 +4482,6 @@ func (o OrgTokenHostOrUsageLimitsOutput) ToOrgTokenHostOrUsageLimitsPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrgTokenHostOrUsageLimits) *OrgTokenHostOrUsageLimits {
 		return &v
 	}).(OrgTokenHostOrUsageLimitsPtrOutput)
-}
-
-func (o OrgTokenHostOrUsageLimitsOutput) ToOutput(ctx context.Context) pulumix.Output[OrgTokenHostOrUsageLimits] {
-	return pulumix.Output[OrgTokenHostOrUsageLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Max number of Docker containers that can use this token
@@ -5371,12 +4536,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) ToOrgTokenHostOrUsageLimitsPtrOutput
 
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ToOrgTokenHostOrUsageLimitsPtrOutputWithContext(ctx context.Context) OrgTokenHostOrUsageLimitsPtrOutput {
 	return o
-}
-
-func (o OrgTokenHostOrUsageLimitsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*OrgTokenHostOrUsageLimits] {
-	return pulumix.Output[*OrgTokenHostOrUsageLimits]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OrgTokenHostOrUsageLimitsPtrOutput) Elem() OrgTokenHostOrUsageLimitsOutput {
@@ -5518,12 +4677,6 @@ func (i SingleValueChartColorScaleArgs) ToSingleValueChartColorScaleOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartColorScaleOutput)
 }
 
-func (i SingleValueChartColorScaleArgs) ToOutput(ctx context.Context) pulumix.Output[SingleValueChartColorScale] {
-	return pulumix.Output[SingleValueChartColorScale]{
-		OutputState: i.ToSingleValueChartColorScaleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SingleValueChartColorScaleArrayInput is an input type that accepts SingleValueChartColorScaleArray and SingleValueChartColorScaleArrayOutput values.
 // You can construct a concrete instance of `SingleValueChartColorScaleArrayInput` via:
 //
@@ -5549,12 +4702,6 @@ func (i SingleValueChartColorScaleArray) ToSingleValueChartColorScaleArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartColorScaleArrayOutput)
 }
 
-func (i SingleValueChartColorScaleArray) ToOutput(ctx context.Context) pulumix.Output[[]SingleValueChartColorScale] {
-	return pulumix.Output[[]SingleValueChartColorScale]{
-		OutputState: i.ToSingleValueChartColorScaleArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SingleValueChartColorScaleOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartColorScaleOutput) ElementType() reflect.Type {
@@ -5567,12 +4714,6 @@ func (o SingleValueChartColorScaleOutput) ToSingleValueChartColorScaleOutput() S
 
 func (o SingleValueChartColorScaleOutput) ToSingleValueChartColorScaleOutputWithContext(ctx context.Context) SingleValueChartColorScaleOutput {
 	return o
-}
-
-func (o SingleValueChartColorScaleOutput) ToOutput(ctx context.Context) pulumix.Output[SingleValueChartColorScale] {
-	return pulumix.Output[SingleValueChartColorScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -5612,12 +4753,6 @@ func (o SingleValueChartColorScaleArrayOutput) ToSingleValueChartColorScaleArray
 
 func (o SingleValueChartColorScaleArrayOutput) ToSingleValueChartColorScaleArrayOutputWithContext(ctx context.Context) SingleValueChartColorScaleArrayOutput {
 	return o
-}
-
-func (o SingleValueChartColorScaleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SingleValueChartColorScale] {
-	return pulumix.Output[[]SingleValueChartColorScale]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SingleValueChartColorScaleArrayOutput) Index(i pulumi.IntInput) SingleValueChartColorScaleOutput {
@@ -5677,12 +4812,6 @@ func (i SingleValueChartVizOptionArgs) ToSingleValueChartVizOptionOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartVizOptionOutput)
 }
 
-func (i SingleValueChartVizOptionArgs) ToOutput(ctx context.Context) pulumix.Output[SingleValueChartVizOption] {
-	return pulumix.Output[SingleValueChartVizOption]{
-		OutputState: i.ToSingleValueChartVizOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SingleValueChartVizOptionArrayInput is an input type that accepts SingleValueChartVizOptionArray and SingleValueChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `SingleValueChartVizOptionArrayInput` via:
 //
@@ -5708,12 +4837,6 @@ func (i SingleValueChartVizOptionArray) ToSingleValueChartVizOptionArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(SingleValueChartVizOptionArrayOutput)
 }
 
-func (i SingleValueChartVizOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]SingleValueChartVizOption] {
-	return pulumix.Output[[]SingleValueChartVizOption]{
-		OutputState: i.ToSingleValueChartVizOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SingleValueChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (SingleValueChartVizOptionOutput) ElementType() reflect.Type {
@@ -5726,12 +4849,6 @@ func (o SingleValueChartVizOptionOutput) ToSingleValueChartVizOptionOutput() Sin
 
 func (o SingleValueChartVizOptionOutput) ToSingleValueChartVizOptionOutputWithContext(ctx context.Context) SingleValueChartVizOptionOutput {
 	return o
-}
-
-func (o SingleValueChartVizOptionOutput) ToOutput(ctx context.Context) pulumix.Output[SingleValueChartVizOption] {
-	return pulumix.Output[SingleValueChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
@@ -5775,12 +4892,6 @@ func (o SingleValueChartVizOptionArrayOutput) ToSingleValueChartVizOptionArrayOu
 
 func (o SingleValueChartVizOptionArrayOutput) ToSingleValueChartVizOptionArrayOutputWithContext(ctx context.Context) SingleValueChartVizOptionArrayOutput {
 	return o
-}
-
-func (o SingleValueChartVizOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]SingleValueChartVizOption] {
-	return pulumix.Output[[]SingleValueChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SingleValueChartVizOptionArrayOutput) Index(i pulumi.IntInput) SingleValueChartVizOptionOutput {
@@ -5830,12 +4941,6 @@ func (i TableChartVizOptionArgs) ToTableChartVizOptionOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TableChartVizOptionOutput)
 }
 
-func (i TableChartVizOptionArgs) ToOutput(ctx context.Context) pulumix.Output[TableChartVizOption] {
-	return pulumix.Output[TableChartVizOption]{
-		OutputState: i.ToTableChartVizOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TableChartVizOptionArrayInput is an input type that accepts TableChartVizOptionArray and TableChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `TableChartVizOptionArrayInput` via:
 //
@@ -5861,12 +4966,6 @@ func (i TableChartVizOptionArray) ToTableChartVizOptionArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(TableChartVizOptionArrayOutput)
 }
 
-func (i TableChartVizOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]TableChartVizOption] {
-	return pulumix.Output[[]TableChartVizOption]{
-		OutputState: i.ToTableChartVizOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TableChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (TableChartVizOptionOutput) ElementType() reflect.Type {
@@ -5879,12 +4978,6 @@ func (o TableChartVizOptionOutput) ToTableChartVizOptionOutput() TableChartVizOp
 
 func (o TableChartVizOptionOutput) ToTableChartVizOptionOutputWithContext(ctx context.Context) TableChartVizOptionOutput {
 	return o
-}
-
-func (o TableChartVizOptionOutput) ToOutput(ctx context.Context) pulumix.Output[TableChartVizOption] {
-	return pulumix.Output[TableChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableChartVizOptionOutput) Color() pulumi.StringPtrOutput {
@@ -5923,12 +5016,6 @@ func (o TableChartVizOptionArrayOutput) ToTableChartVizOptionArrayOutput() Table
 
 func (o TableChartVizOptionArrayOutput) ToTableChartVizOptionArrayOutputWithContext(ctx context.Context) TableChartVizOptionArrayOutput {
 	return o
-}
-
-func (o TableChartVizOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TableChartVizOption] {
-	return pulumix.Output[[]TableChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TableChartVizOptionArrayOutput) Index(i pulumi.IntInput) TableChartVizOptionOutput {
@@ -5996,12 +5083,6 @@ func (i TimeChartAxisLeftArgs) ToTimeChartAxisLeftOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisLeftOutput)
 }
 
-func (i TimeChartAxisLeftArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisLeft] {
-	return pulumix.Output[TimeChartAxisLeft]{
-		OutputState: i.ToTimeChartAxisLeftOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeChartAxisLeftArgs) ToTimeChartAxisLeftPtrOutput() TimeChartAxisLeftPtrOutput {
 	return i.ToTimeChartAxisLeftPtrOutputWithContext(context.Background())
 }
@@ -6043,12 +5124,6 @@ func (i *timeChartAxisLeftPtrType) ToTimeChartAxisLeftPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisLeftPtrOutput)
 }
 
-func (i *timeChartAxisLeftPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeChartAxisLeft] {
-	return pulumix.Output[*TimeChartAxisLeft]{
-		OutputState: i.ToTimeChartAxisLeftPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartAxisLeftOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisLeftOutput) ElementType() reflect.Type {
@@ -6071,12 +5146,6 @@ func (o TimeChartAxisLeftOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeChartAxisLeft) *TimeChartAxisLeft {
 		return &v
 	}).(TimeChartAxisLeftPtrOutput)
-}
-
-func (o TimeChartAxisLeftOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisLeft] {
-	return pulumix.Output[TimeChartAxisLeft]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A line to draw as a high watermark.
@@ -6130,12 +5199,6 @@ func (o TimeChartAxisLeftPtrOutput) ToTimeChartAxisLeftPtrOutput() TimeChartAxis
 
 func (o TimeChartAxisLeftPtrOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx context.Context) TimeChartAxisLeftPtrOutput {
 	return o
-}
-
-func (o TimeChartAxisLeftPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeChartAxisLeft] {
-	return pulumix.Output[*TimeChartAxisLeft]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartAxisLeftPtrOutput) Elem() TimeChartAxisLeftOutput {
@@ -6262,12 +5325,6 @@ func (i TimeChartAxisLeftWatermarkArgs) ToTimeChartAxisLeftWatermarkOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisLeftWatermarkOutput)
 }
 
-func (i TimeChartAxisLeftWatermarkArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisLeftWatermark] {
-	return pulumix.Output[TimeChartAxisLeftWatermark]{
-		OutputState: i.ToTimeChartAxisLeftWatermarkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeChartAxisLeftWatermarkArrayInput is an input type that accepts TimeChartAxisLeftWatermarkArray and TimeChartAxisLeftWatermarkArrayOutput values.
 // You can construct a concrete instance of `TimeChartAxisLeftWatermarkArrayInput` via:
 //
@@ -6293,12 +5350,6 @@ func (i TimeChartAxisLeftWatermarkArray) ToTimeChartAxisLeftWatermarkArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisLeftWatermarkArrayOutput)
 }
 
-func (i TimeChartAxisLeftWatermarkArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartAxisLeftWatermark] {
-	return pulumix.Output[[]TimeChartAxisLeftWatermark]{
-		OutputState: i.ToTimeChartAxisLeftWatermarkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartAxisLeftWatermarkOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisLeftWatermarkOutput) ElementType() reflect.Type {
@@ -6311,12 +5362,6 @@ func (o TimeChartAxisLeftWatermarkOutput) ToTimeChartAxisLeftWatermarkOutput() T
 
 func (o TimeChartAxisLeftWatermarkOutput) ToTimeChartAxisLeftWatermarkOutputWithContext(ctx context.Context) TimeChartAxisLeftWatermarkOutput {
 	return o
-}
-
-func (o TimeChartAxisLeftWatermarkOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisLeftWatermark] {
-	return pulumix.Output[TimeChartAxisLeftWatermark]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
@@ -6340,12 +5385,6 @@ func (o TimeChartAxisLeftWatermarkArrayOutput) ToTimeChartAxisLeftWatermarkArray
 
 func (o TimeChartAxisLeftWatermarkArrayOutput) ToTimeChartAxisLeftWatermarkArrayOutputWithContext(ctx context.Context) TimeChartAxisLeftWatermarkArrayOutput {
 	return o
-}
-
-func (o TimeChartAxisLeftWatermarkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartAxisLeftWatermark] {
-	return pulumix.Output[[]TimeChartAxisLeftWatermark]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartAxisLeftWatermarkArrayOutput) Index(i pulumi.IntInput) TimeChartAxisLeftWatermarkOutput {
@@ -6413,12 +5452,6 @@ func (i TimeChartAxisRightArgs) ToTimeChartAxisRightOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisRightOutput)
 }
 
-func (i TimeChartAxisRightArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisRight] {
-	return pulumix.Output[TimeChartAxisRight]{
-		OutputState: i.ToTimeChartAxisRightOutputWithContext(ctx).OutputState,
-	}
-}
-
 func (i TimeChartAxisRightArgs) ToTimeChartAxisRightPtrOutput() TimeChartAxisRightPtrOutput {
 	return i.ToTimeChartAxisRightPtrOutputWithContext(context.Background())
 }
@@ -6460,12 +5493,6 @@ func (i *timeChartAxisRightPtrType) ToTimeChartAxisRightPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisRightPtrOutput)
 }
 
-func (i *timeChartAxisRightPtrType) ToOutput(ctx context.Context) pulumix.Output[*TimeChartAxisRight] {
-	return pulumix.Output[*TimeChartAxisRight]{
-		OutputState: i.ToTimeChartAxisRightPtrOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartAxisRightOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisRightOutput) ElementType() reflect.Type {
@@ -6488,12 +5515,6 @@ func (o TimeChartAxisRightOutput) ToTimeChartAxisRightPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeChartAxisRight) *TimeChartAxisRight {
 		return &v
 	}).(TimeChartAxisRightPtrOutput)
-}
-
-func (o TimeChartAxisRightOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisRight] {
-	return pulumix.Output[TimeChartAxisRight]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A line to draw as a high watermark.
@@ -6547,12 +5568,6 @@ func (o TimeChartAxisRightPtrOutput) ToTimeChartAxisRightPtrOutput() TimeChartAx
 
 func (o TimeChartAxisRightPtrOutput) ToTimeChartAxisRightPtrOutputWithContext(ctx context.Context) TimeChartAxisRightPtrOutput {
 	return o
-}
-
-func (o TimeChartAxisRightPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TimeChartAxisRight] {
-	return pulumix.Output[*TimeChartAxisRight]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartAxisRightPtrOutput) Elem() TimeChartAxisRightOutput {
@@ -6679,12 +5694,6 @@ func (i TimeChartAxisRightWatermarkArgs) ToTimeChartAxisRightWatermarkOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisRightWatermarkOutput)
 }
 
-func (i TimeChartAxisRightWatermarkArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisRightWatermark] {
-	return pulumix.Output[TimeChartAxisRightWatermark]{
-		OutputState: i.ToTimeChartAxisRightWatermarkOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeChartAxisRightWatermarkArrayInput is an input type that accepts TimeChartAxisRightWatermarkArray and TimeChartAxisRightWatermarkArrayOutput values.
 // You can construct a concrete instance of `TimeChartAxisRightWatermarkArrayInput` via:
 //
@@ -6710,12 +5719,6 @@ func (i TimeChartAxisRightWatermarkArray) ToTimeChartAxisRightWatermarkArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartAxisRightWatermarkArrayOutput)
 }
 
-func (i TimeChartAxisRightWatermarkArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartAxisRightWatermark] {
-	return pulumix.Output[[]TimeChartAxisRightWatermark]{
-		OutputState: i.ToTimeChartAxisRightWatermarkArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartAxisRightWatermarkOutput struct{ *pulumi.OutputState }
 
 func (TimeChartAxisRightWatermarkOutput) ElementType() reflect.Type {
@@ -6728,12 +5731,6 @@ func (o TimeChartAxisRightWatermarkOutput) ToTimeChartAxisRightWatermarkOutput()
 
 func (o TimeChartAxisRightWatermarkOutput) ToTimeChartAxisRightWatermarkOutputWithContext(ctx context.Context) TimeChartAxisRightWatermarkOutput {
 	return o
-}
-
-func (o TimeChartAxisRightWatermarkOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartAxisRightWatermark] {
-	return pulumix.Output[TimeChartAxisRightWatermark]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Label used in the publish statement that displays the event query you want to customize.
@@ -6757,12 +5754,6 @@ func (o TimeChartAxisRightWatermarkArrayOutput) ToTimeChartAxisRightWatermarkArr
 
 func (o TimeChartAxisRightWatermarkArrayOutput) ToTimeChartAxisRightWatermarkArrayOutputWithContext(ctx context.Context) TimeChartAxisRightWatermarkArrayOutput {
 	return o
-}
-
-func (o TimeChartAxisRightWatermarkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartAxisRightWatermark] {
-	return pulumix.Output[[]TimeChartAxisRightWatermark]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartAxisRightWatermarkArrayOutput) Index(i pulumi.IntInput) TimeChartAxisRightWatermarkOutput {
@@ -6812,12 +5803,6 @@ func (i TimeChartEventOptionArgs) ToTimeChartEventOptionOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartEventOptionOutput)
 }
 
-func (i TimeChartEventOptionArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartEventOption] {
-	return pulumix.Output[TimeChartEventOption]{
-		OutputState: i.ToTimeChartEventOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeChartEventOptionArrayInput is an input type that accepts TimeChartEventOptionArray and TimeChartEventOptionArrayOutput values.
 // You can construct a concrete instance of `TimeChartEventOptionArrayInput` via:
 //
@@ -6843,12 +5828,6 @@ func (i TimeChartEventOptionArray) ToTimeChartEventOptionArrayOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartEventOptionArrayOutput)
 }
 
-func (i TimeChartEventOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartEventOption] {
-	return pulumix.Output[[]TimeChartEventOption]{
-		OutputState: i.ToTimeChartEventOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartEventOptionOutput struct{ *pulumi.OutputState }
 
 func (TimeChartEventOptionOutput) ElementType() reflect.Type {
@@ -6861,12 +5840,6 @@ func (o TimeChartEventOptionOutput) ToTimeChartEventOptionOutput() TimeChartEven
 
 func (o TimeChartEventOptionOutput) ToTimeChartEventOptionOutputWithContext(ctx context.Context) TimeChartEventOptionOutput {
 	return o
-}
-
-func (o TimeChartEventOptionOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartEventOption] {
-	return pulumix.Output[TimeChartEventOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
@@ -6896,12 +5869,6 @@ func (o TimeChartEventOptionArrayOutput) ToTimeChartEventOptionArrayOutput() Tim
 
 func (o TimeChartEventOptionArrayOutput) ToTimeChartEventOptionArrayOutputWithContext(ctx context.Context) TimeChartEventOptionArrayOutput {
 	return o
-}
-
-func (o TimeChartEventOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartEventOption] {
-	return pulumix.Output[[]TimeChartEventOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartEventOptionArrayOutput) Index(i pulumi.IntInput) TimeChartEventOptionOutput {
@@ -6943,12 +5910,6 @@ func (i TimeChartHistogramOptionArgs) ToTimeChartHistogramOptionOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartHistogramOptionOutput)
 }
 
-func (i TimeChartHistogramOptionArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartHistogramOption] {
-	return pulumix.Output[TimeChartHistogramOption]{
-		OutputState: i.ToTimeChartHistogramOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeChartHistogramOptionArrayInput is an input type that accepts TimeChartHistogramOptionArray and TimeChartHistogramOptionArrayOutput values.
 // You can construct a concrete instance of `TimeChartHistogramOptionArrayInput` via:
 //
@@ -6974,12 +5935,6 @@ func (i TimeChartHistogramOptionArray) ToTimeChartHistogramOptionArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartHistogramOptionArrayOutput)
 }
 
-func (i TimeChartHistogramOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartHistogramOption] {
-	return pulumix.Output[[]TimeChartHistogramOption]{
-		OutputState: i.ToTimeChartHistogramOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartHistogramOptionOutput struct{ *pulumi.OutputState }
 
 func (TimeChartHistogramOptionOutput) ElementType() reflect.Type {
@@ -6992,12 +5947,6 @@ func (o TimeChartHistogramOptionOutput) ToTimeChartHistogramOptionOutput() TimeC
 
 func (o TimeChartHistogramOptionOutput) ToTimeChartHistogramOptionOutputWithContext(ctx context.Context) TimeChartHistogramOptionOutput {
 	return o
-}
-
-func (o TimeChartHistogramOptionOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartHistogramOption] {
-	return pulumix.Output[TimeChartHistogramOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
@@ -7017,12 +5966,6 @@ func (o TimeChartHistogramOptionArrayOutput) ToTimeChartHistogramOptionArrayOutp
 
 func (o TimeChartHistogramOptionArrayOutput) ToTimeChartHistogramOptionArrayOutputWithContext(ctx context.Context) TimeChartHistogramOptionArrayOutput {
 	return o
-}
-
-func (o TimeChartHistogramOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartHistogramOption] {
-	return pulumix.Output[[]TimeChartHistogramOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartHistogramOptionArrayOutput) Index(i pulumi.IntInput) TimeChartHistogramOptionOutput {
@@ -7068,12 +6011,6 @@ func (i TimeChartLegendOptionsFieldArgs) ToTimeChartLegendOptionsFieldOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartLegendOptionsFieldOutput)
 }
 
-func (i TimeChartLegendOptionsFieldArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartLegendOptionsField] {
-	return pulumix.Output[TimeChartLegendOptionsField]{
-		OutputState: i.ToTimeChartLegendOptionsFieldOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeChartLegendOptionsFieldArrayInput is an input type that accepts TimeChartLegendOptionsFieldArray and TimeChartLegendOptionsFieldArrayOutput values.
 // You can construct a concrete instance of `TimeChartLegendOptionsFieldArrayInput` via:
 //
@@ -7099,12 +6036,6 @@ func (i TimeChartLegendOptionsFieldArray) ToTimeChartLegendOptionsFieldArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartLegendOptionsFieldArrayOutput)
 }
 
-func (i TimeChartLegendOptionsFieldArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartLegendOptionsField] {
-	return pulumix.Output[[]TimeChartLegendOptionsField]{
-		OutputState: i.ToTimeChartLegendOptionsFieldArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartLegendOptionsFieldOutput struct{ *pulumi.OutputState }
 
 func (TimeChartLegendOptionsFieldOutput) ElementType() reflect.Type {
@@ -7117,12 +6048,6 @@ func (o TimeChartLegendOptionsFieldOutput) ToTimeChartLegendOptionsFieldOutput()
 
 func (o TimeChartLegendOptionsFieldOutput) ToTimeChartLegendOptionsFieldOutputWithContext(ctx context.Context) TimeChartLegendOptionsFieldOutput {
 	return o
-}
-
-func (o TimeChartLegendOptionsFieldOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartLegendOptionsField] {
-	return pulumix.Output[TimeChartLegendOptionsField]{
-		OutputState: o.OutputState,
-	}
 }
 
 // True or False depending on if you want the property to be shown or hidden.
@@ -7147,12 +6072,6 @@ func (o TimeChartLegendOptionsFieldArrayOutput) ToTimeChartLegendOptionsFieldArr
 
 func (o TimeChartLegendOptionsFieldArrayOutput) ToTimeChartLegendOptionsFieldArrayOutputWithContext(ctx context.Context) TimeChartLegendOptionsFieldArrayOutput {
 	return o
-}
-
-func (o TimeChartLegendOptionsFieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartLegendOptionsField] {
-	return pulumix.Output[[]TimeChartLegendOptionsField]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TimeChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) TimeChartLegendOptionsFieldOutput {
@@ -7220,12 +6139,6 @@ func (i TimeChartVizOptionArgs) ToTimeChartVizOptionOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartVizOptionOutput)
 }
 
-func (i TimeChartVizOptionArgs) ToOutput(ctx context.Context) pulumix.Output[TimeChartVizOption] {
-	return pulumix.Output[TimeChartVizOption]{
-		OutputState: i.ToTimeChartVizOptionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TimeChartVizOptionArrayInput is an input type that accepts TimeChartVizOptionArray and TimeChartVizOptionArrayOutput values.
 // You can construct a concrete instance of `TimeChartVizOptionArrayInput` via:
 //
@@ -7251,12 +6164,6 @@ func (i TimeChartVizOptionArray) ToTimeChartVizOptionArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TimeChartVizOptionArrayOutput)
 }
 
-func (i TimeChartVizOptionArray) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartVizOption] {
-	return pulumix.Output[[]TimeChartVizOption]{
-		OutputState: i.ToTimeChartVizOptionArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TimeChartVizOptionOutput struct{ *pulumi.OutputState }
 
 func (TimeChartVizOptionOutput) ElementType() reflect.Type {
@@ -7269,12 +6176,6 @@ func (o TimeChartVizOptionOutput) ToTimeChartVizOptionOutput() TimeChartVizOptio
 
 func (o TimeChartVizOptionOutput) ToTimeChartVizOptionOutputWithContext(ctx context.Context) TimeChartVizOptionOutput {
 	return o
-}
-
-func (o TimeChartVizOptionOutput) ToOutput(ctx context.Context) pulumix.Output[TimeChartVizOption] {
-	return pulumix.Output[TimeChartVizOption]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Y-axis associated with values for this plot. Must be either `right` or `left`.
@@ -7330,12 +6231,6 @@ func (o TimeChartVizOptionArrayOutput) ToTimeChartVizOptionArrayOutputWithContex
 	return o
 }
 
-func (o TimeChartVizOptionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]TimeChartVizOption] {
-	return pulumix.Output[[]TimeChartVizOption]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TimeChartVizOptionArrayOutput) Index(i pulumi.IntInput) TimeChartVizOptionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TimeChartVizOption {
 		return vs[0].([]TimeChartVizOption)[vs[1].(int)]
@@ -7379,12 +6274,6 @@ func (i WebhookIntegrationHeaderArgs) ToWebhookIntegrationHeaderOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationHeaderOutput)
 }
 
-func (i WebhookIntegrationHeaderArgs) ToOutput(ctx context.Context) pulumix.Output[WebhookIntegrationHeader] {
-	return pulumix.Output[WebhookIntegrationHeader]{
-		OutputState: i.ToWebhookIntegrationHeaderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebhookIntegrationHeaderArrayInput is an input type that accepts WebhookIntegrationHeaderArray and WebhookIntegrationHeaderArrayOutput values.
 // You can construct a concrete instance of `WebhookIntegrationHeaderArrayInput` via:
 //
@@ -7410,12 +6299,6 @@ func (i WebhookIntegrationHeaderArray) ToWebhookIntegrationHeaderArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(WebhookIntegrationHeaderArrayOutput)
 }
 
-func (i WebhookIntegrationHeaderArray) ToOutput(ctx context.Context) pulumix.Output[[]WebhookIntegrationHeader] {
-	return pulumix.Output[[]WebhookIntegrationHeader]{
-		OutputState: i.ToWebhookIntegrationHeaderArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebhookIntegrationHeaderOutput struct{ *pulumi.OutputState }
 
 func (WebhookIntegrationHeaderOutput) ElementType() reflect.Type {
@@ -7428,12 +6311,6 @@ func (o WebhookIntegrationHeaderOutput) ToWebhookIntegrationHeaderOutput() Webho
 
 func (o WebhookIntegrationHeaderOutput) ToWebhookIntegrationHeaderOutputWithContext(ctx context.Context) WebhookIntegrationHeaderOutput {
 	return o
-}
-
-func (o WebhookIntegrationHeaderOutput) ToOutput(ctx context.Context) pulumix.Output[WebhookIntegrationHeader] {
-	return pulumix.Output[WebhookIntegrationHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The key of the header to send
@@ -7458,12 +6335,6 @@ func (o WebhookIntegrationHeaderArrayOutput) ToWebhookIntegrationHeaderArrayOutp
 
 func (o WebhookIntegrationHeaderArrayOutput) ToWebhookIntegrationHeaderArrayOutputWithContext(ctx context.Context) WebhookIntegrationHeaderArrayOutput {
 	return o
-}
-
-func (o WebhookIntegrationHeaderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WebhookIntegrationHeader] {
-	return pulumix.Output[[]WebhookIntegrationHeader]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebhookIntegrationHeaderArrayOutput) Index(i pulumi.IntInput) WebhookIntegrationHeaderOutput {

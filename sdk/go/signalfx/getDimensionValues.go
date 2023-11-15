@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get a list of dimension values matching the provided query.
@@ -73,12 +72,6 @@ func (o GetDimensionValuesResultOutput) ToGetDimensionValuesResultOutput() GetDi
 
 func (o GetDimensionValuesResultOutput) ToGetDimensionValuesResultOutputWithContext(ctx context.Context) GetDimensionValuesResultOutput {
 	return o
-}
-
-func (o GetDimensionValuesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDimensionValuesResult] {
-	return pulumix.Output[GetDimensionValuesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The provider-assigned unique ID for this managed resource.

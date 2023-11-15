@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get information on an existing PagerDuty integration.
@@ -101,12 +100,6 @@ func (o LookupIntegrationResultOutput) ToLookupIntegrationResultOutput() LookupI
 
 func (o LookupIntegrationResultOutput) ToLookupIntegrationResultOutputWithContext(ctx context.Context) LookupIntegrationResultOutput {
 	return o
-}
-
-func (o LookupIntegrationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationResult] {
-	return pulumix.Output[LookupIntegrationResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether the integration is enabled.
