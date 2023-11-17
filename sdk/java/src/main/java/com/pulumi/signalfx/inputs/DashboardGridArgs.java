@@ -33,14 +33,14 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     @Import(name="height")
     private @Nullable Output<Integer> height;
 
     /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * @return How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     public Optional<Output<Integer>> height() {
@@ -48,14 +48,14 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     @Import(name="width")
     private @Nullable Output<Integer> width;
 
     /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * @return How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Output<Integer>> width() {
@@ -120,7 +120,7 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param height How many rows every chart should take up (greater than or equal to 1). 1 by default.
+         * @param height How many rows every chart should take up (greater than or equal to `1`). `1` by default.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param height How many rows every chart should take up (greater than or equal to 1). 1 by default.
+         * @param height How many rows every chart should take up (greater than or equal to `1`). `1` by default.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param width How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+         * @param width How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param width How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+         * @param width How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
          * 
          * @return builder
          * 

@@ -40,7 +40,7 @@ class DetectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        :param pulumi.Input[str] description: Description of the detector.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
@@ -142,7 +142,7 @@ class DetectorArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        Description of the detector.
         """
         return pulumi.get(self, "description")
 
@@ -334,7 +334,7 @@ class _DetectorState:
         Input properties used for looking up and filtering Detector resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        :param pulumi.Input[str] description: Description of the detector.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
@@ -422,7 +422,7 @@ class _DetectorState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        Description of the detector.
         """
         return pulumi.get(self, "description")
 
@@ -803,7 +803,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        :param pulumi.Input[str] description: Description of the detector.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
@@ -1071,7 +1071,7 @@ class Detector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        :param pulumi.Input[str] description: Description of the detector.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
@@ -1136,7 +1136,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        Description of the detector.
         """
         return pulumi.get(self, "description")
 

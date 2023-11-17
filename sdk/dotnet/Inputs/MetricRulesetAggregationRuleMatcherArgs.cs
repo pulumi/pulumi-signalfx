@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// Type of aggregator. Must always be "rollup"
+        /// Type of matcher. Must always be "dimension"
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

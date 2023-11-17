@@ -24,7 +24,7 @@ public final class DashboardGroupDashboardFilterOverride {
      */
     private String property;
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     private List<String> values;
@@ -45,7 +45,7 @@ public final class DashboardGroupDashboardFilterOverride {
         return this.property;
     }
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public List<String> values() {

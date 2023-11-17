@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? HighWatermarkLabel;
         /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
+        /// Label of the left axis.
         /// </summary>
         public readonly string? Label;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? LowWatermarkLabel;
         /// <summary>
-        /// The maximum value for the right axis.
+        /// The maximum value for the left axis.
         /// </summary>
         public readonly double? MaxValue;
         /// <summary>
-        /// The minimum value for the right axis.
+        /// The minimum value for the left axis.
         /// </summary>
         public readonly double? MinValue;
         public readonly ImmutableArray<Outputs.TimeChartAxisLeftWatermark> Watermarks;

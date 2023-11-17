@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? HighWatermarkLabel;
         /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
+        /// Label of the right axis.
         /// </summary>
         public readonly string? Label;
         /// <summary>

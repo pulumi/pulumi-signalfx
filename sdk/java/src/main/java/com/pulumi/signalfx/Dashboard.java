@@ -91,14 +91,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.chartsResolution);
     }
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed will be placed in a single column with the same width and height.
      * 
      */
     @Export(name="columns", refs={List.class,DashboardColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardColumn>> columns;
 
     /**
-     * @return Column number for the layout.
+     * @return Column layout. Charts listed will be placed in a single column with the same width and height.
      * 
      */
     public Output<Optional<List<DashboardColumn>>> columns() {
@@ -119,14 +119,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.dashboardGroup;
     }
     /**
-     * Variable description.
+     * Description of the dashboard.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Variable description.
+     * @return Description of the dashboard.
      * 
      */
     public Output<Optional<String>> description() {

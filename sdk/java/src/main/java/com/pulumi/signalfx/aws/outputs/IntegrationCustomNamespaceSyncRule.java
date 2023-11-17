@@ -27,7 +27,7 @@ public final class IntegrationCustomNamespaceSyncRule {
      */
     private @Nullable String filterSource;
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
      * 
      */
     private String namespace;
@@ -55,7 +55,7 @@ public final class IntegrationCustomNamespaceSyncRule {
         return Optional.ofNullable(this.filterSource);
     }
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
      * 
      */
     public String namespace() {

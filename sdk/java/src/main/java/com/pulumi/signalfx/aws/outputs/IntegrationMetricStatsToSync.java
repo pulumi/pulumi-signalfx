@@ -16,7 +16,7 @@ public final class IntegrationMetricStatsToSync {
      */
     private String metric;
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * @return An AWS namespace having AWS metric that you want to pick statistics for
      * 
      */
     private String namespace;
@@ -35,7 +35,7 @@ public final class IntegrationMetricStatsToSync {
         return this.metric;
     }
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * @return An AWS namespace having AWS metric that you want to pick statistics for
      * 
      */
     public String namespace() {

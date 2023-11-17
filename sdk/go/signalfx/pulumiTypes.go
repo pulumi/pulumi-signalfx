@@ -131,13 +131,13 @@ func (o AlertMutingRuleFilterArrayOutput) Index(i pulumi.IntInput) AlertMutingRu
 type DashboardChart struct {
 	// ID of the chart to display.
 	ChartId string `pulumi:"chartId"`
-	// Column number for the layout.
+	// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
 	Column *int `pulumi:"column"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+	// How many rows the chart should take up (greater than or equal to `1`). `1` by default.
 	Height *int `pulumi:"height"`
 	// The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
 	Row *int `pulumi:"row"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+	// How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
 	Width *int `pulumi:"width"`
 }
 
@@ -155,13 +155,13 @@ type DashboardChartInput interface {
 type DashboardChartArgs struct {
 	// ID of the chart to display.
 	ChartId pulumi.StringInput `pulumi:"chartId"`
-	// Column number for the layout.
+	// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
 	Column pulumi.IntPtrInput `pulumi:"column"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+	// How many rows the chart should take up (greater than or equal to `1`). `1` by default.
 	Height pulumi.IntPtrInput `pulumi:"height"`
 	// The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
 	Row pulumi.IntPtrInput `pulumi:"row"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+	// How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
 	Width pulumi.IntPtrInput `pulumi:"width"`
 }
 
@@ -221,12 +221,12 @@ func (o DashboardChartOutput) ChartId() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardChart) string { return v.ChartId }).(pulumi.StringOutput)
 }
 
-// Column number for the layout.
+// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
 func (o DashboardChartOutput) Column() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Column }).(pulumi.IntPtrOutput)
 }
 
-// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+// How many rows the chart should take up (greater than or equal to `1`). `1` by default.
 func (o DashboardChartOutput) Height() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
@@ -236,7 +236,7 @@ func (o DashboardChartOutput) Row() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Row }).(pulumi.IntPtrOutput)
 }
 
-// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+// How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardChartOutput) Width() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
@@ -643,13 +643,13 @@ func (o DashboardEventOverlaySourceArrayOutput) Index(i pulumi.IntInput) Dashboa
 }
 
 type DashboardFilter struct {
-	// If true, this variable will also match data that doesn't have this property at all.
+	// If true, this filter will also match data that doesn't have this property at all.
 	ApplyIfExist *bool `pulumi:"applyIfExist"`
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// Whether this filter should be a not filter. `false` by default.
 	Negated *bool `pulumi:"negated"`
-	// The name of a dimension to filter against.
+	// A metric time series dimension or property name.
 	Property string `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
+	// List of of strings (which will be treated as an OR filter on the property).
 	Values []string `pulumi:"values"`
 }
 
@@ -665,13 +665,13 @@ type DashboardFilterInput interface {
 }
 
 type DashboardFilterArgs struct {
-	// If true, this variable will also match data that doesn't have this property at all.
+	// If true, this filter will also match data that doesn't have this property at all.
 	ApplyIfExist pulumi.BoolPtrInput `pulumi:"applyIfExist"`
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+	// Whether this filter should be a not filter. `false` by default.
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// The name of a dimension to filter against.
+	// A metric time series dimension or property name.
 	Property pulumi.StringInput `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
+	// List of of strings (which will be treated as an OR filter on the property).
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -726,22 +726,22 @@ func (o DashboardFilterOutput) ToDashboardFilterOutputWithContext(ctx context.Co
 	return o
 }
 
-// If true, this variable will also match data that doesn't have this property at all.
+// If true, this filter will also match data that doesn't have this property at all.
 func (o DashboardFilterOutput) ApplyIfExist() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardFilter) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+// Whether this filter should be a not filter. `false` by default.
 func (o DashboardFilterOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// The name of a dimension to filter against.
+// A metric time series dimension or property name.
 func (o DashboardFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// A list of values to be used with the `property`, they will be combined via `OR`.
+// List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -769,9 +769,9 @@ func (o DashboardFilterArrayOutput) Index(i pulumi.IntInput) DashboardFilterOutp
 type DashboardGrid struct {
 	// List of IDs of the charts to display.
 	ChartIds []string `pulumi:"chartIds"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+	// How many rows every chart should take up (greater than or equal to `1`). `1` by default.
 	Height *int `pulumi:"height"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+	// How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
 	Width *int `pulumi:"width"`
 }
 
@@ -789,9 +789,9 @@ type DashboardGridInput interface {
 type DashboardGridArgs struct {
 	// List of IDs of the charts to display.
 	ChartIds pulumi.StringArrayInput `pulumi:"chartIds"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+	// How many rows every chart should take up (greater than or equal to `1`). `1` by default.
 	Height pulumi.IntPtrInput `pulumi:"height"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+	// How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
 	Width pulumi.IntPtrInput `pulumi:"width"`
 }
 
@@ -851,12 +851,12 @@ func (o DashboardGridOutput) ChartIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGrid) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
 }
 
-// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+// How many rows every chart should take up (greater than or equal to `1`). `1` by default.
 func (o DashboardGridOutput) Height() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardGrid) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+// How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardGridOutput) Width() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardGrid) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
@@ -1022,7 +1022,7 @@ type DashboardGroupDashboardFilterOverride struct {
 	Negated *bool `pulumi:"negated"`
 	// A metric time series dimension or property name.
 	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// List of of strings (which will be treated as an OR filter on the property).
 	Values []string `pulumi:"values"`
 }
 
@@ -1042,7 +1042,7 @@ type DashboardGroupDashboardFilterOverrideArgs struct {
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
 	// A metric time series dimension or property name.
 	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// List of of strings (which will be treated as an OR filter on the property).
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1107,7 +1107,7 @@ func (o DashboardGroupDashboardFilterOverrideOutput) Property() pulumi.StringOut
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
+// List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupDashboardFilterOverrideOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1133,9 +1133,9 @@ func (o DashboardGroupDashboardFilterOverrideArrayOutput) Index(i pulumi.IntInpu
 }
 
 type DashboardGroupDashboardVariableOverride struct {
-	// A metric time series dimension or property name.
+	// The name of a dimension to filter against.
 	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// A list of values to be used with the `property`, they will be combined via `OR`.
 	Values []string `pulumi:"values"`
 	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 	ValuesSuggesteds []string `pulumi:"valuesSuggesteds"`
@@ -1153,9 +1153,9 @@ type DashboardGroupDashboardVariableOverrideInput interface {
 }
 
 type DashboardGroupDashboardVariableOverrideArgs struct {
-	// A metric time series dimension or property name.
+	// The name of a dimension to filter against.
 	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// A list of values to be used with the `property`, they will be combined via `OR`.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 	ValuesSuggesteds pulumi.StringArrayInput `pulumi:"valuesSuggesteds"`
@@ -1212,12 +1212,12 @@ func (o DashboardGroupDashboardVariableOverrideOutput) ToDashboardGroupDashboard
 	return o
 }
 
-// A metric time series dimension or property name.
+// The name of a dimension to filter against.
 func (o DashboardGroupDashboardVariableOverrideOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
+// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardGroupDashboardVariableOverrideOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1350,9 +1350,9 @@ func (o DashboardGroupImportQualifierArrayOutput) Index(i pulumi.IntInput) Dashb
 type DashboardGroupImportQualifierFilter struct {
 	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated *bool `pulumi:"negated"`
-	// A metric time series dimension or property name.
+	// The name of a dimension to filter against.
 	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// A list of values to be used with the `property`, they will be combined via `OR`.
 	Values []string `pulumi:"values"`
 }
 
@@ -1370,9 +1370,9 @@ type DashboardGroupImportQualifierFilterInput interface {
 type DashboardGroupImportQualifierFilterArgs struct {
 	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// A metric time series dimension or property name.
+	// The name of a dimension to filter against.
 	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
+	// A list of values to be used with the `property`, they will be combined via `OR`.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1432,12 +1432,12 @@ func (o DashboardGroupImportQualifierFilterOutput) Negated() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// A metric time series dimension or property name.
+// The name of a dimension to filter against.
 func (o DashboardGroupImportQualifierFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
+// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardGroupImportQualifierFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2085,7 +2085,7 @@ type DashboardVariable struct {
 	ApplyIfExist *bool `pulumi:"applyIfExist"`
 	// Variable description.
 	Description *string `pulumi:"description"`
-	// The name of a dimension to filter against.
+	// A metric time series dimension or property name.
 	Property string `pulumi:"property"`
 	// If `true`, this variable will only apply to charts that have a filter for the property.
 	ReplaceOnly *bool `pulumi:"replaceOnly"`
@@ -2093,7 +2093,7 @@ type DashboardVariable struct {
 	RestrictedSuggestions *bool `pulumi:"restrictedSuggestions"`
 	// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
 	ValueRequired *bool `pulumi:"valueRequired"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
+	// List of of strings (which will be treated as an OR filter on the property).
 	Values []string `pulumi:"values"`
 	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 	ValuesSuggesteds []string `pulumi:"valuesSuggesteds"`
@@ -2117,7 +2117,7 @@ type DashboardVariableArgs struct {
 	ApplyIfExist pulumi.BoolPtrInput `pulumi:"applyIfExist"`
 	// Variable description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The name of a dimension to filter against.
+	// A metric time series dimension or property name.
 	Property pulumi.StringInput `pulumi:"property"`
 	// If `true`, this variable will only apply to charts that have a filter for the property.
 	ReplaceOnly pulumi.BoolPtrInput `pulumi:"replaceOnly"`
@@ -2125,7 +2125,7 @@ type DashboardVariableArgs struct {
 	RestrictedSuggestions pulumi.BoolPtrInput `pulumi:"restrictedSuggestions"`
 	// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
 	ValueRequired pulumi.BoolPtrInput `pulumi:"valueRequired"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
+	// List of of strings (which will be treated as an OR filter on the property).
 	Values pulumi.StringArrayInput `pulumi:"values"`
 	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 	ValuesSuggesteds pulumi.StringArrayInput `pulumi:"valuesSuggesteds"`
@@ -2197,7 +2197,7 @@ func (o DashboardVariableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of a dimension to filter against.
+// A metric time series dimension or property name.
 func (o DashboardVariableOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardVariable) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -2217,7 +2217,7 @@ func (o DashboardVariableOutput) ValueRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *bool { return v.ValueRequired }).(pulumi.BoolPtrOutput)
 }
 
-// A list of values to be used with the `property`, they will be combined via `OR`.
+// List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardVariableOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardVariable) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2949,7 +2949,7 @@ func (o DetectorVizOptionArrayOutput) Index(i pulumi.IntInput) DetectorVizOption
 }
 
 type HeatmapChartColorRange struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
 	Color string `pulumi:"color"`
 	// The maximum value within the coloring range.
 	MaxValue *float64 `pulumi:"maxValue"`
@@ -2969,7 +2969,7 @@ type HeatmapChartColorRangeInput interface {
 }
 
 type HeatmapChartColorRangeArgs struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+	// The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
 	Color pulumi.StringInput `pulumi:"color"`
 	// The maximum value within the coloring range.
 	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
@@ -3054,7 +3054,7 @@ func (o HeatmapChartColorRangeOutput) ToHeatmapChartColorRangePtrOutputWithConte
 	}).(HeatmapChartColorRangePtrOutput)
 }
 
-// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
 func (o HeatmapChartColorRangeOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
 }
@@ -3093,7 +3093,7 @@ func (o HeatmapChartColorRangePtrOutput) Elem() HeatmapChartColorRangeOutput {
 	}).(HeatmapChartColorRangeOutput)
 }
 
-// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+// The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
 func (o HeatmapChartColorRangePtrOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HeatmapChartColorRange) *string {
 		if v == nil {
@@ -3885,7 +3885,7 @@ func (o MetricRulesetAggregationRuleAggregatorArrayOutput) Index(i pulumi.IntInp
 type MetricRulesetAggregationRuleMatcher struct {
 	// List of filters to filter the set of input MTSs
 	Filters []MetricRulesetAggregationRuleMatcherFilter `pulumi:"filters"`
-	// Type of aggregator. Must always be "rollup"
+	// Type of matcher. Must always be "dimension"
 	Type string `pulumi:"type"`
 }
 
@@ -3903,7 +3903,7 @@ type MetricRulesetAggregationRuleMatcherInput interface {
 type MetricRulesetAggregationRuleMatcherArgs struct {
 	// List of filters to filter the set of input MTSs
 	Filters MetricRulesetAggregationRuleMatcherFilterArrayInput `pulumi:"filters"`
-	// Type of aggregator. Must always be "rollup"
+	// Type of matcher. Must always be "dimension"
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3965,7 +3965,7 @@ func (o MetricRulesetAggregationRuleMatcherOutput) Filters() MetricRulesetAggreg
 	}).(MetricRulesetAggregationRuleMatcherFilterArrayOutput)
 }
 
-// Type of aggregator. Must always be "rollup"
+// Type of matcher. Must always be "dimension"
 func (o MetricRulesetAggregationRuleMatcherOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5029,15 +5029,15 @@ type TimeChartAxisLeft struct {
 	HighWatermark *float64 `pulumi:"highWatermark"`
 	// A label to attach to the high watermark line.
 	HighWatermarkLabel *string `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the left axis.
 	Label *string `pulumi:"label"`
 	// A line to draw as a low watermark.
 	LowWatermark *float64 `pulumi:"lowWatermark"`
 	// A label to attach to the low watermark line.
 	LowWatermarkLabel *string `pulumi:"lowWatermarkLabel"`
-	// The maximum value for the right axis.
+	// The maximum value for the left axis.
 	MaxValue *float64 `pulumi:"maxValue"`
-	// The minimum value for the right axis.
+	// The minimum value for the left axis.
 	MinValue   *float64                     `pulumi:"minValue"`
 	Watermarks []TimeChartAxisLeftWatermark `pulumi:"watermarks"`
 }
@@ -5058,15 +5058,15 @@ type TimeChartAxisLeftArgs struct {
 	HighWatermark pulumi.Float64PtrInput `pulumi:"highWatermark"`
 	// A label to attach to the high watermark line.
 	HighWatermarkLabel pulumi.StringPtrInput `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the left axis.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// A line to draw as a low watermark.
 	LowWatermark pulumi.Float64PtrInput `pulumi:"lowWatermark"`
 	// A label to attach to the low watermark line.
 	LowWatermarkLabel pulumi.StringPtrInput `pulumi:"lowWatermarkLabel"`
-	// The maximum value for the right axis.
+	// The maximum value for the left axis.
 	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
-	// The minimum value for the right axis.
+	// The minimum value for the left axis.
 	MinValue   pulumi.Float64PtrInput               `pulumi:"minValue"`
 	Watermarks TimeChartAxisLeftWatermarkArrayInput `pulumi:"watermarks"`
 }
@@ -5158,7 +5158,7 @@ func (o TimeChartAxisLeftOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label of the left axis.
 func (o TimeChartAxisLeftOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -5173,12 +5173,12 @@ func (o TimeChartAxisLeftOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// The maximum value for the right axis.
+// The maximum value for the left axis.
 func (o TimeChartAxisLeftOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value for the right axis.
+// The minimum value for the left axis.
 func (o TimeChartAxisLeftOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
@@ -5231,7 +5231,7 @@ func (o TimeChartAxisLeftPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label of the left axis.
 func (o TimeChartAxisLeftPtrOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
 		if v == nil {
@@ -5261,7 +5261,7 @@ func (o TimeChartAxisLeftPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum value for the right axis.
+// The maximum value for the left axis.
 func (o TimeChartAxisLeftPtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
 		if v == nil {
@@ -5271,7 +5271,7 @@ func (o TimeChartAxisLeftPtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value for the right axis.
+// The minimum value for the left axis.
 func (o TimeChartAxisLeftPtrOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
 		if v == nil {
@@ -5291,7 +5291,7 @@ func (o TimeChartAxisLeftPtrOutput) Watermarks() TimeChartAxisLeftWatermarkArray
 }
 
 type TimeChartAxisLeftWatermark struct {
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the left axis.
 	Label *string `pulumi:"label"`
 	Value float64 `pulumi:"value"`
 }
@@ -5308,7 +5308,7 @@ type TimeChartAxisLeftWatermarkInput interface {
 }
 
 type TimeChartAxisLeftWatermarkArgs struct {
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the left axis.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	Value pulumi.Float64Input   `pulumi:"value"`
 }
@@ -5364,7 +5364,7 @@ func (o TimeChartAxisLeftWatermarkOutput) ToTimeChartAxisLeftWatermarkOutputWith
 	return o
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label of the left axis.
 func (o TimeChartAxisLeftWatermarkOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeftWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -5398,7 +5398,7 @@ type TimeChartAxisRight struct {
 	HighWatermark *float64 `pulumi:"highWatermark"`
 	// A label to attach to the high watermark line.
 	HighWatermarkLabel *string `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the right axis.
 	Label *string `pulumi:"label"`
 	// A line to draw as a low watermark.
 	LowWatermark *float64 `pulumi:"lowWatermark"`
@@ -5427,7 +5427,7 @@ type TimeChartAxisRightArgs struct {
 	HighWatermark pulumi.Float64PtrInput `pulumi:"highWatermark"`
 	// A label to attach to the high watermark line.
 	HighWatermarkLabel pulumi.StringPtrInput `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the right axis.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// A line to draw as a low watermark.
 	LowWatermark pulumi.Float64PtrInput `pulumi:"lowWatermark"`
@@ -5527,7 +5527,7 @@ func (o TimeChartAxisRightOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label of the right axis.
 func (o TimeChartAxisRightOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -5600,7 +5600,7 @@ func (o TimeChartAxisRightPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label of the right axis.
 func (o TimeChartAxisRightPtrOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *string {
 		if v == nil {
@@ -5660,7 +5660,7 @@ func (o TimeChartAxisRightPtrOutput) Watermarks() TimeChartAxisRightWatermarkArr
 }
 
 type TimeChartAxisRightWatermark struct {
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the left axis.
 	Label *string `pulumi:"label"`
 	Value float64 `pulumi:"value"`
 }
@@ -5677,7 +5677,7 @@ type TimeChartAxisRightWatermarkInput interface {
 }
 
 type TimeChartAxisRightWatermarkArgs struct {
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label of the left axis.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	Value pulumi.Float64Input   `pulumi:"value"`
 }
@@ -5733,7 +5733,7 @@ func (o TimeChartAxisRightWatermarkOutput) ToTimeChartAxisRightWatermarkOutputWi
 	return o
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label of the left axis.
 func (o TimeChartAxisRightWatermarkOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRightWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -6087,7 +6087,7 @@ type TimeChartVizOption struct {
 	Color *string `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName *string `pulumi:"displayName"`
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 	Label string `pulumi:"label"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType *string `pulumi:"plotType"`
@@ -6116,7 +6116,7 @@ type TimeChartVizOptionArgs struct {
 	Color pulumi.StringPtrInput `pulumi:"color"`
 	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Label used in the publish statement that displays the event query you want to customize.
+	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 	PlotType pulumi.StringPtrInput `pulumi:"plotType"`
@@ -6193,7 +6193,7 @@ func (o TimeChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
+// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o TimeChartVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }

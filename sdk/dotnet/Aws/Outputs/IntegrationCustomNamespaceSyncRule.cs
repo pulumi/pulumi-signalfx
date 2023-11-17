@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Aws.Outputs
         /// </summary>
         public readonly string? FilterSource;
         /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
         /// </summary>
         public readonly string Namespace;
 

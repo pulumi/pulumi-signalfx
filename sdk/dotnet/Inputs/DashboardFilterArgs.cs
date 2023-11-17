@@ -13,19 +13,19 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
+        /// If true, this filter will also match data that doesn't have this property at all.
         /// </summary>
         [Input("applyIfExist")]
         public Input<bool>? ApplyIfExist { get; set; }
 
         /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// Whether this filter should be a not filter. `false` by default.
         /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }
 
         /// <summary>
-        /// The name of a dimension to filter against.
+        /// A metric time series dimension or property name.
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
+        /// List of of strings (which will be treated as an OR filter on the property).
         /// </summary>
         public InputList<string> Values
         {

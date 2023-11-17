@@ -411,14 +411,14 @@ public class Detector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authorizedWriterUsers);
     }
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * @return Description of the detector.
      * 
      */
     public Output<Optional<String>> description() {

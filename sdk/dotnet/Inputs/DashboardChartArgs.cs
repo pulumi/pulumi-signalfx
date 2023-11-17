@@ -19,13 +19,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> ChartId { get; set; } = null!;
 
         /// <summary>
-        /// Column number for the layout.
+        /// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
         /// </summary>
         [Input("column")]
         public Input<int>? Column { get; set; }
 
         /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        /// How many rows the chart should take up (greater than or equal to `1`). `1` by default.
         /// </summary>
         [Input("height")]
         public Input<int>? Height { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<int>? Row { get; set; }
 
         /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        /// How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
         /// </summary>
         [Input("width")]
         public Input<int>? Width { get; set; }

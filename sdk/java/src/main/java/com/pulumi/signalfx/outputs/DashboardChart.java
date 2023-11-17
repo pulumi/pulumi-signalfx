@@ -18,12 +18,12 @@ public final class DashboardChart {
      */
     private String chartId;
     /**
-     * @return Column number for the layout.
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     private @Nullable Integer column;
     /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * @return How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     private @Nullable Integer height;
@@ -33,7 +33,7 @@ public final class DashboardChart {
      */
     private @Nullable Integer row;
     /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * @return How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     private @Nullable Integer width;
@@ -47,14 +47,14 @@ public final class DashboardChart {
         return this.chartId;
     }
     /**
-     * @return Column number for the layout.
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     public Optional<Integer> column() {
         return Optional.ofNullable(this.column);
     }
     /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * @return How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     public Optional<Integer> height() {
@@ -68,7 +68,7 @@ public final class DashboardChart {
         return Optional.ofNullable(this.row);
     }
     /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * @return How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Integer> width() {

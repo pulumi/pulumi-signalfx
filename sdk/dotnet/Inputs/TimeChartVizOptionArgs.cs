@@ -31,7 +31,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;

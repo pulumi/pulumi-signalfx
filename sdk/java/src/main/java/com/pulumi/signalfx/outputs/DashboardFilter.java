@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardFilter {
     /**
-     * @return If true, this variable will also match data that doesn&#39;t have this property at all.
+     * @return If true, this filter will also match data that doesn&#39;t have this property at all.
      * 
      */
     private @Nullable Boolean applyIfExist;
     /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * @return Whether this filter should be a not filter. `false` by default.
      * 
      */
     private @Nullable Boolean negated;
     /**
-     * @return The name of a dimension to filter against.
+     * @return A metric time series dimension or property name.
      * 
      */
     private String property;
     /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     private List<String> values;
 
     private DashboardFilter() {}
     /**
-     * @return If true, this variable will also match data that doesn&#39;t have this property at all.
+     * @return If true, this filter will also match data that doesn&#39;t have this property at all.
      * 
      */
     public Optional<Boolean> applyIfExist() {
         return Optional.ofNullable(this.applyIfExist);
     }
     /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * @return Whether this filter should be a not filter. `false` by default.
      * 
      */
     public Optional<Boolean> negated() {
         return Optional.ofNullable(this.negated);
     }
     /**
-     * @return The name of a dimension to filter against.
+     * @return A metric time series dimension or property name.
      * 
      */
     public String property() {
         return this.property;
     }
     /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public List<String> values() {

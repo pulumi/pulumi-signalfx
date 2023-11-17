@@ -52,14 +52,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * @return Description of the detector.
      * 
      */
     public Optional<Output<String>> description() {
@@ -427,7 +427,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+         * @param description Description of the detector.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+         * @param description Description of the detector.
          * 
          * @return builder
          * 

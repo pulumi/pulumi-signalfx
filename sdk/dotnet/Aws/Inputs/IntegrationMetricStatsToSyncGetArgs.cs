@@ -19,7 +19,7 @@ namespace Pulumi.SignalFx.Aws.Inputs
         public Input<string> Metric { get; set; } = null!;
 
         /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        /// An AWS namespace having AWS metric that you want to pick statistics for
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;

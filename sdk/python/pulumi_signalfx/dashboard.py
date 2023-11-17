@@ -43,8 +43,8 @@ class DashboardArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column number for the layout.
-        :param pulumi.Input[str] description: Variable description.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
+        :param pulumi.Input[str] description: Description of the dashboard.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]] event_overlays: Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]] filters: Filter to apply to the charts when displaying the dashboard.
@@ -173,7 +173,7 @@ class DashboardArgs:
     @pulumi.getter
     def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]]:
         """
-        Column number for the layout.
+        Column layout. Charts listed will be placed in a single column with the same width and height.
         """
         return pulumi.get(self, "columns")
 
@@ -185,7 +185,7 @@ class DashboardArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Variable description.
+        Description of the dashboard.
         """
         return pulumi.get(self, "description")
 
@@ -374,9 +374,9 @@ class _DashboardState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardChartArgs']]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column number for the layout.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
-        :param pulumi.Input[str] description: Variable description.
+        :param pulumi.Input[str] description: Description of the dashboard.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlayArgs']]] event_overlays: Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]] filters: Filter to apply to the charts when displaying the dashboard.
@@ -497,7 +497,7 @@ class _DashboardState:
     @pulumi.getter
     def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColumnArgs']]]]:
         """
-        Column number for the layout.
+        Column layout. Charts listed will be placed in a single column with the same width and height.
         """
         return pulumi.get(self, "columns")
 
@@ -521,7 +521,7 @@ class _DashboardState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Variable description.
+        Description of the dashboard.
         """
         return pulumi.get(self, "description")
 
@@ -726,9 +726,9 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
-        :param pulumi.Input[str] description: Variable description.
+        :param pulumi.Input[str] description: Description of the dashboard.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardEventOverlayArgs']]]] event_overlays: Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] filters: Filter to apply to the charts when displaying the dashboard.
@@ -858,9 +858,9 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardChartArgs']]]] charts: Chart ID and layout information for the charts in the dashboard.
         :param pulumi.Input[str] charts_resolution: Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column number for the layout.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColumnArgs']]]] columns: Column layout. Charts listed will be placed in a single column with the same width and height.
         :param pulumi.Input[str] dashboard_group: The ID of the dashboard group that contains the dashboard.
-        :param pulumi.Input[str] description: Variable description.
+        :param pulumi.Input[str] description: Description of the dashboard.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardEventOverlayArgs']]]] event_overlays: Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] filters: Filter to apply to the charts when displaying the dashboard.
@@ -943,7 +943,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def columns(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardColumn']]]:
         """
-        Column number for the layout.
+        Column layout. Charts listed will be placed in a single column with the same width and height.
         """
         return pulumi.get(self, "columns")
 
@@ -959,7 +959,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Variable description.
+        Description of the dashboard.
         """
         return pulumi.get(self, "description")
 

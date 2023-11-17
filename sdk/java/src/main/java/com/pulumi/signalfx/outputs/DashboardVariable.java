@@ -29,7 +29,7 @@ public final class DashboardVariable {
      */
     private @Nullable String description;
     /**
-     * @return The name of a dimension to filter against.
+     * @return A metric time series dimension or property name.
      * 
      */
     private String property;
@@ -49,7 +49,7 @@ public final class DashboardVariable {
      */
     private @Nullable Boolean valueRequired;
     /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     private @Nullable List<String> values;
@@ -82,7 +82,7 @@ public final class DashboardVariable {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The name of a dimension to filter against.
+     * @return A metric time series dimension or property name.
      * 
      */
     public String property() {
@@ -110,7 +110,7 @@ public final class DashboardVariable {
         return Optional.ofNullable(this.valueRequired);
     }
     /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public List<String> values() {

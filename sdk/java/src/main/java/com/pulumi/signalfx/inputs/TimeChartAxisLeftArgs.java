@@ -49,14 +49,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the left axis.
      * 
      */
     public Optional<Output<String>> label() {
@@ -94,14 +94,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum value for the right axis.
+     * The maximum value for the left axis.
      * 
      */
     @Import(name="maxValue")
     private @Nullable Output<Double> maxValue;
 
     /**
-     * @return The maximum value for the right axis.
+     * @return The maximum value for the left axis.
      * 
      */
     public Optional<Output<Double>> maxValue() {
@@ -109,14 +109,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The minimum value for the right axis.
+     * The minimum value for the left axis.
      * 
      */
     @Import(name="minValue")
     private @Nullable Output<Double> minValue;
 
     /**
-     * @return The minimum value for the right axis.
+     * @return The minimum value for the left axis.
      * 
      */
     public Optional<Output<Double>> minValue() {
@@ -204,7 +204,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label of the left axis.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label of the left axis.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxValue The maximum value for the right axis.
+         * @param maxValue The maximum value for the left axis.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxValue The maximum value for the right axis.
+         * @param maxValue The maximum value for the left axis.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param minValue The minimum value for the right axis.
+         * @param minValue The minimum value for the left axis.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param minValue The minimum value for the right axis.
+         * @param minValue The minimum value for the left axis.
          * 
          * @return builder
          * 

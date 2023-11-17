@@ -32,14 +32,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Column number for the layout.
+     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     @Import(name="column")
     private @Nullable Output<Integer> column;
 
     /**
-     * @return Column number for the layout.
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     public Optional<Output<Integer>> column() {
@@ -47,14 +47,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     @Import(name="height")
     private @Nullable Output<Integer> height;
 
     /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * @return How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     public Optional<Output<Integer>> height() {
@@ -77,14 +77,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     @Import(name="width")
     private @Nullable Output<Integer> width;
 
     /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * @return How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Output<Integer>> width() {
@@ -141,7 +141,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param column Column number for the layout.
+         * @param column The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param column Column number for the layout.
+         * @param column The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param height How many rows every chart should take up (greater than or equal to 1). 1 by default.
+         * @param height How many rows the chart should take up (greater than or equal to `1`). `1` by default.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param height How many rows every chart should take up (greater than or equal to 1). 1 by default.
+         * @param height How many rows the chart should take up (greater than or equal to `1`). `1` by default.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param width How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+         * @param width How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param width How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+         * @param width How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
          * 
          * @return builder
          * 

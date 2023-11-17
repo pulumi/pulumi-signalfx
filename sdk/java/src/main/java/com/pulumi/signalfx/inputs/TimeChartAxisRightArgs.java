@@ -49,14 +49,14 @@ public final class TimeChartAxisRightArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the right axis.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the right axis.
      * 
      */
     public Optional<Output<String>> label() {
@@ -204,7 +204,7 @@ public final class TimeChartAxisRightArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label of the right axis.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class TimeChartAxisRightArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label of the right axis.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class HeatmapChartColorRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        /// The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
         /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;

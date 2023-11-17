@@ -33,14 +33,14 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
     }
 
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return A metric time series dimension or property name.
+     * @return The name of a dimension to filter against.
      * 
      */
     public Output<String> property() {
@@ -48,14 +48,14 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
     }
 
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
     public Output<List<String>> values() {
@@ -110,7 +110,7 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
         }
 
         /**
-         * @param property A metric time series dimension or property name.
+         * @param property The name of a dimension to filter against.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
         }
 
         /**
-         * @param property A metric time series dimension or property name.
+         * @param property The name of a dimension to filter against.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
          * 
          * @return builder
          * 

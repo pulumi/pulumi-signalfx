@@ -61,14 +61,14 @@ public final class IntegrationCustomNamespaceSyncRuleArgs extends com.pulumi.res
     }
 
     /**
-     * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
      * 
      */
     public Output<String> namespace() {
@@ -166,7 +166,7 @@ public final class IntegrationCustomNamespaceSyncRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class IntegrationCustomNamespaceSyncRuleArgs extends com.pulumi.res
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
          * 
          * @return builder
          * 

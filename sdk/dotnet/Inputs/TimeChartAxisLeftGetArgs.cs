@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? HighWatermarkLabel { get; set; }
 
         /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
+        /// Label of the left axis.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? LowWatermarkLabel { get; set; }
 
         /// <summary>
-        /// The maximum value for the right axis.
+        /// The maximum value for the left axis.
         /// </summary>
         [Input("maxValue")]
         public Input<double>? MaxValue { get; set; }
 
         /// <summary>
-        /// The minimum value for the right axis.
+        /// The minimum value for the left axis.
         /// </summary>
         [Input("minValue")]
         public Input<double>? MinValue { get; set; }

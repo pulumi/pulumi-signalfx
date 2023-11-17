@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardGroupDashboardVariableOverrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A metric time series dimension or property name.
+        /// The name of a dimension to filter against.
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// A list of values to be used with the `property`, they will be combined via `OR`.
         /// </summary>
         public InputList<string> Values
         {

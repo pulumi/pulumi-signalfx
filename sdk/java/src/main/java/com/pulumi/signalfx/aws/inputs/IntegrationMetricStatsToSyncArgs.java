@@ -30,14 +30,14 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
     }
 
     /**
-     * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * An AWS namespace having AWS metric that you want to pick statistics for
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+     * @return An AWS namespace having AWS metric that you want to pick statistics for
      * 
      */
     public Output<String> namespace() {
@@ -107,7 +107,7 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * @param namespace An AWS namespace having AWS metric that you want to pick statistics for
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * @param namespace An AWS namespace having AWS metric that you want to pick statistics for
          * 
          * @return builder
          * 

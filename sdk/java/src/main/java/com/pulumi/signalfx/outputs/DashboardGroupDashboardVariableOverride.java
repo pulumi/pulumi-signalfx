@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardGroupDashboardVariableOverride {
     /**
-     * @return A metric time series dimension or property name.
+     * @return The name of a dimension to filter against.
      * 
      */
     private String property;
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
     private @Nullable List<String> values;
@@ -29,14 +29,14 @@ public final class DashboardGroupDashboardVariableOverride {
 
     private DashboardGroupDashboardVariableOverride() {}
     /**
-     * @return A metric time series dimension or property name.
+     * @return The name of a dimension to filter against.
      * 
      */
     public String property() {
         return this.property;
     }
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
     public List<String> values() {

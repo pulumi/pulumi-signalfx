@@ -27,11 +27,11 @@ type Dashboard struct {
 	Charts DashboardChartArrayOutput `pulumi:"charts"`
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
 	ChartsResolution pulumi.StringPtrOutput `pulumi:"chartsResolution"`
-	// Column number for the layout.
+	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns DashboardColumnArrayOutput `pulumi:"columns"`
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup pulumi.StringOutput `pulumi:"dashboardGroup"`
-	// Variable description.
+	// Description of the dashboard.
 	Description               pulumi.StringPtrOutput   `pulumi:"description"`
 	DiscoveryOptionsQuery     pulumi.StringPtrOutput   `pulumi:"discoveryOptionsQuery"`
 	DiscoveryOptionsSelectors pulumi.StringArrayOutput `pulumi:"discoveryOptionsSelectors"`
@@ -106,11 +106,11 @@ type dashboardState struct {
 	Charts []DashboardChart `pulumi:"charts"`
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
 	ChartsResolution *string `pulumi:"chartsResolution"`
-	// Column number for the layout.
+	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns []DashboardColumn `pulumi:"columns"`
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup *string `pulumi:"dashboardGroup"`
-	// Variable description.
+	// Description of the dashboard.
 	Description               *string  `pulumi:"description"`
 	DiscoveryOptionsQuery     *string  `pulumi:"discoveryOptionsQuery"`
 	DiscoveryOptionsSelectors []string `pulumi:"discoveryOptionsSelectors"`
@@ -153,11 +153,11 @@ type DashboardState struct {
 	Charts DashboardChartArrayInput
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
 	ChartsResolution pulumi.StringPtrInput
-	// Column number for the layout.
+	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns DashboardColumnArrayInput
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup pulumi.StringPtrInput
-	// Variable description.
+	// Description of the dashboard.
 	Description               pulumi.StringPtrInput
 	DiscoveryOptionsQuery     pulumi.StringPtrInput
 	DiscoveryOptionsSelectors pulumi.StringArrayInput
@@ -204,11 +204,11 @@ type dashboardArgs struct {
 	Charts []DashboardChart `pulumi:"charts"`
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
 	ChartsResolution *string `pulumi:"chartsResolution"`
-	// Column number for the layout.
+	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns []DashboardColumn `pulumi:"columns"`
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup string `pulumi:"dashboardGroup"`
-	// Variable description.
+	// Description of the dashboard.
 	Description               *string  `pulumi:"description"`
 	DiscoveryOptionsQuery     *string  `pulumi:"discoveryOptionsQuery"`
 	DiscoveryOptionsSelectors []string `pulumi:"discoveryOptionsSelectors"`
@@ -250,11 +250,11 @@ type DashboardArgs struct {
 	Charts DashboardChartArrayInput
 	// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
 	ChartsResolution pulumi.StringPtrInput
-	// Column number for the layout.
+	// Column layout. Charts listed will be placed in a single column with the same width and height.
 	Columns DashboardColumnArrayInput
 	// The ID of the dashboard group that contains the dashboard.
 	DashboardGroup pulumi.StringInput
-	// Variable description.
+	// Description of the dashboard.
 	Description               pulumi.StringPtrInput
 	DiscoveryOptionsQuery     pulumi.StringPtrInput
 	DiscoveryOptionsSelectors pulumi.StringArrayInput
@@ -393,7 +393,7 @@ func (o DashboardOutput) ChartsResolution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.ChartsResolution }).(pulumi.StringPtrOutput)
 }
 
-// Column number for the layout.
+// Column layout. Charts listed will be placed in a single column with the same width and height.
 func (o DashboardOutput) Columns() DashboardColumnArrayOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardColumnArrayOutput { return v.Columns }).(DashboardColumnArrayOutput)
 }
@@ -403,7 +403,7 @@ func (o DashboardOutput) DashboardGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DashboardGroup }).(pulumi.StringOutput)
 }
 
-// Variable description.
+// Description of the dashboard.
 func (o DashboardOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

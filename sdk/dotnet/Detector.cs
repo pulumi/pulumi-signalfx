@@ -256,7 +256,7 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
 
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        /// Description of the detector.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -434,7 +434,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        /// Description of the detector.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -586,7 +586,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        /// Description of the detector.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

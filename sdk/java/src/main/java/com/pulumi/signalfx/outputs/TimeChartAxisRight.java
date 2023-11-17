@@ -25,7 +25,7 @@ public final class TimeChartAxisRight {
      */
     private @Nullable String highWatermarkLabel;
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the right axis.
      * 
      */
     private @Nullable String label;
@@ -67,7 +67,7 @@ public final class TimeChartAxisRight {
         return Optional.ofNullable(this.highWatermarkLabel);
     }
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the right axis.
      * 
      */
     public Optional<String> label() {

@@ -17,14 +17,14 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
     public static final TimeChartAxisLeftWatermarkArgs Empty = new TimeChartAxisLeftWatermarkArgs();
 
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the left axis.
      * 
      */
     public Optional<Output<String>> label() {
@@ -64,7 +64,7 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label of the left axis.
          * 
          * @return builder
          * 
@@ -75,7 +75,7 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label of the left axis.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
     public static final DashboardGroupDashboardVariableOverrideArgs Empty = new DashboardGroupDashboardVariableOverrideArgs();
 
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return A metric time series dimension or property name.
+     * @return The name of a dimension to filter against.
      * 
      */
     public Output<String> property() {
@@ -32,14 +32,14 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
     }
 
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return A list of values to be used with the `property`, they will be combined via `OR`.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -88,7 +88,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param property A metric time series dimension or property name.
+         * @param property The name of a dimension to filter against.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param property A metric time series dimension or property name.
+         * @param property The name of a dimension to filter against.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
          * 
          * @return builder
          * 

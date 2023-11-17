@@ -63,14 +63,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of a dimension to filter against.
+     * A metric time series dimension or property name.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return The name of a dimension to filter against.
+     * @return A metric time series dimension or property name.
      * 
      */
     public Output<String> property() {
@@ -123,14 +123,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A list of values to be used with the `property`, they will be combined via `OR`.
+     * List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -248,7 +248,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param property The name of a dimension to filter against.
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param property The name of a dimension to filter against.
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param values A list of values to be used with the `property`, they will be combined via `OR`.
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 

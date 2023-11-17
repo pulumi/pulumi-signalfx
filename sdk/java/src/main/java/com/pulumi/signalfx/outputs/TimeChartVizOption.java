@@ -27,7 +27,7 @@ public final class TimeChartVizOption {
      */
     private @Nullable String displayName;
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     private String label;
@@ -71,7 +71,7 @@ public final class TimeChartVizOption {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     public String label() {

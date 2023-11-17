@@ -273,14 +273,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
      * 
      */
     @Import(name="plotType")
     private @Nullable Output<String> plotType;
 
     /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * @return The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
      * 
      */
     public Optional<Output<String>> plotType() {
@@ -900,7 +900,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plotType The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+         * @param plotType The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
          * 
          * @return builder
          * 
@@ -911,7 +911,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plotType The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+         * @param plotType The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
          * 
          * @return builder
          * 

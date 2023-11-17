@@ -17,14 +17,14 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
     public static final HeatmapChartColorRangeArgs Empty = new HeatmapChartColorRangeArgs();
 
     /**
-     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
      * 
      */
     @Import(name="color", required=true)
     private Output<String> color;
 
     /**
-     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * @return The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
      * 
      */
     public Output<String> color() {
@@ -88,7 +88,7 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param color The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+         * @param color The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param color The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+         * @param color The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
          * 
          * @return builder
          * 

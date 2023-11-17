@@ -331,7 +331,7 @@ type Detector struct {
 	AuthorizedWriterTeams pulumi.StringArrayOutput `pulumi:"authorizedWriterTeams"`
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
@@ -409,7 +409,7 @@ type detectorState struct {
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector.
 	Description *string `pulumi:"description"`
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling *bool `pulumi:"disableSampling"`
@@ -452,7 +452,7 @@ type DetectorState struct {
 	AuthorizedWriterTeams pulumi.StringArrayInput
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers pulumi.StringArrayInput
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector.
 	Description pulumi.StringPtrInput
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling pulumi.BoolPtrInput
@@ -499,7 +499,7 @@ type detectorArgs struct {
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector.
 	Description *string `pulumi:"description"`
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling *bool `pulumi:"disableSampling"`
@@ -539,7 +539,7 @@ type DetectorArgs struct {
 	AuthorizedWriterTeams pulumi.StringArrayInput
 	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
 	AuthorizedWriterUsers pulumi.StringArrayInput
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector.
 	Description pulumi.StringPtrInput
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling pulumi.BoolPtrInput
@@ -670,7 +670,7 @@ func (o DetectorOutput) AuthorizedWriterUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.AuthorizedWriterUsers }).(pulumi.StringArrayOutput)
 }
 
-// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+// Description of the detector.
 func (o DetectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

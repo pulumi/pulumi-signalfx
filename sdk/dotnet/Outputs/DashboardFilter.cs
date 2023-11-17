@@ -14,19 +14,19 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardFilter
     {
         /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
+        /// If true, this filter will also match data that doesn't have this property at all.
         /// </summary>
         public readonly bool? ApplyIfExist;
         /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+        /// Whether this filter should be a not filter. `false` by default.
         /// </summary>
         public readonly bool? Negated;
         /// <summary>
-        /// The name of a dimension to filter against.
+        /// A metric time series dimension or property name.
         /// </summary>
         public readonly string Property;
         /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
+        /// List of of strings (which will be treated as an OR filter on the property).
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

@@ -102,14 +102,14 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed will be placed in a single column with the same width and height.
      * 
      */
     @Import(name="columns")
     private @Nullable Output<List<DashboardColumnArgs>> columns;
 
     /**
-     * @return Column number for the layout.
+     * @return Column layout. Charts listed will be placed in a single column with the same width and height.
      * 
      */
     public Optional<Output<List<DashboardColumnArgs>>> columns() {
@@ -132,14 +132,14 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Variable description.
+     * Description of the dashboard.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Variable description.
+     * @return Description of the dashboard.
      * 
      */
     public Optional<Output<String>> description() {
@@ -507,7 +507,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns Column number for the layout.
+         * @param columns Column layout. Charts listed will be placed in a single column with the same width and height.
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns Column number for the layout.
+         * @param columns Column layout. Charts listed will be placed in a single column with the same width and height.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns Column number for the layout.
+         * @param columns Column layout. Charts listed will be placed in a single column with the same width and height.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Variable description.
+         * @param description Description of the dashboard.
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Variable description.
+         * @param description Description of the dashboard.
          * 
          * @return builder
          * 

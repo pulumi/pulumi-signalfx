@@ -48,14 +48,14 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
     }
 
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public Output<List<String>> values() {
@@ -131,7 +131,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 

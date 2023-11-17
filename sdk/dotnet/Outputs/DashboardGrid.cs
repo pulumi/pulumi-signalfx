@@ -18,11 +18,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ChartIds;
         /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        /// How many rows every chart should take up (greater than or equal to `1`). `1` by default.
         /// </summary>
         public readonly int? Height;
         /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        /// How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
         /// </summary>
         public readonly int? Width;
 

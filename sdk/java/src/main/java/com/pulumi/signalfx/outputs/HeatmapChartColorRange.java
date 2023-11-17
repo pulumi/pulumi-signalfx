@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HeatmapChartColorRange {
     /**
-     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * @return The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
      * 
      */
     private String color;
@@ -30,7 +30,7 @@ public final class HeatmapChartColorRange {
 
     private HeatmapChartColorRange() {}
     /**
-     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * @return The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
      * 
      */
     public String color() {

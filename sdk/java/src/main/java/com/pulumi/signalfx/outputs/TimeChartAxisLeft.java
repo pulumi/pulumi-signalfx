@@ -25,7 +25,7 @@ public final class TimeChartAxisLeft {
      */
     private @Nullable String highWatermarkLabel;
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the left axis.
      * 
      */
     private @Nullable String label;
@@ -40,12 +40,12 @@ public final class TimeChartAxisLeft {
      */
     private @Nullable String lowWatermarkLabel;
     /**
-     * @return The maximum value for the right axis.
+     * @return The maximum value for the left axis.
      * 
      */
     private @Nullable Double maxValue;
     /**
-     * @return The minimum value for the right axis.
+     * @return The minimum value for the left axis.
      * 
      */
     private @Nullable Double minValue;
@@ -67,7 +67,7 @@ public final class TimeChartAxisLeft {
         return Optional.ofNullable(this.highWatermarkLabel);
     }
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label of the left axis.
      * 
      */
     public Optional<String> label() {
@@ -88,14 +88,14 @@ public final class TimeChartAxisLeft {
         return Optional.ofNullable(this.lowWatermarkLabel);
     }
     /**
-     * @return The maximum value for the right axis.
+     * @return The maximum value for the left axis.
      * 
      */
     public Optional<Double> maxValue() {
         return Optional.ofNullable(this.maxValue);
     }
     /**
-     * @return The minimum value for the right axis.
+     * @return The minimum value for the left axis.
      * 
      */
     public Optional<Double> minValue() {

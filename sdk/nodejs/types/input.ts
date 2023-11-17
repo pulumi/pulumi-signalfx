@@ -26,11 +26,11 @@ export interface DashboardChart {
      */
     chartId: pulumi.Input<string>;
     /**
-     * Column number for the layout.
+     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      */
     column?: pulumi.Input<number>;
     /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: pulumi.Input<number>;
     /**
@@ -38,7 +38,7 @@ export interface DashboardChart {
      */
     row?: pulumi.Input<number>;
     /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      */
     width?: pulumi.Input<number>;
 }
@@ -106,19 +106,19 @@ export interface DashboardEventOverlaySource {
 
 export interface DashboardFilter {
     /**
-     * If true, this variable will also match data that doesn't have this property at all.
+     * If true, this filter will also match data that doesn't have this property at all.
      */
     applyIfExist?: pulumi.Input<boolean>;
     /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * Whether this filter should be a not filter. `false` by default.
      */
     negated?: pulumi.Input<boolean>;
     /**
-     * The name of a dimension to filter against.
+     * A metric time series dimension or property name.
      */
     property: pulumi.Input<string>;
     /**
-     * A list of values to be used with the `property`, they will be combined via `OR`.
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -129,11 +129,11 @@ export interface DashboardGrid {
      */
     chartIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: pulumi.Input<number>;
     /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      */
     width?: pulumi.Input<number>;
 }
@@ -169,18 +169,18 @@ export interface DashboardGroupDashboardFilterOverride {
      */
     property: pulumi.Input<string>;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface DashboardGroupDashboardVariableOverride {
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      */
     property: pulumi.Input<string>;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -200,11 +200,11 @@ export interface DashboardGroupImportQualifierFilter {
      */
     negated?: pulumi.Input<boolean>;
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      */
     property: pulumi.Input<string>;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -294,7 +294,7 @@ export interface DashboardVariable {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of a dimension to filter against.
+     * A metric time series dimension or property name.
      */
     property: pulumi.Input<string>;
     /**
@@ -310,7 +310,7 @@ export interface DashboardVariable {
      */
     valueRequired?: pulumi.Input<boolean>;
     /**
-     * A list of values to be used with the `property`, they will be combined via `OR`.
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -447,7 +447,7 @@ export interface DetectorVizOption {
 
 export interface HeatmapChartColorRange {
     /**
-     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
      */
     color: pulumi.Input<string>;
     /**
@@ -585,7 +585,7 @@ export interface MetricRulesetAggregationRuleMatcher {
      */
     filters?: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleMatcherFilter>[]>;
     /**
-     * Type of aggregator. Must always be "rollup"
+     * Type of matcher. Must always be "dimension"
      */
     type: pulumi.Input<string>;
 }
@@ -724,7 +724,7 @@ export interface TimeChartAxisLeft {
      */
     highWatermarkLabel?: pulumi.Input<string>;
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      */
     label?: pulumi.Input<string>;
     /**
@@ -736,11 +736,11 @@ export interface TimeChartAxisLeft {
      */
     lowWatermarkLabel?: pulumi.Input<string>;
     /**
-     * The maximum value for the right axis.
+     * The maximum value for the left axis.
      */
     maxValue?: pulumi.Input<number>;
     /**
-     * The minimum value for the right axis.
+     * The minimum value for the left axis.
      */
     minValue?: pulumi.Input<number>;
     watermarks?: pulumi.Input<pulumi.Input<inputs.TimeChartAxisLeftWatermark>[]>;
@@ -748,7 +748,7 @@ export interface TimeChartAxisLeft {
 
 export interface TimeChartAxisLeftWatermark {
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      */
     label?: pulumi.Input<string>;
     value: pulumi.Input<number>;
@@ -764,7 +764,7 @@ export interface TimeChartAxisRight {
      */
     highWatermarkLabel?: pulumi.Input<string>;
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the right axis.
      */
     label?: pulumi.Input<string>;
     /**
@@ -788,7 +788,7 @@ export interface TimeChartAxisRight {
 
 export interface TimeChartAxisRightWatermark {
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      */
     label?: pulumi.Input<string>;
     value: pulumi.Input<number>;
@@ -841,7 +841,7 @@ export interface TimeChartVizOption {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
     /**
@@ -884,7 +884,7 @@ export namespace aws {
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
          */
         namespace: pulumi.Input<string>;
     }
@@ -895,7 +895,7 @@ export namespace aws {
          */
         metric: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * An AWS namespace having AWS metric that you want to pick statistics for
          */
         namespace: pulumi.Input<string>;
         /**

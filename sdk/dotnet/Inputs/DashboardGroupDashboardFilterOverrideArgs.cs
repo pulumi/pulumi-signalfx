@@ -28,7 +28,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// List of of strings (which will be treated as an OR filter on the property).
         /// </summary>
         public InputList<string> Values
         {

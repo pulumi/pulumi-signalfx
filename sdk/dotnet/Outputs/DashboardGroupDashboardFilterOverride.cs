@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Property;
         /// <summary>
-        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
+        /// List of of strings (which will be treated as an OR filter on the property).
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartAxisRightWatermark
     {
         /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
+        /// Label of the left axis.
         /// </summary>
         public readonly string? Label;
         public readonly double Value;

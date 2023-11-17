@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleMatcherFilter> Filters;
         /// <summary>
-        /// Type of aggregator. Must always be "rollup"
+        /// Type of matcher. Must always be "dimension"
         /// </summary>
         public readonly string Type;
 

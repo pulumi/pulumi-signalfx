@@ -26,7 +26,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         public readonly string Label;
         /// <summary>

@@ -33,14 +33,14 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
     }
 
     /**
-     * Type of aggregator. Must always be &#34;rollup&#34;
+     * Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of aggregator. Must always be &#34;rollup&#34;
+     * @return Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     public Output<String> type() {
@@ -104,7 +104,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param type Type of aggregator. Must always be &#34;rollup&#34;
+         * @param type Type of matcher. Must always be &#34;dimension&#34;
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param type Type of aggregator. Must always be &#34;rollup&#34;
+         * @param type Type of matcher. Must always be &#34;dimension&#34;
          * 
          * @return builder
          * 

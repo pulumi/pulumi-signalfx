@@ -61,14 +61,14 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     public Output<String> label() {
@@ -222,7 +222,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label used in the publish statement that displays the plot (metric time series data) you want to customize.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class TimeChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
+         * @param label Label used in the publish statement that displays the plot (metric time series data) you want to customize.
          * 
          * @return builder
          * 

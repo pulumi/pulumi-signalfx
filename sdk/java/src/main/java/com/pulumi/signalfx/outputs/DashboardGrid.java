@@ -19,12 +19,12 @@ public final class DashboardGrid {
      */
     private List<String> chartIds;
     /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * @return How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     private @Nullable Integer height;
     /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * @return How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     private @Nullable Integer width;
@@ -38,14 +38,14 @@ public final class DashboardGrid {
         return this.chartIds;
     }
     /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * @return How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     public Optional<Integer> height() {
         return Optional.ofNullable(this.height);
     }
     /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * @return How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Integer> width() {

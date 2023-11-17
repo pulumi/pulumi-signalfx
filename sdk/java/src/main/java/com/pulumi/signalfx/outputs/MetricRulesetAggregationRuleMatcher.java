@@ -18,7 +18,7 @@ public final class MetricRulesetAggregationRuleMatcher {
      */
     private @Nullable List<MetricRulesetAggregationRuleMatcherFilter> filters;
     /**
-     * @return Type of aggregator. Must always be &#34;rollup&#34;
+     * @return Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     private String type;
@@ -32,7 +32,7 @@ public final class MetricRulesetAggregationRuleMatcher {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return Type of aggregator. Must always be &#34;rollup&#34;
+     * @return Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     public String type() {

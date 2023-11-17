@@ -317,14 +317,14 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onChartLegendDimension);
     }
     /**
-     * The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
      * 
      */
     @Export(name="plotType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plotType;
 
     /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * @return The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
      * 
      */
     public Output<Optional<String>> plotType() {

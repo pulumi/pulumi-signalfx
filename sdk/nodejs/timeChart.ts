@@ -141,7 +141,7 @@ export class TimeChart extends pulumi.CustomResource {
      */
     public readonly onChartLegendDimension!: pulumi.Output<string | undefined>;
     /**
-     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+     * The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
      */
     public readonly plotType!: pulumi.Output<string | undefined>;
     /**
@@ -342,7 +342,7 @@ export interface TimeChartState {
      */
     onChartLegendDimension?: pulumi.Input<string>;
     /**
-     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+     * The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
      */
     plotType?: pulumi.Input<string>;
     /**
@@ -464,7 +464,7 @@ export interface TimeChartArgs {
      */
     onChartLegendDimension?: pulumi.Input<string>;
     /**
-     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+     * The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
      */
     plotType?: pulumi.Input<string>;
     /**

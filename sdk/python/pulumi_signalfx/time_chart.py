@@ -62,7 +62,7 @@ class TimeChartArgs:
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[str] plot_type: The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
@@ -344,7 +344,7 @@ class TimeChartArgs:
     @pulumi.getter(name="plotType")
     def plot_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         """
         return pulumi.get(self, "plot_type")
 
@@ -513,7 +513,7 @@ class _TimeChartState:
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[str] plot_type: The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
@@ -788,7 +788,7 @@ class _TimeChartState:
     @pulumi.getter(name="plotType")
     def plot_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         """
         return pulumi.get(self, "plot_type")
 
@@ -1022,7 +1022,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[str] plot_type: The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
@@ -1221,7 +1221,7 @@ class TimeChart(pulumi.CustomResource):
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
         :param pulumi.Input[str] name: Name of the chart.
         :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[str] plot_type: The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
         :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
@@ -1403,7 +1403,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="plotType")
     def plot_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         """
         return pulumi.get(self, "plot_type")
 

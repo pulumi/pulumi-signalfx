@@ -23,7 +23,7 @@ class IntegrationCustomNamespaceSyncRuleArgs:
                  filter_action: Optional[pulumi.Input[str]] = None,
                  filter_source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
         :param pulumi.Input[str] default_action: Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
         :param pulumi.Input[str] filter_action: Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
         :param pulumi.Input[str] filter_source: Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
@@ -40,7 +40,7 @@ class IntegrationCustomNamespaceSyncRuleArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
         """
         return pulumi.get(self, "namespace")
 
@@ -93,7 +93,7 @@ class IntegrationMetricStatsToSyncArgs:
                  stats: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] metric: AWS metric that you want to pick statistics for
-        :param pulumi.Input[str] namespace: An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        :param pulumi.Input[str] namespace: An AWS namespace having AWS metric that you want to pick statistics for
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stats: AWS statistics you want to collect
         """
         pulumi.set(__self__, "metric", metric)
@@ -116,7 +116,7 @@ class IntegrationMetricStatsToSyncArgs:
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
         """
-        An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+        An AWS namespace having AWS metric that you want to pick statistics for
         """
         return pulumi.get(self, "namespace")
 

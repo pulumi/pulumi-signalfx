@@ -37,7 +37,7 @@ namespace Pulumi.SignalFx
         public Output<string?> ChartsResolution { get; private set; } = null!;
 
         /// <summary>
-        /// Column number for the layout.
+        /// Column layout. Charts listed will be placed in a single column with the same width and height.
         /// </summary>
         [Output("columns")]
         public Output<ImmutableArray<Outputs.DashboardColumn>> Columns { get; private set; } = null!;
@@ -49,7 +49,7 @@ namespace Pulumi.SignalFx
         public Output<string> DashboardGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Variable description.
+        /// Description of the dashboard.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardColumnArgs>? _columns;
 
         /// <summary>
-        /// Column number for the layout.
+        /// Column layout. Charts listed will be placed in a single column with the same width and height.
         /// </summary>
         public InputList<Inputs.DashboardColumnArgs> Columns
         {
@@ -241,7 +241,7 @@ namespace Pulumi.SignalFx
         public Input<string> DashboardGroup { get; set; } = null!;
 
         /// <summary>
-        /// Variable description.
+        /// Description of the dashboard.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -415,7 +415,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardColumnGetArgs>? _columns;
 
         /// <summary>
-        /// Column number for the layout.
+        /// Column layout. Charts listed will be placed in a single column with the same width and height.
         /// </summary>
         public InputList<Inputs.DashboardColumnGetArgs> Columns
         {
@@ -430,7 +430,7 @@ namespace Pulumi.SignalFx
         public Input<string>? DashboardGroup { get; set; }
 
         /// <summary>
-        /// Variable description.
+        /// Description of the dashboard.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

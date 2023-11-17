@@ -164,7 +164,7 @@ namespace Pulumi.SignalFx
         public Output<string?> OnChartLegendDimension { get; private set; } = null!;
 
         /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        /// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         /// </summary>
         [Output("plotType")]
         public Output<string?> PlotType { get; private set; } = null!;
@@ -403,7 +403,7 @@ namespace Pulumi.SignalFx
         public Input<string>? OnChartLegendDimension { get; set; }
 
         /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        /// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
@@ -611,7 +611,7 @@ namespace Pulumi.SignalFx
         public Input<string>? OnChartLegendDimension { get; set; }
 
         /// <summary>
-        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        /// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }

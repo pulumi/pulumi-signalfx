@@ -102,7 +102,7 @@ type TimeChart struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension pulumi.StringPtrOutput `pulumi:"onChartLegendDimension"`
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType pulumi.StringPtrOutput `pulumi:"plotType"`
 	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
@@ -197,7 +197,7 @@ type timeChartState struct {
 	Name *string `pulumi:"name"`
 	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension *string `pulumi:"onChartLegendDimension"`
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType *string `pulumi:"plotType"`
 	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText *string `pulumi:"programText"`
@@ -260,7 +260,7 @@ type TimeChartState struct {
 	Name pulumi.StringPtrInput
 	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension pulumi.StringPtrInput
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType pulumi.StringPtrInput
 	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringPtrInput
@@ -327,7 +327,7 @@ type timeChartArgs struct {
 	Name *string `pulumi:"name"`
 	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension *string `pulumi:"onChartLegendDimension"`
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType *string `pulumi:"plotType"`
 	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText string `pulumi:"programText"`
@@ -389,7 +389,7 @@ type TimeChartArgs struct {
 	Name pulumi.StringPtrInput
 	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension pulumi.StringPtrInput
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType pulumi.StringPtrInput
 	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
 	ProgramText pulumi.StringInput
@@ -584,7 +584,7 @@ func (o TimeChartOutput) OnChartLegendDimension() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.OnChartLegendDimension }).(pulumi.StringPtrOutput)
 }
 
-// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 func (o TimeChartOutput) PlotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.PlotType }).(pulumi.StringPtrOutput)
 }

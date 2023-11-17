@@ -26,11 +26,11 @@ export interface DashboardChart {
      */
     chartId: string;
     /**
-     * Column number for the layout.
+     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      */
     column?: number;
     /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: number;
     /**
@@ -38,7 +38,7 @@ export interface DashboardChart {
      */
     row?: number;
     /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      */
     width?: number;
 }
@@ -106,19 +106,19 @@ export interface DashboardEventOverlaySource {
 
 export interface DashboardFilter {
     /**
-     * If true, this variable will also match data that doesn't have this property at all.
+     * If true, this filter will also match data that doesn't have this property at all.
      */
     applyIfExist?: boolean;
     /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+     * Whether this filter should be a not filter. `false` by default.
      */
     negated?: boolean;
     /**
-     * The name of a dimension to filter against.
+     * A metric time series dimension or property name.
      */
     property: string;
     /**
-     * A list of values to be used with the `property`, they will be combined via `OR`.
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values: string[];
 }
@@ -129,11 +129,11 @@ export interface DashboardGrid {
      */
     chartIds: string[];
     /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
+     * How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: number;
     /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+     * How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      */
     width?: number;
 }
@@ -169,18 +169,18 @@ export interface DashboardGroupDashboardFilterOverride {
      */
     property: string;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values: string[];
 }
 
 export interface DashboardGroupDashboardVariableOverride {
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      */
     property: string;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values?: string[];
     /**
@@ -200,11 +200,11 @@ export interface DashboardGroupImportQualifierFilter {
      */
     negated?: boolean;
     /**
-     * A metric time series dimension or property name.
+     * The name of a dimension to filter against.
      */
     property: string;
     /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values: string[];
 }
@@ -294,7 +294,7 @@ export interface DashboardVariable {
      */
     description?: string;
     /**
-     * The name of a dimension to filter against.
+     * A metric time series dimension or property name.
      */
     property: string;
     /**
@@ -310,7 +310,7 @@ export interface DashboardVariable {
      */
     valueRequired?: boolean;
     /**
-     * A list of values to be used with the `property`, they will be combined via `OR`.
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values?: string[];
     /**
@@ -447,7 +447,7 @@ export interface DetectorVizOption {
 
 export interface HeatmapChartColorRange {
     /**
-     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
      */
     color: string;
     /**
@@ -585,7 +585,7 @@ export interface MetricRulesetAggregationRuleMatcher {
      */
     filters?: outputs.MetricRulesetAggregationRuleMatcherFilter[];
     /**
-     * Type of aggregator. Must always be "rollup"
+     * Type of matcher. Must always be "dimension"
      */
     type: string;
 }
@@ -724,7 +724,7 @@ export interface TimeChartAxisLeft {
      */
     highWatermarkLabel?: string;
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      */
     label?: string;
     /**
@@ -736,11 +736,11 @@ export interface TimeChartAxisLeft {
      */
     lowWatermarkLabel?: string;
     /**
-     * The maximum value for the right axis.
+     * The maximum value for the left axis.
      */
     maxValue?: number;
     /**
-     * The minimum value for the right axis.
+     * The minimum value for the left axis.
      */
     minValue?: number;
     watermarks?: outputs.TimeChartAxisLeftWatermark[];
@@ -748,7 +748,7 @@ export interface TimeChartAxisLeft {
 
 export interface TimeChartAxisLeftWatermark {
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      */
     label?: string;
     value: number;
@@ -764,7 +764,7 @@ export interface TimeChartAxisRight {
      */
     highWatermarkLabel?: string;
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the right axis.
      */
     label?: string;
     /**
@@ -788,7 +788,7 @@ export interface TimeChartAxisRight {
 
 export interface TimeChartAxisRightWatermark {
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label of the left axis.
      */
     label?: string;
     value: number;
@@ -841,7 +841,7 @@ export interface TimeChartVizOption {
      */
     displayName?: string;
     /**
-     * Label used in the publish statement that displays the event query you want to customize.
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: string;
     /**
@@ -885,7 +885,7 @@ export namespace aws {
          */
         filterSource?: string;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
          */
         namespace: string;
     }
@@ -896,7 +896,7 @@ export namespace aws {
          */
         metric: string;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+         * An AWS namespace having AWS metric that you want to pick statistics for
          */
         namespace: string;
         /**

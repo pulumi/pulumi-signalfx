@@ -25,13 +25,13 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        /// How many rows every chart should take up (greater than or equal to `1`). `1` by default.
         /// </summary>
         [Input("height")]
         public Input<int>? Height { get; set; }
 
         /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
+        /// How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
         /// </summary>
         [Input("width")]
         public Input<int>? Width { get; set; }

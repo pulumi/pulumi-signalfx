@@ -20,7 +20,7 @@ type IntegrationCustomNamespaceSyncRule struct {
 	FilterAction *string `pulumi:"filterAction"`
 	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -42,7 +42,7 @@ type IntegrationCustomNamespaceSyncRuleArgs struct {
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
 	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -112,7 +112,7 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) FilterSource() pulumi.StringPt
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationCustomNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -140,7 +140,7 @@ func (o IntegrationCustomNamespaceSyncRuleArrayOutput) Index(i pulumi.IntInput) 
 type IntegrationMetricStatsToSync struct {
 	// AWS metric that you want to pick statistics for
 	Metric string `pulumi:"metric"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+	// An AWS namespace having AWS metric that you want to pick statistics for
 	Namespace string `pulumi:"namespace"`
 	// AWS statistics you want to collect
 	Stats []string `pulumi:"stats"`
@@ -160,7 +160,7 @@ type IntegrationMetricStatsToSyncInput interface {
 type IntegrationMetricStatsToSyncArgs struct {
 	// AWS metric that you want to pick statistics for
 	Metric pulumi.StringInput `pulumi:"metric"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+	// An AWS namespace having AWS metric that you want to pick statistics for
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 	// AWS statistics you want to collect
 	Stats pulumi.StringArrayInput `pulumi:"stats"`
@@ -222,7 +222,7 @@ func (o IntegrationMetricStatsToSyncOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
+// An AWS namespace having AWS metric that you want to pick statistics for
 func (o IntegrationMetricStatsToSyncOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationMetricStatsToSync) string { return v.Namespace }).(pulumi.StringOutput)
 }

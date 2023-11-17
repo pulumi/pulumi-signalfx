@@ -55,7 +55,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly chartsResolution!: pulumi.Output<string | undefined>;
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed will be placed in a single column with the same width and height.
      */
     public readonly columns!: pulumi.Output<outputs.DashboardColumn[] | undefined>;
     /**
@@ -63,7 +63,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly dashboardGroup!: pulumi.Output<string>;
     /**
-     * Variable description.
+     * Description of the dashboard.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly discoveryOptionsQuery!: pulumi.Output<string | undefined>;
@@ -208,7 +208,7 @@ export interface DashboardState {
      */
     chartsResolution?: pulumi.Input<string>;
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed will be placed in a single column with the same width and height.
      */
     columns?: pulumi.Input<pulumi.Input<inputs.DashboardColumn>[]>;
     /**
@@ -216,7 +216,7 @@ export interface DashboardState {
      */
     dashboardGroup?: pulumi.Input<string>;
     /**
-     * Variable description.
+     * Description of the dashboard.
      */
     description?: pulumi.Input<string>;
     discoveryOptionsQuery?: pulumi.Input<string>;
@@ -296,7 +296,7 @@ export interface DashboardArgs {
      */
     chartsResolution?: pulumi.Input<string>;
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed will be placed in a single column with the same width and height.
      */
     columns?: pulumi.Input<pulumi.Input<inputs.DashboardColumn>[]>;
     /**
@@ -304,7 +304,7 @@ export interface DashboardArgs {
      */
     dashboardGroup: pulumi.Input<string>;
     /**
-     * Variable description.
+     * Description of the dashboard.
      */
     description?: pulumi.Input<string>;
     discoveryOptionsQuery?: pulumi.Input<string>;
