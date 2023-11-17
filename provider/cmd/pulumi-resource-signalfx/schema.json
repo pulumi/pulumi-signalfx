@@ -111,7 +111,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.\n"
+                    "description": "An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.\n"
                 }
             },
             "type": "object",
@@ -127,7 +127,7 @@
                 },
                 "namespace": {
                     "type": "string",
-                    "description": "An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.\n"
+                    "description": "An AWS namespace having AWS metric that you want to pick statistics for\n"
                 },
                 "stats": {
                     "type": "array",
@@ -245,11 +245,11 @@
                 },
                 "column": {
                     "type": "integer",
-                    "description": "Column number for the layout.\n"
+                    "description": "The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).\n"
                 },
                 "height": {
                     "type": "integer",
-                    "description": "How many rows every chart should take up (greater than or equal to 1). 1 by default.\n"
+                    "description": "How many rows the chart should take up (greater than or equal to `1`). `1` by default.\n"
                 },
                 "row": {
                     "type": "integer",
@@ -257,7 +257,7 @@
                 },
                 "width": {
                     "type": "integer",
-                    "description": "How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.\n"
+                    "description": "How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.\n"
                 }
             },
             "type": "object",
@@ -355,22 +355,22 @@
             "properties": {
                 "applyIfExist": {
                     "type": "boolean",
-                    "description": "If true, this variable will also match data that doesn't have this property at all.\n"
+                    "description": "If true, this filter will also match data that doesn't have this property at all.\n"
                 },
                 "negated": {
                     "type": "boolean",
-                    "description": "If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.\n"
+                    "description": "Whether this filter should be a not filter. `false` by default.\n"
                 },
                 "property": {
                     "type": "string",
-                    "description": "The name of a dimension to filter against.\n"
+                    "description": "A metric time series dimension or property name.\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of values to be used with the `property`, they will be combined via `OR`.\n"
+                    "description": "List of of strings (which will be treated as an OR filter on the property).\n"
                 }
             },
             "type": "object",
@@ -390,11 +390,11 @@
                 },
                 "height": {
                     "type": "integer",
-                    "description": "How many rows every chart should take up (greater than or equal to 1). 1 by default.\n"
+                    "description": "How many rows every chart should take up (greater than or equal to `1`). `1` by default.\n"
                 },
                 "width": {
                     "type": "integer",
-                    "description": "How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.\n"
+                    "description": "How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.\n"
                 }
             },
             "type": "object",
@@ -461,7 +461,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "(Optional) List of of strings (which will be treated as an OR filter on the property).\n"
+                    "description": "List of of strings (which will be treated as an OR filter on the property).\n"
                 }
             },
             "type": "object",
@@ -474,14 +474,14 @@
             "properties": {
                 "property": {
                     "type": "string",
-                    "description": "A metric time series dimension or property name.\n"
+                    "description": "The name of a dimension to filter against.\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "(Optional) List of of strings (which will be treated as an OR filter on the property).\n"
+                    "description": "A list of values to be used with the `property`, they will be combined via `OR`.\n"
                 },
                 "valuesSuggesteds": {
                     "type": "array",
@@ -518,14 +518,14 @@
                 },
                 "property": {
                     "type": "string",
-                    "description": "A metric time series dimension or property name.\n"
+                    "description": "The name of a dimension to filter against.\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "(Optional) List of of strings (which will be treated as an OR filter on the property).\n"
+                    "description": "A list of values to be used with the `property`, they will be combined via `OR`.\n"
                 }
             },
             "type": "object",
@@ -661,7 +661,7 @@
                 },
                 "property": {
                     "type": "string",
-                    "description": "The name of a dimension to filter against.\n"
+                    "description": "A metric time series dimension or property name.\n"
                 },
                 "replaceOnly": {
                     "type": "boolean",
@@ -680,7 +680,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of values to be used with the `property`, they will be combined via `OR`.\n"
+                    "description": "List of of strings (which will be treated as an OR filter on the property).\n"
                 },
                 "valuesSuggesteds": {
                     "type": "array",
@@ -856,7 +856,7 @@
             "properties": {
                 "color": {
                     "type": "string",
-                    "description": "The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
+                    "description": "The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example \"#ea1849\" (grass green).\n"
                 },
                 "maxValue": {
                     "type": "number",
@@ -1048,7 +1048,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of aggregator. Must always be \"rollup\"\n"
+                    "description": "Type of matcher. Must always be \"dimension\"\n"
                 }
             },
             "type": "object",
@@ -1243,7 +1243,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "Label used in the publish statement that displays the event query you want to customize.\n"
+                    "description": "Label of the left axis.\n"
                 },
                 "lowWatermark": {
                     "type": "number",
@@ -1255,11 +1255,11 @@
                 },
                 "maxValue": {
                     "type": "number",
-                    "description": "The maximum value for the right axis.\n"
+                    "description": "The maximum value for the left axis.\n"
                 },
                 "minValue": {
                     "type": "number",
-                    "description": "The minimum value for the right axis.\n"
+                    "description": "The minimum value for the left axis.\n"
                 },
                 "watermarks": {
                     "type": "array",
@@ -1274,7 +1274,7 @@
             "properties": {
                 "label": {
                     "type": "string",
-                    "description": "Label used in the publish statement that displays the event query you want to customize.\n"
+                    "description": "Label of the left axis.\n"
                 },
                 "value": {
                     "type": "number"
@@ -1297,7 +1297,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "Label used in the publish statement that displays the event query you want to customize.\n"
+                    "description": "Label of the right axis.\n"
                 },
                 "lowWatermark": {
                     "type": "number",
@@ -1328,7 +1328,7 @@
             "properties": {
                 "label": {
                     "type": "string",
-                    "description": "Label used in the publish statement that displays the event query you want to customize.\n"
+                    "description": "Label of the left axis.\n"
                 },
                 "value": {
                     "type": "number"
@@ -1400,7 +1400,7 @@
                 },
                 "label": {
                     "type": "string",
-                    "description": "Label used in the publish statement that displays the event query you want to customize.\n"
+                    "description": "Label used in the publish statement that displays the plot (metric time series data) you want to customize.\n"
                 },
                 "plotType": {
                     "type": "string",
@@ -2571,7 +2571,7 @@
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardColumn:DashboardColumn"
                     },
-                    "description": "Column number for the layout.\n"
+                    "description": "Column layout. Charts listed will be placed in a single column with the same width and height.\n"
                 },
                 "dashboardGroup": {
                     "type": "string",
@@ -2579,7 +2579,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Variable description.\n"
+                    "description": "Description of the dashboard.\n"
                 },
                 "discoveryOptionsQuery": {
                     "type": "string"
@@ -2696,7 +2696,7 @@
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardColumn:DashboardColumn"
                     },
-                    "description": "Column number for the layout.\n"
+                    "description": "Column layout. Charts listed will be placed in a single column with the same width and height.\n"
                 },
                 "dashboardGroup": {
                     "type": "string",
@@ -2704,7 +2704,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Variable description.\n"
+                    "description": "Description of the dashboard.\n"
                 },
                 "discoveryOptionsQuery": {
                     "type": "string"
@@ -2816,7 +2816,7 @@
                         "items": {
                             "$ref": "#/types/signalfx:index/DashboardColumn:DashboardColumn"
                         },
-                        "description": "Column number for the layout.\n"
+                        "description": "Column layout. Charts listed will be placed in a single column with the same width and height.\n"
                     },
                     "dashboardGroup": {
                         "type": "string",
@@ -2824,7 +2824,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Variable description.\n"
+                        "description": "Description of the dashboard.\n"
                     },
                     "discoveryOptionsQuery": {
                         "type": "string"
@@ -3206,7 +3206,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.\n"
+                    "description": "Description of the detector.\n"
                 },
                 "disableSampling": {
                     "type": "boolean",
@@ -3316,7 +3316,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.\n"
+                    "description": "Description of the detector.\n"
                 },
                 "disableSampling": {
                     "type": "boolean",
@@ -3414,7 +3414,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.\n"
+                        "description": "Description of the detector.\n"
                     },
                     "disableSampling": {
                         "type": "boolean",
@@ -5135,7 +5135,7 @@
                 },
                 "plotType": {
                     "type": "string",
-                    "description": "The visualization style to use. Must be `\"LineChart\"`, `\"AreaChart\"`, `\"ColumnChart\"`, or `\"Histogram\"`. Chart level `plot_type` by default.\n"
+                    "description": "The default plot display style for the visualization. Must be `\"LineChart\"`, `\"AreaChart\"`, `\"ColumnChart\"`, or `\"Histogram\"`. Default: `\"LineChart\"`.\n"
                 },
                 "programText": {
                     "type": "string",
@@ -5274,7 +5274,7 @@
                 },
                 "plotType": {
                     "type": "string",
-                    "description": "The visualization style to use. Must be `\"LineChart\"`, `\"AreaChart\"`, `\"ColumnChart\"`, or `\"Histogram\"`. Chart level `plot_type` by default.\n"
+                    "description": "The default plot display style for the visualization. Must be `\"LineChart\"`, `\"AreaChart\"`, `\"ColumnChart\"`, or `\"Histogram\"`. Default: `\"LineChart\"`.\n"
                 },
                 "programText": {
                     "type": "string",
@@ -5409,7 +5409,7 @@
                     },
                     "plotType": {
                         "type": "string",
-                        "description": "The visualization style to use. Must be `\"LineChart\"`, `\"AreaChart\"`, `\"ColumnChart\"`, or `\"Histogram\"`. Chart level `plot_type` by default.\n"
+                        "description": "The default plot display style for the visualization. Must be `\"LineChart\"`, `\"AreaChart\"`, `\"ColumnChart\"`, or `\"Histogram\"`. Default: `\"LineChart\"`.\n"
                     },
                     "programText": {
                         "type": "string",
