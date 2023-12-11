@@ -26,11 +26,11 @@ import * as utilities from "../utilities";
  *     projectServiceKeys: [
  *         {
  *             projectId: "gcp_project_id_1",
- *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json"),
+ *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json", "utf8"),
  *         },
  *         {
  *             projectId: "gcp_project_id_2",
- *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json"),
+ *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json", "utf8"),
  *         },
  *     ],
  *     services: ["compute"],

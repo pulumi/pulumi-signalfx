@@ -157,7 +157,7 @@ namespace Pulumi.SignalFx.Log
                 Version = Utilities.Version,
                 Aliases =
                 {
-                    new global::Pulumi.Alias { Type = "signalfx:logs/view:View"},
+                    new global::Pulumi.Alias { Type = "signalfx:logs/view:View" },
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
