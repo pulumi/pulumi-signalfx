@@ -48,9 +48,9 @@ public final class TimeChartHistogramOption {
             return this;
         }
         public TimeChartHistogramOption build() {
-            final var o = new TimeChartHistogramOption();
-            o.colorTheme = colorTheme;
-            return o;
+            final var _resultValue = new TimeChartHistogramOption();
+            _resultValue.colorTheme = colorTheme;
+            return _resultValue;
         }
     }
 }

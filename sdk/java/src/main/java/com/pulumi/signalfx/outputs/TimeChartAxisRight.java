@@ -179,16 +179,16 @@ public final class TimeChartAxisRight {
             return watermarks(List.of(watermarks));
         }
         public TimeChartAxisRight build() {
-            final var o = new TimeChartAxisRight();
-            o.highWatermark = highWatermark;
-            o.highWatermarkLabel = highWatermarkLabel;
-            o.label = label;
-            o.lowWatermark = lowWatermark;
-            o.lowWatermarkLabel = lowWatermarkLabel;
-            o.maxValue = maxValue;
-            o.minValue = minValue;
-            o.watermarks = watermarks;
-            return o;
+            final var _resultValue = new TimeChartAxisRight();
+            _resultValue.highWatermark = highWatermark;
+            _resultValue.highWatermarkLabel = highWatermarkLabel;
+            _resultValue.label = label;
+            _resultValue.lowWatermark = lowWatermark;
+            _resultValue.lowWatermarkLabel = lowWatermarkLabel;
+            _resultValue.maxValue = maxValue;
+            _resultValue.minValue = minValue;
+            _resultValue.watermarks = watermarks;
+            return _resultValue;
         }
     }
 }

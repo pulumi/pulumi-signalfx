@@ -87,11 +87,11 @@ public final class HeatmapChartColorRange {
             return this;
         }
         public HeatmapChartColorRange build() {
-            final var o = new HeatmapChartColorRange();
-            o.color = color;
-            o.maxValue = maxValue;
-            o.minValue = minValue;
-            return o;
+            final var _resultValue = new HeatmapChartColorRange();
+            _resultValue.color = color;
+            _resultValue.maxValue = maxValue;
+            _resultValue.minValue = minValue;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class IntegrationNamespaceSyncRule {
             return this;
         }
         public IntegrationNamespaceSyncRule build() {
-            final var o = new IntegrationNamespaceSyncRule();
-            o.defaultAction = defaultAction;
-            o.filterAction = filterAction;
-            o.filterSource = filterSource;
-            o.namespace = namespace;
-            return o;
+            final var _resultValue = new IntegrationNamespaceSyncRule();
+            _resultValue.defaultAction = defaultAction;
+            _resultValue.filterAction = filterAction;
+            _resultValue.filterSource = filterSource;
+            _resultValue.namespace = namespace;
+            return _resultValue;
         }
     }
 }

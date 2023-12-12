@@ -67,10 +67,10 @@ public final class DataLinkTargetSplunk {
             return this;
         }
         public DataLinkTargetSplunk build() {
-            final var o = new DataLinkTargetSplunk();
-            o.name = name;
-            o.propertyKeyMapping = propertyKeyMapping;
-            return o;
+            final var _resultValue = new DataLinkTargetSplunk();
+            _resultValue.name = name;
+            _resultValue.propertyKeyMapping = propertyKeyMapping;
+            return _resultValue;
         }
     }
 }

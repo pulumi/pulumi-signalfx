@@ -72,11 +72,11 @@ public final class GetDimensionValuesResult {
             return values(List.of(values));
         }
         public GetDimensionValuesResult build() {
-            final var o = new GetDimensionValuesResult();
-            o.id = id;
-            o.query = query;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetDimensionValuesResult();
+            _resultValue.id = id;
+            _resultValue.query = query;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

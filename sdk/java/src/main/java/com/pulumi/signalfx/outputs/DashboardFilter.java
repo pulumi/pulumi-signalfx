@@ -110,12 +110,12 @@ public final class DashboardFilter {
             return values(List.of(values));
         }
         public DashboardFilter build() {
-            final var o = new DashboardFilter();
-            o.applyIfExist = applyIfExist;
-            o.negated = negated;
-            o.property = property;
-            o.values = values;
-            return o;
+            final var _resultValue = new DashboardFilter();
+            _resultValue.applyIfExist = applyIfExist;
+            _resultValue.negated = negated;
+            _resultValue.property = property;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

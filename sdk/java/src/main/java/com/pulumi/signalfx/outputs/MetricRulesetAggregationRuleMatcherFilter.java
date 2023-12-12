@@ -89,11 +89,11 @@ public final class MetricRulesetAggregationRuleMatcherFilter {
             return propertyValues(List.of(propertyValues));
         }
         public MetricRulesetAggregationRuleMatcherFilter build() {
-            final var o = new MetricRulesetAggregationRuleMatcherFilter();
-            o.not = not;
-            o.property = property;
-            o.propertyValues = propertyValues;
-            return o;
+            final var _resultValue = new MetricRulesetAggregationRuleMatcherFilter();
+            _resultValue.not = not;
+            _resultValue.property = property;
+            _resultValue.propertyValues = propertyValues;
+            return _resultValue;
         }
     }
 }

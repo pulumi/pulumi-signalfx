@@ -125,13 +125,13 @@ public final class DashboardChart {
             return this;
         }
         public DashboardChart build() {
-            final var o = new DashboardChart();
-            o.chartId = chartId;
-            o.column = column;
-            o.height = height;
-            o.row = row;
-            o.width = width;
-            return o;
+            final var _resultValue = new DashboardChart();
+            _resultValue.chartId = chartId;
+            _resultValue.column = column;
+            _resultValue.height = height;
+            _resultValue.row = row;
+            _resultValue.width = width;
+            return _resultValue;
         }
     }
 }

@@ -60,10 +60,10 @@ public final class TimeChartAxisRightWatermark {
             return this;
         }
         public TimeChartAxisRightWatermark build() {
-            final var o = new TimeChartAxisRightWatermark();
-            o.label = label;
-            o.value = value;
-            return o;
+            final var _resultValue = new TimeChartAxisRightWatermark();
+            _resultValue.label = label;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

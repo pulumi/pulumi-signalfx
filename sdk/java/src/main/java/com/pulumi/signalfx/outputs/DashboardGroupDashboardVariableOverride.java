@@ -92,11 +92,11 @@ public final class DashboardGroupDashboardVariableOverride {
             return valuesSuggesteds(List.of(valuesSuggesteds));
         }
         public DashboardGroupDashboardVariableOverride build() {
-            final var o = new DashboardGroupDashboardVariableOverride();
-            o.property = property;
-            o.values = values;
-            o.valuesSuggesteds = valuesSuggesteds;
-            return o;
+            final var _resultValue = new DashboardGroupDashboardVariableOverride();
+            _resultValue.property = property;
+            _resultValue.values = values;
+            _resultValue.valuesSuggesteds = valuesSuggesteds;
+            return _resultValue;
         }
     }
 }

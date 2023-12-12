@@ -65,10 +65,10 @@ public final class WebhookIntegrationHeader {
             return this;
         }
         public WebhookIntegrationHeader build() {
-            final var o = new WebhookIntegrationHeader();
-            o.headerKey = headerKey;
-            o.headerValue = headerValue;
-            return o;
+            final var _resultValue = new WebhookIntegrationHeader();
+            _resultValue.headerKey = headerKey;
+            _resultValue.headerValue = headerValue;
+            return _resultValue;
         }
     }
 }

@@ -110,12 +110,12 @@ public final class DashboardColumn {
             return this;
         }
         public DashboardColumn build() {
-            final var o = new DashboardColumn();
-            o.chartIds = chartIds;
-            o.column = column;
-            o.height = height;
-            o.width = width;
-            return o;
+            final var _resultValue = new DashboardColumn();
+            _resultValue.chartIds = chartIds;
+            _resultValue.column = column;
+            _resultValue.height = height;
+            _resultValue.width = width;
+            return _resultValue;
         }
     }
 }

@@ -72,10 +72,10 @@ public final class DashboardPermissions {
             return this;
         }
         public DashboardPermissions build() {
-            final var o = new DashboardPermissions();
-            o.acls = acls;
-            o.parent = parent;
-            return o;
+            final var _resultValue = new DashboardPermissions();
+            _resultValue.acls = acls;
+            _resultValue.parent = parent;
+            return _resultValue;
         }
     }
 }

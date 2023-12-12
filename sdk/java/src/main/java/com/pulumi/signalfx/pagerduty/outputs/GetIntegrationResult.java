@@ -85,11 +85,11 @@ public final class GetIntegrationResult {
             return this;
         }
         public GetIntegrationResult build() {
-            final var o = new GetIntegrationResult();
-            o.enabled = enabled;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetIntegrationResult();
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

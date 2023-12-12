@@ -69,10 +69,10 @@ public final class IntegrationCustomNamespacesPerService {
             return this;
         }
         public IntegrationCustomNamespacesPerService build() {
-            final var o = new IntegrationCustomNamespacesPerService();
-            o.namespaces = namespaces;
-            o.service = service;
-            return o;
+            final var _resultValue = new IntegrationCustomNamespacesPerService();
+            _resultValue.namespaces = namespaces;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -56,10 +56,10 @@ public final class DashboardGroupImportQualifier {
             return this;
         }
         public DashboardGroupImportQualifier build() {
-            final var o = new DashboardGroupImportQualifier();
-            o.filters = filters;
-            o.metric = metric;
-            return o;
+            final var _resultValue = new DashboardGroupImportQualifier();
+            _resultValue.filters = filters;
+            _resultValue.metric = metric;
+            return _resultValue;
         }
     }
 }

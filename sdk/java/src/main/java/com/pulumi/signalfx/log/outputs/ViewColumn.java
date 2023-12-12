@@ -46,9 +46,9 @@ public final class ViewColumn {
             return this;
         }
         public ViewColumn build() {
-            final var o = new ViewColumn();
-            o.name = name;
-            return o;
+            final var _resultValue = new ViewColumn();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

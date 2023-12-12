@@ -135,14 +135,14 @@ public final class SingleValueChartVizOption {
             return this;
         }
         public SingleValueChartVizOption build() {
-            final var o = new SingleValueChartVizOption();
-            o.color = color;
-            o.displayName = displayName;
-            o.label = label;
-            o.valuePrefix = valuePrefix;
-            o.valueSuffix = valueSuffix;
-            o.valueUnit = valueUnit;
-            return o;
+            final var _resultValue = new SingleValueChartVizOption();
+            _resultValue.color = color;
+            _resultValue.displayName = displayName;
+            _resultValue.label = label;
+            _resultValue.valuePrefix = valuePrefix;
+            _resultValue.valueSuffix = valueSuffix;
+            _resultValue.valueUnit = valueUnit;
+            return _resultValue;
         }
     }
 }

@@ -89,11 +89,11 @@ public final class DashboardGroupPermission {
             return this;
         }
         public DashboardGroupPermission build() {
-            final var o = new DashboardGroupPermission();
-            o.actions = actions;
-            o.principalId = principalId;
-            o.principalType = principalType;
-            return o;
+            final var _resultValue = new DashboardGroupPermission();
+            _resultValue.actions = actions;
+            _resultValue.principalId = principalId;
+            _resultValue.principalType = principalType;
+            return _resultValue;
         }
     }
 }

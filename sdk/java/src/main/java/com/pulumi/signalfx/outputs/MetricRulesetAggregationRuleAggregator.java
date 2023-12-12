@@ -108,12 +108,12 @@ public final class MetricRulesetAggregationRuleAggregator {
             return this;
         }
         public MetricRulesetAggregationRuleAggregator build() {
-            final var o = new MetricRulesetAggregationRuleAggregator();
-            o.dimensions = dimensions;
-            o.dropDimensions = dropDimensions;
-            o.outputName = outputName;
-            o.type = type;
-            return o;
+            final var _resultValue = new MetricRulesetAggregationRuleAggregator();
+            _resultValue.dimensions = dimensions;
+            _resultValue.dropDimensions = dropDimensions;
+            _resultValue.outputName = outputName;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

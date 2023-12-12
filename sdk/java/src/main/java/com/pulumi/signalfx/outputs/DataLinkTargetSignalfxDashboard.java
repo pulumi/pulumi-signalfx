@@ -106,12 +106,12 @@ public final class DataLinkTargetSignalfxDashboard {
             return this;
         }
         public DataLinkTargetSignalfxDashboard build() {
-            final var o = new DataLinkTargetSignalfxDashboard();
-            o.dashboardGroupId = dashboardGroupId;
-            o.dashboardId = dashboardId;
-            o.isDefault = isDefault;
-            o.name = name;
-            return o;
+            final var _resultValue = new DataLinkTargetSignalfxDashboard();
+            _resultValue.dashboardGroupId = dashboardGroupId;
+            _resultValue.dashboardId = dashboardId;
+            _resultValue.isDefault = isDefault;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

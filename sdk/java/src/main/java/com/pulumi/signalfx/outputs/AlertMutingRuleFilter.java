@@ -87,11 +87,11 @@ public final class AlertMutingRuleFilter {
             return this;
         }
         public AlertMutingRuleFilter build() {
-            final var o = new AlertMutingRuleFilter();
-            o.negated = negated;
-            o.property = property;
-            o.propertyValue = propertyValue;
-            return o;
+            final var _resultValue = new AlertMutingRuleFilter();
+            _resultValue.negated = negated;
+            _resultValue.property = property;
+            _resultValue.propertyValue = propertyValue;
+            return _resultValue;
         }
     }
 }

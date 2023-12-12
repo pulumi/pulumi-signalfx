@@ -91,11 +91,11 @@ public final class DashboardGrid {
             return this;
         }
         public DashboardGrid build() {
-            final var o = new DashboardGrid();
-            o.chartIds = chartIds;
-            o.height = height;
-            o.width = width;
-            return o;
+            final var _resultValue = new DashboardGrid();
+            _resultValue.chartIds = chartIds;
+            _resultValue.height = height;
+            _resultValue.width = width;
+            return _resultValue;
         }
     }
 }

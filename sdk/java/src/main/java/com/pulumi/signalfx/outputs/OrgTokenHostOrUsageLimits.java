@@ -181,16 +181,16 @@ public final class OrgTokenHostOrUsageLimits {
             return this;
         }
         public OrgTokenHostOrUsageLimits build() {
-            final var o = new OrgTokenHostOrUsageLimits();
-            o.containerLimit = containerLimit;
-            o.containerNotificationThreshold = containerNotificationThreshold;
-            o.customMetricsLimit = customMetricsLimit;
-            o.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
-            o.highResMetricsLimit = highResMetricsLimit;
-            o.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
-            o.hostLimit = hostLimit;
-            o.hostNotificationThreshold = hostNotificationThreshold;
-            return o;
+            final var _resultValue = new OrgTokenHostOrUsageLimits();
+            _resultValue.containerLimit = containerLimit;
+            _resultValue.containerNotificationThreshold = containerNotificationThreshold;
+            _resultValue.customMetricsLimit = customMetricsLimit;
+            _resultValue.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
+            _resultValue.highResMetricsLimit = highResMetricsLimit;
+            _resultValue.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
+            _resultValue.hostLimit = hostLimit;
+            _resultValue.hostNotificationThreshold = hostNotificationThreshold;
+            return _resultValue;
         }
     }
 }
