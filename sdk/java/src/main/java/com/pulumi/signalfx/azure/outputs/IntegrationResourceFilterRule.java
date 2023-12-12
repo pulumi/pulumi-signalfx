@@ -46,9 +46,9 @@ public final class IntegrationResourceFilterRule {
             return this;
         }
         public IntegrationResourceFilterRule build() {
-            final var o = new IntegrationResourceFilterRule();
-            o.filterSource = filterSource;
-            return o;
+            final var _resultValue = new IntegrationResourceFilterRule();
+            _resultValue.filterSource = filterSource;
+            return _resultValue;
         }
     }
 }

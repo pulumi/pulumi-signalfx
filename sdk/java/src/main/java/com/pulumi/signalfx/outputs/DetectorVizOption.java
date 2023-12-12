@@ -155,14 +155,14 @@ public final class DetectorVizOption {
             return this;
         }
         public DetectorVizOption build() {
-            final var o = new DetectorVizOption();
-            o.color = color;
-            o.displayName = displayName;
-            o.label = label;
-            o.valuePrefix = valuePrefix;
-            o.valueSuffix = valueSuffix;
-            o.valueUnit = valueUnit;
-            return o;
+            final var _resultValue = new DetectorVizOption();
+            _resultValue.color = color;
+            _resultValue.displayName = displayName;
+            _resultValue.label = label;
+            _resultValue.valuePrefix = valuePrefix;
+            _resultValue.valueSuffix = valueSuffix;
+            _resultValue.valueUnit = valueUnit;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class TimeChartLegendOptionsField {
             return this;
         }
         public TimeChartLegendOptionsField build() {
-            final var o = new TimeChartLegendOptionsField();
-            o.enabled = enabled;
-            o.property = property;
-            return o;
+            final var _resultValue = new TimeChartLegendOptionsField();
+            _resultValue.enabled = enabled;
+            _resultValue.property = property;
+            return _resultValue;
         }
     }
 }

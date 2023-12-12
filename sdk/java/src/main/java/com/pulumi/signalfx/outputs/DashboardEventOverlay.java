@@ -149,14 +149,14 @@ public final class DashboardEventOverlay {
             return this;
         }
         public DashboardEventOverlay build() {
-            final var o = new DashboardEventOverlay();
-            o.color = color;
-            o.label = label;
-            o.line = line;
-            o.signal = signal;
-            o.sources = sources;
-            o.type = type;
-            return o;
+            final var _resultValue = new DashboardEventOverlay();
+            _resultValue.color = color;
+            _resultValue.label = label;
+            _resultValue.line = line;
+            _resultValue.signal = signal;
+            _resultValue.sources = sources;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

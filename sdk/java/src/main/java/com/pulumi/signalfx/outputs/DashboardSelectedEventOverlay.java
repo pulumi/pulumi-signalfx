@@ -91,11 +91,11 @@ public final class DashboardSelectedEventOverlay {
             return this;
         }
         public DashboardSelectedEventOverlay build() {
-            final var o = new DashboardSelectedEventOverlay();
-            o.signal = signal;
-            o.sources = sources;
-            o.type = type;
-            return o;
+            final var _resultValue = new DashboardSelectedEventOverlay();
+            _resultValue.signal = signal;
+            _resultValue.sources = sources;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -125,13 +125,13 @@ public final class SingleValueChartColorScale {
             return this;
         }
         public SingleValueChartColorScale build() {
-            final var o = new SingleValueChartColorScale();
-            o.color = color;
-            o.gt = gt;
-            o.gte = gte;
-            o.lt = lt;
-            o.lte = lte;
-            return o;
+            final var _resultValue = new SingleValueChartColorScale();
+            _resultValue.color = color;
+            _resultValue.gt = gt;
+            _resultValue.gte = gte;
+            _resultValue.lt = lt;
+            _resultValue.lte = lte;
+            return _resultValue;
         }
     }
 }

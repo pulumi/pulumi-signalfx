@@ -89,11 +89,11 @@ public final class DashboardPermissionsAcl {
             return this;
         }
         public DashboardPermissionsAcl build() {
-            final var o = new DashboardPermissionsAcl();
-            o.actions = actions;
-            o.principalId = principalId;
-            o.principalType = principalType;
-            return o;
+            final var _resultValue = new DashboardPermissionsAcl();
+            _resultValue.actions = actions;
+            _resultValue.principalId = principalId;
+            _resultValue.principalType = principalType;
+            return _resultValue;
         }
     }
 }

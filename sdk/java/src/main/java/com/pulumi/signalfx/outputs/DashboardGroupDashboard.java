@@ -136,14 +136,14 @@ public final class DashboardGroupDashboard {
             return variableOverrides(List.of(variableOverrides));
         }
         public DashboardGroupDashboard build() {
-            final var o = new DashboardGroupDashboard();
-            o.configId = configId;
-            o.dashboardId = dashboardId;
-            o.descriptionOverride = descriptionOverride;
-            o.filterOverrides = filterOverrides;
-            o.nameOverride = nameOverride;
-            o.variableOverrides = variableOverrides;
-            return o;
+            final var _resultValue = new DashboardGroupDashboard();
+            _resultValue.configId = configId;
+            _resultValue.dashboardId = dashboardId;
+            _resultValue.descriptionOverride = descriptionOverride;
+            _resultValue.filterOverrides = filterOverrides;
+            _resultValue.nameOverride = nameOverride;
+            _resultValue.variableOverrides = variableOverrides;
+            return _resultValue;
         }
     }
 }

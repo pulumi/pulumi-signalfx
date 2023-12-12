@@ -71,10 +71,10 @@ public final class MetricRulesetAggregationRuleMatcher {
             return this;
         }
         public MetricRulesetAggregationRuleMatcher build() {
-            final var o = new MetricRulesetAggregationRuleMatcher();
-            o.filters = filters;
-            o.type = type;
-            return o;
+            final var _resultValue = new MetricRulesetAggregationRuleMatcher();
+            _resultValue.filters = filters;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

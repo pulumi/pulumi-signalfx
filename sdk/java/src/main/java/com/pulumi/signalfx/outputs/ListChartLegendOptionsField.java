@@ -68,10 +68,10 @@ public final class ListChartLegendOptionsField {
             return this;
         }
         public ListChartLegendOptionsField build() {
-            final var o = new ListChartLegendOptionsField();
-            o.enabled = enabled;
-            o.property = property;
-            return o;
+            final var _resultValue = new ListChartLegendOptionsField();
+            _resultValue.enabled = enabled;
+            _resultValue.property = property;
+            return _resultValue;
         }
     }
 }

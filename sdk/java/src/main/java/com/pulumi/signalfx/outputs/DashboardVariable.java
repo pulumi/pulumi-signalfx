@@ -208,17 +208,17 @@ public final class DashboardVariable {
             return valuesSuggesteds(List.of(valuesSuggesteds));
         }
         public DashboardVariable build() {
-            final var o = new DashboardVariable();
-            o.alias = alias;
-            o.applyIfExist = applyIfExist;
-            o.description = description;
-            o.property = property;
-            o.replaceOnly = replaceOnly;
-            o.restrictedSuggestions = restrictedSuggestions;
-            o.valueRequired = valueRequired;
-            o.values = values;
-            o.valuesSuggesteds = valuesSuggesteds;
-            return o;
+            final var _resultValue = new DashboardVariable();
+            _resultValue.alias = alias;
+            _resultValue.applyIfExist = applyIfExist;
+            _resultValue.description = description;
+            _resultValue.property = property;
+            _resultValue.replaceOnly = replaceOnly;
+            _resultValue.restrictedSuggestions = restrictedSuggestions;
+            _resultValue.valueRequired = valueRequired;
+            _resultValue.values = values;
+            _resultValue.valuesSuggesteds = valuesSuggesteds;
+            return _resultValue;
         }
     }
 }

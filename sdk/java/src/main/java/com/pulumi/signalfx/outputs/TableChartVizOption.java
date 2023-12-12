@@ -95,14 +95,14 @@ public final class TableChartVizOption {
             return this;
         }
         public TableChartVizOption build() {
-            final var o = new TableChartVizOption();
-            o.color = color;
-            o.displayName = displayName;
-            o.label = label;
-            o.valuePrefix = valuePrefix;
-            o.valueSuffix = valueSuffix;
-            o.valueUnit = valueUnit;
-            return o;
+            final var _resultValue = new TableChartVizOption();
+            _resultValue.color = color;
+            _resultValue.displayName = displayName;
+            _resultValue.label = label;
+            _resultValue.valuePrefix = valuePrefix;
+            _resultValue.valueSuffix = valueSuffix;
+            _resultValue.valueUnit = valueUnit;
+            return _resultValue;
         }
     }
 }

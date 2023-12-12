@@ -205,17 +205,17 @@ public final class DetectorRule {
             return this;
         }
         public DetectorRule build() {
-            final var o = new DetectorRule();
-            o.description = description;
-            o.detectLabel = detectLabel;
-            o.disabled = disabled;
-            o.notifications = notifications;
-            o.parameterizedBody = parameterizedBody;
-            o.parameterizedSubject = parameterizedSubject;
-            o.runbookUrl = runbookUrl;
-            o.severity = severity;
-            o.tip = tip;
-            return o;
+            final var _resultValue = new DetectorRule();
+            _resultValue.description = description;
+            _resultValue.detectLabel = detectLabel;
+            _resultValue.disabled = disabled;
+            _resultValue.notifications = notifications;
+            _resultValue.parameterizedBody = parameterizedBody;
+            _resultValue.parameterizedSubject = parameterizedSubject;
+            _resultValue.runbookUrl = runbookUrl;
+            _resultValue.severity = severity;
+            _resultValue.tip = tip;
+            return _resultValue;
         }
     }
 }

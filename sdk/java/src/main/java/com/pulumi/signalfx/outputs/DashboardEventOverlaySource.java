@@ -91,11 +91,11 @@ public final class DashboardEventOverlaySource {
             return values(List.of(values));
         }
         public DashboardEventOverlaySource build() {
-            final var o = new DashboardEventOverlaySource();
-            o.negated = negated;
-            o.property = property;
-            o.values = values;
-            return o;
+            final var _resultValue = new DashboardEventOverlaySource();
+            _resultValue.negated = negated;
+            _resultValue.property = property;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -173,16 +173,16 @@ public final class TimeChartVizOption {
             return this;
         }
         public TimeChartVizOption build() {
-            final var o = new TimeChartVizOption();
-            o.axis = axis;
-            o.color = color;
-            o.displayName = displayName;
-            o.label = label;
-            o.plotType = plotType;
-            o.valuePrefix = valuePrefix;
-            o.valueSuffix = valueSuffix;
-            o.valueUnit = valueUnit;
-            return o;
+            final var _resultValue = new TimeChartVizOption();
+            _resultValue.axis = axis;
+            _resultValue.color = color;
+            _resultValue.displayName = displayName;
+            _resultValue.label = label;
+            _resultValue.plotType = plotType;
+            _resultValue.valuePrefix = valuePrefix;
+            _resultValue.valueSuffix = valueSuffix;
+            _resultValue.valueUnit = valueUnit;
+            return _resultValue;
         }
     }
 }

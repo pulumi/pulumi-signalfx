@@ -49,10 +49,10 @@ public final class IntegrationProjectServiceKey {
             return this;
         }
         public IntegrationProjectServiceKey build() {
-            final var o = new IntegrationProjectServiceKey();
-            o.projectId = projectId;
-            o.projectKey = projectKey;
-            return o;
+            final var _resultValue = new IntegrationProjectServiceKey();
+            _resultValue.projectId = projectId;
+            _resultValue.projectKey = projectKey;
+            return _resultValue;
         }
     }
 }

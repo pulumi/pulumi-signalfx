@@ -86,11 +86,11 @@ public final class TimeChartEventOption {
             return this;
         }
         public TimeChartEventOption build() {
-            final var o = new TimeChartEventOption();
-            o.color = color;
-            o.displayName = displayName;
-            o.label = label;
-            return o;
+            final var _resultValue = new TimeChartEventOption();
+            _resultValue.color = color;
+            _resultValue.displayName = displayName;
+            _resultValue.label = label;
+            return _resultValue;
         }
     }
 }

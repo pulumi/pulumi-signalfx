@@ -91,11 +91,11 @@ public final class DashboardGroupImportQualifierFilter {
             return values(List.of(values));
         }
         public DashboardGroupImportQualifierFilter build() {
-            final var o = new DashboardGroupImportQualifierFilter();
-            o.negated = negated;
-            o.property = property;
-            o.values = values;
-            return o;
+            final var _resultValue = new DashboardGroupImportQualifierFilter();
+            _resultValue.negated = negated;
+            _resultValue.property = property;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

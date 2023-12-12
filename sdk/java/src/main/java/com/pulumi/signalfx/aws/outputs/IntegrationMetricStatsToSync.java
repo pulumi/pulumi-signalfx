@@ -88,11 +88,11 @@ public final class IntegrationMetricStatsToSync {
             return stats(List.of(stats));
         }
         public IntegrationMetricStatsToSync build() {
-            final var o = new IntegrationMetricStatsToSync();
-            o.metric = metric;
-            o.namespace = namespace;
-            o.stats = stats;
-            return o;
+            final var _resultValue = new IntegrationMetricStatsToSync();
+            _resultValue.metric = metric;
+            _resultValue.namespace = namespace;
+            _resultValue.stats = stats;
+            return _resultValue;
         }
     }
 }

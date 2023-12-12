@@ -67,10 +67,10 @@ public final class OrgTokenDpmLimits {
             return this;
         }
         public OrgTokenDpmLimits build() {
-            final var o = new OrgTokenDpmLimits();
-            o.dpmLimit = dpmLimit;
-            o.dpmNotificationThreshold = dpmNotificationThreshold;
-            return o;
+            final var _resultValue = new OrgTokenDpmLimits();
+            _resultValue.dpmLimit = dpmLimit;
+            _resultValue.dpmNotificationThreshold = dpmNotificationThreshold;
+            return _resultValue;
         }
     }
 }

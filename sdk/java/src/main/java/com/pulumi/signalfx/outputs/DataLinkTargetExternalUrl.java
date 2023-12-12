@@ -125,13 +125,13 @@ public final class DataLinkTargetExternalUrl {
             return this;
         }
         public DataLinkTargetExternalUrl build() {
-            final var o = new DataLinkTargetExternalUrl();
-            o.minimumTimeWindow = minimumTimeWindow;
-            o.name = name;
-            o.propertyKeyMapping = propertyKeyMapping;
-            o.timeFormat = timeFormat;
-            o.url = url;
-            return o;
+            final var _resultValue = new DataLinkTargetExternalUrl();
+            _resultValue.minimumTimeWindow = minimumTimeWindow;
+            _resultValue.name = name;
+            _resultValue.propertyKeyMapping = propertyKeyMapping;
+            _resultValue.timeFormat = timeFormat;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

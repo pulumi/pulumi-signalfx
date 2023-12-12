@@ -115,12 +115,12 @@ public final class MetricRulesetAggregationRule {
             return this;
         }
         public MetricRulesetAggregationRule build() {
-            final var o = new MetricRulesetAggregationRule();
-            o.aggregators = aggregators;
-            o.enabled = enabled;
-            o.matchers = matchers;
-            o.name = name;
-            return o;
+            final var _resultValue = new MetricRulesetAggregationRule();
+            _resultValue.aggregators = aggregators;
+            _resultValue.enabled = enabled;
+            _resultValue.matchers = matchers;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

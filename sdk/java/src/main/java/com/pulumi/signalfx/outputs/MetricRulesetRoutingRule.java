@@ -46,9 +46,9 @@ public final class MetricRulesetRoutingRule {
             return this;
         }
         public MetricRulesetRoutingRule build() {
-            final var o = new MetricRulesetRoutingRule();
-            o.destination = destination;
-            return o;
+            final var _resultValue = new MetricRulesetRoutingRule();
+            _resultValue.destination = destination;
+            return _resultValue;
         }
     }
 }

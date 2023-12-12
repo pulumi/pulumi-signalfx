@@ -50,10 +50,10 @@ public final class ViewSortOption {
             return this;
         }
         public ViewSortOption build() {
-            final var o = new ViewSortOption();
-            o.descending = descending;
-            o.field = field;
-            return o;
+            final var _resultValue = new ViewSortOption();
+            _resultValue.descending = descending;
+            _resultValue.field = field;
+            return _resultValue;
         }
     }
 }
