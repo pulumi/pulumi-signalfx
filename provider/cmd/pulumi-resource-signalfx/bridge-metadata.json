@@ -595,13 +595,18 @@
                     }
                 }
             },
-            "signalfx_gcp_services": {
-                "current": "signalfx:gcp/getServices:getServices",
-                "majorVersion": 6
-            },
             "signalfx_pagerduty_integration": {
                 "current": "signalfx:pagerduty/getIntegration:getIntegration",
                 "majorVersion": 7
+            }
+        }
+    },
+    "auto-settings": {
+        "resources": {
+            "signalfx_log_view": {
+                "renames": [
+                    "signalfx:logs/view:View"
+                ]
             }
         }
     },
