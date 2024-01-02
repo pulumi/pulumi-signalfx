@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.HeatmapChartColorRangeArgs;
 import com.pulumi.signalfx.inputs.HeatmapChartColorScaleArgs;
 import java.lang.Boolean;
@@ -582,7 +583,9 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HeatmapChartArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("HeatmapChartArgs", "programText");
+            }
             return $;
         }
     }

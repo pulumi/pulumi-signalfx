@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -94,7 +95,9 @@ public final class TimeChartAxisRightWatermarkArgs extends com.pulumi.resources.
         }
 
         public TimeChartAxisRightWatermarkArgs build() {
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("TimeChartAxisRightWatermarkArgs", "value");
+            }
             return $;
         }
     }

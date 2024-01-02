@@ -137,41 +137,49 @@ public final class TimeChartAxisRight {
 
         @CustomType.Setter
         public Builder highWatermark(@Nullable Double highWatermark) {
+
             this.highWatermark = highWatermark;
             return this;
         }
         @CustomType.Setter
         public Builder highWatermarkLabel(@Nullable String highWatermarkLabel) {
+
             this.highWatermarkLabel = highWatermarkLabel;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder lowWatermark(@Nullable Double lowWatermark) {
+
             this.lowWatermark = lowWatermark;
             return this;
         }
         @CustomType.Setter
         public Builder lowWatermarkLabel(@Nullable String lowWatermarkLabel) {
+
             this.lowWatermarkLabel = lowWatermarkLabel;
             return this;
         }
         @CustomType.Setter
         public Builder maxValue(@Nullable Double maxValue) {
+
             this.maxValue = maxValue;
             return this;
         }
         @CustomType.Setter
         public Builder minValue(@Nullable Double minValue) {
+
             this.minValue = minValue;
             return this;
         }
         @CustomType.Setter
         public Builder watermarks(@Nullable List<TimeChartAxisRightWatermark> watermarks) {
+
             this.watermarks = watermarks;
             return this;
         }

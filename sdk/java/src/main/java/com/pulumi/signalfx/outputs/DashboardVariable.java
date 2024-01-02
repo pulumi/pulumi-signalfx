@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,41 +159,53 @@ public final class DashboardVariable {
 
         @CustomType.Setter
         public Builder alias(String alias) {
-            this.alias = Objects.requireNonNull(alias);
+            if (alias == null) {
+              throw new MissingRequiredPropertyException("DashboardVariable", "alias");
+            }
+            this.alias = alias;
             return this;
         }
         @CustomType.Setter
         public Builder applyIfExist(@Nullable Boolean applyIfExist) {
+
             this.applyIfExist = applyIfExist;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("DashboardVariable", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder replaceOnly(@Nullable Boolean replaceOnly) {
+
             this.replaceOnly = replaceOnly;
             return this;
         }
         @CustomType.Setter
         public Builder restrictedSuggestions(@Nullable Boolean restrictedSuggestions) {
+
             this.restrictedSuggestions = restrictedSuggestions;
             return this;
         }
         @CustomType.Setter
         public Builder valueRequired(@Nullable Boolean valueRequired) {
+
             this.valueRequired = valueRequired;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }
@@ -201,6 +214,7 @@ public final class DashboardVariable {
         }
         @CustomType.Setter
         public Builder valuesSuggesteds(@Nullable List<String> valuesSuggesteds) {
+
             this.valuesSuggesteds = valuesSuggesteds;
             return this;
         }

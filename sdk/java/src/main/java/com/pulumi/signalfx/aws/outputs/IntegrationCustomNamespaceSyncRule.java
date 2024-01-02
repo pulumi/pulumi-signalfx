@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,28 @@ public final class IntegrationCustomNamespaceSyncRule {
 
         @CustomType.Setter
         public Builder defaultAction(@Nullable String defaultAction) {
+
             this.defaultAction = defaultAction;
             return this;
         }
         @CustomType.Setter
         public Builder filterAction(@Nullable String filterAction) {
+
             this.filterAction = filterAction;
             return this;
         }
         @CustomType.Setter
         public Builder filterSource(@Nullable String filterSource) {
+
             this.filterSource = filterSource;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("IntegrationCustomNamespaceSyncRule", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         public IntegrationCustomNamespaceSyncRule build() {

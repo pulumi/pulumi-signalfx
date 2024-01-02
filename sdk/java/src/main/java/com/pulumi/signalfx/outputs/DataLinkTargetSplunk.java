@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -58,11 +59,15 @@ public final class DataLinkTargetSplunk {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("DataLinkTargetSplunk", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder propertyKeyMapping(@Nullable Map<String,String> propertyKeyMapping) {
+
             this.propertyKeyMapping = propertyKeyMapping;
             return this;
         }

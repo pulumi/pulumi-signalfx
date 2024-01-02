@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.outputs.DashboardSelectedEventOverlaySource;
 import java.lang.String;
 import java.util.List;
@@ -74,11 +75,15 @@ public final class DashboardSelectedEventOverlay {
 
         @CustomType.Setter
         public Builder signal(String signal) {
-            this.signal = Objects.requireNonNull(signal);
+            if (signal == null) {
+              throw new MissingRequiredPropertyException("DashboardSelectedEventOverlay", "signal");
+            }
+            this.signal = signal;
             return this;
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<DashboardSelectedEventOverlaySource> sources) {
+
             this.sources = sources;
             return this;
         }
@@ -87,6 +92,7 @@ public final class DashboardSelectedEventOverlay {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

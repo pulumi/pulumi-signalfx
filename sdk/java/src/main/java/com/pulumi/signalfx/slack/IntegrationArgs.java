@@ -5,6 +5,7 @@ package com.pulumi.signalfx.slack;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntegrationArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.webhookUrl = Objects.requireNonNull($.webhookUrl, "expected parameter 'webhookUrl' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "enabled");
+            }
+            if ($.webhookUrl == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "webhookUrl");
+            }
             return $;
         }
     }

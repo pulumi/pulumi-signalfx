@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class OrgTokenDpmLimitsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public OrgTokenDpmLimitsArgs build() {
-            $.dpmLimit = Objects.requireNonNull($.dpmLimit, "expected parameter 'dpmLimit' to be non-null");
+            if ($.dpmLimit == null) {
+                throw new MissingRequiredPropertyException("OrgTokenDpmLimitsArgs", "dpmLimit");
+            }
             return $;
         }
     }

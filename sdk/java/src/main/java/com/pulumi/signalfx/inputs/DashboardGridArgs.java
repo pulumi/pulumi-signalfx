@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -162,7 +163,9 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DashboardGridArgs build() {
-            $.chartIds = Objects.requireNonNull($.chartIds, "expected parameter 'chartIds' to be non-null");
+            if ($.chartIds == null) {
+                throw new MissingRequiredPropertyException("DashboardGridArgs", "chartIds");
+            }
             return $;
         }
     }

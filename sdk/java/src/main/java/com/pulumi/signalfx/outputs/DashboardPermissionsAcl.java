@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,7 @@ public final class DashboardPermissionsAcl {
 
         @CustomType.Setter
         public Builder actions(@Nullable List<String> actions) {
+
             this.actions = actions;
             return this;
         }
@@ -80,12 +82,18 @@ public final class DashboardPermissionsAcl {
         }
         @CustomType.Setter
         public Builder principalId(String principalId) {
-            this.principalId = Objects.requireNonNull(principalId);
+            if (principalId == null) {
+              throw new MissingRequiredPropertyException("DashboardPermissionsAcl", "principalId");
+            }
+            this.principalId = principalId;
             return this;
         }
         @CustomType.Setter
         public Builder principalType(String principalType) {
-            this.principalType = Objects.requireNonNull(principalType);
+            if (principalType == null) {
+              throw new MissingRequiredPropertyException("DashboardPermissionsAcl", "principalType");
+            }
+            this.principalType = principalType;
             return this;
         }
         public DashboardPermissionsAcl build() {

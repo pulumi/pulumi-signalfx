@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.DashboardSelectedEventOverlaySourceArgs;
 import java.lang.String;
 import java.util.List;
@@ -162,7 +163,9 @@ public final class DashboardSelectedEventOverlayArgs extends com.pulumi.resource
         }
 
         public DashboardSelectedEventOverlayArgs build() {
-            $.signal = Objects.requireNonNull($.signal, "expected parameter 'signal' to be non-null");
+            if ($.signal == null) {
+                throw new MissingRequiredPropertyException("DashboardSelectedEventOverlayArgs", "signal");
+            }
             return $;
         }
     }

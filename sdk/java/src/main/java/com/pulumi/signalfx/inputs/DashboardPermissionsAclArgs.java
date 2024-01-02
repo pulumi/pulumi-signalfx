@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         public DashboardPermissionsAclArgs build() {
-            $.principalId = Objects.requireNonNull($.principalId, "expected parameter 'principalId' to be non-null");
-            $.principalType = Objects.requireNonNull($.principalType, "expected parameter 'principalType' to be non-null");
+            if ($.principalId == null) {
+                throw new MissingRequiredPropertyException("DashboardPermissionsAclArgs", "principalId");
+            }
+            if ($.principalType == null) {
+                throw new MissingRequiredPropertyException("DashboardPermissionsAclArgs", "principalType");
+            }
             return $;
         }
     }

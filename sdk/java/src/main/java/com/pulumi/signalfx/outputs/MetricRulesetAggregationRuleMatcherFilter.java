@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -72,17 +73,26 @@ public final class MetricRulesetAggregationRuleMatcherFilter {
 
         @CustomType.Setter
         public Builder not(Boolean not) {
-            this.not = Objects.requireNonNull(not);
+            if (not == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleMatcherFilter", "not");
+            }
+            this.not = not;
             return this;
         }
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleMatcherFilter", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder propertyValues(List<String> propertyValues) {
-            this.propertyValues = Objects.requireNonNull(propertyValues);
+            if (propertyValues == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleMatcherFilter", "propertyValues");
+            }
+            this.propertyValues = propertyValues;
             return this;
         }
         public Builder propertyValues(String... propertyValues) {

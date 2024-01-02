@@ -5,6 +5,7 @@ package com.pulumi.signalfx.aws;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.aws.inputs.IntegrationCustomNamespaceSyncRuleArgs;
 import com.pulumi.signalfx.aws.inputs.IntegrationMetricStatsToSyncArgs;
 import com.pulumi.signalfx.aws.inputs.IntegrationNamespaceSyncRuleArgs;
@@ -853,9 +854,15 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntegrationArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.integrationId = Objects.requireNonNull($.integrationId, "expected parameter 'integrationId' to be non-null");
-            $.regions = Objects.requireNonNull($.regions, "expected parameter 'regions' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "enabled");
+            }
+            if ($.integrationId == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "integrationId");
+            }
+            if ($.regions == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "regions");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -134,41 +135,51 @@ public final class TimeChartVizOption {
 
         @CustomType.Setter
         public Builder axis(@Nullable String axis) {
+
             this.axis = axis;
             return this;
         }
         @CustomType.Setter
         public Builder color(@Nullable String color) {
+
             this.color = color;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("TimeChartVizOption", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder plotType(@Nullable String plotType) {
+
             this.plotType = plotType;
             return this;
         }
         @CustomType.Setter
         public Builder valuePrefix(@Nullable String valuePrefix) {
+
             this.valuePrefix = valuePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder valueSuffix(@Nullable String valueSuffix) {
+
             this.valueSuffix = valueSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder valueUnit(@Nullable String valueUnit) {
+
             this.valueUnit = valueUnit;
             return this;
         }

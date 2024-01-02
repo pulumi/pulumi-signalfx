@@ -142,41 +142,49 @@ public final class OrgTokenHostOrUsageLimits {
 
         @CustomType.Setter
         public Builder containerLimit(@Nullable Integer containerLimit) {
+
             this.containerLimit = containerLimit;
             return this;
         }
         @CustomType.Setter
         public Builder containerNotificationThreshold(@Nullable Integer containerNotificationThreshold) {
+
             this.containerNotificationThreshold = containerNotificationThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder customMetricsLimit(@Nullable Integer customMetricsLimit) {
+
             this.customMetricsLimit = customMetricsLimit;
             return this;
         }
         @CustomType.Setter
         public Builder customMetricsNotificationThreshold(@Nullable Integer customMetricsNotificationThreshold) {
+
             this.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder highResMetricsLimit(@Nullable Integer highResMetricsLimit) {
+
             this.highResMetricsLimit = highResMetricsLimit;
             return this;
         }
         @CustomType.Setter
         public Builder highResMetricsNotificationThreshold(@Nullable Integer highResMetricsNotificationThreshold) {
+
             this.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder hostLimit(@Nullable Integer hostLimit) {
+
             this.hostLimit = hostLimit;
             return this;
         }
         @CustomType.Setter
         public Builder hostNotificationThreshold(@Nullable Integer hostNotificationThreshold) {
+
             this.hostNotificationThreshold = hostNotificationThreshold;
             return this;
         }

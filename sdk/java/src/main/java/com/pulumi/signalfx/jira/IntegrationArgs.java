@@ -5,6 +5,7 @@ package com.pulumi.signalfx.jira;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -484,12 +485,24 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntegrationArgs build() {
-            $.assigneeName = Objects.requireNonNull($.assigneeName, "expected parameter 'assigneeName' to be non-null");
-            $.authMethod = Objects.requireNonNull($.authMethod, "expected parameter 'authMethod' to be non-null");
-            $.baseUrl = Objects.requireNonNull($.baseUrl, "expected parameter 'baseUrl' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.issueType = Objects.requireNonNull($.issueType, "expected parameter 'issueType' to be non-null");
-            $.projectKey = Objects.requireNonNull($.projectKey, "expected parameter 'projectKey' to be non-null");
+            if ($.assigneeName == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "assigneeName");
+            }
+            if ($.authMethod == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "authMethod");
+            }
+            if ($.baseUrl == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "baseUrl");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "enabled");
+            }
+            if ($.issueType == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "issueType");
+            }
+            if ($.projectKey == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "projectKey");
+            }
             return $;
         }
     }

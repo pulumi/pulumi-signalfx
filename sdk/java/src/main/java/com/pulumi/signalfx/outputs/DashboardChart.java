@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -101,26 +102,33 @@ public final class DashboardChart {
 
         @CustomType.Setter
         public Builder chartId(String chartId) {
-            this.chartId = Objects.requireNonNull(chartId);
+            if (chartId == null) {
+              throw new MissingRequiredPropertyException("DashboardChart", "chartId");
+            }
+            this.chartId = chartId;
             return this;
         }
         @CustomType.Setter
         public Builder column(@Nullable Integer column) {
+
             this.column = column;
             return this;
         }
         @CustomType.Setter
         public Builder height(@Nullable Integer height) {
+
             this.height = height;
             return this;
         }
         @CustomType.Setter
         public Builder row(@Nullable Integer row) {
+
             this.row = row;
             return this;
         }
         @CustomType.Setter
         public Builder width(@Nullable Integer width) {
+
             this.width = width;
             return this;
         }

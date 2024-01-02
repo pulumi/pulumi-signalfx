@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.TableChartVizOptionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -507,7 +508,9 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TableChartArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("TableChartArgs", "programText");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -225,7 +226,9 @@ public final class ListChartColorScaleArgs extends com.pulumi.resources.Resource
         }
 
         public ListChartColorScaleArgs build() {
-            $.color = Objects.requireNonNull($.color, "expected parameter 'color' to be non-null");
+            if ($.color == null) {
+                throw new MissingRequiredPropertyException("ListChartColorScaleArgs", "color");
+            }
             return $;
         }
     }
