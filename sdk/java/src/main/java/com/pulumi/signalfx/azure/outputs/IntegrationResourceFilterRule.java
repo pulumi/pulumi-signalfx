@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class IntegrationResourceFilterRule {
 
         @CustomType.Setter
         public Builder filterSource(String filterSource) {
-            this.filterSource = Objects.requireNonNull(filterSource);
+            if (filterSource == null) {
+              throw new MissingRequiredPropertyException("IntegrationResourceFilterRule", "filterSource");
+            }
+            this.filterSource = filterSource;
             return this;
         }
         public IntegrationResourceFilterRule build() {

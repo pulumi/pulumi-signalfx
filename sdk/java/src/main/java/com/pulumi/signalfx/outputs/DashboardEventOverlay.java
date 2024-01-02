@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.outputs.DashboardEventOverlaySource;
 import java.lang.Boolean;
 import java.lang.String;
@@ -117,26 +118,33 @@ public final class DashboardEventOverlay {
 
         @CustomType.Setter
         public Builder color(@Nullable String color) {
+
             this.color = color;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder line(@Nullable Boolean line) {
+
             this.line = line;
             return this;
         }
         @CustomType.Setter
         public Builder signal(String signal) {
-            this.signal = Objects.requireNonNull(signal);
+            if (signal == null) {
+              throw new MissingRequiredPropertyException("DashboardEventOverlay", "signal");
+            }
+            this.signal = signal;
             return this;
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<DashboardEventOverlaySource> sources) {
+
             this.sources = sources;
             return this;
         }
@@ -145,6 +153,7 @@ public final class DashboardEventOverlay {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.signalfx.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
         }
 
         public IntegrationCustomNamespacesPerServiceArgs build() {
-            $.namespaces = Objects.requireNonNull($.namespaces, "expected parameter 'namespaces' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.namespaces == null) {
+                throw new MissingRequiredPropertyException("IntegrationCustomNamespacesPerServiceArgs", "namespaces");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("IntegrationCustomNamespacesPerServiceArgs", "service");
+            }
             return $;
         }
     }

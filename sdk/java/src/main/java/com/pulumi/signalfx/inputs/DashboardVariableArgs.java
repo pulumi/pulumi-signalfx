@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -394,8 +395,12 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DashboardVariableArgs build() {
-            $.alias = Objects.requireNonNull($.alias, "expected parameter 'alias' to be non-null");
-            $.property = Objects.requireNonNull($.property, "expected parameter 'property' to be non-null");
+            if ($.alias == null) {
+                throw new MissingRequiredPropertyException("DashboardVariableArgs", "alias");
+            }
+            if ($.property == null) {
+                throw new MissingRequiredPropertyException("DashboardVariableArgs", "property");
+            }
             return $;
         }
     }

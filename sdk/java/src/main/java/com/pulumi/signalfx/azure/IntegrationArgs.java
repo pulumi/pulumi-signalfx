@@ -5,6 +5,7 @@ package com.pulumi.signalfx.azure;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.azure.inputs.IntegrationCustomNamespacesPerServiceArgs;
 import com.pulumi.signalfx.azure.inputs.IntegrationResourceFilterRuleArgs;
 import java.lang.Boolean;
@@ -649,12 +650,24 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntegrationArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
-            $.services = Objects.requireNonNull($.services, "expected parameter 'services' to be non-null");
-            $.subscriptions = Objects.requireNonNull($.subscriptions, "expected parameter 'subscriptions' to be non-null");
-            $.tenantId = Objects.requireNonNull($.tenantId, "expected parameter 'tenantId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "appId");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "enabled");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "secretKey");
+            }
+            if ($.services == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "services");
+            }
+            if ($.subscriptions == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "subscriptions");
+            }
+            if ($.tenantId == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "tenantId");
+            }
             return $;
         }
     }

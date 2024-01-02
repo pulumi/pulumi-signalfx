@@ -5,6 +5,7 @@ package com.pulumi.signalfx.log.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class ViewSortOptionArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ViewSortOptionArgs build() {
-            $.descending = Objects.requireNonNull($.descending, "expected parameter 'descending' to be non-null");
-            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
+            if ($.descending == null) {
+                throw new MissingRequiredPropertyException("ViewSortOptionArgs", "descending");
+            }
+            if ($.field == null) {
+                throw new MissingRequiredPropertyException("ViewSortOptionArgs", "field");
+            }
             return $;
         }
     }

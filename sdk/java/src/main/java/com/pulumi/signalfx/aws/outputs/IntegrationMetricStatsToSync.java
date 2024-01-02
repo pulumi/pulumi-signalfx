@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.aws.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class IntegrationMetricStatsToSync {
 
         @CustomType.Setter
         public Builder metric(String metric) {
-            this.metric = Objects.requireNonNull(metric);
+            if (metric == null) {
+              throw new MissingRequiredPropertyException("IntegrationMetricStatsToSync", "metric");
+            }
+            this.metric = metric;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("IntegrationMetricStatsToSync", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder stats(List<String> stats) {
-            this.stats = Objects.requireNonNull(stats);
+            if (stats == null) {
+              throw new MissingRequiredPropertyException("IntegrationMetricStatsToSync", "stats");
+            }
+            this.stats = stats;
             return this;
         }
         public Builder stats(String... stats) {

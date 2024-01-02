@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -49,7 +50,9 @@ public final class GetDimensionValuesPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetDimensionValuesPlainArgs build() {
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("GetDimensionValuesPlainArgs", "query");
+            }
             return $;
         }
     }

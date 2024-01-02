@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.log.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class ViewSortOption {
 
         @CustomType.Setter
         public Builder descending(Boolean descending) {
-            this.descending = Objects.requireNonNull(descending);
+            if (descending == null) {
+              throw new MissingRequiredPropertyException("ViewSortOption", "descending");
+            }
+            this.descending = descending;
             return this;
         }
         @CustomType.Setter
         public Builder field(String field) {
-            this.field = Objects.requireNonNull(field);
+            if (field == null) {
+              throw new MissingRequiredPropertyException("ViewSortOption", "field");
+            }
+            this.field = field;
             return this;
         }
         public ViewSortOption build() {

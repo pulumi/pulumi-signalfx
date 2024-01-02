@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.azure.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class IntegrationCustomNamespacesPerService {
 
         @CustomType.Setter
         public Builder namespaces(List<String> namespaces) {
-            this.namespaces = Objects.requireNonNull(namespaces);
+            if (namespaces == null) {
+              throw new MissingRequiredPropertyException("IntegrationCustomNamespacesPerService", "namespaces");
+            }
+            this.namespaces = namespaces;
             return this;
         }
         public Builder namespaces(String... namespaces) {
@@ -65,7 +69,10 @@ public final class IntegrationCustomNamespacesPerService {
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("IntegrationCustomNamespacesPerService", "service");
+            }
+            this.service = service;
             return this;
         }
         public IntegrationCustomNamespacesPerService build() {

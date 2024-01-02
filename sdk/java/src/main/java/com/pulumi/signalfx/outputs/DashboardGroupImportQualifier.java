@@ -44,6 +44,7 @@ public final class DashboardGroupImportQualifier {
 
         @CustomType.Setter
         public Builder filters(@Nullable List<DashboardGroupImportQualifierFilter> filters) {
+
             this.filters = filters;
             return this;
         }
@@ -52,6 +53,7 @@ public final class DashboardGroupImportQualifier {
         }
         @CustomType.Setter
         public Builder metric(@Nullable String metric) {
+
             this.metric = metric;
             return this;
         }

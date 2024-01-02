@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,21 +159,27 @@ public final class DetectorRule {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder detectLabel(String detectLabel) {
-            this.detectLabel = Objects.requireNonNull(detectLabel);
+            if (detectLabel == null) {
+              throw new MissingRequiredPropertyException("DetectorRule", "detectLabel");
+            }
+            this.detectLabel = detectLabel;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder notifications(@Nullable List<String> notifications) {
+
             this.notifications = notifications;
             return this;
         }
@@ -181,26 +188,33 @@ public final class DetectorRule {
         }
         @CustomType.Setter
         public Builder parameterizedBody(@Nullable String parameterizedBody) {
+
             this.parameterizedBody = parameterizedBody;
             return this;
         }
         @CustomType.Setter
         public Builder parameterizedSubject(@Nullable String parameterizedSubject) {
+
             this.parameterizedSubject = parameterizedSubject;
             return this;
         }
         @CustomType.Setter
         public Builder runbookUrl(@Nullable String runbookUrl) {
+
             this.runbookUrl = runbookUrl;
             return this;
         }
         @CustomType.Setter
         public Builder severity(String severity) {
-            this.severity = Objects.requireNonNull(severity);
+            if (severity == null) {
+              throw new MissingRequiredPropertyException("DetectorRule", "severity");
+            }
+            this.severity = severity;
             return this;
         }
         @CustomType.Setter
         public Builder tip(@Nullable String tip) {
+
             this.tip = tip;
             return this;
         }

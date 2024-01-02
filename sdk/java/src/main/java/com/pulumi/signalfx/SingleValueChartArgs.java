@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.SingleValueChartColorScaleArgs;
 import com.pulumi.signalfx.inputs.SingleValueChartVizOptionArgs;
 import java.lang.Boolean;
@@ -582,7 +583,9 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SingleValueChartArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("SingleValueChartArgs", "programText");
+            }
             return $;
         }
     }

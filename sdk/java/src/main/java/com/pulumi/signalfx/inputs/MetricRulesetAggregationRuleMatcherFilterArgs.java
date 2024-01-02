@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -160,9 +161,15 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         public MetricRulesetAggregationRuleMatcherFilterArgs build() {
-            $.not = Objects.requireNonNull($.not, "expected parameter 'not' to be non-null");
-            $.property = Objects.requireNonNull($.property, "expected parameter 'property' to be non-null");
-            $.propertyValues = Objects.requireNonNull($.propertyValues, "expected parameter 'propertyValues' to be non-null");
+            if ($.not == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleMatcherFilterArgs", "not");
+            }
+            if ($.property == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleMatcherFilterArgs", "property");
+            }
+            if ($.propertyValues == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleMatcherFilterArgs", "propertyValues");
+            }
             return $;
         }
     }

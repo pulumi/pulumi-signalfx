@@ -5,6 +5,7 @@ package com.pulumi.signalfx.azure.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class IntegrationResourceFilterRuleArgs extends com.pulumi.resource
         }
 
         public IntegrationResourceFilterRuleArgs build() {
-            $.filterSource = Objects.requireNonNull($.filterSource, "expected parameter 'filterSource' to be non-null");
+            if ($.filterSource == null) {
+                throw new MissingRequiredPropertyException("IntegrationResourceFilterRuleArgs", "filterSource");
+            }
             return $;
         }
     }

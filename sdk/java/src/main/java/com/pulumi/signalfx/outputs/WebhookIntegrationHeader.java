@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class WebhookIntegrationHeader {
 
         @CustomType.Setter
         public Builder headerKey(String headerKey) {
-            this.headerKey = Objects.requireNonNull(headerKey);
+            if (headerKey == null) {
+              throw new MissingRequiredPropertyException("WebhookIntegrationHeader", "headerKey");
+            }
+            this.headerKey = headerKey;
             return this;
         }
         @CustomType.Setter
         public Builder headerValue(String headerValue) {
-            this.headerValue = Objects.requireNonNull(headerValue);
+            if (headerValue == null) {
+              throw new MissingRequiredPropertyException("WebhookIntegrationHeader", "headerValue");
+            }
+            this.headerValue = headerValue;
             return this;
         }
         public WebhookIntegrationHeader build() {

@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -86,7 +87,10 @@ public final class MetricRulesetAggregationRuleAggregator {
 
         @CustomType.Setter
         public Builder dimensions(List<String> dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregator", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         public Builder dimensions(String... dimensions) {
@@ -94,17 +98,26 @@ public final class MetricRulesetAggregationRuleAggregator {
         }
         @CustomType.Setter
         public Builder dropDimensions(Boolean dropDimensions) {
-            this.dropDimensions = Objects.requireNonNull(dropDimensions);
+            if (dropDimensions == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregator", "dropDimensions");
+            }
+            this.dropDimensions = dropDimensions;
             return this;
         }
         @CustomType.Setter
         public Builder outputName(String outputName) {
-            this.outputName = Objects.requireNonNull(outputName);
+            if (outputName == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregator", "outputName");
+            }
+            this.outputName = outputName;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregator", "type");
+            }
+            this.type = type;
             return this;
         }
         public MetricRulesetAggregationRuleAggregator build() {

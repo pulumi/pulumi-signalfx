@@ -5,6 +5,7 @@ package com.pulumi.signalfx.servicenow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -336,11 +337,21 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IntegrationArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.issueType = Objects.requireNonNull($.issueType, "expected parameter 'issueType' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "enabled");
+            }
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "instanceName");
+            }
+            if ($.issueType == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "issueType");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("IntegrationArgs", "username");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -171,7 +172,9 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
         }
 
         public DashboardGroupDashboardVariableOverrideArgs build() {
-            $.property = Objects.requireNonNull($.property, "expected parameter 'property' to be non-null");
+            if ($.property == null) {
+                throw new MissingRequiredPropertyException("DashboardGroupDashboardVariableOverrideArgs", "property");
+            }
             return $;
         }
     }
