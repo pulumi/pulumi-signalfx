@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WebhookIntegrationHeaderArgs extends com.pulumi.resources.Res
         }
 
         public WebhookIntegrationHeaderArgs build() {
-            $.headerKey = Objects.requireNonNull($.headerKey, "expected parameter 'headerKey' to be non-null");
-            $.headerValue = Objects.requireNonNull($.headerValue, "expected parameter 'headerValue' to be non-null");
+            if ($.headerKey == null) {
+                throw new MissingRequiredPropertyException("WebhookIntegrationHeaderArgs", "headerKey");
+            }
+            if ($.headerValue == null) {
+                throw new MissingRequiredPropertyException("WebhookIntegrationHeaderArgs", "headerValue");
+            }
             return $;
         }
     }

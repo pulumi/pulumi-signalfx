@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class ListChartLegendOptionsField {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("ListChartLegendOptionsField", "property");
+            }
+            this.property = property;
             return this;
         }
         public ListChartLegendOptionsField build() {

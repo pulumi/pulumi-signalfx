@@ -60,6 +60,7 @@ public final class DashboardPermissions {
 
         @CustomType.Setter
         public Builder acls(@Nullable List<DashboardPermissionsAcl> acls) {
+
             this.acls = acls;
             return this;
         }
@@ -68,6 +69,7 @@ public final class DashboardPermissions {
         }
         @CustomType.Setter
         public Builder parent(@Nullable String parent) {
+
             this.parent = parent;
             return this;
         }

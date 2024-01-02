@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class OrgTokenDpmLimits {
 
         @CustomType.Setter
         public Builder dpmLimit(Integer dpmLimit) {
-            this.dpmLimit = Objects.requireNonNull(dpmLimit);
+            if (dpmLimit == null) {
+              throw new MissingRequiredPropertyException("OrgTokenDpmLimits", "dpmLimit");
+            }
+            this.dpmLimit = dpmLimit;
             return this;
         }
         @CustomType.Setter
         public Builder dpmNotificationThreshold(@Nullable Integer dpmNotificationThreshold) {
+
             this.dpmNotificationThreshold = dpmNotificationThreshold;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
         }
 
         public TimeChartEventOptionArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("TimeChartEventOptionArgs", "label");
+            }
             return $;
         }
     }

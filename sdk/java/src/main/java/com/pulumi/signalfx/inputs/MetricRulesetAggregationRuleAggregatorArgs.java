@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -197,10 +198,18 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         public MetricRulesetAggregationRuleAggregatorArgs build() {
-            $.dimensions = Objects.requireNonNull($.dimensions, "expected parameter 'dimensions' to be non-null");
-            $.dropDimensions = Objects.requireNonNull($.dropDimensions, "expected parameter 'dropDimensions' to be non-null");
-            $.outputName = Objects.requireNonNull($.outputName, "expected parameter 'outputName' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.dimensions == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregatorArgs", "dimensions");
+            }
+            if ($.dropDimensions == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregatorArgs", "dropDimensions");
+            }
+            if ($.outputName == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregatorArgs", "outputName");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleAggregatorArgs", "type");
+            }
             return $;
         }
     }

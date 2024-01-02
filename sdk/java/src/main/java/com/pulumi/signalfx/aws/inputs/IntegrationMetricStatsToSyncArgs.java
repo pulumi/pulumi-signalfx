@@ -5,6 +5,7 @@ package com.pulumi.signalfx.aws.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
         }
 
         public IntegrationMetricStatsToSyncArgs build() {
-            $.metric = Objects.requireNonNull($.metric, "expected parameter 'metric' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.stats = Objects.requireNonNull($.stats, "expected parameter 'stats' to be non-null");
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("IntegrationMetricStatsToSyncArgs", "metric");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("IntegrationMetricStatsToSyncArgs", "namespace");
+            }
+            if ($.stats == null) {
+                throw new MissingRequiredPropertyException("IntegrationMetricStatsToSyncArgs", "stats");
+            }
             return $;
         }
     }

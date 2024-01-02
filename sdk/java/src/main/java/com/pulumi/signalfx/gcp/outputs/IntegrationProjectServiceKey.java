@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.gcp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class IntegrationProjectServiceKey {
 
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("IntegrationProjectServiceKey", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder projectKey(String projectKey) {
-            this.projectKey = Objects.requireNonNull(projectKey);
+            if (projectKey == null) {
+              throw new MissingRequiredPropertyException("IntegrationProjectServiceKey", "projectKey");
+            }
+            this.projectKey = projectKey;
             return this;
         }
         public IntegrationProjectServiceKey build() {

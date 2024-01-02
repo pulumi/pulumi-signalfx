@@ -5,6 +5,7 @@ package com.pulumi.signalfx.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,7 +300,9 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TimelineArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("TimelineArgs", "programText");
+            }
             return $;
         }
     }

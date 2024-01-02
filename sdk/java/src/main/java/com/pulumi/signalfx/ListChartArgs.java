@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.ListChartColorScaleArgs;
 import com.pulumi.signalfx.inputs.ListChartLegendOptionsFieldArgs;
 import com.pulumi.signalfx.inputs.ListChartVizOptionArgs;
@@ -845,7 +846,9 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListChartArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("ListChartArgs", "programText");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.DashboardChartArgs;
 import com.pulumi.signalfx.inputs.DashboardColumnArgs;
 import com.pulumi.signalfx.inputs.DashboardEventOverlayArgs;
@@ -893,7 +894,9 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DashboardArgs build() {
-            $.dashboardGroup = Objects.requireNonNull($.dashboardGroup, "expected parameter 'dashboardGroup' to be non-null");
+            if ($.dashboardGroup == null) {
+                throw new MissingRequiredPropertyException("DashboardArgs", "dashboardGroup");
+            }
             return $;
         }
     }

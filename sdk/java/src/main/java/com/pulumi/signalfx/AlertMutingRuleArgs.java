@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.AlertMutingRuleFilterArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -247,8 +248,12 @@ public final class AlertMutingRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AlertMutingRuleArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("AlertMutingRuleArgs", "description");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("AlertMutingRuleArgs", "startTime");
+            }
             return $;
         }
     }

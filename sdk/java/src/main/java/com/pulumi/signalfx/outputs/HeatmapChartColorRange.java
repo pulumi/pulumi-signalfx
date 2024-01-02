@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,21 @@ public final class HeatmapChartColorRange {
 
         @CustomType.Setter
         public Builder color(String color) {
-            this.color = Objects.requireNonNull(color);
+            if (color == null) {
+              throw new MissingRequiredPropertyException("HeatmapChartColorRange", "color");
+            }
+            this.color = color;
             return this;
         }
         @CustomType.Setter
         public Builder maxValue(@Nullable Double maxValue) {
+
             this.maxValue = maxValue;
             return this;
         }
         @CustomType.Setter
         public Builder minValue(@Nullable Double minValue) {
+
             this.minValue = minValue;
             return this;
         }

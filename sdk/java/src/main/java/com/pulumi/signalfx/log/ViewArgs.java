@@ -5,6 +5,7 @@ package com.pulumi.signalfx.log;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.log.inputs.ViewColumnArgs;
 import com.pulumi.signalfx.log.inputs.ViewSortOptionArgs;
 import java.lang.Integer;
@@ -396,7 +397,9 @@ public final class ViewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ViewArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("ViewArgs", "programText");
+            }
             return $;
         }
     }

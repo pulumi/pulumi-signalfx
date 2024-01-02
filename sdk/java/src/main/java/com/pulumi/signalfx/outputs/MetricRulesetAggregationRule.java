@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.outputs.MetricRulesetAggregationRuleAggregator;
 import com.pulumi.signalfx.outputs.MetricRulesetAggregationRuleMatcher;
 import java.lang.Boolean;
@@ -90,7 +91,10 @@ public final class MetricRulesetAggregationRule {
 
         @CustomType.Setter
         public Builder aggregators(List<MetricRulesetAggregationRuleAggregator> aggregators) {
-            this.aggregators = Objects.requireNonNull(aggregators);
+            if (aggregators == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRule", "aggregators");
+            }
+            this.aggregators = aggregators;
             return this;
         }
         public Builder aggregators(MetricRulesetAggregationRuleAggregator... aggregators) {
@@ -98,12 +102,18 @@ public final class MetricRulesetAggregationRule {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRule", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder matchers(List<MetricRulesetAggregationRuleMatcher> matchers) {
-            this.matchers = Objects.requireNonNull(matchers);
+            if (matchers == null) {
+              throw new MissingRequiredPropertyException("MetricRulesetAggregationRule", "matchers");
+            }
+            this.matchers = matchers;
             return this;
         }
         public Builder matchers(MetricRulesetAggregationRuleMatcher... matchers) {
@@ -111,6 +121,7 @@ public final class MetricRulesetAggregationRule {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

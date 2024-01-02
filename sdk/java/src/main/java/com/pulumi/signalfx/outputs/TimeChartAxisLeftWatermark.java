@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -51,12 +52,16 @@ public final class TimeChartAxisLeftWatermark {
 
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder value(Double value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("TimeChartAxisLeftWatermark", "value");
+            }
+            this.value = value;
             return this;
         }
         public TimeChartAxisLeftWatermark build() {

@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleArgs;
 import com.pulumi.signalfx.inputs.MetricRulesetRoutingRuleArgs;
 import java.lang.String;
@@ -173,8 +174,12 @@ public final class MetricRulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MetricRulesetArgs build() {
-            $.metricName = Objects.requireNonNull($.metricName, "expected parameter 'metricName' to be non-null");
-            $.routingRules = Objects.requireNonNull($.routingRules, "expected parameter 'routingRules' to be non-null");
+            if ($.metricName == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetArgs", "metricName");
+            }
+            if ($.routingRules == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetArgs", "routingRules");
+            }
             return $;
         }
     }

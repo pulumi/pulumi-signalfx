@@ -5,6 +5,7 @@ package com.pulumi.signalfx.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleAggregatorArgs;
 import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleMatcherArgs;
 import java.lang.Boolean;
@@ -211,9 +212,15 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         public MetricRulesetAggregationRuleArgs build() {
-            $.aggregators = Objects.requireNonNull($.aggregators, "expected parameter 'aggregators' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.matchers = Objects.requireNonNull($.matchers, "expected parameter 'matchers' to be non-null");
+            if ($.aggregators == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleArgs", "aggregators");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleArgs", "enabled");
+            }
+            if ($.matchers == null) {
+                throw new MissingRequiredPropertyException("MetricRulesetAggregationRuleArgs", "matchers");
+            }
             return $;
         }
     }

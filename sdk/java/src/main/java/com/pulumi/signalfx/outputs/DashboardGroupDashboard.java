@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.outputs.DashboardGroupDashboardFilterOverride;
 import com.pulumi.signalfx.outputs.DashboardGroupDashboardVariableOverride;
 import java.lang.String;
@@ -101,21 +102,27 @@ public final class DashboardGroupDashboard {
 
         @CustomType.Setter
         public Builder configId(@Nullable String configId) {
+
             this.configId = configId;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
-            this.dashboardId = Objects.requireNonNull(dashboardId);
+            if (dashboardId == null) {
+              throw new MissingRequiredPropertyException("DashboardGroupDashboard", "dashboardId");
+            }
+            this.dashboardId = dashboardId;
             return this;
         }
         @CustomType.Setter
         public Builder descriptionOverride(@Nullable String descriptionOverride) {
+
             this.descriptionOverride = descriptionOverride;
             return this;
         }
         @CustomType.Setter
         public Builder filterOverrides(@Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides) {
+
             this.filterOverrides = filterOverrides;
             return this;
         }
@@ -124,11 +131,13 @@ public final class DashboardGroupDashboard {
         }
         @CustomType.Setter
         public Builder nameOverride(@Nullable String nameOverride) {
+
             this.nameOverride = nameOverride;
             return this;
         }
         @CustomType.Setter
         public Builder variableOverrides(@Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides) {
+
             this.variableOverrides = variableOverrides;
             return this;
         }

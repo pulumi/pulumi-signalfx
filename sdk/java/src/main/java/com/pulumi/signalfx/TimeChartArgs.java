@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.TimeChartAxisLeftArgs;
 import com.pulumi.signalfx.inputs.TimeChartAxisRightArgs;
 import com.pulumi.signalfx.inputs.TimeChartEventOptionArgs;
@@ -1147,7 +1148,9 @@ public final class TimeChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TimeChartArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("TimeChartArgs", "programText");
+            }
             return $;
         }
     }

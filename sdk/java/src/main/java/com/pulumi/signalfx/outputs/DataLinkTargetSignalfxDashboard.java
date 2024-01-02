@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,32 @@ public final class DataLinkTargetSignalfxDashboard {
 
         @CustomType.Setter
         public Builder dashboardGroupId(String dashboardGroupId) {
-            this.dashboardGroupId = Objects.requireNonNull(dashboardGroupId);
+            if (dashboardGroupId == null) {
+              throw new MissingRequiredPropertyException("DataLinkTargetSignalfxDashboard", "dashboardGroupId");
+            }
+            this.dashboardGroupId = dashboardGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder dashboardId(String dashboardId) {
-            this.dashboardId = Objects.requireNonNull(dashboardId);
+            if (dashboardId == null) {
+              throw new MissingRequiredPropertyException("DataLinkTargetSignalfxDashboard", "dashboardId");
+            }
+            this.dashboardId = dashboardId;
             return this;
         }
         @CustomType.Setter
         public Builder isDefault(@Nullable Boolean isDefault) {
+
             this.isDefault = isDefault;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("DataLinkTargetSignalfxDashboard", "name");
+            }
+            this.name = name;
             return this;
         }
         public DataLinkTargetSignalfxDashboard build() {

@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,11 +73,15 @@ public final class DashboardGroupDashboardVariableOverride {
 
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("DashboardGroupDashboardVariableOverride", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }
@@ -85,6 +90,7 @@ public final class DashboardGroupDashboardVariableOverride {
         }
         @CustomType.Setter
         public Builder valuesSuggesteds(@Nullable List<String> valuesSuggesteds) {
+
             this.valuesSuggesteds = valuesSuggesteds;
             return this;
         }

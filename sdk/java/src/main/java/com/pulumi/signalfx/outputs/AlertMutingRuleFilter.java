@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,24 @@ public final class AlertMutingRuleFilter {
 
         @CustomType.Setter
         public Builder negated(@Nullable Boolean negated) {
+
             this.negated = negated;
             return this;
         }
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("AlertMutingRuleFilter", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder propertyValue(String propertyValue) {
-            this.propertyValue = Objects.requireNonNull(propertyValue);
+            if (propertyValue == null) {
+              throw new MissingRequiredPropertyException("AlertMutingRuleFilter", "propertyValue");
+            }
+            this.propertyValue = propertyValue;
             return this;
         }
         public AlertMutingRuleFilter build() {

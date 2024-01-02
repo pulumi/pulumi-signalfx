@@ -5,6 +5,7 @@ package com.pulumi.signalfx;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.signalfx.inputs.DetectorRuleArgs;
 import com.pulumi.signalfx.inputs.DetectorVizOptionArgs;
 import java.lang.Boolean;
@@ -770,8 +771,12 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DetectorArgs build() {
-            $.programText = Objects.requireNonNull($.programText, "expected parameter 'programText' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.programText == null) {
+                throw new MissingRequiredPropertyException("DetectorArgs", "programText");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("DetectorArgs", "rules");
+            }
             return $;
         }
     }

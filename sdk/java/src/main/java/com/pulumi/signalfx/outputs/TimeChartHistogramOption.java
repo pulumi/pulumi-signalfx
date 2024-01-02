@@ -44,6 +44,7 @@ public final class TimeChartHistogramOption {
 
         @CustomType.Setter
         public Builder colorTheme(@Nullable String colorTheme) {
+
             this.colorTheme = colorTheme;
             return this;
         }

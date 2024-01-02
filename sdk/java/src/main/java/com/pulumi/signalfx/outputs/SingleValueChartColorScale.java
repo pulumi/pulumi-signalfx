@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -101,26 +102,33 @@ public final class SingleValueChartColorScale {
 
         @CustomType.Setter
         public Builder color(String color) {
-            this.color = Objects.requireNonNull(color);
+            if (color == null) {
+              throw new MissingRequiredPropertyException("SingleValueChartColorScale", "color");
+            }
+            this.color = color;
             return this;
         }
         @CustomType.Setter
         public Builder gt(@Nullable Double gt) {
+
             this.gt = gt;
             return this;
         }
         @CustomType.Setter
         public Builder gte(@Nullable Double gte) {
+
             this.gte = gte;
             return this;
         }
         @CustomType.Setter
         public Builder lt(@Nullable Double lt) {
+
             this.lt = lt;
             return this;
         }
         @CustomType.Setter
         public Builder lte(@Nullable Double lte) {
+
             this.lte = lte;
             return this;
         }

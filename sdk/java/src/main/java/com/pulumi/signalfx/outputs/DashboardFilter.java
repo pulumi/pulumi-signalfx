@@ -4,6 +4,7 @@
 package com.pulumi.signalfx.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -88,22 +89,30 @@ public final class DashboardFilter {
 
         @CustomType.Setter
         public Builder applyIfExist(@Nullable Boolean applyIfExist) {
+
             this.applyIfExist = applyIfExist;
             return this;
         }
         @CustomType.Setter
         public Builder negated(@Nullable Boolean negated) {
+
             this.negated = negated;
             return this;
         }
         @CustomType.Setter
         public Builder property(String property) {
-            this.property = Objects.requireNonNull(property);
+            if (property == null) {
+              throw new MissingRequiredPropertyException("DashboardFilter", "property");
+            }
+            this.property = property;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("DashboardFilter", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

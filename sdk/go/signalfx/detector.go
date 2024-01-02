@@ -40,7 +40,7 @@ import (
 //				"clusterA",
 //				"clusterB",
 //			}
-//			if param := cfg.GetBool("clusters"); param != nil {
+//			if param := cfg.GetObject("clusters"); param != nil {
 //				clusters = param
 //			}
 //			var applicationDelay []*signalfx.Detector
