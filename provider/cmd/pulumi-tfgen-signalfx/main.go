@@ -15,9 +15,10 @@
 package main
 
 import (
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+
 	signalfx "github.com/pulumi/pulumi-signalfx/provider/v7"
 	"github.com/pulumi/pulumi-signalfx/provider/v7/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {
