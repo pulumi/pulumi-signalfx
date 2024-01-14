@@ -23,7 +23,8 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/pulumi/pulumi-signalfx/provider/v7/pkg/version"
+	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -31,7 +32,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"github.com/splunk-terraform/terraform-provider-signalfx/signalfx"
+
+	"github.com/pulumi/pulumi-signalfx/provider/v7/pkg/version"
 )
 
 // all of the token components used below.
