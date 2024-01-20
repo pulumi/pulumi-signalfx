@@ -20,14 +20,14 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
     public static final WebhookIntegrationArgs Empty = new WebhookIntegrationArgs();
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
@@ -35,14 +35,14 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A header to send with the request
+     * HTTP headers to pass in the request
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<WebhookIntegrationHeaderArgs>> headers;
 
     /**
-     * @return A header to send with the request
+     * @return HTTP headers to pass in the request
      * 
      */
     public Optional<Output<List<WebhookIntegrationHeaderArgs>>> headers() {
@@ -50,14 +50,14 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -72,14 +72,14 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The URL to request
+     * Webhook URL
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL to request
+     * @return Webhook URL
      * 
      */
     public Optional<Output<String>> url() {
@@ -115,7 +115,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param headers A header to send with the request
+         * @param headers HTTP headers to pass in the request
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param headers A header to send with the request
+         * @param headers HTTP headers to pass in the request
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param headers A header to send with the request
+         * @param headers HTTP headers to pass in the request
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param url The URL to request
+         * @param url Webhook URL
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param url The URL to request
+         * @param url Webhook URL
          * 
          * @return builder
          * 

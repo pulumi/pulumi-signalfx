@@ -17,32 +17,16 @@ public final class DataLinkTargetSplunkArgs extends com.pulumi.resources.Resourc
 
     public static final DataLinkTargetSplunkArgs Empty = new DataLinkTargetSplunkArgs();
 
-    /**
-     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-     * 
-     */
     @Import(name="propertyKeyMapping")
     private @Nullable Output<Map<String,String>> propertyKeyMapping;
 
-    /**
-     * @return Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-     * 
-     */
     public Optional<Output<Map<String,String>>> propertyKeyMapping() {
         return Optional.ofNullable(this.propertyKeyMapping);
     }
@@ -72,44 +56,20 @@ public final class DataLinkTargetSplunkArgs extends com.pulumi.resources.Resourc
             $ = new DataLinkTargetSplunkArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param propertyKeyMapping Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyKeyMapping(@Nullable Output<Map<String,String>> propertyKeyMapping) {
             $.propertyKeyMapping = propertyKeyMapping;
             return this;
         }
 
-        /**
-         * @param propertyKeyMapping Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyKeyMapping(Map<String,String> propertyKeyMapping) {
             return propertyKeyMapping(Output.of(propertyKeyMapping));
         }

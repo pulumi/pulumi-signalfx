@@ -18,14 +18,14 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
     public static final EventFeedChartArgs Empty = new EventFeedChartArgs();
 
     /**
-     * Description of the text note.
+     * Description of the chart (Optional)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the text note.
+     * @return Description of the chart (Optional)
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,14 +33,14 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch to end the visualization
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch to end the visualization
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -48,14 +48,14 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the text note.
+     * Name of the chart
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the text note.
+     * @return Name of the chart
      * 
      */
     public Optional<Output<String>> name() {
@@ -63,14 +63,14 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Output<String> programText() {
@@ -78,14 +78,14 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch to start the visualization
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch to start the visualization
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -93,14 +93,14 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -137,7 +137,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the text note.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the text note.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch to end the visualization
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch to end the visualization
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the text note.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the text note.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch to start the visualization
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch to start the visualization
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeRange From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class EventFeedChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeRange From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
          * 
          * @return builder
          * 

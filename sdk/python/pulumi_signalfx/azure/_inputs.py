@@ -19,19 +19,12 @@ class IntegrationCustomNamespacesPerServiceArgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service: pulumi.Input[str]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: The additional namespaces.
-        :param pulumi.Input[str] service: The name of the service.
-        """
         pulumi.set(__self__, "namespaces", namespaces)
         pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
     def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        The additional namespaces.
-        """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
@@ -41,9 +34,6 @@ class IntegrationCustomNamespacesPerServiceArgs:
     @property
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
-        """
-        The name of the service.
-        """
         return pulumi.get(self, "service")
 
     @service.setter
@@ -55,17 +45,11 @@ class IntegrationCustomNamespacesPerServiceArgs:
 class IntegrationResourceFilterRuleArgs:
     def __init__(__self__, *,
                  filter_source: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] filter_source: Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-        """
         pulumi.set(__self__, "filter_source", filter_source)
 
     @property
     @pulumi.getter(name="filterSource")
     def filter_source(self) -> pulumi.Input[str]:
-        """
-        Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-        """
         return pulumi.get(self, "filter_source")
 
     @filter_source.setter

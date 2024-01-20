@@ -22,12 +22,12 @@ class EventFeedChartArgs:
                  time_range: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a EventFeedChart resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         pulumi.set(__self__, "program_text", program_text)
         if description is not None:
@@ -45,7 +45,7 @@ class EventFeedChartArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -57,7 +57,7 @@ class EventFeedChartArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the text note.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -69,7 +69,7 @@ class EventFeedChartArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -81,7 +81,7 @@ class EventFeedChartArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the text note.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -93,7 +93,7 @@ class EventFeedChartArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -105,7 +105,7 @@ class EventFeedChartArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -126,13 +126,13 @@ class _EventFeedChartState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EventFeedChart resources.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] url: URL of the chart
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -153,7 +153,7 @@ class _EventFeedChartState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the text note.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -165,7 +165,7 @@ class _EventFeedChartState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -177,7 +177,7 @@ class _EventFeedChartState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the text note.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -189,7 +189,7 @@ class _EventFeedChartState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -201,7 +201,7 @@ class _EventFeedChartState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -213,7 +213,7 @@ class _EventFeedChartState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -225,7 +225,7 @@ class _EventFeedChartState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the chart.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 
@@ -249,14 +249,32 @@ class EventFeedChart(pulumi.CustomResource):
         """
         Displays a listing of events as a widget in a dashboard.
 
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the text note.
+        * `program_text` - (Required) Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        * `description` - (Optional) Description of the text note.
+        * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the chart.
+        * `url` - The URL of the chart.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         ...
     @overload
@@ -266,6 +284,24 @@ class EventFeedChart(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Displays a listing of events as a widget in a dashboard.
+
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the text note.
+        * `program_text` - (Required) Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        * `description` - (Optional) Description of the text note.
+        * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the chart.
+        * `url` - The URL of the chart.
 
         :param str resource_name: The name of the resource.
         :param EventFeedChartArgs args: The arguments to use to populate this resource's properties.
@@ -330,13 +366,13 @@ class EventFeedChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] url: URL of the chart
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -355,7 +391,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the text note.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -363,7 +399,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -371,7 +407,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the text note.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -379,7 +415,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -387,7 +423,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -395,7 +431,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output[Optional[int]]:
         """
-        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -403,7 +439,7 @@ class EventFeedChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL of the chart.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 

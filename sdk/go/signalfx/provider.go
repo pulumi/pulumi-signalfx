@@ -18,11 +18,11 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// API URL for your SignalFx org, may include a realm
+	// API URL for your Splunk Observability Cloud org, may include a realm
 	ApiUrl pulumi.StringPtrOutput `pulumi:"apiUrl"`
-	// SignalFx auth token
+	// Splunk Observability Cloud auth token
 	AuthToken pulumi.StringPtrOutput `pulumi:"authToken"`
-	// Application URL for your SignalFx org, often customized for organizations using SSO
+	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 	CustomAppUrl pulumi.StringPtrOutput `pulumi:"customAppUrl"`
 }
 
@@ -43,11 +43,11 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// API URL for your SignalFx org, may include a realm
+	// API URL for your Splunk Observability Cloud org, may include a realm
 	ApiUrl *string `pulumi:"apiUrl"`
-	// SignalFx auth token
+	// Splunk Observability Cloud auth token
 	AuthToken *string `pulumi:"authToken"`
-	// Application URL for your SignalFx org, often customized for organizations using SSO
+	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 	CustomAppUrl *string `pulumi:"customAppUrl"`
 	// Max retries for a single HTTP call. Defaults to 4
 	RetryMaxAttempts *int `pulumi:"retryMaxAttempts"`
@@ -61,11 +61,11 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// API URL for your SignalFx org, may include a realm
+	// API URL for your Splunk Observability Cloud org, may include a realm
 	ApiUrl pulumi.StringPtrInput
-	// SignalFx auth token
+	// Splunk Observability Cloud auth token
 	AuthToken pulumi.StringPtrInput
-	// Application URL for your SignalFx org, often customized for organizations using SSO
+	// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 	CustomAppUrl pulumi.StringPtrInput
 	// Max retries for a single HTTP call. Defaults to 4
 	RetryMaxAttempts pulumi.IntPtrInput
@@ -114,17 +114,17 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// API URL for your SignalFx org, may include a realm
+// API URL for your Splunk Observability Cloud org, may include a realm
 func (o ProviderOutput) ApiUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUrl }).(pulumi.StringPtrOutput)
 }
 
-// SignalFx auth token
+// Splunk Observability Cloud auth token
 func (o ProviderOutput) AuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthToken }).(pulumi.StringPtrOutput)
 }
 
-// Application URL for your SignalFx org, often customized for organizations using SSO
+// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 func (o ProviderOutput) CustomAppUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CustomAppUrl }).(pulumi.StringPtrOutput)
 }

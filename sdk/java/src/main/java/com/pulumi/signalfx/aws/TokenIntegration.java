@@ -17,11 +17,11 @@ import javax.annotation.Nullable;
 /**
  * Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
  * 
- * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observabilit Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
  * &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -78,32 +78,43 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * * `name` - (Required) The name of this integration
+ * 
+ * ## Attributes
+ * 
+ * In addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the integration to use with `signalfx.aws.Integration`
+ * * `signalfx_aws_account` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
+ * 
  */
 @ResourceType(type="signalfx:aws/tokenIntegration:TokenIntegration")
 public class TokenIntegration extends com.pulumi.resources.CustomResource {
     /**
-     * The name of this integration
+     * Name of the integration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of this integration
+     * @return Name of the integration
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+     * The Splunk Observability AWS account ID to use with an AWS role.
      * 
      */
     @Export(name="signalfxAwsAccount", refs={String.class}, tree="[0]")
     private Output<String> signalfxAwsAccount;
 
     /**
-     * @return The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+     * @return The Splunk Observability AWS account ID to use with an AWS role.
      * 
      */
     public Output<String> signalfxAwsAccount() {

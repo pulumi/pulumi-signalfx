@@ -38,28 +38,38 @@ class IntegrationArgs:
                  use_metric_streams_sync: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Integration resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
-        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
-        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
-        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
-        :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
-        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
-        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
-        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
-        :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] integration_id: The ID of this integration
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+               Splunk Observability imports the metrics so you can monitor them.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+               property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+               Splunk Observability imports the metrics.
+        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+               Observability monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
+        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+               Watch metrics from AWS.
+        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+               that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+               specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+               statistics.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+               Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+               in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+               syncs all data in all AWS namespaces.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
+        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
+        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+               `custom_namespace_sync_rule` field for details). Defaults to `false`.
+        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "integration_id", integration_id)
@@ -103,7 +113,7 @@ class IntegrationArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -115,7 +125,7 @@ class IntegrationArgs:
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> pulumi.Input[str]:
         """
-        The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+        The ID of this integration
         """
         return pulumi.get(self, "integration_id")
 
@@ -127,7 +137,7 @@ class IntegrationArgs:
     @pulumi.getter
     def regions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of AWS regions that Splunk Observability should monitor. It cannot be empty.
+        List of AWS regions that Splunk Observability should monitor.
         """
         return pulumi.get(self, "regions")
 
@@ -139,7 +149,8 @@ class IntegrationArgs:
     @pulumi.getter(name="customCloudwatchNamespaces")
     def custom_cloudwatch_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
+        List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+        Splunk Observability imports the metrics so you can monitor them.
         """
         return pulumi.get(self, "custom_cloudwatch_namespaces")
 
@@ -151,7 +162,8 @@ class IntegrationArgs:
     @pulumi.getter(name="customNamespaceSyncRules")
     def custom_namespace_sync_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]]:
         """
-        Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+        Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+        property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
         """
         return pulumi.get(self, "custom_namespace_sync_rules")
 
@@ -163,7 +175,8 @@ class IntegrationArgs:
     @pulumi.getter(name="enableAwsUsage")
     def enable_aws_usage(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
+        Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+        Splunk Observability imports the metrics.
         """
         return pulumi.get(self, "enable_aws_usage")
 
@@ -175,7 +188,8 @@ class IntegrationArgs:
     @pulumi.getter(name="enableCheckLargeVolume")
     def enable_check_large_volume(self) -> Optional[pulumi.Input[bool]]:
         """
-        Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
+        Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+        Observability monitors the amount of data coming in from the integration.
         """
         return pulumi.get(self, "enable_check_large_volume")
 
@@ -187,7 +201,7 @@ class IntegrationArgs:
     @pulumi.getter(name="enableLogsSync")
     def enable_logs_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        Enables AWS logs synchronization.
         """
         return pulumi.get(self, "enable_logs_sync")
 
@@ -199,7 +213,7 @@ class IntegrationArgs:
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
+        Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
         """
         return pulumi.get(self, "external_id")
 
@@ -211,7 +225,8 @@ class IntegrationArgs:
     @pulumi.getter(name="importCloudWatch")
     def import_cloud_watch(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
+        Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+        Watch metrics from AWS.
         """
         return pulumi.get(self, "import_cloud_watch")
 
@@ -223,7 +238,7 @@ class IntegrationArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
         return pulumi.get(self, "key")
 
@@ -235,7 +250,10 @@ class IntegrationArgs:
     @pulumi.getter(name="metricStatsToSyncs")
     def metric_stats_to_syncs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]]:
         """
-        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
+        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+        that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+        specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+        statistics.
         """
         return pulumi.get(self, "metric_stats_to_syncs")
 
@@ -247,7 +265,7 @@ class IntegrationArgs:
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the org token to be used for data ingestion. If not specified then default access token is used.
+        A named token to use for ingest
         """
         return pulumi.get(self, "named_token")
 
@@ -259,7 +277,10 @@ class IntegrationArgs:
     @pulumi.getter(name="namespaceSyncRules")
     def namespace_sync_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]]:
         """
-        Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
+        Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+        Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+        in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+        syncs all data in all AWS namespaces.
         """
         return pulumi.get(self, "namespace_sync_rules")
 
@@ -271,7 +292,7 @@ class IntegrationArgs:
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+        AWS poll rate (in seconds). Between `60` and `600`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -283,7 +304,7 @@ class IntegrationArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+        Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -295,7 +316,7 @@ class IntegrationArgs:
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+        List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         """
         return pulumi.get(self, "services")
 
@@ -307,7 +328,8 @@ class IntegrationArgs:
     @pulumi.getter(name="syncCustomNamespacesOnly")
     def sync_custom_namespaces_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+        `custom_namespace_sync_rule` field for details). Defaults to `false`.
         """
         return pulumi.get(self, "sync_custom_namespaces_only")
 
@@ -319,7 +341,7 @@ class IntegrationArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
         return pulumi.get(self, "token")
 
@@ -331,9 +353,7 @@ class IntegrationArgs:
     @pulumi.getter(name="useMetricStreamsSync")
     def use_metric_streams_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-        Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-        Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         return pulumi.get(self, "use_metric_streams_sync")
 
@@ -371,29 +391,40 @@ class _IntegrationState:
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
                `signalfx_aws_token_integration` to define this
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
-        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
-        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
-        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
-        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
-        :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
-        :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
-        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
-        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
-        :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+               Splunk Observability imports the metrics so you can monitor them.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+               property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+               Splunk Observability imports the metrics.
+        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+               Observability monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+               Watch metrics from AWS.
+        :param pulumi.Input[str] integration_id: The ID of this integration
+        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+               that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+               specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+               statistics.
+        :param pulumi.Input[str] name: Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+               `signalfx_aws_integration_token`
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+               Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+               in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+               syncs all data in all AWS namespaces.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
+        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+               `custom_namespace_sync_rule` field for details). Defaults to `false`.
+        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
@@ -457,7 +488,8 @@ class _IntegrationState:
     @pulumi.getter(name="customCloudwatchNamespaces")
     def custom_cloudwatch_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
+        List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+        Splunk Observability imports the metrics so you can monitor them.
         """
         return pulumi.get(self, "custom_cloudwatch_namespaces")
 
@@ -469,7 +501,8 @@ class _IntegrationState:
     @pulumi.getter(name="customNamespaceSyncRules")
     def custom_namespace_sync_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]]]:
         """
-        Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+        Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+        property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
         """
         return pulumi.get(self, "custom_namespace_sync_rules")
 
@@ -481,7 +514,8 @@ class _IntegrationState:
     @pulumi.getter(name="enableAwsUsage")
     def enable_aws_usage(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
+        Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+        Splunk Observability imports the metrics.
         """
         return pulumi.get(self, "enable_aws_usage")
 
@@ -493,7 +527,8 @@ class _IntegrationState:
     @pulumi.getter(name="enableCheckLargeVolume")
     def enable_check_large_volume(self) -> Optional[pulumi.Input[bool]]:
         """
-        Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
+        Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+        Observability monitors the amount of data coming in from the integration.
         """
         return pulumi.get(self, "enable_check_large_volume")
 
@@ -505,7 +540,7 @@ class _IntegrationState:
     @pulumi.getter(name="enableLogsSync")
     def enable_logs_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        Enables AWS logs synchronization.
         """
         return pulumi.get(self, "enable_logs_sync")
 
@@ -517,7 +552,7 @@ class _IntegrationState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -529,7 +564,7 @@ class _IntegrationState:
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
+        Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
         """
         return pulumi.get(self, "external_id")
 
@@ -541,7 +576,8 @@ class _IntegrationState:
     @pulumi.getter(name="importCloudWatch")
     def import_cloud_watch(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
+        Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+        Watch metrics from AWS.
         """
         return pulumi.get(self, "import_cloud_watch")
 
@@ -553,7 +589,7 @@ class _IntegrationState:
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+        The ID of this integration
         """
         return pulumi.get(self, "integration_id")
 
@@ -565,7 +601,7 @@ class _IntegrationState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
         return pulumi.get(self, "key")
 
@@ -577,7 +613,10 @@ class _IntegrationState:
     @pulumi.getter(name="metricStatsToSyncs")
     def metric_stats_to_syncs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]]]:
         """
-        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
+        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+        that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+        specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+        statistics.
         """
         return pulumi.get(self, "metric_stats_to_syncs")
 
@@ -589,7 +628,8 @@ class _IntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration.
+        Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+        `signalfx_aws_integration_token`
         """
         return pulumi.get(self, "name")
 
@@ -601,7 +641,7 @@ class _IntegrationState:
     @pulumi.getter(name="namedToken")
     def named_token(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the org token to be used for data ingestion. If not specified then default access token is used.
+        A named token to use for ingest
         """
         return pulumi.get(self, "named_token")
 
@@ -613,7 +653,10 @@ class _IntegrationState:
     @pulumi.getter(name="namespaceSyncRules")
     def namespace_sync_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]]]:
         """
-        Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
+        Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+        Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+        in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+        syncs all data in all AWS namespaces.
         """
         return pulumi.get(self, "namespace_sync_rules")
 
@@ -625,7 +668,7 @@ class _IntegrationState:
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+        AWS poll rate (in seconds). Between `60` and `600`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -637,7 +680,7 @@ class _IntegrationState:
     @pulumi.getter
     def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of AWS regions that Splunk Observability should monitor. It cannot be empty.
+        List of AWS regions that Splunk Observability should monitor.
         """
         return pulumi.get(self, "regions")
 
@@ -649,7 +692,7 @@ class _IntegrationState:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+        Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -661,7 +704,7 @@ class _IntegrationState:
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+        List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         """
         return pulumi.get(self, "services")
 
@@ -673,7 +716,8 @@ class _IntegrationState:
     @pulumi.getter(name="syncCustomNamespacesOnly")
     def sync_custom_namespaces_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+        `custom_namespace_sync_rule` field for details). Defaults to `false`.
         """
         return pulumi.get(self, "sync_custom_namespaces_only")
 
@@ -685,7 +729,7 @@ class _IntegrationState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
         return pulumi.get(self, "token")
 
@@ -697,9 +741,7 @@ class _IntegrationState:
     @pulumi.getter(name="useMetricStreamsSync")
     def use_metric_streams_sync(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-        Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-        Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         return pulumi.get(self, "use_metric_streams_sync")
 
@@ -735,13 +777,13 @@ class Integration(pulumi.CustomResource):
                  use_metric_streams_sync: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Splunk Observability AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
+        AWS CloudWatch integrations for Splunk Observability Cloud. For help with this integration see [Monitoring Amazon Web Services](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/get-awstoc.html).
+
+        This resource implements a part of a workflow. Use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
-
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -781,30 +823,77 @@ class Integration(pulumi.CustomResource):
             )])
         ```
 
+        ## Arguments
+
+        * `enable_aws_usage` - (Optional) Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
+        * `enable_check_large_volume` - (Optional) Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
+        * `enable_logs_sync` - (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        * `enabled` - (Required) Whether the integration is enabled.
+        * `external_id` - (Required) The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
+        * `custom_cloudwatch_namespaces` - (Optional) List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
+        * `custom_namespace_sync_rule` - (Optional) Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+          * `default_action` - (Optional) Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_action` - (Optional) Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_source` - (Optional) Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+          * `namespace` - (Required) An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
+        * `import_cloud_watch` - (Optional) Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
+        * `integration_id` - (Required) The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+        * `key` - (Optional) If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        * `metric_stats_to_sync` - (Optional) Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
+          * `metric` - (Required) AWS metric that you want to pick statistics for
+          * `namespace` - (Required) An AWS namespace having AWS metric that you want to pick statistics for
+          * `stats` - (Required) AWS statistics you want to collect
+        * `name` - (Required) Name of the integration.
+        * `named_token` - (Optional) Name of the org token to be used for data ingestion. If not specified then default access token is used.
+        * `namespace_sync_rule` - (Optional) Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability Cloud collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability Cloud syncs all data in all AWS namespaces.
+          * `default_action` - (Optional) Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_action` - (Optional) Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_source` - (Optional) Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+          * `namespace` - (Required) An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
+        * `poll_rate` - (Optional) AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+        * `regions` - (Required) List of AWS regions that Splunk Observability Cloud should monitor. It cannot be empty.
+        * `role_arn` - (Optional) Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+        * `services` - (Optional) List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+        * `sync_custom_namespaces_only` - (Optional) Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        * `token` - (Optional) If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+        * `use_metric_streams_sync` - (Optional) Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+          Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+          Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
-        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
-        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
-        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
-        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
-        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
-        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
-        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
-        :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+               Splunk Observability imports the metrics so you can monitor them.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+               property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+               Splunk Observability imports the metrics.
+        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+               Observability monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+               Watch metrics from AWS.
+        :param pulumi.Input[str] integration_id: The ID of this integration
+        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+               that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+               specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+               statistics.
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+               Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+               in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+               syncs all data in all AWS namespaces.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
+        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+               `custom_namespace_sync_rule` field for details). Defaults to `false`.
+        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         ...
     @overload
@@ -813,13 +902,13 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Splunk Observability AWS CloudWatch integrations. For help with this integration see [Monitoring Amazon Web Services](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#monitor-amazon-web-services).
+        AWS CloudWatch integrations for Splunk Observability Cloud. For help with this integration see [Monitoring Amazon Web Services](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/aws/get-awstoc.html).
+
+        This resource implements a part of a workflow. Use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
 
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        > **WARNING** This resource implements a part of a workflow. You must use it with one of either `aws.ExternalIntegration` or `aws.TokenIntegration`.
-
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -858,6 +947,43 @@ class Integration(pulumi.CustomResource):
                 stats=["upper"],
             )])
         ```
+
+        ## Arguments
+
+        * `enable_aws_usage` - (Optional) Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
+        * `enable_check_large_volume` - (Optional) Controls how Splunk Observability Cloud checks for large amounts of data for this AWS integration. If `true`, Splunk Observability Cloud monitors the amount of data coming in from the integration.
+        * `enable_logs_sync` - (Optional) Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        * `enabled` - (Required) Whether the integration is enabled.
+        * `external_id` - (Required) The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
+        * `custom_cloudwatch_namespaces` - (Optional) List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability Cloud imports the metrics so you can monitor them.
+        * `custom_namespace_sync_rule` - (Optional) Each element controls the data collected by Splunk Observability Cloud for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+          * `default_action` - (Optional) Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_action` - (Optional) Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_source` - (Optional) Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+          * `namespace` - (Required) An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
+        * `import_cloud_watch` - (Optional) Flag that controls how Splunk Observability Cloud imports Cloud Watch metrics. If true, Splunk Observability Cloud imports Cloud Watch metrics from AWS.
+        * `integration_id` - (Required) The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+        * `key` - (Optional) If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        * `metric_stats_to_sync` - (Optional) Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability Cloud collects for this metric. If you specify this property, Splunk Observability Cloud retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability Cloud retrieves the AWS standard set of statistics.
+          * `metric` - (Required) AWS metric that you want to pick statistics for
+          * `namespace` - (Required) An AWS namespace having AWS metric that you want to pick statistics for
+          * `stats` - (Required) AWS statistics you want to collect
+        * `name` - (Required) Name of the integration.
+        * `named_token` - (Optional) Name of the org token to be used for data ingestion. If not specified then default access token is used.
+        * `namespace_sync_rule` - (Optional) Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability Cloud collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability Cloud syncs all data in all AWS namespaces.
+          * `default_action` - (Optional) Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_action` - (Optional) Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
+          * `filter_source` - (Optional) Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+          * `namespace` - (Required) An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
+        * `poll_rate` - (Optional) AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+        * `regions` - (Required) List of AWS regions that Splunk Observability Cloud should monitor. It cannot be empty.
+        * `role_arn` - (Optional) Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+        * `services` - (Optional) List of AWS services that you want Splunk Observability Cloud to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+        * `sync_custom_namespaces_only` - (Optional) Indicates that Splunk Observability Cloud should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        * `token` - (Optional) If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+        * `use_metric_streams_sync` - (Optional) Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
+          Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
+          Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -974,29 +1100,40 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
                `signalfx_aws_token_integration` to define this
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
-        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
-        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
-        :param pulumi.Input[bool] enable_logs_sync: Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] external_id: The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
-        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
-        :param pulumi.Input[str] integration_id: The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
-        :param pulumi.Input[str] key: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
-        :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] named_token: Name of the org token to be used for data ingestion. If not specified then default access token is used.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
-        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor. It cannot be empty.
-        :param pulumi.Input[str] role_arn: Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
-        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
-        :param pulumi.Input[str] token: If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
-        :param pulumi.Input[bool] use_metric_streams_sync: Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-               Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-               Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+               Splunk Observability imports the metrics so you can monitor them.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+               property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+        :param pulumi.Input[bool] enable_aws_usage: Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+               Splunk Observability imports the metrics.
+        :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+               Observability monitors the amount of data coming in from the integration.
+        :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+               Watch metrics from AWS.
+        :param pulumi.Input[str] integration_id: The ID of this integration
+        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+               that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+               specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+               statistics.
+        :param pulumi.Input[str] name: Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+               `signalfx_aws_integration_token`
+        :param pulumi.Input[str] named_token: A named token to use for ingest
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+               Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+               in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+               syncs all data in all AWS namespaces.
+        :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
+        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
+        :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+               `custom_namespace_sync_rule` field for details). Defaults to `false`.
+        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1039,7 +1176,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="customCloudwatchNamespaces")
     def custom_cloudwatch_namespaces(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS; Splunk Observability imports the metrics so you can monitor them.
+        List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
+        Splunk Observability imports the metrics so you can monitor them.
         """
         return pulumi.get(self, "custom_cloudwatch_namespaces")
 
@@ -1047,7 +1185,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="customNamespaceSyncRules")
     def custom_namespace_sync_rules(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationCustomNamespaceSyncRule']]]:
         """
-        Each element controls the data collected by Splunk Observability for the specified namespace. Conflicts with the `custom_cloudwatch_namespaces` property.
+        Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
+        property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
         """
         return pulumi.get(self, "custom_namespace_sync_rules")
 
@@ -1055,7 +1194,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="enableAwsUsage")
     def enable_aws_usage(self) -> pulumi.Output[Optional[bool]]:
         """
-        Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability imports the metrics.
+        Flag that controls how Splunk Observability imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`,
+        Splunk Observability imports the metrics.
         """
         return pulumi.get(self, "enable_aws_usage")
 
@@ -1063,7 +1203,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="enableCheckLargeVolume")
     def enable_check_large_volume(self) -> pulumi.Output[Optional[bool]]:
         """
-        Controls how Splunk Observability checks for large amounts of data for this AWS integration. If `true`, Splunk Observability monitors the amount of data coming in from the integration.
+        Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
+        Observability monitors the amount of data coming in from the integration.
         """
         return pulumi.get(self, "enable_check_large_volume")
 
@@ -1071,7 +1212,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="enableLogsSync")
     def enable_logs_sync(self) -> pulumi.Output[bool]:
         """
-        Enable the AWS logs synchronization. Note that this requires the inclusion of `"logs:DescribeLogGroups"`,  `"logs:DeleteSubscriptionFilter"`, `"logs:DescribeSubscriptionFilters"`, `"logs:PutSubscriptionFilter"`, and `"s3:GetBucketLogging"`,  `"s3:GetBucketNotification"`, `"s3:PutBucketNotification"` permissions. Additional permissions may be required to capture logs from specific AWS services.
+        Enables AWS logs synchronization.
         """
         return pulumi.get(self, "enable_logs_sync")
 
@@ -1079,7 +1220,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -1087,7 +1228,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The `external_id` property from one of a `aws.ExternalIntegration` or `aws.TokenIntegration`
+        Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
         """
         return pulumi.get(self, "external_id")
 
@@ -1095,7 +1236,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="importCloudWatch")
     def import_cloud_watch(self) -> pulumi.Output[Optional[bool]]:
         """
-        Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud Watch metrics from AWS.
+        Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
+        Watch metrics from AWS.
         """
         return pulumi.get(self, "import_cloud_watch")
 
@@ -1103,7 +1245,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> pulumi.Output[str]:
         """
-        The id of one of a `aws.ExternalIntegration` or `aws.TokenIntegration`.
+        The ID of this integration
         """
         return pulumi.get(self, "integration_id")
 
@@ -1111,7 +1253,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[Optional[str]]:
         """
-        If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the key (this is typically equivalent to the `AWS_SECRET_ACCESS_KEY` environment variable).
+        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
         return pulumi.get(self, "key")
 
@@ -1119,7 +1261,10 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="metricStatsToSyncs")
     def metric_stats_to_syncs(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationMetricStatsToSync']]]:
         """
-        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only specified AWS statistics when AWS metric streams are not used. When AWS metric streams are used this property specifies additional extended statistics to collect (please note that AWS metric streams API supports percentile stats only; other stats are ignored). If you don't specify this property, Splunk Observability retrieves the AWS standard set of statistics.
+        Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
+        that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
+        specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
+        statistics.
         """
         return pulumi.get(self, "metric_stats_to_syncs")
 
@@ -1127,7 +1272,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the integration.
+        Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+        `signalfx_aws_integration_token`
         """
         return pulumi.get(self, "name")
 
@@ -1135,7 +1281,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="namedToken")
     def named_token(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of the org token to be used for data ingestion. If not specified then default access token is used.
+        A named token to use for ingest
         """
         return pulumi.get(self, "named_token")
 
@@ -1143,7 +1289,10 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="namespaceSyncRules")
     def namespace_sync_rules(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationNamespaceSyncRule']]]:
         """
-        Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that Splunk Observability collects for the namespace. Conflicts with the `services` property. If you don't specify either property, Splunk Observability syncs all data in all AWS namespaces.
+        Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
+        Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
+        in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
+        syncs all data in all AWS namespaces.
         """
         return pulumi.get(self, "namespace_sync_rules")
 
@@ -1151,7 +1300,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="pollRate")
     def poll_rate(self) -> pulumi.Output[Optional[int]]:
         """
-        AWS poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+        AWS poll rate (in seconds). Between `60` and `600`.
         """
         return pulumi.get(self, "poll_rate")
 
@@ -1159,7 +1308,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def regions(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of AWS regions that Splunk Observability should monitor. It cannot be empty.
+        List of AWS regions that Splunk Observability should monitor.
         """
         return pulumi.get(self, "regions")
 
@@ -1167,7 +1316,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        Role ARN that you add to an existing AWS integration object. **Note**: Ensure you use the `arn` property of your role, not the id!
+        Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -1175,7 +1324,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def services(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service. Can be an empty list to import data for all supported services. Conflicts with `namespace_sync_rule`. See [Amazon Web Services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#amazon-web-services) for a list of valid values.
+        List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         """
         return pulumi.get(self, "services")
 
@@ -1183,7 +1332,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="syncCustomNamespacesOnly")
     def sync_custom_namespaces_only(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the `custom_namespace_sync_rule` above). Defaults to `false`.
+        Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
+        `custom_namespace_sync_rule` field for details). Defaults to `false`.
         """
         return pulumi.get(self, "sync_custom_namespaces_only")
 
@@ -1191,7 +1341,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         """
-        If you specify `auth_method = \\"SecurityToken\\"` in your request to create an AWS integration object, use this property to specify the token (this is typically equivalent to the `AWS_ACCESS_KEY_ID` environment variable).
+        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
         """
         return pulumi.get(self, "token")
 
@@ -1199,9 +1349,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="useMetricStreamsSync")
     def use_metric_streams_sync(self) -> pulumi.Output[bool]:
         """
-        Enable the use of Amazon Cloudwatch Metric Streams for ingesting metrics.<br>
-        Note that this requires the inclusion of `"cloudwatch:ListMetricStreams"`,`"cloudwatch:GetMetricStream"`, `"cloudwatch:PutMetricStream"`, `"cloudwatch:DeleteMetricStream"`, `"cloudwatch:StartMetricStreams"`, `"cloudwatch:StopMetricStreams"` and `"iam:PassRole"` permissions.<br>
-        Note you need to deploy additional resources on your AWS account to enable CloudWatch metrics streaming. Select one of the [CloudFormation templates](https://docs.splunk.com/Observability/gdi/get-data-in/connect/aws/aws-cloudformation.html) to deploy all the required resources.
+        Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         return pulumi.get(self, "use_metric_streams_sync")
 

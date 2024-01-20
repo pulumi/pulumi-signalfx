@@ -13,53 +13,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataLinkTargetSignalfxDashboard {
-    /**
-     * @return SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
-     * 
-     */
     private String dashboardGroupId;
-    /**
-     * @return SignalFx-assigned ID of the dashboard link target
-     * 
-     */
     private String dashboardId;
-    /**
-     * @return Flag that designates a target as the default for a data link object. `true` by default
-     * 
-     */
     private @Nullable Boolean isDefault;
-    /**
-     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-     * 
-     */
     private String name;
 
     private DataLinkTargetSignalfxDashboard() {}
-    /**
-     * @return SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
-     * 
-     */
     public String dashboardGroupId() {
         return this.dashboardGroupId;
     }
-    /**
-     * @return SignalFx-assigned ID of the dashboard link target
-     * 
-     */
     public String dashboardId() {
         return this.dashboardId;
     }
-    /**
-     * @return Flag that designates a target as the default for a data link object. `true` by default
-     * 
-     */
     public Optional<Boolean> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
-    /**
-     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-     * 
-     */
     public String name() {
         return this.name;
     }

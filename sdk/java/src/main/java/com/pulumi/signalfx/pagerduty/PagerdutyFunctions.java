@@ -17,7 +17,7 @@ public final class PagerdutyFunctions {
     /**
      * Use this data source to get information on an existing PagerDuty integration.
      * 
-     * ## Example Usage
+     * ## Example
      * ```java
      * package generated_program;
      * 
@@ -46,6 +46,16 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * 
+     * ## Arguments
+     * 
+     * * `name` - Specify the exact name of the desired PagerDuty integration
+     * 
+     * ## Attributes
+     * 
+     * * `id` - The ID of the integration.
+     * * `name` - The name of the integration.
+     * * `enabled` - Whether the integration is enabled.
      * 
      */
     public static Output<GetIntegrationResult> getIntegration(GetIntegrationArgs args) {
@@ -54,7 +64,7 @@ public final class PagerdutyFunctions {
     /**
      * Use this data source to get information on an existing PagerDuty integration.
      * 
-     * ## Example Usage
+     * ## Example
      * ```java
      * package generated_program;
      * 
@@ -83,6 +93,16 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * 
+     * ## Arguments
+     * 
+     * * `name` - Specify the exact name of the desired PagerDuty integration
+     * 
+     * ## Attributes
+     * 
+     * * `id` - The ID of the integration.
+     * * `name` - The name of the integration.
+     * * `enabled` - Whether the integration is enabled.
      * 
      */
     public static CompletableFuture<GetIntegrationResult> getIntegrationPlain(GetIntegrationPlainArgs args) {
@@ -91,7 +111,7 @@ public final class PagerdutyFunctions {
     /**
      * Use this data source to get information on an existing PagerDuty integration.
      * 
-     * ## Example Usage
+     * ## Example
      * ```java
      * package generated_program;
      * 
@@ -120,6 +140,16 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * 
+     * ## Arguments
+     * 
+     * * `name` - Specify the exact name of the desired PagerDuty integration
+     * 
+     * ## Attributes
+     * 
+     * * `id` - The ID of the integration.
+     * * `name` - The name of the integration.
+     * * `enabled` - Whether the integration is enabled.
      * 
      */
     public static Output<GetIntegrationResult> getIntegration(GetIntegrationArgs args, InvokeOptions options) {
@@ -128,7 +158,7 @@ public final class PagerdutyFunctions {
     /**
      * Use this data source to get information on an existing PagerDuty integration.
      * 
-     * ## Example Usage
+     * ## Example
      * ```java
      * package generated_program;
      * 
@@ -157,6 +187,16 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * 
+     * ## Arguments
+     * 
+     * * `name` - Specify the exact name of the desired PagerDuty integration
+     * 
+     * ## Attributes
+     * 
+     * * `id` - The ID of the integration.
+     * * `name` - The name of the integration.
+     * * `enabled` - Whether the integration is enabled.
      * 
      */
     public static CompletableFuture<GetIntegrationResult> getIntegrationPlain(GetIntegrationPlainArgs args, InvokeOptions options) {

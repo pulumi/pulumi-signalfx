@@ -14,17 +14,9 @@ public final class ViewColumnArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ViewColumnArgs Empty = new ViewColumnArgs();
 
-    /**
-     * Name of the log view.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return Name of the log view.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -53,23 +45,11 @@ public final class ViewColumnArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ViewColumnArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name Name of the log view.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Name of the log view.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

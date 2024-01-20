@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * SignalFx VictorOps integration.
+ * Splunk On-Call integrations.
  *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,18 @@ import * as utilities from "../utilities";
  *     postUrl: "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `postUrl` - (Optional) Splunk On-Call REST API URL.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the integration.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -50,15 +62,15 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Victor Ops REST API URL.
+     * Opsgenie API URL for integration
      */
     public readonly postUrl!: pulumi.Output<string | undefined>;
 
@@ -97,15 +109,15 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     /**
-     * Victor Ops REST API URL.
+     * Opsgenie API URL for integration
      */
     postUrl?: pulumi.Input<string>;
 }
@@ -115,15 +127,15 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     /**
-     * Victor Ops REST API URL.
+     * Opsgenie API URL for integration
      */
     postUrl?: pulumi.Input<string>;
 }

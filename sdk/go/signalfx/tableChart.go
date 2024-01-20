@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This special type of chart displays a Data Table. This Table can be grouped by a Dimension.
+// This special type of chart displays a data table. This table can be grouped by a dimension.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -45,14 +45,30 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// The following arguments are supported in the resource block:
+//
+// * `name` - (Required) Name of the table chart.
+// * `programText` - (Required) The SignalFlow for your Data Table Chart
+// * `description` - (Optional) Description of the table chart.
+// * `groupBy` - (Optional) Dimension to group by
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the chart.
+// * `url` - The URL of the chart.
 type TableChart struct {
 	pulumi.CustomResourceState
 
-	// Description of the table chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
-	// Dimension to group by
+	// Properties to group by in the Table (in nesting order)
 	GroupBies pulumi.StringArrayOutput `pulumi:"groupBies"`
 	// (false by default) Whether to show the timestamp in the chart
 	HideTimestamp pulumi.BoolPtrOutput `pulumi:"hideTimestamp"`
@@ -60,9 +76,9 @@ type TableChart struct {
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
 	// The minimum resolution (in seconds) to use for computing the underlying program
 	MinimumResolution pulumi.IntPtrOutput `pulumi:"minimumResolution"`
-	// Name of the table chart.
+	// Name of the chart
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The SignalFlow for your Data Table Chart
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
@@ -70,7 +86,7 @@ type TableChart struct {
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringOutput `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement
 	VizOptions TableChartVizOptionArrayOutput `pulumi:"vizOptions"`
@@ -109,11 +125,11 @@ func GetTableChart(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TableChart resources.
 type tableChartState struct {
-	// Description of the table chart.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
 	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Dimension to group by
+	// Properties to group by in the Table (in nesting order)
 	GroupBies []string `pulumi:"groupBies"`
 	// (false by default) Whether to show the timestamp in the chart
 	HideTimestamp *bool `pulumi:"hideTimestamp"`
@@ -121,9 +137,9 @@ type tableChartState struct {
 	MaxDelay *int `pulumi:"maxDelay"`
 	// The minimum resolution (in seconds) to use for computing the underlying program
 	MinimumResolution *int `pulumi:"minimumResolution"`
-	// Name of the table chart.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// The SignalFlow for your Data Table Chart
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText *string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -131,18 +147,18 @@ type tableChartState struct {
 	Timezone *string `pulumi:"timezone"`
 	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// The URL of the chart.
+	// URL of the chart
 	Url *string `pulumi:"url"`
 	// Plot-level customization options, associated with a publish statement
 	VizOptions []TableChartVizOption `pulumi:"vizOptions"`
 }
 
 type TableChartState struct {
-	// Description of the table chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
 	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling pulumi.BoolPtrInput
-	// Dimension to group by
+	// Properties to group by in the Table (in nesting order)
 	GroupBies pulumi.StringArrayInput
 	// (false by default) Whether to show the timestamp in the chart
 	HideTimestamp pulumi.BoolPtrInput
@@ -150,9 +166,9 @@ type TableChartState struct {
 	MaxDelay pulumi.IntPtrInput
 	// The minimum resolution (in seconds) to use for computing the underlying program
 	MinimumResolution pulumi.IntPtrInput
-	// Name of the table chart.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// The SignalFlow for your Data Table Chart
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringPtrInput
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval pulumi.IntPtrInput
@@ -160,7 +176,7 @@ type TableChartState struct {
 	Timezone pulumi.StringPtrInput
 	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrInput
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringPtrInput
 	// Plot-level customization options, associated with a publish statement
 	VizOptions TableChartVizOptionArrayInput
@@ -171,11 +187,11 @@ func (TableChartState) ElementType() reflect.Type {
 }
 
 type tableChartArgs struct {
-	// Description of the table chart.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
 	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Dimension to group by
+	// Properties to group by in the Table (in nesting order)
 	GroupBies []string `pulumi:"groupBies"`
 	// (false by default) Whether to show the timestamp in the chart
 	HideTimestamp *bool `pulumi:"hideTimestamp"`
@@ -183,9 +199,9 @@ type tableChartArgs struct {
 	MaxDelay *int `pulumi:"maxDelay"`
 	// The minimum resolution (in seconds) to use for computing the underlying program
 	MinimumResolution *int `pulumi:"minimumResolution"`
-	// Name of the table chart.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// The SignalFlow for your Data Table Chart
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText string `pulumi:"programText"`
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval *int `pulumi:"refreshInterval"`
@@ -199,11 +215,11 @@ type tableChartArgs struct {
 
 // The set of arguments for constructing a TableChart resource.
 type TableChartArgs struct {
-	// Description of the table chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
 	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling pulumi.BoolPtrInput
-	// Dimension to group by
+	// Properties to group by in the Table (in nesting order)
 	GroupBies pulumi.StringArrayInput
 	// (false by default) Whether to show the timestamp in the chart
 	HideTimestamp pulumi.BoolPtrInput
@@ -211,9 +227,9 @@ type TableChartArgs struct {
 	MaxDelay pulumi.IntPtrInput
 	// The minimum resolution (in seconds) to use for computing the underlying program
 	MinimumResolution pulumi.IntPtrInput
-	// Name of the table chart.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// The SignalFlow for your Data Table Chart
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringInput
 	// How often (in seconds) to refresh the values of the Table
 	RefreshInterval pulumi.IntPtrInput
@@ -312,7 +328,7 @@ func (o TableChartOutput) ToTableChartOutputWithContext(ctx context.Context) Tab
 	return o
 }
 
-// Description of the table chart.
+// Description of the chart (Optional)
 func (o TableChartOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -322,7 +338,7 @@ func (o TableChartOutput) DisableSampling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
 }
 
-// Dimension to group by
+// Properties to group by in the Table (in nesting order)
 func (o TableChartOutput) GroupBies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.StringArrayOutput { return v.GroupBies }).(pulumi.StringArrayOutput)
 }
@@ -342,12 +358,12 @@ func (o TableChartOutput) MinimumResolution() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.IntPtrOutput { return v.MinimumResolution }).(pulumi.IntPtrOutput)
 }
 
-// Name of the table chart.
+// Name of the chart
 func (o TableChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The SignalFlow for your Data Table Chart
+// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 func (o TableChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
@@ -367,7 +383,7 @@ func (o TableChartOutput) UnitPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the chart.
+// URL of the chart
 func (o TableChartOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *TableChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

@@ -20,14 +20,14 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
     public static final DataLinkArgs Empty = new DataLinkArgs();
 
     /**
-     * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+     * The dashobard ID to which this data link will be applied
      * 
      */
     @Import(name="contextDashboardId")
     private @Nullable Output<String> contextDashboardId;
 
     /**
-     * @return If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+     * @return The dashobard ID to which this data link will be applied
      * 
      */
     public Optional<Output<String>> contextDashboardId() {
@@ -35,14 +35,16 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify
+     * `property_name`.
      * 
      */
     @Import(name="propertyName")
     private @Nullable Output<String> propertyName;
 
     /**
-     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify
+     * `property_name`.
      * 
      */
     public Optional<Output<String>> propertyName() {
@@ -50,14 +52,16 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify
+     * `property_name`.
      * 
      */
     @Import(name="propertyValue")
     private @Nullable Output<String> propertyValue;
 
     /**
-     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify
+     * `property_name`.
      * 
      */
     public Optional<Output<String>> propertyValue() {
@@ -80,14 +84,14 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Link to a SignalFx dashboard
+     * Link to a Splunk Observability Cloud dashboard
      * 
      */
     @Import(name="targetSignalfxDashboards")
     private @Nullable Output<List<DataLinkTargetSignalfxDashboardArgs>> targetSignalfxDashboards;
 
     /**
-     * @return Link to a SignalFx dashboard
+     * @return Link to a Splunk Observability Cloud dashboard
      * 
      */
     public Optional<Output<List<DataLinkTargetSignalfxDashboardArgs>>> targetSignalfxDashboards() {
@@ -95,14 +99,14 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Link to an external URL
+     * Link to a Splunk instance
      * 
      */
     @Import(name="targetSplunks")
     private @Nullable Output<List<DataLinkTargetSplunkArgs>> targetSplunks;
 
     /**
-     * @return Link to an external URL
+     * @return Link to a Splunk instance
      * 
      */
     public Optional<Output<List<DataLinkTargetSplunkArgs>>> targetSplunks() {
@@ -139,7 +143,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contextDashboardId If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+         * @param contextDashboardId The dashobard ID to which this data link will be applied
          * 
          * @return builder
          * 
@@ -150,7 +154,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contextDashboardId If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+         * @param contextDashboardId The dashobard ID to which this data link will be applied
          * 
          * @return builder
          * 
@@ -160,7 +164,8 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify
+         * `property_name`.
          * 
          * @return builder
          * 
@@ -171,7 +176,8 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+         * @param propertyName Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify
+         * `property_name`.
          * 
          * @return builder
          * 
@@ -181,7 +187,8 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify
+         * `property_name`.
          * 
          * @return builder
          * 
@@ -192,7 +199,8 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+         * @param propertyValue Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify
+         * `property_name`.
          * 
          * @return builder
          * 
@@ -233,7 +241,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetSignalfxDashboards Link to a SignalFx dashboard
+         * @param targetSignalfxDashboards Link to a Splunk Observability Cloud dashboard
          * 
          * @return builder
          * 
@@ -244,7 +252,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetSignalfxDashboards Link to a SignalFx dashboard
+         * @param targetSignalfxDashboards Link to a Splunk Observability Cloud dashboard
          * 
          * @return builder
          * 
@@ -254,7 +262,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetSignalfxDashboards Link to a SignalFx dashboard
+         * @param targetSignalfxDashboards Link to a Splunk Observability Cloud dashboard
          * 
          * @return builder
          * 
@@ -264,7 +272,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetSplunks Link to an external URL
+         * @param targetSplunks Link to a Splunk instance
          * 
          * @return builder
          * 
@@ -275,7 +283,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetSplunks Link to an external URL
+         * @param targetSplunks Link to a Splunk instance
          * 
          * @return builder
          * 
@@ -285,7 +293,7 @@ public final class DataLinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param targetSplunks Link to an external URL
+         * @param targetSplunks Link to a Splunk instance
          * 
          * @return builder
          * 

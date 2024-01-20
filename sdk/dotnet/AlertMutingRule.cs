@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// Provides an Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
+    /// Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
     /// 
-    /// &gt; **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+    /// Splunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.
     /// 
-    /// &gt; **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+    /// &gt; **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -47,18 +47,36 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// * `description` - (Required) The description for this muting rule
+    /// * `start_time` - (Required) Starting time of an alert muting rule as a Unit time stamp in seconds.
+    /// * `stop_time` - (Optional) Stop time of an alert muting rule as a Unix time stamp in seconds.
+    /// * `detectors` - (Optional) A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+    /// * `filter` - (Optional) Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+    ///   * `property` - (Required) The property to filter.
+    ///   * `property_value` - (Required) The property value to filter.
+    ///   * `negated` - (Optional) Determines if this is a "not" filter. Defaults to `false`.
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the alert muting rule.
+    /// * `effective_start_time`
     /// </summary>
     [SignalFxResourceType("signalfx:index/alertMutingRule:AlertMutingRule")]
     public partial class AlertMutingRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description for this muting rule
+        /// description of the rule
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        /// detectors to which this muting rule applies
         /// </summary>
         [Output("detectors")]
         public Output<ImmutableArray<string>> Detectors { get; private set; } = null!;
@@ -67,19 +85,19 @@ namespace Pulumi.SignalFx
         public Output<int> EffectiveStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        /// list of alert muting filters for this rule
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<Outputs.AlertMutingRuleFilter>> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// Starting time of an alert muting rule as a Unit time stamp in seconds.
+        /// starting time of an alert muting rule as a Unix timestamp, in seconds
         /// </summary>
         [Output("startTime")]
         public Output<int> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Stop time of an alert muting rule as a Unix time stamp in seconds.
+        /// stop time of an alert muting rule as a Unix timestamp, in seconds
         /// </summary>
         [Output("stopTime")]
         public Output<int?> StopTime { get; private set; } = null!;
@@ -131,7 +149,7 @@ namespace Pulumi.SignalFx
     public sealed class AlertMutingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description for this muting rule
+        /// description of the rule
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
@@ -140,7 +158,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _detectors;
 
         /// <summary>
-        /// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        /// detectors to which this muting rule applies
         /// </summary>
         public InputList<string> Detectors
         {
@@ -152,7 +170,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.AlertMutingRuleFilterArgs>? _filters;
 
         /// <summary>
-        /// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        /// list of alert muting filters for this rule
         /// </summary>
         public InputList<Inputs.AlertMutingRuleFilterArgs> Filters
         {
@@ -161,13 +179,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Starting time of an alert muting rule as a Unit time stamp in seconds.
+        /// starting time of an alert muting rule as a Unix timestamp, in seconds
         /// </summary>
         [Input("startTime", required: true)]
         public Input<int> StartTime { get; set; } = null!;
 
         /// <summary>
-        /// Stop time of an alert muting rule as a Unix time stamp in seconds.
+        /// stop time of an alert muting rule as a Unix timestamp, in seconds
         /// </summary>
         [Input("stopTime")]
         public Input<int>? StopTime { get; set; }
@@ -181,7 +199,7 @@ namespace Pulumi.SignalFx
     public sealed class AlertMutingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description for this muting rule
+        /// description of the rule
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -190,7 +208,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _detectors;
 
         /// <summary>
-        /// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        /// detectors to which this muting rule applies
         /// </summary>
         public InputList<string> Detectors
         {
@@ -205,7 +223,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.AlertMutingRuleFilterGetArgs>? _filters;
 
         /// <summary>
-        /// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        /// list of alert muting filters for this rule
         /// </summary>
         public InputList<Inputs.AlertMutingRuleFilterGetArgs> Filters
         {
@@ -214,13 +232,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Starting time of an alert muting rule as a Unit time stamp in seconds.
+        /// starting time of an alert muting rule as a Unix timestamp, in seconds
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Stop time of an alert muting rule as a Unix time stamp in seconds.
+        /// stop time of an alert muting rule as a Unix timestamp, in seconds
         /// </summary>
         [Input("stopTime")]
         public Input<int>? StopTime { get; set; }

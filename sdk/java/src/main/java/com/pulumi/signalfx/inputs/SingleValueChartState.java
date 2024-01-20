@@ -21,14 +21,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     public static final SingleValueChartState Empty = new SingleValueChartState();
 
     /**
-     * Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+     * (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
      * 
      */
     @Import(name="colorBy")
     private @Nullable Output<String> colorBy;
 
     /**
-     * @return Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+     * @return (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
      * 
      */
     public Optional<Output<String>> colorBy() {
@@ -36,14 +36,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range
      * 
      */
     @Import(name="colorScales")
     private @Nullable Output<List<SingleValueChartColorScaleArgs>> colorScales;
 
     /**
-     * @return Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * @return Single color range including both the color to display for that range and the borders of the range
      * 
      */
     public Optional<Output<List<SingleValueChartColorScaleArgs>>> colorScales() {
@@ -51,14 +51,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Description of the chart.
+     * Description of the chart (Optional)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart.
+     * @return Description of the chart (Optional)
      * 
      */
     public Optional<Output<String>> description() {
@@ -66,14 +66,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to hide the timestamp in the chart. `false` by default.
+     * (false by default) Whether to hide the timestamp in the chart
      * 
      */
     @Import(name="isTimestampHidden")
     private @Nullable Output<Boolean> isTimestampHidden;
 
     /**
-     * @return Whether to hide the timestamp in the chart. `false` by default.
+     * @return (false by default) Whether to hide the timestamp in the chart
      * 
      */
     public Optional<Output<Boolean>> isTimestampHidden() {
@@ -96,14 +96,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum precision to for value displayed.
+     * The maximum precision to for values displayed in the list
      * 
      */
     @Import(name="maxPrecision")
     private @Nullable Output<Integer> maxPrecision;
 
     /**
-     * @return The maximum precision to for value displayed.
+     * @return The maximum precision to for values displayed in the list
      * 
      */
     public Optional<Output<Integer>> maxPrecision() {
@@ -111,14 +111,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the chart.
+     * Name of the chart
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart.
+     * @return Name of the chart
      * 
      */
     public Optional<Output<String>> name() {
@@ -126,14 +126,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Optional<Output<String>> programText() {
@@ -141,14 +141,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * How often (in seconds) to refresh the value.
+     * How often (in seconds) to refresh the values of the list
      * 
      */
     @Import(name="refreshInterval")
     private @Nullable Output<Integer> refreshInterval;
 
     /**
-     * @return How often (in seconds) to refresh the value.
+     * @return How often (in seconds) to refresh the values of the list
      * 
      */
     public Optional<Output<Integer>> refreshInterval() {
@@ -156,14 +156,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+     * (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
      * 
      */
     @Import(name="secondaryVisualization")
     private @Nullable Output<String> secondaryVisualization;
 
     /**
-     * @return The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+     * @return (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
      * 
      */
     public Optional<Output<String>> secondaryVisualization() {
@@ -171,14 +171,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to show a trend line below the current value. `false` by default.
+     * (false by default) Whether to show a trend line below the current value
      * 
      */
     @Import(name="showSparkLine")
     private @Nullable Output<Boolean> showSparkLine;
 
     /**
-     * @return Whether to show a trend line below the current value. `false` by default.
+     * @return (false by default) Whether to show a trend line below the current value
      * 
      */
     public Optional<Output<Boolean>> showSparkLine() {
@@ -201,14 +201,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     @Import(name="unitPrefix")
     private @Nullable Output<String> unitPrefix;
 
     /**
-     * @return Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     public Optional<Output<String>> unitPrefix() {
@@ -216,14 +216,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The URL of the chart.
+     * URL of the chart
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL of the chart.
+     * @return URL of the chart
      * 
      */
     public Optional<Output<String>> url() {
@@ -231,14 +231,14 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      * 
      */
     @Import(name="vizOptions")
     private @Nullable Output<List<SingleValueChartVizOptionArgs>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement.
+     * @return Plot-level customization options, associated with a publish statement
      * 
      */
     public Optional<Output<List<SingleValueChartVizOptionArgs>>> vizOptions() {
@@ -284,7 +284,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param colorBy Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+         * @param colorBy (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param colorBy Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+         * @param colorBy (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Description of the chart.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Description of the chart.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isTimestampHidden Whether to hide the timestamp in the chart. `false` by default.
+         * @param isTimestampHidden (false by default) Whether to hide the timestamp in the chart
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param isTimestampHidden Whether to hide the timestamp in the chart. `false` by default.
+         * @param isTimestampHidden (false by default) Whether to hide the timestamp in the chart
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxPrecision The maximum precision to for value displayed.
+         * @param maxPrecision The maximum precision to for values displayed in the list
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxPrecision The maximum precision to for value displayed.
+         * @param maxPrecision The maximum precision to for values displayed in the list
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the chart.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the chart.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the value.
+         * @param refreshInterval How often (in seconds) to refresh the values of the list
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the value.
+         * @param refreshInterval How often (in seconds) to refresh the values of the list
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param secondaryVisualization The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+         * @param secondaryVisualization (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param secondaryVisualization The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+         * @param secondaryVisualization (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param showSparkLine Whether to show a trend line below the current value. `false` by default.
+         * @param showSparkLine (false by default) Whether to show a trend line below the current value
          * 
          * @return builder
          * 
@@ -515,7 +515,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param showSparkLine Whether to show a trend line below the current value. `false` by default.
+         * @param showSparkLine (false by default) Whether to show a trend line below the current value
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url The URL of the chart.
+         * @param url URL of the chart
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param url The URL of the chart.
+         * @param url URL of the chart
          * 
          * @return builder
          * 
@@ -588,7 +588,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement.
+         * @param vizOptions Plot-level customization options, associated with a publish statement
          * 
          * @return builder
          * 
@@ -599,7 +599,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement.
+         * @param vizOptions Plot-level customization options, associated with a publish statement
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class SingleValueChartState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement.
+         * @param vizOptions Plot-level customization options, associated with a publish statement
          * 
          * @return builder
          * 

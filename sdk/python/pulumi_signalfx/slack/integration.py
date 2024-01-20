@@ -19,9 +19,9 @@ class IntegrationArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Integration resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
-        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] webhook_url: Slack Webhook URL for integration
+        :param pulumi.Input[str] name: Name of the integration
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "webhook_url", webhook_url)
@@ -32,7 +32,7 @@ class IntegrationArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -44,7 +44,7 @@ class IntegrationArgs:
     @pulumi.getter(name="webhookUrl")
     def webhook_url(self) -> pulumi.Input[str]:
         """
-        Slack incoming webhook URL.
+        Slack Webhook URL for integration
         """
         return pulumi.get(self, "webhook_url")
 
@@ -56,7 +56,7 @@ class IntegrationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration.
+        Name of the integration
         """
         return pulumi.get(self, "name")
 
@@ -73,9 +73,9 @@ class _IntegrationState:
                  webhook_url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[str] webhook_url: Slack Webhook URL for integration
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -88,7 +88,7 @@ class _IntegrationState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -100,7 +100,7 @@ class _IntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration.
+        Name of the integration
         """
         return pulumi.get(self, "name")
 
@@ -112,7 +112,7 @@ class _IntegrationState:
     @pulumi.getter(name="webhookUrl")
     def webhook_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Slack incoming webhook URL.
+        Slack Webhook URL for integration
         """
         return pulumi.get(self, "webhook_url")
 
@@ -131,11 +131,11 @@ class Integration(pulumi.CustomResource):
                  webhook_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        SignalFx Slack integration.
+        Slack integration.
 
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -146,11 +146,23 @@ class Integration(pulumi.CustomResource):
             webhook_url="http://example.com")
         ```
 
+        ## Arguments
+
+        * `name` - (Required) Name of the integration.
+        * `enabled` - (Required) Whether the integration is enabled.
+        * `webhook_url` - (Required) Slack incoming webhook URL.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the integration.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[str] webhook_url: Slack Webhook URL for integration
         """
         ...
     @overload
@@ -159,11 +171,11 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        SignalFx Slack integration.
+        Slack integration.
 
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -173,6 +185,18 @@ class Integration(pulumi.CustomResource):
             enabled=True,
             webhook_url="http://example.com")
         ```
+
+        ## Arguments
+
+        * `name` - (Required) Name of the integration.
+        * `enabled` - (Required) Whether the integration is enabled.
+        * `webhook_url` - (Required) Slack incoming webhook URL.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the integration.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -230,9 +254,9 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] name: Name of the integration.
-        :param pulumi.Input[str] webhook_url: Slack incoming webhook URL.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[str] webhook_url: Slack Webhook URL for integration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -247,7 +271,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -255,7 +279,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the integration.
+        Name of the integration
         """
         return pulumi.get(self, "name")
 
@@ -263,7 +287,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="webhookUrl")
     def webhook_url(self) -> pulumi.Output[str]:
         """
-        Slack incoming webhook URL.
+        Slack Webhook URL for integration
         """
         return pulumi.get(self, "webhook_url")
 

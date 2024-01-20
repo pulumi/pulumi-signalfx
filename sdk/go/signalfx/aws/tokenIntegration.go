@@ -13,11 +13,11 @@ import (
 
 // Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
 //
-// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observabilit Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
 // > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -76,12 +76,23 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// * `name` - (Required) The name of this integration
+//
+// ## Attributes
+//
+// In addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the integration to use with `aws.Integration`
+// * `signalfxAwsAccount` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
 type TokenIntegration struct {
 	pulumi.CustomResourceState
 
-	// The name of this integration
+	// Name of the integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+	// The Splunk Observability AWS account ID to use with an AWS role.
 	SignalfxAwsAccount pulumi.StringOutput `pulumi:"signalfxAwsAccount"`
 	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId pulumi.StringOutput `pulumi:"tokenId"`
@@ -122,18 +133,18 @@ func GetTokenIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TokenIntegration resources.
 type tokenIntegrationState struct {
-	// The name of this integration
+	// Name of the integration
 	Name *string `pulumi:"name"`
-	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+	// The Splunk Observability AWS account ID to use with an AWS role.
 	SignalfxAwsAccount *string `pulumi:"signalfxAwsAccount"`
 	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId *string `pulumi:"tokenId"`
 }
 
 type TokenIntegrationState struct {
-	// The name of this integration
+	// Name of the integration
 	Name pulumi.StringPtrInput
-	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+	// The Splunk Observability AWS account ID to use with an AWS role.
 	SignalfxAwsAccount pulumi.StringPtrInput
 	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId pulumi.StringPtrInput
@@ -144,13 +155,13 @@ func (TokenIntegrationState) ElementType() reflect.Type {
 }
 
 type tokenIntegrationArgs struct {
-	// The name of this integration
+	// Name of the integration
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a TokenIntegration resource.
 type TokenIntegrationArgs struct {
-	// The name of this integration
+	// Name of the integration
 	Name pulumi.StringPtrInput
 }
 
@@ -241,12 +252,12 @@ func (o TokenIntegrationOutput) ToTokenIntegrationOutputWithContext(ctx context.
 	return o
 }
 
-// The name of this integration
+// Name of the integration
 func (o TokenIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+// The Splunk Observability AWS account ID to use with an AWS role.
 func (o TokenIntegrationOutput) SignalfxAwsAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.SignalfxAwsAccount }).(pulumi.StringOutput)
 }

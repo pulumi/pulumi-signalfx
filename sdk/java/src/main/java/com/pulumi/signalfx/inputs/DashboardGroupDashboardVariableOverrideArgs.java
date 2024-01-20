@@ -17,47 +17,23 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
 
     public static final DashboardGroupDashboardVariableOverrideArgs Empty = new DashboardGroupDashboardVariableOverrideArgs();
 
-    /**
-     * A metric time series dimension or property name.
-     * 
-     */
     @Import(name="property", required=true)
     private Output<String> property;
 
-    /**
-     * @return A metric time series dimension or property name.
-     * 
-     */
     public Output<String> property() {
         return this.property;
     }
 
-    /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
-     * 
-     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
-    /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
-     * 
-     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
 
-    /**
-     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-     * 
-     */
     @Import(name="valuesSuggesteds")
     private @Nullable Output<List<String>> valuesSuggesteds;
 
-    /**
-     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-     * 
-     */
     public Optional<Output<List<String>>> valuesSuggesteds() {
         return Optional.ofNullable(this.valuesSuggesteds);
     }
@@ -88,85 +64,37 @@ public final class DashboardGroupDashboardVariableOverrideArgs extends com.pulum
             $ = new DashboardGroupDashboardVariableOverrideArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param property A metric time series dimension or property name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
-        /**
-         * @param property A metric time series dimension or property name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(String property) {
             return property(Output.of(property));
         }
 
-        /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }
 
-        /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-         * 
-         * @return builder
-         * 
-         */
         public Builder valuesSuggesteds(@Nullable Output<List<String>> valuesSuggesteds) {
             $.valuesSuggesteds = valuesSuggesteds;
             return this;
         }
 
-        /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-         * 
-         * @return builder
-         * 
-         */
         public Builder valuesSuggesteds(List<String> valuesSuggesteds) {
             return valuesSuggesteds(Output.of(valuesSuggesteds));
         }
 
-        /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-         * 
-         * @return builder
-         * 
-         */
         public Builder valuesSuggesteds(String... valuesSuggesteds) {
             return valuesSuggesteds(List.of(valuesSuggesteds));
         }

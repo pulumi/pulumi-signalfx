@@ -12,15 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class OrgTokenDpmLimitsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
-        /// </summary>
         [Input("dpmLimit", required: true)]
         public Input<int> DpmLimit { get; set; } = null!;
 
-        /// <summary>
-        /// DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
-        /// </summary>
         [Input("dpmNotificationThreshold")]
         public Input<int>? DpmNotificationThreshold { get; set; }
 

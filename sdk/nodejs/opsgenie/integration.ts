@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * SignalFx Opsgenie integration.
+ * Splunk Observability Cloud Opsgenie integration.
  *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,6 +21,19 @@ import * as utilities from "../utilities";
  *     enabled: true,
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `apiKey` - (Required) The API key
+ * * `apiUrl` - (Optional) Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the integration.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -51,19 +64,19 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * The API key
+     * Opsgenie API key
      */
     public readonly apiKey!: pulumi.Output<string>;
     /**
-     * Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+     * Opsgenie API URL for integration
      */
     public readonly apiUrl!: pulumi.Output<string | undefined>;
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -109,19 +122,19 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * The API key
+     * Opsgenie API key
      */
     apiKey?: pulumi.Input<string>;
     /**
-     * Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+     * Opsgenie API URL for integration
      */
     apiUrl?: pulumi.Input<string>;
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
 }
@@ -131,19 +144,19 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * The API key
+     * Opsgenie API key
      */
     apiKey: pulumi.Input<string>;
     /**
-     * Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+     * Opsgenie API URL for integration
      */
     apiUrl?: pulumi.Input<string>;
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
 }

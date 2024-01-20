@@ -20,14 +20,14 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
     public static final TableChartState Empty = new TableChartState();
 
     /**
-     * Description of the table chart.
+     * Description of the chart (Optional)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the table chart.
+     * @return Description of the chart (Optional)
      * 
      */
     public Optional<Output<String>> description() {
@@ -50,14 +50,14 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dimension to group by
+     * Properties to group by in the Table (in nesting order)
      * 
      */
     @Import(name="groupBies")
     private @Nullable Output<List<String>> groupBies;
 
     /**
-     * @return Dimension to group by
+     * @return Properties to group by in the Table (in nesting order)
      * 
      */
     public Optional<Output<List<String>>> groupBies() {
@@ -110,14 +110,14 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the table chart.
+     * Name of the chart
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the table chart.
+     * @return Name of the chart
      * 
      */
     public Optional<Output<String>> name() {
@@ -125,14 +125,14 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The SignalFlow for your Data Table Chart
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return The SignalFlow for your Data Table Chart
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Optional<Output<String>> programText() {
@@ -185,14 +185,14 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL of the chart.
+     * URL of the chart
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL of the chart.
+     * @return URL of the chart
      * 
      */
     public Optional<Output<String>> url() {
@@ -251,7 +251,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the table chart.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the table chart.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Dimension to group by
+         * @param groupBies Properties to group by in the Table (in nesting order)
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Dimension to group by
+         * @param groupBies Properties to group by in the Table (in nesting order)
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Dimension to group by
+         * @param groupBies Properties to group by in the Table (in nesting order)
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the table chart.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the table chart.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText The SignalFlow for your Data Table Chart
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText The SignalFlow for your Data Table Chart
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL of the chart.
+         * @param url URL of the chart
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class TableChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL of the chart.
+         * @param url URL of the chart
          * 
          * @return builder
          * 

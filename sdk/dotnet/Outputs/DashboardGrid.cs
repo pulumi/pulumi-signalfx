@@ -13,17 +13,8 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardGrid
     {
-        /// <summary>
-        /// List of IDs of the charts to display.
-        /// </summary>
         public readonly ImmutableArray<string> ChartIds;
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
         public readonly int? Height;
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
         public readonly int? Width;
 
         [OutputConstructor]

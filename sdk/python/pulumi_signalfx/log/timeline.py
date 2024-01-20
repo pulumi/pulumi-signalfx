@@ -23,13 +23,13 @@ class TimelineArgs:
                  time_range: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Timeline resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
-        :param pulumi.Input[str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
-        :param pulumi.Input[str] description: Description of the log timeline.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the log timeline.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         pulumi.set(__self__, "program_text", program_text)
         if default_connection is not None:
@@ -49,7 +49,7 @@ class TimelineArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -61,7 +61,7 @@ class TimelineArgs:
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> Optional[pulumi.Input[str]]:
         """
-        The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        default connection that the dashboard uses
         """
         return pulumi.get(self, "default_connection")
 
@@ -73,7 +73,7 @@ class TimelineArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the log timeline.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -85,7 +85,7 @@ class TimelineArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -97,7 +97,7 @@ class TimelineArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the log timeline.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -109,7 +109,7 @@ class TimelineArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -121,7 +121,7 @@ class TimelineArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -143,14 +143,14 @@ class _TimelineState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Timeline resources.
-        :param pulumi.Input[str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
-        :param pulumi.Input[str] description: Description of the log timeline.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the log timeline.
-        :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: The URL of the log timeline.
+        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] url: URL of the chart
         """
         if default_connection is not None:
             pulumi.set(__self__, "default_connection", default_connection)
@@ -173,7 +173,7 @@ class _TimelineState:
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> Optional[pulumi.Input[str]]:
         """
-        The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        default connection that the dashboard uses
         """
         return pulumi.get(self, "default_connection")
 
@@ -185,7 +185,7 @@ class _TimelineState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the log timeline.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -197,7 +197,7 @@ class _TimelineState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -209,7 +209,7 @@ class _TimelineState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the log timeline.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -221,7 +221,7 @@ class _TimelineState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -233,7 +233,7 @@ class _TimelineState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -245,7 +245,7 @@ class _TimelineState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -257,7 +257,7 @@ class _TimelineState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the log timeline.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 
@@ -281,9 +281,10 @@ class Timeline(pulumi.CustomResource):
                  __props__=None):
         """
         You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
+
         A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -297,15 +298,34 @@ class Timeline(pulumi.CustomResource):
             time_range=900)
         ```
 
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the log timeline.
+        * `program_text` - (Required) Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        * `description` - (Optional) Description of the log timeline.
+        * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `default_connection` - (Optional) The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the log timeline.
+        * `url` - The URL of the log timeline.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
-        :param pulumi.Input[str] description: Description of the log timeline.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the log timeline.
-        :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         ...
     @overload
@@ -315,9 +335,10 @@ class Timeline(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
+
         A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -330,6 +351,25 @@ class Timeline(pulumi.CustomResource):
         \"\"\",
             time_range=900)
         ```
+
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the log timeline.
+        * `program_text` - (Required) Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        * `description` - (Optional) Description of the log timeline.
+        * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `default_connection` - (Optional) The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the log timeline.
+        * `url` - The URL of the log timeline.
 
         :param str resource_name: The name of the resource.
         :param TimelineArgs args: The arguments to use to populate this resource's properties.
@@ -397,14 +437,14 @@ class Timeline(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_connection: The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
-        :param pulumi.Input[str] description: Description of the log timeline.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[str] name: Name of the log timeline.
-        :param pulumi.Input[str] program_text: Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[int] time_range: From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] url: The URL of the log timeline.
+        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] url: URL of the chart
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -424,7 +464,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> pulumi.Output[Optional[str]]:
         """
-        The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        default connection that the dashboard uses
         """
         return pulumi.get(self, "default_connection")
 
@@ -432,7 +472,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the log timeline.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -440,7 +480,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -448,7 +488,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the log timeline.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -456,7 +496,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -464,7 +504,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -472,7 +512,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output[Optional[int]]:
         """
-        From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -480,7 +520,7 @@ class Timeline(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL of the log timeline.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 

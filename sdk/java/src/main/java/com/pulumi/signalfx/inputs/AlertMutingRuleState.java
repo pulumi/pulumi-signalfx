@@ -19,14 +19,14 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
     public static final AlertMutingRuleState Empty = new AlertMutingRuleState();
 
     /**
-     * The description for this muting rule
+     * description of the rule
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description for this muting rule
+     * @return description of the rule
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+     * detectors to which this muting rule applies
      * 
      */
     @Import(name="detectors")
     private @Nullable Output<List<String>> detectors;
 
     /**
-     * @return A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+     * @return detectors to which this muting rule applies
      * 
      */
     public Optional<Output<List<String>>> detectors() {
@@ -56,14 +56,14 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+     * list of alert muting filters for this rule
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<AlertMutingRuleFilterArgs>> filters;
 
     /**
-     * @return Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+     * @return list of alert muting filters for this rule
      * 
      */
     public Optional<Output<List<AlertMutingRuleFilterArgs>>> filters() {
@@ -71,14 +71,14 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Starting time of an alert muting rule as a Unit time stamp in seconds.
+     * starting time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Starting time of an alert muting rule as a Unit time stamp in seconds.
+     * @return starting time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -86,14 +86,14 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Stop time of an alert muting rule as a Unix time stamp in seconds.
+     * stop time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     @Import(name="stopTime")
     private @Nullable Output<Integer> stopTime;
 
     /**
-     * @return Stop time of an alert muting rule as a Unix time stamp in seconds.
+     * @return stop time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     public Optional<Output<Integer>> stopTime() {
@@ -130,7 +130,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description The description for this muting rule
+         * @param description description of the rule
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description The description for this muting rule
+         * @param description description of the rule
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param detectors A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+         * @param detectors detectors to which this muting rule applies
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param detectors A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+         * @param detectors detectors to which this muting rule applies
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param detectors A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+         * @param detectors detectors to which this muting rule applies
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filters Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+         * @param filters list of alert muting filters for this rule
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filters Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+         * @param filters list of alert muting filters for this rule
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param filters Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+         * @param filters list of alert muting filters for this rule
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param startTime Starting time of an alert muting rule as a Unit time stamp in seconds.
+         * @param startTime starting time of an alert muting rule as a Unix timestamp, in seconds
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param startTime Starting time of an alert muting rule as a Unit time stamp in seconds.
+         * @param startTime starting time of an alert muting rule as a Unix timestamp, in seconds
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param stopTime Stop time of an alert muting rule as a Unix time stamp in seconds.
+         * @param stopTime stop time of an alert muting rule as a Unix timestamp, in seconds
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param stopTime Stop time of an alert muting rule as a Unix time stamp in seconds.
+         * @param stopTime stop time of an alert muting rule as a Unix timestamp, in seconds
          * 
          * @return builder
          * 

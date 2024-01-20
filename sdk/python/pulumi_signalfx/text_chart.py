@@ -19,9 +19,9 @@ class TextChartArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TextChart resource.
-        :param pulumi.Input[str] markdown: Markdown text to display.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[str] markdown: Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] name: Name of the chart
         """
         pulumi.set(__self__, "markdown", markdown)
         if description is not None:
@@ -33,7 +33,7 @@ class TextChartArgs:
     @pulumi.getter
     def markdown(self) -> pulumi.Input[str]:
         """
-        Markdown text to display.
+        Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         """
         return pulumi.get(self, "markdown")
 
@@ -45,7 +45,7 @@ class TextChartArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the text note.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -57,7 +57,7 @@ class TextChartArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the text note.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -75,10 +75,10 @@ class _TextChartState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TextChart resources.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[str] markdown: Markdown text to display.
-        :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] markdown: Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] url: URL of the chart
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -93,7 +93,7 @@ class _TextChartState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the text note.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -105,7 +105,7 @@ class _TextChartState:
     @pulumi.getter
     def markdown(self) -> Optional[pulumi.Input[str]]:
         """
-        Markdown text to display.
+        Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         """
         return pulumi.get(self, "markdown")
 
@@ -117,7 +117,7 @@ class _TextChartState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the text note.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -129,7 +129,7 @@ class _TextChartState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the chart.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 
@@ -150,7 +150,7 @@ class TextChart(pulumi.CustomResource):
         """
         This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -178,11 +178,26 @@ class TextChart(pulumi.CustomResource):
         \"\"\")
         ```
 
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the text note.
+        * `markdown` - (Required) Markdown text to display.
+        * `description` - (Optional) Description of the text note.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the chart.
+        * `url` - The URL of the chart.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[str] markdown: Markdown text to display.
-        :param pulumi.Input[str] name: Name of the text note.
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] markdown: Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+        :param pulumi.Input[str] name: Name of the chart
         """
         ...
     @overload
@@ -193,7 +208,7 @@ class TextChart(pulumi.CustomResource):
         """
         This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -220,6 +235,21 @@ class TextChart(pulumi.CustomResource):
 
         \"\"\")
         ```
+
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the text note.
+        * `markdown` - (Required) Markdown text to display.
+        * `description` - (Optional) Description of the text note.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the chart.
+        * `url` - The URL of the chart.
 
         :param str resource_name: The name of the resource.
         :param TextChartArgs args: The arguments to use to populate this resource's properties.
@@ -275,10 +305,10 @@ class TextChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the text note.
-        :param pulumi.Input[str] markdown: Markdown text to display.
-        :param pulumi.Input[str] name: Name of the text note.
-        :param pulumi.Input[str] url: The URL of the chart.
+        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] markdown: Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] url: URL of the chart
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -294,7 +324,7 @@ class TextChart(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the text note.
+        Description of the chart (Optional)
         """
         return pulumi.get(self, "description")
 
@@ -302,7 +332,7 @@ class TextChart(pulumi.CustomResource):
     @pulumi.getter
     def markdown(self) -> pulumi.Output[str]:
         """
-        Markdown text to display.
+        Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         """
         return pulumi.get(self, "markdown")
 
@@ -310,7 +340,7 @@ class TextChart(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the text note.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -318,7 +348,7 @@ class TextChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL of the chart.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 

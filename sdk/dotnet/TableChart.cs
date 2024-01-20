@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// This special type of chart displays a Data Table. This Table can be grouped by a Dimension.
+    /// This special type of chart displays a data table. This table can be grouped by a dimension.
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -37,12 +37,28 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// The following arguments are supported in the resource block:
+    /// 
+    /// * `name` - (Required) Name of the table chart.
+    /// * `program_text` - (Required) The SignalFlow for your Data Table Chart
+    /// * `description` - (Optional) Description of the table chart.
+    /// * `group_by` - (Optional) Dimension to group by
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the chart.
+    /// * `url` - The URL of the chart.
     /// </summary>
     [SignalFxResourceType("signalfx:index/tableChart:TableChart")]
     public partial class TableChart : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the table chart.
+        /// Description of the chart (Optional)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -54,7 +70,7 @@ namespace Pulumi.SignalFx
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Dimension to group by
+        /// Properties to group by in the Table (in nesting order)
         /// </summary>
         [Output("groupBies")]
         public Output<ImmutableArray<string>> GroupBies { get; private set; } = null!;
@@ -78,13 +94,13 @@ namespace Pulumi.SignalFx
         public Output<int?> MinimumResolution { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the table chart.
+        /// Name of the chart
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The SignalFlow for your Data Table Chart
+        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
@@ -108,7 +124,7 @@ namespace Pulumi.SignalFx
         public Output<string?> UnitPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the chart.
+        /// URL of the chart
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -166,7 +182,7 @@ namespace Pulumi.SignalFx
     public sealed class TableChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the table chart.
+        /// Description of the chart (Optional)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -181,7 +197,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// Dimension to group by
+        /// Properties to group by in the Table (in nesting order)
         /// </summary>
         public InputList<string> GroupBies
         {
@@ -208,13 +224,13 @@ namespace Pulumi.SignalFx
         public Input<int>? MinimumResolution { get; set; }
 
         /// <summary>
-        /// Name of the table chart.
+        /// Name of the chart
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The SignalFlow for your Data Table Chart
+        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
@@ -258,7 +274,7 @@ namespace Pulumi.SignalFx
     public sealed class TableChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the table chart.
+        /// Description of the chart (Optional)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -273,7 +289,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// Dimension to group by
+        /// Properties to group by in the Table (in nesting order)
         /// </summary>
         public InputList<string> GroupBies
         {
@@ -300,13 +316,13 @@ namespace Pulumi.SignalFx
         public Input<int>? MinimumResolution { get; set; }
 
         /// <summary>
-        /// Name of the table chart.
+        /// Name of the chart
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The SignalFlow for your Data Table Chart
+        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
@@ -330,7 +346,7 @@ namespace Pulumi.SignalFx
         public Input<string>? UnitPrefix { get; set; }
 
         /// <summary>
-        /// The URL of the chart.
+        /// URL of the chart
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

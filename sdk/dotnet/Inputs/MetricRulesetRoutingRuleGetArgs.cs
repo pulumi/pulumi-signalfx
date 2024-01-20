@@ -12,9 +12,6 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class MetricRulesetRoutingRuleGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// end destination of the input metric. Must be `RealTime` or `Drop`
-        /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 

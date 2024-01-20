@@ -13,13 +13,7 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class WebhookIntegrationHeader
     {
-        /// <summary>
-        /// The key of the header to send
-        /// </summary>
         public readonly string HeaderKey;
-        /// <summary>
-        /// The value of the header to send
-        /// </summary>
         public readonly string HeaderValue;
 
         [OutputConstructor]

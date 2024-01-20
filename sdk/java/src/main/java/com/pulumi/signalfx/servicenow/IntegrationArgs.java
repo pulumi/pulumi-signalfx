@@ -18,14 +18,18 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
-     * A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
+     * ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     @Import(name="alertResolvedPayloadTemplate")
     private @Nullable Output<String> alertResolvedPayloadTemplate;
 
     /**
-     * @return A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * @return A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
+     * ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     public Optional<Output<String>> alertResolvedPayloadTemplate() {
@@ -33,14 +37,18 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
+     * to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     @Import(name="alertTriggeredPayloadTemplate")
     private @Nullable Output<String> alertTriggeredPayloadTemplate;
 
     /**
-     * @return A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * @return A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
+     * to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     public Optional<Output<String>> alertTriggeredPayloadTemplate() {
@@ -48,14 +56,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled
      * 
      */
     public Output<Boolean> enabled() {
@@ -63,14 +71,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the ServiceNow instance, for example `myinst.service-now.com`.
+     * Name of the ServiceNow instance, for example `myInstances.service-now.com`.
      * 
      */
     @Import(name="instanceName", required=true)
     private Output<String> instanceName;
 
     /**
-     * @return Name of the ServiceNow instance, for example `myinst.service-now.com`.
+     * @return Name of the ServiceNow instance, for example `myInstances.service-now.com`.
      * 
      */
     public Output<String> instanceName() {
@@ -93,14 +101,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -169,7 +177,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertResolvedPayloadTemplate A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+         * @param alertResolvedPayloadTemplate A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
+         * ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+         * ServiceNow. See API reference for details.
          * 
          * @return builder
          * 
@@ -180,7 +190,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertResolvedPayloadTemplate A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+         * @param alertResolvedPayloadTemplate A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
+         * ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+         * ServiceNow. See API reference for details.
          * 
          * @return builder
          * 
@@ -190,7 +202,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertTriggeredPayloadTemplate A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+         * @param alertTriggeredPayloadTemplate A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
+         * to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+         * ServiceNow. See API reference for details.
          * 
          * @return builder
          * 
@@ -201,7 +215,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertTriggeredPayloadTemplate A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+         * @param alertTriggeredPayloadTemplate A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
+         * to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+         * ServiceNow. See API reference for details.
          * 
          * @return builder
          * 
@@ -211,7 +227,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled
          * 
          * @return builder
          * 
@@ -222,7 +238,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled
          * 
          * @return builder
          * 
@@ -232,7 +248,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName Name of the ServiceNow instance, for example `myinst.service-now.com`.
+         * @param instanceName Name of the ServiceNow instance, for example `myInstances.service-now.com`.
          * 
          * @return builder
          * 
@@ -243,7 +259,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName Name of the ServiceNow instance, for example `myinst.service-now.com`.
+         * @param instanceName Name of the ServiceNow instance, for example `myInstances.service-now.com`.
          * 
          * @return builder
          * 
@@ -274,7 +290,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -285,7 +301,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 

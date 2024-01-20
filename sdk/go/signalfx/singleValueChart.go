@@ -16,7 +16,7 @@ import (
 //
 // If the time period is in the past, the number represents the value of the metric near the end of the time period.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -47,38 +47,75 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// The following arguments are supported in the resource block:
+//
+// * `name` - (Required) Name of the chart.
+// * `programText` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+// * `description` - (Optional) Description of the chart.
+// * `colorBy` - (Optional) Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+// * `colorScale` - (Optional. `colorBy` must be `"Scale"`) Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+//   - `gt` - (Optional) Indicates the lower threshold non-inclusive value for this range.
+//   - `gte` - (Optional) Indicates the lower threshold inclusive value for this range.
+//   - `lt` - (Optional) Indicates the upper threshold non-inculsive value for this range.
+//   - `lte` - (Optional) Indicates the upper threshold inclusive value for this range.
+//   - `color` - (Required) The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+//
+// * `vizOptions` - (Optional) Plot-level customization options, associated with a publish statement.
+//   - `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+//   - `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+//   - `color` - (Optional) The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+//   - `valueUnit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+//   - `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+//
+// * `unitPrefix` - (Optional) Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+// * `maxDelay` - (Optional) How long (in seconds) to wait for late datapoints
+// * `refreshInterval` - (Optional) How often (in seconds) to refresh the value.
+// * `maxPrecision` - (Optional) The maximum precision to for value displayed.
+// * `isTimestampHidden` - (Optional) Whether to hide the timestamp in the chart. `false` by default.
+// * `secondaryVisualization` - (Optional) The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
+// * `showSparkLine` - (Optional) Whether to show a trend line below the current value. `false` by default.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the chart.
+// * `url` - The URL of the chart.
 type SingleValueChart struct {
 	pulumi.CustomResourceState
 
-	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Metric", "Dimension", or "Scale". "Scale" maps to Color by Value in the UI
 	ColorBy pulumi.StringPtrOutput `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales SingleValueChartColorScaleArrayOutput `pulumi:"colorScales"`
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to hide the timestamp in the chart. `false` by default.
+	// (false by default) Whether to hide the timestamp in the chart
 	IsTimestampHidden pulumi.BoolPtrOutput `pulumi:"isTimestampHidden"`
 	// How long (in seconds) to wait for late datapoints
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
-	// The maximum precision to for value displayed.
+	// The maximum precision to for values displayed in the list
 	MaxPrecision pulumi.IntPtrOutput `pulumi:"maxPrecision"`
-	// Name of the chart.
+	// Name of the chart
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
-	// How often (in seconds) to refresh the value.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization pulumi.StringPtrOutput `pulumi:"secondaryVisualization"`
-	// Whether to show a trend line below the current value. `false` by default.
+	// (false by default) Whether to show a trend line below the current value
 	ShowSparkLine pulumi.BoolPtrOutput `pulumi:"showSparkLine"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
-	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions SingleValueChartVizOptionArrayOutput `pulumi:"vizOptions"`
 }
 
@@ -115,68 +152,68 @@ func GetSingleValueChart(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SingleValueChart resources.
 type singleValueChartState struct {
-	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Metric", "Dimension", or "Scale". "Scale" maps to Color by Value in the UI
 	ColorBy *string `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales []SingleValueChartColorScale `pulumi:"colorScales"`
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// Whether to hide the timestamp in the chart. `false` by default.
+	// (false by default) Whether to hide the timestamp in the chart
 	IsTimestampHidden *bool `pulumi:"isTimestampHidden"`
 	// How long (in seconds) to wait for late datapoints
 	MaxDelay *int `pulumi:"maxDelay"`
-	// The maximum precision to for value displayed.
+	// The maximum precision to for values displayed in the list
 	MaxPrecision *int `pulumi:"maxPrecision"`
-	// Name of the chart.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText *string `pulumi:"programText"`
-	// How often (in seconds) to refresh the value.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval *int `pulumi:"refreshInterval"`
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization *string `pulumi:"secondaryVisualization"`
-	// Whether to show a trend line below the current value. `false` by default.
+	// (false by default) Whether to show a trend line below the current value
 	ShowSparkLine *bool `pulumi:"showSparkLine"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
-	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// The URL of the chart.
+	// URL of the chart
 	Url *string `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions []SingleValueChartVizOption `pulumi:"vizOptions"`
 }
 
 type SingleValueChartState struct {
-	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Metric", "Dimension", or "Scale". "Scale" maps to Color by Value in the UI
 	ColorBy pulumi.StringPtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales SingleValueChartColorScaleArrayInput
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// Whether to hide the timestamp in the chart. `false` by default.
+	// (false by default) Whether to hide the timestamp in the chart
 	IsTimestampHidden pulumi.BoolPtrInput
 	// How long (in seconds) to wait for late datapoints
 	MaxDelay pulumi.IntPtrInput
-	// The maximum precision to for value displayed.
+	// The maximum precision to for values displayed in the list
 	MaxPrecision pulumi.IntPtrInput
-	// Name of the chart.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringPtrInput
-	// How often (in seconds) to refresh the value.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval pulumi.IntPtrInput
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization pulumi.StringPtrInput
-	// Whether to show a trend line below the current value. `false` by default.
+	// (false by default) Whether to show a trend line below the current value
 	ShowSparkLine pulumi.BoolPtrInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
-	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrInput
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions SingleValueChartVizOptionArrayInput
 }
 
@@ -185,65 +222,65 @@ func (SingleValueChartState) ElementType() reflect.Type {
 }
 
 type singleValueChartArgs struct {
-	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Metric", "Dimension", or "Scale". "Scale" maps to Color by Value in the UI
 	ColorBy *string `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales []SingleValueChartColorScale `pulumi:"colorScales"`
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// Whether to hide the timestamp in the chart. `false` by default.
+	// (false by default) Whether to hide the timestamp in the chart
 	IsTimestampHidden *bool `pulumi:"isTimestampHidden"`
 	// How long (in seconds) to wait for late datapoints
 	MaxDelay *int `pulumi:"maxDelay"`
-	// The maximum precision to for value displayed.
+	// The maximum precision to for values displayed in the list
 	MaxPrecision *int `pulumi:"maxPrecision"`
-	// Name of the chart.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText string `pulumi:"programText"`
-	// How often (in seconds) to refresh the value.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval *int `pulumi:"refreshInterval"`
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization *string `pulumi:"secondaryVisualization"`
-	// Whether to show a trend line below the current value. `false` by default.
+	// (false by default) Whether to show a trend line below the current value
 	ShowSparkLine *bool `pulumi:"showSparkLine"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
-	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions []SingleValueChartVizOption `pulumi:"vizOptions"`
 }
 
 // The set of arguments for constructing a SingleValueChart resource.
 type SingleValueChartArgs struct {
-	// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Metric", "Dimension", or "Scale". "Scale" maps to Color by Value in the UI
 	ColorBy pulumi.StringPtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales SingleValueChartColorScaleArrayInput
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// Whether to hide the timestamp in the chart. `false` by default.
+	// (false by default) Whether to hide the timestamp in the chart
 	IsTimestampHidden pulumi.BoolPtrInput
 	// How long (in seconds) to wait for late datapoints
 	MaxDelay pulumi.IntPtrInput
-	// The maximum precision to for value displayed.
+	// The maximum precision to for values displayed in the list
 	MaxPrecision pulumi.IntPtrInput
-	// Name of the chart.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringInput
-	// How often (in seconds) to refresh the value.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval pulumi.IntPtrInput
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization pulumi.StringPtrInput
-	// Whether to show a trend line below the current value. `false` by default.
+	// (false by default) Whether to show a trend line below the current value
 	ShowSparkLine pulumi.BoolPtrInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
-	// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions SingleValueChartVizOptionArrayInput
 }
 
@@ -334,22 +371,22 @@ func (o SingleValueChartOutput) ToSingleValueChartOutputWithContext(ctx context.
 	return o
 }
 
-// Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
+// (Metric by default) Must be "Metric", "Dimension", or "Scale". "Scale" maps to Color by Value in the UI
 func (o SingleValueChartOutput) ColorBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
 }
 
-// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+// Single color range including both the color to display for that range and the borders of the range
 func (o SingleValueChartOutput) ColorScales() SingleValueChartColorScaleArrayOutput {
 	return o.ApplyT(func(v *SingleValueChart) SingleValueChartColorScaleArrayOutput { return v.ColorScales }).(SingleValueChartColorScaleArrayOutput)
 }
 
-// Description of the chart.
+// Description of the chart (Optional)
 func (o SingleValueChartOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to hide the timestamp in the chart. `false` by default.
+// (false by default) Whether to hide the timestamp in the chart
 func (o SingleValueChartOutput) IsTimestampHidden() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.BoolPtrOutput { return v.IsTimestampHidden }).(pulumi.BoolPtrOutput)
 }
@@ -359,32 +396,32 @@ func (o SingleValueChartOutput) MaxDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
 }
 
-// The maximum precision to for value displayed.
+// The maximum precision to for values displayed in the list
 func (o SingleValueChartOutput) MaxPrecision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.IntPtrOutput { return v.MaxPrecision }).(pulumi.IntPtrOutput)
 }
 
-// Name of the chart.
+// Name of the chart
 func (o SingleValueChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 func (o SingleValueChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
 
-// How often (in seconds) to refresh the value.
+// How often (in seconds) to refresh the values of the list
 func (o SingleValueChartOutput) RefreshInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
 }
 
-// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 func (o SingleValueChartOutput) SecondaryVisualization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.SecondaryVisualization }).(pulumi.StringPtrOutput)
 }
 
-// Whether to show a trend line below the current value. `false` by default.
+// (false by default) Whether to show a trend line below the current value
 func (o SingleValueChartOutput) ShowSparkLine() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.BoolPtrOutput { return v.ShowSparkLine }).(pulumi.BoolPtrOutput)
 }
@@ -394,17 +431,17 @@ func (o SingleValueChartOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-// Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
+// (Metric by default) Must be "Metric" or "Binary"
 func (o SingleValueChartOutput) UnitPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the chart.
+// URL of the chart
 func (o SingleValueChartOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *SingleValueChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Plot-level customization options, associated with a publish statement.
+// Plot-level customization options, associated with a publish statement
 func (o SingleValueChartOutput) VizOptions() SingleValueChartVizOptionArrayOutput {
 	return o.ApplyT(func(v *SingleValueChart) SingleValueChartVizOptionArrayOutput { return v.VizOptions }).(SingleValueChartVizOptionArrayOutput)
 }

@@ -5,13 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Handles management of SignalFx teams.
+ * Handles management of Splunk Observability Cloud teams.
  *
- * You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+ * You can configure [team notification policies](https://docs.splunk.com/observability/en/admin/user-management/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
  *
- * > **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * > **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,27 @@ import * as utilities from "./utilities";
  *     notificationsInfos: ["Email,notify@example.com"],
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * The following arguments are supported in the resource block:
+ *
+ * * `name` - (Required) Name of the team.
+ * * `description` - (Optional) Description of the team.
+ * * `members` - (Optional) List of user IDs to include in the team.
+ * * `notificationsCritical` - (Optional) Where to send notifications for critical alerts
+ * * `notificationsDefault` - (Optional) Where to send notifications for default alerts
+ * * `notificationsInfo` - (Optional) Where to send notifications for info alerts
+ * * `notificationsMajor` - (Optional) Where to send notifications for major alerts
+ * * `notificationsMinor` - (Optional) Where to send notifications for minor alerts
+ * * `notificationsWarning` - (Optional) Where to send notifications for warning alerts
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the team.
+ * * `url` - The URL of the team.
  */
 export class Team extends pulumi.CustomResource {
     /**
@@ -57,43 +78,43 @@ export class Team extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the team.
+     * Description of the team (Optional)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * List of user IDs to include in the team.
+     * Members of team
      */
     public readonly members!: pulumi.Output<string[] | undefined>;
     /**
-     * Name of the team.
+     * Name of the team
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Where to send notifications for critical alerts
+     * List of notification destinations to use for the critical alerts category.
      */
     public readonly notificationsCriticals!: pulumi.Output<string[] | undefined>;
     /**
-     * Where to send notifications for default alerts
+     * List of notification destinations to use for the default alerts category.
      */
     public readonly notificationsDefaults!: pulumi.Output<string[] | undefined>;
     /**
-     * Where to send notifications for info alerts
+     * List of notification destinations to use for the info alerts category.
      */
     public readonly notificationsInfos!: pulumi.Output<string[] | undefined>;
     /**
-     * Where to send notifications for major alerts
+     * List of notification destinations to use for the major alerts category.
      */
     public readonly notificationsMajors!: pulumi.Output<string[] | undefined>;
     /**
-     * Where to send notifications for minor alerts
+     * List of notification destinations to use for the minor alerts category.
      */
     public readonly notificationsMinors!: pulumi.Output<string[] | undefined>;
     /**
-     * Where to send notifications for warning alerts
+     * List of notification destinations to use for the warning alerts category.
      */
     public readonly notificationsWarnings!: pulumi.Output<string[] | undefined>;
     /**
-     * The URL of the team.
+     * URL of the team
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -143,43 +164,43 @@ export class Team extends pulumi.CustomResource {
  */
 export interface TeamState {
     /**
-     * Description of the team.
+     * Description of the team (Optional)
      */
     description?: pulumi.Input<string>;
     /**
-     * List of user IDs to include in the team.
+     * Members of team
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the team.
+     * Name of the team
      */
     name?: pulumi.Input<string>;
     /**
-     * Where to send notifications for critical alerts
+     * List of notification destinations to use for the critical alerts category.
      */
     notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for default alerts
+     * List of notification destinations to use for the default alerts category.
      */
     notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for info alerts
+     * List of notification destinations to use for the info alerts category.
      */
     notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for major alerts
+     * List of notification destinations to use for the major alerts category.
      */
     notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for minor alerts
+     * List of notification destinations to use for the minor alerts category.
      */
     notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for warning alerts
+     * List of notification destinations to use for the warning alerts category.
      */
     notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URL of the team.
+     * URL of the team
      */
     url?: pulumi.Input<string>;
 }
@@ -189,39 +210,39 @@ export interface TeamState {
  */
 export interface TeamArgs {
     /**
-     * Description of the team.
+     * Description of the team (Optional)
      */
     description?: pulumi.Input<string>;
     /**
-     * List of user IDs to include in the team.
+     * Members of team
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the team.
+     * Name of the team
      */
     name?: pulumi.Input<string>;
     /**
-     * Where to send notifications for critical alerts
+     * List of notification destinations to use for the critical alerts category.
      */
     notificationsCriticals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for default alerts
+     * List of notification destinations to use for the default alerts category.
      */
     notificationsDefaults?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for info alerts
+     * List of notification destinations to use for the info alerts category.
      */
     notificationsInfos?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for major alerts
+     * List of notification destinations to use for the major alerts category.
      */
     notificationsMajors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for minor alerts
+     * List of notification destinations to use for the minor alerts category.
      */
     notificationsMinors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Where to send notifications for warning alerts
+     * List of notification destinations to use for the warning alerts category.
      */
     notificationsWarnings?: pulumi.Input<pulumi.Input<string>[]>;
 }

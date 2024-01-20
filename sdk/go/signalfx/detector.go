@@ -12,13 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a SignalFx detector resource. This can be used to create and manage detectors.
+// Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
 //
-// > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+// If you're interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the "Show SignalFlow" feature to extract the value for `programText`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
 //
-// > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding detectors, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+// > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -90,9 +90,10 @@ import (
 //	}
 //
 // ```
-// ## Notification Format
 //
-// As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+// ## Notification format
+//
+// As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
 //
 // ```go
 // package main
@@ -111,7 +112,9 @@ import (
 //
 // ```
 //
-// This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+// See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
+//
+// Here are some example of how to configure each notification type:
 //
 // ### Email
 //
@@ -134,7 +137,7 @@ import (
 //
 // ### Jira
 //
-// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `jira.Integration`.)
+// Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `jira.Integration`.
 //
 // ```go
 // package main
@@ -153,9 +156,9 @@ import (
 //
 // ```
 //
-// ### Opsgenie
+// ### OpsGenie
 //
-// Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+// Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
 //
 // ```go
 // package main
@@ -195,7 +198,7 @@ import (
 //
 // ### Slack
 //
-// Exclude the `#` on the channel name!
+// Exclude the `#` on the channel name:
 //
 // ```go
 // package main
@@ -256,7 +259,7 @@ import (
 //
 // ```
 //
-// ### VictorOps
+// ### Splunk On-Call (formerly VictorOps)
 //
 // ```go
 // package main
@@ -275,9 +278,9 @@ import (
 //
 // ```
 //
-// ### Webhook
+// ### Webhooks
 //
-// > **NOTE** You need to include all the commas even if you only use a credential id below.
+// You need to include all the commas even if you only use a credential id.
 //
 // You can either configure a Webhook to use an existing integration's credential id:
 // ```go
@@ -297,7 +300,8 @@ import (
 //
 // ```
 //
-// or configure one inline:
+// Or configure one inline:
+//
 // ```go
 // package main
 //
@@ -315,6 +319,58 @@ import (
 //
 // ```
 //
+// ## Arguments
+//
+// * `name` - (Required) Name of the detector.
+// * `programText` - (Required) Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+// * `description` - (Optional) Description of the detector.
+// * `authorizedWriterTeams` - (Optional) Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+// * `authorizedWriterUsers` - (Optional) User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+// * `maxDelay` - (Optional) How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+// * `minDelay` - (Optional) How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+// * `showDataMarkers` - (Optional) When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+// * `showEventLines` - (Optional) When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+// * `disableSampling` - (Optional) When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+// * `timeRange` - (Optional) Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+// * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// * `tags` - (Optional) Tags associated with the detector.
+// * `teams` - (Optional) Team IDs to associate the detector to.
+// * `rule` - (Required) Set of rules used for alerting.
+//   - `detectLabel` - (Required) A detect label which matches a detect label within `programText`.
+//   - `severity` - (Required) The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
+//   - `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+//   - `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.
+//   - `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+//   - `parameterizedBody` - (Optional) Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+//   - `parameterizedSubject` - (Optional) Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+//   - `runbookUrl` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+//   - `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
+//
+// * `vizOptions` - (Optional) Plot-level customization options, associated with a publish statement.
+//   - `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+//   - `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+//   - `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+//   - `valueUnit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+//   - `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+//
+// **Notes**
+//
+// Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+//
+// - `maxDelay` allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+// - `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
+//
+// See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the detector.
+// * `labelResolutions` - The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+// * `url` - The URL of the detector.
+//
 // ## Import
 //
 // Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
@@ -327,45 +383,48 @@ import (
 type Detector struct {
 	pulumi.CustomResourceState
 
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+	// Team IDs that have write access to this dashboard
 	AuthorizedWriterTeams pulumi.StringArrayOutput `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+	// (false by default) When false, samples a subset of the output MTS in the visualization.
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+	// Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+	// should be triggered
 	LabelResolutions pulumi.IntMapOutput `pulumi:"labelResolutions"`
-	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
-	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	// Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+	// is 900 (15m)
 	MinDelay pulumi.IntPtrOutput `pulumi:"minDelay"`
-	// Name of the detector.
+	// Name of the detector
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
-	// Set of rules used for alerting.
+	// Set of rules used for alerting
 	Rules DetectorRuleArrayOutput `pulumi:"rules"`
-	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+	// (true by default) When true, markers will be drawn for each datapoint within the visualization.
 	ShowDataMarkers pulumi.BoolPtrOutput `pulumi:"showDataMarkers"`
-	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+	// (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
 	ShowEventLines pulumi.BoolPtrOutput `pulumi:"showEventLines"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// Tags associated with the detector.
+	// Tags associated with the detector
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Team IDs to associate the detector to.
+	// Team IDs to associate the detector to
 	Teams pulumi.StringArrayOutput `pulumi:"teams"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+	// to 3600
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
-	// The URL of the detector.
+	// URL of the detector
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions DetectorVizOptionArrayOutput `pulumi:"vizOptions"`
 }
 
@@ -405,88 +464,94 @@ func GetDetector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Detector resources.
 type detectorState struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+	// Team IDs that have write access to this dashboard
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector
 	Description *string `pulumi:"description"`
-	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+	// (false by default) When false, samples a subset of the output MTS in the visualization.
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	EndTime *int `pulumi:"endTime"`
-	// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+	// Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+	// should be triggered
 	LabelResolutions map[string]int `pulumi:"labelResolutions"`
-	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
 	MaxDelay *int `pulumi:"maxDelay"`
-	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	// Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+	// is 900 (15m)
 	MinDelay *int `pulumi:"minDelay"`
-	// Name of the detector.
+	// Name of the detector
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText *string `pulumi:"programText"`
-	// Set of rules used for alerting.
+	// Set of rules used for alerting
 	Rules []DetectorRule `pulumi:"rules"`
-	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+	// (true by default) When true, markers will be drawn for each datapoint within the visualization.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
-	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+	// (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
 	ShowEventLines *bool `pulumi:"showEventLines"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	StartTime *int `pulumi:"startTime"`
-	// Tags associated with the detector.
+	// Tags associated with the detector
 	Tags []string `pulumi:"tags"`
-	// Team IDs to associate the detector to.
+	// Team IDs to associate the detector to
 	Teams []string `pulumi:"teams"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+	// to 3600
 	TimeRange *int `pulumi:"timeRange"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
-	// The URL of the detector.
+	// URL of the detector
 	Url *string `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions []DetectorVizOption `pulumi:"vizOptions"`
 }
 
 type DetectorState struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+	// Team IDs that have write access to this dashboard
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard
 	AuthorizedWriterUsers pulumi.StringArrayInput
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector
 	Description pulumi.StringPtrInput
-	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+	// (false by default) When false, samples a subset of the output MTS in the visualization.
 	DisableSampling pulumi.BoolPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	EndTime pulumi.IntPtrInput
-	// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+	// Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+	// should be triggered
 	LabelResolutions pulumi.IntMapInput
-	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
 	MaxDelay pulumi.IntPtrInput
-	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	// Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+	// is 900 (15m)
 	MinDelay pulumi.IntPtrInput
-	// Name of the detector.
+	// Name of the detector
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringPtrInput
-	// Set of rules used for alerting.
+	// Set of rules used for alerting
 	Rules DetectorRuleArrayInput
-	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+	// (true by default) When true, markers will be drawn for each datapoint within the visualization.
 	ShowDataMarkers pulumi.BoolPtrInput
-	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+	// (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
 	ShowEventLines pulumi.BoolPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	StartTime pulumi.IntPtrInput
-	// Tags associated with the detector.
+	// Tags associated with the detector
 	Tags pulumi.StringArrayInput
-	// Team IDs to associate the detector to.
+	// Team IDs to associate the detector to
 	Teams pulumi.StringArrayInput
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+	// to 3600
 	TimeRange pulumi.IntPtrInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
-	// The URL of the detector.
+	// URL of the detector
 	Url pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions DetectorVizOptionArrayInput
 }
 
@@ -495,81 +560,85 @@ func (DetectorState) ElementType() reflect.Type {
 }
 
 type detectorArgs struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+	// Team IDs that have write access to this dashboard
 	AuthorizedWriterTeams []string `pulumi:"authorizedWriterTeams"`
-	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector
 	Description *string `pulumi:"description"`
-	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+	// (false by default) When false, samples a subset of the output MTS in the visualization.
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	EndTime *int `pulumi:"endTime"`
-	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
 	MaxDelay *int `pulumi:"maxDelay"`
-	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	// Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+	// is 900 (15m)
 	MinDelay *int `pulumi:"minDelay"`
-	// Name of the detector.
+	// Name of the detector
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText string `pulumi:"programText"`
-	// Set of rules used for alerting.
+	// Set of rules used for alerting
 	Rules []DetectorRule `pulumi:"rules"`
-	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+	// (true by default) When true, markers will be drawn for each datapoint within the visualization.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
-	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+	// (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
 	ShowEventLines *bool `pulumi:"showEventLines"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	StartTime *int `pulumi:"startTime"`
-	// Tags associated with the detector.
+	// Tags associated with the detector
 	Tags []string `pulumi:"tags"`
-	// Team IDs to associate the detector to.
+	// Team IDs to associate the detector to
 	Teams []string `pulumi:"teams"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+	// to 3600
 	TimeRange *int `pulumi:"timeRange"`
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions []DetectorVizOption `pulumi:"vizOptions"`
 }
 
 // The set of arguments for constructing a Detector resource.
 type DetectorArgs struct {
-	// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+	// Team IDs that have write access to this dashboard
 	AuthorizedWriterTeams pulumi.StringArrayInput
-	// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+	// User IDs that have write access to this dashboard
 	AuthorizedWriterUsers pulumi.StringArrayInput
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+	// Description of the detector
 	Description pulumi.StringPtrInput
-	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+	// (false by default) When false, samples a subset of the output MTS in the visualization.
 	DisableSampling pulumi.BoolPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	EndTime pulumi.IntPtrInput
-	// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+	// Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
 	MaxDelay pulumi.IntPtrInput
-	// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+	// Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+	// is 900 (15m)
 	MinDelay pulumi.IntPtrInput
-	// Name of the detector.
+	// Name of the detector
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringInput
-	// Set of rules used for alerting.
+	// Set of rules used for alerting
 	Rules DetectorRuleArrayInput
-	// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+	// (true by default) When true, markers will be drawn for each datapoint within the visualization.
 	ShowDataMarkers pulumi.BoolPtrInput
-	// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+	// (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
 	ShowEventLines pulumi.BoolPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch. Used for visualization
 	StartTime pulumi.IntPtrInput
-	// Tags associated with the detector.
+	// Tags associated with the detector
 	Tags pulumi.StringArrayInput
-	// Team IDs to associate the detector to.
+	// Team IDs to associate the detector to
 	Teams pulumi.StringArrayInput
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+	// to 3600
 	TimeRange pulumi.IntPtrInput
 	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions DetectorVizOptionArrayInput
 }
 
@@ -660,87 +729,90 @@ func (o DetectorOutput) ToDetectorOutputWithContext(ctx context.Context) Detecto
 	return o
 }
 
-// Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+// Team IDs that have write access to this dashboard
 func (o DetectorOutput) AuthorizedWriterTeams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.AuthorizedWriterTeams }).(pulumi.StringArrayOutput)
 }
 
-// User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+// User IDs that have write access to this dashboard
 func (o DetectorOutput) AuthorizedWriterUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.AuthorizedWriterUsers }).(pulumi.StringArrayOutput)
 }
 
-// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+// Description of the detector
 func (o DetectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+// (false by default) When false, samples a subset of the output MTS in the visualization.
 func (o DetectorOutput) DisableSampling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch. Used for visualization
 func (o DetectorOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+// Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+// should be triggered
 func (o DetectorOutput) LabelResolutions() pulumi.IntMapOutput {
 	return o.ApplyT(func(v *Detector) pulumi.IntMapOutput { return v.LabelResolutions }).(pulumi.IntMapOutput)
 }
 
-// How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+// Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
 func (o DetectorOutput) MaxDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
 }
 
-// How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+// Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+// is 900 (15m)
 func (o DetectorOutput) MinDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.MinDelay }).(pulumi.IntPtrOutput)
 }
 
-// Name of the detector.
+// Name of the detector
 func (o DetectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+// Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 func (o DetectorOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
 
-// Set of rules used for alerting.
+// Set of rules used for alerting
 func (o DetectorOutput) Rules() DetectorRuleArrayOutput {
 	return o.ApplyT(func(v *Detector) DetectorRuleArrayOutput { return v.Rules }).(DetectorRuleArrayOutput)
 }
 
-// When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+// (true by default) When true, markers will be drawn for each datapoint within the visualization.
 func (o DetectorOutput) ShowDataMarkers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.ShowDataMarkers }).(pulumi.BoolPtrOutput)
 }
 
-// When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+// (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
 func (o DetectorOutput) ShowEventLines() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.ShowEventLines }).(pulumi.BoolPtrOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch. Used for visualization
 func (o DetectorOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// Tags associated with the detector.
+// Tags associated with the detector
 func (o DetectorOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Team IDs to associate the detector to.
+// Team IDs to associate the detector to
 func (o DetectorOutput) Teams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringArrayOutput { return v.Teams }).(pulumi.StringArrayOutput)
 }
 
-// Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+// to 3600
 func (o DetectorOutput) TimeRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
 }
@@ -750,12 +822,12 @@ func (o DetectorOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the detector.
+// URL of the detector
 func (o DetectorOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Plot-level customization options, associated with a publish statement.
+// Plot-level customization options, associated with a publish statement
 func (o DetectorOutput) VizOptions() DetectorVizOptionArrayOutput {
 	return o.ApplyT(func(v *Detector) DetectorVizOptionArrayOutput { return v.VizOptions }).(DetectorVizOptionArrayOutput)
 }

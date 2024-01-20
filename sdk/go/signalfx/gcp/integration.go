@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SignalFx GCP Integration
+// Splunk Observability Cloud GCP Integration.
 //
-// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk  Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -69,28 +69,51 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// * `customMetricTypeDomains` - (Optional) List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+// * `enabled` - (Required) Whether the integration is enabled.
+// * `importGcpMetrics` - (Optional) If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+// * `includeList` - (Optional) [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+// * `name` - (Required) Name of the integration.
+// * `namedToken` - (Optional) Name of the org token to be used for data ingestion. If not specified then default access token is used.
+// * `pollRate` - (Optional) GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+// * `projectServiceKeys` - (Required) GCP projects to add.
+// * `services` - (Optional) GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+// * `useMetricSourceProjectForQuota` - (Optional) When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+//
+// ## Attributes
+//
+// In addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the integration.
 type Integration struct {
 	pulumi.CustomResourceState
 
-	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+	// List of additional GCP service domain names that you want to monitor
 	CustomMetricTypeDomains pulumi.StringArrayOutput `pulumi:"customMetricTypeDomains"`
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+	// If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
+	// will import only metadata. Defaults to true.
 	ImportGcpMetrics pulumi.BoolPtrOutput `pulumi:"importGcpMetrics"`
-	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	// List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
 	IncludeLists pulumi.StringArrayOutput `pulumi:"includeLists"`
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+	// A named token to use for ingest
 	NamedToken pulumi.StringPtrOutput `pulumi:"namedToken"`
-	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+	// GCP poll rate (in seconds). Between `60` and `600`.
 	PollRate pulumi.IntPtrOutput `pulumi:"pollRate"`
-	// GCP projects to add.
+	// GCP project service keys
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayOutput `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+	// GCP enabled services
 	Services pulumi.StringArrayOutput `pulumi:"services"`
-	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
+	// stored. For this to work the service account provided for the project needs to be provided with
+	// serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
+	// settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrOutput `pulumi:"useMetricSourceProjectForQuota"`
 }
 
@@ -134,48 +157,56 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
-	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+	// List of additional GCP service domain names that you want to monitor
 	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+	// If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
+	// will import only metadata. Defaults to true.
 	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
-	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	// List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
 	IncludeLists []string `pulumi:"includeLists"`
-	// Name of the integration.
+	// Name of the integration
 	Name *string `pulumi:"name"`
-	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
-	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+	// GCP poll rate (in seconds). Between `60` and `600`.
 	PollRate *int `pulumi:"pollRate"`
-	// GCP projects to add.
+	// GCP project service keys
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+	// GCP enabled services
 	Services []string `pulumi:"services"`
-	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
+	// stored. For this to work the service account provided for the project needs to be provided with
+	// serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
+	// settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
 }
 
 type IntegrationState struct {
-	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+	// List of additional GCP service domain names that you want to monitor
 	CustomMetricTypeDomains pulumi.StringArrayInput
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+	// If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
+	// will import only metadata. Defaults to true.
 	ImportGcpMetrics pulumi.BoolPtrInput
-	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	// List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
 	IncludeLists pulumi.StringArrayInput
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringPtrInput
-	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
-	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+	// GCP poll rate (in seconds). Between `60` and `600`.
 	PollRate pulumi.IntPtrInput
-	// GCP projects to add.
+	// GCP project service keys
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+	// GCP enabled services
 	Services pulumi.StringArrayInput
-	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
+	// stored. For this to work the service account provided for the project needs to be provided with
+	// serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
+	// settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
 }
 
@@ -184,49 +215,57 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
-	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+	// List of additional GCP service domain names that you want to monitor
 	CustomMetricTypeDomains []string `pulumi:"customMetricTypeDomains"`
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled bool `pulumi:"enabled"`
-	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+	// If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
+	// will import only metadata. Defaults to true.
 	ImportGcpMetrics *bool `pulumi:"importGcpMetrics"`
-	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	// List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
 	IncludeLists []string `pulumi:"includeLists"`
-	// Name of the integration.
+	// Name of the integration
 	Name *string `pulumi:"name"`
-	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+	// A named token to use for ingest
 	NamedToken *string `pulumi:"namedToken"`
-	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+	// GCP poll rate (in seconds). Between `60` and `600`.
 	PollRate *int `pulumi:"pollRate"`
-	// GCP projects to add.
+	// GCP project service keys
 	ProjectServiceKeys []IntegrationProjectServiceKey `pulumi:"projectServiceKeys"`
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+	// GCP enabled services
 	Services []string `pulumi:"services"`
-	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
+	// stored. For this to work the service account provided for the project needs to be provided with
+	// serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
+	// settings are used.
 	UseMetricSourceProjectForQuota *bool `pulumi:"useMetricSourceProjectForQuota"`
 }
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
-	// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+	// List of additional GCP service domain names that you want to monitor
 	CustomMetricTypeDomains pulumi.StringArrayInput
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolInput
-	// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+	// If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
+	// will import only metadata. Defaults to true.
 	ImportGcpMetrics pulumi.BoolPtrInput
-	// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+	// List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
 	IncludeLists pulumi.StringArrayInput
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringPtrInput
-	// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+	// A named token to use for ingest
 	NamedToken pulumi.StringPtrInput
-	// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+	// GCP poll rate (in seconds). Between `60` and `600`.
 	PollRate pulumi.IntPtrInput
-	// GCP projects to add.
+	// GCP project service keys
 	ProjectServiceKeys IntegrationProjectServiceKeyArrayInput
-	// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+	// GCP enabled services
 	Services pulumi.StringArrayInput
-	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+	// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
+	// stored. For this to work the service account provided for the project needs to be provided with
+	// serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
+	// settings are used.
 	UseMetricSourceProjectForQuota pulumi.BoolPtrInput
 }
 
@@ -317,52 +356,56 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
+// List of additional GCP service domain names that you want to monitor
 func (o IntegrationOutput) CustomMetricTypeDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.CustomMetricTypeDomains }).(pulumi.StringArrayOutput)
 }
 
-// Whether the integration is enabled.
+// Whether the integration is enabled or not
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
+// If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
+// will import only metadata. Defaults to true.
 func (o IntegrationOutput) ImportGcpMetrics() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.ImportGcpMetrics }).(pulumi.BoolPtrOutput)
 }
 
-// [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
+// List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
 func (o IntegrationOutput) IncludeLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.IncludeLists }).(pulumi.StringArrayOutput)
 }
 
-// Name of the integration.
+// Name of the integration
 func (o IntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Name of the org token to be used for data ingestion. If not specified then default access token is used.
+// A named token to use for ingest
 func (o IntegrationOutput) NamedToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.NamedToken }).(pulumi.StringPtrOutput)
 }
 
-// GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+// GCP poll rate (in seconds). Between `60` and `600`.
 func (o IntegrationOutput) PollRate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.IntPtrOutput { return v.PollRate }).(pulumi.IntPtrOutput)
 }
 
-// GCP projects to add.
+// GCP project service keys
 func (o IntegrationOutput) ProjectServiceKeys() IntegrationProjectServiceKeyArrayOutput {
 	return o.ApplyT(func(v *Integration) IntegrationProjectServiceKeyArrayOutput { return v.ProjectServiceKeys }).(IntegrationProjectServiceKeyArrayOutput)
 }
 
-// GCP service metrics to import. Can be an empty list, or not included, to import 'All services'. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
+// GCP enabled services
 func (o IntegrationOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
 }
 
-// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
+// When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
+// stored. For this to work the service account provided for the project needs to be provided with
+// serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
+// settings are used.
 func (o IntegrationOutput) UseMetricSourceProjectForQuota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolPtrOutput { return v.UseMetricSourceProjectForQuota }).(pulumi.BoolPtrOutput)
 }

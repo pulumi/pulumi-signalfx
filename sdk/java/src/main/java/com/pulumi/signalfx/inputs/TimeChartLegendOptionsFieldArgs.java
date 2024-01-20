@@ -17,32 +17,16 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
 
     public static final TimeChartLegendOptionsFieldArgs Empty = new TimeChartLegendOptionsFieldArgs();
 
-    /**
-     * True or False depending on if you want the property to be shown or hidden.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return True or False depending on if you want the property to be shown or hidden.
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-     * 
-     */
     @Import(name="property", required=true)
     private Output<String> property;
 
-    /**
-     * @return The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-     * 
-     */
     public Output<String> property() {
         return this.property;
     }
@@ -72,44 +56,20 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
             $ = new TimeChartLegendOptionsFieldArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled True or False depending on if you want the property to be shown or hidden.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled True or False depending on if you want the property to be shown or hidden.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param property The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
-        /**
-         * @param property The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(String property) {
             return property(Output.of(property));
         }

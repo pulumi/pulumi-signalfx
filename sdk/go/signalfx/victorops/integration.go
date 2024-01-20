@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SignalFx VictorOps integration.
+// Splunk On-Call integrations.
 //
-// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -42,14 +42,26 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// * `name` - (Required) Name of the integration.
+// * `enabled` - (Required) Whether the integration is enabled.
+// * `postUrl` - (Optional) Splunk On-Call REST API URL.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the integration.
 type Integration struct {
 	pulumi.CustomResourceState
 
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Victor Ops REST API URL.
+	// Opsgenie API URL for integration
 	PostUrl pulumi.StringPtrOutput `pulumi:"postUrl"`
 }
 
@@ -86,20 +98,20 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the integration.
+	// Name of the integration
 	Name *string `pulumi:"name"`
-	// Victor Ops REST API URL.
+	// Opsgenie API URL for integration
 	PostUrl *string `pulumi:"postUrl"`
 }
 
 type IntegrationState struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringPtrInput
-	// Victor Ops REST API URL.
+	// Opsgenie API URL for integration
 	PostUrl pulumi.StringPtrInput
 }
 
@@ -108,21 +120,21 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled bool `pulumi:"enabled"`
-	// Name of the integration.
+	// Name of the integration
 	Name *string `pulumi:"name"`
-	// Victor Ops REST API URL.
+	// Opsgenie API URL for integration
 	PostUrl *string `pulumi:"postUrl"`
 }
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolInput
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringPtrInput
-	// Victor Ops REST API URL.
+	// Opsgenie API URL for integration
 	PostUrl pulumi.StringPtrInput
 }
 
@@ -213,17 +225,17 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// Whether the integration is enabled.
+// Whether the integration is enabled or not
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Name of the integration.
+// Name of the integration
 func (o IntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Victor Ops REST API URL.
+// Opsgenie API URL for integration
 func (o IntegrationOutput) PostUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.PostUrl }).(pulumi.StringPtrOutput)
 }

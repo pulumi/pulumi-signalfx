@@ -22,14 +22,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     public static final HeatmapChartArgs Empty = new HeatmapChartArgs();
 
     /**
-     * Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }
      * 
      */
     @Import(name="colorRange")
     private @Nullable Output<HeatmapChartColorRangeArgs> colorRange;
 
     /**
-     * @return Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * @return Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }
      * 
      */
     public Optional<Output<HeatmapChartColorRangeArgs>> colorRange() {
@@ -37,14 +37,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range
      * 
      */
     @Import(name="colorScales")
     private @Nullable Output<List<HeatmapChartColorScaleArgs>> colorScales;
 
     /**
-     * @return One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * @return Single color range including both the color to display for that range and the borders of the range
      * 
      */
     public Optional<Output<List<HeatmapChartColorScaleArgs>>> colorScales() {
@@ -52,14 +52,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the chart.
+     * Description of the chart (Optional)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart.
+     * @return Description of the chart (Optional)
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +67,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      * 
      */
     @Import(name="disableSampling")
     private @Nullable Output<Boolean> disableSampling;
 
     /**
-     * @return If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+     * @return (false by default) If false, samples a subset of the output MTS, which improves UI performance
      * 
      */
     public Optional<Output<Boolean>> disableSampling() {
@@ -82,14 +82,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Properties to group by in the heatmap (in nesting order).
+     * Properties to group by in the heatmap (in nesting order)
      * 
      */
     @Import(name="groupBies")
     private @Nullable Output<List<String>> groupBies;
 
     /**
-     * @return Properties to group by in the heatmap (in nesting order).
+     * @return Properties to group by in the heatmap (in nesting order)
      * 
      */
     public Optional<Output<List<String>>> groupBies() {
@@ -97,14 +97,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to show the timestamp in the chart. `false` by default.
+     * (false by default) Whether to show the timestamp in the chart
      * 
      */
     @Import(name="hideTimestamp")
     private @Nullable Output<Boolean> hideTimestamp;
 
     /**
-     * @return Whether to show the timestamp in the chart. `false` by default.
+     * @return (false by default) Whether to show the timestamp in the chart
      * 
      */
     public Optional<Output<Boolean>> hideTimestamp() {
@@ -112,14 +112,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How long (in seconds) to wait for late datapoints.
+     * How long (in seconds) to wait for late datapoints
      * 
      */
     @Import(name="maxDelay")
     private @Nullable Output<Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints.
+     * @return How long (in seconds) to wait for late datapoints
      * 
      */
     public Optional<Output<Integer>> maxDelay() {
@@ -127,14 +127,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program.
+     * The minimum resolution (in seconds) to use for computing the underlying program
      * 
      */
     @Import(name="minimumResolution")
     private @Nullable Output<Integer> minimumResolution;
 
     /**
-     * @return The minimum resolution (in seconds) to use for computing the underlying program.
+     * @return The minimum resolution (in seconds) to use for computing the underlying program
      * 
      */
     public Optional<Output<Integer>> minimumResolution() {
@@ -142,14 +142,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart.
+     * Name of the chart
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart.
+     * @return Name of the chart
      * 
      */
     public Optional<Output<String>> name() {
@@ -157,14 +157,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Output<String> programText() {
@@ -172,14 +172,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How often (in seconds) to refresh the values of the heatmap.
+     * How often (in seconds) to refresh the values of the heatmap
      * 
      */
     @Import(name="refreshInterval")
     private @Nullable Output<Integer> refreshInterval;
 
     /**
-     * @return How often (in seconds) to refresh the values of the heatmap.
+     * @return How often (in seconds) to refresh the values of the heatmap
      * 
      */
     public Optional<Output<Integer>> refreshInterval() {
@@ -187,14 +187,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+     * The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
      * 
      */
     @Import(name="sortBy")
     private @Nullable Output<String> sortBy;
 
     /**
-     * @return The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+     * @return The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
      * 
      */
     public Optional<Output<String>> sortBy() {
@@ -202,14 +202,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+     * @return The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
     public Optional<Output<String>> timezone() {
@@ -217,14 +217,14 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     @Import(name="unitPrefix")
     private @Nullable Output<String> unitPrefix;
 
     /**
-     * @return Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     public Optional<Output<String>> unitPrefix() {
@@ -269,7 +269,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorRange Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorRange Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorRange Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorRange Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart.
+         * @param description Description of the chart (Optional)
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+         * @param disableSampling (false by default) If false, samples a subset of the output MTS, which improves UI performance
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+         * @param disableSampling (false by default) If false, samples a subset of the output MTS, which improves UI performance
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Properties to group by in the heatmap (in nesting order).
+         * @param groupBies Properties to group by in the heatmap (in nesting order)
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Properties to group by in the heatmap (in nesting order).
+         * @param groupBies Properties to group by in the heatmap (in nesting order)
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Properties to group by in the heatmap (in nesting order).
+         * @param groupBies Properties to group by in the heatmap (in nesting order)
          * 
          * @return builder
          * 
@@ -394,7 +394,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hideTimestamp Whether to show the timestamp in the chart. `false` by default.
+         * @param hideTimestamp (false by default) Whether to show the timestamp in the chart
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hideTimestamp Whether to show the timestamp in the chart. `false` by default.
+         * @param hideTimestamp (false by default) Whether to show the timestamp in the chart
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints.
+         * @param maxDelay How long (in seconds) to wait for late datapoints
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints.
+         * @param maxDelay How long (in seconds) to wait for late datapoints
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program.
+         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program.
+         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart.
+         * @param name Name of the chart
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &lt;https://developers.signalfx.com/docs/signalflow-overview&gt;.
+         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -499,7 +499,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the values of the heatmap.
+         * @param refreshInterval How often (in seconds) to refresh the values of the heatmap
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the values of the heatmap.
+         * @param refreshInterval How often (in seconds) to refresh the values of the heatmap
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortBy The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+         * @param sortBy The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortBy The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
+         * @param sortBy The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
          * 
          * @return builder
          * 
@@ -541,7 +541,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
          * 
          * @return builder
          * 
@@ -562,7 +562,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class HeatmapChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
          * 
          * @return builder
          * 

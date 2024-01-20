@@ -18,62 +18,30 @@ public final class DashboardColumnArgs extends com.pulumi.resources.ResourceArgs
 
     public static final DashboardColumnArgs Empty = new DashboardColumnArgs();
 
-    /**
-     * List of IDs of the charts to display.
-     * 
-     */
     @Import(name="chartIds", required=true)
     private Output<List<String>> chartIds;
 
-    /**
-     * @return List of IDs of the charts to display.
-     * 
-     */
     public Output<List<String>> chartIds() {
         return this.chartIds;
     }
 
-    /**
-     * Column number for the layout.
-     * 
-     */
     @Import(name="column")
     private @Nullable Output<Integer> column;
 
-    /**
-     * @return Column number for the layout.
-     * 
-     */
     public Optional<Output<Integer>> column() {
         return Optional.ofNullable(this.column);
     }
 
-    /**
-     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
-     * 
-     */
     @Import(name="height")
     private @Nullable Output<Integer> height;
 
-    /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
-     * 
-     */
     public Optional<Output<Integer>> height() {
         return Optional.ofNullable(this.height);
     }
 
-    /**
-     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-     * 
-     */
     @Import(name="width")
     private @Nullable Output<Integer> width;
 
-    /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-     * 
-     */
     public Optional<Output<Integer>> width() {
         return Optional.ofNullable(this.width);
     }
@@ -105,96 +73,42 @@ public final class DashboardColumnArgs extends com.pulumi.resources.ResourceArgs
             $ = new DashboardColumnArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param chartIds List of IDs of the charts to display.
-         * 
-         * @return builder
-         * 
-         */
         public Builder chartIds(Output<List<String>> chartIds) {
             $.chartIds = chartIds;
             return this;
         }
 
-        /**
-         * @param chartIds List of IDs of the charts to display.
-         * 
-         * @return builder
-         * 
-         */
         public Builder chartIds(List<String> chartIds) {
             return chartIds(Output.of(chartIds));
         }
 
-        /**
-         * @param chartIds List of IDs of the charts to display.
-         * 
-         * @return builder
-         * 
-         */
         public Builder chartIds(String... chartIds) {
             return chartIds(List.of(chartIds));
         }
 
-        /**
-         * @param column Column number for the layout.
-         * 
-         * @return builder
-         * 
-         */
         public Builder column(@Nullable Output<Integer> column) {
             $.column = column;
             return this;
         }
 
-        /**
-         * @param column Column number for the layout.
-         * 
-         * @return builder
-         * 
-         */
         public Builder column(Integer column) {
             return column(Output.of(column));
         }
 
-        /**
-         * @param height How many rows every chart should take up (greater than or equal to 1). 1 by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder height(@Nullable Output<Integer> height) {
             $.height = height;
             return this;
         }
 
-        /**
-         * @param height How many rows every chart should take up (greater than or equal to 1). 1 by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder height(Integer height) {
             return height(Output.of(height));
         }
 
-        /**
-         * @param width How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder width(@Nullable Output<Integer> width) {
             $.width = width;
             return this;
         }
 
-        /**
-         * @param width How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder width(Integer width) {
             return width(Output.of(width));
         }

@@ -13,41 +13,14 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DetectorRule
     {
-        /// <summary>
-        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// A detect label which matches a detect label within `program_text`.
-        /// </summary>
         public readonly string DetectLabel;
-        /// <summary>
-        /// When true, notifications and events will not be generated for the detect label. `false` by default.
-        /// </summary>
         public readonly bool? Disabled;
-        /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-        /// </summary>
         public readonly ImmutableArray<string> Notifications;
-        /// <summary>
-        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
         public readonly string? ParameterizedBody;
-        /// <summary>
-        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-        /// </summary>
         public readonly string? ParameterizedSubject;
-        /// <summary>
-        /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-        /// </summary>
         public readonly string? RunbookUrl;
-        /// <summary>
-        /// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-        /// </summary>
         public readonly string Severity;
-        /// <summary>
-        /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-        /// </summary>
         public readonly string? Tip;
 
         [OutputConstructor]

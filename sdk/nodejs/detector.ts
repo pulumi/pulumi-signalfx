@@ -7,13 +7,13 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a SignalFx detector resource. This can be used to create and manage detectors.
+ * Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
  *
- * > **NOTE** If you're interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the "Show SignalFlow" feature to extract the value for `programText`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+ * If you're interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the "Show SignalFlow" feature to extract the value for `programText`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
  *
- * > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding detectors, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -56,15 +56,18 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
- * ## Notification Format
  *
- * As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you'd like to specify multiple notifications, then each should be a member in the list, like so:
+ * ## Notification format
+ *
+ * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+ * See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
+ *
+ * Here are some example of how to configure each notification type:
  *
  * ### Email
  *
@@ -74,15 +77,15 @@ import * as utilities from "./utilities";
  *
  * ### Jira
  *
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)
+ * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * ### Opsgenie
+ * ### OpsGenie
  *
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+ * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -96,7 +99,7 @@ import * as utilities from "./utilities";
  *
  * ### Slack
  *
- * Exclude the `#` on the channel name!
+ * Exclude the `#` on the channel name:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -118,25 +121,77 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * ### VictorOps
+ * ### Splunk On-Call (formerly VictorOps)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * ### Webhook
+ * ### Webhooks
  *
- * > **NOTE** You need to include all the commas even if you only use a credential id below.
+ * You need to include all the commas even if you only use a credential id.
  *
  * You can either configure a Webhook to use an existing integration's credential id:
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
  *
- * or configure one inline:
+ * Or configure one inline:
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ *
+ * ## Arguments
+ *
+ * * `name` - (Required) Name of the detector.
+ * * `programText` - (Required) Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+ * * `description` - (Optional) Description of the detector.
+ * * `authorizedWriterTeams` - (Optional) Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+ * * `authorizedWriterUsers` - (Optional) User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+ * * `maxDelay` - (Optional) How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+ * * `minDelay` - (Optional) How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+ * * `showDataMarkers` - (Optional) When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+ * * `showEventLines` - (Optional) When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+ * * `disableSampling` - (Optional) When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+ * * `timeRange` - (Optional) Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+ * * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+ * * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+ * * `tags` - (Optional) Tags associated with the detector.
+ * * `teams` - (Optional) Team IDs to associate the detector to.
+ * * `rule` - (Required) Set of rules used for alerting.
+ *     * `detectLabel` - (Required) A detect label which matches a detect label within `programText`.
+ *     * `severity` - (Required) The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
+ *     * `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+ *     * `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.
+ *     * `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+ *     * `parameterizedBody` - (Optional) Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+ *     * `parameterizedSubject` - (Optional) Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+ *     * `runbookUrl` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+ *     * `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
+ * * `vizOptions` - (Optional) Plot-level customization options, associated with a publish statement.
+ *     * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+ *     * `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+ *     * `valueUnit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+ *     * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+ *
+ * **Notes**
+ *
+ * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+ *
+ * - `maxDelay` allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+ * - `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
+ *
+ * See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the detector.
+ * * `labelResolutions` - The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+ * * `url` - The URL of the detector.
  *
  * ## Import
  *
@@ -175,71 +230,74 @@ export class Detector extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+     * Team IDs that have write access to this dashboard
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * (false by default) When false, samples a subset of the output MTS in the visualization.
      */
     public readonly disableSampling!: pulumi.Output<boolean | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch. Used for visualization
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     * Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+     * should be triggered
      */
     public /*out*/ readonly labelResolutions!: pulumi.Output<{[key: string]: number}>;
     /**
-     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      */
     public readonly maxDelay!: pulumi.Output<number | undefined>;
     /**
-     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      */
     public readonly minDelay!: pulumi.Output<number | undefined>;
     /**
-     * Name of the detector.
+     * Name of the detector
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     public readonly programText!: pulumi.Output<string>;
     /**
-     * Set of rules used for alerting.
+     * Set of rules used for alerting
      */
     public readonly rules!: pulumi.Output<outputs.DetectorRule[]>;
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * (true by default) When true, markers will be drawn for each datapoint within the visualization.
      */
     public readonly showDataMarkers!: pulumi.Output<boolean | undefined>;
     /**
-     * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      */
     public readonly showEventLines!: pulumi.Output<boolean | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch. Used for visualization
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * Tags associated with the detector.
+     * Tags associated with the detector
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * Team IDs to associate the detector to.
+     * Team IDs to associate the detector to
      */
     public readonly teams!: pulumi.Output<string[] | undefined>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
@@ -247,11 +305,11 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the detector.
+     * URL of the detector
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      */
     public readonly vizOptions!: pulumi.Output<outputs.DetectorVizOption[] | undefined>;
 
@@ -327,71 +385,74 @@ export class Detector extends pulumi.CustomResource {
  */
 export interface DetectorState {
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+     * Team IDs that have write access to this dashboard
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector
      */
     description?: pulumi.Input<string>;
     /**
-     * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * (false by default) When false, samples a subset of the output MTS in the visualization.
      */
     disableSampling?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch. Used for visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     * Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+     * should be triggered
      */
     labelResolutions?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     /**
-     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      */
     maxDelay?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      */
     minDelay?: pulumi.Input<number>;
     /**
-     * Name of the detector.
+     * Name of the detector
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText?: pulumi.Input<string>;
     /**
-     * Set of rules used for alerting.
+     * Set of rules used for alerting
      */
     rules?: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * (true by default) When true, markers will be drawn for each datapoint within the visualization.
      */
     showDataMarkers?: pulumi.Input<boolean>;
     /**
-     * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      */
     showEventLines?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch. Used for visualization
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Tags associated with the detector.
+     * Tags associated with the detector
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Team IDs to associate the detector to.
+     * Team IDs to associate the detector to
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      */
     timeRange?: pulumi.Input<number>;
     /**
@@ -399,11 +460,11 @@ export interface DetectorState {
      */
     timezone?: pulumi.Input<string>;
     /**
-     * The URL of the detector.
+     * URL of the detector
      */
     url?: pulumi.Input<string>;
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      */
     vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
 }
@@ -413,67 +474,69 @@ export interface DetectorState {
  */
 export interface DetectorArgs {
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorizedWriterUsers`).
+     * Team IDs that have write access to this dashboard
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`).
+     * User IDs that have write access to this dashboard
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector
      */
     description?: pulumi.Input<string>;
     /**
-     * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * (false by default) When false, samples a subset of the output MTS in the visualization.
      */
     disableSampling?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch. Used for visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      */
     maxDelay?: pulumi.Input<number>;
     /**
-     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      */
     minDelay?: pulumi.Input<number>;
     /**
-     * Name of the detector.
+     * Name of the detector
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText: pulumi.Input<string>;
     /**
-     * Set of rules used for alerting.
+     * Set of rules used for alerting
      */
     rules: pulumi.Input<pulumi.Input<inputs.DetectorRule>[]>;
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * (true by default) When true, markers will be drawn for each datapoint within the visualization.
      */
     showDataMarkers?: pulumi.Input<boolean>;
     /**
-     * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      */
     showEventLines?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch. Used for visualization
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Tags associated with the detector.
+     * Tags associated with the detector
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Team IDs to associate the detector to.
+     * Team IDs to associate the detector to
      */
     teams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      */
     timeRange?: pulumi.Input<number>;
     /**
@@ -481,7 +544,7 @@ export interface DetectorArgs {
      */
     timezone?: pulumi.Input<string>;
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      */
     vizOptions?: pulumi.Input<pulumi.Input<inputs.DetectorVizOption>[]>;
 }

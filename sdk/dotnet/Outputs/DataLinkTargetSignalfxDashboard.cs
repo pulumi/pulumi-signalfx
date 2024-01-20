@@ -13,21 +13,9 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DataLinkTargetSignalfxDashboard
     {
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target's dashboard group
-        /// </summary>
         public readonly string DashboardGroupId;
-        /// <summary>
-        /// SignalFx-assigned ID of the dashboard link target
-        /// </summary>
         public readonly string DashboardId;
-        /// <summary>
-        /// Flag that designates a target as the default for a data link object. `true` by default
-        /// </summary>
         public readonly bool? IsDefault;
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

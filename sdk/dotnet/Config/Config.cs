@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<string?> _apiUrl = new __Value<string?>(() => __config.Get("apiUrl"));
         /// <summary>
-        /// API URL for your SignalFx org, may include a realm
+        /// API URL for your Splunk Observability Cloud org, may include a realm
         /// </summary>
         public static string? ApiUrl
         {
@@ -44,7 +44,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<string?> _authToken = new __Value<string?>(() => __config.Get("authToken"));
         /// <summary>
-        /// SignalFx auth token
+        /// Splunk Observability Cloud auth token
         /// </summary>
         public static string? AuthToken
         {
@@ -54,7 +54,7 @@ namespace Pulumi.SignalFx
 
         private static readonly __Value<string?> _customAppUrl = new __Value<string?>(() => __config.Get("customAppUrl"));
         /// <summary>
-        /// Application URL for your SignalFx org, often customized for organizations using SSO
+        /// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         /// </summary>
         public static string? CustomAppUrl
         {

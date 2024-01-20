@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+ * You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
  *
- * ## Example Usage
+ * A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+ *
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -47,6 +49,27 @@ import * as utilities from "../utilities";
  *     timeRange: 900,
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * The following arguments are supported in the resource block:
+ *
+ * * `name` - (Required) Name of the log view.
+ * * `programText` - (Required) Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+ * * `description` - (Optional) Description of the log view.
+ * * `timeRange` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+ * * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+ * * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+ * * `columns` - (Optional) The column headers to show on the log view.
+ * * `sortOptions` - (Optional) The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+ * * `defaultConnection` - (Optional) The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the log view.
+ * * `url` - The URL of the log view.
  */
 export class View extends pulumi.CustomResource {
     /**
@@ -77,43 +100,43 @@ export class View extends pulumi.CustomResource {
     }
 
     /**
-     * The column headers to show on the log view.
+     * Column configuration
      */
     public readonly columns!: pulumi.Output<outputs.log.ViewColumn[] | undefined>;
     /**
-     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+     * default connection that the dashboard uses
      */
     public readonly defaultConnection!: pulumi.Output<string | undefined>;
     /**
-     * Description of the log view.
+     * Description of the chart (Optional)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to end the visualization
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * Name of the log view.
+     * Name of the chart
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     public readonly programText!: pulumi.Output<string>;
     /**
-     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+     * Sorting options configuration
      */
     public readonly sortOptions!: pulumi.Output<outputs.log.ViewSortOption[] | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to start the visualization
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
-     * The URL of the log view.
+     * URL of the chart
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -168,43 +191,43 @@ export class View extends pulumi.CustomResource {
  */
 export interface ViewState {
     /**
-     * The column headers to show on the log view.
+     * Column configuration
      */
     columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[]>;
     /**
-     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+     * default connection that the dashboard uses
      */
     defaultConnection?: pulumi.Input<string>;
     /**
-     * Description of the log view.
+     * Description of the chart (Optional)
      */
     description?: pulumi.Input<string>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to end the visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Name of the log view.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText?: pulumi.Input<string>;
     /**
-     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+     * Sorting options configuration
      */
     sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[]>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to start the visualization
      */
     startTime?: pulumi.Input<number>;
     /**
-     * From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      */
     timeRange?: pulumi.Input<number>;
     /**
-     * The URL of the log view.
+     * URL of the chart
      */
     url?: pulumi.Input<string>;
 }
@@ -214,39 +237,39 @@ export interface ViewState {
  */
 export interface ViewArgs {
     /**
-     * The column headers to show on the log view.
+     * Column configuration
      */
     columns?: pulumi.Input<pulumi.Input<inputs.log.ViewColumn>[]>;
     /**
-     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+     * default connection that the dashboard uses
      */
     defaultConnection?: pulumi.Input<string>;
     /**
-     * Description of the log view.
+     * Description of the chart (Optional)
      */
     description?: pulumi.Input<string>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to end the visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Name of the log view.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText: pulumi.Input<string>;
     /**
-     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+     * Sorting options configuration
      */
     sortOptions?: pulumi.Input<pulumi.Input<inputs.log.ViewSortOption>[]>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to start the visualization
      */
     startTime?: pulumi.Input<number>;
     /**
-     * From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      */
     timeRange?: pulumi.Input<number>;
 }

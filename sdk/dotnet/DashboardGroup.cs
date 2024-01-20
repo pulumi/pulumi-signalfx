@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
+    /// In the Splunk Observability Cloud web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
     /// 
-    /// &gt; **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+    /// Dashboard groups cannot be accessed directly. You can access them through a dashboard within a group.
     /// 
-    /// &gt; **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// &gt; **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboard groups, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,7 +41,8 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
-    /// ### With Permissions
+    /// 
+    /// ## Example with permissions
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -80,7 +81,8 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
-    /// ### With Mirrored Dashboards
+    /// 
+    /// ## Example With mirrored dashboards
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -134,30 +136,63 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// The following arguments are supported in the resource block:
+    /// 
+    /// * `name` - (Required) Name of the dashboard group.
+    /// * `description` - (Required) Description of the dashboard group.
+    /// * `teams` - (Optional) Team IDs to associate the dashboard group to.
+    /// * `authorized_writer_teams` - (Optional) Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+    /// * `authorized_writer_users` - (Optional) User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+    /// * `permissions` - (Optional) [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+    ///   * `principal_id` - (Required) ID of the user, team, or organization for which you're granting permissions.
+    ///   * `principal_type` - (Required) Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+    ///   * `actions` - (Required) Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+    /// * `dashboard` - (Optional) [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+    ///   * `dashboard_id` - (Required) The dashboard id to mirror
+    ///   * `name_override` - (Optional) The name that will override the original dashboards's name.
+    ///   * `description_override` - (Optional) The description that will override the original dashboards's description.
+    ///   * `filter_override` - (Optional) The description that will override the original dashboards's description.
+    ///     * `property` - (Required) The name of a dimension to filter against.
+    ///     * `values` - (Required) A list of values to be used with the `property`, they will be combined via `OR`.
+    ///     * `negated` - (Optional) If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+    ///   * `filter_override` - (Optional) The description that will override the original dashboards's description.
+    ///     * `property` - (Required) A metric time series dimension or property name.
+    ///     * `values` - (Optional) (Optional) List of of strings (which will be treated as an OR filter on the property).
+    ///     * `values_suggested` - (Optional) A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the integration.
+    /// * `dashboard.config_id` - The ID of the association between the dashboard group and the dashboard
     /// </summary>
     [SignalFxResourceType("signalfx:index/dashboardGroup:DashboardGroup")]
     public partial class DashboardGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// Team IDs that have write access to this dashboard
         /// </summary>
         [Output("authorizedWriterTeams")]
         public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// User IDs that have write access to this dashboard
         /// </summary>
         [Output("authorizedWriterUsers")]
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
 
         /// <summary>
-        /// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
         /// </summary>
         [Output("dashboards")]
         public Output<ImmutableArray<Outputs.DashboardGroupDashboard>> Dashboards { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the dashboard group.
+        /// Description of the dashboard group
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -166,19 +201,19 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.DashboardGroupImportQualifier>> ImportQualifiers { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the dashboard group.
+        /// Name of the dashboard group
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// The custom access control list for this dashboard
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.DashboardGroupPermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Team IDs to associate the dashboard group to.
+        /// Team IDs to associate the dashboard group to
         /// </summary>
         [Output("teams")]
         public Output<ImmutableArray<string>> Teams { get; private set; } = null!;
@@ -233,7 +268,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// Team IDs that have write access to this dashboard
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterTeams
@@ -246,7 +281,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// User IDs that have write access to this dashboard
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterUsers
@@ -259,7 +294,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardGroupDashboardArgs>? _dashboards;
 
         /// <summary>
-        /// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
         /// </summary>
         public InputList<Inputs.DashboardGroupDashboardArgs> Dashboards
         {
@@ -268,7 +303,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description of the dashboard group.
+        /// Description of the dashboard group
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -282,7 +317,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the dashboard group.
+        /// Name of the dashboard group
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -291,7 +326,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardGroupPermissionArgs>? _permissions;
 
         /// <summary>
-        /// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// The custom access control list for this dashboard
         /// </summary>
         public InputList<Inputs.DashboardGroupPermissionArgs> Permissions
         {
@@ -303,7 +338,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _teams;
 
         /// <summary>
-        /// Team IDs to associate the dashboard group to.
+        /// Team IDs to associate the dashboard group to
         /// </summary>
         public InputList<string> Teams
         {
@@ -323,7 +358,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// Team IDs that have write access to this dashboard
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterTeams
@@ -336,7 +371,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        /// User IDs that have write access to this dashboard
         /// </summary>
         [Obsolete(@"Please use permissions field now")]
         public InputList<string> AuthorizedWriterUsers
@@ -349,7 +384,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardGroupDashboardGetArgs>? _dashboards;
 
         /// <summary>
-        /// [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
         /// </summary>
         public InputList<Inputs.DashboardGroupDashboardGetArgs> Dashboards
         {
@@ -358,7 +393,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description of the dashboard group.
+        /// Description of the dashboard group
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -372,7 +407,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the dashboard group.
+        /// Name of the dashboard group
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -381,7 +416,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardGroupPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// The custom access control list for this dashboard
         /// </summary>
         public InputList<Inputs.DashboardGroupPermissionGetArgs> Permissions
         {
@@ -393,7 +428,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _teams;
 
         /// <summary>
-        /// Team IDs to associate the dashboard group to.
+        /// Team IDs to associate the dashboard group to
         /// </summary>
         public InputList<string> Teams
         {

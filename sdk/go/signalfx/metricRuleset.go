@@ -12,13 +12,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Observability Cloud resource for managing metric rulesets
+// Provides an Observability Cloud resource for managing metric rulesets.
 //
-// > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+//
+// ## Arguments
+//
+// The following arguments are supported in the resource block:
+//
+// * `metricName` - (Required) Name of the input metric
+// * `aggregationRules` - (Optional) List of aggregation rules for the metric
+//   - `enabled` - (Required) When false, this rule will not generate aggregated MTSs
+//   - `name` - (Optional) name of the aggregation rule
+//   - `matcher` - (Required) Matcher object
+//   - `type` - (Required) Type of matcher. Must always be "dimension"
+//   - `filters` - (Optional) List of filters to filter the set of input MTSs
+//   - `property` - (Required) - Name of the dimension
+//   - `propertyValue` - (Required) - Value of the dimension
+//   - `not` - When true, this filter will match all values not matching the propertyValues
+//   - `aggregator` - (Required) - Aggregator object
+//   - `type` - (Required) Type of aggregator. Must always be "rollup"
+//   - `dimensions` - (Required) List of dimensions to either be kept or dropped in the new aggregated MTSs
+//   - `dropDimensions` - (Required) when true, the specified dimensions will be dropped from the aggregated MTSs
+//   - `outputName` - (Required) name of the new aggregated metric
+//
+// * `routingRule` - (Required) Routing Rule object
+//   - `destination` - (Required) - end destination of the input metric. Must be `RealTime` or `Drop`
 type MetricRuleset struct {
 	pulumi.CustomResourceState
 
-	// List of aggregation rules for the metric
+	// Aggregation rules in the ruleset
 	AggregationRules MetricRulesetAggregationRuleArrayOutput `pulumi:"aggregationRules"`
 	// Timestamp of when the metric ruleset was created
 	Created pulumi.StringOutput `pulumi:"created"`
@@ -30,9 +53,9 @@ type MetricRuleset struct {
 	LastUpdatedBy pulumi.StringOutput `pulumi:"lastUpdatedBy"`
 	// Name of user who last updated this metric ruleset
 	LastUpdatedByName pulumi.StringOutput `pulumi:"lastUpdatedByName"`
-	// Name of the input metric
+	// Name of the metric
 	MetricName pulumi.StringOutput `pulumi:"metricName"`
-	// Routing Rule object
+	// Location to send the input metric
 	RoutingRules MetricRulesetRoutingRuleArrayOutput `pulumi:"routingRules"`
 	// Version of the ruleset
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -74,7 +97,7 @@ func GetMetricRuleset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MetricRuleset resources.
 type metricRulesetState struct {
-	// List of aggregation rules for the metric
+	// Aggregation rules in the ruleset
 	AggregationRules []MetricRulesetAggregationRule `pulumi:"aggregationRules"`
 	// Timestamp of when the metric ruleset was created
 	Created *string `pulumi:"created"`
@@ -86,16 +109,16 @@ type metricRulesetState struct {
 	LastUpdatedBy *string `pulumi:"lastUpdatedBy"`
 	// Name of user who last updated this metric ruleset
 	LastUpdatedByName *string `pulumi:"lastUpdatedByName"`
-	// Name of the input metric
+	// Name of the metric
 	MetricName *string `pulumi:"metricName"`
-	// Routing Rule object
+	// Location to send the input metric
 	RoutingRules []MetricRulesetRoutingRule `pulumi:"routingRules"`
 	// Version of the ruleset
 	Version *string `pulumi:"version"`
 }
 
 type MetricRulesetState struct {
-	// List of aggregation rules for the metric
+	// Aggregation rules in the ruleset
 	AggregationRules MetricRulesetAggregationRuleArrayInput
 	// Timestamp of when the metric ruleset was created
 	Created pulumi.StringPtrInput
@@ -107,9 +130,9 @@ type MetricRulesetState struct {
 	LastUpdatedBy pulumi.StringPtrInput
 	// Name of user who last updated this metric ruleset
 	LastUpdatedByName pulumi.StringPtrInput
-	// Name of the input metric
+	// Name of the metric
 	MetricName pulumi.StringPtrInput
-	// Routing Rule object
+	// Location to send the input metric
 	RoutingRules MetricRulesetRoutingRuleArrayInput
 	// Version of the ruleset
 	Version pulumi.StringPtrInput
@@ -120,21 +143,21 @@ func (MetricRulesetState) ElementType() reflect.Type {
 }
 
 type metricRulesetArgs struct {
-	// List of aggregation rules for the metric
+	// Aggregation rules in the ruleset
 	AggregationRules []MetricRulesetAggregationRule `pulumi:"aggregationRules"`
-	// Name of the input metric
+	// Name of the metric
 	MetricName string `pulumi:"metricName"`
-	// Routing Rule object
+	// Location to send the input metric
 	RoutingRules []MetricRulesetRoutingRule `pulumi:"routingRules"`
 }
 
 // The set of arguments for constructing a MetricRuleset resource.
 type MetricRulesetArgs struct {
-	// List of aggregation rules for the metric
+	// Aggregation rules in the ruleset
 	AggregationRules MetricRulesetAggregationRuleArrayInput
-	// Name of the input metric
+	// Name of the metric
 	MetricName pulumi.StringInput
-	// Routing Rule object
+	// Location to send the input metric
 	RoutingRules MetricRulesetRoutingRuleArrayInput
 }
 
@@ -225,7 +248,7 @@ func (o MetricRulesetOutput) ToMetricRulesetOutputWithContext(ctx context.Contex
 	return o
 }
 
-// List of aggregation rules for the metric
+// Aggregation rules in the ruleset
 func (o MetricRulesetOutput) AggregationRules() MetricRulesetAggregationRuleArrayOutput {
 	return o.ApplyT(func(v *MetricRuleset) MetricRulesetAggregationRuleArrayOutput { return v.AggregationRules }).(MetricRulesetAggregationRuleArrayOutput)
 }
@@ -255,12 +278,12 @@ func (o MetricRulesetOutput) LastUpdatedByName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricRuleset) pulumi.StringOutput { return v.LastUpdatedByName }).(pulumi.StringOutput)
 }
 
-// Name of the input metric
+// Name of the metric
 func (o MetricRulesetOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricRuleset) pulumi.StringOutput { return v.MetricName }).(pulumi.StringOutput)
 }
 
-// Routing Rule object
+// Location to send the input metric
 func (o MetricRulesetOutput) RoutingRules() MetricRulesetRoutingRuleArrayOutput {
 	return o.ApplyT(func(v *MetricRuleset) MetricRulesetRoutingRuleArrayOutput { return v.RoutingRules }).(MetricRulesetRoutingRuleArrayOutput)
 }

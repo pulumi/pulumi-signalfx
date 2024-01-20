@@ -13,13 +13,7 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class OrgTokenDpmLimits
     {
-        /// <summary>
-        /// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
-        /// </summary>
         public readonly int DpmLimit;
-        /// <summary>
-        /// DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
-        /// </summary>
         public readonly int? DpmNotificationThreshold;
 
         [OutputConstructor]

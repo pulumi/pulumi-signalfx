@@ -17,14 +17,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderArgs Empty = new ProviderArgs();
 
     /**
-     * API URL for your SignalFx org, may include a realm
+     * API URL for your Splunk Observability Cloud org, may include a realm
      * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
-     * @return API URL for your SignalFx org, may include a realm
+     * @return API URL for your Splunk Observability Cloud org, may include a realm
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -32,14 +32,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SignalFx auth token
+     * Splunk Observability Cloud auth token
      * 
      */
     @Import(name="authToken")
     private @Nullable Output<String> authToken;
 
     /**
-     * @return SignalFx auth token
+     * @return Splunk Observability Cloud auth token
      * 
      */
     public Optional<Output<String>> authToken() {
@@ -47,14 +47,14 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Application URL for your SignalFx org, often customized for organizations using SSO
+     * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
      */
     @Import(name="customAppUrl")
     private @Nullable Output<String> customAppUrl;
 
     /**
-     * @return Application URL for your SignalFx org, often customized for organizations using SSO
+     * @return Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
      */
     public Optional<Output<String>> customAppUrl() {
@@ -152,7 +152,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiUrl API URL for your SignalFx org, may include a realm
+         * @param apiUrl API URL for your Splunk Observability Cloud org, may include a realm
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiUrl API URL for your SignalFx org, may include a realm
+         * @param apiUrl API URL for your Splunk Observability Cloud org, may include a realm
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authToken SignalFx auth token
+         * @param authToken Splunk Observability Cloud auth token
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authToken SignalFx auth token
+         * @param authToken Splunk Observability Cloud auth token
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customAppUrl Application URL for your SignalFx org, often customized for organizations using SSO
+         * @param customAppUrl Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customAppUrl Application URL for your SignalFx org, often customized for organizations using SSO
+         * @param customAppUrl Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
          * 
          * @return builder
          * 

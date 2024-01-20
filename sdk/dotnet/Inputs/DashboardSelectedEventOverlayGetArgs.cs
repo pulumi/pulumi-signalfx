@@ -12,27 +12,17 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardSelectedEventOverlayGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Search term used to choose the events shown in the overlay.
-        /// </summary>
         [Input("signal", required: true)]
         public Input<string> Signal { get; set; } = null!;
 
         [Input("sources")]
         private InputList<Inputs.DashboardSelectedEventOverlaySourceGetArgs>? _sources;
-
-        /// <summary>
-        /// Each element specifies a filter to use against the signal specified in the `signal`.
-        /// </summary>
         public InputList<Inputs.DashboardSelectedEventOverlaySourceGetArgs> Sources
         {
             get => _sources ?? (_sources = new InputList<Inputs.DashboardSelectedEventOverlaySourceGetArgs>());
             set => _sources = value;
         }
 
-        /// <summary>
-        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

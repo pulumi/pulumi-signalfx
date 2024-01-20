@@ -17,32 +17,16 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
 
     public static final DashboardPermissionsArgs Empty = new DashboardPermissionsArgs();
 
-    /**
-     * List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-     * 
-     */
     @Import(name="acls")
     private @Nullable Output<List<DashboardPermissionsAclArgs>> acls;
 
-    /**
-     * @return List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-     * 
-     */
     public Optional<Output<List<DashboardPermissionsAclArgs>>> acls() {
         return Optional.ofNullable(this.acls);
     }
 
-    /**
-     * ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
-     * 
-     */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
-    /**
-     * @return ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
-     * 
-     */
     public Optional<Output<String>> parent() {
         return Optional.ofNullable(this.parent);
     }
@@ -72,54 +56,24 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
             $ = new DashboardPermissionsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param acls List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder acls(@Nullable Output<List<DashboardPermissionsAclArgs>> acls) {
             $.acls = acls;
             return this;
         }
 
-        /**
-         * @param acls List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder acls(List<DashboardPermissionsAclArgs> acls) {
             return acls(Output.of(acls));
         }
 
-        /**
-         * @param acls List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder acls(DashboardPermissionsAclArgs... acls) {
             return acls(List.of(acls));
         }
 
-        /**
-         * @param parent ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parent(@Nullable Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
-        /**
-         * @param parent ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }

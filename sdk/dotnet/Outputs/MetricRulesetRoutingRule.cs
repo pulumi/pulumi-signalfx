@@ -13,9 +13,6 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class MetricRulesetRoutingRule
     {
-        /// <summary>
-        /// end destination of the input metric. Must be `RealTime` or `Drop`
-        /// </summary>
         public readonly string Destination;
 
         [OutputConstructor]

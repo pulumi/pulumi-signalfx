@@ -14,9 +14,9 @@ import (
 
 // This chart type displays current data values in a list format.
 //
-// The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B below. Otherwise, just the raw metric name will be displayed on the chart, as in plot A below.
+// The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B from the example. Otherwise, just the raw metric name will be displayed on the chart, as in plot A from the example.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -72,52 +72,100 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// The following arguments are supported in the resource block:
+//
+// * `name` - (Required) Name of the chart.
+// * `programText` - (Required) Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+// * `description` - (Optional) Description of the chart.
+// * `unitPrefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+// * `colorBy` - (Optional) Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+// * `maxDelay` - (Optional) How long (in seconds) to wait for late datapoints.
+// * `timezone` - (Optional) The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+// * `disableSampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+// * `refreshInterval` - (Optional) How often (in seconds) to refresh the values of the list.
+// * `hideMissingValues` - (Optional) Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+// * `vizOptions` - (Optional) Plot-level customization options, associated with a publish statement.
+//   - `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+//   - `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+//   - `color` - (Optional) The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+//   - `valueUnit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+//   - `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+//
+// * `legendFieldsToHide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+// * `legendOptionsFields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+//   - `property` The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+//   - `enabled` True or False depending on if you want the property to be shown or hidden.
+//
+// * `maxPrecision` - (Optional) Maximum number of digits to display when rounding values up or down.
+// * `secondaryVisualization` - (Optional) The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
+// * `colorScale` - (Optional. `colorBy` must be `"Scale"`) Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
+//   - `gt` - (Optional) Indicates the lower threshold non-inclusive value for this range.
+//   - `gte` - (Optional) Indicates the lower threshold inclusive value for this range.
+//   - `lt` - (Optional) Indicates the upper threshold non-inculsive value for this range.
+//   - `lte` - (Optional) Indicates the upper threshold inclusive value for this range.
+//   - `color` - (Required) The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+//
+// * `sortBy` - (Optional) The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+// * `timeRange` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+// * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the chart.
+// * `url` - The URL of the chart.
 type ListChart struct {
 	pulumi.CustomResourceState
 
-	// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Scale", "Metric" or "Dimension"
 	ColorBy pulumi.StringPtrOutput `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales ListChartColorScaleArrayOutput `pulumi:"colorScales"`
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	// (false by default) If `true`, missing data points in the chart would be hidden
 	HideMissingValues pulumi.BoolPtrOutput `pulumi:"hideMissingValues"`
-	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayOutput `pulumi:"legendFieldsToHides"`
-	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayOutput `pulumi:"legendOptionsFields"`
-	// How long (in seconds) to wait for late datapoints.
+	// How long (in seconds) to wait for late datapoints
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
-	// Maximum number of digits to display when rounding values up or down.
+	// Maximum number of digits to display when rounding values up or down
 	MaxPrecision pulumi.IntPtrOutput `pulumi:"maxPrecision"`
-	// Name of the chart.
+	// Name of the chart
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
-	// How often (in seconds) to refresh the values of the list.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization pulumi.StringPtrOutput `pulumi:"secondaryVisualization"`
-	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+	// The property to use when sorting the elements. Use 'value' if you want to sort by value. Must be prepended with + for
+	// ascending or - for descending (e.g. -foo)
 	SortBy pulumi.StringPtrOutput `pulumi:"sortBy"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
-	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
-	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions ListChartVizOptionArrayOutput `pulumi:"vizOptions"`
 }
 
@@ -154,96 +202,98 @@ func GetListChart(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ListChart resources.
 type listChartState struct {
-	// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Scale", "Metric" or "Dimension"
 	ColorBy *string `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales []ListChartColorScale `pulumi:"colorScales"`
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime *int `pulumi:"endTime"`
-	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	// (false by default) If `true`, missing data points in the chart would be hidden
 	HideMissingValues *bool `pulumi:"hideMissingValues"`
-	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
-	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
 	LegendOptionsFields []ListChartLegendOptionsField `pulumi:"legendOptionsFields"`
-	// How long (in seconds) to wait for late datapoints.
+	// How long (in seconds) to wait for late datapoints
 	MaxDelay *int `pulumi:"maxDelay"`
-	// Maximum number of digits to display when rounding values up or down.
+	// Maximum number of digits to display when rounding values up or down
 	MaxPrecision *int `pulumi:"maxPrecision"`
-	// Name of the chart.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText *string `pulumi:"programText"`
-	// How often (in seconds) to refresh the values of the list.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval *int `pulumi:"refreshInterval"`
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization *string `pulumi:"secondaryVisualization"`
-	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+	// The property to use when sorting the elements. Use 'value' if you want to sort by value. Must be prepended with + for
+	// ascending or - for descending (e.g. -foo)
 	SortBy *string `pulumi:"sortBy"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime *int `pulumi:"startTime"`
-	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange *int `pulumi:"timeRange"`
-	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
-	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// The URL of the chart.
+	// URL of the chart
 	Url *string `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions []ListChartVizOption `pulumi:"vizOptions"`
 }
 
 type ListChartState struct {
-	// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Scale", "Metric" or "Dimension"
 	ColorBy pulumi.StringPtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales ListChartColorScaleArrayInput
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling pulumi.BoolPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrInput
-	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	// (false by default) If `true`, missing data points in the chart would be hidden
 	HideMissingValues pulumi.BoolPtrInput
-	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
-	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayInput
-	// How long (in seconds) to wait for late datapoints.
+	// How long (in seconds) to wait for late datapoints
 	MaxDelay pulumi.IntPtrInput
-	// Maximum number of digits to display when rounding values up or down.
+	// Maximum number of digits to display when rounding values up or down
 	MaxPrecision pulumi.IntPtrInput
-	// Name of the chart.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringPtrInput
-	// How often (in seconds) to refresh the values of the list.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval pulumi.IntPtrInput
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization pulumi.StringPtrInput
-	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+	// The property to use when sorting the elements. Use 'value' if you want to sort by value. Must be prepended with + for
+	// ascending or - for descending (e.g. -foo)
 	SortBy pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrInput
-	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrInput
-	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
-	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrInput
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions ListChartVizOptionArrayInput
 }
 
@@ -252,93 +302,95 @@ func (ListChartState) ElementType() reflect.Type {
 }
 
 type listChartArgs struct {
-	// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Scale", "Metric" or "Dimension"
 	ColorBy *string `pulumi:"colorBy"`
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales []ListChartColorScale `pulumi:"colorScales"`
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime *int `pulumi:"endTime"`
-	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	// (false by default) If `true`, missing data points in the chart would be hidden
 	HideMissingValues *bool `pulumi:"hideMissingValues"`
-	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
-	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
 	LegendOptionsFields []ListChartLegendOptionsField `pulumi:"legendOptionsFields"`
-	// How long (in seconds) to wait for late datapoints.
+	// How long (in seconds) to wait for late datapoints
 	MaxDelay *int `pulumi:"maxDelay"`
-	// Maximum number of digits to display when rounding values up or down.
+	// Maximum number of digits to display when rounding values up or down
 	MaxPrecision *int `pulumi:"maxPrecision"`
-	// Name of the chart.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText string `pulumi:"programText"`
-	// How often (in seconds) to refresh the values of the list.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval *int `pulumi:"refreshInterval"`
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization *string `pulumi:"secondaryVisualization"`
-	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+	// The property to use when sorting the elements. Use 'value' if you want to sort by value. Must be prepended with + for
+	// ascending or - for descending (e.g. -foo)
 	SortBy *string `pulumi:"sortBy"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime *int `pulumi:"startTime"`
-	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange *int `pulumi:"timeRange"`
-	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone *string `pulumi:"timezone"`
-	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions []ListChartVizOption `pulumi:"vizOptions"`
 }
 
 // The set of arguments for constructing a ListChart resource.
 type ListChartArgs struct {
-	// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+	// (Metric by default) Must be "Scale", "Metric" or "Dimension"
 	ColorBy pulumi.StringPtrInput
-	// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+	// Single color range including both the color to display for that range and the borders of the range
 	ColorScales ListChartColorScaleArrayInput
-	// Description of the chart.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 	DisableSampling pulumi.BoolPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrInput
-	// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+	// (false by default) If `true`, missing data points in the chart would be hidden
 	HideMissingValues pulumi.BoolPtrInput
-	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
-	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
 	LegendOptionsFields ListChartLegendOptionsFieldArrayInput
-	// How long (in seconds) to wait for late datapoints.
+	// How long (in seconds) to wait for late datapoints
 	MaxDelay pulumi.IntPtrInput
-	// Maximum number of digits to display when rounding values up or down.
+	// Maximum number of digits to display when rounding values up or down
 	MaxPrecision pulumi.IntPtrInput
-	// Name of the chart.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringInput
-	// How often (in seconds) to refresh the values of the list.
+	// How often (in seconds) to refresh the values of the list
 	RefreshInterval pulumi.IntPtrInput
-	// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+	// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 	SecondaryVisualization pulumi.StringPtrInput
-	// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+	// The property to use when sorting the elements. Use 'value' if you want to sort by value. Must be prepended with + for
+	// ascending or - for descending (e.g. -foo)
 	SortBy pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrInput
-	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrInput
-	// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 	Timezone pulumi.StringPtrInput
-	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+	// (Metric by default) Must be "Metric" or "Binary"
 	UnitPrefix pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement.
+	// Plot-level customization options, associated with a publish statement
 	VizOptions ListChartVizOptionArrayInput
 }
 
@@ -429,109 +481,110 @@ func (o ListChartOutput) ToListChartOutputWithContext(ctx context.Context) ListC
 	return o
 }
 
-// Must be one of `"Scale"`, `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+// (Metric by default) Must be "Scale", "Metric" or "Dimension"
 func (o ListChartOutput) ColorBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
 }
 
-// Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+// Single color range including both the color to display for that range and the borders of the range
 func (o ListChartOutput) ColorScales() ListChartColorScaleArrayOutput {
 	return o.ApplyT(func(v *ListChart) ListChartColorScaleArrayOutput { return v.ColorScales }).(ListChartColorScaleArrayOutput)
 }
 
-// Description of the chart.
+// Description of the chart (Optional)
 func (o ListChartOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
+// (false by default) If false, samples a subset of the output MTS, which improves UI performance
 func (o ListChartOutput) DisableSampling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch to end the visualization
 func (o ListChartOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
+// (false by default) If `true`, missing data points in the chart would be hidden
 func (o ListChartOutput) HideMissingValues() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.BoolPtrOutput { return v.HideMissingValues }).(pulumi.BoolPtrOutput)
 }
 
-// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
 //
 // Deprecated: Please use legend_options_fields
 func (o ListChartOutput) LegendFieldsToHides() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringArrayOutput { return v.LegendFieldsToHides }).(pulumi.StringArrayOutput)
 }
 
-// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+// List of property and enabled flags to control the order and presence of datatable labels in a chart.
 func (o ListChartOutput) LegendOptionsFields() ListChartLegendOptionsFieldArrayOutput {
 	return o.ApplyT(func(v *ListChart) ListChartLegendOptionsFieldArrayOutput { return v.LegendOptionsFields }).(ListChartLegendOptionsFieldArrayOutput)
 }
 
-// How long (in seconds) to wait for late datapoints.
+// How long (in seconds) to wait for late datapoints
 func (o ListChartOutput) MaxDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
 }
 
-// Maximum number of digits to display when rounding values up or down.
+// Maximum number of digits to display when rounding values up or down
 func (o ListChartOutput) MaxPrecision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.MaxPrecision }).(pulumi.IntPtrOutput)
 }
 
-// Name of the chart.
+// Name of the chart
 func (o ListChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 func (o ListChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
 
-// How often (in seconds) to refresh the values of the list.
+// How often (in seconds) to refresh the values of the list
 func (o ListChartOutput) RefreshInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.RefreshInterval }).(pulumi.IntPtrOutput)
 }
 
-// The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`Sparkline`).
+// (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
 func (o ListChartOutput) SecondaryVisualization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.SecondaryVisualization }).(pulumi.StringPtrOutput)
 }
 
-// The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `"value"` for Value, `"sf_originatingMetric"` for Metric, and `"sfMetric"` for plot.
+// The property to use when sorting the elements. Use 'value' if you want to sort by value. Must be prepended with + for
+// ascending or - for descending (e.g. -foo)
 func (o ListChartOutput) SortBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.SortBy }).(pulumi.StringPtrOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch to start the visualization
 func (o ListChartOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 func (o ListChartOutput) TimeRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
 }
 
-// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
+// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
 func (o ListChartOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+// (Metric by default) Must be "Metric" or "Binary"
 func (o ListChartOutput) UnitPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The URL of the chart.
+// URL of the chart
 func (o ListChartOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Plot-level customization options, associated with a publish statement.
+// Plot-level customization options, associated with a publish statement
 func (o ListChartOutput) VizOptions() ListChartVizOptionArrayOutput {
 	return o.ApplyT(func(v *ListChart) ListChartVizOptionArrayOutput { return v.VizOptions }).(ListChartVizOptionArrayOutput)
 }

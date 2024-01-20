@@ -26,15 +26,15 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * API URL for your SignalFx org, may include a realm
+     * API URL for your Splunk Observability Cloud org, may include a realm
      */
     public readonly apiUrl!: pulumi.Output<string | undefined>;
     /**
-     * SignalFx auth token
+     * Splunk Observability Cloud auth token
      */
     public readonly authToken!: pulumi.Output<string | undefined>;
     /**
-     * Application URL for your SignalFx org, often customized for organizations using SSO
+     * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      */
     public readonly customAppUrl!: pulumi.Output<string | undefined>;
 
@@ -67,15 +67,15 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * API URL for your SignalFx org, may include a realm
+     * API URL for your Splunk Observability Cloud org, may include a realm
      */
     apiUrl?: pulumi.Input<string>;
     /**
-     * SignalFx auth token
+     * Splunk Observability Cloud auth token
      */
     authToken?: pulumi.Input<string>;
     /**
-     * Application URL for your SignalFx org, often customized for organizations using SSO
+     * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      */
     customAppUrl?: pulumi.Input<string>;
     /**

@@ -8,7 +8,7 @@ declare var exports: any;
 const __config = new pulumi.Config("signalfx");
 
 /**
- * API URL for your SignalFx org, may include a realm
+ * API URL for your Splunk Observability Cloud org, may include a realm
  */
 export declare const apiUrl: string | undefined;
 Object.defineProperty(exports, "apiUrl", {
@@ -19,7 +19,7 @@ Object.defineProperty(exports, "apiUrl", {
 });
 
 /**
- * SignalFx auth token
+ * Splunk Observability Cloud auth token
  */
 export declare const authToken: string | undefined;
 Object.defineProperty(exports, "authToken", {
@@ -30,7 +30,7 @@ Object.defineProperty(exports, "authToken", {
 });
 
 /**
- * Application URL for your SignalFx org, often customized for organizations using SSO
+ * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
  */
 export declare const customAppUrl: string | undefined;
 Object.defineProperty(exports, "customAppUrl", {

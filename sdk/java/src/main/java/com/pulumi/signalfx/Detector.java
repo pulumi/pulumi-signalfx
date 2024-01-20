@@ -21,13 +21,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a SignalFx detector resource. This can be used to create and manage detectors.
+ * Provides a Splunk Observability Cloud detector resource. This can be used to create and manage detectors.
  * 
- * &gt; **NOTE** If you&#39;re interested in using SignalFx detector features such as Historical Anomaly, Resource Running Out, or others then consider building them in the UI first then using the &#34;Show SignalFlow&#34; feature to extract the value for `program_text`. You may also consult the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
+ * If you&#39;re interested in using Splunk Observability Cloud detector features such as Historical Anomaly, Resource Running Out, or others, consider building them in the UI first and then use the &#34;Show SignalFlow&#34; feature to extract the value for `program_text`. You can also see the [documentation for detector functions in signalflow-library](https://github.com/signalfx/signalflow-library/tree/master/library/signalfx/detectors).
  * 
- * &gt; **NOTE** When you want to &#34;Change or remove write permissions for a user other than yourself&#34; regarding detectors, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * &gt; **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -89,9 +89,10 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ## Notification Format
  * 
- * As SignalFx supports different notification mechanisms a comma-delimited string is used to provide inputs. If you&#39;d like to specify multiple notifications, then each should be a member in the list, like so:
+ * ## Notification format
+ * 
+ * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
  * ```java
  * package generated_program;
  * 
@@ -115,7 +116,9 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * This will likely be changed in a future iteration of the provider. See [SignalFx Docs](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more information. For now, here are some example of how to configure each notification type:
+ * See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
+ * 
+ * Here are some example of how to configure each notification type:
  * 
  * ### Email
  * ```java
@@ -143,7 +146,7 @@ import javax.annotation.Nullable;
  * 
  * ### Jira
  * 
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Jira integration. (See also `signalfx.jira.Integration`.)
+ * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.
  * ```java
  * package generated_program;
  * 
@@ -167,9 +170,9 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * ### Opsgenie
+ * ### OpsGenie
  * 
- * Note that the `credentialId` is the SignalFx-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+ * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
  * ```java
  * package generated_program;
  * 
@@ -219,7 +222,7 @@ import javax.annotation.Nullable;
  * 
  * ### Slack
  * 
- * Exclude the `#` on the channel name!
+ * Exclude the `#` on the channel name:
  * ```java
  * package generated_program;
  * 
@@ -295,7 +298,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * ### VictorOps
+ * ### Splunk On-Call (formerly VictorOps)
  * ```java
  * package generated_program;
  * 
@@ -319,9 +322,9 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * ### Webhook
+ * ### Webhooks
  * 
- * &gt; **NOTE** You need to include all the commas even if you only use a credential id below.
+ * You need to include all the commas even if you only use a credential id.
  * 
  * You can either configure a Webhook to use an existing integration&#39;s credential id:
  * ```java
@@ -347,7 +350,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * or configure one inline:
+ * Or configure one inline:
  * ```java
  * package generated_program;
  * 
@@ -371,6 +374,57 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * * `name` - (Required) Name of the detector.
+ * * `program_text` - (Required) Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+ * * `description` - (Optional) Description of the detector.
+ * * `authorized_writer_teams` - (Optional) Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+ * * `authorized_writer_users` - (Optional) User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+ * * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+ * * `min_delay` - (Optional) How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+ * * `show_data_markers` - (Optional) When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+ * * `show_event_lines` - (Optional) When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+ * * `disable_sampling` - (Optional) When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+ * * `time_range` - (Optional) Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+ * * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+ * * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+ * * `tags` - (Optional) Tags associated with the detector.
+ * * `teams` - (Optional) Team IDs to associate the detector to.
+ * * `rule` - (Required) Set of rules used for alerting.
+ *     * `detect_label` - (Required) A detect label which matches a detect label within `program_text`.
+ *     * `severity` - (Required) The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
+ *     * `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+ *     * `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.
+ *     * `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+ *     * `parameterized_body` - (Optional) Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+ *     * `parameterized_subject` - (Optional) Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+ *     * `runbook_url` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+ *     * `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
+ * * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
+ *     * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+ *     * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+ *     * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+ *     * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+ * 
+ * **Notes**
+ * 
+ * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
+ * 
+ * - `max_delay` allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+ * - `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
+ * 
+ * See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the detector.
+ * * `label_resolutions` - The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+ * * `url` - The URL of the detector.
+ * 
  * ## Import
  * 
  * Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
@@ -383,238 +437,244 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:index/detector:Detector")
 public class Detector extends com.pulumi.resources.CustomResource {
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * Team IDs that have write access to this dashboard
      * 
      */
     @Export(name="authorizedWriterTeams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * @return Team IDs that have write access to this dashboard
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterTeams() {
         return Codegen.optional(this.authorizedWriterTeams);
     }
     /**
-     * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * User IDs that have write access to this dashboard
      * 
      */
     @Export(name="authorizedWriterUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * @return User IDs that have write access to this dashboard
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterUsers() {
         return Codegen.optional(this.authorizedWriterUsers);
     }
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * @return Description of the detector
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * (false by default) When false, samples a subset of the output MTS in the visualization.
      * 
      */
     @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
-     * @return When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * @return (false by default) When false, samples a subset of the output MTS in the visualization.
      * 
      */
     public Output<Optional<Boolean>> disableSampling() {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization
      * 
      */
     public Output<Optional<Integer>> endTime() {
         return Codegen.optional(this.endTime);
     }
     /**
-     * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     * Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+     * should be triggered
      * 
      */
     @Export(name="labelResolutions", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> labelResolutions;
 
     /**
-     * @return The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     * @return Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+     * should be triggered
      * 
      */
     public Output<Map<String,Integer>> labelResolutions() {
         return this.labelResolutions;
     }
     /**
-     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      * 
      */
     @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * @return Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      * 
      */
     public Output<Optional<Integer>> maxDelay() {
         return Codegen.optional(this.maxDelay);
     }
     /**
-     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      * 
      */
     @Export(name="minDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDelay;
 
     /**
-     * @return How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * @return Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      * 
      */
     public Output<Optional<Integer>> minDelay() {
         return Codegen.optional(this.minDelay);
     }
     /**
-     * Name of the detector.
+     * Name of the detector
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the detector.
+     * @return Name of the detector
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the detector. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the detector. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * Set of rules used for alerting.
+     * Set of rules used for alerting
      * 
      */
     @Export(name="rules", refs={List.class,DetectorRule.class}, tree="[0,1]")
     private Output<List<DetectorRule>> rules;
 
     /**
-     * @return Set of rules used for alerting.
+     * @return Set of rules used for alerting
      * 
      */
     public Output<List<DetectorRule>> rules() {
         return this.rules;
     }
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * (true by default) When true, markers will be drawn for each datapoint within the visualization.
      * 
      */
     @Export(name="showDataMarkers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showDataMarkers;
 
     /**
-     * @return When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * @return (true by default) When true, markers will be drawn for each datapoint within the visualization.
      * 
      */
     public Output<Optional<Boolean>> showDataMarkers() {
         return Codegen.optional(this.showDataMarkers);
     }
     /**
-     * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      * 
      */
     @Export(name="showEventLines", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showEventLines;
 
     /**
-     * @return When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * @return (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      * 
      */
     public Output<Optional<Boolean>> showEventLines() {
         return Codegen.optional(this.showEventLines);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization
      * 
      */
     public Output<Optional<Integer>> startTime() {
         return Codegen.optional(this.startTime);
     }
     /**
-     * Tags associated with the detector.
+     * Tags associated with the detector
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags associated with the detector.
+     * @return Tags associated with the detector
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Team IDs to associate the detector to.
+     * Team IDs to associate the detector to
      * 
      */
     @Export(name="teams", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> teams;
 
     /**
-     * @return Team IDs to associate the detector to.
+     * @return Team IDs to associate the detector to
      * 
      */
     public Output<Optional<List<String>>> teams() {
         return Codegen.optional(this.teams);
     }
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      * 
      */
     public Output<Optional<Integer>> timeRange() {
@@ -635,28 +695,28 @@ public class Detector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timezone);
     }
     /**
-     * The URL of the detector.
+     * URL of the detector
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the detector.
+     * @return URL of the detector
      * 
      */
     public Output<String> url() {
         return this.url;
     }
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      * 
      */
     @Export(name="vizOptions", refs={List.class,DetectorVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DetectorVizOption>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement.
+     * @return Plot-level customization options, associated with a publish statement
      * 
      */
     public Output<Optional<List<DetectorVizOption>>> vizOptions() {

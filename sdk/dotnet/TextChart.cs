@@ -12,7 +12,7 @@ namespace Pulumi.SignalFx
     /// <summary>
     /// This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -47,30 +47,45 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// The following arguments are supported in the resource block:
+    /// 
+    /// * `name` - (Required) Name of the text note.
+    /// * `markdown` - (Required) Markdown text to display.
+    /// * `description` - (Optional) Description of the text note.
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the chart.
+    /// * `url` - The URL of the chart.
     /// </summary>
     [SignalFxResourceType("signalfx:index/textChart:TextChart")]
     public partial class TextChart : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the text note.
+        /// Description of the chart (Optional)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Markdown text to display.
+        /// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         /// </summary>
         [Output("markdown")]
         public Output<string> Markdown { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the text note.
+        /// Name of the chart
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the chart.
+        /// URL of the chart
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -122,19 +137,19 @@ namespace Pulumi.SignalFx
     public sealed class TextChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the text note.
+        /// Description of the chart (Optional)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Markdown text to display.
+        /// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         /// </summary>
         [Input("markdown", required: true)]
         public Input<string> Markdown { get; set; } = null!;
 
         /// <summary>
-        /// Name of the text note.
+        /// Name of the chart
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -148,25 +163,25 @@ namespace Pulumi.SignalFx
     public sealed class TextChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the text note.
+        /// Description of the chart (Optional)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Markdown text to display.
+        /// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
         /// </summary>
         [Input("markdown")]
         public Input<string>? Markdown { get; set; }
 
         /// <summary>
-        /// Name of the text note.
+        /// Name of the chart
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL of the chart.
+        /// URL of the chart
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

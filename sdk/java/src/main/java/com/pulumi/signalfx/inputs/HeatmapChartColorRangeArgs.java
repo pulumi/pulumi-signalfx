@@ -17,47 +17,23 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
 
     public static final HeatmapChartColorRangeArgs Empty = new HeatmapChartColorRangeArgs();
 
-    /**
-     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-     * 
-     */
     @Import(name="color", required=true)
     private Output<String> color;
 
-    /**
-     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-     * 
-     */
     public Output<String> color() {
         return this.color;
     }
 
-    /**
-     * The maximum value within the coloring range.
-     * 
-     */
     @Import(name="maxValue")
     private @Nullable Output<Double> maxValue;
 
-    /**
-     * @return The maximum value within the coloring range.
-     * 
-     */
     public Optional<Output<Double>> maxValue() {
         return Optional.ofNullable(this.maxValue);
     }
 
-    /**
-     * The minimum value within the coloring range.
-     * 
-     */
     @Import(name="minValue")
     private @Nullable Output<Double> minValue;
 
-    /**
-     * @return The minimum value within the coloring range.
-     * 
-     */
     public Optional<Output<Double>> minValue() {
         return Optional.ofNullable(this.minValue);
     }
@@ -88,65 +64,29 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
             $ = new HeatmapChartColorRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param color The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-         * 
-         * @return builder
-         * 
-         */
         public Builder color(Output<String> color) {
             $.color = color;
             return this;
         }
 
-        /**
-         * @param color The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-         * 
-         * @return builder
-         * 
-         */
         public Builder color(String color) {
             return color(Output.of(color));
         }
 
-        /**
-         * @param maxValue The maximum value within the coloring range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxValue(@Nullable Output<Double> maxValue) {
             $.maxValue = maxValue;
             return this;
         }
 
-        /**
-         * @param maxValue The maximum value within the coloring range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxValue(Double maxValue) {
             return maxValue(Output.of(maxValue));
         }
 
-        /**
-         * @param minValue The minimum value within the coloring range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minValue(@Nullable Output<Double> minValue) {
             $.minValue = minValue;
             return this;
         }
 
-        /**
-         * @param minValue The minimum value within the coloring range.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minValue(Double minValue) {
             return minValue(Output.of(minValue));
         }

@@ -16,47 +16,23 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
 
     public static final MetricRulesetAggregationRuleMatcherFilterArgs Empty = new MetricRulesetAggregationRuleMatcherFilterArgs();
 
-    /**
-     * When true, this filter will match all values not matching the property_values
-     * 
-     */
     @Import(name="not", required=true)
     private Output<Boolean> not;
 
-    /**
-     * @return When true, this filter will match all values not matching the property_values
-     * 
-     */
     public Output<Boolean> not() {
         return this.not;
     }
 
-    /**
-     * Name of the dimension
-     * 
-     */
     @Import(name="property", required=true)
     private Output<String> property;
 
-    /**
-     * @return Name of the dimension
-     * 
-     */
     public Output<String> property() {
         return this.property;
     }
 
-    /**
-     * Value of the dimension
-     * 
-     */
     @Import(name="propertyValues", required=true)
     private Output<List<String>> propertyValues;
 
-    /**
-     * @return Value of the dimension
-     * 
-     */
     public Output<List<String>> propertyValues() {
         return this.propertyValues;
     }
@@ -87,75 +63,33 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
             $ = new MetricRulesetAggregationRuleMatcherFilterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param not When true, this filter will match all values not matching the property_values
-         * 
-         * @return builder
-         * 
-         */
         public Builder not(Output<Boolean> not) {
             $.not = not;
             return this;
         }
 
-        /**
-         * @param not When true, this filter will match all values not matching the property_values
-         * 
-         * @return builder
-         * 
-         */
         public Builder not(Boolean not) {
             return not(Output.of(not));
         }
 
-        /**
-         * @param property Name of the dimension
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
-        /**
-         * @param property Name of the dimension
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(String property) {
             return property(Output.of(property));
         }
 
-        /**
-         * @param propertyValues Value of the dimension
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyValues(Output<List<String>> propertyValues) {
             $.propertyValues = propertyValues;
             return this;
         }
 
-        /**
-         * @param propertyValues Value of the dimension
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyValues(List<String> propertyValues) {
             return propertyValues(Output.of(propertyValues));
         }
 
-        /**
-         * @param propertyValues Value of the dimension
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyValues(String... propertyValues) {
             return propertyValues(List.of(propertyValues));
         }

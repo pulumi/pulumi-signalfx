@@ -14,41 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardEventOverlaySource {
-    /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-     * 
-     */
     private @Nullable Boolean negated;
-    /**
-     * @return The name of a dimension to filter against.
-     * 
-     */
     private String property;
-    /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
-     * 
-     */
     private List<String> values;
 
     private DashboardEventOverlaySource() {}
-    /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-     * 
-     */
     public Optional<Boolean> negated() {
         return Optional.ofNullable(this.negated);
     }
-    /**
-     * @return The name of a dimension to filter against.
-     * 
-     */
     public String property() {
         return this.property;
     }
-    /**
-     * @return A list of values to be used with the `property`, they will be combined via `OR`.
-     * 
-     */
     public List<String> values() {
         return this.values;
     }

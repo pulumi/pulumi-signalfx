@@ -14,11 +14,8 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AlertMutingRuleFilter struct {
-	// Determines if this is a "not" filter. Defaults to `false`.
-	Negated *bool `pulumi:"negated"`
-	// The property to filter.
-	Property string `pulumi:"property"`
-	// The property value to filter.
+	Negated       *bool  `pulumi:"negated"`
+	Property      string `pulumi:"property"`
 	PropertyValue string `pulumi:"propertyValue"`
 }
 
@@ -34,12 +31,9 @@ type AlertMutingRuleFilterInput interface {
 }
 
 type AlertMutingRuleFilterArgs struct {
-	// Determines if this is a "not" filter. Defaults to `false`.
-	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// The property to filter.
-	Property pulumi.StringInput `pulumi:"property"`
-	// The property value to filter.
-	PropertyValue pulumi.StringInput `pulumi:"propertyValue"`
+	Negated       pulumi.BoolPtrInput `pulumi:"negated"`
+	Property      pulumi.StringInput  `pulumi:"property"`
+	PropertyValue pulumi.StringInput  `pulumi:"propertyValue"`
 }
 
 func (AlertMutingRuleFilterArgs) ElementType() reflect.Type {
@@ -93,17 +87,14 @@ func (o AlertMutingRuleFilterOutput) ToAlertMutingRuleFilterOutputWithContext(ct
 	return o
 }
 
-// Determines if this is a "not" filter. Defaults to `false`.
 func (o AlertMutingRuleFilterOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AlertMutingRuleFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// The property to filter.
 func (o AlertMutingRuleFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertMutingRuleFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// The property value to filter.
 func (o AlertMutingRuleFilterOutput) PropertyValue() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertMutingRuleFilter) string { return v.PropertyValue }).(pulumi.StringOutput)
 }
@@ -129,16 +120,11 @@ func (o AlertMutingRuleFilterArrayOutput) Index(i pulumi.IntInput) AlertMutingRu
 }
 
 type DashboardChart struct {
-	// ID of the chart to display.
 	ChartId string `pulumi:"chartId"`
-	// Column number for the layout.
-	Column *int `pulumi:"column"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-	Height *int `pulumi:"height"`
-	// The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-	Row *int `pulumi:"row"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-	Width *int `pulumi:"width"`
+	Column  *int   `pulumi:"column"`
+	Height  *int   `pulumi:"height"`
+	Row     *int   `pulumi:"row"`
+	Width   *int   `pulumi:"width"`
 }
 
 // DashboardChartInput is an input type that accepts DashboardChartArgs and DashboardChartOutput values.
@@ -153,16 +139,11 @@ type DashboardChartInput interface {
 }
 
 type DashboardChartArgs struct {
-	// ID of the chart to display.
 	ChartId pulumi.StringInput `pulumi:"chartId"`
-	// Column number for the layout.
-	Column pulumi.IntPtrInput `pulumi:"column"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-	Height pulumi.IntPtrInput `pulumi:"height"`
-	// The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-	Row pulumi.IntPtrInput `pulumi:"row"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-	Width pulumi.IntPtrInput `pulumi:"width"`
+	Column  pulumi.IntPtrInput `pulumi:"column"`
+	Height  pulumi.IntPtrInput `pulumi:"height"`
+	Row     pulumi.IntPtrInput `pulumi:"row"`
+	Width   pulumi.IntPtrInput `pulumi:"width"`
 }
 
 func (DashboardChartArgs) ElementType() reflect.Type {
@@ -216,27 +197,22 @@ func (o DashboardChartOutput) ToDashboardChartOutputWithContext(ctx context.Cont
 	return o
 }
 
-// ID of the chart to display.
 func (o DashboardChartOutput) ChartId() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardChart) string { return v.ChartId }).(pulumi.StringOutput)
 }
 
-// Column number for the layout.
 func (o DashboardChartOutput) Column() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Column }).(pulumi.IntPtrOutput)
 }
 
-// How many rows every chart should take up (greater than or equal to 1). 1 by default.
 func (o DashboardChartOutput) Height() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
 func (o DashboardChartOutput) Row() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Row }).(pulumi.IntPtrOutput)
 }
 
-// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardChartOutput) Width() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardChart) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
@@ -262,14 +238,10 @@ func (o DashboardChartArrayOutput) Index(i pulumi.IntInput) DashboardChartOutput
 }
 
 type DashboardColumn struct {
-	// List of IDs of the charts to display.
 	ChartIds []string `pulumi:"chartIds"`
-	// Column number for the layout.
-	Column *int `pulumi:"column"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-	Height *int `pulumi:"height"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-	Width *int `pulumi:"width"`
+	Column   *int     `pulumi:"column"`
+	Height   *int     `pulumi:"height"`
+	Width    *int     `pulumi:"width"`
 }
 
 // DashboardColumnInput is an input type that accepts DashboardColumnArgs and DashboardColumnOutput values.
@@ -284,14 +256,10 @@ type DashboardColumnInput interface {
 }
 
 type DashboardColumnArgs struct {
-	// List of IDs of the charts to display.
 	ChartIds pulumi.StringArrayInput `pulumi:"chartIds"`
-	// Column number for the layout.
-	Column pulumi.IntPtrInput `pulumi:"column"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-	Height pulumi.IntPtrInput `pulumi:"height"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-	Width pulumi.IntPtrInput `pulumi:"width"`
+	Column   pulumi.IntPtrInput      `pulumi:"column"`
+	Height   pulumi.IntPtrInput      `pulumi:"height"`
+	Width    pulumi.IntPtrInput      `pulumi:"width"`
 }
 
 func (DashboardColumnArgs) ElementType() reflect.Type {
@@ -345,22 +313,18 @@ func (o DashboardColumnOutput) ToDashboardColumnOutputWithContext(ctx context.Co
 	return o
 }
 
-// List of IDs of the charts to display.
 func (o DashboardColumnOutput) ChartIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardColumn) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
 }
 
-// Column number for the layout.
 func (o DashboardColumnOutput) Column() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardColumn) *int { return v.Column }).(pulumi.IntPtrOutput)
 }
 
-// How many rows every chart should take up (greater than or equal to 1). 1 by default.
 func (o DashboardColumnOutput) Height() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardColumn) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardColumnOutput) Width() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardColumn) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
@@ -386,18 +350,12 @@ func (o DashboardColumnArrayOutput) Index(i pulumi.IntInput) DashboardColumnOutp
 }
 
 type DashboardEventOverlay struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color *string `pulumi:"color"`
-	// Text shown in the dropdown when selecting this overlay from the menu.
-	Label *string `pulumi:"label"`
-	// Show a vertical line for the event. `false` by default.
-	Line *bool `pulumi:"line"`
-	// Search term used to choose the events shown in the overlay.
-	Signal string `pulumi:"signal"`
-	// Each element specifies a filter to use against the signal specified in the `signal`.
+	Color   *string                       `pulumi:"color"`
+	Label   *string                       `pulumi:"label"`
+	Line    *bool                         `pulumi:"line"`
+	Signal  string                        `pulumi:"signal"`
 	Sources []DashboardEventOverlaySource `pulumi:"sources"`
-	// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-	Type *string `pulumi:"type"`
+	Type    *string                       `pulumi:"type"`
 }
 
 // DashboardEventOverlayInput is an input type that accepts DashboardEventOverlayArgs and DashboardEventOverlayOutput values.
@@ -412,18 +370,12 @@ type DashboardEventOverlayInput interface {
 }
 
 type DashboardEventOverlayArgs struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// Text shown in the dropdown when selecting this overlay from the menu.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// Show a vertical line for the event. `false` by default.
-	Line pulumi.BoolPtrInput `pulumi:"line"`
-	// Search term used to choose the events shown in the overlay.
-	Signal pulumi.StringInput `pulumi:"signal"`
-	// Each element specifies a filter to use against the signal specified in the `signal`.
+	Color   pulumi.StringPtrInput                 `pulumi:"color"`
+	Label   pulumi.StringPtrInput                 `pulumi:"label"`
+	Line    pulumi.BoolPtrInput                   `pulumi:"line"`
+	Signal  pulumi.StringInput                    `pulumi:"signal"`
 	Sources DashboardEventOverlaySourceArrayInput `pulumi:"sources"`
-	// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type    pulumi.StringPtrInput                 `pulumi:"type"`
 }
 
 func (DashboardEventOverlayArgs) ElementType() reflect.Type {
@@ -477,32 +429,26 @@ func (o DashboardEventOverlayOutput) ToDashboardEventOverlayOutputWithContext(ct
 	return o
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o DashboardEventOverlayOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardEventOverlay) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
-// Text shown in the dropdown when selecting this overlay from the menu.
 func (o DashboardEventOverlayOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardEventOverlay) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// Show a vertical line for the event. `false` by default.
 func (o DashboardEventOverlayOutput) Line() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardEventOverlay) *bool { return v.Line }).(pulumi.BoolPtrOutput)
 }
 
-// Search term used to choose the events shown in the overlay.
 func (o DashboardEventOverlayOutput) Signal() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardEventOverlay) string { return v.Signal }).(pulumi.StringOutput)
 }
 
-// Each element specifies a filter to use against the signal specified in the `signal`.
 func (o DashboardEventOverlayOutput) Sources() DashboardEventOverlaySourceArrayOutput {
 	return o.ApplyT(func(v DashboardEventOverlay) []DashboardEventOverlaySource { return v.Sources }).(DashboardEventOverlaySourceArrayOutput)
 }
 
-// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
 func (o DashboardEventOverlayOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardEventOverlay) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -528,12 +474,9 @@ func (o DashboardEventOverlayArrayOutput) Index(i pulumi.IntInput) DashboardEven
 }
 
 type DashboardEventOverlaySource struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated *bool `pulumi:"negated"`
-	// The name of a dimension to filter against.
-	Property string `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values []string `pulumi:"values"`
+	Negated  *bool    `pulumi:"negated"`
+	Property string   `pulumi:"property"`
+	Values   []string `pulumi:"values"`
 }
 
 // DashboardEventOverlaySourceInput is an input type that accepts DashboardEventOverlaySourceArgs and DashboardEventOverlaySourceOutput values.
@@ -548,12 +491,9 @@ type DashboardEventOverlaySourceInput interface {
 }
 
 type DashboardEventOverlaySourceArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// The name of a dimension to filter against.
-	Property pulumi.StringInput `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Negated  pulumi.BoolPtrInput     `pulumi:"negated"`
+	Property pulumi.StringInput      `pulumi:"property"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (DashboardEventOverlaySourceArgs) ElementType() reflect.Type {
@@ -607,17 +547,14 @@ func (o DashboardEventOverlaySourceOutput) ToDashboardEventOverlaySourceOutputWi
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardEventOverlaySourceOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// The name of a dimension to filter against.
 func (o DashboardEventOverlaySourceOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardEventOverlaySource) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardEventOverlaySourceOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardEventOverlaySource) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -643,14 +580,10 @@ func (o DashboardEventOverlaySourceArrayOutput) Index(i pulumi.IntInput) Dashboa
 }
 
 type DashboardFilter struct {
-	// If true, this variable will also match data that doesn't have this property at all.
-	ApplyIfExist *bool `pulumi:"applyIfExist"`
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated *bool `pulumi:"negated"`
-	// The name of a dimension to filter against.
-	Property string `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values []string `pulumi:"values"`
+	ApplyIfExist *bool    `pulumi:"applyIfExist"`
+	Negated      *bool    `pulumi:"negated"`
+	Property     string   `pulumi:"property"`
+	Values       []string `pulumi:"values"`
 }
 
 // DashboardFilterInput is an input type that accepts DashboardFilterArgs and DashboardFilterOutput values.
@@ -665,14 +598,10 @@ type DashboardFilterInput interface {
 }
 
 type DashboardFilterArgs struct {
-	// If true, this variable will also match data that doesn't have this property at all.
-	ApplyIfExist pulumi.BoolPtrInput `pulumi:"applyIfExist"`
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// The name of a dimension to filter against.
-	Property pulumi.StringInput `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	ApplyIfExist pulumi.BoolPtrInput     `pulumi:"applyIfExist"`
+	Negated      pulumi.BoolPtrInput     `pulumi:"negated"`
+	Property     pulumi.StringInput      `pulumi:"property"`
+	Values       pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (DashboardFilterArgs) ElementType() reflect.Type {
@@ -726,22 +655,18 @@ func (o DashboardFilterOutput) ToDashboardFilterOutputWithContext(ctx context.Co
 	return o
 }
 
-// If true, this variable will also match data that doesn't have this property at all.
 func (o DashboardFilterOutput) ApplyIfExist() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardFilter) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardFilterOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// The name of a dimension to filter against.
 func (o DashboardFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -767,12 +692,9 @@ func (o DashboardFilterArrayOutput) Index(i pulumi.IntInput) DashboardFilterOutp
 }
 
 type DashboardGrid struct {
-	// List of IDs of the charts to display.
 	ChartIds []string `pulumi:"chartIds"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-	Height *int `pulumi:"height"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-	Width *int `pulumi:"width"`
+	Height   *int     `pulumi:"height"`
+	Width    *int     `pulumi:"width"`
 }
 
 // DashboardGridInput is an input type that accepts DashboardGridArgs and DashboardGridOutput values.
@@ -787,12 +709,9 @@ type DashboardGridInput interface {
 }
 
 type DashboardGridArgs struct {
-	// List of IDs of the charts to display.
 	ChartIds pulumi.StringArrayInput `pulumi:"chartIds"`
-	// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-	Height pulumi.IntPtrInput `pulumi:"height"`
-	// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-	Width pulumi.IntPtrInput `pulumi:"width"`
+	Height   pulumi.IntPtrInput      `pulumi:"height"`
+	Width    pulumi.IntPtrInput      `pulumi:"width"`
 }
 
 func (DashboardGridArgs) ElementType() reflect.Type {
@@ -846,17 +765,14 @@ func (o DashboardGridOutput) ToDashboardGridOutputWithContext(ctx context.Contex
 	return o
 }
 
-// List of IDs of the charts to display.
 func (o DashboardGridOutput) ChartIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGrid) []string { return v.ChartIds }).(pulumi.StringArrayOutput)
 }
 
-// How many rows every chart should take up (greater than or equal to 1). 1 by default.
 func (o DashboardGridOutput) Height() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardGrid) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
 func (o DashboardGridOutput) Width() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DashboardGrid) *int { return v.Width }).(pulumi.IntPtrOutput)
 }
@@ -882,16 +798,12 @@ func (o DashboardGridArrayOutput) Index(i pulumi.IntInput) DashboardGridOutput {
 }
 
 type DashboardGroupDashboard struct {
-	ConfigId *string `pulumi:"configId"`
-	// The dashboard id to mirror
-	DashboardId string `pulumi:"dashboardId"`
-	// The description that will override the original dashboards's description.
-	DescriptionOverride *string `pulumi:"descriptionOverride"`
-	// The description that will override the original dashboards's description.
-	FilterOverrides []DashboardGroupDashboardFilterOverride `pulumi:"filterOverrides"`
-	// The name that will override the original dashboards's name.
-	NameOverride      *string                                   `pulumi:"nameOverride"`
-	VariableOverrides []DashboardGroupDashboardVariableOverride `pulumi:"variableOverrides"`
+	ConfigId            *string                                   `pulumi:"configId"`
+	DashboardId         string                                    `pulumi:"dashboardId"`
+	DescriptionOverride *string                                   `pulumi:"descriptionOverride"`
+	FilterOverrides     []DashboardGroupDashboardFilterOverride   `pulumi:"filterOverrides"`
+	NameOverride        *string                                   `pulumi:"nameOverride"`
+	VariableOverrides   []DashboardGroupDashboardVariableOverride `pulumi:"variableOverrides"`
 }
 
 // DashboardGroupDashboardInput is an input type that accepts DashboardGroupDashboardArgs and DashboardGroupDashboardOutput values.
@@ -906,16 +818,12 @@ type DashboardGroupDashboardInput interface {
 }
 
 type DashboardGroupDashboardArgs struct {
-	ConfigId pulumi.StringPtrInput `pulumi:"configId"`
-	// The dashboard id to mirror
-	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
-	// The description that will override the original dashboards's description.
-	DescriptionOverride pulumi.StringPtrInput `pulumi:"descriptionOverride"`
-	// The description that will override the original dashboards's description.
-	FilterOverrides DashboardGroupDashboardFilterOverrideArrayInput `pulumi:"filterOverrides"`
-	// The name that will override the original dashboards's name.
-	NameOverride      pulumi.StringPtrInput                             `pulumi:"nameOverride"`
-	VariableOverrides DashboardGroupDashboardVariableOverrideArrayInput `pulumi:"variableOverrides"`
+	ConfigId            pulumi.StringPtrInput                             `pulumi:"configId"`
+	DashboardId         pulumi.StringInput                                `pulumi:"dashboardId"`
+	DescriptionOverride pulumi.StringPtrInput                             `pulumi:"descriptionOverride"`
+	FilterOverrides     DashboardGroupDashboardFilterOverrideArrayInput   `pulumi:"filterOverrides"`
+	NameOverride        pulumi.StringPtrInput                             `pulumi:"nameOverride"`
+	VariableOverrides   DashboardGroupDashboardVariableOverrideArrayInput `pulumi:"variableOverrides"`
 }
 
 func (DashboardGroupDashboardArgs) ElementType() reflect.Type {
@@ -973,22 +881,18 @@ func (o DashboardGroupDashboardOutput) ConfigId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
 }
 
-// The dashboard id to mirror
 func (o DashboardGroupDashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
 }
 
-// The description that will override the original dashboards's description.
 func (o DashboardGroupDashboardOutput) DescriptionOverride() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.DescriptionOverride }).(pulumi.StringPtrOutput)
 }
 
-// The description that will override the original dashboards's description.
 func (o DashboardGroupDashboardOutput) FilterOverrides() DashboardGroupDashboardFilterOverrideArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) []DashboardGroupDashboardFilterOverride { return v.FilterOverrides }).(DashboardGroupDashboardFilterOverrideArrayOutput)
 }
 
-// The name that will override the original dashboards's name.
 func (o DashboardGroupDashboardOutput) NameOverride() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardGroupDashboard) *string { return v.NameOverride }).(pulumi.StringPtrOutput)
 }
@@ -1018,12 +922,9 @@ func (o DashboardGroupDashboardArrayOutput) Index(i pulumi.IntInput) DashboardGr
 }
 
 type DashboardGroupDashboardFilterOverride struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated *bool `pulumi:"negated"`
-	// A metric time series dimension or property name.
-	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
-	Values []string `pulumi:"values"`
+	Negated  *bool    `pulumi:"negated"`
+	Property string   `pulumi:"property"`
+	Values   []string `pulumi:"values"`
 }
 
 // DashboardGroupDashboardFilterOverrideInput is an input type that accepts DashboardGroupDashboardFilterOverrideArgs and DashboardGroupDashboardFilterOverrideOutput values.
@@ -1038,12 +939,9 @@ type DashboardGroupDashboardFilterOverrideInput interface {
 }
 
 type DashboardGroupDashboardFilterOverrideArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// A metric time series dimension or property name.
-	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Negated  pulumi.BoolPtrInput     `pulumi:"negated"`
+	Property pulumi.StringInput      `pulumi:"property"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (DashboardGroupDashboardFilterOverrideArgs) ElementType() reflect.Type {
@@ -1097,17 +995,14 @@ func (o DashboardGroupDashboardFilterOverrideOutput) ToDashboardGroupDashboardFi
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardGroupDashboardFilterOverrideOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// A metric time series dimension or property name.
 func (o DashboardGroupDashboardFilterOverrideOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupDashboardFilterOverrideOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardFilterOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1133,11 +1028,8 @@ func (o DashboardGroupDashboardFilterOverrideArrayOutput) Index(i pulumi.IntInpu
 }
 
 type DashboardGroupDashboardVariableOverride struct {
-	// A metric time series dimension or property name.
-	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
-	Values []string `pulumi:"values"`
-	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+	Property         string   `pulumi:"property"`
+	Values           []string `pulumi:"values"`
 	ValuesSuggesteds []string `pulumi:"valuesSuggesteds"`
 }
 
@@ -1153,11 +1045,8 @@ type DashboardGroupDashboardVariableOverrideInput interface {
 }
 
 type DashboardGroupDashboardVariableOverrideArgs struct {
-	// A metric time series dimension or property name.
-	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
-	Values pulumi.StringArrayInput `pulumi:"values"`
-	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+	Property         pulumi.StringInput      `pulumi:"property"`
+	Values           pulumi.StringArrayInput `pulumi:"values"`
 	ValuesSuggesteds pulumi.StringArrayInput `pulumi:"valuesSuggesteds"`
 }
 
@@ -1212,17 +1101,14 @@ func (o DashboardGroupDashboardVariableOverrideOutput) ToDashboardGroupDashboard
 	return o
 }
 
-// A metric time series dimension or property name.
 func (o DashboardGroupDashboardVariableOverrideOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupDashboardVariableOverrideOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 func (o DashboardGroupDashboardVariableOverrideOutput) ValuesSuggesteds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupDashboardVariableOverride) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
 }
@@ -1348,12 +1234,9 @@ func (o DashboardGroupImportQualifierArrayOutput) Index(i pulumi.IntInput) Dashb
 }
 
 type DashboardGroupImportQualifierFilter struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated *bool `pulumi:"negated"`
-	// A metric time series dimension or property name.
-	Property string `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
-	Values []string `pulumi:"values"`
+	Negated  *bool    `pulumi:"negated"`
+	Property string   `pulumi:"property"`
+	Values   []string `pulumi:"values"`
 }
 
 // DashboardGroupImportQualifierFilterInput is an input type that accepts DashboardGroupImportQualifierFilterArgs and DashboardGroupImportQualifierFilterOutput values.
@@ -1368,12 +1251,9 @@ type DashboardGroupImportQualifierFilterInput interface {
 }
 
 type DashboardGroupImportQualifierFilterArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// A metric time series dimension or property name.
-	Property pulumi.StringInput `pulumi:"property"`
-	// (Optional) List of of strings (which will be treated as an OR filter on the property).
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Negated  pulumi.BoolPtrInput     `pulumi:"negated"`
+	Property pulumi.StringInput      `pulumi:"property"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (DashboardGroupImportQualifierFilterArgs) ElementType() reflect.Type {
@@ -1427,17 +1307,14 @@ func (o DashboardGroupImportQualifierFilterOutput) ToDashboardGroupImportQualifi
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardGroupImportQualifierFilterOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// A metric time series dimension or property name.
 func (o DashboardGroupImportQualifierFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// (Optional) List of of strings (which will be treated as an OR filter on the property).
 func (o DashboardGroupImportQualifierFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupImportQualifierFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1463,12 +1340,9 @@ func (o DashboardGroupImportQualifierFilterArrayOutput) Index(i pulumi.IntInput)
 }
 
 type DashboardGroupPermission struct {
-	// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
-	Actions []string `pulumi:"actions"`
-	// ID of the user, team, or organization for which you're granting permissions.
-	PrincipalId string `pulumi:"principalId"`
-	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
-	PrincipalType string `pulumi:"principalType"`
+	Actions       []string `pulumi:"actions"`
+	PrincipalId   string   `pulumi:"principalId"`
+	PrincipalType string   `pulumi:"principalType"`
 }
 
 // DashboardGroupPermissionInput is an input type that accepts DashboardGroupPermissionArgs and DashboardGroupPermissionOutput values.
@@ -1483,12 +1357,9 @@ type DashboardGroupPermissionInput interface {
 }
 
 type DashboardGroupPermissionArgs struct {
-	// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// ID of the user, team, or organization for which you're granting permissions.
-	PrincipalId pulumi.StringInput `pulumi:"principalId"`
-	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
-	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+	Actions       pulumi.StringArrayInput `pulumi:"actions"`
+	PrincipalId   pulumi.StringInput      `pulumi:"principalId"`
+	PrincipalType pulumi.StringInput      `pulumi:"principalType"`
 }
 
 func (DashboardGroupPermissionArgs) ElementType() reflect.Type {
@@ -1542,17 +1413,14 @@ func (o DashboardGroupPermissionOutput) ToDashboardGroupPermissionOutputWithCont
 	return o
 }
 
-// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
 func (o DashboardGroupPermissionOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardGroupPermission) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// ID of the user, team, or organization for which you're granting permissions.
 func (o DashboardGroupPermissionOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupPermission) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
 func (o DashboardGroupPermissionOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardGroupPermission) string { return v.PrincipalType }).(pulumi.StringOutput)
 }
@@ -1578,10 +1446,8 @@ func (o DashboardGroupPermissionArrayOutput) Index(i pulumi.IntInput) DashboardG
 }
 
 type DashboardPermissions struct {
-	// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-	Acls []DashboardPermissionsAcl `pulumi:"acls"`
-	// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
-	Parent *string `pulumi:"parent"`
+	Acls   []DashboardPermissionsAcl `pulumi:"acls"`
+	Parent *string                   `pulumi:"parent"`
 }
 
 // DashboardPermissionsInput is an input type that accepts DashboardPermissionsArgs and DashboardPermissionsOutput values.
@@ -1596,10 +1462,8 @@ type DashboardPermissionsInput interface {
 }
 
 type DashboardPermissionsArgs struct {
-	// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
-	Acls DashboardPermissionsAclArrayInput `pulumi:"acls"`
-	// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
-	Parent pulumi.StringPtrInput `pulumi:"parent"`
+	Acls   DashboardPermissionsAclArrayInput `pulumi:"acls"`
+	Parent pulumi.StringPtrInput             `pulumi:"parent"`
 }
 
 func (DashboardPermissionsArgs) ElementType() reflect.Type {
@@ -1679,12 +1543,10 @@ func (o DashboardPermissionsOutput) ToDashboardPermissionsPtrOutputWithContext(c
 	}).(DashboardPermissionsPtrOutput)
 }
 
-// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
 func (o DashboardPermissionsOutput) Acls() DashboardPermissionsAclArrayOutput {
 	return o.ApplyT(func(v DashboardPermissions) []DashboardPermissionsAcl { return v.Acls }).(DashboardPermissionsAclArrayOutput)
 }
 
-// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
 func (o DashboardPermissionsOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardPermissions) *string { return v.Parent }).(pulumi.StringPtrOutput)
 }
@@ -1713,7 +1575,6 @@ func (o DashboardPermissionsPtrOutput) Elem() DashboardPermissionsOutput {
 	}).(DashboardPermissionsOutput)
 }
 
-// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
 func (o DashboardPermissionsPtrOutput) Acls() DashboardPermissionsAclArrayOutput {
 	return o.ApplyT(func(v *DashboardPermissions) []DashboardPermissionsAcl {
 		if v == nil {
@@ -1723,7 +1584,6 @@ func (o DashboardPermissionsPtrOutput) Acls() DashboardPermissionsAclArrayOutput
 	}).(DashboardPermissionsAclArrayOutput)
 }
 
-// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
 func (o DashboardPermissionsPtrOutput) Parent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DashboardPermissions) *string {
 		if v == nil {
@@ -1734,12 +1594,9 @@ func (o DashboardPermissionsPtrOutput) Parent() pulumi.StringPtrOutput {
 }
 
 type DashboardPermissionsAcl struct {
-	// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
-	Actions []string `pulumi:"actions"`
-	// ID of the user, team, or organization for which you're granting permissions.
-	PrincipalId string `pulumi:"principalId"`
-	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
-	PrincipalType string `pulumi:"principalType"`
+	Actions       []string `pulumi:"actions"`
+	PrincipalId   string   `pulumi:"principalId"`
+	PrincipalType string   `pulumi:"principalType"`
 }
 
 // DashboardPermissionsAclInput is an input type that accepts DashboardPermissionsAclArgs and DashboardPermissionsAclOutput values.
@@ -1754,12 +1611,9 @@ type DashboardPermissionsAclInput interface {
 }
 
 type DashboardPermissionsAclArgs struct {
-	// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
-	Actions pulumi.StringArrayInput `pulumi:"actions"`
-	// ID of the user, team, or organization for which you're granting permissions.
-	PrincipalId pulumi.StringInput `pulumi:"principalId"`
-	// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
-	PrincipalType pulumi.StringInput `pulumi:"principalType"`
+	Actions       pulumi.StringArrayInput `pulumi:"actions"`
+	PrincipalId   pulumi.StringInput      `pulumi:"principalId"`
+	PrincipalType pulumi.StringInput      `pulumi:"principalType"`
 }
 
 func (DashboardPermissionsAclArgs) ElementType() reflect.Type {
@@ -1813,17 +1667,14 @@ func (o DashboardPermissionsAclOutput) ToDashboardPermissionsAclOutputWithContex
 	return o
 }
 
-// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
 func (o DashboardPermissionsAclOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardPermissionsAcl) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-// ID of the user, team, or organization for which you're granting permissions.
 func (o DashboardPermissionsAclOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPermissionsAcl) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
 func (o DashboardPermissionsAclOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardPermissionsAcl) string { return v.PrincipalType }).(pulumi.StringOutput)
 }
@@ -1849,12 +1700,9 @@ func (o DashboardPermissionsAclArrayOutput) Index(i pulumi.IntInput) DashboardPe
 }
 
 type DashboardSelectedEventOverlay struct {
-	// Search term used to choose the events shown in the overlay.
-	Signal string `pulumi:"signal"`
-	// Each element specifies a filter to use against the signal specified in the `signal`.
+	Signal  string                                `pulumi:"signal"`
 	Sources []DashboardSelectedEventOverlaySource `pulumi:"sources"`
-	// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-	Type *string `pulumi:"type"`
+	Type    *string                               `pulumi:"type"`
 }
 
 // DashboardSelectedEventOverlayInput is an input type that accepts DashboardSelectedEventOverlayArgs and DashboardSelectedEventOverlayOutput values.
@@ -1869,12 +1717,9 @@ type DashboardSelectedEventOverlayInput interface {
 }
 
 type DashboardSelectedEventOverlayArgs struct {
-	// Search term used to choose the events shown in the overlay.
-	Signal pulumi.StringInput `pulumi:"signal"`
-	// Each element specifies a filter to use against the signal specified in the `signal`.
+	Signal  pulumi.StringInput                            `pulumi:"signal"`
 	Sources DashboardSelectedEventOverlaySourceArrayInput `pulumi:"sources"`
-	// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type    pulumi.StringPtrInput                         `pulumi:"type"`
 }
 
 func (DashboardSelectedEventOverlayArgs) ElementType() reflect.Type {
@@ -1928,17 +1773,14 @@ func (o DashboardSelectedEventOverlayOutput) ToDashboardSelectedEventOverlayOutp
 	return o
 }
 
-// Search term used to choose the events shown in the overlay.
 func (o DashboardSelectedEventOverlayOutput) Signal() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlay) string { return v.Signal }).(pulumi.StringOutput)
 }
 
-// Each element specifies a filter to use against the signal specified in the `signal`.
 func (o DashboardSelectedEventOverlayOutput) Sources() DashboardSelectedEventOverlaySourceArrayOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlay) []DashboardSelectedEventOverlaySource { return v.Sources }).(DashboardSelectedEventOverlaySourceArrayOutput)
 }
 
-// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
 func (o DashboardSelectedEventOverlayOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlay) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1964,12 +1806,9 @@ func (o DashboardSelectedEventOverlayArrayOutput) Index(i pulumi.IntInput) Dashb
 }
 
 type DashboardSelectedEventOverlaySource struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated *bool `pulumi:"negated"`
-	// The name of a dimension to filter against.
-	Property string `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values []string `pulumi:"values"`
+	Negated  *bool    `pulumi:"negated"`
+	Property string   `pulumi:"property"`
+	Values   []string `pulumi:"values"`
 }
 
 // DashboardSelectedEventOverlaySourceInput is an input type that accepts DashboardSelectedEventOverlaySourceArgs and DashboardSelectedEventOverlaySourceOutput values.
@@ -1984,12 +1823,9 @@ type DashboardSelectedEventOverlaySourceInput interface {
 }
 
 type DashboardSelectedEventOverlaySourceArgs struct {
-	// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-	Negated pulumi.BoolPtrInput `pulumi:"negated"`
-	// The name of a dimension to filter against.
-	Property pulumi.StringInput `pulumi:"property"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Negated  pulumi.BoolPtrInput     `pulumi:"negated"`
+	Property pulumi.StringInput      `pulumi:"property"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (DashboardSelectedEventOverlaySourceArgs) ElementType() reflect.Type {
@@ -2043,17 +1879,14 @@ func (o DashboardSelectedEventOverlaySourceOutput) ToDashboardSelectedEventOverl
 	return o
 }
 
-// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
 func (o DashboardSelectedEventOverlaySourceOutput) Negated() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) *bool { return v.Negated }).(pulumi.BoolPtrOutput)
 }
 
-// The name of a dimension to filter against.
 func (o DashboardSelectedEventOverlaySourceOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardSelectedEventOverlaySourceOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardSelectedEventOverlaySource) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2079,24 +1912,15 @@ func (o DashboardSelectedEventOverlaySourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type DashboardVariable struct {
-	// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
-	Alias string `pulumi:"alias"`
-	// If true, this variable will also match data that doesn't have this property at all.
-	ApplyIfExist *bool `pulumi:"applyIfExist"`
-	// Variable description.
-	Description *string `pulumi:"description"`
-	// The name of a dimension to filter against.
-	Property string `pulumi:"property"`
-	// If `true`, this variable will only apply to charts that have a filter for the property.
-	ReplaceOnly *bool `pulumi:"replaceOnly"`
-	// If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
-	RestrictedSuggestions *bool `pulumi:"restrictedSuggestions"`
-	// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-	ValueRequired *bool `pulumi:"valueRequired"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values []string `pulumi:"values"`
-	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-	ValuesSuggesteds []string `pulumi:"valuesSuggesteds"`
+	Alias                 string   `pulumi:"alias"`
+	ApplyIfExist          *bool    `pulumi:"applyIfExist"`
+	Description           *string  `pulumi:"description"`
+	Property              string   `pulumi:"property"`
+	ReplaceOnly           *bool    `pulumi:"replaceOnly"`
+	RestrictedSuggestions *bool    `pulumi:"restrictedSuggestions"`
+	ValueRequired         *bool    `pulumi:"valueRequired"`
+	Values                []string `pulumi:"values"`
+	ValuesSuggesteds      []string `pulumi:"valuesSuggesteds"`
 }
 
 // DashboardVariableInput is an input type that accepts DashboardVariableArgs and DashboardVariableOutput values.
@@ -2111,24 +1935,15 @@ type DashboardVariableInput interface {
 }
 
 type DashboardVariableArgs struct {
-	// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
-	Alias pulumi.StringInput `pulumi:"alias"`
-	// If true, this variable will also match data that doesn't have this property at all.
-	ApplyIfExist pulumi.BoolPtrInput `pulumi:"applyIfExist"`
-	// Variable description.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The name of a dimension to filter against.
-	Property pulumi.StringInput `pulumi:"property"`
-	// If `true`, this variable will only apply to charts that have a filter for the property.
-	ReplaceOnly pulumi.BoolPtrInput `pulumi:"replaceOnly"`
-	// If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
-	RestrictedSuggestions pulumi.BoolPtrInput `pulumi:"restrictedSuggestions"`
-	// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-	ValueRequired pulumi.BoolPtrInput `pulumi:"valueRequired"`
-	// A list of values to be used with the `property`, they will be combined via `OR`.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-	// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-	ValuesSuggesteds pulumi.StringArrayInput `pulumi:"valuesSuggesteds"`
+	Alias                 pulumi.StringInput      `pulumi:"alias"`
+	ApplyIfExist          pulumi.BoolPtrInput     `pulumi:"applyIfExist"`
+	Description           pulumi.StringPtrInput   `pulumi:"description"`
+	Property              pulumi.StringInput      `pulumi:"property"`
+	ReplaceOnly           pulumi.BoolPtrInput     `pulumi:"replaceOnly"`
+	RestrictedSuggestions pulumi.BoolPtrInput     `pulumi:"restrictedSuggestions"`
+	ValueRequired         pulumi.BoolPtrInput     `pulumi:"valueRequired"`
+	Values                pulumi.StringArrayInput `pulumi:"values"`
+	ValuesSuggesteds      pulumi.StringArrayInput `pulumi:"valuesSuggesteds"`
 }
 
 func (DashboardVariableArgs) ElementType() reflect.Type {
@@ -2182,47 +1997,38 @@ func (o DashboardVariableOutput) ToDashboardVariableOutputWithContext(ctx contex
 	return o
 }
 
-// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
 func (o DashboardVariableOutput) Alias() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardVariable) string { return v.Alias }).(pulumi.StringOutput)
 }
 
-// If true, this variable will also match data that doesn't have this property at all.
 func (o DashboardVariableOutput) ApplyIfExist() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *bool { return v.ApplyIfExist }).(pulumi.BoolPtrOutput)
 }
 
-// Variable description.
 func (o DashboardVariableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of a dimension to filter against.
 func (o DashboardVariableOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v DashboardVariable) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// If `true`, this variable will only apply to charts that have a filter for the property.
 func (o DashboardVariableOutput) ReplaceOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *bool { return v.ReplaceOnly }).(pulumi.BoolPtrOutput)
 }
 
-// If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
 func (o DashboardVariableOutput) RestrictedSuggestions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *bool { return v.RestrictedSuggestions }).(pulumi.BoolPtrOutput)
 }
 
-// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
 func (o DashboardVariableOutput) ValueRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DashboardVariable) *bool { return v.ValueRequired }).(pulumi.BoolPtrOutput)
 }
 
-// A list of values to be used with the `property`, they will be combined via `OR`.
 func (o DashboardVariableOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardVariable) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
-// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
 func (o DashboardVariableOutput) ValuesSuggesteds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DashboardVariable) []string { return v.ValuesSuggesteds }).(pulumi.StringArrayOutput)
 }
@@ -2248,16 +2054,11 @@ func (o DashboardVariableArrayOutput) Index(i pulumi.IntInput) DashboardVariable
 }
 
 type DataLinkTargetExternalUrl struct {
-	// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-	MinimumTimeWindow *string `pulumi:"minimumTimeWindow"`
-	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-	Name string `pulumi:"name"`
-	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+	MinimumTimeWindow  *string           `pulumi:"minimumTimeWindow"`
+	Name               string            `pulumi:"name"`
 	PropertyKeyMapping map[string]string `pulumi:"propertyKeyMapping"`
-	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-	TimeFormat *string `pulumi:"timeFormat"`
-	// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
-	Url string `pulumi:"url"`
+	TimeFormat         *string           `pulumi:"timeFormat"`
+	Url                string            `pulumi:"url"`
 }
 
 // DataLinkTargetExternalUrlInput is an input type that accepts DataLinkTargetExternalUrlArgs and DataLinkTargetExternalUrlOutput values.
@@ -2272,16 +2073,11 @@ type DataLinkTargetExternalUrlInput interface {
 }
 
 type DataLinkTargetExternalUrlArgs struct {
-	// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
-	MinimumTimeWindow pulumi.StringPtrInput `pulumi:"minimumTimeWindow"`
-	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+	MinimumTimeWindow  pulumi.StringPtrInput `pulumi:"minimumTimeWindow"`
+	Name               pulumi.StringInput    `pulumi:"name"`
 	PropertyKeyMapping pulumi.StringMapInput `pulumi:"propertyKeyMapping"`
-	// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-	TimeFormat pulumi.StringPtrInput `pulumi:"timeFormat"`
-	// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
-	Url pulumi.StringInput `pulumi:"url"`
+	TimeFormat         pulumi.StringPtrInput `pulumi:"timeFormat"`
+	Url                pulumi.StringInput    `pulumi:"url"`
 }
 
 func (DataLinkTargetExternalUrlArgs) ElementType() reflect.Type {
@@ -2335,27 +2131,22 @@ func (o DataLinkTargetExternalUrlOutput) ToDataLinkTargetExternalUrlOutputWithCo
 	return o
 }
 
-// The [minimum time window](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) for a search sent to an external site. Defaults to `6000`
 func (o DataLinkTargetExternalUrlOutput) MinimumTimeWindow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) *string { return v.MinimumTimeWindow }).(pulumi.StringPtrOutput)
 }
 
-// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 func (o DataLinkTargetExternalUrlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
 func (o DataLinkTargetExternalUrlOutput) PropertyKeyMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
 }
 
-// [Designates the format](https://developers.signalfx.com/administration/data_links_overview.html#_minimum_time_window) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
 func (o DataLinkTargetExternalUrlOutput) TimeFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) *string { return v.TimeFormat }).(pulumi.StringPtrOutput)
 }
 
-// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://developers.signalfx.com/administration/data_links_overview.html#_external_link_targets).
 func (o DataLinkTargetExternalUrlOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetExternalUrl) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -2381,14 +2172,10 @@ func (o DataLinkTargetExternalUrlArrayOutput) Index(i pulumi.IntInput) DataLinkT
 }
 
 type DataLinkTargetSignalfxDashboard struct {
-	// SignalFx-assigned ID of the dashboard link target's dashboard group
 	DashboardGroupId string `pulumi:"dashboardGroupId"`
-	// SignalFx-assigned ID of the dashboard link target
-	DashboardId string `pulumi:"dashboardId"`
-	// Flag that designates a target as the default for a data link object. `true` by default
-	IsDefault *bool `pulumi:"isDefault"`
-	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-	Name string `pulumi:"name"`
+	DashboardId      string `pulumi:"dashboardId"`
+	IsDefault        *bool  `pulumi:"isDefault"`
+	Name             string `pulumi:"name"`
 }
 
 // DataLinkTargetSignalfxDashboardInput is an input type that accepts DataLinkTargetSignalfxDashboardArgs and DataLinkTargetSignalfxDashboardOutput values.
@@ -2403,14 +2190,10 @@ type DataLinkTargetSignalfxDashboardInput interface {
 }
 
 type DataLinkTargetSignalfxDashboardArgs struct {
-	// SignalFx-assigned ID of the dashboard link target's dashboard group
-	DashboardGroupId pulumi.StringInput `pulumi:"dashboardGroupId"`
-	// SignalFx-assigned ID of the dashboard link target
-	DashboardId pulumi.StringInput `pulumi:"dashboardId"`
-	// Flag that designates a target as the default for a data link object. `true` by default
-	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
-	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-	Name pulumi.StringInput `pulumi:"name"`
+	DashboardGroupId pulumi.StringInput  `pulumi:"dashboardGroupId"`
+	DashboardId      pulumi.StringInput  `pulumi:"dashboardId"`
+	IsDefault        pulumi.BoolPtrInput `pulumi:"isDefault"`
+	Name             pulumi.StringInput  `pulumi:"name"`
 }
 
 func (DataLinkTargetSignalfxDashboardArgs) ElementType() reflect.Type {
@@ -2464,22 +2247,18 @@ func (o DataLinkTargetSignalfxDashboardOutput) ToDataLinkTargetSignalfxDashboard
 	return o
 }
 
-// SignalFx-assigned ID of the dashboard link target's dashboard group
 func (o DataLinkTargetSignalfxDashboardOutput) DashboardGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) string { return v.DashboardGroupId }).(pulumi.StringOutput)
 }
 
-// SignalFx-assigned ID of the dashboard link target
 func (o DataLinkTargetSignalfxDashboardOutput) DashboardId() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) string { return v.DashboardId }).(pulumi.StringOutput)
 }
 
-// Flag that designates a target as the default for a data link object. `true` by default
 func (o DataLinkTargetSignalfxDashboardOutput) IsDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
-// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 func (o DataLinkTargetSignalfxDashboardOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetSignalfxDashboard) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2505,9 +2284,7 @@ func (o DataLinkTargetSignalfxDashboardArrayOutput) Index(i pulumi.IntInput) Dat
 }
 
 type DataLinkTargetSplunk struct {
-	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-	Name string `pulumi:"name"`
-	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+	Name               string            `pulumi:"name"`
 	PropertyKeyMapping map[string]string `pulumi:"propertyKeyMapping"`
 }
 
@@ -2523,9 +2300,7 @@ type DataLinkTargetSplunkInput interface {
 }
 
 type DataLinkTargetSplunkArgs struct {
-	// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
+	Name               pulumi.StringInput    `pulumi:"name"`
 	PropertyKeyMapping pulumi.StringMapInput `pulumi:"propertyKeyMapping"`
 }
 
@@ -2580,12 +2355,10 @@ func (o DataLinkTargetSplunkOutput) ToDataLinkTargetSplunkOutputWithContext(ctx 
 	return o
 }
 
-// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
 func (o DataLinkTargetSplunkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DataLinkTargetSplunk) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
 func (o DataLinkTargetSplunkOutput) PropertyKeyMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DataLinkTargetSplunk) map[string]string { return v.PropertyKeyMapping }).(pulumi.StringMapOutput)
 }
@@ -2611,24 +2384,15 @@ func (o DataLinkTargetSplunkArrayOutput) Index(i pulumi.IntInput) DataLinkTarget
 }
 
 type DetectorRule struct {
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-	Description *string `pulumi:"description"`
-	// A detect label which matches a detect label within `programText`.
-	DetectLabel string `pulumi:"detectLabel"`
-	// When true, notifications and events will not be generated for the detect label. `false` by default.
-	Disabled *bool `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-	Notifications []string `pulumi:"notifications"`
-	// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-	ParameterizedBody *string `pulumi:"parameterizedBody"`
-	// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-	ParameterizedSubject *string `pulumi:"parameterizedSubject"`
-	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-	RunbookUrl *string `pulumi:"runbookUrl"`
-	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-	Severity string `pulumi:"severity"`
-	// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-	Tip *string `pulumi:"tip"`
+	Description          *string  `pulumi:"description"`
+	DetectLabel          string   `pulumi:"detectLabel"`
+	Disabled             *bool    `pulumi:"disabled"`
+	Notifications        []string `pulumi:"notifications"`
+	ParameterizedBody    *string  `pulumi:"parameterizedBody"`
+	ParameterizedSubject *string  `pulumi:"parameterizedSubject"`
+	RunbookUrl           *string  `pulumi:"runbookUrl"`
+	Severity             string   `pulumi:"severity"`
+	Tip                  *string  `pulumi:"tip"`
 }
 
 // DetectorRuleInput is an input type that accepts DetectorRuleArgs and DetectorRuleOutput values.
@@ -2643,24 +2407,15 @@ type DetectorRuleInput interface {
 }
 
 type DetectorRuleArgs struct {
-	// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// A detect label which matches a detect label within `programText`.
-	DetectLabel pulumi.StringInput `pulumi:"detectLabel"`
-	// When true, notifications and events will not be generated for the detect label. `false` by default.
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
-	// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
-	// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-	ParameterizedSubject pulumi.StringPtrInput `pulumi:"parameterizedSubject"`
-	// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
-	// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-	Severity pulumi.StringInput `pulumi:"severity"`
-	// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-	Tip pulumi.StringPtrInput `pulumi:"tip"`
+	Description          pulumi.StringPtrInput   `pulumi:"description"`
+	DetectLabel          pulumi.StringInput      `pulumi:"detectLabel"`
+	Disabled             pulumi.BoolPtrInput     `pulumi:"disabled"`
+	Notifications        pulumi.StringArrayInput `pulumi:"notifications"`
+	ParameterizedBody    pulumi.StringPtrInput   `pulumi:"parameterizedBody"`
+	ParameterizedSubject pulumi.StringPtrInput   `pulumi:"parameterizedSubject"`
+	RunbookUrl           pulumi.StringPtrInput   `pulumi:"runbookUrl"`
+	Severity             pulumi.StringInput      `pulumi:"severity"`
+	Tip                  pulumi.StringPtrInput   `pulumi:"tip"`
 }
 
 func (DetectorRuleArgs) ElementType() reflect.Type {
@@ -2714,47 +2469,38 @@ func (o DetectorRuleOutput) ToDetectorRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
 func (o DetectorRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A detect label which matches a detect label within `programText`.
 func (o DetectorRuleOutput) DetectLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v DetectorRule) string { return v.DetectLabel }).(pulumi.StringOutput)
 }
 
-// When true, notifications and events will not be generated for the detect label. `false` by default.
 func (o DetectorRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
 func (o DetectorRuleOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DetectorRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
 }
 
-// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 func (o DetectorRuleOutput) ParameterizedBody() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedBody }).(pulumi.StringPtrOutput)
 }
 
-// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
 func (o DetectorRuleOutput) ParameterizedSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
 }
 
-// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
 func (o DetectorRuleOutput) RunbookUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.RunbookUrl }).(pulumi.StringPtrOutput)
 }
 
-// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
 func (o DetectorRuleOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v DetectorRule) string { return v.Severity }).(pulumi.StringOutput)
 }
 
-// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
 func (o DetectorRuleOutput) Tip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.Tip }).(pulumi.StringPtrOutput)
 }
@@ -2780,27 +2526,12 @@ func (o DetectorRuleArrayOutput) Index(i pulumi.IntInput) DetectorRuleOutput {
 }
 
 type DetectorVizOption struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color *string `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       *string `pulumi:"color"`
 	DisplayName *string `pulumi:"displayName"`
-	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label string `pulumi:"label"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-	//
-	// **Notes**
-	//
-	// It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
-	//
-	// `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
-	//
-	// `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
-	//
-	// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
+	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit *string `pulumi:"valueUnit"`
+	ValueUnit   *string `pulumi:"valueUnit"`
 }
 
 // DetectorVizOptionInput is an input type that accepts DetectorVizOptionArgs and DetectorVizOptionOutput values.
@@ -2815,27 +2546,12 @@ type DetectorVizOptionInput interface {
 }
 
 type DetectorVizOptionArgs struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       pulumi.StringPtrInput `pulumi:"color"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-	//
-	// **Notes**
-	//
-	// It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
-	//
-	// `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
-	//
-	// `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
-	//
-	// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
+	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
+	ValueUnit   pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
 func (DetectorVizOptionArgs) ElementType() reflect.Type {
@@ -2889,32 +2605,18 @@ func (o DetectorVizOptionOutput) ToDetectorVizOptionOutputWithContext(ctx contex
 	return o
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o DetectorVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
-// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o DetectorVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o DetectorVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v DetectorVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-//
-// **Notes**
-//
-// It is highly recommended that you use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives/negatives.
-//
-// `maxDelay` allows SignalFx to continue with computation if there is a lag in receiving data points.
-//
-// `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `programText`.
-//
-// See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info.
 func (o DetectorVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -2923,7 +2625,6 @@ func (o DetectorVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o DetectorVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -2949,11 +2650,8 @@ func (o DetectorVizOptionArrayOutput) Index(i pulumi.IntInput) DetectorVizOption
 }
 
 type HeatmapChartColorRange struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color string `pulumi:"color"`
-	// The maximum value within the coloring range.
+	Color    string   `pulumi:"color"`
 	MaxValue *float64 `pulumi:"maxValue"`
-	// The minimum value within the coloring range.
 	MinValue *float64 `pulumi:"minValue"`
 }
 
@@ -2969,11 +2667,8 @@ type HeatmapChartColorRangeInput interface {
 }
 
 type HeatmapChartColorRangeArgs struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color pulumi.StringInput `pulumi:"color"`
-	// The maximum value within the coloring range.
+	Color    pulumi.StringInput     `pulumi:"color"`
 	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
-	// The minimum value within the coloring range.
 	MinValue pulumi.Float64PtrInput `pulumi:"minValue"`
 }
 
@@ -3054,17 +2749,14 @@ func (o HeatmapChartColorRangeOutput) ToHeatmapChartColorRangePtrOutputWithConte
 	}).(HeatmapChartColorRangePtrOutput)
 }
 
-// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o HeatmapChartColorRangeOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v HeatmapChartColorRange) string { return v.Color }).(pulumi.StringOutput)
 }
 
-// The maximum value within the coloring range.
 func (o HeatmapChartColorRangeOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value within the coloring range.
 func (o HeatmapChartColorRangeOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HeatmapChartColorRange) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
@@ -3093,7 +2785,6 @@ func (o HeatmapChartColorRangePtrOutput) Elem() HeatmapChartColorRangeOutput {
 	}).(HeatmapChartColorRangeOutput)
 }
 
-// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o HeatmapChartColorRangePtrOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HeatmapChartColorRange) *string {
 		if v == nil {
@@ -3103,7 +2794,6 @@ func (o HeatmapChartColorRangePtrOutput) Color() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum value within the coloring range.
 func (o HeatmapChartColorRangePtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *HeatmapChartColorRange) *float64 {
 		if v == nil {
@@ -3113,7 +2803,6 @@ func (o HeatmapChartColorRangePtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value within the coloring range.
 func (o HeatmapChartColorRangePtrOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *HeatmapChartColorRange) *float64 {
 		if v == nil {
@@ -3124,16 +2813,11 @@ func (o HeatmapChartColorRangePtrOutput) MinValue() pulumi.Float64PtrOutput {
 }
 
 type HeatmapChartColorScale struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color string `pulumi:"color"`
-	// Indicates the lower threshold non-inclusive value for this range.
-	Gt *float64 `pulumi:"gt"`
-	// Indicates the lower threshold inclusive value for this range.
-	Gte *float64 `pulumi:"gte"`
-	// Indicates the upper threshold non-inclusive value for this range.
-	Lt *float64 `pulumi:"lt"`
-	// Indicates the upper threshold inclusive value for this range.
-	Lte *float64 `pulumi:"lte"`
+	Color string   `pulumi:"color"`
+	Gt    *float64 `pulumi:"gt"`
+	Gte   *float64 `pulumi:"gte"`
+	Lt    *float64 `pulumi:"lt"`
+	Lte   *float64 `pulumi:"lte"`
 }
 
 // HeatmapChartColorScaleInput is an input type that accepts HeatmapChartColorScaleArgs and HeatmapChartColorScaleOutput values.
@@ -3148,16 +2832,11 @@ type HeatmapChartColorScaleInput interface {
 }
 
 type HeatmapChartColorScaleArgs struct {
-	// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color pulumi.StringInput `pulumi:"color"`
-	// Indicates the lower threshold non-inclusive value for this range.
-	Gt pulumi.Float64PtrInput `pulumi:"gt"`
-	// Indicates the lower threshold inclusive value for this range.
-	Gte pulumi.Float64PtrInput `pulumi:"gte"`
-	// Indicates the upper threshold non-inclusive value for this range.
-	Lt pulumi.Float64PtrInput `pulumi:"lt"`
-	// Indicates the upper threshold inclusive value for this range.
-	Lte pulumi.Float64PtrInput `pulumi:"lte"`
+	Color pulumi.StringInput     `pulumi:"color"`
+	Gt    pulumi.Float64PtrInput `pulumi:"gt"`
+	Gte   pulumi.Float64PtrInput `pulumi:"gte"`
+	Lt    pulumi.Float64PtrInput `pulumi:"lt"`
+	Lte   pulumi.Float64PtrInput `pulumi:"lte"`
 }
 
 func (HeatmapChartColorScaleArgs) ElementType() reflect.Type {
@@ -3211,27 +2890,22 @@ func (o HeatmapChartColorScaleOutput) ToHeatmapChartColorScaleOutputWithContext(
 	return o
 }
 
-// The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o HeatmapChartColorScaleOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v HeatmapChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
 
-// Indicates the lower threshold non-inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Gt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the lower threshold inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold non-inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold inclusive value for this range.
 func (o HeatmapChartColorScaleOutput) Lte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v HeatmapChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
 }
@@ -3257,16 +2931,11 @@ func (o HeatmapChartColorScaleArrayOutput) Index(i pulumi.IntInput) HeatmapChart
 }
 
 type ListChartColorScale struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color string `pulumi:"color"`
-	// Indicates the lower threshold non-inclusive value for this range.
-	Gt *float64 `pulumi:"gt"`
-	// Indicates the lower threshold inclusive value for this range.
-	Gte *float64 `pulumi:"gte"`
-	// Indicates the upper threshold non-inculsive value for this range.
-	Lt *float64 `pulumi:"lt"`
-	// Indicates the upper threshold inclusive value for this range.
-	Lte *float64 `pulumi:"lte"`
+	Color string   `pulumi:"color"`
+	Gt    *float64 `pulumi:"gt"`
+	Gte   *float64 `pulumi:"gte"`
+	Lt    *float64 `pulumi:"lt"`
+	Lte   *float64 `pulumi:"lte"`
 }
 
 // ListChartColorScaleInput is an input type that accepts ListChartColorScaleArgs and ListChartColorScaleOutput values.
@@ -3281,16 +2950,11 @@ type ListChartColorScaleInput interface {
 }
 
 type ListChartColorScaleArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color pulumi.StringInput `pulumi:"color"`
-	// Indicates the lower threshold non-inclusive value for this range.
-	Gt pulumi.Float64PtrInput `pulumi:"gt"`
-	// Indicates the lower threshold inclusive value for this range.
-	Gte pulumi.Float64PtrInput `pulumi:"gte"`
-	// Indicates the upper threshold non-inculsive value for this range.
-	Lt pulumi.Float64PtrInput `pulumi:"lt"`
-	// Indicates the upper threshold inclusive value for this range.
-	Lte pulumi.Float64PtrInput `pulumi:"lte"`
+	Color pulumi.StringInput     `pulumi:"color"`
+	Gt    pulumi.Float64PtrInput `pulumi:"gt"`
+	Gte   pulumi.Float64PtrInput `pulumi:"gte"`
+	Lt    pulumi.Float64PtrInput `pulumi:"lt"`
+	Lte   pulumi.Float64PtrInput `pulumi:"lte"`
 }
 
 func (ListChartColorScaleArgs) ElementType() reflect.Type {
@@ -3344,27 +3008,22 @@ func (o ListChartColorScaleOutput) ToListChartColorScaleOutputWithContext(ctx co
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o ListChartColorScaleOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
 
-// Indicates the lower threshold non-inclusive value for this range.
 func (o ListChartColorScaleOutput) Gt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the lower threshold inclusive value for this range.
 func (o ListChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold non-inculsive value for this range.
 func (o ListChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold inclusive value for this range.
 func (o ListChartColorScaleOutput) Lte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ListChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
 }
@@ -3390,9 +3049,7 @@ func (o ListChartColorScaleArrayOutput) Index(i pulumi.IntInput) ListChartColorS
 }
 
 type ListChartLegendOptionsField struct {
-	// True or False depending on if you want the property to be shown or hidden.
-	Enabled *bool `pulumi:"enabled"`
-	// The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
+	Enabled  *bool  `pulumi:"enabled"`
 	Property string `pulumi:"property"`
 }
 
@@ -3408,10 +3065,8 @@ type ListChartLegendOptionsFieldInput interface {
 }
 
 type ListChartLegendOptionsFieldArgs struct {
-	// True or False depending on if you want the property to be shown or hidden.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
-	Property pulumi.StringInput `pulumi:"property"`
+	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
+	Property pulumi.StringInput  `pulumi:"property"`
 }
 
 func (ListChartLegendOptionsFieldArgs) ElementType() reflect.Type {
@@ -3465,12 +3120,10 @@ func (o ListChartLegendOptionsFieldOutput) ToListChartLegendOptionsFieldOutputWi
 	return o
 }
 
-// True or False depending on if you want the property to be shown or hidden.
 func (o ListChartLegendOptionsFieldOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://developers.signalfx.com/signalflow_analytics/functions/data_function.html#table-1-parameter-definitions) for the time series being displayed.
 func (o ListChartLegendOptionsFieldOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -3496,17 +3149,12 @@ func (o ListChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) ListCha
 }
 
 type ListChartVizOption struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color *string `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       *string `pulumi:"color"`
 	DisplayName *string `pulumi:"displayName"`
-	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label string `pulumi:"label"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit *string `pulumi:"valueUnit"`
+	ValueUnit   *string `pulumi:"valueUnit"`
 }
 
 // ListChartVizOptionInput is an input type that accepts ListChartVizOptionArgs and ListChartVizOptionOutput values.
@@ -3521,17 +3169,12 @@ type ListChartVizOptionInput interface {
 }
 
 type ListChartVizOptionArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       pulumi.StringPtrInput `pulumi:"color"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
+	ValueUnit   pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
 func (ListChartVizOptionArgs) ElementType() reflect.Type {
@@ -3585,22 +3228,18 @@ func (o ListChartVizOptionOutput) ToListChartVizOptionOutputWithContext(ctx cont
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o ListChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
-// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o ListChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o ListChartVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o ListChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -3609,7 +3248,6 @@ func (o ListChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o ListChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -3635,14 +3273,10 @@ func (o ListChartVizOptionArrayOutput) Index(i pulumi.IntInput) ListChartVizOpti
 }
 
 type MetricRulesetAggregationRule struct {
-	// Aggregator object
 	Aggregators []MetricRulesetAggregationRuleAggregator `pulumi:"aggregators"`
-	// When false, this rule will not generate aggregated MTSs
-	Enabled bool `pulumi:"enabled"`
-	// Matcher object
-	Matchers []MetricRulesetAggregationRuleMatcher `pulumi:"matchers"`
-	// name of the aggregation rule
-	Name *string `pulumi:"name"`
+	Enabled     bool                                     `pulumi:"enabled"`
+	Matchers    []MetricRulesetAggregationRuleMatcher    `pulumi:"matchers"`
+	Name        *string                                  `pulumi:"name"`
 }
 
 // MetricRulesetAggregationRuleInput is an input type that accepts MetricRulesetAggregationRuleArgs and MetricRulesetAggregationRuleOutput values.
@@ -3657,14 +3291,10 @@ type MetricRulesetAggregationRuleInput interface {
 }
 
 type MetricRulesetAggregationRuleArgs struct {
-	// Aggregator object
 	Aggregators MetricRulesetAggregationRuleAggregatorArrayInput `pulumi:"aggregators"`
-	// When false, this rule will not generate aggregated MTSs
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Matcher object
-	Matchers MetricRulesetAggregationRuleMatcherArrayInput `pulumi:"matchers"`
-	// name of the aggregation rule
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Enabled     pulumi.BoolInput                                 `pulumi:"enabled"`
+	Matchers    MetricRulesetAggregationRuleMatcherArrayInput    `pulumi:"matchers"`
+	Name        pulumi.StringPtrInput                            `pulumi:"name"`
 }
 
 func (MetricRulesetAggregationRuleArgs) ElementType() reflect.Type {
@@ -3718,22 +3348,18 @@ func (o MetricRulesetAggregationRuleOutput) ToMetricRulesetAggregationRuleOutput
 	return o
 }
 
-// Aggregator object
 func (o MetricRulesetAggregationRuleOutput) Aggregators() MetricRulesetAggregationRuleAggregatorArrayOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRule) []MetricRulesetAggregationRuleAggregator { return v.Aggregators }).(MetricRulesetAggregationRuleAggregatorArrayOutput)
 }
 
-// When false, this rule will not generate aggregated MTSs
 func (o MetricRulesetAggregationRuleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRule) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Matcher object
 func (o MetricRulesetAggregationRuleOutput) Matchers() MetricRulesetAggregationRuleMatcherArrayOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRule) []MetricRulesetAggregationRuleMatcher { return v.Matchers }).(MetricRulesetAggregationRuleMatcherArrayOutput)
 }
 
-// name of the aggregation rule
 func (o MetricRulesetAggregationRuleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRule) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3759,14 +3385,10 @@ func (o MetricRulesetAggregationRuleArrayOutput) Index(i pulumi.IntInput) Metric
 }
 
 type MetricRulesetAggregationRuleAggregator struct {
-	// List of dimensions to either be kept or dropped in the new aggregated MTSs
-	Dimensions []string `pulumi:"dimensions"`
-	// when true, the specified dimensions will be dropped from the aggregated MTSs
-	DropDimensions bool `pulumi:"dropDimensions"`
-	// name of the new aggregated metric
-	OutputName string `pulumi:"outputName"`
-	// Type of aggregator. Must always be "rollup"
-	Type string `pulumi:"type"`
+	Dimensions     []string `pulumi:"dimensions"`
+	DropDimensions bool     `pulumi:"dropDimensions"`
+	OutputName     string   `pulumi:"outputName"`
+	Type           string   `pulumi:"type"`
 }
 
 // MetricRulesetAggregationRuleAggregatorInput is an input type that accepts MetricRulesetAggregationRuleAggregatorArgs and MetricRulesetAggregationRuleAggregatorOutput values.
@@ -3781,14 +3403,10 @@ type MetricRulesetAggregationRuleAggregatorInput interface {
 }
 
 type MetricRulesetAggregationRuleAggregatorArgs struct {
-	// List of dimensions to either be kept or dropped in the new aggregated MTSs
-	Dimensions pulumi.StringArrayInput `pulumi:"dimensions"`
-	// when true, the specified dimensions will be dropped from the aggregated MTSs
-	DropDimensions pulumi.BoolInput `pulumi:"dropDimensions"`
-	// name of the new aggregated metric
-	OutputName pulumi.StringInput `pulumi:"outputName"`
-	// Type of aggregator. Must always be "rollup"
-	Type pulumi.StringInput `pulumi:"type"`
+	Dimensions     pulumi.StringArrayInput `pulumi:"dimensions"`
+	DropDimensions pulumi.BoolInput        `pulumi:"dropDimensions"`
+	OutputName     pulumi.StringInput      `pulumi:"outputName"`
+	Type           pulumi.StringInput      `pulumi:"type"`
 }
 
 func (MetricRulesetAggregationRuleAggregatorArgs) ElementType() reflect.Type {
@@ -3842,22 +3460,18 @@ func (o MetricRulesetAggregationRuleAggregatorOutput) ToMetricRulesetAggregation
 	return o
 }
 
-// List of dimensions to either be kept or dropped in the new aggregated MTSs
 func (o MetricRulesetAggregationRuleAggregatorOutput) Dimensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) []string { return v.Dimensions }).(pulumi.StringArrayOutput)
 }
 
-// when true, the specified dimensions will be dropped from the aggregated MTSs
 func (o MetricRulesetAggregationRuleAggregatorOutput) DropDimensions() pulumi.BoolOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) bool { return v.DropDimensions }).(pulumi.BoolOutput)
 }
 
-// name of the new aggregated metric
 func (o MetricRulesetAggregationRuleAggregatorOutput) OutputName() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) string { return v.OutputName }).(pulumi.StringOutput)
 }
 
-// Type of aggregator. Must always be "rollup"
 func (o MetricRulesetAggregationRuleAggregatorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleAggregator) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3883,10 +3497,8 @@ func (o MetricRulesetAggregationRuleAggregatorArrayOutput) Index(i pulumi.IntInp
 }
 
 type MetricRulesetAggregationRuleMatcher struct {
-	// List of filters to filter the set of input MTSs
 	Filters []MetricRulesetAggregationRuleMatcherFilter `pulumi:"filters"`
-	// Type of aggregator. Must always be "rollup"
-	Type string `pulumi:"type"`
+	Type    string                                      `pulumi:"type"`
 }
 
 // MetricRulesetAggregationRuleMatcherInput is an input type that accepts MetricRulesetAggregationRuleMatcherArgs and MetricRulesetAggregationRuleMatcherOutput values.
@@ -3901,10 +3513,8 @@ type MetricRulesetAggregationRuleMatcherInput interface {
 }
 
 type MetricRulesetAggregationRuleMatcherArgs struct {
-	// List of filters to filter the set of input MTSs
 	Filters MetricRulesetAggregationRuleMatcherFilterArrayInput `pulumi:"filters"`
-	// Type of aggregator. Must always be "rollup"
-	Type pulumi.StringInput `pulumi:"type"`
+	Type    pulumi.StringInput                                  `pulumi:"type"`
 }
 
 func (MetricRulesetAggregationRuleMatcherArgs) ElementType() reflect.Type {
@@ -3958,14 +3568,12 @@ func (o MetricRulesetAggregationRuleMatcherOutput) ToMetricRulesetAggregationRul
 	return o
 }
 
-// List of filters to filter the set of input MTSs
 func (o MetricRulesetAggregationRuleMatcherOutput) Filters() MetricRulesetAggregationRuleMatcherFilterArrayOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcher) []MetricRulesetAggregationRuleMatcherFilter {
 		return v.Filters
 	}).(MetricRulesetAggregationRuleMatcherFilterArrayOutput)
 }
 
-// Type of aggregator. Must always be "rollup"
 func (o MetricRulesetAggregationRuleMatcherOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3991,11 +3599,8 @@ func (o MetricRulesetAggregationRuleMatcherArrayOutput) Index(i pulumi.IntInput)
 }
 
 type MetricRulesetAggregationRuleMatcherFilter struct {
-	// When true, this filter will match all values not matching the property_values
-	Not bool `pulumi:"not"`
-	// Name of the dimension
-	Property string `pulumi:"property"`
-	// Value of the dimension
+	Not            bool     `pulumi:"not"`
+	Property       string   `pulumi:"property"`
 	PropertyValues []string `pulumi:"propertyValues"`
 }
 
@@ -4011,11 +3616,8 @@ type MetricRulesetAggregationRuleMatcherFilterInput interface {
 }
 
 type MetricRulesetAggregationRuleMatcherFilterArgs struct {
-	// When true, this filter will match all values not matching the property_values
-	Not pulumi.BoolInput `pulumi:"not"`
-	// Name of the dimension
-	Property pulumi.StringInput `pulumi:"property"`
-	// Value of the dimension
+	Not            pulumi.BoolInput        `pulumi:"not"`
+	Property       pulumi.StringInput      `pulumi:"property"`
 	PropertyValues pulumi.StringArrayInput `pulumi:"propertyValues"`
 }
 
@@ -4070,17 +3672,14 @@ func (o MetricRulesetAggregationRuleMatcherFilterOutput) ToMetricRulesetAggregat
 	return o
 }
 
-// When true, this filter will match all values not matching the property_values
 func (o MetricRulesetAggregationRuleMatcherFilterOutput) Not() pulumi.BoolOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcherFilter) bool { return v.Not }).(pulumi.BoolOutput)
 }
 
-// Name of the dimension
 func (o MetricRulesetAggregationRuleMatcherFilterOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcherFilter) string { return v.Property }).(pulumi.StringOutput)
 }
 
-// Value of the dimension
 func (o MetricRulesetAggregationRuleMatcherFilterOutput) PropertyValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MetricRulesetAggregationRuleMatcherFilter) []string { return v.PropertyValues }).(pulumi.StringArrayOutput)
 }
@@ -4106,7 +3705,6 @@ func (o MetricRulesetAggregationRuleMatcherFilterArrayOutput) Index(i pulumi.Int
 }
 
 type MetricRulesetRoutingRule struct {
-	// end destination of the input metric. Must be `RealTime` or `Drop`
 	Destination string `pulumi:"destination"`
 }
 
@@ -4122,7 +3720,6 @@ type MetricRulesetRoutingRuleInput interface {
 }
 
 type MetricRulesetRoutingRuleArgs struct {
-	// end destination of the input metric. Must be `RealTime` or `Drop`
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -4177,7 +3774,6 @@ func (o MetricRulesetRoutingRuleOutput) ToMetricRulesetRoutingRuleOutputWithCont
 	return o
 }
 
-// end destination of the input metric. Must be `RealTime` or `Drop`
 func (o MetricRulesetRoutingRuleOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricRulesetRoutingRule) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -4203,9 +3799,7 @@ func (o MetricRulesetRoutingRuleArrayOutput) Index(i pulumi.IntInput) MetricRule
 }
 
 type OrgTokenDpmLimits struct {
-	// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
-	DpmLimit int `pulumi:"dpmLimit"`
-	// DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
+	DpmLimit                 int  `pulumi:"dpmLimit"`
 	DpmNotificationThreshold *int `pulumi:"dpmNotificationThreshold"`
 }
 
@@ -4221,9 +3815,7 @@ type OrgTokenDpmLimitsInput interface {
 }
 
 type OrgTokenDpmLimitsArgs struct {
-	// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
-	DpmLimit pulumi.IntInput `pulumi:"dpmLimit"`
-	// DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
+	DpmLimit                 pulumi.IntInput    `pulumi:"dpmLimit"`
 	DpmNotificationThreshold pulumi.IntPtrInput `pulumi:"dpmNotificationThreshold"`
 }
 
@@ -4304,12 +3896,10 @@ func (o OrgTokenDpmLimitsOutput) ToOrgTokenDpmLimitsPtrOutputWithContext(ctx con
 	}).(OrgTokenDpmLimitsPtrOutput)
 }
 
-// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
 func (o OrgTokenDpmLimitsOutput) DpmLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v OrgTokenDpmLimits) int { return v.DpmLimit }).(pulumi.IntOutput)
 }
 
-// DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
 func (o OrgTokenDpmLimitsOutput) DpmNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenDpmLimits) *int { return v.DpmNotificationThreshold }).(pulumi.IntPtrOutput)
 }
@@ -4338,7 +3928,6 @@ func (o OrgTokenDpmLimitsPtrOutput) Elem() OrgTokenDpmLimitsOutput {
 	}).(OrgTokenDpmLimitsOutput)
 }
 
-// The datapoints per minute (dpm) limit for this token. If you exceed this limit, SignalFx sends out an alert.
 func (o OrgTokenDpmLimitsPtrOutput) DpmLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenDpmLimits) *int {
 		if v == nil {
@@ -4348,7 +3937,6 @@ func (o OrgTokenDpmLimitsPtrOutput) DpmLimit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// DPM level at which SignalFx sends the notification for this token. If you don't specify a notification, SignalFx sends the generic notification.
 func (o OrgTokenDpmLimitsPtrOutput) DpmNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenDpmLimits) *int {
 		if v == nil {
@@ -4359,22 +3947,14 @@ func (o OrgTokenDpmLimitsPtrOutput) DpmNotificationThreshold() pulumi.IntPtrOutp
 }
 
 type OrgTokenHostOrUsageLimits struct {
-	// Max number of Docker containers that can use this token
-	ContainerLimit *int `pulumi:"containerLimit"`
-	// Notification threshold for Docker containers
-	ContainerNotificationThreshold *int `pulumi:"containerNotificationThreshold"`
-	// Max number of custom metrics that can be sent with this token
-	CustomMetricsLimit *int `pulumi:"customMetricsLimit"`
-	// Notification threshold for custom metrics
-	CustomMetricsNotificationThreshold *int `pulumi:"customMetricsNotificationThreshold"`
-	// Max number of hi-res metrics that can be sent with this toke
-	HighResMetricsLimit *int `pulumi:"highResMetricsLimit"`
-	// Notification threshold for hi-res metrics
+	ContainerLimit                      *int `pulumi:"containerLimit"`
+	ContainerNotificationThreshold      *int `pulumi:"containerNotificationThreshold"`
+	CustomMetricsLimit                  *int `pulumi:"customMetricsLimit"`
+	CustomMetricsNotificationThreshold  *int `pulumi:"customMetricsNotificationThreshold"`
+	HighResMetricsLimit                 *int `pulumi:"highResMetricsLimit"`
 	HighResMetricsNotificationThreshold *int `pulumi:"highResMetricsNotificationThreshold"`
-	// Max number of hosts that can use this token
-	HostLimit *int `pulumi:"hostLimit"`
-	// Notification threshold for hosts
-	HostNotificationThreshold *int `pulumi:"hostNotificationThreshold"`
+	HostLimit                           *int `pulumi:"hostLimit"`
+	HostNotificationThreshold           *int `pulumi:"hostNotificationThreshold"`
 }
 
 // OrgTokenHostOrUsageLimitsInput is an input type that accepts OrgTokenHostOrUsageLimitsArgs and OrgTokenHostOrUsageLimitsOutput values.
@@ -4389,22 +3969,14 @@ type OrgTokenHostOrUsageLimitsInput interface {
 }
 
 type OrgTokenHostOrUsageLimitsArgs struct {
-	// Max number of Docker containers that can use this token
-	ContainerLimit pulumi.IntPtrInput `pulumi:"containerLimit"`
-	// Notification threshold for Docker containers
-	ContainerNotificationThreshold pulumi.IntPtrInput `pulumi:"containerNotificationThreshold"`
-	// Max number of custom metrics that can be sent with this token
-	CustomMetricsLimit pulumi.IntPtrInput `pulumi:"customMetricsLimit"`
-	// Notification threshold for custom metrics
-	CustomMetricsNotificationThreshold pulumi.IntPtrInput `pulumi:"customMetricsNotificationThreshold"`
-	// Max number of hi-res metrics that can be sent with this toke
-	HighResMetricsLimit pulumi.IntPtrInput `pulumi:"highResMetricsLimit"`
-	// Notification threshold for hi-res metrics
+	ContainerLimit                      pulumi.IntPtrInput `pulumi:"containerLimit"`
+	ContainerNotificationThreshold      pulumi.IntPtrInput `pulumi:"containerNotificationThreshold"`
+	CustomMetricsLimit                  pulumi.IntPtrInput `pulumi:"customMetricsLimit"`
+	CustomMetricsNotificationThreshold  pulumi.IntPtrInput `pulumi:"customMetricsNotificationThreshold"`
+	HighResMetricsLimit                 pulumi.IntPtrInput `pulumi:"highResMetricsLimit"`
 	HighResMetricsNotificationThreshold pulumi.IntPtrInput `pulumi:"highResMetricsNotificationThreshold"`
-	// Max number of hosts that can use this token
-	HostLimit pulumi.IntPtrInput `pulumi:"hostLimit"`
-	// Notification threshold for hosts
-	HostNotificationThreshold pulumi.IntPtrInput `pulumi:"hostNotificationThreshold"`
+	HostLimit                           pulumi.IntPtrInput `pulumi:"hostLimit"`
+	HostNotificationThreshold           pulumi.IntPtrInput `pulumi:"hostNotificationThreshold"`
 }
 
 func (OrgTokenHostOrUsageLimitsArgs) ElementType() reflect.Type {
@@ -4484,42 +4056,34 @@ func (o OrgTokenHostOrUsageLimitsOutput) ToOrgTokenHostOrUsageLimitsPtrOutputWit
 	}).(OrgTokenHostOrUsageLimitsPtrOutput)
 }
 
-// Max number of Docker containers that can use this token
 func (o OrgTokenHostOrUsageLimitsOutput) ContainerLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerLimit }).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for Docker containers
 func (o OrgTokenHostOrUsageLimitsOutput) ContainerNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.ContainerNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Max number of custom metrics that can be sent with this token
 func (o OrgTokenHostOrUsageLimitsOutput) CustomMetricsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsLimit }).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for custom metrics
 func (o OrgTokenHostOrUsageLimitsOutput) CustomMetricsNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.CustomMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Max number of hi-res metrics that can be sent with this toke
 func (o OrgTokenHostOrUsageLimitsOutput) HighResMetricsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsLimit }).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for hi-res metrics
 func (o OrgTokenHostOrUsageLimitsOutput) HighResMetricsNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HighResMetricsNotificationThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Max number of hosts that can use this token
 func (o OrgTokenHostOrUsageLimitsOutput) HostLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostLimit }).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for hosts
 func (o OrgTokenHostOrUsageLimitsOutput) HostNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OrgTokenHostOrUsageLimits) *int { return v.HostNotificationThreshold }).(pulumi.IntPtrOutput)
 }
@@ -4548,7 +4112,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) Elem() OrgTokenHostOrUsageLimitsOutp
 	}).(OrgTokenHostOrUsageLimitsOutput)
 }
 
-// Max number of Docker containers that can use this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4558,7 +4121,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerLimit() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for Docker containers
 func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4568,7 +4130,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) ContainerNotificationThreshold() pul
 	}).(pulumi.IntPtrOutput)
 }
 
-// Max number of custom metrics that can be sent with this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4578,7 +4139,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsLimit() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for custom metrics
 func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4588,7 +4148,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) CustomMetricsNotificationThreshold()
 	}).(pulumi.IntPtrOutput)
 }
 
-// Max number of hi-res metrics that can be sent with this toke
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4598,7 +4157,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsLimit() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for hi-res metrics
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4608,7 +4166,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) HighResMetricsNotificationThreshold(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Max number of hosts that can use this token
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HostLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4618,7 +4175,6 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) HostLimit() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Notification threshold for hosts
 func (o OrgTokenHostOrUsageLimitsPtrOutput) HostNotificationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OrgTokenHostOrUsageLimits) *int {
 		if v == nil {
@@ -4629,16 +4185,11 @@ func (o OrgTokenHostOrUsageLimitsPtrOutput) HostNotificationThreshold() pulumi.I
 }
 
 type SingleValueChartColorScale struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color string `pulumi:"color"`
-	// Indicates the lower threshold non-inclusive value for this range.
-	Gt *float64 `pulumi:"gt"`
-	// Indicates the lower threshold inclusive value for this range.
-	Gte *float64 `pulumi:"gte"`
-	// Indicates the upper threshold non-inculsive value for this range.
-	Lt *float64 `pulumi:"lt"`
-	// Indicates the upper threshold inclusive value for this range.
-	Lte *float64 `pulumi:"lte"`
+	Color string   `pulumi:"color"`
+	Gt    *float64 `pulumi:"gt"`
+	Gte   *float64 `pulumi:"gte"`
+	Lt    *float64 `pulumi:"lt"`
+	Lte   *float64 `pulumi:"lte"`
 }
 
 // SingleValueChartColorScaleInput is an input type that accepts SingleValueChartColorScaleArgs and SingleValueChartColorScaleOutput values.
@@ -4653,16 +4204,11 @@ type SingleValueChartColorScaleInput interface {
 }
 
 type SingleValueChartColorScaleArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color pulumi.StringInput `pulumi:"color"`
-	// Indicates the lower threshold non-inclusive value for this range.
-	Gt pulumi.Float64PtrInput `pulumi:"gt"`
-	// Indicates the lower threshold inclusive value for this range.
-	Gte pulumi.Float64PtrInput `pulumi:"gte"`
-	// Indicates the upper threshold non-inculsive value for this range.
-	Lt pulumi.Float64PtrInput `pulumi:"lt"`
-	// Indicates the upper threshold inclusive value for this range.
-	Lte pulumi.Float64PtrInput `pulumi:"lte"`
+	Color pulumi.StringInput     `pulumi:"color"`
+	Gt    pulumi.Float64PtrInput `pulumi:"gt"`
+	Gte   pulumi.Float64PtrInput `pulumi:"gte"`
+	Lt    pulumi.Float64PtrInput `pulumi:"lt"`
+	Lte   pulumi.Float64PtrInput `pulumi:"lte"`
 }
 
 func (SingleValueChartColorScaleArgs) ElementType() reflect.Type {
@@ -4716,27 +4262,22 @@ func (o SingleValueChartColorScaleOutput) ToSingleValueChartColorScaleOutputWith
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o SingleValueChartColorScaleOutput) Color() pulumi.StringOutput {
 	return o.ApplyT(func(v SingleValueChartColorScale) string { return v.Color }).(pulumi.StringOutput)
 }
 
-// Indicates the lower threshold non-inclusive value for this range.
 func (o SingleValueChartColorScaleOutput) Gt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Gt }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the lower threshold inclusive value for this range.
 func (o SingleValueChartColorScaleOutput) Gte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Gte }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold non-inculsive value for this range.
 func (o SingleValueChartColorScaleOutput) Lt() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Lt }).(pulumi.Float64PtrOutput)
 }
 
-// Indicates the upper threshold inclusive value for this range.
 func (o SingleValueChartColorScaleOutput) Lte() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v SingleValueChartColorScale) *float64 { return v.Lte }).(pulumi.Float64PtrOutput)
 }
@@ -4762,17 +4303,12 @@ func (o SingleValueChartColorScaleArrayOutput) Index(i pulumi.IntInput) SingleVa
 }
 
 type SingleValueChartVizOption struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color *string `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       *string `pulumi:"color"`
 	DisplayName *string `pulumi:"displayName"`
-	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label string `pulumi:"label"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	Label       string  `pulumi:"label"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit *string `pulumi:"valueUnit"`
+	ValueUnit   *string `pulumi:"valueUnit"`
 }
 
 // SingleValueChartVizOptionInput is an input type that accepts SingleValueChartVizOptionArgs and SingleValueChartVizOptionOutput values.
@@ -4787,17 +4323,12 @@ type SingleValueChartVizOptionInput interface {
 }
 
 type SingleValueChartVizOptionArgs struct {
-	// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       pulumi.StringPtrInput `pulumi:"color"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	Label       pulumi.StringInput    `pulumi:"label"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
+	ValueUnit   pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
 func (SingleValueChartVizOptionArgs) ElementType() reflect.Type {
@@ -4851,22 +4382,18 @@ func (o SingleValueChartVizOptionOutput) ToSingleValueChartVizOptionOutputWithCo
 	return o
 }
 
-// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
 func (o SingleValueChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
-// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o SingleValueChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
 func (o SingleValueChartVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o SingleValueChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -4875,7 +4402,6 @@ func (o SingleValueChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o SingleValueChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleValueChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -5025,21 +4551,14 @@ func (o TableChartVizOptionArrayOutput) Index(i pulumi.IntInput) TableChartVizOp
 }
 
 type TimeChartAxisLeft struct {
-	// A line to draw as a high watermark.
-	HighWatermark *float64 `pulumi:"highWatermark"`
-	// A label to attach to the high watermark line.
-	HighWatermarkLabel *string `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label *string `pulumi:"label"`
-	// A line to draw as a low watermark.
-	LowWatermark *float64 `pulumi:"lowWatermark"`
-	// A label to attach to the low watermark line.
-	LowWatermarkLabel *string `pulumi:"lowWatermarkLabel"`
-	// The maximum value for the right axis.
-	MaxValue *float64 `pulumi:"maxValue"`
-	// The minimum value for the right axis.
-	MinValue   *float64                     `pulumi:"minValue"`
-	Watermarks []TimeChartAxisLeftWatermark `pulumi:"watermarks"`
+	HighWatermark      *float64                     `pulumi:"highWatermark"`
+	HighWatermarkLabel *string                      `pulumi:"highWatermarkLabel"`
+	Label              *string                      `pulumi:"label"`
+	LowWatermark       *float64                     `pulumi:"lowWatermark"`
+	LowWatermarkLabel  *string                      `pulumi:"lowWatermarkLabel"`
+	MaxValue           *float64                     `pulumi:"maxValue"`
+	MinValue           *float64                     `pulumi:"minValue"`
+	Watermarks         []TimeChartAxisLeftWatermark `pulumi:"watermarks"`
 }
 
 // TimeChartAxisLeftInput is an input type that accepts TimeChartAxisLeftArgs and TimeChartAxisLeftOutput values.
@@ -5054,21 +4573,14 @@ type TimeChartAxisLeftInput interface {
 }
 
 type TimeChartAxisLeftArgs struct {
-	// A line to draw as a high watermark.
-	HighWatermark pulumi.Float64PtrInput `pulumi:"highWatermark"`
-	// A label to attach to the high watermark line.
-	HighWatermarkLabel pulumi.StringPtrInput `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// A line to draw as a low watermark.
-	LowWatermark pulumi.Float64PtrInput `pulumi:"lowWatermark"`
-	// A label to attach to the low watermark line.
-	LowWatermarkLabel pulumi.StringPtrInput `pulumi:"lowWatermarkLabel"`
-	// The maximum value for the right axis.
-	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
-	// The minimum value for the right axis.
-	MinValue   pulumi.Float64PtrInput               `pulumi:"minValue"`
-	Watermarks TimeChartAxisLeftWatermarkArrayInput `pulumi:"watermarks"`
+	HighWatermark      pulumi.Float64PtrInput               `pulumi:"highWatermark"`
+	HighWatermarkLabel pulumi.StringPtrInput                `pulumi:"highWatermarkLabel"`
+	Label              pulumi.StringPtrInput                `pulumi:"label"`
+	LowWatermark       pulumi.Float64PtrInput               `pulumi:"lowWatermark"`
+	LowWatermarkLabel  pulumi.StringPtrInput                `pulumi:"lowWatermarkLabel"`
+	MaxValue           pulumi.Float64PtrInput               `pulumi:"maxValue"`
+	MinValue           pulumi.Float64PtrInput               `pulumi:"minValue"`
+	Watermarks         TimeChartAxisLeftWatermarkArrayInput `pulumi:"watermarks"`
 }
 
 func (TimeChartAxisLeftArgs) ElementType() reflect.Type {
@@ -5148,37 +4660,30 @@ func (o TimeChartAxisLeftOutput) ToTimeChartAxisLeftPtrOutputWithContext(ctx con
 	}).(TimeChartAxisLeftPtrOutput)
 }
 
-// A line to draw as a high watermark.
 func (o TimeChartAxisLeftOutput) HighWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the high watermark line.
 func (o TimeChartAxisLeftOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// A line to draw as a low watermark.
 func (o TimeChartAxisLeftOutput) LowWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the low watermark line.
 func (o TimeChartAxisLeftOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// The maximum value for the right axis.
 func (o TimeChartAxisLeftOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value for the right axis.
 func (o TimeChartAxisLeftOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeft) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
@@ -5211,7 +4716,6 @@ func (o TimeChartAxisLeftPtrOutput) Elem() TimeChartAxisLeftOutput {
 	}).(TimeChartAxisLeftOutput)
 }
 
-// A line to draw as a high watermark.
 func (o TimeChartAxisLeftPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
 		if v == nil {
@@ -5221,7 +4725,6 @@ func (o TimeChartAxisLeftPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the high watermark line.
 func (o TimeChartAxisLeftPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
 		if v == nil {
@@ -5231,7 +4734,6 @@ func (o TimeChartAxisLeftPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftPtrOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
 		if v == nil {
@@ -5241,7 +4743,6 @@ func (o TimeChartAxisLeftPtrOutput) Label() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A line to draw as a low watermark.
 func (o TimeChartAxisLeftPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
 		if v == nil {
@@ -5251,7 +4752,6 @@ func (o TimeChartAxisLeftPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the low watermark line.
 func (o TimeChartAxisLeftPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *string {
 		if v == nil {
@@ -5261,7 +4761,6 @@ func (o TimeChartAxisLeftPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum value for the right axis.
 func (o TimeChartAxisLeftPtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
 		if v == nil {
@@ -5271,7 +4770,6 @@ func (o TimeChartAxisLeftPtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value for the right axis.
 func (o TimeChartAxisLeftPtrOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisLeft) *float64 {
 		if v == nil {
@@ -5291,7 +4789,6 @@ func (o TimeChartAxisLeftPtrOutput) Watermarks() TimeChartAxisLeftWatermarkArray
 }
 
 type TimeChartAxisLeftWatermark struct {
-	// Label used in the publish statement that displays the event query you want to customize.
 	Label *string `pulumi:"label"`
 	Value float64 `pulumi:"value"`
 }
@@ -5308,7 +4805,6 @@ type TimeChartAxisLeftWatermarkInput interface {
 }
 
 type TimeChartAxisLeftWatermarkArgs struct {
-	// Label used in the publish statement that displays the event query you want to customize.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	Value pulumi.Float64Input   `pulumi:"value"`
 }
@@ -5364,7 +4860,6 @@ func (o TimeChartAxisLeftWatermarkOutput) ToTimeChartAxisLeftWatermarkOutputWith
 	return o
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisLeftWatermarkOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisLeftWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -5394,21 +4889,14 @@ func (o TimeChartAxisLeftWatermarkArrayOutput) Index(i pulumi.IntInput) TimeChar
 }
 
 type TimeChartAxisRight struct {
-	// A line to draw as a high watermark.
-	HighWatermark *float64 `pulumi:"highWatermark"`
-	// A label to attach to the high watermark line.
-	HighWatermarkLabel *string `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label *string `pulumi:"label"`
-	// A line to draw as a low watermark.
-	LowWatermark *float64 `pulumi:"lowWatermark"`
-	// A label to attach to the low watermark line.
-	LowWatermarkLabel *string `pulumi:"lowWatermarkLabel"`
-	// The maximum value for the right axis.
-	MaxValue *float64 `pulumi:"maxValue"`
-	// The minimum value for the right axis.
-	MinValue   *float64                      `pulumi:"minValue"`
-	Watermarks []TimeChartAxisRightWatermark `pulumi:"watermarks"`
+	HighWatermark      *float64                      `pulumi:"highWatermark"`
+	HighWatermarkLabel *string                       `pulumi:"highWatermarkLabel"`
+	Label              *string                       `pulumi:"label"`
+	LowWatermark       *float64                      `pulumi:"lowWatermark"`
+	LowWatermarkLabel  *string                       `pulumi:"lowWatermarkLabel"`
+	MaxValue           *float64                      `pulumi:"maxValue"`
+	MinValue           *float64                      `pulumi:"minValue"`
+	Watermarks         []TimeChartAxisRightWatermark `pulumi:"watermarks"`
 }
 
 // TimeChartAxisRightInput is an input type that accepts TimeChartAxisRightArgs and TimeChartAxisRightOutput values.
@@ -5423,21 +4911,14 @@ type TimeChartAxisRightInput interface {
 }
 
 type TimeChartAxisRightArgs struct {
-	// A line to draw as a high watermark.
-	HighWatermark pulumi.Float64PtrInput `pulumi:"highWatermark"`
-	// A label to attach to the high watermark line.
-	HighWatermarkLabel pulumi.StringPtrInput `pulumi:"highWatermarkLabel"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label pulumi.StringPtrInput `pulumi:"label"`
-	// A line to draw as a low watermark.
-	LowWatermark pulumi.Float64PtrInput `pulumi:"lowWatermark"`
-	// A label to attach to the low watermark line.
-	LowWatermarkLabel pulumi.StringPtrInput `pulumi:"lowWatermarkLabel"`
-	// The maximum value for the right axis.
-	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
-	// The minimum value for the right axis.
-	MinValue   pulumi.Float64PtrInput                `pulumi:"minValue"`
-	Watermarks TimeChartAxisRightWatermarkArrayInput `pulumi:"watermarks"`
+	HighWatermark      pulumi.Float64PtrInput                `pulumi:"highWatermark"`
+	HighWatermarkLabel pulumi.StringPtrInput                 `pulumi:"highWatermarkLabel"`
+	Label              pulumi.StringPtrInput                 `pulumi:"label"`
+	LowWatermark       pulumi.Float64PtrInput                `pulumi:"lowWatermark"`
+	LowWatermarkLabel  pulumi.StringPtrInput                 `pulumi:"lowWatermarkLabel"`
+	MaxValue           pulumi.Float64PtrInput                `pulumi:"maxValue"`
+	MinValue           pulumi.Float64PtrInput                `pulumi:"minValue"`
+	Watermarks         TimeChartAxisRightWatermarkArrayInput `pulumi:"watermarks"`
 }
 
 func (TimeChartAxisRightArgs) ElementType() reflect.Type {
@@ -5517,37 +4998,30 @@ func (o TimeChartAxisRightOutput) ToTimeChartAxisRightPtrOutputWithContext(ctx c
 	}).(TimeChartAxisRightPtrOutput)
 }
 
-// A line to draw as a high watermark.
 func (o TimeChartAxisRightOutput) HighWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.HighWatermark }).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the high watermark line.
 func (o TimeChartAxisRightOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.HighWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// A line to draw as a low watermark.
 func (o TimeChartAxisRightOutput) LowWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.LowWatermark }).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the low watermark line.
 func (o TimeChartAxisRightOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *string { return v.LowWatermarkLabel }).(pulumi.StringPtrOutput)
 }
 
-// The maximum value for the right axis.
 func (o TimeChartAxisRightOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MaxValue }).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value for the right axis.
 func (o TimeChartAxisRightOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRight) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
@@ -5580,7 +5054,6 @@ func (o TimeChartAxisRightPtrOutput) Elem() TimeChartAxisRightOutput {
 	}).(TimeChartAxisRightOutput)
 }
 
-// A line to draw as a high watermark.
 func (o TimeChartAxisRightPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
 		if v == nil {
@@ -5590,7 +5063,6 @@ func (o TimeChartAxisRightPtrOutput) HighWatermark() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the high watermark line.
 func (o TimeChartAxisRightPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *string {
 		if v == nil {
@@ -5600,7 +5072,6 @@ func (o TimeChartAxisRightPtrOutput) HighWatermarkLabel() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightPtrOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *string {
 		if v == nil {
@@ -5610,7 +5081,6 @@ func (o TimeChartAxisRightPtrOutput) Label() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A line to draw as a low watermark.
 func (o TimeChartAxisRightPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
 		if v == nil {
@@ -5620,7 +5090,6 @@ func (o TimeChartAxisRightPtrOutput) LowWatermark() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// A label to attach to the low watermark line.
 func (o TimeChartAxisRightPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *string {
 		if v == nil {
@@ -5630,7 +5099,6 @@ func (o TimeChartAxisRightPtrOutput) LowWatermarkLabel() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum value for the right axis.
 func (o TimeChartAxisRightPtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
 		if v == nil {
@@ -5640,7 +5108,6 @@ func (o TimeChartAxisRightPtrOutput) MaxValue() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The minimum value for the right axis.
 func (o TimeChartAxisRightPtrOutput) MinValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *TimeChartAxisRight) *float64 {
 		if v == nil {
@@ -5660,7 +5127,6 @@ func (o TimeChartAxisRightPtrOutput) Watermarks() TimeChartAxisRightWatermarkArr
 }
 
 type TimeChartAxisRightWatermark struct {
-	// Label used in the publish statement that displays the event query you want to customize.
 	Label *string `pulumi:"label"`
 	Value float64 `pulumi:"value"`
 }
@@ -5677,7 +5143,6 @@ type TimeChartAxisRightWatermarkInput interface {
 }
 
 type TimeChartAxisRightWatermarkArgs struct {
-	// Label used in the publish statement that displays the event query you want to customize.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	Value pulumi.Float64Input   `pulumi:"value"`
 }
@@ -5733,7 +5198,6 @@ func (o TimeChartAxisRightWatermarkOutput) ToTimeChartAxisRightWatermarkOutputWi
 	return o
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartAxisRightWatermarkOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartAxisRightWatermark) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
@@ -5763,12 +5227,9 @@ func (o TimeChartAxisRightWatermarkArrayOutput) Index(i pulumi.IntInput) TimeCha
 }
 
 type TimeChartEventOption struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color *string `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       *string `pulumi:"color"`
 	DisplayName *string `pulumi:"displayName"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label string `pulumi:"label"`
+	Label       string  `pulumi:"label"`
 }
 
 // TimeChartEventOptionInput is an input type that accepts TimeChartEventOptionArgs and TimeChartEventOptionOutput values.
@@ -5783,12 +5244,9 @@ type TimeChartEventOptionInput interface {
 }
 
 type TimeChartEventOptionArgs struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Color       pulumi.StringPtrInput `pulumi:"color"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
+	Label       pulumi.StringInput    `pulumi:"label"`
 }
 
 func (TimeChartEventOptionArgs) ElementType() reflect.Type {
@@ -5842,17 +5300,14 @@ func (o TimeChartEventOptionOutput) ToTimeChartEventOptionOutputWithContext(ctx 
 	return o
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o TimeChartEventOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartEventOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
-// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o TimeChartEventOptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartEventOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartEventOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeChartEventOption) string { return v.Label }).(pulumi.StringOutput)
 }
@@ -5878,7 +5333,6 @@ func (o TimeChartEventOptionArrayOutput) Index(i pulumi.IntInput) TimeChartEvent
 }
 
 type TimeChartHistogramOption struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
 	ColorTheme *string `pulumi:"colorTheme"`
 }
 
@@ -5894,7 +5348,6 @@ type TimeChartHistogramOptionInput interface {
 }
 
 type TimeChartHistogramOptionArgs struct {
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
 	ColorTheme pulumi.StringPtrInput `pulumi:"colorTheme"`
 }
 
@@ -5949,7 +5402,6 @@ func (o TimeChartHistogramOptionOutput) ToTimeChartHistogramOptionOutputWithCont
 	return o
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
 func (o TimeChartHistogramOptionOutput) ColorTheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartHistogramOption) *string { return v.ColorTheme }).(pulumi.StringPtrOutput)
 }
@@ -5975,9 +5427,7 @@ func (o TimeChartHistogramOptionArrayOutput) Index(i pulumi.IntInput) TimeChartH
 }
 
 type TimeChartLegendOptionsField struct {
-	// True or False depending on if you want the property to be shown or hidden.
-	Enabled *bool `pulumi:"enabled"`
-	// The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+	Enabled  *bool  `pulumi:"enabled"`
 	Property string `pulumi:"property"`
 }
 
@@ -5993,10 +5443,8 @@ type TimeChartLegendOptionsFieldInput interface {
 }
 
 type TimeChartLegendOptionsFieldArgs struct {
-	// True or False depending on if you want the property to be shown or hidden.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-	Property pulumi.StringInput `pulumi:"property"`
+	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
+	Property pulumi.StringInput  `pulumi:"property"`
 }
 
 func (TimeChartLegendOptionsFieldArgs) ElementType() reflect.Type {
@@ -6050,12 +5498,10 @@ func (o TimeChartLegendOptionsFieldOutput) ToTimeChartLegendOptionsFieldOutputWi
 	return o
 }
 
-// True or False depending on if you want the property to be shown or hidden.
 func (o TimeChartLegendOptionsFieldOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TimeChartLegendOptionsField) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
 func (o TimeChartLegendOptionsFieldOutput) Property() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeChartLegendOptionsField) string { return v.Property }).(pulumi.StringOutput)
 }
@@ -6081,21 +5527,14 @@ func (o TimeChartLegendOptionsFieldArrayOutput) Index(i pulumi.IntInput) TimeCha
 }
 
 type TimeChartVizOption struct {
-	// Y-axis associated with values for this plot. Must be either `right` or `left`.
-	Axis *string `pulumi:"axis"`
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color *string `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Axis        *string `pulumi:"axis"`
+	Color       *string `pulumi:"color"`
 	DisplayName *string `pulumi:"displayName"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label string `pulumi:"label"`
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-	PlotType *string `pulumi:"plotType"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	Label       string  `pulumi:"label"`
+	PlotType    *string `pulumi:"plotType"`
 	ValuePrefix *string `pulumi:"valuePrefix"`
 	ValueSuffix *string `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit *string `pulumi:"valueUnit"`
+	ValueUnit   *string `pulumi:"valueUnit"`
 }
 
 // TimeChartVizOptionInput is an input type that accepts TimeChartVizOptionArgs and TimeChartVizOptionOutput values.
@@ -6110,21 +5549,14 @@ type TimeChartVizOptionInput interface {
 }
 
 type TimeChartVizOptionArgs struct {
-	// Y-axis associated with values for this plot. Must be either `right` or `left`.
-	Axis pulumi.StringPtrInput `pulumi:"axis"`
-	// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-	Color pulumi.StringPtrInput `pulumi:"color"`
-	// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+	Axis        pulumi.StringPtrInput `pulumi:"axis"`
+	Color       pulumi.StringPtrInput `pulumi:"color"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Label used in the publish statement that displays the event query you want to customize.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-	PlotType pulumi.StringPtrInput `pulumi:"plotType"`
-	// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+	Label       pulumi.StringInput    `pulumi:"label"`
+	PlotType    pulumi.StringPtrInput `pulumi:"plotType"`
 	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
 	ValueSuffix pulumi.StringPtrInput `pulumi:"valueSuffix"`
-	// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-	ValueUnit pulumi.StringPtrInput `pulumi:"valueUnit"`
+	ValueUnit   pulumi.StringPtrInput `pulumi:"valueUnit"`
 }
 
 func (TimeChartVizOptionArgs) ElementType() reflect.Type {
@@ -6178,32 +5610,26 @@ func (o TimeChartVizOptionOutput) ToTimeChartVizOptionOutputWithContext(ctx cont
 	return o
 }
 
-// Y-axis associated with values for this plot. Must be either `right` or `left`.
 func (o TimeChartVizOptionOutput) Axis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Axis }).(pulumi.StringPtrOutput)
 }
 
-// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
 func (o TimeChartVizOptionOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.Color }).(pulumi.StringPtrOutput)
 }
 
-// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
 func (o TimeChartVizOptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Label used in the publish statement that displays the event query you want to customize.
 func (o TimeChartVizOptionOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeChartVizOption) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
 func (o TimeChartVizOptionOutput) PlotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.PlotType }).(pulumi.StringPtrOutput)
 }
 
-// , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
 func (o TimeChartVizOptionOutput) ValuePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
 }
@@ -6212,7 +5638,6 @@ func (o TimeChartVizOptionOutput) ValueSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueSuffix }).(pulumi.StringPtrOutput)
 }
 
-// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
 func (o TimeChartVizOptionOutput) ValueUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeChartVizOption) *string { return v.ValueUnit }).(pulumi.StringPtrOutput)
 }
@@ -6238,9 +5663,7 @@ func (o TimeChartVizOptionArrayOutput) Index(i pulumi.IntInput) TimeChartVizOpti
 }
 
 type WebhookIntegrationHeader struct {
-	// The key of the header to send
-	HeaderKey string `pulumi:"headerKey"`
-	// The value of the header to send
+	HeaderKey   string `pulumi:"headerKey"`
 	HeaderValue string `pulumi:"headerValue"`
 }
 
@@ -6256,9 +5679,7 @@ type WebhookIntegrationHeaderInput interface {
 }
 
 type WebhookIntegrationHeaderArgs struct {
-	// The key of the header to send
-	HeaderKey pulumi.StringInput `pulumi:"headerKey"`
-	// The value of the header to send
+	HeaderKey   pulumi.StringInput `pulumi:"headerKey"`
 	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
 }
 
@@ -6313,12 +5734,10 @@ func (o WebhookIntegrationHeaderOutput) ToWebhookIntegrationHeaderOutputWithCont
 	return o
 }
 
-// The key of the header to send
 func (o WebhookIntegrationHeaderOutput) HeaderKey() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookIntegrationHeader) string { return v.HeaderKey }).(pulumi.StringOutput)
 }
 
-// The value of the header to send
 func (o WebhookIntegrationHeaderOutput) HeaderValue() pulumi.StringOutput {
 	return o.ApplyT(func(v WebhookIntegrationHeader) string { return v.HeaderValue }).(pulumi.StringOutput)
 }

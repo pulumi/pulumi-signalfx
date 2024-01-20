@@ -7,11 +7,11 @@ import * as utilities from "../utilities";
 /**
  * Splunk Observability AWS CloudWatch integrations using security tokens. For help with this integration see [Connect to AWS CloudWatch](https://docs.signalfx.com/en/latest/integrations/amazon-web-services.html#connect-to-aws).
  *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observabilit Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,6 +45,17 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * * `name` - (Required) The name of this integration
+ *
+ * ## Attributes
+ *
+ * In addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the integration to use with `signalfx.aws.Integration`
+ * * `signalfxAwsAccount` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
  */
 export class TokenIntegration extends pulumi.CustomResource {
     /**
@@ -75,11 +86,11 @@ export class TokenIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * The name of this integration
+     * Name of the integration
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+     * The Splunk Observability AWS account ID to use with an AWS role.
      */
     public /*out*/ readonly signalfxAwsAccount!: pulumi.Output<string>;
     /**
@@ -121,11 +132,11 @@ export class TokenIntegration extends pulumi.CustomResource {
  */
 export interface TokenIntegrationState {
     /**
-     * The name of this integration
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     /**
-     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability.
+     * The Splunk Observability AWS account ID to use with an AWS role.
      */
     signalfxAwsAccount?: pulumi.Input<string>;
     /**
@@ -139,7 +150,7 @@ export interface TokenIntegrationState {
  */
 export interface TokenIntegrationArgs {
     /**
-     * The name of this integration
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
 }

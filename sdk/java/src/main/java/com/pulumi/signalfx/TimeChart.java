@@ -24,11 +24,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
+ * Provides a Splunk Observability Cloud time chart resource. This can be used to create and manage the different types of time charts.
  * 
  * Time charts display data points over a period of time.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -85,151 +85,201 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `name` - (Required) Name of the chart.
+ * * `program_text` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+ * * `plot_type` - (Optional) The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
+ * * `description` - (Optional) Description of the chart.
+ * * `axes_precision` - (Optional) Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+ * * `unit_prefix` - (Optional) Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+ * * `color_by` - (Optional) Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+ * * `minimum_resolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
+ * * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints.
+ * * `timezone` - (Optional) A string denotes the geographic region associated with the time zone.
+ * * `disable_sampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+ * * `time_range` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+ * * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+ * * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+ * * `axes_include_zero` - (Optional) Force the chart to display zero on the y-axes, even if none of the data is near zero.
+ * * `axis_left` - (Optional) Set of axis options.
+ *     * `label` - (Optional) Label of the left axis.
+ *     * `min_value` - (Optional) The minimum value for the left axis.
+ *     * `max_value` - (Optional) The maximum value for the left axis.
+ *     * `high_watermark` - (Optional) A line to draw as a high watermark.
+ *     * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
+ *     * `low_watermark`  - (Optional) A line to draw as a low watermark.
+ *     * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
+ * * `axis_right` - (Optional) Set of axis options.
+ *     * `label` - (Optional) Label of the right axis.
+ *     * `min_value` - (Optional) The minimum value for the right axis.
+ *     * `max_value` - (Optional) The maximum value for the right axis.
+ *     * `high_watermark` - (Optional) A line to draw as a high watermark.
+ *     * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
+ *     * `low_watermark`  - (Optional) A line to draw as a low watermark.
+ *     * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
+ * * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
+ *     * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+ *     * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+ *     * `axis` - (Optional) Y-axis associated with values for this plot. Must be either `right` or `left`.
+ *     * `plot_type` - (Optional) The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+ *     * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+ *     * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+ * * `event_options` - (Optional) Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+ *     * `label` - (Required) Label used in the publish statement that displays the event query you want to customize.
+ *     * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+ * * `histogram_options` - (Optional) Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
+ *     * `color_theme` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+ * * `legend_fields_to_hide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+ * * `legend_options_fields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+ *     * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+ *     * `enabled` True or False depending on if you want the property to be shown or hidden.
+ * * `on_chart_legend_dimension` - (Optional) Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
+ * * `show_event_lines` - (Optional) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+ * * `show_data_markers` - (Optional) Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+ * * `stacked` - (Optional) Whether area and bar charts in the visualization should be stacked. `false` by default.
+ * * `timezone` - (Optional) Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `&#34;UTC&#34;` by default.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the chart.
+ * * `url` - The URL of the chart.
+ * 
  */
 @ResourceType(type="signalfx:index/timeChart:TimeChart")
 public class TimeChart extends com.pulumi.resources.CustomResource {
     /**
-     * Force the chart to display zero on the y-axes, even if none of the data is near zero.
+     * Force y-axes to always show zero
      * 
      */
     @Export(name="axesIncludeZero", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> axesIncludeZero;
 
     /**
-     * @return Force the chart to display zero on the y-axes, even if none of the data is near zero.
+     * @return Force y-axes to always show zero
      * 
      */
     public Output<Optional<Boolean>> axesIncludeZero() {
         return Codegen.optional(this.axesIncludeZero);
     }
     /**
-     * Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+     * Force a specific number of significant digits in the y-axis
      * 
      */
     @Export(name="axesPrecision", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> axesPrecision;
 
     /**
-     * @return Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+     * @return Force a specific number of significant digits in the y-axis
      * 
      */
     public Output<Optional<Integer>> axesPrecision() {
         return Codegen.optional(this.axesPrecision);
     }
-    /**
-     * Set of axis options.
-     * 
-     */
     @Export(name="axisLeft", refs={TimeChartAxisLeft.class}, tree="[0]")
     private Output</* @Nullable */ TimeChartAxisLeft> axisLeft;
 
-    /**
-     * @return Set of axis options.
-     * 
-     */
     public Output<Optional<TimeChartAxisLeft>> axisLeft() {
         return Codegen.optional(this.axisLeft);
     }
-    /**
-     * Set of axis options.
-     * 
-     */
     @Export(name="axisRight", refs={TimeChartAxisRight.class}, tree="[0]")
     private Output</* @Nullable */ TimeChartAxisRight> axisRight;
 
-    /**
-     * @return Set of axis options.
-     * 
-     */
     public Output<Optional<TimeChartAxisRight>> axisRight() {
         return Codegen.optional(this.axisRight);
     }
     /**
-     * Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+     * (Dimension by default) Must be &#34;Dimension&#34; or &#34;Metric&#34;
      * 
      */
     @Export(name="colorBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> colorBy;
 
     /**
-     * @return Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+     * @return (Dimension by default) Must be &#34;Dimension&#34; or &#34;Metric&#34;
      * 
      */
     public Output<Optional<String>> colorBy() {
         return Codegen.optional(this.colorBy);
     }
     /**
-     * Description of the chart.
+     * Description of the chart
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart.
+     * @return Description of the chart
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      * 
      */
     @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
-     * @return If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+     * @return (false by default) If false, samples a subset of the output MTS, which improves UI performance
      * 
      */
     public Output<Optional<Boolean>> disableSampling() {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch to end the visualization
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch to end the visualization
      * 
      */
     public Output<Optional<Integer>> endTime() {
         return Codegen.optional(this.endTime);
     }
     /**
-     * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+     * Event display customization options, associated with a publish statement
      * 
      */
     @Export(name="eventOptions", refs={List.class,TimeChartEventOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartEventOption>> eventOptions;
 
     /**
-     * @return Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+     * @return Event display customization options, associated with a publish statement
      * 
      */
     public Output<Optional<List<TimeChartEventOption>>> eventOptions() {
         return Codegen.optional(this.eventOptions);
     }
     /**
-     * Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
+     * Options specific to Histogram charts
      * 
      */
     @Export(name="histogramOptions", refs={List.class,TimeChartHistogramOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartHistogramOption>> histogramOptions;
 
     /**
-     * @return Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
+     * @return Options specific to Histogram charts
      * 
      */
     public Output<Optional<List<TimeChartHistogramOption>>> histogramOptions() {
         return Codegen.optional(this.histogramOptions);
     }
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -240,161 +290,165 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> legendFieldsToHides;
 
     /**
-     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+     * @return List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
      * 
      */
     public Output<Optional<List<String>>> legendFieldsToHides() {
         return Codegen.optional(this.legendFieldsToHides);
     }
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * List of property and enabled flags to control the order and presence of datatable labels in a chart.
      * 
      */
     @Export(name="legendOptionsFields", refs={List.class,TimeChartLegendOptionsField.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartLegendOptionsField>> legendOptionsFields;
 
     /**
-     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+     * @return List of property and enabled flags to control the order and presence of datatable labels in a chart.
      * 
      */
     public Output<Optional<List<TimeChartLegendOptionsField>>> legendOptionsFields() {
         return Codegen.optional(this.legendOptionsFields);
     }
     /**
-     * How long (in seconds) to wait for late datapoints.
+     * How long (in seconds) to wait for late datapoints
      * 
      */
     @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints.
+     * @return How long (in seconds) to wait for late datapoints
      * 
      */
     public Output<Optional<Integer>> maxDelay() {
         return Codegen.optional(this.maxDelay);
     }
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program.
+     * The minimum resolution (in seconds) to use for computing the underlying program
      * 
      */
     @Export(name="minimumResolution", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumResolution;
 
     /**
-     * @return The minimum resolution (in seconds) to use for computing the underlying program.
+     * @return The minimum resolution (in seconds) to use for computing the underlying program
      * 
      */
     public Output<Optional<Integer>> minimumResolution() {
         return Codegen.optional(this.minimumResolution);
     }
     /**
-     * Name of the chart.
+     * Name of the chart
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the chart.
+     * @return Name of the chart
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
+     * Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: &#39;metric&#39;,
+     * &#39;plot_label&#39; and any dimension.
      * 
      */
     @Export(name="onChartLegendDimension", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> onChartLegendDimension;
 
     /**
-     * @return Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
+     * @return Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: &#39;metric&#39;,
+     * &#39;plot_label&#39; and any dimension.
      * 
      */
     public Output<Optional<String>> onChartLegendDimension() {
         return Codegen.optional(this.onChartLegendDimension);
     }
     /**
-     * The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * (LineChart by default) The default plot display style for the visualization. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;,
+     * &#34;ColumnChart&#34;, or &#34;Histogram&#34;
      * 
      */
     @Export(name="plotType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plotType;
 
     /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
+     * @return (LineChart by default) The default plot display style for the visualization. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;,
+     * &#34;ColumnChart&#34;, or &#34;Histogram&#34;
      * 
      */
     public Output<Optional<String>> plotType() {
         return Codegen.optional(this.plotType);
     }
     /**
-     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+     * (false by default) Show markers (circles) for each datapoint used to draw line or area charts
      * 
      */
     @Export(name="showDataMarkers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showDataMarkers;
 
     /**
-     * @return Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+     * @return (false by default) Show markers (circles) for each datapoint used to draw line or area charts
      * 
      */
     public Output<Optional<Boolean>> showDataMarkers() {
         return Codegen.optional(this.showDataMarkers);
     }
     /**
-     * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+     * (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
      * 
      */
     @Export(name="showEventLines", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showEventLines;
 
     /**
-     * @return Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+     * @return (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
      * 
      */
     public Output<Optional<Boolean>> showEventLines() {
         return Codegen.optional(this.showEventLines);
     }
     /**
-     * Whether area and bar charts in the visualization should be stacked. `false` by default.
+     * (false by default) Whether area and bar charts in the visualization should be stacked
      * 
      */
     @Export(name="stacked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> stacked;
 
     /**
-     * @return Whether area and bar charts in the visualization should be stacked. `false` by default.
+     * @return (false by default) Whether area and bar charts in the visualization should be stacked
      * 
      */
     public Output<Optional<Boolean>> stacked() {
         return Codegen.optional(this.stacked);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch to start the visualization
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch to start the visualization
      * 
      */
     public Output<Optional<Integer>> startTime() {
@@ -419,70 +473,70 @@ public class TimeChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      * 
      */
     public Output<Optional<Integer>> timeRange() {
         return Codegen.optional(this.timeRange);
     }
     /**
-     * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `&#34;UTC&#34;` by default.
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
-     * @return Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `&#34;UTC&#34;` by default.
+     * @return The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      * 
      */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }
     /**
-     * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
-     * @return Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
+     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     public Output<Optional<String>> unitPrefix() {
         return Codegen.optional(this.unitPrefix);
     }
     /**
-     * The URL of the chart.
+     * URL of the chart
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the chart.
+     * @return URL of the chart
      * 
      */
     public Output<String> url() {
         return this.url;
     }
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      * 
      */
     @Export(name="vizOptions", refs={List.class,TimeChartVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TimeChartVizOption>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement.
+     * @return Plot-level customization options, associated with a publish statement
      * 
      */
     public Output<Optional<List<TimeChartVizOption>>> vizOptions() {

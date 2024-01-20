@@ -13,17 +13,8 @@ namespace Pulumi.SignalFx.Aws.Outputs
     [OutputType]
     public sealed class IntegrationMetricStatsToSync
     {
-        /// <summary>
-        /// AWS metric that you want to pick statistics for
-        /// </summary>
         public readonly string Metric;
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-        /// </summary>
         public readonly string Namespace;
-        /// <summary>
-        /// AWS statistics you want to collect
-        /// </summary>
         public readonly ImmutableArray<string> Stats;
 
         [OutputConstructor]

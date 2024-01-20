@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SignalFx Jira integrations. For help with this integration see [Integration with Jira](https://docs.signalfx.com/en/latest/admin-guide/integrate-notifications.html#integrate-with-jira).
+// Splunk Observability Cloud Jira integrations. For help with this integration see [Integration with Jira](https://docs.splunk.com/observability/en/admin/notif-services/jira.html).
 //
-// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -49,28 +49,51 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// * `name` - (Required) Name of the integration.
+// * `enabled` - (Required) Whether the integration is enabled.
+// * `authMethod` - (Required) Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+// * `apiToken` - (Required if `authMethod` is `EmailAndToken`) The API token for the user email
+// * `userEmail` - (Required if `authMethod` is `EmailAndToken`) Email address used to authenticate the Jira integration.
+// * `username` - (Required if `authMethod` is `UsernameAndPassword`) User name used to authenticate the Jira integration.
+// * `password` - (Required if `authMethod` is `UsernameAndPassword`) Password used to authenticate the Jira integration.
+// * `baseUrl` - (Required) Base URL of the Jira instance that's integrated with SignalFx.
+// * `issueType` - (Required) Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+// * `projectKey` - (Required) Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+// * `assigneeName` - (Required) Jira user name for the assignee.
+// * `assigneeDisplayName` - (Optional) Jira display name for the assignee.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the integration.
 type Integration struct {
 	pulumi.CustomResourceState
 
 	// The API token for the user email
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
-	// Jira display name for the assignee.
+	// Jira display name for the assignee
 	AssigneeDisplayName pulumi.StringPtrOutput `pulumi:"assigneeDisplayName"`
-	// Jira user name for the assignee.
+	// Jira user name for the assignee
 	AssigneeName pulumi.StringOutput `pulumi:"assigneeName"`
-	// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+	// Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
 	AuthMethod pulumi.StringOutput `pulumi:"authMethod"`
 	// Base URL of the Jira instance that's integrated with SignalFx.
 	BaseUrl pulumi.StringOutput `pulumi:"baseUrl"`
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+	// validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
 	IssueType pulumi.StringOutput `pulumi:"issueType"`
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password used to authenticate the Jira integration.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+	// this project.
 	ProjectKey pulumi.StringOutput `pulumi:"projectKey"`
 	// Email address used to authenticate the Jira integration.
 	UserEmail pulumi.StringPtrOutput `pulumi:"userEmail"`
@@ -139,23 +162,25 @@ func GetIntegration(ctx *pulumi.Context,
 type integrationState struct {
 	// The API token for the user email
 	ApiToken *string `pulumi:"apiToken"`
-	// Jira display name for the assignee.
+	// Jira display name for the assignee
 	AssigneeDisplayName *string `pulumi:"assigneeDisplayName"`
-	// Jira user name for the assignee.
+	// Jira user name for the assignee
 	AssigneeName *string `pulumi:"assigneeName"`
-	// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+	// Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
 	AuthMethod *string `pulumi:"authMethod"`
 	// Base URL of the Jira instance that's integrated with SignalFx.
 	BaseUrl *string `pulumi:"baseUrl"`
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+	// validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
 	IssueType *string `pulumi:"issueType"`
-	// Name of the integration.
+	// Name of the integration
 	Name *string `pulumi:"name"`
 	// Password used to authenticate the Jira integration.
 	Password *string `pulumi:"password"`
-	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+	// this project.
 	ProjectKey *string `pulumi:"projectKey"`
 	// Email address used to authenticate the Jira integration.
 	UserEmail *string `pulumi:"userEmail"`
@@ -166,23 +191,25 @@ type integrationState struct {
 type IntegrationState struct {
 	// The API token for the user email
 	ApiToken pulumi.StringPtrInput
-	// Jira display name for the assignee.
+	// Jira display name for the assignee
 	AssigneeDisplayName pulumi.StringPtrInput
-	// Jira user name for the assignee.
+	// Jira user name for the assignee
 	AssigneeName pulumi.StringPtrInput
-	// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+	// Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
 	AuthMethod pulumi.StringPtrInput
 	// Base URL of the Jira instance that's integrated with SignalFx.
 	BaseUrl pulumi.StringPtrInput
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+	// validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
 	IssueType pulumi.StringPtrInput
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringPtrInput
 	// Password used to authenticate the Jira integration.
 	Password pulumi.StringPtrInput
-	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+	// this project.
 	ProjectKey pulumi.StringPtrInput
 	// Email address used to authenticate the Jira integration.
 	UserEmail pulumi.StringPtrInput
@@ -197,23 +224,25 @@ func (IntegrationState) ElementType() reflect.Type {
 type integrationArgs struct {
 	// The API token for the user email
 	ApiToken *string `pulumi:"apiToken"`
-	// Jira display name for the assignee.
+	// Jira display name for the assignee
 	AssigneeDisplayName *string `pulumi:"assigneeDisplayName"`
-	// Jira user name for the assignee.
+	// Jira user name for the assignee
 	AssigneeName string `pulumi:"assigneeName"`
-	// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+	// Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
 	AuthMethod string `pulumi:"authMethod"`
 	// Base URL of the Jira instance that's integrated with SignalFx.
 	BaseUrl string `pulumi:"baseUrl"`
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled bool `pulumi:"enabled"`
-	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+	// validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
 	IssueType string `pulumi:"issueType"`
-	// Name of the integration.
+	// Name of the integration
 	Name *string `pulumi:"name"`
 	// Password used to authenticate the Jira integration.
 	Password *string `pulumi:"password"`
-	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+	// this project.
 	ProjectKey string `pulumi:"projectKey"`
 	// Email address used to authenticate the Jira integration.
 	UserEmail *string `pulumi:"userEmail"`
@@ -225,23 +254,25 @@ type integrationArgs struct {
 type IntegrationArgs struct {
 	// The API token for the user email
 	ApiToken pulumi.StringPtrInput
-	// Jira display name for the assignee.
+	// Jira display name for the assignee
 	AssigneeDisplayName pulumi.StringPtrInput
-	// Jira user name for the assignee.
+	// Jira user name for the assignee
 	AssigneeName pulumi.StringInput
-	// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+	// Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
 	AuthMethod pulumi.StringInput
 	// Base URL of the Jira instance that's integrated with SignalFx.
 	BaseUrl pulumi.StringInput
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolInput
-	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+	// Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+	// validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
 	IssueType pulumi.StringInput
-	// Name of the integration.
+	// Name of the integration
 	Name pulumi.StringPtrInput
 	// Password used to authenticate the Jira integration.
 	Password pulumi.StringPtrInput
-	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+	// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+	// this project.
 	ProjectKey pulumi.StringInput
 	// Email address used to authenticate the Jira integration.
 	UserEmail pulumi.StringPtrInput
@@ -341,17 +372,17 @@ func (o IntegrationOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
-// Jira display name for the assignee.
+// Jira display name for the assignee
 func (o IntegrationOutput) AssigneeDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AssigneeDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Jira user name for the assignee.
+// Jira user name for the assignee
 func (o IntegrationOutput) AssigneeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AssigneeName }).(pulumi.StringOutput)
 }
 
-// Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
+// Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
 func (o IntegrationOutput) AuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.AuthMethod }).(pulumi.StringOutput)
 }
@@ -361,17 +392,18 @@ func (o IntegrationOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.BaseUrl }).(pulumi.StringOutput)
 }
 
-// Whether the integration is enabled.
+// Whether the integration is enabled or not
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+// Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+// validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
 func (o IntegrationOutput) IssueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.IssueType }).(pulumi.StringOutput)
 }
 
-// Name of the integration.
+// Name of the integration
 func (o IntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -381,7 +413,8 @@ func (o IntegrationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+// Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+// this project.
 func (o IntegrationOutput) ProjectKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.ProjectKey }).(pulumi.StringOutput)
 }

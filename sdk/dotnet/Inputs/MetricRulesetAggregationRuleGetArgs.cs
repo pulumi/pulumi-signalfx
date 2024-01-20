@@ -14,37 +14,23 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("aggregators", required: true)]
         private InputList<Inputs.MetricRulesetAggregationRuleAggregatorGetArgs>? _aggregators;
-
-        /// <summary>
-        /// Aggregator object
-        /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleAggregatorGetArgs> Aggregators
         {
             get => _aggregators ?? (_aggregators = new InputList<Inputs.MetricRulesetAggregationRuleAggregatorGetArgs>());
             set => _aggregators = value;
         }
 
-        /// <summary>
-        /// When false, this rule will not generate aggregated MTSs
-        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         [Input("matchers", required: true)]
         private InputList<Inputs.MetricRulesetAggregationRuleMatcherGetArgs>? _matchers;
-
-        /// <summary>
-        /// Matcher object
-        /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleMatcherGetArgs> Matchers
         {
             get => _matchers ?? (_matchers = new InputList<Inputs.MetricRulesetAggregationRuleMatcherGetArgs>());
             set => _matchers = value;
         }
 
-        /// <summary>
-        /// name of the aggregation rule
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

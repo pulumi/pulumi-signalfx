@@ -20,9 +20,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+ * You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
  * 
- * ## Example Usage
+ * A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+ * 
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -82,144 +84,165 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `name` - (Required) Name of the log view.
+ * * `program_text` - (Required) Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+ * * `description` - (Optional) Description of the log view.
+ * * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+ * * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+ * * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+ * * `columns` - (Optional) The column headers to show on the log view.
+ * * `sort_options` - (Optional) The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+ * * `default_connection` - (Optional) The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the log view.
+ * * `url` - The URL of the log view.
+ * 
  */
 @ResourceType(type="signalfx:log/view:View")
 public class View extends com.pulumi.resources.CustomResource {
     /**
-     * The column headers to show on the log view.
+     * Column configuration
      * 
      */
     @Export(name="columns", refs={List.class,ViewColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ViewColumn>> columns;
 
     /**
-     * @return The column headers to show on the log view.
+     * @return Column configuration
      * 
      */
     public Output<Optional<List<ViewColumn>>> columns() {
         return Codegen.optional(this.columns);
     }
     /**
-     * The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+     * default connection that the dashboard uses
      * 
      */
     @Export(name="defaultConnection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultConnection;
 
     /**
-     * @return The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+     * @return default connection that the dashboard uses
      * 
      */
     public Output<Optional<String>> defaultConnection() {
         return Codegen.optional(this.defaultConnection);
     }
     /**
-     * Description of the log view.
+     * Description of the chart (Optional)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the log view.
+     * @return Description of the chart (Optional)
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch to end the visualization
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch to end the visualization
      * 
      */
     public Output<Optional<Integer>> endTime() {
         return Codegen.optional(this.endTime);
     }
     /**
-     * Name of the log view.
+     * Name of the chart
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the log view.
+     * @return Name of the chart
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+     * Sorting options configuration
      * 
      */
     @Export(name="sortOptions", refs={List.class,ViewSortOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ViewSortOption>> sortOptions;
 
     /**
-     * @return The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+     * @return Sorting options configuration
      * 
      */
     public Output<Optional<List<ViewSortOption>>> sortOptions() {
         return Codegen.optional(this.sortOptions);
     }
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch to start the visualization
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch to start the visualization
      * 
      */
     public Output<Optional<Integer>> startTime() {
         return Codegen.optional(this.startTime);
     }
     /**
-     * From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return From when to display data. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
+     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      * 
      */
     public Output<Optional<Integer>> timeRange() {
         return Codegen.optional(this.timeRange);
     }
     /**
-     * The URL of the log view.
+     * URL of the chart
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the log view.
+     * @return URL of the chart
      * 
      */
     public Output<String> url() {

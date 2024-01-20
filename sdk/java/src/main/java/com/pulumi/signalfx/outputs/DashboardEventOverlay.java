@@ -15,77 +15,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardEventOverlay {
-    /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-     * 
-     */
     private @Nullable String color;
-    /**
-     * @return Text shown in the dropdown when selecting this overlay from the menu.
-     * 
-     */
     private @Nullable String label;
-    /**
-     * @return Show a vertical line for the event. `false` by default.
-     * 
-     */
     private @Nullable Boolean line;
-    /**
-     * @return Search term used to choose the events shown in the overlay.
-     * 
-     */
     private String signal;
-    /**
-     * @return Each element specifies a filter to use against the signal specified in the `signal`.
-     * 
-     */
     private @Nullable List<DashboardEventOverlaySource> sources;
-    /**
-     * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-     * 
-     */
     private @Nullable String type;
 
     private DashboardEventOverlay() {}
-    /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-     * 
-     */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
-    /**
-     * @return Text shown in the dropdown when selecting this overlay from the menu.
-     * 
-     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
-    /**
-     * @return Show a vertical line for the event. `false` by default.
-     * 
-     */
     public Optional<Boolean> line() {
         return Optional.ofNullable(this.line);
     }
-    /**
-     * @return Search term used to choose the events shown in the overlay.
-     * 
-     */
     public String signal() {
         return this.signal;
     }
-    /**
-     * @return Each element specifies a filter to use against the signal specified in the `signal`.
-     * 
-     */
     public List<DashboardEventOverlaySource> sources() {
         return this.sources == null ? List.of() : this.sources;
     }
-    /**
-     * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

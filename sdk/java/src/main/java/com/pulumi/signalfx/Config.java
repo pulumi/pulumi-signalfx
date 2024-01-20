@@ -12,21 +12,21 @@ public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("signalfx");
 /**
- * API URL for your SignalFx org, may include a realm
+ * API URL for your Splunk Observability Cloud org, may include a realm
  * 
  */
     public Optional<String> apiUrl() {
         return Codegen.stringProp("apiUrl").config(config).get();
     }
 /**
- * SignalFx auth token
+ * Splunk Observability Cloud auth token
  * 
  */
     public Optional<String> authToken() {
         return Codegen.stringProp("authToken").config(config).get();
     }
 /**
- * Application URL for your SignalFx org, often customized for organizations using SSO
+ * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
  * 
  */
     public Optional<String> customAppUrl() {

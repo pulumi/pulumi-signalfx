@@ -12,93 +12,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartVizOption {
-    /**
-     * @return Y-axis associated with values for this plot. Must be either `right` or `left`.
-     * 
-     */
     private @Nullable String axis;
-    /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-     * 
-     */
     private @Nullable String color;
-    /**
-     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-     * 
-     */
     private @Nullable String displayName;
-    /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
-     * 
-     */
     private String label;
-    /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
-     * 
-     */
     private @Nullable String plotType;
-    /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-     * 
-     */
     private @Nullable String valuePrefix;
     private @Nullable String valueSuffix;
-    /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * 
-     */
     private @Nullable String valueUnit;
 
     private TimeChartVizOption() {}
-    /**
-     * @return Y-axis associated with values for this plot. Must be either `right` or `left`.
-     * 
-     */
     public Optional<String> axis() {
         return Optional.ofNullable(this.axis);
     }
-    /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-     * 
-     */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
-    /**
-     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-     * 
-     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
-    /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
-     * 
-     */
     public String label() {
         return this.label;
     }
-    /**
-     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
-     * 
-     */
     public Optional<String> plotType() {
         return Optional.ofNullable(this.plotType);
     }
-    /**
-     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-     * 
-     */
     public Optional<String> valuePrefix() {
         return Optional.ofNullable(this.valuePrefix);
     }
     public Optional<String> valueSuffix() {
         return Optional.ofNullable(this.valueSuffix);
     }
-    /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-     * 
-     */
     public Optional<String> valueUnit() {
         return Optional.ofNullable(this.valueUnit);
     }

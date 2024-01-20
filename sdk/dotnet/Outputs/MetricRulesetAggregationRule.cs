@@ -13,21 +13,9 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class MetricRulesetAggregationRule
     {
-        /// <summary>
-        /// Aggregator object
-        /// </summary>
         public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleAggregator> Aggregators;
-        /// <summary>
-        /// When false, this rule will not generate aggregated MTSs
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// Matcher object
-        /// </summary>
         public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleMatcher> Matchers;
-        /// <summary>
-        /// name of the aggregation rule
-        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

@@ -12,18 +12,11 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DataLinkTargetSplunkGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("propertyKeyMapping")]
         private InputMap<string>? _propertyKeyMapping;
-
-        /// <summary>
-        /// Describes the relationship between SignalFx metadata keys and external system properties when the key names are different.
-        /// </summary>
         public InputMap<string> PropertyKeyMapping
         {
             get => _propertyKeyMapping ?? (_propertyKeyMapping = new InputMap<string>());

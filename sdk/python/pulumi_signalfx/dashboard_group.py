@@ -26,13 +26,13 @@ class DashboardGroupArgs:
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a DashboardGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[str] description: Description of the dashboard group.
-        :param pulumi.Input[str] name: Name of the dashboard group.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
+        :param pulumi.Input[str] description: Description of the dashboard group
+        :param pulumi.Input[str] name: Name of the dashboard group
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: The custom access control list for this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to
         """
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
@@ -61,7 +61,7 @@ class DashboardGroupArgs:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        Team IDs that have write access to this dashboard
         """
         warnings.warn("""Please use permissions field now""", DeprecationWarning)
         pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
@@ -76,7 +76,7 @@ class DashboardGroupArgs:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        User IDs that have write access to this dashboard
         """
         warnings.warn("""Please use permissions field now""", DeprecationWarning)
         pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
@@ -91,7 +91,7 @@ class DashboardGroupArgs:
     @pulumi.getter
     def dashboards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
         """
-        [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
         """
         return pulumi.get(self, "dashboards")
 
@@ -103,7 +103,7 @@ class DashboardGroupArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the dashboard group.
+        Description of the dashboard group
         """
         return pulumi.get(self, "description")
 
@@ -124,7 +124,7 @@ class DashboardGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the dashboard group.
+        Name of the dashboard group
         """
         return pulumi.get(self, "name")
 
@@ -136,7 +136,7 @@ class DashboardGroupArgs:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
         """
-        [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        The custom access control list for this dashboard
         """
         return pulumi.get(self, "permissions")
 
@@ -148,7 +148,7 @@ class DashboardGroupArgs:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs to associate the dashboard group to.
+        Team IDs to associate the dashboard group to
         """
         return pulumi.get(self, "teams")
 
@@ -170,13 +170,13 @@ class _DashboardGroupState:
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering DashboardGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[str] description: Description of the dashboard group.
-        :param pulumi.Input[str] name: Name of the dashboard group.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]] dashboards: Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
+        :param pulumi.Input[str] description: Description of the dashboard group
+        :param pulumi.Input[str] name: Name of the dashboard group
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]] permissions: The custom access control list for this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to
         """
         if authorized_writer_teams is not None:
             warnings.warn("""Please use permissions field now""", DeprecationWarning)
@@ -205,7 +205,7 @@ class _DashboardGroupState:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        Team IDs that have write access to this dashboard
         """
         warnings.warn("""Please use permissions field now""", DeprecationWarning)
         pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
@@ -220,7 +220,7 @@ class _DashboardGroupState:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        User IDs that have write access to this dashboard
         """
         warnings.warn("""Please use permissions field now""", DeprecationWarning)
         pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
@@ -235,7 +235,7 @@ class _DashboardGroupState:
     @pulumi.getter
     def dashboards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardArgs']]]]:
         """
-        [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
         """
         return pulumi.get(self, "dashboards")
 
@@ -247,7 +247,7 @@ class _DashboardGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the dashboard group.
+        Description of the dashboard group
         """
         return pulumi.get(self, "description")
 
@@ -268,7 +268,7 @@ class _DashboardGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the dashboard group.
+        Name of the dashboard group
         """
         return pulumi.get(self, "name")
 
@@ -280,7 +280,7 @@ class _DashboardGroupState:
     @pulumi.getter
     def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupPermissionArgs']]]]:
         """
-        [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        The custom access control list for this dashboard
         """
         return pulumi.get(self, "permissions")
 
@@ -292,7 +292,7 @@ class _DashboardGroupState:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs to associate the dashboard group to.
+        Team IDs to associate the dashboard group to
         """
         return pulumi.get(self, "teams")
 
@@ -316,13 +316,13 @@ class DashboardGroup(pulumi.CustomResource):
                  teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
+        In the Splunk Observability Cloud web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
 
-        > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+        Dashboard groups cannot be accessed directly. You can access them through a dashboard within a group.
 
-        > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+        > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboard groups, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -333,7 +333,8 @@ class DashboardGroup(pulumi.CustomResource):
             authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
             authorized_writer_users=["abc123"])
         ```
-        ### With Permissions
+
+        ## Example with permissions
 
         ```python
         import pulumi
@@ -357,7 +358,8 @@ class DashboardGroup(pulumi.CustomResource):
                 ),
             ])
         ```
-        ### With Mirrored Dashboards
+
+        ## Example With mirrored dashboards
 
         ```python
         import pulumi
@@ -385,15 +387,48 @@ class DashboardGroup(pulumi.CustomResource):
             )])
         ```
 
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the dashboard group.
+        * `description` - (Required) Description of the dashboard group.
+        * `teams` - (Optional) Team IDs to associate the dashboard group to.
+        * `authorized_writer_teams` - (Optional) Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        * `authorized_writer_users` - (Optional) User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        * `permissions` - (Optional) [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+          * `principal_id` - (Required) ID of the user, team, or organization for which you're granting permissions.
+          * `principal_type` - (Required) Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+          * `actions` - (Required) Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        * `dashboard` - (Optional) [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+          * `dashboard_id` - (Required) The dashboard id to mirror
+          * `name_override` - (Optional) The name that will override the original dashboards's name.
+          * `description_override` - (Optional) The description that will override the original dashboards's description.
+          * `filter_override` - (Optional) The description that will override the original dashboards's description.
+            * `property` - (Required) The name of a dimension to filter against.
+            * `values` - (Required) A list of values to be used with the `property`, they will be combined via `OR`.
+            * `negated` - (Optional) If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+          * `filter_override` - (Optional) The description that will override the original dashboards's description.
+            * `property` - (Required) A metric time series dimension or property name.
+            * `values` - (Optional) (Optional) List of of strings (which will be treated as an OR filter on the property).
+            * `values_suggested` - (Optional) A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the integration.
+        * `dashboard.config_id` - The ID of the association between the dashboard group and the dashboard
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[str] description: Description of the dashboard group.
-        :param pulumi.Input[str] name: Name of the dashboard group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
+        :param pulumi.Input[str] description: Description of the dashboard group
+        :param pulumi.Input[str] name: Name of the dashboard group
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]] permissions: The custom access control list for this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to
         """
         ...
     @overload
@@ -402,13 +437,13 @@ class DashboardGroup(pulumi.CustomResource):
                  args: Optional[DashboardGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        In the SignalFx web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
+        In the Splunk Observability Cloud web UI, a [dashboard group](https://developers.signalfx.com/dashboard_groups_reference.html) is a collection of dashboards.
 
-        > **NOTE** Dashboard groups cannot be accessed directly, but just via a dashboard contained in them. This is the reason why make show won't show any of yours dashboard groups.
+        Dashboard groups cannot be accessed directly. You can access them through a dashboard within a group.
 
-        > **NOTE** When you want to "Change or remove write permissions for a user other than yourself" regarding dashboard groups, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+        > **NOTE** When you want to change or remove write permissions for a user other than yourself regarding dashboard groups, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -419,7 +454,8 @@ class DashboardGroup(pulumi.CustomResource):
             authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
             authorized_writer_users=["abc123"])
         ```
-        ### With Permissions
+
+        ## Example with permissions
 
         ```python
         import pulumi
@@ -443,7 +479,8 @@ class DashboardGroup(pulumi.CustomResource):
                 ),
             ])
         ```
-        ### With Mirrored Dashboards
+
+        ## Example With mirrored dashboards
 
         ```python
         import pulumi
@@ -470,6 +507,39 @@ class DashboardGroup(pulumi.CustomResource):
                 )],
             )])
         ```
+
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the dashboard group.
+        * `description` - (Required) Description of the dashboard group.
+        * `teams` - (Optional) Team IDs to associate the dashboard group to.
+        * `authorized_writer_teams` - (Optional) Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        * `authorized_writer_users` - (Optional) User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        * `permissions` - (Optional) [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+          * `principal_id` - (Required) ID of the user, team, or organization for which you're granting permissions.
+          * `principal_type` - (Required) Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+          * `actions` - (Required) Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
+        * `dashboard` - (Optional) [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+          * `dashboard_id` - (Required) The dashboard id to mirror
+          * `name_override` - (Optional) The name that will override the original dashboards's name.
+          * `description_override` - (Optional) The description that will override the original dashboards's description.
+          * `filter_override` - (Optional) The description that will override the original dashboards's description.
+            * `property` - (Required) The name of a dimension to filter against.
+            * `values` - (Required) A list of values to be used with the `property`, they will be combined via `OR`.
+            * `negated` - (Optional) If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
+          * `filter_override` - (Optional) The description that will override the original dashboards's description.
+            * `property` - (Required) A metric time series dimension or property name.
+            * `values` - (Optional) (Optional) List of of strings (which will be treated as an OR filter on the property).
+            * `values_suggested` - (Optional) A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the integration.
+        * `dashboard.config_id` - The ID of the association between the dashboard group and the dashboard
 
         :param str resource_name: The name of the resource.
         :param DashboardGroupArgs args: The arguments to use to populate this resource's properties.
@@ -536,13 +606,13 @@ class DashboardGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[str] description: Description of the dashboard group.
-        :param pulumi.Input[str] name: Name of the dashboard group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]] permissions: [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupDashboardArgs']]]] dashboards: Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
+        :param pulumi.Input[str] description: Description of the dashboard group
+        :param pulumi.Input[str] name: Name of the dashboard group
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardGroupPermissionArgs']]]] permissions: The custom access control list for this dashboard
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the dashboard group to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -562,7 +632,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        Team IDs that have write access to this dashboard
         """
         warnings.warn("""Please use permissions field now""", DeprecationWarning)
         pulumi.log.warn("""authorized_writer_teams is deprecated: Please use permissions field now""")
@@ -573,7 +643,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+        User IDs that have write access to this dashboard
         """
         warnings.warn("""Please use permissions field now""", DeprecationWarning)
         pulumi.log.warn("""authorized_writer_users is deprecated: Please use permissions field now""")
@@ -584,7 +654,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter
     def dashboards(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardGroupDashboard']]]:
         """
-        [Mirrored dashboards](https://docs.signalfx.com/en/latest/dashboards/dashboard-mirrors.html) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        Dashboard IDs that are members of this dashboard group. Also handles 'mirrored' dashboards.
         """
         return pulumi.get(self, "dashboards")
 
@@ -592,7 +662,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the dashboard group.
+        Description of the dashboard group
         """
         return pulumi.get(self, "description")
 
@@ -605,7 +675,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the dashboard group.
+        Name of the dashboard group
         """
         return pulumi.get(self, "name")
 
@@ -613,7 +683,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter
     def permissions(self) -> pulumi.Output[Sequence['outputs.DashboardGroupPermission']]:
         """
-        [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        The custom access control list for this dashboard
         """
         return pulumi.get(self, "permissions")
 
@@ -621,7 +691,7 @@ class DashboardGroup(pulumi.CustomResource):
     @pulumi.getter
     def teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs to associate the dashboard group to.
+        Team IDs to associate the dashboard group to
         """
         return pulumi.get(self, "teams")
 

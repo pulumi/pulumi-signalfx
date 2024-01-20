@@ -23,11 +23,11 @@ class AlertMutingRuleArgs:
                  stop_time: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AlertMutingRule resource.
-        :param pulumi.Input[str] description: The description for this muting rule
-        :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
-        :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
+        :param pulumi.Input[str] description: description of the rule
+        :param pulumi.Input[int] start_time: starting time of an alert muting rule as a Unix timestamp, in seconds
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: detectors to which this muting rule applies
+        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: list of alert muting filters for this rule
+        :param pulumi.Input[int] stop_time: stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "start_time", start_time)
@@ -42,7 +42,7 @@ class AlertMutingRuleArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        The description for this muting rule
+        description of the rule
         """
         return pulumi.get(self, "description")
 
@@ -54,7 +54,7 @@ class AlertMutingRuleArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[int]:
         """
-        Starting time of an alert muting rule as a Unit time stamp in seconds.
+        starting time of an alert muting rule as a Unix timestamp, in seconds
         """
         return pulumi.get(self, "start_time")
 
@@ -66,7 +66,7 @@ class AlertMutingRuleArgs:
     @pulumi.getter
     def detectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        detectors to which this muting rule applies
         """
         return pulumi.get(self, "detectors")
 
@@ -78,7 +78,7 @@ class AlertMutingRuleArgs:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
         """
-        Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        list of alert muting filters for this rule
         """
         return pulumi.get(self, "filters")
 
@@ -90,7 +90,7 @@ class AlertMutingRuleArgs:
     @pulumi.getter(name="stopTime")
     def stop_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Stop time of an alert muting rule as a Unix time stamp in seconds.
+        stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         return pulumi.get(self, "stop_time")
 
@@ -110,11 +110,11 @@ class _AlertMutingRuleState:
                  stop_time: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering AlertMutingRule resources.
-        :param pulumi.Input[str] description: The description for this muting rule
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
-        :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
-        :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
+        :param pulumi.Input[str] description: description of the rule
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: detectors to which this muting rule applies
+        :param pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]] filters: list of alert muting filters for this rule
+        :param pulumi.Input[int] start_time: starting time of an alert muting rule as a Unix timestamp, in seconds
+        :param pulumi.Input[int] stop_time: stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -133,7 +133,7 @@ class _AlertMutingRuleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description for this muting rule
+        description of the rule
         """
         return pulumi.get(self, "description")
 
@@ -145,7 +145,7 @@ class _AlertMutingRuleState:
     @pulumi.getter
     def detectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        detectors to which this muting rule applies
         """
         return pulumi.get(self, "detectors")
 
@@ -166,7 +166,7 @@ class _AlertMutingRuleState:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlertMutingRuleFilterArgs']]]]:
         """
-        Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        list of alert muting filters for this rule
         """
         return pulumi.get(self, "filters")
 
@@ -178,7 +178,7 @@ class _AlertMutingRuleState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Starting time of an alert muting rule as a Unit time stamp in seconds.
+        starting time of an alert muting rule as a Unix timestamp, in seconds
         """
         return pulumi.get(self, "start_time")
 
@@ -190,7 +190,7 @@ class _AlertMutingRuleState:
     @pulumi.getter(name="stopTime")
     def stop_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Stop time of an alert muting rule as a Unix time stamp in seconds.
+        stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         return pulumi.get(self, "stop_time")
 
@@ -211,13 +211,13 @@ class AlertMutingRule(pulumi.CustomResource):
                  stop_time: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides an Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
+        Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
 
-        > **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+        Splunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.
 
-        > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+        > **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -234,13 +234,31 @@ class AlertMutingRule(pulumi.CustomResource):
             )])
         ```
 
+        ## Arguments
+
+        * `description` - (Required) The description for this muting rule
+        * `start_time` - (Required) Starting time of an alert muting rule as a Unit time stamp in seconds.
+        * `stop_time` - (Optional) Stop time of an alert muting rule as a Unix time stamp in seconds.
+        * `detectors` - (Optional) A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        * `filter` - (Optional) Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+          * `property` - (Required) The property to filter.
+          * `property_value` - (Required) The property value to filter.
+          * `negated` - (Optional) Determines if this is a "not" filter. Defaults to `false`.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the alert muting rule.
+        * `effective_start_time`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description for this muting rule
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
-        :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
-        :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
+        :param pulumi.Input[str] description: description of the rule
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: detectors to which this muting rule applies
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]] filters: list of alert muting filters for this rule
+        :param pulumi.Input[int] start_time: starting time of an alert muting rule as a Unix timestamp, in seconds
+        :param pulumi.Input[int] stop_time: stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         ...
     @overload
@@ -249,13 +267,13 @@ class AlertMutingRule(pulumi.CustomResource):
                  args: AlertMutingRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
+        Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
 
-        > **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+        Splunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.
 
-        > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+        > **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -271,6 +289,24 @@ class AlertMutingRule(pulumi.CustomResource):
                 property_value="bar",
             )])
         ```
+
+        ## Arguments
+
+        * `description` - (Required) The description for this muting rule
+        * `start_time` - (Required) Starting time of an alert muting rule as a Unit time stamp in seconds.
+        * `stop_time` - (Optional) Stop time of an alert muting rule as a Unix time stamp in seconds.
+        * `detectors` - (Optional) A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        * `filter` - (Optional) Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+          * `property` - (Required) The property to filter.
+          * `property_value` - (Required) The property value to filter.
+          * `negated` - (Optional) Determines if this is a "not" filter. Defaults to `false`.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the alert muting rule.
+        * `effective_start_time`
 
         :param str resource_name: The name of the resource.
         :param AlertMutingRuleArgs args: The arguments to use to populate this resource's properties.
@@ -334,11 +370,11 @@ class AlertMutingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description for this muting rule
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]] filters: Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
-        :param pulumi.Input[int] start_time: Starting time of an alert muting rule as a Unit time stamp in seconds.
-        :param pulumi.Input[int] stop_time: Stop time of an alert muting rule as a Unix time stamp in seconds.
+        :param pulumi.Input[str] description: description of the rule
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] detectors: detectors to which this muting rule applies
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertMutingRuleFilterArgs']]]] filters: list of alert muting filters for this rule
+        :param pulumi.Input[int] start_time: starting time of an alert muting rule as a Unix timestamp, in seconds
+        :param pulumi.Input[int] stop_time: stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -356,7 +392,7 @@ class AlertMutingRule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description for this muting rule
+        description of the rule
         """
         return pulumi.get(self, "description")
 
@@ -364,7 +400,7 @@ class AlertMutingRule(pulumi.CustomResource):
     @pulumi.getter
     def detectors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+        detectors to which this muting rule applies
         """
         return pulumi.get(self, "detectors")
 
@@ -377,7 +413,7 @@ class AlertMutingRule(pulumi.CustomResource):
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional[Sequence['outputs.AlertMutingRuleFilter']]]:
         """
-        Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+        list of alert muting filters for this rule
         """
         return pulumi.get(self, "filters")
 
@@ -385,7 +421,7 @@ class AlertMutingRule(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[int]:
         """
-        Starting time of an alert muting rule as a Unit time stamp in seconds.
+        starting time of an alert muting rule as a Unix timestamp, in seconds
         """
         return pulumi.get(self, "start_time")
 
@@ -393,7 +429,7 @@ class AlertMutingRule(pulumi.CustomResource):
     @pulumi.getter(name="stopTime")
     def stop_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Stop time of an alert muting rule as a Unix time stamp in seconds.
+        stop time of an alert muting rule as a Unix timestamp, in seconds
         """
         return pulumi.get(self, "stop_time")
 

@@ -12,54 +12,29 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardVariableArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
-        /// </summary>
         [Input("alias", required: true)]
         public Input<string> Alias { get; set; } = null!;
 
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
         [Input("applyIfExist")]
         public Input<bool>? ApplyIfExist { get; set; }
 
-        /// <summary>
-        /// Variable description.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 
-        /// <summary>
-        /// If `true`, this variable will only apply to charts that have a filter for the property.
-        /// </summary>
         [Input("replaceOnly")]
         public Input<bool>? ReplaceOnly { get; set; }
 
-        /// <summary>
-        /// If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
-        /// </summary>
         [Input("restrictedSuggestions")]
         public Input<bool>? RestrictedSuggestions { get; set; }
 
-        /// <summary>
-        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
-        /// </summary>
         [Input("valueRequired")]
         public Input<bool>? ValueRequired { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());
@@ -68,10 +43,6 @@ namespace Pulumi.SignalFx.Inputs
 
         [Input("valuesSuggesteds")]
         private InputList<string>? _valuesSuggesteds;
-
-        /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
-        /// </summary>
         public InputList<string> ValuesSuggesteds
         {
             get => _valuesSuggesteds ?? (_valuesSuggesteds = new InputList<string>());

@@ -15,32 +15,16 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
 
     public static final IntegrationCustomNamespacesPerServiceArgs Empty = new IntegrationCustomNamespacesPerServiceArgs();
 
-    /**
-     * The additional namespaces.
-     * 
-     */
     @Import(name="namespaces", required=true)
     private Output<List<String>> namespaces;
 
-    /**
-     * @return The additional namespaces.
-     * 
-     */
     public Output<List<String>> namespaces() {
         return this.namespaces;
     }
 
-    /**
-     * The name of the service.
-     * 
-     */
     @Import(name="service", required=true)
     private Output<String> service;
 
-    /**
-     * @return The name of the service.
-     * 
-     */
     public Output<String> service() {
         return this.service;
     }
@@ -70,54 +54,24 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
             $ = new IntegrationCustomNamespacesPerServiceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param namespaces The additional namespaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespaces(Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
-        /**
-         * @param namespaces The additional namespaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
-        /**
-         * @param namespaces The additional namespaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }
 
-        /**
-         * @param service The name of the service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder service(Output<String> service) {
             $.service = service;
             return this;
         }
 
-        /**
-         * @param service The name of the service.
-         * 
-         * @return builder
-         * 
-         */
         public Builder service(String service) {
             return service(Output.of(service));
         }

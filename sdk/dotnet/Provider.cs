@@ -19,19 +19,19 @@ namespace Pulumi.SignalFx
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
-        /// API URL for your SignalFx org, may include a realm
+        /// API URL for your Splunk Observability Cloud org, may include a realm
         /// </summary>
         [Output("apiUrl")]
         public Output<string?> ApiUrl { get; private set; } = null!;
 
         /// <summary>
-        /// SignalFx auth token
+        /// Splunk Observability Cloud auth token
         /// </summary>
         [Output("authToken")]
         public Output<string?> AuthToken { get; private set; } = null!;
 
         /// <summary>
-        /// Application URL for your SignalFx org, often customized for organizations using SSO
+        /// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         /// </summary>
         [Output("customAppUrl")]
         public Output<string?> CustomAppUrl { get; private set; } = null!;
@@ -65,19 +65,19 @@ namespace Pulumi.SignalFx
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// API URL for your SignalFx org, may include a realm
+        /// API URL for your Splunk Observability Cloud org, may include a realm
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
-        /// SignalFx auth token
+        /// Splunk Observability Cloud auth token
         /// </summary>
         [Input("authToken")]
         public Input<string>? AuthToken { get; set; }
 
         /// <summary>
-        /// Application URL for your SignalFx org, often customized for organizations using SSO
+        /// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         /// </summary>
         [Input("customAppUrl")]
         public Input<string>? CustomAppUrl { get; set; }

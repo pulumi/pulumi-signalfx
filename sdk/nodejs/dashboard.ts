@@ -35,85 +35,85 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard
      *
      * @deprecated Please use permissions_* fields now
      */
     public readonly authorizedWriterTeams!: pulumi.Output<string[] | undefined>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard
      *
      * @deprecated Please use permissions fields now
      */
     public readonly authorizedWriterUsers!: pulumi.Output<string[] | undefined>;
     /**
-     * Chart ID and layout information for the charts in the dashboard.
+     * Chart ID and layout information for the charts in the dashboard
      */
     public readonly charts!: pulumi.Output<outputs.DashboardChart[] | undefined>;
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of "default", "low", "high",
+     * or "highest". default by default
      */
     public readonly chartsResolution!: pulumi.Output<string | undefined>;
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed, will be placed in a single column with the same width and height
      */
     public readonly columns!: pulumi.Output<outputs.DashboardColumn[] | undefined>;
     /**
-     * The ID of the dashboard group that contains the dashboard.
+     * The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
+     * be placed in a newly created dashboard group
      */
     public readonly dashboardGroup!: pulumi.Output<string>;
     /**
-     * Variable description.
+     * Description of the dashboard (Optional)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly discoveryOptionsQuery!: pulumi.Output<string | undefined>;
     public readonly discoveryOptionsSelectors!: pulumi.Output<string[] | undefined>;
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to end the visualization
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
+     * Event overlay to add to charts
      */
     public readonly eventOverlays!: pulumi.Output<outputs.DashboardEventOverlay[] | undefined>;
     /**
-     * Filter to apply to the charts when displaying the dashboard.
+     * Filter to apply to each chart in the dashboard
      */
     public readonly filters!: pulumi.Output<outputs.DashboardFilter[] | undefined>;
     /**
-     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
+     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can't
+     * fit in a row, it will be placed automatically in the next row
      */
     public readonly grids!: pulumi.Output<outputs.DashboardGrid[] | undefined>;
     /**
-     * Name of the dashboard.
+     * Name of the dashboard
      */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-     */
     public readonly permissions!: pulumi.Output<outputs.DashboardPermissions>;
     /**
-     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
+     * Event overlay added to charts by default to charts
      */
     public readonly selectedEventOverlays!: pulumi.Output<outputs.DashboardSelectedEventOverlay[] | undefined>;
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to start the visualization
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * Tags of the dashboard.
+     * Tags of the dashboard
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
      */
     public readonly timeRange!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the dashboard.
+     * URL of the dashboard
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
-     * Dashboard variable to apply to each chart in the dashboard.
+     * Dashboard variable to apply to each chart in the dashboard
      */
     public readonly variables!: pulumi.Output<outputs.DashboardVariable[] | undefined>;
 
@@ -188,85 +188,85 @@ export class Dashboard extends pulumi.CustomResource {
  */
 export interface DashboardState {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard
      *
      * @deprecated Please use permissions_* fields now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard
      *
      * @deprecated Please use permissions fields now
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Chart ID and layout information for the charts in the dashboard.
+     * Chart ID and layout information for the charts in the dashboard
      */
     charts?: pulumi.Input<pulumi.Input<inputs.DashboardChart>[]>;
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of "default", "low", "high",
+     * or "highest". default by default
      */
     chartsResolution?: pulumi.Input<string>;
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed, will be placed in a single column with the same width and height
      */
     columns?: pulumi.Input<pulumi.Input<inputs.DashboardColumn>[]>;
     /**
-     * The ID of the dashboard group that contains the dashboard.
+     * The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
+     * be placed in a newly created dashboard group
      */
     dashboardGroup?: pulumi.Input<string>;
     /**
-     * Variable description.
+     * Description of the dashboard (Optional)
      */
     description?: pulumi.Input<string>;
     discoveryOptionsQuery?: pulumi.Input<string>;
     discoveryOptionsSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to end the visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
+     * Event overlay to add to charts
      */
     eventOverlays?: pulumi.Input<pulumi.Input<inputs.DashboardEventOverlay>[]>;
     /**
-     * Filter to apply to the charts when displaying the dashboard.
+     * Filter to apply to each chart in the dashboard
      */
     filters?: pulumi.Input<pulumi.Input<inputs.DashboardFilter>[]>;
     /**
-     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
+     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can't
+     * fit in a row, it will be placed automatically in the next row
      */
     grids?: pulumi.Input<pulumi.Input<inputs.DashboardGrid>[]>;
     /**
-     * Name of the dashboard.
+     * Name of the dashboard
      */
     name?: pulumi.Input<string>;
-    /**
-     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-     */
     permissions?: pulumi.Input<inputs.DashboardPermissions>;
     /**
-     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
+     * Event overlay added to charts by default to charts
      */
     selectedEventOverlays?: pulumi.Input<pulumi.Input<inputs.DashboardSelectedEventOverlay>[]>;
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to start the visualization
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Tags of the dashboard.
+     * Tags of the dashboard
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
      */
     timeRange?: pulumi.Input<string>;
     /**
-     * The URL of the dashboard.
+     * URL of the dashboard
      */
     url?: pulumi.Input<string>;
     /**
-     * Dashboard variable to apply to each chart in the dashboard.
+     * Dashboard variable to apply to each chart in the dashboard
      */
     variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }
@@ -276,81 +276,81 @@ export interface DashboardState {
  */
 export interface DashboardArgs {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard
      *
      * @deprecated Please use permissions_* fields now
      */
     authorizedWriterTeams?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorizedWriterTeams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard
      *
      * @deprecated Please use permissions fields now
      */
     authorizedWriterUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Chart ID and layout information for the charts in the dashboard.
+     * Chart ID and layout information for the charts in the dashboard
      */
     charts?: pulumi.Input<pulumi.Input<inputs.DashboardChart>[]>;
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of "default", "low", "high",
+     * or "highest". default by default
      */
     chartsResolution?: pulumi.Input<string>;
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed, will be placed in a single column with the same width and height
      */
     columns?: pulumi.Input<pulumi.Input<inputs.DashboardColumn>[]>;
     /**
-     * The ID of the dashboard group that contains the dashboard.
+     * The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
+     * be placed in a newly created dashboard group
      */
     dashboardGroup: pulumi.Input<string>;
     /**
-     * Variable description.
+     * Description of the dashboard (Optional)
      */
     description?: pulumi.Input<string>;
     discoveryOptionsQuery?: pulumi.Input<string>;
     discoveryOptionsSelectors?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to end the visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selectedEventOverlay` property instead.
+     * Event overlay to add to charts
      */
     eventOverlays?: pulumi.Input<pulumi.Input<inputs.DashboardEventOverlay>[]>;
     /**
-     * Filter to apply to the charts when displaying the dashboard.
+     * Filter to apply to each chart in the dashboard
      */
     filters?: pulumi.Input<pulumi.Input<inputs.DashboardFilter>[]>;
     /**
-     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
+     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can't
+     * fit in a row, it will be placed automatically in the next row
      */
     grids?: pulumi.Input<pulumi.Input<inputs.DashboardGrid>[]>;
     /**
-     * Name of the dashboard.
+     * Name of the dashboard
      */
     name?: pulumi.Input<string>;
-    /**
-     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-     */
     permissions?: pulumi.Input<inputs.DashboardPermissions>;
     /**
-     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `eventOverlay`, which are similar to the properties here.
+     * Event overlay added to charts by default to charts
      */
     selectedEventOverlays?: pulumi.Input<pulumi.Input<inputs.DashboardSelectedEventOverlay>[]>;
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to start the visualization
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Tags of the dashboard.
+     * Tags of the dashboard
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The time range prior to now to visualize. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`).
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
      */
     timeRange?: pulumi.Input<string>;
     /**
-     * Dashboard variable to apply to each chart in the dashboard.
+     * Dashboard variable to apply to each chart in the dashboard
      */
     variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
 }

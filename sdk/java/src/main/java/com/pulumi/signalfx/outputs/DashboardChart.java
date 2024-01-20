@@ -13,65 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardChart {
-    /**
-     * @return ID of the chart to display.
-     * 
-     */
     private String chartId;
-    /**
-     * @return Column number for the layout.
-     * 
-     */
     private @Nullable Integer column;
-    /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
-     * 
-     */
     private @Nullable Integer height;
-    /**
-     * @return The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-     * 
-     */
     private @Nullable Integer row;
-    /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-     * 
-     */
     private @Nullable Integer width;
 
     private DashboardChart() {}
-    /**
-     * @return ID of the chart to display.
-     * 
-     */
     public String chartId() {
         return this.chartId;
     }
-    /**
-     * @return Column number for the layout.
-     * 
-     */
     public Optional<Integer> column() {
         return Optional.ofNullable(this.column);
     }
-    /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
-     * 
-     */
     public Optional<Integer> height() {
         return Optional.ofNullable(this.height);
     }
-    /**
-     * @return The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-     * 
-     */
     public Optional<Integer> row() {
         return Optional.ofNullable(this.row);
     }
-    /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-     * 
-     */
     public Optional<Integer> width() {
         return Optional.ofNullable(this.width);
     }

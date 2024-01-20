@@ -19,11 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manage SignalFx org tokens.
+ * Manage Splunk Observability Cloud org tokens.
  * 
- * &gt; **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * &gt; **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -65,6 +65,35 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `name` - (Required) Name of the token.
+ * * `description` - (Optional) Description of the token.
+ * * `disabled` - (Optional) Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+ * * `secret` - The secret token created by the API. You cannot set this value.
+ * * `notifications` - (Optional) Where to send notifications about this token&#39;s limits. See the Notification Format laid out in detectors.
+ * * `host_or_usage_limits` - (Optional) Specify Usage-based limits for this token.
+ *   * `host_limit` - (Optional) Max number of hosts that can use this token
+ *   * `host_notification_threshold` - (Optional) Notification threshold for hosts
+ *   * `container_limit` - (Optional) Max number of Docker containers that can use this token
+ *   * `container_notification_threshold` - (Optional) Notification threshold for Docker containers
+ *   * `custom_metrics_limit` - (Optional) Max number of custom metrics that can be sent with this token
+ *   * `custom_metrics_notification_threshold` - (Optional) Notification threshold for custom metrics
+ *   * `high_res_metrics_limit` - (Optional) Max number of hi-res metrics that can be sent with this toke
+ *   * `high_res_metrics_notification_threshold` - (Optional) Notification threshold for hi-res metrics
+ * * `dpm_limits` (Optional) Specify DPM-based limits for this token.
+ *   * `dpm_notification_threshold` - (Optional) DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+ *   * `dpm_limit` - (Required) The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the token.
+ * * `secret` - The assigned token.
+ * 
  */
 @ResourceType(type="signalfx:index/orgToken:OrgToken")
 public class OrgToken extends com.pulumi.resources.CustomResource {
@@ -83,100 +112,80 @@ public class OrgToken extends com.pulumi.resources.CustomResource {
         return this.authScopes;
     }
     /**
-     * Description of the token.
+     * Description of the token (Optional)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the token.
+     * @return Description of the token (Optional)
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication.
+     * Defaults to `false`
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+     * @return Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication.
+     * Defaults to `false`
      * 
      */
     public Output<Optional<Boolean>> disabled() {
         return Codegen.optional(this.disabled);
     }
-    /**
-     * Specify DPM-based limits for this token.
-     * 
-     */
     @Export(name="dpmLimits", refs={OrgTokenDpmLimits.class}, tree="[0]")
     private Output</* @Nullable */ OrgTokenDpmLimits> dpmLimits;
 
-    /**
-     * @return Specify DPM-based limits for this token.
-     * 
-     */
     public Output<Optional<OrgTokenDpmLimits>> dpmLimits() {
         return Codegen.optional(this.dpmLimits);
     }
-    /**
-     * Specify Usage-based limits for this token.
-     * 
-     */
     @Export(name="hostOrUsageLimits", refs={OrgTokenHostOrUsageLimits.class}, tree="[0]")
     private Output</* @Nullable */ OrgTokenHostOrUsageLimits> hostOrUsageLimits;
 
-    /**
-     * @return Specify Usage-based limits for this token.
-     * 
-     */
     public Output<Optional<OrgTokenHostOrUsageLimits>> hostOrUsageLimits() {
         return Codegen.optional(this.hostOrUsageLimits);
     }
     /**
-     * Name of the token.
+     * Name of the token
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the token.
+     * @return Name of the token
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+     * List of strings specifying where notifications will be sent when an incident occurs. See
+     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      * 
      */
     @Export(name="notifications", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notifications;
 
     /**
-     * @return Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+     * @return List of strings specifying where notifications will be sent when an incident occurs. See
+     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      * 
      */
     public Output<Optional<List<String>>> notifications() {
         return Codegen.optional(this.notifications);
     }
-    /**
-     * The secret token created by the API. You cannot set this value.
-     * 
-     */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
-    /**
-     * @return The secret token created by the API. You cannot set this value.
-     * 
-     */
     public Output<String> secret() {
         return this.secret;
     }

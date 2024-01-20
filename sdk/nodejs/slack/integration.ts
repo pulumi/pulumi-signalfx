@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * SignalFx Slack integration.
+ * Slack integration.
  *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,6 +20,18 @@ import * as utilities from "../utilities";
  *     webhookUrl: "http://example.com",
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `webhookUrl` - (Required) Slack incoming webhook URL.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the integration.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -50,15 +62,15 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Slack incoming webhook URL.
+     * Slack Webhook URL for integration
      */
     public readonly webhookUrl!: pulumi.Output<string>;
 
@@ -102,15 +114,15 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     /**
-     * Slack incoming webhook URL.
+     * Slack Webhook URL for integration
      */
     webhookUrl?: pulumi.Input<string>;
 }
@@ -120,15 +132,15 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     /**
-     * Slack incoming webhook URL.
+     * Slack Webhook URL for integration
      */
     webhookUrl: pulumi.Input<string>;
 }

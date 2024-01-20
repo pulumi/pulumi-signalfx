@@ -17,47 +17,23 @@ public final class DashboardGroupPermissionArgs extends com.pulumi.resources.Res
 
     public static final DashboardGroupPermissionArgs Empty = new DashboardGroupPermissionArgs();
 
-    /**
-     * Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-     * 
-     */
     @Import(name="actions")
     private @Nullable Output<List<String>> actions;
 
-    /**
-     * @return Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-     * 
-     */
     public Optional<Output<List<String>>> actions() {
         return Optional.ofNullable(this.actions);
     }
 
-    /**
-     * ID of the user, team, or organization for which you&#39;re granting permissions.
-     * 
-     */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
-    /**
-     * @return ID of the user, team, or organization for which you&#39;re granting permissions.
-     * 
-     */
     public Output<String> principalId() {
         return this.principalId;
     }
 
-    /**
-     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
-     * 
-     */
     @Import(name="principalType", required=true)
     private Output<String> principalType;
 
-    /**
-     * @return Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
-     * 
-     */
     public Output<String> principalType() {
         return this.principalType;
     }
@@ -88,75 +64,33 @@ public final class DashboardGroupPermissionArgs extends com.pulumi.resources.Res
             $ = new DashboardGroupPermissionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param actions Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-         * 
-         * @return builder
-         * 
-         */
         public Builder actions(@Nullable Output<List<String>> actions) {
             $.actions = actions;
             return this;
         }
 
-        /**
-         * @param actions Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-         * 
-         * @return builder
-         * 
-         */
         public Builder actions(List<String> actions) {
             return actions(Output.of(actions));
         }
 
-        /**
-         * @param actions Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-         * 
-         * @return builder
-         * 
-         */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
 
-        /**
-         * @param principalId ID of the user, team, or organization for which you&#39;re granting permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder principalId(Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
-        /**
-         * @param principalId ID of the user, team, or organization for which you&#39;re granting permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 
-        /**
-         * @param principalType Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder principalType(Output<String> principalType) {
             $.principalType = principalType;
             return this;
         }
 
-        /**
-         * @param principalType Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder principalType(String principalType) {
             return principalType(Output.of(principalType));
         }
