@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:index/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
     /**
-     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * Team IDs that have write access to this dashboard
      * 
      * @deprecated
      * Please use permissions_* fields now
@@ -38,14 +38,14 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return Team IDs that have write access to this dashboard
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterTeams() {
         return Codegen.optional(this.authorizedWriterTeams);
     }
     /**
-     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * User IDs that have write access to this dashboard
      * 
      * @deprecated
      * Please use permissions fields now
@@ -56,77 +56,81 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
+     * @return User IDs that have write access to this dashboard
      * 
      */
     public Output<Optional<List<String>>> authorizedWriterUsers() {
         return Codegen.optional(this.authorizedWriterUsers);
     }
     /**
-     * Chart ID and layout information for the charts in the dashboard.
+     * Chart ID and layout information for the charts in the dashboard
      * 
      */
     @Export(name="charts", refs={List.class,DashboardChart.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardChart>> charts;
 
     /**
-     * @return Chart ID and layout information for the charts in the dashboard.
+     * @return Chart ID and layout information for the charts in the dashboard
      * 
      */
     public Output<Optional<List<DashboardChart>>> charts() {
         return Codegen.optional(this.charts);
     }
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of &#34;default&#34;, &#34;low&#34;, &#34;high&#34;,
+     * or &#34;highest&#34;. default by default
      * 
      */
     @Export(name="chartsResolution", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chartsResolution;
 
     /**
-     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
+     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of &#34;default&#34;, &#34;low&#34;, &#34;high&#34;,
+     * or &#34;highest&#34;. default by default
      * 
      */
     public Output<Optional<String>> chartsResolution() {
         return Codegen.optional(this.chartsResolution);
     }
     /**
-     * Column number for the layout.
+     * Column layout. Charts listed, will be placed in a single column with the same width and height
      * 
      */
     @Export(name="columns", refs={List.class,DashboardColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardColumn>> columns;
 
     /**
-     * @return Column number for the layout.
+     * @return Column layout. Charts listed, will be placed in a single column with the same width and height
      * 
      */
     public Output<Optional<List<DashboardColumn>>> columns() {
         return Codegen.optional(this.columns);
     }
     /**
-     * The ID of the dashboard group that contains the dashboard.
+     * The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
+     * be placed in a newly created dashboard group
      * 
      */
     @Export(name="dashboardGroup", refs={String.class}, tree="[0]")
     private Output<String> dashboardGroup;
 
     /**
-     * @return The ID of the dashboard group that contains the dashboard.
+     * @return The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
+     * be placed in a newly created dashboard group
      * 
      */
     public Output<String> dashboardGroup() {
         return this.dashboardGroup;
     }
     /**
-     * Variable description.
+     * Description of the dashboard (Optional)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Variable description.
+     * @return Description of the dashboard (Optional)
      * 
      */
     public Output<Optional<String>> description() {
@@ -145,168 +149,162 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.discoveryOptionsSelectors);
     }
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to end the visualization
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization.
+     * @return Seconds since epoch to end the visualization
      * 
      */
     public Output<Optional<Integer>> endTime() {
         return Codegen.optional(this.endTime);
     }
     /**
-     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
+     * Event overlay to add to charts
      * 
      */
     @Export(name="eventOverlays", refs={List.class,DashboardEventOverlay.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardEventOverlay>> eventOverlays;
 
     /**
-     * @return Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
+     * @return Event overlay to add to charts
      * 
      */
     public Output<Optional<List<DashboardEventOverlay>>> eventOverlays() {
         return Codegen.optional(this.eventOverlays);
     }
     /**
-     * Filter to apply to the charts when displaying the dashboard.
+     * Filter to apply to each chart in the dashboard
      * 
      */
     @Export(name="filters", refs={List.class,DashboardFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardFilter>> filters;
 
     /**
-     * @return Filter to apply to the charts when displaying the dashboard.
+     * @return Filter to apply to each chart in the dashboard
      * 
      */
     public Output<Optional<List<DashboardFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
     /**
-     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
+     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
+     * fit in a row, it will be placed automatically in the next row
      * 
      */
     @Export(name="grids", refs={List.class,DashboardGrid.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardGrid>> grids;
 
     /**
-     * @return Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
+     * @return Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
+     * fit in a row, it will be placed automatically in the next row
      * 
      */
     public Output<Optional<List<DashboardGrid>>> grids() {
         return Codegen.optional(this.grids);
     }
     /**
-     * Name of the dashboard.
+     * Name of the dashboard
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the dashboard.
+     * @return Name of the dashboard
      * 
      */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-     * 
-     */
     @Export(name="permissions", refs={DashboardPermissions.class}, tree="[0]")
     private Output<DashboardPermissions> permissions;
 
-    /**
-     * @return [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
-     * 
-     */
     public Output<DashboardPermissions> permissions() {
         return this.permissions;
     }
     /**
-     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
+     * Event overlay added to charts by default to charts
      * 
      */
     @Export(name="selectedEventOverlays", refs={List.class,DashboardSelectedEventOverlay.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardSelectedEventOverlay>> selectedEventOverlays;
 
     /**
-     * @return Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
+     * @return Event overlay added to charts by default to charts
      * 
      */
     public Output<Optional<List<DashboardSelectedEventOverlay>>> selectedEventOverlays() {
         return Codegen.optional(this.selectedEventOverlays);
     }
     /**
-     * Seconds since epoch. Used for visualization.
+     * Seconds since epoch to start the visualization
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization.
+     * @return Seconds since epoch to start the visualization
      * 
      */
     public Output<Optional<Integer>> startTime() {
         return Codegen.optional(this.startTime);
     }
     /**
-     * Tags of the dashboard.
+     * Tags of the dashboard
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
-     * @return Tags of the dashboard.
+     * @return Tags of the dashboard
      * 
      */
     public Output<Optional<List<String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The time range prior to now to visualize. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`).
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
      * 
      */
     @Export(name="timeRange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeRange;
 
     /**
-     * @return The time range prior to now to visualize. SignalFx time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`).
+     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
      * 
      */
     public Output<Optional<String>> timeRange() {
         return Codegen.optional(this.timeRange);
     }
     /**
-     * The URL of the dashboard.
+     * URL of the dashboard
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the dashboard.
+     * @return URL of the dashboard
      * 
      */
     public Output<String> url() {
         return this.url;
     }
     /**
-     * Dashboard variable to apply to each chart in the dashboard.
+     * Dashboard variable to apply to each chart in the dashboard
      * 
      */
     @Export(name="variables", refs={List.class,DashboardVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardVariable>> variables;
 
     /**
-     * @return Dashboard variable to apply to each chart in the dashboard.
+     * @return Dashboard variable to apply to each chart in the dashboard
      * 
      */
     public Output<Optional<List<DashboardVariable>>> variables() {

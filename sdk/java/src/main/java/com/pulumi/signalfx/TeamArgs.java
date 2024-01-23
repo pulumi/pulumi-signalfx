@@ -17,14 +17,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     public static final TeamArgs Empty = new TeamArgs();
 
     /**
-     * Description of the team.
+     * Description of the team (Optional)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the team.
+     * @return Description of the team (Optional)
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of user IDs to include in the team.
+     * Members of team
      * 
      */
     @Import(name="members")
     private @Nullable Output<List<String>> members;
 
     /**
-     * @return List of user IDs to include in the team.
+     * @return Members of team
      * 
      */
     public Optional<Output<List<String>>> members() {
@@ -47,14 +47,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the team.
+     * Name of the team
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the team.
+     * @return Name of the team
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,14 +62,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications for critical alerts
+     * List of notification destinations to use for the critical alerts category.
      * 
      */
     @Import(name="notificationsCriticals")
     private @Nullable Output<List<String>> notificationsCriticals;
 
     /**
-     * @return Where to send notifications for critical alerts
+     * @return List of notification destinations to use for the critical alerts category.
      * 
      */
     public Optional<Output<List<String>>> notificationsCriticals() {
@@ -77,14 +77,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications for default alerts
+     * List of notification destinations to use for the default alerts category.
      * 
      */
     @Import(name="notificationsDefaults")
     private @Nullable Output<List<String>> notificationsDefaults;
 
     /**
-     * @return Where to send notifications for default alerts
+     * @return List of notification destinations to use for the default alerts category.
      * 
      */
     public Optional<Output<List<String>>> notificationsDefaults() {
@@ -92,14 +92,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications for info alerts
+     * List of notification destinations to use for the info alerts category.
      * 
      */
     @Import(name="notificationsInfos")
     private @Nullable Output<List<String>> notificationsInfos;
 
     /**
-     * @return Where to send notifications for info alerts
+     * @return List of notification destinations to use for the info alerts category.
      * 
      */
     public Optional<Output<List<String>>> notificationsInfos() {
@@ -107,14 +107,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications for major alerts
+     * List of notification destinations to use for the major alerts category.
      * 
      */
     @Import(name="notificationsMajors")
     private @Nullable Output<List<String>> notificationsMajors;
 
     /**
-     * @return Where to send notifications for major alerts
+     * @return List of notification destinations to use for the major alerts category.
      * 
      */
     public Optional<Output<List<String>>> notificationsMajors() {
@@ -122,14 +122,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications for minor alerts
+     * List of notification destinations to use for the minor alerts category.
      * 
      */
     @Import(name="notificationsMinors")
     private @Nullable Output<List<String>> notificationsMinors;
 
     /**
-     * @return Where to send notifications for minor alerts
+     * @return List of notification destinations to use for the minor alerts category.
      * 
      */
     public Optional<Output<List<String>>> notificationsMinors() {
@@ -137,14 +137,14 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications for warning alerts
+     * List of notification destinations to use for the warning alerts category.
      * 
      */
     @Import(name="notificationsWarnings")
     private @Nullable Output<List<String>> notificationsWarnings;
 
     /**
-     * @return Where to send notifications for warning alerts
+     * @return List of notification destinations to use for the warning alerts category.
      * 
      */
     public Optional<Output<List<String>>> notificationsWarnings() {
@@ -184,7 +184,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the team.
+         * @param description Description of the team (Optional)
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the team.
+         * @param description Description of the team (Optional)
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members List of user IDs to include in the team.
+         * @param members Members of team
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members List of user IDs to include in the team.
+         * @param members Members of team
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param members List of user IDs to include in the team.
+         * @param members Members of team
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the team.
+         * @param name Name of the team
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the team.
+         * @param name Name of the team
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsCriticals Where to send notifications for critical alerts
+         * @param notificationsCriticals List of notification destinations to use for the critical alerts category.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsCriticals Where to send notifications for critical alerts
+         * @param notificationsCriticals List of notification destinations to use for the critical alerts category.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsCriticals Where to send notifications for critical alerts
+         * @param notificationsCriticals List of notification destinations to use for the critical alerts category.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsDefaults Where to send notifications for default alerts
+         * @param notificationsDefaults List of notification destinations to use for the default alerts category.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsDefaults Where to send notifications for default alerts
+         * @param notificationsDefaults List of notification destinations to use for the default alerts category.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsDefaults Where to send notifications for default alerts
+         * @param notificationsDefaults List of notification destinations to use for the default alerts category.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsInfos Where to send notifications for info alerts
+         * @param notificationsInfos List of notification destinations to use for the info alerts category.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsInfos Where to send notifications for info alerts
+         * @param notificationsInfos List of notification destinations to use for the info alerts category.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsInfos Where to send notifications for info alerts
+         * @param notificationsInfos List of notification destinations to use for the info alerts category.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsMajors Where to send notifications for major alerts
+         * @param notificationsMajors List of notification destinations to use for the major alerts category.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsMajors Where to send notifications for major alerts
+         * @param notificationsMajors List of notification destinations to use for the major alerts category.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsMajors Where to send notifications for major alerts
+         * @param notificationsMajors List of notification destinations to use for the major alerts category.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsMinors Where to send notifications for minor alerts
+         * @param notificationsMinors List of notification destinations to use for the minor alerts category.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsMinors Where to send notifications for minor alerts
+         * @param notificationsMinors List of notification destinations to use for the minor alerts category.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsMinors Where to send notifications for minor alerts
+         * @param notificationsMinors List of notification destinations to use for the minor alerts category.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsWarnings Where to send notifications for warning alerts
+         * @param notificationsWarnings List of notification destinations to use for the warning alerts category.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsWarnings Where to send notifications for warning alerts
+         * @param notificationsWarnings List of notification destinations to use for the warning alerts category.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class TeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationsWarnings Where to send notifications for warning alerts
+         * @param notificationsWarnings List of notification destinations to use for the warning alerts category.
          * 
          * @return builder
          * 

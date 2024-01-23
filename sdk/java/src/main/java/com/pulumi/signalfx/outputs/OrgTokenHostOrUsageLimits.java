@@ -11,101 +11,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OrgTokenHostOrUsageLimits {
-    /**
-     * @return Max number of Docker containers that can use this token
-     * 
-     */
     private @Nullable Integer containerLimit;
-    /**
-     * @return Notification threshold for Docker containers
-     * 
-     */
     private @Nullable Integer containerNotificationThreshold;
-    /**
-     * @return Max number of custom metrics that can be sent with this token
-     * 
-     */
     private @Nullable Integer customMetricsLimit;
-    /**
-     * @return Notification threshold for custom metrics
-     * 
-     */
     private @Nullable Integer customMetricsNotificationThreshold;
-    /**
-     * @return Max number of hi-res metrics that can be sent with this toke
-     * 
-     */
     private @Nullable Integer highResMetricsLimit;
-    /**
-     * @return Notification threshold for hi-res metrics
-     * 
-     */
     private @Nullable Integer highResMetricsNotificationThreshold;
-    /**
-     * @return Max number of hosts that can use this token
-     * 
-     */
     private @Nullable Integer hostLimit;
-    /**
-     * @return Notification threshold for hosts
-     * 
-     */
     private @Nullable Integer hostNotificationThreshold;
 
     private OrgTokenHostOrUsageLimits() {}
-    /**
-     * @return Max number of Docker containers that can use this token
-     * 
-     */
     public Optional<Integer> containerLimit() {
         return Optional.ofNullable(this.containerLimit);
     }
-    /**
-     * @return Notification threshold for Docker containers
-     * 
-     */
     public Optional<Integer> containerNotificationThreshold() {
         return Optional.ofNullable(this.containerNotificationThreshold);
     }
-    /**
-     * @return Max number of custom metrics that can be sent with this token
-     * 
-     */
     public Optional<Integer> customMetricsLimit() {
         return Optional.ofNullable(this.customMetricsLimit);
     }
-    /**
-     * @return Notification threshold for custom metrics
-     * 
-     */
     public Optional<Integer> customMetricsNotificationThreshold() {
         return Optional.ofNullable(this.customMetricsNotificationThreshold);
     }
-    /**
-     * @return Max number of hi-res metrics that can be sent with this toke
-     * 
-     */
     public Optional<Integer> highResMetricsLimit() {
         return Optional.ofNullable(this.highResMetricsLimit);
     }
-    /**
-     * @return Notification threshold for hi-res metrics
-     * 
-     */
     public Optional<Integer> highResMetricsNotificationThreshold() {
         return Optional.ofNullable(this.highResMetricsNotificationThreshold);
     }
-    /**
-     * @return Max number of hosts that can use this token
-     * 
-     */
     public Optional<Integer> hostLimit() {
         return Optional.ofNullable(this.hostLimit);
     }
-    /**
-     * @return Notification threshold for hosts
-     * 
-     */
     public Optional<Integer> hostNotificationThreshold() {
         return Optional.ofNullable(this.hostNotificationThreshold);
     }

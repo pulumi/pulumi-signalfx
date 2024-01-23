@@ -13,13 +13,7 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TimeChartLegendOptionsField
     {
-        /// <summary>
-        /// True or False depending on if you want the property to be shown or hidden.
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-        /// </summary>
         public readonly string Property;
 
         [OutputConstructor]

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// Handles management of SignalFx teams.
+    /// Handles management of Splunk Observability Cloud teams.
     /// 
-    /// You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+    /// You can configure [team notification policies](https://docs.splunk.com/observability/en/admin/user-management/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
     /// 
-    /// &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+    /// &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,66 +46,87 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// The following arguments are supported in the resource block:
+    /// 
+    /// * `name` - (Required) Name of the team.
+    /// * `description` - (Optional) Description of the team.
+    /// * `members` - (Optional) List of user IDs to include in the team.
+    /// * `notifications_critical` - (Optional) Where to send notifications for critical alerts
+    /// * `notifications_default` - (Optional) Where to send notifications for default alerts
+    /// * `notifications_info` - (Optional) Where to send notifications for info alerts
+    /// * `notifications_major` - (Optional) Where to send notifications for major alerts
+    /// * `notifications_minor` - (Optional) Where to send notifications for minor alerts
+    /// * `notifications_warning` - (Optional) Where to send notifications for warning alerts
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the team.
+    /// * `url` - The URL of the team.
     /// </summary>
     [SignalFxResourceType("signalfx:index/team:Team")]
     public partial class Team : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the team.
+        /// Description of the team (Optional)
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// List of user IDs to include in the team.
+        /// Members of team
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the team.
+        /// Name of the team
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications for critical alerts
+        /// List of notification destinations to use for the critical alerts category.
         /// </summary>
         [Output("notificationsCriticals")]
         public Output<ImmutableArray<string>> NotificationsCriticals { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications for default alerts
+        /// List of notification destinations to use for the default alerts category.
         /// </summary>
         [Output("notificationsDefaults")]
         public Output<ImmutableArray<string>> NotificationsDefaults { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications for info alerts
+        /// List of notification destinations to use for the info alerts category.
         /// </summary>
         [Output("notificationsInfos")]
         public Output<ImmutableArray<string>> NotificationsInfos { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications for major alerts
+        /// List of notification destinations to use for the major alerts category.
         /// </summary>
         [Output("notificationsMajors")]
         public Output<ImmutableArray<string>> NotificationsMajors { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications for minor alerts
+        /// List of notification destinations to use for the minor alerts category.
         /// </summary>
         [Output("notificationsMinors")]
         public Output<ImmutableArray<string>> NotificationsMinors { get; private set; } = null!;
 
         /// <summary>
-        /// Where to send notifications for warning alerts
+        /// List of notification destinations to use for the warning alerts category.
         /// </summary>
         [Output("notificationsWarnings")]
         public Output<ImmutableArray<string>> NotificationsWarnings { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the team.
+        /// URL of the team
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -157,7 +178,7 @@ namespace Pulumi.SignalFx
     public sealed class TeamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the team.
+        /// Description of the team (Optional)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -166,7 +187,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _members;
 
         /// <summary>
-        /// List of user IDs to include in the team.
+        /// Members of team
         /// </summary>
         public InputList<string> Members
         {
@@ -175,7 +196,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the team.
+        /// Name of the team
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -184,7 +205,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsCriticals;
 
         /// <summary>
-        /// Where to send notifications for critical alerts
+        /// List of notification destinations to use for the critical alerts category.
         /// </summary>
         public InputList<string> NotificationsCriticals
         {
@@ -196,7 +217,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsDefaults;
 
         /// <summary>
-        /// Where to send notifications for default alerts
+        /// List of notification destinations to use for the default alerts category.
         /// </summary>
         public InputList<string> NotificationsDefaults
         {
@@ -208,7 +229,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsInfos;
 
         /// <summary>
-        /// Where to send notifications for info alerts
+        /// List of notification destinations to use for the info alerts category.
         /// </summary>
         public InputList<string> NotificationsInfos
         {
@@ -220,7 +241,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsMajors;
 
         /// <summary>
-        /// Where to send notifications for major alerts
+        /// List of notification destinations to use for the major alerts category.
         /// </summary>
         public InputList<string> NotificationsMajors
         {
@@ -232,7 +253,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsMinors;
 
         /// <summary>
-        /// Where to send notifications for minor alerts
+        /// List of notification destinations to use for the minor alerts category.
         /// </summary>
         public InputList<string> NotificationsMinors
         {
@@ -244,7 +265,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsWarnings;
 
         /// <summary>
-        /// Where to send notifications for warning alerts
+        /// List of notification destinations to use for the warning alerts category.
         /// </summary>
         public InputList<string> NotificationsWarnings
         {
@@ -261,7 +282,7 @@ namespace Pulumi.SignalFx
     public sealed class TeamState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the team.
+        /// Description of the team (Optional)
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -270,7 +291,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _members;
 
         /// <summary>
-        /// List of user IDs to include in the team.
+        /// Members of team
         /// </summary>
         public InputList<string> Members
         {
@@ -279,7 +300,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the team.
+        /// Name of the team
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -288,7 +309,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsCriticals;
 
         /// <summary>
-        /// Where to send notifications for critical alerts
+        /// List of notification destinations to use for the critical alerts category.
         /// </summary>
         public InputList<string> NotificationsCriticals
         {
@@ -300,7 +321,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsDefaults;
 
         /// <summary>
-        /// Where to send notifications for default alerts
+        /// List of notification destinations to use for the default alerts category.
         /// </summary>
         public InputList<string> NotificationsDefaults
         {
@@ -312,7 +333,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsInfos;
 
         /// <summary>
-        /// Where to send notifications for info alerts
+        /// List of notification destinations to use for the info alerts category.
         /// </summary>
         public InputList<string> NotificationsInfos
         {
@@ -324,7 +345,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsMajors;
 
         /// <summary>
-        /// Where to send notifications for major alerts
+        /// List of notification destinations to use for the major alerts category.
         /// </summary>
         public InputList<string> NotificationsMajors
         {
@@ -336,7 +357,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsMinors;
 
         /// <summary>
-        /// Where to send notifications for minor alerts
+        /// List of notification destinations to use for the minor alerts category.
         /// </summary>
         public InputList<string> NotificationsMinors
         {
@@ -348,7 +369,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _notificationsWarnings;
 
         /// <summary>
-        /// Where to send notifications for warning alerts
+        /// List of notification destinations to use for the warning alerts category.
         /// </summary>
         public InputList<string> NotificationsWarnings
         {
@@ -357,7 +378,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// The URL of the team.
+        /// URL of the team
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

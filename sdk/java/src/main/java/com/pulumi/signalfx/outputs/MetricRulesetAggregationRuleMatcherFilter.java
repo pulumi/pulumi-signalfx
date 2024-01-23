@@ -12,41 +12,17 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricRulesetAggregationRuleMatcherFilter {
-    /**
-     * @return When true, this filter will match all values not matching the property_values
-     * 
-     */
     private Boolean not;
-    /**
-     * @return Name of the dimension
-     * 
-     */
     private String property;
-    /**
-     * @return Value of the dimension
-     * 
-     */
     private List<String> propertyValues;
 
     private MetricRulesetAggregationRuleMatcherFilter() {}
-    /**
-     * @return When true, this filter will match all values not matching the property_values
-     * 
-     */
     public Boolean not() {
         return this.not;
     }
-    /**
-     * @return Name of the dimension
-     * 
-     */
     public String property() {
         return this.property;
     }
-    /**
-     * @return Value of the dimension
-     * 
-     */
     public List<String> propertyValues() {
         return this.propertyValues;
     }

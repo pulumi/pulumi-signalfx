@@ -18,14 +18,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -48,14 +48,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Slack incoming webhook URL.
+     * Slack Webhook URL for integration
      * 
      */
     @Import(name="webhookUrl", required=true)
     private Output<String> webhookUrl;
 
     /**
-     * @return Slack incoming webhook URL.
+     * @return Slack Webhook URL for integration
      * 
      */
     public Output<String> webhookUrl() {
@@ -89,7 +89,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookUrl Slack incoming webhook URL.
+         * @param webhookUrl Slack Webhook URL for integration
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param webhookUrl Slack incoming webhook URL.
+         * @param webhookUrl Slack Webhook URL for integration
          * 
          * @return builder
          * 

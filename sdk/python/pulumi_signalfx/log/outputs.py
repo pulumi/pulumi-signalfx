@@ -18,17 +18,11 @@ __all__ = [
 class ViewColumn(dict):
     def __init__(__self__, *,
                  name: str):
-        """
-        :param str name: Name of the log view.
-        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the log view.
-        """
         return pulumi.get(self, "name")
 
 

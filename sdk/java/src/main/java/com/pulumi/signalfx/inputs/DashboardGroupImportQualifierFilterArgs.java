@@ -18,47 +18,23 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
 
     public static final DashboardGroupImportQualifierFilterArgs Empty = new DashboardGroupImportQualifierFilterArgs();
 
-    /**
-     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-     * 
-     */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
-    /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> negated() {
         return Optional.ofNullable(this.negated);
     }
 
-    /**
-     * A metric time series dimension or property name.
-     * 
-     */
     @Import(name="property", required=true)
     private Output<String> property;
 
-    /**
-     * @return A metric time series dimension or property name.
-     * 
-     */
     public Output<String> property() {
         return this.property;
     }
 
-    /**
-     * (Optional) List of of strings (which will be treated as an OR filter on the property).
-     * 
-     */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
-    /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
-     * 
-     */
     public Output<List<String>> values() {
         return this.values;
     }
@@ -89,75 +65,33 @@ public final class DashboardGroupImportQualifierFilterArgs extends com.pulumi.re
             $ = new DashboardGroupImportQualifierFilterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param negated If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder negated(@Nullable Output<Boolean> negated) {
             $.negated = negated;
             return this;
         }
 
-        /**
-         * @param negated If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder negated(Boolean negated) {
             return negated(Output.of(negated));
         }
 
-        /**
-         * @param property A metric time series dimension or property name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
-        /**
-         * @param property A metric time series dimension or property name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(String property) {
             return property(Output.of(property));
         }
 
-        /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

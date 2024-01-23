@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -35,6 +35,21 @@ import * as utilities from "./utilities";
  * `,
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * The following arguments are supported in the resource block:
+ *
+ * * `name` - (Required) Name of the text note.
+ * * `markdown` - (Required) Markdown text to display.
+ * * `description` - (Optional) Description of the text note.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the chart.
+ * * `url` - The URL of the chart.
  */
 export class TextChart extends pulumi.CustomResource {
     /**
@@ -65,19 +80,19 @@ export class TextChart extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the text note.
+     * Description of the chart (Optional)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Markdown text to display.
+     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
      */
     public readonly markdown!: pulumi.Output<string>;
     /**
-     * Name of the text note.
+     * Name of the chart
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The URL of the chart.
+     * URL of the chart
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -118,19 +133,19 @@ export class TextChart extends pulumi.CustomResource {
  */
 export interface TextChartState {
     /**
-     * Description of the text note.
+     * Description of the chart (Optional)
      */
     description?: pulumi.Input<string>;
     /**
-     * Markdown text to display.
+     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
      */
     markdown?: pulumi.Input<string>;
     /**
-     * Name of the text note.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * The URL of the chart.
+     * URL of the chart
      */
     url?: pulumi.Input<string>;
 }
@@ -140,15 +155,15 @@ export interface TextChartState {
  */
 export interface TextChartArgs {
     /**
-     * Description of the text note.
+     * Description of the chart (Optional)
      */
     description?: pulumi.Input<string>;
     /**
-     * Markdown text to display.
+     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
      */
     markdown: pulumi.Input<string>;
     /**
-     * Name of the text note.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
 }

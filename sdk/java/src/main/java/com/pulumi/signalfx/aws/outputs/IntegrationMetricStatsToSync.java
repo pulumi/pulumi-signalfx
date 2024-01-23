@@ -11,41 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class IntegrationMetricStatsToSync {
-    /**
-     * @return AWS metric that you want to pick statistics for
-     * 
-     */
     private String metric;
-    /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-     * 
-     */
     private String namespace;
-    /**
-     * @return AWS statistics you want to collect
-     * 
-     */
     private List<String> stats;
 
     private IntegrationMetricStatsToSync() {}
-    /**
-     * @return AWS metric that you want to pick statistics for
-     * 
-     */
     public String metric() {
         return this.metric;
     }
-    /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-     * 
-     */
     public String namespace() {
         return this.namespace;
     }
-    /**
-     * @return AWS statistics you want to collect
-     * 
-     */
     public List<String> stats() {
         return this.stats;
     }

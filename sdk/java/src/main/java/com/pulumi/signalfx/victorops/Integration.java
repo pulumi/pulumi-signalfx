@@ -16,11 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * SignalFx VictorOps integration.
+ * Splunk On-Call integrations.
  * 
- * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
+ * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -51,46 +51,58 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `post_url` - (Optional) Splunk On-Call REST API URL.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the integration.
+ * 
  */
 @ResourceType(type="signalfx:victorops/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Victor Ops REST API URL.
+     * Opsgenie API URL for integration
      * 
      */
     @Export(name="postUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> postUrl;
 
     /**
-     * @return Victor Ops REST API URL.
+     * @return Opsgenie API URL for integration
      * 
      */
     public Output<Optional<String>> postUrl() {

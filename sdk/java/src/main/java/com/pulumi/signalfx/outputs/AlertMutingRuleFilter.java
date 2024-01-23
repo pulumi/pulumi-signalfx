@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AlertMutingRuleFilter {
-    /**
-     * @return Determines if this is a &#34;not&#34; filter. Defaults to `false`.
-     * 
-     */
     private @Nullable Boolean negated;
-    /**
-     * @return The property to filter.
-     * 
-     */
     private String property;
-    /**
-     * @return The property value to filter.
-     * 
-     */
     private String propertyValue;
 
     private AlertMutingRuleFilter() {}
-    /**
-     * @return Determines if this is a &#34;not&#34; filter. Defaults to `false`.
-     * 
-     */
     public Optional<Boolean> negated() {
         return Optional.ofNullable(this.negated);
     }
-    /**
-     * @return The property to filter.
-     * 
-     */
     public String property() {
         return this.property;
     }
-    /**
-     * @return The property value to filter.
-     * 
-     */
     public String propertyValue() {
         return this.propertyValue;
     }

@@ -16,13 +16,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Handles management of SignalFx teams.
+ * Handles management of Splunk Observability Cloud teams.
  * 
- * You can configure [team notification policies](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
+ * You can configure [team notification policies](https://docs.splunk.com/observability/en/admin/user-management/teams/team-notifications.html) using this resource and the various `notifications_*` properties.
  * 
- * &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
+ * &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -57,144 +57,165 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `name` - (Required) Name of the team.
+ * * `description` - (Optional) Description of the team.
+ * * `members` - (Optional) List of user IDs to include in the team.
+ * * `notifications_critical` - (Optional) Where to send notifications for critical alerts
+ * * `notifications_default` - (Optional) Where to send notifications for default alerts
+ * * `notifications_info` - (Optional) Where to send notifications for info alerts
+ * * `notifications_major` - (Optional) Where to send notifications for major alerts
+ * * `notifications_minor` - (Optional) Where to send notifications for minor alerts
+ * * `notifications_warning` - (Optional) Where to send notifications for warning alerts
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the team.
+ * * `url` - The URL of the team.
+ * 
  */
 @ResourceType(type="signalfx:index/team:Team")
 public class Team extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the team.
+     * Description of the team (Optional)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the team.
+     * @return Description of the team (Optional)
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * List of user IDs to include in the team.
+     * Members of team
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> members;
 
     /**
-     * @return List of user IDs to include in the team.
+     * @return Members of team
      * 
      */
     public Output<Optional<List<String>>> members() {
         return Codegen.optional(this.members);
     }
     /**
-     * Name of the team.
+     * Name of the team
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the team.
+     * @return Name of the team
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Where to send notifications for critical alerts
+     * List of notification destinations to use for the critical alerts category.
      * 
      */
     @Export(name="notificationsCriticals", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsCriticals;
 
     /**
-     * @return Where to send notifications for critical alerts
+     * @return List of notification destinations to use for the critical alerts category.
      * 
      */
     public Output<Optional<List<String>>> notificationsCriticals() {
         return Codegen.optional(this.notificationsCriticals);
     }
     /**
-     * Where to send notifications for default alerts
+     * List of notification destinations to use for the default alerts category.
      * 
      */
     @Export(name="notificationsDefaults", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsDefaults;
 
     /**
-     * @return Where to send notifications for default alerts
+     * @return List of notification destinations to use for the default alerts category.
      * 
      */
     public Output<Optional<List<String>>> notificationsDefaults() {
         return Codegen.optional(this.notificationsDefaults);
     }
     /**
-     * Where to send notifications for info alerts
+     * List of notification destinations to use for the info alerts category.
      * 
      */
     @Export(name="notificationsInfos", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsInfos;
 
     /**
-     * @return Where to send notifications for info alerts
+     * @return List of notification destinations to use for the info alerts category.
      * 
      */
     public Output<Optional<List<String>>> notificationsInfos() {
         return Codegen.optional(this.notificationsInfos);
     }
     /**
-     * Where to send notifications for major alerts
+     * List of notification destinations to use for the major alerts category.
      * 
      */
     @Export(name="notificationsMajors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsMajors;
 
     /**
-     * @return Where to send notifications for major alerts
+     * @return List of notification destinations to use for the major alerts category.
      * 
      */
     public Output<Optional<List<String>>> notificationsMajors() {
         return Codegen.optional(this.notificationsMajors);
     }
     /**
-     * Where to send notifications for minor alerts
+     * List of notification destinations to use for the minor alerts category.
      * 
      */
     @Export(name="notificationsMinors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsMinors;
 
     /**
-     * @return Where to send notifications for minor alerts
+     * @return List of notification destinations to use for the minor alerts category.
      * 
      */
     public Output<Optional<List<String>>> notificationsMinors() {
         return Codegen.optional(this.notificationsMinors);
     }
     /**
-     * Where to send notifications for warning alerts
+     * List of notification destinations to use for the warning alerts category.
      * 
      */
     @Export(name="notificationsWarnings", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsWarnings;
 
     /**
-     * @return Where to send notifications for warning alerts
+     * @return List of notification destinations to use for the warning alerts category.
      * 
      */
     public Output<Optional<List<String>>> notificationsWarnings() {
         return Codegen.optional(this.notificationsWarnings);
     }
     /**
-     * The URL of the team.
+     * URL of the team
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the team.
+     * @return URL of the team
      * 
      */
     public Output<String> url() {

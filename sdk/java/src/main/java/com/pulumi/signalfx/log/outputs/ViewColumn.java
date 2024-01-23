@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class ViewColumn {
-    /**
-     * @return Name of the log view.
-     * 
-     */
     private String name;
 
     private ViewColumn() {}
-    /**
-     * @return Name of the log view.
-     * 
-     */
     public String name() {
         return this.name;
     }

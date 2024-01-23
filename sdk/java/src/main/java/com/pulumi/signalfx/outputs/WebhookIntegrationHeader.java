@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class WebhookIntegrationHeader {
-    /**
-     * @return The key of the header to send
-     * 
-     */
     private String headerKey;
-    /**
-     * @return The value of the header to send
-     * 
-     */
     private String headerValue;
 
     private WebhookIntegrationHeader() {}
-    /**
-     * @return The key of the header to send
-     * 
-     */
     public String headerKey() {
         return this.headerKey;
     }
-    /**
-     * @return The value of the header to send
-     * 
-     */
     public String headerValue() {
         return this.headerValue;
     }

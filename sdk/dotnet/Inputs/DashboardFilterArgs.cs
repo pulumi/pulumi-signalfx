@@ -12,30 +12,17 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardFilterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If true, this variable will also match data that doesn't have this property at all.
-        /// </summary>
         [Input("applyIfExist")]
         public Input<bool>? ApplyIfExist { get; set; }
 
-        /// <summary>
-        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-        /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }
 
-        /// <summary>
-        /// The name of a dimension to filter against.
-        /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 
         [Input("values", required: true)]
         private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of values to be used with the `property`, they will be combined via `OR`.
-        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

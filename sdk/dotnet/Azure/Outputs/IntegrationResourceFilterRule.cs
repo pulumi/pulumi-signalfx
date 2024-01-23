@@ -13,9 +13,6 @@ namespace Pulumi.SignalFx.Azure.Outputs
     [OutputType]
     public sealed class IntegrationResourceFilterRule
     {
-        /// <summary>
-        /// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-        /// </summary>
         public readonly string FilterSource;
 
         [OutputConstructor]

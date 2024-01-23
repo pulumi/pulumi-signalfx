@@ -23,9 +23,9 @@ class ProviderArgs:
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] api_url: API URL for your SignalFx org, may include a realm
-        :param pulumi.Input[str] auth_token: SignalFx auth token
-        :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customized for organizations using SSO
+        :param pulumi.Input[str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
+        :param pulumi.Input[str] auth_token: Splunk Observability Cloud auth token
+        :param pulumi.Input[str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         :param pulumi.Input[int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
@@ -50,7 +50,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> Optional[pulumi.Input[str]]:
         """
-        API URL for your SignalFx org, may include a realm
+        API URL for your Splunk Observability Cloud org, may include a realm
         """
         return pulumi.get(self, "api_url")
 
@@ -62,7 +62,7 @@ class ProviderArgs:
     @pulumi.getter(name="authToken")
     def auth_token(self) -> Optional[pulumi.Input[str]]:
         """
-        SignalFx auth token
+        Splunk Observability Cloud auth token
         """
         return pulumi.get(self, "auth_token")
 
@@ -74,7 +74,7 @@ class ProviderArgs:
     @pulumi.getter(name="customAppUrl")
     def custom_app_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Application URL for your SignalFx org, often customized for organizations using SSO
+        Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         """
         return pulumi.get(self, "custom_app_url")
 
@@ -152,9 +152,9 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_url: API URL for your SignalFx org, may include a realm
-        :param pulumi.Input[str] auth_token: SignalFx auth token
-        :param pulumi.Input[str] custom_app_url: Application URL for your SignalFx org, often customized for organizations using SSO
+        :param pulumi.Input[str] api_url: API URL for your Splunk Observability Cloud org, may include a realm
+        :param pulumi.Input[str] auth_token: Splunk Observability Cloud auth token
+        :param pulumi.Input[str] custom_app_url: Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         :param pulumi.Input[int] retry_max_attempts: Max retries for a single HTTP call. Defaults to 4
         :param pulumi.Input[int] retry_wait_max_seconds: Maximum retry wait for a single HTTP call in seconds. Defaults to 30
         :param pulumi.Input[int] retry_wait_min_seconds: Minimum retry wait for a single HTTP call in seconds. Defaults to 1
@@ -220,7 +220,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiUrl")
     def api_url(self) -> pulumi.Output[Optional[str]]:
         """
-        API URL for your SignalFx org, may include a realm
+        API URL for your Splunk Observability Cloud org, may include a realm
         """
         return pulumi.get(self, "api_url")
 
@@ -228,7 +228,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="authToken")
     def auth_token(self) -> pulumi.Output[Optional[str]]:
         """
-        SignalFx auth token
+        Splunk Observability Cloud auth token
         """
         return pulumi.get(self, "auth_token")
 
@@ -236,7 +236,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="customAppUrl")
     def custom_app_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Application URL for your SignalFx org, often customized for organizations using SSO
+        Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         """
         return pulumi.get(self, "custom_app_url")
 

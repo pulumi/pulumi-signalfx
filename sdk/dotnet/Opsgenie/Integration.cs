@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Opsgenie
 {
     /// <summary>
-    /// SignalFx Opsgenie integration.
+    /// Splunk Observability Cloud Opsgenie integration.
     /// 
-    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -33,30 +33,43 @@ namespace Pulumi.SignalFx.Opsgenie
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// * `name` - (Required) Name of the integration.
+    /// * `enabled` - (Required) Whether the integration is enabled.
+    /// * `api_key` - (Required) The API key
+    /// * `api_url` - (Optional) Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the integration.
     /// </summary>
     [SignalFxResourceType("signalfx:opsgenie/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The API key
+        /// Opsgenie API key
         /// </summary>
         [Output("apiKey")]
         public Output<string> ApiKey { get; private set; } = null!;
 
         /// <summary>
-        /// Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+        /// Opsgenie API URL for integration
         /// </summary>
         [Output("apiUrl")]
         public Output<string?> ApiUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is enabled or not
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the integration.
+        /// Name of the integration
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,7 +128,7 @@ namespace Pulumi.SignalFx.Opsgenie
         private Input<string>? _apiKey;
 
         /// <summary>
-        /// The API key
+        /// Opsgenie API key
         /// </summary>
         public Input<string>? ApiKey
         {
@@ -128,19 +141,19 @@ namespace Pulumi.SignalFx.Opsgenie
         }
 
         /// <summary>
-        /// Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+        /// Opsgenie API URL for integration
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is enabled or not
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Name of the integration.
+        /// Name of the integration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -157,7 +170,7 @@ namespace Pulumi.SignalFx.Opsgenie
         private Input<string>? _apiKey;
 
         /// <summary>
-        /// The API key
+        /// Opsgenie API key
         /// </summary>
         public Input<string>? ApiKey
         {
@@ -170,19 +183,19 @@ namespace Pulumi.SignalFx.Opsgenie
         }
 
         /// <summary>
-        /// Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
+        /// Opsgenie API URL for integration
         /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is enabled or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the integration.
+        /// Name of the integration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

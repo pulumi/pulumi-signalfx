@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupPermission {
-    /**
-     * @return Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-     * 
-     */
     private @Nullable List<String> actions;
-    /**
-     * @return ID of the user, team, or organization for which you&#39;re granting permissions.
-     * 
-     */
     private String principalId;
-    /**
-     * @return Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
-     * 
-     */
     private String principalType;
 
     private DashboardGroupPermission() {}
-    /**
-     * @return Action the user, team, or organization can take with the dashboard group. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
-     * 
-     */
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
-    /**
-     * @return ID of the user, team, or organization for which you&#39;re granting permissions.
-     * 
-     */
     public String principalId() {
         return this.principalId;
     }
-    /**
-     * @return Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
-     * 
-     */
     public String principalType() {
         return this.principalType;
     }

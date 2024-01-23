@@ -22,14 +22,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     public static final DetectorState Empty = new DetectorState();
 
     /**
-     * Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * Team IDs that have write access to this dashboard
      * 
      */
     @Import(name="authorizedWriterTeams")
     private @Nullable Output<List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+     * @return Team IDs that have write access to this dashboard
      * 
      */
     public Optional<Output<List<String>>> authorizedWriterTeams() {
@@ -37,14 +37,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * User IDs that have write access to this dashboard
      * 
      */
     @Import(name="authorizedWriterUsers")
     private @Nullable Output<List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+     * @return User IDs that have write access to this dashboard
      * 
      */
     public Optional<Output<List<String>>> authorizedWriterUsers() {
@@ -52,14 +52,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * Description of the detector
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+     * @return Description of the detector
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +67,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * (false by default) When false, samples a subset of the output MTS in the visualization.
      * 
      */
     @Import(name="disableSampling")
     private @Nullable Output<Boolean> disableSampling;
 
     /**
-     * @return When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+     * @return (false by default) When false, samples a subset of the output MTS in the visualization.
      * 
      */
     public Optional<Output<Boolean>> disableSampling() {
@@ -82,14 +82,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -97,14 +97,16 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     * Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+     * should be triggered
      * 
      */
     @Import(name="labelResolutions")
     private @Nullable Output<Map<String,Integer>> labelResolutions;
 
     /**
-     * @return The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+     * @return Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+     * should be triggered
      * 
      */
     public Optional<Output<Map<String,Integer>>> labelResolutions() {
@@ -112,14 +114,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      * 
      */
     @Import(name="maxDelay")
     private @Nullable Output<Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+     * @return Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
      * 
      */
     public Optional<Output<Integer>> maxDelay() {
@@ -127,14 +129,16 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      * 
      */
     @Import(name="minDelay")
     private @Nullable Output<Integer> minDelay;
 
     /**
-     * @return How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+     * @return Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+     * is 900 (15m)
      * 
      */
     public Optional<Output<Integer>> minDelay() {
@@ -142,14 +146,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the detector.
+     * Name of the detector
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the detector.
+     * @return Name of the detector
      * 
      */
     public Optional<Output<String>> name() {
@@ -157,14 +161,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the detector. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the detector. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Optional<Output<String>> programText() {
@@ -172,14 +176,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set of rules used for alerting.
+     * Set of rules used for alerting
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<DetectorRuleArgs>> rules;
 
     /**
-     * @return Set of rules used for alerting.
+     * @return Set of rules used for alerting
      * 
      */
     public Optional<Output<List<DetectorRuleArgs>>> rules() {
@@ -187,14 +191,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * (true by default) When true, markers will be drawn for each datapoint within the visualization.
      * 
      */
     @Import(name="showDataMarkers")
     private @Nullable Output<Boolean> showDataMarkers;
 
     /**
-     * @return When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+     * @return (true by default) When true, markers will be drawn for each datapoint within the visualization.
      * 
      */
     public Optional<Output<Boolean>> showDataMarkers() {
@@ -202,14 +206,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      * 
      */
     @Import(name="showEventLines")
     private @Nullable Output<Boolean> showEventLines;
 
     /**
-     * @return When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+     * @return (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
      * 
      */
     public Optional<Output<Boolean>> showEventLines() {
@@ -217,14 +221,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * Seconds since epoch. Used for visualization
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+     * @return Seconds since epoch. Used for visualization
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -232,14 +236,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags associated with the detector.
+     * Tags associated with the detector
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags associated with the detector.
+     * @return Tags associated with the detector
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -247,14 +251,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Team IDs to associate the detector to.
+     * Team IDs to associate the detector to
      * 
      */
     @Import(name="teams")
     private @Nullable Output<List<String>> teams;
 
     /**
-     * @return Team IDs to associate the detector to.
+     * @return Team IDs to associate the detector to
      * 
      */
     public Optional<Output<List<String>>> teams() {
@@ -262,14 +266,16 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+     * to 3600
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -292,14 +298,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The URL of the detector.
+     * URL of the detector
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return The URL of the detector.
+     * @return URL of the detector
      * 
      */
     public Optional<Output<String>> url() {
@@ -307,14 +313,14 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      * 
      */
     @Import(name="vizOptions")
     private @Nullable Output<List<DetectorVizOptionArgs>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement.
+     * @return Plot-level customization options, associated with a publish statement
      * 
      */
     public Optional<Output<List<DetectorVizOptionArgs>>> vizOptions() {
@@ -365,7 +371,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
          * 
          * @return builder
          * 
@@ -376,7 +382,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
          * 
          * @return builder
          * 
@@ -386,7 +392,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team id (or user id in `authorized_writer_users`).
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
          * 
          * @return builder
          * 
@@ -396,7 +402,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard
          * 
          * @return builder
          * 
@@ -407,7 +413,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard
          * 
          * @return builder
          * 
@@ -417,7 +423,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this detector. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`).
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard
          * 
          * @return builder
          * 
@@ -427,7 +433,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+         * @param description Description of the detector
          * 
          * @return builder
          * 
@@ -438,7 +444,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+         * @param description Description of the detector
          * 
          * @return builder
          * 
@@ -448,7 +454,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+         * @param disableSampling (false by default) When false, samples a subset of the output MTS in the visualization.
          * 
          * @return builder
          * 
@@ -459,7 +465,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+         * @param disableSampling (false by default) When false, samples a subset of the output MTS in the visualization.
          * 
          * @return builder
          * 
@@ -469,7 +475,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization
          * 
          * @return builder
          * 
@@ -480,7 +486,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param endTime Seconds since epoch. Used for visualization
          * 
          * @return builder
          * 
@@ -490,7 +496,8 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelResolutions The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+         * @param labelResolutions Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+         * should be triggered
          * 
          * @return builder
          * 
@@ -501,7 +508,8 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param labelResolutions The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+         * @param labelResolutions Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
+         * should be triggered
          * 
          * @return builder
          * 
@@ -511,7 +519,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+         * @param maxDelay Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
          * 
          * @return builder
          * 
@@ -522,7 +530,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
+         * @param maxDelay Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
          * 
          * @return builder
          * 
@@ -532,7 +540,8 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDelay How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+         * @param minDelay Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+         * is 900 (15m)
          * 
          * @return builder
          * 
@@ -543,7 +552,8 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minDelay How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+         * @param minDelay Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
+         * is 900 (15m)
          * 
          * @return builder
          * 
@@ -553,7 +563,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the detector.
+         * @param name Name of the detector
          * 
          * @return builder
          * 
@@ -564,7 +574,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the detector.
+         * @param name Name of the detector
          * 
          * @return builder
          * 
@@ -574,7 +584,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the detector. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -585,7 +595,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the detector. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+         * @param programText Signalflow program text for the detector. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
          * 
          * @return builder
          * 
@@ -595,7 +605,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules Set of rules used for alerting.
+         * @param rules Set of rules used for alerting
          * 
          * @return builder
          * 
@@ -606,7 +616,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules Set of rules used for alerting.
+         * @param rules Set of rules used for alerting
          * 
          * @return builder
          * 
@@ -616,7 +626,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules Set of rules used for alerting.
+         * @param rules Set of rules used for alerting
          * 
          * @return builder
          * 
@@ -626,7 +636,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showDataMarkers When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+         * @param showDataMarkers (true by default) When true, markers will be drawn for each datapoint within the visualization.
          * 
          * @return builder
          * 
@@ -637,7 +647,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showDataMarkers When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+         * @param showDataMarkers (true by default) When true, markers will be drawn for each datapoint within the visualization.
          * 
          * @return builder
          * 
@@ -647,7 +657,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showEventLines When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+         * @param showEventLines (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
          * 
          * @return builder
          * 
@@ -658,7 +668,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showEventLines When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+         * @param showEventLines (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
          * 
          * @return builder
          * 
@@ -668,7 +678,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization
          * 
          * @return builder
          * 
@@ -679,7 +689,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+         * @param startTime Seconds since epoch. Used for visualization
          * 
          * @return builder
          * 
@@ -689,7 +699,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags associated with the detector.
+         * @param tags Tags associated with the detector
          * 
          * @return builder
          * 
@@ -700,7 +710,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags associated with the detector.
+         * @param tags Tags associated with the detector
          * 
          * @return builder
          * 
@@ -710,7 +720,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags associated with the detector.
+         * @param tags Tags associated with the detector
          * 
          * @return builder
          * 
@@ -720,7 +730,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param teams Team IDs to associate the detector to.
+         * @param teams Team IDs to associate the detector to
          * 
          * @return builder
          * 
@@ -731,7 +741,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param teams Team IDs to associate the detector to.
+         * @param teams Team IDs to associate the detector to
          * 
          * @return builder
          * 
@@ -741,7 +751,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param teams Team IDs to associate the detector to.
+         * @param teams Team IDs to associate the detector to
          * 
          * @return builder
          * 
@@ -751,7 +761,8 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+         * to 3600
          * 
          * @return builder
          * 
@@ -762,7 +773,8 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
+         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
+         * to 3600
          * 
          * @return builder
          * 
@@ -793,7 +805,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL of the detector.
+         * @param url URL of the detector
          * 
          * @return builder
          * 
@@ -804,7 +816,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url The URL of the detector.
+         * @param url URL of the detector
          * 
          * @return builder
          * 
@@ -814,7 +826,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement.
+         * @param vizOptions Plot-level customization options, associated with a publish statement
          * 
          * @return builder
          * 
@@ -825,7 +837,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement.
+         * @param vizOptions Plot-level customization options, associated with a publish statement
          * 
          * @return builder
          * 
@@ -835,7 +847,7 @@ public final class DetectorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement.
+         * @param vizOptions Plot-level customization options, associated with a publish statement
          * 
          * @return builder
          * 

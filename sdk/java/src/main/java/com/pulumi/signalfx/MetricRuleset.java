@@ -18,11 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Observability Cloud resource for managing metric rulesets
+ * Provides an Observability Cloud resource for managing metric rulesets.
  * 
- * &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
+ * &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
- * ## Example Usage
+ * ## Example
  * 
  * ```java
  * package generated_program;
@@ -76,18 +76,40 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `metric_name` - (Required) Name of the input metric
+ * * `aggregation_rules` - (Optional) List of aggregation rules for the metric
+ *   * `enabled` - (Required) When false, this rule will not generate aggregated MTSs
+ *   * `name` - (Optional) name of the aggregation rule
+ *   * `matcher` - (Required) Matcher object
+ *     * `type` - (Required) Type of matcher. Must always be &#34;dimension&#34;
+ *     * `filters` - (Optional) List of filters to filter the set of input MTSs
+ *       * `property` - (Required) - Name of the dimension
+ *       * `property_value` - (Required) - Value of the dimension
+ *       * `not` - When true, this filter will match all values not matching the property_values
+ *   * `aggregator` - (Required) - Aggregator object
+ *     * `type` - (Required) Type of aggregator. Must always be &#34;rollup&#34;
+ *     * `dimensions` - (Required) List of dimensions to either be kept or dropped in the new aggregated MTSs
+ *     * `drop_dimensions` - (Required) when true, the specified dimensions will be dropped from the aggregated MTSs
+ *     * `output_name` - (Required) name of the new aggregated metric
+ * * `routing_rule` - (Required) Routing Rule object
+ *   * `destination` - (Required) - end destination of the input metric. Must be `RealTime` or `Drop`
+ * 
  */
 @ResourceType(type="signalfx:index/metricRuleset:MetricRuleset")
 public class MetricRuleset extends com.pulumi.resources.CustomResource {
     /**
-     * List of aggregation rules for the metric
+     * Aggregation rules in the ruleset
      * 
      */
     @Export(name="aggregationRules", refs={List.class,MetricRulesetAggregationRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MetricRulesetAggregationRule>> aggregationRules;
 
     /**
-     * @return List of aggregation rules for the metric
+     * @return Aggregation rules in the ruleset
      * 
      */
     public Output<Optional<List<MetricRulesetAggregationRule>>> aggregationRules() {
@@ -164,28 +186,28 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
         return this.lastUpdatedByName;
     }
     /**
-     * Name of the input metric
+     * Name of the metric
      * 
      */
     @Export(name="metricName", refs={String.class}, tree="[0]")
     private Output<String> metricName;
 
     /**
-     * @return Name of the input metric
+     * @return Name of the metric
      * 
      */
     public Output<String> metricName() {
         return this.metricName;
     }
     /**
-     * Routing Rule object
+     * Location to send the input metric
      * 
      */
     @Export(name="routingRules", refs={List.class,MetricRulesetRoutingRule.class}, tree="[0,1]")
     private Output<List<MetricRulesetRoutingRule>> routingRules;
 
     /**
-     * @return Routing Rule object
+     * @return Location to send the input metric
      * 
      */
     public Output<List<MetricRulesetRoutingRule>> routingRules() {

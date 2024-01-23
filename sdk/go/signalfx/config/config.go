@@ -11,17 +11,17 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// API URL for your SignalFx org, may include a realm
+// API URL for your Splunk Observability Cloud org, may include a realm
 func GetApiUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:apiUrl")
 }
 
-// SignalFx auth token
+// Splunk Observability Cloud auth token
 func GetAuthToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:authToken")
 }
 
-// Application URL for your SignalFx org, often customized for organizations using SSO
+// Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
 func GetCustomAppUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "signalfx:customAppUrl")
 }

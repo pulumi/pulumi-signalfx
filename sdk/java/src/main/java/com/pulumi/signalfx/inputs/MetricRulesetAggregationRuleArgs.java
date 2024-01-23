@@ -20,62 +20,30 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
 
     public static final MetricRulesetAggregationRuleArgs Empty = new MetricRulesetAggregationRuleArgs();
 
-    /**
-     * Aggregator object
-     * 
-     */
     @Import(name="aggregators", required=true)
     private Output<List<MetricRulesetAggregationRuleAggregatorArgs>> aggregators;
 
-    /**
-     * @return Aggregator object
-     * 
-     */
     public Output<List<MetricRulesetAggregationRuleAggregatorArgs>> aggregators() {
         return this.aggregators;
     }
 
-    /**
-     * When false, this rule will not generate aggregated MTSs
-     * 
-     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
-    /**
-     * @return When false, this rule will not generate aggregated MTSs
-     * 
-     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
-    /**
-     * Matcher object
-     * 
-     */
     @Import(name="matchers", required=true)
     private Output<List<MetricRulesetAggregationRuleMatcherArgs>> matchers;
 
-    /**
-     * @return Matcher object
-     * 
-     */
     public Output<List<MetricRulesetAggregationRuleMatcherArgs>> matchers() {
         return this.matchers;
     }
 
-    /**
-     * name of the aggregation rule
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return name of the aggregation rule
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -107,106 +75,46 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
             $ = new MetricRulesetAggregationRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aggregators Aggregator object
-         * 
-         * @return builder
-         * 
-         */
         public Builder aggregators(Output<List<MetricRulesetAggregationRuleAggregatorArgs>> aggregators) {
             $.aggregators = aggregators;
             return this;
         }
 
-        /**
-         * @param aggregators Aggregator object
-         * 
-         * @return builder
-         * 
-         */
         public Builder aggregators(List<MetricRulesetAggregationRuleAggregatorArgs> aggregators) {
             return aggregators(Output.of(aggregators));
         }
 
-        /**
-         * @param aggregators Aggregator object
-         * 
-         * @return builder
-         * 
-         */
         public Builder aggregators(MetricRulesetAggregationRuleAggregatorArgs... aggregators) {
             return aggregators(List.of(aggregators));
         }
 
-        /**
-         * @param enabled When false, this rule will not generate aggregated MTSs
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled When false, this rule will not generate aggregated MTSs
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param matchers Matcher object
-         * 
-         * @return builder
-         * 
-         */
         public Builder matchers(Output<List<MetricRulesetAggregationRuleMatcherArgs>> matchers) {
             $.matchers = matchers;
             return this;
         }
 
-        /**
-         * @param matchers Matcher object
-         * 
-         * @return builder
-         * 
-         */
         public Builder matchers(List<MetricRulesetAggregationRuleMatcherArgs> matchers) {
             return matchers(Output.of(matchers));
         }
 
-        /**
-         * @param matchers Matcher object
-         * 
-         * @return builder
-         * 
-         */
         public Builder matchers(MetricRulesetAggregationRuleMatcherArgs... matchers) {
             return matchers(List.of(matchers));
         }
 
-        /**
-         * @param name name of the aggregation rule
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name name of the aggregation rule
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

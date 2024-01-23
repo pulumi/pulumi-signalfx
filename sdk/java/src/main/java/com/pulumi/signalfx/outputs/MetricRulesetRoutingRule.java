@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricRulesetRoutingRule {
-    /**
-     * @return end destination of the input metric. Must be `RealTime` or `Drop`
-     * 
-     */
     private String destination;
 
     private MetricRulesetRoutingRule() {}
-    /**
-     * @return end destination of the input metric. Must be `RealTime` or `Drop`
-     * 
-     */
     public String destination() {
         return this.destination;
     }

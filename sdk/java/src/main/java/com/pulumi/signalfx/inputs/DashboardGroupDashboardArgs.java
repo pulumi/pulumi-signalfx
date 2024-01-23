@@ -26,62 +26,30 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.configId);
     }
 
-    /**
-     * The dashboard id to mirror
-     * 
-     */
     @Import(name="dashboardId", required=true)
     private Output<String> dashboardId;
 
-    /**
-     * @return The dashboard id to mirror
-     * 
-     */
     public Output<String> dashboardId() {
         return this.dashboardId;
     }
 
-    /**
-     * The description that will override the original dashboards&#39;s description.
-     * 
-     */
     @Import(name="descriptionOverride")
     private @Nullable Output<String> descriptionOverride;
 
-    /**
-     * @return The description that will override the original dashboards&#39;s description.
-     * 
-     */
     public Optional<Output<String>> descriptionOverride() {
         return Optional.ofNullable(this.descriptionOverride);
     }
 
-    /**
-     * The description that will override the original dashboards&#39;s description.
-     * 
-     */
     @Import(name="filterOverrides")
     private @Nullable Output<List<DashboardGroupDashboardFilterOverrideArgs>> filterOverrides;
 
-    /**
-     * @return The description that will override the original dashboards&#39;s description.
-     * 
-     */
     public Optional<Output<List<DashboardGroupDashboardFilterOverrideArgs>>> filterOverrides() {
         return Optional.ofNullable(this.filterOverrides);
     }
 
-    /**
-     * The name that will override the original dashboards&#39;s name.
-     * 
-     */
     @Import(name="nameOverride")
     private @Nullable Output<String> nameOverride;
 
-    /**
-     * @return The name that will override the original dashboards&#39;s name.
-     * 
-     */
     public Optional<Output<String>> nameOverride() {
         return Optional.ofNullable(this.nameOverride);
     }
@@ -131,96 +99,42 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
             return configId(Output.of(configId));
         }
 
-        /**
-         * @param dashboardId The dashboard id to mirror
-         * 
-         * @return builder
-         * 
-         */
         public Builder dashboardId(Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
-        /**
-         * @param dashboardId The dashboard id to mirror
-         * 
-         * @return builder
-         * 
-         */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
         }
 
-        /**
-         * @param descriptionOverride The description that will override the original dashboards&#39;s description.
-         * 
-         * @return builder
-         * 
-         */
         public Builder descriptionOverride(@Nullable Output<String> descriptionOverride) {
             $.descriptionOverride = descriptionOverride;
             return this;
         }
 
-        /**
-         * @param descriptionOverride The description that will override the original dashboards&#39;s description.
-         * 
-         * @return builder
-         * 
-         */
         public Builder descriptionOverride(String descriptionOverride) {
             return descriptionOverride(Output.of(descriptionOverride));
         }
 
-        /**
-         * @param filterOverrides The description that will override the original dashboards&#39;s description.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterOverrides(@Nullable Output<List<DashboardGroupDashboardFilterOverrideArgs>> filterOverrides) {
             $.filterOverrides = filterOverrides;
             return this;
         }
 
-        /**
-         * @param filterOverrides The description that will override the original dashboards&#39;s description.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterOverrides(List<DashboardGroupDashboardFilterOverrideArgs> filterOverrides) {
             return filterOverrides(Output.of(filterOverrides));
         }
 
-        /**
-         * @param filterOverrides The description that will override the original dashboards&#39;s description.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterOverrides(DashboardGroupDashboardFilterOverrideArgs... filterOverrides) {
             return filterOverrides(List.of(filterOverrides));
         }
 
-        /**
-         * @param nameOverride The name that will override the original dashboards&#39;s name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nameOverride(@Nullable Output<String> nameOverride) {
             $.nameOverride = nameOverride;
             return this;
         }
 
-        /**
-         * @param nameOverride The name that will override the original dashboards&#39;s name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nameOverride(String nameOverride) {
             return nameOverride(Output.of(nameOverride));
         }

@@ -14,41 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupDashboardFilterOverride {
-    /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-     * 
-     */
     private @Nullable Boolean negated;
-    /**
-     * @return A metric time series dimension or property name.
-     * 
-     */
     private String property;
-    /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
-     * 
-     */
     private List<String> values;
 
     private DashboardGroupDashboardFilterOverride() {}
-    /**
-     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
-     * 
-     */
     public Optional<Boolean> negated() {
         return Optional.ofNullable(this.negated);
     }
-    /**
-     * @return A metric time series dimension or property name.
-     * 
-     */
     public String property() {
         return this.property;
     }
-    /**
-     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
-     * 
-     */
     public List<String> values() {
         return this.values;
     }

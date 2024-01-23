@@ -14,17 +14,9 @@ public final class IntegrationResourceFilterRuleArgs extends com.pulumi.resource
 
     public static final IntegrationResourceFilterRuleArgs Empty = new IntegrationResourceFilterRuleArgs();
 
-    /**
-     * Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-     * 
-     */
     @Import(name="filterSource", required=true)
     private Output<String> filterSource;
 
-    /**
-     * @return Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-     * 
-     */
     public Output<String> filterSource() {
         return this.filterSource;
     }
@@ -53,23 +45,11 @@ public final class IntegrationResourceFilterRuleArgs extends com.pulumi.resource
             $ = new IntegrationResourceFilterRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param filterSource Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterSource(Output<String> filterSource) {
             $.filterSource = filterSource;
             return this;
         }
 
-        /**
-         * @param filterSource Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterSource(String filterSource) {
             return filterSource(Output.of(filterSource));
         }

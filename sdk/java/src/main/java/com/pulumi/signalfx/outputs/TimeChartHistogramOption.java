@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartHistogramOption {
-    /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-     * 
-     */
     private @Nullable String colorTheme;
 
     private TimeChartHistogramOption() {}
-    /**
-     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-     * 
-     */
     public Optional<String> colorTheme() {
         return Optional.ofNullable(this.colorTheme);
     }

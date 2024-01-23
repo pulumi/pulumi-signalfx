@@ -10,15 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// Provides an Observability Cloud resource for managing metric rulesets
+    /// Provides an Observability Cloud resource for managing metric rulesets.
     /// 
-    /// &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// 
+    /// ## Arguments
+    /// 
+    /// The following arguments are supported in the resource block:
+    /// 
+    /// * `metric_name` - (Required) Name of the input metric
+    /// * `aggregation_rules` - (Optional) List of aggregation rules for the metric
+    ///   * `enabled` - (Required) When false, this rule will not generate aggregated MTSs
+    ///   * `name` - (Optional) name of the aggregation rule
+    ///   * `matcher` - (Required) Matcher object
+    ///     * `type` - (Required) Type of matcher. Must always be "dimension"
+    ///     * `filters` - (Optional) List of filters to filter the set of input MTSs
+    ///       * `property` - (Required) - Name of the dimension
+    ///       * `property_value` - (Required) - Value of the dimension
+    ///       * `not` - When true, this filter will match all values not matching the property_values
+    ///   * `aggregator` - (Required) - Aggregator object
+    ///     * `type` - (Required) Type of aggregator. Must always be "rollup"
+    ///     * `dimensions` - (Required) List of dimensions to either be kept or dropped in the new aggregated MTSs
+    ///     * `drop_dimensions` - (Required) when true, the specified dimensions will be dropped from the aggregated MTSs
+    ///     * `output_name` - (Required) name of the new aggregated metric
+    /// * `routing_rule` - (Required) Routing Rule object
+    ///   * `destination` - (Required) - end destination of the input metric. Must be `RealTime` or `Drop`
     /// </summary>
     [SignalFxResourceType("signalfx:index/metricRuleset:MetricRuleset")]
     public partial class MetricRuleset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of aggregation rules for the metric
+        /// Aggregation rules in the ruleset
         /// </summary>
         [Output("aggregationRules")]
         public Output<ImmutableArray<Outputs.MetricRulesetAggregationRule>> AggregationRules { get; private set; } = null!;
@@ -54,13 +76,13 @@ namespace Pulumi.SignalFx
         public Output<string> LastUpdatedByName { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the input metric
+        /// Name of the metric
         /// </summary>
         [Output("metricName")]
         public Output<string> MetricName { get; private set; } = null!;
 
         /// <summary>
-        /// Routing Rule object
+        /// Location to send the input metric
         /// </summary>
         [Output("routingRules")]
         public Output<ImmutableArray<Outputs.MetricRulesetRoutingRule>> RoutingRules { get; private set; } = null!;
@@ -121,7 +143,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.MetricRulesetAggregationRuleArgs>? _aggregationRules;
 
         /// <summary>
-        /// List of aggregation rules for the metric
+        /// Aggregation rules in the ruleset
         /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleArgs> AggregationRules
         {
@@ -130,7 +152,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the input metric
+        /// Name of the metric
         /// </summary>
         [Input("metricName", required: true)]
         public Input<string> MetricName { get; set; } = null!;
@@ -139,7 +161,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.MetricRulesetRoutingRuleArgs>? _routingRules;
 
         /// <summary>
-        /// Routing Rule object
+        /// Location to send the input metric
         /// </summary>
         public InputList<Inputs.MetricRulesetRoutingRuleArgs> RoutingRules
         {
@@ -159,7 +181,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.MetricRulesetAggregationRuleGetArgs>? _aggregationRules;
 
         /// <summary>
-        /// List of aggregation rules for the metric
+        /// Aggregation rules in the ruleset
         /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleGetArgs> AggregationRules
         {
@@ -198,7 +220,7 @@ namespace Pulumi.SignalFx
         public Input<string>? LastUpdatedByName { get; set; }
 
         /// <summary>
-        /// Name of the input metric
+        /// Name of the metric
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
@@ -207,7 +229,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.MetricRulesetRoutingRuleGetArgs>? _routingRules;
 
         /// <summary>
-        /// Routing Rule object
+        /// Location to send the input metric
         /// </summary>
         public InputList<Inputs.MetricRulesetRoutingRuleGetArgs> RoutingRules
         {

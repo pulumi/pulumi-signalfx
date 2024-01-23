@@ -7,11 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * SignalFx Webhook integration.
+ * Splunk Observability Cloud webhook integration.
  *
- * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+ * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,6 +27,22 @@ import * as utilities from "./utilities";
  *     url: "https://www.example.com",
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `url` - (Required) The URL to request
+ * * `sharedSecret` - (Optional)
+ * * `headers` - (Optional) A header to send with the request
+ *   * `headerKey` - (Required) The key of the header to send
+ *   * `headerValue` - (Required) The value of the header to send
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the integration.
  */
 export class WebhookIntegration extends pulumi.CustomResource {
     /**
@@ -57,20 +73,20 @@ export class WebhookIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * A header to send with the request
+     * HTTP headers to pass in the request
      */
     public readonly headers!: pulumi.Output<outputs.WebhookIntegrationHeader[] | undefined>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     public readonly name!: pulumi.Output<string>;
     public readonly sharedSecret!: pulumi.Output<string | undefined>;
     /**
-     * The URL to request
+     * Webhook URL
      */
     public readonly url!: pulumi.Output<string | undefined>;
 
@@ -115,20 +131,20 @@ export class WebhookIntegration extends pulumi.CustomResource {
  */
 export interface WebhookIntegrationState {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * A header to send with the request
+     * HTTP headers to pass in the request
      */
     headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     sharedSecret?: pulumi.Input<string>;
     /**
-     * The URL to request
+     * Webhook URL
      */
     url?: pulumi.Input<string>;
 }
@@ -138,20 +154,20 @@ export interface WebhookIntegrationState {
  */
 export interface WebhookIntegrationArgs {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * A header to send with the request
+     * HTTP headers to pass in the request
      */
     headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
-     * Name of the integration.
+     * Name of the integration
      */
     name?: pulumi.Input<string>;
     sharedSecret?: pulumi.Input<string>;
     /**
-     * The URL to request
+     * Webhook URL
      */
     url?: pulumi.Input<string>;
 }

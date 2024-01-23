@@ -12,18 +12,11 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class WebhookIntegrationHeaderArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The key of the header to send
-        /// </summary>
         [Input("headerKey", required: true)]
         public Input<string> HeaderKey { get; set; } = null!;
 
         [Input("headerValue", required: true)]
         private Input<string>? _headerValue;
-
-        /// <summary>
-        /// The value of the header to send
-        /// </summary>
         public Input<string>? HeaderValue
         {
             get => _headerValue;

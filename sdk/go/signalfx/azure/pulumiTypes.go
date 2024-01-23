@@ -14,10 +14,8 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type IntegrationCustomNamespacesPerService struct {
-	// The additional namespaces.
 	Namespaces []string `pulumi:"namespaces"`
-	// The name of the service.
-	Service string `pulumi:"service"`
+	Service    string   `pulumi:"service"`
 }
 
 // IntegrationCustomNamespacesPerServiceInput is an input type that accepts IntegrationCustomNamespacesPerServiceArgs and IntegrationCustomNamespacesPerServiceOutput values.
@@ -32,10 +30,8 @@ type IntegrationCustomNamespacesPerServiceInput interface {
 }
 
 type IntegrationCustomNamespacesPerServiceArgs struct {
-	// The additional namespaces.
 	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
-	// The name of the service.
-	Service pulumi.StringInput `pulumi:"service"`
+	Service    pulumi.StringInput      `pulumi:"service"`
 }
 
 func (IntegrationCustomNamespacesPerServiceArgs) ElementType() reflect.Type {
@@ -89,12 +85,10 @@ func (o IntegrationCustomNamespacesPerServiceOutput) ToIntegrationCustomNamespac
 	return o
 }
 
-// The additional namespaces.
 func (o IntegrationCustomNamespacesPerServiceOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespacesPerService) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
 
-// The name of the service.
 func (o IntegrationCustomNamespacesPerServiceOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespacesPerService) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -120,7 +114,6 @@ func (o IntegrationCustomNamespacesPerServiceArrayOutput) Index(i pulumi.IntInpu
 }
 
 type IntegrationResourceFilterRule struct {
-	// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
 	FilterSource string `pulumi:"filterSource"`
 }
 
@@ -136,7 +129,6 @@ type IntegrationResourceFilterRuleInput interface {
 }
 
 type IntegrationResourceFilterRuleArgs struct {
-	// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
 	FilterSource pulumi.StringInput `pulumi:"filterSource"`
 }
 
@@ -191,7 +183,6 @@ func (o IntegrationResourceFilterRuleOutput) ToIntegrationResourceFilterRuleOutp
 	return o
 }
 
-// Expression that selects the data that SignalFx should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
 func (o IntegrationResourceFilterRuleOutput) FilterSource() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationResourceFilterRule) string { return v.FilterSource }).(pulumi.StringOutput)
 }

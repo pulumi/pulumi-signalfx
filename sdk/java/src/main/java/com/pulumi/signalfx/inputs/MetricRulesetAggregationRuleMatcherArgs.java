@@ -18,32 +18,16 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
 
     public static final MetricRulesetAggregationRuleMatcherArgs Empty = new MetricRulesetAggregationRuleMatcherArgs();
 
-    /**
-     * List of filters to filter the set of input MTSs
-     * 
-     */
     @Import(name="filters")
     private @Nullable Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>> filters;
 
-    /**
-     * @return List of filters to filter the set of input MTSs
-     * 
-     */
     public Optional<Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
 
-    /**
-     * Type of aggregator. Must always be &#34;rollup&#34;
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return Type of aggregator. Must always be &#34;rollup&#34;
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -73,54 +57,24 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
             $ = new MetricRulesetAggregationRuleMatcherArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param filters List of filters to filter the set of input MTSs
-         * 
-         * @return builder
-         * 
-         */
         public Builder filters(@Nullable Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
-        /**
-         * @param filters List of filters to filter the set of input MTSs
-         * 
-         * @return builder
-         * 
-         */
         public Builder filters(List<MetricRulesetAggregationRuleMatcherFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
-        /**
-         * @param filters List of filters to filter the set of input MTSs
-         * 
-         * @return builder
-         * 
-         */
         public Builder filters(MetricRulesetAggregationRuleMatcherFilterArgs... filters) {
             return filters(List.of(filters));
         }
 
-        /**
-         * @param type Type of aggregator. Must always be &#34;rollup&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Type of aggregator. Must always be &#34;rollup&#34;
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

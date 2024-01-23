@@ -16,25 +16,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardGroupDashboard {
     private @Nullable String configId;
-    /**
-     * @return The dashboard id to mirror
-     * 
-     */
     private String dashboardId;
-    /**
-     * @return The description that will override the original dashboards&#39;s description.
-     * 
-     */
     private @Nullable String descriptionOverride;
-    /**
-     * @return The description that will override the original dashboards&#39;s description.
-     * 
-     */
     private @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides;
-    /**
-     * @return The name that will override the original dashboards&#39;s name.
-     * 
-     */
     private @Nullable String nameOverride;
     private @Nullable List<DashboardGroupDashboardVariableOverride> variableOverrides;
 
@@ -42,31 +26,15 @@ public final class DashboardGroupDashboard {
     public Optional<String> configId() {
         return Optional.ofNullable(this.configId);
     }
-    /**
-     * @return The dashboard id to mirror
-     * 
-     */
     public String dashboardId() {
         return this.dashboardId;
     }
-    /**
-     * @return The description that will override the original dashboards&#39;s description.
-     * 
-     */
     public Optional<String> descriptionOverride() {
         return Optional.ofNullable(this.descriptionOverride);
     }
-    /**
-     * @return The description that will override the original dashboards&#39;s description.
-     * 
-     */
     public List<DashboardGroupDashboardFilterOverride> filterOverrides() {
         return this.filterOverrides == null ? List.of() : this.filterOverrides;
     }
-    /**
-     * @return The name that will override the original dashboards&#39;s name.
-     * 
-     */
     public Optional<String> nameOverride() {
         return Optional.ofNullable(this.nameOverride);
     }

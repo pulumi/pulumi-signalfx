@@ -19,14 +19,14 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
     public static final MetricRulesetState Empty = new MetricRulesetState();
 
     /**
-     * List of aggregation rules for the metric
+     * Aggregation rules in the ruleset
      * 
      */
     @Import(name="aggregationRules")
     private @Nullable Output<List<MetricRulesetAggregationRuleArgs>> aggregationRules;
 
     /**
-     * @return List of aggregation rules for the metric
+     * @return Aggregation rules in the ruleset
      * 
      */
     public Optional<Output<List<MetricRulesetAggregationRuleArgs>>> aggregationRules() {
@@ -109,14 +109,14 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the input metric
+     * Name of the metric
      * 
      */
     @Import(name="metricName")
     private @Nullable Output<String> metricName;
 
     /**
-     * @return Name of the input metric
+     * @return Name of the metric
      * 
      */
     public Optional<Output<String>> metricName() {
@@ -124,14 +124,14 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Routing Rule object
+     * Location to send the input metric
      * 
      */
     @Import(name="routingRules")
     private @Nullable Output<List<MetricRulesetRoutingRuleArgs>> routingRules;
 
     /**
-     * @return Routing Rule object
+     * @return Location to send the input metric
      * 
      */
     public Optional<Output<List<MetricRulesetRoutingRuleArgs>>> routingRules() {
@@ -186,7 +186,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aggregationRules List of aggregation rules for the metric
+         * @param aggregationRules Aggregation rules in the ruleset
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aggregationRules List of aggregation rules for the metric
+         * @param aggregationRules Aggregation rules in the ruleset
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param aggregationRules List of aggregation rules for the metric
+         * @param aggregationRules Aggregation rules in the ruleset
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param metricName Name of the input metric
+         * @param metricName Name of the metric
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param metricName Name of the input metric
+         * @param metricName Name of the metric
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routingRules Routing Rule object
+         * @param routingRules Location to send the input metric
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routingRules Routing Rule object
+         * @param routingRules Location to send the input metric
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class MetricRulesetState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param routingRules Routing Rule object
+         * @param routingRules Location to send the input metric
          * 
          * @return builder
          * 

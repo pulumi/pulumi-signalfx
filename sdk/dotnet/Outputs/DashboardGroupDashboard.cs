@@ -14,21 +14,9 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardGroupDashboard
     {
         public readonly string? ConfigId;
-        /// <summary>
-        /// The dashboard id to mirror
-        /// </summary>
         public readonly string DashboardId;
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
         public readonly string? DescriptionOverride;
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
         public readonly ImmutableArray<Outputs.DashboardGroupDashboardFilterOverride> FilterOverrides;
-        /// <summary>
-        /// The name that will override the original dashboards's name.
-        /// </summary>
         public readonly string? NameOverride;
         public readonly ImmutableArray<Outputs.DashboardGroupDashboardVariableOverride> VariableOverrides;
 

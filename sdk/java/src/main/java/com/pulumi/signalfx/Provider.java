@@ -23,42 +23,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:signalfx")
 public class Provider extends com.pulumi.resources.ProviderResource {
     /**
-     * API URL for your SignalFx org, may include a realm
+     * API URL for your Splunk Observability Cloud org, may include a realm
      * 
      */
     @Export(name="apiUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiUrl;
 
     /**
-     * @return API URL for your SignalFx org, may include a realm
+     * @return API URL for your Splunk Observability Cloud org, may include a realm
      * 
      */
     public Output<Optional<String>> apiUrl() {
         return Codegen.optional(this.apiUrl);
     }
     /**
-     * SignalFx auth token
+     * Splunk Observability Cloud auth token
      * 
      */
     @Export(name="authToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authToken;
 
     /**
-     * @return SignalFx auth token
+     * @return Splunk Observability Cloud auth token
      * 
      */
     public Output<Optional<String>> authToken() {
         return Codegen.optional(this.authToken);
     }
     /**
-     * Application URL for your SignalFx org, often customized for organizations using SSO
+     * Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
      */
     @Export(name="customAppUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customAppUrl;
 
     /**
-     * @return Application URL for your SignalFx org, often customized for organizations using SSO
+     * @return Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
      * 
      */
     public Output<Optional<String>> customAppUrl() {

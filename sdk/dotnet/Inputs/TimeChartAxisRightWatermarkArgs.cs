@@ -12,9 +12,6 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartAxisRightWatermarkArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Label used in the publish statement that displays the event query you want to customize.
-        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 

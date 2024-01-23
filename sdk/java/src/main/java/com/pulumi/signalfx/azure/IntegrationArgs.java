@@ -37,14 +37,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+     * Azure application ID for the Splunk Observability Cloud app.
      * 
      */
     @Import(name="appId", required=true)
     private Output<String> appId;
 
     /**
-     * @return Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+     * @return Azure application ID for the Splunk Observability Cloud app.
      * 
      */
     public Output<String> appId() {
@@ -52,14 +52,20 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
+     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
+     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+     * addition to the default namespaces.
      * 
      */
     @Import(name="customNamespacesPerServices")
     private @Nullable Output<List<IntegrationCustomNamespacesPerServiceArgs>> customNamespacesPerServices;
 
     /**
-     * @return Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+     * @return Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
+     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
+     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+     * addition to the default namespaces.
      * 
      */
     public Optional<Output<List<IntegrationCustomNamespacesPerServiceArgs>>> customNamespacesPerServices() {
@@ -67,14 +73,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
@@ -82,14 +88,16 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+     * what type of Azure integration this is. The allowed values are `&#34;azure_us_government&#34;` and `&#34;azure&#34;`. Defaults to
+     * `&#34;azure&#34;`
      * 
      */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
     /**
-     * @return What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+     * @return what type of Azure integration this is. The allowed values are `&#34;azure_us_government&#34;` and `&#34;azure&#34;`. Defaults to
+     * `&#34;azure&#34;`
      * 
      */
     public Optional<Output<String>> environment() {
@@ -97,14 +105,16 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
+     * import only metadata. Defaults to true.
      * 
      */
     @Import(name="importAzureMonitor")
     private @Nullable Output<Boolean> importAzureMonitor;
 
     /**
-     * @return If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+     * @return If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
+     * import only metadata. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> importAzureMonitor() {
@@ -112,14 +122,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -127,14 +137,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
+     * A named token to use for ingest
      * 
      */
     @Import(name="namedToken")
     private @Nullable Output<String> namedToken;
 
     /**
-     * @return Name of the org token to be used for data ingestion. If not specified then default access token is used.
+     * @return A named token to use for ingest
      * 
      */
     public Optional<Output<String>> namedToken() {
@@ -142,14 +152,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+     * Azure poll rate (in seconds). Between `60` and `600`.
      * 
      */
     @Import(name="pollRate")
     private @Nullable Output<Integer> pollRate;
 
     /**
-     * @return Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+     * @return Azure poll rate (in seconds). Between `60` and `600`.
      * 
      */
     public Optional<Output<Integer>> pollRate() {
@@ -157,14 +167,18 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of rules for filtering Azure resources by their tags.
+     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
+     * limited to tags and must start with the azure_tag_ prefix..
      * 
      */
     @Import(name="resourceFilterRules")
     private @Nullable Output<List<IntegrationResourceFilterRuleArgs>> resourceFilterRules;
 
     /**
-     * @return List of rules for filtering Azure resources by their tags.
+     * @return List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
+     * limited to tags and must start with the azure_tag_ prefix..
      * 
      */
     public Optional<Output<List<IntegrationResourceFilterRuleArgs>>> resourceFilterRules() {
@@ -172,14 +186,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+     * @return Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
      * 
      */
     public Output<String> secretKey() {
@@ -187,14 +201,16 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
+     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
+     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
      * 
      */
     @Import(name="services", required=true)
     private Output<List<String>> services;
 
     /**
-     * @return List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
+     * @return List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
+     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
      * 
      */
     public Output<List<String>> services() {
@@ -202,14 +218,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Azure subscriptions that SignalFx should monitor.
+     * List of Azure subscriptions that Splunk Observability Cloud should monitor.
      * 
      */
     @Import(name="subscriptions", required=true)
     private Output<List<String>> subscriptions;
 
     /**
-     * @return List of Azure subscriptions that SignalFx should monitor.
+     * @return List of Azure subscriptions that Splunk Observability Cloud should monitor.
      * 
      */
     public Output<List<String>> subscriptions() {
@@ -217,14 +233,18 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
+     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
+     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
      * 
      */
     @Import(name="syncGuestOsNamespaces")
     private @Nullable Output<Boolean> syncGuestOsNamespaces;
 
     /**
-     * @return If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+     * @return If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
+     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
+     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
      * 
      */
     public Optional<Output<Boolean>> syncGuestOsNamespaces() {
@@ -232,14 +252,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+     * Azure ID of the Azure tenant.
      * 
      */
     @Import(name="tenantId", required=true)
     private Output<String> tenantId;
 
     /**
-     * @return Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+     * @return Azure ID of the Azure tenant.
      * 
      */
     public Output<String> tenantId() {
@@ -316,7 +336,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+         * @param appId Azure application ID for the Splunk Observability Cloud app.
          * 
          * @return builder
          * 
@@ -327,7 +347,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param appId Azure application ID for the SignalFx app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-microsoft-azure) in the product documentation.
+         * @param appId Azure application ID for the Splunk Observability Cloud app.
          * 
          * @return builder
          * 
@@ -337,7 +357,10 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customNamespacesPerServices Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+         * @param customNamespacesPerServices Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
+         * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
+         * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+         * addition to the default namespaces.
          * 
          * @return builder
          * 
@@ -348,7 +371,10 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customNamespacesPerServices Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+         * @param customNamespacesPerServices Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
+         * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
+         * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+         * addition to the default namespaces.
          * 
          * @return builder
          * 
@@ -358,7 +384,10 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customNamespacesPerServices Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
+         * @param customNamespacesPerServices Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
+         * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
+         * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+         * addition to the default namespaces.
          * 
          * @return builder
          * 
@@ -368,7 +397,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -379,7 +408,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -389,7 +418,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+         * @param environment what type of Azure integration this is. The allowed values are `&#34;azure_us_government&#34;` and `&#34;azure&#34;`. Defaults to
+         * `&#34;azure&#34;`
          * 
          * @return builder
          * 
@@ -400,7 +430,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param environment What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
+         * @param environment what type of Azure integration this is. The allowed values are `&#34;azure_us_government&#34;` and `&#34;azure&#34;`. Defaults to
+         * `&#34;azure&#34;`
          * 
          * @return builder
          * 
@@ -410,7 +441,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importAzureMonitor If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+         * @param importAzureMonitor If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
+         * import only metadata. Defaults to true.
          * 
          * @return builder
          * 
@@ -421,7 +453,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importAzureMonitor If enabled, SignalFx will sync also Azure Monitor data. If disabled, SignalFx will import only metadata. Defaults to true.
+         * @param importAzureMonitor If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
+         * import only metadata. Defaults to true.
          * 
          * @return builder
          * 
@@ -431,7 +464,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -442,7 +475,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -452,7 +485,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namedToken Name of the org token to be used for data ingestion. If not specified then default access token is used.
+         * @param namedToken A named token to use for ingest
          * 
          * @return builder
          * 
@@ -463,7 +496,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namedToken Name of the org token to be used for data ingestion. If not specified then default access token is used.
+         * @param namedToken A named token to use for ingest
          * 
          * @return builder
          * 
@@ -473,7 +506,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pollRate Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+         * @param pollRate Azure poll rate (in seconds). Between `60` and `600`.
          * 
          * @return builder
          * 
@@ -484,7 +517,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pollRate Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
+         * @param pollRate Azure poll rate (in seconds). Between `60` and `600`.
          * 
          * @return builder
          * 
@@ -494,7 +527,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceFilterRules List of rules for filtering Azure resources by their tags.
+         * @param resourceFilterRules List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+         * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
+         * limited to tags and must start with the azure_tag_ prefix..
          * 
          * @return builder
          * 
@@ -505,7 +540,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceFilterRules List of rules for filtering Azure resources by their tags.
+         * @param resourceFilterRules List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+         * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
+         * limited to tags and must start with the azure_tag_ prefix..
          * 
          * @return builder
          * 
@@ -515,7 +552,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceFilterRules List of rules for filtering Azure resources by their tags.
+         * @param resourceFilterRules List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
+         * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
+         * limited to tags and must start with the azure_tag_ prefix..
          * 
          * @return builder
          * 
@@ -525,7 +564,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretKey Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+         * @param secretKey Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
          * 
          * @return builder
          * 
@@ -536,7 +575,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secretKey Azure secret key that associates the SignalFx app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+         * @param secretKey Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
          * 
          * @return builder
          * 
@@ -546,7 +585,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
+         * @param services List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
+         * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
          * 
          * @return builder
          * 
@@ -557,7 +597,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
+         * @param services List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
+         * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
          * 
          * @return builder
          * 
@@ -567,7 +608,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services List of Microsoft Azure service names for the Azure services you want SignalFx to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
+         * @param services List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
+         * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
          * 
          * @return builder
          * 
@@ -577,7 +619,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptions List of Azure subscriptions that SignalFx should monitor.
+         * @param subscriptions List of Azure subscriptions that Splunk Observability Cloud should monitor.
          * 
          * @return builder
          * 
@@ -588,7 +630,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptions List of Azure subscriptions that SignalFx should monitor.
+         * @param subscriptions List of Azure subscriptions that Splunk Observability Cloud should monitor.
          * 
          * @return builder
          * 
@@ -598,7 +640,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subscriptions List of Azure subscriptions that SignalFx should monitor.
+         * @param subscriptions List of Azure subscriptions that Splunk Observability Cloud should monitor.
          * 
          * @return builder
          * 
@@ -608,7 +650,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncGuestOsNamespaces If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+         * @param syncGuestOsNamespaces If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
+         * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
+         * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
          * 
          * @return builder
          * 
@@ -619,7 +663,9 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param syncGuestOsNamespaces If enabled, SignalFx will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
+         * @param syncGuestOsNamespaces If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
+         * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
+         * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
          * 
          * @return builder
          * 
@@ -629,7 +675,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+         * @param tenantId Azure ID of the Azure tenant.
          * 
          * @return builder
          * 
@@ -640,7 +686,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.signalfx.com/en/latest/integrations/azure-info.html#connect-to-azure) in the product documentation.
+         * @param tenantId Azure ID of the Azure tenant.
          * 
          * @return builder
          * 

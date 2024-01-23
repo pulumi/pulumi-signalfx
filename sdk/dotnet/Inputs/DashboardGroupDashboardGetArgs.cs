@@ -15,33 +15,20 @@ namespace Pulumi.SignalFx.Inputs
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
 
-        /// <summary>
-        /// The dashboard id to mirror
-        /// </summary>
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
 
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
         [Input("descriptionOverride")]
         public Input<string>? DescriptionOverride { get; set; }
 
         [Input("filterOverrides")]
         private InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs>? _filterOverrides;
-
-        /// <summary>
-        /// The description that will override the original dashboards's description.
-        /// </summary>
         public InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs> FilterOverrides
         {
             get => _filterOverrides ?? (_filterOverrides = new InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs>());
             set => _filterOverrides = value;
         }
 
-        /// <summary>
-        /// The name that will override the original dashboards's name.
-        /// </summary>
         [Input("nameOverride")]
         public Input<string>? NameOverride { get; set; }
 

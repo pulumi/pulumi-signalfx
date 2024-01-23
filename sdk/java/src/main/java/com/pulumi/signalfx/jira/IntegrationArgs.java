@@ -33,14 +33,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Jira display name for the assignee.
+     * Jira display name for the assignee
      * 
      */
     @Import(name="assigneeDisplayName")
     private @Nullable Output<String> assigneeDisplayName;
 
     /**
-     * @return Jira display name for the assignee.
+     * @return Jira display name for the assignee
      * 
      */
     public Optional<Output<String>> assigneeDisplayName() {
@@ -48,14 +48,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Jira user name for the assignee.
+     * Jira user name for the assignee
      * 
      */
     @Import(name="assigneeName", required=true)
     private Output<String> assigneeName;
 
     /**
-     * @return Jira user name for the assignee.
+     * @return Jira user name for the assignee
      * 
      */
     public Output<String> assigneeName() {
@@ -63,14 +63,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+     * Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
      * 
      */
     @Import(name="authMethod", required=true)
     private Output<String> authMethod;
 
     /**
-     * @return Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+     * @return Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
      * 
      */
     public Output<String> authMethod() {
@@ -93,14 +93,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
@@ -108,14 +108,16 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
+     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+     * validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
      * 
      */
     @Import(name="issueType", required=true)
     private Output<String> issueType;
 
     /**
-     * @return Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
+     * @return Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+     * validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
      * 
      */
     public Output<String> issueType() {
@@ -123,14 +125,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -153,14 +155,16 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+     * this project.
      * 
      */
     @Import(name="projectKey", required=true)
     private Output<String> projectKey;
 
     /**
-     * @return Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+     * @return Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+     * this project.
      * 
      */
     public Output<String> projectKey() {
@@ -254,7 +258,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assigneeDisplayName Jira display name for the assignee.
+         * @param assigneeDisplayName Jira display name for the assignee
          * 
          * @return builder
          * 
@@ -265,7 +269,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assigneeDisplayName Jira display name for the assignee.
+         * @param assigneeDisplayName Jira display name for the assignee
          * 
          * @return builder
          * 
@@ -275,7 +279,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assigneeName Jira user name for the assignee.
+         * @param assigneeName Jira user name for the assignee
          * 
          * @return builder
          * 
@@ -286,7 +290,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param assigneeName Jira user name for the assignee.
+         * @param assigneeName Jira user name for the assignee
          * 
          * @return builder
          * 
@@ -296,7 +300,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+         * @param authMethod Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
          * 
          * @return builder
          * 
@@ -307,7 +311,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
+         * @param authMethod Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
          * 
          * @return builder
          * 
@@ -338,7 +342,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -349,7 +353,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled.
+         * @param enabled Whether the integration is enabled or not
          * 
          * @return builder
          * 
@@ -359,7 +363,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issueType Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
+         * @param issueType Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+         * validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
          * 
          * @return builder
          * 
@@ -370,7 +375,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param issueType Issue type (for example, Story) for tickets that Jira creates for detector notifications. SignalFx validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
+         * @param issueType Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
+         * validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
          * 
          * @return builder
          * 
@@ -380,7 +386,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -391,7 +397,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration.
+         * @param name Name of the integration
          * 
          * @return builder
          * 
@@ -422,7 +428,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+         * @param projectKey Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+         * this project.
          * 
          * @return builder
          * 
@@ -433,7 +440,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectKey Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
+         * @param projectKey Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
+         * this project.
          * 
          * @return builder
          * 

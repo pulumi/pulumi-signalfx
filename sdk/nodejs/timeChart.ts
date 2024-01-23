@@ -7,11 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
+ * Provides a Splunk Observability Cloud time chart resource. This can be used to create and manage the different types of time charts.
  *
  * Time charts display data points over a period of time.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,6 +45,72 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * The following arguments are supported in the resource block:
+ *
+ * * `name` - (Required) Name of the chart.
+ * * `programText` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+ * * `plotType` - (Optional) The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
+ * * `description` - (Optional) Description of the chart.
+ * * `axesPrecision` - (Optional) Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+ * * `unitPrefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+ * * `colorBy` - (Optional) Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+ * * `minimumResolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
+ * * `maxDelay` - (Optional) How long (in seconds) to wait for late datapoints.
+ * * `timezone` - (Optional) A string denotes the geographic region associated with the time zone.
+ * * `disableSampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+ * * `timeRange` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+ * * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+ * * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+ * * `axesIncludeZero` - (Optional) Force the chart to display zero on the y-axes, even if none of the data is near zero.
+ * * `axisLeft` - (Optional) Set of axis options.
+ *     * `label` - (Optional) Label of the left axis.
+ *     * `minValue` - (Optional) The minimum value for the left axis.
+ *     * `maxValue` - (Optional) The maximum value for the left axis.
+ *     * `highWatermark` - (Optional) A line to draw as a high watermark.
+ *     * `highWatermarkLabel` - (Optional) A label to attach to the high watermark line.
+ *     * `lowWatermark`  - (Optional) A line to draw as a low watermark.
+ *     * `lowWatermarkLabel` - (Optional) A label to attach to the low watermark line.
+ * * `axisRight` - (Optional) Set of axis options.
+ *     * `label` - (Optional) Label of the right axis.
+ *     * `minValue` - (Optional) The minimum value for the right axis.
+ *     * `maxValue` - (Optional) The maximum value for the right axis.
+ *     * `highWatermark` - (Optional) A line to draw as a high watermark.
+ *     * `highWatermarkLabel` - (Optional) A label to attach to the high watermark line.
+ *     * `lowWatermark`  - (Optional) A line to draw as a low watermark.
+ *     * `lowWatermarkLabel` - (Optional) A label to attach to the low watermark line.
+ * * `vizOptions` - (Optional) Plot-level customization options, associated with a publish statement.
+ *     * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+ *     * `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+ *     * `axis` - (Optional) Y-axis associated with values for this plot. Must be either `right` or `left`.
+ *     * `plotType` - (Optional) The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+ *     * `valueUnit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+ *     * `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+ * * `eventOptions` - (Optional) Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+ *     * `label` - (Required) Label used in the publish statement that displays the event query you want to customize.
+ *     * `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+ * * `histogramOptions` - (Optional) Only used when `plotType` is `"Histogram"`. Histogram specific options.
+ *     * `colorTheme` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+ * * `legendFieldsToHide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+ * * `legendOptionsFields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+ *     * `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+ *     * `enabled` True or False depending on if you want the property to be shown or hidden.
+ * * `onChartLegendDimension` - (Optional) Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
+ * * `showEventLines` - (Optional) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+ * * `showDataMarkers` - (Optional) Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+ * * `stacked` - (Optional) Whether area and bar charts in the visualization should be stacked. `false` by default.
+ * * `timezone` - (Optional) Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the chart.
+ * * `url` - The URL of the chart.
  */
 export class TimeChart extends pulumi.CustomResource {
     /**
@@ -75,93 +141,89 @@ export class TimeChart extends pulumi.CustomResource {
     }
 
     /**
-     * Force the chart to display zero on the y-axes, even if none of the data is near zero.
+     * Force y-axes to always show zero
      */
     public readonly axesIncludeZero!: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+     * Force a specific number of significant digits in the y-axis
      */
     public readonly axesPrecision!: pulumi.Output<number | undefined>;
-    /**
-     * Set of axis options.
-     */
     public readonly axisLeft!: pulumi.Output<outputs.TimeChartAxisLeft | undefined>;
-    /**
-     * Set of axis options.
-     */
     public readonly axisRight!: pulumi.Output<outputs.TimeChartAxisRight | undefined>;
     /**
-     * Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+     * (Dimension by default) Must be "Dimension" or "Metric"
      */
     public readonly colorBy!: pulumi.Output<string | undefined>;
     /**
-     * Description of the chart.
+     * Description of the chart
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      */
     public readonly disableSampling!: pulumi.Output<boolean | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to end the visualization
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+     * Event display customization options, associated with a publish statement
      */
     public readonly eventOptions!: pulumi.Output<outputs.TimeChartEventOption[] | undefined>;
     /**
-     * Only used when `plotType` is `"Histogram"`. Histogram specific options.
+     * Options specific to Histogram charts
      */
     public readonly histogramOptions!: pulumi.Output<outputs.TimeChartHistogramOption[] | undefined>;
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
      *
      * @deprecated Please use legend_options_fields
      */
     public readonly legendFieldsToHides!: pulumi.Output<string[] | undefined>;
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+     * List of property and enabled flags to control the order and presence of datatable labels in a chart.
      */
     public readonly legendOptionsFields!: pulumi.Output<outputs.TimeChartLegendOptionsField[] | undefined>;
     /**
-     * How long (in seconds) to wait for late datapoints.
+     * How long (in seconds) to wait for late datapoints
      */
     public readonly maxDelay!: pulumi.Output<number | undefined>;
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program.
+     * The minimum resolution (in seconds) to use for computing the underlying program
      */
     public readonly minimumResolution!: pulumi.Output<number | undefined>;
     /**
-     * Name of the chart.
+     * Name of the chart
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
+     * Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+     * 'plot_label' and any dimension.
      */
     public readonly onChartLegendDimension!: pulumi.Output<string | undefined>;
     /**
-     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+     * (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+     * "ColumnChart", or "Histogram"
      */
     public readonly plotType!: pulumi.Output<string | undefined>;
     /**
-     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     public readonly programText!: pulumi.Output<string>;
     /**
-     * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+     * (false by default) Show markers (circles) for each datapoint used to draw line or area charts
      */
     public readonly showDataMarkers!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+     * (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
      */
     public readonly showEventLines!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether area and bar charts in the visualization should be stacked. `false` by default.
+     * (false by default) Whether area and bar charts in the visualization should be stacked
      */
     public readonly stacked!: pulumi.Output<boolean | undefined>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to start the visualization
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
@@ -171,23 +233,23 @@ export class TimeChart extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
-     * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
-     * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+     * (Metric by default) Must be "Metric" or "Binary"
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the chart.
+     * URL of the chart
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      */
     public readonly vizOptions!: pulumi.Output<outputs.TimeChartVizOption[] | undefined>;
 
@@ -276,93 +338,89 @@ export class TimeChart extends pulumi.CustomResource {
  */
 export interface TimeChartState {
     /**
-     * Force the chart to display zero on the y-axes, even if none of the data is near zero.
+     * Force y-axes to always show zero
      */
     axesIncludeZero?: pulumi.Input<boolean>;
     /**
-     * Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+     * Force a specific number of significant digits in the y-axis
      */
     axesPrecision?: pulumi.Input<number>;
-    /**
-     * Set of axis options.
-     */
     axisLeft?: pulumi.Input<inputs.TimeChartAxisLeft>;
-    /**
-     * Set of axis options.
-     */
     axisRight?: pulumi.Input<inputs.TimeChartAxisRight>;
     /**
-     * Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+     * (Dimension by default) Must be "Dimension" or "Metric"
      */
     colorBy?: pulumi.Input<string>;
     /**
-     * Description of the chart.
+     * Description of the chart
      */
     description?: pulumi.Input<string>;
     /**
-     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      */
     disableSampling?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to end the visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+     * Event display customization options, associated with a publish statement
      */
     eventOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartEventOption>[]>;
     /**
-     * Only used when `plotType` is `"Histogram"`. Histogram specific options.
+     * Options specific to Histogram charts
      */
     histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
      *
      * @deprecated Please use legend_options_fields
      */
     legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+     * List of property and enabled flags to control the order and presence of datatable labels in a chart.
      */
     legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.TimeChartLegendOptionsField>[]>;
     /**
-     * How long (in seconds) to wait for late datapoints.
+     * How long (in seconds) to wait for late datapoints
      */
     maxDelay?: pulumi.Input<number>;
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program.
+     * The minimum resolution (in seconds) to use for computing the underlying program
      */
     minimumResolution?: pulumi.Input<number>;
     /**
-     * Name of the chart.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
+     * Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+     * 'plot_label' and any dimension.
      */
     onChartLegendDimension?: pulumi.Input<string>;
     /**
-     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+     * (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+     * "ColumnChart", or "Histogram"
      */
     plotType?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText?: pulumi.Input<string>;
     /**
-     * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+     * (false by default) Show markers (circles) for each datapoint used to draw line or area charts
      */
     showDataMarkers?: pulumi.Input<boolean>;
     /**
-     * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+     * (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
      */
     showEventLines?: pulumi.Input<boolean>;
     /**
-     * Whether area and bar charts in the visualization should be stacked. `false` by default.
+     * (false by default) Whether area and bar charts in the visualization should be stacked
      */
     stacked?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to start the visualization
      */
     startTime?: pulumi.Input<number>;
     /**
@@ -372,23 +430,23 @@ export interface TimeChartState {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      */
     timeRange?: pulumi.Input<number>;
     /**
-     * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
     timezone?: pulumi.Input<string>;
     /**
-     * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+     * (Metric by default) Must be "Metric" or "Binary"
      */
     unitPrefix?: pulumi.Input<string>;
     /**
-     * The URL of the chart.
+     * URL of the chart
      */
     url?: pulumi.Input<string>;
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      */
     vizOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartVizOption>[]>;
 }
@@ -398,93 +456,89 @@ export interface TimeChartState {
  */
 export interface TimeChartArgs {
     /**
-     * Force the chart to display zero on the y-axes, even if none of the data is near zero.
+     * Force y-axes to always show zero
      */
     axesIncludeZero?: pulumi.Input<boolean>;
     /**
-     * Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+     * Force a specific number of significant digits in the y-axis
      */
     axesPrecision?: pulumi.Input<number>;
-    /**
-     * Set of axis options.
-     */
     axisLeft?: pulumi.Input<inputs.TimeChartAxisLeft>;
-    /**
-     * Set of axis options.
-     */
     axisRight?: pulumi.Input<inputs.TimeChartAxisRight>;
     /**
-     * Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+     * (Dimension by default) Must be "Dimension" or "Metric"
      */
     colorBy?: pulumi.Input<string>;
     /**
-     * Description of the chart.
+     * Description of the chart
      */
     description?: pulumi.Input<string>;
     /**
-     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
      */
     disableSampling?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to end the visualization
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+     * Event display customization options, associated with a publish statement
      */
     eventOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartEventOption>[]>;
     /**
-     * Only used when `plotType` is `"Histogram"`. Histogram specific options.
+     * Options specific to Histogram charts
      */
     histogramOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartHistogramOption>[]>;
     /**
-     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
+     * List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
      *
      * @deprecated Please use legend_options_fields
      */
     legendFieldsToHides?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
+     * List of property and enabled flags to control the order and presence of datatable labels in a chart.
      */
     legendOptionsFields?: pulumi.Input<pulumi.Input<inputs.TimeChartLegendOptionsField>[]>;
     /**
-     * How long (in seconds) to wait for late datapoints.
+     * How long (in seconds) to wait for late datapoints
      */
     maxDelay?: pulumi.Input<number>;
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program.
+     * The minimum resolution (in seconds) to use for computing the underlying program
      */
     minimumResolution?: pulumi.Input<number>;
     /**
-     * Name of the chart.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
+     * Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+     * 'plot_label' and any dimension.
      */
     onChartLegendDimension?: pulumi.Input<string>;
     /**
-     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
+     * (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+     * "ColumnChart", or "Histogram"
      */
     plotType?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText: pulumi.Input<string>;
     /**
-     * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+     * (false by default) Show markers (circles) for each datapoint used to draw line or area charts
      */
     showDataMarkers?: pulumi.Input<boolean>;
     /**
-     * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+     * (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
      */
     showEventLines?: pulumi.Input<boolean>;
     /**
-     * Whether area and bar charts in the visualization should be stacked. `false` by default.
+     * (false by default) Whether area and bar charts in the visualization should be stacked
      */
     stacked?: pulumi.Input<boolean>;
     /**
-     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+     * Seconds since epoch to start the visualization
      */
     startTime?: pulumi.Input<number>;
     /**
@@ -494,19 +548,19 @@ export interface TimeChartArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
+     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
      */
     timeRange?: pulumi.Input<number>;
     /**
-     * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
      */
     timezone?: pulumi.Input<string>;
     /**
-     * Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+     * (Metric by default) Must be "Metric" or "Binary"
      */
     unitPrefix?: pulumi.Input<string>;
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      */
     vizOptions?: pulumi.Input<pulumi.Input<inputs.TimeChartVizOption>[]>;
 }

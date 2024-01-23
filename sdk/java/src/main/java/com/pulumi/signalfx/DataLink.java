@@ -19,9 +19,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+ * Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -72,46 +72,78 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `property_name` - (Optional) Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+ * * `property_value` - (Optional) Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+ * * `context_dashboard_id` - (Optional) If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+ * * `target_external_url` - (Optional) Link to an external URL
+ *   * `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+ *   * `url`- (Required) URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
+ *   * `time_format` - (Optional) [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
+ *   * `minimum_time_window` - (Optional) The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
+ *   * `property_key_mapping` - Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+ * * `target_signalfx_dashboard` - (Optional) Link to a Splunk Observability Cloud dashboard
+ *   * `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+ *   * `is_default` - (Optional) Flag that designates a target as the default for a data link object. `true` by default
+ *   * `dashboard_id` - (Required) SignalFx-assigned ID of the dashboard link target
+ *   * `dashboard_group_id` - (Required) SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
+ * * `target_splunk` - (Optional) Link to an external URL
+ *   * `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+ *   * `property_key_mapping` - Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the link.
+ * 
  */
 @ResourceType(type="signalfx:index/dataLink:DataLink")
 public class DataLink extends com.pulumi.resources.CustomResource {
     /**
-     * If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+     * The dashobard ID to which this data link will be applied
      * 
      */
     @Export(name="contextDashboardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contextDashboardId;
 
     /**
-     * @return If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+     * @return The dashobard ID to which this data link will be applied
      * 
      */
     public Output<Optional<String>> contextDashboardId() {
         return Codegen.optional(this.contextDashboardId);
     }
     /**
-     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify
+     * `property_name`.
      * 
      */
     @Export(name="propertyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> propertyName;
 
     /**
-     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+     * @return Name (key) of the metadata that&#39;s the trigger of a data link. If you specify `property_value`, you must specify
+     * `property_name`.
      * 
      */
     public Output<Optional<String>> propertyName() {
         return Codegen.optional(this.propertyName);
     }
     /**
-     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify
+     * `property_name`.
      * 
      */
     @Export(name="propertyValue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> propertyValue;
 
     /**
-     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify `property_name`.
+     * @return Value of the metadata that&#39;s the trigger of a data link. If you specify this property, you must also specify
+     * `property_name`.
      * 
      */
     public Output<Optional<String>> propertyValue() {
@@ -132,28 +164,28 @@ public class DataLink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetExternalUrls);
     }
     /**
-     * Link to a SignalFx dashboard
+     * Link to a Splunk Observability Cloud dashboard
      * 
      */
     @Export(name="targetSignalfxDashboards", refs={List.class,DataLinkTargetSignalfxDashboard.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataLinkTargetSignalfxDashboard>> targetSignalfxDashboards;
 
     /**
-     * @return Link to a SignalFx dashboard
+     * @return Link to a Splunk Observability Cloud dashboard
      * 
      */
     public Output<Optional<List<DataLinkTargetSignalfxDashboard>>> targetSignalfxDashboards() {
         return Codegen.optional(this.targetSignalfxDashboards);
     }
     /**
-     * Link to an external URL
+     * Link to a Splunk instance
      * 
      */
     @Export(name="targetSplunks", refs={List.class,DataLinkTargetSplunk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataLinkTargetSplunk>> targetSplunks;
 
     /**
-     * @return Link to an external URL
+     * @return Link to a Splunk instance
      * 
      */
     public Output<Optional<List<DataLinkTargetSplunk>>> targetSplunks() {

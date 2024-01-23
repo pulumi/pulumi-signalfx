@@ -14,113 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DetectorRule {
-    /**
-     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-     * 
-     */
     private @Nullable String description;
-    /**
-     * @return A detect label which matches a detect label within `program_text`.
-     * 
-     */
     private String detectLabel;
-    /**
-     * @return When true, notifications and events will not be generated for the detect label. `false` by default.
-     * 
-     */
     private @Nullable Boolean disabled;
-    /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-     * 
-     */
     private @Nullable List<String> notifications;
-    /**
-     * @return Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-     * 
-     */
     private @Nullable String parameterizedBody;
-    /**
-     * @return Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-     * 
-     */
     private @Nullable String parameterizedSubject;
-    /**
-     * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-     * 
-     */
     private @Nullable String runbookUrl;
-    /**
-     * @return The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
-     * 
-     */
     private String severity;
-    /**
-     * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-     * 
-     */
     private @Nullable String tip;
 
     private DetectorRule() {}
-    /**
-     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    /**
-     * @return A detect label which matches a detect label within `program_text`.
-     * 
-     */
     public String detectLabel() {
         return this.detectLabel;
     }
-    /**
-     * @return When true, notifications and events will not be generated for the detect label. `false` by default.
-     * 
-     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
-    /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://developers.signalfx.com/detectors_reference.html#operation/Create%20Single%20Detector) for more info.
-     * 
-     */
     public List<String> notifications() {
         return this.notifications == null ? List.of() : this.notifications;
     }
-    /**
-     * @return Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-     * 
-     */
     public Optional<String> parameterizedBody() {
         return Optional.ofNullable(this.parameterizedBody);
     }
-    /**
-     * @return Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.signalfx.com/en/latest/detect-alert/set-up-detectors.html#about-detectors#alert-settings) for more info.
-     * 
-     */
     public Optional<String> parameterizedSubject() {
         return Optional.ofNullable(this.parameterizedSubject);
     }
-    /**
-     * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-     * 
-     */
     public Optional<String> runbookUrl() {
         return Optional.ofNullable(this.runbookUrl);
     }
-    /**
-     * @return The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
-     * 
-     */
     public String severity() {
         return this.severity;
     }
-    /**
-     * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-     * 
-     */
     public Optional<String> tip() {
         return Optional.ofNullable(this.tip);
     }

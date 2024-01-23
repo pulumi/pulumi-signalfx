@@ -13,17 +13,8 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class AlertMutingRuleFilter
     {
-        /// <summary>
-        /// Determines if this is a "not" filter. Defaults to `false`.
-        /// </summary>
         public readonly bool? Negated;
-        /// <summary>
-        /// The property to filter.
-        /// </summary>
         public readonly string Property;
-        /// <summary>
-        /// The property value to filter.
-        /// </summary>
         public readonly string PropertyValue;
 
         [OutputConstructor]

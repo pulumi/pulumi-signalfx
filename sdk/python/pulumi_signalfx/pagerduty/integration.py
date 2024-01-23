@@ -19,9 +19,9 @@ class IntegrationArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Integration resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] api_key: PagerDuty API key.
-        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] api_key: PagerDuty API key
+        :param pulumi.Input[str] name: Name of the integration
         """
         pulumi.set(__self__, "enabled", enabled)
         if api_key is not None:
@@ -33,7 +33,7 @@ class IntegrationArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -45,7 +45,7 @@ class IntegrationArgs:
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        PagerDuty API key.
+        PagerDuty API key
         """
         return pulumi.get(self, "api_key")
 
@@ -57,7 +57,7 @@ class IntegrationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration.
+        Name of the integration
         """
         return pulumi.get(self, "name")
 
@@ -74,9 +74,9 @@ class _IntegrationState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
-        :param pulumi.Input[str] api_key: PagerDuty API key.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] api_key: PagerDuty API key
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] name: Name of the integration
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -89,7 +89,7 @@ class _IntegrationState:
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        PagerDuty API key.
+        PagerDuty API key
         """
         return pulumi.get(self, "api_key")
 
@@ -101,7 +101,7 @@ class _IntegrationState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -113,7 +113,7 @@ class _IntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration.
+        Name of the integration
         """
         return pulumi.get(self, "name")
 
@@ -132,11 +132,11 @@ class Integration(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        SignalFx PagerDuty integrations
+        Splunk Observability Cloud PagerDuty integrations.
 
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -146,12 +146,23 @@ class Integration(pulumi.CustomResource):
             api_key="1234567890",
             enabled=True)
         ```
+        ## Arguments
+
+        * `name` - (Required) Name of the integration.
+        * `enabled` - (Required) Whether the integration is enabled.
+        * `api_key` - (Required) PagerDuty API key.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the integration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_key: PagerDuty API key.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] api_key: PagerDuty API key
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] name: Name of the integration
         """
         ...
     @overload
@@ -160,11 +171,11 @@ class Integration(pulumi.CustomResource):
                  args: IntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        SignalFx PagerDuty integrations
+        Splunk Observability Cloud PagerDuty integrations.
 
-        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+        > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -174,6 +185,17 @@ class Integration(pulumi.CustomResource):
             api_key="1234567890",
             enabled=True)
         ```
+        ## Arguments
+
+        * `name` - (Required) Name of the integration.
+        * `enabled` - (Required) Whether the integration is enabled.
+        * `api_key` - (Required) PagerDuty API key.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the integration.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -229,9 +251,9 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_key: PagerDuty API key.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
-        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] api_key: PagerDuty API key
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
+        :param pulumi.Input[str] name: Name of the integration
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,7 +268,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[Optional[str]]:
         """
-        PagerDuty API key.
+        PagerDuty API key
         """
         return pulumi.get(self, "api_key")
 
@@ -254,7 +276,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether the integration is enabled.
+        Whether the integration is enabled or not
         """
         return pulumi.get(self, "enabled")
 
@@ -262,7 +284,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the integration.
+        Name of the integration
         """
         return pulumi.get(self, "name")
 

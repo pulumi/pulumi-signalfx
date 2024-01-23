@@ -18,13 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
+ * Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
  * 
- * &gt; **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+ * Splunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.
  * 
- * &gt; **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+ * &gt; **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -62,32 +62,50 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * * `description` - (Required) The description for this muting rule
+ * * `start_time` - (Required) Starting time of an alert muting rule as a Unit time stamp in seconds.
+ * * `stop_time` - (Optional) Stop time of an alert muting rule as a Unix time stamp in seconds.
+ * * `detectors` - (Optional) A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+ * * `filter` - (Optional) Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+ *   * `property` - (Required) The property to filter.
+ *   * `property_value` - (Required) The property value to filter.
+ *   * `negated` - (Optional) Determines if this is a &#34;not&#34; filter. Defaults to `false`.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the alert muting rule.
+ * * `effective_start_time`
+ * 
  */
 @ResourceType(type="signalfx:index/alertMutingRule:AlertMutingRule")
 public class AlertMutingRule extends com.pulumi.resources.CustomResource {
     /**
-     * The description for this muting rule
+     * description of the rule
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description for this muting rule
+     * @return description of the rule
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+     * detectors to which this muting rule applies
      * 
      */
     @Export(name="detectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> detectors;
 
     /**
-     * @return A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+     * @return detectors to which this muting rule applies
      * 
      */
     public Output<Optional<List<String>>> detectors() {
@@ -100,42 +118,42 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
         return this.effectiveStartTime;
     }
     /**
-     * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+     * list of alert muting filters for this rule
      * 
      */
     @Export(name="filters", refs={List.class,AlertMutingRuleFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertMutingRuleFilter>> filters;
 
     /**
-     * @return Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+     * @return list of alert muting filters for this rule
      * 
      */
     public Output<Optional<List<AlertMutingRuleFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
     /**
-     * Starting time of an alert muting rule as a Unit time stamp in seconds.
+     * starting time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> startTime;
 
     /**
-     * @return Starting time of an alert muting rule as a Unit time stamp in seconds.
+     * @return starting time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     public Output<Integer> startTime() {
         return this.startTime;
     }
     /**
-     * Stop time of an alert muting rule as a Unix time stamp in seconds.
+     * stop time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     @Export(name="stopTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stopTime;
 
     /**
-     * @return Stop time of an alert muting rule as a Unix time stamp in seconds.
+     * @return stop time of an alert muting rule as a Unix timestamp, in seconds
      * 
      */
     public Output<Optional<Integer>> stopTime() {

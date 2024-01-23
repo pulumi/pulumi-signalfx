@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This special type of chart displays a Data Table. This Table can be grouped by a Dimension.
+ * This special type of chart displays a data table. This table can be grouped by a dimension.
  *
- * ## Example Usage
+ * ## Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +24,22 @@ import * as utilities from "./utilities";
  *     programText: "A = data('cpu.usage.total').publish(label='CPU Total')",
  * });
  * ```
+ *
+ * ## Arguments
+ *
+ * The following arguments are supported in the resource block:
+ *
+ * * `name` - (Required) Name of the table chart.
+ * * `programText` - (Required) The SignalFlow for your Data Table Chart
+ * * `description` - (Optional) Description of the table chart.
+ * * `groupBy` - (Optional) Dimension to group by
+ *
+ * ## Attributes
+ *
+ * In a addition to all arguments above, the following attributes are exported:
+ *
+ * * `id` - The ID of the chart.
+ * * `url` - The URL of the chart.
  */
 export class TableChart extends pulumi.CustomResource {
     /**
@@ -54,7 +70,7 @@ export class TableChart extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the table chart.
+     * Description of the chart (Optional)
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -62,7 +78,7 @@ export class TableChart extends pulumi.CustomResource {
      */
     public readonly disableSampling!: pulumi.Output<boolean | undefined>;
     /**
-     * Dimension to group by
+     * Properties to group by in the Table (in nesting order)
      */
     public readonly groupBies!: pulumi.Output<string[] | undefined>;
     /**
@@ -78,11 +94,11 @@ export class TableChart extends pulumi.CustomResource {
      */
     public readonly minimumResolution!: pulumi.Output<number | undefined>;
     /**
-     * Name of the table chart.
+     * Name of the chart
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The SignalFlow for your Data Table Chart
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     public readonly programText!: pulumi.Output<string>;
     /**
@@ -98,7 +114,7 @@ export class TableChart extends pulumi.CustomResource {
      */
     public readonly unitPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The URL of the chart.
+     * URL of the chart
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
     /**
@@ -161,7 +177,7 @@ export class TableChart extends pulumi.CustomResource {
  */
 export interface TableChartState {
     /**
-     * Description of the table chart.
+     * Description of the chart (Optional)
      */
     description?: pulumi.Input<string>;
     /**
@@ -169,7 +185,7 @@ export interface TableChartState {
      */
     disableSampling?: pulumi.Input<boolean>;
     /**
-     * Dimension to group by
+     * Properties to group by in the Table (in nesting order)
      */
     groupBies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -185,11 +201,11 @@ export interface TableChartState {
      */
     minimumResolution?: pulumi.Input<number>;
     /**
-     * Name of the table chart.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * The SignalFlow for your Data Table Chart
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText?: pulumi.Input<string>;
     /**
@@ -205,7 +221,7 @@ export interface TableChartState {
      */
     unitPrefix?: pulumi.Input<string>;
     /**
-     * The URL of the chart.
+     * URL of the chart
      */
     url?: pulumi.Input<string>;
     /**
@@ -219,7 +235,7 @@ export interface TableChartState {
  */
 export interface TableChartArgs {
     /**
-     * Description of the table chart.
+     * Description of the chart (Optional)
      */
     description?: pulumi.Input<string>;
     /**
@@ -227,7 +243,7 @@ export interface TableChartArgs {
      */
     disableSampling?: pulumi.Input<boolean>;
     /**
-     * Dimension to group by
+     * Properties to group by in the Table (in nesting order)
      */
     groupBies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -243,11 +259,11 @@ export interface TableChartArgs {
      */
     minimumResolution?: pulumi.Input<number>;
     /**
-     * Name of the table chart.
+     * Name of the chart
      */
     name?: pulumi.Input<string>;
     /**
-     * The SignalFlow for your Data Table Chart
+     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
      */
     programText: pulumi.Input<string>;
     /**

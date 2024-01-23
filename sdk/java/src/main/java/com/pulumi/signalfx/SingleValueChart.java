@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * If the time period is in the past, the number represents the value of the metric near the end of the time period.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -64,60 +64,95 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `name` - (Required) Name of the chart.
+ * * `program_text` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+ * * `description` - (Optional) Description of the chart.
+ * * `color_by` - (Optional) Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+ * * `color_scale` - (Optional. `color_by` must be `&#34;Scale&#34;`) Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+ *     * `gt` - (Optional) Indicates the lower threshold non-inclusive value for this range.
+ *     * `gte` - (Optional) Indicates the lower threshold inclusive value for this range.
+ *     * `lt` - (Optional) Indicates the upper threshold non-inculsive value for this range.
+ *     * `lte` - (Optional) Indicates the upper threshold inclusive value for this range.
+ *     * `color` - (Required) The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+ * * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
+ *     * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+ *     * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+ *     * `color` - (Optional) The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+ *     * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+ *     * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+ * * `unit_prefix` - (Optional) Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+ * * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints
+ * * `refresh_interval` - (Optional) How often (in seconds) to refresh the value.
+ * * `max_precision` - (Optional) The maximum precision to for value displayed.
+ * * `is_timestamp_hidden` - (Optional) Whether to hide the timestamp in the chart. `false` by default.
+ * * `secondary_visualization` - (Optional) The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
+ * * `show_spark_line` - (Optional) Whether to show a trend line below the current value. `false` by default.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the chart.
+ * * `url` - The URL of the chart.
+ * 
  */
 @ResourceType(type="signalfx:index/singleValueChart:SingleValueChart")
 public class SingleValueChart extends com.pulumi.resources.CustomResource {
     /**
-     * Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+     * (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
      * 
      */
     @Export(name="colorBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> colorBy;
 
     /**
-     * @return Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
+     * @return (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
      * 
      */
     public Output<Optional<String>> colorBy() {
         return Codegen.optional(this.colorBy);
     }
     /**
-     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * Single color range including both the color to display for that range and the borders of the range
      * 
      */
     @Export(name="colorScales", refs={List.class,SingleValueChartColorScale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SingleValueChartColorScale>> colorScales;
 
     /**
-     * @return Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+     * @return Single color range including both the color to display for that range and the borders of the range
      * 
      */
     public Output<Optional<List<SingleValueChartColorScale>>> colorScales() {
         return Codegen.optional(this.colorScales);
     }
     /**
-     * Description of the chart.
+     * Description of the chart (Optional)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart.
+     * @return Description of the chart (Optional)
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to hide the timestamp in the chart. `false` by default.
+     * (false by default) Whether to hide the timestamp in the chart
      * 
      */
     @Export(name="isTimestampHidden", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isTimestampHidden;
 
     /**
-     * @return Whether to hide the timestamp in the chart. `false` by default.
+     * @return (false by default) Whether to hide the timestamp in the chart
      * 
      */
     public Output<Optional<Boolean>> isTimestampHidden() {
@@ -138,84 +173,84 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maxDelay);
     }
     /**
-     * The maximum precision to for value displayed.
+     * The maximum precision to for values displayed in the list
      * 
      */
     @Export(name="maxPrecision", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPrecision;
 
     /**
-     * @return The maximum precision to for value displayed.
+     * @return The maximum precision to for values displayed in the list
      * 
      */
     public Output<Optional<Integer>> maxPrecision() {
         return Codegen.optional(this.maxPrecision);
     }
     /**
-     * Name of the chart.
+     * Name of the chart
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the chart.
+     * @return Name of the chart
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * How often (in seconds) to refresh the value.
+     * How often (in seconds) to refresh the values of the list
      * 
      */
     @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
-     * @return How often (in seconds) to refresh the value.
+     * @return How often (in seconds) to refresh the values of the list
      * 
      */
     public Output<Optional<Integer>> refreshInterval() {
         return Codegen.optional(this.refreshInterval);
     }
     /**
-     * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+     * (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
      * 
      */
     @Export(name="secondaryVisualization", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryVisualization;
 
     /**
-     * @return The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the SignalFx default is used (`None`).
+     * @return (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
      * 
      */
     public Output<Optional<String>> secondaryVisualization() {
         return Codegen.optional(this.secondaryVisualization);
     }
     /**
-     * Whether to show a trend line below the current value. `false` by default.
+     * (false by default) Whether to show a trend line below the current value
      * 
      */
     @Export(name="showSparkLine", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> showSparkLine;
 
     /**
-     * @return Whether to show a trend line below the current value. `false` by default.
+     * @return (false by default) Whether to show a trend line below the current value
      * 
      */
     public Output<Optional<Boolean>> showSparkLine() {
@@ -236,42 +271,42 @@ public class SingleValueChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timezone);
     }
     /**
-     * Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
-     * @return Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
+     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
      * 
      */
     public Output<Optional<String>> unitPrefix() {
         return Codegen.optional(this.unitPrefix);
     }
     /**
-     * The URL of the chart.
+     * URL of the chart
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the chart.
+     * @return URL of the chart
      * 
      */
     public Output<String> url() {
         return this.url;
     }
     /**
-     * Plot-level customization options, associated with a publish statement.
+     * Plot-level customization options, associated with a publish statement
      * 
      */
     @Export(name="vizOptions", refs={List.class,SingleValueChartVizOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SingleValueChartVizOption>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement.
+     * @return Plot-level customization options, associated with a publish statement
      * 
      */
     public Output<Optional<List<SingleValueChartVizOption>>> vizOptions() {

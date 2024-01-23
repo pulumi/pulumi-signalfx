@@ -13,18 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartAxisLeftWatermark {
-    /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
-     * 
-     */
     private @Nullable String label;
     private Double value;
 
     private TimeChartAxisLeftWatermark() {}
-    /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
-     * 
-     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }

@@ -14,41 +14,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGrid {
-    /**
-     * @return List of IDs of the charts to display.
-     * 
-     */
     private List<String> chartIds;
-    /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
-     * 
-     */
     private @Nullable Integer height;
-    /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-     * 
-     */
     private @Nullable Integer width;
 
     private DashboardGrid() {}
-    /**
-     * @return List of IDs of the charts to display.
-     * 
-     */
     public List<String> chartIds() {
         return this.chartIds;
     }
-    /**
-     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
-     * 
-     */
     public Optional<Integer> height() {
         return Optional.ofNullable(this.height);
     }
-    /**
-     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-     * 
-     */
     public Optional<Integer> width() {
         return Optional.ofNullable(this.width);
     }

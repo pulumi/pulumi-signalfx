@@ -17,11 +17,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Observability Cloud ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/Observability/admin/notif-services/servicenow.html).
+ * ServiceNow integrations. For help with this integration see [Integration with ServiceNow](https://docs.splunk.com/observability/en/admin/notif-services/servicenow.html).
  * 
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -57,60 +57,85 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `username` - (Required) User name used to authenticate the ServiceNow integration.
+ * * `password` - (Required) Password used to authenticate the ServiceNow integration.
+ * * `instance_name` - (Required) Name of the ServiceNow instance, for example `myinst.service-now.com`.
+ * * `issue_type` - (Required) The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
+ * * `alert_triggered_payload_template` - (Optional) A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+ * * `alert_resolved_payload_template` - (Optional) A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the integration.
+ * 
  */
 @ResourceType(type="signalfx:servicenow/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
+     * ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     @Export(name="alertResolvedPayloadTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertResolvedPayloadTemplate;
 
     /**
-     * @return A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * @return A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
+     * ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     public Output<Optional<String>> alertResolvedPayloadTemplate() {
         return Codegen.optional(this.alertResolvedPayloadTemplate);
     }
     /**
-     * A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
+     * to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     @Export(name="alertTriggeredPayloadTemplate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertTriggeredPayloadTemplate;
 
     /**
-     * @return A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
+     * @return A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
+     * to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
+     * ServiceNow. See API reference for details.
      * 
      */
     public Output<Optional<String>> alertTriggeredPayloadTemplate() {
         return Codegen.optional(this.alertTriggeredPayloadTemplate);
     }
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Name of the ServiceNow instance, for example `myinst.service-now.com`.
+     * Name of the ServiceNow instance, for example `myInstances.service-now.com`.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return Name of the ServiceNow instance, for example `myinst.service-now.com`.
+     * @return Name of the ServiceNow instance, for example `myInstances.service-now.com`.
      * 
      */
     public Output<String> instanceName() {
@@ -131,14 +156,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.issueType;
     }
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Output<String> name() {

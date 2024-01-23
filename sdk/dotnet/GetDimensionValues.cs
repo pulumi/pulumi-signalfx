@@ -14,7 +14,15 @@ namespace Pulumi.SignalFx
         /// <summary>
         /// Use this data source to get a list of dimension values matching the provided query.
         /// 
-        /// &gt; **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.
+        /// &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+        /// 
+        /// ## Arguments
+        /// 
+        /// * `query`
+        /// 
+        /// ## Attributes
+        /// 
+        /// `values` is set to the list of dimension values.
         /// </summary>
         public static Task<GetDimensionValuesResult> InvokeAsync(GetDimensionValuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesArgs(), options.WithDefaults());
@@ -22,7 +30,15 @@ namespace Pulumi.SignalFx
         /// <summary>
         /// Use this data source to get a list of dimension values matching the provided query.
         /// 
-        /// &gt; **NOTE** This data source only allows 1000 values, as it's kinda nuts to make anything with `for_each` that big in SignalFx. This is negotiable.
+        /// &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
+        /// 
+        /// ## Arguments
+        /// 
+        /// * `query`
+        /// 
+        /// ## Attributes
+        /// 
+        /// `values` is set to the list of dimension values.
         /// </summary>
         public static Output<GetDimensionValuesResult> Invoke(GetDimensionValuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDimensionValuesResult>("signalfx:index/getDimensionValues:getDimensionValues", args ?? new GetDimensionValuesInvokeArgs(), options.WithDefaults());

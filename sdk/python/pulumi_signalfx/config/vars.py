@@ -18,21 +18,21 @@ class _ExportableConfig(types.ModuleType):
     @property
     def api_url(self) -> Optional[str]:
         """
-        API URL for your SignalFx org, may include a realm
+        API URL for your Splunk Observability Cloud org, may include a realm
         """
         return __config__.get('apiUrl')
 
     @property
     def auth_token(self) -> Optional[str]:
         """
-        SignalFx auth token
+        Splunk Observability Cloud auth token
         """
         return __config__.get('authToken')
 
     @property
     def custom_app_url(self) -> Optional[str]:
         """
-        Application URL for your SignalFx org, often customized for organizations using SSO
+        Application URL for your Splunk Observability Cloud org, often customized for organizations using SSO
         """
         return __config__.get('customAppUrl')
 

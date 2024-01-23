@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// Manage SignalFx [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
+    /// Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // A global link to SignalFx dashboard.
+    ///     // A global link to Splunk Observability Cloud dashboard.
     ///     var myDataLink = new SignalFx.DataLink("myDataLink", new()
     ///     {
     ///         PropertyName = "pname",
@@ -62,24 +62,54 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// The following arguments are supported in the resource block:
+    /// 
+    /// * `property_name` - (Optional) Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+    /// * `property_value` - (Optional) Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+    /// * `context_dashboard_id` - (Optional) If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+    /// * `target_external_url` - (Optional) Link to an external URL
+    ///   * `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+    ///   * `url`- (Required) URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
+    ///   * `time_format` - (Optional) [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
+    ///   * `minimum_time_window` - (Optional) The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
+    ///   * `property_key_mapping` - Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+    /// * `target_signalfx_dashboard` - (Optional) Link to a Splunk Observability Cloud dashboard
+    ///   * `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+    ///   * `is_default` - (Optional) Flag that designates a target as the default for a data link object. `true` by default
+    ///   * `dashboard_id` - (Required) SignalFx-assigned ID of the dashboard link target
+    ///   * `dashboard_group_id` - (Required) SignalFx-assigned ID of the dashboard link target's dashboard group
+    /// * `target_splunk` - (Optional) Link to an external URL
+    ///   * `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+    ///   * `property_key_mapping` - Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the link.
     /// </summary>
     [SignalFxResourceType("signalfx:index/dataLink:DataLink")]
     public partial class DataLink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+        /// The dashobard ID to which this data link will be applied
         /// </summary>
         [Output("contextDashboardId")]
         public Output<string?> ContextDashboardId { get; private set; } = null!;
 
         /// <summary>
-        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
+        /// `property_name`.
         /// </summary>
         [Output("propertyName")]
         public Output<string?> PropertyName { get; private set; } = null!;
 
         /// <summary>
-        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
+        /// `property_name`.
         /// </summary>
         [Output("propertyValue")]
         public Output<string?> PropertyValue { get; private set; } = null!;
@@ -91,13 +121,13 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.DataLinkTargetExternalUrl>> TargetExternalUrls { get; private set; } = null!;
 
         /// <summary>
-        /// Link to a SignalFx dashboard
+        /// Link to a Splunk Observability Cloud dashboard
         /// </summary>
         [Output("targetSignalfxDashboards")]
         public Output<ImmutableArray<Outputs.DataLinkTargetSignalfxDashboard>> TargetSignalfxDashboards { get; private set; } = null!;
 
         /// <summary>
-        /// Link to an external URL
+        /// Link to a Splunk instance
         /// </summary>
         [Output("targetSplunks")]
         public Output<ImmutableArray<Outputs.DataLinkTargetSplunk>> TargetSplunks { get; private set; } = null!;
@@ -149,19 +179,21 @@ namespace Pulumi.SignalFx
     public sealed class DataLinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+        /// The dashobard ID to which this data link will be applied
         /// </summary>
         [Input("contextDashboardId")]
         public Input<string>? ContextDashboardId { get; set; }
 
         /// <summary>
-        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
+        /// `property_name`.
         /// </summary>
         [Input("propertyName")]
         public Input<string>? PropertyName { get; set; }
 
         /// <summary>
-        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
+        /// `property_name`.
         /// </summary>
         [Input("propertyValue")]
         public Input<string>? PropertyValue { get; set; }
@@ -182,7 +214,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DataLinkTargetSignalfxDashboardArgs>? _targetSignalfxDashboards;
 
         /// <summary>
-        /// Link to a SignalFx dashboard
+        /// Link to a Splunk Observability Cloud dashboard
         /// </summary>
         public InputList<Inputs.DataLinkTargetSignalfxDashboardArgs> TargetSignalfxDashboards
         {
@@ -194,7 +226,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DataLinkTargetSplunkArgs>? _targetSplunks;
 
         /// <summary>
-        /// Link to an external URL
+        /// Link to a Splunk instance
         /// </summary>
         public InputList<Inputs.DataLinkTargetSplunkArgs> TargetSplunks
         {
@@ -211,19 +243,21 @@ namespace Pulumi.SignalFx
     public sealed class DataLinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
+        /// The dashobard ID to which this data link will be applied
         /// </summary>
         [Input("contextDashboardId")]
         public Input<string>? ContextDashboardId { get; set; }
 
         /// <summary>
-        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify `property_name`.
+        /// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
+        /// `property_name`.
         /// </summary>
         [Input("propertyName")]
         public Input<string>? PropertyName { get; set; }
 
         /// <summary>
-        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `property_name`.
+        /// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
+        /// `property_name`.
         /// </summary>
         [Input("propertyValue")]
         public Input<string>? PropertyValue { get; set; }
@@ -244,7 +278,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DataLinkTargetSignalfxDashboardGetArgs>? _targetSignalfxDashboards;
 
         /// <summary>
-        /// Link to a SignalFx dashboard
+        /// Link to a Splunk Observability Cloud dashboard
         /// </summary>
         public InputList<Inputs.DataLinkTargetSignalfxDashboardGetArgs> TargetSignalfxDashboards
         {
@@ -256,7 +290,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DataLinkTargetSplunkGetArgs>? _targetSplunks;
 
         /// <summary>
-        /// Link to an external URL
+        /// Link to a Splunk instance
         /// </summary>
         public InputList<Inputs.DataLinkTargetSplunkGetArgs> TargetSplunks
         {

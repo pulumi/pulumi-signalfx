@@ -45,33 +45,33 @@ class TimeChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a TimeChart resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
-        :param pulumi.Input[int] axes_precision: Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
-        :param pulumi.Input['TimeChartAxisLeftArgs'] axis_left: Set of axis options.
-        :param pulumi.Input['TimeChartAxisRightArgs'] axis_right: Set of axis options.
-        :param pulumi.Input[str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[str] description: Description of the chart.
-        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-        :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-        :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[bool] axes_include_zero: Force y-axes to always show zero
+        :param pulumi.Input[int] axes_precision: Force a specific number of significant digits in the y-axis
+        :param pulumi.Input[str] color_by: (Dimension by default) Must be "Dimension" or "Metric"
+        :param pulumi.Input[str] description: Description of the chart
+        :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]] event_options: Event display customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]] histogram_options: Options specific to Histogram charts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]] legend_options_fields: List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] on_chart_legend_dimension: Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+               'plot_label' and any dimension.
+        :param pulumi.Input[str] plot_type: (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+               "ColumnChart", or "Histogram"
+        :param pulumi.Input[bool] show_data_markers: (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        :param pulumi.Input[bool] show_event_lines: (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        :param pulumi.Input[bool] stacked: (false by default) Whether area and bar charts in the visualization should be stacked
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the chart
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
-        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
         """
         pulumi.set(__self__, "program_text", program_text)
         if axes_include_zero is not None:
@@ -137,7 +137,7 @@ class TimeChartArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -149,7 +149,7 @@ class TimeChartArgs:
     @pulumi.getter(name="axesIncludeZero")
     def axes_include_zero(self) -> Optional[pulumi.Input[bool]]:
         """
-        Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        Force y-axes to always show zero
         """
         return pulumi.get(self, "axes_include_zero")
 
@@ -161,7 +161,7 @@ class TimeChartArgs:
     @pulumi.getter(name="axesPrecision")
     def axes_precision(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+        Force a specific number of significant digits in the y-axis
         """
         return pulumi.get(self, "axes_precision")
 
@@ -172,9 +172,6 @@ class TimeChartArgs:
     @property
     @pulumi.getter(name="axisLeft")
     def axis_left(self) -> Optional[pulumi.Input['TimeChartAxisLeftArgs']]:
-        """
-        Set of axis options.
-        """
         return pulumi.get(self, "axis_left")
 
     @axis_left.setter
@@ -184,9 +181,6 @@ class TimeChartArgs:
     @property
     @pulumi.getter(name="axisRight")
     def axis_right(self) -> Optional[pulumi.Input['TimeChartAxisRightArgs']]:
-        """
-        Set of axis options.
-        """
         return pulumi.get(self, "axis_right")
 
     @axis_right.setter
@@ -197,7 +191,7 @@ class TimeChartArgs:
     @pulumi.getter(name="colorBy")
     def color_by(self) -> Optional[pulumi.Input[str]]:
         """
-        Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        (Dimension by default) Must be "Dimension" or "Metric"
         """
         return pulumi.get(self, "color_by")
 
@@ -209,7 +203,7 @@ class TimeChartArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart.
+        Description of the chart
         """
         return pulumi.get(self, "description")
 
@@ -221,7 +215,7 @@ class TimeChartArgs:
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        (false by default) If false, samples a subset of the output MTS, which improves UI performance
         """
         return pulumi.get(self, "disable_sampling")
 
@@ -233,7 +227,7 @@ class TimeChartArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -245,7 +239,7 @@ class TimeChartArgs:
     @pulumi.getter(name="eventOptions")
     def event_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
         """
-        Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        Event display customization options, associated with a publish statement
         """
         return pulumi.get(self, "event_options")
 
@@ -257,7 +251,7 @@ class TimeChartArgs:
     @pulumi.getter(name="histogramOptions")
     def histogram_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
         """
-        Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        Options specific to Histogram charts
         """
         return pulumi.get(self, "histogram_options")
 
@@ -269,7 +263,7 @@ class TimeChartArgs:
     @pulumi.getter(name="legendFieldsToHides")
     def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
         """
         warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
         pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
@@ -284,7 +278,7 @@ class TimeChartArgs:
     @pulumi.getter(name="legendOptionsFields")
     def legend_options_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
         """
-        List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        List of property and enabled flags to control the order and presence of datatable labels in a chart.
         """
         return pulumi.get(self, "legend_options_fields")
 
@@ -296,7 +290,7 @@ class TimeChartArgs:
     @pulumi.getter(name="maxDelay")
     def max_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        How long (in seconds) to wait for late datapoints.
+        How long (in seconds) to wait for late datapoints
         """
         return pulumi.get(self, "max_delay")
 
@@ -308,7 +302,7 @@ class TimeChartArgs:
     @pulumi.getter(name="minimumResolution")
     def minimum_resolution(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum resolution (in seconds) to use for computing the underlying program.
+        The minimum resolution (in seconds) to use for computing the underlying program
         """
         return pulumi.get(self, "minimum_resolution")
 
@@ -320,7 +314,7 @@ class TimeChartArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -332,7 +326,8 @@ class TimeChartArgs:
     @pulumi.getter(name="onChartLegendDimension")
     def on_chart_legend_dimension(self) -> Optional[pulumi.Input[str]]:
         """
-        Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+        'plot_label' and any dimension.
         """
         return pulumi.get(self, "on_chart_legend_dimension")
 
@@ -344,7 +339,8 @@ class TimeChartArgs:
     @pulumi.getter(name="plotType")
     def plot_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+        "ColumnChart", or "Histogram"
         """
         return pulumi.get(self, "plot_type")
 
@@ -356,7 +352,7 @@ class TimeChartArgs:
     @pulumi.getter(name="showDataMarkers")
     def show_data_markers(self) -> Optional[pulumi.Input[bool]]:
         """
-        Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        (false by default) Show markers (circles) for each datapoint used to draw line or area charts
         """
         return pulumi.get(self, "show_data_markers")
 
@@ -368,7 +364,7 @@ class TimeChartArgs:
     @pulumi.getter(name="showEventLines")
     def show_event_lines(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
         """
         return pulumi.get(self, "show_event_lines")
 
@@ -380,7 +376,7 @@ class TimeChartArgs:
     @pulumi.getter
     def stacked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether area and bar charts in the visualization should be stacked. `false` by default.
+        (false by default) Whether area and bar charts in the visualization should be stacked
         """
         return pulumi.get(self, "stacked")
 
@@ -392,7 +388,7 @@ class TimeChartArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -419,7 +415,7 @@ class TimeChartArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -431,7 +427,7 @@ class TimeChartArgs:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
@@ -443,7 +439,7 @@ class TimeChartArgs:
     @pulumi.getter(name="unitPrefix")
     def unit_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        (Metric by default) Must be "Metric" or "Binary"
         """
         return pulumi.get(self, "unit_prefix")
 
@@ -455,7 +451,7 @@ class TimeChartArgs:
     @pulumi.getter(name="vizOptions")
     def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
         """
-        Plot-level customization options, associated with a publish statement.
+        Plot-level customization options, associated with a publish statement
         """
         return pulumi.get(self, "viz_options")
 
@@ -497,34 +493,34 @@ class _TimeChartState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering TimeChart resources.
-        :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
-        :param pulumi.Input[int] axes_precision: Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
-        :param pulumi.Input['TimeChartAxisLeftArgs'] axis_left: Set of axis options.
-        :param pulumi.Input['TimeChartAxisRightArgs'] axis_right: Set of axis options.
-        :param pulumi.Input[str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[str] description: Description of the chart.
-        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-        :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-        :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[bool] axes_include_zero: Force y-axes to always show zero
+        :param pulumi.Input[int] axes_precision: Force a specific number of significant digits in the y-axis
+        :param pulumi.Input[str] color_by: (Dimension by default) Must be "Dimension" or "Metric"
+        :param pulumi.Input[str] description: Description of the chart
+        :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]] event_options: Event display customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]] histogram_options: Options specific to Histogram charts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]] legend_options_fields: List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] on_chart_legend_dimension: Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+               'plot_label' and any dimension.
+        :param pulumi.Input[str] plot_type: (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+               "ColumnChart", or "Histogram"
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[bool] show_data_markers: (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        :param pulumi.Input[bool] show_event_lines: (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        :param pulumi.Input[bool] stacked: (false by default) Whether area and bar charts in the visualization should be stacked
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the chart
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
-        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[str] url: The URL of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
+        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
         """
         if axes_include_zero is not None:
             pulumi.set(__self__, "axes_include_zero", axes_include_zero)
@@ -593,7 +589,7 @@ class _TimeChartState:
     @pulumi.getter(name="axesIncludeZero")
     def axes_include_zero(self) -> Optional[pulumi.Input[bool]]:
         """
-        Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        Force y-axes to always show zero
         """
         return pulumi.get(self, "axes_include_zero")
 
@@ -605,7 +601,7 @@ class _TimeChartState:
     @pulumi.getter(name="axesPrecision")
     def axes_precision(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+        Force a specific number of significant digits in the y-axis
         """
         return pulumi.get(self, "axes_precision")
 
@@ -616,9 +612,6 @@ class _TimeChartState:
     @property
     @pulumi.getter(name="axisLeft")
     def axis_left(self) -> Optional[pulumi.Input['TimeChartAxisLeftArgs']]:
-        """
-        Set of axis options.
-        """
         return pulumi.get(self, "axis_left")
 
     @axis_left.setter
@@ -628,9 +621,6 @@ class _TimeChartState:
     @property
     @pulumi.getter(name="axisRight")
     def axis_right(self) -> Optional[pulumi.Input['TimeChartAxisRightArgs']]:
-        """
-        Set of axis options.
-        """
         return pulumi.get(self, "axis_right")
 
     @axis_right.setter
@@ -641,7 +631,7 @@ class _TimeChartState:
     @pulumi.getter(name="colorBy")
     def color_by(self) -> Optional[pulumi.Input[str]]:
         """
-        Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        (Dimension by default) Must be "Dimension" or "Metric"
         """
         return pulumi.get(self, "color_by")
 
@@ -653,7 +643,7 @@ class _TimeChartState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart.
+        Description of the chart
         """
         return pulumi.get(self, "description")
 
@@ -665,7 +655,7 @@ class _TimeChartState:
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        (false by default) If false, samples a subset of the output MTS, which improves UI performance
         """
         return pulumi.get(self, "disable_sampling")
 
@@ -677,7 +667,7 @@ class _TimeChartState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -689,7 +679,7 @@ class _TimeChartState:
     @pulumi.getter(name="eventOptions")
     def event_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartEventOptionArgs']]]]:
         """
-        Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        Event display customization options, associated with a publish statement
         """
         return pulumi.get(self, "event_options")
 
@@ -701,7 +691,7 @@ class _TimeChartState:
     @pulumi.getter(name="histogramOptions")
     def histogram_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartHistogramOptionArgs']]]]:
         """
-        Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        Options specific to Histogram charts
         """
         return pulumi.get(self, "histogram_options")
 
@@ -713,7 +703,7 @@ class _TimeChartState:
     @pulumi.getter(name="legendFieldsToHides")
     def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
         """
         warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
         pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
@@ -728,7 +718,7 @@ class _TimeChartState:
     @pulumi.getter(name="legendOptionsFields")
     def legend_options_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartLegendOptionsFieldArgs']]]]:
         """
-        List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        List of property and enabled flags to control the order and presence of datatable labels in a chart.
         """
         return pulumi.get(self, "legend_options_fields")
 
@@ -740,7 +730,7 @@ class _TimeChartState:
     @pulumi.getter(name="maxDelay")
     def max_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        How long (in seconds) to wait for late datapoints.
+        How long (in seconds) to wait for late datapoints
         """
         return pulumi.get(self, "max_delay")
 
@@ -752,7 +742,7 @@ class _TimeChartState:
     @pulumi.getter(name="minimumResolution")
     def minimum_resolution(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum resolution (in seconds) to use for computing the underlying program.
+        The minimum resolution (in seconds) to use for computing the underlying program
         """
         return pulumi.get(self, "minimum_resolution")
 
@@ -764,7 +754,7 @@ class _TimeChartState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -776,7 +766,8 @@ class _TimeChartState:
     @pulumi.getter(name="onChartLegendDimension")
     def on_chart_legend_dimension(self) -> Optional[pulumi.Input[str]]:
         """
-        Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+        'plot_label' and any dimension.
         """
         return pulumi.get(self, "on_chart_legend_dimension")
 
@@ -788,7 +779,8 @@ class _TimeChartState:
     @pulumi.getter(name="plotType")
     def plot_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+        "ColumnChart", or "Histogram"
         """
         return pulumi.get(self, "plot_type")
 
@@ -800,7 +792,7 @@ class _TimeChartState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -812,7 +804,7 @@ class _TimeChartState:
     @pulumi.getter(name="showDataMarkers")
     def show_data_markers(self) -> Optional[pulumi.Input[bool]]:
         """
-        Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        (false by default) Show markers (circles) for each datapoint used to draw line or area charts
         """
         return pulumi.get(self, "show_data_markers")
 
@@ -824,7 +816,7 @@ class _TimeChartState:
     @pulumi.getter(name="showEventLines")
     def show_event_lines(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
         """
         return pulumi.get(self, "show_event_lines")
 
@@ -836,7 +828,7 @@ class _TimeChartState:
     @pulumi.getter
     def stacked(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether area and bar charts in the visualization should be stacked. `false` by default.
+        (false by default) Whether area and bar charts in the visualization should be stacked
         """
         return pulumi.get(self, "stacked")
 
@@ -848,7 +840,7 @@ class _TimeChartState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -875,7 +867,7 @@ class _TimeChartState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -887,7 +879,7 @@ class _TimeChartState:
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
         """
-        Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
@@ -899,7 +891,7 @@ class _TimeChartState:
     @pulumi.getter(name="unitPrefix")
     def unit_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        (Metric by default) Must be "Metric" or "Binary"
         """
         return pulumi.get(self, "unit_prefix")
 
@@ -911,7 +903,7 @@ class _TimeChartState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the chart.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 
@@ -923,7 +915,7 @@ class _TimeChartState:
     @pulumi.getter(name="vizOptions")
     def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartVizOptionArgs']]]]:
         """
-        Plot-level customization options, associated with a publish statement.
+        Plot-level customization options, associated with a publish statement
         """
         return pulumi.get(self, "viz_options")
 
@@ -966,11 +958,11 @@ class TimeChart(pulumi.CustomResource):
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
+        Provides a Splunk Observability Cloud time chart resource. This can be used to create and manage the different types of time charts.
 
         Time charts display data points over a period of time.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -1004,35 +996,101 @@ class TimeChart(pulumi.CustomResource):
             )])
         ```
 
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the chart.
+        * `program_text` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        * `plot_type` - (Optional) The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
+        * `description` - (Optional) Description of the chart.
+        * `axes_precision` - (Optional) Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+        * `unit_prefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        * `color_by` - (Optional) Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        * `minimum_resolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
+        * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints.
+        * `timezone` - (Optional) A string denotes the geographic region associated with the time zone.
+        * `disable_sampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        * `time_range` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `axes_include_zero` - (Optional) Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        * `axis_left` - (Optional) Set of axis options.
+            * `label` - (Optional) Label of the left axis.
+            * `min_value` - (Optional) The minimum value for the left axis.
+            * `max_value` - (Optional) The maximum value for the left axis.
+            * `high_watermark` - (Optional) A line to draw as a high watermark.
+            * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
+            * `low_watermark`  - (Optional) A line to draw as a low watermark.
+            * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
+        * `axis_right` - (Optional) Set of axis options.
+            * `label` - (Optional) Label of the right axis.
+            * `min_value` - (Optional) The minimum value for the right axis.
+            * `max_value` - (Optional) The maximum value for the right axis.
+            * `high_watermark` - (Optional) A line to draw as a high watermark.
+            * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
+            * `low_watermark`  - (Optional) A line to draw as a low watermark.
+            * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
+        * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
+            * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+            * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+            * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+            * `axis` - (Optional) Y-axis associated with values for this plot. Must be either `right` or `left`.
+            * `plot_type` - (Optional) The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+            * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        * `event_options` - (Optional) Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+            * `label` - (Required) Label used in the publish statement that displays the event query you want to customize.
+            * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+            * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        * `histogram_options` - (Optional) Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+            * `color_theme` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        * `legend_fields_to_hide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        * `legend_options_fields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+            * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+            * `enabled` True or False depending on if you want the property to be shown or hidden.
+        * `on_chart_legend_dimension` - (Optional) Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        * `show_event_lines` - (Optional) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        * `show_data_markers` - (Optional) Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        * `stacked` - (Optional) Whether area and bar charts in the visualization should be stacked. `false` by default.
+        * `timezone` - (Optional) Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the chart.
+        * `url` - The URL of the chart.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
-        :param pulumi.Input[int] axes_precision: Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
-        :param pulumi.Input[pulumi.InputType['TimeChartAxisLeftArgs']] axis_left: Set of axis options.
-        :param pulumi.Input[pulumi.InputType['TimeChartAxisRightArgs']] axis_right: Set of axis options.
-        :param pulumi.Input[str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[str] description: Description of the chart.
-        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartEventOptionArgs']]]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartHistogramOptionArgs']]]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-        :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-        :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[bool] axes_include_zero: Force y-axes to always show zero
+        :param pulumi.Input[int] axes_precision: Force a specific number of significant digits in the y-axis
+        :param pulumi.Input[str] color_by: (Dimension by default) Must be "Dimension" or "Metric"
+        :param pulumi.Input[str] description: Description of the chart
+        :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartEventOptionArgs']]]] event_options: Event display customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartHistogramOptionArgs']]]] histogram_options: Options specific to Histogram charts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] on_chart_legend_dimension: Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+               'plot_label' and any dimension.
+        :param pulumi.Input[str] plot_type: (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+               "ColumnChart", or "Histogram"
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[bool] show_data_markers: (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        :param pulumi.Input[bool] show_event_lines: (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        :param pulumi.Input[bool] stacked: (false by default) Whether area and bar charts in the visualization should be stacked
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the chart
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
-        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
         """
         ...
     @overload
@@ -1041,11 +1099,11 @@ class TimeChart(pulumi.CustomResource):
                  args: TimeChartArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a SignalFx time chart resource. This can be used to create and manage the different types of time charts.
+        Provides a Splunk Observability Cloud time chart resource. This can be used to create and manage the different types of time charts.
 
         Time charts display data points over a period of time.
 
-        ## Example Usage
+        ## Example
 
         ```python
         import pulumi
@@ -1078,6 +1136,72 @@ class TimeChart(pulumi.CustomResource):
                 label="CPU Idle",
             )])
         ```
+
+        ## Arguments
+
+        The following arguments are supported in the resource block:
+
+        * `name` - (Required) Name of the chart.
+        * `program_text` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        * `plot_type` - (Optional) The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
+        * `description` - (Optional) Description of the chart.
+        * `axes_precision` - (Optional) Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+        * `unit_prefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        * `color_by` - (Optional) Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        * `minimum_resolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
+        * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints.
+        * `timezone` - (Optional) A string denotes the geographic region associated with the time zone.
+        * `disable_sampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        * `time_range` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        * `axes_include_zero` - (Optional) Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        * `axis_left` - (Optional) Set of axis options.
+            * `label` - (Optional) Label of the left axis.
+            * `min_value` - (Optional) The minimum value for the left axis.
+            * `max_value` - (Optional) The maximum value for the left axis.
+            * `high_watermark` - (Optional) A line to draw as a high watermark.
+            * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
+            * `low_watermark`  - (Optional) A line to draw as a low watermark.
+            * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
+        * `axis_right` - (Optional) Set of axis options.
+            * `label` - (Optional) Label of the right axis.
+            * `min_value` - (Optional) The minimum value for the right axis.
+            * `max_value` - (Optional) The maximum value for the right axis.
+            * `high_watermark` - (Optional) A line to draw as a high watermark.
+            * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
+            * `low_watermark`  - (Optional) A line to draw as a low watermark.
+            * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
+        * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
+            * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+            * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+            * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+            * `axis` - (Optional) Y-axis associated with values for this plot. Must be either `right` or `left`.
+            * `plot_type` - (Optional) The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+            * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
+            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        * `event_options` - (Optional) Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+            * `label` - (Required) Label used in the publish statement that displays the event query you want to customize.
+            * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+            * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        * `histogram_options` - (Optional) Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+            * `color_theme` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
+        * `legend_fields_to_hide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        * `legend_options_fields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+            * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+            * `enabled` True or False depending on if you want the property to be shown or hidden.
+        * `on_chart_legend_dimension` - (Optional) Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        * `show_event_lines` - (Optional) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        * `show_data_markers` - (Optional) Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        * `stacked` - (Optional) Whether area and bar charts in the visualization should be stacked. `false` by default.
+        * `timezone` - (Optional) Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
+
+        ## Attributes
+
+        In a addition to all arguments above, the following attributes are exported:
+
+        * `id` - The ID of the chart.
+        * `url` - The URL of the chart.
 
         :param str resource_name: The name of the resource.
         :param TimeChartArgs args: The arguments to use to populate this resource's properties.
@@ -1205,34 +1329,34 @@ class TimeChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] axes_include_zero: Force the chart to display zero on the y-axes, even if none of the data is near zero.
-        :param pulumi.Input[int] axes_precision: Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
-        :param pulumi.Input[pulumi.InputType['TimeChartAxisLeftArgs']] axis_left: Set of axis options.
-        :param pulumi.Input[pulumi.InputType['TimeChartAxisRightArgs']] axis_right: Set of axis options.
-        :param pulumi.Input[str] color_by: Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[str] description: Description of the chart.
-        :param pulumi.Input[bool] disable_sampling: If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartEventOptionArgs']]]] event_options: Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartHistogramOptionArgs']]]] histogram_options: Only used when `plot_type` is `"Histogram"`. Histogram specific options.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints.
-        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program.
-        :param pulumi.Input[str] name: Name of the chart.
-        :param pulumi.Input[str] on_chart_legend_dimension: Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
-        :param pulumi.Input[bool] show_data_markers: Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-        :param pulumi.Input[bool] show_event_lines: Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-        :param pulumi.Input[bool] stacked: Whether area and bar charts in the visualization should be stacked. `false` by default.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[bool] axes_include_zero: Force y-axes to always show zero
+        :param pulumi.Input[int] axes_precision: Force a specific number of significant digits in the y-axis
+        :param pulumi.Input[str] color_by: (Dimension by default) Must be "Dimension" or "Metric"
+        :param pulumi.Input[str] description: Description of the chart
+        :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartEventOptionArgs']]]] event_options: Event display customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartHistogramOptionArgs']]]] histogram_options: Options specific to Histogram charts
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legend_fields_to_hides: List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartLegendOptionsFieldArgs']]]] legend_options_fields: List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
+        :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
+        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] on_chart_legend_dimension: Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+               'plot_label' and any dimension.
+        :param pulumi.Input[str] plot_type: (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+               "ColumnChart", or "Histogram"
+        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[bool] show_data_markers: (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        :param pulumi.Input[bool] show_event_lines: (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        :param pulumi.Input[bool] stacked: (false by default) Whether area and bar charts in the visualization should be stacked
+        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the chart
-        :param pulumi.Input[int] time_range: How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-        :param pulumi.Input[str] timezone: Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
-        :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-        :param pulumi.Input[str] url: The URL of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
+        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TimeChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1272,7 +1396,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="axesIncludeZero")
     def axes_include_zero(self) -> pulumi.Output[Optional[bool]]:
         """
-        Force the chart to display zero on the y-axes, even if none of the data is near zero.
+        Force y-axes to always show zero
         """
         return pulumi.get(self, "axes_include_zero")
 
@@ -1280,31 +1404,25 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="axesPrecision")
     def axes_precision(self) -> pulumi.Output[Optional[int]]:
         """
-        Specifies the digits SignalFx displays for values plotted on the chart. Defaults to `3`.
+        Force a specific number of significant digits in the y-axis
         """
         return pulumi.get(self, "axes_precision")
 
     @property
     @pulumi.getter(name="axisLeft")
     def axis_left(self) -> pulumi.Output[Optional['outputs.TimeChartAxisLeft']]:
-        """
-        Set of axis options.
-        """
         return pulumi.get(self, "axis_left")
 
     @property
     @pulumi.getter(name="axisRight")
     def axis_right(self) -> pulumi.Output[Optional['outputs.TimeChartAxisRight']]:
-        """
-        Set of axis options.
-        """
         return pulumi.get(self, "axis_right")
 
     @property
     @pulumi.getter(name="colorBy")
     def color_by(self) -> pulumi.Output[Optional[str]]:
         """
-        Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
+        (Dimension by default) Must be "Dimension" or "Metric"
         """
         return pulumi.get(self, "color_by")
 
@@ -1312,7 +1430,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the chart.
+        Description of the chart
         """
         return pulumi.get(self, "description")
 
@@ -1320,7 +1438,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> pulumi.Output[Optional[bool]]:
         """
-        If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
+        (false by default) If false, samples a subset of the output MTS, which improves UI performance
         """
         return pulumi.get(self, "disable_sampling")
 
@@ -1328,7 +1446,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to end the visualization
         """
         return pulumi.get(self, "end_time")
 
@@ -1336,7 +1454,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="eventOptions")
     def event_options(self) -> pulumi.Output[Optional[Sequence['outputs.TimeChartEventOption']]]:
         """
-        Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
+        Event display customization options, associated with a publish statement
         """
         return pulumi.get(self, "event_options")
 
@@ -1344,7 +1462,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="histogramOptions")
     def histogram_options(self) -> pulumi.Output[Optional[Sequence['outputs.TimeChartHistogramOption']]]:
         """
-        Only used when `plot_type` is `"Histogram"`. Histogram specific options.
+        Options specific to Histogram charts
         """
         return pulumi.get(self, "histogram_options")
 
@@ -1352,7 +1470,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="legendFieldsToHides")
     def legend_fields_to_hides(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
+        List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
         """
         warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
         pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
@@ -1363,7 +1481,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="legendOptionsFields")
     def legend_options_fields(self) -> pulumi.Output[Optional[Sequence['outputs.TimeChartLegendOptionsField']]]:
         """
-        List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
+        List of property and enabled flags to control the order and presence of datatable labels in a chart.
         """
         return pulumi.get(self, "legend_options_fields")
 
@@ -1371,7 +1489,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="maxDelay")
     def max_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        How long (in seconds) to wait for late datapoints.
+        How long (in seconds) to wait for late datapoints
         """
         return pulumi.get(self, "max_delay")
 
@@ -1379,7 +1497,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="minimumResolution")
     def minimum_resolution(self) -> pulumi.Output[Optional[int]]:
         """
-        The minimum resolution (in seconds) to use for computing the underlying program.
+        The minimum resolution (in seconds) to use for computing the underlying program
         """
         return pulumi.get(self, "minimum_resolution")
 
@@ -1387,7 +1505,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the chart.
+        Name of the chart
         """
         return pulumi.get(self, "name")
 
@@ -1395,7 +1513,8 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="onChartLegendDimension")
     def on_chart_legend_dimension(self) -> pulumi.Output[Optional[str]]:
         """
-        Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
+        Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
+        'plot_label' and any dimension.
         """
         return pulumi.get(self, "on_chart_legend_dimension")
 
@@ -1403,7 +1522,8 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="plotType")
     def plot_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
+        "ColumnChart", or "Histogram"
         """
         return pulumi.get(self, "plot_type")
 
@@ -1411,7 +1531,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the chart. More info [in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
         """
         return pulumi.get(self, "program_text")
 
@@ -1419,7 +1539,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="showDataMarkers")
     def show_data_markers(self) -> pulumi.Output[Optional[bool]]:
         """
-        Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
+        (false by default) Show markers (circles) for each datapoint used to draw line or area charts
         """
         return pulumi.get(self, "show_data_markers")
 
@@ -1427,7 +1547,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="showEventLines")
     def show_event_lines(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
+        (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
         """
         return pulumi.get(self, "show_event_lines")
 
@@ -1435,7 +1555,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter
     def stacked(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether area and bar charts in the visualization should be stacked. `false` by default.
+        (false by default) Whether area and bar charts in the visualization should be stacked
         """
         return pulumi.get(self, "stacked")
 
@@ -1443,7 +1563,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        Seconds since epoch to start the visualization
         """
         return pulumi.get(self, "start_time")
 
@@ -1462,7 +1582,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output[Optional[int]]:
         """
-        How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
         """
         return pulumi.get(self, "time_range")
 
@@ -1470,7 +1590,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter
     def timezone(self) -> pulumi.Output[Optional[str]]:
         """
-        Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_supported_signalflow_time_zones). `"UTC"` by default.
+        The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         """
         return pulumi.get(self, "timezone")
 
@@ -1478,7 +1598,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="unitPrefix")
     def unit_prefix(self) -> pulumi.Output[Optional[str]]:
         """
-        Must be `"Metric"` or `"Binary`". `"Metric"` by default.
+        (Metric by default) Must be "Metric" or "Binary"
         """
         return pulumi.get(self, "unit_prefix")
 
@@ -1486,7 +1606,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        The URL of the chart.
+        URL of the chart
         """
         return pulumi.get(self, "url")
 
@@ -1494,7 +1614,7 @@ class TimeChart(pulumi.CustomResource):
     @pulumi.getter(name="vizOptions")
     def viz_options(self) -> pulumi.Output[Optional[Sequence['outputs.TimeChartVizOption']]]:
         """
-        Plot-level customization options, associated with a publish statement.
+        Plot-level customization options, associated with a publish statement
         """
         return pulumi.get(self, "viz_options")
 

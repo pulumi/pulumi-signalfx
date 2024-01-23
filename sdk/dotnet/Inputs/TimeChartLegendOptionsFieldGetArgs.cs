@@ -12,15 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartLegendOptionsFieldGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// True or False depending on if you want the property to be shown or hidden.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-        /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 

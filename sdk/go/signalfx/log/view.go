@@ -12,9 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first. A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+// You can add logs data to your Observability Cloud dashboards without turning your logs into metrics first.
 //
-// ## Example Usage
+// A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
+//
+// ## Example
 //
 // ```go
 // package main
@@ -67,28 +69,49 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// The following arguments are supported in the resource block:
+//
+// * `name` - (Required) Name of the log view.
+// * `programText` - (Required) Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+// * `description` - (Optional) Description of the log view.
+// * `timeRange` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+// * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// * `columns` - (Optional) The column headers to show on the log view.
+// * `sortOptions` - (Optional) The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+// * `defaultConnection` - (Optional) The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the log view.
+// * `url` - The URL of the log view.
 type View struct {
 	pulumi.CustomResourceState
 
-	// The column headers to show on the log view.
+	// Column configuration
 	Columns ViewColumnArrayOutput `pulumi:"columns"`
-	// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+	// default connection that the dashboard uses
 	DefaultConnection pulumi.StringPtrOutput `pulumi:"defaultConnection"`
-	// Description of the log view.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// Name of the log view.
+	// Name of the chart
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
-	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+	// Sorting options configuration
 	SortOptions ViewSortOptionArrayOutput `pulumi:"sortOptions"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
-	// The URL of the log view.
+	// URL of the chart
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -131,48 +154,48 @@ func GetView(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering View resources.
 type viewState struct {
-	// The column headers to show on the log view.
+	// Column configuration
 	Columns []ViewColumn `pulumi:"columns"`
-	// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+	// default connection that the dashboard uses
 	DefaultConnection *string `pulumi:"defaultConnection"`
-	// Description of the log view.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime *int `pulumi:"endTime"`
-	// Name of the log view.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText *string `pulumi:"programText"`
-	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+	// Sorting options configuration
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime *int `pulumi:"startTime"`
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange *int `pulumi:"timeRange"`
-	// The URL of the log view.
+	// URL of the chart
 	Url *string `pulumi:"url"`
 }
 
 type ViewState struct {
-	// The column headers to show on the log view.
+	// Column configuration
 	Columns ViewColumnArrayInput
-	// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+	// default connection that the dashboard uses
 	DefaultConnection pulumi.StringPtrInput
-	// Description of the log view.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrInput
-	// Name of the log view.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringPtrInput
-	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+	// Sorting options configuration
 	SortOptions ViewSortOptionArrayInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrInput
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrInput
-	// The URL of the log view.
+	// URL of the chart
 	Url pulumi.StringPtrInput
 }
 
@@ -181,45 +204,45 @@ func (ViewState) ElementType() reflect.Type {
 }
 
 type viewArgs struct {
-	// The column headers to show on the log view.
+	// Column configuration
 	Columns []ViewColumn `pulumi:"columns"`
-	// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+	// default connection that the dashboard uses
 	DefaultConnection *string `pulumi:"defaultConnection"`
-	// Description of the log view.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime *int `pulumi:"endTime"`
-	// Name of the log view.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText string `pulumi:"programText"`
-	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+	// Sorting options configuration
 	SortOptions []ViewSortOption `pulumi:"sortOptions"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime *int `pulumi:"startTime"`
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange *int `pulumi:"timeRange"`
 }
 
 // The set of arguments for constructing a View resource.
 type ViewArgs struct {
-	// The column headers to show on the log view.
+	// Column configuration
 	Columns ViewColumnArrayInput
-	// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+	// default connection that the dashboard uses
 	DefaultConnection pulumi.StringPtrInput
-	// Description of the log view.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrInput
-	// Name of the log view.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringInput
-	// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+	// Sorting options configuration
 	SortOptions ViewSortOptionArrayInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrInput
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrInput
 }
 
@@ -310,52 +333,52 @@ func (o ViewOutput) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return o
 }
 
-// The column headers to show on the log view.
+// Column configuration
 func (o ViewOutput) Columns() ViewColumnArrayOutput {
 	return o.ApplyT(func(v *View) ViewColumnArrayOutput { return v.Columns }).(ViewColumnArrayOutput)
 }
 
-// The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+// default connection that the dashboard uses
 func (o ViewOutput) DefaultConnection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.DefaultConnection }).(pulumi.StringPtrOutput)
 }
 
-// Description of the log view.
+// Description of the chart (Optional)
 func (o ViewOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch to end the visualization
 func (o ViewOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// Name of the log view.
+// Name of the chart
 func (o ViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 func (o ViewOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
 
-// The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+// Sorting options configuration
 func (o ViewOutput) SortOptions() ViewSortOptionArrayOutput {
 	return o.ApplyT(func(v *View) ViewSortOptionArrayOutput { return v.SortOptions }).(ViewSortOptionArrayOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch to start the visualization
 func (o ViewOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 func (o ViewOutput) TimeRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *View) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
 }
 
-// The URL of the log view.
+// URL of the chart
 func (o ViewOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

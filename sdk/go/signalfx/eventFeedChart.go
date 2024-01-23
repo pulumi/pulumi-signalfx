@@ -13,22 +13,40 @@ import (
 )
 
 // Displays a listing of events as a widget in a dashboard.
+//
+// ## Arguments
+//
+// The following arguments are supported in the resource block:
+//
+// * `name` - (Required) Name of the text note.
+// * `programText` - (Required) Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+// * `description` - (Optional) Description of the text note.
+// * `timeRange` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+// * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the chart.
+// * `url` - The URL of the chart.
 type EventFeedChart struct {
 	pulumi.CustomResourceState
 
-	// Description of the text note.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// Name of the text note.
+	// Name of the chart
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -65,36 +83,36 @@ func GetEventFeedChart(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EventFeedChart resources.
 type eventFeedChartState struct {
-	// Description of the text note.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime *int `pulumi:"endTime"`
-	// Name of the text note.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText *string `pulumi:"programText"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime *int `pulumi:"startTime"`
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange *int `pulumi:"timeRange"`
-	// The URL of the chart.
+	// URL of the chart
 	Url *string `pulumi:"url"`
 }
 
 type EventFeedChartState struct {
-	// Description of the text note.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrInput
-	// Name of the text note.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrInput
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrInput
-	// The URL of the chart.
+	// URL of the chart
 	Url pulumi.StringPtrInput
 }
 
@@ -103,33 +121,33 @@ func (EventFeedChartState) ElementType() reflect.Type {
 }
 
 type eventFeedChartArgs struct {
-	// Description of the text note.
+	// Description of the chart (Optional)
 	Description *string `pulumi:"description"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime *int `pulumi:"endTime"`
-	// Name of the text note.
+	// Name of the chart
 	Name *string `pulumi:"name"`
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText string `pulumi:"programText"`
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime *int `pulumi:"startTime"`
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange *int `pulumi:"timeRange"`
 }
 
 // The set of arguments for constructing a EventFeedChart resource.
 type EventFeedChartArgs struct {
-	// Description of the text note.
+	// Description of the chart (Optional)
 	Description pulumi.StringPtrInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to end the visualization
 	EndTime pulumi.IntPtrInput
-	// Name of the text note.
+	// Name of the chart
 	Name pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 	ProgramText pulumi.StringInput
-	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+	// Seconds since epoch to start the visualization
 	StartTime pulumi.IntPtrInput
-	// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 	TimeRange pulumi.IntPtrInput
 }
 
@@ -220,37 +238,37 @@ func (o EventFeedChartOutput) ToEventFeedChartOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Description of the text note.
+// Description of the chart (Optional)
 func (o EventFeedChartOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch to end the visualization
 func (o EventFeedChartOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// Name of the text note.
+// Name of the chart
 func (o EventFeedChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Signalflow program text for the chart. More info[in the SignalFx docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
+// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
 func (o EventFeedChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
 
-// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
+// Seconds since epoch to start the visualization
 func (o EventFeedChartOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
 
-// From when to display data. SignalFx time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
+// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
 func (o EventFeedChartOutput) TimeRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
 }
 
-// The URL of the chart.
+// URL of the chart
 func (o EventFeedChartOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *EventFeedChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

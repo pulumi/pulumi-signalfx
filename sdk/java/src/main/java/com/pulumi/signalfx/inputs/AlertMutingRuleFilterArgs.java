@@ -17,47 +17,23 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
 
     public static final AlertMutingRuleFilterArgs Empty = new AlertMutingRuleFilterArgs();
 
-    /**
-     * Determines if this is a &#34;not&#34; filter. Defaults to `false`.
-     * 
-     */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
-    /**
-     * @return Determines if this is a &#34;not&#34; filter. Defaults to `false`.
-     * 
-     */
     public Optional<Output<Boolean>> negated() {
         return Optional.ofNullable(this.negated);
     }
 
-    /**
-     * The property to filter.
-     * 
-     */
     @Import(name="property", required=true)
     private Output<String> property;
 
-    /**
-     * @return The property to filter.
-     * 
-     */
     public Output<String> property() {
         return this.property;
     }
 
-    /**
-     * The property value to filter.
-     * 
-     */
     @Import(name="propertyValue", required=true)
     private Output<String> propertyValue;
 
-    /**
-     * @return The property value to filter.
-     * 
-     */
     public Output<String> propertyValue() {
         return this.propertyValue;
     }
@@ -88,65 +64,29 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
             $ = new AlertMutingRuleFilterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param negated Determines if this is a &#34;not&#34; filter. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder negated(@Nullable Output<Boolean> negated) {
             $.negated = negated;
             return this;
         }
 
-        /**
-         * @param negated Determines if this is a &#34;not&#34; filter. Defaults to `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder negated(Boolean negated) {
             return negated(Output.of(negated));
         }
 
-        /**
-         * @param property The property to filter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
-        /**
-         * @param property The property to filter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder property(String property) {
             return property(Output.of(property));
         }
 
-        /**
-         * @param propertyValue The property value to filter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyValue(Output<String> propertyValue) {
             $.propertyValue = propertyValue;
             return this;
         }
 
-        /**
-         * @param propertyValue The property value to filter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder propertyValue(String propertyValue) {
             return propertyValue(Output.of(propertyValue));
         }

@@ -18,11 +18,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * SignalFx Webhook integration.
+ * Splunk Observability Cloud webhook integration.
  * 
- * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
+ * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -59,46 +59,62 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * * `name` - (Required) Name of the integration.
+ * * `enabled` - (Required) Whether the integration is enabled.
+ * * `url` - (Required) The URL to request
+ * * `shared_secret` - (Optional)
+ * * `headers` - (Optional) A header to send with the request
+ *   * `header_key` - (Required) The key of the header to send
+ *   * `header_value` - (Required) The value of the header to send
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the integration.
+ * 
  */
 @ResourceType(type="signalfx:index/webhookIntegration:WebhookIntegration")
 public class WebhookIntegration extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the integration is enabled.
+     * Whether the integration is enabled or not
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled.
+     * @return Whether the integration is enabled or not
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * A header to send with the request
+     * HTTP headers to pass in the request
      * 
      */
     @Export(name="headers", refs={List.class,WebhookIntegrationHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WebhookIntegrationHeader>> headers;
 
     /**
-     * @return A header to send with the request
+     * @return HTTP headers to pass in the request
      * 
      */
     public Output<Optional<List<WebhookIntegrationHeader>>> headers() {
         return Codegen.optional(this.headers);
     }
     /**
-     * Name of the integration.
+     * Name of the integration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration.
+     * @return Name of the integration
      * 
      */
     public Output<String> name() {
@@ -111,14 +127,14 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sharedSecret);
     }
     /**
-     * The URL to request
+     * Webhook URL
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**
-     * @return The URL to request
+     * @return Webhook URL
      * 
      */
     public Output<Optional<String>> url() {

@@ -15,47 +15,23 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
 
     public static final IntegrationMetricStatsToSyncArgs Empty = new IntegrationMetricStatsToSyncArgs();
 
-    /**
-     * AWS metric that you want to pick statistics for
-     * 
-     */
     @Import(name="metric", required=true)
     private Output<String> metric;
 
-    /**
-     * @return AWS metric that you want to pick statistics for
-     * 
-     */
     public Output<String> metric() {
         return this.metric;
     }
 
-    /**
-     * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-     * 
-     */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
-    /**
-     * @return An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-     * 
-     */
     public Output<String> namespace() {
         return this.namespace;
     }
 
-    /**
-     * AWS statistics you want to collect
-     * 
-     */
     @Import(name="stats", required=true)
     private Output<List<String>> stats;
 
-    /**
-     * @return AWS statistics you want to collect
-     * 
-     */
     public Output<List<String>> stats() {
         return this.stats;
     }
@@ -86,75 +62,33 @@ public final class IntegrationMetricStatsToSyncArgs extends com.pulumi.resources
             $ = new IntegrationMetricStatsToSyncArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param metric AWS metric that you want to pick statistics for
-         * 
-         * @return builder
-         * 
-         */
         public Builder metric(Output<String> metric) {
             $.metric = metric;
             return this;
         }
 
-        /**
-         * @param metric AWS metric that you want to pick statistics for
-         * 
-         * @return builder
-         * 
-         */
         public Builder metric(String metric) {
             return metric(Output.of(metric));
         }
 
-        /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
-        /**
-         * @param namespace An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
-        /**
-         * @param stats AWS statistics you want to collect
-         * 
-         * @return builder
-         * 
-         */
         public Builder stats(Output<List<String>> stats) {
             $.stats = stats;
             return this;
         }
 
-        /**
-         * @param stats AWS statistics you want to collect
-         * 
-         * @return builder
-         * 
-         */
         public Builder stats(List<String> stats) {
             return stats(Output.of(stats));
         }
 
-        /**
-         * @param stats AWS statistics you want to collect
-         * 
-         * @return builder
-         * 
-         */
         public Builder stats(String... stats) {
             return stats(List.of(stats));
         }

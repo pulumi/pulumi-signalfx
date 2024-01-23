@@ -12,13 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides an Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
+// Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.
 //
-// > **WARNING** Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. As such, attempting to modify a currently active rule will destroy the existing rule and create a new rule. This may result in the emission of notifications.
+// Splunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.
 //
-// > **WARNING** Observability Cloud currently allows linking alert muting rule with only one detector ID. Specifying multiple detector IDs will make the muting rule obsolete.
+// > **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -54,19 +54,37 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// * `description` - (Required) The description for this muting rule
+// * `startTime` - (Required) Starting time of an alert muting rule as a Unit time stamp in seconds.
+// * `stopTime` - (Optional) Stop time of an alert muting rule as a Unix time stamp in seconds.
+// * `detectors` - (Optional) A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+// * `filter` - (Optional) Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+//   - `property` - (Required) The property to filter.
+//   - `propertyValue` - (Required) The property value to filter.
+//   - `negated` - (Optional) Determines if this is a "not" filter. Defaults to `false`.
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the alert muting rule.
+// * `effectiveStartTime`
 type AlertMutingRule struct {
 	pulumi.CustomResourceState
 
-	// The description for this muting rule
+	// description of the rule
 	Description pulumi.StringOutput `pulumi:"description"`
-	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+	// detectors to which this muting rule applies
 	Detectors          pulumi.StringArrayOutput `pulumi:"detectors"`
 	EffectiveStartTime pulumi.IntOutput         `pulumi:"effectiveStartTime"`
-	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+	// list of alert muting filters for this rule
 	Filters AlertMutingRuleFilterArrayOutput `pulumi:"filters"`
-	// Starting time of an alert muting rule as a Unit time stamp in seconds.
+	// starting time of an alert muting rule as a Unix timestamp, in seconds
 	StartTime pulumi.IntOutput `pulumi:"startTime"`
-	// Stop time of an alert muting rule as a Unix time stamp in seconds.
+	// stop time of an alert muting rule as a Unix timestamp, in seconds
 	StopTime pulumi.IntPtrOutput `pulumi:"stopTime"`
 }
 
@@ -106,30 +124,30 @@ func GetAlertMutingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertMutingRule resources.
 type alertMutingRuleState struct {
-	// The description for this muting rule
+	// description of the rule
 	Description *string `pulumi:"description"`
-	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+	// detectors to which this muting rule applies
 	Detectors          []string `pulumi:"detectors"`
 	EffectiveStartTime *int     `pulumi:"effectiveStartTime"`
-	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+	// list of alert muting filters for this rule
 	Filters []AlertMutingRuleFilter `pulumi:"filters"`
-	// Starting time of an alert muting rule as a Unit time stamp in seconds.
+	// starting time of an alert muting rule as a Unix timestamp, in seconds
 	StartTime *int `pulumi:"startTime"`
-	// Stop time of an alert muting rule as a Unix time stamp in seconds.
+	// stop time of an alert muting rule as a Unix timestamp, in seconds
 	StopTime *int `pulumi:"stopTime"`
 }
 
 type AlertMutingRuleState struct {
-	// The description for this muting rule
+	// description of the rule
 	Description pulumi.StringPtrInput
-	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+	// detectors to which this muting rule applies
 	Detectors          pulumi.StringArrayInput
 	EffectiveStartTime pulumi.IntPtrInput
-	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+	// list of alert muting filters for this rule
 	Filters AlertMutingRuleFilterArrayInput
-	// Starting time of an alert muting rule as a Unit time stamp in seconds.
+	// starting time of an alert muting rule as a Unix timestamp, in seconds
 	StartTime pulumi.IntPtrInput
-	// Stop time of an alert muting rule as a Unix time stamp in seconds.
+	// stop time of an alert muting rule as a Unix timestamp, in seconds
 	StopTime pulumi.IntPtrInput
 }
 
@@ -138,29 +156,29 @@ func (AlertMutingRuleState) ElementType() reflect.Type {
 }
 
 type alertMutingRuleArgs struct {
-	// The description for this muting rule
+	// description of the rule
 	Description string `pulumi:"description"`
-	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+	// detectors to which this muting rule applies
 	Detectors []string `pulumi:"detectors"`
-	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+	// list of alert muting filters for this rule
 	Filters []AlertMutingRuleFilter `pulumi:"filters"`
-	// Starting time of an alert muting rule as a Unit time stamp in seconds.
+	// starting time of an alert muting rule as a Unix timestamp, in seconds
 	StartTime int `pulumi:"startTime"`
-	// Stop time of an alert muting rule as a Unix time stamp in seconds.
+	// stop time of an alert muting rule as a Unix timestamp, in seconds
 	StopTime *int `pulumi:"stopTime"`
 }
 
 // The set of arguments for constructing a AlertMutingRule resource.
 type AlertMutingRuleArgs struct {
-	// The description for this muting rule
+	// description of the rule
 	Description pulumi.StringInput
-	// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+	// detectors to which this muting rule applies
 	Detectors pulumi.StringArrayInput
-	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+	// list of alert muting filters for this rule
 	Filters AlertMutingRuleFilterArrayInput
-	// Starting time of an alert muting rule as a Unit time stamp in seconds.
+	// starting time of an alert muting rule as a Unix timestamp, in seconds
 	StartTime pulumi.IntInput
-	// Stop time of an alert muting rule as a Unix time stamp in seconds.
+	// stop time of an alert muting rule as a Unix timestamp, in seconds
 	StopTime pulumi.IntPtrInput
 }
 
@@ -251,12 +269,12 @@ func (o AlertMutingRuleOutput) ToAlertMutingRuleOutputWithContext(ctx context.Co
 	return o
 }
 
-// The description for this muting rule
+// description of the rule
 func (o AlertMutingRuleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
+// detectors to which this muting rule applies
 func (o AlertMutingRuleOutput) Detectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.StringArrayOutput { return v.Detectors }).(pulumi.StringArrayOutput)
 }
@@ -265,17 +283,17 @@ func (o AlertMutingRuleOutput) EffectiveStartTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntOutput { return v.EffectiveStartTime }).(pulumi.IntOutput)
 }
 
-// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
+// list of alert muting filters for this rule
 func (o AlertMutingRuleOutput) Filters() AlertMutingRuleFilterArrayOutput {
 	return o.ApplyT(func(v *AlertMutingRule) AlertMutingRuleFilterArrayOutput { return v.Filters }).(AlertMutingRuleFilterArrayOutput)
 }
 
-// Starting time of an alert muting rule as a Unit time stamp in seconds.
+// starting time of an alert muting rule as a Unix timestamp, in seconds
 func (o AlertMutingRuleOutput) StartTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntOutput { return v.StartTime }).(pulumi.IntOutput)
 }
 
-// Stop time of an alert muting rule as a Unix time stamp in seconds.
+// stop time of an alert muting rule as a Unix timestamp, in seconds
 func (o AlertMutingRuleOutput) StopTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AlertMutingRule) pulumi.IntPtrOutput { return v.StopTime }).(pulumi.IntPtrOutput)
 }

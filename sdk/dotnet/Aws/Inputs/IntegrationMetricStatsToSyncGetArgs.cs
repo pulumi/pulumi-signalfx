@@ -12,24 +12,14 @@ namespace Pulumi.SignalFx.Aws.Inputs
 
     public sealed class IntegrationMetricStatsToSyncGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AWS metric that you want to pick statistics for
-        /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
 
-        /// <summary>
-        /// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See `services` field description below for additional information.
-        /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
         [Input("stats", required: true)]
         private InputList<string>? _stats;
-
-        /// <summary>
-        /// AWS statistics you want to collect
-        /// </summary>
         public InputList<string> Stats
         {
             get => _stats ?? (_stats = new InputList<string>());

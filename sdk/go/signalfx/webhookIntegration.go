@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// SignalFx Webhook integration.
+// Splunk Observability Cloud webhook integration.
 //
-// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+// > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
-// ## Example Usage
+// ## Example
 //
 // ```go
 // package main
@@ -49,17 +49,33 @@ import (
 //	}
 //
 // ```
+//
+// ## Arguments
+//
+// * `name` - (Required) Name of the integration.
+// * `enabled` - (Required) Whether the integration is enabled.
+// * `url` - (Required) The URL to request
+// * `sharedSecret` - (Optional)
+// * `headers` - (Optional) A header to send with the request
+//   - `headerKey` - (Required) The key of the header to send
+//   - `headerValue` - (Required) The value of the header to send
+//
+// ## Attributes
+//
+// In a addition to all arguments above, the following attributes are exported:
+//
+// * `id` - The ID of the integration.
 type WebhookIntegration struct {
 	pulumi.CustomResourceState
 
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// A header to send with the request
+	// HTTP headers to pass in the request
 	Headers WebhookIntegrationHeaderArrayOutput `pulumi:"headers"`
-	// Name of the integration.
+	// Name of the integration
 	Name         pulumi.StringOutput    `pulumi:"name"`
 	SharedSecret pulumi.StringPtrOutput `pulumi:"sharedSecret"`
-	// The URL to request
+	// Webhook URL
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 }
 
@@ -107,26 +123,26 @@ func GetWebhookIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebhookIntegration resources.
 type webhookIntegrationState struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// A header to send with the request
+	// HTTP headers to pass in the request
 	Headers []WebhookIntegrationHeader `pulumi:"headers"`
-	// Name of the integration.
+	// Name of the integration
 	Name         *string `pulumi:"name"`
 	SharedSecret *string `pulumi:"sharedSecret"`
-	// The URL to request
+	// Webhook URL
 	Url *string `pulumi:"url"`
 }
 
 type WebhookIntegrationState struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// A header to send with the request
+	// HTTP headers to pass in the request
 	Headers WebhookIntegrationHeaderArrayInput
-	// Name of the integration.
+	// Name of the integration
 	Name         pulumi.StringPtrInput
 	SharedSecret pulumi.StringPtrInput
-	// The URL to request
+	// Webhook URL
 	Url pulumi.StringPtrInput
 }
 
@@ -135,27 +151,27 @@ func (WebhookIntegrationState) ElementType() reflect.Type {
 }
 
 type webhookIntegrationArgs struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled bool `pulumi:"enabled"`
-	// A header to send with the request
+	// HTTP headers to pass in the request
 	Headers []WebhookIntegrationHeader `pulumi:"headers"`
-	// Name of the integration.
+	// Name of the integration
 	Name         *string `pulumi:"name"`
 	SharedSecret *string `pulumi:"sharedSecret"`
-	// The URL to request
+	// Webhook URL
 	Url *string `pulumi:"url"`
 }
 
 // The set of arguments for constructing a WebhookIntegration resource.
 type WebhookIntegrationArgs struct {
-	// Whether the integration is enabled.
+	// Whether the integration is enabled or not
 	Enabled pulumi.BoolInput
-	// A header to send with the request
+	// HTTP headers to pass in the request
 	Headers WebhookIntegrationHeaderArrayInput
-	// Name of the integration.
+	// Name of the integration
 	Name         pulumi.StringPtrInput
 	SharedSecret pulumi.StringPtrInput
-	// The URL to request
+	// Webhook URL
 	Url pulumi.StringPtrInput
 }
 
@@ -246,17 +262,17 @@ func (o WebhookIntegrationOutput) ToWebhookIntegrationOutputWithContext(ctx cont
 	return o
 }
 
-// Whether the integration is enabled.
+// Whether the integration is enabled or not
 func (o WebhookIntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WebhookIntegration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// A header to send with the request
+// HTTP headers to pass in the request
 func (o WebhookIntegrationOutput) Headers() WebhookIntegrationHeaderArrayOutput {
 	return o.ApplyT(func(v *WebhookIntegration) WebhookIntegrationHeaderArrayOutput { return v.Headers }).(WebhookIntegrationHeaderArrayOutput)
 }
 
-// Name of the integration.
+// Name of the integration
 func (o WebhookIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -265,7 +281,7 @@ func (o WebhookIntegrationOutput) SharedSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringPtrOutput { return v.SharedSecret }).(pulumi.StringPtrOutput)
 }
 
-// The URL to request
+// Webhook URL
 func (o WebhookIntegrationOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }

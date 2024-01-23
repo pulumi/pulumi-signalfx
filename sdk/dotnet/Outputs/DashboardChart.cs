@@ -13,25 +13,10 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardChart
     {
-        /// <summary>
-        /// ID of the chart to display.
-        /// </summary>
         public readonly string ChartId;
-        /// <summary>
-        /// Column number for the layout.
-        /// </summary>
         public readonly int? Column;
-        /// <summary>
-        /// How many rows every chart should take up (greater than or equal to 1). 1 by default.
-        /// </summary>
         public readonly int? Height;
-        /// <summary>
-        /// The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
-        /// </summary>
         public readonly int? Row;
-        /// <summary>
-        /// How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
-        /// </summary>
         public readonly int? Width;
 
         [OutputConstructor]

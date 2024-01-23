@@ -17,17 +17,9 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
 
     public static final TimeChartAxisLeftWatermarkArgs Empty = new TimeChartAxisLeftWatermarkArgs();
 
-    /**
-     * Label used in the publish statement that displays the event query you want to customize.
-     * 
-     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
-    /**
-     * @return Label used in the publish statement that displays the event query you want to customize.
-     * 
-     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
@@ -64,23 +56,11 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
             $ = new TimeChartAxisLeftWatermarkArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
-         * 
-         * @return builder
-         * 
-         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
-        /**
-         * @param label Label used in the publish statement that displays the event query you want to customize.
-         * 
-         * @return builder
-         * 
-         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

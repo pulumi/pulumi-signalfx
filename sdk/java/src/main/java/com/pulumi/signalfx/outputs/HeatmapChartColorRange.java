@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HeatmapChartColorRange {
-    /**
-     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-     * 
-     */
     private String color;
-    /**
-     * @return The maximum value within the coloring range.
-     * 
-     */
     private @Nullable Double maxValue;
-    /**
-     * @return The minimum value within the coloring range.
-     * 
-     */
     private @Nullable Double minValue;
 
     private HeatmapChartColorRange() {}
-    /**
-     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-     * 
-     */
     public String color() {
         return this.color;
     }
-    /**
-     * @return The maximum value within the coloring range.
-     * 
-     */
     public Optional<Double> maxValue() {
         return Optional.ofNullable(this.maxValue);
     }
-    /**
-     * @return The minimum value within the coloring range.
-     * 
-     */
     public Optional<Double> minValue() {
         return Optional.ofNullable(this.minValue);
     }

@@ -35,14 +35,14 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the token.
+     * Description of the token (Optional)
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the token.
+     * @return Description of the token (Optional)
      * 
      */
     public Optional<Output<String>> description() {
@@ -50,59 +50,45 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication.
+     * Defaults to `false`
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+     * @return Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication.
+     * Defaults to `false`
      * 
      */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
-    /**
-     * Specify DPM-based limits for this token.
-     * 
-     */
     @Import(name="dpmLimits")
     private @Nullable Output<OrgTokenDpmLimitsArgs> dpmLimits;
 
-    /**
-     * @return Specify DPM-based limits for this token.
-     * 
-     */
     public Optional<Output<OrgTokenDpmLimitsArgs>> dpmLimits() {
         return Optional.ofNullable(this.dpmLimits);
     }
 
-    /**
-     * Specify Usage-based limits for this token.
-     * 
-     */
     @Import(name="hostOrUsageLimits")
     private @Nullable Output<OrgTokenHostOrUsageLimitsArgs> hostOrUsageLimits;
 
-    /**
-     * @return Specify Usage-based limits for this token.
-     * 
-     */
     public Optional<Output<OrgTokenHostOrUsageLimitsArgs>> hostOrUsageLimits() {
         return Optional.ofNullable(this.hostOrUsageLimits);
     }
 
     /**
-     * Name of the token.
+     * Name of the token
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the token.
+     * @return Name of the token
      * 
      */
     public Optional<Output<String>> name() {
@@ -110,14 +96,16 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+     * List of strings specifying where notifications will be sent when an incident occurs. See
+     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<List<String>> notifications;
 
     /**
-     * @return Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+     * @return List of strings specifying where notifications will be sent when an incident occurs. See
+     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
      * 
      */
     public Optional<Output<List<String>>> notifications() {
@@ -186,7 +174,7 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the token.
+         * @param description Description of the token (Optional)
          * 
          * @return builder
          * 
@@ -197,7 +185,7 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the token.
+         * @param description Description of the token (Optional)
          * 
          * @return builder
          * 
@@ -207,7 +195,8 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+         * @param disabled Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication.
+         * Defaults to `false`
          * 
          * @return builder
          * 
@@ -218,7 +207,8 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication. Defaults to `false`.
+         * @param disabled Flag that controls enabling the token. If set to `true`, the token is disabled, and you can&#39;t use it for authentication.
+         * Defaults to `false`
          * 
          * @return builder
          * 
@@ -227,50 +217,26 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
             return disabled(Output.of(disabled));
         }
 
-        /**
-         * @param dpmLimits Specify DPM-based limits for this token.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dpmLimits(@Nullable Output<OrgTokenDpmLimitsArgs> dpmLimits) {
             $.dpmLimits = dpmLimits;
             return this;
         }
 
-        /**
-         * @param dpmLimits Specify DPM-based limits for this token.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dpmLimits(OrgTokenDpmLimitsArgs dpmLimits) {
             return dpmLimits(Output.of(dpmLimits));
         }
 
-        /**
-         * @param hostOrUsageLimits Specify Usage-based limits for this token.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostOrUsageLimits(@Nullable Output<OrgTokenHostOrUsageLimitsArgs> hostOrUsageLimits) {
             $.hostOrUsageLimits = hostOrUsageLimits;
             return this;
         }
 
-        /**
-         * @param hostOrUsageLimits Specify Usage-based limits for this token.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostOrUsageLimits(OrgTokenHostOrUsageLimitsArgs hostOrUsageLimits) {
             return hostOrUsageLimits(Output.of(hostOrUsageLimits));
         }
 
         /**
-         * @param name Name of the token.
+         * @param name Name of the token
          * 
          * @return builder
          * 
@@ -281,7 +247,7 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the token.
+         * @param name Name of the token
          * 
          * @return builder
          * 
@@ -291,7 +257,8 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See
+         * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
          * 
          * @return builder
          * 
@@ -302,7 +269,8 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See
+         * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
          * 
          * @return builder
          * 
@@ -312,7 +280,8 @@ public final class OrgTokenArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notifications Where to send notifications about this token&#39;s limits. Please consult the Notification Format laid out in detectors.
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See
+         * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
          * 
          * @return builder
          * 

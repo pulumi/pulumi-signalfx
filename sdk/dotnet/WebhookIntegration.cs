@@ -10,11 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx
 {
     /// <summary>
-    /// SignalFx Webhook integration.
+    /// Splunk Observability Cloud webhook integration.
     /// 
-    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the SignalFx provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
+    /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
-    /// ## Example Usage
+    /// ## Example
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,24 +41,40 @@ namespace Pulumi.SignalFx
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Arguments
+    /// 
+    /// * `name` - (Required) Name of the integration.
+    /// * `enabled` - (Required) Whether the integration is enabled.
+    /// * `url` - (Required) The URL to request
+    /// * `shared_secret` - (Optional)
+    /// * `headers` - (Optional) A header to send with the request
+    ///   * `header_key` - (Required) The key of the header to send
+    ///   * `header_value` - (Required) The value of the header to send
+    /// 
+    /// ## Attributes
+    /// 
+    /// In a addition to all arguments above, the following attributes are exported:
+    /// 
+    /// * `id` - The ID of the integration.
     /// </summary>
     [SignalFxResourceType("signalfx:index/webhookIntegration:WebhookIntegration")]
     public partial class WebhookIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is enabled or not
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// A header to send with the request
+        /// HTTP headers to pass in the request
         /// </summary>
         [Output("headers")]
         public Output<ImmutableArray<Outputs.WebhookIntegrationHeader>> Headers { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the integration.
+        /// Name of the integration
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -67,7 +83,7 @@ namespace Pulumi.SignalFx
         public Output<string?> SharedSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to request
+        /// Webhook URL
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
@@ -124,7 +140,7 @@ namespace Pulumi.SignalFx
     public sealed class WebhookIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is enabled or not
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -133,7 +149,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.WebhookIntegrationHeaderArgs>? _headers;
 
         /// <summary>
-        /// A header to send with the request
+        /// HTTP headers to pass in the request
         /// </summary>
         public InputList<Inputs.WebhookIntegrationHeaderArgs> Headers
         {
@@ -146,7 +162,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the integration.
+        /// Name of the integration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -164,7 +180,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// The URL to request
+        /// Webhook URL
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -178,7 +194,7 @@ namespace Pulumi.SignalFx
     public sealed class WebhookIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the integration is enabled.
+        /// Whether the integration is enabled or not
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -187,7 +203,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.WebhookIntegrationHeaderGetArgs>? _headers;
 
         /// <summary>
-        /// A header to send with the request
+        /// HTTP headers to pass in the request
         /// </summary>
         public InputList<Inputs.WebhookIntegrationHeaderGetArgs> Headers
         {
@@ -200,7 +216,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the integration.
+        /// Name of the integration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -218,7 +234,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// The URL to request
+        /// Webhook URL
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

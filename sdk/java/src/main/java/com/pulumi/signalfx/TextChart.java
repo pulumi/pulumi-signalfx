@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
  * 
- * ## Example Usage
+ * ## Example
  * ```java
  * package generated_program;
  * 
@@ -66,60 +66,75 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Arguments
+ * 
+ * The following arguments are supported in the resource block:
+ * 
+ * * `name` - (Required) Name of the text note.
+ * * `markdown` - (Required) Markdown text to display.
+ * * `description` - (Optional) Description of the text note.
+ * 
+ * ## Attributes
+ * 
+ * In a addition to all arguments above, the following attributes are exported:
+ * 
+ * * `id` - The ID of the chart.
+ * * `url` - The URL of the chart.
+ * 
  */
 @ResourceType(type="signalfx:index/textChart:TextChart")
 public class TextChart extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the text note.
+     * Description of the chart (Optional)
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the text note.
+     * @return Description of the chart (Optional)
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Markdown text to display.
+     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
      * 
      */
     @Export(name="markdown", refs={String.class}, tree="[0]")
     private Output<String> markdown;
 
     /**
-     * @return Markdown text to display.
+     * @return Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
      * 
      */
     public Output<String> markdown() {
         return this.markdown;
     }
     /**
-     * Name of the text note.
+     * Name of the chart
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the text note.
+     * @return Name of the chart
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The URL of the chart.
+     * URL of the chart
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return The URL of the chart.
+     * @return URL of the chart
      * 
      */
     public Output<String> url() {
