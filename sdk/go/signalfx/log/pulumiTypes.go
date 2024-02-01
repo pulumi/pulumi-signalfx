@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ViewColumn struct {
+	// Name of the column
 	Name string `pulumi:"name"`
 }
 
@@ -29,6 +30,7 @@ type ViewColumnInput interface {
 }
 
 type ViewColumnArgs struct {
+	// Name of the column
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -83,6 +85,7 @@ func (o ViewColumnOutput) ToViewColumnOutputWithContext(ctx context.Context) Vie
 	return o
 }
 
+// Name of the column
 func (o ViewColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ViewColumn) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -108,8 +111,10 @@ func (o ViewColumnArrayOutput) Index(i pulumi.IntInput) ViewColumnOutput {
 }
 
 type ViewSortOption struct {
-	Descending bool   `pulumi:"descending"`
-	Field      string `pulumi:"field"`
+	// Name of the column
+	Descending bool `pulumi:"descending"`
+	// Name of the column
+	Field string `pulumi:"field"`
 }
 
 // ViewSortOptionInput is an input type that accepts ViewSortOptionArgs and ViewSortOptionOutput values.
@@ -124,8 +129,10 @@ type ViewSortOptionInput interface {
 }
 
 type ViewSortOptionArgs struct {
-	Descending pulumi.BoolInput   `pulumi:"descending"`
-	Field      pulumi.StringInput `pulumi:"field"`
+	// Name of the column
+	Descending pulumi.BoolInput `pulumi:"descending"`
+	// Name of the column
+	Field pulumi.StringInput `pulumi:"field"`
 }
 
 func (ViewSortOptionArgs) ElementType() reflect.Type {
@@ -179,10 +186,12 @@ func (o ViewSortOptionOutput) ToViewSortOptionOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Name of the column
 func (o ViewSortOptionOutput) Descending() pulumi.BoolOutput {
 	return o.ApplyT(func(v ViewSortOption) bool { return v.Descending }).(pulumi.BoolOutput)
 }
 
+// Name of the column
 func (o ViewSortOptionOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v ViewSortOption) string { return v.Field }).(pulumi.StringOutput)
 }

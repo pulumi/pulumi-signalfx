@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class IntegrationNamespaceSyncRule {
+    /**
+     * @return Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn&#39;t match the filter. The available actions are one of &#34;Include&#34; or &#34;Exclude&#34;.
+     * 
+     */
     private @Nullable String defaultAction;
+    /**
+     * @return Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of &#34;Include&#34; or &#34;Exclude&#34;.
+     * 
+     */
     private @Nullable String filterAction;
+    /**
+     * @return Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+     * 
+     */
     private @Nullable String filterSource;
+    /**
+     * @return An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+     * 
+     */
     private String namespace;
 
     private IntegrationNamespaceSyncRule() {}
+    /**
+     * @return Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn&#39;t match the filter. The available actions are one of &#34;Include&#34; or &#34;Exclude&#34;.
+     * 
+     */
     public Optional<String> defaultAction() {
         return Optional.ofNullable(this.defaultAction);
     }
+    /**
+     * @return Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of &#34;Include&#34; or &#34;Exclude&#34;.
+     * 
+     */
     public Optional<String> filterAction() {
         return Optional.ofNullable(this.filterAction);
     }
+    /**
+     * @return Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+     * 
+     */
     public Optional<String> filterSource() {
         return Optional.ofNullable(this.filterSource);
     }
+    /**
+     * @return An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }

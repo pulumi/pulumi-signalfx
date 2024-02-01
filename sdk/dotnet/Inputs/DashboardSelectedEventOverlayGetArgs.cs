@@ -12,6 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardSelectedEventOverlayGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Search term used to define events
+        /// </summary>
         [Input("signal", required: true)]
         public Input<string> Signal { get; set; } = null!;
 
@@ -23,6 +26,9 @@ namespace Pulumi.SignalFx.Inputs
             set => _sources = value;
         }
 
+        /// <summary>
+        /// Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

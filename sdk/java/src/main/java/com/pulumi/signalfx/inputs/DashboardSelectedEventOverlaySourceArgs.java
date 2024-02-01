@@ -18,23 +18,47 @@ public final class DashboardSelectedEventOverlaySourceArgs extends com.pulumi.re
 
     public static final DashboardSelectedEventOverlaySourceArgs Empty = new DashboardSelectedEventOverlaySourceArgs();
 
+    /**
+     * (false by default) Whether this filter should be a &#34;not&#34; filter
+     * 
+     */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
+    /**
+     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * 
+     */
     public Optional<Output<Boolean>> negated() {
         return Optional.ofNullable(this.negated);
     }
 
+    /**
+     * A metric time series dimension or property name
+     * 
+     */
     @Import(name="property", required=true)
     private Output<String> property;
 
+    /**
+     * @return A metric time series dimension or property name
+     * 
+     */
     public Output<String> property() {
         return this.property;
     }
 
+    /**
+     * List of strings (which will be treated as an OR filter on the property)
+     * 
+     */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
+    /**
+     * @return List of strings (which will be treated as an OR filter on the property)
+     * 
+     */
     public Output<List<String>> values() {
         return this.values;
     }
@@ -65,33 +89,75 @@ public final class DashboardSelectedEventOverlaySourceArgs extends com.pulumi.re
             $ = new DashboardSelectedEventOverlaySourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param negated (false by default) Whether this filter should be a &#34;not&#34; filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder negated(@Nullable Output<Boolean> negated) {
             $.negated = negated;
             return this;
         }
 
+        /**
+         * @param negated (false by default) Whether this filter should be a &#34;not&#34; filter
+         * 
+         * @return builder
+         * 
+         */
         public Builder negated(Boolean negated) {
             return negated(Output.of(negated));
         }
 
+        /**
+         * @param property A metric time series dimension or property name
+         * 
+         * @return builder
+         * 
+         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
+        /**
+         * @param property A metric time series dimension or property name
+         * 
+         * @return builder
+         * 
+         */
         public Builder property(String property) {
             return property(Output.of(property));
         }
 
+        /**
+         * @param values List of strings (which will be treated as an OR filter on the property)
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values List of strings (which will be treated as an OR filter on the property)
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values List of strings (which will be treated as an OR filter on the property)
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

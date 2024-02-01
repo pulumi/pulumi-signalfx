@@ -13,10 +13,25 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DataLinkTargetExternalUrl
     {
+        /// <summary>
+        /// The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+        /// </summary>
         public readonly string? MinimumTimeWindow;
+        /// <summary>
+        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
+        /// <summary>
+        /// Designates the format of minimumTimeWindow in the same data link target object.
+        /// </summary>
         public readonly string? TimeFormat;
+        /// <summary>
+        /// URL string for a Splunk instance or external system data link target.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

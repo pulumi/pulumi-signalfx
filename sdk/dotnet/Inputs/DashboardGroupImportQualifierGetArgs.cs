@@ -14,6 +14,10 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("filters")]
         private InputList<Inputs.DashboardGroupImportQualifierFilterGetArgs>? _filters;
+
+        /// <summary>
+        /// Filter to apply to each chart in the dashboard
+        /// </summary>
         public InputList<Inputs.DashboardGroupImportQualifierFilterGetArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.DashboardGroupImportQualifierFilterGetArgs>());

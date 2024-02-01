@@ -17,37 +17,77 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
 
     public static final DataLinkTargetExternalUrlArgs Empty = new DataLinkTargetExternalUrlArgs();
 
+    /**
+     * The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * 
+     */
     @Import(name="minimumTimeWindow")
     private @Nullable Output<String> minimumTimeWindow;
 
+    /**
+     * @return The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * 
+     */
     public Optional<Output<String>> minimumTimeWindow() {
         return Optional.ofNullable(this.minimumTimeWindow);
     }
 
+    /**
+     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * 
+     */
     @Import(name="propertyKeyMapping")
     private @Nullable Output<Map<String,String>> propertyKeyMapping;
 
+    /**
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * 
+     */
     public Optional<Output<Map<String,String>>> propertyKeyMapping() {
         return Optional.ofNullable(this.propertyKeyMapping);
     }
 
+    /**
+     * Designates the format of minimumTimeWindow in the same data link target object.
+     * 
+     */
     @Import(name="timeFormat")
     private @Nullable Output<String> timeFormat;
 
+    /**
+     * @return Designates the format of minimumTimeWindow in the same data link target object.
+     * 
+     */
     public Optional<Output<String>> timeFormat() {
         return Optional.ofNullable(this.timeFormat);
     }
 
+    /**
+     * URL string for a Splunk instance or external system data link target.
+     * 
+     */
     @Import(name="url", required=true)
     private Output<String> url;
 
+    /**
+     * @return URL string for a Splunk instance or external system data link target.
+     * 
+     */
     public Output<String> url() {
         return this.url;
     }
@@ -80,47 +120,107 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
             $ = new DataLinkTargetExternalUrlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param minimumTimeWindow The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minimumTimeWindow(@Nullable Output<String> minimumTimeWindow) {
             $.minimumTimeWindow = minimumTimeWindow;
             return this;
         }
 
+        /**
+         * @param minimumTimeWindow The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minimumTimeWindow(String minimumTimeWindow) {
             return minimumTimeWindow(Output.of(minimumTimeWindow));
         }
 
+        /**
+         * @param name User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+         * 
+         * @return builder
+         * 
+         */
         public Builder propertyKeyMapping(@Nullable Output<Map<String,String>> propertyKeyMapping) {
             $.propertyKeyMapping = propertyKeyMapping;
             return this;
         }
 
+        /**
+         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+         * 
+         * @return builder
+         * 
+         */
         public Builder propertyKeyMapping(Map<String,String> propertyKeyMapping) {
             return propertyKeyMapping(Output.of(propertyKeyMapping));
         }
 
+        /**
+         * @param timeFormat Designates the format of minimumTimeWindow in the same data link target object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeFormat(@Nullable Output<String> timeFormat) {
             $.timeFormat = timeFormat;
             return this;
         }
 
+        /**
+         * @param timeFormat Designates the format of minimumTimeWindow in the same data link target object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeFormat(String timeFormat) {
             return timeFormat(Output.of(timeFormat));
         }
 
+        /**
+         * @param url URL string for a Splunk instance or external system data link target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(Output<String> url) {
             $.url = url;
             return this;
         }
 
+        /**
+         * @param url URL string for a Splunk instance or external system data link target.
+         * 
+         * @return builder
+         * 
+         */
         public Builder url(String url) {
             return url(Output.of(url));
         }

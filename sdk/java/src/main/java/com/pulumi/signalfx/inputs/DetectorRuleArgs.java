@@ -18,65 +18,137 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DetectorRuleArgs Empty = new DetectorRuleArgs();
 
+    /**
+     * Description of the rule
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Description of the rule
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * A detect label which matches a detect label within the program text
+     * 
+     */
     @Import(name="detectLabel", required=true)
     private Output<String> detectLabel;
 
+    /**
+     * @return A detect label which matches a detect label within the program text
+     * 
+     */
     public Output<String> detectLabel() {
         return this.detectLabel;
     }
 
+    /**
+     * (default: false) When true, notifications and events will not be generated for the detect label
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return (default: false) When true, notifications and events will not be generated for the detect label
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * 
+     */
     @Import(name="notifications")
     private @Nullable Output<List<String>> notifications;
 
+    /**
+     * @return List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * 
+     */
     public Optional<Output<List<String>>> notifications() {
         return Optional.ofNullable(this.notifications);
     }
 
+    /**
+     * Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     @Import(name="parameterizedBody")
     private @Nullable Output<String> parameterizedBody;
 
+    /**
+     * @return Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     public Optional<Output<String>> parameterizedBody() {
         return Optional.ofNullable(this.parameterizedBody);
     }
 
+    /**
+     * Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     @Import(name="parameterizedSubject")
     private @Nullable Output<String> parameterizedSubject;
 
+    /**
+     * @return Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     public Optional<Output<String>> parameterizedSubject() {
         return Optional.ofNullable(this.parameterizedSubject);
     }
 
+    /**
+     * URL of page to consult when an alert is triggered
+     * 
+     */
     @Import(name="runbookUrl")
     private @Nullable Output<String> runbookUrl;
 
+    /**
+     * @return URL of page to consult when an alert is triggered
+     * 
+     */
     public Optional<Output<String>> runbookUrl() {
         return Optional.ofNullable(this.runbookUrl);
     }
 
+    /**
+     * The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * 
+     */
     @Import(name="severity", required=true)
     private Output<String> severity;
 
+    /**
+     * @return The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * 
+     */
     public Output<String> severity() {
         return this.severity;
     }
 
+    /**
+     * Plain text suggested first course of action, such as a command to execute.
+     * 
+     */
     @Import(name="tip")
     private @Nullable Output<String> tip;
 
+    /**
+     * @return Plain text suggested first course of action, such as a command to execute.
+     * 
+     */
     public Optional<Output<String>> tip() {
         return Optional.ofNullable(this.tip);
     }
@@ -113,87 +185,201 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DetectorRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description Description of the rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Description of the rule
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param detectLabel A detect label which matches a detect label within the program text
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectLabel(Output<String> detectLabel) {
             $.detectLabel = detectLabel;
             return this;
         }
 
+        /**
+         * @param detectLabel A detect label which matches a detect label within the program text
+         * 
+         * @return builder
+         * 
+         */
         public Builder detectLabel(String detectLabel) {
             return detectLabel(Output.of(detectLabel));
         }
 
+        /**
+         * @param disabled (default: false) When true, notifications and events will not be generated for the detect label
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled (default: false) When true, notifications and events will not be generated for the detect label
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
+        /**
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifications(@Nullable Output<List<String>> notifications) {
             $.notifications = notifications;
             return this;
         }
 
+        /**
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifications(List<String> notifications) {
             return notifications(Output.of(notifications));
         }
 
+        /**
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder notifications(String... notifications) {
             return notifications(List.of(notifications));
         }
 
+        /**
+         * @param parameterizedBody Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterizedBody(@Nullable Output<String> parameterizedBody) {
             $.parameterizedBody = parameterizedBody;
             return this;
         }
 
+        /**
+         * @param parameterizedBody Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterizedBody(String parameterizedBody) {
             return parameterizedBody(Output.of(parameterizedBody));
         }
 
+        /**
+         * @param parameterizedSubject Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterizedSubject(@Nullable Output<String> parameterizedSubject) {
             $.parameterizedSubject = parameterizedSubject;
             return this;
         }
 
+        /**
+         * @param parameterizedSubject Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+         * 
+         * @return builder
+         * 
+         */
         public Builder parameterizedSubject(String parameterizedSubject) {
             return parameterizedSubject(Output.of(parameterizedSubject));
         }
 
+        /**
+         * @param runbookUrl URL of page to consult when an alert is triggered
+         * 
+         * @return builder
+         * 
+         */
         public Builder runbookUrl(@Nullable Output<String> runbookUrl) {
             $.runbookUrl = runbookUrl;
             return this;
         }
 
+        /**
+         * @param runbookUrl URL of page to consult when an alert is triggered
+         * 
+         * @return builder
+         * 
+         */
         public Builder runbookUrl(String runbookUrl) {
             return runbookUrl(Output.of(runbookUrl));
         }
 
+        /**
+         * @param severity The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(Output<String> severity) {
             $.severity = severity;
             return this;
         }
 
+        /**
+         * @param severity The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+         * 
+         * @return builder
+         * 
+         */
         public Builder severity(String severity) {
             return severity(Output.of(severity));
         }
 
+        /**
+         * @param tip Plain text suggested first course of action, such as a command to execute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tip(@Nullable Output<String> tip) {
             $.tip = tip;
             return this;
         }
 
+        /**
+         * @param tip Plain text suggested first course of action, such as a command to execute.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tip(String tip) {
             return tip(Output.of(tip));
         }

@@ -14,12 +14,19 @@ namespace Pulumi.SignalFx.Azure.Inputs
     {
         [Input("namespaces", required: true)]
         private InputList<string>? _namespaces;
+
+        /// <summary>
+        /// The namespaces to sync
+        /// </summary>
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());
             set => _namespaces = value;
         }
 
+        /// <summary>
+        /// The name of the service
+        /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 

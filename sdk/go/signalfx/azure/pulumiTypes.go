@@ -14,8 +14,10 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type IntegrationCustomNamespacesPerService struct {
+	// The namespaces to sync
 	Namespaces []string `pulumi:"namespaces"`
-	Service    string   `pulumi:"service"`
+	// The name of the service
+	Service string `pulumi:"service"`
 }
 
 // IntegrationCustomNamespacesPerServiceInput is an input type that accepts IntegrationCustomNamespacesPerServiceArgs and IntegrationCustomNamespacesPerServiceOutput values.
@@ -30,8 +32,10 @@ type IntegrationCustomNamespacesPerServiceInput interface {
 }
 
 type IntegrationCustomNamespacesPerServiceArgs struct {
+	// The namespaces to sync
 	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
-	Service    pulumi.StringInput      `pulumi:"service"`
+	// The name of the service
+	Service pulumi.StringInput `pulumi:"service"`
 }
 
 func (IntegrationCustomNamespacesPerServiceArgs) ElementType() reflect.Type {
@@ -85,10 +89,12 @@ func (o IntegrationCustomNamespacesPerServiceOutput) ToIntegrationCustomNamespac
 	return o
 }
 
+// The namespaces to sync
 func (o IntegrationCustomNamespacesPerServiceOutput) Namespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespacesPerService) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
 }
 
+// The name of the service
 func (o IntegrationCustomNamespacesPerServiceOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespacesPerService) string { return v.Service }).(pulumi.StringOutput)
 }

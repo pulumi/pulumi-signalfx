@@ -12,28 +12,48 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardGroupDashboardGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Unique identifier of an association between a dashboard group and a dashboard
+        /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
 
+        /// <summary>
+        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// </summary>
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
 
+        /// <summary>
+        /// String that provides a description override for a mirrored dashboard
+        /// </summary>
         [Input("descriptionOverride")]
         public Input<string>? DescriptionOverride { get; set; }
 
         [Input("filterOverrides")]
         private InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs>? _filterOverrides;
+
+        /// <summary>
+        /// Filter to apply to each chart in the dashboard
+        /// </summary>
         public InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs> FilterOverrides
         {
             get => _filterOverrides ?? (_filterOverrides = new InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs>());
             set => _filterOverrides = value;
         }
 
+        /// <summary>
+        /// String that provides a name override for a mirrored dashboard
+        /// </summary>
         [Input("nameOverride")]
         public Input<string>? NameOverride { get; set; }
 
         [Input("variableOverrides")]
         private InputList<Inputs.DashboardGroupDashboardVariableOverrideGetArgs>? _variableOverrides;
+
+        /// <summary>
+        /// Dashboard variable to apply to each chart in the dashboard
+        /// </summary>
         public InputList<Inputs.DashboardGroupDashboardVariableOverrideGetArgs> VariableOverrides
         {
             get => _variableOverrides ?? (_variableOverrides = new InputList<Inputs.DashboardGroupDashboardVariableOverrideGetArgs>());

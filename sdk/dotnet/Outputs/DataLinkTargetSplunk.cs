@@ -13,7 +13,13 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DataLinkTargetSplunk
     {
+        /// <summary>
+        /// User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
 
         [OutputConstructor]

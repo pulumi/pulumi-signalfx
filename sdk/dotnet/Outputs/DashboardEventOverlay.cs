@@ -13,11 +13,26 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardEventOverlay
     {
+        /// <summary>
+        /// Color to use
+        /// </summary>
         public readonly string? Color;
+        /// <summary>
+        /// The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+        /// </summary>
         public readonly string? Label;
+        /// <summary>
+        /// (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+        /// </summary>
         public readonly bool? Line;
+        /// <summary>
+        /// Search term used to define events
+        /// </summary>
         public readonly string Signal;
         public readonly ImmutableArray<Outputs.DashboardEventOverlaySource> Sources;
+        /// <summary>
+        /// Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

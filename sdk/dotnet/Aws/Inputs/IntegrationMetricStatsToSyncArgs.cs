@@ -12,14 +12,24 @@ namespace Pulumi.SignalFx.Aws.Inputs
 
     public sealed class IntegrationMetricStatsToSyncArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// AWS metric that you want to pick statistics for
+        /// </summary>
         [Input("metric", required: true)]
         public Input<string> Metric { get; set; } = null!;
 
+        /// <summary>
+        /// An AWS namespace having AWS metric that you want to pick statistics for
+        /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 
         [Input("stats", required: true)]
         private InputList<string>? _stats;
+
+        /// <summary>
+        /// AWS statistics you want to collect
+        /// </summary>
         public InputList<string> Stats
         {
             get => _stats ?? (_stats = new InputList<string>());

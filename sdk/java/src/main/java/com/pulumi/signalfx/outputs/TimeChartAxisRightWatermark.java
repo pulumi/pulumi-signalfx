@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartAxisRightWatermark {
+    /**
+     * @return Label to display associated with the watermark line
+     * 
+     */
     private @Nullable String label;
+    /**
+     * @return Axis value where the watermark line will be displayed
+     * 
+     */
     private Double value;
 
     private TimeChartAxisRightWatermark() {}
+    /**
+     * @return Label to display associated with the watermark line
+     * 
+     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
+    /**
+     * @return Axis value where the watermark line will be displayed
+     * 
+     */
     public Double value() {
         return this.value;
     }

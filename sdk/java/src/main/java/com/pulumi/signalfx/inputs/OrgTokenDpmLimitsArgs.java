@@ -16,16 +16,32 @@ public final class OrgTokenDpmLimitsArgs extends com.pulumi.resources.ResourceAr
 
     public static final OrgTokenDpmLimitsArgs Empty = new OrgTokenDpmLimitsArgs();
 
+    /**
+     * The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+     * 
+     */
     @Import(name="dpmLimit", required=true)
     private Output<Integer> dpmLimit;
 
+    /**
+     * @return The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+     * 
+     */
     public Output<Integer> dpmLimit() {
         return this.dpmLimit;
     }
 
+    /**
+     * DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+     * 
+     */
     @Import(name="dpmNotificationThreshold")
     private @Nullable Output<Integer> dpmNotificationThreshold;
 
+    /**
+     * @return DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+     * 
+     */
     public Optional<Output<Integer>> dpmNotificationThreshold() {
         return Optional.ofNullable(this.dpmNotificationThreshold);
     }
@@ -55,20 +71,44 @@ public final class OrgTokenDpmLimitsArgs extends com.pulumi.resources.ResourceAr
             $ = new OrgTokenDpmLimitsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dpmLimit The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dpmLimit(Output<Integer> dpmLimit) {
             $.dpmLimit = dpmLimit;
             return this;
         }
 
+        /**
+         * @param dpmLimit The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dpmLimit(Integer dpmLimit) {
             return dpmLimit(Output.of(dpmLimit));
         }
 
+        /**
+         * @param dpmNotificationThreshold DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dpmNotificationThreshold(@Nullable Output<Integer> dpmNotificationThreshold) {
             $.dpmNotificationThreshold = dpmNotificationThreshold;
             return this;
         }
 
+        /**
+         * @param dpmNotificationThreshold DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dpmNotificationThreshold(Integer dpmNotificationThreshold) {
             return dpmNotificationThreshold(Output.of(dpmNotificationThreshold));
         }

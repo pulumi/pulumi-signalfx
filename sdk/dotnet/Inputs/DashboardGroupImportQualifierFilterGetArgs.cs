@@ -12,14 +12,24 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardGroupImportQualifierFilterGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (false by default) Whether this filter should be a "not" filter
+        /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }
 
+        /// <summary>
+        /// A metric time series dimension or property name
+        /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 
         [Input("values", required: true)]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// List of strings (which will be treated as an OR filter on the property)
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

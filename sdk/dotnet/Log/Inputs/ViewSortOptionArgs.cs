@@ -12,9 +12,15 @@ namespace Pulumi.SignalFx.Log.Inputs
 
     public sealed class ViewSortOptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the column
+        /// </summary>
         [Input("descending", required: true)]
         public Input<bool> Descending { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the column
+        /// </summary>
         [Input("field", required: true)]
         public Input<string> Field { get; set; } = null!;
 

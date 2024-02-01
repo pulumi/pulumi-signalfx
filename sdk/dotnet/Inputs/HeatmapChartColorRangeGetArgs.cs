@@ -12,12 +12,21 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class HeatmapChartColorRangeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
+        /// </summary>
         [Input("color", required: true)]
         public Input<string> Color { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum value within the coloring range
+        /// </summary>
         [Input("maxValue")]
         public Input<double>? MaxValue { get; set; }
 
+        /// <summary>
+        /// The minimum value within the coloring range
+        /// </summary>
         [Input("minValue")]
         public Input<double>? MinValue { get; set; }
 

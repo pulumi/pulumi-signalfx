@@ -12,15 +12,27 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class DashboardEventOverlayGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Color to use
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
+        /// <summary>
+        /// The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+        /// </summary>
         [Input("line")]
         public Input<bool>? Line { get; set; }
 
+        /// <summary>
+        /// Search term used to define events
+        /// </summary>
         [Input("signal", required: true)]
         public Input<string> Signal { get; set; } = null!;
 
@@ -32,6 +44,9 @@ namespace Pulumi.SignalFx.Inputs
             set => _sources = value;
         }
 
+        /// <summary>
+        /// Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

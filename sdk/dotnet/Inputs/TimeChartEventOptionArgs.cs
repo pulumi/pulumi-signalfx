@@ -12,12 +12,21 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartEventOptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Color to use
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// The label used in the publish statement that displays the events you want to customize
+        /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 

@@ -16,30 +16,62 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
 
     public static final MetricRulesetAggregationRuleAggregatorArgs Empty = new MetricRulesetAggregationRuleAggregatorArgs();
 
+    /**
+     * List of dimensions to keep or drop in aggregated metric
+     * 
+     */
     @Import(name="dimensions", required=true)
     private Output<List<String>> dimensions;
 
+    /**
+     * @return List of dimensions to keep or drop in aggregated metric
+     * 
+     */
     public Output<List<String>> dimensions() {
         return this.dimensions;
     }
 
+    /**
+     * Flag specifying to keep or drop given dimensions
+     * 
+     */
     @Import(name="dropDimensions", required=true)
     private Output<Boolean> dropDimensions;
 
+    /**
+     * @return Flag specifying to keep or drop given dimensions
+     * 
+     */
     public Output<Boolean> dropDimensions() {
         return this.dropDimensions;
     }
 
+    /**
+     * The aggregated metric name
+     * 
+     */
     @Import(name="outputName", required=true)
     private Output<String> outputName;
 
+    /**
+     * @return The aggregated metric name
+     * 
+     */
     public Output<String> outputName() {
         return this.outputName;
     }
 
+    /**
+     * The type of the aggregator
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The type of the aggregator
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -71,42 +103,96 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
             $ = new MetricRulesetAggregationRuleAggregatorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dimensions List of dimensions to keep or drop in aggregated metric
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(Output<List<String>> dimensions) {
             $.dimensions = dimensions;
             return this;
         }
 
+        /**
+         * @param dimensions List of dimensions to keep or drop in aggregated metric
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(List<String> dimensions) {
             return dimensions(Output.of(dimensions));
         }
 
+        /**
+         * @param dimensions List of dimensions to keep or drop in aggregated metric
+         * 
+         * @return builder
+         * 
+         */
         public Builder dimensions(String... dimensions) {
             return dimensions(List.of(dimensions));
         }
 
+        /**
+         * @param dropDimensions Flag specifying to keep or drop given dimensions
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDimensions(Output<Boolean> dropDimensions) {
             $.dropDimensions = dropDimensions;
             return this;
         }
 
+        /**
+         * @param dropDimensions Flag specifying to keep or drop given dimensions
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropDimensions(Boolean dropDimensions) {
             return dropDimensions(Output.of(dropDimensions));
         }
 
+        /**
+         * @param outputName The aggregated metric name
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputName(Output<String> outputName) {
             $.outputName = outputName;
             return this;
         }
 
+        /**
+         * @param outputName The aggregated metric name
+         * 
+         * @return builder
+         * 
+         */
         public Builder outputName(String outputName) {
             return outputName(Output.of(outputName));
         }
 
+        /**
+         * @param type The type of the aggregator
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of the aggregator
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

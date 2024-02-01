@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricRulesetRoutingRule {
+    /**
+     * @return Destination to send the input metric
+     * 
+     */
     private String destination;
 
     private MetricRulesetRoutingRule() {}
+    /**
+     * @return Destination to send the input metric
+     * 
+     */
     public String destination() {
         return this.destination;
     }

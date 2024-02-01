@@ -13,8 +13,17 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TimeChartEventOption
     {
+        /// <summary>
+        /// Color to use
+        /// </summary>
         public readonly string? Color;
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
         public readonly string? DisplayName;
+        /// <summary>
+        /// The label used in the publish statement that displays the events you want to customize
+        /// </summary>
         public readonly string Label;
 
         [OutputConstructor]

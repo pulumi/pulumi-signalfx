@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartLegendOptionsField {
+    /**
+     * @return (true by default) Determines if this property is displayed in the data table.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return The name of a property to hide or show in the data table.
+     * 
+     */
     private String property;
 
     private TimeChartLegendOptionsField() {}
+    /**
+     * @return (true by default) Determines if this property is displayed in the data table.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return The name of a property to hide or show in the data table.
+     * 
+     */
     public String property() {
         return this.property;
     }

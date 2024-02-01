@@ -13,14 +13,41 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DetectorRule
     {
+        /// <summary>
+        /// Description of the rule
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// A detect label which matches a detect label within the program text
+        /// </summary>
         public readonly string DetectLabel;
+        /// <summary>
+        /// (default: false) When true, notifications and events will not be generated for the detect label
+        /// </summary>
         public readonly bool? Disabled;
+        /// <summary>
+        /// List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        /// </summary>
         public readonly ImmutableArray<string> Notifications;
+        /// <summary>
+        /// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        /// </summary>
         public readonly string? ParameterizedBody;
+        /// <summary>
+        /// Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+        /// </summary>
         public readonly string? ParameterizedSubject;
+        /// <summary>
+        /// URL of page to consult when an alert is triggered
+        /// </summary>
         public readonly string? RunbookUrl;
+        /// <summary>
+        /// The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+        /// </summary>
         public readonly string Severity;
+        /// <summary>
+        /// Plain text suggested first course of action, such as a command to execute.
+        /// </summary>
         public readonly string? Tip;
 
         [OutputConstructor]

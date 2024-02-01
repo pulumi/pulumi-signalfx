@@ -13,7 +13,13 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TimeChartLegendOptionsField
     {
+        /// <summary>
+        /// (true by default) Determines if this property is displayed in the data table.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The name of a property to hide or show in the data table.
+        /// </summary>
         public readonly string Property;
 
         [OutputConstructor]

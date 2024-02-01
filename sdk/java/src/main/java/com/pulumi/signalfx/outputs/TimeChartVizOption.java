@@ -12,37 +12,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartVizOption {
+    /**
+     * @return The Y-axis associated with values for this plot. Must be either &#34;right&#34; or &#34;left&#34;. Defaults to &#34;left&#34;.
+     * 
+     */
     private @Nullable String axis;
+    /**
+     * @return Color to use
+     * 
+     */
     private @Nullable String color;
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     private @Nullable String displayName;
+    /**
+     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * 
+     */
     private String label;
+    /**
+     * @return (Chart plot_type by default) The visualization style to use. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;, &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+     * 
+     */
     private @Nullable String plotType;
+    /**
+     * @return An arbitrary prefix to display with the value of this plot
+     * 
+     */
     private @Nullable String valuePrefix;
+    /**
+     * @return An arbitrary suffix to display with the value of this plot
+     * 
+     */
     private @Nullable String valueSuffix;
+    /**
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * 
+     */
     private @Nullable String valueUnit;
 
     private TimeChartVizOption() {}
+    /**
+     * @return The Y-axis associated with values for this plot. Must be either &#34;right&#34; or &#34;left&#34;. Defaults to &#34;left&#34;.
+     * 
+     */
     public Optional<String> axis() {
         return Optional.ofNullable(this.axis);
     }
+    /**
+     * @return Color to use
+     * 
+     */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return (Chart plot_type by default) The visualization style to use. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;, &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+     * 
+     */
     public Optional<String> plotType() {
         return Optional.ofNullable(this.plotType);
     }
+    /**
+     * @return An arbitrary prefix to display with the value of this plot
+     * 
+     */
     public Optional<String> valuePrefix() {
         return Optional.ofNullable(this.valuePrefix);
     }
+    /**
+     * @return An arbitrary suffix to display with the value of this plot
+     * 
+     */
     public Optional<String> valueSuffix() {
         return Optional.ofNullable(this.valueSuffix);
     }
+    /**
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * 
+     */
     public Optional<String> valueUnit() {
         return Optional.ofNullable(this.valueUnit);
     }

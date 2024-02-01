@@ -12,29 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SingleValueChartVizOption {
+    /**
+     * @return Color to use
+     * 
+     */
     private @Nullable String color;
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     private @Nullable String displayName;
+    /**
+     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * 
+     */
     private String label;
+    /**
+     * @return An arbitrary prefix to display with the value of this plot
+     * 
+     */
     private @Nullable String valuePrefix;
+    /**
+     * @return An arbitrary suffix to display with the value of this plot
+     * 
+     */
     private @Nullable String valueSuffix;
+    /**
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * 
+     */
     private @Nullable String valueUnit;
 
     private SingleValueChartVizOption() {}
+    /**
+     * @return Color to use
+     * 
+     */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * 
+     */
     public String label() {
         return this.label;
     }
+    /**
+     * @return An arbitrary prefix to display with the value of this plot
+     * 
+     */
     public Optional<String> valuePrefix() {
         return Optional.ofNullable(this.valuePrefix);
     }
+    /**
+     * @return An arbitrary suffix to display with the value of this plot
+     * 
+     */
     public Optional<String> valueSuffix() {
         return Optional.ofNullable(this.valueSuffix);
     }
+    /**
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * 
+     */
     public Optional<String> valueUnit() {
         return Optional.ofNullable(this.valueUnit);
     }

@@ -17,16 +17,32 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
 
     public static final TimeChartAxisLeftWatermarkArgs Empty = new TimeChartAxisLeftWatermarkArgs();
 
+    /**
+     * Label to display associated with the watermark line
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return Label to display associated with the watermark line
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
 
+    /**
+     * Axis value where the watermark line will be displayed
+     * 
+     */
     @Import(name="value", required=true)
     private Output<Double> value;
 
+    /**
+     * @return Axis value where the watermark line will be displayed
+     * 
+     */
     public Output<Double> value() {
         return this.value;
     }
@@ -56,20 +72,44 @@ public final class TimeChartAxisLeftWatermarkArgs extends com.pulumi.resources.R
             $ = new TimeChartAxisLeftWatermarkArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param label Label to display associated with the watermark line
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label Label to display associated with the watermark line
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }
 
+        /**
+         * @param value Axis value where the watermark line will be displayed
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<Double> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Axis value where the watermark line will be displayed
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Double value) {
             return value(Output.of(value));
         }

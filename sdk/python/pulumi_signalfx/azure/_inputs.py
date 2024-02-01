@@ -19,12 +19,19 @@ class IntegrationCustomNamespacesPerServiceArgs:
     def __init__(__self__, *,
                  namespaces: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] namespaces: The namespaces to sync
+        :param pulumi.Input[str] service: The name of the service
+        """
         pulumi.set(__self__, "namespaces", namespaces)
         pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
     def namespaces(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The namespaces to sync
+        """
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
@@ -34,6 +41,9 @@ class IntegrationCustomNamespacesPerServiceArgs:
     @property
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
+        """
+        The name of the service
+        """
         return pulumi.get(self, "service")
 
     @service.setter

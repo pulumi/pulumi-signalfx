@@ -13,11 +13,29 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardGroupDashboard
     {
+        /// <summary>
+        /// Unique identifier of an association between a dashboard group and a dashboard
+        /// </summary>
         public readonly string? ConfigId;
+        /// <summary>
+        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// </summary>
         public readonly string DashboardId;
+        /// <summary>
+        /// String that provides a description override for a mirrored dashboard
+        /// </summary>
         public readonly string? DescriptionOverride;
+        /// <summary>
+        /// Filter to apply to each chart in the dashboard
+        /// </summary>
         public readonly ImmutableArray<Outputs.DashboardGroupDashboardFilterOverride> FilterOverrides;
+        /// <summary>
+        /// String that provides a name override for a mirrored dashboard
+        /// </summary>
         public readonly string? NameOverride;
+        /// <summary>
+        /// Dashboard variable to apply to each chart in the dashboard
+        /// </summary>
         public readonly ImmutableArray<Outputs.DashboardGroupDashboardVariableOverride> VariableOverrides;
 
         [OutputConstructor]
