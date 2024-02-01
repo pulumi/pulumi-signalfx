@@ -14,12 +14,19 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("acls")]
         private InputList<Inputs.DashboardPermissionsAclArgs>? _acls;
+
+        /// <summary>
+        /// The custom access control list for this dashboard
+        /// </summary>
         public InputList<Inputs.DashboardPermissionsAclArgs> Acls
         {
             get => _acls ?? (_acls = new InputList<Inputs.DashboardPermissionsAclArgs>());
             set => _acls = value;
         }
 
+        /// <summary>
+        /// The ID of the dashboard group that this dashboard inherits permissions from
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 

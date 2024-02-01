@@ -17,30 +17,62 @@ public final class DataLinkTargetSignalfxDashboardArgs extends com.pulumi.resour
 
     public static final DataLinkTargetSignalfxDashboardArgs Empty = new DataLinkTargetSignalfxDashboardArgs();
 
+    /**
+     * SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
+     * 
+     */
     @Import(name="dashboardGroupId", required=true)
     private Output<String> dashboardGroupId;
 
+    /**
+     * @return SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
+     * 
+     */
     public Output<String> dashboardGroupId() {
         return this.dashboardGroupId;
     }
 
+    /**
+     * SignalFx-assigned ID of the dashboard link target
+     * 
+     */
     @Import(name="dashboardId", required=true)
     private Output<String> dashboardId;
 
+    /**
+     * @return SignalFx-assigned ID of the dashboard link target
+     * 
+     */
     public Output<String> dashboardId() {
         return this.dashboardId;
     }
 
+    /**
+     * Flag that designates a target as the default for a data link object.
+     * 
+     */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
+    /**
+     * @return Flag that designates a target as the default for a data link object.
+     * 
+     */
     public Optional<Output<Boolean>> isDefault() {
         return Optional.ofNullable(this.isDefault);
     }
 
+    /**
+     * User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -72,38 +104,86 @@ public final class DataLinkTargetSignalfxDashboardArgs extends com.pulumi.resour
             $ = new DataLinkTargetSignalfxDashboardArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dashboardGroupId SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardGroupId(Output<String> dashboardGroupId) {
             $.dashboardGroupId = dashboardGroupId;
             return this;
         }
 
+        /**
+         * @param dashboardGroupId SignalFx-assigned ID of the dashboard link target&#39;s dashboard group
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardGroupId(String dashboardGroupId) {
             return dashboardGroupId(Output.of(dashboardGroupId));
         }
 
+        /**
+         * @param dashboardId SignalFx-assigned ID of the dashboard link target
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
+        /**
+         * @param dashboardId SignalFx-assigned ID of the dashboard link target
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
         }
 
+        /**
+         * @param isDefault Flag that designates a target as the default for a data link object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(@Nullable Output<Boolean> isDefault) {
             $.isDefault = isDefault;
             return this;
         }
 
+        /**
+         * @param isDefault Flag that designates a target as the default for a data link object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder isDefault(Boolean isDefault) {
             return isDefault(Output.of(isDefault));
         }
 
+        /**
+         * @param name User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

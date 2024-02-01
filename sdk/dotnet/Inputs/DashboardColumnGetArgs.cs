@@ -14,18 +14,31 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("chartIds", required: true)]
         private InputList<string>? _chartIds;
+
+        /// <summary>
+        /// Charts to use for the column
+        /// </summary>
         public InputList<string> ChartIds
         {
             get => _chartIds ?? (_chartIds = new InputList<string>());
             set => _chartIds = value;
         }
 
+        /// <summary>
+        /// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+        /// </summary>
         [Input("column")]
         public Input<int>? Column { get; set; }
 
+        /// <summary>
+        /// How many rows each chart should take up. (greater than or equal to 1)
+        /// </summary>
         [Input("height")]
         public Input<int>? Height { get; set; }
 
+        /// <summary>
+        /// Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+        /// </summary>
         [Input("width")]
         public Input<int>? Width { get; set; }
 

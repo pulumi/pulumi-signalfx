@@ -15,9 +15,17 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
 
     public static final TimeChartHistogramOptionArgs Empty = new TimeChartHistogramOptionArgs();
 
+    /**
+     * Base color theme to use for the graph.
+     * 
+     */
     @Import(name="colorTheme")
     private @Nullable Output<String> colorTheme;
 
+    /**
+     * @return Base color theme to use for the graph.
+     * 
+     */
     public Optional<Output<String>> colorTheme() {
         return Optional.ofNullable(this.colorTheme);
     }
@@ -46,11 +54,23 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
             $ = new TimeChartHistogramOptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param colorTheme Base color theme to use for the graph.
+         * 
+         * @return builder
+         * 
+         */
         public Builder colorTheme(@Nullable Output<String> colorTheme) {
             $.colorTheme = colorTheme;
             return this;
         }
 
+        /**
+         * @param colorTheme Base color theme to use for the graph.
+         * 
+         * @return builder
+         * 
+         */
         public Builder colorTheme(String colorTheme) {
             return colorTheme(Output.of(colorTheme));
         }

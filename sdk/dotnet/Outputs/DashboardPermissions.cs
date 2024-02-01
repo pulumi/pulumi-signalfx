@@ -13,7 +13,13 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardPermissions
     {
+        /// <summary>
+        /// The custom access control list for this dashboard
+        /// </summary>
         public readonly ImmutableArray<Outputs.DashboardPermissionsAcl> Acls;
+        /// <summary>
+        /// The ID of the dashboard group that this dashboard inherits permissions from
+        /// </summary>
         public readonly string? Parent;
 
         [OutputConstructor]

@@ -19,44 +19,92 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
 
     public static final DashboardGroupDashboardArgs Empty = new DashboardGroupDashboardArgs();
 
+    /**
+     * Unique identifier of an association between a dashboard group and a dashboard
+     * 
+     */
     @Import(name="configId")
     private @Nullable Output<String> configId;
 
+    /**
+     * @return Unique identifier of an association between a dashboard group and a dashboard
+     * 
+     */
     public Optional<Output<String>> configId() {
         return Optional.ofNullable(this.configId);
     }
 
+    /**
+     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * 
+     */
     @Import(name="dashboardId", required=true)
     private Output<String> dashboardId;
 
+    /**
+     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * 
+     */
     public Output<String> dashboardId() {
         return this.dashboardId;
     }
 
+    /**
+     * String that provides a description override for a mirrored dashboard
+     * 
+     */
     @Import(name="descriptionOverride")
     private @Nullable Output<String> descriptionOverride;
 
+    /**
+     * @return String that provides a description override for a mirrored dashboard
+     * 
+     */
     public Optional<Output<String>> descriptionOverride() {
         return Optional.ofNullable(this.descriptionOverride);
     }
 
+    /**
+     * Filter to apply to each chart in the dashboard
+     * 
+     */
     @Import(name="filterOverrides")
     private @Nullable Output<List<DashboardGroupDashboardFilterOverrideArgs>> filterOverrides;
 
+    /**
+     * @return Filter to apply to each chart in the dashboard
+     * 
+     */
     public Optional<Output<List<DashboardGroupDashboardFilterOverrideArgs>>> filterOverrides() {
         return Optional.ofNullable(this.filterOverrides);
     }
 
+    /**
+     * String that provides a name override for a mirrored dashboard
+     * 
+     */
     @Import(name="nameOverride")
     private @Nullable Output<String> nameOverride;
 
+    /**
+     * @return String that provides a name override for a mirrored dashboard
+     * 
+     */
     public Optional<Output<String>> nameOverride() {
         return Optional.ofNullable(this.nameOverride);
     }
 
+    /**
+     * Dashboard variable to apply to each chart in the dashboard
+     * 
+     */
     @Import(name="variableOverrides")
     private @Nullable Output<List<DashboardGroupDashboardVariableOverrideArgs>> variableOverrides;
 
+    /**
+     * @return Dashboard variable to apply to each chart in the dashboard
+     * 
+     */
     public Optional<Output<List<DashboardGroupDashboardVariableOverrideArgs>>> variableOverrides() {
         return Optional.ofNullable(this.variableOverrides);
     }
@@ -90,64 +138,148 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
             $ = new DashboardGroupDashboardArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param configId Unique identifier of an association between a dashboard group and a dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder configId(@Nullable Output<String> configId) {
             $.configId = configId;
             return this;
         }
 
+        /**
+         * @param configId Unique identifier of an association between a dashboard group and a dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder configId(String configId) {
             return configId(Output.of(configId));
         }
 
+        /**
+         * @param dashboardId The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(Output<String> dashboardId) {
             $.dashboardId = dashboardId;
             return this;
         }
 
+        /**
+         * @param dashboardId The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * 
+         * @return builder
+         * 
+         */
         public Builder dashboardId(String dashboardId) {
             return dashboardId(Output.of(dashboardId));
         }
 
+        /**
+         * @param descriptionOverride String that provides a description override for a mirrored dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder descriptionOverride(@Nullable Output<String> descriptionOverride) {
             $.descriptionOverride = descriptionOverride;
             return this;
         }
 
+        /**
+         * @param descriptionOverride String that provides a description override for a mirrored dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder descriptionOverride(String descriptionOverride) {
             return descriptionOverride(Output.of(descriptionOverride));
         }
 
+        /**
+         * @param filterOverrides Filter to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder filterOverrides(@Nullable Output<List<DashboardGroupDashboardFilterOverrideArgs>> filterOverrides) {
             $.filterOverrides = filterOverrides;
             return this;
         }
 
+        /**
+         * @param filterOverrides Filter to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder filterOverrides(List<DashboardGroupDashboardFilterOverrideArgs> filterOverrides) {
             return filterOverrides(Output.of(filterOverrides));
         }
 
+        /**
+         * @param filterOverrides Filter to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder filterOverrides(DashboardGroupDashboardFilterOverrideArgs... filterOverrides) {
             return filterOverrides(List.of(filterOverrides));
         }
 
+        /**
+         * @param nameOverride String that provides a name override for a mirrored dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameOverride(@Nullable Output<String> nameOverride) {
             $.nameOverride = nameOverride;
             return this;
         }
 
+        /**
+         * @param nameOverride String that provides a name override for a mirrored dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameOverride(String nameOverride) {
             return nameOverride(Output.of(nameOverride));
         }
 
+        /**
+         * @param variableOverrides Dashboard variable to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder variableOverrides(@Nullable Output<List<DashboardGroupDashboardVariableOverrideArgs>> variableOverrides) {
             $.variableOverrides = variableOverrides;
             return this;
         }
 
+        /**
+         * @param variableOverrides Dashboard variable to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder variableOverrides(List<DashboardGroupDashboardVariableOverrideArgs> variableOverrides) {
             return variableOverrides(Output.of(variableOverrides));
         }
 
+        /**
+         * @param variableOverrides Dashboard variable to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder variableOverrides(DashboardGroupDashboardVariableOverrideArgs... variableOverrides) {
             return variableOverrides(List.of(variableOverrides));
         }

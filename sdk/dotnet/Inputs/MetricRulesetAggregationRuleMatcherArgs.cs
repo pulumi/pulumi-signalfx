@@ -14,12 +14,19 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("filters")]
         private InputList<Inputs.MetricRulesetAggregationRuleMatcherFilterArgs>? _filters;
+
+        /// <summary>
+        /// List of filters to match on
+        /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleMatcherFilterArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.MetricRulesetAggregationRuleMatcherFilterArgs>());
             set => _filters = value;
         }
 
+        /// <summary>
+        /// The type of the matcher
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

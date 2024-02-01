@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class ViewSortOption {
+    /**
+     * @return Name of the column
+     * 
+     */
     private Boolean descending;
+    /**
+     * @return Name of the column
+     * 
+     */
     private String field;
 
     private ViewSortOption() {}
+    /**
+     * @return Name of the column
+     * 
+     */
     public Boolean descending() {
         return this.descending;
     }
+    /**
+     * @return Name of the column
+     * 
+     */
     public String field() {
         return this.field;
     }

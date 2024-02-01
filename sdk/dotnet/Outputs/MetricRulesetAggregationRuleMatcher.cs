@@ -13,7 +13,13 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class MetricRulesetAggregationRuleMatcher
     {
+        /// <summary>
+        /// List of filters to match on
+        /// </summary>
         public readonly ImmutableArray<Outputs.MetricRulesetAggregationRuleMatcherFilter> Filters;
+        /// <summary>
+        /// The type of the matcher
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

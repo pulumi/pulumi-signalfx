@@ -18,51 +18,107 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
 
     public static final TimeChartAxisLeftArgs Empty = new TimeChartAxisLeftArgs();
 
+    /**
+     * A line to draw as a high watermark
+     * 
+     */
     @Import(name="highWatermark")
     private @Nullable Output<Double> highWatermark;
 
+    /**
+     * @return A line to draw as a high watermark
+     * 
+     */
     public Optional<Output<Double>> highWatermark() {
         return Optional.ofNullable(this.highWatermark);
     }
 
+    /**
+     * A label to attach to the high watermark line
+     * 
+     */
     @Import(name="highWatermarkLabel")
     private @Nullable Output<String> highWatermarkLabel;
 
+    /**
+     * @return A label to attach to the high watermark line
+     * 
+     */
     public Optional<Output<String>> highWatermarkLabel() {
         return Optional.ofNullable(this.highWatermarkLabel);
     }
 
+    /**
+     * Label of the left axis
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return Label of the left axis
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
 
+    /**
+     * A line to draw as a low watermark
+     * 
+     */
     @Import(name="lowWatermark")
     private @Nullable Output<Double> lowWatermark;
 
+    /**
+     * @return A line to draw as a low watermark
+     * 
+     */
     public Optional<Output<Double>> lowWatermark() {
         return Optional.ofNullable(this.lowWatermark);
     }
 
+    /**
+     * A label to attach to the low watermark line
+     * 
+     */
     @Import(name="lowWatermarkLabel")
     private @Nullable Output<String> lowWatermarkLabel;
 
+    /**
+     * @return A label to attach to the low watermark line
+     * 
+     */
     public Optional<Output<String>> lowWatermarkLabel() {
         return Optional.ofNullable(this.lowWatermarkLabel);
     }
 
+    /**
+     * The maximum value for the left axis
+     * 
+     */
     @Import(name="maxValue")
     private @Nullable Output<Double> maxValue;
 
+    /**
+     * @return The maximum value for the left axis
+     * 
+     */
     public Optional<Output<Double>> maxValue() {
         return Optional.ofNullable(this.maxValue);
     }
 
+    /**
+     * The minimum value for the left axis
+     * 
+     */
     @Import(name="minValue")
     private @Nullable Output<Double> minValue;
 
+    /**
+     * @return The minimum value for the left axis
+     * 
+     */
     public Optional<Output<Double>> minValue() {
         return Optional.ofNullable(this.minValue);
     }
@@ -105,65 +161,149 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
             $ = new TimeChartAxisLeftArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param highWatermark A line to draw as a high watermark
+         * 
+         * @return builder
+         * 
+         */
         public Builder highWatermark(@Nullable Output<Double> highWatermark) {
             $.highWatermark = highWatermark;
             return this;
         }
 
+        /**
+         * @param highWatermark A line to draw as a high watermark
+         * 
+         * @return builder
+         * 
+         */
         public Builder highWatermark(Double highWatermark) {
             return highWatermark(Output.of(highWatermark));
         }
 
+        /**
+         * @param highWatermarkLabel A label to attach to the high watermark line
+         * 
+         * @return builder
+         * 
+         */
         public Builder highWatermarkLabel(@Nullable Output<String> highWatermarkLabel) {
             $.highWatermarkLabel = highWatermarkLabel;
             return this;
         }
 
+        /**
+         * @param highWatermarkLabel A label to attach to the high watermark line
+         * 
+         * @return builder
+         * 
+         */
         public Builder highWatermarkLabel(String highWatermarkLabel) {
             return highWatermarkLabel(Output.of(highWatermarkLabel));
         }
 
+        /**
+         * @param label Label of the left axis
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label Label of the left axis
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }
 
+        /**
+         * @param lowWatermark A line to draw as a low watermark
+         * 
+         * @return builder
+         * 
+         */
         public Builder lowWatermark(@Nullable Output<Double> lowWatermark) {
             $.lowWatermark = lowWatermark;
             return this;
         }
 
+        /**
+         * @param lowWatermark A line to draw as a low watermark
+         * 
+         * @return builder
+         * 
+         */
         public Builder lowWatermark(Double lowWatermark) {
             return lowWatermark(Output.of(lowWatermark));
         }
 
+        /**
+         * @param lowWatermarkLabel A label to attach to the low watermark line
+         * 
+         * @return builder
+         * 
+         */
         public Builder lowWatermarkLabel(@Nullable Output<String> lowWatermarkLabel) {
             $.lowWatermarkLabel = lowWatermarkLabel;
             return this;
         }
 
+        /**
+         * @param lowWatermarkLabel A label to attach to the low watermark line
+         * 
+         * @return builder
+         * 
+         */
         public Builder lowWatermarkLabel(String lowWatermarkLabel) {
             return lowWatermarkLabel(Output.of(lowWatermarkLabel));
         }
 
+        /**
+         * @param maxValue The maximum value for the left axis
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxValue(@Nullable Output<Double> maxValue) {
             $.maxValue = maxValue;
             return this;
         }
 
+        /**
+         * @param maxValue The maximum value for the left axis
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxValue(Double maxValue) {
             return maxValue(Output.of(maxValue));
         }
 
+        /**
+         * @param minValue The minimum value for the left axis
+         * 
+         * @return builder
+         * 
+         */
         public Builder minValue(@Nullable Output<Double> minValue) {
             $.minValue = minValue;
             return this;
         }
 
+        /**
+         * @param minValue The minimum value for the left axis
+         * 
+         * @return builder
+         * 
+         */
         public Builder minValue(Double minValue) {
             return minValue(Output.of(minValue));
         }

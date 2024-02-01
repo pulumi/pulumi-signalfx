@@ -16,21 +16,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetricRulesetAggregationRule {
+    /**
+     * @return The aggregator for this rule
+     * 
+     */
     private List<MetricRulesetAggregationRuleAggregator> aggregators;
+    /**
+     * @return Status of this aggregation rule
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The matcher for this rule
+     * 
+     */
     private List<MetricRulesetAggregationRuleMatcher> matchers;
+    /**
+     * @return Name of this aggregation rule
+     * 
+     */
     private @Nullable String name;
 
     private MetricRulesetAggregationRule() {}
+    /**
+     * @return The aggregator for this rule
+     * 
+     */
     public List<MetricRulesetAggregationRuleAggregator> aggregators() {
         return this.aggregators;
     }
+    /**
+     * @return Status of this aggregation rule
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The matcher for this rule
+     * 
+     */
     public List<MetricRulesetAggregationRuleMatcher> matchers() {
         return this.matchers;
     }
+    /**
+     * @return Name of this aggregation rule
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

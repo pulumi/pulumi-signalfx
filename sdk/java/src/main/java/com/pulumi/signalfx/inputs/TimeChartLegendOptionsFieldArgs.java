@@ -17,16 +17,32 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
 
     public static final TimeChartLegendOptionsFieldArgs Empty = new TimeChartLegendOptionsFieldArgs();
 
+    /**
+     * (true by default) Determines if this property is displayed in the data table.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return (true by default) Determines if this property is displayed in the data table.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The name of a property to hide or show in the data table.
+     * 
+     */
     @Import(name="property", required=true)
     private Output<String> property;
 
+    /**
+     * @return The name of a property to hide or show in the data table.
+     * 
+     */
     public Output<String> property() {
         return this.property;
     }
@@ -56,20 +72,44 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
             $ = new TimeChartLegendOptionsFieldArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled (true by default) Determines if this property is displayed in the data table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled (true by default) Determines if this property is displayed in the data table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param property The name of a property to hide or show in the data table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder property(Output<String> property) {
             $.property = property;
             return this;
         }
 
+        /**
+         * @param property The name of a property to hide or show in the data table.
+         * 
+         * @return builder
+         * 
+         */
         public Builder property(String property) {
             return property(Output.of(property));
         }

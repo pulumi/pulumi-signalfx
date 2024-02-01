@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricRulesetAggregationRuleAggregator {
+    /**
+     * @return List of dimensions to keep or drop in aggregated metric
+     * 
+     */
     private List<String> dimensions;
+    /**
+     * @return Flag specifying to keep or drop given dimensions
+     * 
+     */
     private Boolean dropDimensions;
+    /**
+     * @return The aggregated metric name
+     * 
+     */
     private String outputName;
+    /**
+     * @return The type of the aggregator
+     * 
+     */
     private String type;
 
     private MetricRulesetAggregationRuleAggregator() {}
+    /**
+     * @return List of dimensions to keep or drop in aggregated metric
+     * 
+     */
     public List<String> dimensions() {
         return this.dimensions;
     }
+    /**
+     * @return Flag specifying to keep or drop given dimensions
+     * 
+     */
     public Boolean dropDimensions() {
         return this.dropDimensions;
     }
+    /**
+     * @return The aggregated metric name
+     * 
+     */
     public String outputName() {
         return this.outputName;
     }
+    /**
+     * @return The type of the aggregator
+     * 
+     */
     public String type() {
         return this.type;
     }

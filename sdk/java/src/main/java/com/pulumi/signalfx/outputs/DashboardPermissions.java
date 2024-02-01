@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPermissions {
+    /**
+     * @return The custom access control list for this dashboard
+     * 
+     */
     private @Nullable List<DashboardPermissionsAcl> acls;
+    /**
+     * @return The ID of the dashboard group that this dashboard inherits permissions from
+     * 
+     */
     private @Nullable String parent;
 
     private DashboardPermissions() {}
+    /**
+     * @return The custom access control list for this dashboard
+     * 
+     */
     public List<DashboardPermissionsAcl> acls() {
         return this.acls == null ? List.of() : this.acls;
     }
+    /**
+     * @return The ID of the dashboard group that this dashboard inherits permissions from
+     * 
+     */
     public Optional<String> parent() {
         return Optional.ofNullable(this.parent);
     }

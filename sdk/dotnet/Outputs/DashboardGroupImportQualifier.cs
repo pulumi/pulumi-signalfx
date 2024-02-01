@@ -13,6 +13,9 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardGroupImportQualifier
     {
+        /// <summary>
+        /// Filter to apply to each chart in the dashboard
+        /// </summary>
         public readonly ImmutableArray<Outputs.DashboardGroupImportQualifierFilter> Filters;
         public readonly string? Metric;
 

@@ -13,6 +13,9 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TimeChartHistogramOption
     {
+        /// <summary>
+        /// Base color theme to use for the graph.
+        /// </summary>
         public readonly string? ColorTheme;
 
         [OutputConstructor]

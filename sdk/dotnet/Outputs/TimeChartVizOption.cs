@@ -13,13 +13,37 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TimeChartVizOption
     {
+        /// <summary>
+        /// The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+        /// </summary>
         public readonly string? Axis;
+        /// <summary>
+        /// Color to use
+        /// </summary>
         public readonly string? Color;
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
         public readonly string? DisplayName;
+        /// <summary>
+        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// (Chart plot_type by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+        /// </summary>
         public readonly string? PlotType;
+        /// <summary>
+        /// An arbitrary prefix to display with the value of this plot
+        /// </summary>
         public readonly string? ValuePrefix;
+        /// <summary>
+        /// An arbitrary suffix to display with the value of this plot
+        /// </summary>
         public readonly string? ValueSuffix;
+        /// <summary>
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        /// </summary>
         public readonly string? ValueUnit;
 
         [OutputConstructor]

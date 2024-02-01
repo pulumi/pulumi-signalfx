@@ -12,6 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartHistogramOptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Base color theme to use for the graph.
+        /// </summary>
         [Input("colorTheme")]
         public Input<string>? ColorTheme { get; set; }
 

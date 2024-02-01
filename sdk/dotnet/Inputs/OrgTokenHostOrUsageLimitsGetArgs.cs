@@ -12,27 +12,51 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class OrgTokenHostOrUsageLimitsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Max number of containers that can use this token
+        /// </summary>
         [Input("containerLimit")]
         public Input<int>? ContainerLimit { get; set; }
 
+        /// <summary>
+        /// Notification threshold for containers
+        /// </summary>
         [Input("containerNotificationThreshold")]
         public Input<int>? ContainerNotificationThreshold { get; set; }
 
+        /// <summary>
+        /// Max number of custom metrics that can be sent with this token
+        /// </summary>
         [Input("customMetricsLimit")]
         public Input<int>? CustomMetricsLimit { get; set; }
 
+        /// <summary>
+        /// Notification threshold for custom metrics
+        /// </summary>
         [Input("customMetricsNotificationThreshold")]
         public Input<int>? CustomMetricsNotificationThreshold { get; set; }
 
+        /// <summary>
+        /// Max number of high-res metrics that can be sent with this token
+        /// </summary>
         [Input("highResMetricsLimit")]
         public Input<int>? HighResMetricsLimit { get; set; }
 
+        /// <summary>
+        /// Notification threshold for high-res metrics
+        /// </summary>
         [Input("highResMetricsNotificationThreshold")]
         public Input<int>? HighResMetricsNotificationThreshold { get; set; }
 
+        /// <summary>
+        /// Max number of hosts that can use this token
+        /// </summary>
         [Input("hostLimit")]
         public Input<int>? HostLimit { get; set; }
 
+        /// <summary>
+        /// Notification threshold for hosts
+        /// </summary>
         [Input("hostNotificationThreshold")]
         public Input<int>? HostNotificationThreshold { get; set; }
 

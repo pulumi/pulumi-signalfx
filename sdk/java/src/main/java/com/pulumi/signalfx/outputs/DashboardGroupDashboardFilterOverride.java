@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupDashboardFilterOverride {
+    /**
+     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * 
+     */
     private @Nullable Boolean negated;
+    /**
+     * @return A metric time series dimension or property name
+     * 
+     */
     private String property;
+    /**
+     * @return List of strings (which will be treated as an OR filter on the property)
+     * 
+     */
     private List<String> values;
 
     private DashboardGroupDashboardFilterOverride() {}
+    /**
+     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * 
+     */
     public Optional<Boolean> negated() {
         return Optional.ofNullable(this.negated);
     }
+    /**
+     * @return A metric time series dimension or property name
+     * 
+     */
     public String property() {
         return this.property;
     }
+    /**
+     * @return List of strings (which will be treated as an OR filter on the property)
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

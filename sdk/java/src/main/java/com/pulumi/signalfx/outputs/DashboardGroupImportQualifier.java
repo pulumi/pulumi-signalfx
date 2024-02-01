@@ -13,10 +13,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupImportQualifier {
+    /**
+     * @return Filter to apply to each chart in the dashboard
+     * 
+     */
     private @Nullable List<DashboardGroupImportQualifierFilter> filters;
     private @Nullable String metric;
 
     private DashboardGroupImportQualifier() {}
+    /**
+     * @return Filter to apply to each chart in the dashboard
+     * 
+     */
     public List<DashboardGroupImportQualifierFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }

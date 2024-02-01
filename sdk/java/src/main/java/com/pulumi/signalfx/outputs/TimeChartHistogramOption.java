@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartHistogramOption {
+    /**
+     * @return Base color theme to use for the graph.
+     * 
+     */
     private @Nullable String colorTheme;
 
     private TimeChartHistogramOption() {}
+    /**
+     * @return Base color theme to use for the graph.
+     * 
+     */
     public Optional<String> colorTheme() {
         return Optional.ofNullable(this.colorTheme);
     }

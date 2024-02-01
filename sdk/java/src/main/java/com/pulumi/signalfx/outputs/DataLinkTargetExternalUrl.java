@@ -13,25 +13,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataLinkTargetExternalUrl {
+    /**
+     * @return The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * 
+     */
     private @Nullable String minimumTimeWindow;
+    /**
+     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     private String name;
+    /**
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * 
+     */
     private @Nullable Map<String,String> propertyKeyMapping;
+    /**
+     * @return Designates the format of minimumTimeWindow in the same data link target object.
+     * 
+     */
     private @Nullable String timeFormat;
+    /**
+     * @return URL string for a Splunk instance or external system data link target.
+     * 
+     */
     private String url;
 
     private DataLinkTargetExternalUrl() {}
+    /**
+     * @return The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * 
+     */
     public Optional<String> minimumTimeWindow() {
         return Optional.ofNullable(this.minimumTimeWindow);
     }
+    /**
+     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * 
+     */
     public Map<String,String> propertyKeyMapping() {
         return this.propertyKeyMapping == null ? Map.of() : this.propertyKeyMapping;
     }
+    /**
+     * @return Designates the format of minimumTimeWindow in the same data link target object.
+     * 
+     */
     public Optional<String> timeFormat() {
         return Optional.ofNullable(this.timeFormat);
     }
+    /**
+     * @return URL string for a Splunk instance or external system data link target.
+     * 
+     */
     public String url() {
         return this.url;
     }

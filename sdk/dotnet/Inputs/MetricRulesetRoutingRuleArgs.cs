@@ -12,6 +12,9 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class MetricRulesetRoutingRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Destination to send the input metric
+        /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
 
