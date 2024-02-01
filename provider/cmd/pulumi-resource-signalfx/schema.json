@@ -98,16 +98,20 @@
         "signalfx:aws/IntegrationCustomNamespaceSyncRule:IntegrationCustomNamespaceSyncRule": {
             "properties": {
                 "defaultAction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of \"Include\" or \"Exclude\".\n"
                 },
                 "filterAction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of \"Include\" or \"Exclude\".\n"
                 },
                 "filterSource": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.\n"
                 },
                 "namespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.\n"
                 }
             },
             "type": "object",
@@ -118,16 +122,19 @@
         "signalfx:aws/IntegrationMetricStatsToSync:IntegrationMetricStatsToSync": {
             "properties": {
                 "metric": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "AWS metric that you want to pick statistics for\n"
                 },
                 "namespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An AWS namespace having AWS metric that you want to pick statistics for\n"
                 },
                 "stats": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "AWS statistics you want to collect\n"
                 }
             },
             "type": "object",
@@ -140,16 +147,20 @@
         "signalfx:aws/IntegrationNamespaceSyncRule:IntegrationNamespaceSyncRule": {
             "properties": {
                 "defaultAction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filter_action` and `filter_source` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of \"Include\" or \"Exclude\".\n"
                 },
                 "filterAction": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of \"Include\" or \"Exclude\".\n"
                 },
                 "filterSource": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.\n"
                 },
                 "namespace": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.\n"
                 }
             },
             "type": "object",
@@ -163,10 +174,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The namespaces to sync\n"
                 },
                 "service": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of the service\n"
                 }
             },
             "type": "object",
@@ -205,13 +218,16 @@
         "signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter": {
             "properties": {
                 "negated": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) whether this filter should be a \"not\" filter\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the property to filter by\n"
                 },
                 "propertyValue": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "the value of the property to filter by\n"
                 }
             },
             "type": "object",
@@ -223,19 +239,24 @@
         "signalfx:index/DashboardChart:DashboardChart": {
             "properties": {
                 "chartId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ID of the chart to display\n"
                 },
                 "column": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)\n"
                 },
                 "height": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many rows the chart should take up. (greater than or equal to 1)\n"
                 },
                 "row": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The row to show the chart in (zero-based); if height \u003e 1, this value represents the topmost row of the chart. (greater than or equal to 0)\n"
                 },
                 "width": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)\n"
                 }
             },
             "type": "object",
@@ -249,16 +270,20 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Charts to use for the column\n"
                 },
                 "column": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)\n"
                 },
                 "height": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many rows each chart should take up. (greater than or equal to 1)\n"
                 },
                 "width": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)\n"
                 }
             },
             "type": "object",
@@ -269,16 +294,20 @@
         "signalfx:index/DashboardEventOverlay:DashboardEventOverlay": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.\n"
                 },
                 "line": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) Whether a vertical line should be displayed in the plot at the time the event occurs\n"
                 },
                 "signal": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Search term used to define events\n"
                 },
                 "sources": {
                     "type": "array",
@@ -287,7 +316,8 @@
                     }
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Source for this event's data. Can be \"eventTimeSeries\" (default) or \"detectorEvents\".\n"
                 }
             },
             "type": "object",
@@ -298,16 +328,19 @@
         "signalfx:index/DashboardEventOverlaySource:DashboardEventOverlaySource": {
             "properties": {
                 "negated": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) Whether this filter should be a \"not\" filter\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 }
             },
             "type": "object",
@@ -319,19 +352,23 @@
         "signalfx:index/DashboardFilter:DashboardFilter": {
             "properties": {
                 "applyIfExist": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this filter will also match data that does not have the specified property\n"
                 },
                 "negated": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) Whether this filter should be a \"not\" filter\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 }
             },
             "type": "object",
@@ -346,13 +383,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Charts to use for the grid\n"
                 },
                 "height": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many rows each chart should take up. (greater than or equal to 1)\n"
                 },
                 "width": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)\n"
                 }
             },
             "type": "object",
@@ -363,28 +403,34 @@
         "signalfx:index/DashboardGroupDashboard:DashboardGroupDashboard": {
             "properties": {
                 "configId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Unique identifier of an association between a dashboard group and a dashboard\n"
                 },
                 "dashboardId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the plot (metric time series data) you want to customize\n"
                 },
                 "descriptionOverride": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "String that provides a description override for a mirrored dashboard\n"
                 },
                 "filterOverrides": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardGroupDashboardFilterOverride:DashboardGroupDashboardFilterOverride"
-                    }
+                    },
+                    "description": "Filter to apply to each chart in the dashboard\n"
                 },
                 "nameOverride": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "String that provides a name override for a mirrored dashboard\n"
                 },
                 "variableOverrides": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardGroupDashboardVariableOverride:DashboardGroupDashboardVariableOverride"
-                    }
+                    },
+                    "description": "Dashboard variable to apply to each chart in the dashboard\n"
                 }
             },
             "type": "object",
@@ -403,16 +449,19 @@
         "signalfx:index/DashboardGroupDashboardFilterOverride:DashboardGroupDashboardFilterOverride": {
             "properties": {
                 "negated": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) Whether this filter should be a \"not\" filter\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 }
             },
             "type": "object",
@@ -424,19 +473,22 @@
         "signalfx:index/DashboardGroupDashboardVariableOverride:DashboardGroupDashboardVariableOverride": {
             "properties": {
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 },
                 "valuesSuggesteds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable\n"
                 }
             },
             "type": "object",
@@ -450,7 +502,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardGroupImportQualifierFilter:DashboardGroupImportQualifierFilter"
-                    }
+                    },
+                    "description": "Filter to apply to each chart in the dashboard\n"
                 },
                 "metric": {
                     "type": "string"
@@ -461,16 +514,19 @@
         "signalfx:index/DashboardGroupImportQualifierFilter:DashboardGroupImportQualifierFilter": {
             "properties": {
                 "negated": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) Whether this filter should be a \"not\" filter\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 }
             },
             "type": "object",
@@ -485,13 +541,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Actions level, possible values: READ, WRITE\n"
                 },
                 "principalId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ID of the principal with access\n"
                 },
                 "principalType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Type of principal, possible values: ORG, TEAM, USER\n"
                 }
             },
             "type": "object",
@@ -506,10 +565,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/DashboardPermissionsAcl:DashboardPermissionsAcl"
-                    }
+                    },
+                    "description": "The custom access control list for this dashboard\n"
                 },
                 "parent": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the dashboard group that this dashboard inherits permissions from\n"
                 }
             },
             "type": "object"
@@ -520,13 +581,16 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Actions level, possible values: READ, WRITE\n"
                 },
                 "principalId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "ID of the principal with access\n"
                 },
                 "principalType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Type of principal, possible values: ORG, TEAM, USER\n"
                 }
             },
             "type": "object",
@@ -538,7 +602,8 @@
         "signalfx:index/DashboardSelectedEventOverlay:DashboardSelectedEventOverlay": {
             "properties": {
                 "signal": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Search term used to define events\n"
                 },
                 "sources": {
                     "type": "array",
@@ -547,7 +612,8 @@
                     }
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Source for this event's data. Can be \"eventTimeSeries\" (default) or \"detectorEvents\".\n"
                 }
             },
             "type": "object",
@@ -558,16 +624,19 @@
         "signalfx:index/DashboardSelectedEventOverlaySource:DashboardSelectedEventOverlaySource": {
             "properties": {
                 "negated": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(false by default) Whether this filter should be a \"not\" filter\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 }
             },
             "type": "object",
@@ -579,37 +648,46 @@
         "signalfx:index/DashboardVariable:DashboardVariable": {
             "properties": {
                 "alias": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard\n"
                 },
                 "applyIfExist": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this variable will also match data that does not have the specified property\n"
                 },
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Variable description\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A metric time series dimension or property name\n"
                 },
                 "replaceOnly": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this variable will only apply to charts with a filter on the named property.\n"
                 },
                 "restrictedSuggestions": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default\n"
                 },
                 "valueRequired": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default\n"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings (which will be treated as an OR filter on the property)\n"
                 },
                 "valuesSuggesteds": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable\n"
                 }
             },
             "type": "object",
@@ -621,22 +699,27 @@
         "signalfx:index/DataLinkTargetExternalUrl:DataLinkTargetExternalUrl": {
             "properties": {
                 "minimumTimeWindow": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User-assigned target name. Use this value to differentiate between the link targets for a data link object.\n"
                 },
                 "propertyKeyMapping": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different\n"
                 },
                 "timeFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Designates the format of minimumTimeWindow in the same data link target object.\n"
                 },
                 "url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "URL string for a Splunk instance or external system data link target.\n"
                 }
             },
             "type": "object",
@@ -648,16 +731,20 @@
         "signalfx:index/DataLinkTargetSignalfxDashboard:DataLinkTargetSignalfxDashboard": {
             "properties": {
                 "dashboardGroupId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SignalFx-assigned ID of the dashboard link target's dashboard group\n"
                 },
                 "dashboardId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "SignalFx-assigned ID of the dashboard link target\n"
                 },
                 "isDefault": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Flag that designates a target as the default for a data link object.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User-assigned target name. Use this value to differentiate between the link targets for a data link object.\n"
                 }
             },
             "type": "object",
@@ -670,13 +757,15 @@
         "signalfx:index/DataLinkTargetSplunk:DataLinkTargetSplunk": {
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "User-assigned target name. Use this value to differentiate between the link targets for a data link object.\n"
                 },
                 "propertyKeyMapping": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different\n"
                 }
             },
             "type": "object",
@@ -687,34 +776,43 @@
         "signalfx:index/DetectorRule:DetectorRule": {
             "properties": {
                 "description": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Description of the rule\n"
                 },
                 "detectLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A detect label which matches a detect label within the program text\n"
                 },
                 "disabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(default: false) When true, notifications and events will not be generated for the detect label\n"
                 },
                 "notifications": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info\n"
                 },
                 "parameterizedBody": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info\n"
                 },
                 "parameterizedSubject": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info\n"
                 },
                 "runbookUrl": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "URL of page to consult when an alert is triggered\n"
                 },
                 "severity": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info\n"
                 },
                 "tip": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Plain text suggested first course of action, such as a command to execute.\n"
                 }
             },
             "type": "object",
@@ -726,22 +824,28 @@
         "signalfx:index/DetectorVizOption:DetectorVizOption": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "displayName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the plot (metric time series data) you want to customize\n"
                 },
                 "valuePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary prefix to display with the value of this plot\n"
                 },
                 "valueSuffix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary suffix to display with the value of this plot\n"
                 },
                 "valueUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)\n"
                 }
             },
             "type": "object",
@@ -752,13 +856,16 @@
         "signalfx:index/HeatmapChartColorRange:HeatmapChartColorRange": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example \"#ea1849\" (grass green).\n"
                 },
                 "maxValue": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The maximum value within the coloring range\n"
                 },
                 "minValue": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The minimum value within the coloring range\n"
                 }
             },
             "type": "object",
@@ -769,19 +876,24 @@
         "signalfx:index/HeatmapChartColorScale:HeatmapChartColorScale": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
                 },
                 "gt": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the lower threshold non-inclusive value for this range\n"
                 },
                 "gte": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the lower threshold inclusive value for this range\n"
                 },
                 "lt": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the upper threshold non-inculsive value for this range\n"
                 },
                 "lte": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the upper threshold inclusive value for this range\n"
                 }
             },
             "type": "object",
@@ -792,19 +904,24 @@
         "signalfx:index/ListChartColorScale:ListChartColorScale": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
                 },
                 "gt": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the lower threshold non-inclusive value for this range\n"
                 },
                 "gte": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the lower threshold inclusive value for this range\n"
                 },
                 "lt": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the upper threshold non-inculsive value for this range\n"
                 },
                 "lte": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the upper threshold inclusive value for this range\n"
                 }
             },
             "type": "object",
@@ -815,10 +932,12 @@
         "signalfx:index/ListChartLegendOptionsField:ListChartLegendOptionsField": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(true by default) Determines if this property is displayed in the data table.\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of a property to hide or show in the data table.\n"
                 }
             },
             "type": "object",
@@ -829,22 +948,28 @@
         "signalfx:index/ListChartVizOption:ListChartVizOption": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "displayName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the plot (metric time series data) you want to customize\n"
                 },
                 "valuePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary prefix to display with the value of this plot\n"
                 },
                 "valueSuffix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary suffix to display with the value of this plot\n"
                 },
                 "valueUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)\n"
                 }
             },
             "type": "object",
@@ -858,19 +983,23 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/MetricRulesetAggregationRuleAggregator:MetricRulesetAggregationRuleAggregator"
-                    }
+                    },
+                    "description": "The aggregator for this rule\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Status of this aggregation rule\n"
                 },
                 "matchers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/MetricRulesetAggregationRuleMatcher:MetricRulesetAggregationRuleMatcher"
-                    }
+                    },
+                    "description": "The matcher for this rule\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of this aggregation rule\n"
                 }
             },
             "type": "object",
@@ -886,16 +1015,20 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of dimensions to keep or drop in aggregated metric\n"
                 },
                 "dropDimensions": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Flag specifying to keep or drop given dimensions\n"
                 },
                 "outputName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The aggregated metric name\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the aggregator\n"
                 }
             },
             "type": "object",
@@ -912,10 +1045,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/signalfx:index/MetricRulesetAggregationRuleMatcherFilter:MetricRulesetAggregationRuleMatcherFilter"
-                    }
+                    },
+                    "description": "List of filters to match on\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The type of the matcher\n"
                 }
             },
             "type": "object",
@@ -926,16 +1061,19 @@
         "signalfx:index/MetricRulesetAggregationRuleMatcherFilter:MetricRulesetAggregationRuleMatcherFilter": {
             "properties": {
                 "not": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Flag specifying equals or not equals\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of dimension to match\n"
                 },
                 "propertyValues": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of property values to match\n"
                 }
             },
             "type": "object",
@@ -948,7 +1086,8 @@
         "signalfx:index/MetricRulesetRoutingRule:MetricRulesetRoutingRule": {
             "properties": {
                 "destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Destination to send the input metric\n"
                 }
             },
             "type": "object",
@@ -959,10 +1098,12 @@
         "signalfx:index/OrgTokenDpmLimits:OrgTokenDpmLimits": {
             "properties": {
                 "dpmLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.\n"
                 },
                 "dpmNotificationThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "DPM level at which Splunk Observability Cloud sends the notification for this token. If you don't specify a notification, Splunk Observability Cloud sends the generic notification.\n"
                 }
             },
             "type": "object",
@@ -973,28 +1114,36 @@
         "signalfx:index/OrgTokenHostOrUsageLimits:OrgTokenHostOrUsageLimits": {
             "properties": {
                 "containerLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Max number of containers that can use this token\n"
                 },
                 "containerNotificationThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Notification threshold for containers\n"
                 },
                 "customMetricsLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Max number of custom metrics that can be sent with this token\n"
                 },
                 "customMetricsNotificationThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Notification threshold for custom metrics\n"
                 },
                 "highResMetricsLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Max number of high-res metrics that can be sent with this token\n"
                 },
                 "highResMetricsNotificationThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Notification threshold for high-res metrics\n"
                 },
                 "hostLimit": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Max number of hosts that can use this token\n"
                 },
                 "hostNotificationThreshold": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Notification threshold for hosts\n"
                 }
             },
             "type": "object"
@@ -1002,19 +1151,24 @@
         "signalfx:index/SingleValueChartColorScale:SingleValueChartColorScale": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.\n"
                 },
                 "gt": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the lower threshold non-inclusive value for this range\n"
                 },
                 "gte": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the lower threshold inclusive value for this range\n"
                 },
                 "lt": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the upper threshold non-inculsive value for this range\n"
                 },
                 "lte": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Indicates the upper threshold inclusive value for this range\n"
                 }
             },
             "type": "object",
@@ -1025,22 +1179,28 @@
         "signalfx:index/SingleValueChartVizOption:SingleValueChartVizOption": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "displayName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the plot (metric time series data) you want to customize\n"
                 },
                 "valuePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary prefix to display with the value of this plot\n"
                 },
                 "valueSuffix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary suffix to display with the value of this plot\n"
                 },
                 "valueUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)\n"
                 }
             },
             "type": "object",
@@ -1051,22 +1211,28 @@
         "signalfx:index/TableChartVizOption:TableChartVizOption": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "displayName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the plot (metric time series data) you want to customize\n"
                 },
                 "valuePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary prefix to display with the value of this plot\n"
                 },
                 "valueSuffix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary suffix to display with the value of this plot\n"
                 },
                 "valueUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)\n"
                 }
             },
             "type": "object",
@@ -1077,25 +1243,32 @@
         "signalfx:index/TimeChartAxisLeft:TimeChartAxisLeft": {
             "properties": {
                 "highWatermark": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "A line to draw as a high watermark\n"
                 },
                 "highWatermarkLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A label to attach to the high watermark line\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Label of the left axis\n"
                 },
                 "lowWatermark": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "A line to draw as a low watermark\n"
                 },
                 "lowWatermarkLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A label to attach to the low watermark line\n"
                 },
                 "maxValue": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The maximum value for the left axis\n"
                 },
                 "minValue": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The minimum value for the left axis\n"
                 },
                 "watermarks": {
                     "type": "array",
@@ -1109,10 +1282,12 @@
         "signalfx:index/TimeChartAxisLeftWatermark:TimeChartAxisLeftWatermark": {
             "properties": {
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Label to display associated with the watermark line\n"
                 },
                 "value": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Axis value where the watermark line will be displayed\n"
                 }
             },
             "type": "object",
@@ -1123,25 +1298,32 @@
         "signalfx:index/TimeChartAxisRight:TimeChartAxisRight": {
             "properties": {
                 "highWatermark": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "A line to draw as a high watermark\n"
                 },
                 "highWatermarkLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A label to attach to the high watermark line\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Label of the right axis\n"
                 },
                 "lowWatermark": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "A line to draw as a low watermark\n"
                 },
                 "lowWatermarkLabel": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A label to attach to the low watermark line\n"
                 },
                 "maxValue": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The maximum value for the right axis\n"
                 },
                 "minValue": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "The minimum value for the right axis\n"
                 },
                 "watermarks": {
                     "type": "array",
@@ -1155,10 +1337,12 @@
         "signalfx:index/TimeChartAxisRightWatermark:TimeChartAxisRightWatermark": {
             "properties": {
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Label to display associated with the watermark line\n"
                 },
                 "value": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Axis value where the watermark line will be displayed\n"
                 }
             },
             "type": "object",
@@ -1169,13 +1353,16 @@
         "signalfx:index/TimeChartEventOption:TimeChartEventOption": {
             "properties": {
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "displayName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the events you want to customize\n"
                 }
             },
             "type": "object",
@@ -1186,7 +1373,8 @@
         "signalfx:index/TimeChartHistogramOption:TimeChartHistogramOption": {
             "properties": {
                 "colorTheme": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Base color theme to use for the graph.\n"
                 }
             },
             "type": "object"
@@ -1194,10 +1382,12 @@
         "signalfx:index/TimeChartLegendOptionsField:TimeChartLegendOptionsField": {
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "(true by default) Determines if this property is displayed in the data table.\n"
                 },
                 "property": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The name of a property to hide or show in the data table.\n"
                 }
             },
             "type": "object",
@@ -1208,28 +1398,36 @@
         "signalfx:index/TimeChartVizOption:TimeChartVizOption": {
             "properties": {
                 "axis": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Y-axis associated with values for this plot. Must be either \"right\" or \"left\". Defaults to \"left\".\n"
                 },
                 "color": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Color to use\n"
                 },
                 "displayName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.\n"
                 },
                 "label": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The label used in the publish statement that displays the plot (metric time series data) you want to customize\n"
                 },
                 "plotType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "(Chart plot_type by default) The visualization style to use. Must be \"LineChart\", \"AreaChart\", \"ColumnChart\", or \"Histogram\"\n"
                 },
                 "valuePrefix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary prefix to display with the value of this plot\n"
                 },
                 "valueSuffix": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "An arbitrary suffix to display with the value of this plot\n"
                 },
                 "valueUnit": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)\n"
                 }
             },
             "type": "object",
@@ -1256,7 +1454,8 @@
         "signalfx:log/ViewColumn:ViewColumn": {
             "properties": {
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the column\n"
                 }
             },
             "type": "object",
@@ -1267,10 +1466,12 @@
         "signalfx:log/ViewSortOption:ViewSortOption": {
             "properties": {
                 "descending": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Name of the column\n"
                 },
                 "field": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the column\n"
                 }
             },
             "type": "object",
