@@ -18,23 +18,47 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DashboardGridArgs Empty = new DashboardGridArgs();
 
+    /**
+     * Charts to use for the grid
+     * 
+     */
     @Import(name="chartIds", required=true)
     private Output<List<String>> chartIds;
 
+    /**
+     * @return Charts to use for the grid
+     * 
+     */
     public Output<List<String>> chartIds() {
         return this.chartIds;
     }
 
+    /**
+     * How many rows each chart should take up. (greater than or equal to 1)
+     * 
+     */
     @Import(name="height")
     private @Nullable Output<Integer> height;
 
+    /**
+     * @return How many rows each chart should take up. (greater than or equal to 1)
+     * 
+     */
     public Optional<Output<Integer>> height() {
         return Optional.ofNullable(this.height);
     }
 
+    /**
+     * Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+     * 
+     */
     @Import(name="width")
     private @Nullable Output<Integer> width;
 
+    /**
+     * @return Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+     * 
+     */
     public Optional<Output<Integer>> width() {
         return Optional.ofNullable(this.width);
     }
@@ -65,33 +89,75 @@ public final class DashboardGridArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DashboardGridArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param chartIds Charts to use for the grid
+         * 
+         * @return builder
+         * 
+         */
         public Builder chartIds(Output<List<String>> chartIds) {
             $.chartIds = chartIds;
             return this;
         }
 
+        /**
+         * @param chartIds Charts to use for the grid
+         * 
+         * @return builder
+         * 
+         */
         public Builder chartIds(List<String> chartIds) {
             return chartIds(Output.of(chartIds));
         }
 
+        /**
+         * @param chartIds Charts to use for the grid
+         * 
+         * @return builder
+         * 
+         */
         public Builder chartIds(String... chartIds) {
             return chartIds(List.of(chartIds));
         }
 
+        /**
+         * @param height How many rows each chart should take up. (greater than or equal to 1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder height(@Nullable Output<Integer> height) {
             $.height = height;
             return this;
         }
 
+        /**
+         * @param height How many rows each chart should take up. (greater than or equal to 1)
+         * 
+         * @return builder
+         * 
+         */
         public Builder height(Integer height) {
             return height(Output.of(height));
         }
 
+        /**
+         * @param width Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+         * 
+         * @return builder
+         * 
+         */
         public Builder width(@Nullable Output<Integer> width) {
             $.width = width;
             return this;
         }
 
+        /**
+         * @param width Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+         * 
+         * @return builder
+         * 
+         */
         public Builder width(Integer width) {
             return width(Output.of(width));
         }

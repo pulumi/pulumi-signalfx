@@ -14,41 +14,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DetectorRule {
+    /**
+     * @return Description of the rule
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return A detect label which matches a detect label within the program text
+     * 
+     */
     private String detectLabel;
+    /**
+     * @return (default: false) When true, notifications and events will not be generated for the detect label
+     * 
+     */
     private @Nullable Boolean disabled;
+    /**
+     * @return List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * 
+     */
     private @Nullable List<String> notifications;
+    /**
+     * @return Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     private @Nullable String parameterizedBody;
+    /**
+     * @return Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     private @Nullable String parameterizedSubject;
+    /**
+     * @return URL of page to consult when an alert is triggered
+     * 
+     */
     private @Nullable String runbookUrl;
+    /**
+     * @return The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * 
+     */
     private String severity;
+    /**
+     * @return Plain text suggested first course of action, such as a command to execute.
+     * 
+     */
     private @Nullable String tip;
 
     private DetectorRule() {}
+    /**
+     * @return Description of the rule
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return A detect label which matches a detect label within the program text
+     * 
+     */
     public String detectLabel() {
         return this.detectLabel;
     }
+    /**
+     * @return (default: false) When true, notifications and events will not be generated for the detect label
+     * 
+     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
+    /**
+     * @return List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * 
+     */
     public List<String> notifications() {
         return this.notifications == null ? List.of() : this.notifications;
     }
+    /**
+     * @return Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     public Optional<String> parameterizedBody() {
         return Optional.ofNullable(this.parameterizedBody);
     }
+    /**
+     * @return Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+     * 
+     */
     public Optional<String> parameterizedSubject() {
         return Optional.ofNullable(this.parameterizedSubject);
     }
+    /**
+     * @return URL of page to consult when an alert is triggered
+     * 
+     */
     public Optional<String> runbookUrl() {
         return Optional.ofNullable(this.runbookUrl);
     }
+    /**
+     * @return The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * 
+     */
     public String severity() {
         return this.severity;
     }
+    /**
+     * @return Plain text suggested first course of action, such as a command to execute.
+     * 
+     */
     public Optional<String> tip() {
         return Optional.ofNullable(this.tip);
     }

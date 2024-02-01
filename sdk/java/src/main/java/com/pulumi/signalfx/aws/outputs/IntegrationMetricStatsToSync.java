@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class IntegrationMetricStatsToSync {
+    /**
+     * @return AWS metric that you want to pick statistics for
+     * 
+     */
     private String metric;
+    /**
+     * @return An AWS namespace having AWS metric that you want to pick statistics for
+     * 
+     */
     private String namespace;
+    /**
+     * @return AWS statistics you want to collect
+     * 
+     */
     private List<String> stats;
 
     private IntegrationMetricStatsToSync() {}
+    /**
+     * @return AWS metric that you want to pick statistics for
+     * 
+     */
     public String metric() {
         return this.metric;
     }
+    /**
+     * @return An AWS namespace having AWS metric that you want to pick statistics for
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return AWS statistics you want to collect
+     * 
+     */
     public List<String> stats() {
         return this.stats;
     }

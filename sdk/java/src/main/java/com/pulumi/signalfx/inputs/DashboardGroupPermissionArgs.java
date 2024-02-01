@@ -17,23 +17,47 @@ public final class DashboardGroupPermissionArgs extends com.pulumi.resources.Res
 
     public static final DashboardGroupPermissionArgs Empty = new DashboardGroupPermissionArgs();
 
+    /**
+     * Actions level, possible values: READ, WRITE
+     * 
+     */
     @Import(name="actions")
     private @Nullable Output<List<String>> actions;
 
+    /**
+     * @return Actions level, possible values: READ, WRITE
+     * 
+     */
     public Optional<Output<List<String>>> actions() {
         return Optional.ofNullable(this.actions);
     }
 
+    /**
+     * ID of the principal with access
+     * 
+     */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
+    /**
+     * @return ID of the principal with access
+     * 
+     */
     public Output<String> principalId() {
         return this.principalId;
     }
 
+    /**
+     * Type of principal, possible values: ORG, TEAM, USER
+     * 
+     */
     @Import(name="principalType", required=true)
     private Output<String> principalType;
 
+    /**
+     * @return Type of principal, possible values: ORG, TEAM, USER
+     * 
+     */
     public Output<String> principalType() {
         return this.principalType;
     }
@@ -64,33 +88,75 @@ public final class DashboardGroupPermissionArgs extends com.pulumi.resources.Res
             $ = new DashboardGroupPermissionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actions Actions level, possible values: READ, WRITE
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(@Nullable Output<List<String>> actions) {
             $.actions = actions;
             return this;
         }
 
+        /**
+         * @param actions Actions level, possible values: READ, WRITE
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(List<String> actions) {
             return actions(Output.of(actions));
         }
 
+        /**
+         * @param actions Actions level, possible values: READ, WRITE
+         * 
+         * @return builder
+         * 
+         */
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
 
+        /**
+         * @param principalId ID of the principal with access
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalId(Output<String> principalId) {
             $.principalId = principalId;
             return this;
         }
 
+        /**
+         * @param principalId ID of the principal with access
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalId(String principalId) {
             return principalId(Output.of(principalId));
         }
 
+        /**
+         * @param principalType Type of principal, possible values: ORG, TEAM, USER
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalType(Output<String> principalType) {
             $.principalType = principalType;
             return this;
         }
 
+        /**
+         * @param principalType Type of principal, possible values: ORG, TEAM, USER
+         * 
+         * @return builder
+         * 
+         */
         public Builder principalType(String principalType) {
             return principalType(Output.of(principalType));
         }

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataLinkTargetSplunk {
+    /**
+     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     private String name;
+    /**
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * 
+     */
     private @Nullable Map<String,String> propertyKeyMapping;
 
     private DataLinkTargetSplunk() {}
+    /**
+     * @return User-assigned target name. Use this value to differentiate between the link targets for a data link object.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * 
+     */
     public Map<String,String> propertyKeyMapping() {
         return this.propertyKeyMapping == null ? Map.of() : this.propertyKeyMapping;
     }

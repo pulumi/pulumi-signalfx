@@ -12,9 +12,15 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartLegendOptionsFieldArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (true by default) Determines if this property is displayed in the data table.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The name of a property to hide or show in the data table.
+        /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 

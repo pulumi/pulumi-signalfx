@@ -18,11 +18,17 @@ __all__ = [
 class ViewColumnArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of the column
+        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        Name of the column
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -35,12 +41,19 @@ class ViewSortOptionArgs:
     def __init__(__self__, *,
                  descending: pulumi.Input[bool],
                  field: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] descending: Name of the column
+        :param pulumi.Input[str] field: Name of the column
+        """
         pulumi.set(__self__, "descending", descending)
         pulumi.set(__self__, "field", field)
 
     @property
     @pulumi.getter
     def descending(self) -> pulumi.Input[bool]:
+        """
+        Name of the column
+        """
         return pulumi.get(self, "descending")
 
     @descending.setter
@@ -50,6 +63,9 @@ class ViewSortOptionArgs:
     @property
     @pulumi.getter
     def field(self) -> pulumi.Input[str]:
+        """
+        Name of the column
+        """
         return pulumi.get(self, "field")
 
     @field.setter

@@ -12,6 +12,9 @@ namespace Pulumi.SignalFx.Log.Inputs
 
     public sealed class ViewColumnGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the column
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

@@ -13,8 +13,14 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardSelectedEventOverlay
     {
+        /// <summary>
+        /// Search term used to define events
+        /// </summary>
         public readonly string Signal;
         public readonly ImmutableArray<Outputs.DashboardSelectedEventOverlaySource> Sources;
+        /// <summary>
+        /// Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

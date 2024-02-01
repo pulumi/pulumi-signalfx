@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardGroupPermission {
+    /**
+     * @return Actions level, possible values: READ, WRITE
+     * 
+     */
     private @Nullable List<String> actions;
+    /**
+     * @return ID of the principal with access
+     * 
+     */
     private String principalId;
+    /**
+     * @return Type of principal, possible values: ORG, TEAM, USER
+     * 
+     */
     private String principalType;
 
     private DashboardGroupPermission() {}
+    /**
+     * @return Actions level, possible values: READ, WRITE
+     * 
+     */
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
     }
+    /**
+     * @return ID of the principal with access
+     * 
+     */
     public String principalId() {
         return this.principalId;
     }
+    /**
+     * @return Type of principal, possible values: ORG, TEAM, USER
+     * 
+     */
     public String principalType() {
         return this.principalType;
     }

@@ -14,18 +14,31 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("dimensions", required: true)]
         private InputList<string>? _dimensions;
+
+        /// <summary>
+        /// List of dimensions to keep or drop in aggregated metric
+        /// </summary>
         public InputList<string> Dimensions
         {
             get => _dimensions ?? (_dimensions = new InputList<string>());
             set => _dimensions = value;
         }
 
+        /// <summary>
+        /// Flag specifying to keep or drop given dimensions
+        /// </summary>
         [Input("dropDimensions", required: true)]
         public Input<bool> DropDimensions { get; set; } = null!;
 
+        /// <summary>
+        /// The aggregated metric name
+        /// </summary>
         [Input("outputName", required: true)]
         public Input<string> OutputName { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the aggregator
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

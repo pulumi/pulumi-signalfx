@@ -15,16 +15,32 @@ public final class ViewSortOptionArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final ViewSortOptionArgs Empty = new ViewSortOptionArgs();
 
+    /**
+     * Name of the column
+     * 
+     */
     @Import(name="descending", required=true)
     private Output<Boolean> descending;
 
+    /**
+     * @return Name of the column
+     * 
+     */
     public Output<Boolean> descending() {
         return this.descending;
     }
 
+    /**
+     * Name of the column
+     * 
+     */
     @Import(name="field", required=true)
     private Output<String> field;
 
+    /**
+     * @return Name of the column
+     * 
+     */
     public Output<String> field() {
         return this.field;
     }
@@ -54,20 +70,44 @@ public final class ViewSortOptionArgs extends com.pulumi.resources.ResourceArgs 
             $ = new ViewSortOptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param descending Name of the column
+         * 
+         * @return builder
+         * 
+         */
         public Builder descending(Output<Boolean> descending) {
             $.descending = descending;
             return this;
         }
 
+        /**
+         * @param descending Name of the column
+         * 
+         * @return builder
+         * 
+         */
         public Builder descending(Boolean descending) {
             return descending(Output.of(descending));
         }
 
+        /**
+         * @param field Name of the column
+         * 
+         * @return builder
+         * 
+         */
         public Builder field(Output<String> field) {
             $.field = field;
             return this;
         }
 
+        /**
+         * @param field Name of the column
+         * 
+         * @return builder
+         * 
+         */
         public Builder field(String field) {
             return field(Output.of(field));
         }

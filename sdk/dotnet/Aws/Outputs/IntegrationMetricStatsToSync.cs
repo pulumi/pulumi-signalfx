@@ -13,8 +13,17 @@ namespace Pulumi.SignalFx.Aws.Outputs
     [OutputType]
     public sealed class IntegrationMetricStatsToSync
     {
+        /// <summary>
+        /// AWS metric that you want to pick statistics for
+        /// </summary>
         public readonly string Metric;
+        /// <summary>
+        /// An AWS namespace having AWS metric that you want to pick statistics for
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// AWS statistics you want to collect
+        /// </summary>
         public readonly ImmutableArray<string> Stats;
 
         [OutputConstructor]

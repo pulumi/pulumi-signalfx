@@ -14,15 +14,25 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("chartIds", required: true)]
         private InputList<string>? _chartIds;
+
+        /// <summary>
+        /// Charts to use for the grid
+        /// </summary>
         public InputList<string> ChartIds
         {
             get => _chartIds ?? (_chartIds = new InputList<string>());
             set => _chartIds = value;
         }
 
+        /// <summary>
+        /// How many rows each chart should take up. (greater than or equal to 1)
+        /// </summary>
         [Input("height")]
         public Input<int>? Height { get; set; }
 
+        /// <summary>
+        /// Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+        /// </summary>
         [Input("width")]
         public Input<int>? Width { get; set; }
 

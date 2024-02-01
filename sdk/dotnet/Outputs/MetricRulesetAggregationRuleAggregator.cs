@@ -13,9 +13,21 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class MetricRulesetAggregationRuleAggregator
     {
+        /// <summary>
+        /// List of dimensions to keep or drop in aggregated metric
+        /// </summary>
         public readonly ImmutableArray<string> Dimensions;
+        /// <summary>
+        /// Flag specifying to keep or drop given dimensions
+        /// </summary>
         public readonly bool DropDimensions;
+        /// <summary>
+        /// The aggregated metric name
+        /// </summary>
         public readonly string OutputName;
+        /// <summary>
+        /// The type of the aggregator
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

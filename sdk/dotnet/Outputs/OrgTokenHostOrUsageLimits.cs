@@ -13,13 +13,37 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class OrgTokenHostOrUsageLimits
     {
+        /// <summary>
+        /// Max number of containers that can use this token
+        /// </summary>
         public readonly int? ContainerLimit;
+        /// <summary>
+        /// Notification threshold for containers
+        /// </summary>
         public readonly int? ContainerNotificationThreshold;
+        /// <summary>
+        /// Max number of custom metrics that can be sent with this token
+        /// </summary>
         public readonly int? CustomMetricsLimit;
+        /// <summary>
+        /// Notification threshold for custom metrics
+        /// </summary>
         public readonly int? CustomMetricsNotificationThreshold;
+        /// <summary>
+        /// Max number of high-res metrics that can be sent with this token
+        /// </summary>
         public readonly int? HighResMetricsLimit;
+        /// <summary>
+        /// Notification threshold for high-res metrics
+        /// </summary>
         public readonly int? HighResMetricsNotificationThreshold;
+        /// <summary>
+        /// Max number of hosts that can use this token
+        /// </summary>
         public readonly int? HostLimit;
+        /// <summary>
+        /// Notification threshold for hosts
+        /// </summary>
         public readonly int? HostNotificationThreshold;
 
         [OutputConstructor]

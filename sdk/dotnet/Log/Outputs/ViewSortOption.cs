@@ -13,7 +13,13 @@ namespace Pulumi.SignalFx.Log.Outputs
     [OutputType]
     public sealed class ViewSortOption
     {
+        /// <summary>
+        /// Name of the column
+        /// </summary>
         public readonly bool Descending;
+        /// <summary>
+        /// Name of the column
+        /// </summary>
         public readonly string Field;
 
         [OutputConstructor]

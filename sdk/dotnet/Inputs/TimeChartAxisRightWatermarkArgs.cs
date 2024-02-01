@@ -12,9 +12,15 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartAxisRightWatermarkArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Label to display associated with the watermark line
+        /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// Axis value where the watermark line will be displayed
+        /// </summary>
         [Input("value", required: true)]
         public Input<double> Value { get; set; } = null!;
 

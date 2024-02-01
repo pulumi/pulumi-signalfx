@@ -13,8 +13,17 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardGroupDashboardFilterOverride
     {
+        /// <summary>
+        /// (false by default) Whether this filter should be a "not" filter
+        /// </summary>
         public readonly bool? Negated;
+        /// <summary>
+        /// A metric time series dimension or property name
+        /// </summary>
         public readonly string Property;
+        /// <summary>
+        /// List of strings (which will be treated as an OR filter on the property)
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.SignalFx.Log.Outputs
     [OutputType]
     public sealed class ViewColumn
     {
+        /// <summary>
+        /// Name of the column
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

@@ -16,23 +16,47 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
 
     public static final TimeChartEventOptionArgs Empty = new TimeChartEventOptionArgs();
 
+    /**
+     * Color to use
+     * 
+     */
     @Import(name="color")
     private @Nullable Output<String> color;
 
+    /**
+     * @return Color to use
+     * 
+     */
     public Optional<Output<String>> color() {
         return Optional.ofNullable(this.color);
     }
 
+    /**
+     * Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * The label used in the publish statement that displays the events you want to customize
+     * 
+     */
     @Import(name="label", required=true)
     private Output<String> label;
 
+    /**
+     * @return The label used in the publish statement that displays the events you want to customize
+     * 
+     */
     public Output<String> label() {
         return this.label;
     }
@@ -63,29 +87,65 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
             $ = new TimeChartEventOptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param color Color to use
+         * 
+         * @return builder
+         * 
+         */
         public Builder color(@Nullable Output<String> color) {
             $.color = color;
             return this;
         }
 
+        /**
+         * @param color Color to use
+         * 
+         * @return builder
+         * 
+         */
         public Builder color(String color) {
             return color(Output.of(color));
         }
 
+        /**
+         * @param displayName Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(@Nullable Output<String> displayName) {
             $.displayName = displayName;
             return this;
         }
 
+        /**
+         * @param displayName Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+         * 
+         * @return builder
+         * 
+         */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
         }
 
+        /**
+         * @param label The label used in the publish statement that displays the events you want to customize
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label The label used in the publish statement that displays the events you want to customize
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

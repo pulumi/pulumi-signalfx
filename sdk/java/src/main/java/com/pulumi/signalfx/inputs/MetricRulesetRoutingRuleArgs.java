@@ -14,9 +14,17 @@ public final class MetricRulesetRoutingRuleArgs extends com.pulumi.resources.Res
 
     public static final MetricRulesetRoutingRuleArgs Empty = new MetricRulesetRoutingRuleArgs();
 
+    /**
+     * Destination to send the input metric
+     * 
+     */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
+    /**
+     * @return Destination to send the input metric
+     * 
+     */
     public Output<String> destination() {
         return this.destination;
     }
@@ -45,11 +53,23 @@ public final class MetricRulesetRoutingRuleArgs extends com.pulumi.resources.Res
             $ = new MetricRulesetRoutingRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destination Destination to send the input metric
+         * 
+         * @return builder
+         * 
+         */
         public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
 
+        /**
+         * @param destination Destination to send the input metric
+         * 
+         * @return builder
+         * 
+         */
         public Builder destination(String destination) {
             return destination(Output.of(destination));
         }
