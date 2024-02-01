@@ -14,41 +14,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardVariable {
+    /**
+     * @return An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+     * 
+     */
     private String alias;
+    /**
+     * @return If true, this variable will also match data that does not have the specified property
+     * 
+     */
     private @Nullable Boolean applyIfExist;
+    /**
+     * @return Variable description
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return A metric time series dimension or property name
+     * 
+     */
     private String property;
+    /**
+     * @return If true, this variable will only apply to charts with a filter on the named property.
+     * 
+     */
     private @Nullable Boolean replaceOnly;
+    /**
+     * @return If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+     * 
+     */
     private @Nullable Boolean restrictedSuggestions;
+    /**
+     * @return Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+     * 
+     */
     private @Nullable Boolean valueRequired;
+    /**
+     * @return List of strings (which will be treated as an OR filter on the property)
+     * 
+     */
     private @Nullable List<String> values;
+    /**
+     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * 
+     */
     private @Nullable List<String> valuesSuggesteds;
 
     private DashboardVariable() {}
+    /**
+     * @return An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+     * 
+     */
     public String alias() {
         return this.alias;
     }
+    /**
+     * @return If true, this variable will also match data that does not have the specified property
+     * 
+     */
     public Optional<Boolean> applyIfExist() {
         return Optional.ofNullable(this.applyIfExist);
     }
+    /**
+     * @return Variable description
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return A metric time series dimension or property name
+     * 
+     */
     public String property() {
         return this.property;
     }
+    /**
+     * @return If true, this variable will only apply to charts with a filter on the named property.
+     * 
+     */
     public Optional<Boolean> replaceOnly() {
         return Optional.ofNullable(this.replaceOnly);
     }
+    /**
+     * @return If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+     * 
+     */
     public Optional<Boolean> restrictedSuggestions() {
         return Optional.ofNullable(this.restrictedSuggestions);
     }
+    /**
+     * @return Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+     * 
+     */
     public Optional<Boolean> valueRequired() {
         return Optional.ofNullable(this.valueRequired);
     }
+    /**
+     * @return List of strings (which will be treated as an OR filter on the property)
+     * 
+     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }
+    /**
+     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * 
+     */
     public List<String> valuesSuggesteds() {
         return this.valuesSuggesteds == null ? List.of() : this.valuesSuggesteds;
     }

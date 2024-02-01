@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetricRulesetAggregationRuleMatcher {
+    /**
+     * @return List of filters to match on
+     * 
+     */
     private @Nullable List<MetricRulesetAggregationRuleMatcherFilter> filters;
+    /**
+     * @return The type of the matcher
+     * 
+     */
     private String type;
 
     private MetricRulesetAggregationRuleMatcher() {}
+    /**
+     * @return List of filters to match on
+     * 
+     */
     public List<MetricRulesetAggregationRuleMatcherFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return The type of the matcher
+     * 
+     */
     public String type() {
         return this.type;
     }

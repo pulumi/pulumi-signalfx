@@ -13,7 +13,13 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class TimeChartAxisRightWatermark
     {
+        /// <summary>
+        /// Label to display associated with the watermark line
+        /// </summary>
         public readonly string? Label;
+        /// <summary>
+        /// Axis value where the watermark line will be displayed
+        /// </summary>
         public readonly double Value;
 
         [OutputConstructor]

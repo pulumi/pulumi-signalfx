@@ -15,58 +15,122 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
 
     public static final OrgTokenHostOrUsageLimitsArgs Empty = new OrgTokenHostOrUsageLimitsArgs();
 
+    /**
+     * Max number of containers that can use this token
+     * 
+     */
     @Import(name="containerLimit")
     private @Nullable Output<Integer> containerLimit;
 
+    /**
+     * @return Max number of containers that can use this token
+     * 
+     */
     public Optional<Output<Integer>> containerLimit() {
         return Optional.ofNullable(this.containerLimit);
     }
 
+    /**
+     * Notification threshold for containers
+     * 
+     */
     @Import(name="containerNotificationThreshold")
     private @Nullable Output<Integer> containerNotificationThreshold;
 
+    /**
+     * @return Notification threshold for containers
+     * 
+     */
     public Optional<Output<Integer>> containerNotificationThreshold() {
         return Optional.ofNullable(this.containerNotificationThreshold);
     }
 
+    /**
+     * Max number of custom metrics that can be sent with this token
+     * 
+     */
     @Import(name="customMetricsLimit")
     private @Nullable Output<Integer> customMetricsLimit;
 
+    /**
+     * @return Max number of custom metrics that can be sent with this token
+     * 
+     */
     public Optional<Output<Integer>> customMetricsLimit() {
         return Optional.ofNullable(this.customMetricsLimit);
     }
 
+    /**
+     * Notification threshold for custom metrics
+     * 
+     */
     @Import(name="customMetricsNotificationThreshold")
     private @Nullable Output<Integer> customMetricsNotificationThreshold;
 
+    /**
+     * @return Notification threshold for custom metrics
+     * 
+     */
     public Optional<Output<Integer>> customMetricsNotificationThreshold() {
         return Optional.ofNullable(this.customMetricsNotificationThreshold);
     }
 
+    /**
+     * Max number of high-res metrics that can be sent with this token
+     * 
+     */
     @Import(name="highResMetricsLimit")
     private @Nullable Output<Integer> highResMetricsLimit;
 
+    /**
+     * @return Max number of high-res metrics that can be sent with this token
+     * 
+     */
     public Optional<Output<Integer>> highResMetricsLimit() {
         return Optional.ofNullable(this.highResMetricsLimit);
     }
 
+    /**
+     * Notification threshold for high-res metrics
+     * 
+     */
     @Import(name="highResMetricsNotificationThreshold")
     private @Nullable Output<Integer> highResMetricsNotificationThreshold;
 
+    /**
+     * @return Notification threshold for high-res metrics
+     * 
+     */
     public Optional<Output<Integer>> highResMetricsNotificationThreshold() {
         return Optional.ofNullable(this.highResMetricsNotificationThreshold);
     }
 
+    /**
+     * Max number of hosts that can use this token
+     * 
+     */
     @Import(name="hostLimit")
     private @Nullable Output<Integer> hostLimit;
 
+    /**
+     * @return Max number of hosts that can use this token
+     * 
+     */
     public Optional<Output<Integer>> hostLimit() {
         return Optional.ofNullable(this.hostLimit);
     }
 
+    /**
+     * Notification threshold for hosts
+     * 
+     */
     @Import(name="hostNotificationThreshold")
     private @Nullable Output<Integer> hostNotificationThreshold;
 
+    /**
+     * @return Notification threshold for hosts
+     * 
+     */
     public Optional<Output<Integer>> hostNotificationThreshold() {
         return Optional.ofNullable(this.hostNotificationThreshold);
     }
@@ -102,74 +166,170 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
             $ = new OrgTokenHostOrUsageLimitsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param containerLimit Max number of containers that can use this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder containerLimit(@Nullable Output<Integer> containerLimit) {
             $.containerLimit = containerLimit;
             return this;
         }
 
+        /**
+         * @param containerLimit Max number of containers that can use this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder containerLimit(Integer containerLimit) {
             return containerLimit(Output.of(containerLimit));
         }
 
+        /**
+         * @param containerNotificationThreshold Notification threshold for containers
+         * 
+         * @return builder
+         * 
+         */
         public Builder containerNotificationThreshold(@Nullable Output<Integer> containerNotificationThreshold) {
             $.containerNotificationThreshold = containerNotificationThreshold;
             return this;
         }
 
+        /**
+         * @param containerNotificationThreshold Notification threshold for containers
+         * 
+         * @return builder
+         * 
+         */
         public Builder containerNotificationThreshold(Integer containerNotificationThreshold) {
             return containerNotificationThreshold(Output.of(containerNotificationThreshold));
         }
 
+        /**
+         * @param customMetricsLimit Max number of custom metrics that can be sent with this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder customMetricsLimit(@Nullable Output<Integer> customMetricsLimit) {
             $.customMetricsLimit = customMetricsLimit;
             return this;
         }
 
+        /**
+         * @param customMetricsLimit Max number of custom metrics that can be sent with this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder customMetricsLimit(Integer customMetricsLimit) {
             return customMetricsLimit(Output.of(customMetricsLimit));
         }
 
+        /**
+         * @param customMetricsNotificationThreshold Notification threshold for custom metrics
+         * 
+         * @return builder
+         * 
+         */
         public Builder customMetricsNotificationThreshold(@Nullable Output<Integer> customMetricsNotificationThreshold) {
             $.customMetricsNotificationThreshold = customMetricsNotificationThreshold;
             return this;
         }
 
+        /**
+         * @param customMetricsNotificationThreshold Notification threshold for custom metrics
+         * 
+         * @return builder
+         * 
+         */
         public Builder customMetricsNotificationThreshold(Integer customMetricsNotificationThreshold) {
             return customMetricsNotificationThreshold(Output.of(customMetricsNotificationThreshold));
         }
 
+        /**
+         * @param highResMetricsLimit Max number of high-res metrics that can be sent with this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder highResMetricsLimit(@Nullable Output<Integer> highResMetricsLimit) {
             $.highResMetricsLimit = highResMetricsLimit;
             return this;
         }
 
+        /**
+         * @param highResMetricsLimit Max number of high-res metrics that can be sent with this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder highResMetricsLimit(Integer highResMetricsLimit) {
             return highResMetricsLimit(Output.of(highResMetricsLimit));
         }
 
+        /**
+         * @param highResMetricsNotificationThreshold Notification threshold for high-res metrics
+         * 
+         * @return builder
+         * 
+         */
         public Builder highResMetricsNotificationThreshold(@Nullable Output<Integer> highResMetricsNotificationThreshold) {
             $.highResMetricsNotificationThreshold = highResMetricsNotificationThreshold;
             return this;
         }
 
+        /**
+         * @param highResMetricsNotificationThreshold Notification threshold for high-res metrics
+         * 
+         * @return builder
+         * 
+         */
         public Builder highResMetricsNotificationThreshold(Integer highResMetricsNotificationThreshold) {
             return highResMetricsNotificationThreshold(Output.of(highResMetricsNotificationThreshold));
         }
 
+        /**
+         * @param hostLimit Max number of hosts that can use this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostLimit(@Nullable Output<Integer> hostLimit) {
             $.hostLimit = hostLimit;
             return this;
         }
 
+        /**
+         * @param hostLimit Max number of hosts that can use this token
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostLimit(Integer hostLimit) {
             return hostLimit(Output.of(hostLimit));
         }
 
+        /**
+         * @param hostNotificationThreshold Notification threshold for hosts
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostNotificationThreshold(@Nullable Output<Integer> hostNotificationThreshold) {
             $.hostNotificationThreshold = hostNotificationThreshold;
             return this;
         }
 
+        /**
+         * @param hostNotificationThreshold Notification threshold for hosts
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostNotificationThreshold(Integer hostNotificationThreshold) {
             return hostNotificationThreshold(Output.of(hostNotificationThreshold));
         }

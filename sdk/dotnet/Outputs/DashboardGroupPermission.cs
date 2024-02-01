@@ -13,8 +13,17 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class DashboardGroupPermission
     {
+        /// <summary>
+        /// Actions level, possible values: READ, WRITE
+        /// </summary>
         public readonly ImmutableArray<string> Actions;
+        /// <summary>
+        /// ID of the principal with access
+        /// </summary>
         public readonly string PrincipalId;
+        /// <summary>
+        /// Type of principal, possible values: ORG, TEAM, USER
+        /// </summary>
         public readonly string PrincipalType;
 
         [OutputConstructor]

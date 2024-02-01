@@ -18,11 +18,17 @@ __all__ = [
 class ViewColumn(dict):
     def __init__(__self__, *,
                  name: str):
+        """
+        :param str name: Name of the column
+        """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the column
+        """
         return pulumi.get(self, "name")
 
 
@@ -31,17 +37,27 @@ class ViewSortOption(dict):
     def __init__(__self__, *,
                  descending: bool,
                  field: str):
+        """
+        :param bool descending: Name of the column
+        :param str field: Name of the column
+        """
         pulumi.set(__self__, "descending", descending)
         pulumi.set(__self__, "field", field)
 
     @property
     @pulumi.getter
     def descending(self) -> bool:
+        """
+        Name of the column
+        """
         return pulumi.get(self, "descending")
 
     @property
     @pulumi.getter
     def field(self) -> str:
+        """
+        Name of the column
+        """
         return pulumi.get(self, "field")
 
 

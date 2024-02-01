@@ -13,6 +13,9 @@ namespace Pulumi.SignalFx.Outputs
     [OutputType]
     public sealed class MetricRulesetRoutingRule
     {
+        /// <summary>
+        /// Destination to send the input metric
+        /// </summary>
         public readonly string Destination;
 
         [OutputConstructor]

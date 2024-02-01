@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OrgTokenDpmLimits {
+    /**
+     * @return The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+     * 
+     */
     private Integer dpmLimit;
+    /**
+     * @return DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+     * 
+     */
     private @Nullable Integer dpmNotificationThreshold;
 
     private OrgTokenDpmLimits() {}
+    /**
+     * @return The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
+     * 
+     */
     public Integer dpmLimit() {
         return this.dpmLimit;
     }
+    /**
+     * @return DPM level at which Splunk Observability Cloud sends the notification for this token. If you don&#39;t specify a notification, Splunk Observability Cloud sends the generic notification.
+     * 
+     */
     public Optional<Integer> dpmNotificationThreshold() {
         return Optional.ofNullable(this.dpmNotificationThreshold);
     }

@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardColumn {
+    /**
+     * @return Charts to use for the column
+     * 
+     */
     private List<String> chartIds;
+    /**
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * 
+     */
     private @Nullable Integer column;
+    /**
+     * @return How many rows each chart should take up. (greater than or equal to 1)
+     * 
+     */
     private @Nullable Integer height;
+    /**
+     * @return Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+     * 
+     */
     private @Nullable Integer width;
 
     private DashboardColumn() {}
+    /**
+     * @return Charts to use for the column
+     * 
+     */
     public List<String> chartIds() {
         return this.chartIds;
     }
+    /**
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * 
+     */
     public Optional<Integer> column() {
         return Optional.ofNullable(this.column);
     }
+    /**
+     * @return How many rows each chart should take up. (greater than or equal to 1)
+     * 
+     */
     public Optional<Integer> height() {
         return Optional.ofNullable(this.height);
     }
+    /**
+     * @return Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+     * 
+     */
     public Optional<Integer> width() {
         return Optional.ofNullable(this.width);
     }

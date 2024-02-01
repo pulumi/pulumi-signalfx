@@ -17,16 +17,32 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
 
     public static final DashboardPermissionsArgs Empty = new DashboardPermissionsArgs();
 
+    /**
+     * The custom access control list for this dashboard
+     * 
+     */
     @Import(name="acls")
     private @Nullable Output<List<DashboardPermissionsAclArgs>> acls;
 
+    /**
+     * @return The custom access control list for this dashboard
+     * 
+     */
     public Optional<Output<List<DashboardPermissionsAclArgs>>> acls() {
         return Optional.ofNullable(this.acls);
     }
 
+    /**
+     * The ID of the dashboard group that this dashboard inherits permissions from
+     * 
+     */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
+    /**
+     * @return The ID of the dashboard group that this dashboard inherits permissions from
+     * 
+     */
     public Optional<Output<String>> parent() {
         return Optional.ofNullable(this.parent);
     }
@@ -56,24 +72,54 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
             $ = new DashboardPermissionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acls The custom access control list for this dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder acls(@Nullable Output<List<DashboardPermissionsAclArgs>> acls) {
             $.acls = acls;
             return this;
         }
 
+        /**
+         * @param acls The custom access control list for this dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder acls(List<DashboardPermissionsAclArgs> acls) {
             return acls(Output.of(acls));
         }
 
+        /**
+         * @param acls The custom access control list for this dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder acls(DashboardPermissionsAclArgs... acls) {
             return acls(List.of(acls));
         }
 
+        /**
+         * @param parent The ID of the dashboard group that this dashboard inherits permissions from
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(@Nullable Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
+        /**
+         * @param parent The ID of the dashboard group that this dashboard inherits permissions from
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }

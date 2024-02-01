@@ -12,27 +12,51 @@ namespace Pulumi.SignalFx.Inputs
 
     public sealed class TimeChartVizOptionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+        /// </summary>
         [Input("axis")]
         public Input<string>? Axis { get; set; }
 
+        /// <summary>
+        /// Color to use
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
+        /// <summary>
+        /// Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
+        /// <summary>
+        /// (Chart plot_type by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+        /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
 
+        /// <summary>
+        /// An arbitrary prefix to display with the value of this plot
+        /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }
 
+        /// <summary>
+        /// An arbitrary suffix to display with the value of this plot
+        /// </summary>
         [Input("valueSuffix")]
         public Input<string>? ValueSuffix { get; set; }
 
+        /// <summary>
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        /// </summary>
         [Input("valueUnit")]
         public Input<string>? ValueUnit { get; set; }
 

@@ -15,29 +15,69 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardEventOverlay {
+    /**
+     * @return Color to use
+     * 
+     */
     private @Nullable String color;
+    /**
+     * @return The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+     * 
+     */
     private @Nullable String label;
+    /**
+     * @return (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+     * 
+     */
     private @Nullable Boolean line;
+    /**
+     * @return Search term used to define events
+     * 
+     */
     private String signal;
     private @Nullable List<DashboardEventOverlaySource> sources;
+    /**
+     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * 
+     */
     private @Nullable String type;
 
     private DashboardEventOverlay() {}
+    /**
+     * @return Color to use
+     * 
+     */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
+    /**
+     * @return The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+     * 
+     */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
+    /**
+     * @return (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+     * 
+     */
     public Optional<Boolean> line() {
         return Optional.ofNullable(this.line);
     }
+    /**
+     * @return Search term used to define events
+     * 
+     */
     public String signal() {
         return this.signal;
     }
     public List<DashboardEventOverlaySource> sources() {
         return this.sources == null ? List.of() : this.sources;
     }
+    /**
+     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

@@ -18,16 +18,32 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
 
     public static final MetricRulesetAggregationRuleMatcherArgs Empty = new MetricRulesetAggregationRuleMatcherArgs();
 
+    /**
+     * List of filters to match on
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>> filters;
 
+    /**
+     * @return List of filters to match on
+     * 
+     */
     public Optional<Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * The type of the matcher
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The type of the matcher
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -57,24 +73,54 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
             $ = new MetricRulesetAggregationRuleMatcherArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters List of filters to match on
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters List of filters to match on
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<MetricRulesetAggregationRuleMatcherFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters List of filters to match on
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(MetricRulesetAggregationRuleMatcherFilterArgs... filters) {
             return filters(List.of(filters));
         }
 
+        /**
+         * @param type The type of the matcher
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of the matcher
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

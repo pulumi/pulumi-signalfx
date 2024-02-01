@@ -14,15 +14,25 @@ namespace Pulumi.SignalFx.Inputs
     {
         [Input("actions")]
         private InputList<string>? _actions;
+
+        /// <summary>
+        /// Actions level, possible values: READ, WRITE
+        /// </summary>
         public InputList<string> Actions
         {
             get => _actions ?? (_actions = new InputList<string>());
             set => _actions = value;
         }
 
+        /// <summary>
+        /// ID of the principal with access
+        /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;
 
+        /// <summary>
+        /// Type of principal, possible values: ORG, TEAM, USER
+        /// </summary>
         [Input("principalType", required: true)]
         public Input<string> PrincipalType { get; set; } = null!;
 

@@ -14,17 +14,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardSelectedEventOverlay {
+    /**
+     * @return Search term used to define events
+     * 
+     */
     private String signal;
     private @Nullable List<DashboardSelectedEventOverlaySource> sources;
+    /**
+     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * 
+     */
     private @Nullable String type;
 
     private DashboardSelectedEventOverlay() {}
+    /**
+     * @return Search term used to define events
+     * 
+     */
     public String signal() {
         return this.signal;
     }
     public List<DashboardSelectedEventOverlaySource> sources() {
         return this.sources == null ? List.of() : this.sources;
     }
+    /**
+     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

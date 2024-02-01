@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TimeChartEventOption {
+    /**
+     * @return Color to use
+     * 
+     */
     private @Nullable String color;
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     private @Nullable String displayName;
+    /**
+     * @return The label used in the publish statement that displays the events you want to customize
+     * 
+     */
     private String label;
 
     private TimeChartEventOption() {}
+    /**
+     * @return Color to use
+     * 
+     */
     public Optional<String> color() {
         return Optional.ofNullable(this.color);
     }
+    /**
+     * @return Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }
+    /**
+     * @return The label used in the publish statement that displays the events you want to customize
+     * 
+     */
     public String label() {
         return this.label;
     }

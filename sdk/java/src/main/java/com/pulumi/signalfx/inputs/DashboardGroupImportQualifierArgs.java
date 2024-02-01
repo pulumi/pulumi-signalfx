@@ -17,9 +17,17 @@ public final class DashboardGroupImportQualifierArgs extends com.pulumi.resource
 
     public static final DashboardGroupImportQualifierArgs Empty = new DashboardGroupImportQualifierArgs();
 
+    /**
+     * Filter to apply to each chart in the dashboard
+     * 
+     */
     @Import(name="filters")
     private @Nullable Output<List<DashboardGroupImportQualifierFilterArgs>> filters;
 
+    /**
+     * @return Filter to apply to each chart in the dashboard
+     * 
+     */
     public Optional<Output<List<DashboardGroupImportQualifierFilterArgs>>> filters() {
         return Optional.ofNullable(this.filters);
     }
@@ -56,15 +64,33 @@ public final class DashboardGroupImportQualifierArgs extends com.pulumi.resource
             $ = new DashboardGroupImportQualifierArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param filters Filter to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(@Nullable Output<List<DashboardGroupImportQualifierFilterArgs>> filters) {
             $.filters = filters;
             return this;
         }
 
+        /**
+         * @param filters Filter to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(List<DashboardGroupImportQualifierFilterArgs> filters) {
             return filters(Output.of(filters));
         }
 
+        /**
+         * @param filters Filter to apply to each chart in the dashboard
+         * 
+         * @return builder
+         * 
+         */
         public Builder filters(DashboardGroupImportQualifierFilterArgs... filters) {
             return filters(List.of(filters));
         }
