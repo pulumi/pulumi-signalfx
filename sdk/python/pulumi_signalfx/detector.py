@@ -858,7 +858,7 @@ class Detector(pulumi.CustomResource):
 
         ## Import
 
-        Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
+        Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
 
         ```sh
          $ pulumi import signalfx:index/detector:Detector application_delay abc123
@@ -1082,7 +1082,7 @@ class Detector(pulumi.CustomResource):
 
         ## Import
 
-        Detectors can be imported using their string ID (recoverable from URL`/#/detector/v2/abc123/edit`, e.g.
+        Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
 
         ```sh
          $ pulumi import signalfx:index/detector:Detector application_delay abc123
