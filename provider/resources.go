@@ -27,9 +27,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
@@ -79,26 +77,20 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 	return makeMember(mod, res)
 }
 
-func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
-	return nil
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(signalfx.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "signalfx",
-		Description:          "A Pulumi package for creating and managing SignalFx resources.",
-		Keywords:             []string{"pulumi", "signalfx"},
-		License:              "Apache-2.0",
-		Homepage:             "https://pulumi.io",
-		Repository:           "https://github.com/pulumi/pulumi-signalfx",
-		GitHubOrg:            "splunk-terraform",
-		Config:               map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
-		Version:              version.Version,
-		MetadataInfo:         tfbridge.NewProviderMetadata(metadata),
+		P:            p,
+		Name:         "signalfx",
+		Description:  "A Pulumi package for creating and managing SignalFx resources.",
+		Keywords:     []string{"pulumi", "signalfx"},
+		License:      "Apache-2.0",
+		Homepage:     "https://pulumi.io",
+		Repository:   "https://github.com/pulumi/pulumi-signalfx",
+		GitHubOrg:    "splunk-terraform",
+		Version:      version.Version,
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"signalfx_dashboard":           {Tok: makeResource(mainMod, "Dashboard")},
 			"signalfx_dashboard_group":     {Tok: makeResource(mainMod, "DashboardGroup")},
