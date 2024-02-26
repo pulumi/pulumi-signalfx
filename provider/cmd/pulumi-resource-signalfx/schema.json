@@ -800,7 +800,7 @@
                 },
                 "parameterizedSubject": {
                     "type": "string",
-                    "description": "Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info\n"
+                    "description": "Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info\n"
                 },
                 "runbookUrl": {
                     "type": "string",
@@ -1207,6 +1207,178 @@
             "required": [
                 "label"
             ]
+        },
+        "signalfx:index/SloInput:SloInput": {
+            "properties": {
+                "goodEventsLabel": {
+                    "type": "string",
+                    "description": "Label used in `program_text` that refers to the data block which contains the stream of successful events\n"
+                },
+                "programText": {
+                    "type": "string",
+                    "description": "Signalflow program text for the SLO. More info at \"https://dev.splunk.com/observability/docs/signalflow\". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel\n"
+                },
+                "totalEventsLabel": {
+                    "type": "string",
+                    "description": "Label used in `program_text` that refers to the data block which contains the stream of total events\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "programText"
+            ]
+        },
+        "signalfx:index/SloTarget:SloTarget": {
+            "properties": {
+                "alertRules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/SloTargetAlertRule:SloTargetAlertRule"
+                    },
+                    "description": "SLO alert rules\n"
+                },
+                "compliancePeriod": {
+                    "type": "string",
+                    "description": "(Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.\n"
+                },
+                "slo": {
+                    "type": "number",
+                    "description": "Target value in the form of a percentage\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "SLO target type can be the following type: `RollingWindow`\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "alertRules",
+                "slo",
+                "type"
+            ]
+        },
+        "signalfx:index/SloTargetAlertRule:SloTargetAlertRule": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/signalfx:index/SloTargetAlertRuleRule:SloTargetAlertRuleRule"
+                    },
+                    "description": "Set of rules used for alerting\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "SLO alert rule type\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules",
+                "type"
+            ]
+        },
+        "signalfx:index/SloTargetAlertRuleRule:SloTargetAlertRuleRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the rule\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "(default: false) When true, notifications and events will not be generated for the detect label\n"
+                },
+                "notifications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info\n"
+                },
+                "parameterizedBody": {
+                    "type": "string",
+                    "description": "Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info\n"
+                },
+                "parameterizedSubject": {
+                    "type": "string",
+                    "description": "Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/signalfx:index/SloTargetAlertRuleRuleParameters:SloTargetAlertRuleRuleParameters",
+                    "description": "Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.\n"
+                },
+                "runbookUrl": {
+                    "type": "string",
+                    "description": "URL of page to consult when an alert is triggered\n"
+                },
+                "severity": {
+                    "type": "string",
+                    "description": "The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info\n"
+                },
+                "tip": {
+                    "type": "string",
+                    "description": "Plain text suggested first course of action, such as a command to execute.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "severity"
+            ]
+        },
+        "signalfx:index/SloTargetAlertRuleRuleParameters:SloTargetAlertRuleRuleParameters": {
+            "properties": {
+                "burnRateThreshold1": {
+                    "type": "number",
+                    "description": "Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burn_rate_threshold_1 parameter.\n"
+                },
+                "burnRateThreshold2": {
+                    "type": "number",
+                    "description": "Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burn_rate_threshold_2 parameter.\n"
+                },
+                "fireLasting": {
+                    "type": "string",
+                    "description": "Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fire_lasting parameter\n"
+                },
+                "longWindow1": {
+                    "type": "string",
+                    "description": "Long window 1 used in burn rate alert calculation. This value must be longer than short_window_1` and shorter than 90 days. Note: BURN_RATE alert rules use the long_window_1 parameter.\n"
+                },
+                "longWindow2": {
+                    "type": "string",
+                    "description": "Long window 2 used in burn rate alert calculation. This value must be longer than short_window_2` and shorter than 90 days. Note: BURN_RATE alert rules use the long_window_2 parameter.\n"
+                },
+                "percentErrorBudgetLeft": {
+                    "type": "number",
+                    "description": "Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percent_error_budget_left parameter.\n"
+                },
+                "percentOfLasting": {
+                    "type": "number",
+                    "description": "Percentage of the fire_lasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percent_of_lasting parameter\n"
+                },
+                "shortWindow1": {
+                    "type": "string",
+                    "description": "Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the short_window_1 parameter.\n"
+                },
+                "shortWindow2": {
+                    "type": "string",
+                    "description": "Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the short_window_2 parameter.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "burnRateThreshold1",
+                        "burnRateThreshold2",
+                        "fireLasting",
+                        "longWindow1",
+                        "longWindow2",
+                        "percentErrorBudgetLeft",
+                        "percentOfLasting",
+                        "shortWindow1",
+                        "shortWindow2"
+                    ]
+                }
+            }
         },
         "signalfx:index/TableChartVizOption:TableChartVizOption": {
             "properties": {
@@ -4597,6 +4769,90 @@
                             "$ref": "#/types/signalfx:index/SingleValueChartVizOption:SingleValueChartVizOption"
                         },
                         "description": "Plot-level customization options, associated with a publish statement\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "signalfx:index/slo:Slo": {
+            "description": "Provides a Splunk Observability Cloud slo resource. This can be used to create and manage SLOs.\n\nTo learn more about this feature take a look on [documentation for SLO](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/slo-intro.html).\n\n## Example\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.signalfx.Slo;\nimport com.pulumi.signalfx.SloArgs;\nimport com.pulumi.signalfx.inputs.SloInputArgs;\nimport com.pulumi.signalfx.inputs.SloTargetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var fooServiceSlo = new Slo(\"fooServiceSlo\", SloArgs.builder()        \n            .description(\"SLO monitoring for foo service\")\n            .input(SloInputArgs.builder()\n                .goodEventsLabel(\"G\")\n                .programText(\"\"\"\nG = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))\nT = data('spans.count', filter=filter('sf_service', 'foo-service'))\n                \"\"\")\n                .totalEventsLabel(\"T\")\n                .build())\n            .target(SloTargetArgs.builder()\n                .alertRules(SloTargetAlertRuleArgs.builder()\n                    .rule(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                    .type(\"BREACH\")\n                    .build())\n                .compliancePeriod(\"30d\")\n                .slo(95)\n                .type(\"RollingWindow\")\n                .build())\n            .type(\"RequestBased\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  fooServiceSlo:\n    type: signalfx:Slo\n    properties:\n      description: SLO monitoring for foo service\n      input:\n        goodEventsLabel: G\n        programText: |\n          G = data('spans.count', filter=filter('sf_error', 'false') and filter('sf_service', 'foo-service'))\n          T = data('spans.count', filter=filter('sf_service', 'foo-service'))\n        totalEventsLabel: T\n      target:\n        alertRules:\n          - rule:\n              - notifications:\n                  - Email,foo-alerts@bar.com\n                severity: Warning\n            type: BREACH\n        compliancePeriod: 30d\n        slo: 95\n        type: RollingWindow\n      type: RequestBased\n```\n\n## Notification format\n\nAs Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\nSee [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.\n\nHere are some example of how to configure each notification type:\n\n### Email\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### Jira\n\nNote that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### OpsGenie\n\nNote that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### PagerDuty\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### Slack\n\nExclude the `#` on the channel name:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### Team\n\nSends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### TeamEmail\n\nSends an email to every member of a team.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### Splunk On-Call (formerly VictorOps)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n### Webhooks\n\nYou need to include all the commas even if you only use a credential id.\n\nYou can either configure a Webhook to use an existing integration's credential id:\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\nOr configure one inline:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\n```\n```python\nimport pulumi\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n    }\n}\n```\n```yaml\n{}\n```\n\n## Arguments\n\n* `name` - (Required) Name of the SLO. Each SLO name must be unique within an organization.\n* `description` - (Optional) Description of the SLO.\n* `type` - (Required) Type of the SLO. Currently just: `\"RequestBased\"` is supported.\n* `input` - (Required) Properties to configure an SLO object inputs\n  * `program_text` - (Required) SignalFlow program and arguments text strings that define the streams used as successful event count and total event count\n  * `good_events_label` - (Required) Label used in `\"program_text\"` that refers to the data block which contains the stream of successful events\n  * `total_events_label` - (Required) Label used in `\"program_text\"` that refers to the data block which contains the stream of total events\n* `target` - (Required) Define target value of the service level indicator in the appropriate time period.\n  * `type` - (Required) SLO target type can be the following type: `\"RollingWindow\"`\n  * `compliance_period` - (Required for `\"RollingWindow\"` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.\n  * `slo` - (Required) Target value in the form of a percentage\n  * `alert_rule` - (Required) List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.\n    * `type` - (Required) SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can't specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n    * `rule` - (Required) Set of rules used for alerting.\n        * `severity` - (Required) The severity of the rule, must be one of: `\"Critical\"`, `\"Major\"`, `\"Minor\"`, `\"Warning\"`, `\"Info\"`.\n        * `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.\n        * `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.\n        * `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.\n        * `parameterized_body` - (Optional) Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.\n        * `parameterized_subject` - (Optional) Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.\n        * `runbook_url` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.\n        * `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.\n        * `parameters` - (Optional) Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.\n          * `fire_lasting` - (Optional) Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: `\"BREACH\"` and `\"ERROR_BUDGET_LEFT\"` alert rules use the fireLasting parameter. Default: `\"5m\"`\n          * `percent_of_lasting` - (Optional) Percentage of the `\"fire_lasting\"` duration that the alert condition is met before the alert is triggered. Note: `\"BREACH\"` and `\"ERROR_BUDGET_LEFT\"` alert rules use the `\"percent_of_lasting\"` parameter. Default: `100`\n          * `percent_error_budget_left` - (Optional) Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `\"ERROR_BUDGET_LEFT\"` alert rules use the `\"percent_error_budget_left\"` parameter. Default: `100`\n          * `short_window_1` - (Optional) Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `\"long_window_1\"`. Note: `\"BURN_RATE\"` alert rules use the `\"short_window_1\"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n          * `short_window_2` - (Optional) Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `\"long_window_2\"`. Note: `\"BURN_RATE\"` alert rules use the `\"short_window_2\"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n          * `long_window_1` - (Optional) Long window 1 used in burn rate alert calculation. This value must be longer than `\"short_window_1\"` and shorter than 90 days. Note: `\"BURN_RATE\"` alert rules use the `\"long_window_1\"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n          * `long_window_2` - (Optional) Long window 2 used in burn rate alert calculation. This value must be longer than `\"short_window_2\"` and shorter than 90 days. Note: `\"BURN_RATE\"` alert rules use the `\"long_window_2\"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n          * `burn_rate_threshold_1` - (Optional) Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `\"BURN_RATE\"` alert rules use the `\"burn_rate_threshold_1\"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n          * `burn_rate_threshold_2` - (Optional) Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `\"BURN_RATE\"` alert rules use the `\"burn_rate_threshold_2\"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the SLO\n"
+                },
+                "input": {
+                    "$ref": "#/types/signalfx:index/SloInput:SloInput",
+                    "description": "SignalFlow program and arguments text strings that define the streams used as successful event count and total event\ncount\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the SLO\n"
+                },
+                "target": {
+                    "$ref": "#/types/signalfx:index/SloTarget:SloTarget",
+                    "description": "Define target value of the service level indicator in the appropriate time period.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the SLO. Currently only RequestBased SLO is supported\n"
+                }
+            },
+            "required": [
+                "input",
+                "name",
+                "target",
+                "type"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the SLO\n"
+                },
+                "input": {
+                    "$ref": "#/types/signalfx:index/SloInput:SloInput",
+                    "description": "SignalFlow program and arguments text strings that define the streams used as successful event count and total event\ncount\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the SLO\n"
+                },
+                "target": {
+                    "$ref": "#/types/signalfx:index/SloTarget:SloTarget",
+                    "description": "Define target value of the service level indicator in the appropriate time period.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the SLO. Currently only RequestBased SLO is supported\n"
+                }
+            },
+            "requiredInputs": [
+                "input",
+                "target",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Slo resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the SLO\n"
+                    },
+                    "input": {
+                        "$ref": "#/types/signalfx:index/SloInput:SloInput",
+                        "description": "SignalFlow program and arguments text strings that define the streams used as successful event count and total event\ncount\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the SLO\n"
+                    },
+                    "target": {
+                        "$ref": "#/types/signalfx:index/SloTarget:SloTarget",
+                        "description": "Define target value of the service level indicator in the appropriate time period.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the SLO. Currently only RequestBased SLO is supported\n"
                     }
                 },
                 "type": "object"
