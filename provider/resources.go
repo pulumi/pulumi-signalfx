@@ -29,7 +29,6 @@ import (
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/pulumi/pulumi-signalfx/provider/v7/pkg/version"
 )
@@ -108,6 +107,7 @@ func Provider() tfbridge.ProviderInfo {
 			"signalfx_data_link":           {Tok: makeResource(mainMod, "DataLink")},
 			"signalfx_webhook_integration": {Tok: makeResource(mainMod, "WebhookIntegration")},
 			"signalfx_metric_ruleset":      {Tok: makeResource(mainMod, "MetricRuleset")},
+			"signalfx_slo":                 {Tok: makeResource(mainMod, "Slo")},
 
 			"signalfx_log_view": {Tok: makeResource(logsMod, "View")},
 
@@ -145,15 +145,12 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/mime": "^2.0.0",
 			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				},
-			}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
@@ -185,23 +182,10 @@ func Provider() tfbridge.ProviderInfo {
 		"victor_ops":  "VictorOps",
 	}
 
-	mappedModKeys := make([]string, 0, len(mappedMods))
-	for k := range mappedMods {
-		mappedModKeys = append(mappedModKeys, k)
-	}
-
-	moduleNameMap := make(map[string]string, len(mappedMods))
-	for _, v := range mappedMods {
-		moduleNameMap[strings.ToLower(v)] = v
-	}
-
-	err := prov.ComputeTokens(tfbridgetokens.KnownModules("signalfx_", mainMod, mappedModKeys,
+	prov.MustComputeTokens(tfbridgetokens.MappedModules("signalfx_", "", mappedMods,
 		func(mod, name string) (string, error) {
-			m, ok := moduleNameMap[strings.ToLower(mod)]
-			contract.Assertf(ok, "all mods must be mapped: '%s'", strings.ToLower(mod))
-			return makeResource(m, name).String(), nil
+			return makeResource(mod, name).String(), nil
 		}))
-	contract.AssertNoErrorf(err, "failed to compute defaults")
 	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")

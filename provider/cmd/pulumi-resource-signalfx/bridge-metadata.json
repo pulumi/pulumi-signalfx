@@ -484,6 +484,42 @@
                 "current": "signalfx:slack/integration:Integration",
                 "majorVersion": 7
             },
+            "signalfx_slo": {
+                "current": "signalfx:index/slo:Slo",
+                "majorVersion": 7,
+                "fields": {
+                    "input": {
+                        "maxItemsOne": true
+                    },
+                    "target": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "alert_rule": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "rule": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "notifications": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "parameters": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "signalfx_table_chart": {
                 "current": "signalfx:index/tableChart:TableChart",
                 "majorVersion": 7,
@@ -628,6 +664,7 @@
             "signalfx:index/metricRuleset:MetricRuleset": "signalfx_metric_ruleset",
             "signalfx:index/orgToken:OrgToken": "signalfx_org_token",
             "signalfx:index/singleValueChart:SingleValueChart": "signalfx_single_value_chart",
+            "signalfx:index/slo:Slo": "signalfx_slo",
             "signalfx:index/tableChart:TableChart": "signalfx_table_chart",
             "signalfx:index/team:Team": "signalfx_team",
             "signalfx:index/textChart:TextChart": "signalfx_text_chart",
@@ -826,6 +863,34 @@
                 "valuePrefix": "value_prefix",
                 "valueSuffix": "value_suffix",
                 "valueUnit": "value_unit"
+            },
+            "signalfx:index/SloInput:SloInput": {
+                "goodEventsLabel": "good_events_label",
+                "programText": "program_text",
+                "totalEventsLabel": "total_events_label"
+            },
+            "signalfx:index/SloTarget:SloTarget": {
+                "alertRules": "alert_rule",
+                "compliancePeriod": "compliance_period"
+            },
+            "signalfx:index/SloTargetAlertRule:SloTargetAlertRule": {
+                "rules": "rule"
+            },
+            "signalfx:index/SloTargetAlertRuleRule:SloTargetAlertRuleRule": {
+                "parameterizedBody": "parameterized_body",
+                "parameterizedSubject": "parameterized_subject",
+                "runbookUrl": "runbook_url"
+            },
+            "signalfx:index/SloTargetAlertRuleRuleParameters:SloTargetAlertRuleRuleParameters": {
+                "burnRateThreshold1": "burn_rate_threshold_1",
+                "burnRateThreshold2": "burn_rate_threshold_2",
+                "fireLasting": "fire_lasting",
+                "longWindow1": "long_window_1",
+                "longWindow2": "long_window_2",
+                "percentErrorBudgetLeft": "percent_error_budget_left",
+                "percentOfLasting": "percent_of_lasting",
+                "shortWindow1": "short_window_1",
+                "shortWindow2": "short_window_2"
             },
             "signalfx:index/TableChartVizOption:TableChartVizOption": {
                 "displayName": "display_name",

@@ -2624,7 +2624,7 @@ type DetectorRule struct {
 	Notifications []string `pulumi:"notifications"`
 	// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
 	ParameterizedBody *string `pulumi:"parameterizedBody"`
-	// Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+	// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
 	ParameterizedSubject *string `pulumi:"parameterizedSubject"`
 	// URL of page to consult when an alert is triggered
 	RunbookUrl *string `pulumi:"runbookUrl"`
@@ -2656,7 +2656,7 @@ type DetectorRuleArgs struct {
 	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
 	// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
 	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
-	// Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+	// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
 	ParameterizedSubject pulumi.StringPtrInput `pulumi:"parameterizedSubject"`
 	// URL of page to consult when an alert is triggered
 	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
@@ -2742,7 +2742,7 @@ func (o DetectorRuleOutput) ParameterizedBody() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedBody }).(pulumi.StringPtrOutput)
 }
 
-// Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
 func (o DetectorRuleOutput) ParameterizedSubject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DetectorRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
 }
@@ -4882,6 +4882,939 @@ func (o SingleValueChartVizOptionArrayOutput) Index(i pulumi.IntInput) SingleVal
 	}).(SingleValueChartVizOptionOutput)
 }
 
+type SloInputType struct {
+	// Label used in `programText` that refers to the data block which contains the stream of successful events
+	GoodEventsLabel *string `pulumi:"goodEventsLabel"`
+	// Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+	ProgramText string `pulumi:"programText"`
+	// Label used in `programText` that refers to the data block which contains the stream of total events
+	TotalEventsLabel *string `pulumi:"totalEventsLabel"`
+}
+
+// SloInputTypeInput is an input type that accepts SloInputTypeArgs and SloInputTypeOutput values.
+// You can construct a concrete instance of `SloInputTypeInput` via:
+//
+//	SloInputTypeArgs{...}
+type SloInputTypeInput interface {
+	pulumi.Input
+
+	ToSloInputTypeOutput() SloInputTypeOutput
+	ToSloInputTypeOutputWithContext(context.Context) SloInputTypeOutput
+}
+
+type SloInputTypeArgs struct {
+	// Label used in `programText` that refers to the data block which contains the stream of successful events
+	GoodEventsLabel pulumi.StringPtrInput `pulumi:"goodEventsLabel"`
+	// Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+	ProgramText pulumi.StringInput `pulumi:"programText"`
+	// Label used in `programText` that refers to the data block which contains the stream of total events
+	TotalEventsLabel pulumi.StringPtrInput `pulumi:"totalEventsLabel"`
+}
+
+func (SloInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloInputType)(nil)).Elem()
+}
+
+func (i SloInputTypeArgs) ToSloInputTypeOutput() SloInputTypeOutput {
+	return i.ToSloInputTypeOutputWithContext(context.Background())
+}
+
+func (i SloInputTypeArgs) ToSloInputTypeOutputWithContext(ctx context.Context) SloInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloInputTypeOutput)
+}
+
+func (i SloInputTypeArgs) ToSloInputTypePtrOutput() SloInputTypePtrOutput {
+	return i.ToSloInputTypePtrOutputWithContext(context.Background())
+}
+
+func (i SloInputTypeArgs) ToSloInputTypePtrOutputWithContext(ctx context.Context) SloInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloInputTypeOutput).ToSloInputTypePtrOutputWithContext(ctx)
+}
+
+// SloInputTypePtrInput is an input type that accepts SloInputTypeArgs, SloInputTypePtr and SloInputTypePtrOutput values.
+// You can construct a concrete instance of `SloInputTypePtrInput` via:
+//
+//	        SloInputTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SloInputTypePtrInput interface {
+	pulumi.Input
+
+	ToSloInputTypePtrOutput() SloInputTypePtrOutput
+	ToSloInputTypePtrOutputWithContext(context.Context) SloInputTypePtrOutput
+}
+
+type sloInputTypePtrType SloInputTypeArgs
+
+func SloInputTypePtr(v *SloInputTypeArgs) SloInputTypePtrInput {
+	return (*sloInputTypePtrType)(v)
+}
+
+func (*sloInputTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloInputType)(nil)).Elem()
+}
+
+func (i *sloInputTypePtrType) ToSloInputTypePtrOutput() SloInputTypePtrOutput {
+	return i.ToSloInputTypePtrOutputWithContext(context.Background())
+}
+
+func (i *sloInputTypePtrType) ToSloInputTypePtrOutputWithContext(ctx context.Context) SloInputTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloInputTypePtrOutput)
+}
+
+type SloInputTypeOutput struct{ *pulumi.OutputState }
+
+func (SloInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloInputType)(nil)).Elem()
+}
+
+func (o SloInputTypeOutput) ToSloInputTypeOutput() SloInputTypeOutput {
+	return o
+}
+
+func (o SloInputTypeOutput) ToSloInputTypeOutputWithContext(ctx context.Context) SloInputTypeOutput {
+	return o
+}
+
+func (o SloInputTypeOutput) ToSloInputTypePtrOutput() SloInputTypePtrOutput {
+	return o.ToSloInputTypePtrOutputWithContext(context.Background())
+}
+
+func (o SloInputTypeOutput) ToSloInputTypePtrOutputWithContext(ctx context.Context) SloInputTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloInputType) *SloInputType {
+		return &v
+	}).(SloInputTypePtrOutput)
+}
+
+// Label used in `programText` that refers to the data block which contains the stream of successful events
+func (o SloInputTypeOutput) GoodEventsLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloInputType) *string { return v.GoodEventsLabel }).(pulumi.StringPtrOutput)
+}
+
+// Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+func (o SloInputTypeOutput) ProgramText() pulumi.StringOutput {
+	return o.ApplyT(func(v SloInputType) string { return v.ProgramText }).(pulumi.StringOutput)
+}
+
+// Label used in `programText` that refers to the data block which contains the stream of total events
+func (o SloInputTypeOutput) TotalEventsLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloInputType) *string { return v.TotalEventsLabel }).(pulumi.StringPtrOutput)
+}
+
+type SloInputTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SloInputTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloInputType)(nil)).Elem()
+}
+
+func (o SloInputTypePtrOutput) ToSloInputTypePtrOutput() SloInputTypePtrOutput {
+	return o
+}
+
+func (o SloInputTypePtrOutput) ToSloInputTypePtrOutputWithContext(ctx context.Context) SloInputTypePtrOutput {
+	return o
+}
+
+func (o SloInputTypePtrOutput) Elem() SloInputTypeOutput {
+	return o.ApplyT(func(v *SloInputType) SloInputType {
+		if v != nil {
+			return *v
+		}
+		var ret SloInputType
+		return ret
+	}).(SloInputTypeOutput)
+}
+
+// Label used in `programText` that refers to the data block which contains the stream of successful events
+func (o SloInputTypePtrOutput) GoodEventsLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloInputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GoodEventsLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+func (o SloInputTypePtrOutput) ProgramText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloInputType) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProgramText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label used in `programText` that refers to the data block which contains the stream of total events
+func (o SloInputTypePtrOutput) TotalEventsLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloInputType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEventsLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloTarget struct {
+	// SLO alert rules
+	AlertRules []SloTargetAlertRule `pulumi:"alertRules"`
+	// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+	CompliancePeriod *string `pulumi:"compliancePeriod"`
+	// Target value in the form of a percentage
+	Slo float64 `pulumi:"slo"`
+	// SLO target type can be the following type: `RollingWindow`
+	Type string `pulumi:"type"`
+}
+
+// SloTargetInput is an input type that accepts SloTargetArgs and SloTargetOutput values.
+// You can construct a concrete instance of `SloTargetInput` via:
+//
+//	SloTargetArgs{...}
+type SloTargetInput interface {
+	pulumi.Input
+
+	ToSloTargetOutput() SloTargetOutput
+	ToSloTargetOutputWithContext(context.Context) SloTargetOutput
+}
+
+type SloTargetArgs struct {
+	// SLO alert rules
+	AlertRules SloTargetAlertRuleArrayInput `pulumi:"alertRules"`
+	// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+	CompliancePeriod pulumi.StringPtrInput `pulumi:"compliancePeriod"`
+	// Target value in the form of a percentage
+	Slo pulumi.Float64Input `pulumi:"slo"`
+	// SLO target type can be the following type: `RollingWindow`
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SloTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTarget)(nil)).Elem()
+}
+
+func (i SloTargetArgs) ToSloTargetOutput() SloTargetOutput {
+	return i.ToSloTargetOutputWithContext(context.Background())
+}
+
+func (i SloTargetArgs) ToSloTargetOutputWithContext(ctx context.Context) SloTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetOutput)
+}
+
+func (i SloTargetArgs) ToSloTargetPtrOutput() SloTargetPtrOutput {
+	return i.ToSloTargetPtrOutputWithContext(context.Background())
+}
+
+func (i SloTargetArgs) ToSloTargetPtrOutputWithContext(ctx context.Context) SloTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetOutput).ToSloTargetPtrOutputWithContext(ctx)
+}
+
+// SloTargetPtrInput is an input type that accepts SloTargetArgs, SloTargetPtr and SloTargetPtrOutput values.
+// You can construct a concrete instance of `SloTargetPtrInput` via:
+//
+//	        SloTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type SloTargetPtrInput interface {
+	pulumi.Input
+
+	ToSloTargetPtrOutput() SloTargetPtrOutput
+	ToSloTargetPtrOutputWithContext(context.Context) SloTargetPtrOutput
+}
+
+type sloTargetPtrType SloTargetArgs
+
+func SloTargetPtr(v *SloTargetArgs) SloTargetPtrInput {
+	return (*sloTargetPtrType)(v)
+}
+
+func (*sloTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloTarget)(nil)).Elem()
+}
+
+func (i *sloTargetPtrType) ToSloTargetPtrOutput() SloTargetPtrOutput {
+	return i.ToSloTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *sloTargetPtrType) ToSloTargetPtrOutputWithContext(ctx context.Context) SloTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetPtrOutput)
+}
+
+type SloTargetOutput struct{ *pulumi.OutputState }
+
+func (SloTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTarget)(nil)).Elem()
+}
+
+func (o SloTargetOutput) ToSloTargetOutput() SloTargetOutput {
+	return o
+}
+
+func (o SloTargetOutput) ToSloTargetOutputWithContext(ctx context.Context) SloTargetOutput {
+	return o
+}
+
+func (o SloTargetOutput) ToSloTargetPtrOutput() SloTargetPtrOutput {
+	return o.ToSloTargetPtrOutputWithContext(context.Background())
+}
+
+func (o SloTargetOutput) ToSloTargetPtrOutputWithContext(ctx context.Context) SloTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloTarget) *SloTarget {
+		return &v
+	}).(SloTargetPtrOutput)
+}
+
+// SLO alert rules
+func (o SloTargetOutput) AlertRules() SloTargetAlertRuleArrayOutput {
+	return o.ApplyT(func(v SloTarget) []SloTargetAlertRule { return v.AlertRules }).(SloTargetAlertRuleArrayOutput)
+}
+
+// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+func (o SloTargetOutput) CompliancePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTarget) *string { return v.CompliancePeriod }).(pulumi.StringPtrOutput)
+}
+
+// Target value in the form of a percentage
+func (o SloTargetOutput) Slo() pulumi.Float64Output {
+	return o.ApplyT(func(v SloTarget) float64 { return v.Slo }).(pulumi.Float64Output)
+}
+
+// SLO target type can be the following type: `RollingWindow`
+func (o SloTargetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SloTarget) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SloTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (SloTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloTarget)(nil)).Elem()
+}
+
+func (o SloTargetPtrOutput) ToSloTargetPtrOutput() SloTargetPtrOutput {
+	return o
+}
+
+func (o SloTargetPtrOutput) ToSloTargetPtrOutputWithContext(ctx context.Context) SloTargetPtrOutput {
+	return o
+}
+
+func (o SloTargetPtrOutput) Elem() SloTargetOutput {
+	return o.ApplyT(func(v *SloTarget) SloTarget {
+		if v != nil {
+			return *v
+		}
+		var ret SloTarget
+		return ret
+	}).(SloTargetOutput)
+}
+
+// SLO alert rules
+func (o SloTargetPtrOutput) AlertRules() SloTargetAlertRuleArrayOutput {
+	return o.ApplyT(func(v *SloTarget) []SloTargetAlertRule {
+		if v == nil {
+			return nil
+		}
+		return v.AlertRules
+	}).(SloTargetAlertRuleArrayOutput)
+}
+
+// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+func (o SloTargetPtrOutput) CompliancePeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompliancePeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target value in the form of a percentage
+func (o SloTargetPtrOutput) Slo() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloTarget) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Slo
+	}).(pulumi.Float64PtrOutput)
+}
+
+// SLO target type can be the following type: `RollingWindow`
+func (o SloTargetPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type SloTargetAlertRule struct {
+	// Set of rules used for alerting
+	Rules []SloTargetAlertRuleRule `pulumi:"rules"`
+	// SLO alert rule type
+	Type string `pulumi:"type"`
+}
+
+// SloTargetAlertRuleInput is an input type that accepts SloTargetAlertRuleArgs and SloTargetAlertRuleOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleInput` via:
+//
+//	SloTargetAlertRuleArgs{...}
+type SloTargetAlertRuleInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleOutput() SloTargetAlertRuleOutput
+	ToSloTargetAlertRuleOutputWithContext(context.Context) SloTargetAlertRuleOutput
+}
+
+type SloTargetAlertRuleArgs struct {
+	// Set of rules used for alerting
+	Rules SloTargetAlertRuleRuleArrayInput `pulumi:"rules"`
+	// SLO alert rule type
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (SloTargetAlertRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRule)(nil)).Elem()
+}
+
+func (i SloTargetAlertRuleArgs) ToSloTargetAlertRuleOutput() SloTargetAlertRuleOutput {
+	return i.ToSloTargetAlertRuleOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleArgs) ToSloTargetAlertRuleOutputWithContext(ctx context.Context) SloTargetAlertRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleOutput)
+}
+
+// SloTargetAlertRuleArrayInput is an input type that accepts SloTargetAlertRuleArray and SloTargetAlertRuleArrayOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleArrayInput` via:
+//
+//	SloTargetAlertRuleArray{ SloTargetAlertRuleArgs{...} }
+type SloTargetAlertRuleArrayInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleArrayOutput() SloTargetAlertRuleArrayOutput
+	ToSloTargetAlertRuleArrayOutputWithContext(context.Context) SloTargetAlertRuleArrayOutput
+}
+
+type SloTargetAlertRuleArray []SloTargetAlertRuleInput
+
+func (SloTargetAlertRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloTargetAlertRule)(nil)).Elem()
+}
+
+func (i SloTargetAlertRuleArray) ToSloTargetAlertRuleArrayOutput() SloTargetAlertRuleArrayOutput {
+	return i.ToSloTargetAlertRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleArray) ToSloTargetAlertRuleArrayOutputWithContext(ctx context.Context) SloTargetAlertRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleArrayOutput)
+}
+
+type SloTargetAlertRuleOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRule)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleOutput) ToSloTargetAlertRuleOutput() SloTargetAlertRuleOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleOutput) ToSloTargetAlertRuleOutputWithContext(ctx context.Context) SloTargetAlertRuleOutput {
+	return o
+}
+
+// Set of rules used for alerting
+func (o SloTargetAlertRuleOutput) Rules() SloTargetAlertRuleRuleArrayOutput {
+	return o.ApplyT(func(v SloTargetAlertRule) []SloTargetAlertRuleRule { return v.Rules }).(SloTargetAlertRuleRuleArrayOutput)
+}
+
+// SLO alert rule type
+func (o SloTargetAlertRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SloTargetAlertRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type SloTargetAlertRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloTargetAlertRule)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleArrayOutput) ToSloTargetAlertRuleArrayOutput() SloTargetAlertRuleArrayOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleArrayOutput) ToSloTargetAlertRuleArrayOutputWithContext(ctx context.Context) SloTargetAlertRuleArrayOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleArrayOutput) Index(i pulumi.IntInput) SloTargetAlertRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloTargetAlertRule {
+		return vs[0].([]SloTargetAlertRule)[vs[1].(int)]
+	}).(SloTargetAlertRuleOutput)
+}
+
+type SloTargetAlertRuleRule struct {
+	// Description of the rule
+	Description *string `pulumi:"description"`
+	// (default: false) When true, notifications and events will not be generated for the detect label
+	Disabled *bool `pulumi:"disabled"`
+	// List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	Notifications []string `pulumi:"notifications"`
+	// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+	ParameterizedBody *string `pulumi:"parameterizedBody"`
+	// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+	ParameterizedSubject *string `pulumi:"parameterizedSubject"`
+	// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+	Parameters *SloTargetAlertRuleRuleParameters `pulumi:"parameters"`
+	// URL of page to consult when an alert is triggered
+	RunbookUrl *string `pulumi:"runbookUrl"`
+	// The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+	Severity string `pulumi:"severity"`
+	// Plain text suggested first course of action, such as a command to execute.
+	Tip *string `pulumi:"tip"`
+}
+
+// SloTargetAlertRuleRuleInput is an input type that accepts SloTargetAlertRuleRuleArgs and SloTargetAlertRuleRuleOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleRuleInput` via:
+//
+//	SloTargetAlertRuleRuleArgs{...}
+type SloTargetAlertRuleRuleInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleRuleOutput() SloTargetAlertRuleRuleOutput
+	ToSloTargetAlertRuleRuleOutputWithContext(context.Context) SloTargetAlertRuleRuleOutput
+}
+
+type SloTargetAlertRuleRuleArgs struct {
+	// Description of the rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (default: false) When true, notifications and events will not be generated for the detect label
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	Notifications pulumi.StringArrayInput `pulumi:"notifications"`
+	// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+	ParameterizedBody pulumi.StringPtrInput `pulumi:"parameterizedBody"`
+	// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+	ParameterizedSubject pulumi.StringPtrInput `pulumi:"parameterizedSubject"`
+	// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+	Parameters SloTargetAlertRuleRuleParametersPtrInput `pulumi:"parameters"`
+	// URL of page to consult when an alert is triggered
+	RunbookUrl pulumi.StringPtrInput `pulumi:"runbookUrl"`
+	// The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// Plain text suggested first course of action, such as a command to execute.
+	Tip pulumi.StringPtrInput `pulumi:"tip"`
+}
+
+func (SloTargetAlertRuleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRuleRule)(nil)).Elem()
+}
+
+func (i SloTargetAlertRuleRuleArgs) ToSloTargetAlertRuleRuleOutput() SloTargetAlertRuleRuleOutput {
+	return i.ToSloTargetAlertRuleRuleOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleRuleArgs) ToSloTargetAlertRuleRuleOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleOutput)
+}
+
+// SloTargetAlertRuleRuleArrayInput is an input type that accepts SloTargetAlertRuleRuleArray and SloTargetAlertRuleRuleArrayOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleRuleArrayInput` via:
+//
+//	SloTargetAlertRuleRuleArray{ SloTargetAlertRuleRuleArgs{...} }
+type SloTargetAlertRuleRuleArrayInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleRuleArrayOutput() SloTargetAlertRuleRuleArrayOutput
+	ToSloTargetAlertRuleRuleArrayOutputWithContext(context.Context) SloTargetAlertRuleRuleArrayOutput
+}
+
+type SloTargetAlertRuleRuleArray []SloTargetAlertRuleRuleInput
+
+func (SloTargetAlertRuleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloTargetAlertRuleRule)(nil)).Elem()
+}
+
+func (i SloTargetAlertRuleRuleArray) ToSloTargetAlertRuleRuleArrayOutput() SloTargetAlertRuleRuleArrayOutput {
+	return i.ToSloTargetAlertRuleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleRuleArray) ToSloTargetAlertRuleRuleArrayOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleArrayOutput)
+}
+
+type SloTargetAlertRuleRuleOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRuleRule)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleRuleOutput) ToSloTargetAlertRuleRuleOutput() SloTargetAlertRuleRuleOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleOutput) ToSloTargetAlertRuleRuleOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleOutput {
+	return o
+}
+
+// Description of the rule
+func (o SloTargetAlertRuleRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (default: false) When true, notifications and events will not be generated for the detect label
+func (o SloTargetAlertRuleRuleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+func (o SloTargetAlertRuleRuleOutput) Notifications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) []string { return v.Notifications }).(pulumi.StringArrayOutput)
+}
+
+// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+func (o SloTargetAlertRuleRuleOutput) ParameterizedBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *string { return v.ParameterizedBody }).(pulumi.StringPtrOutput)
+}
+
+// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+func (o SloTargetAlertRuleRuleOutput) ParameterizedSubject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *string { return v.ParameterizedSubject }).(pulumi.StringPtrOutput)
+}
+
+// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+func (o SloTargetAlertRuleRuleOutput) Parameters() SloTargetAlertRuleRuleParametersPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *SloTargetAlertRuleRuleParameters { return v.Parameters }).(SloTargetAlertRuleRuleParametersPtrOutput)
+}
+
+// URL of page to consult when an alert is triggered
+func (o SloTargetAlertRuleRuleOutput) RunbookUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *string { return v.RunbookUrl }).(pulumi.StringPtrOutput)
+}
+
+// The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+func (o SloTargetAlertRuleRuleOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Plain text suggested first course of action, such as a command to execute.
+func (o SloTargetAlertRuleRuleOutput) Tip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRule) *string { return v.Tip }).(pulumi.StringPtrOutput)
+}
+
+type SloTargetAlertRuleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SloTargetAlertRuleRule)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleRuleArrayOutput) ToSloTargetAlertRuleRuleArrayOutput() SloTargetAlertRuleRuleArrayOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleArrayOutput) ToSloTargetAlertRuleRuleArrayOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleArrayOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleArrayOutput) Index(i pulumi.IntInput) SloTargetAlertRuleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SloTargetAlertRuleRule {
+		return vs[0].([]SloTargetAlertRuleRule)[vs[1].(int)]
+	}).(SloTargetAlertRuleRuleOutput)
+}
+
+type SloTargetAlertRuleRuleParameters struct {
+	// Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold1 parameter.
+	BurnRateThreshold1 *float64 `pulumi:"burnRateThreshold1"`
+	// Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold2 parameter.
+	BurnRateThreshold2 *float64 `pulumi:"burnRateThreshold2"`
+	// Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fireLasting parameter
+	FireLasting *string `pulumi:"fireLasting"`
+	// Long window 1 used in burn rate alert calculation. This value must be longer than shortWindow1` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow1 parameter.
+	LongWindow1 *string `pulumi:"longWindow1"`
+	// Long window 2 used in burn rate alert calculation. This value must be longer than shortWindow2` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow2 parameter.
+	LongWindow2 *string `pulumi:"longWindow2"`
+	// Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percentErrorBudgetLeft parameter.
+	PercentErrorBudgetLeft *float64 `pulumi:"percentErrorBudgetLeft"`
+	// Percentage of the fireLasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percentOfLasting parameter
+	PercentOfLasting *float64 `pulumi:"percentOfLasting"`
+	// Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the shortWindow1 parameter.
+	ShortWindow1 *string `pulumi:"shortWindow1"`
+	// Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the shortWindow2 parameter.
+	ShortWindow2 *string `pulumi:"shortWindow2"`
+}
+
+// SloTargetAlertRuleRuleParametersInput is an input type that accepts SloTargetAlertRuleRuleParametersArgs and SloTargetAlertRuleRuleParametersOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleRuleParametersInput` via:
+//
+//	SloTargetAlertRuleRuleParametersArgs{...}
+type SloTargetAlertRuleRuleParametersInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleRuleParametersOutput() SloTargetAlertRuleRuleParametersOutput
+	ToSloTargetAlertRuleRuleParametersOutputWithContext(context.Context) SloTargetAlertRuleRuleParametersOutput
+}
+
+type SloTargetAlertRuleRuleParametersArgs struct {
+	// Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold1 parameter.
+	BurnRateThreshold1 pulumi.Float64PtrInput `pulumi:"burnRateThreshold1"`
+	// Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold2 parameter.
+	BurnRateThreshold2 pulumi.Float64PtrInput `pulumi:"burnRateThreshold2"`
+	// Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fireLasting parameter
+	FireLasting pulumi.StringPtrInput `pulumi:"fireLasting"`
+	// Long window 1 used in burn rate alert calculation. This value must be longer than shortWindow1` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow1 parameter.
+	LongWindow1 pulumi.StringPtrInput `pulumi:"longWindow1"`
+	// Long window 2 used in burn rate alert calculation. This value must be longer than shortWindow2` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow2 parameter.
+	LongWindow2 pulumi.StringPtrInput `pulumi:"longWindow2"`
+	// Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percentErrorBudgetLeft parameter.
+	PercentErrorBudgetLeft pulumi.Float64PtrInput `pulumi:"percentErrorBudgetLeft"`
+	// Percentage of the fireLasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percentOfLasting parameter
+	PercentOfLasting pulumi.Float64PtrInput `pulumi:"percentOfLasting"`
+	// Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the shortWindow1 parameter.
+	ShortWindow1 pulumi.StringPtrInput `pulumi:"shortWindow1"`
+	// Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the shortWindow2 parameter.
+	ShortWindow2 pulumi.StringPtrInput `pulumi:"shortWindow2"`
+}
+
+func (SloTargetAlertRuleRuleParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRuleRuleParameters)(nil)).Elem()
+}
+
+func (i SloTargetAlertRuleRuleParametersArgs) ToSloTargetAlertRuleRuleParametersOutput() SloTargetAlertRuleRuleParametersOutput {
+	return i.ToSloTargetAlertRuleRuleParametersOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleRuleParametersArgs) ToSloTargetAlertRuleRuleParametersOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleParametersOutput)
+}
+
+func (i SloTargetAlertRuleRuleParametersArgs) ToSloTargetAlertRuleRuleParametersPtrOutput() SloTargetAlertRuleRuleParametersPtrOutput {
+	return i.ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(context.Background())
+}
+
+func (i SloTargetAlertRuleRuleParametersArgs) ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleParametersOutput).ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(ctx)
+}
+
+// SloTargetAlertRuleRuleParametersPtrInput is an input type that accepts SloTargetAlertRuleRuleParametersArgs, SloTargetAlertRuleRuleParametersPtr and SloTargetAlertRuleRuleParametersPtrOutput values.
+// You can construct a concrete instance of `SloTargetAlertRuleRuleParametersPtrInput` via:
+//
+//	        SloTargetAlertRuleRuleParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type SloTargetAlertRuleRuleParametersPtrInput interface {
+	pulumi.Input
+
+	ToSloTargetAlertRuleRuleParametersPtrOutput() SloTargetAlertRuleRuleParametersPtrOutput
+	ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(context.Context) SloTargetAlertRuleRuleParametersPtrOutput
+}
+
+type sloTargetAlertRuleRuleParametersPtrType SloTargetAlertRuleRuleParametersArgs
+
+func SloTargetAlertRuleRuleParametersPtr(v *SloTargetAlertRuleRuleParametersArgs) SloTargetAlertRuleRuleParametersPtrInput {
+	return (*sloTargetAlertRuleRuleParametersPtrType)(v)
+}
+
+func (*sloTargetAlertRuleRuleParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloTargetAlertRuleRuleParameters)(nil)).Elem()
+}
+
+func (i *sloTargetAlertRuleRuleParametersPtrType) ToSloTargetAlertRuleRuleParametersPtrOutput() SloTargetAlertRuleRuleParametersPtrOutput {
+	return i.ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *sloTargetAlertRuleRuleParametersPtrType) ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloTargetAlertRuleRuleParametersPtrOutput)
+}
+
+type SloTargetAlertRuleRuleParametersOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleRuleParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloTargetAlertRuleRuleParameters)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleRuleParametersOutput) ToSloTargetAlertRuleRuleParametersOutput() SloTargetAlertRuleRuleParametersOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleParametersOutput) ToSloTargetAlertRuleRuleParametersOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleParametersOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleParametersOutput) ToSloTargetAlertRuleRuleParametersPtrOutput() SloTargetAlertRuleRuleParametersPtrOutput {
+	return o.ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(context.Background())
+}
+
+func (o SloTargetAlertRuleRuleParametersOutput) ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SloTargetAlertRuleRuleParameters) *SloTargetAlertRuleRuleParameters {
+		return &v
+	}).(SloTargetAlertRuleRuleParametersPtrOutput)
+}
+
+// Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold1 parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) BurnRateThreshold1() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *float64 { return v.BurnRateThreshold1 }).(pulumi.Float64PtrOutput)
+}
+
+// Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold2 parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) BurnRateThreshold2() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *float64 { return v.BurnRateThreshold2 }).(pulumi.Float64PtrOutput)
+}
+
+// Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fireLasting parameter
+func (o SloTargetAlertRuleRuleParametersOutput) FireLasting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *string { return v.FireLasting }).(pulumi.StringPtrOutput)
+}
+
+// Long window 1 used in burn rate alert calculation. This value must be longer than shortWindow1` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow1 parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) LongWindow1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *string { return v.LongWindow1 }).(pulumi.StringPtrOutput)
+}
+
+// Long window 2 used in burn rate alert calculation. This value must be longer than shortWindow2` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow2 parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) LongWindow2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *string { return v.LongWindow2 }).(pulumi.StringPtrOutput)
+}
+
+// Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percentErrorBudgetLeft parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) PercentErrorBudgetLeft() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *float64 { return v.PercentErrorBudgetLeft }).(pulumi.Float64PtrOutput)
+}
+
+// Percentage of the fireLasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percentOfLasting parameter
+func (o SloTargetAlertRuleRuleParametersOutput) PercentOfLasting() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *float64 { return v.PercentOfLasting }).(pulumi.Float64PtrOutput)
+}
+
+// Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the shortWindow1 parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) ShortWindow1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *string { return v.ShortWindow1 }).(pulumi.StringPtrOutput)
+}
+
+// Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the shortWindow2 parameter.
+func (o SloTargetAlertRuleRuleParametersOutput) ShortWindow2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTargetAlertRuleRuleParameters) *string { return v.ShortWindow2 }).(pulumi.StringPtrOutput)
+}
+
+type SloTargetAlertRuleRuleParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (SloTargetAlertRuleRuleParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloTargetAlertRuleRuleParameters)(nil)).Elem()
+}
+
+func (o SloTargetAlertRuleRuleParametersPtrOutput) ToSloTargetAlertRuleRuleParametersPtrOutput() SloTargetAlertRuleRuleParametersPtrOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleParametersPtrOutput) ToSloTargetAlertRuleRuleParametersPtrOutputWithContext(ctx context.Context) SloTargetAlertRuleRuleParametersPtrOutput {
+	return o
+}
+
+func (o SloTargetAlertRuleRuleParametersPtrOutput) Elem() SloTargetAlertRuleRuleParametersOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) SloTargetAlertRuleRuleParameters {
+		if v != nil {
+			return *v
+		}
+		var ret SloTargetAlertRuleRuleParameters
+		return ret
+	}).(SloTargetAlertRuleRuleParametersOutput)
+}
+
+// Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold1 parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) BurnRateThreshold1() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BurnRateThreshold1
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold2 parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) BurnRateThreshold2() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BurnRateThreshold2
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fireLasting parameter
+func (o SloTargetAlertRuleRuleParametersPtrOutput) FireLasting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FireLasting
+	}).(pulumi.StringPtrOutput)
+}
+
+// Long window 1 used in burn rate alert calculation. This value must be longer than shortWindow1` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow1 parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) LongWindow1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LongWindow1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Long window 2 used in burn rate alert calculation. This value must be longer than shortWindow2` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow2 parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) LongWindow2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LongWindow2
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percentErrorBudgetLeft parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) PercentErrorBudgetLeft() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PercentErrorBudgetLeft
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Percentage of the fireLasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percentOfLasting parameter
+func (o SloTargetAlertRuleRuleParametersPtrOutput) PercentOfLasting() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PercentOfLasting
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the shortWindow1 parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) ShortWindow1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortWindow1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the shortWindow2 parameter.
+func (o SloTargetAlertRuleRuleParametersPtrOutput) ShortWindow2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTargetAlertRuleRuleParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShortWindow2
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableChartVizOption struct {
 	// Color to use
 	Color *string `pulumi:"color"`
@@ -6421,6 +7354,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartColorScaleArrayInput)(nil)).Elem(), SingleValueChartColorScaleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartVizOptionInput)(nil)).Elem(), SingleValueChartVizOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleValueChartVizOptionArrayInput)(nil)).Elem(), SingleValueChartVizOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloInputTypeInput)(nil)).Elem(), SloInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloInputTypePtrInput)(nil)).Elem(), SloInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetInput)(nil)).Elem(), SloTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetPtrInput)(nil)).Elem(), SloTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleInput)(nil)).Elem(), SloTargetAlertRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleArrayInput)(nil)).Elem(), SloTargetAlertRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleInput)(nil)).Elem(), SloTargetAlertRuleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleArrayInput)(nil)).Elem(), SloTargetAlertRuleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleParametersInput)(nil)).Elem(), SloTargetAlertRuleRuleParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SloTargetAlertRuleRuleParametersPtrInput)(nil)).Elem(), SloTargetAlertRuleRuleParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableChartVizOptionInput)(nil)).Elem(), TableChartVizOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableChartVizOptionArrayInput)(nil)).Elem(), TableChartVizOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeChartAxisLeftInput)(nil)).Elem(), TimeChartAxisLeftArgs{})
@@ -6515,6 +7458,16 @@ func init() {
 	pulumi.RegisterOutputType(SingleValueChartColorScaleArrayOutput{})
 	pulumi.RegisterOutputType(SingleValueChartVizOptionOutput{})
 	pulumi.RegisterOutputType(SingleValueChartVizOptionArrayOutput{})
+	pulumi.RegisterOutputType(SloInputTypeOutput{})
+	pulumi.RegisterOutputType(SloInputTypePtrOutput{})
+	pulumi.RegisterOutputType(SloTargetOutput{})
+	pulumi.RegisterOutputType(SloTargetPtrOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleArrayOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleRuleOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleRuleArrayOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleRuleParametersOutput{})
+	pulumi.RegisterOutputType(SloTargetAlertRuleRuleParametersPtrOutput{})
 	pulumi.RegisterOutputType(TableChartVizOptionOutput{})
 	pulumi.RegisterOutputType(TableChartVizOptionArrayOutput{})
 	pulumi.RegisterOutputType(TimeChartAxisLeftOutput{})

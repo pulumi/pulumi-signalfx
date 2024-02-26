@@ -397,7 +397,7 @@ export interface DetectorRule {
      */
     parameterizedBody?: string;
     /**
-     * Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
      */
     parameterizedSubject?: string;
     /**
@@ -705,6 +705,129 @@ export interface SingleValueChartVizOption {
      * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
      */
     valueUnit?: string;
+}
+
+export interface SloInput {
+    /**
+     * Label used in `programText` that refers to the data block which contains the stream of successful events
+     */
+    goodEventsLabel?: string;
+    /**
+     * Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     */
+    programText: string;
+    /**
+     * Label used in `programText` that refers to the data block which contains the stream of total events
+     */
+    totalEventsLabel?: string;
+}
+
+export interface SloTarget {
+    /**
+     * SLO alert rules
+     */
+    alertRules: outputs.SloTargetAlertRule[];
+    /**
+     * (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     */
+    compliancePeriod?: string;
+    /**
+     * Target value in the form of a percentage
+     */
+    slo: number;
+    /**
+     * SLO target type can be the following type: `RollingWindow`
+     */
+    type: string;
+}
+
+export interface SloTargetAlertRule {
+    /**
+     * Set of rules used for alerting
+     */
+    rules: outputs.SloTargetAlertRuleRule[];
+    /**
+     * SLO alert rule type
+     */
+    type: string;
+}
+
+export interface SloTargetAlertRuleRule {
+    /**
+     * Description of the rule
+     */
+    description?: string;
+    /**
+     * (default: false) When true, notifications and events will not be generated for the detect label
+     */
+    disabled?: boolean;
+    /**
+     * List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     */
+    notifications?: string[];
+    /**
+     * Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     */
+    parameterizedBody?: string;
+    /**
+     * Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     */
+    parameterizedSubject?: string;
+    /**
+     * Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+     */
+    parameters?: outputs.SloTargetAlertRuleRuleParameters;
+    /**
+     * URL of page to consult when an alert is triggered
+     */
+    runbookUrl?: string;
+    /**
+     * The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     */
+    severity: string;
+    /**
+     * Plain text suggested first course of action, such as a command to execute.
+     */
+    tip?: string;
+}
+
+export interface SloTargetAlertRuleRuleParameters {
+    /**
+     * Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold1 parameter.
+     */
+    burnRateThreshold1: number;
+    /**
+     * Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold2 parameter.
+     */
+    burnRateThreshold2: number;
+    /**
+     * Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fireLasting parameter
+     */
+    fireLasting: string;
+    /**
+     * Long window 1 used in burn rate alert calculation. This value must be longer than shortWindow1` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow1 parameter.
+     */
+    longWindow1: string;
+    /**
+     * Long window 2 used in burn rate alert calculation. This value must be longer than shortWindow2` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow2 parameter.
+     */
+    longWindow2: string;
+    /**
+     * Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percentErrorBudgetLeft parameter.
+     */
+    percentErrorBudgetLeft: number;
+    /**
+     * Percentage of the fireLasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percentOfLasting parameter
+     */
+    percentOfLasting: number;
+    /**
+     * Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the shortWindow1 parameter.
+     */
+    shortWindow1: string;
+    /**
+     * Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the shortWindow2 parameter.
+     */
+    shortWindow2: string;
 }
 
 export interface TableChartVizOption {
