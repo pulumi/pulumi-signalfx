@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? ParameterizedBody;
         /// <summary>
-        /// Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+        /// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
         /// </summary>
         public readonly string? ParameterizedSubject;
         /// <summary>

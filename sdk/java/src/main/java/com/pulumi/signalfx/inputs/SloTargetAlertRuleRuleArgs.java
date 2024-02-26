@@ -6,6 +6,7 @@ package com.pulumi.signalfx.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.signalfx.inputs.SloTargetAlertRuleRuleParametersArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,9 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
+public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final DetectorRuleArgs Empty = new DetectorRuleArgs();
+    public static final SloTargetAlertRuleRuleArgs Empty = new SloTargetAlertRuleRuleArgs();
 
     /**
      * Description of the rule
@@ -31,21 +32,6 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
-    }
-
-    /**
-     * A detect label which matches a detect label within the program text
-     * 
-     */
-    @Import(name="detectLabel", required=true)
-    private Output<String> detectLabel;
-
-    /**
-     * @return A detect label which matches a detect label within the program text
-     * 
-     */
-    public Output<String> detectLabel() {
-        return this.detectLabel;
     }
 
     /**
@@ -109,6 +95,21 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<SloTargetAlertRuleRuleParametersArgs> parameters;
+
+    /**
+     * @return Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+     * 
+     */
+    public Optional<Output<SloTargetAlertRuleRuleParametersArgs>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
+    /**
      * URL of page to consult when an alert is triggered
      * 
      */
@@ -153,15 +154,15 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tip);
     }
 
-    private DetectorRuleArgs() {}
+    private SloTargetAlertRuleRuleArgs() {}
 
-    private DetectorRuleArgs(DetectorRuleArgs $) {
+    private SloTargetAlertRuleRuleArgs(SloTargetAlertRuleRuleArgs $) {
         this.description = $.description;
-        this.detectLabel = $.detectLabel;
         this.disabled = $.disabled;
         this.notifications = $.notifications;
         this.parameterizedBody = $.parameterizedBody;
         this.parameterizedSubject = $.parameterizedSubject;
+        this.parameters = $.parameters;
         this.runbookUrl = $.runbookUrl;
         this.severity = $.severity;
         this.tip = $.tip;
@@ -170,19 +171,19 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(DetectorRuleArgs defaults) {
+    public static Builder builder(SloTargetAlertRuleRuleArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private DetectorRuleArgs $;
+        private SloTargetAlertRuleRuleArgs $;
 
         public Builder() {
-            $ = new DetectorRuleArgs();
+            $ = new SloTargetAlertRuleRuleArgs();
         }
 
-        public Builder(DetectorRuleArgs defaults) {
-            $ = new DetectorRuleArgs(Objects.requireNonNull(defaults));
+        public Builder(SloTargetAlertRuleRuleArgs defaults) {
+            $ = new SloTargetAlertRuleRuleArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -204,27 +205,6 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        /**
-         * @param detectLabel A detect label which matches a detect label within the program text
-         * 
-         * @return builder
-         * 
-         */
-        public Builder detectLabel(Output<String> detectLabel) {
-            $.detectLabel = detectLabel;
-            return this;
-        }
-
-        /**
-         * @param detectLabel A detect label which matches a detect label within the program text
-         * 
-         * @return builder
-         * 
-         */
-        public Builder detectLabel(String detectLabel) {
-            return detectLabel(Output.of(detectLabel));
         }
 
         /**
@@ -322,6 +302,27 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param parameters Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<SloTargetAlertRuleRuleParametersArgs> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(SloTargetAlertRuleRuleParametersArgs parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
          * @param runbookUrl URL of page to consult when an alert is triggered
          * 
          * @return builder
@@ -384,12 +385,9 @@ public final class DetectorRuleArgs extends com.pulumi.resources.ResourceArgs {
             return tip(Output.of(tip));
         }
 
-        public DetectorRuleArgs build() {
-            if ($.detectLabel == null) {
-                throw new MissingRequiredPropertyException("DetectorRuleArgs", "detectLabel");
-            }
+        public SloTargetAlertRuleRuleArgs build() {
             if ($.severity == null) {
-                throw new MissingRequiredPropertyException("DetectorRuleArgs", "severity");
+                throw new MissingRequiredPropertyException("SloTargetAlertRuleRuleArgs", "severity");
             }
             return $;
         }

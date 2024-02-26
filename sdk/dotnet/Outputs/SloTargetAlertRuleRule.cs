@@ -7,74 +7,78 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.SignalFx.Inputs
+namespace Pulumi.SignalFx.Outputs
 {
 
-    public sealed class DetectorRuleGetArgs : global::Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class SloTargetAlertRuleRule
     {
         /// <summary>
         /// Description of the rule
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// A detect label which matches a detect label within the program text
-        /// </summary>
-        [Input("detectLabel", required: true)]
-        public Input<string> DetectLabel { get; set; } = null!;
-
+        public readonly string? Description;
         /// <summary>
         /// (default: false) When true, notifications and events will not be generated for the detect label
         /// </summary>
-        [Input("disabled")]
-        public Input<bool>? Disabled { get; set; }
-
-        [Input("notifications")]
-        private InputList<string>? _notifications;
-
+        public readonly bool? Disabled;
         /// <summary>
         /// List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         /// </summary>
-        public InputList<string> Notifications
-        {
-            get => _notifications ?? (_notifications = new InputList<string>());
-            set => _notifications = value;
-        }
-
+        public readonly ImmutableArray<string> Notifications;
         /// <summary>
         /// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
         /// </summary>
-        [Input("parameterizedBody")]
-        public Input<string>? ParameterizedBody { get; set; }
-
+        public readonly string? ParameterizedBody;
         /// <summary>
         /// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
         /// </summary>
-        [Input("parameterizedSubject")]
-        public Input<string>? ParameterizedSubject { get; set; }
-
+        public readonly string? ParameterizedSubject;
+        /// <summary>
+        /// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+        /// </summary>
+        public readonly Outputs.SloTargetAlertRuleRuleParameters? Parameters;
         /// <summary>
         /// URL of page to consult when an alert is triggered
         /// </summary>
-        [Input("runbookUrl")]
-        public Input<string>? RunbookUrl { get; set; }
-
+        public readonly string? RunbookUrl;
         /// <summary>
         /// The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
         /// </summary>
-        [Input("severity", required: true)]
-        public Input<string> Severity { get; set; } = null!;
-
+        public readonly string Severity;
         /// <summary>
         /// Plain text suggested first course of action, such as a command to execute.
         /// </summary>
-        [Input("tip")]
-        public Input<string>? Tip { get; set; }
+        public readonly string? Tip;
 
-        public DetectorRuleGetArgs()
+        [OutputConstructor]
+        private SloTargetAlertRuleRule(
+            string? description,
+
+            bool? disabled,
+
+            ImmutableArray<string> notifications,
+
+            string? parameterizedBody,
+
+            string? parameterizedSubject,
+
+            Outputs.SloTargetAlertRuleRuleParameters? parameters,
+
+            string? runbookUrl,
+
+            string severity,
+
+            string? tip)
         {
+            Description = description;
+            Disabled = disabled;
+            Notifications = notifications;
+            ParameterizedBody = parameterizedBody;
+            ParameterizedSubject = parameterizedSubject;
+            Parameters = parameters;
+            RunbookUrl = runbookUrl;
+            Severity = severity;
+            Tip = tip;
         }
-        public static new DetectorRuleGetArgs Empty => new DetectorRuleGetArgs();
     }
 }

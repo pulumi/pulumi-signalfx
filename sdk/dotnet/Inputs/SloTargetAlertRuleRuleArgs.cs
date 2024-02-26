@@ -10,19 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SignalFx.Inputs
 {
 
-    public sealed class DetectorRuleGetArgs : global::Pulumi.ResourceArgs
+    public sealed class SloTargetAlertRuleRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the rule
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// A detect label which matches a detect label within the program text
-        /// </summary>
-        [Input("detectLabel", required: true)]
-        public Input<string> DetectLabel { get; set; } = null!;
 
         /// <summary>
         /// (default: false) When true, notifications and events will not be generated for the detect label
@@ -55,6 +49,12 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? ParameterizedSubject { get; set; }
 
         /// <summary>
+        /// Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+        /// </summary>
+        [Input("parameters")]
+        public Input<Inputs.SloTargetAlertRuleRuleParametersArgs>? Parameters { get; set; }
+
+        /// <summary>
         /// URL of page to consult when an alert is triggered
         /// </summary>
         [Input("runbookUrl")]
@@ -72,9 +72,9 @@ namespace Pulumi.SignalFx.Inputs
         [Input("tip")]
         public Input<string>? Tip { get; set; }
 
-        public DetectorRuleGetArgs()
+        public SloTargetAlertRuleRuleArgs()
         {
         }
-        public static new DetectorRuleGetArgs Empty => new DetectorRuleGetArgs();
+        public static new SloTargetAlertRuleRuleArgs Empty => new SloTargetAlertRuleRuleArgs();
     }
 }

@@ -49,7 +49,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? ParameterizedBody { get; set; }
 
         /// <summary>
-        /// Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+        /// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
         /// </summary>
         [Input("parameterizedSubject")]
         public Input<string>? ParameterizedSubject { get; set; }

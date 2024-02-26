@@ -47,6 +47,11 @@ __all__ = [
     'OrgTokenHostOrUsageLimitsArgs',
     'SingleValueChartColorScaleArgs',
     'SingleValueChartVizOptionArgs',
+    'SloInputArgs',
+    'SloTargetArgs',
+    'SloTargetAlertRuleArgs',
+    'SloTargetAlertRuleRuleArgs',
+    'SloTargetAlertRuleRuleParametersArgs',
     'TableChartVizOptionArgs',
     'TimeChartAxisLeftArgs',
     'TimeChartAxisLeftWatermarkArgs',
@@ -1446,7 +1451,7 @@ class DetectorRuleArgs:
         :param pulumi.Input[bool] disabled: (default: false) When true, notifications and events will not be generated for the detect label
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         :param pulumi.Input[str] parameterized_body: Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
-        :param pulumi.Input[str] parameterized_subject: Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+        :param pulumi.Input[str] parameterized_subject: Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
         :param pulumi.Input[str] runbook_url: URL of page to consult when an alert is triggered
         :param pulumi.Input[str] tip: Plain text suggested first course of action, such as a command to execute.
         """
@@ -1543,7 +1548,7 @@ class DetectorRuleArgs:
     @pulumi.getter(name="parameterizedSubject")
     def parameterized_subject(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom notification message subject when an alert is triggered. See https://d    evelopers.signalfx.com/v2/reference#detector-model for more info
+        Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
         """
         return pulumi.get(self, "parameterized_subject")
 
@@ -2650,6 +2655,466 @@ class SingleValueChartVizOptionArgs:
     @value_unit.setter
     def value_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value_unit", value)
+
+
+@pulumi.input_type
+class SloInputArgs:
+    def __init__(__self__, *,
+                 program_text: pulumi.Input[str],
+                 good_events_label: Optional[pulumi.Input[str]] = None,
+                 total_events_label: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] program_text: Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+        :param pulumi.Input[str] good_events_label: Label used in `program_text` that refers to the data block which contains the stream of successful events
+        :param pulumi.Input[str] total_events_label: Label used in `program_text` that refers to the data block which contains the stream of total events
+        """
+        pulumi.set(__self__, "program_text", program_text)
+        if good_events_label is not None:
+            pulumi.set(__self__, "good_events_label", good_events_label)
+        if total_events_label is not None:
+            pulumi.set(__self__, "total_events_label", total_events_label)
+
+    @property
+    @pulumi.getter(name="programText")
+    def program_text(self) -> pulumi.Input[str]:
+        """
+        Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+        """
+        return pulumi.get(self, "program_text")
+
+    @program_text.setter
+    def program_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "program_text", value)
+
+    @property
+    @pulumi.getter(name="goodEventsLabel")
+    def good_events_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Label used in `program_text` that refers to the data block which contains the stream of successful events
+        """
+        return pulumi.get(self, "good_events_label")
+
+    @good_events_label.setter
+    def good_events_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "good_events_label", value)
+
+    @property
+    @pulumi.getter(name="totalEventsLabel")
+    def total_events_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Label used in `program_text` that refers to the data block which contains the stream of total events
+        """
+        return pulumi.get(self, "total_events_label")
+
+    @total_events_label.setter
+    def total_events_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_events_label", value)
+
+
+@pulumi.input_type
+class SloTargetArgs:
+    def __init__(__self__, *,
+                 alert_rules: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]],
+                 slo: pulumi.Input[float],
+                 type: pulumi.Input[str],
+                 compliance_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]] alert_rules: SLO alert rules
+        :param pulumi.Input[float] slo: Target value in the form of a percentage
+        :param pulumi.Input[str] type: SLO target type can be the following type: `RollingWindow`
+        :param pulumi.Input[str] compliance_period: (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        """
+        pulumi.set(__self__, "alert_rules", alert_rules)
+        pulumi.set(__self__, "slo", slo)
+        pulumi.set(__self__, "type", type)
+        if compliance_period is not None:
+            pulumi.set(__self__, "compliance_period", compliance_period)
+
+    @property
+    @pulumi.getter(name="alertRules")
+    def alert_rules(self) -> pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]]:
+        """
+        SLO alert rules
+        """
+        return pulumi.get(self, "alert_rules")
+
+    @alert_rules.setter
+    def alert_rules(self, value: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]]):
+        pulumi.set(self, "alert_rules", value)
+
+    @property
+    @pulumi.getter
+    def slo(self) -> pulumi.Input[float]:
+        """
+        Target value in the form of a percentage
+        """
+        return pulumi.get(self, "slo")
+
+    @slo.setter
+    def slo(self, value: pulumi.Input[float]):
+        pulumi.set(self, "slo", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        SLO target type can be the following type: `RollingWindow`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="compliancePeriod")
+    def compliance_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        """
+        return pulumi.get(self, "compliance_period")
+
+    @compliance_period.setter
+    def compliance_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_period", value)
+
+
+@pulumi.input_type
+class SloTargetAlertRuleArgs:
+    def __init__(__self__, *,
+                 rules: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleRuleArgs']]],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleRuleArgs']]] rules: Set of rules used for alerting
+        :param pulumi.Input[str] type: SLO alert rule type
+        """
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleRuleArgs']]]:
+        """
+        Set of rules used for alerting
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        SLO alert rule type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class SloTargetAlertRuleRuleArgs:
+    def __init__(__self__, *,
+                 severity: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 parameterized_body: Optional[pulumi.Input[str]] = None,
+                 parameterized_subject: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input['SloTargetAlertRuleRuleParametersArgs']] = None,
+                 runbook_url: Optional[pulumi.Input[str]] = None,
+                 tip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] severity: The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+        :param pulumi.Input[str] description: Description of the rule
+        :param pulumi.Input[bool] disabled: (default: false) When true, notifications and events will not be generated for the detect label
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[str] parameterized_body: Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        :param pulumi.Input[str] parameterized_subject: Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        :param pulumi.Input['SloTargetAlertRuleRuleParametersArgs'] parameters: Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+        :param pulumi.Input[str] runbook_url: URL of page to consult when an alert is triggered
+        :param pulumi.Input[str] tip: Plain text suggested first course of action, such as a command to execute.
+        """
+        pulumi.set(__self__, "severity", severity)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if notifications is not None:
+            pulumi.set(__self__, "notifications", notifications)
+        if parameterized_body is not None:
+            pulumi.set(__self__, "parameterized_body", parameterized_body)
+        if parameterized_subject is not None:
+            pulumi.set(__self__, "parameterized_subject", parameterized_subject)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if runbook_url is not None:
+            pulumi.set(__self__, "runbook_url", runbook_url)
+        if tip is not None:
+            pulumi.set(__self__, "tip", tip)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[str]:
+        """
+        The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "severity", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the rule
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (default: false) When true, notifications and events will not be generated for the detect label
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        """
+        return pulumi.get(self, "notifications")
+
+    @notifications.setter
+    def notifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notifications", value)
+
+    @property
+    @pulumi.getter(name="parameterizedBody")
+    def parameterized_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        """
+        return pulumi.get(self, "parameterized_body")
+
+    @parameterized_body.setter
+    def parameterized_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameterized_body", value)
+
+    @property
+    @pulumi.getter(name="parameterizedSubject")
+    def parameterized_subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        """
+        return pulumi.get(self, "parameterized_subject")
+
+    @parameterized_subject.setter
+    def parameterized_subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameterized_subject", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['SloTargetAlertRuleRuleParametersArgs']]:
+        """
+        Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['SloTargetAlertRuleRuleParametersArgs']]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="runbookUrl")
+    def runbook_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of page to consult when an alert is triggered
+        """
+        return pulumi.get(self, "runbook_url")
+
+    @runbook_url.setter
+    def runbook_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runbook_url", value)
+
+    @property
+    @pulumi.getter
+    def tip(self) -> Optional[pulumi.Input[str]]:
+        """
+        Plain text suggested first course of action, such as a command to execute.
+        """
+        return pulumi.get(self, "tip")
+
+    @tip.setter
+    def tip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tip", value)
+
+
+@pulumi.input_type
+class SloTargetAlertRuleRuleParametersArgs:
+    def __init__(__self__, *,
+                 burn_rate_threshold1: Optional[pulumi.Input[float]] = None,
+                 burn_rate_threshold2: Optional[pulumi.Input[float]] = None,
+                 fire_lasting: Optional[pulumi.Input[str]] = None,
+                 long_window1: Optional[pulumi.Input[str]] = None,
+                 long_window2: Optional[pulumi.Input[str]] = None,
+                 percent_error_budget_left: Optional[pulumi.Input[float]] = None,
+                 percent_of_lasting: Optional[pulumi.Input[float]] = None,
+                 short_window1: Optional[pulumi.Input[str]] = None,
+                 short_window2: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[float] burn_rate_threshold1: Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burn_rate_threshold_1 parameter.
+        :param pulumi.Input[float] burn_rate_threshold2: Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burn_rate_threshold_2 parameter.
+        :param pulumi.Input[str] fire_lasting: Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fire_lasting parameter
+        :param pulumi.Input[str] long_window1: Long window 1 used in burn rate alert calculation. This value must be longer than short_window_1` and shorter than 90 days. Note: BURN_RATE alert rules use the long_window_1 parameter.
+        :param pulumi.Input[str] long_window2: Long window 2 used in burn rate alert calculation. This value must be longer than short_window_2` and shorter than 90 days. Note: BURN_RATE alert rules use the long_window_2 parameter.
+        :param pulumi.Input[float] percent_error_budget_left: Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percent_error_budget_left parameter.
+        :param pulumi.Input[float] percent_of_lasting: Percentage of the fire_lasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percent_of_lasting parameter
+        :param pulumi.Input[str] short_window1: Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the short_window_1 parameter.
+        :param pulumi.Input[str] short_window2: Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the short_window_2 parameter.
+        """
+        if burn_rate_threshold1 is not None:
+            pulumi.set(__self__, "burn_rate_threshold1", burn_rate_threshold1)
+        if burn_rate_threshold2 is not None:
+            pulumi.set(__self__, "burn_rate_threshold2", burn_rate_threshold2)
+        if fire_lasting is not None:
+            pulumi.set(__self__, "fire_lasting", fire_lasting)
+        if long_window1 is not None:
+            pulumi.set(__self__, "long_window1", long_window1)
+        if long_window2 is not None:
+            pulumi.set(__self__, "long_window2", long_window2)
+        if percent_error_budget_left is not None:
+            pulumi.set(__self__, "percent_error_budget_left", percent_error_budget_left)
+        if percent_of_lasting is not None:
+            pulumi.set(__self__, "percent_of_lasting", percent_of_lasting)
+        if short_window1 is not None:
+            pulumi.set(__self__, "short_window1", short_window1)
+        if short_window2 is not None:
+            pulumi.set(__self__, "short_window2", short_window2)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold1")
+    def burn_rate_threshold1(self) -> Optional[pulumi.Input[float]]:
+        """
+        Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burn_rate_threshold_1 parameter.
+        """
+        return pulumi.get(self, "burn_rate_threshold1")
+
+    @burn_rate_threshold1.setter
+    def burn_rate_threshold1(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "burn_rate_threshold1", value)
+
+    @property
+    @pulumi.getter(name="burnRateThreshold2")
+    def burn_rate_threshold2(self) -> Optional[pulumi.Input[float]]:
+        """
+        Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burn_rate_threshold_2 parameter.
+        """
+        return pulumi.get(self, "burn_rate_threshold2")
+
+    @burn_rate_threshold2.setter
+    def burn_rate_threshold2(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "burn_rate_threshold2", value)
+
+    @property
+    @pulumi.getter(name="fireLasting")
+    def fire_lasting(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fire_lasting parameter
+        """
+        return pulumi.get(self, "fire_lasting")
+
+    @fire_lasting.setter
+    def fire_lasting(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fire_lasting", value)
+
+    @property
+    @pulumi.getter(name="longWindow1")
+    def long_window1(self) -> Optional[pulumi.Input[str]]:
+        """
+        Long window 1 used in burn rate alert calculation. This value must be longer than short_window_1` and shorter than 90 days. Note: BURN_RATE alert rules use the long_window_1 parameter.
+        """
+        return pulumi.get(self, "long_window1")
+
+    @long_window1.setter
+    def long_window1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_window1", value)
+
+    @property
+    @pulumi.getter(name="longWindow2")
+    def long_window2(self) -> Optional[pulumi.Input[str]]:
+        """
+        Long window 2 used in burn rate alert calculation. This value must be longer than short_window_2` and shorter than 90 days. Note: BURN_RATE alert rules use the long_window_2 parameter.
+        """
+        return pulumi.get(self, "long_window2")
+
+    @long_window2.setter
+    def long_window2(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_window2", value)
+
+    @property
+    @pulumi.getter(name="percentErrorBudgetLeft")
+    def percent_error_budget_left(self) -> Optional[pulumi.Input[float]]:
+        """
+        Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percent_error_budget_left parameter.
+        """
+        return pulumi.get(self, "percent_error_budget_left")
+
+    @percent_error_budget_left.setter
+    def percent_error_budget_left(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "percent_error_budget_left", value)
+
+    @property
+    @pulumi.getter(name="percentOfLasting")
+    def percent_of_lasting(self) -> Optional[pulumi.Input[float]]:
+        """
+        Percentage of the fire_lasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percent_of_lasting parameter
+        """
+        return pulumi.get(self, "percent_of_lasting")
+
+    @percent_of_lasting.setter
+    def percent_of_lasting(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "percent_of_lasting", value)
+
+    @property
+    @pulumi.getter(name="shortWindow1")
+    def short_window1(self) -> Optional[pulumi.Input[str]]:
+        """
+        Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the short_window_1 parameter.
+        """
+        return pulumi.get(self, "short_window1")
+
+    @short_window1.setter
+    def short_window1(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_window1", value)
+
+    @property
+    @pulumi.getter(name="shortWindow2")
+    def short_window2(self) -> Optional[pulumi.Input[str]]:
+        """
+        Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the short_window_2 parameter.
+        """
+        return pulumi.get(self, "short_window2")
+
+    @short_window2.setter
+    def short_window2(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_window2", value)
 
 
 @pulumi.input_type
