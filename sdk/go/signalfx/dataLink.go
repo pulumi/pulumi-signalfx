@@ -27,6 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A global link to Splunk Observability Cloud dashboard.
 //			_, err := signalfx.NewDataLink(ctx, "myDataLink", &signalfx.DataLinkArgs{
 //				PropertyName:  pulumi.String("pname"),
 //				PropertyValue: pulumi.String("pvalue"),
@@ -42,6 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// A dashboard-specific link to an external URL
 //			_, err = signalfx.NewDataLink(ctx, "myDataLinkDash", &signalfx.DataLinkArgs{
 //				ContextDashboardId: pulumi.Any(signalfx_dashboard.Mydashboard0.Id),
 //				PropertyName:       pulumi.String("pname2"),

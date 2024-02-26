@@ -33,10 +33,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This resource returns an account id in `external_id`…
 //			awsMyteamExternal, err := aws.NewExternalIntegration(ctx, "awsMyteamExternal", nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
 //			awsSfxRole, err := iam.NewRole(ctx, "awsSfxRole", nil)
 //			if err != nil {
 //				return err

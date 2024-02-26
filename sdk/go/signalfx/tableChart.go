@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// signalfx_list_chart.Logs-Exec_0:
 //			_, err := signalfx.NewTableChart(ctx, "table0", &signalfx.TableChartArgs{
 //				Description:     pulumi.String("beep"),
 //				DisableSampling: pulumi.Bool(false),
