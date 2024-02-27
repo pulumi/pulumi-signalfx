@@ -36,6 +36,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Make yourself an AWS IAM role here
 //			_, err = iam.NewRole(ctx, "awsSfxRole", nil)
 //			if err != nil {
 //				return err
