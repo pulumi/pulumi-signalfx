@@ -15,45 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * // This resource returns an account id in `external_id`…
- * const awsMyteamExternal = new signalfx.aws.ExternalIntegration("awsMyteamExternal", {});
- * // Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
- * const awsSfxRole = new aws.iam.Role("awsSfxRole", {});
- * // Stuff here that uses the external and account ID
- * const awsMyteam = new signalfx.aws.Integration("awsMyteam", {
- *     enabled: true,
- *     integrationId: awsMyteamExternal.id,
- *     externalId: awsMyteamExternal.externalId,
- *     roleArn: awsSfxRole.arn,
- *     regions: ["us-east-1"],
- *     pollRate: 300,
- *     importCloudWatch: true,
- *     enableAwsUsage: true,
- *     customNamespaceSyncRules: [{
- *         defaultAction: "Exclude",
- *         filterAction: "Include",
- *         filterSource: "filter('code', '200')",
- *         namespace: "my-custom-namespace",
- *     }],
- *     namespaceSyncRules: [{
- *         defaultAction: "Exclude",
- *         filterAction: "Include",
- *         filterSource: "filter('code', '200')",
- *         namespace: "AWS/EC2",
- *     }],
- *     metricStatsToSyncs: [{
- *         namespace: "AWS/EC2",
- *         metric: "NetworkPacketsIn",
- *         stats: ["upper"],
- *     }],
- * });
- * ```
- *
  * ## Arguments
  *
  * * `enableAwsUsage` - (Optional) Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.

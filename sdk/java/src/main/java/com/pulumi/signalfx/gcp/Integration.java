@@ -24,48 +24,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk  Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.gcp.Integration;
- * import com.pulumi.signalfx.gcp.IntegrationArgs;
- * import com.pulumi.signalfx.gcp.inputs.IntegrationProjectServiceKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var gcpMyteam = new Integration(&#34;gcpMyteam&#34;, IntegrationArgs.builder()        
- *             .customMetricTypeDomains(&#34;istio.io&#34;)
- *             .enabled(true)
- *             .importGcpMetrics(true)
- *             .pollRate(300)
- *             .projectServiceKeys(            
- *                 IntegrationProjectServiceKeyArgs.builder()
- *                     .projectId(&#34;gcp_project_id_1&#34;)
- *                     .projectKey(Files.readString(Paths.get(&#34;/path/to/gcp_credentials_1.json&#34;)))
- *                     .build(),
- *                 IntegrationProjectServiceKeyArgs.builder()
- *                     .projectId(&#34;gcp_project_id_2&#34;)
- *                     .projectKey(Files.readString(Paths.get(&#34;/path/to/gcp_credentials_2.json&#34;)))
- *                     .build())
- *             .services(&#34;compute&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

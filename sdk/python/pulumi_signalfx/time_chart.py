@@ -964,38 +964,6 @@ class TimeChart(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mychart0 = signalfx.TimeChart("mychart0",
-            axis_left=signalfx.TimeChartAxisLeftArgs(
-                label="CPU Total Idle",
-                low_watermark=1000,
-            ),
-            legend_options_fields=[
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="hostname",
-                ),
-            ],
-            plot_type="LineChart",
-            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
-
-        \"\"\",
-            show_data_markers=True,
-            time_range=3600,
-            viz_options=[signalfx.TimeChartVizOptionArgs(
-                axis="left",
-                color="orange",
-                label="CPU Idle",
-            )])
-        ```
-
         ## Arguments
 
         The following arguments are supported in the resource block:
@@ -1104,38 +1072,6 @@ class TimeChart(pulumi.CustomResource):
         Time charts display data points over a period of time.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mychart0 = signalfx.TimeChart("mychart0",
-            axis_left=signalfx.TimeChartAxisLeftArgs(
-                label="CPU Total Idle",
-                low_watermark=1000,
-            ),
-            legend_options_fields=[
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.TimeChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="hostname",
-                ),
-            ],
-            plot_type="LineChart",
-            program_text=\"\"\"data("cpu.total.idle").publish(label="CPU Idle")
-
-        \"\"\",
-            show_data_markers=True,
-            time_range=3600,
-            viz_options=[signalfx.TimeChartVizOptionArgs(
-                axis="left",
-                color="orange",
-                label="CPU Idle",
-            )])
-        ```
 
         ## Arguments
 

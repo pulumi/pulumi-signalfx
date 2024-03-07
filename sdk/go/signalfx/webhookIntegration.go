@@ -18,38 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := signalfx.NewWebhookIntegration(ctx, "webhookMyteam", &signalfx.WebhookIntegrationArgs{
-//				Enabled: pulumi.Bool(true),
-//				Headers: signalfx.WebhookIntegrationHeaderArray{
-//					&signalfx.WebhookIntegrationHeaderArgs{
-//						HeaderKey:   pulumi.String("some_header"),
-//						HeaderValue: pulumi.String("value_for_that_header"),
-//					},
-//				},
-//				SharedSecret: pulumi.String("abc1234"),
-//				Url:          pulumi.String("https://www.example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `name` - (Required) Name of the integration.

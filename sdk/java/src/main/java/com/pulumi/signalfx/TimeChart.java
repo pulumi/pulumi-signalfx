@@ -29,61 +29,6 @@ import javax.annotation.Nullable;
  * Time charts display data points over a period of time.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.TimeChart;
- * import com.pulumi.signalfx.TimeChartArgs;
- * import com.pulumi.signalfx.inputs.TimeChartAxisLeftArgs;
- * import com.pulumi.signalfx.inputs.TimeChartLegendOptionsFieldArgs;
- * import com.pulumi.signalfx.inputs.TimeChartVizOptionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mychart0 = new TimeChart(&#34;mychart0&#34;, TimeChartArgs.builder()        
- *             .axisLeft(TimeChartAxisLeftArgs.builder()
- *                 .label(&#34;CPU Total Idle&#34;)
- *                 .lowWatermark(1000)
- *                 .build())
- *             .legendOptionsFields(            
- *                 TimeChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;collector&#34;)
- *                     .build(),
- *                 TimeChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;hostname&#34;)
- *                     .build())
- *             .plotType(&#34;LineChart&#34;)
- *             .programText(&#34;&#34;&#34;
- * data(&#34;cpu.total.idle&#34;).publish(label=&#34;CPU Idle&#34;)
- * 
- *             &#34;&#34;&#34;)
- *             .showDataMarkers(true)
- *             .timeRange(3600)
- *             .vizOptions(TimeChartVizOptionArgs.builder()
- *                 .axis(&#34;left&#34;)
- *                 .color(&#34;orange&#34;)
- *                 .label(&#34;CPU Idle&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

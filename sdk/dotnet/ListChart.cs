@@ -16,62 +16,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mylistchart0 = new SignalFx.ListChart("mylistchart0", new()
-    ///     {
-    ///         ColorBy = "Metric",
-    ///         Description = "Very cool List Chart",
-    ///         DisableSampling = true,
-    ///         HideMissingValues = true,
-    ///         LegendOptionsFields = new[]
-    ///         {
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = false,
-    ///                 Property = "collector",
-    ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Property = "cluster_name",
-    ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Property = "role",
-    ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = false,
-    ///                 Property = "collector",
-    ///             },
-    ///             new SignalFx.Inputs.ListChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = false,
-    ///                 Property = "host",
-    ///             },
-    ///         },
-    ///         MaxDelay = 2,
-    ///         MaxPrecision = 2,
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
-    /// 
-    /// ",
-    ///         RefreshInterval = 1,
-    ///         SortBy = "-value",
-    ///         Timezone = "Europe/Paris",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

@@ -16,31 +16,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mysvchart0 = new SignalFx.SingleValueChart("mysvchart0", new()
-    ///     {
-    ///         ColorBy = "Dimension",
-    ///         Description = "Very cool Single Value Chart",
-    ///         IsTimestampHidden = true,
-    ///         MaxDelay = 2,
-    ///         MaxPrecision = 2,
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
-    /// 
-    /// ",
-    ///         RefreshInterval = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

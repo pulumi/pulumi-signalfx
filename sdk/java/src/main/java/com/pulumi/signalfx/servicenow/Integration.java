@@ -22,40 +22,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.servicenow.Integration;
- * import com.pulumi.signalfx.servicenow.IntegrationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var serviceNowMyteam = new Integration(&#34;serviceNowMyteam&#34;, IntegrationArgs.builder()        
- *             .alertResolvedPayloadTemplate(&#34;{\&#34;close_notes\&#34;: \&#34;{{{messageTitle}}} (customized close msg)\&#34;}&#34;)
- *             .alertTriggeredPayloadTemplate(&#34;{\&#34;short_description\&#34;: \&#34;{{{messageTitle}}} (customized)\&#34;}&#34;)
- *             .enabled(false)
- *             .instanceName(&#34;myinst.service-now.com&#34;)
- *             .issueType(&#34;Incident&#34;)
- *             .password(&#34;youd0ntsee1t&#34;)
- *             .username(&#34;thisis_me&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

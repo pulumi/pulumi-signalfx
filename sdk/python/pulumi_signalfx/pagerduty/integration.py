@@ -137,15 +137,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        pagerduty_myteam = signalfx.pagerduty.Integration("pagerdutyMyteam",
-            api_key="1234567890",
-            enabled=True)
-        ```
         ## Arguments
 
         * `name` - (Required) Name of the integration.
@@ -176,15 +167,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        pagerduty_myteam = signalfx.pagerduty.Integration("pagerdutyMyteam",
-            api_key="1234567890",
-            enabled=True)
-        ```
         ## Arguments
 
         * `name` - (Required) Name of the integration.

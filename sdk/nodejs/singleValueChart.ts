@@ -13,24 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mysvchart0 = new signalfx.SingleValueChart("mysvchart0", {
- *     colorBy: "Dimension",
- *     description: "Very cool Single Value Chart",
- *     isTimestampHidden: true,
- *     maxDelay: 2,
- *     maxPrecision: 2,
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
- *
- * `,
- *     refreshInterval: 1,
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

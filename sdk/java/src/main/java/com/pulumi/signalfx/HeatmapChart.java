@@ -23,67 +23,6 @@ import javax.annotation.Nullable;
  * This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.HeatmapChart;
- * import com.pulumi.signalfx.HeatmapChartArgs;
- * import com.pulumi.signalfx.inputs.HeatmapChartColorRangeArgs;
- * import com.pulumi.signalfx.inputs.HeatmapChartColorScaleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myheatmapchart0 = new HeatmapChart(&#34;myheatmapchart0&#34;, HeatmapChartArgs.builder()        
- *             .colorRange(HeatmapChartColorRangeArgs.builder()
- *                 .color(&#34;#ff0000&#34;)
- *                 .maxValue(100)
- *                 .minValue(0)
- *                 .build())
- *             .colorScales(            
- *                 HeatmapChartColorScaleArgs.builder()
- *                     .color(&#34;green&#34;)
- *                     .gte(99)
- *                     .build(),
- *                 HeatmapChartColorScaleArgs.builder()
- *                     .color(&#34;yellow&#34;)
- *                     .gte(95)
- *                     .lt(99)
- *                     .build(),
- *                 HeatmapChartColorScaleArgs.builder()
- *                     .color(&#34;red&#34;)
- *                     .lt(95)
- *                     .build())
- *             .description(&#34;Very cool Heatmap&#34;)
- *             .disableSampling(true)
- *             .groupBies(            
- *                 &#34;hostname&#34;,
- *                 &#34;host&#34;)
- *             .hideTimestamp(true)
- *             .programText(&#34;&#34;&#34;
- * myfilters = filter(&#34;cluster_name&#34;, &#34;prod&#34;) and filter(&#34;role&#34;, &#34;search&#34;)
- * data(&#34;cpu.total.idle&#34;, filter=myfilters).publish()
- * 
- *             &#34;&#34;&#34;)
- *             .sortBy(&#34;+host&#34;)
- *             .timezone(&#34;Europe/Paris&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

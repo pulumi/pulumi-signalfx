@@ -22,38 +22,6 @@ import javax.annotation.Nullable;
  * This special type of chart displays a data table. This table can be grouped by a dimension.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.TableChart;
- * import com.pulumi.signalfx.TableChartArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var table0 = new TableChart(&#34;table0&#34;, TableChartArgs.builder()        
- *             .description(&#34;beep&#34;)
- *             .disableSampling(false)
- *             .groupBies(&#34;ClusterName&#34;)
- *             .maxDelay(0)
- *             .programText(&#34;A = data(&#39;cpu.usage.total&#39;).publish(label=&#39;CPU Total&#39;)&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

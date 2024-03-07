@@ -22,36 +22,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.opsgenie.Integration;
- * import com.pulumi.signalfx.opsgenie.IntegrationArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var opgenieMyteam = new Integration(&#34;opgenieMyteam&#34;, IntegrationArgs.builder()        
- *             .apiKey(&#34;my-key&#34;)
- *             .apiUrl(&#34;https://api.opsgenie.com&#34;)
- *             .enabled(true)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

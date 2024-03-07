@@ -387,28 +387,6 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
-            custom_metric_type_domains=["istio.io"],
-            enabled=True,
-            import_gcp_metrics=True,
-            poll_rate=300,
-            project_service_keys=[
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_1",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
-                ),
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_2",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
-                ),
-            ],
-            services=["compute"])
-        ```
-
         ## Arguments
 
         * `custom_metric_type_domains` - (Optional) List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
@@ -457,28 +435,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk  Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        gcp_myteam = signalfx.gcp.Integration("gcpMyteam",
-            custom_metric_type_domains=["istio.io"],
-            enabled=True,
-            import_gcp_metrics=True,
-            poll_rate=300,
-            project_service_keys=[
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_1",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_1.json"),
-                ),
-                signalfx.gcp.IntegrationProjectServiceKeyArgs(
-                    project_id="gcp_project_id_2",
-                    project_key=(lambda path: open(path).read())("/path/to/gcp_credentials_2.json"),
-                ),
-            ],
-            services=["compute"])
-        ```
 
         ## Arguments
 

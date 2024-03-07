@@ -25,44 +25,6 @@ import javax.annotation.Nullable;
  * If the time period is in the past, the number represents the value of the metric near the end of the time period.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.SingleValueChart;
- * import com.pulumi.signalfx.SingleValueChartArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mysvchart0 = new SingleValueChart(&#34;mysvchart0&#34;, SingleValueChartArgs.builder()        
- *             .colorBy(&#34;Dimension&#34;)
- *             .description(&#34;Very cool Single Value Chart&#34;)
- *             .isTimestampHidden(true)
- *             .maxDelay(2)
- *             .maxPrecision(2)
- *             .programText(&#34;&#34;&#34;
- * myfilters = filter(&#34;cluster_name&#34;, &#34;prod&#34;) and filter(&#34;role&#34;, &#34;search&#34;)
- * data(&#34;cpu.total.idle&#34;, filter=myfilters).publish()
- * 
- *             &#34;&#34;&#34;)
- *             .refreshInterval(1)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

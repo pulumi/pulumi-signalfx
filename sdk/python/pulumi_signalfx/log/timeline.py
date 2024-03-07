@@ -286,18 +286,6 @@ class Timeline(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        my_log_timeline = signalfx.log.Timeline("myLogTimeline",
-            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
-
-        \"\"\",
-            time_range=900)
-        ```
-
         ## Arguments
 
         The following arguments are supported in the resource block:
@@ -339,18 +327,6 @@ class Timeline(pulumi.CustomResource):
         A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        my_log_timeline = signalfx.log.Timeline("myLogTimeline",
-            description="Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-            program_text=\"\"\"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
-
-        \"\"\",
-            time_range=900)
-        ```
 
         ## Arguments
 

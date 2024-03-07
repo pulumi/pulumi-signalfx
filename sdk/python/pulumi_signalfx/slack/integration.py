@@ -137,15 +137,6 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        slack_myteam = signalfx.slack.Integration("slackMyteam",
-            enabled=True,
-            webhook_url="http://example.com")
-        ```
-
         ## Arguments
 
         * `name` - (Required) Name of the integration.
@@ -176,15 +167,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        slack_myteam = signalfx.slack.Integration("slackMyteam",
-            enabled=True,
-            webhook_url="http://example.com")
-        ```
 
         ## Arguments
 

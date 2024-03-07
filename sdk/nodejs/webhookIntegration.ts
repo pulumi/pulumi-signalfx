@@ -13,21 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const webhookMyteam = new signalfx.WebhookIntegration("webhookMyteam", {
- *     enabled: true,
- *     headers: [{
- *         headerKey: "some_header",
- *         headerValue: "value_for_that_header",
- *     }],
- *     sharedSecret: "abc1234",
- *     url: "https://www.example.com",
- * });
- * ```
- *
  * ## Arguments
  *
  * * `name` - (Required) Name of the integration.

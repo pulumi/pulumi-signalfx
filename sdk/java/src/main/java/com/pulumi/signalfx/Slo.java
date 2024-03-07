@@ -23,58 +23,11 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.Slo;
- * import com.pulumi.signalfx.SloArgs;
- * import com.pulumi.signalfx.inputs.SloInputArgs;
- * import com.pulumi.signalfx.inputs.SloTargetArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var fooServiceSlo = new Slo(&#34;fooServiceSlo&#34;, SloArgs.builder()        
- *             .description(&#34;SLO monitoring for foo service&#34;)
- *             .input(SloInputArgs.builder()
- *                 .goodEventsLabel(&#34;G&#34;)
- *                 .programText(&#34;&#34;&#34;
- * G = data(&#39;spans.count&#39;, filter=filter(&#39;sf_error&#39;, &#39;false&#39;) and filter(&#39;sf_service&#39;, &#39;foo-service&#39;))
- * T = data(&#39;spans.count&#39;, filter=filter(&#39;sf_service&#39;, &#39;foo-service&#39;))
- *                 &#34;&#34;&#34;)
- *                 .totalEventsLabel(&#34;T&#34;)
- *                 .build())
- *             .target(SloTargetArgs.builder()
- *                 .alertRules(SloTargetAlertRuleArgs.builder()
- *                     .rule(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                     .type(&#34;BREACH&#34;)
- *                     .build())
- *                 .compliancePeriod(&#34;30d&#34;)
- *                 .slo(95)
- *                 .type(&#34;RollingWindow&#34;)
- *                 .build())
- *             .type(&#34;RequestBased&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Notification format
  * 
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -97,12 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
  * 
  * Here are some example of how to configure each notification type:
  * 
  * ### Email
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -125,10 +81,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Jira
  * 
  * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -151,10 +110,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### OpsGenie
  * 
  * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -177,8 +139,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### PagerDuty
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -201,10 +166,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Slack
  * 
  * Exclude the `#` on the channel name:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -227,10 +195,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Team
  * 
  * Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -253,10 +224,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### TeamEmail
  * 
  * Sends an email to every member of a team.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -279,8 +253,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Splunk On-Call (formerly VictorOps)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -303,12 +280,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Webhooks
  * 
  * You need to include all the commas even if you only use a credential id.
  * 
  * You can either configure a Webhook to use an existing integration&#39;s credential id:
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -331,8 +310,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Or configure one inline:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -355,6 +337,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Arguments
  * 

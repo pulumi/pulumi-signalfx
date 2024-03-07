@@ -13,41 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const azureMyteam = new signalfx.azure.Integration("azureMyteam", {
- *     additionalServices: [
- *         "some/service",
- *         "another/service",
- *     ],
- *     appId: "YYY",
- *     customNamespacesPerServices: [{
- *         namespaces: [
- *             "monitoringAgent",
- *             "customNamespace",
- *         ],
- *         service: "Microsoft.Compute/virtualMachines",
- *     }],
- *     enabled: true,
- *     environment: "azure",
- *     pollRate: 300,
- *     resourceFilterRules: [
- *         {
- *             filterSource: "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
- *         },
- *         {
- *             filterSource: "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
- *         },
- *     ],
- *     secretKey: "XXX",
- *     services: ["microsoft.sql/servers/elasticpools"],
- *     subscriptions: ["sub-guid-here"],
- *     tenantId: "ZZZ",
- * });
- * ```
- *
  * ## Arguments
  *
  * * `appId` - (Required) Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.

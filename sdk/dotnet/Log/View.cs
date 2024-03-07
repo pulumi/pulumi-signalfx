@@ -16,61 +16,6 @@ namespace Pulumi.SignalFx.Log
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myLogView = new SignalFx.Log.View("myLogView", new()
-    ///     {
-    ///         Columns = new[]
-    ///         {
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "severity",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "time",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "amount.currency_code",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "amount.nanos",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "amount.units",
-    ///             },
-    ///             new SignalFx.Log.Inputs.ViewColumnArgs
-    ///             {
-    ///                 Name = "message",
-    ///             },
-    ///         },
-    ///         Description = "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
-    ///         ProgramText = @"logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
-    /// 
-    /// ",
-    ///         SortOptions = new[]
-    ///         {
-    ///             new SignalFx.Log.Inputs.ViewSortOptionArgs
-    ///             {
-    ///                 Descending = false,
-    ///                 Field = "severity",
-    ///             },
-    ///         },
-    ///         TimeRange = 900,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

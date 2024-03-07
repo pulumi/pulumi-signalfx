@@ -571,40 +571,6 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        azure_myteam = signalfx.azure.Integration("azureMyteam",
-            additional_services=[
-                "some/service",
-                "another/service",
-            ],
-            app_id="YYY",
-            custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(
-                namespaces=[
-                    "monitoringAgent",
-                    "customNamespace",
-                ],
-                service="Microsoft.Compute/virtualMachines",
-            )],
-            enabled=True,
-            environment="azure",
-            poll_rate=300,
-            resource_filter_rules=[
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-            ],
-            secret_key="XXX",
-            services=["microsoft.sql/servers/elasticpools"],
-            subscriptions=["sub-guid-here"],
-            tenant_id="ZZZ")
-        ```
-
         ## Arguments
 
         * `app_id` - (Required) Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
@@ -671,40 +637,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        azure_myteam = signalfx.azure.Integration("azureMyteam",
-            additional_services=[
-                "some/service",
-                "another/service",
-            ],
-            app_id="YYY",
-            custom_namespaces_per_services=[signalfx.azure.IntegrationCustomNamespacesPerServiceArgs(
-                namespaces=[
-                    "monitoringAgent",
-                    "customNamespace",
-                ],
-                service="Microsoft.Compute/virtualMachines",
-            )],
-            enabled=True,
-            environment="azure",
-            poll_rate=300,
-            resource_filter_rules=[
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-                signalfx.azure.IntegrationResourceFilterRuleArgs(
-                    filter_source="filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-                ),
-            ],
-            secret_key="XXX",
-            services=["microsoft.sql/servers/elasticpools"],
-            subscriptions=["sub-guid-here"],
-            tenant_id="ZZZ")
-        ```
 
         ## Arguments
 

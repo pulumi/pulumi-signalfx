@@ -18,77 +18,11 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var config = new Config();
-    ///     var clusters = config.GetObject&lt;dynamic&gt;("clusters") ?? new[]
-    ///     {
-    ///         "clusterA",
-    ///         "clusterB",
-    ///     };
-    ///     var applicationDelay = new List&lt;SignalFx.Detector&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; clusters.Length; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         applicationDelay.Add(new SignalFx.Detector($"applicationDelay-{range.Value}", new()
-    ///         {
-    ///             Description = $"your application is slow - {clusters[range.Value]}",
-    ///             MaxDelay = 30,
-    ///             Tags = new[]
-    ///             {
-    ///                 "app-backend",
-    ///                 "staging",
-    ///             },
-    ///             AuthorizedWriterTeams = new[]
-    ///             {
-    ///                 signalfx_team.Mycoolteam.Id,
-    ///             },
-    ///             AuthorizedWriterUsers = new[]
-    ///             {
-    ///                 "abc123",
-    ///             },
-    ///             ProgramText = @$"signal = data('app.delay', filter('cluster','{clusters[range.Value]}'), extrapolation='last_value', maxExtrapolations=5).max()
-    /// detect(when(signal &gt; 60, '5m')).publish('Processing old messages 5m')
-    /// detect(when(signal &gt; 60, '30m')).publish('Processing old messages 30m')
-    /// ",
-    ///             Rules = new[]
-    ///             {
-    ///                 new SignalFx.Inputs.DetectorRuleArgs
-    ///                 {
-    ///                     Description = "maximum &gt; 60 for 5m",
-    ///                     Severity = "Warning",
-    ///                     DetectLabel = "Processing old messages 5m",
-    ///                     Notifications = new[]
-    ///                     {
-    ///                         "Email,foo-alerts@bar.com",
-    ///                     },
-    ///                 },
-    ///                 new SignalFx.Inputs.DetectorRuleArgs
-    ///                 {
-    ///                     Description = "maximum &gt; 60 for 30m",
-    ///                     Severity = "Critical",
-    ///                     DetectLabel = "Processing old messages 30m",
-    ///                     Notifications = new[]
-    ///                     {
-    ///                         "Email,foo-alerts@bar.com",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         }));
-    ///     }
-    /// });
-    /// ```
-    /// 
     /// ## Notification format
     /// 
     /// As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,6 +32,7 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
     /// 
@@ -105,6 +40,7 @@ namespace Pulumi.SignalFx
     /// 
     /// ### Email
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -114,11 +50,13 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Jira
     /// 
     /// Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -128,11 +66,13 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### OpsGenie
     /// 
     /// Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -142,9 +82,11 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### PagerDuty
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -154,11 +96,13 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Slack
     /// 
     /// Exclude the `#` on the channel name:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -168,11 +112,13 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Team
     /// 
     /// Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -182,11 +128,13 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### TeamEmail
     /// 
     /// Sends an email to every member of a team.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -196,9 +144,11 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Splunk On-Call (formerly VictorOps)
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -208,12 +158,14 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### Webhooks
     /// 
     /// You need to include all the commas even if you only use a credential id.
     /// 
     /// You can either configure a Webhook to use an existing integration's credential id:
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -223,9 +175,11 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Or configure one inline:
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -235,6 +189,7 @@ namespace Pulumi.SignalFx
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Arguments
     /// 
@@ -292,7 +247,7 @@ namespace Pulumi.SignalFx
     /// Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import signalfx:index/detector:Detector application_delay abc123
+    /// $ pulumi import signalfx:index/detector:Detector application_delay abc123
     /// ```
     /// </summary>
     [SignalFxResourceType("signalfx:index/detector:Detector")]

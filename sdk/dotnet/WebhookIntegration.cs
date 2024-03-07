@@ -16,32 +16,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var webhookMyteam = new SignalFx.WebhookIntegration("webhookMyteam", new()
-    ///     {
-    ///         Enabled = true,
-    ///         Headers = new[]
-    ///         {
-    ///             new SignalFx.Inputs.WebhookIntegrationHeaderArgs
-    ///             {
-    ///                 HeaderKey = "some_header",
-    ///                 HeaderValue = "value_for_that_header",
-    ///             },
-    ///         },
-    ///         SharedSecret = "abc1234",
-    ///         Url = "https://www.example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `name` - (Required) Name of the integration.

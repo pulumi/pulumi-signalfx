@@ -16,24 +16,6 @@ namespace Pulumi.SignalFx.Opsgenie
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var opgenieMyteam = new SignalFx.Opsgenie.Integration("opgenieMyteam", new()
-    ///     {
-    ///         ApiKey = "my-key",
-    ///         ApiUrl = "https://api.opsgenie.com",
-    ///         Enabled = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `name` - (Required) Name of the integration.
