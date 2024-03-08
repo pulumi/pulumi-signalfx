@@ -11,16 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const slackMyteam = new signalfx.slack.Integration("slackMyteam", {
- *     enabled: true,
- *     webhookUrl: "http://example.com",
- * });
- * ```
- *
  * ## Arguments
  *
  * * `name` - (Required) Name of the integration.

@@ -11,23 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const jiraMyteamXX = new signalfx.jira.Integration("jiraMyteamXX", {
- *     assigneeDisplayName: "Testy Testerson",
- *     assigneeName: "testytesterson",
- *     authMethod: "UsernameAndPassword",
- *     baseUrl: "https://www.example.com",
- *     enabled: false,
- *     issueType: "Story",
- *     password: "paasword",
- *     projectKey: "TEST",
- *     username: "yoosername",
- * });
- * ```
- *
  * ## Arguments
  *
  * * `name` - (Required) Name of the integration.

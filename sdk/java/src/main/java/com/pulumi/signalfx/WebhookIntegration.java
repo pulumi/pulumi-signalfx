@@ -23,41 +23,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.WebhookIntegration;
- * import com.pulumi.signalfx.WebhookIntegrationArgs;
- * import com.pulumi.signalfx.inputs.WebhookIntegrationHeaderArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var webhookMyteam = new WebhookIntegration(&#34;webhookMyteam&#34;, WebhookIntegrationArgs.builder()        
- *             .enabled(true)
- *             .headers(WebhookIntegrationHeaderArgs.builder()
- *                 .headerKey(&#34;some_header&#34;)
- *                 .headerValue(&#34;value_for_that_header&#34;)
- *                 .build())
- *             .sharedSecret(&#34;abc1234&#34;)
- *             .url(&#34;https://www.example.com&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

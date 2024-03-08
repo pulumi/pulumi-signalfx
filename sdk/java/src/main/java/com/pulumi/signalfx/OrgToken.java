@@ -24,46 +24,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.OrgToken;
- * import com.pulumi.signalfx.OrgTokenArgs;
- * import com.pulumi.signalfx.inputs.OrgTokenHostOrUsageLimitsArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myteamkey0 = new OrgToken(&#34;myteamkey0&#34;, OrgTokenArgs.builder()        
- *             .description(&#34;My team&#39;s rad key&#34;)
- *             .hostOrUsageLimits(OrgTokenHostOrUsageLimitsArgs.builder()
- *                 .containerLimit(200)
- *                 .containerNotificationThreshold(180)
- *                 .customMetricsLimit(1000)
- *                 .customMetricsNotificationThreshold(900)
- *                 .highResMetricsLimit(1000)
- *                 .highResMetricsNotificationThreshold(900)
- *                 .hostLimit(100)
- *                 .hostNotificationThreshold(90)
- *                 .build())
- *             .notifications(&#34;Email,foo-alerts@bar.com&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Displays a listing of events as a widget in a dashboard.
  *
+ * ## Example
+ *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

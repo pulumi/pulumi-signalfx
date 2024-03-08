@@ -19,65 +19,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/iam"
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/aws"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			awsMyteamToken, err := aws.NewTokenIntegration(ctx, "awsMyteamToken", nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Make yourself an AWS IAM role here
-//			_, err = iam.NewRole(ctx, "awsSfxRole", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aws.NewIntegration(ctx, "awsMyteam", &aws.IntegrationArgs{
-//				Enabled:       pulumi.Bool(true),
-//				IntegrationId: awsMyteamToken.ID(),
-//				Token:         pulumi.String("put_your_token_here"),
-//				Key:           pulumi.String("put_your_key_here"),
-//				Regions: pulumi.StringArray{
-//					pulumi.String("us-east-1"),
-//				},
-//				PollRate:         pulumi.Int(300),
-//				ImportCloudWatch: pulumi.Bool(true),
-//				EnableAwsUsage:   pulumi.Bool(true),
-//				CustomNamespaceSyncRules: aws.IntegrationCustomNamespaceSyncRuleArray{
-//					&aws.IntegrationCustomNamespaceSyncRuleArgs{
-//						DefaultAction: pulumi.String("Exclude"),
-//						FilterAction:  pulumi.String("Include"),
-//						FilterSource:  pulumi.String("filter('code', '200')"),
-//						Namespace:     pulumi.String("my-custom-namespace"),
-//					},
-//				},
-//				NamespaceSyncRules: aws.IntegrationNamespaceSyncRuleArray{
-//					&aws.IntegrationNamespaceSyncRuleArgs{
-//						DefaultAction: pulumi.String("Exclude"),
-//						FilterAction:  pulumi.String("Include"),
-//						FilterSource:  pulumi.String("filter('code', '200')"),
-//						Namespace:     pulumi.String("AWS/EC2"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `name` - (Required) The name of this integration

@@ -733,48 +733,6 @@ class ListChart(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mylistchart0 = signalfx.ListChart("mylistchart0",
-            color_by="Metric",
-            description="Very cool List Chart",
-            disable_sampling=True,
-            hide_missing_values=True,
-            legend_options_fields=[
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="cluster_name",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="role",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="host",
-                ),
-            ],
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            refresh_interval=1,
-            sort_by="-value",
-            timezone="Europe/Paris")
-        ```
-
         ## Arguments
 
         The following arguments are supported in the resource block:
@@ -855,48 +813,6 @@ class ListChart(pulumi.CustomResource):
         The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B from the example. Otherwise, just the raw metric name will be displayed on the chart, as in plot A from the example.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mylistchart0 = signalfx.ListChart("mylistchart0",
-            color_by="Metric",
-            description="Very cool List Chart",
-            disable_sampling=True,
-            hide_missing_values=True,
-            legend_options_fields=[
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="cluster_name",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=True,
-                    property="role",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="collector",
-                ),
-                signalfx.ListChartLegendOptionsFieldArgs(
-                    enabled=False,
-                    property="host",
-                ),
-            ],
-            max_delay=2,
-            max_precision=2,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            refresh_interval=1,
-            sort_by="-value",
-            timezone="Europe/Paris")
-        ```
 
         ## Arguments
 

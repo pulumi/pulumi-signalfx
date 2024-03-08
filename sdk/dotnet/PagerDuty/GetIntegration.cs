@@ -16,6 +16,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// 
         /// ## Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Arguments
         /// 
@@ -50,6 +52,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// 
         /// ## Example
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,6 +68,7 @@ namespace Pulumi.SignalFx.PagerDuty
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// ## Arguments
         /// 

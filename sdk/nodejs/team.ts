@@ -13,21 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const myteam0 = new signalfx.Team("myteam0", {
- *     description: "Super great team no jerks definitely",
- *     members: [
- *         "userid1",
- *         "userid2",
- *     ],
- *     notificationsCriticals: ["PagerDuty,credentialId"],
- *     notificationsInfos: ["Email,notify@example.com"],
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

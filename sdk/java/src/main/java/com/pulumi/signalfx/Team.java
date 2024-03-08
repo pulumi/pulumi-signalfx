@@ -23,39 +23,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.Team;
- * import com.pulumi.signalfx.TeamArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myteam0 = new Team(&#34;myteam0&#34;, TeamArgs.builder()        
- *             .description(&#34;Super great team no jerks definitely&#34;)
- *             .members(            
- *                 &#34;userid1&#34;,
- *                 &#34;userid2&#34;)
- *             .notificationsCriticals(&#34;PagerDuty,credentialId&#34;)
- *             .notificationsInfos(&#34;Email,notify@example.com&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

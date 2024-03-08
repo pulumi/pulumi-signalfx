@@ -246,35 +246,6 @@ class DataLink(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        # A global link to Splunk Observability Cloud dashboard.
-        my_data_link = signalfx.DataLink("myDataLink",
-            property_name="pname",
-            property_value="pvalue",
-            target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
-                is_default=True,
-                name="sfx_dash",
-                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
-                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            )])
-        # A dashboard-specific link to an external URL
-        my_data_link_dash = signalfx.DataLink("myDataLinkDash",
-            context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            property_name="pname2",
-            property_value="pvalue",
-            target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(
-                name="ex_url",
-                time_format="ISO8601",
-                url="https://www.example.com",
-                property_key_mapping={
-                    "foo": "bar",
-                },
-            )])
-        ```
-
         ## Arguments
 
         The following arguments are supported in the resource block:
@@ -324,35 +295,6 @@ class DataLink(pulumi.CustomResource):
         Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        # A global link to Splunk Observability Cloud dashboard.
-        my_data_link = signalfx.DataLink("myDataLink",
-            property_name="pname",
-            property_value="pvalue",
-            target_signalfx_dashboards=[signalfx.DataLinkTargetSignalfxDashboardArgs(
-                is_default=True,
-                name="sfx_dash",
-                dashboard_group_id=signalfx_dashboard_group["mydashboardgroup0"]["id"],
-                dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            )])
-        # A dashboard-specific link to an external URL
-        my_data_link_dash = signalfx.DataLink("myDataLinkDash",
-            context_dashboard_id=signalfx_dashboard["mydashboard0"]["id"],
-            property_name="pname2",
-            property_value="pvalue",
-            target_external_urls=[signalfx.DataLinkTargetExternalUrlArgs(
-                name="ex_url",
-                time_format="ISO8601",
-                url="https://www.example.com",
-                property_key_mapping={
-                    "foo": "bar",
-                },
-            )])
-        ```
 
         ## Arguments
 

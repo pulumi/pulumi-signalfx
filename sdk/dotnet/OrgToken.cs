@@ -16,37 +16,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myteamkey0 = new SignalFx.OrgToken("myteamkey0", new()
-    ///     {
-    ///         Description = "My team's rad key",
-    ///         HostOrUsageLimits = new SignalFx.Inputs.OrgTokenHostOrUsageLimitsArgs
-    ///         {
-    ///             ContainerLimit = 200,
-    ///             ContainerNotificationThreshold = 180,
-    ///             CustomMetricsLimit = 1000,
-    ///             CustomMetricsNotificationThreshold = 900,
-    ///             HighResMetricsLimit = 1000,
-    ///             HighResMetricsNotificationThreshold = 900,
-    ///             HostLimit = 100,
-    ///             HostNotificationThreshold = 90,
-    ///         },
-    ///         Notifications = new[]
-    ///         {
-    ///             "Email,foo-alerts@bar.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

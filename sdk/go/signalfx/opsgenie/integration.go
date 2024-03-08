@@ -18,32 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/opsgenie"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := opsgenie.NewIntegration(ctx, "opgenieMyteam", &opsgenie.IntegrationArgs{
-//				ApiKey:  pulumi.String("my-key"),
-//				ApiUrl:  pulumi.String("https://api.opsgenie.com"),
-//				Enabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `name` - (Required) Name of the integration.

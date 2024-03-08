@@ -8,14 +8,6 @@ import * as utilities from "./utilities";
  * Use this data source to get a list of dimension values matching the provided query.
  *
  * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
- *
- * ## Arguments
- *
- * * `query`
- *
- * ## Attributes
- *
- * `values` is set to the list of dimension values.
  */
 export function getDimensionValues(args: GetDimensionValuesArgs, opts?: pulumi.InvokeOptions): Promise<GetDimensionValuesResult> {
 
@@ -47,14 +39,6 @@ export interface GetDimensionValuesResult {
  * Use this data source to get a list of dimension values matching the provided query.
  *
  * > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
- *
- * ## Arguments
- *
- * * `query`
- *
- * ## Attributes
- *
- * `values` is set to the list of dimension values.
  */
 export function getDimensionValuesOutput(args: GetDimensionValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDimensionValuesResult> {
     return pulumi.output(args).apply((a: any) => getDimensionValues(a, opts))

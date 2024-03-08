@@ -11,17 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const opgenieMyteam = new signalfx.opsgenie.Integration("opgenieMyteam", {
- *     apiKey: "my-key",
- *     apiUrl: "https://api.opsgenie.com",
- *     enabled: true,
- * });
- * ```
- *
  * ## Arguments
  *
  * * `name` - (Required) Name of the integration.

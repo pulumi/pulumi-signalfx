@@ -18,36 +18,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var roolMooterOne = new SignalFx.AlertMutingRule("roolMooterOne", new()
-    ///     {
-    ///         Description = "mooted it NEW",
-    ///         StartTime = 1573063243,
-    ///         StopTime = 0,
-    ///         Detectors = new[]
-    ///         {
-    ///             signalfx_detector.Some_detector_id,
-    ///         },
-    ///         Filters = new[]
-    ///         {
-    ///             new SignalFx.Inputs.AlertMutingRuleFilterArgs
-    ///             {
-    ///                 Property = "foo",
-    ///                 PropertyValue = "bar",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `description` - (Required) The description for this muting rule

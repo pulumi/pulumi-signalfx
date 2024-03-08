@@ -16,28 +16,6 @@ namespace Pulumi.SignalFx.ServiceNow
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var serviceNowMyteam = new SignalFx.ServiceNow.Integration("serviceNowMyteam", new()
-    ///     {
-    ///         AlertResolvedPayloadTemplate = "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
-    ///         AlertTriggeredPayloadTemplate = "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
-    ///         Enabled = false,
-    ///         InstanceName = "myinst.service-now.com",
-    ///         IssueType = "Incident",
-    ///         Password = "youd0ntsee1t",
-    ///         Username = "thisis_me",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `name` - (Required) Name of the integration.

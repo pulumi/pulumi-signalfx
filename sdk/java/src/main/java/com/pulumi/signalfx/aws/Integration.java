@@ -28,67 +28,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.aws.ExternalIntegration;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.signalfx.aws.Integration;
- * import com.pulumi.signalfx.aws.IntegrationArgs;
- * import com.pulumi.signalfx.aws.inputs.IntegrationCustomNamespaceSyncRuleArgs;
- * import com.pulumi.signalfx.aws.inputs.IntegrationNamespaceSyncRuleArgs;
- * import com.pulumi.signalfx.aws.inputs.IntegrationMetricStatsToSyncArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var awsMyteamExternal = new ExternalIntegration(&#34;awsMyteamExternal&#34;);
- * 
- *         var awsSfxRole = new Role(&#34;awsSfxRole&#34;);
- * 
- *         var awsMyteam = new Integration(&#34;awsMyteam&#34;, IntegrationArgs.builder()        
- *             .enabled(true)
- *             .integrationId(awsMyteamExternal.id())
- *             .externalId(awsMyteamExternal.externalId())
- *             .roleArn(awsSfxRole.arn())
- *             .regions(&#34;us-east-1&#34;)
- *             .pollRate(300)
- *             .importCloudWatch(true)
- *             .enableAwsUsage(true)
- *             .customNamespaceSyncRules(IntegrationCustomNamespaceSyncRuleArgs.builder()
- *                 .defaultAction(&#34;Exclude&#34;)
- *                 .filterAction(&#34;Include&#34;)
- *                 .filterSource(&#34;filter(&#39;code&#39;, &#39;200&#39;)&#34;)
- *                 .namespace(&#34;my-custom-namespace&#34;)
- *                 .build())
- *             .namespaceSyncRules(IntegrationNamespaceSyncRuleArgs.builder()
- *                 .defaultAction(&#34;Exclude&#34;)
- *                 .filterAction(&#34;Include&#34;)
- *                 .filterSource(&#34;filter(&#39;code&#39;, &#39;200&#39;)&#34;)
- *                 .namespace(&#34;AWS/EC2&#34;)
- *                 .build())
- *             .metricStatsToSyncs(IntegrationMetricStatsToSyncArgs.builder()
- *                 .namespace(&#34;AWS/EC2&#34;)
- *                 .metric(&#34;NetworkPacketsIn&#34;)
- *                 .stats(&#34;upper&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

@@ -18,38 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/jira"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := jira.NewIntegration(ctx, "jiraMyteamXX", &jira.IntegrationArgs{
-//				AssigneeDisplayName: pulumi.String("Testy Testerson"),
-//				AssigneeName:        pulumi.String("testytesterson"),
-//				AuthMethod:          pulumi.String("UsernameAndPassword"),
-//				BaseUrl:             pulumi.String("https://www.example.com"),
-//				Enabled:             pulumi.Bool(false),
-//				IssueType:           pulumi.String("Story"),
-//				Password:            pulumi.String("paasword"),
-//				ProjectKey:          pulumi.String("TEST"),
-//				Username:            pulumi.String("yoosername"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `name` - (Required) Name of the integration.

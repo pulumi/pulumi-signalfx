@@ -22,55 +22,6 @@ import javax.annotation.Nullable;
  * Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.DataLink;
- * import com.pulumi.signalfx.DataLinkArgs;
- * import com.pulumi.signalfx.inputs.DataLinkTargetSignalfxDashboardArgs;
- * import com.pulumi.signalfx.inputs.DataLinkTargetExternalUrlArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myDataLink = new DataLink(&#34;myDataLink&#34;, DataLinkArgs.builder()        
- *             .propertyName(&#34;pname&#34;)
- *             .propertyValue(&#34;pvalue&#34;)
- *             .targetSignalfxDashboards(DataLinkTargetSignalfxDashboardArgs.builder()
- *                 .isDefault(true)
- *                 .name(&#34;sfx_dash&#34;)
- *                 .dashboardGroupId(signalfx_dashboard_group.mydashboardgroup0().id())
- *                 .dashboardId(signalfx_dashboard.mydashboard0().id())
- *                 .build())
- *             .build());
- * 
- *         var myDataLinkDash = new DataLink(&#34;myDataLinkDash&#34;, DataLinkArgs.builder()        
- *             .contextDashboardId(signalfx_dashboard.mydashboard0().id())
- *             .propertyName(&#34;pname2&#34;)
- *             .propertyValue(&#34;pvalue&#34;)
- *             .targetExternalUrls(DataLinkTargetExternalUrlArgs.builder()
- *                 .name(&#34;ex_url&#34;)
- *                 .timeFormat(&#34;ISO8601&#34;)
- *                 .url(&#34;https://www.example.com&#34;)
- *                 .propertyKeyMapping(Map.of(&#34;foo&#34;, &#34;bar&#34;))
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

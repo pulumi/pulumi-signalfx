@@ -19,14 +19,6 @@ public final class SignalfxFunctions {
      * 
      * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
      * 
-     * ## Arguments
-     * 
-     * * `query`
-     * 
-     * ## Attributes
-     * 
-     * `values` is set to the list of dimension values.
-     * 
      */
     public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args) {
         return getDimensionValues(args, InvokeOptions.Empty);
@@ -35,14 +27,6 @@ public final class SignalfxFunctions {
      * Use this data source to get a list of dimension values matching the provided query.
      * 
      * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
-     * 
-     * ## Arguments
-     * 
-     * * `query`
-     * 
-     * ## Attributes
-     * 
-     * `values` is set to the list of dimension values.
      * 
      */
     public static CompletableFuture<GetDimensionValuesResult> getDimensionValuesPlain(GetDimensionValuesPlainArgs args) {
@@ -53,14 +37,6 @@ public final class SignalfxFunctions {
      * 
      * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
      * 
-     * ## Arguments
-     * 
-     * * `query`
-     * 
-     * ## Attributes
-     * 
-     * `values` is set to the list of dimension values.
-     * 
      */
     public static Output<GetDimensionValuesResult> getDimensionValues(GetDimensionValuesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("signalfx:index/getDimensionValues:getDimensionValues", TypeShape.of(GetDimensionValuesResult.class), args, Utilities.withVersion(options));
@@ -69,14 +45,6 @@ public final class SignalfxFunctions {
      * Use this data source to get a list of dimension values matching the provided query.
      * 
      * &gt; **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
-     * 
-     * ## Arguments
-     * 
-     * * `query`
-     * 
-     * ## Attributes
-     * 
-     * `values` is set to the list of dimension values.
      * 
      */
     public static CompletableFuture<GetDimensionValuesResult> getDimensionValuesPlain(GetDimensionValuesPlainArgs args, InvokeOptions options) {

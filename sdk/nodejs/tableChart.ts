@@ -11,20 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * // signalfx_list_chart.Logs-Exec_0:
- * const table0 = new signalfx.TableChart("table0", {
- *     description: "beep",
- *     disableSampling: false,
- *     groupBies: ["ClusterName"],
- *     maxDelay: 0,
- *     programText: "A = data('cpu.usage.total').publish(label='CPU Total')",
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

@@ -18,35 +18,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myteam0 = new SignalFx.Team("myteam0", new()
-    ///     {
-    ///         Description = "Super great team no jerks definitely",
-    ///         Members = new[]
-    ///         {
-    ///             "userid1",
-    ///             "userid2",
-    ///         },
-    ///         NotificationsCriticals = new[]
-    ///         {
-    ///             "PagerDuty,credentialId",
-    ///         },
-    ///         NotificationsInfos = new[]
-    ///         {
-    ///             "Email,notify@example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

@@ -24,58 +24,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.MetricRuleset;
- * import com.pulumi.signalfx.MetricRulesetArgs;
- * import com.pulumi.signalfx.inputs.MetricRulesetAggregationRuleArgs;
- * import com.pulumi.signalfx.inputs.MetricRulesetRoutingRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var cpuUtilizationMetricRuleset = new MetricRuleset(&#34;cpuUtilizationMetricRuleset&#34;, MetricRulesetArgs.builder()        
- *             .aggregationRules(MetricRulesetAggregationRuleArgs.builder()
- *                 .aggregators(MetricRulesetAggregationRuleAggregatorArgs.builder()
- *                     .dimensions(&#34;service&#34;)
- *                     .dropDimensions(false)
- *                     .outputName(&#34;cpu.utilization.by.service.agg&#34;)
- *                     .type(&#34;rollup&#34;)
- *                     .build())
- *                 .enabled(true)
- *                 .matchers(MetricRulesetAggregationRuleMatcherArgs.builder()
- *                     .filters(MetricRulesetAggregationRuleMatcherFilterArgs.builder()
- *                         .not(false)
- *                         .property(&#34;realm&#34;)
- *                         .propertyValue(&#34;us-east-1&#34;)
- *                         .build())
- *                     .type(&#34;dimension&#34;)
- *                     .build())
- *                 .name(&#34;cpu.utilization by service rule&#34;)
- *                 .build())
- *             .metricName(&#34;cpu.utilization&#34;)
- *             .routingRules(MetricRulesetRoutingRuleArgs.builder()
- *                 .destination(&#34;RealTime&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Arguments
  * 
  * The following arguments are supported in the resource block:
