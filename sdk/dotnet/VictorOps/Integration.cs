@@ -16,23 +16,6 @@ namespace Pulumi.SignalFx.VictorOps
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vioctorOpsMyteam = new SignalFx.VictorOps.Integration("vioctorOpsMyteam", new()
-    ///     {
-    ///         Enabled = true,
-    ///         PostUrl = "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `name` - (Required) Name of the integration.

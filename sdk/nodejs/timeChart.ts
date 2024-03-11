@@ -13,39 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mychart0 = new signalfx.TimeChart("mychart0", {
- *     axisLeft: {
- *         label: "CPU Total Idle",
- *         lowWatermark: 1000,
- *     },
- *     legendOptionsFields: [
- *         {
- *             enabled: false,
- *             property: "collector",
- *         },
- *         {
- *             enabled: false,
- *             property: "hostname",
- *         },
- *     ],
- *     plotType: "LineChart",
- *     programText: `data("cpu.total.idle").publish(label="CPU Idle")
- *
- * `,
- *     showDataMarkers: true,
- *     timeRange: 3600,
- *     vizOptions: [{
- *         axis: "left",
- *         color: "orange",
- *         label: "CPU Idle",
- *     }],
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

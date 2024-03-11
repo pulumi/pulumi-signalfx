@@ -69,12 +69,14 @@ def get_integration(name: Optional[str] = None,
 
     ## Example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_signalfx as signalfx
 
     pd_integration = signalfx.pagerduty.get_integration(name="PD-Integration")
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Arguments
 
@@ -105,12 +107,14 @@ def get_integration_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_signalfx as signalfx
 
     pd_integration = signalfx.pagerduty.get_integration(name="PD-Integration")
     ```
+    <!--End PulumiCodeChooser -->
 
     ## Arguments
 

@@ -517,46 +517,6 @@ class HeatmapChart(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
-            color_range=signalfx.HeatmapChartColorRangeArgs(
-                color="#ff0000",
-                max_value=100,
-                min_value=0,
-            ),
-            color_scales=[
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="green",
-                    gte=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="yellow",
-                    gte=95,
-                    lt=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="red",
-                    lt=95,
-                ),
-            ],
-            description="Very cool Heatmap",
-            disable_sampling=True,
-            group_bies=[
-                "hostname",
-                "host",
-            ],
-            hide_timestamp=True,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            sort_by="+host",
-            timezone="Europe/Paris")
-        ```
-
         ## Arguments
 
         The following arguments are supported in the resource block:
@@ -618,46 +578,6 @@ class HeatmapChart(pulumi.CustomResource):
         This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myheatmapchart0 = signalfx.HeatmapChart("myheatmapchart0",
-            color_range=signalfx.HeatmapChartColorRangeArgs(
-                color="#ff0000",
-                max_value=100,
-                min_value=0,
-            ),
-            color_scales=[
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="green",
-                    gte=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="yellow",
-                    gte=95,
-                    lt=99,
-                ),
-                signalfx.HeatmapChartColorScaleArgs(
-                    color="red",
-                    lt=95,
-                ),
-            ],
-            description="Very cool Heatmap",
-            disable_sampling=True,
-            group_bies=[
-                "hostname",
-                "host",
-            ],
-            hide_timestamp=True,
-            program_text=\"\"\"myfilters = filter("cluster_name", "prod") and filter("role", "search")
-        data("cpu.total.idle", filter=myfilters).publish()
-
-        \"\"\",
-            sort_by="+host",
-            timezone="Europe/Paris")
-        ```
 
         ## Arguments
 

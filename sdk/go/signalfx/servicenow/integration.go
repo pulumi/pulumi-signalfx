@@ -18,36 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/servicenow"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := servicenow.NewIntegration(ctx, "serviceNowMyteam", &servicenow.IntegrationArgs{
-//				AlertResolvedPayloadTemplate:  pulumi.String("{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}"),
-//				AlertTriggeredPayloadTemplate: pulumi.String("{\"short_description\": \"{{{messageTitle}}} (customized)\"}"),
-//				Enabled:                       pulumi.Bool(false),
-//				InstanceName:                  pulumi.String("myinst.service-now.com"),
-//				IssueType:                     pulumi.String("Incident"),
-//				Password:                      pulumi.String("youd0ntsee1t"),
-//				Username:                      pulumi.String("thisis_me"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `name` - (Required) Name of the integration.

@@ -16,30 +16,6 @@ namespace Pulumi.SignalFx.Jira
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var jiraMyteamXX = new SignalFx.Jira.Integration("jiraMyteamXX", new()
-    ///     {
-    ///         AssigneeDisplayName = "Testy Testerson",
-    ///         AssigneeName = "testytesterson",
-    ///         AuthMethod = "UsernameAndPassword",
-    ///         BaseUrl = "https://www.example.com",
-    ///         Enabled = false,
-    ///         IssueType = "Story",
-    ///         Password = "paasword",
-    ///         ProjectKey = "TEST",
-    ///         Username = "yoosername",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `name` - (Required) Name of the integration.

@@ -18,62 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/azure"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azure.NewIntegration(ctx, "azureMyteam", &azure.IntegrationArgs{
-//				AdditionalServices: pulumi.StringArray{
-//					pulumi.String("some/service"),
-//					pulumi.String("another/service"),
-//				},
-//				AppId: pulumi.String("YYY"),
-//				CustomNamespacesPerServices: azure.IntegrationCustomNamespacesPerServiceArray{
-//					&azure.IntegrationCustomNamespacesPerServiceArgs{
-//						Namespaces: pulumi.StringArray{
-//							pulumi.String("monitoringAgent"),
-//							pulumi.String("customNamespace"),
-//						},
-//						Service: pulumi.String("Microsoft.Compute/virtualMachines"),
-//					},
-//				},
-//				Enabled:     pulumi.Bool(true),
-//				Environment: pulumi.String("azure"),
-//				PollRate:    pulumi.Int(300),
-//				ResourceFilterRules: azure.IntegrationResourceFilterRuleArray{
-//					&azure.IntegrationResourceFilterRuleArgs{
-//						FilterSource: pulumi.String("filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
-//					},
-//					&azure.IntegrationResourceFilterRuleArgs{
-//						FilterSource: pulumi.String("filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))"),
-//					},
-//				},
-//				SecretKey: pulumi.String("XXX"),
-//				Services: pulumi.StringArray{
-//					pulumi.String("microsoft.sql/servers/elasticpools"),
-//				},
-//				Subscriptions: pulumi.StringArray{
-//					pulumi.String("sub-guid-here"),
-//				},
-//				TenantId: pulumi.String("ZZZ"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `appId` - (Required) Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.

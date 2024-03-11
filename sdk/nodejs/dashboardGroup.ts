@@ -15,71 +15,9 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mydashboardgroup0 = new signalfx.DashboardGroup("mydashboardgroup0", {
- *     description: "Cool dashboard group",
- *     authorizedWriterTeams: [signalfx_team.mycoolteam.id],
- *     authorizedWriterUsers: ["abc123"],
- * });
- * ```
- *
  * ## Example with permissions
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mydashboardgroupWithpermissions = new signalfx.DashboardGroup("mydashboardgroupWithpermissions", {
- *     description: "Cool dashboard group",
- *     permissions: [
- *         {
- *             actions: ["READ"],
- *             principalId: "abc123",
- *             principalType: "ORG",
- *         },
- *         {
- *             actions: [
- *                 "READ",
- *                 "WRITE",
- *             ],
- *             principalId: "abc456",
- *             principalType: "USER",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Example With mirrored dashboards
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mydashboardgroupWithmirrors = new signalfx.DashboardGroup("mydashboardgroupWithmirrors", {
- *     description: "Cool dashboard group",
- *     dashboards: [{
- *         dashboardId: signalfx_dashboard.gc_dashboard.id,
- *         nameOverride: "GC For My Service",
- *         descriptionOverride: "Garbage Collection dashboard maintained by JVM team",
- *         filterOverrides: [{
- *             property: "service",
- *             values: ["myservice"],
- *             negated: false,
- *         }],
- *         variableOverrides: [{
- *             property: "region",
- *             values: ["us-west1"],
- *             valuesSuggesteds: [
- *                 "us-west-1",
- *                 "us-east-1",
- *             ],
- *         }],
- *     }],
- * });
- * ```
  *
  * ## Arguments
  *

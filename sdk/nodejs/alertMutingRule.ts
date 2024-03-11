@@ -15,22 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const roolMooterOne = new signalfx.AlertMutingRule("roolMooterOne", {
- *     description: "mooted it NEW",
- *     startTime: 1573063243,
- *     stopTime: 0,
- *     detectors: [signalfx_detector.some_detector_id],
- *     filters: [{
- *         property: "foo",
- *         propertyValue: "bar",
- *     }],
- * });
- * ```
- *
  * ## Arguments
  *
  * * `description` - (Required) The description for this muting rule

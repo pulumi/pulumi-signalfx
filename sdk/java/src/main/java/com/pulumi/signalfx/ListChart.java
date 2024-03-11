@@ -26,69 +26,6 @@ import javax.annotation.Nullable;
  * The name of each value in the chart reflects the name of the plot and any associated dimensions. We recommend you click the Pencil icon and give the plot a meaningful name, as in plot B from the example. Otherwise, just the raw metric name will be displayed on the chart, as in plot A from the example.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.ListChart;
- * import com.pulumi.signalfx.ListChartArgs;
- * import com.pulumi.signalfx.inputs.ListChartLegendOptionsFieldArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mylistchart0 = new ListChart(&#34;mylistchart0&#34;, ListChartArgs.builder()        
- *             .colorBy(&#34;Metric&#34;)
- *             .description(&#34;Very cool List Chart&#34;)
- *             .disableSampling(true)
- *             .hideMissingValues(true)
- *             .legendOptionsFields(            
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;collector&#34;)
- *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(true)
- *                     .property(&#34;cluster_name&#34;)
- *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(true)
- *                     .property(&#34;role&#34;)
- *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;collector&#34;)
- *                     .build(),
- *                 ListChartLegendOptionsFieldArgs.builder()
- *                     .enabled(false)
- *                     .property(&#34;host&#34;)
- *                     .build())
- *             .maxDelay(2)
- *             .maxPrecision(2)
- *             .programText(&#34;&#34;&#34;
- * myfilters = filter(&#34;cluster_name&#34;, &#34;prod&#34;) and filter(&#34;role&#34;, &#34;search&#34;)
- * data(&#34;cpu.total.idle&#34;, filter=myfilters).publish()
- * 
- *             &#34;&#34;&#34;)
- *             .refreshInterval(1)
- *             .sortBy(&#34;-value&#34;)
- *             .timezone(&#34;Europe/Paris&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

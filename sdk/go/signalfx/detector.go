@@ -20,81 +20,11 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusters := []string{
-//				"clusterA",
-//				"clusterB",
-//			}
-//			if param := cfg.GetObject("clusters"); param != nil {
-//				clusters = param
-//			}
-//			var applicationDelay []*signalfx.Detector
-//			for index := 0; index < len(clusters); index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := signalfx.NewDetector(ctx, fmt.Sprintf("applicationDelay-%v", key0), &signalfx.DetectorArgs{
-//					Description: pulumi.String(fmt.Sprintf("your application is slow - %v", clusters[val0])),
-//					MaxDelay:    pulumi.Int(30),
-//					Tags: pulumi.StringArray{
-//						pulumi.String("app-backend"),
-//						pulumi.String("staging"),
-//					},
-//					AuthorizedWriterTeams: pulumi.StringArray{
-//						signalfx_team.Mycoolteam.Id,
-//					},
-//					AuthorizedWriterUsers: pulumi.StringArray{
-//						pulumi.String("abc123"),
-//					},
-//					ProgramText: pulumi.String(fmt.Sprintf("signal = data('app.delay', filter('cluster','%v'), extrapolation='last_value', maxExtrapolations=5).max()\ndetect(when(signal > 60, '5m')).publish('Processing old messages 5m')\ndetect(when(signal > 60, '30m')).publish('Processing old messages 30m')\n", clusters[val0])),
-//					Rules: signalfx.DetectorRuleArray{
-//						&signalfx.DetectorRuleArgs{
-//							Description: pulumi.String("maximum > 60 for 5m"),
-//							Severity:    pulumi.String("Warning"),
-//							DetectLabel: pulumi.String("Processing old messages 5m"),
-//							Notifications: pulumi.StringArray{
-//								pulumi.String("Email,foo-alerts@bar.com"),
-//							},
-//						},
-//						&signalfx.DetectorRuleArgs{
-//							Description: pulumi.String("maximum > 60 for 30m"),
-//							Severity:    pulumi.String("Critical"),
-//							DetectLabel: pulumi.String("Processing old messages 30m"),
-//							Notifications: pulumi.StringArray{
-//								pulumi.String("Email,foo-alerts@bar.com"),
-//							},
-//						},
-//					},
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				applicationDelay = append(applicationDelay, __res)
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Notification format
 //
 // As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
 //
@@ -118,6 +49,7 @@ import (
 //
 // ### Email
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -134,11 +66,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Jira
 //
 // Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `jira.Integration`.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -155,11 +89,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### OpsGenie
 //
 // Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -176,9 +112,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### PagerDuty
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -195,11 +133,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Slack
 //
 // Exclude the `#` on the channel name:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -216,11 +156,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Team
 //
 // Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -237,11 +179,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### TeamEmail
 //
 // Sends an email to every member of a team.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -258,9 +202,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Splunk On-Call (formerly VictorOps)
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -277,12 +223,14 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ### Webhooks
 //
 // You need to include all the commas even if you only use a credential id.
 //
 // You can either configure a Webhook to use an existing integration's credential id:
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -299,9 +247,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Or configure one inline:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -318,6 +268,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Arguments
 //
@@ -376,9 +327,7 @@ import (
 // Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import signalfx:index/detector:Detector application_delay abc123
-//
+// $ pulumi import signalfx:index/detector:Detector application_delay abc123
 // ```
 type Detector struct {
 	pulumi.CustomResourceState

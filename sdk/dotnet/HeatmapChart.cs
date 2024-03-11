@@ -14,60 +14,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myheatmapchart0 = new SignalFx.HeatmapChart("myheatmapchart0", new()
-    ///     {
-    ///         ColorRange = new SignalFx.Inputs.HeatmapChartColorRangeArgs
-    ///         {
-    ///             Color = "#ff0000",
-    ///             MaxValue = 100,
-    ///             MinValue = 0,
-    ///         },
-    ///         ColorScales = new[]
-    ///         {
-    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///             {
-    ///                 Color = "green",
-    ///                 Gte = 99,
-    ///             },
-    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///             {
-    ///                 Color = "yellow",
-    ///                 Gte = 95,
-    ///                 Lt = 99,
-    ///             },
-    ///             new SignalFx.Inputs.HeatmapChartColorScaleArgs
-    ///             {
-    ///                 Color = "red",
-    ///                 Lt = 95,
-    ///             },
-    ///         },
-    ///         Description = "Very cool Heatmap",
-    ///         DisableSampling = true,
-    ///         GroupBies = new[]
-    ///         {
-    ///             "hostname",
-    ///             "host",
-    ///         },
-    ///         HideTimestamp = true,
-    ///         ProgramText = @"myfilters = filter(""cluster_name"", ""prod"") and filter(""role"", ""search"")
-    /// data(""cpu.total.idle"", filter=myfilters).publish()
-    /// 
-    /// ",
-    ///         SortBy = "+host",
-    ///         Timezone = "Europe/Paris",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

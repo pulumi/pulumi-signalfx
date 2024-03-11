@@ -20,37 +20,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.EventFeedChart;
- * import com.pulumi.signalfx.EventFeedChartArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mynote0 = new EventFeedChart(&#34;mynote0&#34;, EventFeedChartArgs.builder()        
- *             .description(&#34;Lorem ipsum dolor sit amet&#34;)
- *             .programText(&#34;A = events(eventType=&#39;My Event Type&#39;).publish(label=&#39;A&#39;)&#34;)
- *             .vizOptions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
  * ## Arguments
  * 
  * The following arguments are supported in the resource block:

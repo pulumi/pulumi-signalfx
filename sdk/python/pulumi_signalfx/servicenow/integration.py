@@ -315,20 +315,6 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        service_now_myteam = signalfx.servicenow.Integration("serviceNowMyteam",
-            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}",
-            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
-            enabled=False,
-            instance_name="myinst.service-now.com",
-            issue_type="Incident",
-            password="youd0ntsee1t",
-            username="thisis_me")
-        ```
-
         ## Arguments
 
         * `name` - (Required) Name of the integration.
@@ -373,20 +359,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        service_now_myteam = signalfx.servicenow.Integration("serviceNowMyteam",
-            alert_resolved_payload_template="{\\"close_notes\\": \\"{{{messageTitle}}} (customized close msg)\\"}",
-            alert_triggered_payload_template="{\\"short_description\\": \\"{{{messageTitle}}} (customized)\\"}",
-            enabled=False,
-            instance_name="myinst.service-now.com",
-            issue_type="Incident",
-            password="youd0ntsee1t",
-            username="thisis_me")
-        ```
 
         ## Arguments
 

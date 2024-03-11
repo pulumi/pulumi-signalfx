@@ -25,64 +25,6 @@ import javax.annotation.Nullable;
  * A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.log.View;
- * import com.pulumi.signalfx.log.ViewArgs;
- * import com.pulumi.signalfx.log.inputs.ViewColumnArgs;
- * import com.pulumi.signalfx.log.inputs.ViewSortOptionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myLogView = new View(&#34;myLogView&#34;, ViewArgs.builder()        
- *             .columns(            
- *                 ViewColumnArgs.builder()
- *                     .name(&#34;severity&#34;)
- *                     .build(),
- *                 ViewColumnArgs.builder()
- *                     .name(&#34;time&#34;)
- *                     .build(),
- *                 ViewColumnArgs.builder()
- *                     .name(&#34;amount.currency_code&#34;)
- *                     .build(),
- *                 ViewColumnArgs.builder()
- *                     .name(&#34;amount.nanos&#34;)
- *                     .build(),
- *                 ViewColumnArgs.builder()
- *                     .name(&#34;amount.units&#34;)
- *                     .build(),
- *                 ViewColumnArgs.builder()
- *                     .name(&#34;message&#34;)
- *                     .build())
- *             .description(&#34;Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis&#34;)
- *             .programText(&#34;&#34;&#34;
- * logs(filter=field(&#39;message&#39;) == &#39;Transaction processed&#39; and field(&#39;service.name&#39;) == &#39;paymentservice&#39;).publish()
- * 
- *             &#34;&#34;&#34;)
- *             .sortOptions(ViewSortOptionArgs.builder()
- *                 .descending(false)
- *                 .field(&#34;severity&#34;)
- *                 .build())
- *             .timeRange(900)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

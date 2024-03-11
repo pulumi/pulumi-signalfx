@@ -18,53 +18,6 @@ import javax.annotation.Nullable;
  * This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.TextChart;
- * import com.pulumi.signalfx.TextChartArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mynote0 = new TextChart(&#34;mynote0&#34;, TextChartArgs.builder()        
- *             .description(&#34;Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis&#34;)
- *             .markdown(&#34;&#34;&#34;
- *     1. First ordered list item
- *     2. Another item
- *       * Unordered sub-list.
- *     1. Actual numbers don&#39;t matter, just that it&#39;s a number
- *       1. Ordered sub-list
- *     4. And another item.
- * 
- *        You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we&#39;ll use three here to also align the raw Markdown).
- * 
- *        To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
- *        Note that this line is separate, but within the same paragraph.⋅⋅
- *        (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
- * 
- *     * Unordered list can use asterisks
- *     - Or minuses
- *     + Or pluses
- * 
- *             &#34;&#34;&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

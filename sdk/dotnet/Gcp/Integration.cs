@@ -16,46 +16,6 @@ namespace Pulumi.SignalFx.Gcp
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var gcpMyteam = new SignalFx.Gcp.Integration("gcpMyteam", new()
-    ///     {
-    ///         CustomMetricTypeDomains = new[]
-    ///         {
-    ///             "istio.io",
-    ///         },
-    ///         Enabled = true,
-    ///         ImportGcpMetrics = true,
-    ///         PollRate = 300,
-    ///         ProjectServiceKeys = new[]
-    ///         {
-    ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
-    ///             {
-    ///                 ProjectId = "gcp_project_id_1",
-    ///                 ProjectKey = File.ReadAllText("/path/to/gcp_credentials_1.json"),
-    ///             },
-    ///             new SignalFx.Gcp.Inputs.IntegrationProjectServiceKeyArgs
-    ///             {
-    ///                 ProjectId = "gcp_project_id_2",
-    ///                 ProjectKey = File.ReadAllText("/path/to/gcp_credentials_2.json"),
-    ///             },
-    ///         },
-    ///         Services = new[]
-    ///         {
-    ///             "compute",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `custom_metric_type_domains` - (Optional) List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)

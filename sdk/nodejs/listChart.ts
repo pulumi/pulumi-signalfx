@@ -13,49 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const mylistchart0 = new signalfx.ListChart("mylistchart0", {
- *     colorBy: "Metric",
- *     description: "Very cool List Chart",
- *     disableSampling: true,
- *     hideMissingValues: true,
- *     legendOptionsFields: [
- *         {
- *             enabled: false,
- *             property: "collector",
- *         },
- *         {
- *             enabled: true,
- *             property: "cluster_name",
- *         },
- *         {
- *             enabled: true,
- *             property: "role",
- *         },
- *         {
- *             enabled: false,
- *             property: "collector",
- *         },
- *         {
- *             enabled: false,
- *             property: "host",
- *         },
- *     ],
- *     maxDelay: 2,
- *     maxPrecision: 2,
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
- *
- * `,
- *     refreshInterval: 1,
- *     sortBy: "-value",
- *     timezone: "Europe/Paris",
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

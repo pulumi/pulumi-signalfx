@@ -25,59 +25,6 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.azure.Integration;
- * import com.pulumi.signalfx.azure.IntegrationArgs;
- * import com.pulumi.signalfx.azure.inputs.IntegrationCustomNamespacesPerServiceArgs;
- * import com.pulumi.signalfx.azure.inputs.IntegrationResourceFilterRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var azureMyteam = new Integration(&#34;azureMyteam&#34;, IntegrationArgs.builder()        
- *             .additionalServices(            
- *                 &#34;some/service&#34;,
- *                 &#34;another/service&#34;)
- *             .appId(&#34;YYY&#34;)
- *             .customNamespacesPerServices(IntegrationCustomNamespacesPerServiceArgs.builder()
- *                 .namespaces(                
- *                     &#34;monitoringAgent&#34;,
- *                     &#34;customNamespace&#34;)
- *                 .service(&#34;Microsoft.Compute/virtualMachines&#34;)
- *                 .build())
- *             .enabled(true)
- *             .environment(&#34;azure&#34;)
- *             .pollRate(300)
- *             .resourceFilterRules(            
- *                 IntegrationResourceFilterRuleArgs.builder()
- *                     .filterSource(&#34;filter(&#39;azure_tag_service&#39;, &#39;payment&#39;) and (filter(&#39;azure_tag_env&#39;, &#39;prod-us&#39;) or filter(&#39;azure_tag_env&#39;, &#39;prod-eu&#39;))&#34;)
- *                     .build(),
- *                 IntegrationResourceFilterRuleArgs.builder()
- *                     .filterSource(&#34;filter(&#39;azure_tag_service&#39;, &#39;notification&#39;) and (filter(&#39;azure_tag_env&#39;, &#39;prod-us&#39;) or filter(&#39;azure_tag_env&#39;, &#39;prod-eu&#39;))&#34;)
- *                     .build())
- *             .secretKey(&#34;XXX&#34;)
- *             .services(&#34;microsoft.sql/servers/elasticpools&#34;)
- *             .subscriptions(&#34;sub-guid-here&#34;)
- *             .tenantId(&#34;ZZZ&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 

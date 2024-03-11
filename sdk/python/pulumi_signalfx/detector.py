@@ -678,55 +678,15 @@ class Detector(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        config = pulumi.Config()
-        clusters = config.get_object("clusters")
-        if clusters is None:
-            clusters = [
-                "clusterA",
-                "clusterB",
-            ]
-        application_delay = []
-        for range in [{"value": i} for i in range(0, len(clusters))]:
-            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
-                description=f"your application is slow - {clusters[range['value']]}",
-                max_delay=30,
-                tags=[
-                    "app-backend",
-                    "staging",
-                ],
-                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-                authorized_writer_users=["abc123"],
-                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
-        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
-        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
-        \"\"\",
-                rules=[
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 5m",
-                        severity="Warning",
-                        detect_label="Processing old messages 5m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 30m",
-                        severity="Critical",
-                        detect_label="Processing old messages 30m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                ]))
-        ```
-
         ## Notification format
 
         As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
 
@@ -734,76 +694,96 @@ class Detector(pulumi.CustomResource):
 
         ### Email
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Jira
 
         Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `jira.Integration`.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### OpsGenie
 
         Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### PagerDuty
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Slack
 
         Exclude the `#` on the channel name:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Team
 
         Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### TeamEmail
 
         Sends an email to every member of a team.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Splunk On-Call (formerly VictorOps)
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Webhooks
 
         You need to include all the commas even if you only use a credential id.
 
         You can either configure a Webhook to use an existing integration's credential id:
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         Or configure one inline:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Arguments
 
@@ -861,7 +841,7 @@ class Detector(pulumi.CustomResource):
         Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
 
         ```sh
-         $ pulumi import signalfx:index/detector:Detector application_delay abc123
+        $ pulumi import signalfx:index/detector:Detector application_delay abc123
         ```
 
         :param str resource_name: The name of the resource.
@@ -902,55 +882,15 @@ class Detector(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        config = pulumi.Config()
-        clusters = config.get_object("clusters")
-        if clusters is None:
-            clusters = [
-                "clusterA",
-                "clusterB",
-            ]
-        application_delay = []
-        for range in [{"value": i} for i in range(0, len(clusters))]:
-            application_delay.append(signalfx.Detector(f"applicationDelay-{range['value']}",
-                description=f"your application is slow - {clusters[range['value']]}",
-                max_delay=30,
-                tags=[
-                    "app-backend",
-                    "staging",
-                ],
-                authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-                authorized_writer_users=["abc123"],
-                program_text=f\"\"\"signal = data('app.delay', filter('cluster','{clusters[range["value"]]}'), extrapolation='last_value', maxExtrapolations=5).max()
-        detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
-        detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
-        \"\"\",
-                rules=[
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 5m",
-                        severity="Warning",
-                        detect_label="Processing old messages 5m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                    signalfx.DetectorRuleArgs(
-                        description="maximum > 60 for 30m",
-                        severity="Critical",
-                        detect_label="Processing old messages 30m",
-                        notifications=["Email,foo-alerts@bar.com"],
-                    ),
-                ]))
-        ```
-
         ## Notification format
 
         As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
 
@@ -958,76 +898,96 @@ class Detector(pulumi.CustomResource):
 
         ### Email
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Jira
 
         Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `jira.Integration`.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### OpsGenie
 
         Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### PagerDuty
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Slack
 
         Exclude the `#` on the channel name:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Team
 
         Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### TeamEmail
 
         Sends an email to every member of a team.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Splunk On-Call (formerly VictorOps)
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ### Webhooks
 
         You need to include all the commas even if you only use a credential id.
 
         You can either configure a Webhook to use an existing integration's credential id:
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         Or configure one inline:
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Arguments
 
@@ -1085,7 +1045,7 @@ class Detector(pulumi.CustomResource):
         Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
 
         ```sh
-         $ pulumi import signalfx:index/detector:Detector application_delay abc123
+        $ pulumi import signalfx:index/detector:Detector application_delay abc123
         ```
 
         :param str resource_name: The name of the resource.

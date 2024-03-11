@@ -13,30 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as fs from "fs";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const gcpMyteam = new signalfx.gcp.Integration("gcpMyteam", {
- *     customMetricTypeDomains: ["istio.io"],
- *     enabled: true,
- *     importGcpMetrics: true,
- *     pollRate: 300,
- *     projectServiceKeys: [
- *         {
- *             projectId: "gcp_project_id_1",
- *             projectKey: fs.readFileSync("/path/to/gcp_credentials_1.json", "utf8"),
- *         },
- *         {
- *             projectId: "gcp_project_id_2",
- *             projectKey: fs.readFileSync("/path/to/gcp_credentials_2.json", "utf8"),
- *         },
- *     ],
- *     services: ["compute"],
- * });
- * ```
- *
  * ## Arguments
  *
  * * `customMetricTypeDomains` - (Optional) List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)

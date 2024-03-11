@@ -18,6 +18,8 @@ public final class PagerdutyFunctions {
      * Use this data source to get information on an existing PagerDuty integration.
      * 
      * ## Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -46,6 +48,7 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
      * 
@@ -65,6 +68,8 @@ public final class PagerdutyFunctions {
      * Use this data source to get information on an existing PagerDuty integration.
      * 
      * ## Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -93,6 +98,7 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
      * 
@@ -112,6 +118,8 @@ public final class PagerdutyFunctions {
      * Use this data source to get information on an existing PagerDuty integration.
      * 
      * ## Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -140,6 +148,7 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
      * 
@@ -159,6 +168,8 @@ public final class PagerdutyFunctions {
      * Use this data source to get information on an existing PagerDuty integration.
      * 
      * ## Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -187,6 +198,7 @@ public final class PagerdutyFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
      * 

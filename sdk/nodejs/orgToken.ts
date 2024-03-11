@@ -13,26 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const myteamkey0 = new signalfx.OrgToken("myteamkey0", {
- *     description: "My team's rad key",
- *     hostOrUsageLimits: {
- *         containerLimit: 200,
- *         containerNotificationThreshold: 180,
- *         customMetricsLimit: 1000,
- *         customMetricsNotificationThreshold: 900,
- *         highResMetricsLimit: 1000,
- *         highResMetricsNotificationThreshold: 900,
- *         hostLimit: 100,
- *         hostNotificationThreshold: 90,
- *     },
- *     notifications: ["Email,foo-alerts@bar.com"],
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

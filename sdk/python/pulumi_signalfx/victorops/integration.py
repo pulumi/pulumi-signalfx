@@ -138,15 +138,6 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        vioctor_ops_myteam = signalfx.victorops.Integration("vioctorOpsMyteam",
-            enabled=True,
-            post_url="https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
-        ```
-
         ## Arguments
 
         * `name` - (Required) Name of the integration.
@@ -177,15 +168,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        vioctor_ops_myteam = signalfx.victorops.Integration("vioctorOpsMyteam",
-            enabled=True,
-            post_url="https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key")
-        ```
 
         ## Arguments
 

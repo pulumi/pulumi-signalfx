@@ -198,20 +198,6 @@ class WebhookIntegration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        webhook_myteam = signalfx.WebhookIntegration("webhookMyteam",
-            enabled=True,
-            headers=[signalfx.WebhookIntegrationHeaderArgs(
-                header_key="some_header",
-                header_value="value_for_that_header",
-            )],
-            shared_secret="abc1234",
-            url="https://www.example.com")
-        ```
-
         ## Arguments
 
         * `name` - (Required) Name of the integration.
@@ -247,20 +233,6 @@ class WebhookIntegration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        webhook_myteam = signalfx.WebhookIntegration("webhookMyteam",
-            enabled=True,
-            headers=[signalfx.WebhookIntegrationHeaderArgs(
-                header_key="some_header",
-                header_value="value_for_that_header",
-            )],
-            shared_secret="abc1234",
-            url="https://www.example.com")
-        ```
 
         ## Arguments
 

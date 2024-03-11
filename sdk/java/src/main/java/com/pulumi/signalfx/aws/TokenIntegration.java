@@ -22,61 +22,6 @@ import javax.annotation.Nullable;
  * &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.aws.TokenIntegration;
- * import com.pulumi.aws.iam.Role;
- * import com.pulumi.signalfx.aws.Integration;
- * import com.pulumi.signalfx.aws.IntegrationArgs;
- * import com.pulumi.signalfx.aws.inputs.IntegrationCustomNamespaceSyncRuleArgs;
- * import com.pulumi.signalfx.aws.inputs.IntegrationNamespaceSyncRuleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var awsMyteamToken = new TokenIntegration(&#34;awsMyteamToken&#34;);
- * 
- *         var awsSfxRole = new Role(&#34;awsSfxRole&#34;);
- * 
- *         var awsMyteam = new Integration(&#34;awsMyteam&#34;, IntegrationArgs.builder()        
- *             .enabled(true)
- *             .integrationId(awsMyteamToken.id())
- *             .token(&#34;put_your_token_here&#34;)
- *             .key(&#34;put_your_key_here&#34;)
- *             .regions(&#34;us-east-1&#34;)
- *             .pollRate(300)
- *             .importCloudWatch(true)
- *             .enableAwsUsage(true)
- *             .customNamespaceSyncRules(IntegrationCustomNamespaceSyncRuleArgs.builder()
- *                 .defaultAction(&#34;Exclude&#34;)
- *                 .filterAction(&#34;Include&#34;)
- *                 .filterSource(&#34;filter(&#39;code&#39;, &#39;200&#39;)&#34;)
- *                 .namespace(&#34;my-custom-namespace&#34;)
- *                 .build())
- *             .namespaceSyncRules(IntegrationNamespaceSyncRuleArgs.builder()
- *                 .defaultAction(&#34;Exclude&#34;)
- *                 .filterAction(&#34;Include&#34;)
- *                 .filterSource(&#34;filter(&#39;code&#39;, &#39;200&#39;)&#34;)
- *                 .namespace(&#34;AWS/EC2&#34;)
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Arguments
  * 
