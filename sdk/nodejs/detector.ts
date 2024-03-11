@@ -15,55 +15,15 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const config = new pulumi.Config();
- * const clusters = config.getObject("clusters") || [
- *     "clusterA",
- *     "clusterB",
- * ];
- * const applicationDelay: signalfx.Detector[] = [];
- * for (const range = {value: 0}; range.value < clusters.length; range.value++) {
- *     applicationDelay.push(new signalfx.Detector(`applicationDelay-${range.value}`, {
- *         description: `your application is slow - ${clusters[range.value]}`,
- *         maxDelay: 30,
- *         tags: [
- *             "app-backend",
- *             "staging",
- *         ],
- *         authorizedWriterTeams: [signalfx_team.mycoolteam.id],
- *         authorizedWriterUsers: ["abc123"],
- *         programText: `signal = data('app.delay', filter('cluster','${clusters[range.value]}'), extrapolation='last_value', maxExtrapolations=5).max()
- * detect(when(signal > 60, '5m')).publish('Processing old messages 5m')
- * detect(when(signal > 60, '30m')).publish('Processing old messages 30m')
- * `,
- *         rules: [
- *             {
- *                 description: "maximum > 60 for 5m",
- *                 severity: "Warning",
- *                 detectLabel: "Processing old messages 5m",
- *                 notifications: ["Email,foo-alerts@bar.com"],
- *             },
- *             {
- *                 description: "maximum > 60 for 30m",
- *                 severity: "Critical",
- *                 detectLabel: "Processing old messages 30m",
- *                 notifications: ["Email,foo-alerts@bar.com"],
- *             },
- *         ],
- *     }));
- * }
- * ```
- *
  * ## Notification format
  *
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
  *
@@ -71,76 +31,96 @@ import * as utilities from "./utilities";
  *
  * ### Email
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Jira
  *
  * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### OpsGenie
  *
  * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### PagerDuty
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Slack
  *
  * Exclude the `#` on the channel name:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Team
  *
  * Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### TeamEmail
  *
  * Sends an email to every member of a team.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Splunk On-Call (formerly VictorOps)
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ### Webhooks
  *
  * You need to include all the commas even if you only use a credential id.
  *
  * You can either configure a Webhook to use an existing integration's credential id:
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * Or configure one inline:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Arguments
  *
@@ -198,7 +178,7 @@ import * as utilities from "./utilities";
  * Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
  *
  * ```sh
- *  $ pulumi import signalfx:index/detector:Detector application_delay abc123
+ * $ pulumi import signalfx:index/detector:Detector application_delay abc123
  * ```
  */
 export class Detector extends pulumi.CustomResource {

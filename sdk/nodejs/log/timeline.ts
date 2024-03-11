@@ -11,19 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const myLogTimeline = new signalfx.log.Timeline("myLogTimeline", {
- *     description: "Lorem ipsum dolor sit amet, laudem tibique iracundia at mea. Nam posse dolores ex, nec cu adhuc putent honestatis",
- *     programText: `logs(filter=field('message') == 'Transaction processed' and field('service.name') == 'paymentservice').publish()
- *
- * `,
- *     timeRange: 900,
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

@@ -28,71 +28,12 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When you want to change or remove write permissions for a user other than yourself regarding detectors, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  * 
  * ## Example
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.signalfx.Detector;
- * import com.pulumi.signalfx.DetectorArgs;
- * import com.pulumi.signalfx.inputs.DetectorRuleArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var clusters = config.get(&#34;clusters&#34;).orElse(        
- *             &#34;clusterA&#34;,
- *             &#34;clusterB&#34;);
- *         for (var i = 0; i &lt; clusters.length(); i++) {
- *             new Detector(&#34;applicationDelay-&#34; + i, DetectorArgs.builder()            
- *                 .description(String.format(&#34;your application is slow - %s&#34;, clusters[range.value()]))
- *                 .maxDelay(30)
- *                 .tags(                
- *                     &#34;app-backend&#34;,
- *                     &#34;staging&#34;)
- *                 .authorizedWriterTeams(signalfx_team.mycoolteam().id())
- *                 .authorizedWriterUsers(&#34;abc123&#34;)
- *                 .programText(&#34;&#34;&#34;
- * signal = data(&#39;app.delay&#39;, filter(&#39;cluster&#39;,&#39;%s&#39;), extrapolation=&#39;last_value&#39;, maxExtrapolations=5).max()
- * detect(when(signal &gt; 60, &#39;5m&#39;)).publish(&#39;Processing old messages 5m&#39;)
- * detect(when(signal &gt; 60, &#39;30m&#39;)).publish(&#39;Processing old messages 30m&#39;)
- * &#34;, clusters[range.value()]))
- *                 .rules(                
- *                     DetectorRuleArgs.builder()
- *                         .description(&#34;maximum &gt; 60 for 5m&#34;)
- *                         .severity(&#34;Warning&#34;)
- *                         .detectLabel(&#34;Processing old messages 5m&#34;)
- *                         .notifications(&#34;Email,foo-alerts@bar.com&#34;)
- *                         .build(),
- *                     DetectorRuleArgs.builder()
- *                         .description(&#34;maximum &gt; 60 for 30m&#34;)
- *                         .severity(&#34;Critical&#34;)
- *                         .detectLabel(&#34;Processing old messages 30m&#34;)
- *                         .notifications(&#34;Email,foo-alerts@bar.com&#34;)
- *                         .build())
- *                 .build());
- * 
- *         
- * }
- *     }
- * }
- * ```
  * 
  * ## Notification format
  * 
  * As Splunk Observability Cloud supports different notification mechanisms, use a comma-delimited string to provide inputs. If you want to specify multiple notifications, each must be a member in the list, like so:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -115,12 +56,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * See [Splunk Observability Cloud Docs](https://dev.splunk.com/observability/reference/api/detectors/latest) for more information.
  * 
  * Here are some example of how to configure each notification type:
  * 
  * ### Email
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -143,10 +87,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Jira
  * 
  * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Jira integration. See also `signalfx.jira.Integration`.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -169,10 +116,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### OpsGenie
  * 
  * Note that the `credentialId` is the Splunk-provided ID shown after setting up your Opsgenie integration. `Team` here is hardcoded as the `responderType` as that is the only acceptable type as per the API docs.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -195,8 +145,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### PagerDuty
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -219,10 +172,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Slack
  * 
  * Exclude the `#` on the channel name:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -245,10 +201,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Team
  * 
  * Sends [notifications to a team](https://docs.signalfx.com/en/latest/managing/teams/team-notifications.html).
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -271,10 +230,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### TeamEmail
  * 
  * Sends an email to every member of a team.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -297,8 +259,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Splunk On-Call (formerly VictorOps)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -321,12 +286,14 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Webhooks
  * 
  * You need to include all the commas even if you only use a credential id.
  * 
  * You can either configure a Webhook to use an existing integration&#39;s credential id:
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -349,8 +316,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Or configure one inline:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -373,6 +343,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Arguments
  * 
@@ -430,7 +401,7 @@ import javax.annotation.Nullable;
  * Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
  * 
  * ```sh
- *  $ pulumi import signalfx:index/detector:Detector application_delay abc123
+ * $ pulumi import signalfx:index/detector:Detector application_delay abc123
  * ```
  * 
  */

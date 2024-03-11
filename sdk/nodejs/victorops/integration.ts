@@ -11,16 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const vioctorOpsMyteam = new signalfx.victorops.Integration("vioctorOpsMyteam", {
- *     enabled: true,
- *     postUrl: "https://alert.victorops.com/integrations/generic/1234/alert/$key/$routing_key",
- * });
- * ```
- *
  * ## Arguments
  *
  * * `name` - (Required) Name of the integration.

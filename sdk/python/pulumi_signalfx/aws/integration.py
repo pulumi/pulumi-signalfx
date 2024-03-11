@@ -785,44 +785,6 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_signalfx as signalfx
-
-        # This resource returns an account id in `external_id`…
-        aws_myteam_external = signalfx.aws.ExternalIntegration("awsMyteamExternal")
-        # Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-        aws_sfx_role = aws.iam.Role("awsSfxRole")
-        # Stuff here that uses the external and account ID
-        aws_myteam = signalfx.aws.Integration("awsMyteam",
-            enabled=True,
-            integration_id=aws_myteam_external.id,
-            external_id=aws_myteam_external.external_id,
-            role_arn=aws_sfx_role.arn,
-            regions=["us-east-1"],
-            poll_rate=300,
-            import_cloud_watch=True,
-            enable_aws_usage=True,
-            custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="my-custom-namespace",
-            )],
-            namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="AWS/EC2",
-            )],
-            metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(
-                namespace="AWS/EC2",
-                metric="NetworkPacketsIn",
-                stats=["upper"],
-            )])
-        ```
-
         ## Arguments
 
         * `enable_aws_usage` - (Optional) Flag that controls how Splunk Observability Cloud imports usage metrics from AWS to use with AWS Cost Optimizer. If `true`, Splunk Observability Cloud imports the metrics.
@@ -909,44 +871,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_aws as aws
-        import pulumi_signalfx as signalfx
-
-        # This resource returns an account id in `external_id`…
-        aws_myteam_external = signalfx.aws.ExternalIntegration("awsMyteamExternal")
-        # Make yourself an AWS IAM role here, use `signalfx_aws_external_integration.aws_myteam_external.external_id`
-        aws_sfx_role = aws.iam.Role("awsSfxRole")
-        # Stuff here that uses the external and account ID
-        aws_myteam = signalfx.aws.Integration("awsMyteam",
-            enabled=True,
-            integration_id=aws_myteam_external.id,
-            external_id=aws_myteam_external.external_id,
-            role_arn=aws_sfx_role.arn,
-            regions=["us-east-1"],
-            poll_rate=300,
-            import_cloud_watch=True,
-            enable_aws_usage=True,
-            custom_namespace_sync_rules=[signalfx.aws.IntegrationCustomNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="my-custom-namespace",
-            )],
-            namespace_sync_rules=[signalfx.aws.IntegrationNamespaceSyncRuleArgs(
-                default_action="Exclude",
-                filter_action="Include",
-                filter_source="filter('code', '200')",
-                namespace="AWS/EC2",
-            )],
-            metric_stats_to_syncs=[signalfx.aws.IntegrationMetricStatsToSyncArgs(
-                namespace="AWS/EC2",
-                metric="NetworkPacketsIn",
-                stats=["upper"],
-            )])
-        ```
 
         ## Arguments
 

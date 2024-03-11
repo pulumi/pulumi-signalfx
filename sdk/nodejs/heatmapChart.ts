@@ -11,47 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const myheatmapchart0 = new signalfx.HeatmapChart("myheatmapchart0", {
- *     colorRange: {
- *         color: "#ff0000",
- *         maxValue: 100,
- *         minValue: 0,
- *     },
- *     colorScales: [
- *         {
- *             color: "green",
- *             gte: 99,
- *         },
- *         {
- *             color: "yellow",
- *             gte: 95,
- *             lt: 99,
- *         },
- *         {
- *             color: "red",
- *             lt: 95,
- *         },
- *     ],
- *     description: "Very cool Heatmap",
- *     disableSampling: true,
- *     groupBies: [
- *         "hostname",
- *         "host",
- *     ],
- *     hideTimestamp: true,
- *     programText: `myfilters = filter("cluster_name", "prod") and filter("role", "search")
- * data("cpu.total.idle", filter=myfilters).publish()
- *
- * `,
- *     sortBy: "+host",
- *     timezone: "Europe/Paris",
- * });
- * ```
- *
  * ## Arguments
  *
  * The following arguments are supported in the resource block:

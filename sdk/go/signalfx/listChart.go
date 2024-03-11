@@ -18,61 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := signalfx.NewListChart(ctx, "mylistchart0", &signalfx.ListChartArgs{
-//				ColorBy:           pulumi.String("Metric"),
-//				Description:       pulumi.String("Very cool List Chart"),
-//				DisableSampling:   pulumi.Bool(true),
-//				HideMissingValues: pulumi.Bool(true),
-//				LegendOptionsFields: signalfx.ListChartLegendOptionsFieldArray{
-//					&signalfx.ListChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(false),
-//						Property: pulumi.String("collector"),
-//					},
-//					&signalfx.ListChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(true),
-//						Property: pulumi.String("cluster_name"),
-//					},
-//					&signalfx.ListChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(true),
-//						Property: pulumi.String("role"),
-//					},
-//					&signalfx.ListChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(false),
-//						Property: pulumi.String("collector"),
-//					},
-//					&signalfx.ListChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(false),
-//						Property: pulumi.String("host"),
-//					},
-//				},
-//				MaxDelay:        pulumi.Int(2),
-//				MaxPrecision:    pulumi.Int(2),
-//				ProgramText:     pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n"),
-//				RefreshInterval: pulumi.Int(1),
-//				SortBy:          pulumi.String("-value"),
-//				Timezone:        pulumi.String("Europe/Paris"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // The following arguments are supported in the resource block:

@@ -18,58 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx/gcp"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gcp.NewIntegration(ctx, "gcpMyteam", &gcp.IntegrationArgs{
-//				CustomMetricTypeDomains: pulumi.StringArray{
-//					pulumi.String("istio.io"),
-//				},
-//				Enabled:          pulumi.Bool(true),
-//				ImportGcpMetrics: pulumi.Bool(true),
-//				PollRate:         pulumi.Int(300),
-//				ProjectServiceKeys: gcp.IntegrationProjectServiceKeyArray{
-//					&gcp.IntegrationProjectServiceKeyArgs{
-//						ProjectId:  pulumi.String("gcp_project_id_1"),
-//						ProjectKey: readFileOrPanic("/path/to/gcp_credentials_1.json"),
-//					},
-//					&gcp.IntegrationProjectServiceKeyArgs{
-//						ProjectId:  pulumi.String("gcp_project_id_2"),
-//						ProjectKey: readFileOrPanic("/path/to/gcp_credentials_2.json"),
-//					},
-//				},
-//				Services: pulumi.StringArray{
-//					pulumi.String("compute"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // * `customMetricTypeDomains` - (Optional) List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)

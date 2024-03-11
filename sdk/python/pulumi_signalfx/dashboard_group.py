@@ -324,68 +324,9 @@ class DashboardGroup(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
-            description="Cool dashboard group",
-            authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-            authorized_writer_users=["abc123"])
-        ```
-
         ## Example with permissions
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroupWithpermissions",
-            description="Cool dashboard group",
-            permissions=[
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=["READ"],
-                    principal_id="abc123",
-                    principal_type="ORG",
-                ),
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=[
-                        "READ",
-                        "WRITE",
-                    ],
-                    principal_id="abc456",
-                    principal_type="USER",
-                ),
-            ])
-        ```
-
         ## Example With mirrored dashboards
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
-            description="Cool dashboard group",
-            dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
-                name_override="GC For My Service",
-                description_override="Garbage Collection dashboard maintained by JVM team",
-                filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
-                    property="service",
-                    values=["myservice"],
-                    negated=False,
-                )],
-                variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(
-                    property="region",
-                    values=["us-west1"],
-                    values_suggesteds=[
-                        "us-west-1",
-                        "us-east-1",
-                    ],
-                )],
-            )])
-        ```
 
         ## Arguments
 
@@ -445,68 +386,9 @@ class DashboardGroup(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup0 = signalfx.DashboardGroup("mydashboardgroup0",
-            description="Cool dashboard group",
-            authorized_writer_teams=[signalfx_team["mycoolteam"]["id"]],
-            authorized_writer_users=["abc123"])
-        ```
-
         ## Example with permissions
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withpermissions = signalfx.DashboardGroup("mydashboardgroupWithpermissions",
-            description="Cool dashboard group",
-            permissions=[
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=["READ"],
-                    principal_id="abc123",
-                    principal_type="ORG",
-                ),
-                signalfx.DashboardGroupPermissionArgs(
-                    actions=[
-                        "READ",
-                        "WRITE",
-                    ],
-                    principal_id="abc456",
-                    principal_type="USER",
-                ),
-            ])
-        ```
-
         ## Example With mirrored dashboards
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        mydashboardgroup_withmirrors = signalfx.DashboardGroup("mydashboardgroupWithmirrors",
-            description="Cool dashboard group",
-            dashboards=[signalfx.DashboardGroupDashboardArgs(
-                dashboard_id=signalfx_dashboard["gc_dashboard"]["id"],
-                name_override="GC For My Service",
-                description_override="Garbage Collection dashboard maintained by JVM team",
-                filter_overrides=[signalfx.DashboardGroupDashboardFilterOverrideArgs(
-                    property="service",
-                    values=["myservice"],
-                    negated=False,
-                )],
-                variable_overrides=[signalfx.DashboardGroupDashboardVariableOverrideArgs(
-                    property="region",
-                    values=["us-west1"],
-                    values_suggesteds=[
-                        "us-west-1",
-                        "us-east-1",
-                    ],
-                )],
-            )])
-        ```
 
         ## Arguments
 

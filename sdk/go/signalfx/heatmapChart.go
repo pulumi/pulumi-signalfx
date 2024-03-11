@@ -16,59 +16,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := signalfx.NewHeatmapChart(ctx, "myheatmapchart0", &signalfx.HeatmapChartArgs{
-//				ColorRange: &signalfx.HeatmapChartColorRangeArgs{
-//					Color:    pulumi.String("#ff0000"),
-//					MaxValue: pulumi.Float64(100),
-//					MinValue: pulumi.Float64(0),
-//				},
-//				ColorScales: signalfx.HeatmapChartColorScaleArray{
-//					&signalfx.HeatmapChartColorScaleArgs{
-//						Color: pulumi.String("green"),
-//						Gte:   pulumi.Float64(99),
-//					},
-//					&signalfx.HeatmapChartColorScaleArgs{
-//						Color: pulumi.String("yellow"),
-//						Gte:   pulumi.Float64(95),
-//						Lt:    pulumi.Float64(99),
-//					},
-//					&signalfx.HeatmapChartColorScaleArgs{
-//						Color: pulumi.String("red"),
-//						Lt:    pulumi.Float64(95),
-//					},
-//				},
-//				Description:     pulumi.String("Very cool Heatmap"),
-//				DisableSampling: pulumi.Bool(true),
-//				GroupBies: pulumi.StringArray{
-//					pulumi.String("hostname"),
-//					pulumi.String("host"),
-//				},
-//				HideTimestamp: pulumi.Bool(true),
-//				ProgramText:   pulumi.String("myfilters = filter(\"cluster_name\", \"prod\") and filter(\"role\", \"search\")\ndata(\"cpu.total.idle\", filter=myfilters).publish()\n\n"),
-//				SortBy:        pulumi.String("+host"),
-//				Timezone:      pulumi.String("Europe/Paris"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // The following arguments are supported in the resource block:

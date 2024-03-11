@@ -14,55 +14,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // A global link to Splunk Observability Cloud dashboard.
-    ///     var myDataLink = new SignalFx.DataLink("myDataLink", new()
-    ///     {
-    ///         PropertyName = "pname",
-    ///         PropertyValue = "pvalue",
-    ///         TargetSignalfxDashboards = new[]
-    ///         {
-    ///             new SignalFx.Inputs.DataLinkTargetSignalfxDashboardArgs
-    ///             {
-    ///                 IsDefault = true,
-    ///                 Name = "sfx_dash",
-    ///                 DashboardGroupId = signalfx_dashboard_group.Mydashboardgroup0.Id,
-    ///                 DashboardId = signalfx_dashboard.Mydashboard0.Id,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // A dashboard-specific link to an external URL
-    ///     var myDataLinkDash = new SignalFx.DataLink("myDataLinkDash", new()
-    ///     {
-    ///         ContextDashboardId = signalfx_dashboard.Mydashboard0.Id,
-    ///         PropertyName = "pname2",
-    ///         PropertyValue = "pvalue",
-    ///         TargetExternalUrls = new[]
-    ///         {
-    ///             new SignalFx.Inputs.DataLinkTargetExternalUrlArgs
-    ///             {
-    ///                 Name = "ex_url",
-    ///                 TimeFormat = "ISO8601",
-    ///                 Url = "https://www.example.com",
-    ///                 PropertyKeyMapping = 
-    ///                 {
-    ///                     { "foo", "bar" },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

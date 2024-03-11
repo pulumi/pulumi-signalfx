@@ -16,63 +16,6 @@ namespace Pulumi.SignalFx.Azure
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var azureMyteam = new SignalFx.Azure.Integration("azureMyteam", new()
-    ///     {
-    ///         AdditionalServices = new[]
-    ///         {
-    ///             "some/service",
-    ///             "another/service",
-    ///         },
-    ///         AppId = "YYY",
-    ///         CustomNamespacesPerServices = new[]
-    ///         {
-    ///             new SignalFx.Azure.Inputs.IntegrationCustomNamespacesPerServiceArgs
-    ///             {
-    ///                 Namespaces = new[]
-    ///                 {
-    ///                     "monitoringAgent",
-    ///                     "customNamespace",
-    ///                 },
-    ///                 Service = "Microsoft.Compute/virtualMachines",
-    ///             },
-    ///         },
-    ///         Enabled = true,
-    ///         Environment = "azure",
-    ///         PollRate = 300,
-    ///         ResourceFilterRules = new[]
-    ///         {
-    ///             new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
-    ///             {
-    ///                 FilterSource = "filter('azure_tag_service', 'payment') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-    ///             },
-    ///             new SignalFx.Azure.Inputs.IntegrationResourceFilterRuleArgs
-    ///             {
-    ///                 FilterSource = "filter('azure_tag_service', 'notification') and (filter('azure_tag_env', 'prod-us') or filter('azure_tag_env', 'prod-eu'))",
-    ///             },
-    ///         },
-    ///         SecretKey = "XXX",
-    ///         Services = new[]
-    ///         {
-    ///             "microsoft.sql/servers/elasticpools",
-    ///         },
-    ///         Subscriptions = new[]
-    ///         {
-    ///             "sub-guid-here",
-    ///         },
-    ///         TenantId = "ZZZ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// * `app_id` - (Required) Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.

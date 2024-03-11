@@ -14,30 +14,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // signalfx_list_chart.Logs-Exec_0:
-    ///     var table0 = new SignalFx.TableChart("table0", new()
-    ///     {
-    ///         Description = "beep",
-    ///         DisableSampling = false,
-    ///         GroupBies = new[]
-    ///         {
-    ///             "ClusterName",
-    ///         },
-    ///         MaxDelay = 0,
-    ///         ProgramText = "A = data('cpu.usage.total').publish(label='CPU Total')",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

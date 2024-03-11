@@ -18,54 +18,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := signalfx.NewTimeChart(ctx, "mychart0", &signalfx.TimeChartArgs{
-//				AxisLeft: &signalfx.TimeChartAxisLeftArgs{
-//					Label:        pulumi.String("CPU Total Idle"),
-//					LowWatermark: pulumi.Float64(1000),
-//				},
-//				LegendOptionsFields: signalfx.TimeChartLegendOptionsFieldArray{
-//					&signalfx.TimeChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(false),
-//						Property: pulumi.String("collector"),
-//					},
-//					&signalfx.TimeChartLegendOptionsFieldArgs{
-//						Enabled:  pulumi.Bool(false),
-//						Property: pulumi.String("hostname"),
-//					},
-//				},
-//				PlotType:        pulumi.String("LineChart"),
-//				ProgramText:     pulumi.String("data(\"cpu.total.idle\").publish(label=\"CPU Idle\")\n\n"),
-//				ShowDataMarkers: pulumi.Bool(true),
-//				TimeRange:       pulumi.Int(3600),
-//				VizOptions: signalfx.TimeChartVizOptionArray{
-//					&signalfx.TimeChartVizOptionArgs{
-//						Axis:  pulumi.String("left"),
-//						Color: pulumi.String("orange"),
-//						Label: pulumi.String("CPU Idle"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // The following arguments are supported in the resource block:

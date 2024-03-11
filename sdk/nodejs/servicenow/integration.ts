@@ -11,21 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as signalfx from "@pulumi/signalfx";
- *
- * const serviceNowMyteam = new signalfx.servicenow.Integration("serviceNowMyteam", {
- *     alertResolvedPayloadTemplate: "{\"close_notes\": \"{{{messageTitle}}} (customized close msg)\"}",
- *     alertTriggeredPayloadTemplate: "{\"short_description\": \"{{{messageTitle}}} (customized)\"}",
- *     enabled: false,
- *     instanceName: "myinst.service-now.com",
- *     issueType: "Incident",
- *     password: "youd0ntsee1t",
- *     username: "thisis_me",
- * });
- * ```
- *
  * ## Arguments
  *
  * * `name` - (Required) Name of the integration.

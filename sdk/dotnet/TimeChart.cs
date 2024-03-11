@@ -16,54 +16,6 @@ namespace Pulumi.SignalFx
     /// 
     /// ## Example
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SignalFx = Pulumi.SignalFx;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mychart0 = new SignalFx.TimeChart("mychart0", new()
-    ///     {
-    ///         AxisLeft = new SignalFx.Inputs.TimeChartAxisLeftArgs
-    ///         {
-    ///             Label = "CPU Total Idle",
-    ///             LowWatermark = 1000,
-    ///         },
-    ///         LegendOptionsFields = new[]
-    ///         {
-    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = false,
-    ///                 Property = "collector",
-    ///             },
-    ///             new SignalFx.Inputs.TimeChartLegendOptionsFieldArgs
-    ///             {
-    ///                 Enabled = false,
-    ///                 Property = "hostname",
-    ///             },
-    ///         },
-    ///         PlotType = "LineChart",
-    ///         ProgramText = @"data(""cpu.total.idle"").publish(label=""CPU Idle"")
-    /// 
-    /// ",
-    ///         ShowDataMarkers = true,
-    ///         TimeRange = 3600,
-    ///         VizOptions = new[]
-    ///         {
-    ///             new SignalFx.Inputs.TimeChartVizOptionArgs
-    ///             {
-    ///                 Axis = "left",
-    ///                 Color = "orange",
-    ///                 Label = "CPU Idle",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Arguments
     /// 
     /// The following arguments are supported in the resource block:

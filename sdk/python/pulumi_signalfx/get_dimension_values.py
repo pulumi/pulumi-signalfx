@@ -68,14 +68,6 @@ def get_dimension_values(query: Optional[str] = None,
     Use this data source to get a list of dimension values matching the provided query.
 
     > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
-
-    ## Arguments
-
-    * `query`
-
-    ## Attributes
-
-    `values` is set to the list of dimension values.
     """
     __args__ = dict()
     __args__['query'] = query
@@ -95,13 +87,5 @@ def get_dimension_values_output(query: Optional[pulumi.Input[str]] = None,
     Use this data source to get a list of dimension values matching the provided query.
 
     > **NOTE** The maximum number of values for this data source is 1,000. If you need more, reach out to Splunk support.
-
-    ## Arguments
-
-    * `query`
-
-    ## Attributes
-
-    `values` is set to the list of dimension values.
     """
     ...

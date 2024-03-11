@@ -16,37 +16,6 @@ import (
 //
 // ## Example
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-signalfx/sdk/v7/go/signalfx"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// signalfx_list_chart.Logs-Exec_0:
-//			_, err := signalfx.NewTableChart(ctx, "table0", &signalfx.TableChartArgs{
-//				Description:     pulumi.String("beep"),
-//				DisableSampling: pulumi.Bool(false),
-//				GroupBies: pulumi.StringArray{
-//					pulumi.String("ClusterName"),
-//				},
-//				MaxDelay:    pulumi.Int(0),
-//				ProgramText: pulumi.String("A = data('cpu.usage.total').publish(label='CPU Total')"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Arguments
 //
 // The following arguments are supported in the resource block:

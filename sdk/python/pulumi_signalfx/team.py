@@ -355,20 +355,6 @@ class Team(pulumi.CustomResource):
 
         ## Example
 
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myteam0 = signalfx.Team("myteam0",
-            description="Super great team no jerks definitely",
-            members=[
-                "userid1",
-                "userid2",
-            ],
-            notifications_criticals=["PagerDuty,credentialId"],
-            notifications_infos=["Email,notify@example.com"])
-        ```
-
         ## Arguments
 
         The following arguments are supported in the resource block:
@@ -416,20 +402,6 @@ class Team(pulumi.CustomResource):
         > **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         ## Example
-
-        ```python
-        import pulumi
-        import pulumi_signalfx as signalfx
-
-        myteam0 = signalfx.Team("myteam0",
-            description="Super great team no jerks definitely",
-            members=[
-                "userid1",
-                "userid2",
-            ],
-            notifications_criticals=["PagerDuty,credentialId"],
-            notifications_infos=["Email,notify@example.com"])
-        ```
 
         ## Arguments
 
