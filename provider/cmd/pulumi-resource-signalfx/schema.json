@@ -6658,25 +6658,25 @@
                 "description": "A collection of values returned by getDimensionValues.\n",
                 "properties": {
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "query": {
                         "type": "string"
                     },
                     "values": {
-                        "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "type": "array"
                     }
                 },
-                "type": "object",
                 "required": [
                     "query",
                     "values",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         },
         "signalfx:pagerduty/getIntegration:getIntegration": {
@@ -6700,19 +6700,19 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
                     },
                     "name": {
                         "type": "string"
                     }
                 },
-                "type": "object",
                 "required": [
                     "enabled",
                     "name",
                     "id"
-                ]
+                ],
+                "type": "object"
             }
         }
     }
