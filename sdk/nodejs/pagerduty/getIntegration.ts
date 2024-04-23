@@ -9,7 +9,6 @@ import * as utilities from "../utilities";
  *
  * ## Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -18,7 +17,6 @@ import * as utilities from "../utilities";
  *     name: "PD-Integration",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Arguments
  *
@@ -61,7 +59,6 @@ export interface GetIntegrationResult {
  *
  * ## Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as signalfx from "@pulumi/signalfx";
@@ -70,7 +67,6 @@ export interface GetIntegrationResult {
  *     name: "PD-Integration",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Arguments
  *
