@@ -1774,7 +1774,7 @@
             "properties": {
                 "authMethod": {
                     "type": "string",
-                    "description": "The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or\n`signalfx_aws_token_integration` to define this\n"
+                    "description": "The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or\n`signalfx.aws.TokenIntegration` to define this\n"
                 },
                 "customCloudwatchNamespaces": {
                     "type": "array",
@@ -1808,7 +1808,7 @@
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_external_integration`. Use this property to specify the external id.\n",
+                    "description": "Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.\n",
                     "secret": true
                 },
                 "importCloudWatch": {
@@ -1821,7 +1821,7 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_token_integration`. Use this property to specify the token.\n",
+                    "description": "Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.\n",
                     "secret": true
                 },
                 "metricStatsToSyncs": {
@@ -1833,7 +1833,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the integration. Please specify the name in `signalfx_aws_external_integration` or\n`signalfx_aws_integration_token`\n"
+                    "description": "Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or\n`signalfx_aws_integration_token`\n"
                 },
                 "namedToken": {
                     "type": "string",
@@ -1859,7 +1859,7 @@
                 },
                 "roleArn": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.\n"
+                    "description": "Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.\n"
                 },
                 "services": {
                     "type": "array",
@@ -1874,7 +1874,7 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_token_integration`. Use this property to specify the token.\n"
+                    "description": "Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.\n"
                 },
                 "useMetricStreamsSync": {
                     "type": "boolean",
@@ -1923,7 +1923,7 @@
                 },
                 "externalId": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_external_integration`. Use this property to specify the external id.\n",
+                    "description": "Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.\n",
                     "secret": true
                 },
                 "importCloudWatch": {
@@ -1937,7 +1937,7 @@
                 },
                 "key": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_token_integration`. Use this property to specify the token.\n",
+                    "description": "Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.\n",
                     "secret": true
                 },
                 "metricStatsToSyncs": {
@@ -1971,7 +1971,7 @@
                 },
                 "roleArn": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.\n"
+                    "description": "Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.\n"
                 },
                 "services": {
                     "type": "array",
@@ -1986,7 +1986,7 @@
                 },
                 "token": {
                     "type": "string",
-                    "description": "Used with `signalfx_aws_token_integration`. Use this property to specify the token.\n"
+                    "description": "Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.\n"
                 },
                 "useMetricStreamsSync": {
                     "type": "boolean",
@@ -2003,7 +2003,7 @@
                 "properties": {
                     "authMethod": {
                         "type": "string",
-                        "description": "The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or\n`signalfx_aws_token_integration` to define this\n"
+                        "description": "The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or\n`signalfx.aws.TokenIntegration` to define this\n"
                     },
                     "customCloudwatchNamespaces": {
                         "type": "array",
@@ -2037,7 +2037,7 @@
                     },
                     "externalId": {
                         "type": "string",
-                        "description": "Used with `signalfx_aws_external_integration`. Use this property to specify the external id.\n",
+                        "description": "Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.\n",
                         "secret": true
                     },
                     "importCloudWatch": {
@@ -2051,7 +2051,7 @@
                     },
                     "key": {
                         "type": "string",
-                        "description": "Used with `signalfx_aws_token_integration`. Use this property to specify the token.\n",
+                        "description": "Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.\n",
                         "secret": true
                     },
                     "metricStatsToSyncs": {
@@ -2063,7 +2063,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the integration. Please specify the name in `signalfx_aws_external_integration` or\n`signalfx_aws_integration_token`\n"
+                        "description": "Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or\n`signalfx_aws_integration_token`\n"
                     },
                     "namedToken": {
                         "type": "string",
@@ -2089,7 +2089,7 @@
                     },
                     "roleArn": {
                         "type": "string",
-                        "description": "Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.\n"
+                        "description": "Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.\n"
                     },
                     "services": {
                         "type": "array",
@@ -2104,7 +2104,7 @@
                     },
                     "token": {
                         "type": "string",
-                        "description": "Used with `signalfx_aws_token_integration`. Use this property to specify the token.\n"
+                        "description": "Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.\n"
                     },
                     "useMetricStreamsSync": {
                         "type": "boolean",
