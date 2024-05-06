@@ -72,13 +72,13 @@ export class DataLink extends pulumi.CustomResource {
      */
     public readonly contextDashboardId!: pulumi.Output<string | undefined>;
     /**
-     * Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-     * `property_name`.
+     * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+     * `propertyName`.
      */
     public readonly propertyName!: pulumi.Output<string | undefined>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-     * `property_name`.
+     * `propertyName`.
      */
     public readonly propertyValue!: pulumi.Output<string | undefined>;
     /**
@@ -136,13 +136,13 @@ export interface DataLinkState {
      */
     contextDashboardId?: pulumi.Input<string>;
     /**
-     * Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-     * `property_name`.
+     * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+     * `propertyName`.
      */
     propertyName?: pulumi.Input<string>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-     * `property_name`.
+     * `propertyName`.
      */
     propertyValue?: pulumi.Input<string>;
     /**
@@ -168,13 +168,13 @@ export interface DataLinkArgs {
      */
     contextDashboardId?: pulumi.Input<string>;
     /**
-     * Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-     * `property_name`.
+     * Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+     * `propertyName`.
      */
     propertyName?: pulumi.Input<string>;
     /**
      * Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-     * `property_name`.
+     * `propertyName`.
      */
     propertyValue?: pulumi.Input<string>;
     /**

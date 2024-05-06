@@ -70,16 +70,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="signalfx:aws/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-     * `signalfx_aws_token_integration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+     * `signalfx.aws.TokenIntegration` to define this
      * 
      */
     @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
-     * @return The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-     * `signalfx_aws_token_integration` to define this
+     * @return The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+     * `signalfx.aws.TokenIntegration` to define this
      * 
      */
     public Output<String> authMethod() {
@@ -178,14 +178,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.enabled;
     }
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
-     * @return Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * @return Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      * 
      */
     public Output<Optional<String>> externalId() {
@@ -222,14 +222,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.integrationId;
     }
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     @Export(name="key", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> key;
 
     /**
-     * @return Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * @return Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     public Output<Optional<String>> key() {
@@ -256,7 +256,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metricStatsToSyncs);
     }
     /**
-     * Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+     * Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
      * `signalfx_aws_integration_token`
      * 
      */
@@ -264,7 +264,7 @@ public class Integration extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+     * @return Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
      * `signalfx_aws_integration_token`
      * 
      */
@@ -334,14 +334,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.regions;
     }
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      * 
      */
     @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
-     * @return Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * @return Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      * 
      */
     public Output<Optional<String>> roleArn() {
@@ -378,14 +378,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.syncCustomNamespacesOnly);
     }
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> token;
 
     /**
-     * @return Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * @return Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     public Output<Optional<String>> token() {

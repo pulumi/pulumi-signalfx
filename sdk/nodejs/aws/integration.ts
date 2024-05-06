@@ -81,8 +81,8 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-     * `signalfx_aws_token_integration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+     * `signalfx.aws.TokenIntegration` to define this
      */
     public /*out*/ readonly authMethod!: pulumi.Output<string>;
     /**
@@ -92,7 +92,7 @@ export class Integration extends pulumi.CustomResource {
     public readonly customCloudwatchNamespaces!: pulumi.Output<string[] | undefined>;
     /**
      * Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
-     * property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+     * property, Splunk Observability ignores values in the "customCloudwatchNamespaces" property.
      */
     public readonly customNamespaceSyncRules!: pulumi.Output<outputs.aws.IntegrationCustomNamespaceSyncRule[] | undefined>;
     /**
@@ -114,7 +114,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      */
     public readonly externalId!: pulumi.Output<string | undefined>;
     /**
@@ -127,7 +127,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly integrationId!: pulumi.Output<string>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      */
     public readonly key!: pulumi.Output<string | undefined>;
     /**
@@ -138,8 +138,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly metricStatsToSyncs!: pulumi.Output<outputs.aws.IntegrationMetricStatsToSync[] | undefined>;
     /**
-     * Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
-     * `signalfx_aws_integration_token`
+     * Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or `signalfxAwsIntegrationToken`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -162,7 +161,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly regions!: pulumi.Output<string[]>;
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
@@ -171,11 +170,11 @@ export class Integration extends pulumi.CustomResource {
     public readonly services!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
-     * `custom_namespace_sync_rule` field for details). Defaults to `false`.
+     * `customNamespaceSyncRule` field for details). Defaults to `false`.
      */
     public readonly syncCustomNamespacesOnly!: pulumi.Output<boolean | undefined>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      */
     public readonly token!: pulumi.Output<string | undefined>;
     /**
@@ -264,8 +263,8 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-     * `signalfx_aws_token_integration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+     * `signalfx.aws.TokenIntegration` to define this
      */
     authMethod?: pulumi.Input<string>;
     /**
@@ -275,7 +274,7 @@ export interface IntegrationState {
     customCloudwatchNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
-     * property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+     * property, Splunk Observability ignores values in the "customCloudwatchNamespaces" property.
      */
     customNamespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationCustomNamespaceSyncRule>[]>;
     /**
@@ -297,7 +296,7 @@ export interface IntegrationState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      */
     externalId?: pulumi.Input<string>;
     /**
@@ -310,7 +309,7 @@ export interface IntegrationState {
      */
     integrationId?: pulumi.Input<string>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      */
     key?: pulumi.Input<string>;
     /**
@@ -321,8 +320,7 @@ export interface IntegrationState {
      */
     metricStatsToSyncs?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationMetricStatsToSync>[]>;
     /**
-     * Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
-     * `signalfx_aws_integration_token`
+     * Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or `signalfxAwsIntegrationToken`
      */
     name?: pulumi.Input<string>;
     /**
@@ -345,7 +343,7 @@ export interface IntegrationState {
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      */
     roleArn?: pulumi.Input<string>;
     /**
@@ -354,11 +352,11 @@ export interface IntegrationState {
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
-     * `custom_namespace_sync_rule` field for details). Defaults to `false`.
+     * `customNamespaceSyncRule` field for details). Defaults to `false`.
      */
     syncCustomNamespacesOnly?: pulumi.Input<boolean>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      */
     token?: pulumi.Input<string>;
     /**
@@ -378,7 +376,7 @@ export interface IntegrationArgs {
     customCloudwatchNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
-     * property, Splunk Observability ignores values in the "custom_cloudwatch_namespaces" property.
+     * property, Splunk Observability ignores values in the "customCloudwatchNamespaces" property.
      */
     customNamespaceSyncRules?: pulumi.Input<pulumi.Input<inputs.aws.IntegrationCustomNamespaceSyncRule>[]>;
     /**
@@ -400,7 +398,7 @@ export interface IntegrationArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      */
     externalId?: pulumi.Input<string>;
     /**
@@ -413,7 +411,7 @@ export interface IntegrationArgs {
      */
     integrationId: pulumi.Input<string>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      */
     key?: pulumi.Input<string>;
     /**
@@ -443,7 +441,7 @@ export interface IntegrationArgs {
      */
     regions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      */
     roleArn?: pulumi.Input<string>;
     /**
@@ -452,11 +450,11 @@ export interface IntegrationArgs {
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
-     * `custom_namespace_sync_rule` field for details). Defaults to `false`.
+     * `customNamespaceSyncRule` field for details). Defaults to `false`.
      */
     syncCustomNamespacesOnly?: pulumi.Input<boolean>;
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      */
     token?: pulumi.Input<string>;
     /**

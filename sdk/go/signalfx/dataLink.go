@@ -49,11 +49,11 @@ type DataLink struct {
 
 	// The dashobard ID to which this data link will be applied
 	ContextDashboardId pulumi.StringPtrOutput `pulumi:"contextDashboardId"`
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-	// `property_name`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+	// `propertyName`.
 	PropertyName pulumi.StringPtrOutput `pulumi:"propertyName"`
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `property_name`.
+	// `propertyName`.
 	PropertyValue pulumi.StringPtrOutput `pulumi:"propertyValue"`
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayOutput `pulumi:"targetExternalUrls"`
@@ -95,11 +95,11 @@ func GetDataLink(ctx *pulumi.Context,
 type dataLinkState struct {
 	// The dashobard ID to which this data link will be applied
 	ContextDashboardId *string `pulumi:"contextDashboardId"`
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-	// `property_name`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+	// `propertyName`.
 	PropertyName *string `pulumi:"propertyName"`
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `property_name`.
+	// `propertyName`.
 	PropertyValue *string `pulumi:"propertyValue"`
 	// Link to an external URL
 	TargetExternalUrls []DataLinkTargetExternalUrl `pulumi:"targetExternalUrls"`
@@ -112,11 +112,11 @@ type dataLinkState struct {
 type DataLinkState struct {
 	// The dashobard ID to which this data link will be applied
 	ContextDashboardId pulumi.StringPtrInput
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-	// `property_name`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+	// `propertyName`.
 	PropertyName pulumi.StringPtrInput
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `property_name`.
+	// `propertyName`.
 	PropertyValue pulumi.StringPtrInput
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayInput
@@ -133,11 +133,11 @@ func (DataLinkState) ElementType() reflect.Type {
 type dataLinkArgs struct {
 	// The dashobard ID to which this data link will be applied
 	ContextDashboardId *string `pulumi:"contextDashboardId"`
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-	// `property_name`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+	// `propertyName`.
 	PropertyName *string `pulumi:"propertyName"`
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `property_name`.
+	// `propertyName`.
 	PropertyValue *string `pulumi:"propertyValue"`
 	// Link to an external URL
 	TargetExternalUrls []DataLinkTargetExternalUrl `pulumi:"targetExternalUrls"`
@@ -151,11 +151,11 @@ type dataLinkArgs struct {
 type DataLinkArgs struct {
 	// The dashobard ID to which this data link will be applied
 	ContextDashboardId pulumi.StringPtrInput
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-	// `property_name`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+	// `propertyName`.
 	PropertyName pulumi.StringPtrInput
 	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `property_name`.
+	// `propertyName`.
 	PropertyValue pulumi.StringPtrInput
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayInput
@@ -257,14 +257,14 @@ func (o DataLinkOutput) ContextDashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.ContextDashboardId }).(pulumi.StringPtrOutput)
 }
 
-// Name (key) of the metadata that's the trigger of a data link. If you specify `property_value`, you must specify
-// `property_name`.
+// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
+// `propertyName`.
 func (o DataLinkOutput) PropertyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyName }).(pulumi.StringPtrOutput)
 }
 
 // Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-// `property_name`.
+// `propertyName`.
 func (o DataLinkOutput) PropertyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyValue }).(pulumi.StringPtrOutput)
 }
