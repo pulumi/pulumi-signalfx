@@ -59,8 +59,8 @@ namespace Pulumi.SignalFx.Aws
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-        /// `signalfx_aws_token_integration` to define this
+        /// The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+        /// `signalfx.aws.TokenIntegration` to define this
         /// </summary>
         [Output("authMethod")]
         public Output<string> AuthMethod { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        /// Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
         /// </summary>
         [Output("externalId")]
         public Output<string?> ExternalId { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<string> IntegrationId { get; private set; } = null!;
 
         /// <summary>
-        /// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        /// Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
         /// </summary>
         [Output("key")]
         public Output<string?> Key { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<ImmutableArray<Outputs.IntegrationMetricStatsToSync>> MetricStatsToSyncs { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+        /// Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
         /// `signalfx_aws_integration_token`
         /// </summary>
         [Output("name")]
@@ -174,7 +174,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
-        /// Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        /// Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         /// </summary>
         [Output("roleArn")]
         public Output<string?> RoleArn { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.SignalFx.Aws
         public Output<bool?> SyncCustomNamespacesOnly { get; private set; } = null!;
 
         /// <summary>
-        /// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        /// Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
         /// </summary>
         [Output("token")]
         public Output<string?> Token { get; private set; } = null!;
@@ -311,7 +311,7 @@ namespace Pulumi.SignalFx.Aws
         private Input<string>? _externalId;
 
         /// <summary>
-        /// Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        /// Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
         /// </summary>
         public Input<string>? ExternalId
         {
@@ -340,7 +340,7 @@ namespace Pulumi.SignalFx.Aws
         private Input<string>? _key;
 
         /// <summary>
-        /// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        /// Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
         /// </summary>
         public Input<string>? Key
         {
@@ -407,7 +407,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        /// Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? SyncCustomNamespacesOnly { get; set; }
 
         /// <summary>
-        /// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        /// Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
@@ -452,8 +452,8 @@ namespace Pulumi.SignalFx.Aws
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-        /// `signalfx_aws_token_integration` to define this
+        /// The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+        /// `signalfx.aws.TokenIntegration` to define this
         /// </summary>
         [Input("authMethod")]
         public Input<string>? AuthMethod { get; set; }
@@ -514,7 +514,7 @@ namespace Pulumi.SignalFx.Aws
         private Input<string>? _externalId;
 
         /// <summary>
-        /// Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        /// Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
         /// </summary>
         public Input<string>? ExternalId
         {
@@ -543,7 +543,7 @@ namespace Pulumi.SignalFx.Aws
         private Input<string>? _key;
 
         /// <summary>
-        /// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        /// Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
         /// </summary>
         public Input<string>? Key
         {
@@ -571,7 +571,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+        /// Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
         /// `signalfx_aws_integration_token`
         /// </summary>
         [Input("name")]
@@ -617,7 +617,7 @@ namespace Pulumi.SignalFx.Aws
         }
 
         /// <summary>
-        /// Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        /// Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
@@ -642,7 +642,7 @@ namespace Pulumi.SignalFx.Aws
         public Input<bool>? SyncCustomNamespacesOnly { get; set; }
 
         /// <summary>
-        /// Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        /// Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }
