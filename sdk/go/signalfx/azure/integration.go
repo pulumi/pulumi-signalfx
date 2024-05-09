@@ -53,13 +53,13 @@ type Integration struct {
 	// Azure application ID for the Splunk Observability Cloud app.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-	// `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-	// so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+	// `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+	// for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
 	// addition to the default namespaces.
 	CustomNamespacesPerServices IntegrationCustomNamespacesPerServiceArrayOutput `pulumi:"customNamespacesPerServices"`
 	// Whether the integration is enabled or not
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+	// what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
 	// `"azure"`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
@@ -158,13 +158,13 @@ type integrationState struct {
 	// Azure application ID for the Splunk Observability Cloud app.
 	AppId *string `pulumi:"appId"`
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-	// `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-	// so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+	// `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+	// for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
 	// addition to the default namespaces.
 	CustomNamespacesPerServices []IntegrationCustomNamespacesPerService `pulumi:"customNamespacesPerServices"`
 	// Whether the integration is enabled or not
 	Enabled *bool `pulumi:"enabled"`
-	// what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+	// what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
 	// `"azure"`
 	Environment *string `pulumi:"environment"`
 	// If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
@@ -201,13 +201,13 @@ type IntegrationState struct {
 	// Azure application ID for the Splunk Observability Cloud app.
 	AppId pulumi.StringPtrInput
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-	// `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-	// so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+	// `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+	// for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
 	// addition to the default namespaces.
 	CustomNamespacesPerServices IntegrationCustomNamespacesPerServiceArrayInput
 	// Whether the integration is enabled or not
 	Enabled pulumi.BoolPtrInput
-	// what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+	// what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
 	// `"azure"`
 	Environment pulumi.StringPtrInput
 	// If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
@@ -248,13 +248,13 @@ type integrationArgs struct {
 	// Azure application ID for the Splunk Observability Cloud app.
 	AppId string `pulumi:"appId"`
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-	// `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-	// so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+	// `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+	// for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
 	// addition to the default namespaces.
 	CustomNamespacesPerServices []IntegrationCustomNamespacesPerService `pulumi:"customNamespacesPerServices"`
 	// Whether the integration is enabled or not
 	Enabled bool `pulumi:"enabled"`
-	// what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+	// what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
 	// `"azure"`
 	Environment *string `pulumi:"environment"`
 	// If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
@@ -292,13 +292,13 @@ type IntegrationArgs struct {
 	// Azure application ID for the Splunk Observability Cloud app.
 	AppId pulumi.StringInput
 	// Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-	// `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-	// so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+	// `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+	// for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
 	// addition to the default namespaces.
 	CustomNamespacesPerServices IntegrationCustomNamespacesPerServiceArrayInput
 	// Whether the integration is enabled or not
 	Enabled pulumi.BoolInput
-	// what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+	// what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
 	// `"azure"`
 	Environment pulumi.StringPtrInput
 	// If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
@@ -427,8 +427,8 @@ func (o IntegrationOutput) AppId() pulumi.StringOutput {
 }
 
 // Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-// `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-// so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+// `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+// for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
 // addition to the default namespaces.
 func (o IntegrationOutput) CustomNamespacesPerServices() IntegrationCustomNamespacesPerServiceArrayOutput {
 	return o.ApplyT(func(v *Integration) IntegrationCustomNamespacesPerServiceArrayOutput {
@@ -441,7 +441,7 @@ func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+// what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
 // `"azure"`
 func (o IntegrationOutput) Environment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)

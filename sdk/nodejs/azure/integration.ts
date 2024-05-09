@@ -77,8 +77,8 @@ export class Integration extends pulumi.CustomResource {
     public readonly appId!: pulumi.Output<string>;
     /**
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+     * `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+     * for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
      * addition to the default namespaces.
      */
     public readonly customNamespacesPerServices!: pulumi.Output<outputs.azure.IntegrationCustomNamespacesPerService[] | undefined>;
@@ -87,7 +87,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+     * what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
      * `"azure"`
      */
     public readonly environment!: pulumi.Output<string | undefined>;
@@ -223,8 +223,8 @@ export interface IntegrationState {
     appId?: pulumi.Input<string>;
     /**
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+     * `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+     * for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
      * addition to the default namespaces.
      */
     customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
@@ -233,7 +233,7 @@ export interface IntegrationState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+     * what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
      * `"azure"`
      */
     environment?: pulumi.Input<string>;
@@ -299,8 +299,8 @@ export interface IntegrationArgs {
     appId: pulumi.Input<string>;
     /**
      * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
+     * `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
+     * for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
      * addition to the default namespaces.
      */
     customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
@@ -309,7 +309,7 @@ export interface IntegrationArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * what type of Azure integration this is. The allowed values are `"azure_us_government"` and `"azure"`. Defaults to
+     * what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
      * `"azure"`
      */
     environment?: pulumi.Input<string>;
