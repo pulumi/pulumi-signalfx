@@ -22,16 +22,16 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationState Empty = new IntegrationState();
 
     /**
-     * The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-     * `signalfx_aws_token_integration` to define this
+     * The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+     * `signalfx.aws.TokenIntegration` to define this
      * 
      */
     @Import(name="authMethod")
     private @Nullable Output<String> authMethod;
 
     /**
-     * @return The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-     * `signalfx_aws_token_integration` to define this
+     * @return The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+     * `signalfx.aws.TokenIntegration` to define this
      * 
      */
     public Optional<Output<String>> authMethod() {
@@ -137,14 +137,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+     * @return Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -184,14 +184,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * @return Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     public Optional<Output<String>> key() {
@@ -220,7 +220,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+     * Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
      * `signalfx_aws_integration_token`
      * 
      */
@@ -228,7 +228,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+     * @return Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
      * `signalfx_aws_integration_token`
      * 
      */
@@ -303,14 +303,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
-     * @return Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+     * @return Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -350,14 +350,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+     * @return Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
      * 
      */
     public Optional<Output<String>> token() {
@@ -425,8 +425,8 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-         * `signalfx_aws_token_integration` to define this
+         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+         * `signalfx.aws.TokenIntegration` to define this
          * 
          * @return builder
          * 
@@ -437,8 +437,8 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-         * `signalfx_aws_token_integration` to define this
+         * @param authMethod The mechanism used to authenticate with AWS. Use one of `signalfx.aws.ExternalIntegration` or
+         * `signalfx.aws.TokenIntegration` to define this
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalId Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+         * @param externalId Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
          * 
          * @return builder
          * 
@@ -615,7 +615,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalId Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+         * @param externalId Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the external id.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+         * @param key Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+         * @param key Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+         * @param name Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
          * `signalfx_aws_integration_token`
          * 
          * @return builder
@@ -742,7 +742,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
+         * @param name Name of the integration. Please specify the name in `signalfx.aws.ExternalIntegration` or
          * `signalfx_aws_integration_token`
          * 
          * @return builder
@@ -866,7 +866,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+         * @param roleArn Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
          * 
          * @return builder
          * 
@@ -877,7 +877,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+         * @param roleArn Used with `signalfx.aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
          * 
          * @return builder
          * 
@@ -941,7 +941,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+         * @param token Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
          * 
          * @return builder
          * 
@@ -952,7 +952,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param token Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+         * @param token Used with `signalfx.aws.TokenIntegration`. Use this property to specify the token.
          * 
          * @return builder
          * 
