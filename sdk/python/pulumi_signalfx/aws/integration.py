@@ -50,10 +50,10 @@ class IntegrationArgs:
         :param pulumi.Input[bool] enable_check_large_volume: Controls how Splunk Observability checks for large amounts of data for this AWS integration. If true, Splunk
                Observability monitors the amount of data coming in from the integration.
         :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
-        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[str] external_id: Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
                Watch metrics from AWS.
-        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] key: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
                that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
                specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
@@ -64,11 +64,11 @@ class IntegrationArgs:
                in the AWS CloudWatch Integration Model "services" property. If you don't specify either property, Splunk Observability
                syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
-        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[str] role_arn: Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
                `custom_namespace_sync_rule` field for details). Defaults to `false`.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -213,7 +213,7 @@ class IntegrationArgs:
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         """
         return pulumi.get(self, "external_id")
 
@@ -238,7 +238,7 @@ class IntegrationArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        Used with `aws.TokenIntegration`. Use this property to specify the token.
         """
         return pulumi.get(self, "key")
 
@@ -304,7 +304,7 @@ class IntegrationArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -341,7 +341,7 @@ class IntegrationArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        Used with `aws.TokenIntegration`. Use this property to specify the token.
         """
         return pulumi.get(self, "token")
 
@@ -389,8 +389,8 @@ class _IntegrationState:
                  use_metric_streams_sync: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Integration resources.
-        :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-               `signalfx_aws_token_integration` to define this
+        :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
+               this
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
                Splunk Observability imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationCustomNamespaceSyncRuleArgs']]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
@@ -401,17 +401,16 @@ class _IntegrationState:
                Observability monitors the amount of data coming in from the integration.
         :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[str] external_id: Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
                Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The ID of this integration
-        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] key: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationMetricStatsToSyncArgs']]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
                that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
                specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
                statistics.
-        :param pulumi.Input[str] name: Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
-               `signalfx_aws_integration_token`
+        :param pulumi.Input[str] name: Name of the integration. Please specify the name in `aws.ExternalIntegration` or `signalfx_aws_integration_token`
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationNamespaceSyncRuleArgs']]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
                Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
@@ -419,11 +418,11 @@ class _IntegrationState:
                syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
-        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[str] role_arn: Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
                `custom_namespace_sync_rule` field for details). Defaults to `false`.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         if auth_method is not None:
@@ -475,8 +474,8 @@ class _IntegrationState:
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
         """
-        The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-        `signalfx_aws_token_integration` to define this
+        The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
+        this
         """
         return pulumi.get(self, "auth_method")
 
@@ -564,7 +563,7 @@ class _IntegrationState:
     @pulumi.getter(name="externalId")
     def external_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         """
         return pulumi.get(self, "external_id")
 
@@ -601,7 +600,7 @@ class _IntegrationState:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        Used with `aws.TokenIntegration`. Use this property to specify the token.
         """
         return pulumi.get(self, "key")
 
@@ -628,8 +627,7 @@ class _IntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
-        `signalfx_aws_integration_token`
+        Name of the integration. Please specify the name in `aws.ExternalIntegration` or `signalfx_aws_integration_token`
         """
         return pulumi.get(self, "name")
 
@@ -692,7 +690,7 @@ class _IntegrationState:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -729,7 +727,7 @@ class _IntegrationState:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        Used with `aws.TokenIntegration`. Use this property to specify the token.
         """
         return pulumi.get(self, "token")
 
@@ -834,11 +832,11 @@ class Integration(pulumi.CustomResource):
                Observability monitors the amount of data coming in from the integration.
         :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[str] external_id: Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
                Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The ID of this integration
-        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] key: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
                that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
                specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
@@ -850,11 +848,11 @@ class Integration(pulumi.CustomResource):
                syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
-        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[str] role_arn: Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
                `custom_namespace_sync_rule` field for details). Defaults to `false`.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         ...
@@ -1022,8 +1020,8 @@ class Integration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-               `signalfx_aws_token_integration` to define this
+        :param pulumi.Input[str] auth_method: The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
+               this
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_cloudwatch_namespaces: List of custom AWS CloudWatch namespaces to monitor. Custom namespaces contain custom metrics that you define in AWS;
                Splunk Observability imports the metrics so you can monitor them.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationCustomNamespaceSyncRuleArgs']]]] custom_namespace_sync_rules: Each element controls the data collected by Splunk Observability for the specified namespace. If you specify this
@@ -1034,17 +1032,16 @@ class Integration(pulumi.CustomResource):
                Observability monitors the amount of data coming in from the integration.
         :param pulumi.Input[bool] enable_logs_sync: Enables AWS logs synchronization.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] external_id: Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        :param pulumi.Input[str] external_id: Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         :param pulumi.Input[bool] import_cloud_watch: Flag that controls how Splunk Observability imports Cloud Watch metrics. If true, Splunk Observability imports Cloud
                Watch metrics from AWS.
         :param pulumi.Input[str] integration_id: The ID of this integration
-        :param pulumi.Input[str] key: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] key: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationMetricStatsToSyncArgs']]]] metric_stats_to_syncs: Each element in the array is an object that contains an AWS namespace name, AWS metric name and a list of statistics
                that Splunk Observability collects for this metric. If you specify this property, Splunk Observability retrieves only
                specified AWS statistics. If you don't specify this property, Splunk Observability retrieves the AWS standard set of
                statistics.
-        :param pulumi.Input[str] name: Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
-               `signalfx_aws_integration_token`
+        :param pulumi.Input[str] name: Name of the integration. Please specify the name in `aws.ExternalIntegration` or `signalfx_aws_integration_token`
         :param pulumi.Input[str] named_token: A named token to use for ingest
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationNamespaceSyncRuleArgs']]]] namespace_sync_rules: Each element in the array is an object that contains an AWS namespace name and a filter that controls the data that
                Splunk Observability collects for the namespace. If you specify this property, Splunk Observability ignores the values
@@ -1052,11 +1049,11 @@ class Integration(pulumi.CustomResource):
                syncs all data in all AWS namespaces.
         :param pulumi.Input[int] poll_rate: AWS poll rate (in seconds). Between `60` and `600`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of AWS regions that Splunk Observability should monitor.
-        :param pulumi.Input[str] role_arn: Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        :param pulumi.Input[str] role_arn: Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: List of AWS services that you want Splunk Observability to monitor. Each element is a string designating an AWS service.
         :param pulumi.Input[bool] sync_custom_namespaces_only: Indicates that Splunk Observability should sync metrics and metadata from custom AWS namespaces only (see the
                `custom_namespace_sync_rule` field for details). Defaults to `false`.
-        :param pulumi.Input[str] token: Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        :param pulumi.Input[str] token: Used with `aws.TokenIntegration`. Use this property to specify the token.
         :param pulumi.Input[bool] use_metric_streams_sync: Enables the use of Cloudwatch Metric Streams for metrics synchronization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1091,8 +1088,8 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[str]:
         """
-        The mechanism used to authenticate with AWS. Use one of `signalfx_aws_external_integration` or
-        `signalfx_aws_token_integration` to define this
+        The mechanism used to authenticate with AWS. Use one of `aws.ExternalIntegration` or `aws.TokenIntegration` to define
+        this
         """
         return pulumi.get(self, "auth_method")
 
@@ -1152,7 +1149,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Used with `signalfx_aws_external_integration`. Use this property to specify the external id.
+        Used with `aws.ExternalIntegration`. Use this property to specify the external id.
         """
         return pulumi.get(self, "external_id")
 
@@ -1177,7 +1174,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def key(self) -> pulumi.Output[Optional[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        Used with `aws.TokenIntegration`. Use this property to specify the token.
         """
         return pulumi.get(self, "key")
 
@@ -1196,8 +1193,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the integration. Please specify the name in `signalfx_aws_external_integration` or
-        `signalfx_aws_integration_token`
+        Name of the integration. Please specify the name in `aws.ExternalIntegration` or `signalfx_aws_integration_token`
         """
         return pulumi.get(self, "name")
 
@@ -1240,7 +1236,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        Used with `signalfx_aws_external_integration`. Use this property to specify the AIM role ARN.
+        Used with `aws.ExternalIntegration`. Use this property to specify the AIM role ARN.
         """
         return pulumi.get(self, "role_arn")
 
@@ -1265,7 +1261,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def token(self) -> pulumi.Output[Optional[str]]:
         """
-        Used with `signalfx_aws_token_integration`. Use this property to specify the token.
+        Used with `aws.TokenIntegration`. Use this property to specify the token.
         """
         return pulumi.get(self, "token")
 

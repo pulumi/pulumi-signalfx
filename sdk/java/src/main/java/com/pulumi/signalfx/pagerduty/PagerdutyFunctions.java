@@ -20,7 +20,8 @@ public final class PagerdutyFunctions {
      * ## Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -42,12 +43,13 @@ public final class PagerdutyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pdIntegration = PagerdutyFunctions.getIntegration(GetIntegrationArgs.builder()
-     *             .name(&#34;PD-Integration&#34;)
+     *             .name("PD-Integration")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
@@ -70,7 +72,8 @@ public final class PagerdutyFunctions {
      * ## Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,12 +95,13 @@ public final class PagerdutyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pdIntegration = PagerdutyFunctions.getIntegration(GetIntegrationArgs.builder()
-     *             .name(&#34;PD-Integration&#34;)
+     *             .name("PD-Integration")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
@@ -120,7 +124,8 @@ public final class PagerdutyFunctions {
      * ## Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -142,12 +147,13 @@ public final class PagerdutyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pdIntegration = PagerdutyFunctions.getIntegration(GetIntegrationArgs.builder()
-     *             .name(&#34;PD-Integration&#34;)
+     *             .name("PD-Integration")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
@@ -170,7 +176,8 @@ public final class PagerdutyFunctions {
      * ## Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -192,12 +199,13 @@ public final class PagerdutyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pdIntegration = PagerdutyFunctions.getIntegration(GetIntegrationArgs.builder()
-     *             .name(&#34;PD-Integration&#34;)
+     *             .name("PD-Integration")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Arguments
