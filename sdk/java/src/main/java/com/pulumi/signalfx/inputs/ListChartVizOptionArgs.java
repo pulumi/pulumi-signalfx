@@ -17,14 +17,14 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
     public static final ListChartVizOptionArgs Empty = new ListChartVizOptionArgs();
 
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Color to use
+     * @return The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
     public Optional<Output<String>> color() {
@@ -47,14 +47,14 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     public Output<String> label() {
@@ -62,14 +62,14 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
     /**
-     * @return An arbitrary prefix to display with the value of this plot
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<Output<String>> valuePrefix() {
@@ -92,14 +92,14 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     @Import(name="valueUnit")
     private @Nullable Output<String> valueUnit;
 
     /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     public Optional<Output<String>> valueUnit() {
@@ -136,7 +136,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param color Color to use
+         * @param color The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param color Color to use
+         * @param color The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * @param label Label used in the publish statement that displays the plot (metric time series data) you want to customize.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param label The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * @param label Label used in the publish statement that displays the plot (metric time series data) you want to customize.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valuePrefix An arbitrary prefix to display with the value of this plot
+         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valuePrefix An arbitrary prefix to display with the value of this plot
+         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ListChartVizOptionArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
     public static final TimeChartLegendOptionsFieldArgs Empty = new TimeChartLegendOptionsFieldArgs();
 
     /**
-     * (true by default) Determines if this property is displayed in the data table.
+     * True or False depending on if you want the property to be shown or hidden.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return (true by default) Determines if this property is displayed in the data table.
+     * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
     }
 
     /**
-     * The name of a property to hide or show in the data table.
+     * The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return The name of a property to hide or show in the data table.
+     * @return The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
     public Output<String> property() {
@@ -73,7 +73,7 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled (true by default) Determines if this property is displayed in the data table.
+         * @param enabled True or False depending on if you want the property to be shown or hidden.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled (true by default) Determines if this property is displayed in the data table.
+         * @param enabled True or False depending on if you want the property to be shown or hidden.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param property The name of a property to hide or show in the data table.
+         * @param property The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class TimeChartLegendOptionsFieldArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param property The name of a property to hide or show in the data table.
+         * @param property The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
          * 
          * @return builder
          * 

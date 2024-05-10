@@ -19,14 +19,14 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
     public static final DashboardFilterArgs Empty = new DashboardFilterArgs();
 
     /**
-     * If true, this filter will also match data that does not have the specified property
+     * If true, this filter will also match data that doesn&#39;t have this property at all.
      * 
      */
     @Import(name="applyIfExist")
     private @Nullable Output<Boolean> applyIfExist;
 
     /**
-     * @return If true, this filter will also match data that does not have the specified property
+     * @return If true, this filter will also match data that doesn&#39;t have this property at all.
      * 
      */
     public Optional<Output<Boolean>> applyIfExist() {
@@ -34,14 +34,14 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (false by default) Whether this filter should be a &#34;not&#34; filter
+     * Whether this filter should be a not filter. `false` by default.
      * 
      */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
     /**
-     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * @return Whether this filter should be a not filter. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> negated() {
@@ -49,14 +49,14 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     public Output<String> property() {
@@ -64,14 +64,14 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public Output<List<String>> values() {
@@ -106,7 +106,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param applyIfExist If true, this filter will also match data that does not have the specified property
+         * @param applyIfExist If true, this filter will also match data that doesn&#39;t have this property at all.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param applyIfExist If true, this filter will also match data that does not have the specified property
+         * @param applyIfExist If true, this filter will also match data that doesn&#39;t have this property at all.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param negated (false by default) Whether this filter should be a &#34;not&#34; filter
+         * @param negated Whether this filter should be a not filter. `false` by default.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param negated (false by default) Whether this filter should be a &#34;not&#34; filter
+         * @param negated Whether this filter should be a not filter. `false` by default.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class DashboardFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 

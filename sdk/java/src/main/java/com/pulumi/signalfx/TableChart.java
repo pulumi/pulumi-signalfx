@@ -23,34 +23,18 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * The following arguments are supported in the resource block:
- * 
- * * `name` - (Required) Name of the table chart.
- * * `program_text` - (Required) The SignalFlow for your Data Table Chart
- * * `description` - (Optional) Description of the table chart.
- * * `group_by` - (Optional) Dimension to group by
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the chart.
- * * `url` - The URL of the chart.
- * 
  */
 @ResourceType(type="signalfx:index/tableChart:TableChart")
 public class TableChart extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the chart (Optional)
+     * Description of the table chart.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the table chart.
      * 
      */
     public Output<Optional<String>> description() {
@@ -71,14 +55,14 @@ public class TableChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Properties to group by in the Table (in nesting order)
+     * Dimension to group by
      * 
      */
     @Export(name="groupBies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupBies;
 
     /**
-     * @return Properties to group by in the Table (in nesting order)
+     * @return Dimension to group by
      * 
      */
     public Output<Optional<List<String>>> groupBies() {
@@ -127,28 +111,28 @@ public class TableChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.minimumResolution);
     }
     /**
-     * Name of the chart
+     * Name of the table chart.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the table chart.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * The SignalFlow for your Data Table Chart
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return The SignalFlow for your Data Table Chart
      * 
      */
     public Output<String> programText() {
@@ -197,14 +181,14 @@ public class TableChart extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.unitPrefix);
     }
     /**
-     * URL of the chart
+     * The URL of the chart.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the chart
+     * @return The URL of the chart.
      * 
      */
     public Output<String> url() {

@@ -23,14 +23,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListChartArgs Empty = new ListChartArgs();
 
     /**
-     * (Metric by default) Must be &#34;Scale&#34;, &#34;Metric&#34; or &#34;Dimension&#34;
+     * Must be one of `&#34;Scale&#34;`, `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
     @Import(name="colorBy")
     private @Nullable Output<String> colorBy;
 
     /**
-     * @return (Metric by default) Must be &#34;Scale&#34;, &#34;Metric&#34; or &#34;Dimension&#34;
+     * @return Must be one of `&#34;Scale&#34;`, `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
     public Optional<Output<String>> colorBy() {
@@ -38,14 +38,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Single color range including both the color to display for that range and the borders of the range
+     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     @Import(name="colorScales")
     private @Nullable Output<List<ListChartColorScaleArgs>> colorScales;
 
     /**
-     * @return Single color range including both the color to display for that range and the borders of the range
+     * @return Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     public Optional<Output<List<ListChartColorScaleArgs>>> colorScales() {
@@ -53,14 +53,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the chart (Optional)
+     * Description of the chart.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the chart.
      * 
      */
     public Optional<Output<String>> description() {
@@ -68,14 +68,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
+     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      * 
      */
     @Import(name="disableSampling")
     private @Nullable Output<Boolean> disableSampling;
 
     /**
-     * @return (false by default) If false, samples a subset of the output MTS, which improves UI performance
+     * @return If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> disableSampling() {
@@ -83,14 +83,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch to end the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -98,14 +98,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) If `true`, missing data points in the chart would be hidden
+     * Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      * 
      */
     @Import(name="hideMissingValues")
     private @Nullable Output<Boolean> hideMissingValues;
 
     /**
-     * @return (false by default) If `true`, missing data points in the chart would be hidden
+     * @return Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> hideMissingValues() {
@@ -113,7 +113,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -124,7 +124,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> legendFieldsToHides;
 
     /**
-     * @return List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -136,14 +136,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of property and enabled flags to control the order and presence of datatable labels in a chart.
+     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
      * 
      */
     @Import(name="legendOptionsFields")
     private @Nullable Output<List<ListChartLegendOptionsFieldArgs>> legendOptionsFields;
 
     /**
-     * @return List of property and enabled flags to control the order and presence of datatable labels in a chart.
+     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
      * 
      */
     public Optional<Output<List<ListChartLegendOptionsFieldArgs>>> legendOptionsFields() {
@@ -151,14 +151,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How long (in seconds) to wait for late datapoints
+     * How long (in seconds) to wait for late datapoints.
      * 
      */
     @Import(name="maxDelay")
     private @Nullable Output<Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints
+     * @return How long (in seconds) to wait for late datapoints.
      * 
      */
     public Optional<Output<Integer>> maxDelay() {
@@ -166,14 +166,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum number of digits to display when rounding values up or down
+     * Maximum number of digits to display when rounding values up or down.
      * 
      */
     @Import(name="maxPrecision")
     private @Nullable Output<Integer> maxPrecision;
 
     /**
-     * @return Maximum number of digits to display when rounding values up or down
+     * @return Maximum number of digits to display when rounding values up or down.
      * 
      */
     public Optional<Output<Integer>> maxPrecision() {
@@ -181,14 +181,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart
+     * Name of the chart.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the chart.
      * 
      */
     public Optional<Output<String>> name() {
@@ -196,14 +196,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
      * 
      */
     public Output<String> programText() {
@@ -211,14 +211,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How often (in seconds) to refresh the values of the list
+     * How often (in seconds) to refresh the values of the list.
      * 
      */
     @Import(name="refreshInterval")
     private @Nullable Output<Integer> refreshInterval;
 
     /**
-     * @return How often (in seconds) to refresh the values of the list
+     * @return How often (in seconds) to refresh the values of the list.
      * 
      */
     public Optional<Output<Integer>> refreshInterval() {
@@ -226,14 +226,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+     * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
      * 
      */
     @Import(name="secondaryVisualization")
     private @Nullable Output<String> secondaryVisualization;
 
     /**
-     * @return (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+     * @return The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
      * 
      */
     public Optional<Output<String>> secondaryVisualization() {
@@ -241,16 +241,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property to use when sorting the elements. Use &#39;value&#39; if you want to sort by value. Must be prepended with + for
-     * ascending or - for descending (e.g. -foo)
+     * The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
      * 
      */
     @Import(name="sortBy")
     private @Nullable Output<String> sortBy;
 
     /**
-     * @return The property to use when sorting the elements. Use &#39;value&#39; if you want to sort by value. Must be prepended with + for
-     * ascending or - for descending (e.g. -foo)
+     * @return The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
      * 
      */
     public Optional<Output<String>> sortBy() {
@@ -258,14 +256,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch to start the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -273,14 +271,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -288,14 +286,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     * @return The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      * 
      */
     public Optional<Output<String>> timezone() {
@@ -303,14 +301,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
     @Import(name="unitPrefix")
     private @Nullable Output<String> unitPrefix;
 
     /**
-     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * @return Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
     public Optional<Output<String>> unitPrefix() {
@@ -318,14 +316,14 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Plot-level customization options, associated with a publish statement
+     * Plot-level customization options, associated with a publish statement.
      * 
      */
     @Import(name="vizOptions")
     private @Nullable Output<List<ListChartVizOptionArgs>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement
+     * @return Plot-level customization options, associated with a publish statement.
      * 
      */
     public Optional<Output<List<ListChartVizOptionArgs>>> vizOptions() {
@@ -376,7 +374,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorBy (Metric by default) Must be &#34;Scale&#34;, &#34;Metric&#34; or &#34;Dimension&#34;
+         * @param colorBy Must be one of `&#34;Scale&#34;`, `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
          * 
          * @return builder
          * 
@@ -387,7 +385,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorBy (Metric by default) Must be &#34;Scale&#34;, &#34;Metric&#34; or &#34;Dimension&#34;
+         * @param colorBy Must be one of `&#34;Scale&#34;`, `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
          * 
          * @return builder
          * 
@@ -397,7 +395,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -408,7 +406,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -418,7 +416,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
          * 
          * @return builder
          * 
@@ -428,7 +426,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the chart.
          * 
          * @return builder
          * 
@@ -439,7 +437,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the chart.
          * 
          * @return builder
          * 
@@ -449,7 +447,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling (false by default) If false, samples a subset of the output MTS, which improves UI performance
+         * @param disableSampling If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
          * 
          * @return builder
          * 
@@ -460,7 +458,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling (false by default) If false, samples a subset of the output MTS, which improves UI performance
+         * @param disableSampling If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
          * 
          * @return builder
          * 
@@ -470,7 +468,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -481,7 +479,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -491,7 +489,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hideMissingValues (false by default) If `true`, missing data points in the chart would be hidden
+         * @param hideMissingValues Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
          * 
          * @return builder
          * 
@@ -502,7 +500,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hideMissingValues (false by default) If `true`, missing data points in the chart would be hidden
+         * @param hideMissingValues Determines whether to hide missing data points in the chart. If `true`, missing data points in the chart would be hidden. `false` by default.
          * 
          * @return builder
          * 
@@ -512,7 +510,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
          * 
          * @return builder
          * 
@@ -527,7 +525,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
          * 
          * @return builder
          * 
@@ -541,7 +539,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
          * 
          * @return builder
          * 
@@ -555,7 +553,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property and enabled flags to control the order and presence of datatable labels in a chart.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
          * 
          * @return builder
          * 
@@ -566,7 +564,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property and enabled flags to control the order and presence of datatable labels in a chart.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
          * 
          * @return builder
          * 
@@ -576,7 +574,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property and enabled flags to control the order and presence of datatable labels in a chart.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
          * 
          * @return builder
          * 
@@ -586,7 +584,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints
+         * @param maxDelay How long (in seconds) to wait for late datapoints.
          * 
          * @return builder
          * 
@@ -597,7 +595,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints
+         * @param maxDelay How long (in seconds) to wait for late datapoints.
          * 
          * @return builder
          * 
@@ -607,7 +605,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxPrecision Maximum number of digits to display when rounding values up or down
+         * @param maxPrecision Maximum number of digits to display when rounding values up or down.
          * 
          * @return builder
          * 
@@ -618,7 +616,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxPrecision Maximum number of digits to display when rounding values up or down
+         * @param maxPrecision Maximum number of digits to display when rounding values up or down.
          * 
          * @return builder
          * 
@@ -628,7 +626,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the chart.
          * 
          * @return builder
          * 
@@ -639,7 +637,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the chart.
          * 
          * @return builder
          * 
@@ -649,7 +647,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
          * 
          * @return builder
          * 
@@ -660,7 +658,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://developers.signalfx.com/signalflow_analytics/signalflow_overview.html#_signalflow_programming_language).
          * 
          * @return builder
          * 
@@ -670,7 +668,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the values of the list
+         * @param refreshInterval How often (in seconds) to refresh the values of the list.
          * 
          * @return builder
          * 
@@ -681,7 +679,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the values of the list
+         * @param refreshInterval How often (in seconds) to refresh the values of the list.
          * 
          * @return builder
          * 
@@ -691,7 +689,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryVisualization (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+         * @param secondaryVisualization The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
          * 
          * @return builder
          * 
@@ -702,7 +700,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondaryVisualization (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+         * @param secondaryVisualization The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`Sparkline`).
          * 
          * @return builder
          * 
@@ -712,8 +710,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortBy The property to use when sorting the elements. Use &#39;value&#39; if you want to sort by value. Must be prepended with + for
-         * ascending or - for descending (e.g. -foo)
+         * @param sortBy The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
          * 
          * @return builder
          * 
@@ -724,8 +721,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sortBy The property to use when sorting the elements. Use &#39;value&#39; if you want to sort by value. Must be prepended with + for
-         * ascending or - for descending (e.g. -foo)
+         * @param sortBy The property to use when sorting the elements. Use `value` if you want to sort by value. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`). Note there are some special values for some of the options provided in the UX: `&#34;value&#34;` for Value, `&#34;sf_originatingMetric&#34;` for Metric, and `&#34;sf_metric&#34;` for plot.
          * 
          * @return builder
          * 
@@ -735,7 +731,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -746,7 +742,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -756,7 +752,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
          * 
          * @return builder
          * 
@@ -767,7 +763,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
          * 
          * @return builder
          * 
@@ -777,7 +773,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
          * 
          * @return builder
          * 
@@ -788,7 +784,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
          * 
          * @return builder
          * 
@@ -798,7 +794,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
          * 
          * @return builder
          * 
@@ -809,7 +805,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
          * 
          * @return builder
          * 
@@ -819,7 +815,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 
@@ -830,7 +826,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 
@@ -840,7 +836,7 @@ public final class ListChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 

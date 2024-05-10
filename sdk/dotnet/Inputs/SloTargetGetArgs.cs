@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.SloTargetAlertRuleGetArgs>? _alertRules;
 
         /// <summary>
-        /// SLO alert rules
+        /// List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
         /// </summary>
         public InputList<Inputs.SloTargetAlertRuleGetArgs> AlertRules
         {
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        /// Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
         /// </summary>
         [Input("compliancePeriod")]
         public Input<string>? CompliancePeriod { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<double> Slo { get; set; } = null!;
 
         /// <summary>
-        /// SLO target type can be the following type: `RollingWindow`
+        /// SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can't specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

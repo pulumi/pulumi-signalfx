@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DataLinkTargetExternalUrl {
     /**
-     * @return The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * @return The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
      * 
      */
     private @Nullable String minimumTimeWindow;
@@ -24,24 +24,24 @@ public final class DataLinkTargetExternalUrl {
      */
     private String name;
     /**
-     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     private @Nullable Map<String,String> propertyKeyMapping;
     /**
-     * @return Designates the format of minimumTimeWindow in the same data link target object.
+     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     private @Nullable String timeFormat;
     /**
-     * @return URL string for a Splunk instance or external system data link target.
+     * @return URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
      * 
      */
     private String url;
 
     private DataLinkTargetExternalUrl() {}
     /**
-     * @return The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * @return The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
      * 
      */
     public Optional<String> minimumTimeWindow() {
@@ -55,21 +55,21 @@ public final class DataLinkTargetExternalUrl {
         return this.name;
     }
     /**
-     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     public Map<String,String> propertyKeyMapping() {
         return this.propertyKeyMapping == null ? Map.of() : this.propertyKeyMapping;
     }
     /**
-     * @return Designates the format of minimumTimeWindow in the same data link target object.
+     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     public Optional<String> timeFormat() {
         return Optional.ofNullable(this.timeFormat);
     }
     /**
-     * @return URL string for a Splunk instance or external system data link target.
+     * @return URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
      * 
      */
     public String url() {

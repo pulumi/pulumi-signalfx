@@ -13,31 +13,35 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardEventOverlayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
         /// <summary>
-        /// The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+        /// Text shown in the dropdown when selecting this overlay from the menu.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+        /// Show a vertical line for the event. `false` by default.
         /// </summary>
         [Input("line")]
         public Input<bool>? Line { get; set; }
 
         /// <summary>
-        /// Search term used to define events
+        /// Search term used to choose the events shown in the overlay.
         /// </summary>
         [Input("signal", required: true)]
         public Input<string> Signal { get; set; } = null!;
 
         [Input("sources")]
         private InputList<Inputs.DashboardEventOverlaySourceArgs>? _sources;
+
+        /// <summary>
+        /// Each element specifies a filter to use against the signal specified in the `signal`.
+        /// </summary>
         public InputList<Inputs.DashboardEventOverlaySourceArgs> Sources
         {
             get => _sources ?? (_sources = new InputList<Inputs.DashboardEventOverlaySourceArgs>());
@@ -45,7 +49,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

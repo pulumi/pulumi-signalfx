@@ -17,50 +17,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MetricRulesetAggregationRule {
     /**
-     * @return The aggregator for this rule
+     * @return Aggregator object
      * 
      */
     private List<MetricRulesetAggregationRuleAggregator> aggregators;
     /**
-     * @return Status of this aggregation rule
+     * @return When false, this rule will not generate aggregated MTSs
      * 
      */
     private Boolean enabled;
     /**
-     * @return The matcher for this rule
+     * @return Matcher object
      * 
      */
     private List<MetricRulesetAggregationRuleMatcher> matchers;
     /**
-     * @return Name of this aggregation rule
+     * @return name of the aggregation rule
      * 
      */
     private @Nullable String name;
 
     private MetricRulesetAggregationRule() {}
     /**
-     * @return The aggregator for this rule
+     * @return Aggregator object
      * 
      */
     public List<MetricRulesetAggregationRuleAggregator> aggregators() {
         return this.aggregators;
     }
     /**
-     * @return Status of this aggregation rule
+     * @return When false, this rule will not generate aggregated MTSs
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return The matcher for this rule
+     * @return Matcher object
      * 
      */
     public List<MetricRulesetAggregationRuleMatcher> matchers() {
         return this.matchers;
     }
     /**
-     * @return Name of this aggregation rule
+     * @return name of the aggregation rule
      * 
      */
     public Optional<String> name() {

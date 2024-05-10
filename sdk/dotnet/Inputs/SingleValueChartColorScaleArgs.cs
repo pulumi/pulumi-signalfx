@@ -19,25 +19,25 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> Color { get; set; } = null!;
 
         /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range
+        /// Indicates the lower threshold non-inclusive value for this range.
         /// </summary>
         [Input("gt")]
         public Input<double>? Gt { get; set; }
 
         /// <summary>
-        /// Indicates the lower threshold inclusive value for this range
+        /// Indicates the lower threshold inclusive value for this range.
         /// </summary>
         [Input("gte")]
         public Input<double>? Gte { get; set; }
 
         /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range
+        /// Indicates the upper threshold non-inculsive value for this range.
         /// </summary>
         [Input("lt")]
         public Input<double>? Lt { get; set; }
 
         /// <summary>
-        /// Indicates the upper threshold inclusive value for this range
+        /// Indicates the upper threshold inclusive value for this range.
         /// </summary>
         [Input("lte")]
         public Input<double>? Lte { get; set; }

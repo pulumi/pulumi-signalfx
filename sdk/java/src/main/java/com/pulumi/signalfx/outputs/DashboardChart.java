@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardChart {
     /**
-     * @return ID of the chart to display
+     * @return ID of the chart to display.
      * 
      */
     private String chartId;
     /**
-     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     private @Nullable Integer column;
     /**
-     * @return How many rows the chart should take up. (greater than or equal to 1)
+     * @return How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     private @Nullable Integer height;
     /**
-     * @return The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+     * @return The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      * 
      */
     private @Nullable Integer row;
     /**
-     * @return How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+     * @return How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     private @Nullable Integer width;
 
     private DashboardChart() {}
     /**
-     * @return ID of the chart to display
+     * @return ID of the chart to display.
      * 
      */
     public String chartId() {
         return this.chartId;
     }
     /**
-     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     public Optional<Integer> column() {
         return Optional.ofNullable(this.column);
     }
     /**
-     * @return How many rows the chart should take up. (greater than or equal to 1)
+     * @return How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     public Optional<Integer> height() {
         return Optional.ofNullable(this.height);
     }
     /**
-     * @return The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+     * @return The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      * 
      */
     public Optional<Integer> row() {
         return Optional.ofNullable(this.row);
     }
     /**
-     * @return How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+     * @return How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Integer> width() {

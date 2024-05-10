@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TimeChartVizOption {
     /**
-     * @return The Y-axis associated with values for this plot. Must be either &#34;right&#34; or &#34;left&#34;. Defaults to &#34;left&#34;.
+     * @return Y-axis associated with values for this plot. Must be either `right` or `left`.
      * 
      */
     private @Nullable String axis;
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     private @Nullable String color;
@@ -28,17 +28,17 @@ public final class TimeChartVizOption {
      */
     private @Nullable String displayName;
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     private String label;
     /**
-     * @return (Chart plot_type by default) The visualization style to use. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;, &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
      * 
      */
     private @Nullable String plotType;
     /**
-     * @return An arbitrary prefix to display with the value of this plot
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     private @Nullable String valuePrefix;
@@ -48,21 +48,21 @@ public final class TimeChartVizOption {
      */
     private @Nullable String valueSuffix;
     /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     private @Nullable String valueUnit;
 
     private TimeChartVizOption() {}
     /**
-     * @return The Y-axis associated with values for this plot. Must be either &#34;right&#34; or &#34;left&#34;. Defaults to &#34;left&#34;.
+     * @return Y-axis associated with values for this plot. Must be either `right` or `left`.
      * 
      */
     public Optional<String> axis() {
         return Optional.ofNullable(this.axis);
     }
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     public Optional<String> color() {
@@ -76,21 +76,21 @@ public final class TimeChartVizOption {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     public String label() {
         return this.label;
     }
     /**
-     * @return (Chart plot_type by default) The visualization style to use. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;, &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+     * @return The visualization style to use. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Chart level `plot_type` by default.
      * 
      */
     public Optional<String> plotType() {
         return Optional.ofNullable(this.plotType);
     }
     /**
-     * @return An arbitrary prefix to display with the value of this plot
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<String> valuePrefix() {
@@ -104,7 +104,7 @@ public final class TimeChartVizOption {
         return Optional.ofNullable(this.valueSuffix);
     }
     /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     public Optional<String> valueUnit() {

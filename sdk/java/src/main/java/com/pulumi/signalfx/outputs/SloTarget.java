@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloTarget {
     /**
-     * @return SLO alert rules
+     * @return List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     private List<SloTargetAlertRule> alertRules;
     /**
-     * @return (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * @return Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     private @Nullable String compliancePeriod;
@@ -31,21 +31,21 @@ public final class SloTarget {
      */
     private Double slo;
     /**
-     * @return SLO target type can be the following type: `RollingWindow`
+     * @return SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private String type;
 
     private SloTarget() {}
     /**
-     * @return SLO alert rules
+     * @return List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     public List<SloTargetAlertRule> alertRules() {
         return this.alertRules;
     }
     /**
-     * @return (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * @return Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     public Optional<String> compliancePeriod() {
@@ -59,7 +59,7 @@ public final class SloTarget {
         return this.slo;
     }
     /**
-     * @return SLO target type can be the following type: `RollingWindow`
+     * @return SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public String type() {

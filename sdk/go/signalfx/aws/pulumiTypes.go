@@ -14,13 +14,13 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type IntegrationCustomNamespaceSyncRule struct {
-	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+	// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction *string `pulumi:"defaultAction"`
-	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+	// Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction *string `pulumi:"filterAction"`
-	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -36,13 +36,13 @@ type IntegrationCustomNamespaceSyncRuleInput interface {
 }
 
 type IntegrationCustomNamespaceSyncRuleArgs struct {
-	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+	// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
-	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+	// Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
-	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -97,22 +97,22 @@ func (o IntegrationCustomNamespaceSyncRuleOutput) ToIntegrationCustomNamespaceSy
 	return o
 }
 
-// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationCustomNamespaceSyncRuleOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
-// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+// Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationCustomNamespaceSyncRuleOutput) FilterAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
 }
 
-// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+// Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 func (o IntegrationCustomNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
 func (o IntegrationCustomNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationCustomNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -253,13 +253,13 @@ func (o IntegrationMetricStatsToSyncArrayOutput) Index(i pulumi.IntInput) Integr
 }
 
 type IntegrationNamespaceSyncRule struct {
-	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+	// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction *string `pulumi:"defaultAction"`
-	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+	// Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction *string `pulumi:"filterAction"`
-	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource *string `pulumi:"filterSource"`
-	// An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -275,13 +275,13 @@ type IntegrationNamespaceSyncRuleInput interface {
 }
 
 type IntegrationNamespaceSyncRuleArgs struct {
-	// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+	// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
-	// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+	// Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 	FilterAction pulumi.StringPtrInput `pulumi:"filterAction"`
-	// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+	// Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 	FilterSource pulumi.StringPtrInput `pulumi:"filterSource"`
-	// An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+	// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -336,22 +336,22 @@ func (o IntegrationNamespaceSyncRuleOutput) ToIntegrationNamespaceSyncRuleOutput
 	return o
 }
 
-// Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+// Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationNamespaceSyncRuleOutput) DefaultAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
-// Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+// Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
 func (o IntegrationNamespaceSyncRuleOutput) FilterAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterAction }).(pulumi.StringPtrOutput)
 }
 
-// Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+// Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
 func (o IntegrationNamespaceSyncRuleOutput) FilterSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) *string { return v.FilterSource }).(pulumi.StringPtrOutput)
 }
 
-// An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+// An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
 func (o IntegrationNamespaceSyncRuleOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v IntegrationNamespaceSyncRule) string { return v.Namespace }).(pulumi.StringOutput)
 }

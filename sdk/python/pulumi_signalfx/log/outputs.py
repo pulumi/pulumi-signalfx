@@ -19,7 +19,7 @@ class ViewColumn(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of the column
+        :param str name: Name of the log view.
         """
         pulumi.set(__self__, "name", name)
 
@@ -27,7 +27,7 @@ class ViewColumn(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the column
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
