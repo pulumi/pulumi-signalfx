@@ -15,37 +15,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TimeChartAxisRight {
     /**
-     * @return A line to draw as a high watermark
+     * @return A line to draw as a high watermark.
      * 
      */
     private @Nullable Double highWatermark;
     /**
-     * @return A label to attach to the high watermark line
+     * @return A label to attach to the high watermark line.
      * 
      */
     private @Nullable String highWatermarkLabel;
     /**
-     * @return Label of the right axis
+     * @return Label of the right axis.
      * 
      */
     private @Nullable String label;
     /**
-     * @return A line to draw as a low watermark
+     * @return A line to draw as a low watermark.
      * 
      */
     private @Nullable Double lowWatermark;
     /**
-     * @return A label to attach to the low watermark line
+     * @return A label to attach to the low watermark line.
      * 
      */
     private @Nullable String lowWatermarkLabel;
     /**
-     * @return The maximum value for the right axis
+     * @return The maximum value for the right axis.
      * 
      */
     private @Nullable Double maxValue;
     /**
-     * @return The minimum value for the right axis
+     * @return The minimum value for the right axis.
      * 
      */
     private @Nullable Double minValue;
@@ -53,49 +53,49 @@ public final class TimeChartAxisRight {
 
     private TimeChartAxisRight() {}
     /**
-     * @return A line to draw as a high watermark
+     * @return A line to draw as a high watermark.
      * 
      */
     public Optional<Double> highWatermark() {
         return Optional.ofNullable(this.highWatermark);
     }
     /**
-     * @return A label to attach to the high watermark line
+     * @return A label to attach to the high watermark line.
      * 
      */
     public Optional<String> highWatermarkLabel() {
         return Optional.ofNullable(this.highWatermarkLabel);
     }
     /**
-     * @return Label of the right axis
+     * @return Label of the right axis.
      * 
      */
     public Optional<String> label() {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return A line to draw as a low watermark
+     * @return A line to draw as a low watermark.
      * 
      */
     public Optional<Double> lowWatermark() {
         return Optional.ofNullable(this.lowWatermark);
     }
     /**
-     * @return A label to attach to the low watermark line
+     * @return A label to attach to the low watermark line.
      * 
      */
     public Optional<String> lowWatermarkLabel() {
         return Optional.ofNullable(this.lowWatermarkLabel);
     }
     /**
-     * @return The maximum value for the right axis
+     * @return The maximum value for the right axis.
      * 
      */
     public Optional<Double> maxValue() {
         return Optional.ofNullable(this.maxValue);
     }
     /**
-     * @return The minimum value for the right axis
+     * @return The minimum value for the right axis.
      * 
      */
     public Optional<Double> minValue() {

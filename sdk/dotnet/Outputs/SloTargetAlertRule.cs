@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SloTargetAlertRuleRule> Rules;
         /// <summary>
-        /// SLO alert rule type
+        /// Type of the SLO. Currently just: `"RequestBased"` is supported.
         /// </summary>
         public readonly string Type;
 

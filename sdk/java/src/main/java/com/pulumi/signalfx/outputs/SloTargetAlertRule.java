@@ -18,7 +18,7 @@ public final class SloTargetAlertRule {
      */
     private List<SloTargetAlertRuleRule> rules;
     /**
-     * @return SLO alert rule type
+     * @return Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     private String type;
@@ -32,7 +32,7 @@ public final class SloTargetAlertRule {
         return this.rules;
     }
     /**
-     * @return SLO alert rule type
+     * @return Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     public String type() {

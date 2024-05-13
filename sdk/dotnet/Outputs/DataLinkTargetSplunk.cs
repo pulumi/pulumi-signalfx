@@ -18,7 +18,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
 

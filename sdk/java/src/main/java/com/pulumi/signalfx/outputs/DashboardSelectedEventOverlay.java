@@ -15,30 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardSelectedEventOverlay {
     /**
-     * @return Search term used to define events
+     * @return Search term used to choose the events shown in the overlay.
      * 
      */
     private String signal;
+    /**
+     * @return Each element specifies a filter to use against the signal specified in the `signal`.
+     * 
+     */
     private @Nullable List<DashboardSelectedEventOverlaySource> sources;
     /**
-     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
     private @Nullable String type;
 
     private DashboardSelectedEventOverlay() {}
     /**
-     * @return Search term used to define events
+     * @return Search term used to choose the events shown in the overlay.
      * 
      */
     public String signal() {
         return this.signal;
     }
+    /**
+     * @return Each element specifies a filter to use against the signal specified in the `signal`.
+     * 
+     */
     public List<DashboardSelectedEventOverlaySource> sources() {
         return this.sources == null ? List.of() : this.sources;
     }
     /**
-     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
     public Optional<String> type() {

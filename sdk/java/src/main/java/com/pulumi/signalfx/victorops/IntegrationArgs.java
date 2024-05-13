@@ -18,14 +18,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationArgs Empty = new IntegrationArgs();
 
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
@@ -33,14 +33,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Optional<Output<String>> name() {
@@ -48,14 +48,14 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Opsgenie API URL for integration
+     * Splunk On-Call REST API URL.
      * 
      */
     @Import(name="postUrl")
     private @Nullable Output<String> postUrl;
 
     /**
-     * @return Opsgenie API URL for integration
+     * @return Splunk On-Call REST API URL.
      * 
      */
     public Optional<Output<String>> postUrl() {
@@ -89,7 +89,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled or not
+         * @param enabled Whether the integration is enabled.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled or not
+         * @param enabled Whether the integration is enabled.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration
+         * @param name Name of the integration.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration
+         * @param name Name of the integration.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postUrl Opsgenie API URL for integration
+         * @param postUrl Splunk On-Call REST API URL.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postUrl Opsgenie API URL for integration
+         * @param postUrl Splunk On-Call REST API URL.
          * 
          * @return builder
          * 

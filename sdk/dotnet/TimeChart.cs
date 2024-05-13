@@ -15,200 +15,138 @@ namespace Pulumi.SignalFx
     /// Time charts display data points over a period of time.
     /// 
     /// ## Example
-    /// 
-    /// ## Arguments
-    /// 
-    /// The following arguments are supported in the resource block:
-    /// 
-    /// * `name` - (Required) Name of the chart.
-    /// * `program_text` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-    /// * `plot_type` - (Optional) The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
-    /// * `description` - (Optional) Description of the chart.
-    /// * `axes_precision` - (Optional) Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
-    /// * `unit_prefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-    /// * `color_by` - (Optional) Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-    /// * `minimum_resolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
-    /// * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints.
-    /// * `timezone` - (Optional) A string denotes the geographic region associated with the time zone.
-    /// * `disable_sampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-    /// * `time_range` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
-    /// * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-    /// * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-    /// * `axes_include_zero` - (Optional) Force the chart to display zero on the y-axes, even if none of the data is near zero.
-    /// * `axis_left` - (Optional) Set of axis options.
-    ///     * `label` - (Optional) Label of the left axis.
-    ///     * `min_value` - (Optional) The minimum value for the left axis.
-    ///     * `max_value` - (Optional) The maximum value for the left axis.
-    ///     * `high_watermark` - (Optional) A line to draw as a high watermark.
-    ///     * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
-    ///     * `low_watermark`  - (Optional) A line to draw as a low watermark.
-    ///     * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
-    /// * `axis_right` - (Optional) Set of axis options.
-    ///     * `label` - (Optional) Label of the right axis.
-    ///     * `min_value` - (Optional) The minimum value for the right axis.
-    ///     * `max_value` - (Optional) The maximum value for the right axis.
-    ///     * `high_watermark` - (Optional) A line to draw as a high watermark.
-    ///     * `high_watermark_label` - (Optional) A label to attach to the high watermark line.
-    ///     * `low_watermark`  - (Optional) A line to draw as a low watermark.
-    ///     * `low_watermark_label` - (Optional) A label to attach to the low watermark line.
-    /// * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
-    ///     * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-    ///     * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-    ///     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-    ///     * `axis` - (Optional) Y-axis associated with values for this plot. Must be either `right` or `left`.
-    ///     * `plot_type` - (Optional) The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
-    ///     * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-    ///     * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-    /// * `event_options` - (Optional) Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-    ///     * `label` - (Required) Label used in the publish statement that displays the event query you want to customize.
-    ///     * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-    ///     * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-    /// * `histogram_options` - (Optional) Only used when `plot_type` is `"Histogram"`. Histogram specific options.
-    ///     * `color_theme` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-    /// * `legend_fields_to_hide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
-    /// * `legend_options_fields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
-    ///     * `property` The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-    ///     * `enabled` True or False depending on if you want the property to be shown or hidden.
-    /// * `on_chart_legend_dimension` - (Optional) Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
-    /// * `show_event_lines` - (Optional) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-    /// * `show_data_markers` - (Optional) Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-    /// * `stacked` - (Optional) Whether area and bar charts in the visualization should be stacked. `false` by default.
-    /// * `timezone` - (Optional) Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
-    /// 
-    /// ## Attributes
-    /// 
-    /// In a addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the chart.
-    /// * `url` - The URL of the chart.
     /// </summary>
     [SignalFxResourceType("signalfx:index/timeChart:TimeChart")]
     public partial class TimeChart : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Force y-axes to always show zero
+        /// Force the chart to display zero on the y-axes, even if none of the data is near zero.
         /// </summary>
         [Output("axesIncludeZero")]
         public Output<bool?> AxesIncludeZero { get; private set; } = null!;
 
         /// <summary>
-        /// Force a specific number of significant digits in the y-axis
+        /// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
         /// </summary>
         [Output("axesPrecision")]
         public Output<int?> AxesPrecision { get; private set; } = null!;
 
+        /// <summary>
+        /// Set of axis options.
+        /// </summary>
         [Output("axisLeft")]
         public Output<Outputs.TimeChartAxisLeft?> AxisLeft { get; private set; } = null!;
 
+        /// <summary>
+        /// Set of axis options.
+        /// </summary>
         [Output("axisRight")]
         public Output<Outputs.TimeChartAxisRight?> AxisRight { get; private set; } = null!;
 
         /// <summary>
-        /// (Dimension by default) Must be "Dimension" or "Metric"
+        /// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         /// </summary>
         [Output("colorBy")]
         public Output<string?> ColorBy { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the chart
+        /// Description of the chart.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         /// </summary>
         [Output("disableSampling")]
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Event display customization options, associated with a publish statement
+        /// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         /// </summary>
         [Output("eventOptions")]
         public Output<ImmutableArray<Outputs.TimeChartEventOption>> EventOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Options specific to Histogram charts
+        /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         /// </summary>
         [Output("histogramOptions")]
         public Output<ImmutableArray<Outputs.TimeChartHistogramOption>> HistogramOptions { get; private set; } = null!;
 
         /// <summary>
-        /// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         /// </summary>
         [Output("legendFieldsToHides")]
         public Output<ImmutableArray<string>> LegendFieldsToHides { get; private set; } = null!;
 
         /// <summary>
-        /// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// </summary>
         [Output("legendOptionsFields")]
         public Output<ImmutableArray<Outputs.TimeChartLegendOptionsField>> LegendOptionsFields { get; private set; } = null!;
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints
+        /// How long (in seconds) to wait for late datapoints.
         /// </summary>
         [Output("maxDelay")]
         public Output<int?> MaxDelay { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum resolution (in seconds) to use for computing the underlying program
+        /// The minimum resolution (in seconds) to use for computing the underlying program.
         /// </summary>
         [Output("minimumResolution")]
         public Output<int?> MinimumResolution { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the chart.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-        /// 'plot_label' and any dimension.
+        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         /// </summary>
         [Output("onChartLegendDimension")]
         public Output<string?> OnChartLegendDimension { get; private set; } = null!;
 
         /// <summary>
-        /// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-        /// "ColumnChart", or "Histogram"
+        /// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         /// </summary>
         [Output("plotType")]
         public Output<string?> PlotType { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
 
         /// <summary>
-        /// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        /// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         /// </summary>
         [Output("showDataMarkers")]
         public Output<bool?> ShowDataMarkers { get; private set; } = null!;
 
         /// <summary>
-        /// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         /// </summary>
         [Output("showEventLines")]
         public Output<bool?> ShowEventLines { get; private set; } = null!;
 
         /// <summary>
-        /// (false by default) Whether area and bar charts in the visualization should be stacked
+        /// Whether area and bar charts in the visualization should be stacked. `false` by default.
         /// </summary>
         [Output("stacked")]
         public Output<bool?> Stacked { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
@@ -220,31 +158,31 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
-        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
-        /// (Metric by default) Must be "Metric" or "Binary"
+        /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Output("unitPrefix")]
         public Output<string?> UnitPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// Plot-level customization options, associated with a publish statement
+        /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         [Output("vizOptions")]
         public Output<ImmutableArray<Outputs.TimeChartVizOption>> VizOptions { get; private set; } = null!;
@@ -296,43 +234,49 @@ namespace Pulumi.SignalFx
     public sealed class TimeChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Force y-axes to always show zero
+        /// Force the chart to display zero on the y-axes, even if none of the data is near zero.
         /// </summary>
         [Input("axesIncludeZero")]
         public Input<bool>? AxesIncludeZero { get; set; }
 
         /// <summary>
-        /// Force a specific number of significant digits in the y-axis
+        /// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
         /// </summary>
         [Input("axesPrecision")]
         public Input<int>? AxesPrecision { get; set; }
 
+        /// <summary>
+        /// Set of axis options.
+        /// </summary>
         [Input("axisLeft")]
         public Input<Inputs.TimeChartAxisLeftArgs>? AxisLeft { get; set; }
 
+        /// <summary>
+        /// Set of axis options.
+        /// </summary>
         [Input("axisRight")]
         public Input<Inputs.TimeChartAxisRightArgs>? AxisRight { get; set; }
 
         /// <summary>
-        /// (Dimension by default) Must be "Dimension" or "Metric"
+        /// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         /// </summary>
         [Input("colorBy")]
         public Input<string>? ColorBy { get; set; }
 
         /// <summary>
-        /// Description of the chart
+        /// Description of the chart.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -341,7 +285,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartEventOptionArgs>? _eventOptions;
 
         /// <summary>
-        /// Event display customization options, associated with a publish statement
+        /// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         /// </summary>
         public InputList<Inputs.TimeChartEventOptionArgs> EventOptions
         {
@@ -353,7 +297,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartHistogramOptionArgs>? _histogramOptions;
 
         /// <summary>
-        /// Options specific to Histogram charts
+        /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         /// </summary>
         public InputList<Inputs.TimeChartHistogramOptionArgs> HistogramOptions
         {
@@ -365,7 +309,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _legendFieldsToHides;
 
         /// <summary>
-        /// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         /// </summary>
         [Obsolete(@"Please use legend_options_fields")]
         public InputList<string> LegendFieldsToHides
@@ -378,7 +322,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartLegendOptionsFieldArgs>? _legendOptionsFields;
 
         /// <summary>
-        /// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// </summary>
         public InputList<Inputs.TimeChartLegendOptionsFieldArgs> LegendOptionsFields
         {
@@ -387,63 +331,61 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints
+        /// How long (in seconds) to wait for late datapoints.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
 
         /// <summary>
-        /// The minimum resolution (in seconds) to use for computing the underlying program
+        /// The minimum resolution (in seconds) to use for computing the underlying program.
         /// </summary>
         [Input("minimumResolution")]
         public Input<int>? MinimumResolution { get; set; }
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the chart.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-        /// 'plot_label' and any dimension.
+        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         /// </summary>
         [Input("onChartLegendDimension")]
         public Input<string>? OnChartLegendDimension { get; set; }
 
         /// <summary>
-        /// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-        /// "ColumnChart", or "Histogram"
+        /// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        /// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
 
         /// <summary>
-        /// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         /// </summary>
         [Input("showEventLines")]
         public Input<bool>? ShowEventLines { get; set; }
 
         /// <summary>
-        /// (false by default) Whether area and bar charts in the visualization should be stacked
+        /// Whether area and bar charts in the visualization should be stacked. `false` by default.
         /// </summary>
         [Input("stacked")]
         public Input<bool>? Stacked { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -462,19 +404,19 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
-        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// (Metric by default) Must be "Metric" or "Binary"
+        /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
         public Input<string>? UnitPrefix { get; set; }
@@ -483,7 +425,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartVizOptionArgs>? _vizOptions;
 
         /// <summary>
-        /// Plot-level customization options, associated with a publish statement
+        /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         public InputList<Inputs.TimeChartVizOptionArgs> VizOptions
         {
@@ -500,43 +442,49 @@ namespace Pulumi.SignalFx
     public sealed class TimeChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Force y-axes to always show zero
+        /// Force the chart to display zero on the y-axes, even if none of the data is near zero.
         /// </summary>
         [Input("axesIncludeZero")]
         public Input<bool>? AxesIncludeZero { get; set; }
 
         /// <summary>
-        /// Force a specific number of significant digits in the y-axis
+        /// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
         /// </summary>
         [Input("axesPrecision")]
         public Input<int>? AxesPrecision { get; set; }
 
+        /// <summary>
+        /// Set of axis options.
+        /// </summary>
         [Input("axisLeft")]
         public Input<Inputs.TimeChartAxisLeftGetArgs>? AxisLeft { get; set; }
 
+        /// <summary>
+        /// Set of axis options.
+        /// </summary>
         [Input("axisRight")]
         public Input<Inputs.TimeChartAxisRightGetArgs>? AxisRight { get; set; }
 
         /// <summary>
-        /// (Dimension by default) Must be "Dimension" or "Metric"
+        /// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
         /// </summary>
         [Input("colorBy")]
         public Input<string>? ColorBy { get; set; }
 
         /// <summary>
-        /// Description of the chart
+        /// Description of the chart.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -545,7 +493,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartEventOptionGetArgs>? _eventOptions;
 
         /// <summary>
-        /// Event display customization options, associated with a publish statement
+        /// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
         /// </summary>
         public InputList<Inputs.TimeChartEventOptionGetArgs> EventOptions
         {
@@ -557,7 +505,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartHistogramOptionGetArgs>? _histogramOptions;
 
         /// <summary>
-        /// Options specific to Histogram charts
+        /// Only used when `plot_type` is `"Histogram"`. Histogram specific options.
         /// </summary>
         public InputList<Inputs.TimeChartHistogramOptionGetArgs> HistogramOptions
         {
@@ -569,7 +517,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _legendFieldsToHides;
 
         /// <summary>
-        /// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+        /// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         /// </summary>
         [Obsolete(@"Please use legend_options_fields")]
         public InputList<string> LegendFieldsToHides
@@ -582,7 +530,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartLegendOptionsFieldGetArgs>? _legendOptionsFields;
 
         /// <summary>
-        /// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+        /// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
         /// </summary>
         public InputList<Inputs.TimeChartLegendOptionsFieldGetArgs> LegendOptionsFields
         {
@@ -591,63 +539,61 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints
+        /// How long (in seconds) to wait for late datapoints.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
 
         /// <summary>
-        /// The minimum resolution (in seconds) to use for computing the underlying program
+        /// The minimum resolution (in seconds) to use for computing the underlying program.
         /// </summary>
         [Input("minimumResolution")]
         public Input<int>? MinimumResolution { get; set; }
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the chart.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-        /// 'plot_label' and any dimension.
+        /// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plot_label"` and any dimension.
         /// </summary>
         [Input("onChartLegendDimension")]
         public Input<string>? OnChartLegendDimension { get; set; }
 
         /// <summary>
-        /// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-        /// "ColumnChart", or "Histogram"
+        /// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
         /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
 
         /// <summary>
-        /// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+        /// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
         /// </summary>
         [Input("showDataMarkers")]
         public Input<bool>? ShowDataMarkers { get; set; }
 
         /// <summary>
-        /// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+        /// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
         /// </summary>
         [Input("showEventLines")]
         public Input<bool>? ShowEventLines { get; set; }
 
         /// <summary>
-        /// (false by default) Whether area and bar charts in the visualization should be stacked
+        /// Whether area and bar charts in the visualization should be stacked. `false` by default.
         /// </summary>
         [Input("stacked")]
         public Input<bool>? Stacked { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -666,25 +612,25 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        /// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
-        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// (Metric by default) Must be "Metric" or "Binary"
+        /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
         public Input<string>? UnitPrefix { get; set; }
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -693,7 +639,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.TimeChartVizOptionGetArgs>? _vizOptions;
 
         /// <summary>
-        /// Plot-level customization options, associated with a publish statement
+        /// Plot-level customization options, associated with a publish statement.
         /// </summary>
         public InputList<Inputs.TimeChartVizOptionGetArgs> VizOptions
         {

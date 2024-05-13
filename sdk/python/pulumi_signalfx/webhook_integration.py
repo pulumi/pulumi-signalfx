@@ -23,10 +23,10 @@ class WebhookIntegrationArgs:
                  url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebhookIntegration resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: HTTP headers to pass in the request
-        :param pulumi.Input[str] name: Name of the integration
-        :param pulumi.Input[str] url: Webhook URL
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] url: The URL to request
         """
         pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
@@ -42,7 +42,7 @@ class WebhookIntegrationArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Whether the integration is enabled or not
+        Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -54,7 +54,7 @@ class WebhookIntegrationArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]]:
         """
-        HTTP headers to pass in the request
+        A header to send with the request
         """
         return pulumi.get(self, "headers")
 
@@ -66,7 +66,7 @@ class WebhookIntegrationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration
+        Name of the integration.
         """
         return pulumi.get(self, "name")
 
@@ -87,7 +87,7 @@ class WebhookIntegrationArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Webhook URL
+        The URL to request
         """
         return pulumi.get(self, "url")
 
@@ -106,10 +106,10 @@ class _WebhookIntegrationState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WebhookIntegration resources.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: HTTP headers to pass in the request
-        :param pulumi.Input[str] name: Name of the integration
-        :param pulumi.Input[str] url: Webhook URL
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] url: The URL to request
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -126,7 +126,7 @@ class _WebhookIntegrationState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the integration is enabled or not
+        Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -138,7 +138,7 @@ class _WebhookIntegrationState:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]]:
         """
-        HTTP headers to pass in the request
+        A header to send with the request
         """
         return pulumi.get(self, "headers")
 
@@ -150,7 +150,7 @@ class _WebhookIntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration
+        Name of the integration.
         """
         return pulumi.get(self, "name")
 
@@ -171,7 +171,7 @@ class _WebhookIntegrationState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Webhook URL
+        The URL to request
         """
         return pulumi.get(self, "url")
 
@@ -198,28 +198,12 @@ class WebhookIntegration(pulumi.CustomResource):
 
         ## Example
 
-        ## Arguments
-
-        * `name` - (Required) Name of the integration.
-        * `enabled` - (Required) Whether the integration is enabled.
-        * `url` - (Required) The URL to request
-        * `shared_secret` - (Optional)
-        * `headers` - (Optional) A header to send with the request
-          * `header_key` - (Required) The key of the header to send
-          * `header_value` - (Required) The value of the header to send
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the integration.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: HTTP headers to pass in the request
-        :param pulumi.Input[str] name: Name of the integration
-        :param pulumi.Input[str] url: Webhook URL
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] url: The URL to request
         """
         ...
     @overload
@@ -233,22 +217,6 @@ class WebhookIntegration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ## Arguments
-
-        * `name` - (Required) Name of the integration.
-        * `enabled` - (Required) Whether the integration is enabled.
-        * `url` - (Required) The URL to request
-        * `shared_secret` - (Optional)
-        * `headers` - (Optional) A header to send with the request
-          * `header_key` - (Required) The key of the header to send
-          * `header_value` - (Required) The value of the header to send
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the integration.
 
         :param str resource_name: The name of the resource.
         :param WebhookIntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -310,10 +278,10 @@ class WebhookIntegration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: HTTP headers to pass in the request
-        :param pulumi.Input[str] name: Name of the integration
-        :param pulumi.Input[str] url: Webhook URL
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
+        :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] url: The URL to request
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -330,7 +298,7 @@ class WebhookIntegration(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether the integration is enabled or not
+        Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -338,7 +306,7 @@ class WebhookIntegration(pulumi.CustomResource):
     @pulumi.getter
     def headers(self) -> pulumi.Output[Optional[Sequence['outputs.WebhookIntegrationHeader']]]:
         """
-        HTTP headers to pass in the request
+        A header to send with the request
         """
         return pulumi.get(self, "headers")
 
@@ -346,7 +314,7 @@ class WebhookIntegration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the integration
+        Name of the integration.
         """
         return pulumi.get(self, "name")
 
@@ -359,7 +327,7 @@ class WebhookIntegration(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[Optional[str]]:
         """
-        Webhook URL
+        The URL to request
         """
         return pulumi.get(self, "url")
 

@@ -20,14 +20,14 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
     public static final DashboardEventOverlayArgs Empty = new DashboardEventOverlayArgs();
 
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     public Optional<Output<String>> color() {
@@ -35,14 +35,14 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+     * Text shown in the dropdown when selecting this overlay from the menu.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+     * @return Text shown in the dropdown when selecting this overlay from the menu.
      * 
      */
     public Optional<Output<String>> label() {
@@ -50,14 +50,14 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+     * Show a vertical line for the event. `false` by default.
      * 
      */
     @Import(name="line")
     private @Nullable Output<Boolean> line;
 
     /**
-     * @return (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+     * @return Show a vertical line for the event. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> line() {
@@ -65,36 +65,44 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Search term used to define events
+     * Search term used to choose the events shown in the overlay.
      * 
      */
     @Import(name="signal", required=true)
     private Output<String> signal;
 
     /**
-     * @return Search term used to define events
+     * @return Search term used to choose the events shown in the overlay.
      * 
      */
     public Output<String> signal() {
         return this.signal;
     }
 
+    /**
+     * Each element specifies a filter to use against the signal specified in the `signal`.
+     * 
+     */
     @Import(name="sources")
     private @Nullable Output<List<DashboardEventOverlaySourceArgs>> sources;
 
+    /**
+     * @return Each element specifies a filter to use against the signal specified in the `signal`.
+     * 
+     */
     public Optional<Output<List<DashboardEventOverlaySourceArgs>>> sources() {
         return Optional.ofNullable(this.sources);
     }
 
     /**
-     * Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
     public Optional<Output<String>> type() {
@@ -131,7 +139,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param color Color to use
+         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
          * 
          * @return builder
          * 
@@ -142,7 +150,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param color Color to use
+         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
          * 
          * @return builder
          * 
@@ -152,7 +160,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param label The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+         * @param label Text shown in the dropdown when selecting this overlay from the menu.
          * 
          * @return builder
          * 
@@ -163,7 +171,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param label The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+         * @param label Text shown in the dropdown when selecting this overlay from the menu.
          * 
          * @return builder
          * 
@@ -173,7 +181,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param line (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+         * @param line Show a vertical line for the event. `false` by default.
          * 
          * @return builder
          * 
@@ -184,7 +192,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param line (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+         * @param line Show a vertical line for the event. `false` by default.
          * 
          * @return builder
          * 
@@ -194,7 +202,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param signal Search term used to define events
+         * @param signal Search term used to choose the events shown in the overlay.
          * 
          * @return builder
          * 
@@ -205,7 +213,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param signal Search term used to define events
+         * @param signal Search term used to choose the events shown in the overlay.
          * 
          * @return builder
          * 
@@ -214,21 +222,39 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
             return signal(Output.of(signal));
         }
 
+        /**
+         * @param sources Each element specifies a filter to use against the signal specified in the `signal`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sources(@Nullable Output<List<DashboardEventOverlaySourceArgs>> sources) {
             $.sources = sources;
             return this;
         }
 
+        /**
+         * @param sources Each element specifies a filter to use against the signal specified in the `signal`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sources(List<DashboardEventOverlaySourceArgs> sources) {
             return sources(Output.of(sources));
         }
 
+        /**
+         * @param sources Each element specifies a filter to use against the signal specified in the `signal`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sources(DashboardEventOverlaySourceArgs... sources) {
             return sources(List.of(sources));
         }
 
         /**
-         * @param type Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+         * @param type Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
          * 
          * @return builder
          * 
@@ -239,7 +265,7 @@ public final class DashboardEventOverlayArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+         * @param type Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
          * 
          * @return builder
          * 

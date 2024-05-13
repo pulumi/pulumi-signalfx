@@ -15,36 +15,24 @@ namespace Pulumi.SignalFx.Slack
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example
-    /// 
-    /// ## Arguments
-    /// 
-    /// * `name` - (Required) Name of the integration.
-    /// * `enabled` - (Required) Whether the integration is enabled.
-    /// * `webhook_url` - (Required) Slack incoming webhook URL.
-    /// 
-    /// ## Attributes
-    /// 
-    /// In a addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the integration.
     /// </summary>
     [SignalFxResourceType("signalfx:slack/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the integration is enabled or not
+        /// Whether the integration is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the integration
+        /// Name of the integration.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Slack Webhook URL for integration
+        /// Slack incoming webhook URL.
         /// </summary>
         [Output("webhookUrl")]
         public Output<string> WebhookUrl { get; private set; } = null!;
@@ -100,13 +88,13 @@ namespace Pulumi.SignalFx.Slack
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the integration is enabled or not
+        /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Name of the integration
+        /// Name of the integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -115,7 +103,7 @@ namespace Pulumi.SignalFx.Slack
         private Input<string>? _webhookUrl;
 
         /// <summary>
-        /// Slack Webhook URL for integration
+        /// Slack incoming webhook URL.
         /// </summary>
         public Input<string>? WebhookUrl
         {
@@ -136,13 +124,13 @@ namespace Pulumi.SignalFx.Slack
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the integration is enabled or not
+        /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the integration
+        /// Name of the integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -151,7 +139,7 @@ namespace Pulumi.SignalFx.Slack
         private Input<string>? _webhookUrl;
 
         /// <summary>
-        /// Slack Webhook URL for integration
+        /// Slack incoming webhook URL.
         /// </summary>
         public Input<string>? WebhookUrl
         {

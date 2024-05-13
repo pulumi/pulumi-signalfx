@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OrgTokenHostOrUsageLimits {
     /**
-     * @return Max number of containers that can use this token
+     * @return Max number of Docker containers that can use this token
      * 
      */
     private @Nullable Integer containerLimit;
     /**
-     * @return Notification threshold for containers
+     * @return Notification threshold for Docker containers
      * 
      */
     private @Nullable Integer containerNotificationThreshold;
@@ -32,12 +32,12 @@ public final class OrgTokenHostOrUsageLimits {
      */
     private @Nullable Integer customMetricsNotificationThreshold;
     /**
-     * @return Max number of high-res metrics that can be sent with this token
+     * @return Max number of hi-res metrics that can be sent with this toke
      * 
      */
     private @Nullable Integer highResMetricsLimit;
     /**
-     * @return Notification threshold for high-res metrics
+     * @return Notification threshold for hi-res metrics
      * 
      */
     private @Nullable Integer highResMetricsNotificationThreshold;
@@ -54,14 +54,14 @@ public final class OrgTokenHostOrUsageLimits {
 
     private OrgTokenHostOrUsageLimits() {}
     /**
-     * @return Max number of containers that can use this token
+     * @return Max number of Docker containers that can use this token
      * 
      */
     public Optional<Integer> containerLimit() {
         return Optional.ofNullable(this.containerLimit);
     }
     /**
-     * @return Notification threshold for containers
+     * @return Notification threshold for Docker containers
      * 
      */
     public Optional<Integer> containerNotificationThreshold() {
@@ -82,14 +82,14 @@ public final class OrgTokenHostOrUsageLimits {
         return Optional.ofNullable(this.customMetricsNotificationThreshold);
     }
     /**
-     * @return Max number of high-res metrics that can be sent with this token
+     * @return Max number of hi-res metrics that can be sent with this toke
      * 
      */
     public Optional<Integer> highResMetricsLimit() {
         return Optional.ofNullable(this.highResMetricsLimit);
     }
     /**
-     * @return Notification threshold for high-res metrics
+     * @return Notification threshold for hi-res metrics
      * 
      */
     public Optional<Integer> highResMetricsNotificationThreshold() {

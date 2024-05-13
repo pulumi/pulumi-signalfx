@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloInput {
     /**
-     * @return Label used in `program_text` that refers to the data block which contains the stream of successful events
+     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     private @Nullable String goodEventsLabel;
     /**
-     * @return Signalflow program text for the SLO. More info at &#34;https://dev.splunk.com/observability/docs/signalflow&#34;. We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     * @return SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
      * 
      */
     private String programText;
     /**
-     * @return Label used in `program_text` that refers to the data block which contains the stream of total events
+     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     private @Nullable String totalEventsLabel;
 
     private SloInput() {}
     /**
-     * @return Label used in `program_text` that refers to the data block which contains the stream of successful events
+     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     public Optional<String> goodEventsLabel() {
         return Optional.ofNullable(this.goodEventsLabel);
     }
     /**
-     * @return Signalflow program text for the SLO. More info at &#34;https://dev.splunk.com/observability/docs/signalflow&#34;. We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     * @return SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
      * 
      */
     public String programText() {
         return this.programText;
     }
     /**
-     * @return Label used in `program_text` that refers to the data block which contains the stream of total events
+     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     public Optional<String> totalEventsLabel() {

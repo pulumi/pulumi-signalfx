@@ -17,41 +17,20 @@ import (
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
 // ## Example
-//
-// ## Arguments
-//
-// * `name` - (Required) Name of the integration.
-// * `enabled` - (Required) Whether the integration is enabled.
-// * `username` - (Required) User name used to authenticate the ServiceNow integration.
-// * `password` - (Required) Password used to authenticate the ServiceNow integration.
-// * `instanceName` - (Required) Name of the ServiceNow instance, for example `myinst.service-now.com`.
-// * `issueType` - (Required) The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
-// * `alertTriggeredPayloadTemplate` - (Optional) A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
-// * `alertResolvedPayloadTemplate` - (Optional) A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the integration.
 type Integration struct {
 	pulumi.CustomResourceState
 
-	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-	// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertResolvedPayloadTemplate pulumi.StringPtrOutput `pulumi:"alertResolvedPayloadTemplate"`
-	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-	// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertTriggeredPayloadTemplate pulumi.StringPtrOutput `pulumi:"alertTriggeredPayloadTemplate"`
-	// Whether the integration is enabled
+	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+	// Name of the ServiceNow instance, for example `myinst.service-now.com`.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
 	IssueType pulumi.StringOutput `pulumi:"issueType"`
-	// Name of the integration
+	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password used to authenticate the ServiceNow integration.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -111,21 +90,17 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
-	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-	// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertResolvedPayloadTemplate *string `pulumi:"alertResolvedPayloadTemplate"`
-	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-	// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertTriggeredPayloadTemplate *string `pulumi:"alertTriggeredPayloadTemplate"`
-	// Whether the integration is enabled
+	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+	// Name of the ServiceNow instance, for example `myinst.service-now.com`.
 	InstanceName *string `pulumi:"instanceName"`
 	// The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
 	IssueType *string `pulumi:"issueType"`
-	// Name of the integration
+	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Password used to authenticate the ServiceNow integration.
 	Password *string `pulumi:"password"`
@@ -134,21 +109,17 @@ type integrationState struct {
 }
 
 type IntegrationState struct {
-	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-	// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertResolvedPayloadTemplate pulumi.StringPtrInput
-	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-	// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertTriggeredPayloadTemplate pulumi.StringPtrInput
-	// Whether the integration is enabled
+	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+	// Name of the ServiceNow instance, for example `myinst.service-now.com`.
 	InstanceName pulumi.StringPtrInput
 	// The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
 	IssueType pulumi.StringPtrInput
-	// Name of the integration
+	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Password used to authenticate the ServiceNow integration.
 	Password pulumi.StringPtrInput
@@ -161,21 +132,17 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
-	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-	// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertResolvedPayloadTemplate *string `pulumi:"alertResolvedPayloadTemplate"`
-	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-	// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertTriggeredPayloadTemplate *string `pulumi:"alertTriggeredPayloadTemplate"`
-	// Whether the integration is enabled
+	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+	// Name of the ServiceNow instance, for example `myinst.service-now.com`.
 	InstanceName string `pulumi:"instanceName"`
 	// The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
 	IssueType string `pulumi:"issueType"`
-	// Name of the integration
+	// Name of the integration.
 	Name *string `pulumi:"name"`
 	// Password used to authenticate the ServiceNow integration.
 	Password string `pulumi:"password"`
@@ -185,21 +152,17 @@ type integrationArgs struct {
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
-	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-	// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertResolvedPayloadTemplate pulumi.StringPtrInput
-	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-	// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-	// ServiceNow. See API reference for details.
+	// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 	AlertTriggeredPayloadTemplate pulumi.StringPtrInput
-	// Whether the integration is enabled
+	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
-	// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+	// Name of the ServiceNow instance, for example `myinst.service-now.com`.
 	InstanceName pulumi.StringInput
 	// The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
 	IssueType pulumi.StringInput
-	// Name of the integration
+	// Name of the integration.
 	Name pulumi.StringPtrInput
 	// Password used to authenticate the ServiceNow integration.
 	Password pulumi.StringInput
@@ -294,26 +257,22 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-// ServiceNow. See API reference for details.
+// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 func (o IntegrationOutput) AlertResolvedPayloadTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AlertResolvedPayloadTemplate }).(pulumi.StringPtrOutput)
 }
 
-// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-// ServiceNow. See API reference for details.
+// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
 func (o IntegrationOutput) AlertTriggeredPayloadTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringPtrOutput { return v.AlertTriggeredPayloadTemplate }).(pulumi.StringPtrOutput)
 }
 
-// Whether the integration is enabled
+// Whether the integration is enabled.
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+// Name of the ServiceNow instance, for example `myinst.service-now.com`.
 func (o IntegrationOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
@@ -323,7 +282,7 @@ func (o IntegrationOutput) IssueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.IssueType }).(pulumi.StringOutput)
 }
 
-// Name of the integration
+// Name of the integration.
 func (o IntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

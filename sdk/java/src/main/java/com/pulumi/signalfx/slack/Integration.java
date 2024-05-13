@@ -22,58 +22,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `webhook_url` - (Required) Slack incoming webhook URL.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration.
- * 
  */
 @ResourceType(type="signalfx:slack/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Slack Webhook URL for integration
+     * Slack incoming webhook URL.
      * 
      */
     @Export(name="webhookUrl", refs={String.class}, tree="[0]")
     private Output<String> webhookUrl;
 
     /**
-     * @return Slack Webhook URL for integration
+     * @return Slack incoming webhook URL.
      * 
      */
     public Output<String> webhookUrl() {

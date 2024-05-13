@@ -20,14 +20,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationState Empty = new IntegrationState();
 
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     @Import(name="customMetricTypeDomains")
     private @Nullable Output<List<String>> customMetricTypeDomains;
 
     /**
-     * @return List of additional GCP service domain names that you want to monitor
+     * @return List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     public Optional<Output<List<String>>> customMetricTypeDomains() {
@@ -35,14 +35,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -50,16 +50,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
-     * will import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     @Import(name="importGcpMetrics")
     private @Nullable Output<Boolean> importGcpMetrics;
 
     /**
-     * @return If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
-     * will import only metadata. Defaults to true.
+     * @return If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     public Optional<Output<Boolean>> importGcpMetrics() {
@@ -67,14 +65,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      * 
      */
     @Import(name="includeLists")
     private @Nullable Output<List<String>> includeLists;
 
     /**
-     * @return List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      * 
      */
     public Optional<Output<List<String>>> includeLists() {
@@ -82,14 +80,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Optional<Output<String>> name() {
@@ -97,14 +95,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
     @Import(name="namedToken")
     private @Nullable Output<String> namedToken;
 
     /**
-     * @return A named token to use for ingest
+     * @return Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
     public Optional<Output<String>> namedToken() {
@@ -112,14 +110,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GCP poll rate (in seconds). Between `60` and `600`.
+     * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
     @Import(name="pollRate")
     private @Nullable Output<Integer> pollRate;
 
     /**
-     * @return GCP poll rate (in seconds). Between `60` and `600`.
+     * @return GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
     public Optional<Output<Integer>> pollRate() {
@@ -127,14 +125,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GCP project service keys
+     * GCP projects to add.
      * 
      */
     @Import(name="projectServiceKeys")
     private @Nullable Output<List<IntegrationProjectServiceKeyArgs>> projectServiceKeys;
 
     /**
-     * @return GCP project service keys
+     * @return GCP projects to add.
      * 
      */
     public Optional<Output<List<IntegrationProjectServiceKeyArgs>>> projectServiceKeys() {
@@ -142,14 +140,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * GCP enabled services
+     * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
     /**
-     * @return GCP enabled services
+     * @return GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     public Optional<Output<List<String>>> services() {
@@ -157,20 +155,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
-     * stored. For this to work the service account provided for the project needs to be provided with
-     * serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
-     * settings are used.
+     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      * 
      */
     @Import(name="useMetricSourceProjectForQuota")
     private @Nullable Output<Boolean> useMetricSourceProjectForQuota;
 
     /**
-     * @return When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
-     * stored. For this to work the service account provided for the project needs to be provided with
-     * serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
-     * settings are used.
+     * @return When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      * 
      */
     public Optional<Output<Boolean>> useMetricSourceProjectForQuota() {
@@ -211,7 +203,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * @param customMetricTypeDomains List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
          * 
          * @return builder
          * 
@@ -222,7 +214,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * @param customMetricTypeDomains List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
          * 
          * @return builder
          * 
@@ -232,7 +224,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customMetricTypeDomains List of additional GCP service domain names that you want to monitor
+         * @param customMetricTypeDomains List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
          * 
          * @return builder
          * 
@@ -242,7 +234,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled or not
+         * @param enabled Whether the integration is enabled.
          * 
          * @return builder
          * 
@@ -253,7 +245,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled or not
+         * @param enabled Whether the integration is enabled.
          * 
          * @return builder
          * 
@@ -263,8 +255,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importGcpMetrics If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
-         * will import only metadata. Defaults to true.
+         * @param importGcpMetrics If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
          * 
          * @return builder
          * 
@@ -275,8 +266,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importGcpMetrics If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
-         * will import only metadata. Defaults to true.
+         * @param importGcpMetrics If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
          * 
          * @return builder
          * 
@@ -286,7 +276,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeLists List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+         * @param includeLists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
          * 
          * @return builder
          * 
@@ -297,7 +287,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeLists List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+         * @param includeLists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
          * 
          * @return builder
          * 
@@ -307,7 +297,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param includeLists List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+         * @param includeLists [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
          * 
          * @return builder
          * 
@@ -317,7 +307,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration
+         * @param name Name of the integration.
          * 
          * @return builder
          * 
@@ -328,7 +318,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration
+         * @param name Name of the integration.
          * 
          * @return builder
          * 
@@ -338,7 +328,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namedToken A named token to use for ingest
+         * @param namedToken Name of the org token to be used for data ingestion. If not specified then default access token is used.
          * 
          * @return builder
          * 
@@ -349,7 +339,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namedToken A named token to use for ingest
+         * @param namedToken Name of the org token to be used for data ingestion. If not specified then default access token is used.
          * 
          * @return builder
          * 
@@ -359,7 +349,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pollRate GCP poll rate (in seconds). Between `60` and `600`.
+         * @param pollRate GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
          * 
          * @return builder
          * 
@@ -370,7 +360,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pollRate GCP poll rate (in seconds). Between `60` and `600`.
+         * @param pollRate GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
          * 
          * @return builder
          * 
@@ -380,7 +370,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectServiceKeys GCP project service keys
+         * @param projectServiceKeys GCP projects to add.
          * 
          * @return builder
          * 
@@ -391,7 +381,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectServiceKeys GCP project service keys
+         * @param projectServiceKeys GCP projects to add.
          * 
          * @return builder
          * 
@@ -401,7 +391,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectServiceKeys GCP project service keys
+         * @param projectServiceKeys GCP projects to add.
          * 
          * @return builder
          * 
@@ -411,7 +401,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services GCP enabled services
+         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
          * 
@@ -422,7 +412,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services GCP enabled services
+         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
          * 
@@ -432,7 +422,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param services GCP enabled services
+         * @param services GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
          * 
          * @return builder
          * 
@@ -442,10 +432,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMetricSourceProjectForQuota When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
-         * stored. For this to work the service account provided for the project needs to be provided with
-         * serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
-         * settings are used.
+         * @param useMetricSourceProjectForQuota When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
          * 
          * @return builder
          * 
@@ -456,10 +443,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMetricSourceProjectForQuota When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
-         * stored. For this to work the service account provided for the project needs to be provided with
-         * serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
-         * settings are used.
+         * @param useMetricSourceProjectForQuota When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
          * 
          * @return builder
          * 

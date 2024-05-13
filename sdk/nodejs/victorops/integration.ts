@@ -10,18 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
- *
- * ## Arguments
- *
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `postUrl` - (Optional) Splunk On-Call REST API URL.
- *
- * ## Attributes
- *
- * In a addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the integration.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -52,15 +40,15 @@ export class Integration extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Opsgenie API URL for integration
+     * Splunk On-Call REST API URL.
      */
     public readonly postUrl!: pulumi.Output<string | undefined>;
 
@@ -99,15 +87,15 @@ export class Integration extends pulumi.CustomResource {
  */
 export interface IntegrationState {
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     /**
-     * Opsgenie API URL for integration
+     * Splunk On-Call REST API URL.
      */
     postUrl?: pulumi.Input<string>;
 }
@@ -117,15 +105,15 @@ export interface IntegrationState {
  */
 export interface IntegrationArgs {
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     /**
-     * Opsgenie API URL for integration
+     * Splunk On-Call REST API URL.
      */
     postUrl?: pulumi.Input<string>;
 }

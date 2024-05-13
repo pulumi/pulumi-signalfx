@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DataLinkTargetExternalUrl
     {
         /// <summary>
-        /// The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+        /// The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
         /// </summary>
         public readonly string? MinimumTimeWindow;
         /// <summary>
@@ -22,15 +22,15 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PropertyKeyMapping;
         /// <summary>
-        /// Designates the format of minimumTimeWindow in the same data link target object.
+        /// [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         /// </summary>
         public readonly string? TimeFormat;
         /// <summary>
-        /// URL string for a Splunk instance or external system data link target.
+        /// URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
         /// </summary>
         public readonly string Url;
 

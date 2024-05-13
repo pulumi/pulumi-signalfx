@@ -19,36 +19,44 @@ public final class DashboardSelectedEventOverlayArgs extends com.pulumi.resource
     public static final DashboardSelectedEventOverlayArgs Empty = new DashboardSelectedEventOverlayArgs();
 
     /**
-     * Search term used to define events
+     * Search term used to choose the events shown in the overlay.
      * 
      */
     @Import(name="signal", required=true)
     private Output<String> signal;
 
     /**
-     * @return Search term used to define events
+     * @return Search term used to choose the events shown in the overlay.
      * 
      */
     public Output<String> signal() {
         return this.signal;
     }
 
+    /**
+     * Each element specifies a filter to use against the signal specified in the `signal`.
+     * 
+     */
     @Import(name="sources")
     private @Nullable Output<List<DashboardSelectedEventOverlaySourceArgs>> sources;
 
+    /**
+     * @return Each element specifies a filter to use against the signal specified in the `signal`.
+     * 
+     */
     public Optional<Output<List<DashboardSelectedEventOverlaySourceArgs>>> sources() {
         return Optional.ofNullable(this.sources);
     }
 
     /**
-     * Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+     * @return Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      * 
      */
     public Optional<Output<String>> type() {
@@ -82,7 +90,7 @@ public final class DashboardSelectedEventOverlayArgs extends com.pulumi.resource
         }
 
         /**
-         * @param signal Search term used to define events
+         * @param signal Search term used to choose the events shown in the overlay.
          * 
          * @return builder
          * 
@@ -93,7 +101,7 @@ public final class DashboardSelectedEventOverlayArgs extends com.pulumi.resource
         }
 
         /**
-         * @param signal Search term used to define events
+         * @param signal Search term used to choose the events shown in the overlay.
          * 
          * @return builder
          * 
@@ -102,21 +110,39 @@ public final class DashboardSelectedEventOverlayArgs extends com.pulumi.resource
             return signal(Output.of(signal));
         }
 
+        /**
+         * @param sources Each element specifies a filter to use against the signal specified in the `signal`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sources(@Nullable Output<List<DashboardSelectedEventOverlaySourceArgs>> sources) {
             $.sources = sources;
             return this;
         }
 
+        /**
+         * @param sources Each element specifies a filter to use against the signal specified in the `signal`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sources(List<DashboardSelectedEventOverlaySourceArgs> sources) {
             return sources(Output.of(sources));
         }
 
+        /**
+         * @param sources Each element specifies a filter to use against the signal specified in the `signal`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sources(DashboardSelectedEventOverlaySourceArgs... sources) {
             return sources(List.of(sources));
         }
 
         /**
-         * @param type Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+         * @param type Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
          * 
          * @return builder
          * 
@@ -127,7 +153,7 @@ public final class DashboardSelectedEventOverlayArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type Source for this event&#39;s data. Can be &#34;eventTimeSeries&#34; (default) or &#34;detectorEvents&#34;.
+         * @param type Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
          * 
          * @return builder
          * 

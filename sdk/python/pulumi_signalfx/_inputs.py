@@ -71,9 +71,9 @@ class AlertMutingRuleFilterArgs:
                  property_value: pulumi.Input[str],
                  negated: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] property: the property to filter by
-        :param pulumi.Input[str] property_value: the value of the property to filter by
-        :param pulumi.Input[bool] negated: (false by default) whether this filter should be a "not" filter
+        :param pulumi.Input[str] property: The property to filter.
+        :param pulumi.Input[str] property_value: The property value to filter.
+        :param pulumi.Input[bool] negated: Determines if this is a "not" filter. Defaults to `false`.
         """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "property_value", property_value)
@@ -84,7 +84,7 @@ class AlertMutingRuleFilterArgs:
     @pulumi.getter(name="propertyValue")
     def property_value(self) -> pulumi.Input[str]:
         """
-        the value of the property to filter by
+        The property value to filter.
         """
         return pulumi.get(self, "property_value")
 
@@ -96,7 +96,7 @@ class AlertMutingRuleFilterArgs:
     @pulumi.getter
     def negated(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) whether this filter should be a "not" filter
+        Determines if this is a "not" filter. Defaults to `false`.
         """
         return pulumi.get(self, "negated")
 
@@ -108,7 +108,7 @@ class AlertMutingRuleFilterArgs:
     @pulumi.getter
     def property(self) -> pulumi.Input[str]:
         """
-        the property to filter by
+        The property to filter.
         """
         return pulumi.get(self, "property")
 
@@ -126,11 +126,11 @@ class DashboardChartArgs:
                  row: Optional[pulumi.Input[int]] = None,
                  width: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] chart_id: ID of the chart to display
-        :param pulumi.Input[int] column: The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
-        :param pulumi.Input[int] height: How many rows the chart should take up. (greater than or equal to 1)
-        :param pulumi.Input[int] row: The row to show the chart in (zero-based); if height > 1, this value represents the topmost row of the chart. (greater than or equal to 0)
-        :param pulumi.Input[int] width: How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+        :param pulumi.Input[str] chart_id: ID of the chart to display.
+        :param pulumi.Input[int] column: The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
+        :param pulumi.Input[int] height: How many rows the chart should take up (greater than or equal to `1`). `1` by default.
+        :param pulumi.Input[int] row: The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
+        :param pulumi.Input[int] width: How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
         """
         pulumi.set(__self__, "chart_id", chart_id)
         if column is not None:
@@ -146,7 +146,7 @@ class DashboardChartArgs:
     @pulumi.getter(name="chartId")
     def chart_id(self) -> pulumi.Input[str]:
         """
-        ID of the chart to display
+        ID of the chart to display.
         """
         return pulumi.get(self, "chart_id")
 
@@ -158,7 +158,7 @@ class DashboardChartArgs:
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[int]]:
         """
-        The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+        The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
         """
         return pulumi.get(self, "column")
 
@@ -170,7 +170,7 @@ class DashboardChartArgs:
     @pulumi.getter
     def height(self) -> Optional[pulumi.Input[int]]:
         """
-        How many rows the chart should take up. (greater than or equal to 1)
+        How many rows the chart should take up (greater than or equal to `1`). `1` by default.
         """
         return pulumi.get(self, "height")
 
@@ -182,7 +182,7 @@ class DashboardChartArgs:
     @pulumi.getter
     def row(self) -> Optional[pulumi.Input[int]]:
         """
-        The row to show the chart in (zero-based); if height > 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+        The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
         """
         return pulumi.get(self, "row")
 
@@ -194,7 +194,7 @@ class DashboardChartArgs:
     @pulumi.getter
     def width(self) -> Optional[pulumi.Input[int]]:
         """
-        How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+        How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
         """
         return pulumi.get(self, "width")
 
@@ -211,10 +211,10 @@ class DashboardColumnArgs:
                  height: Optional[pulumi.Input[int]] = None,
                  width: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] chart_ids: Charts to use for the column
-        :param pulumi.Input[int] column: The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
-        :param pulumi.Input[int] height: How many rows each chart should take up. (greater than or equal to 1)
-        :param pulumi.Input[int] width: Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] chart_ids: List of IDs of the charts to display.
+        :param pulumi.Input[int] column: Column number for the layout.
+        :param pulumi.Input[int] height: How many rows every chart should take up (greater than or equal to 1). 1 by default.
+        :param pulumi.Input[int] width: How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
         pulumi.set(__self__, "chart_ids", chart_ids)
         if column is not None:
@@ -228,7 +228,7 @@ class DashboardColumnArgs:
     @pulumi.getter(name="chartIds")
     def chart_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Charts to use for the column
+        List of IDs of the charts to display.
         """
         return pulumi.get(self, "chart_ids")
 
@@ -240,7 +240,7 @@ class DashboardColumnArgs:
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[int]]:
         """
-        The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+        Column number for the layout.
         """
         return pulumi.get(self, "column")
 
@@ -252,7 +252,7 @@ class DashboardColumnArgs:
     @pulumi.getter
     def height(self) -> Optional[pulumi.Input[int]]:
         """
-        How many rows each chart should take up. (greater than or equal to 1)
+        How many rows every chart should take up (greater than or equal to 1). 1 by default.
         """
         return pulumi.get(self, "height")
 
@@ -264,7 +264,7 @@ class DashboardColumnArgs:
     @pulumi.getter
     def width(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+        How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
         """
         return pulumi.get(self, "width")
 
@@ -283,11 +283,12 @@ class DashboardEventOverlayArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlaySourceArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] signal: Search term used to define events
-        :param pulumi.Input[str] color: Color to use
-        :param pulumi.Input[str] label: The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
-        :param pulumi.Input[bool] line: (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
-        :param pulumi.Input[str] type: Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        :param pulumi.Input[str] signal: Search term used to choose the events shown in the overlay.
+        :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
+        :param pulumi.Input[str] label: Text shown in the dropdown when selecting this overlay from the menu.
+        :param pulumi.Input[bool] line: Show a vertical line for the event. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlaySourceArgs']]] sources: Each element specifies a filter to use against the signal specified in the `signal`.
+        :param pulumi.Input[str] type: Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
         pulumi.set(__self__, "signal", signal)
         if color is not None:
@@ -305,7 +306,7 @@ class DashboardEventOverlayArgs:
     @pulumi.getter
     def signal(self) -> pulumi.Input[str]:
         """
-        Search term used to define events
+        Search term used to choose the events shown in the overlay.
         """
         return pulumi.get(self, "signal")
 
@@ -317,7 +318,7 @@ class DashboardEventOverlayArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        Color to use
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -329,7 +330,7 @@ class DashboardEventOverlayArgs:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+        Text shown in the dropdown when selecting this overlay from the menu.
         """
         return pulumi.get(self, "label")
 
@@ -341,7 +342,7 @@ class DashboardEventOverlayArgs:
     @pulumi.getter
     def line(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+        Show a vertical line for the event. `false` by default.
         """
         return pulumi.get(self, "line")
 
@@ -352,6 +353,9 @@ class DashboardEventOverlayArgs:
     @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardEventOverlaySourceArgs']]]]:
+        """
+        Each element specifies a filter to use against the signal specified in the `signal`.
+        """
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -362,7 +366,7 @@ class DashboardEventOverlayArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
         return pulumi.get(self, "type")
 
@@ -432,10 +436,10 @@ class DashboardFilterArgs:
                  apply_if_exist: Optional[pulumi.Input[bool]] = None,
                  negated: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] property: A metric time series dimension or property name
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of strings (which will be treated as an OR filter on the property)
-        :param pulumi.Input[bool] apply_if_exist: If true, this filter will also match data that does not have the specified property
-        :param pulumi.Input[bool] negated: (false by default) Whether this filter should be a "not" filter
+        :param pulumi.Input[str] property: A metric time series dimension or property name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of of strings (which will be treated as an OR filter on the property).
+        :param pulumi.Input[bool] apply_if_exist: If true, this filter will also match data that doesn't have this property at all.
+        :param pulumi.Input[bool] negated: Whether this filter should be a not filter. `false` by default.
         """
         pulumi.set(__self__, "property", property)
         pulumi.set(__self__, "values", values)
@@ -448,7 +452,7 @@ class DashboardFilterArgs:
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of strings (which will be treated as an OR filter on the property)
+        List of of strings (which will be treated as an OR filter on the property).
         """
         return pulumi.get(self, "values")
 
@@ -460,7 +464,7 @@ class DashboardFilterArgs:
     @pulumi.getter(name="applyIfExist")
     def apply_if_exist(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, this filter will also match data that does not have the specified property
+        If true, this filter will also match data that doesn't have this property at all.
         """
         return pulumi.get(self, "apply_if_exist")
 
@@ -472,7 +476,7 @@ class DashboardFilterArgs:
     @pulumi.getter
     def negated(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) Whether this filter should be a "not" filter
+        Whether this filter should be a not filter. `false` by default.
         """
         return pulumi.get(self, "negated")
 
@@ -484,7 +488,7 @@ class DashboardFilterArgs:
     @pulumi.getter
     def property(self) -> pulumi.Input[str]:
         """
-        A metric time series dimension or property name
+        A metric time series dimension or property name.
         """
         return pulumi.get(self, "property")
 
@@ -500,9 +504,9 @@ class DashboardGridArgs:
                  height: Optional[pulumi.Input[int]] = None,
                  width: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] chart_ids: Charts to use for the grid
-        :param pulumi.Input[int] height: How many rows each chart should take up. (greater than or equal to 1)
-        :param pulumi.Input[int] width: Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] chart_ids: List of IDs of the charts to display.
+        :param pulumi.Input[int] height: How many rows every chart should take up (greater than or equal to `1`). `1` by default.
+        :param pulumi.Input[int] width: How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
         """
         pulumi.set(__self__, "chart_ids", chart_ids)
         if height is not None:
@@ -514,7 +518,7 @@ class DashboardGridArgs:
     @pulumi.getter(name="chartIds")
     def chart_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Charts to use for the grid
+        List of IDs of the charts to display.
         """
         return pulumi.get(self, "chart_ids")
 
@@ -526,7 +530,7 @@ class DashboardGridArgs:
     @pulumi.getter
     def height(self) -> Optional[pulumi.Input[int]]:
         """
-        How many rows each chart should take up. (greater than or equal to 1)
+        How many rows every chart should take up (greater than or equal to `1`). `1` by default.
         """
         return pulumi.get(self, "height")
 
@@ -538,7 +542,7 @@ class DashboardGridArgs:
     @pulumi.getter
     def width(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+        How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
         """
         return pulumi.get(self, "width")
 
@@ -557,11 +561,11 @@ class DashboardGroupDashboardArgs:
                  name_override: Optional[pulumi.Input[str]] = None,
                  variable_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardVariableOverrideArgs']]]] = None):
         """
-        :param pulumi.Input[str] dashboard_id: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param pulumi.Input[str] config_id: Unique identifier of an association between a dashboard group and a dashboard
-        :param pulumi.Input[str] description_override: String that provides a description override for a mirrored dashboard
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]] filter_overrides: Filter to apply to each chart in the dashboard
-        :param pulumi.Input[str] name_override: String that provides a name override for a mirrored dashboard
+        :param pulumi.Input[str] dashboard_id: The dashboard id to mirror
+        :param pulumi.Input[str] config_id: The ID of the association between the dashboard group and the dashboard
+        :param pulumi.Input[str] description_override: The description that will override the original dashboards's description.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]] filter_overrides: The description that will override the original dashboards's description.
+        :param pulumi.Input[str] name_override: The name that will override the original dashboards's name.
         :param pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardVariableOverrideArgs']]] variable_overrides: Dashboard variable to apply to each chart in the dashboard
         """
         pulumi.set(__self__, "dashboard_id", dashboard_id)
@@ -580,7 +584,7 @@ class DashboardGroupDashboardArgs:
     @pulumi.getter(name="dashboardId")
     def dashboard_id(self) -> pulumi.Input[str]:
         """
-        The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        The dashboard id to mirror
         """
         return pulumi.get(self, "dashboard_id")
 
@@ -592,7 +596,7 @@ class DashboardGroupDashboardArgs:
     @pulumi.getter(name="configId")
     def config_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Unique identifier of an association between a dashboard group and a dashboard
+        The ID of the association between the dashboard group and the dashboard
         """
         return pulumi.get(self, "config_id")
 
@@ -604,7 +608,7 @@ class DashboardGroupDashboardArgs:
     @pulumi.getter(name="descriptionOverride")
     def description_override(self) -> Optional[pulumi.Input[str]]:
         """
-        String that provides a description override for a mirrored dashboard
+        The description that will override the original dashboards's description.
         """
         return pulumi.get(self, "description_override")
 
@@ -616,7 +620,7 @@ class DashboardGroupDashboardArgs:
     @pulumi.getter(name="filterOverrides")
     def filter_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardGroupDashboardFilterOverrideArgs']]]]:
         """
-        Filter to apply to each chart in the dashboard
+        The description that will override the original dashboards's description.
         """
         return pulumi.get(self, "filter_overrides")
 
@@ -628,7 +632,7 @@ class DashboardGroupDashboardArgs:
     @pulumi.getter(name="nameOverride")
     def name_override(self) -> Optional[pulumi.Input[str]]:
         """
-        String that provides a name override for a mirrored dashboard
+        The name that will override the original dashboards's name.
         """
         return pulumi.get(self, "name_override")
 
@@ -851,9 +855,9 @@ class DashboardGroupPermissionArgs:
                  principal_type: pulumi.Input[str],
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] principal_id: ID of the principal with access
-        :param pulumi.Input[str] principal_type: Type of principal, possible values: ORG, TEAM, USER
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Actions level, possible values: READ, WRITE
+        :param pulumi.Input[str] principal_id: ID of the user, team, or organization for which you're granting permissions.
+        :param pulumi.Input[str] principal_type: Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
         """
         pulumi.set(__self__, "principal_id", principal_id)
         pulumi.set(__self__, "principal_type", principal_type)
@@ -864,7 +868,7 @@ class DashboardGroupPermissionArgs:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> pulumi.Input[str]:
         """
-        ID of the principal with access
+        ID of the user, team, or organization for which you're granting permissions.
         """
         return pulumi.get(self, "principal_id")
 
@@ -876,7 +880,7 @@ class DashboardGroupPermissionArgs:
     @pulumi.getter(name="principalType")
     def principal_type(self) -> pulumi.Input[str]:
         """
-        Type of principal, possible values: ORG, TEAM, USER
+        Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
         """
         return pulumi.get(self, "principal_type")
 
@@ -888,7 +892,7 @@ class DashboardGroupPermissionArgs:
     @pulumi.getter
     def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Actions level, possible values: READ, WRITE
+        Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
         """
         return pulumi.get(self, "actions")
 
@@ -903,8 +907,8 @@ class DashboardPermissionsArgs:
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]] = None,
                  parent: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]] acls: The custom access control list for this dashboard
-        :param pulumi.Input[str] parent: The ID of the dashboard group that this dashboard inherits permissions from
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]] acls: List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
+        :param pulumi.Input[str] parent: ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
         """
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
@@ -915,7 +919,7 @@ class DashboardPermissionsArgs:
     @pulumi.getter
     def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPermissionsAclArgs']]]]:
         """
-        The custom access control list for this dashboard
+        List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
         """
         return pulumi.get(self, "acls")
 
@@ -927,7 +931,7 @@ class DashboardPermissionsArgs:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dashboard group that this dashboard inherits permissions from
+        ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
         """
         return pulumi.get(self, "parent")
 
@@ -996,8 +1000,9 @@ class DashboardSelectedEventOverlayArgs:
                  sources: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] signal: Search term used to define events
-        :param pulumi.Input[str] type: Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        :param pulumi.Input[str] signal: Search term used to choose the events shown in the overlay.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgs']]] sources: Each element specifies a filter to use against the signal specified in the `signal`.
+        :param pulumi.Input[str] type: Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
         pulumi.set(__self__, "signal", signal)
         if sources is not None:
@@ -1009,7 +1014,7 @@ class DashboardSelectedEventOverlayArgs:
     @pulumi.getter
     def signal(self) -> pulumi.Input[str]:
         """
-        Search term used to define events
+        Search term used to choose the events shown in the overlay.
         """
         return pulumi.get(self, "signal")
 
@@ -1020,6 +1025,9 @@ class DashboardSelectedEventOverlayArgs:
     @property
     @pulumi.getter
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardSelectedEventOverlaySourceArgs']]]]:
+        """
+        Each element specifies a filter to use against the signal specified in the `signal`.
+        """
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -1030,7 +1038,7 @@ class DashboardSelectedEventOverlayArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         """
         return pulumi.get(self, "type")
 
@@ -1105,15 +1113,15 @@ class DashboardVariableArgs:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  values_suggesteds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] alias: An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
-        :param pulumi.Input[str] property: A metric time series dimension or property name
-        :param pulumi.Input[bool] apply_if_exist: If true, this variable will also match data that does not have the specified property
-        :param pulumi.Input[str] description: Variable description
-        :param pulumi.Input[bool] replace_only: If true, this variable will only apply to charts with a filter on the named property.
-        :param pulumi.Input[bool] restricted_suggestions: If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
-        :param pulumi.Input[bool] value_required: Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of strings (which will be treated as an OR filter on the property)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+        :param pulumi.Input[str] alias: An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
+        :param pulumi.Input[str] property: A metric time series dimension or property name.
+        :param pulumi.Input[bool] apply_if_exist: If true, this variable will also match data that doesn't have this property at all.
+        :param pulumi.Input[str] description: Variable description.
+        :param pulumi.Input[bool] replace_only: If `true`, this variable will only apply to charts that have a filter for the property.
+        :param pulumi.Input[bool] restricted_suggestions: If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
+        :param pulumi.Input[bool] value_required: Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of of strings (which will be treated as an OR filter on the property).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values_suggesteds: A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         pulumi.set(__self__, "alias", alias)
         pulumi.set(__self__, "property", property)
@@ -1136,7 +1144,7 @@ class DashboardVariableArgs:
     @pulumi.getter
     def alias(self) -> pulumi.Input[str]:
         """
-        An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+        An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
         """
         return pulumi.get(self, "alias")
 
@@ -1148,7 +1156,7 @@ class DashboardVariableArgs:
     @pulumi.getter(name="applyIfExist")
     def apply_if_exist(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, this variable will also match data that does not have the specified property
+        If true, this variable will also match data that doesn't have this property at all.
         """
         return pulumi.get(self, "apply_if_exist")
 
@@ -1160,7 +1168,7 @@ class DashboardVariableArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Variable description
+        Variable description.
         """
         return pulumi.get(self, "description")
 
@@ -1172,7 +1180,7 @@ class DashboardVariableArgs:
     @pulumi.getter(name="replaceOnly")
     def replace_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, this variable will only apply to charts with a filter on the named property.
+        If `true`, this variable will only apply to charts that have a filter for the property.
         """
         return pulumi.get(self, "replace_only")
 
@@ -1184,7 +1192,7 @@ class DashboardVariableArgs:
     @pulumi.getter(name="restrictedSuggestions")
     def restricted_suggestions(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+        If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
         """
         return pulumi.get(self, "restricted_suggestions")
 
@@ -1196,7 +1204,7 @@ class DashboardVariableArgs:
     @pulumi.getter(name="valueRequired")
     def value_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+        Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
         """
         return pulumi.get(self, "value_required")
 
@@ -1208,7 +1216,7 @@ class DashboardVariableArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings (which will be treated as an OR filter on the property)
+        List of of strings (which will be treated as an OR filter on the property).
         """
         return pulumi.get(self, "values")
 
@@ -1220,7 +1228,7 @@ class DashboardVariableArgs:
     @pulumi.getter(name="valuesSuggesteds")
     def values_suggesteds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+        A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         """
         return pulumi.get(self, "values_suggesteds")
 
@@ -1232,7 +1240,7 @@ class DashboardVariableArgs:
     @pulumi.getter
     def property(self) -> pulumi.Input[str]:
         """
-        A metric time series dimension or property name
+        A metric time series dimension or property name.
         """
         return pulumi.get(self, "property")
 
@@ -1251,10 +1259,10 @@ class DataLinkTargetExternalUrlArgs:
                  time_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        :param pulumi.Input[str] url: URL string for a Splunk instance or external system data link target.
-        :param pulumi.Input[str] minimum_time_window: The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] property_key_mapping: Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
-        :param pulumi.Input[str] time_format: Designates the format of minimumTimeWindow in the same data link target object.
+        :param pulumi.Input[str] url: URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
+        :param pulumi.Input[str] minimum_time_window: The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] property_key_mapping: Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
+        :param pulumi.Input[str] time_format: [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "url", url)
@@ -1281,7 +1289,7 @@ class DataLinkTargetExternalUrlArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
-        URL string for a Splunk instance or external system data link target.
+        URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
         """
         return pulumi.get(self, "url")
 
@@ -1293,7 +1301,7 @@ class DataLinkTargetExternalUrlArgs:
     @pulumi.getter(name="minimumTimeWindow")
     def minimum_time_window(self) -> Optional[pulumi.Input[str]]:
         """
-        The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+        The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
         """
         return pulumi.get(self, "minimum_time_window")
 
@@ -1305,7 +1313,7 @@ class DataLinkTargetExternalUrlArgs:
     @pulumi.getter(name="propertyKeyMapping")
     def property_key_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
         """
         return pulumi.get(self, "property_key_mapping")
 
@@ -1317,7 +1325,7 @@ class DataLinkTargetExternalUrlArgs:
     @pulumi.getter(name="timeFormat")
     def time_format(self) -> Optional[pulumi.Input[str]]:
         """
-        Designates the format of minimumTimeWindow in the same data link target object.
+        [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
         """
         return pulumi.get(self, "time_format")
 
@@ -1337,7 +1345,7 @@ class DataLinkTargetSignalfxDashboardArgs:
         :param pulumi.Input[str] dashboard_group_id: SignalFx-assigned ID of the dashboard link target's dashboard group
         :param pulumi.Input[str] dashboard_id: SignalFx-assigned ID of the dashboard link target
         :param pulumi.Input[str] name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        :param pulumi.Input[bool] is_default: Flag that designates a target as the default for a data link object.
+        :param pulumi.Input[bool] is_default: Flag that designates a target as the default for a data link object. `true` by default
         """
         pulumi.set(__self__, "dashboard_group_id", dashboard_group_id)
         pulumi.set(__self__, "dashboard_id", dashboard_id)
@@ -1385,7 +1393,7 @@ class DataLinkTargetSignalfxDashboardArgs:
     @pulumi.getter(name="isDefault")
     def is_default(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that designates a target as the default for a data link object.
+        Flag that designates a target as the default for a data link object. `true` by default
         """
         return pulumi.get(self, "is_default")
 
@@ -1401,7 +1409,7 @@ class DataLinkTargetSplunkArgs:
                  property_key_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] property_key_mapping: Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] property_key_mapping: Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
         """
         pulumi.set(__self__, "name", name)
         if property_key_mapping is not None:
@@ -1423,7 +1431,7 @@ class DataLinkTargetSplunkArgs:
     @pulumi.getter(name="propertyKeyMapping")
     def property_key_mapping(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
         """
         return pulumi.get(self, "property_key_mapping")
 
@@ -1445,15 +1453,15 @@ class DetectorRuleArgs:
                  runbook_url: Optional[pulumi.Input[str]] = None,
                  tip: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] detect_label: A detect label which matches a detect label within the program text
-        :param pulumi.Input[str] severity: The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
-        :param pulumi.Input[str] description: Description of the rule
-        :param pulumi.Input[bool] disabled: (default: false) When true, notifications and events will not be generated for the detect label
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
-        :param pulumi.Input[str] parameterized_body: Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
-        :param pulumi.Input[str] parameterized_subject: Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
-        :param pulumi.Input[str] runbook_url: URL of page to consult when an alert is triggered
-        :param pulumi.Input[str] tip: Plain text suggested first course of action, such as a command to execute.
+        :param pulumi.Input[str] detect_label: A detect label which matches a detect label within `program_text`.
+        :param pulumi.Input[str] severity: The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
+        :param pulumi.Input[str] description: Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
+        :param pulumi.Input[bool] disabled: When true, notifications and events will not be generated for the detect label. `false` by default.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
+        :param pulumi.Input[str] parameterized_body: Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+        :param pulumi.Input[str] parameterized_subject: Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
+        :param pulumi.Input[str] runbook_url: URL of page to consult when an alert is triggered. This can be used with custom notification messages.
+        :param pulumi.Input[str] tip: Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         pulumi.set(__self__, "detect_label", detect_label)
         pulumi.set(__self__, "severity", severity)
@@ -1476,7 +1484,7 @@ class DetectorRuleArgs:
     @pulumi.getter(name="detectLabel")
     def detect_label(self) -> pulumi.Input[str]:
         """
-        A detect label which matches a detect label within the program text
+        A detect label which matches a detect label within `program_text`.
         """
         return pulumi.get(self, "detect_label")
 
@@ -1488,7 +1496,7 @@ class DetectorRuleArgs:
     @pulumi.getter
     def severity(self) -> pulumi.Input[str]:
         """
-        The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+        The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
         """
         return pulumi.get(self, "severity")
 
@@ -1500,7 +1508,7 @@ class DetectorRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the rule
+        Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         """
         return pulumi.get(self, "description")
 
@@ -1512,7 +1520,7 @@ class DetectorRuleArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (default: false) When true, notifications and events will not be generated for the detect label
+        When true, notifications and events will not be generated for the detect label. `false` by default.
         """
         return pulumi.get(self, "disabled")
 
@@ -1524,7 +1532,7 @@ class DetectorRuleArgs:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         """
         return pulumi.get(self, "notifications")
 
@@ -1536,7 +1544,7 @@ class DetectorRuleArgs:
     @pulumi.getter(name="parameterizedBody")
     def parameterized_body(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         """
         return pulumi.get(self, "parameterized_body")
 
@@ -1548,7 +1556,7 @@ class DetectorRuleArgs:
     @pulumi.getter(name="parameterizedSubject")
     def parameterized_subject(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         """
         return pulumi.get(self, "parameterized_subject")
 
@@ -1560,7 +1568,7 @@ class DetectorRuleArgs:
     @pulumi.getter(name="runbookUrl")
     def runbook_url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of page to consult when an alert is triggered
+        URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         """
         return pulumi.get(self, "runbook_url")
 
@@ -1572,7 +1580,7 @@ class DetectorRuleArgs:
     @pulumi.getter
     def tip(self) -> Optional[pulumi.Input[str]]:
         """
-        Plain text suggested first course of action, such as a command to execute.
+        Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         """
         return pulumi.get(self, "tip")
 
@@ -1591,12 +1599,16 @@ class DetectorVizOptionArgs:
                  value_suffix: Optional[pulumi.Input[str]] = None,
                  value_unit: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param pulumi.Input[str] color: Color to use
+        :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        :param pulumi.Input[str] value_prefix: An arbitrary prefix to display with the value of this plot
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+               
+               **Notes**
+               
+               Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
         :param pulumi.Input[str] value_suffix: An arbitrary suffix to display with the value of this plot
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -1614,7 +1626,7 @@ class DetectorVizOptionArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         """
         return pulumi.get(self, "label")
 
@@ -1626,7 +1638,7 @@ class DetectorVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        Color to use
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -1650,7 +1662,11 @@ class DetectorVizOptionArgs:
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary prefix to display with the value of this plot
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+
+        **Notes**
+
+        Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
         """
         return pulumi.get(self, "value_prefix")
 
@@ -1674,7 +1690,7 @@ class DetectorVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -1691,8 +1707,8 @@ class HeatmapChartColorRangeArgs:
                  min_value: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] color: The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
-        :param pulumi.Input[float] max_value: The maximum value within the coloring range
-        :param pulumi.Input[float] min_value: The minimum value within the coloring range
+        :param pulumi.Input[float] max_value: The maximum value within the coloring range.
+        :param pulumi.Input[float] min_value: The minimum value within the coloring range.
         """
         pulumi.set(__self__, "color", color)
         if max_value is not None:
@@ -1716,7 +1732,7 @@ class HeatmapChartColorRangeArgs:
     @pulumi.getter(name="maxValue")
     def max_value(self) -> Optional[pulumi.Input[float]]:
         """
-        The maximum value within the coloring range
+        The maximum value within the coloring range.
         """
         return pulumi.get(self, "max_value")
 
@@ -1728,7 +1744,7 @@ class HeatmapChartColorRangeArgs:
     @pulumi.getter(name="minValue")
     def min_value(self) -> Optional[pulumi.Input[float]]:
         """
-        The minimum value within the coloring range
+        The minimum value within the coloring range.
         """
         return pulumi.get(self, "min_value")
 
@@ -1746,11 +1762,11 @@ class HeatmapChartColorScaleArgs:
                  lt: Optional[pulumi.Input[float]] = None,
                  lte: Optional[pulumi.Input[float]] = None):
         """
-        :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-        :param pulumi.Input[float] gt: Indicates the lower threshold non-inclusive value for this range
-        :param pulumi.Input[float] gte: Indicates the lower threshold inclusive value for this range
-        :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range
-        :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range
+        :param pulumi.Input[str] color: The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        :param pulumi.Input[float] gt: Indicates the lower threshold non-inclusive value for this range.
+        :param pulumi.Input[float] gte: Indicates the lower threshold inclusive value for this range.
+        :param pulumi.Input[float] lt: Indicates the upper threshold non-inclusive value for this range.
+        :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range.
         """
         pulumi.set(__self__, "color", color)
         if gt is not None:
@@ -1766,7 +1782,7 @@ class HeatmapChartColorScaleArgs:
     @pulumi.getter
     def color(self) -> pulumi.Input[str]:
         """
-        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+        The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -1778,7 +1794,7 @@ class HeatmapChartColorScaleArgs:
     @pulumi.getter
     def gt(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the lower threshold non-inclusive value for this range
+        Indicates the lower threshold non-inclusive value for this range.
         """
         return pulumi.get(self, "gt")
 
@@ -1790,7 +1806,7 @@ class HeatmapChartColorScaleArgs:
     @pulumi.getter
     def gte(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the lower threshold inclusive value for this range
+        Indicates the lower threshold inclusive value for this range.
         """
         return pulumi.get(self, "gte")
 
@@ -1802,7 +1818,7 @@ class HeatmapChartColorScaleArgs:
     @pulumi.getter
     def lt(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the upper threshold non-inculsive value for this range
+        Indicates the upper threshold non-inclusive value for this range.
         """
         return pulumi.get(self, "lt")
 
@@ -1814,7 +1830,7 @@ class HeatmapChartColorScaleArgs:
     @pulumi.getter
     def lte(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the upper threshold inclusive value for this range
+        Indicates the upper threshold inclusive value for this range.
         """
         return pulumi.get(self, "lte")
 
@@ -1833,10 +1849,10 @@ class ListChartColorScaleArgs:
                  lte: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-        :param pulumi.Input[float] gt: Indicates the lower threshold non-inclusive value for this range
-        :param pulumi.Input[float] gte: Indicates the lower threshold inclusive value for this range
-        :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range
-        :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range
+        :param pulumi.Input[float] gt: Indicates the lower threshold non-inclusive value for this range.
+        :param pulumi.Input[float] gte: Indicates the lower threshold inclusive value for this range.
+        :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range.
+        :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range.
         """
         pulumi.set(__self__, "color", color)
         if gt is not None:
@@ -1864,7 +1880,7 @@ class ListChartColorScaleArgs:
     @pulumi.getter
     def gt(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the lower threshold non-inclusive value for this range
+        Indicates the lower threshold non-inclusive value for this range.
         """
         return pulumi.get(self, "gt")
 
@@ -1876,7 +1892,7 @@ class ListChartColorScaleArgs:
     @pulumi.getter
     def gte(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the lower threshold inclusive value for this range
+        Indicates the lower threshold inclusive value for this range.
         """
         return pulumi.get(self, "gte")
 
@@ -1888,7 +1904,7 @@ class ListChartColorScaleArgs:
     @pulumi.getter
     def lt(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the upper threshold non-inculsive value for this range
+        Indicates the upper threshold non-inculsive value for this range.
         """
         return pulumi.get(self, "lt")
 
@@ -1900,7 +1916,7 @@ class ListChartColorScaleArgs:
     @pulumi.getter
     def lte(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the upper threshold inclusive value for this range
+        Indicates the upper threshold inclusive value for this range.
         """
         return pulumi.get(self, "lte")
 
@@ -1915,8 +1931,8 @@ class ListChartLegendOptionsFieldArgs:
                  property: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] property: The name of a property to hide or show in the data table.
-        :param pulumi.Input[bool] enabled: (true by default) Determines if this property is displayed in the data table.
+        :param pulumi.Input[str] property: The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
+        :param pulumi.Input[bool] enabled: True or False depending on if you want the property to be shown or hidden.
         """
         pulumi.set(__self__, "property", property)
         if enabled is not None:
@@ -1926,7 +1942,7 @@ class ListChartLegendOptionsFieldArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (true by default) Determines if this property is displayed in the data table.
+        True or False depending on if you want the property to be shown or hidden.
         """
         return pulumi.get(self, "enabled")
 
@@ -1938,7 +1954,7 @@ class ListChartLegendOptionsFieldArgs:
     @pulumi.getter
     def property(self) -> pulumi.Input[str]:
         """
-        The name of a property to hide or show in the data table.
+        The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
         """
         return pulumi.get(self, "property")
 
@@ -1957,12 +1973,12 @@ class ListChartVizOptionArgs:
                  value_suffix: Optional[pulumi.Input[str]] = None,
                  value_unit: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param pulumi.Input[str] color: Color to use
+        :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        :param pulumi.Input[str] value_prefix: An arbitrary prefix to display with the value of this plot
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_suffix: An arbitrary suffix to display with the value of this plot
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -1980,7 +1996,7 @@ class ListChartVizOptionArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         """
         return pulumi.get(self, "label")
 
@@ -1992,7 +2008,7 @@ class ListChartVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        Color to use
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -2016,7 +2032,7 @@ class ListChartVizOptionArgs:
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary prefix to display with the value of this plot
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         return pulumi.get(self, "value_prefix")
 
@@ -2040,7 +2056,7 @@ class ListChartVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -2057,10 +2073,10 @@ class MetricRulesetAggregationRuleArgs:
                  matchers: pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]],
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]] aggregators: The aggregator for this rule
-        :param pulumi.Input[bool] enabled: Status of this aggregation rule
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]] matchers: The matcher for this rule
-        :param pulumi.Input[str] name: Name of this aggregation rule
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]] aggregators: Aggregator object
+        :param pulumi.Input[bool] enabled: When false, this rule will not generate aggregated MTSs
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]] matchers: Matcher object
+        :param pulumi.Input[str] name: name of the aggregation rule
         """
         pulumi.set(__self__, "aggregators", aggregators)
         pulumi.set(__self__, "enabled", enabled)
@@ -2072,7 +2088,7 @@ class MetricRulesetAggregationRuleArgs:
     @pulumi.getter
     def aggregators(self) -> pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleAggregatorArgs']]]:
         """
-        The aggregator for this rule
+        Aggregator object
         """
         return pulumi.get(self, "aggregators")
 
@@ -2084,7 +2100,7 @@ class MetricRulesetAggregationRuleArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Status of this aggregation rule
+        When false, this rule will not generate aggregated MTSs
         """
         return pulumi.get(self, "enabled")
 
@@ -2096,7 +2112,7 @@ class MetricRulesetAggregationRuleArgs:
     @pulumi.getter
     def matchers(self) -> pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleMatcherArgs']]]:
         """
-        The matcher for this rule
+        Matcher object
         """
         return pulumi.get(self, "matchers")
 
@@ -2108,7 +2124,7 @@ class MetricRulesetAggregationRuleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of this aggregation rule
+        name of the aggregation rule
         """
         return pulumi.get(self, "name")
 
@@ -2279,7 +2295,7 @@ class MetricRulesetRoutingRuleArgs:
     def __init__(__self__, *,
                  destination: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] destination: Destination to send the input metric
+        :param pulumi.Input[str] destination: end destination of the input metric. Must be `RealTime` or `Drop`
         """
         pulumi.set(__self__, "destination", destination)
 
@@ -2287,7 +2303,7 @@ class MetricRulesetRoutingRuleArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        Destination to send the input metric
+        end destination of the input metric. Must be `RealTime` or `Drop`
         """
         return pulumi.get(self, "destination")
 
@@ -2346,12 +2362,12 @@ class OrgTokenHostOrUsageLimitsArgs:
                  host_limit: Optional[pulumi.Input[int]] = None,
                  host_notification_threshold: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] container_limit: Max number of containers that can use this token
-        :param pulumi.Input[int] container_notification_threshold: Notification threshold for containers
+        :param pulumi.Input[int] container_limit: Max number of Docker containers that can use this token
+        :param pulumi.Input[int] container_notification_threshold: Notification threshold for Docker containers
         :param pulumi.Input[int] custom_metrics_limit: Max number of custom metrics that can be sent with this token
         :param pulumi.Input[int] custom_metrics_notification_threshold: Notification threshold for custom metrics
-        :param pulumi.Input[int] high_res_metrics_limit: Max number of high-res metrics that can be sent with this token
-        :param pulumi.Input[int] high_res_metrics_notification_threshold: Notification threshold for high-res metrics
+        :param pulumi.Input[int] high_res_metrics_limit: Max number of hi-res metrics that can be sent with this toke
+        :param pulumi.Input[int] high_res_metrics_notification_threshold: Notification threshold for hi-res metrics
         :param pulumi.Input[int] host_limit: Max number of hosts that can use this token
         :param pulumi.Input[int] host_notification_threshold: Notification threshold for hosts
         """
@@ -2376,7 +2392,7 @@ class OrgTokenHostOrUsageLimitsArgs:
     @pulumi.getter(name="containerLimit")
     def container_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of containers that can use this token
+        Max number of Docker containers that can use this token
         """
         return pulumi.get(self, "container_limit")
 
@@ -2388,7 +2404,7 @@ class OrgTokenHostOrUsageLimitsArgs:
     @pulumi.getter(name="containerNotificationThreshold")
     def container_notification_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Notification threshold for containers
+        Notification threshold for Docker containers
         """
         return pulumi.get(self, "container_notification_threshold")
 
@@ -2424,7 +2440,7 @@ class OrgTokenHostOrUsageLimitsArgs:
     @pulumi.getter(name="highResMetricsLimit")
     def high_res_metrics_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        Max number of high-res metrics that can be sent with this token
+        Max number of hi-res metrics that can be sent with this toke
         """
         return pulumi.get(self, "high_res_metrics_limit")
 
@@ -2436,7 +2452,7 @@ class OrgTokenHostOrUsageLimitsArgs:
     @pulumi.getter(name="highResMetricsNotificationThreshold")
     def high_res_metrics_notification_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        Notification threshold for high-res metrics
+        Notification threshold for hi-res metrics
         """
         return pulumi.get(self, "high_res_metrics_notification_threshold")
 
@@ -2479,10 +2495,10 @@ class SingleValueChartColorScaleArgs:
                  lte: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-        :param pulumi.Input[float] gt: Indicates the lower threshold non-inclusive value for this range
-        :param pulumi.Input[float] gte: Indicates the lower threshold inclusive value for this range
-        :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range
-        :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range
+        :param pulumi.Input[float] gt: Indicates the lower threshold non-inclusive value for this range.
+        :param pulumi.Input[float] gte: Indicates the lower threshold inclusive value for this range.
+        :param pulumi.Input[float] lt: Indicates the upper threshold non-inculsive value for this range.
+        :param pulumi.Input[float] lte: Indicates the upper threshold inclusive value for this range.
         """
         pulumi.set(__self__, "color", color)
         if gt is not None:
@@ -2510,7 +2526,7 @@ class SingleValueChartColorScaleArgs:
     @pulumi.getter
     def gt(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the lower threshold non-inclusive value for this range
+        Indicates the lower threshold non-inclusive value for this range.
         """
         return pulumi.get(self, "gt")
 
@@ -2522,7 +2538,7 @@ class SingleValueChartColorScaleArgs:
     @pulumi.getter
     def gte(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the lower threshold inclusive value for this range
+        Indicates the lower threshold inclusive value for this range.
         """
         return pulumi.get(self, "gte")
 
@@ -2534,7 +2550,7 @@ class SingleValueChartColorScaleArgs:
     @pulumi.getter
     def lt(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the upper threshold non-inculsive value for this range
+        Indicates the upper threshold non-inculsive value for this range.
         """
         return pulumi.get(self, "lt")
 
@@ -2546,7 +2562,7 @@ class SingleValueChartColorScaleArgs:
     @pulumi.getter
     def lte(self) -> Optional[pulumi.Input[float]]:
         """
-        Indicates the upper threshold inclusive value for this range
+        Indicates the upper threshold inclusive value for this range.
         """
         return pulumi.get(self, "lte")
 
@@ -2565,12 +2581,12 @@ class SingleValueChartVizOptionArgs:
                  value_suffix: Optional[pulumi.Input[str]] = None,
                  value_unit: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param pulumi.Input[str] color: Color to use
+        :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        :param pulumi.Input[str] color: The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        :param pulumi.Input[str] value_prefix: An arbitrary prefix to display with the value of this plot
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_suffix: An arbitrary suffix to display with the value of this plot
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if color is not None:
@@ -2588,7 +2604,7 @@ class SingleValueChartVizOptionArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         """
         return pulumi.get(self, "label")
 
@@ -2600,7 +2616,7 @@ class SingleValueChartVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        Color to use
+        The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         """
         return pulumi.get(self, "color")
 
@@ -2624,7 +2640,7 @@ class SingleValueChartVizOptionArgs:
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary prefix to display with the value of this plot
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         return pulumi.get(self, "value_prefix")
 
@@ -2648,7 +2664,7 @@ class SingleValueChartVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -2664,9 +2680,9 @@ class SloInputArgs:
                  good_events_label: Optional[pulumi.Input[str]] = None,
                  total_events_label: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] program_text: Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
-        :param pulumi.Input[str] good_events_label: Label used in `program_text` that refers to the data block which contains the stream of successful events
-        :param pulumi.Input[str] total_events_label: Label used in `program_text` that refers to the data block which contains the stream of total events
+        :param pulumi.Input[str] program_text: SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
+        :param pulumi.Input[str] good_events_label: Label used in `"program_text"` that refers to the data block which contains the stream of successful events
+        :param pulumi.Input[str] total_events_label: Label used in `"program_text"` that refers to the data block which contains the stream of total events
         """
         pulumi.set(__self__, "program_text", program_text)
         if good_events_label is not None:
@@ -2678,7 +2694,7 @@ class SloInputArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+        SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
         """
         return pulumi.get(self, "program_text")
 
@@ -2690,7 +2706,7 @@ class SloInputArgs:
     @pulumi.getter(name="goodEventsLabel")
     def good_events_label(self) -> Optional[pulumi.Input[str]]:
         """
-        Label used in `program_text` that refers to the data block which contains the stream of successful events
+        Label used in `"program_text"` that refers to the data block which contains the stream of successful events
         """
         return pulumi.get(self, "good_events_label")
 
@@ -2702,7 +2718,7 @@ class SloInputArgs:
     @pulumi.getter(name="totalEventsLabel")
     def total_events_label(self) -> Optional[pulumi.Input[str]]:
         """
-        Label used in `program_text` that refers to the data block which contains the stream of total events
+        Label used in `"program_text"` that refers to the data block which contains the stream of total events
         """
         return pulumi.get(self, "total_events_label")
 
@@ -2719,10 +2735,10 @@ class SloTargetArgs:
                  type: pulumi.Input[str],
                  compliance_period: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]] alert_rules: SLO alert rules
+        :param pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]] alert_rules: List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
         :param pulumi.Input[float] slo: Target value in the form of a percentage
-        :param pulumi.Input[str] type: SLO target type can be the following type: `RollingWindow`
-        :param pulumi.Input[str] compliance_period: (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        :param pulumi.Input[str] type: SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can't specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
+        :param pulumi.Input[str] compliance_period: Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
         """
         pulumi.set(__self__, "alert_rules", alert_rules)
         pulumi.set(__self__, "slo", slo)
@@ -2734,7 +2750,7 @@ class SloTargetArgs:
     @pulumi.getter(name="alertRules")
     def alert_rules(self) -> pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]]:
         """
-        SLO alert rules
+        List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
         """
         return pulumi.get(self, "alert_rules")
 
@@ -2758,7 +2774,7 @@ class SloTargetArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        SLO target type can be the following type: `RollingWindow`
+        SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can't specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         """
         return pulumi.get(self, "type")
 
@@ -2770,7 +2786,7 @@ class SloTargetArgs:
     @pulumi.getter(name="compliancePeriod")
     def compliance_period(self) -> Optional[pulumi.Input[str]]:
         """
-        (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
         """
         return pulumi.get(self, "compliance_period")
 
@@ -2786,7 +2802,7 @@ class SloTargetAlertRuleArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleRuleArgs']]] rules: Set of rules used for alerting
-        :param pulumi.Input[str] type: SLO alert rule type
+        :param pulumi.Input[str] type: Type of the SLO. Currently just: `"RequestBased"` is supported.
         """
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "type", type)
@@ -2807,7 +2823,7 @@ class SloTargetAlertRuleArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        SLO alert rule type
+        Type of the SLO. Currently just: `"RequestBased"` is supported.
         """
         return pulumi.get(self, "type")
 
@@ -2830,7 +2846,7 @@ class SloTargetAlertRuleRuleArgs:
                  tip: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] severity: The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
-        :param pulumi.Input[str] description: Description of the rule
+        :param pulumi.Input[str] description: Description of the SLO.
         :param pulumi.Input[bool] disabled: (default: false) When true, notifications and events will not be generated for the detect label
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
         :param pulumi.Input[str] parameterized_body: Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
@@ -2873,7 +2889,7 @@ class SloTargetAlertRuleRuleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the rule
+        Description of the SLO.
         """
         return pulumi.get(self, "description")
 
@@ -3231,13 +3247,13 @@ class TimeChartAxisLeftArgs:
                  min_value: Optional[pulumi.Input[float]] = None,
                  watermarks: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartAxisLeftWatermarkArgs']]]] = None):
         """
-        :param pulumi.Input[float] high_watermark: A line to draw as a high watermark
-        :param pulumi.Input[str] high_watermark_label: A label to attach to the high watermark line
-        :param pulumi.Input[str] label: Label of the left axis
-        :param pulumi.Input[float] low_watermark: A line to draw as a low watermark
-        :param pulumi.Input[str] low_watermark_label: A label to attach to the low watermark line
-        :param pulumi.Input[float] max_value: The maximum value for the left axis
-        :param pulumi.Input[float] min_value: The minimum value for the left axis
+        :param pulumi.Input[float] high_watermark: A line to draw as a high watermark.
+        :param pulumi.Input[str] high_watermark_label: A label to attach to the high watermark line.
+        :param pulumi.Input[str] label: Label of the left axis.
+        :param pulumi.Input[float] low_watermark: A line to draw as a low watermark.
+        :param pulumi.Input[str] low_watermark_label: A label to attach to the low watermark line.
+        :param pulumi.Input[float] max_value: The maximum value for the left axis.
+        :param pulumi.Input[float] min_value: The minimum value for the left axis.
         """
         if high_watermark is not None:
             pulumi.set(__self__, "high_watermark", high_watermark)
@@ -3260,7 +3276,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter(name="highWatermark")
     def high_watermark(self) -> Optional[pulumi.Input[float]]:
         """
-        A line to draw as a high watermark
+        A line to draw as a high watermark.
         """
         return pulumi.get(self, "high_watermark")
 
@@ -3272,7 +3288,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter(name="highWatermarkLabel")
     def high_watermark_label(self) -> Optional[pulumi.Input[str]]:
         """
-        A label to attach to the high watermark line
+        A label to attach to the high watermark line.
         """
         return pulumi.get(self, "high_watermark_label")
 
@@ -3284,7 +3300,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        Label of the left axis
+        Label of the left axis.
         """
         return pulumi.get(self, "label")
 
@@ -3296,7 +3312,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter(name="lowWatermark")
     def low_watermark(self) -> Optional[pulumi.Input[float]]:
         """
-        A line to draw as a low watermark
+        A line to draw as a low watermark.
         """
         return pulumi.get(self, "low_watermark")
 
@@ -3308,7 +3324,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter(name="lowWatermarkLabel")
     def low_watermark_label(self) -> Optional[pulumi.Input[str]]:
         """
-        A label to attach to the low watermark line
+        A label to attach to the low watermark line.
         """
         return pulumi.get(self, "low_watermark_label")
 
@@ -3320,7 +3336,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter(name="maxValue")
     def max_value(self) -> Optional[pulumi.Input[float]]:
         """
-        The maximum value for the left axis
+        The maximum value for the left axis.
         """
         return pulumi.get(self, "max_value")
 
@@ -3332,7 +3348,7 @@ class TimeChartAxisLeftArgs:
     @pulumi.getter(name="minValue")
     def min_value(self) -> Optional[pulumi.Input[float]]:
         """
-        The minimum value for the left axis
+        The minimum value for the left axis.
         """
         return pulumi.get(self, "min_value")
 
@@ -3400,13 +3416,13 @@ class TimeChartAxisRightArgs:
                  min_value: Optional[pulumi.Input[float]] = None,
                  watermarks: Optional[pulumi.Input[Sequence[pulumi.Input['TimeChartAxisRightWatermarkArgs']]]] = None):
         """
-        :param pulumi.Input[float] high_watermark: A line to draw as a high watermark
-        :param pulumi.Input[str] high_watermark_label: A label to attach to the high watermark line
-        :param pulumi.Input[str] label: Label of the right axis
-        :param pulumi.Input[float] low_watermark: A line to draw as a low watermark
-        :param pulumi.Input[str] low_watermark_label: A label to attach to the low watermark line
-        :param pulumi.Input[float] max_value: The maximum value for the right axis
-        :param pulumi.Input[float] min_value: The minimum value for the right axis
+        :param pulumi.Input[float] high_watermark: A line to draw as a high watermark.
+        :param pulumi.Input[str] high_watermark_label: A label to attach to the high watermark line.
+        :param pulumi.Input[str] label: Label of the right axis.
+        :param pulumi.Input[float] low_watermark: A line to draw as a low watermark.
+        :param pulumi.Input[str] low_watermark_label: A label to attach to the low watermark line.
+        :param pulumi.Input[float] max_value: The maximum value for the right axis.
+        :param pulumi.Input[float] min_value: The minimum value for the right axis.
         """
         if high_watermark is not None:
             pulumi.set(__self__, "high_watermark", high_watermark)
@@ -3429,7 +3445,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter(name="highWatermark")
     def high_watermark(self) -> Optional[pulumi.Input[float]]:
         """
-        A line to draw as a high watermark
+        A line to draw as a high watermark.
         """
         return pulumi.get(self, "high_watermark")
 
@@ -3441,7 +3457,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter(name="highWatermarkLabel")
     def high_watermark_label(self) -> Optional[pulumi.Input[str]]:
         """
-        A label to attach to the high watermark line
+        A label to attach to the high watermark line.
         """
         return pulumi.get(self, "high_watermark_label")
 
@@ -3453,7 +3469,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        Label of the right axis
+        Label of the right axis.
         """
         return pulumi.get(self, "label")
 
@@ -3465,7 +3481,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter(name="lowWatermark")
     def low_watermark(self) -> Optional[pulumi.Input[float]]:
         """
-        A line to draw as a low watermark
+        A line to draw as a low watermark.
         """
         return pulumi.get(self, "low_watermark")
 
@@ -3477,7 +3493,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter(name="lowWatermarkLabel")
     def low_watermark_label(self) -> Optional[pulumi.Input[str]]:
         """
-        A label to attach to the low watermark line
+        A label to attach to the low watermark line.
         """
         return pulumi.get(self, "low_watermark_label")
 
@@ -3489,7 +3505,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter(name="maxValue")
     def max_value(self) -> Optional[pulumi.Input[float]]:
         """
-        The maximum value for the right axis
+        The maximum value for the right axis.
         """
         return pulumi.get(self, "max_value")
 
@@ -3501,7 +3517,7 @@ class TimeChartAxisRightArgs:
     @pulumi.getter(name="minValue")
     def min_value(self) -> Optional[pulumi.Input[float]]:
         """
-        The minimum value for the right axis
+        The minimum value for the right axis.
         """
         return pulumi.get(self, "min_value")
 
@@ -3564,8 +3580,8 @@ class TimeChartEventOptionArgs:
                  color: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The label used in the publish statement that displays the events you want to customize
-        :param pulumi.Input[str] color: Color to use
+        :param pulumi.Input[str] label: Label used in the publish statement that displays the event query you want to customize.
+        :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
         """
         pulumi.set(__self__, "label", label)
@@ -3578,7 +3594,7 @@ class TimeChartEventOptionArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The label used in the publish statement that displays the events you want to customize
+        Label used in the publish statement that displays the event query you want to customize.
         """
         return pulumi.get(self, "label")
 
@@ -3590,7 +3606,7 @@ class TimeChartEventOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        Color to use
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -3616,7 +3632,7 @@ class TimeChartHistogramOptionArgs:
     def __init__(__self__, *,
                  color_theme: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] color_theme: Base color theme to use for the graph.
+        :param pulumi.Input[str] color_theme: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
         """
         if color_theme is not None:
             pulumi.set(__self__, "color_theme", color_theme)
@@ -3625,7 +3641,7 @@ class TimeChartHistogramOptionArgs:
     @pulumi.getter(name="colorTheme")
     def color_theme(self) -> Optional[pulumi.Input[str]]:
         """
-        Base color theme to use for the graph.
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
         """
         return pulumi.get(self, "color_theme")
 
@@ -3640,8 +3656,8 @@ class TimeChartLegendOptionsFieldArgs:
                  property: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] property: The name of a property to hide or show in the data table.
-        :param pulumi.Input[bool] enabled: (true by default) Determines if this property is displayed in the data table.
+        :param pulumi.Input[str] property: The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
+        :param pulumi.Input[bool] enabled: True or False depending on if you want the property to be shown or hidden.
         """
         pulumi.set(__self__, "property", property)
         if enabled is not None:
@@ -3651,7 +3667,7 @@ class TimeChartLegendOptionsFieldArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        (true by default) Determines if this property is displayed in the data table.
+        True or False depending on if you want the property to be shown or hidden.
         """
         return pulumi.get(self, "enabled")
 
@@ -3663,7 +3679,7 @@ class TimeChartLegendOptionsFieldArgs:
     @pulumi.getter
     def property(self) -> pulumi.Input[str]:
         """
-        The name of a property to hide or show in the data table.
+        The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         """
         return pulumi.get(self, "property")
 
@@ -3684,14 +3700,14 @@ class TimeChartVizOptionArgs:
                  value_suffix: Optional[pulumi.Input[str]] = None,
                  value_unit: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] label: The label used in the publish statement that displays the plot (metric time series data) you want to customize
-        :param pulumi.Input[str] axis: The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
-        :param pulumi.Input[str] color: Color to use
+        :param pulumi.Input[str] label: Label used in the publish statement that displays the plot (metric time series data) you want to customize.
+        :param pulumi.Input[str] axis: Y-axis associated with values for this plot. Must be either `right` or `left`.
+        :param pulumi.Input[str] color: Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         :param pulumi.Input[str] display_name: Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-        :param pulumi.Input[str] plot_type: (Chart plot_type by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
-        :param pulumi.Input[str] value_prefix: An arbitrary prefix to display with the value of this plot
+        :param pulumi.Input[str] plot_type: The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
+        :param pulumi.Input[str] value_prefix: , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         :param pulumi.Input[str] value_suffix: An arbitrary suffix to display with the value of this plot
-        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        :param pulumi.Input[str] value_unit: A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         pulumi.set(__self__, "label", label)
         if axis is not None:
@@ -3713,7 +3729,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         """
         return pulumi.get(self, "label")
 
@@ -3725,7 +3741,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter
     def axis(self) -> Optional[pulumi.Input[str]]:
         """
-        The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+        Y-axis associated with values for this plot. Must be either `right` or `left`.
         """
         return pulumi.get(self, "axis")
 
@@ -3737,7 +3753,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
         """
-        Color to use
+        Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         """
         return pulumi.get(self, "color")
 
@@ -3761,7 +3777,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter(name="plotType")
     def plot_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Chart plot_type by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+        The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         """
         return pulumi.get(self, "plot_type")
 
@@ -3773,7 +3789,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter(name="valuePrefix")
     def value_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary prefix to display with the value of this plot
+        , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         """
         return pulumi.get(self, "value_prefix")
 
@@ -3797,7 +3813,7 @@ class TimeChartVizOptionArgs:
     @pulumi.getter(name="valueUnit")
     def value_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         """
         return pulumi.get(self, "value_unit")
 
@@ -3811,12 +3827,19 @@ class WebhookIntegrationHeaderArgs:
     def __init__(__self__, *,
                  header_key: pulumi.Input[str],
                  header_value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] header_key: The key of the header to send
+        :param pulumi.Input[str] header_value: The value of the header to send
+        """
         pulumi.set(__self__, "header_key", header_key)
         pulumi.set(__self__, "header_value", header_value)
 
     @property
     @pulumi.getter(name="headerKey")
     def header_key(self) -> pulumi.Input[str]:
+        """
+        The key of the header to send
+        """
         return pulumi.get(self, "header_key")
 
     @header_key.setter
@@ -3826,6 +3849,9 @@ class WebhookIntegrationHeaderArgs:
     @property
     @pulumi.getter(name="headerValue")
     def header_value(self) -> pulumi.Input[str]:
+        """
+        The value of the header to send
+        """
         return pulumi.get(self, "header_value")
 
     @header_value.setter

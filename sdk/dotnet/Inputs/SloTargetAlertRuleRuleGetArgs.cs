@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class SloTargetAlertRuleRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the rule
+        /// Description of the SLO.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
