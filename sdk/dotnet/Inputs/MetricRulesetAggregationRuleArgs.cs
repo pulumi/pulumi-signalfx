@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.MetricRulesetAggregationRuleAggregatorArgs>? _aggregators;
 
         /// <summary>
-        /// The aggregator for this rule
+        /// Aggregator object
         /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleAggregatorArgs> Aggregators
         {
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// Status of this aggregation rule
+        /// When false, this rule will not generate aggregated MTSs
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.MetricRulesetAggregationRuleMatcherArgs>? _matchers;
 
         /// <summary>
-        /// The matcher for this rule
+        /// Matcher object
         /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleMatcherArgs> Matchers
         {
@@ -43,7 +43,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// Name of this aggregation rule
+        /// name of the aggregation rule
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

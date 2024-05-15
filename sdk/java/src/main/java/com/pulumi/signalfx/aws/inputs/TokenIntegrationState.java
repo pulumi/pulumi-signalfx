@@ -16,14 +16,14 @@ public final class TokenIntegrationState extends com.pulumi.resources.ResourceAr
     public static final TokenIntegrationState Empty = new TokenIntegrationState();
 
     /**
-     * Name of the integration
+     * The name of this integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return The name of this integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -31,14 +31,14 @@ public final class TokenIntegrationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Splunk Observability AWS account ID to use with an AWS role.
+     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      * 
      */
     @Import(name="signalfxAwsAccount")
     private @Nullable Output<String> signalfxAwsAccount;
 
     /**
-     * @return The Splunk Observability AWS account ID to use with an AWS role.
+     * @return The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      * 
      */
     public Optional<Output<String>> signalfxAwsAccount() {
@@ -87,7 +87,7 @@ public final class TokenIntegrationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the integration
+         * @param name The name of this integration
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class TokenIntegrationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the integration
+         * @param name The name of this integration
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class TokenIntegrationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signalfxAwsAccount The Splunk Observability AWS account ID to use with an AWS role.
+         * @param signalfxAwsAccount The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class TokenIntegrationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param signalfxAwsAccount The Splunk Observability AWS account ID to use with an AWS role.
+         * @param signalfxAwsAccount The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class SloTargetAlertRuleRule
     {
         /// <summary>
-        /// Description of the rule
+        /// Description of the SLO.
         /// </summary>
         public readonly string? Description;
         /// <summary>

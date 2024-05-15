@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputMap<string>? _propertyKeyMapping;
 
         /// <summary>
-        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+        /// Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
         /// </summary>
         public InputMap<string> PropertyKeyMapping
         {

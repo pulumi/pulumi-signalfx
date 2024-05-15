@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class TimeChartEventOptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The label used in the publish statement that displays the events you want to customize
+        /// Label used in the publish statement that displays the event query you want to customize.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;

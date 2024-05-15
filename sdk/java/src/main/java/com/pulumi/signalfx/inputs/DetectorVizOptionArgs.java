@@ -17,14 +17,14 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
     public static final DetectorVizOptionArgs Empty = new DetectorVizOptionArgs();
 
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     public Optional<Output<String>> color() {
@@ -47,14 +47,14 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     public Output<String> label() {
@@ -62,14 +62,22 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     * **Notes**
+     * 
+     * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      * 
      */
     @Import(name="valuePrefix")
     private @Nullable Output<String> valuePrefix;
 
     /**
-     * @return An arbitrary prefix to display with the value of this plot
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     * 
+     * **Notes**
+     * 
+     * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      * 
      */
     public Optional<Output<String>> valuePrefix() {
@@ -92,14 +100,14 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     @Import(name="valueUnit")
     private @Nullable Output<String> valueUnit;
 
     /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     public Optional<Output<String>> valueUnit() {
@@ -136,7 +144,7 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param color Color to use
+         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
          * 
          * @return builder
          * 
@@ -147,7 +155,7 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param color Color to use
+         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
          * 
          * @return builder
          * 
@@ -178,7 +186,7 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param label The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * @param label Label used in the publish statement that displays the plot (metric time series data) you want to customize.
          * 
          * @return builder
          * 
@@ -189,7 +197,7 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param label The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * @param label Label used in the publish statement that displays the plot (metric time series data) you want to customize.
          * 
          * @return builder
          * 
@@ -199,7 +207,11 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuePrefix An arbitrary prefix to display with the value of this plot
+         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * 
+         * **Notes**
+         * 
+         * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
          * 
          * @return builder
          * 
@@ -210,7 +222,11 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuePrefix An arbitrary prefix to display with the value of this plot
+         * @param valuePrefix , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+         * 
+         * **Notes**
+         * 
+         * Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
          * 
          * @return builder
          * 
@@ -241,7 +257,7 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
          * 
          * @return builder
          * 
@@ -252,7 +268,7 @@ public final class DetectorVizOptionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+         * @param valueUnit A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
          * 
          * @return builder
          * 

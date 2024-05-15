@@ -24,165 +24,144 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * The following arguments are supported in the resource block:
- * 
- * * `name` - (Required) Name of the team.
- * * `description` - (Optional) Description of the team.
- * * `members` - (Optional) List of user IDs to include in the team.
- * * `notifications_critical` - (Optional) Where to send notifications for critical alerts
- * * `notifications_default` - (Optional) Where to send notifications for default alerts
- * * `notifications_info` - (Optional) Where to send notifications for info alerts
- * * `notifications_major` - (Optional) Where to send notifications for major alerts
- * * `notifications_minor` - (Optional) Where to send notifications for minor alerts
- * * `notifications_warning` - (Optional) Where to send notifications for warning alerts
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the team.
- * * `url` - The URL of the team.
- * 
  */
 @ResourceType(type="signalfx:index/team:Team")
 public class Team extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the team (Optional)
+     * Description of the team.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the team (Optional)
+     * @return Description of the team.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Members of team
+     * List of user IDs to include in the team.
      * 
      */
     @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> members;
 
     /**
-     * @return Members of team
+     * @return List of user IDs to include in the team.
      * 
      */
     public Output<Optional<List<String>>> members() {
         return Codegen.optional(this.members);
     }
     /**
-     * Name of the team
+     * Name of the team.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the team
+     * @return Name of the team.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * List of notification destinations to use for the critical alerts category.
+     * Where to send notifications for critical alerts
      * 
      */
     @Export(name="notificationsCriticals", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsCriticals;
 
     /**
-     * @return List of notification destinations to use for the critical alerts category.
+     * @return Where to send notifications for critical alerts
      * 
      */
     public Output<Optional<List<String>>> notificationsCriticals() {
         return Codegen.optional(this.notificationsCriticals);
     }
     /**
-     * List of notification destinations to use for the default alerts category.
+     * Where to send notifications for default alerts
      * 
      */
     @Export(name="notificationsDefaults", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsDefaults;
 
     /**
-     * @return List of notification destinations to use for the default alerts category.
+     * @return Where to send notifications for default alerts
      * 
      */
     public Output<Optional<List<String>>> notificationsDefaults() {
         return Codegen.optional(this.notificationsDefaults);
     }
     /**
-     * List of notification destinations to use for the info alerts category.
+     * Where to send notifications for info alerts
      * 
      */
     @Export(name="notificationsInfos", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsInfos;
 
     /**
-     * @return List of notification destinations to use for the info alerts category.
+     * @return Where to send notifications for info alerts
      * 
      */
     public Output<Optional<List<String>>> notificationsInfos() {
         return Codegen.optional(this.notificationsInfos);
     }
     /**
-     * List of notification destinations to use for the major alerts category.
+     * Where to send notifications for major alerts
      * 
      */
     @Export(name="notificationsMajors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsMajors;
 
     /**
-     * @return List of notification destinations to use for the major alerts category.
+     * @return Where to send notifications for major alerts
      * 
      */
     public Output<Optional<List<String>>> notificationsMajors() {
         return Codegen.optional(this.notificationsMajors);
     }
     /**
-     * List of notification destinations to use for the minor alerts category.
+     * Where to send notifications for minor alerts
      * 
      */
     @Export(name="notificationsMinors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsMinors;
 
     /**
-     * @return List of notification destinations to use for the minor alerts category.
+     * @return Where to send notifications for minor alerts
      * 
      */
     public Output<Optional<List<String>>> notificationsMinors() {
         return Codegen.optional(this.notificationsMinors);
     }
     /**
-     * List of notification destinations to use for the warning alerts category.
+     * Where to send notifications for warning alerts
      * 
      */
     @Export(name="notificationsWarnings", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationsWarnings;
 
     /**
-     * @return List of notification destinations to use for the warning alerts category.
+     * @return Where to send notifications for warning alerts
      * 
      */
     public Output<Optional<List<String>>> notificationsWarnings() {
         return Codegen.optional(this.notificationsWarnings);
     }
     /**
-     * URL of the team
+     * The URL of the team.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the team
+     * @return The URL of the team.
      * 
      */
     public Output<String> url() {

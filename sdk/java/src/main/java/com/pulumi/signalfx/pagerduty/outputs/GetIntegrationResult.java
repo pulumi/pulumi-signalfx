@@ -11,15 +11,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetIntegrationResult {
+    /**
+     * @return Whether the integration is enabled.
+     * 
+     */
     private Boolean enabled;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The name of the integration.
+     * 
+     */
     private String name;
 
     private GetIntegrationResult() {}
+    /**
+     * @return Whether the integration is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
@@ -30,6 +42,10 @@ public final class GetIntegrationResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the integration.
+     * 
+     */
     public String name() {
         return this.name;
     }

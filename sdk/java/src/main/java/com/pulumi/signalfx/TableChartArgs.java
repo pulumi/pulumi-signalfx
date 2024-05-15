@@ -21,14 +21,14 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
     public static final TableChartArgs Empty = new TableChartArgs();
 
     /**
-     * Description of the chart (Optional)
+     * Description of the table chart.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the table chart.
      * 
      */
     public Optional<Output<String>> description() {
@@ -51,14 +51,14 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Properties to group by in the Table (in nesting order)
+     * Dimension to group by
      * 
      */
     @Import(name="groupBies")
     private @Nullable Output<List<String>> groupBies;
 
     /**
-     * @return Properties to group by in the Table (in nesting order)
+     * @return Dimension to group by
      * 
      */
     public Optional<Output<List<String>>> groupBies() {
@@ -111,14 +111,14 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart
+     * Name of the table chart.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the table chart.
      * 
      */
     public Optional<Output<String>> name() {
@@ -126,14 +126,14 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * The SignalFlow for your Data Table Chart
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return The SignalFlow for your Data Table Chart
      * 
      */
     public Output<String> programText() {
@@ -236,7 +236,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the table chart.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the table chart.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Properties to group by in the Table (in nesting order)
+         * @param groupBies Dimension to group by
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Properties to group by in the Table (in nesting order)
+         * @param groupBies Dimension to group by
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupBies Properties to group by in the Table (in nesting order)
+         * @param groupBies Dimension to group by
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the table chart.
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the table chart.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText The SignalFlow for your Data Table Chart
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class TableChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText The SignalFlow for your Data Table Chart
          * 
          * @return builder
          * 

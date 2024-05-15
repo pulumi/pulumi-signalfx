@@ -18,11 +18,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Color;
         /// <summary>
-        /// The maximum value within the coloring range
+        /// The maximum value within the coloring range.
         /// </summary>
         public readonly double? MaxValue;
         /// <summary>
-        /// The minimum value within the coloring range
+        /// The minimum value within the coloring range.
         /// </summary>
         public readonly double? MinValue;
 

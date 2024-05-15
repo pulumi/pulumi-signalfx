@@ -13,13 +13,13 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class ListChartLegendOptionsFieldGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (true by default) Determines if this property is displayed in the data table.
+        /// True or False depending on if you want the property to be shown or hidden.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The name of a property to hide or show in the data table.
+        /// The name of the property to display. Note the special values of `sf_metric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;

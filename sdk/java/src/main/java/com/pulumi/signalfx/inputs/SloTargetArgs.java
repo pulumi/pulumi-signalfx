@@ -20,14 +20,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final SloTargetArgs Empty = new SloTargetArgs();
 
     /**
-     * SLO alert rules
+     * List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     @Import(name="alertRules", required=true)
     private Output<List<SloTargetAlertRuleArgs>> alertRules;
 
     /**
-     * @return SLO alert rules
+     * @return List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     public Output<List<SloTargetAlertRuleArgs>> alertRules() {
@@ -35,14 +35,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     @Import(name="compliancePeriod")
     private @Nullable Output<String> compliancePeriod;
 
     /**
-     * @return (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * @return Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     public Optional<Output<String>> compliancePeriod() {
@@ -65,14 +65,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLO target type can be the following type: `RollingWindow`
+     * SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return SLO target type can be the following type: `RollingWindow`
+     * @return SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public Output<String> type() {
@@ -107,7 +107,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertRules SLO alert rules
+         * @param alertRules List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertRules SLO alert rules
+         * @param alertRules List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertRules SLO alert rules
+         * @param alertRules List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compliancePeriod (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+         * @param compliancePeriod Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compliancePeriod (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+         * @param compliancePeriod Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type SLO target type can be the following type: `RollingWindow`
+         * @param type SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type SLO target type can be the following type: `RollingWindow`
+         * @param type SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
          * 
          * @return builder
          * 

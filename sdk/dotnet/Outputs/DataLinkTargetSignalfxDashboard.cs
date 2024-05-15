@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string DashboardId;
         /// <summary>
-        /// Flag that designates a target as the default for a data link object.
+        /// Flag that designates a target as the default for a data link object. `true` by default
         /// </summary>
         public readonly bool? IsDefault;
         /// <summary>

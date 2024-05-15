@@ -25,14 +25,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     public static final TimeChartState Empty = new TimeChartState();
 
     /**
-     * Force y-axes to always show zero
+     * Force the chart to display zero on the y-axes, even if none of the data is near zero.
      * 
      */
     @Import(name="axesIncludeZero")
     private @Nullable Output<Boolean> axesIncludeZero;
 
     /**
-     * @return Force y-axes to always show zero
+     * @return Force the chart to display zero on the y-axes, even if none of the data is near zero.
      * 
      */
     public Optional<Output<Boolean>> axesIncludeZero() {
@@ -40,43 +40,59 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Force a specific number of significant digits in the y-axis
+     * Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
      * 
      */
     @Import(name="axesPrecision")
     private @Nullable Output<Integer> axesPrecision;
 
     /**
-     * @return Force a specific number of significant digits in the y-axis
+     * @return Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
      * 
      */
     public Optional<Output<Integer>> axesPrecision() {
         return Optional.ofNullable(this.axesPrecision);
     }
 
+    /**
+     * Set of axis options.
+     * 
+     */
     @Import(name="axisLeft")
     private @Nullable Output<TimeChartAxisLeftArgs> axisLeft;
 
+    /**
+     * @return Set of axis options.
+     * 
+     */
     public Optional<Output<TimeChartAxisLeftArgs>> axisLeft() {
         return Optional.ofNullable(this.axisLeft);
     }
 
+    /**
+     * Set of axis options.
+     * 
+     */
     @Import(name="axisRight")
     private @Nullable Output<TimeChartAxisRightArgs> axisRight;
 
+    /**
+     * @return Set of axis options.
+     * 
+     */
     public Optional<Output<TimeChartAxisRightArgs>> axisRight() {
         return Optional.ofNullable(this.axisRight);
     }
 
     /**
-     * (Dimension by default) Must be &#34;Dimension&#34; or &#34;Metric&#34;
+     * Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
     @Import(name="colorBy")
     private @Nullable Output<String> colorBy;
 
     /**
-     * @return (Dimension by default) Must be &#34;Dimension&#34; or &#34;Metric&#34;
+     * @return Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
     public Optional<Output<String>> colorBy() {
@@ -84,14 +100,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the chart
+     * Description of the chart.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart
+     * @return Description of the chart.
      * 
      */
     public Optional<Output<String>> description() {
@@ -99,14 +115,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
+     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
      * 
      */
     @Import(name="disableSampling")
     private @Nullable Output<Boolean> disableSampling;
 
     /**
-     * @return (false by default) If false, samples a subset of the output MTS, which improves UI performance
+     * @return If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
      * 
      */
     public Optional<Output<Boolean>> disableSampling() {
@@ -114,14 +130,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch to end the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -129,14 +145,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Event display customization options, associated with a publish statement
+     * Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
      * 
      */
     @Import(name="eventOptions")
     private @Nullable Output<List<TimeChartEventOptionArgs>> eventOptions;
 
     /**
-     * @return Event display customization options, associated with a publish statement
+     * @return Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
      * 
      */
     public Optional<Output<List<TimeChartEventOptionArgs>>> eventOptions() {
@@ -144,14 +160,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Options specific to Histogram charts
+     * Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
      * 
      */
     @Import(name="histogramOptions")
     private @Nullable Output<List<TimeChartHistogramOptionArgs>> histogramOptions;
 
     /**
-     * @return Options specific to Histogram charts
+     * @return Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
      * 
      */
     public Optional<Output<List<TimeChartHistogramOptionArgs>>> histogramOptions() {
@@ -159,7 +175,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+     * List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -170,7 +186,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> legendFieldsToHides;
 
     /**
-     * @return List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+     * @return List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
      * 
      * @deprecated
      * Please use legend_options_fields
@@ -182,14 +198,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of property and enabled flags to control the order and presence of datatable labels in a chart.
+     * List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
      * 
      */
     @Import(name="legendOptionsFields")
     private @Nullable Output<List<TimeChartLegendOptionsFieldArgs>> legendOptionsFields;
 
     /**
-     * @return List of property and enabled flags to control the order and presence of datatable labels in a chart.
+     * @return List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
      * 
      */
     public Optional<Output<List<TimeChartLegendOptionsFieldArgs>>> legendOptionsFields() {
@@ -197,14 +213,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How long (in seconds) to wait for late datapoints
+     * How long (in seconds) to wait for late datapoints.
      * 
      */
     @Import(name="maxDelay")
     private @Nullable Output<Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints
+     * @return How long (in seconds) to wait for late datapoints.
      * 
      */
     public Optional<Output<Integer>> maxDelay() {
@@ -212,14 +228,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program
+     * The minimum resolution (in seconds) to use for computing the underlying program.
      * 
      */
     @Import(name="minimumResolution")
     private @Nullable Output<Integer> minimumResolution;
 
     /**
-     * @return The minimum resolution (in seconds) to use for computing the underlying program
+     * @return The minimum resolution (in seconds) to use for computing the underlying program.
      * 
      */
     public Optional<Output<Integer>> minimumResolution() {
@@ -227,14 +243,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart
+     * Name of the chart.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the chart.
      * 
      */
     public Optional<Output<String>> name() {
@@ -242,16 +258,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: &#39;metric&#39;,
-     * &#39;plot_label&#39; and any dimension.
+     * Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
      * 
      */
     @Import(name="onChartLegendDimension")
     private @Nullable Output<String> onChartLegendDimension;
 
     /**
-     * @return Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: &#39;metric&#39;,
-     * &#39;plot_label&#39; and any dimension.
+     * @return Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
      * 
      */
     public Optional<Output<String>> onChartLegendDimension() {
@@ -259,16 +273,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (LineChart by default) The default plot display style for the visualization. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;,
-     * &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+     * The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
      * 
      */
     @Import(name="plotType")
     private @Nullable Output<String> plotType;
 
     /**
-     * @return (LineChart by default) The default plot display style for the visualization. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;,
-     * &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+     * @return The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
      * 
      */
     public Optional<Output<String>> plotType() {
@@ -276,14 +288,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     @Import(name="programText")
     private @Nullable Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     public Optional<Output<String>> programText() {
@@ -291,14 +303,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+     * Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
      * 
      */
     @Import(name="showDataMarkers")
     private @Nullable Output<Boolean> showDataMarkers;
 
     /**
-     * @return (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+     * @return Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> showDataMarkers() {
@@ -306,14 +318,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+     * Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
      * 
      */
     @Import(name="showEventLines")
     private @Nullable Output<Boolean> showEventLines;
 
     /**
-     * @return (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+     * @return Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> showEventLines() {
@@ -321,14 +333,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (false by default) Whether area and bar charts in the visualization should be stacked
+     * Whether area and bar charts in the visualization should be stacked. `false` by default.
      * 
      */
     @Import(name="stacked")
     private @Nullable Output<Boolean> stacked;
 
     /**
-     * @return (false by default) Whether area and bar charts in the visualization should be stacked
+     * @return Whether area and bar charts in the visualization should be stacked. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> stacked() {
@@ -336,14 +348,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch to start the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -374,14 +386,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * @return How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -389,14 +401,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     * Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `&#34;UTC&#34;` by default.
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     * @return Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `&#34;UTC&#34;` by default.
      * 
      */
     public Optional<Output<String>> timezone() {
@@ -404,14 +416,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
     @Import(name="unitPrefix")
     private @Nullable Output<String> unitPrefix;
 
     /**
-     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * @return Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
     public Optional<Output<String>> unitPrefix() {
@@ -419,14 +431,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the chart
+     * The URL of the chart.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the chart
+     * @return The URL of the chart.
      * 
      */
     public Optional<Output<String>> url() {
@@ -434,14 +446,14 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Plot-level customization options, associated with a publish statement
+     * Plot-level customization options, associated with a publish statement.
      * 
      */
     @Import(name="vizOptions")
     private @Nullable Output<List<TimeChartVizOptionArgs>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement
+     * @return Plot-level customization options, associated with a publish statement.
      * 
      */
     public Optional<Output<List<TimeChartVizOptionArgs>>> vizOptions() {
@@ -500,7 +512,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param axesIncludeZero Force y-axes to always show zero
+         * @param axesIncludeZero Force the chart to display zero on the y-axes, even if none of the data is near zero.
          * 
          * @return builder
          * 
@@ -511,7 +523,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param axesIncludeZero Force y-axes to always show zero
+         * @param axesIncludeZero Force the chart to display zero on the y-axes, even if none of the data is near zero.
          * 
          * @return builder
          * 
@@ -521,7 +533,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param axesPrecision Force a specific number of significant digits in the y-axis
+         * @param axesPrecision Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
          * 
          * @return builder
          * 
@@ -532,7 +544,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param axesPrecision Force a specific number of significant digits in the y-axis
+         * @param axesPrecision Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
          * 
          * @return builder
          * 
@@ -541,26 +553,50 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
             return axesPrecision(Output.of(axesPrecision));
         }
 
+        /**
+         * @param axisLeft Set of axis options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder axisLeft(@Nullable Output<TimeChartAxisLeftArgs> axisLeft) {
             $.axisLeft = axisLeft;
             return this;
         }
 
+        /**
+         * @param axisLeft Set of axis options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder axisLeft(TimeChartAxisLeftArgs axisLeft) {
             return axisLeft(Output.of(axisLeft));
         }
 
+        /**
+         * @param axisRight Set of axis options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder axisRight(@Nullable Output<TimeChartAxisRightArgs> axisRight) {
             $.axisRight = axisRight;
             return this;
         }
 
+        /**
+         * @param axisRight Set of axis options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder axisRight(TimeChartAxisRightArgs axisRight) {
             return axisRight(Output.of(axisRight));
         }
 
         /**
-         * @param colorBy (Dimension by default) Must be &#34;Dimension&#34; or &#34;Metric&#34;
+         * @param colorBy Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
          * 
          * @return builder
          * 
@@ -571,7 +607,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param colorBy (Dimension by default) Must be &#34;Dimension&#34; or &#34;Metric&#34;
+         * @param colorBy Must be `&#34;Dimension&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
          * 
          * @return builder
          * 
@@ -581,7 +617,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart
+         * @param description Description of the chart.
          * 
          * @return builder
          * 
@@ -592,7 +628,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart
+         * @param description Description of the chart.
          * 
          * @return builder
          * 
@@ -602,7 +638,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling (false by default) If false, samples a subset of the output MTS, which improves UI performance
+         * @param disableSampling If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
          * 
          * @return builder
          * 
@@ -613,7 +649,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableSampling (false by default) If false, samples a subset of the output MTS, which improves UI performance
+         * @param disableSampling If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
          * 
          * @return builder
          * 
@@ -623,7 +659,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -634,7 +670,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -644,7 +680,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventOptions Event display customization options, associated with a publish statement
+         * @param eventOptions Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
          * 
          * @return builder
          * 
@@ -655,7 +691,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventOptions Event display customization options, associated with a publish statement
+         * @param eventOptions Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
          * 
          * @return builder
          * 
@@ -665,7 +701,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventOptions Event display customization options, associated with a publish statement
+         * @param eventOptions Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
          * 
          * @return builder
          * 
@@ -675,7 +711,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param histogramOptions Options specific to Histogram charts
+         * @param histogramOptions Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
          * 
          * @return builder
          * 
@@ -686,7 +722,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param histogramOptions Options specific to Histogram charts
+         * @param histogramOptions Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
          * 
          * @return builder
          * 
@@ -696,7 +732,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param histogramOptions Options specific to Histogram charts
+         * @param histogramOptions Only used when `plot_type` is `&#34;Histogram&#34;`. Histogram specific options.
          * 
          * @return builder
          * 
@@ -706,7 +742,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
          * 
          * @return builder
          * 
@@ -721,7 +757,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
          * 
          * @return builder
          * 
@@ -735,7 +771,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendFieldsToHides List of properties that shouldn&#39;t be displayed in the chart legend (i.e. dimension names)
+         * @param legendFieldsToHides List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
          * 
          * @return builder
          * 
@@ -749,7 +785,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property and enabled flags to control the order and presence of datatable labels in a chart.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
          * 
          * @return builder
          * 
@@ -760,7 +796,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property and enabled flags to control the order and presence of datatable labels in a chart.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
          * 
          * @return builder
          * 
@@ -770,7 +806,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param legendOptionsFields List of property and enabled flags to control the order and presence of datatable labels in a chart.
+         * @param legendOptionsFields List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legend_fields_to_hide`.
          * 
          * @return builder
          * 
@@ -780,7 +816,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints
+         * @param maxDelay How long (in seconds) to wait for late datapoints.
          * 
          * @return builder
          * 
@@ -791,7 +827,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxDelay How long (in seconds) to wait for late datapoints
+         * @param maxDelay How long (in seconds) to wait for late datapoints.
          * 
          * @return builder
          * 
@@ -801,7 +837,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program
+         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program.
          * 
          * @return builder
          * 
@@ -812,7 +848,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program
+         * @param minimumResolution The minimum resolution (in seconds) to use for computing the underlying program.
          * 
          * @return builder
          * 
@@ -822,7 +858,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the chart.
          * 
          * @return builder
          * 
@@ -833,7 +869,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the chart.
          * 
          * @return builder
          * 
@@ -843,8 +879,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onChartLegendDimension Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: &#39;metric&#39;,
-         * &#39;plot_label&#39; and any dimension.
+         * @param onChartLegendDimension Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
          * 
          * @return builder
          * 
@@ -855,8 +890,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param onChartLegendDimension Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: &#39;metric&#39;,
-         * &#39;plot_label&#39; and any dimension.
+         * @param onChartLegendDimension Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `&#34;metric&#34;`, `&#34;plot_label&#34;` and any dimension.
          * 
          * @return builder
          * 
@@ -866,8 +900,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plotType (LineChart by default) The default plot display style for the visualization. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;,
-         * &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+         * @param plotType The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
          * 
          * @return builder
          * 
@@ -878,8 +911,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plotType (LineChart by default) The default plot display style for the visualization. Must be &#34;LineChart&#34;, &#34;AreaChart&#34;,
-         * &#34;ColumnChart&#34;, or &#34;Histogram&#34;
+         * @param plotType The default plot display style for the visualization. Must be `&#34;LineChart&#34;`, `&#34;AreaChart&#34;`, `&#34;ColumnChart&#34;`, or `&#34;Histogram&#34;`. Default: `&#34;LineChart&#34;`.
          * 
          * @return builder
          * 
@@ -889,7 +921,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 
@@ -900,7 +932,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 
@@ -910,7 +942,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showDataMarkers (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+         * @param showDataMarkers Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
          * 
          * @return builder
          * 
@@ -921,7 +953,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showDataMarkers (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+         * @param showDataMarkers Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
          * 
          * @return builder
          * 
@@ -931,7 +963,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showEventLines (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+         * @param showEventLines Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
          * 
          * @return builder
          * 
@@ -942,7 +974,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param showEventLines (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+         * @param showEventLines Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
          * 
          * @return builder
          * 
@@ -952,7 +984,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stacked (false by default) Whether area and bar charts in the visualization should be stacked
+         * @param stacked Whether area and bar charts in the visualization should be stacked. `false` by default.
          * 
          * @return builder
          * 
@@ -963,7 +995,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stacked (false by default) Whether area and bar charts in the visualization should be stacked
+         * @param stacked Whether area and bar charts in the visualization should be stacked. `false` by default.
          * 
          * @return builder
          * 
@@ -973,7 +1005,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -984,7 +1016,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -1037,7 +1069,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
          * 
          * @return builder
          * 
@@ -1048,7 +1080,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+         * @param timeRange How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `start_time` and `end_time`.
          * 
          * @return builder
          * 
@@ -1058,7 +1090,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+         * @param timezone Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `&#34;UTC&#34;` by default.
          * 
          * @return builder
          * 
@@ -1069,7 +1101,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timezone The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+         * @param timezone Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set &#34;timezone&#34;: &#34;Europe/Paris&#34; and then use the transformation sum(cycle=&#34;week&#34;, cycle_start=&#34;Monday&#34;) in your chart&#39;s SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `&#34;UTC&#34;` by default.
          * 
          * @return builder
          * 
@@ -1079,7 +1111,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
          * 
          * @return builder
          * 
@@ -1090,7 +1122,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
          * 
          * @return builder
          * 
@@ -1100,7 +1132,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the chart
+         * @param url The URL of the chart.
          * 
          * @return builder
          * 
@@ -1111,7 +1143,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the chart
+         * @param url The URL of the chart.
          * 
          * @return builder
          * 
@@ -1121,7 +1153,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 
@@ -1132,7 +1164,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 
@@ -1142,7 +1174,7 @@ public final class TimeChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 

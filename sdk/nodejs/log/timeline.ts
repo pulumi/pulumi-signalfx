@@ -10,25 +10,6 @@ import * as utilities from "../utilities";
  * A log timeline chart displays timeline visualization in a dashboard and shows you in detail what is happening and why.
  *
  * ## Example
- *
- * ## Arguments
- *
- * The following arguments are supported in the resource block:
- *
- * * `name` - (Required) Name of the log timeline.
- * * `programText` - (Required) Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
- * * `description` - (Optional) Description of the log timeline.
- * * `timeRange` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
- * * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
- * * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
- * * `defaultConnection` - (Optional) The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
- *
- * ## Attributes
- *
- * In a addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the log timeline.
- * * `url` - The URL of the log timeline.
  */
 export class Timeline extends pulumi.CustomResource {
     /**
@@ -59,35 +40,35 @@ export class Timeline extends pulumi.CustomResource {
     }
 
     /**
-     * default connection that the dashboard uses
+     * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
     public readonly defaultConnection!: pulumi.Output<string | undefined>;
     /**
-     * Description of the chart (Optional)
+     * Description of the log timeline.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     public readonly endTime!: pulumi.Output<number | undefined>;
     /**
-     * Name of the chart
+     * Name of the log timeline.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+     * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      */
     public readonly programText!: pulumi.Output<string>;
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     public readonly startTime!: pulumi.Output<number | undefined>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     public readonly timeRange!: pulumi.Output<number | undefined>;
     /**
-     * URL of the chart
+     * The URL of the log timeline.
      */
     public /*out*/ readonly url!: pulumi.Output<string>;
 
@@ -136,35 +117,35 @@ export class Timeline extends pulumi.CustomResource {
  */
 export interface TimelineState {
     /**
-     * default connection that the dashboard uses
+     * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
     defaultConnection?: pulumi.Input<string>;
     /**
-     * Description of the chart (Optional)
+     * Description of the log timeline.
      */
     description?: pulumi.Input<string>;
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Name of the chart
+     * Name of the log timeline.
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+     * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      */
     programText?: pulumi.Input<string>;
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     timeRange?: pulumi.Input<number>;
     /**
-     * URL of the chart
+     * The URL of the log timeline.
      */
     url?: pulumi.Input<string>;
 }
@@ -174,31 +155,31 @@ export interface TimelineState {
  */
 export interface TimelineArgs {
     /**
-     * default connection that the dashboard uses
+     * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      */
     defaultConnection?: pulumi.Input<string>;
     /**
-     * Description of the chart (Optional)
+     * Description of the log timeline.
      */
     description?: pulumi.Input<string>;
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     endTime?: pulumi.Input<number>;
     /**
-     * Name of the chart
+     * Name of the log timeline.
      */
     name?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+     * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      */
     programText: pulumi.Input<string>;
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
      */
     startTime?: pulumi.Input<number>;
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `startTime` and `endTime`.
      */
     timeRange?: pulumi.Input<number>;
 }

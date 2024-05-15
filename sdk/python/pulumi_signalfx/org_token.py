@@ -26,12 +26,12 @@ class OrgTokenArgs:
         """
         The set of arguments for constructing a OrgToken resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
-        :param pulumi.Input[str] description: Description of the token (Optional)
-        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-               Defaults to `false`
-        :param pulumi.Input[str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[str] description: Description of the token.
+        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        :param pulumi.Input['OrgTokenDpmLimitsArgs'] dpm_limits: Specify DPM-based limits for this token.
+        :param pulumi.Input['OrgTokenHostOrUsageLimitsArgs'] host_or_usage_limits: Specify Usage-based limits for this token.
+        :param pulumi.Input[str] name: Name of the token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         if auth_scopes is not None:
             pulumi.set(__self__, "auth_scopes", auth_scopes)
@@ -64,7 +64,7 @@ class OrgTokenArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the token (Optional)
+        Description of the token.
         """
         return pulumi.get(self, "description")
 
@@ -76,8 +76,7 @@ class OrgTokenArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-        Defaults to `false`
+        Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -88,6 +87,9 @@ class OrgTokenArgs:
     @property
     @pulumi.getter(name="dpmLimits")
     def dpm_limits(self) -> Optional[pulumi.Input['OrgTokenDpmLimitsArgs']]:
+        """
+        Specify DPM-based limits for this token.
+        """
         return pulumi.get(self, "dpm_limits")
 
     @dpm_limits.setter
@@ -97,6 +99,9 @@ class OrgTokenArgs:
     @property
     @pulumi.getter(name="hostOrUsageLimits")
     def host_or_usage_limits(self) -> Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']]:
+        """
+        Specify Usage-based limits for this token.
+        """
         return pulumi.get(self, "host_or_usage_limits")
 
     @host_or_usage_limits.setter
@@ -107,7 +112,7 @@ class OrgTokenArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the token
+        Name of the token.
         """
         return pulumi.get(self, "name")
 
@@ -119,8 +124,7 @@ class OrgTokenArgs:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See
-        https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
@@ -143,12 +147,13 @@ class _OrgTokenState:
         """
         Input properties used for looking up and filtering OrgToken resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
-        :param pulumi.Input[str] description: Description of the token (Optional)
-        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-               Defaults to `false`
-        :param pulumi.Input[str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[str] description: Description of the token.
+        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        :param pulumi.Input['OrgTokenDpmLimitsArgs'] dpm_limits: Specify DPM-based limits for this token.
+        :param pulumi.Input['OrgTokenHostOrUsageLimitsArgs'] host_or_usage_limits: Specify Usage-based limits for this token.
+        :param pulumi.Input[str] name: Name of the token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
+        :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
         """
         if auth_scopes is not None:
             pulumi.set(__self__, "auth_scopes", auth_scopes)
@@ -183,7 +188,7 @@ class _OrgTokenState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the token (Optional)
+        Description of the token.
         """
         return pulumi.get(self, "description")
 
@@ -195,8 +200,7 @@ class _OrgTokenState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-        Defaults to `false`
+        Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
@@ -207,6 +211,9 @@ class _OrgTokenState:
     @property
     @pulumi.getter(name="dpmLimits")
     def dpm_limits(self) -> Optional[pulumi.Input['OrgTokenDpmLimitsArgs']]:
+        """
+        Specify DPM-based limits for this token.
+        """
         return pulumi.get(self, "dpm_limits")
 
     @dpm_limits.setter
@@ -216,6 +223,9 @@ class _OrgTokenState:
     @property
     @pulumi.getter(name="hostOrUsageLimits")
     def host_or_usage_limits(self) -> Optional[pulumi.Input['OrgTokenHostOrUsageLimitsArgs']]:
+        """
+        Specify Usage-based limits for this token.
+        """
         return pulumi.get(self, "host_or_usage_limits")
 
     @host_or_usage_limits.setter
@@ -226,7 +236,7 @@ class _OrgTokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the token
+        Name of the token.
         """
         return pulumi.get(self, "name")
 
@@ -238,8 +248,7 @@ class _OrgTokenState:
     @pulumi.getter
     def notifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See
-        https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
@@ -250,6 +259,9 @@ class _OrgTokenState:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret token created by the API. You cannot set this value.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -277,44 +289,15 @@ class OrgToken(pulumi.CustomResource):
 
         ## Example
 
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `name` - (Required) Name of the token.
-        * `description` - (Optional) Description of the token.
-        * `disabled` - (Optional) Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
-        * `secret` - The secret token created by the API. You cannot set this value.
-        * `notifications` - (Optional) Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
-        * `host_or_usage_limits` - (Optional) Specify Usage-based limits for this token.
-          * `host_limit` - (Optional) Max number of hosts that can use this token
-          * `host_notification_threshold` - (Optional) Notification threshold for hosts
-          * `container_limit` - (Optional) Max number of Docker containers that can use this token
-          * `container_notification_threshold` - (Optional) Notification threshold for Docker containers
-          * `custom_metrics_limit` - (Optional) Max number of custom metrics that can be sent with this token
-          * `custom_metrics_notification_threshold` - (Optional) Notification threshold for custom metrics
-          * `high_res_metrics_limit` - (Optional) Max number of hi-res metrics that can be sent with this toke
-          * `high_res_metrics_notification_threshold` - (Optional) Notification threshold for hi-res metrics
-        * `dpm_limits` (Optional) Specify DPM-based limits for this token.
-          * `dpm_notification_threshold` - (Optional) DPM level at which Splunk Observability Cloud sends the notification for this token. If you don't specify a notification, Splunk Observability Cloud sends the generic notification.
-          * `dpm_limit` - (Required) The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the token.
-        * `secret` - The assigned token.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
-        :param pulumi.Input[str] description: Description of the token (Optional)
-        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-               Defaults to `false`
-        :param pulumi.Input[str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[str] description: Description of the token.
+        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        :param pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']] dpm_limits: Specify DPM-based limits for this token.
+        :param pulumi.Input[pulumi.InputType['OrgTokenHostOrUsageLimitsArgs']] host_or_usage_limits: Specify Usage-based limits for this token.
+        :param pulumi.Input[str] name: Name of the token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         ...
     @overload
@@ -328,35 +311,6 @@ class OrgToken(pulumi.CustomResource):
         > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 
         ## Example
-
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `name` - (Required) Name of the token.
-        * `description` - (Optional) Description of the token.
-        * `disabled` - (Optional) Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
-        * `secret` - The secret token created by the API. You cannot set this value.
-        * `notifications` - (Optional) Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
-        * `host_or_usage_limits` - (Optional) Specify Usage-based limits for this token.
-          * `host_limit` - (Optional) Max number of hosts that can use this token
-          * `host_notification_threshold` - (Optional) Notification threshold for hosts
-          * `container_limit` - (Optional) Max number of Docker containers that can use this token
-          * `container_notification_threshold` - (Optional) Notification threshold for Docker containers
-          * `custom_metrics_limit` - (Optional) Max number of custom metrics that can be sent with this token
-          * `custom_metrics_notification_threshold` - (Optional) Notification threshold for custom metrics
-          * `high_res_metrics_limit` - (Optional) Max number of hi-res metrics that can be sent with this toke
-          * `high_res_metrics_notification_threshold` - (Optional) Notification threshold for hi-res metrics
-        * `dpm_limits` (Optional) Specify DPM-based limits for this token.
-          * `dpm_notification_threshold` - (Optional) DPM level at which Splunk Observability Cloud sends the notification for this token. If you don't specify a notification, Splunk Observability Cloud sends the generic notification.
-          * `dpm_limit` - (Required) The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the token.
-        * `secret` - The assigned token.
 
         :param str resource_name: The name of the resource.
         :param OrgTokenArgs args: The arguments to use to populate this resource's properties.
@@ -425,12 +379,13 @@ class OrgToken(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] auth_scopes: Authentication scope, ex: INGEST, API, RUM ... (Optional)
-        :param pulumi.Input[str] description: Description of the token (Optional)
-        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-               Defaults to `false`
-        :param pulumi.Input[str] name: Name of the token
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: List of strings specifying where notifications will be sent when an incident occurs. See
-               https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        :param pulumi.Input[str] description: Description of the token.
+        :param pulumi.Input[bool] disabled: Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+        :param pulumi.Input[pulumi.InputType['OrgTokenDpmLimitsArgs']] dpm_limits: Specify DPM-based limits for this token.
+        :param pulumi.Input[pulumi.InputType['OrgTokenHostOrUsageLimitsArgs']] host_or_usage_limits: Specify Usage-based limits for this token.
+        :param pulumi.Input[str] name: Name of the token.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notifications: Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
+        :param pulumi.Input[str] secret: The secret token created by the API. You cannot set this value.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -458,7 +413,7 @@ class OrgToken(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the token (Optional)
+        Description of the token.
         """
         return pulumi.get(self, "description")
 
@@ -466,26 +421,31 @@ class OrgToken(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-        Defaults to `false`
+        Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
         """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="dpmLimits")
     def dpm_limits(self) -> pulumi.Output[Optional['outputs.OrgTokenDpmLimits']]:
+        """
+        Specify DPM-based limits for this token.
+        """
         return pulumi.get(self, "dpm_limits")
 
     @property
     @pulumi.getter(name="hostOrUsageLimits")
     def host_or_usage_limits(self) -> pulumi.Output[Optional['outputs.OrgTokenHostOrUsageLimits']]:
+        """
+        Specify Usage-based limits for this token.
+        """
         return pulumi.get(self, "host_or_usage_limits")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the token
+        Name of the token.
         """
         return pulumi.get(self, "name")
 
@@ -493,13 +453,15 @@ class OrgToken(pulumi.CustomResource):
     @pulumi.getter
     def notifications(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        List of strings specifying where notifications will be sent when an incident occurs. See
-        https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
         """
         return pulumi.get(self, "notifications")
 
     @property
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
+        """
+        The secret token created by the API. You cannot set this value.
+        """
         return pulumi.get(self, "secret")
 

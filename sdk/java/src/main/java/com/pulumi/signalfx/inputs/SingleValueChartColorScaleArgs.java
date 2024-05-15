@@ -33,14 +33,14 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      * 
      */
     @Import(name="gt")
     private @Nullable Output<Double> gt;
 
     /**
-     * @return Indicates the lower threshold non-inclusive value for this range
+     * @return Indicates the lower threshold non-inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> gt() {
@@ -48,14 +48,14 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      * 
      */
     @Import(name="gte")
     private @Nullable Output<Double> gte;
 
     /**
-     * @return Indicates the lower threshold inclusive value for this range
+     * @return Indicates the lower threshold inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> gte() {
@@ -63,14 +63,14 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inculsive value for this range.
      * 
      */
     @Import(name="lt")
     private @Nullable Output<Double> lt;
 
     /**
-     * @return Indicates the upper threshold non-inculsive value for this range
+     * @return Indicates the upper threshold non-inculsive value for this range.
      * 
      */
     public Optional<Output<Double>> lt() {
@@ -78,14 +78,14 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      * 
      */
     @Import(name="lte")
     private @Nullable Output<Double> lte;
 
     /**
-     * @return Indicates the upper threshold inclusive value for this range
+     * @return Indicates the upper threshold inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> lte() {
@@ -142,7 +142,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param gt Indicates the lower threshold non-inclusive value for this range
+         * @param gt Indicates the lower threshold non-inclusive value for this range.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param gt Indicates the lower threshold non-inclusive value for this range
+         * @param gt Indicates the lower threshold non-inclusive value for this range.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param gte Indicates the lower threshold inclusive value for this range
+         * @param gte Indicates the lower threshold inclusive value for this range.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param gte Indicates the lower threshold inclusive value for this range
+         * @param gte Indicates the lower threshold inclusive value for this range.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param lt Indicates the upper threshold non-inculsive value for this range
+         * @param lt Indicates the upper threshold non-inculsive value for this range.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param lt Indicates the upper threshold non-inculsive value for this range
+         * @param lt Indicates the upper threshold non-inculsive value for this range.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param lte Indicates the upper threshold inclusive value for this range
+         * @param lte Indicates the upper threshold inclusive value for this range.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class SingleValueChartColorScaleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param lte Indicates the upper threshold inclusive value for this range
+         * @param lte Indicates the upper threshold inclusive value for this range.
          * 
          * @return builder
          * 

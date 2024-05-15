@@ -33,14 +33,14 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The maximum value within the coloring range
+     * The maximum value within the coloring range.
      * 
      */
     @Import(name="maxValue")
     private @Nullable Output<Double> maxValue;
 
     /**
-     * @return The maximum value within the coloring range
+     * @return The maximum value within the coloring range.
      * 
      */
     public Optional<Output<Double>> maxValue() {
@@ -48,14 +48,14 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The minimum value within the coloring range
+     * The minimum value within the coloring range.
      * 
      */
     @Import(name="minValue")
     private @Nullable Output<Double> minValue;
 
     /**
-     * @return The minimum value within the coloring range
+     * @return The minimum value within the coloring range.
      * 
      */
     public Optional<Output<Double>> minValue() {
@@ -110,7 +110,7 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param maxValue The maximum value within the coloring range
+         * @param maxValue The maximum value within the coloring range.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param maxValue The maximum value within the coloring range
+         * @param maxValue The maximum value within the coloring range.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param minValue The minimum value within the coloring range
+         * @param minValue The minimum value within the coloring range.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class HeatmapChartColorRangeArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param minValue The minimum value within the coloring range
+         * @param minValue The minimum value within the coloring range.
          * 
          * @return builder
          * 

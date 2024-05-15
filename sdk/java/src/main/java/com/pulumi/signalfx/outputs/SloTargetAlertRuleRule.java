@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloTargetAlertRuleRule {
     /**
-     * @return Description of the rule
+     * @return Description of the SLO.
      * 
      */
     private @Nullable String description;
@@ -63,7 +63,7 @@ public final class SloTargetAlertRuleRule {
 
     private SloTargetAlertRuleRule() {}
     /**
-     * @return Description of the rule
+     * @return Description of the SLO.
      * 
      */
     public Optional<String> description() {

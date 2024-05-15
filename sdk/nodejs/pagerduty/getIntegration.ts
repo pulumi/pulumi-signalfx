@@ -17,16 +17,6 @@ import * as utilities from "../utilities";
  *     name: "PD-Integration",
  * });
  * ```
- *
- * ## Arguments
- *
- * * `name` - Specify the exact name of the desired PagerDuty integration
- *
- * ## Attributes
- *
- * * `id` - The ID of the integration.
- * * `name` - The name of the integration.
- * * `enabled` - Whether the integration is enabled.
  */
 export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationResult> {
 
@@ -40,6 +30,9 @@ export function getIntegration(args: GetIntegrationArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getIntegration.
  */
 export interface GetIntegrationArgs {
+    /**
+     * Specify the exact name of the desired PagerDuty integration
+     */
     name: string;
 }
 
@@ -47,11 +40,17 @@ export interface GetIntegrationArgs {
  * A collection of values returned by getIntegration.
  */
 export interface GetIntegrationResult {
+    /**
+     * Whether the integration is enabled.
+     */
     readonly enabled: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the integration.
+     */
     readonly name: string;
 }
 /**
@@ -67,16 +66,6 @@ export interface GetIntegrationResult {
  *     name: "PD-Integration",
  * });
  * ```
- *
- * ## Arguments
- *
- * * `name` - Specify the exact name of the desired PagerDuty integration
- *
- * ## Attributes
- *
- * * `id` - The ID of the integration.
- * * `name` - The name of the integration.
- * * `enabled` - Whether the integration is enabled.
  */
 export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationResult> {
     return pulumi.output(args).apply((a: any) => getIntegration(a, opts))
@@ -86,5 +75,8 @@ export function getIntegrationOutput(args: GetIntegrationOutputArgs, opts?: pulu
  * A collection of arguments for invoking getIntegration.
  */
 export interface GetIntegrationOutputArgs {
+    /**
+     * Specify the exact name of the desired PagerDuty integration
+     */
     name: pulumi.Input<string>;
 }

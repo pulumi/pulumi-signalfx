@@ -13,19 +13,19 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardGroupDashboardGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Unique identifier of an association between a dashboard group and a dashboard
+        /// The ID of the association between the dashboard group and the dashboard
         /// </summary>
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
 
         /// <summary>
-        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// The dashboard id to mirror
         /// </summary>
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
 
         /// <summary>
-        /// String that provides a description override for a mirrored dashboard
+        /// The description that will override the original dashboards's description.
         /// </summary>
         [Input("descriptionOverride")]
         public Input<string>? DescriptionOverride { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs>? _filterOverrides;
 
         /// <summary>
-        /// Filter to apply to each chart in the dashboard
+        /// The description that will override the original dashboards's description.
         /// </summary>
         public InputList<Inputs.DashboardGroupDashboardFilterOverrideGetArgs> FilterOverrides
         {
@@ -43,7 +43,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// String that provides a name override for a mirrored dashboard
+        /// The name that will override the original dashboards's name.
         /// </summary>
         [Input("nameOverride")]
         public Input<string>? NameOverride { get; set; }

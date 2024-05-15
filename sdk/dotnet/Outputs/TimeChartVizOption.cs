@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartVizOption
     {
         /// <summary>
-        /// The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
         /// </summary>
         public readonly string? Axis;
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         public readonly string? Color;
         /// <summary>
@@ -26,15 +26,15 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// (Chart plot_type by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         /// </summary>
         public readonly string? PlotType;
         /// <summary>
-        /// An arbitrary prefix to display with the value of this plot
+        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         public readonly string? ValuePrefix;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? ValueSuffix;
         /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         /// </summary>
         public readonly string? ValueUnit;
 

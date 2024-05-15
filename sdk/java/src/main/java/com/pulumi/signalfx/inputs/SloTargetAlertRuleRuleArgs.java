@@ -20,14 +20,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     public static final SloTargetAlertRuleRuleArgs Empty = new SloTargetAlertRuleRuleArgs();
 
     /**
-     * Description of the rule
+     * Description of the SLO.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the rule
+     * @return Description of the SLO.
      * 
      */
     public Optional<Output<String>> description() {
@@ -187,7 +187,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description Description of the rule
+         * @param description Description of the SLO.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description Description of the rule
+         * @param description Description of the SLO.
          * 
          * @return builder
          * 

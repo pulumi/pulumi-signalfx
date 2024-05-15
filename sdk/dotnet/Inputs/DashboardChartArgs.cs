@@ -13,31 +13,31 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the chart to display
+        /// ID of the chart to display.
         /// </summary>
         [Input("chartId", required: true)]
         public Input<string> ChartId { get; set; } = null!;
 
         /// <summary>
-        /// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+        /// The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
         /// </summary>
         [Input("column")]
         public Input<int>? Column { get; set; }
 
         /// <summary>
-        /// How many rows the chart should take up. (greater than or equal to 1)
+        /// How many rows the chart should take up (greater than or equal to `1`). `1` by default.
         /// </summary>
         [Input("height")]
         public Input<int>? Height { get; set; }
 
         /// <summary>
-        /// The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+        /// The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
         /// </summary>
         [Input("row")]
         public Input<int>? Row { get; set; }
 
         /// <summary>
-        /// How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+        /// How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
         /// </summary>
         [Input("width")]
         public Input<int>? Width { get; set; }

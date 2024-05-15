@@ -19,13 +19,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string> Color { get; set; } = null!;
 
         /// <summary>
-        /// The maximum value within the coloring range
+        /// The maximum value within the coloring range.
         /// </summary>
         [Input("maxValue")]
         public Input<double>? MaxValue { get; set; }
 
         /// <summary>
-        /// The minimum value within the coloring range
+        /// The minimum value within the coloring range.
         /// </summary>
         [Input("minValue")]
         public Input<double>? MinValue { get; set; }

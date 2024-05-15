@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class OrgTokenHostOrUsageLimits
     {
         /// <summary>
-        /// Max number of containers that can use this token
+        /// Max number of Docker containers that can use this token
         /// </summary>
         public readonly int? ContainerLimit;
         /// <summary>
-        /// Notification threshold for containers
+        /// Notification threshold for Docker containers
         /// </summary>
         public readonly int? ContainerNotificationThreshold;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly int? CustomMetricsNotificationThreshold;
         /// <summary>
-        /// Max number of high-res metrics that can be sent with this token
+        /// Max number of hi-res metrics that can be sent with this toke
         /// </summary>
         public readonly int? HighResMetricsLimit;
         /// <summary>
-        /// Notification threshold for high-res metrics
+        /// Notification threshold for hi-res metrics
         /// </summary>
         public readonly int? HighResMetricsNotificationThreshold;
         /// <summary>

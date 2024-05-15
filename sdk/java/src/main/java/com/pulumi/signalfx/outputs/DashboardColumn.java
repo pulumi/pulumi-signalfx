@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardColumn {
     /**
-     * @return Charts to use for the column
+     * @return List of IDs of the charts to display.
      * 
      */
     private List<String> chartIds;
     /**
-     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * @return Column number for the layout.
      * 
      */
     private @Nullable Integer column;
     /**
-     * @return How many rows each chart should take up. (greater than or equal to 1)
+     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
      * 
      */
     private @Nullable Integer height;
     /**
-     * @return Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     private @Nullable Integer width;
 
     private DashboardColumn() {}
     /**
-     * @return Charts to use for the column
+     * @return List of IDs of the charts to display.
      * 
      */
     public List<String> chartIds() {
         return this.chartIds;
     }
     /**
-     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * @return Column number for the layout.
      * 
      */
     public Optional<Integer> column() {
         return Optional.ofNullable(this.column);
     }
     /**
-     * @return How many rows each chart should take up. (greater than or equal to 1)
+     * @return How many rows every chart should take up (greater than or equal to 1). 1 by default.
      * 
      */
     public Optional<Integer> height() {
         return Optional.ofNullable(this.height);
     }
     /**
-     * @return Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+     * @return How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Integer> width() {

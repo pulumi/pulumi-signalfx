@@ -18,23 +18,12 @@ import (
 // > **WARNING** This resource implements a part of a workflow. You must use it with `aws.Integration`.
 //
 // ## Example
-//
-// ## Arguments
-//
-// * `name` - (Required) The name of this integration
-//
-// ## Attributes
-//
-// In addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the integration to use with `aws.Integration`
-// * `signalfxAwsAccount` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
 type TokenIntegration struct {
 	pulumi.CustomResourceState
 
-	// Name of the integration
+	// The name of this integration
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Splunk Observability AWS account ID to use with an AWS role.
+	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
 	SignalfxAwsAccount pulumi.StringOutput `pulumi:"signalfxAwsAccount"`
 	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId pulumi.StringOutput `pulumi:"tokenId"`
@@ -75,18 +64,18 @@ func GetTokenIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TokenIntegration resources.
 type tokenIntegrationState struct {
-	// Name of the integration
+	// The name of this integration
 	Name *string `pulumi:"name"`
-	// The Splunk Observability AWS account ID to use with an AWS role.
+	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
 	SignalfxAwsAccount *string `pulumi:"signalfxAwsAccount"`
 	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId *string `pulumi:"tokenId"`
 }
 
 type TokenIntegrationState struct {
-	// Name of the integration
+	// The name of this integration
 	Name pulumi.StringPtrInput
-	// The Splunk Observability AWS account ID to use with an AWS role.
+	// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
 	SignalfxAwsAccount pulumi.StringPtrInput
 	// The SignalFx-generated AWS token to use with an AWS integration.
 	TokenId pulumi.StringPtrInput
@@ -97,13 +86,13 @@ func (TokenIntegrationState) ElementType() reflect.Type {
 }
 
 type tokenIntegrationArgs struct {
-	// Name of the integration
+	// The name of this integration
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a TokenIntegration resource.
 type TokenIntegrationArgs struct {
-	// Name of the integration
+	// The name of this integration
 	Name pulumi.StringPtrInput
 }
 
@@ -194,12 +183,12 @@ func (o TokenIntegrationOutput) ToTokenIntegrationOutputWithContext(ctx context.
 	return o
 }
 
-// Name of the integration
+// The name of this integration
 func (o TokenIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Splunk Observability AWS account ID to use with an AWS role.
+// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
 func (o TokenIntegrationOutput) SignalfxAwsAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *TokenIntegration) pulumi.StringOutput { return v.SignalfxAwsAccount }).(pulumi.StringOutput)
 }
