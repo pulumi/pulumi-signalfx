@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/signalfx",
-    "version": "${VERSION}",
+    "version": "7.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing SignalFx resources.",
     "keywords": [
         "pulumi",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "signalfx"
+        "name": "signalfx",
+        "version": "7.0.0-alpha.0+dev"
     }
 }
