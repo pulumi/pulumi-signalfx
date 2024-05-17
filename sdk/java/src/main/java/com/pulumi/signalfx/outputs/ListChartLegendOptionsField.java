@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListChartLegendOptionsField {
     /**
-     * @return (true by default) Determines if this property is displayed in the data table.
+     * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The name of a property to hide or show in the data table.
+     * @return The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
      * 
      */
     private String property;
 
     private ListChartLegendOptionsField() {}
     /**
-     * @return (true by default) Determines if this property is displayed in the data table.
+     * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The name of a property to hide or show in the data table.
+     * @return The name of the property to display. Note the special values of `sf_metric` (corresponding with the API&#39;s `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API&#39;s `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
      * 
      */
     public String property() {

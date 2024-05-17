@@ -24,62 +24,46 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `url` - (Required) The URL to request
- * * `shared_secret` - (Optional)
- * * `headers` - (Optional) A header to send with the request
- *   * `header_key` - (Required) The key of the header to send
- *   * `header_value` - (Required) The value of the header to send
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration.
- * 
  */
 @ResourceType(type="signalfx:index/webhookIntegration:WebhookIntegration")
 public class WebhookIntegration extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * HTTP headers to pass in the request
+     * A header to send with the request
      * 
      */
     @Export(name="headers", refs={List.class,WebhookIntegrationHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WebhookIntegrationHeader>> headers;
 
     /**
-     * @return HTTP headers to pass in the request
+     * @return A header to send with the request
      * 
      */
     public Output<Optional<List<WebhookIntegrationHeader>>> headers() {
         return Codegen.optional(this.headers);
     }
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Output<String> name() {
@@ -92,14 +76,14 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sharedSecret);
     }
     /**
-     * Webhook URL
+     * The URL to request
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> url;
 
     /**
-     * @return Webhook URL
+     * @return The URL to request
      * 
      */
     public Output<Optional<String>> url() {

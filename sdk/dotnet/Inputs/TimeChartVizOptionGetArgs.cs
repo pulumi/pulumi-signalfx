@@ -13,13 +13,13 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class TimeChartVizOptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+        /// Y-axis associated with values for this plot. Must be either `right` or `left`.
         /// </summary>
         [Input("axis")]
         public Input<string>? Axis { get; set; }
 
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
@@ -31,19 +31,19 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// (Chart plot_type by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+        /// The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plot_type` by default.
         /// </summary>
         [Input("plotType")]
         public Input<string>? PlotType { get; set; }
 
         /// <summary>
-        /// An arbitrary prefix to display with the value of this plot
+        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? ValueSuffix { get; set; }
 
         /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         /// </summary>
         [Input("valueUnit")]
         public Input<string>? ValueUnit { get; set; }

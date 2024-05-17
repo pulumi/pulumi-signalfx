@@ -20,120 +20,102 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * The following arguments are supported in the resource block:
- * 
- * * `name` - (Required) Name of the text note.
- * * `program_text` - (Required) Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
- * * `description` - (Optional) Description of the text note.
- * * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
- * * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
- * * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the chart.
- * * `url` - The URL of the chart.
- * 
  */
 @ResourceType(type="signalfx:index/eventFeedChart:EventFeedChart")
 public class EventFeedChart extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the chart (Optional)
+     * Description of the text note.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the text note.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
-     * @return Seconds since epoch to end the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Output<Optional<Integer>> endTime() {
         return Codegen.optional(this.endTime);
     }
     /**
-     * Name of the chart
+     * Name of the text note.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the text note.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
-     * @return Seconds since epoch to start the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Output<Optional<Integer>> startTime() {
         return Codegen.optional(this.startTime);
     }
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
     @Export(name="timeRange", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeRange;
 
     /**
-     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
     public Output<Optional<Integer>> timeRange() {
         return Codegen.optional(this.timeRange);
     }
     /**
-     * URL of the chart
+     * The URL of the chart.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the chart
+     * @return The URL of the chart.
      * 
      */
     public Output<String> url() {

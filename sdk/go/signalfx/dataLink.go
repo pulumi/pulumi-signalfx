@@ -14,52 +14,20 @@ import (
 // Manage Splunk Observability Cloud [Data Links](https://docs.signalfx.com/en/latest/managing/data-links.html).
 //
 // ## Example
-//
-// ## Arguments
-//
-// The following arguments are supported in the resource block:
-//
-// * `propertyName` - (Optional) Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
-// * `propertyValue` - (Optional) Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
-// * `contextDashboardId` - (Optional) If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
-// * `targetExternalUrl` - (Optional) Link to an external URL
-//   - `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-//   - `url`- (Required) URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
-//   - `timeFormat` - (Optional) [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
-//   - `minimumTimeWindow` - (Optional) The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
-//   - `propertyKeyMapping` - Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
-//
-// * `targetSignalfxDashboard` - (Optional) Link to a Splunk Observability Cloud dashboard
-//   - `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-//   - `isDefault` - (Optional) Flag that designates a target as the default for a data link object. `true` by default
-//   - `dashboardId` - (Required) SignalFx-assigned ID of the dashboard link target
-//   - `dashboardGroupId` - (Required) SignalFx-assigned ID of the dashboard link target's dashboard group
-//
-// * `targetSplunk` - (Optional) Link to an external URL
-//   - `name` (Required) User-assigned target name. Use this value to differentiate between the link targets for a data link object.
-//   - `propertyKeyMapping` - Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the link.
 type DataLink struct {
 	pulumi.CustomResourceState
 
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId pulumi.StringPtrOutput `pulumi:"contextDashboardId"`
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
-	// `propertyName`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName pulumi.StringPtrOutput `pulumi:"propertyName"`
-	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `propertyName`.
+	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue pulumi.StringPtrOutput `pulumi:"propertyValue"`
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayOutput `pulumi:"targetExternalUrls"`
 	// Link to a Splunk Observability Cloud dashboard
 	TargetSignalfxDashboards DataLinkTargetSignalfxDashboardArrayOutput `pulumi:"targetSignalfxDashboards"`
-	// Link to a Splunk instance
+	// Link to an external URL
 	TargetSplunks DataLinkTargetSplunkArrayOutput `pulumi:"targetSplunks"`
 }
 
@@ -93,36 +61,32 @@ func GetDataLink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataLink resources.
 type dataLinkState struct {
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId *string `pulumi:"contextDashboardId"`
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
-	// `propertyName`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName *string `pulumi:"propertyName"`
-	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `propertyName`.
+	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue *string `pulumi:"propertyValue"`
 	// Link to an external URL
 	TargetExternalUrls []DataLinkTargetExternalUrl `pulumi:"targetExternalUrls"`
 	// Link to a Splunk Observability Cloud dashboard
 	TargetSignalfxDashboards []DataLinkTargetSignalfxDashboard `pulumi:"targetSignalfxDashboards"`
-	// Link to a Splunk instance
+	// Link to an external URL
 	TargetSplunks []DataLinkTargetSplunk `pulumi:"targetSplunks"`
 }
 
 type DataLinkState struct {
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId pulumi.StringPtrInput
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
-	// `propertyName`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName pulumi.StringPtrInput
-	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `propertyName`.
+	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue pulumi.StringPtrInput
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayInput
 	// Link to a Splunk Observability Cloud dashboard
 	TargetSignalfxDashboards DataLinkTargetSignalfxDashboardArrayInput
-	// Link to a Splunk instance
+	// Link to an external URL
 	TargetSplunks DataLinkTargetSplunkArrayInput
 }
 
@@ -131,37 +95,33 @@ func (DataLinkState) ElementType() reflect.Type {
 }
 
 type dataLinkArgs struct {
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId *string `pulumi:"contextDashboardId"`
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
-	// `propertyName`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName *string `pulumi:"propertyName"`
-	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `propertyName`.
+	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue *string `pulumi:"propertyValue"`
 	// Link to an external URL
 	TargetExternalUrls []DataLinkTargetExternalUrl `pulumi:"targetExternalUrls"`
 	// Link to a Splunk Observability Cloud dashboard
 	TargetSignalfxDashboards []DataLinkTargetSignalfxDashboard `pulumi:"targetSignalfxDashboards"`
-	// Link to a Splunk instance
+	// Link to an external URL
 	TargetSplunks []DataLinkTargetSplunk `pulumi:"targetSplunks"`
 }
 
 // The set of arguments for constructing a DataLink resource.
 type DataLinkArgs struct {
-	// The dashobard ID to which this data link will be applied
+	// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 	ContextDashboardId pulumi.StringPtrInput
-	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
-	// `propertyName`.
+	// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 	PropertyName pulumi.StringPtrInput
-	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-	// `propertyName`.
+	// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 	PropertyValue pulumi.StringPtrInput
 	// Link to an external URL
 	TargetExternalUrls DataLinkTargetExternalUrlArrayInput
 	// Link to a Splunk Observability Cloud dashboard
 	TargetSignalfxDashboards DataLinkTargetSignalfxDashboardArrayInput
-	// Link to a Splunk instance
+	// Link to an external URL
 	TargetSplunks DataLinkTargetSplunkArrayInput
 }
 
@@ -252,19 +212,17 @@ func (o DataLinkOutput) ToDataLinkOutputWithContext(ctx context.Context) DataLin
 	return o
 }
 
-// The dashobard ID to which this data link will be applied
+// If provided, scopes this data link to the supplied dashboard id. If omitted then the link will be global.
 func (o DataLinkOutput) ContextDashboardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.ContextDashboardId }).(pulumi.StringPtrOutput)
 }
 
-// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify
-// `propertyName`.
+// Name (key) of the metadata that's the trigger of a data link. If you specify `propertyValue`, you must specify `propertyName`.
 func (o DataLinkOutput) PropertyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyName }).(pulumi.StringPtrOutput)
 }
 
-// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify
-// `propertyName`.
+// Value of the metadata that's the trigger of a data link. If you specify this property, you must also specify `propertyName`.
 func (o DataLinkOutput) PropertyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataLink) pulumi.StringPtrOutput { return v.PropertyValue }).(pulumi.StringPtrOutput)
 }
@@ -279,7 +237,7 @@ func (o DataLinkOutput) TargetSignalfxDashboards() DataLinkTargetSignalfxDashboa
 	return o.ApplyT(func(v *DataLink) DataLinkTargetSignalfxDashboardArrayOutput { return v.TargetSignalfxDashboards }).(DataLinkTargetSignalfxDashboardArrayOutput)
 }
 
-// Link to a Splunk instance
+// Link to an external URL
 func (o DataLinkOutput) TargetSplunks() DataLinkTargetSplunkArrayOutput {
 	return o.ApplyT(func(v *DataLink) DataLinkTargetSplunkArrayOutput { return v.TargetSplunks }).(DataLinkTargetSplunkArrayOutput)
 }

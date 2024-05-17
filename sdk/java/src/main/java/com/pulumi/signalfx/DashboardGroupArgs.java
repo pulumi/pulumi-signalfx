@@ -20,7 +20,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     public static final DashboardGroupArgs Empty = new DashboardGroupArgs();
 
     /**
-     * Team IDs that have write access to this dashboard
+     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -31,7 +31,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this dashboard
+     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -43,7 +43,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * User IDs that have write access to this dashboard
+     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -54,7 +54,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this dashboard
+     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions field now
@@ -66,14 +66,14 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Dashboard IDs that are members of this dashboard group. Also handles &#39;mirrored&#39; dashboards.
+     * [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      * 
      */
     @Import(name="dashboards")
     private @Nullable Output<List<DashboardGroupDashboardArgs>> dashboards;
 
     /**
-     * @return Dashboard IDs that are members of this dashboard group. Also handles &#39;mirrored&#39; dashboards.
+     * @return [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      * 
      */
     public Optional<Output<List<DashboardGroupDashboardArgs>>> dashboards() {
@@ -81,14 +81,14 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Description of the dashboard group
+     * Description of the dashboard group.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the dashboard group
+     * @return Description of the dashboard group.
      * 
      */
     public Optional<Output<String>> description() {
@@ -103,14 +103,14 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the dashboard group
+     * Name of the dashboard group.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the dashboard group
+     * @return Name of the dashboard group.
      * 
      */
     public Optional<Output<String>> name() {
@@ -118,14 +118,14 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The custom access control list for this dashboard
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<DashboardGroupPermissionArgs>> permissions;
 
     /**
-     * @return The custom access control list for this dashboard
+     * @return [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
      * 
      */
     public Optional<Output<List<DashboardGroupPermissionArgs>>> permissions() {
@@ -133,14 +133,14 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Team IDs to associate the dashboard group to
+     * Team IDs to associate the dashboard group to.
      * 
      */
     @Import(name="teams")
     private @Nullable Output<List<String>> teams;
 
     /**
-     * @return Team IDs to associate the dashboard group to
+     * @return Team IDs to associate the dashboard group to.
      * 
      */
     public Optional<Output<List<String>>> teams() {
@@ -179,7 +179,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dashboards Dashboard IDs that are members of this dashboard group. Also handles &#39;mirrored&#39; dashboards.
+         * @param dashboards [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dashboards Dashboard IDs that are members of this dashboard group. Also handles &#39;mirrored&#39; dashboards.
+         * @param dashboards [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param dashboards Dashboard IDs that are members of this dashboard group. Also handles &#39;mirrored&#39; dashboards.
+         * @param dashboards [Mirrored dashboards](https://docs.splunk.com/observability/en/data-visualization/dashboards/dashboard-share-clone-mirror.html#mirror-dashboard) in this dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the dashboard group
+         * @param description Description of the dashboard group.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description Description of the dashboard group
+         * @param description Description of the dashboard group.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the dashboard group
+         * @param name Name of the dashboard group.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name Name of the dashboard group
+         * @param name Name of the dashboard group.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param permissions The custom access control list for this dashboard
+         * @param permissions [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param permissions The custom access control list for this dashboard
+         * @param permissions [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param permissions The custom access control list for this dashboard
+         * @param permissions [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) List of read and write permission configuration to specify which user, team, and organization can view and/or edit your dashboard group. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param teams Team IDs to associate the dashboard group to
+         * @param teams Team IDs to associate the dashboard group to.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param teams Team IDs to associate the dashboard group to
+         * @param teams Team IDs to associate the dashboard group to.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class DashboardGroupArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param teams Team IDs to associate the dashboard group to
+         * @param teams Team IDs to associate the dashboard group to.
          * 
          * @return builder
          * 

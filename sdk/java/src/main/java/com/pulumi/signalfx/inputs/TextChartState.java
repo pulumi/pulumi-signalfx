@@ -16,14 +16,14 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
     public static final TextChartState Empty = new TextChartState();
 
     /**
-     * Description of the chart (Optional)
+     * Description of the text note.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the text note.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+     * Markdown text to display.
      * 
      */
     @Import(name="markdown")
     private @Nullable Output<String> markdown;
 
     /**
-     * @return Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+     * @return Markdown text to display.
      * 
      */
     public Optional<Output<String>> markdown() {
@@ -46,14 +46,14 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart
+     * Name of the text note.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the text note.
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,14 +61,14 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the chart
+     * The URL of the chart.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the chart
+     * @return The URL of the chart.
      * 
      */
     public Optional<Output<String>> url() {
@@ -103,7 +103,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the text note.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the text note.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param markdown Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+         * @param markdown Markdown text to display.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param markdown Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+         * @param markdown Markdown text to display.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the text note.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the text note.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the chart
+         * @param url The URL of the chart.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class TextChartState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the chart
+         * @param url The URL of the chart.
          * 
          * @return builder
          * 

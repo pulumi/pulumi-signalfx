@@ -22,58 +22,47 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you&#39;ll receive a 4xx error.
  * 
  * ## Example
- * ## Arguments
- * 
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `api_key` - (Required) PagerDuty API key.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration.
  * 
  */
 @ResourceType(type="signalfx:pagerduty/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * PagerDuty API key
+     * PagerDuty API key.
      * 
      */
     @Export(name="apiKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apiKey;
 
     /**
-     * @return PagerDuty API key
+     * @return PagerDuty API key.
      * 
      */
     public Output<Optional<String>> apiKey() {
         return Codegen.optional(this.apiKey);
     }
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Output<String> name() {

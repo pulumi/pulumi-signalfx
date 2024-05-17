@@ -16,54 +16,25 @@ import (
 // > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
 // ## Example
-//
-// ## Arguments
-//
-// The following arguments are supported in the resource block:
-//
-// * `name` - (Required) Name of the token.
-// * `description` - (Optional) Description of the token.
-// * `disabled` - (Optional) Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
-// * `secret` - The secret token created by the API. You cannot set this value.
-// * `notifications` - (Optional) Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
-// * `hostOrUsageLimits` - (Optional) Specify Usage-based limits for this token.
-//   - `hostLimit` - (Optional) Max number of hosts that can use this token
-//   - `hostNotificationThreshold` - (Optional) Notification threshold for hosts
-//   - `containerLimit` - (Optional) Max number of Docker containers that can use this token
-//   - `containerNotificationThreshold` - (Optional) Notification threshold for Docker containers
-//   - `customMetricsLimit` - (Optional) Max number of custom metrics that can be sent with this token
-//   - `customMetricsNotificationThreshold` - (Optional) Notification threshold for custom metrics
-//   - `highResMetricsLimit` - (Optional) Max number of hi-res metrics that can be sent with this toke
-//   - `highResMetricsNotificationThreshold` - (Optional) Notification threshold for hi-res metrics
-//
-// * `dpmLimits` (Optional) Specify DPM-based limits for this token.
-//   - `dpmNotificationThreshold` - (Optional) DPM level at which Splunk Observability Cloud sends the notification for this token. If you don't specify a notification, Splunk Observability Cloud sends the generic notification.
-//   - `dpmLimit` - (Required) The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the token.
-// * `secret` - The assigned token.
 type OrgToken struct {
 	pulumi.CustomResourceState
 
 	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
 	AuthScopes pulumi.StringArrayOutput `pulumi:"authScopes"`
-	// Description of the token (Optional)
+	// Description of the token.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-	// Defaults to `false`
-	Disabled          pulumi.BoolPtrOutput               `pulumi:"disabled"`
-	DpmLimits         OrgTokenDpmLimitsPtrOutput         `pulumi:"dpmLimits"`
+	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// Specify DPM-based limits for this token.
+	DpmLimits OrgTokenDpmLimitsPtrOutput `pulumi:"dpmLimits"`
+	// Specify Usage-based limits for this token.
 	HostOrUsageLimits OrgTokenHostOrUsageLimitsPtrOutput `pulumi:"hostOrUsageLimits"`
-	// Name of the token
+	// Name of the token.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
 	Notifications pulumi.StringArrayOutput `pulumi:"notifications"`
-	Secret        pulumi.StringOutput      `pulumi:"secret"`
+	// The secret token created by the API. You cannot set this value.
+	Secret pulumi.StringOutput `pulumi:"secret"`
 }
 
 // NewOrgToken registers a new resource with the given unique name, arguments, and options.
@@ -102,37 +73,39 @@ func GetOrgToken(ctx *pulumi.Context,
 type orgTokenState struct {
 	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
 	AuthScopes []string `pulumi:"authScopes"`
-	// Description of the token (Optional)
+	// Description of the token.
 	Description *string `pulumi:"description"`
-	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-	// Defaults to `false`
-	Disabled          *bool                      `pulumi:"disabled"`
-	DpmLimits         *OrgTokenDpmLimits         `pulumi:"dpmLimits"`
+	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+	Disabled *bool `pulumi:"disabled"`
+	// Specify DPM-based limits for this token.
+	DpmLimits *OrgTokenDpmLimits `pulumi:"dpmLimits"`
+	// Specify Usage-based limits for this token.
 	HostOrUsageLimits *OrgTokenHostOrUsageLimits `pulumi:"hostOrUsageLimits"`
-	// Name of the token
+	// Name of the token.
 	Name *string `pulumi:"name"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
 	Notifications []string `pulumi:"notifications"`
-	Secret        *string  `pulumi:"secret"`
+	// The secret token created by the API. You cannot set this value.
+	Secret *string `pulumi:"secret"`
 }
 
 type OrgTokenState struct {
 	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
 	AuthScopes pulumi.StringArrayInput
-	// Description of the token (Optional)
+	// Description of the token.
 	Description pulumi.StringPtrInput
-	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-	// Defaults to `false`
-	Disabled          pulumi.BoolPtrInput
-	DpmLimits         OrgTokenDpmLimitsPtrInput
+	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+	Disabled pulumi.BoolPtrInput
+	// Specify DPM-based limits for this token.
+	DpmLimits OrgTokenDpmLimitsPtrInput
+	// Specify Usage-based limits for this token.
 	HostOrUsageLimits OrgTokenHostOrUsageLimitsPtrInput
-	// Name of the token
+	// Name of the token.
 	Name pulumi.StringPtrInput
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
 	Notifications pulumi.StringArrayInput
-	Secret        pulumi.StringPtrInput
+	// The secret token created by the API. You cannot set this value.
+	Secret pulumi.StringPtrInput
 }
 
 func (OrgTokenState) ElementType() reflect.Type {
@@ -142,17 +115,17 @@ func (OrgTokenState) ElementType() reflect.Type {
 type orgTokenArgs struct {
 	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
 	AuthScopes []string `pulumi:"authScopes"`
-	// Description of the token (Optional)
+	// Description of the token.
 	Description *string `pulumi:"description"`
-	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-	// Defaults to `false`
-	Disabled          *bool                      `pulumi:"disabled"`
-	DpmLimits         *OrgTokenDpmLimits         `pulumi:"dpmLimits"`
+	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+	Disabled *bool `pulumi:"disabled"`
+	// Specify DPM-based limits for this token.
+	DpmLimits *OrgTokenDpmLimits `pulumi:"dpmLimits"`
+	// Specify Usage-based limits for this token.
 	HostOrUsageLimits *OrgTokenHostOrUsageLimits `pulumi:"hostOrUsageLimits"`
-	// Name of the token
+	// Name of the token.
 	Name *string `pulumi:"name"`
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
 	Notifications []string `pulumi:"notifications"`
 }
 
@@ -160,17 +133,17 @@ type orgTokenArgs struct {
 type OrgTokenArgs struct {
 	// Authentication scope, ex: INGEST, API, RUM ... (Optional)
 	AuthScopes pulumi.StringArrayInput
-	// Description of the token (Optional)
+	// Description of the token.
 	Description pulumi.StringPtrInput
-	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-	// Defaults to `false`
-	Disabled          pulumi.BoolPtrInput
-	DpmLimits         OrgTokenDpmLimitsPtrInput
+	// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
+	Disabled pulumi.BoolPtrInput
+	// Specify DPM-based limits for this token.
+	DpmLimits OrgTokenDpmLimitsPtrInput
+	// Specify Usage-based limits for this token.
 	HostOrUsageLimits OrgTokenHostOrUsageLimitsPtrInput
-	// Name of the token
+	// Name of the token.
 	Name pulumi.StringPtrInput
-	// List of strings specifying where notifications will be sent when an incident occurs. See
-	// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+	// Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
 	Notifications pulumi.StringArrayInput
 }
 
@@ -266,36 +239,37 @@ func (o OrgTokenOutput) AuthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrgToken) pulumi.StringArrayOutput { return v.AuthScopes }).(pulumi.StringArrayOutput)
 }
 
-// Description of the token (Optional)
+// Description of the token.
 func (o OrgTokenOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrgToken) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-// Defaults to `false`
+// Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
 func (o OrgTokenOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrgToken) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// Specify DPM-based limits for this token.
 func (o OrgTokenOutput) DpmLimits() OrgTokenDpmLimitsPtrOutput {
 	return o.ApplyT(func(v *OrgToken) OrgTokenDpmLimitsPtrOutput { return v.DpmLimits }).(OrgTokenDpmLimitsPtrOutput)
 }
 
+// Specify Usage-based limits for this token.
 func (o OrgTokenOutput) HostOrUsageLimits() OrgTokenHostOrUsageLimitsPtrOutput {
 	return o.ApplyT(func(v *OrgToken) OrgTokenHostOrUsageLimitsPtrOutput { return v.HostOrUsageLimits }).(OrgTokenHostOrUsageLimitsPtrOutput)
 }
 
-// Name of the token
+// Name of the token.
 func (o OrgTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrgToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of strings specifying where notifications will be sent when an incident occurs. See
-// https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+// Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
 func (o OrgTokenOutput) Notifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OrgToken) pulumi.StringArrayOutput { return v.Notifications }).(pulumi.StringArrayOutput)
 }
 
+// The secret token created by the API. You cannot set this value.
 func (o OrgTokenOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrgToken) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

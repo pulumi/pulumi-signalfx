@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartEventOption
     {
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         public readonly string? Color;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// The label used in the publish statement that displays the events you want to customize
+        /// Label used in the publish statement that displays the event query you want to customize.
         /// </summary>
         public readonly string Label;
 

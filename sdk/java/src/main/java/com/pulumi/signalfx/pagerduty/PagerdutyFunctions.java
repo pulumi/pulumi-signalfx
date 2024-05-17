@@ -52,16 +52,6 @@ public final class PagerdutyFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Arguments
-     * 
-     * * `name` - Specify the exact name of the desired PagerDuty integration
-     * 
-     * ## Attributes
-     * 
-     * * `id` - The ID of the integration.
-     * * `name` - The name of the integration.
-     * * `enabled` - Whether the integration is enabled.
-     * 
      */
     public static Output<GetIntegrationResult> getIntegration(GetIntegrationArgs args) {
         return getIntegration(args, InvokeOptions.Empty);
@@ -103,16 +93,6 @@ public final class PagerdutyFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Arguments
-     * 
-     * * `name` - Specify the exact name of the desired PagerDuty integration
-     * 
-     * ## Attributes
-     * 
-     * * `id` - The ID of the integration.
-     * * `name` - The name of the integration.
-     * * `enabled` - Whether the integration is enabled.
      * 
      */
     public static CompletableFuture<GetIntegrationResult> getIntegrationPlain(GetIntegrationPlainArgs args) {
@@ -156,16 +136,6 @@ public final class PagerdutyFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Arguments
-     * 
-     * * `name` - Specify the exact name of the desired PagerDuty integration
-     * 
-     * ## Attributes
-     * 
-     * * `id` - The ID of the integration.
-     * * `name` - The name of the integration.
-     * * `enabled` - Whether the integration is enabled.
-     * 
      */
     public static Output<GetIntegrationResult> getIntegration(GetIntegrationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("signalfx:pagerduty/getIntegration:getIntegration", TypeShape.of(GetIntegrationResult.class), args, Utilities.withVersion(options));
@@ -207,16 +177,6 @@ public final class PagerdutyFunctions {
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Arguments
-     * 
-     * * `name` - Specify the exact name of the desired PagerDuty integration
-     * 
-     * ## Attributes
-     * 
-     * * `id` - The ID of the integration.
-     * * `name` - The name of the integration.
-     * * `enabled` - Whether the integration is enabled.
      * 
      */
     public static CompletableFuture<GetIntegrationResult> getIntegrationPlain(GetIntegrationPlainArgs args, InvokeOptions options) {

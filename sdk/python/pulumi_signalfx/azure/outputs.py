@@ -20,8 +20,8 @@ class IntegrationCustomNamespacesPerService(dict):
                  namespaces: Sequence[str],
                  service: str):
         """
-        :param Sequence[str] namespaces: The namespaces to sync
-        :param str service: The name of the service
+        :param Sequence[str] namespaces: The additional namespaces.
+        :param str service: The name of the service.
         """
         pulumi.set(__self__, "namespaces", namespaces)
         pulumi.set(__self__, "service", service)
@@ -30,7 +30,7 @@ class IntegrationCustomNamespacesPerService(dict):
     @pulumi.getter
     def namespaces(self) -> Sequence[str]:
         """
-        The namespaces to sync
+        The additional namespaces.
         """
         return pulumi.get(self, "namespaces")
 
@@ -38,7 +38,7 @@ class IntegrationCustomNamespacesPerService(dict):
     @pulumi.getter
     def service(self) -> str:
         """
-        The name of the service
+        The name of the service.
         """
         return pulumi.get(self, "service")
 
@@ -64,11 +64,17 @@ class IntegrationResourceFilterRule(dict):
 
     def __init__(__self__, *,
                  filter_source: str):
+        """
+        :param str filter_source: Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
         pulumi.set(__self__, "filter_source", filter_source)
 
     @property
     @pulumi.getter(name="filterSource")
     def filter_source(self) -> str:
+        """
+        Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+        """
         return pulumi.get(self, "filter_source")
 
 

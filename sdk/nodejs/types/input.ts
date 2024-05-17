@@ -7,81 +7,84 @@ import * as outputs from "../types/output";
 
 export interface AlertMutingRuleFilter {
     /**
-     * (false by default) whether this filter should be a "not" filter
+     * Determines if this is a "not" filter. Defaults to `false`.
      */
     negated?: pulumi.Input<boolean>;
     /**
-     * the property to filter by
+     * The property to filter.
      */
     property: pulumi.Input<string>;
     /**
-     * the value of the property to filter by
+     * The property value to filter.
      */
     propertyValue: pulumi.Input<string>;
 }
 
 export interface DashboardChart {
     /**
-     * ID of the chart to display
+     * ID of the chart to display.
      */
     chartId: pulumi.Input<string>;
     /**
-     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      */
     column?: pulumi.Input<number>;
     /**
-     * How many rows the chart should take up. (greater than or equal to 1)
+     * How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: pulumi.Input<number>;
     /**
-     * The row to show the chart in (zero-based); if height > 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+     * The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      */
     row?: pulumi.Input<number>;
     /**
-     * How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+     * How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      */
     width?: pulumi.Input<number>;
 }
 
 export interface DashboardColumn {
     /**
-     * Charts to use for the column
+     * List of IDs of the charts to display.
      */
     chartIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * Column number for the layout.
      */
     column?: pulumi.Input<number>;
     /**
-     * How many rows each chart should take up. (greater than or equal to 1)
+     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
      */
     height?: pulumi.Input<number>;
     /**
-     * Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
      */
     width?: pulumi.Input<number>;
 }
 
 export interface DashboardEventOverlay {
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: pulumi.Input<string>;
     /**
-     * The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+     * Text shown in the dropdown when selecting this overlay from the menu.
      */
     label?: pulumi.Input<string>;
     /**
-     * (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+     * Show a vertical line for the event. `false` by default.
      */
     line?: pulumi.Input<boolean>;
     /**
-     * Search term used to define events
+     * Search term used to choose the events shown in the overlay.
      */
     signal: pulumi.Input<string>;
+    /**
+     * Each element specifies a filter to use against the signal specified in the `signal`.
+     */
     sources?: pulumi.Input<pulumi.Input<inputs.DashboardEventOverlaySource>[]>;
     /**
-     * Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+     * Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      */
     type?: pulumi.Input<string>;
 }
@@ -103,57 +106,57 @@ export interface DashboardEventOverlaySource {
 
 export interface DashboardFilter {
     /**
-     * If true, this filter will also match data that does not have the specified property
+     * If true, this filter will also match data that doesn't have this property at all.
      */
     applyIfExist?: pulumi.Input<boolean>;
     /**
-     * (false by default) Whether this filter should be a "not" filter
+     * Whether this filter should be a not filter. `false` by default.
      */
     negated?: pulumi.Input<boolean>;
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      */
     property: pulumi.Input<string>;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface DashboardGrid {
     /**
-     * Charts to use for the grid
+     * List of IDs of the charts to display.
      */
     chartIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How many rows each chart should take up. (greater than or equal to 1)
+     * How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: pulumi.Input<number>;
     /**
-     * Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+     * How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      */
     width?: pulumi.Input<number>;
 }
 
 export interface DashboardGroupDashboard {
     /**
-     * Unique identifier of an association between a dashboard group and a dashboard
+     * The ID of the association between the dashboard group and the dashboard
      */
     configId?: pulumi.Input<string>;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * The dashboard id to mirror
      */
     dashboardId: pulumi.Input<string>;
     /**
-     * String that provides a description override for a mirrored dashboard
+     * The description that will override the original dashboards's description.
      */
     descriptionOverride?: pulumi.Input<string>;
     /**
-     * Filter to apply to each chart in the dashboard
+     * The description that will override the original dashboards's description.
      */
     filterOverrides?: pulumi.Input<pulumi.Input<inputs.DashboardGroupDashboardFilterOverride>[]>;
     /**
-     * String that provides a name override for a mirrored dashboard
+     * The name that will override the original dashboards's name.
      */
     nameOverride?: pulumi.Input<string>;
     /**
@@ -217,26 +220,26 @@ export interface DashboardGroupImportQualifierFilter {
 
 export interface DashboardGroupPermission {
     /**
-     * Actions level, possible values: READ, WRITE
+     * Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
      */
     actions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ID of the principal with access
+     * ID of the user, team, or organization for which you're granting permissions.
      */
     principalId: pulumi.Input<string>;
     /**
-     * Type of principal, possible values: ORG, TEAM, USER
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
      */
     principalType: pulumi.Input<string>;
 }
 
 export interface DashboardPermissions {
     /**
-     * The custom access control list for this dashboard
+     * List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      */
     acls?: pulumi.Input<pulumi.Input<inputs.DashboardPermissionsAcl>[]>;
     /**
-     * The ID of the dashboard group that this dashboard inherits permissions from
+     * ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      */
     parent?: pulumi.Input<string>;
 }
@@ -258,12 +261,15 @@ export interface DashboardPermissionsAcl {
 
 export interface DashboardSelectedEventOverlay {
     /**
-     * Search term used to define events
+     * Search term used to choose the events shown in the overlay.
      */
     signal: pulumi.Input<string>;
+    /**
+     * Each element specifies a filter to use against the signal specified in the `signal`.
+     */
     sources?: pulumi.Input<pulumi.Input<inputs.DashboardSelectedEventOverlaySource>[]>;
     /**
-     * Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+     * Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      */
     type?: pulumi.Input<string>;
 }
@@ -285,46 +291,46 @@ export interface DashboardSelectedEventOverlaySource {
 
 export interface DashboardVariable {
     /**
-     * An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+     * An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
      */
     alias: pulumi.Input<string>;
     /**
-     * If true, this variable will also match data that does not have the specified property
+     * If true, this variable will also match data that doesn't have this property at all.
      */
     applyIfExist?: pulumi.Input<boolean>;
     /**
-     * Variable description
+     * Variable description.
      */
     description?: pulumi.Input<string>;
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      */
     property: pulumi.Input<string>;
     /**
-     * If true, this variable will only apply to charts with a filter on the named property.
+     * If `true`, this variable will only apply to charts that have a filter for the property.
      */
     replaceOnly?: pulumi.Input<boolean>;
     /**
-     * If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+     * If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
      */
     restrictedSuggestions?: pulumi.Input<boolean>;
     /**
-     * Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+     * Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
      */
     valueRequired?: pulumi.Input<boolean>;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      */
     valuesSuggesteds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface DataLinkTargetExternalUrl {
     /**
-     * The minimum time window for a search sent to an external site. Depends on the value set for `timeFormat`.
+     * The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
      */
     minimumTimeWindow?: pulumi.Input<string>;
     /**
@@ -332,15 +338,15 @@ export interface DataLinkTargetExternalUrl {
      */
     name: pulumi.Input<string>;
     /**
-     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      */
     propertyKeyMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Designates the format of minimumTimeWindow in the same data link target object.
+     * [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
      */
     timeFormat?: pulumi.Input<string>;
     /**
-     * URL string for a Splunk instance or external system data link target.
+     * URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
      */
     url: pulumi.Input<string>;
 }
@@ -355,7 +361,7 @@ export interface DataLinkTargetSignalfxDashboard {
      */
     dashboardId: pulumi.Input<string>;
     /**
-     * Flag that designates a target as the default for a data link object.
+     * Flag that designates a target as the default for a data link object. `true` by default
      */
     isDefault?: pulumi.Input<boolean>;
     /**
@@ -370,53 +376,53 @@ export interface DataLinkTargetSplunk {
      */
     name: pulumi.Input<string>;
     /**
-     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      */
     propertyKeyMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface DetectorRule {
     /**
-     * Description of the rule
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     description?: pulumi.Input<string>;
     /**
-     * A detect label which matches a detect label within the program text
+     * A detect label which matches a detect label within `programText`.
      */
     detectLabel: pulumi.Input<string>;
     /**
-     * (default: false) When true, notifications and events will not be generated for the detect label
+     * When true, notifications and events will not be generated for the detect label. `false` by default.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
      */
     parameterizedBody?: pulumi.Input<string>;
     /**
-     * Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
      */
     parameterizedSubject?: pulumi.Input<string>;
     /**
-     * URL of page to consult when an alert is triggered
+     * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      */
     runbookUrl?: pulumi.Input<string>;
     /**
-     * The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
      */
     severity: pulumi.Input<string>;
     /**
-     * Plain text suggested first course of action, such as a command to execute.
+     * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: pulumi.Input<string>;
 }
 
 export interface DetectorVizOption {
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: pulumi.Input<string>;
     /**
@@ -424,11 +430,15 @@ export interface DetectorVizOption {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     *
+     * **Notes**
+     *
+     * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      */
     valuePrefix?: pulumi.Input<string>;
     /**
@@ -436,7 +446,7 @@ export interface DetectorVizOption {
      */
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
@@ -447,34 +457,34 @@ export interface HeatmapChartColorRange {
      */
     color: pulumi.Input<string>;
     /**
-     * The maximum value within the coloring range
+     * The maximum value within the coloring range.
      */
     maxValue?: pulumi.Input<number>;
     /**
-     * The minimum value within the coloring range
+     * The minimum value within the coloring range.
      */
     minValue?: pulumi.Input<number>;
 }
 
 export interface HeatmapChartColorScale {
     /**
-     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color: pulumi.Input<string>;
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      */
     gt?: pulumi.Input<number>;
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      */
     gte?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inclusive value for this range.
      */
     lt?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      */
     lte?: pulumi.Input<number>;
 }
@@ -485,37 +495,37 @@ export interface ListChartColorScale {
      */
     color: pulumi.Input<string>;
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      */
     gt?: pulumi.Input<number>;
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      */
     gte?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inculsive value for this range.
      */
     lt?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      */
     lte?: pulumi.Input<number>;
 }
 
 export interface ListChartLegendOptionsField {
     /**
-     * (true by default) Determines if this property is displayed in the data table.
+     * True or False depending on if you want the property to be shown or hidden.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The name of a property to hide or show in the data table.
+     * The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
      */
     property: pulumi.Input<string>;
 }
 
 export interface ListChartVizOption {
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color?: pulumi.Input<string>;
     /**
@@ -523,11 +533,11 @@ export interface ListChartVizOption {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valuePrefix?: pulumi.Input<string>;
     /**
@@ -535,26 +545,26 @@ export interface ListChartVizOption {
      */
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
 
 export interface MetricRulesetAggregationRule {
     /**
-     * The aggregator for this rule
+     * Aggregator object
      */
     aggregators: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleAggregator>[]>;
     /**
-     * Status of this aggregation rule
+     * When false, this rule will not generate aggregated MTSs
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * The matcher for this rule
+     * Matcher object
      */
     matchers: pulumi.Input<pulumi.Input<inputs.MetricRulesetAggregationRuleMatcher>[]>;
     /**
-     * Name of this aggregation rule
+     * name of the aggregation rule
      */
     name?: pulumi.Input<string>;
 }
@@ -606,7 +616,7 @@ export interface MetricRulesetAggregationRuleMatcherFilter {
 
 export interface MetricRulesetRoutingRule {
     /**
-     * Destination to send the input metric
+     * end destination of the input metric. Must be `RealTime` or `Drop`
      */
     destination: pulumi.Input<string>;
 }
@@ -624,11 +634,11 @@ export interface OrgTokenDpmLimits {
 
 export interface OrgTokenHostOrUsageLimits {
     /**
-     * Max number of containers that can use this token
+     * Max number of Docker containers that can use this token
      */
     containerLimit?: pulumi.Input<number>;
     /**
-     * Notification threshold for containers
+     * Notification threshold for Docker containers
      */
     containerNotificationThreshold?: pulumi.Input<number>;
     /**
@@ -640,11 +650,11 @@ export interface OrgTokenHostOrUsageLimits {
      */
     customMetricsNotificationThreshold?: pulumi.Input<number>;
     /**
-     * Max number of high-res metrics that can be sent with this token
+     * Max number of hi-res metrics that can be sent with this toke
      */
     highResMetricsLimit?: pulumi.Input<number>;
     /**
-     * Notification threshold for high-res metrics
+     * Notification threshold for hi-res metrics
      */
     highResMetricsNotificationThreshold?: pulumi.Input<number>;
     /**
@@ -663,26 +673,26 @@ export interface SingleValueChartColorScale {
      */
     color: pulumi.Input<string>;
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      */
     gt?: pulumi.Input<number>;
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      */
     gte?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inculsive value for this range.
      */
     lt?: pulumi.Input<number>;
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      */
     lte?: pulumi.Input<number>;
 }
 
 export interface SingleValueChartVizOption {
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color?: pulumi.Input<string>;
     /**
@@ -690,11 +700,11 @@ export interface SingleValueChartVizOption {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valuePrefix?: pulumi.Input<string>;
     /**
@@ -702,33 +712,33 @@ export interface SingleValueChartVizOption {
      */
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
 
 export interface SloInput {
     /**
-     * Label used in `programText` that refers to the data block which contains the stream of successful events
+     * Label used in `"programText"` that refers to the data block which contains the stream of successful events
      */
     goodEventsLabel?: pulumi.Input<string>;
     /**
-     * Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     * SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
      */
     programText: pulumi.Input<string>;
     /**
-     * Label used in `programText` that refers to the data block which contains the stream of total events
+     * Label used in `"programText"` that refers to the data block which contains the stream of total events
      */
     totalEventsLabel?: pulumi.Input<string>;
 }
 
 export interface SloTarget {
     /**
-     * SLO alert rules
+     * List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      */
     alertRules: pulumi.Input<pulumi.Input<inputs.SloTargetAlertRule>[]>;
     /**
-     * (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      */
     compliancePeriod?: pulumi.Input<string>;
     /**
@@ -736,7 +746,7 @@ export interface SloTarget {
      */
     slo: pulumi.Input<number>;
     /**
-     * SLO target type can be the following type: `RollingWindow`
+     * SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alertRule per type. For example, you can't specify two alertRule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     type: pulumi.Input<string>;
 }
@@ -747,14 +757,14 @@ export interface SloTargetAlertRule {
      */
     rules: pulumi.Input<pulumi.Input<inputs.SloTargetAlertRuleRule>[]>;
     /**
-     * SLO alert rule type
+     * Type of the SLO. Currently just: `"RequestBased"` is supported.
      */
     type: pulumi.Input<string>;
 }
 
 export interface SloTargetAlertRuleRule {
     /**
-     * Description of the rule
+     * Description of the SLO.
      */
     description?: pulumi.Input<string>;
     /**
@@ -859,31 +869,31 @@ export interface TableChartVizOption {
 
 export interface TimeChartAxisLeft {
     /**
-     * A line to draw as a high watermark
+     * A line to draw as a high watermark.
      */
     highWatermark?: pulumi.Input<number>;
     /**
-     * A label to attach to the high watermark line
+     * A label to attach to the high watermark line.
      */
     highWatermarkLabel?: pulumi.Input<string>;
     /**
-     * Label of the left axis
+     * Label of the left axis.
      */
     label?: pulumi.Input<string>;
     /**
-     * A line to draw as a low watermark
+     * A line to draw as a low watermark.
      */
     lowWatermark?: pulumi.Input<number>;
     /**
-     * A label to attach to the low watermark line
+     * A label to attach to the low watermark line.
      */
     lowWatermarkLabel?: pulumi.Input<string>;
     /**
-     * The maximum value for the left axis
+     * The maximum value for the left axis.
      */
     maxValue?: pulumi.Input<number>;
     /**
-     * The minimum value for the left axis
+     * The minimum value for the left axis.
      */
     minValue?: pulumi.Input<number>;
     watermarks?: pulumi.Input<pulumi.Input<inputs.TimeChartAxisLeftWatermark>[]>;
@@ -902,31 +912,31 @@ export interface TimeChartAxisLeftWatermark {
 
 export interface TimeChartAxisRight {
     /**
-     * A line to draw as a high watermark
+     * A line to draw as a high watermark.
      */
     highWatermark?: pulumi.Input<number>;
     /**
-     * A label to attach to the high watermark line
+     * A label to attach to the high watermark line.
      */
     highWatermarkLabel?: pulumi.Input<string>;
     /**
-     * Label of the right axis
+     * Label of the right axis.
      */
     label?: pulumi.Input<string>;
     /**
-     * A line to draw as a low watermark
+     * A line to draw as a low watermark.
      */
     lowWatermark?: pulumi.Input<number>;
     /**
-     * A label to attach to the low watermark line
+     * A label to attach to the low watermark line.
      */
     lowWatermarkLabel?: pulumi.Input<string>;
     /**
-     * The maximum value for the right axis
+     * The maximum value for the right axis.
      */
     maxValue?: pulumi.Input<number>;
     /**
-     * The minimum value for the right axis
+     * The minimum value for the right axis.
      */
     minValue?: pulumi.Input<number>;
     watermarks?: pulumi.Input<pulumi.Input<inputs.TimeChartAxisRightWatermark>[]>;
@@ -945,7 +955,7 @@ export interface TimeChartAxisRightWatermark {
 
 export interface TimeChartEventOption {
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: pulumi.Input<string>;
     /**
@@ -953,36 +963,36 @@ export interface TimeChartEventOption {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The label used in the publish statement that displays the events you want to customize
+     * Label used in the publish statement that displays the event query you want to customize.
      */
     label: pulumi.Input<string>;
 }
 
 export interface TimeChartHistogramOption {
     /**
-     * Base color theme to use for the graph.
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
      */
     colorTheme?: pulumi.Input<string>;
 }
 
 export interface TimeChartLegendOptionsField {
     /**
-     * (true by default) Determines if this property is displayed in the data table.
+     * True or False depending on if you want the property to be shown or hidden.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The name of a property to hide or show in the data table.
+     * The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      */
     property: pulumi.Input<string>;
 }
 
 export interface TimeChartVizOption {
     /**
-     * The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+     * Y-axis associated with values for this plot. Must be either `right` or `left`.
      */
     axis?: pulumi.Input<string>;
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: pulumi.Input<string>;
     /**
@@ -990,15 +1000,15 @@ export interface TimeChartVizOption {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: pulumi.Input<string>;
     /**
-     * (Chart plotType by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
      */
     plotType?: pulumi.Input<string>;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valuePrefix?: pulumi.Input<string>;
     /**
@@ -1006,31 +1016,37 @@ export interface TimeChartVizOption {
      */
     valueSuffix?: pulumi.Input<string>;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: pulumi.Input<string>;
 }
 
 export interface WebhookIntegrationHeader {
+    /**
+     * The key of the header to send
+     */
     headerKey: pulumi.Input<string>;
+    /**
+     * The value of the header to send
+     */
     headerValue: pulumi.Input<string>;
 }
 export namespace aws {
     export interface IntegrationCustomNamespaceSyncRule {
         /**
-         * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+         * Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
         defaultAction?: pulumi.Input<string>;
         /**
-         * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+         * Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
         filterAction?: pulumi.Input<string>;
         /**
-         * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
          */
         namespace: pulumi.Input<string>;
     }
@@ -1052,19 +1068,19 @@ export namespace aws {
 
     export interface IntegrationNamespaceSyncRule {
         /**
-         * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+         * Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
         defaultAction?: pulumi.Input<string>;
         /**
-         * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+         * Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
         filterAction?: pulumi.Input<string>;
         /**
-         * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
         filterSource?: pulumi.Input<string>;
         /**
-         * An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
          */
         namespace: pulumi.Input<string>;
     }
@@ -1073,16 +1089,19 @@ export namespace aws {
 export namespace azure {
     export interface IntegrationCustomNamespacesPerService {
         /**
-         * The namespaces to sync
+         * The additional namespaces.
          */
         namespaces: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The name of the service
+         * The name of the service.
          */
         service: pulumi.Input<string>;
     }
 
     export interface IntegrationResourceFilterRule {
+        /**
+         * Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+         */
         filterSource: pulumi.Input<string>;
     }
 }
@@ -1097,7 +1116,7 @@ export namespace gcp {
 export namespace log {
     export interface ViewColumn {
         /**
-         * Name of the column
+         * Name of the log view.
          */
         name: pulumi.Input<string>;
     }

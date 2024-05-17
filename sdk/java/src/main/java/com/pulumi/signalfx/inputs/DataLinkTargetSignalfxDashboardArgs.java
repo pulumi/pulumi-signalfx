@@ -48,14 +48,14 @@ public final class DataLinkTargetSignalfxDashboardArgs extends com.pulumi.resour
     }
 
     /**
-     * Flag that designates a target as the default for a data link object.
+     * Flag that designates a target as the default for a data link object. `true` by default
      * 
      */
     @Import(name="isDefault")
     private @Nullable Output<Boolean> isDefault;
 
     /**
-     * @return Flag that designates a target as the default for a data link object.
+     * @return Flag that designates a target as the default for a data link object. `true` by default
      * 
      */
     public Optional<Output<Boolean>> isDefault() {
@@ -147,7 +147,7 @@ public final class DataLinkTargetSignalfxDashboardArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isDefault Flag that designates a target as the default for a data link object.
+         * @param isDefault Flag that designates a target as the default for a data link object. `true` by default
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class DataLinkTargetSignalfxDashboardArgs extends com.pulumi.resour
         }
 
         /**
-         * @param isDefault Flag that designates a target as the default for a data link object.
+         * @param isDefault Flag that designates a target as the default for a data link object. `true` by default
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     public static final TimelineArgs Empty = new TimelineArgs();
 
     /**
-     * default connection that the dashboard uses
+     * The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      * 
      */
     @Import(name="defaultConnection")
     private @Nullable Output<String> defaultConnection;
 
     /**
-     * @return default connection that the dashboard uses
+     * @return The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
      * 
      */
     public Optional<Output<String>> defaultConnection() {
@@ -33,14 +33,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the chart (Optional)
+     * Description of the log timeline.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the log timeline.
      * 
      */
     public Optional<Output<String>> description() {
@@ -48,14 +48,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch to end the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -63,14 +63,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart
+     * Name of the log timeline.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the log timeline.
      * 
      */
     public Optional<Output<String>> name() {
@@ -78,14 +78,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
      * 
      */
     public Output<String> programText() {
@@ -93,14 +93,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch to start the visualization
+     * @return Seconds since epoch. Used for visualization. Conflicts with `time_range`.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -108,14 +108,14 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<Integer> timeRange;
 
     /**
-     * @return Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
      * 
      */
     public Optional<Output<Integer>> timeRange() {
@@ -153,7 +153,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultConnection default connection that the dashboard uses
+         * @param defaultConnection The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultConnection default connection that the dashboard uses
+         * @param defaultConnection The connection that the log timeline uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the log timeline.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the log timeline.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the log timeline.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the log timeline.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the log timeline. More info at https://dev.splunk.com/observability/docs/.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization. Conflicts with `time_range`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class TimelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`). Conflicts with `start_time` and `end_time`.
          * 
          * @return builder
          * 

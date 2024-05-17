@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// SLO alert rule type
+        /// Type of the SLO. Currently just: `"RequestBased"` is supported.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

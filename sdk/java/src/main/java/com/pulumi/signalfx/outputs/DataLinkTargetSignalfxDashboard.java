@@ -24,7 +24,7 @@ public final class DataLinkTargetSignalfxDashboard {
      */
     private String dashboardId;
     /**
-     * @return Flag that designates a target as the default for a data link object.
+     * @return Flag that designates a target as the default for a data link object. `true` by default
      * 
      */
     private @Nullable Boolean isDefault;
@@ -50,7 +50,7 @@ public final class DataLinkTargetSignalfxDashboard {
         return this.dashboardId;
     }
     /**
-     * @return Flag that designates a target as the default for a data link object.
+     * @return Flag that designates a target as the default for a data link object. `true` by default
      * 
      */
     public Optional<Boolean> isDefault() {

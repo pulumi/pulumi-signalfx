@@ -32,14 +32,14 @@ public final class SloTargetAlertRuleArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * SLO alert rule type
+     * Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return SLO alert rule type
+     * @return Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     public Output<String> type() {
@@ -103,7 +103,7 @@ public final class SloTargetAlertRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type SLO alert rule type
+         * @param type Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class SloTargetAlertRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type SLO alert rule type
+         * @param type Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
          * 
          * @return builder
          * 

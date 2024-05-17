@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class IntegrationCustomNamespacesPerService {
     /**
-     * @return The namespaces to sync
+     * @return The additional namespaces.
      * 
      */
     private List<String> namespaces;
     /**
-     * @return The name of the service
+     * @return The name of the service.
      * 
      */
     private String service;
 
     private IntegrationCustomNamespacesPerService() {}
     /**
-     * @return The namespaces to sync
+     * @return The additional namespaces.
      * 
      */
     public List<String> namespaces() {
         return this.namespaces;
     }
     /**
-     * @return The name of the service
+     * @return The name of the service.
      * 
      */
     public String service() {

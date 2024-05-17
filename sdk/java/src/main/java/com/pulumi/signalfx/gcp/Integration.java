@@ -25,171 +25,144 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `custom_metric_type_domains` - (Optional) List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `import_gcp_metrics` - (Optional) If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
- * * `include_list` - (Optional) [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
- * * `name` - (Required) Name of the integration.
- * * `named_token` - (Optional) Name of the org token to be used for data ingestion. If not specified then default access token is used.
- * * `poll_rate` - (Optional) GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
- * * `project_service_keys` - (Required) GCP projects to add.
- * * `services` - (Optional) GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
- * * `use_metric_source_project_for_quota` - (Optional) When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
- * 
- * ## Attributes
- * 
- * In addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration.
- * 
  */
 @ResourceType(type="signalfx:gcp/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
     /**
-     * List of additional GCP service domain names that you want to monitor
+     * List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     @Export(name="customMetricTypeDomains", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customMetricTypeDomains;
 
     /**
-     * @return List of additional GCP service domain names that you want to monitor
+     * @return List of additional GCP service domain names that Splunk Observability Cloud will monitor. See [Custom Metric Type Domains documentation](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/#Custom-metric-type-domains)
      * 
      */
     public Output<Optional<List<String>>> customMetricTypeDomains() {
         return Codegen.optional(this.customMetricTypeDomains);
     }
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
-     * will import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     @Export(name="importGcpMetrics", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> importGcpMetrics;
 
     /**
-     * @return If enabled, Splunk Observability Cloud will sync also Google Cloud Metrics data. If disabled, Splunk Observability Cloud
-     * will import only metadata. Defaults to true.
+     * @return If enabled, Splunk Observability Cloud will sync also Google Cloud Monitoring data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     public Output<Optional<Boolean>> importGcpMetrics() {
         return Codegen.optional(this.importGcpMetrics);
     }
     /**
-     * List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+     * [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      * 
      */
     @Export(name="includeLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> includeLists;
 
     /**
-     * @return List of custom metadata keys that you want Observability Cloud to collect for Compute Engine instances.
+     * @return [Compute Metadata Include List](https://dev.splunk.com/observability/docs/integrations/gcp_integration_overview/).
      * 
      */
     public Output<Optional<List<String>>> includeLists() {
         return Codegen.optional(this.includeLists);
     }
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
     @Export(name="namedToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namedToken;
 
     /**
-     * @return A named token to use for ingest
+     * @return Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
     public Output<Optional<String>> namedToken() {
         return Codegen.optional(this.namedToken);
     }
     /**
-     * GCP poll rate (in seconds). Between `60` and `600`.
+     * GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
     @Export(name="pollRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pollRate;
 
     /**
-     * @return GCP poll rate (in seconds). Between `60` and `600`.
+     * @return GCP integration poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
     public Output<Optional<Integer>> pollRate() {
         return Codegen.optional(this.pollRate);
     }
     /**
-     * GCP project service keys
+     * GCP projects to add.
      * 
      */
     @Export(name="projectServiceKeys", refs={List.class,IntegrationProjectServiceKey.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationProjectServiceKey>> projectServiceKeys;
 
     /**
-     * @return GCP project service keys
+     * @return GCP projects to add.
      * 
      */
     public Output<Optional<List<IntegrationProjectServiceKey>>> projectServiceKeys() {
         return Codegen.optional(this.projectServiceKeys);
     }
     /**
-     * GCP enabled services
+     * GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> services;
 
     /**
-     * @return GCP enabled services
+     * @return GCP service metrics to import. Can be an empty list, or not included, to import &#39;All services&#39;. See [Google Cloud Platform services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#google-cloud-platform-services) for a list of valid values.
      * 
      */
     public Output<Optional<List<String>>> services() {
         return Codegen.optional(this.services);
     }
     /**
-     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
-     * stored. For this to work the service account provided for the project needs to be provided with
-     * serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
-     * settings are used.
+     * When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      * 
      */
     @Export(name="useMetricSourceProjectForQuota", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useMetricSourceProjectForQuota;
 
     /**
-     * @return When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are
-     * stored. For this to work the service account provided for the project needs to be provided with
-     * serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota
-     * settings are used.
+     * @return When this value is set to true Observability Cloud will force usage of a quota from the project where metrics are stored. For this to work the service account provided for the project needs to be provided with serviceusage.services.use permission or Service Usage Consumer role in this project. When set to false default quota settings are used.
      * 
      */
     public Output<Optional<Boolean>> useMetricSourceProjectForQuota() {

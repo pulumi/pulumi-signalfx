@@ -18,14 +18,14 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
     public static final AlertMutingRuleFilterArgs Empty = new AlertMutingRuleFilterArgs();
 
     /**
-     * (false by default) whether this filter should be a &#34;not&#34; filter
+     * Determines if this is a &#34;not&#34; filter. Defaults to `false`.
      * 
      */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
     /**
-     * @return (false by default) whether this filter should be a &#34;not&#34; filter
+     * @return Determines if this is a &#34;not&#34; filter. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> negated() {
@@ -33,14 +33,14 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * the property to filter by
+     * The property to filter.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return the property to filter by
+     * @return The property to filter.
      * 
      */
     public Output<String> property() {
@@ -48,14 +48,14 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * the value of the property to filter by
+     * The property value to filter.
      * 
      */
     @Import(name="propertyValue", required=true)
     private Output<String> propertyValue;
 
     /**
-     * @return the value of the property to filter by
+     * @return The property value to filter.
      * 
      */
     public Output<String> propertyValue() {
@@ -89,7 +89,7 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param negated (false by default) whether this filter should be a &#34;not&#34; filter
+         * @param negated Determines if this is a &#34;not&#34; filter. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param negated (false by default) whether this filter should be a &#34;not&#34; filter
+         * @param negated Determines if this is a &#34;not&#34; filter. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param property the property to filter by
+         * @param property The property to filter.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param property the property to filter by
+         * @param property The property to filter.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param propertyValue the value of the property to filter by
+         * @param propertyValue The property value to filter.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class AlertMutingRuleFilterArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param propertyValue the value of the property to filter by
+         * @param propertyValue The property value to filter.
          * 
          * @return builder
          * 

@@ -14,9 +14,17 @@ public final class GetIntegrationArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetIntegrationArgs Empty = new GetIntegrationArgs();
 
+    /**
+     * Specify the exact name of the desired PagerDuty integration
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Specify the exact name of the desired PagerDuty integration
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -45,11 +53,23 @@ public final class GetIntegrationArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetIntegrationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Specify the exact name of the desired PagerDuty integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Specify the exact name of the desired PagerDuty integration
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

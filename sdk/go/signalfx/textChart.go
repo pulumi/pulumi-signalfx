@@ -15,31 +15,16 @@ import (
 // This special type of chart doesn’t display any metric data. Rather, it lets you place a text note on the dashboard.
 //
 // ## Example
-//
-// ## Arguments
-//
-// The following arguments are supported in the resource block:
-//
-// * `name` - (Required) Name of the text note.
-// * `markdown` - (Required) Markdown text to display.
-// * `description` - (Optional) Description of the text note.
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the chart.
-// * `url` - The URL of the chart.
 type TextChart struct {
 	pulumi.CustomResourceState
 
-	// Description of the chart (Optional)
+	// Description of the text note.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+	// Markdown text to display.
 	Markdown pulumi.StringOutput `pulumi:"markdown"`
-	// Name of the chart
+	// Name of the text note.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -76,24 +61,24 @@ func GetTextChart(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TextChart resources.
 type textChartState struct {
-	// Description of the chart (Optional)
+	// Description of the text note.
 	Description *string `pulumi:"description"`
-	// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+	// Markdown text to display.
 	Markdown *string `pulumi:"markdown"`
-	// Name of the chart
+	// Name of the text note.
 	Name *string `pulumi:"name"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
 }
 
 type TextChartState struct {
-	// Description of the chart (Optional)
+	// Description of the text note.
 	Description pulumi.StringPtrInput
-	// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+	// Markdown text to display.
 	Markdown pulumi.StringPtrInput
-	// Name of the chart
+	// Name of the text note.
 	Name pulumi.StringPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
 }
 
@@ -102,21 +87,21 @@ func (TextChartState) ElementType() reflect.Type {
 }
 
 type textChartArgs struct {
-	// Description of the chart (Optional)
+	// Description of the text note.
 	Description *string `pulumi:"description"`
-	// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+	// Markdown text to display.
 	Markdown string `pulumi:"markdown"`
-	// Name of the chart
+	// Name of the text note.
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a TextChart resource.
 type TextChartArgs struct {
-	// Description of the chart (Optional)
+	// Description of the text note.
 	Description pulumi.StringPtrInput
-	// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+	// Markdown text to display.
 	Markdown pulumi.StringInput
-	// Name of the chart
+	// Name of the text note.
 	Name pulumi.StringPtrInput
 }
 
@@ -207,22 +192,22 @@ func (o TextChartOutput) ToTextChartOutputWithContext(ctx context.Context) TextC
 	return o
 }
 
-// Description of the chart (Optional)
+// Description of the text note.
 func (o TextChartOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TextChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+// Markdown text to display.
 func (o TextChartOutput) Markdown() pulumi.StringOutput {
 	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Markdown }).(pulumi.StringOutput)
 }
 
-// Name of the chart
+// Name of the text note.
 func (o TextChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// URL of the chart
+// The URL of the chart.
 func (o TextChartOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *TextChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

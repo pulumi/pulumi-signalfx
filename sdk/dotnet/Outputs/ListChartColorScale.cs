@@ -18,19 +18,19 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string Color;
         /// <summary>
-        /// Indicates the lower threshold non-inclusive value for this range
+        /// Indicates the lower threshold non-inclusive value for this range.
         /// </summary>
         public readonly double? Gt;
         /// <summary>
-        /// Indicates the lower threshold inclusive value for this range
+        /// Indicates the lower threshold inclusive value for this range.
         /// </summary>
         public readonly double? Gte;
         /// <summary>
-        /// Indicates the upper threshold non-inculsive value for this range
+        /// Indicates the upper threshold non-inculsive value for this range.
         /// </summary>
         public readonly double? Lt;
         /// <summary>
-        /// Indicates the upper threshold inclusive value for this range
+        /// Indicates the upper threshold inclusive value for this range.
         /// </summary>
         public readonly double? Lte;
 
