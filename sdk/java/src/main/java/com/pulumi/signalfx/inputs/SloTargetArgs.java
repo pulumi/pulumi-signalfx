@@ -50,6 +50,36 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * 
+     */
+    @Import(name="cycleStart")
+    private @Nullable Output<String> cycleStart;
+
+    /**
+     * @return (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * 
+     */
+    public Optional<Output<String>> cycleStart() {
+        return Optional.ofNullable(this.cycleStart);
+    }
+
+    /**
+     * (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * 
+     */
+    @Import(name="cycleType")
+    private @Nullable Output<String> cycleType;
+
+    /**
+     * @return (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * 
+     */
+    public Optional<Output<String>> cycleType() {
+        return Optional.ofNullable(this.cycleType);
+    }
+
+    /**
      * Target value in the form of a percentage
      * 
      */
@@ -84,6 +114,8 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     private SloTargetArgs(SloTargetArgs $) {
         this.alertRules = $.alertRules;
         this.compliancePeriod = $.compliancePeriod;
+        this.cycleStart = $.cycleStart;
+        this.cycleType = $.cycleType;
         this.slo = $.slo;
         this.type = $.type;
     }
@@ -156,6 +188,48 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder compliancePeriod(String compliancePeriod) {
             return compliancePeriod(Output.of(compliancePeriod));
+        }
+
+        /**
+         * @param cycleStart (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cycleStart(@Nullable Output<String> cycleStart) {
+            $.cycleStart = cycleStart;
+            return this;
+        }
+
+        /**
+         * @param cycleStart (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cycleStart(String cycleStart) {
+            return cycleStart(Output.of(cycleStart));
+        }
+
+        /**
+         * @param cycleType (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cycleType(@Nullable Output<String> cycleType) {
+            $.cycleType = cycleType;
+            return this;
+        }
+
+        /**
+         * @param cycleType (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cycleType(String cycleType) {
+            return cycleType(Output.of(cycleType));
         }
 
         /**

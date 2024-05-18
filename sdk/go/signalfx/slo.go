@@ -71,8 +71,10 @@ import (
 //   - `totalEventsLabel` - (Required) Label used in `"programText"` that refers to the data block which contains the stream of total events
 //
 // * `target` - (Required) Define target value of the service level indicator in the appropriate time period.
-//   - `type` - (Required) SLO target type can be the following type: `"RollingWindow"`
+//   - `type` - (Required) SLO target type can be the following type: `"RollingWindow"`, `"CalendarWindow"`
 //   - `compliancePeriod` - (Required for `"RollingWindow"` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+//   - `cycleType` - (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+//   - `cycleStart` - (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
 //   - `slo` - (Required) Target value in the form of a percentage
 //   - `alertRule` - (Required) List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
 //   - `type` - (Required) SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alertRule per type. For example, you can't specify two alertRule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.

@@ -732,6 +732,14 @@ export interface SloTarget {
      */
     compliancePeriod?: string;
     /**
+     * (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     */
+    cycleStart: string;
+    /**
+     * (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     */
+    cycleType?: string;
+    /**
      * Target value in the form of a percentage
      */
     slo: number;

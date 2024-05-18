@@ -2580,6 +2580,10 @@ class SloTarget(dict):
             suggest = "alert_rules"
         elif key == "compliancePeriod":
             suggest = "compliance_period"
+        elif key == "cycleStart":
+            suggest = "cycle_start"
+        elif key == "cycleType":
+            suggest = "cycle_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SloTarget. Access the value via the '{suggest}' property getter instead.")
@@ -2596,18 +2600,26 @@ class SloTarget(dict):
                  alert_rules: Sequence['outputs.SloTargetAlertRule'],
                  slo: float,
                  type: str,
-                 compliance_period: Optional[str] = None):
+                 compliance_period: Optional[str] = None,
+                 cycle_start: Optional[str] = None,
+                 cycle_type: Optional[str] = None):
         """
         :param Sequence['SloTargetAlertRuleArgs'] alert_rules: SLO alert rules
         :param float slo: Target value in the form of a percentage
         :param str type: SLO target type can be the following type: `RollingWindow`
         :param str compliance_period: (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        :param str cycle_start: (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        :param str cycle_type: (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
         """
         pulumi.set(__self__, "alert_rules", alert_rules)
         pulumi.set(__self__, "slo", slo)
         pulumi.set(__self__, "type", type)
         if compliance_period is not None:
             pulumi.set(__self__, "compliance_period", compliance_period)
+        if cycle_start is not None:
+            pulumi.set(__self__, "cycle_start", cycle_start)
+        if cycle_type is not None:
+            pulumi.set(__self__, "cycle_type", cycle_type)
 
     @property
     @pulumi.getter(name="alertRules")
@@ -2640,6 +2652,22 @@ class SloTarget(dict):
         (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
         """
         return pulumi.get(self, "compliance_period")
+
+    @property
+    @pulumi.getter(name="cycleStart")
+    def cycle_start(self) -> Optional[str]:
+        """
+        (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        """
+        return pulumi.get(self, "cycle_start")
+
+    @property
+    @pulumi.getter(name="cycleType")
+    def cycle_type(self) -> Optional[str]:
+        """
+        (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+        """
+        return pulumi.get(self, "cycle_type")
 
 
 @pulumi.output_type

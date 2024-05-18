@@ -31,6 +31,18 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? CompliancePeriod { get; set; }
 
         /// <summary>
+        /// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        /// </summary>
+        [Input("cycleStart")]
+        public Input<string>? CycleStart { get; set; }
+
+        /// <summary>
+        /// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+        /// </summary>
+        [Input("cycleType")]
+        public Input<string>? CycleType { get; set; }
+
+        /// <summary>
         /// Target value in the form of a percentage
         /// </summary>
         [Input("slo", required: true)]
