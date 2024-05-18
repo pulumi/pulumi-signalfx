@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
 	github.com/pulumi/pulumi/sdk/v3 v3.114.0
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20240423212330-3d9c02c90d25
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20240515152406-6ce6d999c55e
 )
 
 replace (
