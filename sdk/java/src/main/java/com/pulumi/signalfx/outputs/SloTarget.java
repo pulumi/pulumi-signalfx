@@ -26,6 +26,16 @@ public final class SloTarget {
      */
     private @Nullable String compliancePeriod;
     /**
+     * @return (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * 
+     */
+    private @Nullable String cycleStart;
+    /**
+     * @return (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * 
+     */
+    private @Nullable String cycleType;
+    /**
      * @return Target value in the form of a percentage
      * 
      */
@@ -50,6 +60,20 @@ public final class SloTarget {
      */
     public Optional<String> compliancePeriod() {
         return Optional.ofNullable(this.compliancePeriod);
+    }
+    /**
+     * @return (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * 
+     */
+    public Optional<String> cycleStart() {
+        return Optional.ofNullable(this.cycleStart);
+    }
+    /**
+     * @return (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * 
+     */
+    public Optional<String> cycleType() {
+        return Optional.ofNullable(this.cycleType);
     }
     /**
      * @return Target value in the form of a percentage
@@ -77,6 +101,8 @@ public final class SloTarget {
     public static final class Builder {
         private List<SloTargetAlertRule> alertRules;
         private @Nullable String compliancePeriod;
+        private @Nullable String cycleStart;
+        private @Nullable String cycleType;
         private Double slo;
         private String type;
         public Builder() {}
@@ -84,6 +110,8 @@ public final class SloTarget {
     	      Objects.requireNonNull(defaults);
     	      this.alertRules = defaults.alertRules;
     	      this.compliancePeriod = defaults.compliancePeriod;
+    	      this.cycleStart = defaults.cycleStart;
+    	      this.cycleType = defaults.cycleType;
     	      this.slo = defaults.slo;
     	      this.type = defaults.type;
         }
@@ -106,6 +134,18 @@ public final class SloTarget {
             return this;
         }
         @CustomType.Setter
+        public Builder cycleStart(@Nullable String cycleStart) {
+
+            this.cycleStart = cycleStart;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cycleType(@Nullable String cycleType) {
+
+            this.cycleType = cycleType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder slo(Double slo) {
             if (slo == null) {
               throw new MissingRequiredPropertyException("SloTarget", "slo");
@@ -125,6 +165,8 @@ public final class SloTarget {
             final var _resultValue = new SloTarget();
             _resultValue.alertRules = alertRules;
             _resultValue.compliancePeriod = compliancePeriod;
+            _resultValue.cycleStart = cycleStart;
+            _resultValue.cycleType = cycleType;
             _resultValue.slo = slo;
             _resultValue.type = type;
             return _resultValue;

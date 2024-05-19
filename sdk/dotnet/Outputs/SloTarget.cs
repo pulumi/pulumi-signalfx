@@ -22,6 +22,14 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? CompliancePeriod;
         /// <summary>
+        /// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        /// </summary>
+        public readonly string? CycleStart;
+        /// <summary>
+        /// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+        /// </summary>
+        public readonly string? CycleType;
+        /// <summary>
         /// Target value in the form of a percentage
         /// </summary>
         public readonly double Slo;
@@ -36,12 +44,18 @@ namespace Pulumi.SignalFx.Outputs
 
             string? compliancePeriod,
 
+            string? cycleStart,
+
+            string? cycleType,
+
             double slo,
 
             string type)
         {
             AlertRules = alertRules;
             CompliancePeriod = compliancePeriod;
+            CycleStart = cycleStart;
+            CycleType = cycleType;
             Slo = slo;
             Type = type;
         }

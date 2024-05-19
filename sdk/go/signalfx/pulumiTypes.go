@@ -5062,6 +5062,10 @@ type SloTarget struct {
 	AlertRules []SloTargetAlertRule `pulumi:"alertRules"`
 	// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
 	CompliancePeriod *string `pulumi:"compliancePeriod"`
+	// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+	CycleStart *string `pulumi:"cycleStart"`
+	// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+	CycleType *string `pulumi:"cycleType"`
 	// Target value in the form of a percentage
 	Slo float64 `pulumi:"slo"`
 	// SLO target type can be the following type: `RollingWindow`
@@ -5084,6 +5088,10 @@ type SloTargetArgs struct {
 	AlertRules SloTargetAlertRuleArrayInput `pulumi:"alertRules"`
 	// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
 	CompliancePeriod pulumi.StringPtrInput `pulumi:"compliancePeriod"`
+	// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+	CycleStart pulumi.StringPtrInput `pulumi:"cycleStart"`
+	// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+	CycleType pulumi.StringPtrInput `pulumi:"cycleType"`
 	// Target value in the form of a percentage
 	Slo pulumi.Float64Input `pulumi:"slo"`
 	// SLO target type can be the following type: `RollingWindow`
@@ -5177,6 +5185,16 @@ func (o SloTargetOutput) CompliancePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloTarget) *string { return v.CompliancePeriod }).(pulumi.StringPtrOutput)
 }
 
+// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+func (o SloTargetOutput) CycleStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTarget) *string { return v.CycleStart }).(pulumi.StringPtrOutput)
+}
+
+// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+func (o SloTargetOutput) CycleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SloTarget) *string { return v.CycleType }).(pulumi.StringPtrOutput)
+}
+
 // Target value in the form of a percentage
 func (o SloTargetOutput) Slo() pulumi.Float64Output {
 	return o.ApplyT(func(v SloTarget) float64 { return v.Slo }).(pulumi.Float64Output)
@@ -5228,6 +5246,26 @@ func (o SloTargetPtrOutput) CompliancePeriod() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.CompliancePeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+func (o SloTargetPtrOutput) CycleStart() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CycleStart
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+func (o SloTargetPtrOutput) CycleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SloTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CycleType
 	}).(pulumi.StringPtrOutput)
 }
 

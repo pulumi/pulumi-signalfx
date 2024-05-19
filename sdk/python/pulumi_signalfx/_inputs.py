@@ -2717,18 +2717,26 @@ class SloTargetArgs:
                  alert_rules: pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]],
                  slo: pulumi.Input[float],
                  type: pulumi.Input[str],
-                 compliance_period: Optional[pulumi.Input[str]] = None):
+                 compliance_period: Optional[pulumi.Input[str]] = None,
+                 cycle_start: Optional[pulumi.Input[str]] = None,
+                 cycle_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SloTargetAlertRuleArgs']]] alert_rules: SLO alert rules
         :param pulumi.Input[float] slo: Target value in the form of a percentage
         :param pulumi.Input[str] type: SLO target type can be the following type: `RollingWindow`
         :param pulumi.Input[str] compliance_period: (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        :param pulumi.Input[str] cycle_start: (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        :param pulumi.Input[str] cycle_type: (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
         """
         pulumi.set(__self__, "alert_rules", alert_rules)
         pulumi.set(__self__, "slo", slo)
         pulumi.set(__self__, "type", type)
         if compliance_period is not None:
             pulumi.set(__self__, "compliance_period", compliance_period)
+        if cycle_start is not None:
+            pulumi.set(__self__, "cycle_start", cycle_start)
+        if cycle_type is not None:
+            pulumi.set(__self__, "cycle_type", cycle_type)
 
     @property
     @pulumi.getter(name="alertRules")
@@ -2777,6 +2785,30 @@ class SloTargetArgs:
     @compliance_period.setter
     def compliance_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "compliance_period", value)
+
+    @property
+    @pulumi.getter(name="cycleStart")
+    def cycle_start(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        """
+        return pulumi.get(self, "cycle_start")
+
+    @cycle_start.setter
+    def cycle_start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cycle_start", value)
+
+    @property
+    @pulumi.getter(name="cycleType")
+    def cycle_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+        """
+        return pulumi.get(self, "cycle_type")
+
+    @cycle_type.setter
+    def cycle_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cycle_type", value)
 
 
 @pulumi.input_type
