@@ -19,22 +19,22 @@ public final class ListChartColorScale {
      */
     private String color;
     /**
-     * @return Indicates the lower threshold non-inclusive value for this range
+     * @return Indicates the lower threshold non-inclusive value for this range.
      * 
      */
     private @Nullable Double gt;
     /**
-     * @return Indicates the lower threshold inclusive value for this range
+     * @return Indicates the lower threshold inclusive value for this range.
      * 
      */
     private @Nullable Double gte;
     /**
-     * @return Indicates the upper threshold non-inculsive value for this range
+     * @return Indicates the upper threshold non-inculsive value for this range.
      * 
      */
     private @Nullable Double lt;
     /**
-     * @return Indicates the upper threshold inclusive value for this range
+     * @return Indicates the upper threshold inclusive value for this range.
      * 
      */
     private @Nullable Double lte;
@@ -48,28 +48,28 @@ public final class ListChartColorScale {
         return this.color;
     }
     /**
-     * @return Indicates the lower threshold non-inclusive value for this range
+     * @return Indicates the lower threshold non-inclusive value for this range.
      * 
      */
     public Optional<Double> gt() {
         return Optional.ofNullable(this.gt);
     }
     /**
-     * @return Indicates the lower threshold inclusive value for this range
+     * @return Indicates the lower threshold inclusive value for this range.
      * 
      */
     public Optional<Double> gte() {
         return Optional.ofNullable(this.gte);
     }
     /**
-     * @return Indicates the upper threshold non-inculsive value for this range
+     * @return Indicates the upper threshold non-inculsive value for this range.
      * 
      */
     public Optional<Double> lt() {
         return Optional.ofNullable(this.lt);
     }
     /**
-     * @return Indicates the upper threshold inclusive value for this range
+     * @return Indicates the upper threshold inclusive value for this range.
      * 
      */
     public Optional<Double> lte() {

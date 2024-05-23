@@ -13,50 +13,50 @@ import java.util.Objects;
 @CustomType
 public final class MetricRulesetAggregationRuleAggregator {
     /**
-     * @return List of dimensions to keep or drop in aggregated metric
+     * @return List of dimensions to either be kept or dropped in the new aggregated MTSs
      * 
      */
     private List<String> dimensions;
     /**
-     * @return Flag specifying to keep or drop given dimensions
+     * @return when true, the specified dimensions will be dropped from the aggregated MTSs
      * 
      */
     private Boolean dropDimensions;
     /**
-     * @return The aggregated metric name
+     * @return name of the new aggregated metric
      * 
      */
     private String outputName;
     /**
-     * @return The type of the aggregator
+     * @return Type of aggregator. Must always be &#34;rollup&#34;
      * 
      */
     private String type;
 
     private MetricRulesetAggregationRuleAggregator() {}
     /**
-     * @return List of dimensions to keep or drop in aggregated metric
+     * @return List of dimensions to either be kept or dropped in the new aggregated MTSs
      * 
      */
     public List<String> dimensions() {
         return this.dimensions;
     }
     /**
-     * @return Flag specifying to keep or drop given dimensions
+     * @return when true, the specified dimensions will be dropped from the aggregated MTSs
      * 
      */
     public Boolean dropDimensions() {
         return this.dropDimensions;
     }
     /**
-     * @return The aggregated metric name
+     * @return name of the new aggregated metric
      * 
      */
     public String outputName() {
         return this.outputName;
     }
     /**
-     * @return The type of the aggregator
+     * @return Type of aggregator. Must always be &#34;rollup&#34;
      * 
      */
     public String type() {

@@ -16,14 +16,14 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
     public static final TimeChartHistogramOptionArgs Empty = new TimeChartHistogramOptionArgs();
 
     /**
-     * Base color theme to use for the graph.
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
      * 
      */
     @Import(name="colorTheme")
     private @Nullable Output<String> colorTheme;
 
     /**
-     * @return Base color theme to use for the graph.
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
      * 
      */
     public Optional<Output<String>> colorTheme() {
@@ -55,7 +55,7 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param colorTheme Base color theme to use for the graph.
+         * @param colorTheme Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class TimeChartHistogramOptionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param colorTheme Base color theme to use for the graph.
+         * @param colorTheme Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
          * 
          * @return builder
          * 

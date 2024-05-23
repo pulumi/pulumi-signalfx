@@ -18,7 +18,7 @@ public final class DataLinkTargetSplunk {
      */
     private String name;
     /**
-     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     private @Nullable Map<String,String> propertyKeyMapping;
@@ -32,7 +32,7 @@ public final class DataLinkTargetSplunk {
         return this.name;
     }
     /**
-     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     public Map<String,String> propertyKeyMapping() {

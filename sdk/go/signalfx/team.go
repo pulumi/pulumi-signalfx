@@ -18,49 +18,28 @@ import (
 // > **NOTE** When managing teams, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
 //
 // ## Example
-//
-// ## Arguments
-//
-// The following arguments are supported in the resource block:
-//
-// * `name` - (Required) Name of the team.
-// * `description` - (Optional) Description of the team.
-// * `members` - (Optional) List of user IDs to include in the team.
-// * `notificationsCritical` - (Optional) Where to send notifications for critical alerts
-// * `notificationsDefault` - (Optional) Where to send notifications for default alerts
-// * `notificationsInfo` - (Optional) Where to send notifications for info alerts
-// * `notificationsMajor` - (Optional) Where to send notifications for major alerts
-// * `notificationsMinor` - (Optional) Where to send notifications for minor alerts
-// * `notificationsWarning` - (Optional) Where to send notifications for warning alerts
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the team.
-// * `url` - The URL of the team.
 type Team struct {
 	pulumi.CustomResourceState
 
-	// Description of the team (Optional)
+	// Description of the team.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Members of team
+	// List of user IDs to include in the team.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// Name of the team
+	// Name of the team.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of notification destinations to use for the critical alerts category.
+	// Where to send notifications for critical alerts
 	NotificationsCriticals pulumi.StringArrayOutput `pulumi:"notificationsCriticals"`
-	// List of notification destinations to use for the default alerts category.
+	// Where to send notifications for default alerts
 	NotificationsDefaults pulumi.StringArrayOutput `pulumi:"notificationsDefaults"`
-	// List of notification destinations to use for the info alerts category.
+	// Where to send notifications for info alerts
 	NotificationsInfos pulumi.StringArrayOutput `pulumi:"notificationsInfos"`
-	// List of notification destinations to use for the major alerts category.
+	// Where to send notifications for major alerts
 	NotificationsMajors pulumi.StringArrayOutput `pulumi:"notificationsMajors"`
-	// List of notification destinations to use for the minor alerts category.
+	// Where to send notifications for minor alerts
 	NotificationsMinors pulumi.StringArrayOutput `pulumi:"notificationsMinors"`
-	// List of notification destinations to use for the warning alerts category.
+	// Where to send notifications for warning alerts
 	NotificationsWarnings pulumi.StringArrayOutput `pulumi:"notificationsWarnings"`
-	// URL of the team
+	// The URL of the team.
 	Url pulumi.StringOutput `pulumi:"url"`
 }
 
@@ -94,48 +73,48 @@ func GetTeam(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Team resources.
 type teamState struct {
-	// Description of the team (Optional)
+	// Description of the team.
 	Description *string `pulumi:"description"`
-	// Members of team
+	// List of user IDs to include in the team.
 	Members []string `pulumi:"members"`
-	// Name of the team
+	// Name of the team.
 	Name *string `pulumi:"name"`
-	// List of notification destinations to use for the critical alerts category.
+	// Where to send notifications for critical alerts
 	NotificationsCriticals []string `pulumi:"notificationsCriticals"`
-	// List of notification destinations to use for the default alerts category.
+	// Where to send notifications for default alerts
 	NotificationsDefaults []string `pulumi:"notificationsDefaults"`
-	// List of notification destinations to use for the info alerts category.
+	// Where to send notifications for info alerts
 	NotificationsInfos []string `pulumi:"notificationsInfos"`
-	// List of notification destinations to use for the major alerts category.
+	// Where to send notifications for major alerts
 	NotificationsMajors []string `pulumi:"notificationsMajors"`
-	// List of notification destinations to use for the minor alerts category.
+	// Where to send notifications for minor alerts
 	NotificationsMinors []string `pulumi:"notificationsMinors"`
-	// List of notification destinations to use for the warning alerts category.
+	// Where to send notifications for warning alerts
 	NotificationsWarnings []string `pulumi:"notificationsWarnings"`
-	// URL of the team
+	// The URL of the team.
 	Url *string `pulumi:"url"`
 }
 
 type TeamState struct {
-	// Description of the team (Optional)
+	// Description of the team.
 	Description pulumi.StringPtrInput
-	// Members of team
+	// List of user IDs to include in the team.
 	Members pulumi.StringArrayInput
-	// Name of the team
+	// Name of the team.
 	Name pulumi.StringPtrInput
-	// List of notification destinations to use for the critical alerts category.
+	// Where to send notifications for critical alerts
 	NotificationsCriticals pulumi.StringArrayInput
-	// List of notification destinations to use for the default alerts category.
+	// Where to send notifications for default alerts
 	NotificationsDefaults pulumi.StringArrayInput
-	// List of notification destinations to use for the info alerts category.
+	// Where to send notifications for info alerts
 	NotificationsInfos pulumi.StringArrayInput
-	// List of notification destinations to use for the major alerts category.
+	// Where to send notifications for major alerts
 	NotificationsMajors pulumi.StringArrayInput
-	// List of notification destinations to use for the minor alerts category.
+	// Where to send notifications for minor alerts
 	NotificationsMinors pulumi.StringArrayInput
-	// List of notification destinations to use for the warning alerts category.
+	// Where to send notifications for warning alerts
 	NotificationsWarnings pulumi.StringArrayInput
-	// URL of the team
+	// The URL of the team.
 	Url pulumi.StringPtrInput
 }
 
@@ -144,45 +123,45 @@ func (TeamState) ElementType() reflect.Type {
 }
 
 type teamArgs struct {
-	// Description of the team (Optional)
+	// Description of the team.
 	Description *string `pulumi:"description"`
-	// Members of team
+	// List of user IDs to include in the team.
 	Members []string `pulumi:"members"`
-	// Name of the team
+	// Name of the team.
 	Name *string `pulumi:"name"`
-	// List of notification destinations to use for the critical alerts category.
+	// Where to send notifications for critical alerts
 	NotificationsCriticals []string `pulumi:"notificationsCriticals"`
-	// List of notification destinations to use for the default alerts category.
+	// Where to send notifications for default alerts
 	NotificationsDefaults []string `pulumi:"notificationsDefaults"`
-	// List of notification destinations to use for the info alerts category.
+	// Where to send notifications for info alerts
 	NotificationsInfos []string `pulumi:"notificationsInfos"`
-	// List of notification destinations to use for the major alerts category.
+	// Where to send notifications for major alerts
 	NotificationsMajors []string `pulumi:"notificationsMajors"`
-	// List of notification destinations to use for the minor alerts category.
+	// Where to send notifications for minor alerts
 	NotificationsMinors []string `pulumi:"notificationsMinors"`
-	// List of notification destinations to use for the warning alerts category.
+	// Where to send notifications for warning alerts
 	NotificationsWarnings []string `pulumi:"notificationsWarnings"`
 }
 
 // The set of arguments for constructing a Team resource.
 type TeamArgs struct {
-	// Description of the team (Optional)
+	// Description of the team.
 	Description pulumi.StringPtrInput
-	// Members of team
+	// List of user IDs to include in the team.
 	Members pulumi.StringArrayInput
-	// Name of the team
+	// Name of the team.
 	Name pulumi.StringPtrInput
-	// List of notification destinations to use for the critical alerts category.
+	// Where to send notifications for critical alerts
 	NotificationsCriticals pulumi.StringArrayInput
-	// List of notification destinations to use for the default alerts category.
+	// Where to send notifications for default alerts
 	NotificationsDefaults pulumi.StringArrayInput
-	// List of notification destinations to use for the info alerts category.
+	// Where to send notifications for info alerts
 	NotificationsInfos pulumi.StringArrayInput
-	// List of notification destinations to use for the major alerts category.
+	// Where to send notifications for major alerts
 	NotificationsMajors pulumi.StringArrayInput
-	// List of notification destinations to use for the minor alerts category.
+	// Where to send notifications for minor alerts
 	NotificationsMinors pulumi.StringArrayInput
-	// List of notification destinations to use for the warning alerts category.
+	// Where to send notifications for warning alerts
 	NotificationsWarnings pulumi.StringArrayInput
 }
 
@@ -273,52 +252,52 @@ func (o TeamOutput) ToTeamOutputWithContext(ctx context.Context) TeamOutput {
 	return o
 }
 
-// Description of the team (Optional)
+// Description of the team.
 func (o TeamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Members of team
+// List of user IDs to include in the team.
 func (o TeamOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Name of the team
+// Name of the team.
 func (o TeamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of notification destinations to use for the critical alerts category.
+// Where to send notifications for critical alerts
 func (o TeamOutput) NotificationsCriticals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsCriticals }).(pulumi.StringArrayOutput)
 }
 
-// List of notification destinations to use for the default alerts category.
+// Where to send notifications for default alerts
 func (o TeamOutput) NotificationsDefaults() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsDefaults }).(pulumi.StringArrayOutput)
 }
 
-// List of notification destinations to use for the info alerts category.
+// Where to send notifications for info alerts
 func (o TeamOutput) NotificationsInfos() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsInfos }).(pulumi.StringArrayOutput)
 }
 
-// List of notification destinations to use for the major alerts category.
+// Where to send notifications for major alerts
 func (o TeamOutput) NotificationsMajors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsMajors }).(pulumi.StringArrayOutput)
 }
 
-// List of notification destinations to use for the minor alerts category.
+// Where to send notifications for minor alerts
 func (o TeamOutput) NotificationsMinors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsMinors }).(pulumi.StringArrayOutput)
 }
 
-// List of notification destinations to use for the warning alerts category.
+// Where to send notifications for warning alerts
 func (o TeamOutput) NotificationsWarnings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringArrayOutput { return v.NotificationsWarnings }).(pulumi.StringArrayOutput)
 }
 
-// URL of the team
+// The URL of the team.
 func (o TeamOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *Team) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }

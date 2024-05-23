@@ -13,66 +13,48 @@ namespace Pulumi.SignalFx
     /// Displays a listing of events as a widget in a dashboard.
     /// 
     /// ## Example
-    /// 
-    /// ## Arguments
-    /// 
-    /// The following arguments are supported in the resource block:
-    /// 
-    /// * `name` - (Required) Name of the text note.
-    /// * `program_text` - (Required) Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-    /// * `description` - (Optional) Description of the text note.
-    /// * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-    /// * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-    /// * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-    /// 
-    /// ## Attributes
-    /// 
-    /// In a addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the chart.
-    /// * `url` - The URL of the chart.
     /// </summary>
     [SignalFxResourceType("signalfx:index/eventFeedChart:EventFeedChart")]
     public partial class EventFeedChart : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the chart (Optional)
+        /// Description of the text note.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the text note.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Output("timeRange")]
         public Output<int?> TimeRange { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -124,37 +106,37 @@ namespace Pulumi.SignalFx
     public sealed class EventFeedChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the chart (Optional)
+        /// Description of the text note.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the text note.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
@@ -168,43 +150,43 @@ namespace Pulumi.SignalFx
     public sealed class EventFeedChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the chart (Optional)
+        /// Description of the text note.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the text note.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info[in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
 
         /// <summary>
-        /// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        /// From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         /// </summary>
         [Input("timeRange")]
         public Input<int>? TimeRange { get; set; }
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

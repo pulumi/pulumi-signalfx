@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardPermissions {
     /**
-     * @return The custom access control list for this dashboard
+     * @return List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      * 
      */
     private @Nullable List<DashboardPermissionsAcl> acls;
     /**
-     * @return The ID of the dashboard group that this dashboard inherits permissions from
+     * @return ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      * 
      */
     private @Nullable String parent;
 
     private DashboardPermissions() {}
     /**
-     * @return The custom access control list for this dashboard
+     * @return List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      * 
      */
     public List<DashboardPermissionsAcl> acls() {
         return this.acls == null ? List.of() : this.acls;
     }
     /**
-     * @return The ID of the dashboard group that this dashboard inherits permissions from
+     * @return ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      * 
      */
     public Optional<String> parent() {

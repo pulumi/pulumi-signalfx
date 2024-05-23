@@ -13,130 +13,96 @@ namespace Pulumi.SignalFx
     /// This chart type shows the specified plot in a heat map fashion. This format is similar to the [Infrastructure Navigator](https://signalfx-product-docs.readthedocs-hosted.com/en/latest/built-in-content/infra-nav.html#infra), with squares representing each source for the selected metric, and the color of each square representing the value range of the metric.
     /// 
     /// ## Example
-    /// 
-    /// ## Arguments
-    /// 
-    /// The following arguments are supported in the resource block:
-    /// 
-    /// * `name` - (Required) Name of the chart.
-    /// * `program_text` - (Required) Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
-    /// * `description` - (Optional) Description of the chart.
-    /// * `unit_prefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-    /// * `minimum_resolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
-    /// * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints.
-    /// * `timezone` - (Optional) The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
-    /// * `refresh_interval` - (Optional) How often (in seconds) to refresh the values of the heatmap.
-    /// * `disable_sampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
-    /// * `group_by` - (Optional) Properties to group by in the heatmap (in nesting order).
-    /// * `sort_by` - (Optional) The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
-    /// * `hide_timestamp` - (Optional) Whether to show the timestamp in the chart. `false` by default.
-    /// * `color_range` - (Optional, Default) Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
-    ///     * `min_value` - (Optional) The minimum value within the coloring range.
-    ///     * `max_value` - (Optional) The maximum value within the coloring range.
-    ///     * `color` - (Required) The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the '#' character, for example "#ea1849" (grass green).
-    /// * `color_scale` - (Optional.  Conflicts with `color_range`) One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
-    ///     * `gt` - (Optional) Indicates the lower threshold non-inclusive value for this range.
-    ///     * `gte` - (Optional) Indicates the lower threshold inclusive value for this range.
-    ///     * `lt` - (Optional) Indicates the upper threshold non-inclusive value for this range.
-    ///     * `lte` - (Optional) Indicates the upper threshold inclusive value for this range.
-    ///     * `color` - (Required) The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
-    /// 
-    /// ## Attributes
-    /// 
-    /// In a addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the chart.
-    /// * `url` - The URL of the chart.
     /// </summary>
     [SignalFxResourceType("signalfx:index/heatmapChart:HeatmapChart")]
     public partial class HeatmapChart : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : "#0000ff" }
+        /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Output("colorRange")]
         public Output<Outputs.HeatmapChartColorRange?> ColorRange { get; private set; } = null!;
 
         /// <summary>
-        /// Single color range including both the color to display for that range and the borders of the range
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Output("colorScales")]
         public Output<ImmutableArray<Outputs.HeatmapChartColorScale>> ColorScales { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the chart (Optional)
+        /// Description of the chart.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         /// </summary>
         [Output("disableSampling")]
         public Output<bool?> DisableSampling { get; private set; } = null!;
 
         /// <summary>
-        /// Properties to group by in the heatmap (in nesting order)
+        /// Properties to group by in the heatmap (in nesting order).
         /// </summary>
         [Output("groupBies")]
         public Output<ImmutableArray<string>> GroupBies { get; private set; } = null!;
 
         /// <summary>
-        /// (false by default) Whether to show the timestamp in the chart
+        /// Whether to show the timestamp in the chart. `false` by default.
         /// </summary>
         [Output("hideTimestamp")]
         public Output<bool?> HideTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints
+        /// How long (in seconds) to wait for late datapoints.
         /// </summary>
         [Output("maxDelay")]
         public Output<int?> MaxDelay { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum resolution (in seconds) to use for computing the underlying program
+        /// The minimum resolution (in seconds) to use for computing the underlying program.
         /// </summary>
         [Output("minimumResolution")]
         public Output<int?> MinimumResolution { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the chart.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
         /// </summary>
         [Output("programText")]
         public Output<string> ProgramText { get; private set; } = null!;
 
         /// <summary>
-        /// How often (in seconds) to refresh the values of the heatmap
+        /// How often (in seconds) to refresh the values of the heatmap.
         /// </summary>
         [Output("refreshInterval")]
         public Output<int?> RefreshInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
+        /// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         /// </summary>
         [Output("sortBy")]
         public Output<string?> SortBy { get; private set; } = null!;
 
         /// <summary>
-        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
 
         /// <summary>
-        /// (Metric by default) Must be "Metric" or "Binary"
+        /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Output("unitPrefix")]
         public Output<string?> UnitPrefix { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
@@ -188,7 +154,7 @@ namespace Pulumi.SignalFx
     public sealed class HeatmapChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : "#0000ff" }
+        /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Input("colorRange")]
         public Input<Inputs.HeatmapChartColorRangeArgs>? ColorRange { get; set; }
@@ -197,7 +163,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.HeatmapChartColorScaleArgs>? _colorScales;
 
         /// <summary>
-        /// Single color range including both the color to display for that range and the borders of the range
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         public InputList<Inputs.HeatmapChartColorScaleArgs> ColorScales
         {
@@ -206,13 +172,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description of the chart (Optional)
+        /// Description of the chart.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
@@ -221,7 +187,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// Properties to group by in the heatmap (in nesting order)
+        /// Properties to group by in the heatmap (in nesting order).
         /// </summary>
         public InputList<string> GroupBies
         {
@@ -230,55 +196,55 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// (false by default) Whether to show the timestamp in the chart
+        /// Whether to show the timestamp in the chart. `false` by default.
         /// </summary>
         [Input("hideTimestamp")]
         public Input<bool>? HideTimestamp { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints
+        /// How long (in seconds) to wait for late datapoints.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
 
         /// <summary>
-        /// The minimum resolution (in seconds) to use for computing the underlying program
+        /// The minimum resolution (in seconds) to use for computing the underlying program.
         /// </summary>
         [Input("minimumResolution")]
         public Input<int>? MinimumResolution { get; set; }
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the chart.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// How often (in seconds) to refresh the values of the heatmap
+        /// How often (in seconds) to refresh the values of the heatmap.
         /// </summary>
         [Input("refreshInterval")]
         public Input<int>? RefreshInterval { get; set; }
 
         /// <summary>
-        /// The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
+        /// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
-        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// (Metric by default) Must be "Metric" or "Binary"
+        /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
         public Input<string>? UnitPrefix { get; set; }
@@ -292,7 +258,7 @@ namespace Pulumi.SignalFx
     public sealed class HeatmapChartState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : "#0000ff" }
+        /// Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : "#0000ff" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         [Input("colorRange")]
         public Input<Inputs.HeatmapChartColorRangeGetArgs>? ColorRange { get; set; }
@@ -301,7 +267,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.HeatmapChartColorScaleGetArgs>? _colorScales;
 
         /// <summary>
-        /// Single color range including both the color to display for that range and the borders of the range
+        /// One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = "blue" } color_scale { lte = 60, color = "yellow" }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
         /// </summary>
         public InputList<Inputs.HeatmapChartColorScaleGetArgs> ColorScales
         {
@@ -310,13 +276,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Description of the chart (Optional)
+        /// Description of the chart.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+        /// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
         /// </summary>
         [Input("disableSampling")]
         public Input<bool>? DisableSampling { get; set; }
@@ -325,7 +291,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _groupBies;
 
         /// <summary>
-        /// Properties to group by in the heatmap (in nesting order)
+        /// Properties to group by in the heatmap (in nesting order).
         /// </summary>
         public InputList<string> GroupBies
         {
@@ -334,61 +300,61 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// (false by default) Whether to show the timestamp in the chart
+        /// Whether to show the timestamp in the chart. `false` by default.
         /// </summary>
         [Input("hideTimestamp")]
         public Input<bool>? HideTimestamp { get; set; }
 
         /// <summary>
-        /// How long (in seconds) to wait for late datapoints
+        /// How long (in seconds) to wait for late datapoints.
         /// </summary>
         [Input("maxDelay")]
         public Input<int>? MaxDelay { get; set; }
 
         /// <summary>
-        /// The minimum resolution (in seconds) to use for computing the underlying program
+        /// The minimum resolution (in seconds) to use for computing the underlying program.
         /// </summary>
         [Input("minimumResolution")]
         public Input<int>? MinimumResolution { get; set; }
 
         /// <summary>
-        /// Name of the chart
+        /// Name of the chart.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        /// Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
         /// </summary>
         [Input("programText")]
         public Input<string>? ProgramText { get; set; }
 
         /// <summary>
-        /// How often (in seconds) to refresh the values of the heatmap
+        /// How often (in seconds) to refresh the values of the heatmap.
         /// </summary>
         [Input("refreshInterval")]
         public Input<int>? RefreshInterval { get; set; }
 
         /// <summary>
-        /// The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
+        /// The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
         /// </summary>
         [Input("sortBy")]
         public Input<string>? SortBy { get; set; }
 
         /// <summary>
-        /// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+        /// The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
         /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
         /// <summary>
-        /// (Metric by default) Must be "Metric" or "Binary"
+        /// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
         /// </summary>
         [Input("unitPrefix")]
         public Input<string>? UnitPrefix { get; set; }
 
         /// <summary>
-        /// URL of the chart
+        /// The URL of the chart.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

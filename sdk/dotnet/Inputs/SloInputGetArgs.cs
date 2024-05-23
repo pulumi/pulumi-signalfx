@@ -13,19 +13,19 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class SloInputGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Label used in `program_text` that refers to the data block which contains the stream of successful events
+        /// Label used in `"program_text"` that refers to the data block which contains the stream of successful events
         /// </summary>
         [Input("goodEventsLabel")]
         public Input<string>? GoodEventsLabel { get; set; }
 
         /// <summary>
-        /// Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+        /// SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
         /// </summary>
         [Input("programText", required: true)]
         public Input<string> ProgramText { get; set; } = null!;
 
         /// <summary>
-        /// Label used in `program_text` that refers to the data block which contains the stream of total events
+        /// Label used in `"program_text"` that refers to the data block which contains the stream of total events
         /// </summary>
         [Input("totalEventsLabel")]
         public Input<string>? TotalEventsLabel { get; set; }

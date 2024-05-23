@@ -14,15 +14,15 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardPermissionsAcl
     {
         /// <summary>
-        /// Actions level, possible values: READ, WRITE
+        /// Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
-        /// ID of the principal with access
+        /// ID of the user, team, or organization for which you're granting permissions.
         /// </summary>
         public readonly string PrincipalId;
         /// <summary>
-        /// Type of principal, possible values: ORG, TEAM, USER
+        /// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
         /// </summary>
         public readonly string PrincipalType;
 

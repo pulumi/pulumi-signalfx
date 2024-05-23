@@ -12,22 +12,6 @@ import * as utilities from "./utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
- *
- * ## Arguments
- *
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `url` - (Required) The URL to request
- * * `sharedSecret` - (Optional)
- * * `headers` - (Optional) A header to send with the request
- *   * `headerKey` - (Required) The key of the header to send
- *   * `headerValue` - (Required) The value of the header to send
- *
- * ## Attributes
- *
- * In a addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the integration.
  */
 export class WebhookIntegration extends pulumi.CustomResource {
     /**
@@ -58,20 +42,20 @@ export class WebhookIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * HTTP headers to pass in the request
+     * A header to send with the request
      */
     public readonly headers!: pulumi.Output<outputs.WebhookIntegrationHeader[] | undefined>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly sharedSecret!: pulumi.Output<string | undefined>;
     /**
-     * Webhook URL
+     * The URL to request
      */
     public readonly url!: pulumi.Output<string | undefined>;
 
@@ -116,20 +100,20 @@ export class WebhookIntegration extends pulumi.CustomResource {
  */
 export interface WebhookIntegrationState {
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * HTTP headers to pass in the request
+     * A header to send with the request
      */
     headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     sharedSecret?: pulumi.Input<string>;
     /**
-     * Webhook URL
+     * The URL to request
      */
     url?: pulumi.Input<string>;
 }
@@ -139,20 +123,20 @@ export interface WebhookIntegrationState {
  */
 export interface WebhookIntegrationArgs {
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * HTTP headers to pass in the request
+     * A header to send with the request
      */
     headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     sharedSecret?: pulumi.Input<string>;
     /**
-     * Webhook URL
+     * The URL to request
      */
     url?: pulumi.Input<string>;
 }

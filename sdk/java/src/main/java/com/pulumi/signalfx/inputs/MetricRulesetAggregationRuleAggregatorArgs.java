@@ -17,14 +17,14 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
     public static final MetricRulesetAggregationRuleAggregatorArgs Empty = new MetricRulesetAggregationRuleAggregatorArgs();
 
     /**
-     * List of dimensions to keep or drop in aggregated metric
+     * List of dimensions to either be kept or dropped in the new aggregated MTSs
      * 
      */
     @Import(name="dimensions", required=true)
     private Output<List<String>> dimensions;
 
     /**
-     * @return List of dimensions to keep or drop in aggregated metric
+     * @return List of dimensions to either be kept or dropped in the new aggregated MTSs
      * 
      */
     public Output<List<String>> dimensions() {
@@ -32,14 +32,14 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
     }
 
     /**
-     * Flag specifying to keep or drop given dimensions
+     * when true, the specified dimensions will be dropped from the aggregated MTSs
      * 
      */
     @Import(name="dropDimensions", required=true)
     private Output<Boolean> dropDimensions;
 
     /**
-     * @return Flag specifying to keep or drop given dimensions
+     * @return when true, the specified dimensions will be dropped from the aggregated MTSs
      * 
      */
     public Output<Boolean> dropDimensions() {
@@ -47,14 +47,14 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
     }
 
     /**
-     * The aggregated metric name
+     * name of the new aggregated metric
      * 
      */
     @Import(name="outputName", required=true)
     private Output<String> outputName;
 
     /**
-     * @return The aggregated metric name
+     * @return name of the new aggregated metric
      * 
      */
     public Output<String> outputName() {
@@ -62,14 +62,14 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
     }
 
     /**
-     * The type of the aggregator
+     * Type of aggregator. Must always be &#34;rollup&#34;
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the aggregator
+     * @return Type of aggregator. Must always be &#34;rollup&#34;
      * 
      */
     public Output<String> type() {
@@ -104,7 +104,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param dimensions List of dimensions to keep or drop in aggregated metric
+         * @param dimensions List of dimensions to either be kept or dropped in the new aggregated MTSs
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param dimensions List of dimensions to keep or drop in aggregated metric
+         * @param dimensions List of dimensions to either be kept or dropped in the new aggregated MTSs
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param dimensions List of dimensions to keep or drop in aggregated metric
+         * @param dimensions List of dimensions to either be kept or dropped in the new aggregated MTSs
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param dropDimensions Flag specifying to keep or drop given dimensions
+         * @param dropDimensions when true, the specified dimensions will be dropped from the aggregated MTSs
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param dropDimensions Flag specifying to keep or drop given dimensions
+         * @param dropDimensions when true, the specified dimensions will be dropped from the aggregated MTSs
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param outputName The aggregated metric name
+         * @param outputName name of the new aggregated metric
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param outputName The aggregated metric name
+         * @param outputName name of the new aggregated metric
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param type The type of the aggregator
+         * @param type Type of aggregator. Must always be &#34;rollup&#34;
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class MetricRulesetAggregationRuleAggregatorArgs extends com.pulumi
         }
 
         /**
-         * @param type The type of the aggregator
+         * @param type Type of aggregator. Must always be &#34;rollup&#34;
          * 
          * @return builder
          * 

@@ -20,14 +20,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     public static final SloTargetArgs Empty = new SloTargetArgs();
 
     /**
-     * SLO alert rules
+     * List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     @Import(name="alertRules", required=true)
     private Output<List<SloTargetAlertRuleArgs>> alertRules;
 
     /**
-     * @return SLO alert rules
+     * @return List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     public Output<List<SloTargetAlertRuleArgs>> alertRules() {
@@ -35,14 +35,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     @Import(name="compliancePeriod")
     private @Nullable Output<String> compliancePeriod;
 
     /**
-     * @return (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * @return Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     public Optional<Output<String>> compliancePeriod() {
@@ -50,14 +50,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
      * 
      */
     @Import(name="cycleStart")
     private @Nullable Output<String> cycleStart;
 
     /**
-     * @return (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * @return It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
      * 
      */
     public Optional<Output<String>> cycleStart() {
@@ -65,14 +65,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * The cycle type of the calendar window, e.g. week, month.
      * 
      */
     @Import(name="cycleType")
     private @Nullable Output<String> cycleType;
 
     /**
-     * @return (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * @return The cycle type of the calendar window, e.g. week, month.
      * 
      */
     public Optional<Output<String>> cycleType() {
@@ -95,14 +95,14 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLO target type can be the following type: `RollingWindow`
+     * SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return SLO target type can be the following type: `RollingWindow`
+     * @return SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
      * 
      */
     public Output<String> type() {
@@ -139,7 +139,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertRules SLO alert rules
+         * @param alertRules List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertRules SLO alert rules
+         * @param alertRules List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alertRules SLO alert rules
+         * @param alertRules List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compliancePeriod (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+         * @param compliancePeriod Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param compliancePeriod (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+         * @param compliancePeriod Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cycleStart (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+         * @param cycleStart It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cycleStart (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+         * @param cycleStart It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cycleType (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+         * @param cycleType The cycle type of the calendar window, e.g. week, month.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cycleType (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+         * @param cycleType The cycle type of the calendar window, e.g. week, month.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type SLO target type can be the following type: `RollingWindow`
+         * @param type SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class SloTargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type SLO target type can be the following type: `RollingWindow`
+         * @param type SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
          * 
          * @return builder
          * 

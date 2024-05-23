@@ -19,14 +19,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     public static final DashboardVariableArgs Empty = new DashboardVariableArgs();
 
     /**
-     * An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+     * An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
      * 
      */
     @Import(name="alias", required=true)
     private Output<String> alias;
 
     /**
-     * @return An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+     * @return An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
      * 
      */
     public Output<String> alias() {
@@ -34,14 +34,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If true, this variable will also match data that does not have the specified property
+     * If true, this variable will also match data that doesn&#39;t have this property at all.
      * 
      */
     @Import(name="applyIfExist")
     private @Nullable Output<Boolean> applyIfExist;
 
     /**
-     * @return If true, this variable will also match data that does not have the specified property
+     * @return If true, this variable will also match data that doesn&#39;t have this property at all.
      * 
      */
     public Optional<Output<Boolean>> applyIfExist() {
@@ -49,14 +49,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Variable description
+     * Variable description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Variable description
+     * @return Variable description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,14 +64,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     public Output<String> property() {
@@ -79,14 +79,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If true, this variable will only apply to charts with a filter on the named property.
+     * If `true`, this variable will only apply to charts that have a filter for the property.
      * 
      */
     @Import(name="replaceOnly")
     private @Nullable Output<Boolean> replaceOnly;
 
     /**
-     * @return If true, this variable will only apply to charts with a filter on the named property.
+     * @return If `true`, this variable will only apply to charts that have a filter for the property.
      * 
      */
     public Optional<Output<Boolean>> replaceOnly() {
@@ -94,14 +94,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+     * If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
     @Import(name="restrictedSuggestions")
     private @Nullable Output<Boolean> restrictedSuggestions;
 
     /**
-     * @return If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+     * @return If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> restrictedSuggestions() {
@@ -109,14 +109,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+     * Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
      * 
      */
     @Import(name="valueRequired")
     private @Nullable Output<Boolean> valueRequired;
 
     /**
-     * @return Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+     * @return Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
      * 
      */
     public Optional<Output<Boolean>> valueRequired() {
@@ -124,14 +124,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -139,14 +139,14 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
     @Import(name="valuesSuggesteds")
     private @Nullable Output<List<String>> valuesSuggesteds;
 
     /**
-     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * @return A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      * 
      */
     public Optional<Output<List<String>>> valuesSuggesteds() {
@@ -186,7 +186,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alias An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+         * @param alias An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param alias An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+         * @param alias An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applyIfExist If true, this variable will also match data that does not have the specified property
+         * @param applyIfExist If true, this variable will also match data that doesn&#39;t have this property at all.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param applyIfExist If true, this variable will also match data that does not have the specified property
+         * @param applyIfExist If true, this variable will also match data that doesn&#39;t have this property at all.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Variable description
+         * @param description Variable description.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param description Variable description
+         * @param description Variable description.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replaceOnly If true, this variable will only apply to charts with a filter on the named property.
+         * @param replaceOnly If `true`, this variable will only apply to charts that have a filter for the property.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param replaceOnly If true, this variable will only apply to charts with a filter on the named property.
+         * @param replaceOnly If `true`, this variable will only apply to charts that have a filter for the property.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param restrictedSuggestions If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+         * @param restrictedSuggestions If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param restrictedSuggestions If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+         * @param restrictedSuggestions If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueRequired Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+         * @param valueRequired Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valueRequired Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+         * @param valueRequired Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+         * @param valuesSuggesteds A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
          * 
          * @return builder
          * 

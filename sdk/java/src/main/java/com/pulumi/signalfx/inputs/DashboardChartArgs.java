@@ -18,14 +18,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     public static final DashboardChartArgs Empty = new DashboardChartArgs();
 
     /**
-     * ID of the chart to display
+     * ID of the chart to display.
      * 
      */
     @Import(name="chartId", required=true)
     private Output<String> chartId;
 
     /**
-     * @return ID of the chart to display
+     * @return ID of the chart to display.
      * 
      */
     public Output<String> chartId() {
@@ -33,14 +33,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     @Import(name="column")
     private @Nullable Output<Integer> column;
 
     /**
-     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * @return The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      * 
      */
     public Optional<Output<Integer>> column() {
@@ -48,14 +48,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * How many rows the chart should take up. (greater than or equal to 1)
+     * How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     @Import(name="height")
     private @Nullable Output<Integer> height;
 
     /**
-     * @return How many rows the chart should take up. (greater than or equal to 1)
+     * @return How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      * 
      */
     public Optional<Output<Integer>> height() {
@@ -63,14 +63,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+     * The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      * 
      */
     @Import(name="row")
     private @Nullable Output<Integer> row;
 
     /**
-     * @return The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+     * @return The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      * 
      */
     public Optional<Output<Integer>> row() {
@@ -78,14 +78,14 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+     * How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     @Import(name="width")
     private @Nullable Output<Integer> width;
 
     /**
-     * @return How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+     * @return How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      * 
      */
     public Optional<Output<Integer>> width() {
@@ -121,7 +121,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param chartId ID of the chart to display
+         * @param chartId ID of the chart to display.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param chartId ID of the chart to display
+         * @param chartId ID of the chart to display.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param column The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+         * @param column The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param column The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+         * @param column The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param height How many rows the chart should take up. (greater than or equal to 1)
+         * @param height How many rows the chart should take up (greater than or equal to `1`). `1` by default.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param height How many rows the chart should take up. (greater than or equal to 1)
+         * @param height How many rows the chart should take up (greater than or equal to `1`). `1` by default.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param row The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+         * @param row The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param row The row to show the chart in (zero-based); if height &gt; 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+         * @param row The row to show the chart in (zero-based); if `height &gt; 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param width How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+         * @param width How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class DashboardChartArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param width How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+         * @param width How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
          * 
          * @return builder
          * 

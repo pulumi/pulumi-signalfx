@@ -17,140 +17,68 @@ import (
 // Time charts display data points over a period of time.
 //
 // ## Example
-//
-// ## Arguments
-//
-// The following arguments are supported in the resource block:
-//
-// * `name` - (Required) Name of the chart.
-// * `programText` - (Required) Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-// * `plotType` - (Optional) The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
-// * `description` - (Optional) Description of the chart.
-// * `axesPrecision` - (Optional) Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
-// * `unitPrefix` - (Optional) Must be `"Metric"` or `"Binary`". `"Metric"` by default.
-// * `colorBy` - (Optional) Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
-// * `minimumResolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
-// * `maxDelay` - (Optional) How long (in seconds) to wait for late datapoints.
-// * `timezone` - (Optional) A string denotes the geographic region associated with the time zone.
-// * `disableSampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
-// * `timeRange` - (Optional) How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
-// * `startTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-// * `endTime` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
-// * `axesIncludeZero` - (Optional) Force the chart to display zero on the y-axes, even if none of the data is near zero.
-// * `axisLeft` - (Optional) Set of axis options.
-//   - `label` - (Optional) Label of the left axis.
-//   - `minValue` - (Optional) The minimum value for the left axis.
-//   - `maxValue` - (Optional) The maximum value for the left axis.
-//   - `highWatermark` - (Optional) A line to draw as a high watermark.
-//   - `highWatermarkLabel` - (Optional) A label to attach to the high watermark line.
-//   - `lowWatermark`  - (Optional) A line to draw as a low watermark.
-//   - `lowWatermarkLabel` - (Optional) A label to attach to the low watermark line.
-//
-// * `axisRight` - (Optional) Set of axis options.
-//   - `label` - (Optional) Label of the right axis.
-//   - `minValue` - (Optional) The minimum value for the right axis.
-//   - `maxValue` - (Optional) The maximum value for the right axis.
-//   - `highWatermark` - (Optional) A line to draw as a high watermark.
-//   - `highWatermarkLabel` - (Optional) A label to attach to the high watermark line.
-//   - `lowWatermark`  - (Optional) A line to draw as a low watermark.
-//   - `lowWatermarkLabel` - (Optional) A label to attach to the low watermark line.
-//
-// * `vizOptions` - (Optional) Plot-level customization options, associated with a publish statement.
-//   - `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-//   - `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-//   - `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-//   - `axis` - (Optional) Y-axis associated with values for this plot. Must be either `right` or `left`.
-//   - `plotType` - (Optional) The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
-//   - `valueUnit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-//   - `valuePrefix`, `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-//
-// * `eventOptions` - (Optional) Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
-//   - `label` - (Required) Label used in the publish statement that displays the event query you want to customize.
-//   - `displayName` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-//   - `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-//
-// * `histogramOptions` - (Optional) Only used when `plotType` is `"Histogram"`. Histogram specific options.
-//   - `colorTheme` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
-//
-// * `legendFieldsToHide` - (Optional) List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
-// * `legendOptionsFields` - (Optional) List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
-//   - `property` The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
-//   - `enabled` True or False depending on if you want the property to be shown or hidden.
-//
-// * `onChartLegendDimension` - (Optional) Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
-// * `showEventLines` - (Optional) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
-// * `showDataMarkers` - (Optional) Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
-// * `stacked` - (Optional) Whether area and bar charts in the visualization should be stacked. `false` by default.
-// * `timezone` - (Optional) Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the chart.
-// * `url` - The URL of the chart.
 type TimeChart struct {
 	pulumi.CustomResourceState
 
-	// Force y-axes to always show zero
+	// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 	AxesIncludeZero pulumi.BoolPtrOutput `pulumi:"axesIncludeZero"`
-	// Force a specific number of significant digits in the y-axis
-	AxesPrecision pulumi.IntPtrOutput         `pulumi:"axesPrecision"`
-	AxisLeft      TimeChartAxisLeftPtrOutput  `pulumi:"axisLeft"`
-	AxisRight     TimeChartAxisRightPtrOutput `pulumi:"axisRight"`
-	// (Dimension by default) Must be "Dimension" or "Metric"
+	// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+	AxesPrecision pulumi.IntPtrOutput `pulumi:"axesPrecision"`
+	// Set of axis options.
+	AxisLeft TimeChartAxisLeftPtrOutput `pulumi:"axisLeft"`
+	// Set of axis options.
+	AxisRight TimeChartAxisRightPtrOutput `pulumi:"axisRight"`
+	// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy pulumi.StringPtrOutput `pulumi:"colorBy"`
-	// Description of the chart
+	// Description of the chart.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
-	// Seconds since epoch to end the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrOutput `pulumi:"endTime"`
-	// Event display customization options, associated with a publish statement
+	// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
 	EventOptions TimeChartEventOptionArrayOutput `pulumi:"eventOptions"`
-	// Options specific to Histogram charts
+	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions TimeChartHistogramOptionArrayOutput `pulumi:"histogramOptions"`
-	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayOutput `pulumi:"legendFieldsToHides"`
-	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields TimeChartLegendOptionsFieldArrayOutput `pulumi:"legendOptionsFields"`
-	// How long (in seconds) to wait for late datapoints
+	// How long (in seconds) to wait for late datapoints.
 	MaxDelay pulumi.IntPtrOutput `pulumi:"maxDelay"`
-	// The minimum resolution (in seconds) to use for computing the underlying program
+	// The minimum resolution (in seconds) to use for computing the underlying program.
 	MinimumResolution pulumi.IntPtrOutput `pulumi:"minimumResolution"`
-	// Name of the chart
+	// Name of the chart.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-	// 'plot_label' and any dimension.
+	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension pulumi.StringPtrOutput `pulumi:"onChartLegendDimension"`
-	// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-	// "ColumnChart", or "Histogram"
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType pulumi.StringPtrOutput `pulumi:"plotType"`
-	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+	// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
-	// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers pulumi.BoolPtrOutput `pulumi:"showDataMarkers"`
-	// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+	// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
 	ShowEventLines pulumi.BoolPtrOutput `pulumi:"showEventLines"`
-	// (false by default) Whether area and bar charts in the visualization should be stacked
+	// Whether area and bar charts in the visualization should be stacked. `false` by default.
 	Stacked pulumi.BoolPtrOutput `pulumi:"stacked"`
-	// Seconds since epoch to start the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrOutput `pulumi:"startTime"`
 	// Tags associated with the chart
 	//
 	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrOutput `pulumi:"timeRange"`
-	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
 	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
-	// (Metric by default) Must be "Metric" or "Binary"
+	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrOutput `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringOutput `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement
+	// Plot-level customization options, associated with a publish statement.
 	VizOptions TimeChartVizOptionArrayOutput `pulumi:"vizOptions"`
 }
 
@@ -187,128 +115,128 @@ func GetTimeChart(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TimeChart resources.
 type timeChartState struct {
-	// Force y-axes to always show zero
+	// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 	AxesIncludeZero *bool `pulumi:"axesIncludeZero"`
-	// Force a specific number of significant digits in the y-axis
-	AxesPrecision *int                `pulumi:"axesPrecision"`
-	AxisLeft      *TimeChartAxisLeft  `pulumi:"axisLeft"`
-	AxisRight     *TimeChartAxisRight `pulumi:"axisRight"`
-	// (Dimension by default) Must be "Dimension" or "Metric"
+	// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+	AxesPrecision *int `pulumi:"axesPrecision"`
+	// Set of axis options.
+	AxisLeft *TimeChartAxisLeft `pulumi:"axisLeft"`
+	// Set of axis options.
+	AxisRight *TimeChartAxisRight `pulumi:"axisRight"`
+	// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy *string `pulumi:"colorBy"`
-	// Description of the chart
+	// Description of the chart.
 	Description *string `pulumi:"description"`
-	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Seconds since epoch to end the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
-	// Event display customization options, associated with a publish statement
+	// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
 	EventOptions []TimeChartEventOption `pulumi:"eventOptions"`
-	// Options specific to Histogram charts
+	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions []TimeChartHistogramOption `pulumi:"histogramOptions"`
-	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
-	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields []TimeChartLegendOptionsField `pulumi:"legendOptionsFields"`
-	// How long (in seconds) to wait for late datapoints
+	// How long (in seconds) to wait for late datapoints.
 	MaxDelay *int `pulumi:"maxDelay"`
-	// The minimum resolution (in seconds) to use for computing the underlying program
+	// The minimum resolution (in seconds) to use for computing the underlying program.
 	MinimumResolution *int `pulumi:"minimumResolution"`
-	// Name of the chart
+	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-	// 'plot_label' and any dimension.
+	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension *string `pulumi:"onChartLegendDimension"`
-	// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-	// "ColumnChart", or "Histogram"
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType *string `pulumi:"plotType"`
-	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+	// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText *string `pulumi:"programText"`
-	// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
-	// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+	// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
 	ShowEventLines *bool `pulumi:"showEventLines"`
-	// (false by default) Whether area and bar charts in the visualization should be stacked
+	// Whether area and bar charts in the visualization should be stacked. `false` by default.
 	Stacked *bool `pulumi:"stacked"`
-	// Seconds since epoch to start the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
 	// Tags associated with the chart
 	//
 	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags []string `pulumi:"tags"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
-	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
 	Timezone *string `pulumi:"timezone"`
-	// (Metric by default) Must be "Metric" or "Binary"
+	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// URL of the chart
+	// The URL of the chart.
 	Url *string `pulumi:"url"`
-	// Plot-level customization options, associated with a publish statement
+	// Plot-level customization options, associated with a publish statement.
 	VizOptions []TimeChartVizOption `pulumi:"vizOptions"`
 }
 
 type TimeChartState struct {
-	// Force y-axes to always show zero
+	// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 	AxesIncludeZero pulumi.BoolPtrInput
-	// Force a specific number of significant digits in the y-axis
+	// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
 	AxesPrecision pulumi.IntPtrInput
-	AxisLeft      TimeChartAxisLeftPtrInput
-	AxisRight     TimeChartAxisRightPtrInput
-	// (Dimension by default) Must be "Dimension" or "Metric"
+	// Set of axis options.
+	AxisLeft TimeChartAxisLeftPtrInput
+	// Set of axis options.
+	AxisRight TimeChartAxisRightPtrInput
+	// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy pulumi.StringPtrInput
-	// Description of the chart
+	// Description of the chart.
 	Description pulumi.StringPtrInput
-	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
 	DisableSampling pulumi.BoolPtrInput
-	// Seconds since epoch to end the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
-	// Event display customization options, associated with a publish statement
+	// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
 	EventOptions TimeChartEventOptionArrayInput
-	// Options specific to Histogram charts
+	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions TimeChartHistogramOptionArrayInput
-	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
-	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields TimeChartLegendOptionsFieldArrayInput
-	// How long (in seconds) to wait for late datapoints
+	// How long (in seconds) to wait for late datapoints.
 	MaxDelay pulumi.IntPtrInput
-	// The minimum resolution (in seconds) to use for computing the underlying program
+	// The minimum resolution (in seconds) to use for computing the underlying program.
 	MinimumResolution pulumi.IntPtrInput
-	// Name of the chart
+	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-	// 'plot_label' and any dimension.
+	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension pulumi.StringPtrInput
-	// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-	// "ColumnChart", or "Histogram"
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+	// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringPtrInput
-	// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers pulumi.BoolPtrInput
-	// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+	// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
 	ShowEventLines pulumi.BoolPtrInput
-	// (false by default) Whether area and bar charts in the visualization should be stacked
+	// Whether area and bar charts in the visualization should be stacked. `false` by default.
 	Stacked pulumi.BoolPtrInput
-	// Seconds since epoch to start the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
 	// Tags associated with the chart
 	//
 	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags pulumi.StringArrayInput
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
-	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
 	Timezone pulumi.StringPtrInput
-	// (Metric by default) Must be "Metric" or "Binary"
+	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
-	// URL of the chart
+	// The URL of the chart.
 	Url pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement
+	// Plot-level customization options, associated with a publish statement.
 	VizOptions TimeChartVizOptionArrayInput
 }
 
@@ -317,125 +245,125 @@ func (TimeChartState) ElementType() reflect.Type {
 }
 
 type timeChartArgs struct {
-	// Force y-axes to always show zero
+	// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 	AxesIncludeZero *bool `pulumi:"axesIncludeZero"`
-	// Force a specific number of significant digits in the y-axis
-	AxesPrecision *int                `pulumi:"axesPrecision"`
-	AxisLeft      *TimeChartAxisLeft  `pulumi:"axisLeft"`
-	AxisRight     *TimeChartAxisRight `pulumi:"axisRight"`
-	// (Dimension by default) Must be "Dimension" or "Metric"
+	// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
+	AxesPrecision *int `pulumi:"axesPrecision"`
+	// Set of axis options.
+	AxisLeft *TimeChartAxisLeft `pulumi:"axisLeft"`
+	// Set of axis options.
+	AxisRight *TimeChartAxisRight `pulumi:"axisRight"`
+	// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy *string `pulumi:"colorBy"`
-	// Description of the chart
+	// Description of the chart.
 	Description *string `pulumi:"description"`
-	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
 	DisableSampling *bool `pulumi:"disableSampling"`
-	// Seconds since epoch to end the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime *int `pulumi:"endTime"`
-	// Event display customization options, associated with a publish statement
+	// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
 	EventOptions []TimeChartEventOption `pulumi:"eventOptions"`
-	// Options specific to Histogram charts
+	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions []TimeChartHistogramOption `pulumi:"histogramOptions"`
-	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides []string `pulumi:"legendFieldsToHides"`
-	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields []TimeChartLegendOptionsField `pulumi:"legendOptionsFields"`
-	// How long (in seconds) to wait for late datapoints
+	// How long (in seconds) to wait for late datapoints.
 	MaxDelay *int `pulumi:"maxDelay"`
-	// The minimum resolution (in seconds) to use for computing the underlying program
+	// The minimum resolution (in seconds) to use for computing the underlying program.
 	MinimumResolution *int `pulumi:"minimumResolution"`
-	// Name of the chart
+	// Name of the chart.
 	Name *string `pulumi:"name"`
-	// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-	// 'plot_label' and any dimension.
+	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension *string `pulumi:"onChartLegendDimension"`
-	// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-	// "ColumnChart", or "Histogram"
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType *string `pulumi:"plotType"`
-	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+	// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText string `pulumi:"programText"`
-	// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers *bool `pulumi:"showDataMarkers"`
-	// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+	// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
 	ShowEventLines *bool `pulumi:"showEventLines"`
-	// (false by default) Whether area and bar charts in the visualization should be stacked
+	// Whether area and bar charts in the visualization should be stacked. `false` by default.
 	Stacked *bool `pulumi:"stacked"`
-	// Seconds since epoch to start the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime *int `pulumi:"startTime"`
 	// Tags associated with the chart
 	//
 	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags []string `pulumi:"tags"`
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange *int `pulumi:"timeRange"`
-	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
 	Timezone *string `pulumi:"timezone"`
-	// (Metric by default) Must be "Metric" or "Binary"
+	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix *string `pulumi:"unitPrefix"`
-	// Plot-level customization options, associated with a publish statement
+	// Plot-level customization options, associated with a publish statement.
 	VizOptions []TimeChartVizOption `pulumi:"vizOptions"`
 }
 
 // The set of arguments for constructing a TimeChart resource.
 type TimeChartArgs struct {
-	// Force y-axes to always show zero
+	// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 	AxesIncludeZero pulumi.BoolPtrInput
-	// Force a specific number of significant digits in the y-axis
+	// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
 	AxesPrecision pulumi.IntPtrInput
-	AxisLeft      TimeChartAxisLeftPtrInput
-	AxisRight     TimeChartAxisRightPtrInput
-	// (Dimension by default) Must be "Dimension" or "Metric"
+	// Set of axis options.
+	AxisLeft TimeChartAxisLeftPtrInput
+	// Set of axis options.
+	AxisRight TimeChartAxisRightPtrInput
+	// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 	ColorBy pulumi.StringPtrInput
-	// Description of the chart
+	// Description of the chart.
 	Description pulumi.StringPtrInput
-	// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+	// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
 	DisableSampling pulumi.BoolPtrInput
-	// Seconds since epoch to end the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	EndTime pulumi.IntPtrInput
-	// Event display customization options, associated with a publish statement
+	// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
 	EventOptions TimeChartEventOptionArrayInput
-	// Options specific to Histogram charts
+	// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 	HistogramOptions TimeChartHistogramOptionArrayInput
-	// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+	// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 	//
 	// Deprecated: Please use legend_options_fields
 	LegendFieldsToHides pulumi.StringArrayInput
-	// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+	// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 	LegendOptionsFields TimeChartLegendOptionsFieldArrayInput
-	// How long (in seconds) to wait for late datapoints
+	// How long (in seconds) to wait for late datapoints.
 	MaxDelay pulumi.IntPtrInput
-	// The minimum resolution (in seconds) to use for computing the underlying program
+	// The minimum resolution (in seconds) to use for computing the underlying program.
 	MinimumResolution pulumi.IntPtrInput
-	// Name of the chart
+	// Name of the chart.
 	Name pulumi.StringPtrInput
-	// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-	// 'plot_label' and any dimension.
+	// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 	OnChartLegendDimension pulumi.StringPtrInput
-	// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-	// "ColumnChart", or "Histogram"
+	// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 	PlotType pulumi.StringPtrInput
-	// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+	// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringInput
-	// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+	// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 	ShowDataMarkers pulumi.BoolPtrInput
-	// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+	// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
 	ShowEventLines pulumi.BoolPtrInput
-	// (false by default) Whether area and bar charts in the visualization should be stacked
+	// Whether area and bar charts in the visualization should be stacked. `false` by default.
 	Stacked pulumi.BoolPtrInput
-	// Seconds since epoch to start the visualization
+	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 	StartTime pulumi.IntPtrInput
 	// Tags associated with the chart
 	//
 	// Deprecated: signalfx_time_chart.tags is being removed in the next release
 	Tags pulumi.StringArrayInput
-	// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+	// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 	TimeRange pulumi.IntPtrInput
-	// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+	// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
 	Timezone pulumi.StringPtrInput
-	// (Metric by default) Must be "Metric" or "Binary"
+	// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 	UnitPrefix pulumi.StringPtrInput
-	// Plot-level customization options, associated with a publish statement
+	// Plot-level customization options, associated with a publish statement.
 	VizOptions TimeChartVizOptionArrayInput
 }
 
@@ -526,114 +454,114 @@ func (o TimeChartOutput) ToTimeChartOutputWithContext(ctx context.Context) TimeC
 	return o
 }
 
-// Force y-axes to always show zero
+// Force the chart to display zero on the y-axes, even if none of the data is near zero.
 func (o TimeChartOutput) AxesIncludeZero() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.AxesIncludeZero }).(pulumi.BoolPtrOutput)
 }
 
-// Force a specific number of significant digits in the y-axis
+// Specifies the digits Splunk Observability Cloud displays for values plotted on the chart. Defaults to `3`.
 func (o TimeChartOutput) AxesPrecision() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.AxesPrecision }).(pulumi.IntPtrOutput)
 }
 
+// Set of axis options.
 func (o TimeChartOutput) AxisLeft() TimeChartAxisLeftPtrOutput {
 	return o.ApplyT(func(v *TimeChart) TimeChartAxisLeftPtrOutput { return v.AxisLeft }).(TimeChartAxisLeftPtrOutput)
 }
 
+// Set of axis options.
 func (o TimeChartOutput) AxisRight() TimeChartAxisRightPtrOutput {
 	return o.ApplyT(func(v *TimeChart) TimeChartAxisRightPtrOutput { return v.AxisRight }).(TimeChartAxisRightPtrOutput)
 }
 
-// (Dimension by default) Must be "Dimension" or "Metric"
+// Must be `"Dimension"` or `"Metric"`. `"Dimension"` by default.
 func (o TimeChartOutput) ColorBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.ColorBy }).(pulumi.StringPtrOutput)
 }
 
-// Description of the chart
+// Description of the chart.
 func (o TimeChartOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// (false by default) If false, samples a subset of the output MTS, which improves UI performance
+// If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default
 func (o TimeChartOutput) DisableSampling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
 }
 
-// Seconds since epoch to end the visualization
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 func (o TimeChartOutput) EndTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.EndTime }).(pulumi.IntPtrOutput)
 }
 
-// Event display customization options, associated with a publish statement
+// Event customization options, associated with a publish statement. You will need to use this to change settings for any `events(…)` statements you use.
 func (o TimeChartOutput) EventOptions() TimeChartEventOptionArrayOutput {
 	return o.ApplyT(func(v *TimeChart) TimeChartEventOptionArrayOutput { return v.EventOptions }).(TimeChartEventOptionArrayOutput)
 }
 
-// Options specific to Histogram charts
+// Only used when `plotType` is `"Histogram"`. Histogram specific options.
 func (o TimeChartOutput) HistogramOptions() TimeChartHistogramOptionArrayOutput {
 	return o.ApplyT(func(v *TimeChart) TimeChartHistogramOptionArrayOutput { return v.HistogramOptions }).(TimeChartHistogramOptionArrayOutput)
 }
 
-// List of properties that shouldn't be displayed in the chart legend (i.e. dimension names)
+// List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legendOptionsFields`.
 //
 // Deprecated: Please use legend_options_fields
 func (o TimeChartOutput) LegendFieldsToHides() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringArrayOutput { return v.LegendFieldsToHides }).(pulumi.StringArrayOutput)
 }
 
-// List of property and enabled flags to control the order and presence of datatable labels in a chart.
+// List of property names and enabled flags that should be displayed in the data table for the chart, in the order provided. This option cannot be used with `legendFieldsToHide`.
 func (o TimeChartOutput) LegendOptionsFields() TimeChartLegendOptionsFieldArrayOutput {
 	return o.ApplyT(func(v *TimeChart) TimeChartLegendOptionsFieldArrayOutput { return v.LegendOptionsFields }).(TimeChartLegendOptionsFieldArrayOutput)
 }
 
-// How long (in seconds) to wait for late datapoints
+// How long (in seconds) to wait for late datapoints.
 func (o TimeChartOutput) MaxDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.MaxDelay }).(pulumi.IntPtrOutput)
 }
 
-// The minimum resolution (in seconds) to use for computing the underlying program
+// The minimum resolution (in seconds) to use for computing the underlying program.
 func (o TimeChartOutput) MinimumResolution() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.MinimumResolution }).(pulumi.IntPtrOutput)
 }
 
-// Name of the chart
+// Name of the chart.
 func (o TimeChartOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Dimension to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: 'metric',
-// 'plot_label' and any dimension.
+// Dimensions to show in the on-chart legend. On-chart legend is off unless a dimension is specified. Allowed: `"metric"`, `"plotLabel"` and any dimension.
 func (o TimeChartOutput) OnChartLegendDimension() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.OnChartLegendDimension }).(pulumi.StringPtrOutput)
 }
 
-// (LineChart by default) The default plot display style for the visualization. Must be "LineChart", "AreaChart",
-// "ColumnChart", or "Histogram"
+// The default plot display style for the visualization. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Default: `"LineChart"`.
 func (o TimeChartOutput) PlotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.PlotType }).(pulumi.StringPtrOutput)
 }
 
-// Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+// Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 func (o TimeChartOutput) ProgramText() pulumi.StringOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringOutput { return v.ProgramText }).(pulumi.StringOutput)
 }
 
-// (false by default) Show markers (circles) for each datapoint used to draw line or area charts
+// Show markers (circles) for each datapoint used to draw line or area charts. `false` by default.
 func (o TimeChartOutput) ShowDataMarkers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.ShowDataMarkers }).(pulumi.BoolPtrOutput)
 }
 
-// (false by default) Whether vertical highlight lines should be drawn in the visualizations at times when events occurred
+// Whether vertical highlight lines should be drawn in the visualizations at times when events occurred. `false` by default.
 func (o TimeChartOutput) ShowEventLines() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.ShowEventLines }).(pulumi.BoolPtrOutput)
 }
 
-// (false by default) Whether area and bar charts in the visualization should be stacked
+// Whether area and bar charts in the visualization should be stacked. `false` by default.
 func (o TimeChartOutput) Stacked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.BoolPtrOutput { return v.Stacked }).(pulumi.BoolPtrOutput)
 }
 
-// Seconds since epoch to start the visualization
+// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
 func (o TimeChartOutput) StartTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.StartTime }).(pulumi.IntPtrOutput)
 }
@@ -645,27 +573,27 @@ func (o TimeChartOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+// How many seconds ago from which to display data. For example, the last hour would be `3600`, etc. Conflicts with `startTime` and `endTime`.
 func (o TimeChartOutput) TimeRange() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.IntPtrOutput { return v.TimeRange }).(pulumi.IntPtrOutput)
 }
 
-// The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+// Time zone that SignalFlow uses as the basis of calendar window transformation methods. For example, if you set "timezone": "Europe/Paris" and then use the transformation sum(cycle="week", cycle_start="Monday") in your chart's SignalFlow program, the calendar window starts on Monday, Paris time. See the [full list of timezones for more](https://dev.splunk.com/observability/docs/signalflow/). `"UTC"` by default.
 func (o TimeChartOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }
 
-// (Metric by default) Must be "Metric" or "Binary"
+// Must be `"Metric"` or `"Binary`". `"Metric"` by default.
 func (o TimeChartOutput) UnitPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringPtrOutput { return v.UnitPrefix }).(pulumi.StringPtrOutput)
 }
 
-// URL of the chart
+// The URL of the chart.
 func (o TimeChartOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v *TimeChart) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
-// Plot-level customization options, associated with a publish statement
+// Plot-level customization options, associated with a publish statement.
 func (o TimeChartOutput) VizOptions() TimeChartVizOptionArrayOutput {
 	return o.ApplyT(func(v *TimeChart) TimeChartVizOptionArrayOutput { return v.VizOptions }).(TimeChartVizOptionArrayOutput)
 }

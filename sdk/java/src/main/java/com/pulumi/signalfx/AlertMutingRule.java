@@ -26,50 +26,32 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `description` - (Required) The description for this muting rule
- * * `start_time` - (Required) Starting time of an alert muting rule as a Unit time stamp in seconds.
- * * `stop_time` - (Optional) Stop time of an alert muting rule as a Unix time stamp in seconds.
- * * `detectors` - (Optional) A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
- * * `filter` - (Optional) Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
- *   * `property` - (Required) The property to filter.
- *   * `property_value` - (Required) The property value to filter.
- *   * `negated` - (Optional) Determines if this is a &#34;not&#34; filter. Defaults to `false`.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the alert muting rule.
- * * `effective_start_time`
- * 
  */
 @ResourceType(type="signalfx:index/alertMutingRule:AlertMutingRule")
 public class AlertMutingRule extends com.pulumi.resources.CustomResource {
     /**
-     * description of the rule
+     * The description for this muting rule
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return description of the rule
+     * @return The description for this muting rule
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * detectors to which this muting rule applies
+     * A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      * 
      */
     @Export(name="detectors", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> detectors;
 
     /**
-     * @return detectors to which this muting rule applies
+     * @return A convenience attribute that associated this muting rule with specific detector IDs. Currently, only one ID is supported.
      * 
      */
     public Output<Optional<List<String>>> detectors() {
@@ -82,42 +64,42 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
         return this.effectiveStartTime;
     }
     /**
-     * list of alert muting filters for this rule
+     * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      * 
      */
     @Export(name="filters", refs={List.class,AlertMutingRuleFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertMutingRuleFilter>> filters;
 
     /**
-     * @return list of alert muting filters for this rule
+     * @return Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      * 
      */
     public Output<Optional<List<AlertMutingRuleFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
     /**
-     * starting time of an alert muting rule as a Unix timestamp, in seconds
+     * Starting time of an alert muting rule as a Unit time stamp in seconds.
      * 
      */
     @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> startTime;
 
     /**
-     * @return starting time of an alert muting rule as a Unix timestamp, in seconds
+     * @return Starting time of an alert muting rule as a Unit time stamp in seconds.
      * 
      */
     public Output<Integer> startTime() {
         return this.startTime;
     }
     /**
-     * stop time of an alert muting rule as a Unix timestamp, in seconds
+     * Stop time of an alert muting rule as a Unix time stamp in seconds.
      * 
      */
     @Export(name="stopTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stopTime;
 
     /**
-     * @return stop time of an alert muting rule as a Unix timestamp, in seconds
+     * @return Stop time of an alert muting rule as a Unix time stamp in seconds.
      * 
      */
     public Output<Optional<Integer>> stopTime() {

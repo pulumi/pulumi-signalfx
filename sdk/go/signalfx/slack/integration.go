@@ -17,26 +17,14 @@ import (
 // > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 //
 // ## Example
-//
-// ## Arguments
-//
-// * `name` - (Required) Name of the integration.
-// * `enabled` - (Required) Whether the integration is enabled.
-// * `webhookUrl` - (Required) Slack incoming webhook URL.
-//
-// ## Attributes
-//
-// In a addition to all arguments above, the following attributes are exported:
-//
-// * `id` - The ID of the integration.
 type Integration struct {
 	pulumi.CustomResourceState
 
-	// Whether the integration is enabled or not
+	// Whether the integration is enabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Name of the integration
+	// Name of the integration.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Slack Webhook URL for integration
+	// Slack incoming webhook URL.
 	WebhookUrl pulumi.StringOutput `pulumi:"webhookUrl"`
 }
 
@@ -83,20 +71,20 @@ func GetIntegration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Integration resources.
 type integrationState struct {
-	// Whether the integration is enabled or not
+	// Whether the integration is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Name of the integration
+	// Name of the integration.
 	Name *string `pulumi:"name"`
-	// Slack Webhook URL for integration
+	// Slack incoming webhook URL.
 	WebhookUrl *string `pulumi:"webhookUrl"`
 }
 
 type IntegrationState struct {
-	// Whether the integration is enabled or not
+	// Whether the integration is enabled.
 	Enabled pulumi.BoolPtrInput
-	// Name of the integration
+	// Name of the integration.
 	Name pulumi.StringPtrInput
-	// Slack Webhook URL for integration
+	// Slack incoming webhook URL.
 	WebhookUrl pulumi.StringPtrInput
 }
 
@@ -105,21 +93,21 @@ func (IntegrationState) ElementType() reflect.Type {
 }
 
 type integrationArgs struct {
-	// Whether the integration is enabled or not
+	// Whether the integration is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// Name of the integration
+	// Name of the integration.
 	Name *string `pulumi:"name"`
-	// Slack Webhook URL for integration
+	// Slack incoming webhook URL.
 	WebhookUrl string `pulumi:"webhookUrl"`
 }
 
 // The set of arguments for constructing a Integration resource.
 type IntegrationArgs struct {
-	// Whether the integration is enabled or not
+	// Whether the integration is enabled.
 	Enabled pulumi.BoolInput
-	// Name of the integration
+	// Name of the integration.
 	Name pulumi.StringPtrInput
-	// Slack Webhook URL for integration
+	// Slack incoming webhook URL.
 	WebhookUrl pulumi.StringInput
 }
 
@@ -210,17 +198,17 @@ func (o IntegrationOutput) ToIntegrationOutputWithContext(ctx context.Context) I
 	return o
 }
 
-// Whether the integration is enabled or not
+// Whether the integration is enabled.
 func (o IntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Integration) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Name of the integration
+// Name of the integration.
 func (o IntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Slack Webhook URL for integration
+// Slack incoming webhook URL.
 func (o IntegrationOutput) WebhookUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.WebhookUrl }).(pulumi.StringOutput)
 }

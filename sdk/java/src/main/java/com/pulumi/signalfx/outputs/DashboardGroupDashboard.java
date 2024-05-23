@@ -16,27 +16,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardGroupDashboard {
     /**
-     * @return Unique identifier of an association between a dashboard group and a dashboard
+     * @return The ID of the association between the dashboard group and the dashboard
      * 
      */
     private @Nullable String configId;
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return The dashboard id to mirror
      * 
      */
     private String dashboardId;
     /**
-     * @return String that provides a description override for a mirrored dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     private @Nullable String descriptionOverride;
     /**
-     * @return Filter to apply to each chart in the dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     private @Nullable List<DashboardGroupDashboardFilterOverride> filterOverrides;
     /**
-     * @return String that provides a name override for a mirrored dashboard
+     * @return The name that will override the original dashboards&#39;s name.
      * 
      */
     private @Nullable String nameOverride;
@@ -48,35 +48,35 @@ public final class DashboardGroupDashboard {
 
     private DashboardGroupDashboard() {}
     /**
-     * @return Unique identifier of an association between a dashboard group and a dashboard
+     * @return The ID of the association between the dashboard group and the dashboard
      * 
      */
     public Optional<String> configId() {
         return Optional.ofNullable(this.configId);
     }
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return The dashboard id to mirror
      * 
      */
     public String dashboardId() {
         return this.dashboardId;
     }
     /**
-     * @return String that provides a description override for a mirrored dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     public Optional<String> descriptionOverride() {
         return Optional.ofNullable(this.descriptionOverride);
     }
     /**
-     * @return Filter to apply to each chart in the dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     public List<DashboardGroupDashboardFilterOverride> filterOverrides() {
         return this.filterOverrides == null ? List.of() : this.filterOverrides;
     }
     /**
-     * @return String that provides a name override for a mirrored dashboard
+     * @return The name that will override the original dashboards&#39;s name.
      * 
      */
     public Optional<String> nameOverride() {

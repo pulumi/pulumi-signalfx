@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TimeChartEventOption {
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     private @Nullable String color;
@@ -23,14 +23,14 @@ public final class TimeChartEventOption {
      */
     private @Nullable String displayName;
     /**
-     * @return The label used in the publish statement that displays the events you want to customize
+     * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
     private String label;
 
     private TimeChartEventOption() {}
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     public Optional<String> color() {
@@ -44,7 +44,7 @@ public final class TimeChartEventOption {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return The label used in the publish statement that displays the events you want to customize
+     * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
     public String label() {

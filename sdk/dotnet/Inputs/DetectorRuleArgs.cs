@@ -13,19 +13,19 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DetectorRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the rule
+        /// Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A detect label which matches a detect label within the program text
+        /// A detect label which matches a detect label within `program_text`.
         /// </summary>
         [Input("detectLabel", required: true)]
         public Input<string> DetectLabel { get; set; } = null!;
 
         /// <summary>
-        /// (default: false) When true, notifications and events will not be generated for the detect label
+        /// When true, notifications and events will not be generated for the detect label. `false` by default.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _notifications;
 
         /// <summary>
-        /// List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+        /// List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
         /// </summary>
         public InputList<string> Notifications
         {
@@ -43,31 +43,31 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        /// Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         /// </summary>
         [Input("parameterizedBody")]
         public Input<string>? ParameterizedBody { get; set; }
 
         /// <summary>
-        /// Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+        /// Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
         /// </summary>
         [Input("parameterizedSubject")]
         public Input<string>? ParameterizedSubject { get; set; }
 
         /// <summary>
-        /// URL of page to consult when an alert is triggered
+        /// URL of page to consult when an alert is triggered. This can be used with custom notification messages.
         /// </summary>
         [Input("runbookUrl")]
         public Input<string>? RunbookUrl { get; set; }
 
         /// <summary>
-        /// The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+        /// The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
         /// </summary>
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
 
         /// <summary>
-        /// Plain text suggested first course of action, such as a command to execute.
+        /// Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
         /// </summary>
         [Input("tip")]
         public Input<string>? Tip { get; set; }
