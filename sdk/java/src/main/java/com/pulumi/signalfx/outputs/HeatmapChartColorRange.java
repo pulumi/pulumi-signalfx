@@ -19,12 +19,12 @@ public final class HeatmapChartColorRange {
      */
     private String color;
     /**
-     * @return The maximum value within the coloring range
+     * @return The maximum value within the coloring range.
      * 
      */
     private @Nullable Double maxValue;
     /**
-     * @return The minimum value within the coloring range
+     * @return The minimum value within the coloring range.
      * 
      */
     private @Nullable Double minValue;
@@ -38,14 +38,14 @@ public final class HeatmapChartColorRange {
         return this.color;
     }
     /**
-     * @return The maximum value within the coloring range
+     * @return The maximum value within the coloring range.
      * 
      */
     public Optional<Double> maxValue() {
         return Optional.ofNullable(this.maxValue);
     }
     /**
-     * @return The minimum value within the coloring range
+     * @return The minimum value within the coloring range.
      * 
      */
     public Optional<Double> minValue() {

@@ -19,75 +19,60 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * The following arguments are supported in the resource block:
- * 
- * * `name` - (Required) Name of the text note.
- * * `markdown` - (Required) Markdown text to display.
- * * `description` - (Optional) Description of the text note.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the chart.
- * * `url` - The URL of the chart.
- * 
  */
 @ResourceType(type="signalfx:index/textChart:TextChart")
 public class TextChart extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the chart (Optional)
+     * Description of the text note.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the text note.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+     * Markdown text to display.
      * 
      */
     @Export(name="markdown", refs={String.class}, tree="[0]")
     private Output<String> markdown;
 
     /**
-     * @return Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+     * @return Markdown text to display.
      * 
      */
     public Output<String> markdown() {
         return this.markdown;
     }
     /**
-     * Name of the chart
+     * Name of the text note.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the text note.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * URL of the chart
+     * The URL of the chart.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the chart
+     * @return The URL of the chart.
      * 
      */
     public Output<String> url() {

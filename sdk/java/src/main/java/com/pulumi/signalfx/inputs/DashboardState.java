@@ -26,7 +26,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     public static final DashboardState Empty = new DashboardState();
 
     /**
-     * Team IDs that have write access to this dashboard
+     * Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions_* fields now
@@ -37,7 +37,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> authorizedWriterTeams;
 
     /**
-     * @return Team IDs that have write access to this dashboard
+     * @return Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions_* fields now
@@ -49,7 +49,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * User IDs that have write access to this dashboard
+     * User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions fields now
@@ -60,7 +60,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> authorizedWriterUsers;
 
     /**
-     * @return User IDs that have write access to this dashboard
+     * @return User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
      * 
      * @deprecated
      * Please use permissions fields now
@@ -72,14 +72,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Chart ID and layout information for the charts in the dashboard
+     * Chart ID and layout information for the charts in the dashboard.
      * 
      */
     @Import(name="charts")
     private @Nullable Output<List<DashboardChartArgs>> charts;
 
     /**
-     * @return Chart ID and layout information for the charts in the dashboard
+     * @return Chart ID and layout information for the charts in the dashboard.
      * 
      */
     public Optional<Output<List<DashboardChartArgs>>> charts() {
@@ -87,16 +87,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of &#34;default&#34;, &#34;low&#34;, &#34;high&#34;,
-     * or &#34;highest&#34;. default by default
+     * Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
      * 
      */
     @Import(name="chartsResolution")
     private @Nullable Output<String> chartsResolution;
 
     /**
-     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of &#34;default&#34;, &#34;low&#34;, &#34;high&#34;,
-     * or &#34;highest&#34;. default by default
+     * @return Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
      * 
      */
     public Optional<Output<String>> chartsResolution() {
@@ -104,14 +102,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Column layout. Charts listed, will be placed in a single column with the same width and height
+     * Column layout. Charts listed will be placed in a single column with the same width and height.
      * 
      */
     @Import(name="columns")
     private @Nullable Output<List<DashboardColumnArgs>> columns;
 
     /**
-     * @return Column layout. Charts listed, will be placed in a single column with the same width and height
+     * @return Column layout. Charts listed will be placed in a single column with the same width and height.
      * 
      */
     public Optional<Output<List<DashboardColumnArgs>>> columns() {
@@ -119,16 +117,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-     * be placed in a newly created dashboard group
+     * The ID of the dashboard group that contains the dashboard.
      * 
      */
     @Import(name="dashboardGroup")
     private @Nullable Output<String> dashboardGroup;
 
     /**
-     * @return The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-     * be placed in a newly created dashboard group
+     * @return The ID of the dashboard group that contains the dashboard.
      * 
      */
     public Optional<Output<String>> dashboardGroup() {
@@ -136,14 +132,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the dashboard (Optional)
+     * Description of the dashboard.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the dashboard (Optional)
+     * @return Description of the dashboard.
      * 
      */
     public Optional<Output<String>> description() {
@@ -165,14 +161,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to end the visualization
+     * Seconds since epoch. Used for visualization.
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<Integer> endTime;
 
     /**
-     * @return Seconds since epoch to end the visualization
+     * @return Seconds since epoch. Used for visualization.
      * 
      */
     public Optional<Output<Integer>> endTime() {
@@ -180,14 +176,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Event overlay to add to charts
+     * Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
      * 
      */
     @Import(name="eventOverlays")
     private @Nullable Output<List<DashboardEventOverlayArgs>> eventOverlays;
 
     /**
-     * @return Event overlay to add to charts
+     * @return Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
      * 
      */
     public Optional<Output<List<DashboardEventOverlayArgs>>> eventOverlays() {
@@ -195,14 +191,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Filter to apply to each chart in the dashboard
+     * Filter to apply to the charts when displaying the dashboard.
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<DashboardFilterArgs>> filters;
 
     /**
-     * @return Filter to apply to each chart in the dashboard
+     * @return Filter to apply to the charts when displaying the dashboard.
      * 
      */
     public Optional<Output<List<DashboardFilterArgs>>> filters() {
@@ -210,16 +206,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
-     * fit in a row, it will be placed automatically in the next row
+     * Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
      * 
      */
     @Import(name="grids")
     private @Nullable Output<List<DashboardGridArgs>> grids;
 
     /**
-     * @return Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
-     * fit in a row, it will be placed automatically in the next row
+     * @return Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
      * 
      */
     public Optional<Output<List<DashboardGridArgs>>> grids() {
@@ -227,36 +221,44 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the dashboard
+     * Name of the dashboard.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the dashboard
+     * @return Name of the dashboard.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
     @Import(name="permissions")
     private @Nullable Output<DashboardPermissionsArgs> permissions;
 
+    /**
+     * @return [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+     * 
+     */
     public Optional<Output<DashboardPermissionsArgs>> permissions() {
         return Optional.ofNullable(this.permissions);
     }
 
     /**
-     * Event overlay added to charts by default to charts
+     * Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
      * 
      */
     @Import(name="selectedEventOverlays")
     private @Nullable Output<List<DashboardSelectedEventOverlayArgs>> selectedEventOverlays;
 
     /**
-     * @return Event overlay added to charts by default to charts
+     * @return Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
      * 
      */
     public Optional<Output<List<DashboardSelectedEventOverlayArgs>>> selectedEventOverlays() {
@@ -264,14 +266,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Seconds since epoch to start the visualization
+     * Seconds since epoch. Used for visualization.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<Integer> startTime;
 
     /**
-     * @return Seconds since epoch to start the visualization
+     * @return Seconds since epoch. Used for visualization.
      * 
      */
     public Optional<Output<Integer>> startTime() {
@@ -279,14 +281,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags of the dashboard
+     * Tags of the dashboard.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return Tags of the dashboard
+     * @return Tags of the dashboard.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -294,14 +296,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+     * The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`).
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<String> timeRange;
 
     /**
-     * @return From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+     * @return The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`).
      * 
      */
     public Optional<Output<String>> timeRange() {
@@ -309,14 +311,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the dashboard
+     * The URL of the dashboard.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL of the dashboard
+     * @return The URL of the dashboard.
      * 
      */
     public Optional<Output<String>> url() {
@@ -324,14 +326,14 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Dashboard variable to apply to each chart in the dashboard
+     * Dashboard variable to apply to each chart in the dashboard.
      * 
      */
     @Import(name="variables")
     private @Nullable Output<List<DashboardVariableArgs>> variables;
 
     /**
-     * @return Dashboard variable to apply to each chart in the dashboard
+     * @return Dashboard variable to apply to each chart in the dashboard.
      * 
      */
     public Optional<Output<List<DashboardVariableArgs>>> variables() {
@@ -383,7 +385,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -398,7 +400,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -412,7 +414,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterTeams Team IDs that have write access to this dashboard
+         * @param authorizedWriterTeams Team IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -426,7 +428,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -441,7 +443,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -455,7 +457,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedWriterUsers User IDs that have write access to this dashboard
+         * @param authorizedWriterUsers User IDs that have write access to this dashboard group. Remember to use an admin&#39;s token if using this feature and to include that admin&#39;s user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
          * 
          * @return builder
          * 
@@ -469,7 +471,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param charts Chart ID and layout information for the charts in the dashboard
+         * @param charts Chart ID and layout information for the charts in the dashboard.
          * 
          * @return builder
          * 
@@ -480,7 +482,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param charts Chart ID and layout information for the charts in the dashboard
+         * @param charts Chart ID and layout information for the charts in the dashboard.
          * 
          * @return builder
          * 
@@ -490,7 +492,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param charts Chart ID and layout information for the charts in the dashboard
+         * @param charts Chart ID and layout information for the charts in the dashboard.
          * 
          * @return builder
          * 
@@ -500,8 +502,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of &#34;default&#34;, &#34;low&#34;, &#34;high&#34;,
-         * or &#34;highest&#34;. default by default
+         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
          * 
          * @return builder
          * 
@@ -512,8 +513,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of &#34;default&#34;, &#34;low&#34;, &#34;high&#34;,
-         * or &#34;highest&#34;. default by default
+         * @param chartsResolution Specifies the chart data display resolution for charts in this dashboard. Value can be one of `&#34;default&#34;`,  `&#34;low&#34;`, `&#34;high&#34;`, or  `&#34;highest&#34;`.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns Column layout. Charts listed, will be placed in a single column with the same width and height
+         * @param columns Column layout. Charts listed will be placed in a single column with the same width and height.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns Column layout. Charts listed, will be placed in a single column with the same width and height
+         * @param columns Column layout. Charts listed will be placed in a single column with the same width and height.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param columns Column layout. Charts listed, will be placed in a single column with the same width and height
+         * @param columns Column layout. Charts listed will be placed in a single column with the same width and height.
          * 
          * @return builder
          * 
@@ -554,8 +554,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardGroup The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-         * be placed in a newly created dashboard group
+         * @param dashboardGroup The ID of the dashboard group that contains the dashboard.
          * 
          * @return builder
          * 
@@ -566,8 +565,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardGroup The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-         * be placed in a newly created dashboard group
+         * @param dashboardGroup The ID of the dashboard group that contains the dashboard.
          * 
          * @return builder
          * 
@@ -577,7 +575,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the dashboard (Optional)
+         * @param description Description of the dashboard.
          * 
          * @return builder
          * 
@@ -588,7 +586,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the dashboard (Optional)
+         * @param description Description of the dashboard.
          * 
          * @return builder
          * 
@@ -620,7 +618,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization.
          * 
          * @return builder
          * 
@@ -631,7 +629,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endTime Seconds since epoch to end the visualization
+         * @param endTime Seconds since epoch. Used for visualization.
          * 
          * @return builder
          * 
@@ -641,7 +639,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventOverlays Event overlay to add to charts
+         * @param eventOverlays Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
          * 
          * @return builder
          * 
@@ -652,7 +650,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventOverlays Event overlay to add to charts
+         * @param eventOverlays Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
          * 
          * @return builder
          * 
@@ -662,7 +660,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eventOverlays Event overlay to add to charts
+         * @param eventOverlays Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they&#39;re not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
          * 
          * @return builder
          * 
@@ -672,7 +670,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters Filter to apply to each chart in the dashboard
+         * @param filters Filter to apply to the charts when displaying the dashboard.
          * 
          * @return builder
          * 
@@ -683,7 +681,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters Filter to apply to each chart in the dashboard
+         * @param filters Filter to apply to the charts when displaying the dashboard.
          * 
          * @return builder
          * 
@@ -693,7 +691,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param filters Filter to apply to each chart in the dashboard
+         * @param filters Filter to apply to the charts when displaying the dashboard.
          * 
          * @return builder
          * 
@@ -703,8 +701,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grids Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
-         * fit in a row, it will be placed automatically in the next row
+         * @param grids Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
          * 
          * @return builder
          * 
@@ -715,8 +712,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grids Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
-         * fit in a row, it will be placed automatically in the next row
+         * @param grids Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
          * 
          * @return builder
          * 
@@ -726,8 +722,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param grids Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can&#39;t
-         * fit in a row, it will be placed automatically in the next row
+         * @param grids Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
          * 
          * @return builder
          * 
@@ -737,7 +732,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the dashboard
+         * @param name Name of the dashboard.
          * 
          * @return builder
          * 
@@ -748,7 +743,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the dashboard
+         * @param name Name of the dashboard.
          * 
          * @return builder
          * 
@@ -757,17 +752,29 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param permissions [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(@Nullable Output<DashboardPermissionsArgs> permissions) {
             $.permissions = permissions;
             return this;
         }
 
+        /**
+         * @param permissions [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissions(DashboardPermissionsArgs permissions) {
             return permissions(Output.of(permissions));
         }
 
         /**
-         * @param selectedEventOverlays Event overlay added to charts by default to charts
+         * @param selectedEventOverlays Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
          * 
          * @return builder
          * 
@@ -778,7 +785,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selectedEventOverlays Event overlay added to charts by default to charts
+         * @param selectedEventOverlays Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
          * 
          * @return builder
          * 
@@ -788,7 +795,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param selectedEventOverlays Event overlay added to charts by default to charts
+         * @param selectedEventOverlays Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
          * 
          * @return builder
          * 
@@ -798,7 +805,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization.
          * 
          * @return builder
          * 
@@ -809,7 +816,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startTime Seconds since epoch to start the visualization
+         * @param startTime Seconds since epoch. Used for visualization.
          * 
          * @return builder
          * 
@@ -819,7 +826,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags of the dashboard
+         * @param tags Tags of the dashboard.
          * 
          * @return builder
          * 
@@ -830,7 +837,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags of the dashboard
+         * @param tags Tags of the dashboard.
          * 
          * @return builder
          * 
@@ -840,7 +847,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags of the dashboard
+         * @param tags Tags of the dashboard.
          * 
          * @return builder
          * 
@@ -850,7 +857,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+         * @param timeRange The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`).
          * 
          * @return builder
          * 
@@ -861,7 +868,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+         * @param timeRange The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `&#34;-5m&#34;`, `&#34;-1h&#34;`).
          * 
          * @return builder
          * 
@@ -871,7 +878,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the dashboard
+         * @param url The URL of the dashboard.
          * 
          * @return builder
          * 
@@ -882,7 +889,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param url URL of the dashboard
+         * @param url The URL of the dashboard.
          * 
          * @return builder
          * 
@@ -892,7 +899,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variables Dashboard variable to apply to each chart in the dashboard
+         * @param variables Dashboard variable to apply to each chart in the dashboard.
          * 
          * @return builder
          * 
@@ -903,7 +910,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variables Dashboard variable to apply to each chart in the dashboard
+         * @param variables Dashboard variable to apply to each chart in the dashboard.
          * 
          * @return builder
          * 
@@ -913,7 +920,7 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variables Dashboard variable to apply to each chart in the dashboard
+         * @param variables Dashboard variable to apply to each chart in the dashboard.
          * 
          * @return builder
          * 

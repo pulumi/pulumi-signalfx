@@ -10,27 +10,6 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
- *
- * ## Arguments
- *
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `authMethod` - (Required) Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
- * * `apiToken` - (Required if `authMethod` is `EmailAndToken`) The API token for the user email
- * * `userEmail` - (Required if `authMethod` is `EmailAndToken`) Email address used to authenticate the Jira integration.
- * * `username` - (Required if `authMethod` is `UsernameAndPassword`) User name used to authenticate the Jira integration.
- * * `password` - (Required if `authMethod` is `UsernameAndPassword`) Password used to authenticate the Jira integration.
- * * `baseUrl` - (Required) Base URL of the Jira instance that's integrated with SignalFx.
- * * `issueType` - (Required) Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
- * * `projectKey` - (Required) Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
- * * `assigneeName` - (Required) Jira user name for the assignee.
- * * `assigneeDisplayName` - (Optional) Jira display name for the assignee.
- *
- * ## Attributes
- *
- * In a addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the integration.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -65,15 +44,15 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly apiToken!: pulumi.Output<string | undefined>;
     /**
-     * Jira display name for the assignee
+     * Jira display name for the assignee.
      */
     public readonly assigneeDisplayName!: pulumi.Output<string | undefined>;
     /**
-     * Jira user name for the assignee
+     * Jira user name for the assignee.
      */
     public readonly assigneeName!: pulumi.Output<string>;
     /**
-     * Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+     * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
     public readonly authMethod!: pulumi.Output<string>;
     /**
@@ -81,16 +60,15 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly baseUrl!: pulumi.Output<string>;
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-     * validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
     public readonly issueType!: pulumi.Output<string>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -98,8 +76,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-     * this project.
+     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
     public readonly projectKey!: pulumi.Output<string>;
     /**
@@ -185,15 +162,15 @@ export interface IntegrationState {
      */
     apiToken?: pulumi.Input<string>;
     /**
-     * Jira display name for the assignee
+     * Jira display name for the assignee.
      */
     assigneeDisplayName?: pulumi.Input<string>;
     /**
-     * Jira user name for the assignee
+     * Jira user name for the assignee.
      */
     assigneeName?: pulumi.Input<string>;
     /**
-     * Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+     * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
     authMethod?: pulumi.Input<string>;
     /**
@@ -201,16 +178,15 @@ export interface IntegrationState {
      */
     baseUrl?: pulumi.Input<string>;
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-     * validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
     issueType?: pulumi.Input<string>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     /**
@@ -218,8 +194,7 @@ export interface IntegrationState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-     * this project.
+     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
     projectKey?: pulumi.Input<string>;
     /**
@@ -241,15 +216,15 @@ export interface IntegrationArgs {
      */
     apiToken?: pulumi.Input<string>;
     /**
-     * Jira display name for the assignee
+     * Jira display name for the assignee.
      */
     assigneeDisplayName?: pulumi.Input<string>;
     /**
-     * Jira user name for the assignee
+     * Jira user name for the assignee.
      */
     assigneeName: pulumi.Input<string>;
     /**
-     * Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+     * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `userEmail` and `apiToken`) or `UsernameAndPassword` (using `username` and `password`).
      */
     authMethod: pulumi.Input<string>;
     /**
@@ -257,16 +232,15 @@ export interface IntegrationArgs {
      */
     baseUrl: pulumi.Input<string>;
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-     * validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
      */
     issueType: pulumi.Input<string>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     /**
@@ -274,8 +248,7 @@ export interface IntegrationArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-     * this project.
+     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      */
     projectKey: pulumi.Input<string>;
     /**

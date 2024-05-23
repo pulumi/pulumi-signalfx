@@ -20,14 +20,14 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     public static final DashboardGroupDashboardArgs Empty = new DashboardGroupDashboardArgs();
 
     /**
-     * Unique identifier of an association between a dashboard group and a dashboard
+     * The ID of the association between the dashboard group and the dashboard
      * 
      */
     @Import(name="configId")
     private @Nullable Output<String> configId;
 
     /**
-     * @return Unique identifier of an association between a dashboard group and a dashboard
+     * @return The ID of the association between the dashboard group and the dashboard
      * 
      */
     public Optional<Output<String>> configId() {
@@ -35,14 +35,14 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * The dashboard id to mirror
      * 
      */
     @Import(name="dashboardId", required=true)
     private Output<String> dashboardId;
 
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return The dashboard id to mirror
      * 
      */
     public Output<String> dashboardId() {
@@ -50,14 +50,14 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String that provides a description override for a mirrored dashboard
+     * The description that will override the original dashboards&#39;s description.
      * 
      */
     @Import(name="descriptionOverride")
     private @Nullable Output<String> descriptionOverride;
 
     /**
-     * @return String that provides a description override for a mirrored dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     public Optional<Output<String>> descriptionOverride() {
@@ -65,14 +65,14 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Filter to apply to each chart in the dashboard
+     * The description that will override the original dashboards&#39;s description.
      * 
      */
     @Import(name="filterOverrides")
     private @Nullable Output<List<DashboardGroupDashboardFilterOverrideArgs>> filterOverrides;
 
     /**
-     * @return Filter to apply to each chart in the dashboard
+     * @return The description that will override the original dashboards&#39;s description.
      * 
      */
     public Optional<Output<List<DashboardGroupDashboardFilterOverrideArgs>>> filterOverrides() {
@@ -80,14 +80,14 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String that provides a name override for a mirrored dashboard
+     * The name that will override the original dashboards&#39;s name.
      * 
      */
     @Import(name="nameOverride")
     private @Nullable Output<String> nameOverride;
 
     /**
-     * @return String that provides a name override for a mirrored dashboard
+     * @return The name that will override the original dashboards&#39;s name.
      * 
      */
     public Optional<Output<String>> nameOverride() {
@@ -139,7 +139,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configId Unique identifier of an association between a dashboard group and a dashboard
+         * @param configId The ID of the association between the dashboard group and the dashboard
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param configId Unique identifier of an association between a dashboard group and a dashboard
+         * @param configId The ID of the association between the dashboard group and the dashboard
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dashboardId The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * @param dashboardId The dashboard id to mirror
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dashboardId The label used in the publish statement that displays the plot (metric time series data) you want to customize
+         * @param dashboardId The dashboard id to mirror
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param descriptionOverride String that provides a description override for a mirrored dashboard
+         * @param descriptionOverride The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param descriptionOverride String that provides a description override for a mirrored dashboard
+         * @param descriptionOverride The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filterOverrides Filter to apply to each chart in the dashboard
+         * @param filterOverrides The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filterOverrides Filter to apply to each chart in the dashboard
+         * @param filterOverrides The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param filterOverrides Filter to apply to each chart in the dashboard
+         * @param filterOverrides The description that will override the original dashboards&#39;s description.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param nameOverride String that provides a name override for a mirrored dashboard
+         * @param nameOverride The name that will override the original dashboards&#39;s name.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class DashboardGroupDashboardArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param nameOverride String that provides a name override for a mirrored dashboard
+         * @param nameOverride The name that will override the original dashboards&#39;s name.
          * 
          * @return builder
          * 

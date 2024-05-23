@@ -15,51 +15,30 @@ namespace Pulumi.SignalFx.ServiceNow
     /// &gt; **NOTE** When managing integrations, use a session token of an administrator to authenticate the Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
     /// 
     /// ## Example
-    /// 
-    /// ## Arguments
-    /// 
-    /// * `name` - (Required) Name of the integration.
-    /// * `enabled` - (Required) Whether the integration is enabled.
-    /// * `username` - (Required) User name used to authenticate the ServiceNow integration.
-    /// * `password` - (Required) Password used to authenticate the ServiceNow integration.
-    /// * `instance_name` - (Required) Name of the ServiceNow instance, for example `myinst.service-now.com`.
-    /// * `issue_type` - (Required) The type of issue in standard ITIL terminology. The allowed values are `Incident` and `Problem`.
-    /// * `alert_triggered_payload_template` - (Optional) A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
-    /// * `alert_resolved_payload_template` - (Optional) A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
-    /// 
-    /// ## Attributes
-    /// 
-    /// In a addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the integration.
     /// </summary>
     [SignalFxResourceType("signalfx:servicenow/integration:Integration")]
     public partial class Integration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-        /// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-        /// ServiceNow. See API reference for details.
+        /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         /// </summary>
         [Output("alertResolvedPayloadTemplate")]
         public Output<string?> AlertResolvedPayloadTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-        /// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-        /// ServiceNow. See API reference for details.
+        /// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         /// </summary>
         [Output("alertTriggeredPayloadTemplate")]
         public Output<string?> AlertTriggeredPayloadTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the integration is enabled
+        /// Whether the integration is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+        /// Name of the ServiceNow instance, for example `myinst.service-now.com`.
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
@@ -71,7 +50,7 @@ namespace Pulumi.SignalFx.ServiceNow
         public Output<string> IssueType { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the integration
+        /// Name of the integration.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -139,29 +118,25 @@ namespace Pulumi.SignalFx.ServiceNow
     public sealed class IntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-        /// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-        /// ServiceNow. See API reference for details.
+        /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         /// </summary>
         [Input("alertResolvedPayloadTemplate")]
         public Input<string>? AlertResolvedPayloadTemplate { get; set; }
 
         /// <summary>
-        /// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-        /// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-        /// ServiceNow. See API reference for details.
+        /// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         /// </summary>
         [Input("alertTriggeredPayloadTemplate")]
         public Input<string>? AlertTriggeredPayloadTemplate { get; set; }
 
         /// <summary>
-        /// Whether the integration is enabled
+        /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+        /// Name of the ServiceNow instance, for example `myinst.service-now.com`.
         /// </summary>
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
@@ -173,7 +148,7 @@ namespace Pulumi.SignalFx.ServiceNow
         public Input<string> IssueType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the integration
+        /// Name of the integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -209,29 +184,25 @@ namespace Pulumi.SignalFx.ServiceNow
     public sealed class IntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in
-        /// ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-        /// ServiceNow. See API reference for details.
+        /// A template that Observability Cloud uses to create the ServiceNow PUT JSON payloads when an alert is cleared in ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         /// </summary>
         [Input("alertResolvedPayloadTemplate")]
         public Input<string>? AlertResolvedPayloadTemplate { get; set; }
 
         /// <summary>
-        /// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification
-        /// to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in
-        /// ServiceNow. See API reference for details.
+        /// A template that Observability Cloud uses to create the ServiceNow POST JSON payloads when an alert sends a notification to ServiceNow. Use this optional field to send the values of Observability Cloud alert properties to specific fields in ServiceNow. See [API reference](https://dev.splunk.com/observability/reference/api/integrations/latest) for details.
         /// </summary>
         [Input("alertTriggeredPayloadTemplate")]
         public Input<string>? AlertTriggeredPayloadTemplate { get; set; }
 
         /// <summary>
-        /// Whether the integration is enabled
+        /// Whether the integration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Name of the ServiceNow instance, for example `myInstances.service-now.com`.
+        /// Name of the ServiceNow instance, for example `myinst.service-now.com`.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -243,7 +214,7 @@ namespace Pulumi.SignalFx.ServiceNow
         public Input<string>? IssueType { get; set; }
 
         /// <summary>
-        /// Name of the integration
+        /// Name of the integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -16,14 +16,14 @@ public final class ExternalIntegrationArgs extends com.pulumi.resources.Resource
     public static final ExternalIntegrationArgs Empty = new ExternalIntegrationArgs();
 
     /**
-     * Name of the integration
+     * The name of this integration
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return The name of this integration
      * 
      */
     public Optional<Output<String>> name() {
@@ -55,7 +55,7 @@ public final class ExternalIntegrationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the integration
+         * @param name The name of this integration
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ExternalIntegrationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of the integration
+         * @param name The name of this integration
          * 
          * @return builder
          * 

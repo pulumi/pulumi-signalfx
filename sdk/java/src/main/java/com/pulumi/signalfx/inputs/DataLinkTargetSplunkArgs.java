@@ -33,14 +33,14 @@ public final class DataLinkTargetSplunkArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     @Import(name="propertyKeyMapping")
     private @Nullable Output<Map<String,String>> propertyKeyMapping;
 
     /**
-     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     public Optional<Output<Map<String,String>>> propertyKeyMapping() {
@@ -94,7 +94,7 @@ public final class DataLinkTargetSplunkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class DataLinkTargetSplunkArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
     public static final TextChartArgs Empty = new TextChartArgs();
 
     /**
-     * Description of the chart (Optional)
+     * Description of the text note.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the text note.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+     * Markdown text to display.
      * 
      */
     @Import(name="markdown", required=true)
     private Output<String> markdown;
 
     /**
-     * @return Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+     * @return Markdown text to display.
      * 
      */
     public Output<String> markdown() {
@@ -47,14 +47,14 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the chart
+     * Name of the text note.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the text note.
      * 
      */
     public Optional<Output<String>> name() {
@@ -88,7 +88,7 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the text note.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the text note.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param markdown Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+         * @param markdown Markdown text to display.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param markdown Markdown text to display. More info at: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+         * @param markdown Markdown text to display.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the text note.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TextChartArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the text note.
          * 
          * @return builder
          * 

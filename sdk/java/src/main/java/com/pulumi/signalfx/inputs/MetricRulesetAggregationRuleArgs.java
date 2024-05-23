@@ -21,14 +21,14 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
     public static final MetricRulesetAggregationRuleArgs Empty = new MetricRulesetAggregationRuleArgs();
 
     /**
-     * The aggregator for this rule
+     * Aggregator object
      * 
      */
     @Import(name="aggregators", required=true)
     private Output<List<MetricRulesetAggregationRuleAggregatorArgs>> aggregators;
 
     /**
-     * @return The aggregator for this rule
+     * @return Aggregator object
      * 
      */
     public Output<List<MetricRulesetAggregationRuleAggregatorArgs>> aggregators() {
@@ -36,14 +36,14 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * Status of this aggregation rule
+     * When false, this rule will not generate aggregated MTSs
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Status of this aggregation rule
+     * @return When false, this rule will not generate aggregated MTSs
      * 
      */
     public Output<Boolean> enabled() {
@@ -51,14 +51,14 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * The matcher for this rule
+     * Matcher object
      * 
      */
     @Import(name="matchers", required=true)
     private Output<List<MetricRulesetAggregationRuleMatcherArgs>> matchers;
 
     /**
-     * @return The matcher for this rule
+     * @return Matcher object
      * 
      */
     public Output<List<MetricRulesetAggregationRuleMatcherArgs>> matchers() {
@@ -66,14 +66,14 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of this aggregation rule
+     * name of the aggregation rule
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of this aggregation rule
+     * @return name of the aggregation rule
      * 
      */
     public Optional<Output<String>> name() {
@@ -108,7 +108,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param aggregators The aggregator for this rule
+         * @param aggregators Aggregator object
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param aggregators The aggregator for this rule
+         * @param aggregators Aggregator object
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param aggregators The aggregator for this rule
+         * @param aggregators Aggregator object
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Status of this aggregation rule
+         * @param enabled When false, this rule will not generate aggregated MTSs
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param enabled Status of this aggregation rule
+         * @param enabled When false, this rule will not generate aggregated MTSs
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param matchers The matcher for this rule
+         * @param matchers Matcher object
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param matchers The matcher for this rule
+         * @param matchers Matcher object
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param matchers The matcher for this rule
+         * @param matchers Matcher object
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Name of this aggregation rule
+         * @param name name of the aggregation rule
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class MetricRulesetAggregationRuleArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name Name of this aggregation rule
+         * @param name name of the aggregation rule
          * 
          * @return builder
          * 

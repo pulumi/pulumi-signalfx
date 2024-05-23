@@ -13,13 +13,13 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class DashboardGroupDashboardFilterOverrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (false by default) Whether this filter should be a "not" filter
+        /// If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
         /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }
 
         /// <summary>
-        /// A metric time series dimension or property name
+        /// A metric time series dimension or property name.
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// List of strings (which will be treated as an OR filter on the property)
+        /// (Optional) List of of strings (which will be treated as an OR filter on the property).
         /// </summary>
         public InputList<string> Values
         {

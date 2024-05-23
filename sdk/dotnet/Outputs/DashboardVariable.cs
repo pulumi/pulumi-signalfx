@@ -14,39 +14,39 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardVariable
     {
         /// <summary>
-        /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+        /// An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
         /// </summary>
         public readonly string Alias;
         /// <summary>
-        /// If true, this variable will also match data that does not have the specified property
+        /// If true, this variable will also match data that doesn't have this property at all.
         /// </summary>
         public readonly bool? ApplyIfExist;
         /// <summary>
-        /// Variable description
+        /// Variable description.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// A metric time series dimension or property name
+        /// A metric time series dimension or property name.
         /// </summary>
         public readonly string Property;
         /// <summary>
-        /// If true, this variable will only apply to charts with a filter on the named property.
+        /// If `true`, this variable will only apply to charts that have a filter for the property.
         /// </summary>
         public readonly bool? ReplaceOnly;
         /// <summary>
-        /// If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+        /// If `true`, this variable may only be set to the values listed in `values_suggested` and only these values will appear in autosuggestion menus. `false` by default.
         /// </summary>
         public readonly bool? RestrictedSuggestions;
         /// <summary>
-        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+        /// Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
         /// </summary>
         public readonly bool? ValueRequired;
         /// <summary>
-        /// List of strings (which will be treated as an OR filter on the property)
+        /// List of of strings (which will be treated as an OR filter on the property).
         /// </summary>
         public readonly ImmutableArray<string> Values;
         /// <summary>
-        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+        /// A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
         /// </summary>
         public readonly ImmutableArray<string> ValuesSuggesteds;
 

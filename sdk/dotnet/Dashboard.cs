@@ -13,45 +13,43 @@ namespace Pulumi.SignalFx
     public partial class Dashboard : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Team IDs that have write access to this dashboard
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         /// </summary>
         [Output("authorizedWriterTeams")]
         public Output<ImmutableArray<string>> AuthorizedWriterTeams { get; private set; } = null!;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         /// </summary>
         [Output("authorizedWriterUsers")]
         public Output<ImmutableArray<string>> AuthorizedWriterUsers { get; private set; } = null!;
 
         /// <summary>
-        /// Chart ID and layout information for the charts in the dashboard
+        /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
         [Output("charts")]
         public Output<ImmutableArray<Outputs.DashboardChart>> Charts { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of "default", "low", "high",
-        /// or "highest". default by default
+        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         /// </summary>
         [Output("chartsResolution")]
         public Output<string?> ChartsResolution { get; private set; } = null!;
 
         /// <summary>
-        /// Column layout. Charts listed, will be placed in a single column with the same width and height
+        /// Column layout. Charts listed will be placed in a single column with the same width and height.
         /// </summary>
         [Output("columns")]
         public Output<ImmutableArray<Outputs.DashboardColumn>> Columns { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-        /// be placed in a newly created dashboard group
+        /// The ID of the dashboard group that contains the dashboard.
         /// </summary>
         [Output("dashboardGroup")]
         public Output<string> DashboardGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the dashboard (Optional)
+        /// Description of the dashboard.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -63,71 +61,73 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<string>> DiscoveryOptionsSelectors { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization.
         /// </summary>
         [Output("endTime")]
         public Output<int?> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Event overlay to add to charts
+        /// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         /// </summary>
         [Output("eventOverlays")]
         public Output<ImmutableArray<Outputs.DashboardEventOverlay>> EventOverlays { get; private set; } = null!;
 
         /// <summary>
-        /// Filter to apply to each chart in the dashboard
+        /// Filter to apply to the charts when displaying the dashboard.
         /// </summary>
         [Output("filters")]
         public Output<ImmutableArray<Outputs.DashboardFilter>> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can't
-        /// fit in a row, it will be placed automatically in the next row
+        /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         /// </summary>
         [Output("grids")]
         public Output<ImmutableArray<Outputs.DashboardGrid>> Grids { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the dashboard
+        /// Name of the dashboard.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// </summary>
         [Output("permissions")]
         public Output<Outputs.DashboardPermissions> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Event overlay added to charts by default to charts
+        /// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         /// </summary>
         [Output("selectedEventOverlays")]
         public Output<ImmutableArray<Outputs.DashboardSelectedEventOverlay>> SelectedEventOverlays { get; private set; } = null!;
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization.
         /// </summary>
         [Output("startTime")]
         public Output<int?> StartTime { get; private set; } = null!;
 
         /// <summary>
-        /// Tags of the dashboard
+        /// Tags of the dashboard.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+        /// The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`).
         /// </summary>
         [Output("timeRange")]
         public Output<string?> TimeRange { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the dashboard
+        /// The URL of the dashboard.
         /// </summary>
         [Output("url")]
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// Dashboard variable to apply to each chart in the dashboard
+        /// Dashboard variable to apply to each chart in the dashboard.
         /// </summary>
         [Output("variables")]
         public Output<ImmutableArray<Outputs.DashboardVariable>> Variables { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions_* fields now")]
         public InputList<string> AuthorizedWriterTeams
@@ -195,7 +195,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions fields now")]
         public InputList<string> AuthorizedWriterUsers
@@ -208,7 +208,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardChartArgs>? _charts;
 
         /// <summary>
-        /// Chart ID and layout information for the charts in the dashboard
+        /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
         public InputList<Inputs.DashboardChartArgs> Charts
         {
@@ -217,8 +217,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of "default", "low", "high",
-        /// or "highest". default by default
+        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         /// </summary>
         [Input("chartsResolution")]
         public Input<string>? ChartsResolution { get; set; }
@@ -227,7 +226,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardColumnArgs>? _columns;
 
         /// <summary>
-        /// Column layout. Charts listed, will be placed in a single column with the same width and height
+        /// Column layout. Charts listed will be placed in a single column with the same width and height.
         /// </summary>
         public InputList<Inputs.DashboardColumnArgs> Columns
         {
@@ -236,14 +235,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-        /// be placed in a newly created dashboard group
+        /// The ID of the dashboard group that contains the dashboard.
         /// </summary>
         [Input("dashboardGroup", required: true)]
         public Input<string> DashboardGroup { get; set; } = null!;
 
         /// <summary>
-        /// Description of the dashboard (Optional)
+        /// Description of the dashboard.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -260,7 +258,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -269,7 +267,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardEventOverlayArgs>? _eventOverlays;
 
         /// <summary>
-        /// Event overlay to add to charts
+        /// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         /// </summary>
         public InputList<Inputs.DashboardEventOverlayArgs> EventOverlays
         {
@@ -281,7 +279,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardFilterArgs>? _filters;
 
         /// <summary>
-        /// Filter to apply to each chart in the dashboard
+        /// Filter to apply to the charts when displaying the dashboard.
         /// </summary>
         public InputList<Inputs.DashboardFilterArgs> Filters
         {
@@ -293,8 +291,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardGridArgs>? _grids;
 
         /// <summary>
-        /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can't
-        /// fit in a row, it will be placed automatically in the next row
+        /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         /// </summary>
         public InputList<Inputs.DashboardGridArgs> Grids
         {
@@ -303,11 +300,14 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the dashboard
+        /// Name of the dashboard.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// </summary>
         [Input("permissions")]
         public Input<Inputs.DashboardPermissionsArgs>? Permissions { get; set; }
 
@@ -315,7 +315,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardSelectedEventOverlayArgs>? _selectedEventOverlays;
 
         /// <summary>
-        /// Event overlay added to charts by default to charts
+        /// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         /// </summary>
         public InputList<Inputs.DashboardSelectedEventOverlayArgs> SelectedEventOverlays
         {
@@ -324,7 +324,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -333,7 +333,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags of the dashboard
+        /// Tags of the dashboard.
         /// </summary>
         public InputList<string> Tags
         {
@@ -342,7 +342,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+        /// The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`).
         /// </summary>
         [Input("timeRange")]
         public Input<string>? TimeRange { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardVariableArgs>? _variables;
 
         /// <summary>
-        /// Dashboard variable to apply to each chart in the dashboard
+        /// Dashboard variable to apply to each chart in the dashboard.
         /// </summary>
         public InputList<Inputs.DashboardVariableArgs> Variables
         {
@@ -371,7 +371,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterTeams;
 
         /// <summary>
-        /// Team IDs that have write access to this dashboard
+        /// Team IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's team (or user id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions_* fields now")]
         public InputList<string> AuthorizedWriterTeams
@@ -384,7 +384,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _authorizedWriterUsers;
 
         /// <summary>
-        /// User IDs that have write access to this dashboard
+        /// User IDs that have write access to this dashboard group. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`). **Note:** Deprecated use `permissions` instead.
         /// </summary>
         [Obsolete(@"Please use permissions fields now")]
         public InputList<string> AuthorizedWriterUsers
@@ -397,7 +397,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardChartGetArgs>? _charts;
 
         /// <summary>
-        /// Chart ID and layout information for the charts in the dashboard
+        /// Chart ID and layout information for the charts in the dashboard.
         /// </summary>
         public InputList<Inputs.DashboardChartGetArgs> Charts
         {
@@ -406,8 +406,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of "default", "low", "high",
-        /// or "highest". default by default
+        /// Specifies the chart data display resolution for charts in this dashboard. Value can be one of `"default"`,  `"low"`, `"high"`, or  `"highest"`.
         /// </summary>
         [Input("chartsResolution")]
         public Input<string>? ChartsResolution { get; set; }
@@ -416,7 +415,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardColumnGetArgs>? _columns;
 
         /// <summary>
-        /// Column layout. Charts listed, will be placed in a single column with the same width and height
+        /// Column layout. Charts listed will be placed in a single column with the same width and height.
         /// </summary>
         public InputList<Inputs.DashboardColumnGetArgs> Columns
         {
@@ -425,14 +424,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// The ID of the dashboard group that contains the dashboard. If an ID is not provided during creation, the dashboard will
-        /// be placed in a newly created dashboard group
+        /// The ID of the dashboard group that contains the dashboard.
         /// </summary>
         [Input("dashboardGroup")]
         public Input<string>? DashboardGroup { get; set; }
 
         /// <summary>
-        /// Description of the dashboard (Optional)
+        /// Description of the dashboard.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -449,7 +447,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds since epoch to end the visualization
+        /// Seconds since epoch. Used for visualization.
         /// </summary>
         [Input("endTime")]
         public Input<int>? EndTime { get; set; }
@@ -458,7 +456,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardEventOverlayGetArgs>? _eventOverlays;
 
         /// <summary>
-        /// Event overlay to add to charts
+        /// Specify a list of event overlays to include in the dashboard. Note: These overlays correspond to the *suggested* event overlays specified in the web UI, and they're not automatically applied as active overlays. To set default active event overlays, use the `selected_event_overlay` property instead.
         /// </summary>
         public InputList<Inputs.DashboardEventOverlayGetArgs> EventOverlays
         {
@@ -470,7 +468,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardFilterGetArgs>? _filters;
 
         /// <summary>
-        /// Filter to apply to each chart in the dashboard
+        /// Filter to apply to the charts when displaying the dashboard.
         /// </summary>
         public InputList<Inputs.DashboardFilterGetArgs> Filters
         {
@@ -482,8 +480,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardGridGetArgs>? _grids;
 
         /// <summary>
-        /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart can't
-        /// fit in a row, it will be placed automatically in the next row
+        /// Grid dashboard layout. Charts listed will be placed in a grid by row with the same width and height. If a chart cannot fit in a row, it will be placed automatically in the next row.
         /// </summary>
         public InputList<Inputs.DashboardGridGetArgs> Grids
         {
@@ -492,11 +489,14 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Name of the dashboard
+        /// Name of the dashboard.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// [Permissions](https://docs.splunk.com/Observability/infrastructure/terms-concepts/permissions.html) Controls who can view and/or edit your dashboard. **Note:** This feature is not present in all accounts. Please contact support if you are unsure.
+        /// </summary>
         [Input("permissions")]
         public Input<Inputs.DashboardPermissionsGetArgs>? Permissions { get; set; }
 
@@ -504,7 +504,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardSelectedEventOverlayGetArgs>? _selectedEventOverlays;
 
         /// <summary>
-        /// Event overlay added to charts by default to charts
+        /// Defines event overlays which are enabled by **default**. Any overlay specified here should have an accompanying entry in `event_overlay`, which are similar to the properties here.
         /// </summary>
         public InputList<Inputs.DashboardSelectedEventOverlayGetArgs> SelectedEventOverlays
         {
@@ -513,7 +513,7 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// Seconds since epoch to start the visualization
+        /// Seconds since epoch. Used for visualization.
         /// </summary>
         [Input("startTime")]
         public Input<int>? StartTime { get; set; }
@@ -522,7 +522,7 @@ namespace Pulumi.SignalFx
         private InputList<string>? _tags;
 
         /// <summary>
-        /// Tags of the dashboard
+        /// Tags of the dashboard.
         /// </summary>
         public InputList<string> Tags
         {
@@ -531,13 +531,13 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
-        /// From when to display data. Splunk Observability Cloud time syntax (e.g. -5m, -1h)
+        /// The time range prior to now to visualize. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`).
         /// </summary>
         [Input("timeRange")]
         public Input<string>? TimeRange { get; set; }
 
         /// <summary>
-        /// URL of the dashboard
+        /// The URL of the dashboard.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -546,7 +546,7 @@ namespace Pulumi.SignalFx
         private InputList<Inputs.DashboardVariableGetArgs>? _variables;
 
         /// <summary>
-        /// Dashboard variable to apply to each chart in the dashboard
+        /// Dashboard variable to apply to each chart in the dashboard.
         /// </summary>
         public InputList<Inputs.DashboardVariableGetArgs> Variables
         {

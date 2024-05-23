@@ -26,32 +26,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `app_id` - (Required) Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `custom_namespaces_per_service` - (Optional) Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
- *   * `namespaces` - (Required) The additional namespaces.
- *   * `service` - (Required) The name of the service.
- * * `environment` (Optional) What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
- * * `name` - (Required) Name of the integration.
- * * `named_token` - (Optional) Name of the org token to be used for data ingestion. If not specified then default access token is used.
- * * `poll_rate` - (Optional) Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
- * * `resource_filter_rules` - (Optional) List of rules for filtering Azure resources by their tags.
- *   * `filter_source` - (Required) Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
- * * `secret_key` - (Required) Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
- * * `services` - (Required) List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
- * * `subscriptions` - (Required) List of Azure subscriptions that Splunk Observability Cloud should monitor.
- * * `sync_guest_os_namespaces` - (Optional) If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
- * * `import_azure_monitor` - (Optional) If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
- * * `tenant_id` (Required) Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration.
- * 
  */
 @ResourceType(type="signalfx:azure/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
@@ -70,170 +44,154 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.additionalServices);
     }
     /**
-     * Azure application ID for the Splunk Observability Cloud app.
+     * Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      * 
      */
     @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
-     * @return Azure application ID for the Splunk Observability Cloud app.
+     * @return Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      * 
      */
     public Output<String> appId() {
         return this.appId;
     }
     /**
-     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
-     * addition to the default namespaces.
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      * 
      */
     @Export(name="customNamespacesPerServices", refs={List.class,IntegrationCustomNamespacesPerService.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationCustomNamespacesPerService>> customNamespacesPerServices;
 
     /**
-     * @return Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do
-     * so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
-     * addition to the default namespaces.
+     * @return Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `sync_guest_os_namespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      * 
      */
     public Output<Optional<List<IntegrationCustomNamespacesPerService>>> customNamespacesPerServices() {
         return Codegen.optional(this.customNamespacesPerServices);
     }
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * what type of Azure integration this is. The allowed values are `&#34;azure_us_government&#34;` and `&#34;azure&#34;`. Defaults to
-     * `&#34;azure&#34;`
+     * What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
      * 
      */
     @Export(name="environment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environment;
 
     /**
-     * @return what type of Azure integration this is. The allowed values are `&#34;azure_us_government&#34;` and `&#34;azure&#34;`. Defaults to
-     * `&#34;azure&#34;`
+     * @return What type of Azure integration this is. The allowed values are `\&#34;azure_us_government\&#34;` and `\&#34;azure\&#34;`. Defaults to `\&#34;azure\&#34;`.
      * 
      */
     public Output<Optional<String>> environment() {
         return Codegen.optional(this.environment);
     }
     /**
-     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
-     * import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     @Export(name="importAzureMonitor", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> importAzureMonitor;
 
     /**
-     * @return If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
-     * import only metadata. Defaults to true.
+     * @return If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      * 
      */
     public Output<Optional<Boolean>> importAzureMonitor() {
         return Codegen.optional(this.importAzureMonitor);
     }
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
     @Export(name="namedToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namedToken;
 
     /**
-     * @return A named token to use for ingest
+     * @return Name of the org token to be used for data ingestion. If not specified then default access token is used.
      * 
      */
     public Output<Optional<String>> namedToken() {
         return Codegen.optional(this.namedToken);
     }
     /**
-     * Azure poll rate (in seconds). Between `60` and `600`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
     @Export(name="pollRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pollRate;
 
     /**
-     * @return Azure poll rate (in seconds). Between `60` and `600`.
+     * @return Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      * 
      */
     public Output<Optional<Integer>> pollRate() {
         return Codegen.optional(this.pollRate);
     }
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      * 
      */
     @Export(name="resourceFilterRules", refs={List.class,IntegrationResourceFilterRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationResourceFilterRule>> resourceFilterRules;
 
     /**
-     * @return List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * @return List of rules for filtering Azure resources by their tags.
      * 
      */
     public Output<Optional<List<IntegrationResourceFilterRule>>> resourceFilterRules() {
         return Codegen.optional(this.resourceFilterRules);
     }
     /**
-     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
+     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      * 
      */
     @Export(name="secretKey", refs={String.class}, tree="[0]")
     private Output<String> secretKey;
 
     /**
-     * @return Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
+     * @return Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      * 
      */
     public Output<String> secretKey() {
         return this.secretKey;
     }
     /**
-     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
-     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
+     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
     @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> services;
 
     /**
-     * @return List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
-     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
+     * @return List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      * 
      */
     public Output<List<String>> services() {
@@ -254,32 +212,28 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.subscriptions;
     }
     /**
-     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
-     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
-     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
+     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      * 
      */
     @Export(name="syncGuestOsNamespaces", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncGuestOsNamespaces;
 
     /**
-     * @return If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
-     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
-     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
+     * @return If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      * 
      */
     public Output<Optional<Boolean>> syncGuestOsNamespaces() {
         return Codegen.optional(this.syncGuestOsNamespaces);
     }
     /**
-     * Azure ID of the Azure tenant.
+     * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
-     * @return Azure ID of the Azure tenant.
+     * @return Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      * 
      */
     public Output<String> tenantId() {

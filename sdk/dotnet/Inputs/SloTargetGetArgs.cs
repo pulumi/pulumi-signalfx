@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.SloTargetAlertRuleGetArgs>? _alertRules;
 
         /// <summary>
-        /// SLO alert rules
+        /// List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
         /// </summary>
         public InputList<Inputs.SloTargetAlertRuleGetArgs> AlertRules
         {
@@ -25,19 +25,19 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        /// Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
         /// </summary>
         [Input("compliancePeriod")]
         public Input<string>? CompliancePeriod { get; set; }
 
         /// <summary>
-        /// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        /// It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
         /// </summary>
         [Input("cycleStart")]
         public Input<string>? CycleStart { get; set; }
 
         /// <summary>
-        /// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+        /// The cycle type of the calendar window, e.g. week, month.
         /// </summary>
         [Input("cycleType")]
         public Input<string>? CycleType { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<double> Slo { get; set; } = null!;
 
         /// <summary>
-        /// SLO target type can be the following type: `RollingWindow`
+        /// SLO target type can be the following type: `"RollingWindow"`, `"CalendarWindow"`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -17,14 +17,14 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
     public static final TimeChartEventOptionArgs Empty = new TimeChartEventOptionArgs();
 
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     @Import(name="color")
     private @Nullable Output<String> color;
 
     /**
-     * @return Color to use
+     * @return Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      * 
      */
     public Optional<Output<String>> color() {
@@ -47,14 +47,14 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The label used in the publish statement that displays the events you want to customize
+     * Label used in the publish statement that displays the event query you want to customize.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return The label used in the publish statement that displays the events you want to customize
+     * @return Label used in the publish statement that displays the event query you want to customize.
      * 
      */
     public Output<String> label() {
@@ -88,7 +88,7 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param color Color to use
+         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param color Color to use
+         * @param color Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param label The label used in the publish statement that displays the events you want to customize
+         * @param label Label used in the publish statement that displays the event query you want to customize.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TimeChartEventOptionArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param label The label used in the publish statement that displays the events you want to customize
+         * @param label Label used in the publish statement that displays the event query you want to customize.
          * 
          * @return builder
          * 

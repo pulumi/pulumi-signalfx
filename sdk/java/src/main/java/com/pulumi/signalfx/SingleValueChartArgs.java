@@ -22,14 +22,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     public static final SingleValueChartArgs Empty = new SingleValueChartArgs();
 
     /**
-     * (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
+     * Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
     @Import(name="colorBy")
     private @Nullable Output<String> colorBy;
 
     /**
-     * @return (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
+     * @return Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
      * 
      */
     public Optional<Output<String>> colorBy() {
@@ -37,14 +37,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Single color range including both the color to display for that range and the borders of the range
+     * Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      * 
      */
     @Import(name="colorScales")
     private @Nullable Output<List<SingleValueChartColorScaleArgs>> colorScales;
 
     /**
-     * @return Single color range including both the color to display for that range and the borders of the range
+     * @return Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
      * 
      */
     public Optional<Output<List<SingleValueChartColorScaleArgs>>> colorScales() {
@@ -52,14 +52,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Description of the chart (Optional)
+     * Description of the chart.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the chart.
      * 
      */
     public Optional<Output<String>> description() {
@@ -67,14 +67,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (false by default) Whether to hide the timestamp in the chart
+     * Whether to hide the timestamp in the chart. `false` by default.
      * 
      */
     @Import(name="isTimestampHidden")
     private @Nullable Output<Boolean> isTimestampHidden;
 
     /**
-     * @return (false by default) Whether to hide the timestamp in the chart
+     * @return Whether to hide the timestamp in the chart. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> isTimestampHidden() {
@@ -97,14 +97,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The maximum precision to for values displayed in the list
+     * The maximum precision to for value displayed.
      * 
      */
     @Import(name="maxPrecision")
     private @Nullable Output<Integer> maxPrecision;
 
     /**
-     * @return The maximum precision to for values displayed in the list
+     * @return The maximum precision to for value displayed.
      * 
      */
     public Optional<Output<Integer>> maxPrecision() {
@@ -112,14 +112,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name of the chart
+     * Name of the chart.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the chart.
      * 
      */
     public Optional<Output<String>> name() {
@@ -127,14 +127,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      * 
      */
     public Output<String> programText() {
@@ -142,14 +142,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * How often (in seconds) to refresh the values of the list
+     * How often (in seconds) to refresh the value.
      * 
      */
     @Import(name="refreshInterval")
     private @Nullable Output<Integer> refreshInterval;
 
     /**
-     * @return How often (in seconds) to refresh the values of the list
+     * @return How often (in seconds) to refresh the value.
      * 
      */
     public Optional<Output<Integer>> refreshInterval() {
@@ -157,14 +157,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+     * The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
      * 
      */
     @Import(name="secondaryVisualization")
     private @Nullable Output<String> secondaryVisualization;
 
     /**
-     * @return (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+     * @return The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
      * 
      */
     public Optional<Output<String>> secondaryVisualization() {
@@ -172,14 +172,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (false by default) Whether to show a trend line below the current value
+     * Whether to show a trend line below the current value. `false` by default.
      * 
      */
     @Import(name="showSparkLine")
     private @Nullable Output<Boolean> showSparkLine;
 
     /**
-     * @return (false by default) Whether to show a trend line below the current value
+     * @return Whether to show a trend line below the current value. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> showSparkLine() {
@@ -202,14 +202,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
      * 
      */
     @Import(name="unitPrefix")
     private @Nullable Output<String> unitPrefix;
 
     /**
-     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * @return Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
      * 
      */
     public Optional<Output<String>> unitPrefix() {
@@ -217,14 +217,14 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Plot-level customization options, associated with a publish statement
+     * Plot-level customization options, associated with a publish statement.
      * 
      */
     @Import(name="vizOptions")
     private @Nullable Output<List<SingleValueChartVizOptionArgs>> vizOptions;
 
     /**
-     * @return Plot-level customization options, associated with a publish statement
+     * @return Plot-level customization options, associated with a publish statement.
      * 
      */
     public Optional<Output<List<SingleValueChartVizOptionArgs>>> vizOptions() {
@@ -269,7 +269,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param colorBy (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
+         * @param colorBy Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param colorBy (Metric by default) Must be &#34;Metric&#34;, &#34;Dimension&#34;, or &#34;Scale&#34;. &#34;Scale&#34; maps to Color by Value in the UI
+         * @param colorBy Must be `&#34;Dimension&#34;`, `&#34;Scale&#34;` or `&#34;Metric&#34;`. `&#34;Dimension&#34;` by default.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param colorScales Single color range including both the color to display for that range and the borders of the range
+         * @param colorScales Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = &#34;blue&#34; }, { lte = 60, color = &#34;yellow&#34; }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the chart.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description Description of the chart (Optional)
+         * @param description Description of the chart.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param isTimestampHidden (false by default) Whether to hide the timestamp in the chart
+         * @param isTimestampHidden Whether to hide the timestamp in the chart. `false` by default.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param isTimestampHidden (false by default) Whether to hide the timestamp in the chart
+         * @param isTimestampHidden Whether to hide the timestamp in the chart. `false` by default.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPrecision The maximum precision to for values displayed in the list
+         * @param maxPrecision The maximum precision to for value displayed.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param maxPrecision The maximum precision to for values displayed in the list
+         * @param maxPrecision The maximum precision to for value displayed.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the chart.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the chart
+         * @param name Name of the chart.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param programText Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+         * @param programText Signalflow program text for the chart. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the values of the list
+         * @param refreshInterval How often (in seconds) to refresh the value.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param refreshInterval How often (in seconds) to refresh the values of the list
+         * @param refreshInterval How often (in seconds) to refresh the value.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryVisualization (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+         * @param secondaryVisualization The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param secondaryVisualization (false by default) What kind of secondary visualization to show (None, Radial, Linear, Sparkline)
+         * @param secondaryVisualization The type of secondary visualization. Can be `None`, `Radial`, `Linear`, or `Sparkline`. If unset, the Splunk Observability Cloud default is used (`None`).
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param showSparkLine (false by default) Whether to show a trend line below the current value
+         * @param showSparkLine Whether to show a trend line below the current value. `false` by default.
          * 
          * @return builder
          * 
@@ -500,7 +500,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param showSparkLine (false by default) Whether to show a trend line below the current value
+         * @param showSparkLine Whether to show a trend line below the current value. `false` by default.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param unitPrefix (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+         * @param unitPrefix Must be `&#34;Metric&#34;` or `&#34;Binary&#34;`. `&#34;Metric&#34;` by default.
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class SingleValueChartArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vizOptions Plot-level customization options, associated with a publish statement
+         * @param vizOptions Plot-level customization options, associated with a publish statement.
          * 
          * @return builder
          * 

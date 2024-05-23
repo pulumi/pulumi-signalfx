@@ -13,43 +13,43 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class TimeChartAxisLeftGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A line to draw as a high watermark
+        /// A line to draw as a high watermark.
         /// </summary>
         [Input("highWatermark")]
         public Input<double>? HighWatermark { get; set; }
 
         /// <summary>
-        /// A label to attach to the high watermark line
+        /// A label to attach to the high watermark line.
         /// </summary>
         [Input("highWatermarkLabel")]
         public Input<string>? HighWatermarkLabel { get; set; }
 
         /// <summary>
-        /// Label of the left axis
+        /// Label of the left axis.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// A line to draw as a low watermark
+        /// A line to draw as a low watermark.
         /// </summary>
         [Input("lowWatermark")]
         public Input<double>? LowWatermark { get; set; }
 
         /// <summary>
-        /// A label to attach to the low watermark line
+        /// A label to attach to the low watermark line.
         /// </summary>
         [Input("lowWatermarkLabel")]
         public Input<string>? LowWatermarkLabel { get; set; }
 
         /// <summary>
-        /// The maximum value for the left axis
+        /// The maximum value for the left axis.
         /// </summary>
         [Input("maxValue")]
         public Input<double>? MaxValue { get; set; }
 
         /// <summary>
-        /// The minimum value for the left axis
+        /// The minimum value for the left axis.
         /// </summary>
         [Input("minValue")]
         public Input<double>? MinValue { get; set; }

@@ -13,13 +13,13 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class OrgTokenHostOrUsageLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Max number of containers that can use this token
+        /// Max number of Docker containers that can use this token
         /// </summary>
         [Input("containerLimit")]
         public Input<int>? ContainerLimit { get; set; }
 
         /// <summary>
-        /// Notification threshold for containers
+        /// Notification threshold for Docker containers
         /// </summary>
         [Input("containerNotificationThreshold")]
         public Input<int>? ContainerNotificationThreshold { get; set; }
@@ -37,13 +37,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<int>? CustomMetricsNotificationThreshold { get; set; }
 
         /// <summary>
-        /// Max number of high-res metrics that can be sent with this token
+        /// Max number of hi-res metrics that can be sent with this toke
         /// </summary>
         [Input("highResMetricsLimit")]
         public Input<int>? HighResMetricsLimit { get; set; }
 
         /// <summary>
-        /// Notification threshold for high-res metrics
+        /// Notification threshold for hi-res metrics
         /// </summary>
         [Input("highResMetricsNotificationThreshold")]
         public Input<int>? HighResMetricsNotificationThreshold { get; set; }

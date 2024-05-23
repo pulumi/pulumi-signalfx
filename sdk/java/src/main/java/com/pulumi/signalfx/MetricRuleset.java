@@ -24,40 +24,18 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * The following arguments are supported in the resource block:
- * 
- * * `metric_name` - (Required) Name of the input metric
- * * `aggregation_rules` - (Optional) List of aggregation rules for the metric
- *   * `enabled` - (Required) When false, this rule will not generate aggregated MTSs
- *   * `name` - (Optional) name of the aggregation rule
- *   * `matcher` - (Required) Matcher object
- *     * `type` - (Required) Type of matcher. Must always be &#34;dimension&#34;
- *     * `filters` - (Optional) List of filters to filter the set of input MTSs
- *       * `property` - (Required) - Name of the dimension
- *       * `property_value` - (Required) - Value of the dimension
- *       * `not` - When true, this filter will match all values not matching the property_values
- *   * `aggregator` - (Required) - Aggregator object
- *     * `type` - (Required) Type of aggregator. Must always be &#34;rollup&#34;
- *     * `dimensions` - (Required) List of dimensions to either be kept or dropped in the new aggregated MTSs
- *     * `drop_dimensions` - (Required) when true, the specified dimensions will be dropped from the aggregated MTSs
- *     * `output_name` - (Required) name of the new aggregated metric
- * * `routing_rule` - (Required) Routing Rule object
- *   * `destination` - (Required) - end destination of the input metric. Must be `RealTime` or `Drop`
- * 
  */
 @ResourceType(type="signalfx:index/metricRuleset:MetricRuleset")
 public class MetricRuleset extends com.pulumi.resources.CustomResource {
     /**
-     * Aggregation rules in the ruleset
+     * List of aggregation rules for the metric
      * 
      */
     @Export(name="aggregationRules", refs={List.class,MetricRulesetAggregationRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MetricRulesetAggregationRule>> aggregationRules;
 
     /**
-     * @return Aggregation rules in the ruleset
+     * @return List of aggregation rules for the metric
      * 
      */
     public Output<Optional<List<MetricRulesetAggregationRule>>> aggregationRules() {
@@ -134,28 +112,28 @@ public class MetricRuleset extends com.pulumi.resources.CustomResource {
         return this.lastUpdatedByName;
     }
     /**
-     * Name of the metric
+     * Name of the input metric
      * 
      */
     @Export(name="metricName", refs={String.class}, tree="[0]")
     private Output<String> metricName;
 
     /**
-     * @return Name of the metric
+     * @return Name of the input metric
      * 
      */
     public Output<String> metricName() {
         return this.metricName;
     }
     /**
-     * Location to send the input metric
+     * Routing Rule object
      * 
      */
     @Export(name="routingRules", refs={List.class,MetricRulesetRoutingRule.class}, tree="[0,1]")
     private Output<List<MetricRulesetRoutingRule>> routingRules;
 
     /**
-     * @return Location to send the input metric
+     * @return Routing Rule object
      * 
      */
     public Output<List<MetricRulesetRoutingRule>> routingRules() {

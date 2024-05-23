@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _dimensions;
 
         /// <summary>
-        /// List of dimensions to keep or drop in aggregated metric
+        /// List of dimensions to either be kept or dropped in the new aggregated MTSs
         /// </summary>
         public InputList<string> Dimensions
         {
@@ -25,19 +25,19 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// Flag specifying to keep or drop given dimensions
+        /// when true, the specified dimensions will be dropped from the aggregated MTSs
         /// </summary>
         [Input("dropDimensions", required: true)]
         public Input<bool> DropDimensions { get; set; } = null!;
 
         /// <summary>
-        /// The aggregated metric name
+        /// name of the new aggregated metric
         /// </summary>
         [Input("outputName", required: true)]
         public Input<string> OutputName { get; set; } = null!;
 
         /// <summary>
-        /// The type of the aggregator
+        /// Type of aggregator. Must always be "rollup"
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -14,24 +14,27 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardEventOverlay
     {
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         public readonly string? Color;
         /// <summary>
-        /// The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+        /// Text shown in the dropdown when selecting this overlay from the menu.
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+        /// Show a vertical line for the event. `false` by default.
         /// </summary>
         public readonly bool? Line;
         /// <summary>
-        /// Search term used to define events
+        /// Search term used to choose the events shown in the overlay.
         /// </summary>
         public readonly string Signal;
+        /// <summary>
+        /// Each element specifies a filter to use against the signal specified in the `signal`.
+        /// </summary>
         public readonly ImmutableArray<Outputs.DashboardEventOverlaySource> Sources;
         /// <summary>
-        /// Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+        /// Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
         /// </summary>
         public readonly string? Type;
 

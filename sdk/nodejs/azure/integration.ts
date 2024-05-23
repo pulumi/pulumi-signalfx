@@ -12,32 +12,6 @@ import * as utilities from "../utilities";
  * > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
  *
  * ## Example
- *
- * ## Arguments
- *
- * * `appId` - (Required) Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `customNamespacesPerService` - (Optional) Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
- *   * `namespaces` - (Required) The additional namespaces.
- *   * `service` - (Required) The name of the service.
- * * `environment` (Optional) What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
- * * `name` - (Required) Name of the integration.
- * * `namedToken` - (Optional) Name of the org token to be used for data ingestion. If not specified then default access token is used.
- * * `pollRate` - (Optional) Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
- * * `resourceFilterRules` - (Optional) List of rules for filtering Azure resources by their tags.
- *   * `filterSource` - (Required) Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
- * * `secretKey` - (Required) Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
- * * `services` - (Required) List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
- * * `subscriptions` - (Required) List of Azure subscriptions that Splunk Observability Cloud should monitor.
- * * `syncGuestOsNamespaces` - (Optional) If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
- * * `importAzureMonitor` - (Optional) If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
- * * `tenantId` (Required) Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
- *
- * ## Attributes
- *
- * In a addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the integration.
  */
 export class Integration extends pulumi.CustomResource {
     /**
@@ -72,55 +46,47 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly additionalServices!: pulumi.Output<string[] | undefined>;
     /**
-     * Azure application ID for the Splunk Observability Cloud app.
+     * Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     public readonly appId!: pulumi.Output<string>;
     /**
-     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
-     * for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
-     * addition to the default namespaces.
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      */
     public readonly customNamespacesPerServices!: pulumi.Output<outputs.azure.IntegrationCustomNamespacesPerService[] | undefined>;
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
-     * `"azure"`
+     * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
-     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
-     * import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
     public readonly importAzureMonitor!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
     public readonly namedToken!: pulumi.Output<string | undefined>;
     /**
-     * Azure poll rate (in seconds). Between `60` and `600`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     public readonly pollRate!: pulumi.Output<number | undefined>;
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      */
     public readonly resourceFilterRules!: pulumi.Output<outputs.azure.IntegrationResourceFilterRule[] | undefined>;
     /**
-     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
+     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     public readonly secretKey!: pulumi.Output<string>;
     /**
-     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
-     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
+     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
     public readonly services!: pulumi.Output<string[]>;
     /**
@@ -128,13 +94,11 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly subscriptions!: pulumi.Output<string[]>;
     /**
-     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
-     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
-     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
+     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      */
     public readonly syncGuestOsNamespaces!: pulumi.Output<boolean | undefined>;
     /**
-     * Azure ID of the Azure tenant.
+     * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     public readonly tenantId!: pulumi.Output<string>;
 
@@ -218,55 +182,47 @@ export interface IntegrationState {
      */
     additionalServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Azure application ID for the Splunk Observability Cloud app.
+     * Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     appId?: pulumi.Input<string>;
     /**
-     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
-     * for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
-     * addition to the default namespaces.
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      */
     customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
-     * `"azure"`
+     * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
     environment?: pulumi.Input<string>;
     /**
-     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
-     * import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
     importAzureMonitor?: pulumi.Input<boolean>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
     namedToken?: pulumi.Input<string>;
     /**
-     * Azure poll rate (in seconds). Between `60` and `600`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      */
     resourceFilterRules?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationResourceFilterRule>[]>;
     /**
-     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
+     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     secretKey?: pulumi.Input<string>;
     /**
-     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
-     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
+     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -274,13 +230,11 @@ export interface IntegrationState {
      */
     subscriptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
-     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
-     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
+     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      */
     syncGuestOsNamespaces?: pulumi.Input<boolean>;
     /**
-     * Azure ID of the Azure tenant.
+     * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     tenantId?: pulumi.Input<string>;
 }
@@ -294,55 +248,47 @@ export interface IntegrationArgs {
      */
     additionalServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Azure application ID for the Splunk Observability Cloud app.
+     * Azure application ID for the Splunk Observability Cloud app. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     appId: pulumi.Input<string>;
     /**
-     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter
-     * `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so,
-     * for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in
-     * addition to the default namespaces.
+     * Allows for more fine-grained control of syncing of custom namespaces, should the boolean convenience parameter `syncGuestOsNamespaces` be not enough. The customer may specify a map of services to custom namespaces. If they do so, for each service which is a key in this map, we will attempt to sync metrics from namespaces in the value list in addition to the default namespaces.
      */
     customNamespacesPerServices?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationCustomNamespacesPerService>[]>;
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * what type of Azure integration this is. The allowed values are `"azureUsGovernment"` and `"azure"`. Defaults to
-     * `"azure"`
+     * What type of Azure integration this is. The allowed values are `\"azure_us_government\"` and `\"azure\"`. Defaults to `\"azure\"`.
      */
     environment?: pulumi.Input<string>;
     /**
-     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will
-     * import only metadata. Defaults to true.
+     * If enabled, Splunk Observability Cloud will sync also Azure Monitor data. If disabled, Splunk Observability Cloud will import only metadata. Defaults to true.
      */
     importAzureMonitor?: pulumi.Input<boolean>;
     /**
-     * Name of the integration
+     * Name of the integration.
      */
     name?: pulumi.Input<string>;
     /**
-     * A named token to use for ingest
+     * Name of the org token to be used for data ingestion. If not specified then default access token is used.
      */
     namedToken?: pulumi.Input<string>;
     /**
-     * Azure poll rate (in seconds). Between `60` and `600`.
+     * Azure poll rate (in seconds). Value between `60` and `600`. Default: `300`.
      */
     pollRate?: pulumi.Input<number>;
     /**
-     * List of rules for filtering Azure resources by their tags. The source of each filter rule must be in the form
-     * filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are
-     * limited to tags and must start with the azure_tag_ prefix..
+     * List of rules for filtering Azure resources by their tags.
      */
     resourceFilterRules?: pulumi.Input<pulumi.Input<inputs.azure.IntegrationResourceFilterRule>[]>;
     /**
-     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant.
+     * Azure secret key that associates the Splunk Observability Cloud app in Azure with the Azure tenant ID. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     secretKey: pulumi.Input<string>;
     /**
-     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Splunk
-     * Observability Cloud only supports certain services, and if you specify an unsupported one, you receive an API error.
+     * List of Microsoft Azure service names for the Azure services you want Splunk Observability Cloud to monitor. Can be an empty list to import data for all supported services. See [Microsoft Azure services](https://docs.splunk.com/Observability/gdi/get-data-in/integrations.html#azure-integrations) for a list of valid values.
      */
     services: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -350,13 +296,11 @@ export interface IntegrationArgs {
      */
     subscriptions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets):
-     * telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their
-     * Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested.
+     * If enabled, Splunk Observability Cloud will try to sync additional namespaces for VMs (including VMs in scale sets): telegraf/mem, telegraf/cpu, azure.vm.windows.guest (these are namespaces recommended by Azure when enabling their Diagnostic Extension). If there are no metrics there, no new datapoints will be ingested. Defaults to false.
      */
     syncGuestOsNamespaces?: pulumi.Input<boolean>;
     /**
-     * Azure ID of the Azure tenant.
+     * Azure ID of the Azure tenant. To learn how to get this ID, see the topic [Connect to Microsoft Azure](https://docs.splunk.com/observability/en/gdi/get-data-in/connect/azure/azure.html) in the product documentation.
      */
     tenantId: pulumi.Input<string>;
 }
