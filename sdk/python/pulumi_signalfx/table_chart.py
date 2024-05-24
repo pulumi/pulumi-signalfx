@@ -30,14 +30,14 @@ class TableChartArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a TableChart resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
+        :param pulumi.Input[str] description: Description of the table chart.
         :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the Table (in nesting order)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Dimension to group by
         :param pulumi.Input[bool] hide_timestamp: (false by default) Whether to show the timestamp in the chart
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
-        :param pulumi.Input[str] name: Name of the chart
+        :param pulumi.Input[str] name: Name of the table chart.
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
@@ -71,7 +71,7 @@ class TableChartArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        The SignalFlow for your Data Table Chart
         """
         return pulumi.get(self, "program_text")
 
@@ -83,7 +83,7 @@ class TableChartArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart (Optional)
+        Description of the table chart.
         """
         return pulumi.get(self, "description")
 
@@ -107,7 +107,7 @@ class TableChartArgs:
     @pulumi.getter(name="groupBies")
     def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Properties to group by in the Table (in nesting order)
+        Dimension to group by
         """
         return pulumi.get(self, "group_bies")
 
@@ -155,7 +155,7 @@ class TableChartArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart
+        Name of the table chart.
         """
         return pulumi.get(self, "name")
 
@@ -230,18 +230,18 @@ class _TableChartState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering TableChart resources.
-        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] description: Description of the table chart.
         :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the Table (in nesting order)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Dimension to group by
         :param pulumi.Input[bool] hide_timestamp: (false by default) Whether to show the timestamp in the chart
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[str] name: Name of the table chart.
+        :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input['TableChartVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
         """
         if description is not None:
@@ -275,7 +275,7 @@ class _TableChartState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart (Optional)
+        Description of the table chart.
         """
         return pulumi.get(self, "description")
 
@@ -299,7 +299,7 @@ class _TableChartState:
     @pulumi.getter(name="groupBies")
     def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Properties to group by in the Table (in nesting order)
+        Dimension to group by
         """
         return pulumi.get(self, "group_bies")
 
@@ -347,7 +347,7 @@ class _TableChartState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart
+        Name of the table chart.
         """
         return pulumi.get(self, "name")
 
@@ -359,7 +359,7 @@ class _TableChartState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        The SignalFlow for your Data Table Chart
         """
         return pulumi.get(self, "program_text")
 
@@ -407,7 +407,7 @@ class _TableChartState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 
@@ -451,32 +451,16 @@ class TableChart(pulumi.CustomResource):
 
         ## Example
 
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `name` - (Required) Name of the table chart.
-        * `program_text` - (Required) The SignalFlow for your Data Table Chart
-        * `description` - (Optional) Description of the table chart.
-        * `group_by` - (Optional) Dimension to group by
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the chart.
-        * `url` - The URL of the chart.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] description: Description of the table chart.
         :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the Table (in nesting order)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Dimension to group by
         :param pulumi.Input[bool] hide_timestamp: (false by default) Whether to show the timestamp in the chart
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[str] name: Name of the table chart.
+        :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
@@ -492,22 +476,6 @@ class TableChart(pulumi.CustomResource):
         This special type of chart displays a data table. This table can be grouped by a dimension.
 
         ## Example
-
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `name` - (Required) Name of the table chart.
-        * `program_text` - (Required) The SignalFlow for your Data Table Chart
-        * `description` - (Optional) Description of the table chart.
-        * `group_by` - (Optional) Dimension to group by
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the chart.
-        * `url` - The URL of the chart.
 
         :param str resource_name: The name of the resource.
         :param TableChartArgs args: The arguments to use to populate this resource's properties.
@@ -590,18 +558,18 @@ class TableChart(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the chart (Optional)
+        :param pulumi.Input[str] description: Description of the table chart.
         :param pulumi.Input[bool] disable_sampling: (false by default) If false, samples a subset of the output MTS, which improves UI performance
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Properties to group by in the Table (in nesting order)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Dimension to group by
         :param pulumi.Input[bool] hide_timestamp: (false by default) Whether to show the timestamp in the chart
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
         :param pulumi.Input[int] minimum_resolution: The minimum resolution (in seconds) to use for computing the underlying program
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        :param pulumi.Input[str] name: Name of the table chart.
+        :param pulumi.Input[str] program_text: The SignalFlow for your Data Table Chart
         :param pulumi.Input[int] refresh_interval: How often (in seconds) to refresh the values of the Table
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: (Metric by default) Must be "Metric" or "Binary"
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[str] url: The URL of the chart.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -627,7 +595,7 @@ class TableChart(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the chart (Optional)
+        Description of the table chart.
         """
         return pulumi.get(self, "description")
 
@@ -643,7 +611,7 @@ class TableChart(pulumi.CustomResource):
     @pulumi.getter(name="groupBies")
     def group_bies(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Properties to group by in the Table (in nesting order)
+        Dimension to group by
         """
         return pulumi.get(self, "group_bies")
 
@@ -675,7 +643,7 @@ class TableChart(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the chart
+        Name of the table chart.
         """
         return pulumi.get(self, "name")
 
@@ -683,7 +651,7 @@ class TableChart(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        The SignalFlow for your Data Table Chart
         """
         return pulumi.get(self, "program_text")
 
@@ -715,7 +683,7 @@ class TableChart(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the chart.
         """
         return pulumi.get(self, "url")
 

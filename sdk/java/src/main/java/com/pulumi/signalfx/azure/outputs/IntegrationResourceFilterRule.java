@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class IntegrationResourceFilterRule {
+    /**
+     * @return Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+     * 
+     */
     private String filterSource;
 
     private IntegrationResourceFilterRule() {}
+    /**
+     * @return Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter(&#39;key&#39;, &#39;value&#39;). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+     * 
+     */
     public String filterSource() {
         return this.filterSource;
     }

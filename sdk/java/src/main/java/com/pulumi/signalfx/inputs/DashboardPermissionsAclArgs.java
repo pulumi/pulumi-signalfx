@@ -18,14 +18,14 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
     public static final DashboardPermissionsAclArgs Empty = new DashboardPermissionsAclArgs();
 
     /**
-     * Actions level, possible values: READ, WRITE
+     * Action the user, team, or organization can take with the dashboard. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<String>> actions;
 
     /**
-     * @return Actions level, possible values: READ, WRITE
+     * @return Action the user, team, or organization can take with the dashboard. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
      * 
      */
     public Optional<Output<List<String>>> actions() {
@@ -33,14 +33,14 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * ID of the principal with access
+     * ID of the user, team, or organization for which you&#39;re granting permissions.
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return ID of the principal with access
+     * @return ID of the user, team, or organization for which you&#39;re granting permissions.
      * 
      */
     public Output<String> principalId() {
@@ -48,14 +48,14 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Type of principal, possible values: ORG, TEAM, USER
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
      * 
      */
     @Import(name="principalType", required=true)
     private Output<String> principalType;
 
     /**
-     * @return Type of principal, possible values: ORG, TEAM, USER
+     * @return Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
      * 
      */
     public Output<String> principalType() {
@@ -89,7 +89,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param actions Actions level, possible values: READ, WRITE
+         * @param actions Action the user, team, or organization can take with the dashboard. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param actions Actions level, possible values: READ, WRITE
+         * @param actions Action the user, team, or organization can take with the dashboard. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param actions Actions level, possible values: READ, WRITE
+         * @param actions Action the user, team, or organization can take with the dashboard. List of values (value can be &#34;READ&#34; or &#34;WRITE&#34;).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param principalId ID of the principal with access
+         * @param principalId ID of the user, team, or organization for which you&#39;re granting permissions.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param principalId ID of the principal with access
+         * @param principalId ID of the user, team, or organization for which you&#39;re granting permissions.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param principalType Type of principal, possible values: ORG, TEAM, USER
+         * @param principalType Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DashboardPermissionsAclArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param principalType Type of principal, possible values: ORG, TEAM, USER
+         * @param principalType Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of &#34;USER&#34;, &#34;TEAM&#34;, or &#34;ORG&#34;.
          * 
          * @return builder
          * 

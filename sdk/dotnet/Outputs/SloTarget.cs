@@ -14,19 +14,19 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class SloTarget
     {
         /// <summary>
-        /// SLO alert rules
+        /// List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
         /// </summary>
         public readonly ImmutableArray<Outputs.SloTargetAlertRule> AlertRules;
         /// <summary>
-        /// (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+        /// Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
         /// </summary>
         public readonly string? CompliancePeriod;
         /// <summary>
-        /// (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+        /// It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
         /// </summary>
         public readonly string? CycleStart;
         /// <summary>
-        /// (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+        /// The cycle type of the calendar window, e.g. week, month.
         /// </summary>
         public readonly string? CycleType;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly double Slo;
         /// <summary>
-        /// SLO target type can be the following type: `RollingWindow`
+        /// SLO target type can be the following type: `"RollingWindow"`, `"CalendarWindow"`
         /// </summary>
         public readonly string Type;
 

@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class SloTargetAlertRule
     {
         /// <summary>
-        /// Set of rules used for alerting
+        /// Set of rules used for alerting.
         /// </summary>
         public readonly ImmutableArray<Outputs.SloTargetAlertRuleRule> Rules;
         /// <summary>
-        /// SLO alert rule type
+        /// SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can't specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
         /// </summary>
         public readonly string Type;
 

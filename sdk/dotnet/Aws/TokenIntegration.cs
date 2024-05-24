@@ -17,29 +17,18 @@ namespace Pulumi.SignalFx.Aws
     /// &gt; **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
     /// 
     /// ## Example
-    /// 
-    /// ## Arguments
-    /// 
-    /// * `name` - (Required) The name of this integration
-    /// 
-    /// ## Attributes
-    /// 
-    /// In addition to all arguments above, the following attributes are exported:
-    /// 
-    /// * `id` - The ID of the integration to use with `signalfx.aws.Integration`
-    /// * `signalfx_aws_account` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
     /// </summary>
     [SignalFxResourceType("signalfx:aws/tokenIntegration:TokenIntegration")]
     public partial class TokenIntegration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Name of the integration
+        /// The name of this integration
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Splunk Observability AWS account ID to use with an AWS role.
+        /// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
         /// </summary>
         [Output("signalfxAwsAccount")]
         public Output<string> SignalfxAwsAccount { get; private set; } = null!;
@@ -102,7 +91,7 @@ namespace Pulumi.SignalFx.Aws
     public sealed class TokenIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the integration
+        /// The name of this integration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -116,7 +105,7 @@ namespace Pulumi.SignalFx.Aws
     public sealed class TokenIntegrationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the integration
+        /// The name of this integration
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -125,7 +114,7 @@ namespace Pulumi.SignalFx.Aws
         private Input<string>? _signalfxAwsAccount;
 
         /// <summary>
-        /// The Splunk Observability AWS account ID to use with an AWS role.
+        /// The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
         /// </summary>
         public Input<string>? SignalfxAwsAccount
         {

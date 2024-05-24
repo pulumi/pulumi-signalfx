@@ -23,43 +23,32 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `name` - (Required) The name of this integration
- * 
- * ## Attributes
- * 
- * In addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration to use with `signalfx.aws.Integration`
- * * `signalfx_aws_account` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
- * 
  */
 @ResourceType(type="signalfx:aws/tokenIntegration:TokenIntegration")
 public class TokenIntegration extends com.pulumi.resources.CustomResource {
     /**
-     * Name of the integration
+     * The name of this integration
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return The name of this integration
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The Splunk Observability AWS account ID to use with an AWS role.
+     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      * 
      */
     @Export(name="signalfxAwsAccount", refs={String.class}, tree="[0]")
     private Output<String> signalfxAwsAccount;
 
     /**
-     * @return The Splunk Observability AWS account ID to use with an AWS role.
+     * @return The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      * 
      */
     public Output<String> signalfxAwsAccount() {

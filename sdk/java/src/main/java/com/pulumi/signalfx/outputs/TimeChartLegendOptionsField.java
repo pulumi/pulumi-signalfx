@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TimeChartLegendOptionsField {
     /**
-     * @return (true by default) Determines if this property is displayed in the data table.
+     * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The name of a property to hide or show in the data table.
+     * @return The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
     private String property;
 
     private TimeChartLegendOptionsField() {}
     /**
-     * @return (true by default) Determines if this property is displayed in the data table.
+     * @return True or False depending on if you want the property to be shown or hidden.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The name of a property to hide or show in the data table.
+     * @return The name of the property to display. Note the special values of `plot_label` (corresponding with the API&#39;s `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API&#39;s `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      * 
      */
     public String property() {

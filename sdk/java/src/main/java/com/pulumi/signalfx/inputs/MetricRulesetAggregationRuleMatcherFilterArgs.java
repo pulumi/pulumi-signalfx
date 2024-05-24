@@ -17,14 +17,14 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
     public static final MetricRulesetAggregationRuleMatcherFilterArgs Empty = new MetricRulesetAggregationRuleMatcherFilterArgs();
 
     /**
-     * Flag specifying equals or not equals
+     * When true, this filter will match all values not matching the property_values
      * 
      */
     @Import(name="not", required=true)
     private Output<Boolean> not;
 
     /**
-     * @return Flag specifying equals or not equals
+     * @return When true, this filter will match all values not matching the property_values
      * 
      */
     public Output<Boolean> not() {
@@ -32,14 +32,14 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
     }
 
     /**
-     * Name of dimension to match
+     * Name of the dimension
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return Name of dimension to match
+     * @return Name of the dimension
      * 
      */
     public Output<String> property() {
@@ -47,14 +47,14 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
     }
 
     /**
-     * List of property values to match
+     * Value of the dimension
      * 
      */
     @Import(name="propertyValues", required=true)
     private Output<List<String>> propertyValues;
 
     /**
-     * @return List of property values to match
+     * @return Value of the dimension
      * 
      */
     public Output<List<String>> propertyValues() {
@@ -88,7 +88,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param not Flag specifying equals or not equals
+         * @param not When true, this filter will match all values not matching the property_values
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param not Flag specifying equals or not equals
+         * @param not When true, this filter will match all values not matching the property_values
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param property Name of dimension to match
+         * @param property Name of the dimension
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param property Name of dimension to match
+         * @param property Name of the dimension
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param propertyValues List of property values to match
+         * @param propertyValues Value of the dimension
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param propertyValues List of property values to match
+         * @param propertyValues Value of the dimension
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class MetricRulesetAggregationRuleMatcherFilterArgs extends com.pul
         }
 
         /**
-         * @param propertyValues List of property values to match
+         * @param propertyValues Value of the dimension
          * 
          * @return builder
          * 

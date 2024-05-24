@@ -35,6 +35,9 @@ class GetIntegrationResult:
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Whether the integration is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -48,6 +51,9 @@ class GetIntegrationResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the integration.
+        """
         return pulumi.get(self, "name")
 
 
@@ -76,15 +82,8 @@ def get_integration(name: Optional[str] = None,
     pd_integration = signalfx.pagerduty.get_integration(name="PD-Integration")
     ```
 
-    ## Arguments
 
-    * `name` - Specify the exact name of the desired PagerDuty integration
-
-    ## Attributes
-
-    * `id` - The ID of the integration.
-    * `name` - The name of the integration.
-    * `enabled` - Whether the integration is enabled.
+    :param str name: Specify the exact name of the desired PagerDuty integration
     """
     __args__ = dict()
     __args__['name'] = name
@@ -112,14 +111,7 @@ def get_integration_output(name: Optional[pulumi.Input[str]] = None,
     pd_integration = signalfx.pagerduty.get_integration(name="PD-Integration")
     ```
 
-    ## Arguments
 
-    * `name` - Specify the exact name of the desired PagerDuty integration
-
-    ## Attributes
-
-    * `id` - The ID of the integration.
-    * `name` - The name of the integration.
-    * `enabled` - Whether the integration is enabled.
+    :param str name: Specify the exact name of the desired PagerDuty integration
     """
     ...

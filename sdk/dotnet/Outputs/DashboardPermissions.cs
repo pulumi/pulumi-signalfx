@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DashboardPermissions
     {
         /// <summary>
-        /// The custom access control list for this dashboard
+        /// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
         /// </summary>
         public readonly ImmutableArray<Outputs.DashboardPermissionsAcl> Acls;
         /// <summary>
-        /// The ID of the dashboard group that this dashboard inherits permissions from
+        /// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
         /// </summary>
         public readonly string? Parent;
 

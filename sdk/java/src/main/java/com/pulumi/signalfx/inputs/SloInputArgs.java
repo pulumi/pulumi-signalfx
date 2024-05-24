@@ -17,14 +17,14 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
     public static final SloInputArgs Empty = new SloInputArgs();
 
     /**
-     * Label used in `program_text` that refers to the data block which contains the stream of successful events
+     * Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     @Import(name="goodEventsLabel")
     private @Nullable Output<String> goodEventsLabel;
 
     /**
-     * @return Label used in `program_text` that refers to the data block which contains the stream of successful events
+     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
      * 
      */
     public Optional<Output<String>> goodEventsLabel() {
@@ -32,14 +32,14 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Signalflow program text for the SLO. More info at &#34;https://dev.splunk.com/observability/docs/signalflow&#34;. We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     * SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
      * 
      */
     @Import(name="programText", required=true)
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the SLO. More info at &#34;https://dev.splunk.com/observability/docs/signalflow&#34;. We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     * @return SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
      * 
      */
     public Output<String> programText() {
@@ -47,14 +47,14 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Label used in `program_text` that refers to the data block which contains the stream of total events
+     * Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     @Import(name="totalEventsLabel")
     private @Nullable Output<String> totalEventsLabel;
 
     /**
-     * @return Label used in `program_text` that refers to the data block which contains the stream of total events
+     * @return Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
      * 
      */
     public Optional<Output<String>> totalEventsLabel() {
@@ -88,7 +88,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param goodEventsLabel Label used in `program_text` that refers to the data block which contains the stream of successful events
+         * @param goodEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param goodEventsLabel Label used in `program_text` that refers to the data block which contains the stream of successful events
+         * @param goodEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the SLO. More info at &#34;https://dev.splunk.com/observability/docs/signalflow&#34;. We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+         * @param programText SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param programText Signalflow program text for the SLO. More info at &#34;https://dev.splunk.com/observability/docs/signalflow&#34;. We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+         * @param programText SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param totalEventsLabel Label used in `program_text` that refers to the data block which contains the stream of total events
+         * @param totalEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class SloInputArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param totalEventsLabel Label used in `program_text` that refers to the data block which contains the stream of total events
+         * @param totalEventsLabel Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
          * 
          * @return builder
          * 

@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartLegendOptionsField
     {
         /// <summary>
-        /// (true by default) Determines if this property is displayed in the data table.
+        /// True or False depending on if you want the property to be shown or hidden.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The name of a property to hide or show in the data table.
+        /// The name of the property to display. Note the special values of `plot_label` (corresponding with the API's `sf_metric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
         /// </summary>
         public readonly string Property;
 

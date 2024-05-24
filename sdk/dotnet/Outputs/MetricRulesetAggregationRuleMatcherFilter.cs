@@ -14,15 +14,15 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class MetricRulesetAggregationRuleMatcherFilter
     {
         /// <summary>
-        /// Flag specifying equals or not equals
+        /// When true, this filter will match all values not matching the property_values
         /// </summary>
         public readonly bool Not;
         /// <summary>
-        /// Name of dimension to match
+        /// Name of the dimension
         /// </summary>
         public readonly string Property;
         /// <summary>
-        /// List of property values to match
+        /// Value of the dimension
         /// </summary>
         public readonly ImmutableArray<string> PropertyValues;
 

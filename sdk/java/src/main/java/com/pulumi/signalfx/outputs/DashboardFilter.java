@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DashboardFilter {
     /**
-     * @return If true, this filter will also match data that does not have the specified property
+     * @return If true, this filter will also match data that doesn&#39;t have this property at all.
      * 
      */
     private @Nullable Boolean applyIfExist;
     /**
-     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * @return Whether this filter should be a not filter. `false` by default.
      * 
      */
     private @Nullable Boolean negated;
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     private String property;
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     private List<String> values;
 
     private DashboardFilter() {}
     /**
-     * @return If true, this filter will also match data that does not have the specified property
+     * @return If true, this filter will also match data that doesn&#39;t have this property at all.
      * 
      */
     public Optional<Boolean> applyIfExist() {
         return Optional.ofNullable(this.applyIfExist);
     }
     /**
-     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * @return Whether this filter should be a not filter. `false` by default.
      * 
      */
     public Optional<Boolean> negated() {
         return Optional.ofNullable(this.negated);
     }
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     public String property() {
         return this.property;
     }
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public List<String> values() {

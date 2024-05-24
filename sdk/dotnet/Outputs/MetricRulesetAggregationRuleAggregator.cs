@@ -14,19 +14,19 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class MetricRulesetAggregationRuleAggregator
     {
         /// <summary>
-        /// List of dimensions to keep or drop in aggregated metric
+        /// List of dimensions to either be kept or dropped in the new aggregated MTSs
         /// </summary>
         public readonly ImmutableArray<string> Dimensions;
         /// <summary>
-        /// Flag specifying to keep or drop given dimensions
+        /// when true, the specified dimensions will be dropped from the aggregated MTSs
         /// </summary>
         public readonly bool DropDimensions;
         /// <summary>
-        /// The aggregated metric name
+        /// name of the new aggregated metric
         /// </summary>
         public readonly string OutputName;
         /// <summary>
-        /// The type of the aggregator
+        /// Type of aggregator. Must always be "rollup"
         /// </summary>
         public readonly string Type;
 

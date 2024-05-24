@@ -19,14 +19,14 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
     public static final DashboardGroupDashboardFilterOverrideArgs Empty = new DashboardGroupDashboardFilterOverrideArgs();
 
     /**
-     * (false by default) Whether this filter should be a &#34;not&#34; filter
+     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
     @Import(name="negated")
     private @Nullable Output<Boolean> negated;
 
     /**
-     * @return (false by default) Whether this filter should be a &#34;not&#34; filter
+     * @return If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> negated() {
@@ -34,14 +34,14 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
     }
 
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      * 
      */
     @Import(name="property", required=true)
     private Output<String> property;
 
     /**
-     * @return A metric time series dimension or property name
+     * @return A metric time series dimension or property name.
      * 
      */
     public Output<String> property() {
@@ -49,14 +49,14 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
     }
 
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
     /**
-     * @return List of strings (which will be treated as an OR filter on the property)
+     * @return (Optional) List of of strings (which will be treated as an OR filter on the property).
      * 
      */
     public Output<List<String>> values() {
@@ -90,7 +90,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param negated (false by default) Whether this filter should be a &#34;not&#34; filter
+         * @param negated If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param negated (false by default) Whether this filter should be a &#34;not&#34; filter
+         * @param negated If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param property A metric time series dimension or property name
+         * @param property A metric time series dimension or property name.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class DashboardGroupDashboardFilterOverrideArgs extends com.pulumi.
         }
 
         /**
-         * @param values List of strings (which will be treated as an OR filter on the property)
+         * @param values (Optional) List of of strings (which will be treated as an OR filter on the property).
          * 
          * @return builder
          * 

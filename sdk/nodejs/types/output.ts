@@ -7,153 +7,156 @@ import * as outputs from "../types/output";
 
 export interface AlertMutingRuleFilter {
     /**
-     * (false by default) whether this filter should be a "not" filter
+     * Determines if this is a "not" filter. Defaults to `false`.
      */
     negated?: boolean;
     /**
-     * the property to filter by
+     * The property to filter.
      */
     property: string;
     /**
-     * the value of the property to filter by
+     * The property value to filter.
      */
     propertyValue: string;
 }
 
 export interface DashboardChart {
     /**
-     * ID of the chart to display
+     * ID of the chart to display.
      */
     chartId: string;
     /**
-     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart (between `0` and `11`).
      */
     column?: number;
     /**
-     * How many rows the chart should take up. (greater than or equal to 1)
+     * How many rows the chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: number;
     /**
-     * The row to show the chart in (zero-based); if height > 1, this value represents the topmost row of the chart. (greater than or equal to 0)
+     * The row to show the chart in (zero-based); if `height > 1`, this value represents the topmost row of the chart (greater than or equal to `0`).
      */
     row?: number;
     /**
-     * How many columns (out of a total of 12, one-based) the chart should take up. (between 1 and 12)
+     * How many columns (out of a total of 12) the chart should take up (between `1` and `12`). `12` by default.
      */
     width?: number;
 }
 
 export interface DashboardColumn {
     /**
-     * Charts to use for the column
+     * List of IDs of the charts to display.
      */
     chartIds: string[];
     /**
-     * The column to show the chart in (zero-based); this value always represents the leftmost column of the chart. (between 0 and 11)
+     * Column number for the layout.
      */
     column?: number;
     /**
-     * How many rows each chart should take up. (greater than or equal to 1)
+     * How many rows every chart should take up (greater than or equal to 1). 1 by default.
      */
     height?: number;
     /**
-     * Number of columns (out of a total of 12) each chart should take up. (between 1 and 12)
+     * How many columns (out of a total of `12`) every chart should take up (between `1` and `12`). `12` by default.
      */
     width?: number;
 }
 
 export interface DashboardEventOverlay {
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: string;
     /**
-     * The text displaying in the dropdown menu used to select this event overlay as an active overlay for the dashboard.
+     * Text shown in the dropdown when selecting this overlay from the menu.
      */
     label?: string;
     /**
-     * (false by default) Whether a vertical line should be displayed in the plot at the time the event occurs
+     * Show a vertical line for the event. `false` by default.
      */
     line?: boolean;
     /**
-     * Search term used to define events
+     * Search term used to choose the events shown in the overlay.
      */
     signal: string;
+    /**
+     * Each element specifies a filter to use against the signal specified in the `signal`.
+     */
     sources?: outputs.DashboardEventOverlaySource[];
     /**
-     * Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+     * Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      */
     type?: string;
 }
 
 export interface DashboardEventOverlaySource {
     /**
-     * (false by default) Whether this filter should be a "not" filter
+     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      */
     negated?: boolean;
     /**
-     * A metric time series dimension or property name
+     * The name of a dimension to filter against.
      */
     property: string;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values: string[];
 }
 
 export interface DashboardFilter {
     /**
-     * If true, this filter will also match data that does not have the specified property
+     * If true, this filter will also match data that doesn't have this property at all.
      */
     applyIfExist?: boolean;
     /**
-     * (false by default) Whether this filter should be a "not" filter
+     * Whether this filter should be a not filter. `false` by default.
      */
     negated?: boolean;
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      */
     property: string;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values: string[];
 }
 
 export interface DashboardGrid {
     /**
-     * Charts to use for the grid
+     * List of IDs of the charts to display.
      */
     chartIds: string[];
     /**
-     * How many rows each chart should take up. (greater than or equal to 1)
+     * How many rows every chart should take up (greater than or equal to `1`). `1` by default.
      */
     height?: number;
     /**
-     * Number of columns (out of a total of 12, one-based) each chart should take up. (between 1 and 12)
+     * How many columns (out of a total of 12) every chart should take up (between `1` and `12`). `12` by default.
      */
     width?: number;
 }
 
 export interface DashboardGroupDashboard {
     /**
-     * Unique identifier of an association between a dashboard group and a dashboard
+     * The ID of the association between the dashboard group and the dashboard
      */
     configId: string;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * The dashboard id to mirror
      */
     dashboardId: string;
     /**
-     * String that provides a description override for a mirrored dashboard
+     * The description that will override the original dashboards's description.
      */
     descriptionOverride?: string;
     /**
-     * Filter to apply to each chart in the dashboard
+     * The description that will override the original dashboards's description.
      */
     filterOverrides?: outputs.DashboardGroupDashboardFilterOverride[];
     /**
-     * String that provides a name override for a mirrored dashboard
+     * The name that will override the original dashboards's name.
      */
     nameOverride?: string;
     /**
@@ -164,15 +167,15 @@ export interface DashboardGroupDashboard {
 
 export interface DashboardGroupDashboardFilterOverride {
     /**
-     * (false by default) Whether this filter should be a "not" filter
+     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      */
     negated?: boolean;
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      */
     property: string;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * (Optional) List of of strings (which will be treated as an OR filter on the property).
      */
     values: string[];
 }
@@ -217,114 +220,117 @@ export interface DashboardGroupImportQualifierFilter {
 
 export interface DashboardGroupPermission {
     /**
-     * Actions level, possible values: READ, WRITE
+     * Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
      */
     actions?: string[];
     /**
-     * ID of the principal with access
+     * ID of the user, team, or organization for which you're granting permissions.
      */
     principalId: string;
     /**
-     * Type of principal, possible values: ORG, TEAM, USER
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
      */
     principalType: string;
 }
 
 export interface DashboardPermissions {
     /**
-     * The custom access control list for this dashboard
+     * List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      */
     acls?: outputs.DashboardPermissionsAcl[];
     /**
-     * The ID of the dashboard group that this dashboard inherits permissions from
+     * ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      */
     parent?: string;
 }
 
 export interface DashboardPermissionsAcl {
     /**
-     * Actions level, possible values: READ, WRITE
+     * Action the user, team, or organization can take with the dashboard. List of values (value can be "READ" or "WRITE").
      */
     actions?: string[];
     /**
-     * ID of the principal with access
+     * ID of the user, team, or organization for which you're granting permissions.
      */
     principalId: string;
     /**
-     * Type of principal, possible values: ORG, TEAM, USER
+     * Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
      */
     principalType: string;
 }
 
 export interface DashboardSelectedEventOverlay {
     /**
-     * Search term used to define events
+     * Search term used to choose the events shown in the overlay.
      */
     signal: string;
+    /**
+     * Each element specifies a filter to use against the signal specified in the `signal`.
+     */
     sources?: outputs.DashboardSelectedEventOverlaySource[];
     /**
-     * Source for this event's data. Can be "eventTimeSeries" (default) or "detectorEvents".
+     * Can be set to `eventTimeSeries` (the default) to refer to externally reported events, or `detectorEvents` to refer to events from detector triggers.
      */
     type?: string;
 }
 
 export interface DashboardSelectedEventOverlaySource {
     /**
-     * (false by default) Whether this filter should be a "not" filter
+     * If true,  only data that does not match the specified value of the specified property appear in the event overlay. Defaults to `false`.
      */
     negated?: boolean;
     /**
-     * A metric time series dimension or property name
+     * The name of a dimension to filter against.
      */
     property: string;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * A list of values to be used with the `property`, they will be combined via `OR`.
      */
     values: string[];
 }
 
 export interface DashboardVariable {
     /**
-     * An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard
+     * An alias for the dashboard variable. This text will appear as the label for the dropdown field on the dashboard.
      */
     alias: string;
     /**
-     * If true, this variable will also match data that does not have the specified property
+     * If true, this variable will also match data that doesn't have this property at all.
      */
     applyIfExist?: boolean;
     /**
-     * Variable description
+     * Variable description.
      */
     description?: string;
     /**
-     * A metric time series dimension or property name
+     * A metric time series dimension or property name.
      */
     property: string;
     /**
-     * If true, this variable will only apply to charts with a filter on the named property.
+     * If `true`, this variable will only apply to charts that have a filter for the property.
      */
     replaceOnly?: boolean;
     /**
-     * If true, this variable may only be set to the values listed in preferredSuggestions. and only these values will appear in autosuggestion menus. false by default
+     * If `true`, this variable may only be set to the values listed in `valuesSuggested` and only these values will appear in autosuggestion menus. `false` by default.
      */
     restrictedSuggestions?: boolean;
     /**
-     * Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). false by default
+     * Determines whether a value is required for this variable (and therefore whether it will be possible to view this dashboard without this filter applied). `false` by default.
      */
     valueRequired?: boolean;
     /**
-     * List of strings (which will be treated as an OR filter on the property)
+     * List of of strings (which will be treated as an OR filter on the property).
      */
     values?: string[];
     /**
-     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable
+     * A list of strings of suggested values for this variable; these suggestions will receive priority when values are autosuggested for this variable.
      */
     valuesSuggesteds?: string[];
 }
 
 export interface DataLinkTargetExternalUrl {
     /**
-     * The minimum time window for a search sent to an external site. Depends on the value set for `timeFormat`.
+     * The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
      */
     minimumTimeWindow?: string;
     /**
@@ -332,15 +338,15 @@ export interface DataLinkTargetExternalUrl {
      */
     name: string;
     /**
-     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      */
     propertyKeyMapping?: {[key: string]: string};
     /**
-     * Designates the format of minimumTimeWindow in the same data link target object.
+     * [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimumTimeWindow` in the same data link target object. Must be one of `"ISO8601"`, `"EpochSeconds"` or `"Epoch"` (which is milliseconds). Defaults to `"ISO8601"`.
      */
     timeFormat?: string;
     /**
-     * URL string for a Splunk instance or external system data link target.
+     * URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
      */
     url: string;
 }
@@ -355,7 +361,7 @@ export interface DataLinkTargetSignalfxDashboard {
      */
     dashboardId: string;
     /**
-     * Flag that designates a target as the default for a data link object.
+     * Flag that designates a target as the default for a data link object. `true` by default
      */
     isDefault?: boolean;
     /**
@@ -370,53 +376,53 @@ export interface DataLinkTargetSplunk {
      */
     name: string;
     /**
-     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      */
     propertyKeyMapping?: {[key: string]: string};
 }
 
 export interface DetectorRule {
     /**
-     * Description of the rule
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     description?: string;
     /**
-     * A detect label which matches a detect label within the program text
+     * A detect label which matches a detect label within `programText`.
      */
     detectLabel: string;
     /**
-     * (default: false) When true, notifications and events will not be generated for the detect label
+     * When true, notifications and events will not be generated for the detect label. `false` by default.
      */
     disabled?: boolean;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
      */
     notifications?: string[];
     /**
-     * Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
      */
     parameterizedBody?: string;
     /**
-     * Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
      */
     parameterizedSubject?: string;
     /**
-     * URL of page to consult when an alert is triggered
+     * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      */
     runbookUrl?: string;
     /**
-     * The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
      */
     severity: string;
     /**
-     * Plain text suggested first course of action, such as a command to execute.
+     * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: string;
 }
 
 export interface DetectorVizOption {
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: string;
     /**
@@ -424,11 +430,15 @@ export interface DetectorVizOption {
      */
     displayName?: string;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: string;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+     *
+     * **Notes**
+     *
+     * Use both `maxDelay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
      */
     valuePrefix?: string;
     /**
@@ -436,7 +446,7 @@ export interface DetectorVizOption {
      */
     valueSuffix?: string;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: string;
 }
@@ -447,34 +457,34 @@ export interface HeatmapChartColorRange {
      */
     color: string;
     /**
-     * The maximum value within the coloring range
+     * The maximum value within the coloring range.
      */
     maxValue?: number;
     /**
-     * The minimum value within the coloring range
+     * The minimum value within the coloring range.
      */
     minValue?: number;
 }
 
 export interface HeatmapChartColorScale {
     /**
-     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color: string;
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      */
     gt?: number;
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      */
     gte?: number;
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inclusive value for this range.
      */
     lt?: number;
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      */
     lte?: number;
 }
@@ -485,37 +495,37 @@ export interface ListChartColorScale {
      */
     color: string;
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      */
     gt?: number;
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      */
     gte?: number;
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inculsive value for this range.
      */
     lt?: number;
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      */
     lte?: number;
 }
 
 export interface ListChartLegendOptionsField {
     /**
-     * (true by default) Determines if this property is displayed in the data table.
+     * True or False depending on if you want the property to be shown or hidden.
      */
     enabled?: boolean;
     /**
-     * The name of a property to hide or show in the data table.
+     * The name of the property to display. Note the special values of `sfMetric` (corresponding with the API's `Plot Name`) which shows the label of the time series `publish()` and `sf_originatingMetric` (corresponding with the API's `metric (sf metric)`) that shows the [name of the metric](https://dev.splunk.com/observability/docs/signalflow/functions/data_function/) for the time series being displayed.
      */
     property: string;
 }
 
 export interface ListChartVizOption {
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color?: string;
     /**
@@ -523,11 +533,11 @@ export interface ListChartVizOption {
      */
     displayName?: string;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: string;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valuePrefix?: string;
     /**
@@ -535,78 +545,78 @@ export interface ListChartVizOption {
      */
     valueSuffix?: string;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: string;
 }
 
 export interface MetricRulesetAggregationRule {
     /**
-     * The aggregator for this rule
+     * Aggregator object
      */
     aggregators: outputs.MetricRulesetAggregationRuleAggregator[];
     /**
-     * Status of this aggregation rule
+     * When false, this rule will not generate aggregated MTSs
      */
     enabled: boolean;
     /**
-     * The matcher for this rule
+     * Matcher object
      */
     matchers: outputs.MetricRulesetAggregationRuleMatcher[];
     /**
-     * Name of this aggregation rule
+     * name of the aggregation rule
      */
     name?: string;
 }
 
 export interface MetricRulesetAggregationRuleAggregator {
     /**
-     * List of dimensions to keep or drop in aggregated metric
+     * List of dimensions to either be kept or dropped in the new aggregated MTSs
      */
     dimensions: string[];
     /**
-     * Flag specifying to keep or drop given dimensions
+     * when true, the specified dimensions will be dropped from the aggregated MTSs
      */
     dropDimensions: boolean;
     /**
-     * The aggregated metric name
+     * name of the new aggregated metric
      */
     outputName: string;
     /**
-     * The type of the aggregator
+     * Type of aggregator. Must always be "rollup"
      */
     type: string;
 }
 
 export interface MetricRulesetAggregationRuleMatcher {
     /**
-     * List of filters to match on
+     * List of filters to filter the set of input MTSs
      */
     filters?: outputs.MetricRulesetAggregationRuleMatcherFilter[];
     /**
-     * The type of the matcher
+     * Type of matcher. Must always be "dimension"
      */
     type: string;
 }
 
 export interface MetricRulesetAggregationRuleMatcherFilter {
     /**
-     * Flag specifying equals or not equals
+     * When true, this filter will match all values not matching the property_values
      */
     not: boolean;
     /**
-     * Name of dimension to match
+     * Name of the dimension
      */
     property: string;
     /**
-     * List of property values to match
+     * Value of the dimension
      */
     propertyValues: string[];
 }
 
 export interface MetricRulesetRoutingRule {
     /**
-     * Destination to send the input metric
+     * end destination of the input metric. Must be `RealTime` or `Drop`
      */
     destination: string;
 }
@@ -624,11 +634,11 @@ export interface OrgTokenDpmLimits {
 
 export interface OrgTokenHostOrUsageLimits {
     /**
-     * Max number of containers that can use this token
+     * Max number of Docker containers that can use this token
      */
     containerLimit?: number;
     /**
-     * Notification threshold for containers
+     * Notification threshold for Docker containers
      */
     containerNotificationThreshold?: number;
     /**
@@ -640,11 +650,11 @@ export interface OrgTokenHostOrUsageLimits {
      */
     customMetricsNotificationThreshold?: number;
     /**
-     * Max number of high-res metrics that can be sent with this token
+     * Max number of hi-res metrics that can be sent with this toke
      */
     highResMetricsLimit?: number;
     /**
-     * Notification threshold for high-res metrics
+     * Notification threshold for hi-res metrics
      */
     highResMetricsNotificationThreshold?: number;
     /**
@@ -663,26 +673,26 @@ export interface SingleValueChartColorScale {
      */
     color: string;
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      */
     gt?: number;
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      */
     gte?: number;
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inculsive value for this range.
      */
     lt?: number;
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      */
     lte?: number;
 }
 
 export interface SingleValueChartVizOption {
     /**
-     * Color to use
+     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      */
     color?: string;
     /**
@@ -690,11 +700,11 @@ export interface SingleValueChartVizOption {
      */
     displayName?: string;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: string;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valuePrefix?: string;
     /**
@@ -702,41 +712,41 @@ export interface SingleValueChartVizOption {
      */
     valueSuffix?: string;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: string;
 }
 
 export interface SloInput {
     /**
-     * Label used in `programText` that refers to the data block which contains the stream of successful events
+     * Label used in `"programText"` that refers to the data block which contains the stream of successful events
      */
     goodEventsLabel?: string;
     /**
-     * Signalflow program text for the SLO. More info at "https://dev.splunk.com/observability/docs/signalflow". We require this Signalflow program text to contain at least 2 data blocks - one for the total stream and one for the good stream, whose labels are specified by goodEventsLabel and totalEventsLabel
+     * SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
      */
     programText: string;
     /**
-     * Label used in `programText` that refers to the data block which contains the stream of total events
+     * Label used in `"programText"` that refers to the data block which contains the stream of total events
      */
     totalEventsLabel?: string;
 }
 
 export interface SloTarget {
     /**
-     * SLO alert rules
+     * List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      */
     alertRules: outputs.SloTargetAlertRule[];
     /**
-     * (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      */
     compliancePeriod?: string;
     /**
-     * (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
      */
     cycleStart: string;
     /**
-     * (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * The cycle type of the calendar window, e.g. week, month.
      */
     cycleType?: string;
     /**
@@ -744,41 +754,41 @@ export interface SloTarget {
      */
     slo: number;
     /**
-     * SLO target type can be the following type: `RollingWindow`
+     * SLO target type can be the following type: `"RollingWindow"`, `"CalendarWindow"`
      */
     type: string;
 }
 
 export interface SloTargetAlertRule {
     /**
-     * Set of rules used for alerting
+     * Set of rules used for alerting.
      */
     rules: outputs.SloTargetAlertRuleRule[];
     /**
-     * SLO alert rule type
+     * SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alertRule per type. For example, you can't specify two alertRule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     type: string;
 }
 
 export interface SloTargetAlertRuleRule {
     /**
-     * Description of the rule
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      */
     description?: string;
     /**
-     * (default: false) When true, notifications and events will not be generated for the detect label
+     * When true, notifications and events will not be generated for the detect label. `false` by default.
      */
     disabled?: boolean;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      */
     notifications?: string[];
     /**
-     * Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
      */
     parameterizedBody?: string;
     /**
-     * Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
      */
     parameterizedSubject?: string;
     /**
@@ -786,54 +796,54 @@ export interface SloTargetAlertRuleRule {
      */
     parameters?: outputs.SloTargetAlertRuleRuleParameters;
     /**
-     * URL of page to consult when an alert is triggered
+     * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      */
     runbookUrl?: string;
     /**
-     * The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
      */
     severity: string;
     /**
-     * Plain text suggested first course of action, such as a command to execute.
+     * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      */
     tip?: string;
 }
 
 export interface SloTargetAlertRuleRuleParameters {
     /**
-     * Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold1 parameter.
+     * Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"burnRateThreshold1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     burnRateThreshold1: number;
     /**
-     * Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: BURN_RATE alert rules use the burnRateThreshold2 parameter.
+     * Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `"BURN_RATE"` alert rules use the `"burnRateThreshold2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     burnRateThreshold2: number;
     /**
-     * Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the fireLasting parameter
+     * Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: `"BREACH"` and `"ERROR_BUDGET_LEFT"` alert rules use the fireLasting parameter. Default: `"5m"`
      */
     fireLasting: string;
     /**
-     * Long window 1 used in burn rate alert calculation. This value must be longer than shortWindow1` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow1 parameter.
+     * Long window 1 used in burn rate alert calculation. This value must be longer than `"shortWindow1"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"longWindow1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     longWindow1: string;
     /**
-     * Long window 2 used in burn rate alert calculation. This value must be longer than shortWindow2` and shorter than 90 days. Note: BURN_RATE alert rules use the longWindow2 parameter.
+     * Long window 2 used in burn rate alert calculation. This value must be longer than `"shortWindow2"` and shorter than 90 days. Note: `"BURN_RATE"` alert rules use the `"longWindow2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     longWindow2: string;
     /**
-     * Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: ERROR_BUDGET_LEFT alert rules use the percentErrorBudgetLeft parameter.
+     * Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `"ERROR_BUDGET_LEFT"` alert rules use the `"percentErrorBudgetLeft"` parameter. Default: `100`
      */
     percentErrorBudgetLeft: number;
     /**
-     * Percentage of the fireLasting duration that the alert condition is met before the alert is triggered. Note: BREACH and ERROR_BUDGET_LEFT alert rules use the percentOfLasting parameter
+     * Percentage of the `"fireLasting"` duration that the alert condition is met before the alert is triggered. Note: `"BREACH"` and `"ERROR_BUDGET_LEFT"` alert rules use the `"percentOfLasting"` parameter. Default: `100`
      */
     percentOfLasting: number;
     /**
-     * Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_1. Note: BURN_RATE alert rules use the shortWindow1 parameter.
+     * Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `"longWindow1"`. Note: `"BURN_RATE"` alert rules use the `"shortWindow1"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     shortWindow1: string;
     /**
-     * Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of long_window_2. Note: BURN_RATE alert rules use the shortWindow2 parameter.
+     * Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `"longWindow2"`. Note: `"BURN_RATE"` alert rules use the `"shortWindow2"` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      */
     shortWindow2: string;
 }
@@ -867,31 +877,31 @@ export interface TableChartVizOption {
 
 export interface TimeChartAxisLeft {
     /**
-     * A line to draw as a high watermark
+     * A line to draw as a high watermark.
      */
     highWatermark?: number;
     /**
-     * A label to attach to the high watermark line
+     * A label to attach to the high watermark line.
      */
     highWatermarkLabel?: string;
     /**
-     * Label of the left axis
+     * Label of the left axis.
      */
     label?: string;
     /**
-     * A line to draw as a low watermark
+     * A line to draw as a low watermark.
      */
     lowWatermark?: number;
     /**
-     * A label to attach to the low watermark line
+     * A label to attach to the low watermark line.
      */
     lowWatermarkLabel?: string;
     /**
-     * The maximum value for the left axis
+     * The maximum value for the left axis.
      */
     maxValue?: number;
     /**
-     * The minimum value for the left axis
+     * The minimum value for the left axis.
      */
     minValue?: number;
     watermarks?: outputs.TimeChartAxisLeftWatermark[];
@@ -910,31 +920,31 @@ export interface TimeChartAxisLeftWatermark {
 
 export interface TimeChartAxisRight {
     /**
-     * A line to draw as a high watermark
+     * A line to draw as a high watermark.
      */
     highWatermark?: number;
     /**
-     * A label to attach to the high watermark line
+     * A label to attach to the high watermark line.
      */
     highWatermarkLabel?: string;
     /**
-     * Label of the right axis
+     * Label of the right axis.
      */
     label?: string;
     /**
-     * A line to draw as a low watermark
+     * A line to draw as a low watermark.
      */
     lowWatermark?: number;
     /**
-     * A label to attach to the low watermark line
+     * A label to attach to the low watermark line.
      */
     lowWatermarkLabel?: string;
     /**
-     * The maximum value for the right axis
+     * The maximum value for the right axis.
      */
     maxValue?: number;
     /**
-     * The minimum value for the right axis
+     * The minimum value for the right axis.
      */
     minValue?: number;
     watermarks?: outputs.TimeChartAxisRightWatermark[];
@@ -953,7 +963,7 @@ export interface TimeChartAxisRightWatermark {
 
 export interface TimeChartEventOption {
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: string;
     /**
@@ -961,36 +971,36 @@ export interface TimeChartEventOption {
      */
     displayName?: string;
     /**
-     * The label used in the publish statement that displays the events you want to customize
+     * Label used in the publish statement that displays the event query you want to customize.
      */
     label: string;
 }
 
 export interface TimeChartHistogramOption {
     /**
-     * Base color theme to use for the graph.
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine, red, gold, greenyellow, chartreuse, jade
      */
     colorTheme?: string;
 }
 
 export interface TimeChartLegendOptionsField {
     /**
-     * (true by default) Determines if this property is displayed in the data table.
+     * True or False depending on if you want the property to be shown or hidden.
      */
     enabled?: boolean;
     /**
-     * The name of a property to hide or show in the data table.
+     * The name of the property to display. Note the special values of `plotLabel` (corresponding with the API's `sfMetric`) which shows the label of the time series `publish()` and `metric` (corresponding with the API's `sf_originatingMetric`) that shows the name of the metric for the time series being displayed.
      */
     property: string;
 }
 
 export interface TimeChartVizOption {
     /**
-     * The Y-axis associated with values for this plot. Must be either "right" or "left". Defaults to "left".
+     * Y-axis associated with values for this plot. Must be either `right` or `left`.
      */
     axis?: string;
     /**
-     * Color to use
+     * Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
      */
     color?: string;
     /**
@@ -998,15 +1008,15 @@ export interface TimeChartVizOption {
      */
     displayName?: string;
     /**
-     * The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      */
     label: string;
     /**
-     * (Chart plotType by default) The visualization style to use. Must be "LineChart", "AreaChart", "ColumnChart", or "Histogram"
+     * The visualization style to use. Must be `"LineChart"`, `"AreaChart"`, `"ColumnChart"`, or `"Histogram"`. Chart level `plotType` by default.
      */
     plotType?: string;
     /**
-     * An arbitrary prefix to display with the value of this plot
+     * , `valueSuffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      */
     valuePrefix?: string;
     /**
@@ -1014,32 +1024,38 @@ export interface TimeChartVizOption {
      */
     valueSuffix?: string;
     /**
-     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      */
     valueUnit?: string;
 }
 
 export interface WebhookIntegrationHeader {
+    /**
+     * The key of the header to send
+     */
     headerKey: string;
+    /**
+     * The value of the header to send
+     */
     headerValue: string;
 }
 
 export namespace aws {
     export interface IntegrationCustomNamespaceSyncRule {
         /**
-         * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+         * Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
         defaultAction?: string;
         /**
-         * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+         * Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
         filterAction?: string;
         /**
-         * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
         filterSource?: string;
         /**
-         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See the AWS documentation on publishing metrics for more information.
          */
         namespace: string;
     }
@@ -1061,19 +1077,19 @@ export namespace aws {
 
     export interface IntegrationNamespaceSyncRule {
         /**
-         * Controls the Splunk Observability default behavior for processing data from an AWS namespace. Splunk Observability ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability treats data that doesn't match the filter. The available actions are one of "Include" or "Exclude".
+         * Controls the Splunk Observability Cloud default behavior for processing data from an AWS namespace. Splunk Observability Cloud ignores this property unless you specify the `filterAction` and `filterSource` properties. If you do specify them, use this property to control how Splunk Observability Cloud treats data that doesn't match the filter. The available actions are one of `"Include"` or `"Exclude"`.
          */
         defaultAction?: string;
         /**
-         * Controls how Splunk Observability processes data from a custom AWS namespace. The available actions are one of "Include" or "Exclude".
+         * Controls how Splunk Observability Cloud processes data from a custom AWS namespace. The available actions are one of `"Include"` or `"Exclude"`.
          */
         filterAction?: string;
         /**
-         * Expression that selects the data that Splunk Observability should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
+         * Expression that selects the data that Splunk Observability Cloud should sync for the custom namespace associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function; it can be any valid SignalFlow filter expression.
          */
         filterSource?: string;
         /**
-         * An AWS namespace having custom AWS metrics that you want to sync with Splunk Observability. See the AWS documentation on publishing metrics for more information.
+         * An AWS custom namespace having custom AWS metrics that you want to sync with Splunk Observability Cloud. See `services` field description below for additional information.
          */
         namespace: string;
     }
@@ -1083,16 +1099,19 @@ export namespace aws {
 export namespace azure {
     export interface IntegrationCustomNamespacesPerService {
         /**
-         * The namespaces to sync
+         * The additional namespaces.
          */
         namespaces: string[];
         /**
-         * The name of the service
+         * The name of the service.
          */
         service: string;
     }
 
     export interface IntegrationResourceFilterRule {
+        /**
+         * Expression that selects the data that Splunk Observability Cloud should sync for the resource associated with this sync rule. The expression uses the syntax defined for the SignalFlow `filter()` function. The source of each filter rule must be in the form filter('key', 'value'). You can join multiple filter statements using the and and or operators. Referenced keys are limited to tags and must start with the azure_tag_ prefix.
+         */
         filterSource: string;
     }
 
@@ -1109,7 +1128,7 @@ export namespace gcp {
 export namespace log {
     export interface ViewColumn {
         /**
-         * Name of the column
+         * Name of the log view.
          */
         name: string;
     }

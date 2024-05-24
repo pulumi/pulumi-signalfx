@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _actions;
 
         /// <summary>
-        /// Actions level, possible values: READ, WRITE
+        /// Action the user, team, or organization can take with the dashboard group. List of values (value can be "READ" or "WRITE").
         /// </summary>
         public InputList<string> Actions
         {
@@ -25,13 +25,13 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// ID of the principal with access
+        /// ID of the user, team, or organization for which you're granting permissions.
         /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// Type of principal, possible values: ORG, TEAM, USER
+        /// Clarify whether this permission configuration is for a user, a team, or an organization. Value can be one of "USER", "TEAM", or "ORG".
         /// </summary>
         [Input("principalType", required: true)]
         public Input<string> PrincipalType { get; set; } = null!;

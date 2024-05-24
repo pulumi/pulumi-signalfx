@@ -19,14 +19,14 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
     public static final SloArgs Empty = new SloArgs();
 
     /**
-     * Description of the SLO
+     * Description of the SLO.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the SLO
+     * @return Description of the SLO.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,16 +34,14 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SignalFlow program and arguments text strings that define the streams used as successful event count and total event
-     * count
+     * Properties to configure an SLO object inputs
      * 
      */
     @Import(name="input", required=true)
     private Output<SloInputArgs> input;
 
     /**
-     * @return SignalFlow program and arguments text strings that define the streams used as successful event count and total event
-     * count
+     * @return Properties to configure an SLO object inputs
      * 
      */
     public Output<SloInputArgs> input() {
@@ -51,14 +49,14 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the SLO
+     * Name of the SLO. Each SLO name must be unique within an organization.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the SLO
+     * @return Name of the SLO. Each SLO name must be unique within an organization.
      * 
      */
     public Optional<Output<String>> name() {
@@ -81,14 +79,14 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the SLO. Currently only RequestBased SLO is supported
+     * Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of the SLO. Currently only RequestBased SLO is supported
+     * @return Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     public Output<String> type() {
@@ -124,7 +122,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the SLO
+         * @param description Description of the SLO.
          * 
          * @return builder
          * 
@@ -135,7 +133,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the SLO
+         * @param description Description of the SLO.
          * 
          * @return builder
          * 
@@ -145,8 +143,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param input SignalFlow program and arguments text strings that define the streams used as successful event count and total event
-         * count
+         * @param input Properties to configure an SLO object inputs
          * 
          * @return builder
          * 
@@ -157,8 +154,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param input SignalFlow program and arguments text strings that define the streams used as successful event count and total event
-         * count
+         * @param input Properties to configure an SLO object inputs
          * 
          * @return builder
          * 
@@ -168,7 +164,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the SLO
+         * @param name Name of the SLO. Each SLO name must be unique within an organization.
          * 
          * @return builder
          * 
@@ -179,7 +175,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the SLO
+         * @param name Name of the SLO. Each SLO name must be unique within an organization.
          * 
          * @return builder
          * 
@@ -210,7 +206,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the SLO. Currently only RequestBased SLO is supported
+         * @param type Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
          * 
          * @return builder
          * 
@@ -221,7 +217,7 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the SLO. Currently only RequestBased SLO is supported
+         * @param type Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
          * 
          * @return builder
          * 

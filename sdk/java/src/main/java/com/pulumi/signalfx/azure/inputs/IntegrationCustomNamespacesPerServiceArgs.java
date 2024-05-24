@@ -16,14 +16,14 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
     public static final IntegrationCustomNamespacesPerServiceArgs Empty = new IntegrationCustomNamespacesPerServiceArgs();
 
     /**
-     * The namespaces to sync
+     * The additional namespaces.
      * 
      */
     @Import(name="namespaces", required=true)
     private Output<List<String>> namespaces;
 
     /**
-     * @return The namespaces to sync
+     * @return The additional namespaces.
      * 
      */
     public Output<List<String>> namespaces() {
@@ -31,14 +31,14 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
     }
 
     /**
-     * The name of the service
+     * The name of the service.
      * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
-     * @return The name of the service
+     * @return The name of the service.
      * 
      */
     public Output<String> service() {
@@ -71,7 +71,7 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param namespaces The namespaces to sync
+         * @param namespaces The additional namespaces.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param namespaces The namespaces to sync
+         * @param namespaces The additional namespaces.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param namespaces The namespaces to sync
+         * @param namespaces The additional namespaces.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param service The name of the service
+         * @param service The name of the service.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class IntegrationCustomNamespacesPerServiceArgs extends com.pulumi.
         }
 
         /**
-         * @param service The name of the service
+         * @param service The name of the service.
          * 
          * @return builder
          * 

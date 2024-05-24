@@ -14,11 +14,11 @@ namespace Pulumi.SignalFx.Azure.Outputs
     public sealed class IntegrationCustomNamespacesPerService
     {
         /// <summary>
-        /// The namespaces to sync
+        /// The additional namespaces.
         /// </summary>
         public readonly ImmutableArray<string> Namespaces;
         /// <summary>
-        /// The name of the service
+        /// The name of the service.
         /// </summary>
         public readonly string Service;
 

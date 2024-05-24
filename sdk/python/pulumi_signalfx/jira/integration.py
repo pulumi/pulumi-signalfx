@@ -28,17 +28,15 @@ class IntegrationArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Integration resource.
-        :param pulumi.Input[str] assignee_name: Jira user name for the assignee
-        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        :param pulumi.Input[str] assignee_name: Jira user name for the assignee.
+        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         :param pulumi.Input[str] base_url: Base URL of the Jira instance that's integrated with SignalFx.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-               validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-               this project.
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         :param pulumi.Input[str] api_token: The API token for the user email
-        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee
-        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee.
+        :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] password: Password used to authenticate the Jira integration.
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
@@ -66,7 +64,7 @@ class IntegrationArgs:
     @pulumi.getter(name="assigneeName")
     def assignee_name(self) -> pulumi.Input[str]:
         """
-        Jira user name for the assignee
+        Jira user name for the assignee.
         """
         return pulumi.get(self, "assignee_name")
 
@@ -78,7 +76,7 @@ class IntegrationArgs:
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Input[str]:
         """
-        Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         """
         return pulumi.get(self, "auth_method")
 
@@ -102,7 +100,7 @@ class IntegrationArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Whether the integration is enabled or not
+        Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -114,8 +112,7 @@ class IntegrationArgs:
     @pulumi.getter(name="issueType")
     def issue_type(self) -> pulumi.Input[str]:
         """
-        Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-        validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
         """
         return pulumi.get(self, "issue_type")
 
@@ -127,8 +124,7 @@ class IntegrationArgs:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Input[str]:
         """
-        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-        this project.
+        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         """
         return pulumi.get(self, "project_key")
 
@@ -152,7 +148,7 @@ class IntegrationArgs:
     @pulumi.getter(name="assigneeDisplayName")
     def assignee_display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Jira display name for the assignee
+        Jira display name for the assignee.
         """
         return pulumi.get(self, "assignee_display_name")
 
@@ -164,7 +160,7 @@ class IntegrationArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration
+        Name of the integration.
         """
         return pulumi.get(self, "name")
 
@@ -227,17 +223,15 @@ class _IntegrationState:
         """
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[str] api_token: The API token for the user email
-        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee
-        :param pulumi.Input[str] assignee_name: Jira user name for the assignee
-        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee.
+        :param pulumi.Input[str] assignee_name: Jira user name for the assignee.
+        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         :param pulumi.Input[str] base_url: Base URL of the Jira instance that's integrated with SignalFx.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-               validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] password: Password used to authenticate the Jira integration.
-        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-               this project.
+        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
         """
@@ -282,7 +276,7 @@ class _IntegrationState:
     @pulumi.getter(name="assigneeDisplayName")
     def assignee_display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Jira display name for the assignee
+        Jira display name for the assignee.
         """
         return pulumi.get(self, "assignee_display_name")
 
@@ -294,7 +288,7 @@ class _IntegrationState:
     @pulumi.getter(name="assigneeName")
     def assignee_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Jira user name for the assignee
+        Jira user name for the assignee.
         """
         return pulumi.get(self, "assignee_name")
 
@@ -306,7 +300,7 @@ class _IntegrationState:
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         """
         return pulumi.get(self, "auth_method")
 
@@ -330,7 +324,7 @@ class _IntegrationState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the integration is enabled or not
+        Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -342,8 +336,7 @@ class _IntegrationState:
     @pulumi.getter(name="issueType")
     def issue_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-        validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
         """
         return pulumi.get(self, "issue_type")
 
@@ -355,7 +348,7 @@ class _IntegrationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the integration
+        Name of the integration.
         """
         return pulumi.get(self, "name")
 
@@ -379,8 +372,7 @@ class _IntegrationState:
     @pulumi.getter(name="projectKey")
     def project_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-        this project.
+        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         """
         return pulumi.get(self, "project_key")
 
@@ -438,41 +430,18 @@ class Integration(pulumi.CustomResource):
 
         ## Example
 
-        ## Arguments
-
-        * `name` - (Required) Name of the integration.
-        * `enabled` - (Required) Whether the integration is enabled.
-        * `auth_method` - (Required) Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
-        * `api_token` - (Required if `auth_method` is `EmailAndToken`) The API token for the user email
-        * `user_email` - (Required if `auth_method` is `EmailAndToken`) Email address used to authenticate the Jira integration.
-        * `username` - (Required if `auth_method` is `UsernameAndPassword`) User name used to authenticate the Jira integration.
-        * `password` - (Required if `auth_method` is `UsernameAndPassword`) Password used to authenticate the Jira integration.
-        * `base_url` - (Required) Base URL of the Jira instance that's integrated with SignalFx.
-        * `issue_type` - (Required) Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-        * `project_key` - (Required) Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
-        * `assignee_name` - (Required) Jira user name for the assignee.
-        * `assignee_display_name` - (Optional) Jira display name for the assignee.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the integration.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_token: The API token for the user email
-        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee
-        :param pulumi.Input[str] assignee_name: Jira user name for the assignee
-        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee.
+        :param pulumi.Input[str] assignee_name: Jira user name for the assignee.
+        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         :param pulumi.Input[str] base_url: Base URL of the Jira instance that's integrated with SignalFx.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-               validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] password: Password used to authenticate the Jira integration.
-        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-               this project.
+        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
         """
@@ -488,27 +457,6 @@ class Integration(pulumi.CustomResource):
         > **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ## Arguments
-
-        * `name` - (Required) Name of the integration.
-        * `enabled` - (Required) Whether the integration is enabled.
-        * `auth_method` - (Required) Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
-        * `api_token` - (Required if `auth_method` is `EmailAndToken`) The API token for the user email
-        * `user_email` - (Required if `auth_method` is `EmailAndToken`) Email address used to authenticate the Jira integration.
-        * `username` - (Required if `auth_method` is `UsernameAndPassword`) User name used to authenticate the Jira integration.
-        * `password` - (Required if `auth_method` is `UsernameAndPassword`) Password used to authenticate the Jira integration.
-        * `base_url` - (Required) Base URL of the Jira instance that's integrated with SignalFx.
-        * `issue_type` - (Required) Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-        * `project_key` - (Required) Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
-        * `assignee_name` - (Required) Jira user name for the assignee.
-        * `assignee_display_name` - (Optional) Jira display name for the assignee.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the integration.
 
         :param str resource_name: The name of the resource.
         :param IntegrationArgs args: The arguments to use to populate this resource's properties.
@@ -602,17 +550,15 @@ class Integration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_token: The API token for the user email
-        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee
-        :param pulumi.Input[str] assignee_name: Jira user name for the assignee
-        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        :param pulumi.Input[str] assignee_display_name: Jira display name for the assignee.
+        :param pulumi.Input[str] assignee_name: Jira user name for the assignee.
+        :param pulumi.Input[str] auth_method: Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         :param pulumi.Input[str] base_url: Base URL of the Jira instance that's integrated with SignalFx.
-        :param pulumi.Input[bool] enabled: Whether the integration is enabled or not
-        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-               validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
-        :param pulumi.Input[str] name: Name of the integration
+        :param pulumi.Input[bool] enabled: Whether the integration is enabled.
+        :param pulumi.Input[str] issue_type: Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        :param pulumi.Input[str] name: Name of the integration.
         :param pulumi.Input[str] password: Password used to authenticate the Jira integration.
-        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-               this project.
+        :param pulumi.Input[str] project_key: Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         :param pulumi.Input[str] user_email: Email address used to authenticate the Jira integration.
         :param pulumi.Input[str] username: User name used to authenticate the Jira integration.
         """
@@ -646,7 +592,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="assigneeDisplayName")
     def assignee_display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Jira display name for the assignee
+        Jira display name for the assignee.
         """
         return pulumi.get(self, "assignee_display_name")
 
@@ -654,7 +600,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="assigneeName")
     def assignee_name(self) -> pulumi.Output[str]:
         """
-        Jira user name for the assignee
+        Jira user name for the assignee.
         """
         return pulumi.get(self, "assignee_name")
 
@@ -662,7 +608,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="authMethod")
     def auth_method(self) -> pulumi.Output[str]:
         """
-        Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+        Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
         """
         return pulumi.get(self, "auth_method")
 
@@ -678,7 +624,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        Whether the integration is enabled or not
+        Whether the integration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -686,8 +632,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="issueType")
     def issue_type(self) -> pulumi.Output[str]:
         """
-        Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-        validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
+        Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that's valid for the Jira project specified in `projectKey`.
         """
         return pulumi.get(self, "issue_type")
 
@@ -695,7 +640,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the integration
+        Name of the integration.
         """
         return pulumi.get(self, "name")
 
@@ -711,8 +656,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter(name="projectKey")
     def project_key(self) -> pulumi.Output[str]:
         """
-        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-        this project.
+        Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
         """
         return pulumi.get(self, "project_key")
 
