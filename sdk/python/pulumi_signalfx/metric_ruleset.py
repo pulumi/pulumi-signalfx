@@ -21,9 +21,9 @@ class MetricRulesetArgs:
                  aggregation_rules: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]] = None):
         """
         The set of arguments for constructing a MetricRuleset resource.
-        :param pulumi.Input[str] metric_name: Name of the metric
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Location to send the input metric
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: Aggregation rules in the ruleset
+        :param pulumi.Input[str] metric_name: Name of the input metric
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
         """
         pulumi.set(__self__, "metric_name", metric_name)
         pulumi.set(__self__, "routing_rules", routing_rules)
@@ -34,7 +34,7 @@ class MetricRulesetArgs:
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Input[str]:
         """
-        Name of the metric
+        Name of the input metric
         """
         return pulumi.get(self, "metric_name")
 
@@ -46,7 +46,7 @@ class MetricRulesetArgs:
     @pulumi.getter(name="routingRules")
     def routing_rules(self) -> pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]:
         """
-        Location to send the input metric
+        Routing Rule object
         """
         return pulumi.get(self, "routing_rules")
 
@@ -58,7 +58,7 @@ class MetricRulesetArgs:
     @pulumi.getter(name="aggregationRules")
     def aggregation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]]:
         """
-        Aggregation rules in the ruleset
+        List of aggregation rules for the metric
         """
         return pulumi.get(self, "aggregation_rules")
 
@@ -81,14 +81,14 @@ class _MetricRulesetState:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleset resources.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: Aggregation rules in the ruleset
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]] aggregation_rules: List of aggregation rules for the metric
         :param pulumi.Input[str] created: Timestamp of when the metric ruleset was created
         :param pulumi.Input[str] creator: ID of the creator of the metric ruleset
         :param pulumi.Input[str] last_updated: Timestamp of when the metric ruleset was last updated
         :param pulumi.Input[str] last_updated_by: ID of user who last updated the metric ruleset
         :param pulumi.Input[str] last_updated_by_name: Name of user who last updated this metric ruleset
-        :param pulumi.Input[str] metric_name: Name of the metric
-        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Location to send the input metric
+        :param pulumi.Input[str] metric_name: Name of the input metric
+        :param pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]] routing_rules: Routing Rule object
         :param pulumi.Input[str] version: Version of the ruleset
         """
         if aggregation_rules is not None:
@@ -114,7 +114,7 @@ class _MetricRulesetState:
     @pulumi.getter(name="aggregationRules")
     def aggregation_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetAggregationRuleArgs']]]]:
         """
-        Aggregation rules in the ruleset
+        List of aggregation rules for the metric
         """
         return pulumi.get(self, "aggregation_rules")
 
@@ -186,7 +186,7 @@ class _MetricRulesetState:
     @pulumi.getter(name="metricName")
     def metric_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the metric
+        Name of the input metric
         """
         return pulumi.get(self, "metric_name")
 
@@ -198,7 +198,7 @@ class _MetricRulesetState:
     @pulumi.getter(name="routingRules")
     def routing_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRulesetRoutingRuleArgs']]]]:
         """
-        Location to send the input metric
+        Routing Rule object
         """
         return pulumi.get(self, "routing_rules")
 
@@ -235,33 +235,11 @@ class MetricRuleset(pulumi.CustomResource):
 
         ## Example
 
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `metric_name` - (Required) Name of the input metric
-        * `aggregation_rules` - (Optional) List of aggregation rules for the metric
-          * `enabled` - (Required) When false, this rule will not generate aggregated MTSs
-          * `name` - (Optional) name of the aggregation rule
-          * `matcher` - (Required) Matcher object
-            * `type` - (Required) Type of matcher. Must always be "dimension"
-            * `filters` - (Optional) List of filters to filter the set of input MTSs
-              * `property` - (Required) - Name of the dimension
-              * `property_value` - (Required) - Value of the dimension
-              * `not` - When true, this filter will match all values not matching the property_values
-          * `aggregator` - (Required) - Aggregator object
-            * `type` - (Required) Type of aggregator. Must always be "rollup"
-            * `dimensions` - (Required) List of dimensions to either be kept or dropped in the new aggregated MTSs
-            * `drop_dimensions` - (Required) when true, the specified dimensions will be dropped from the aggregated MTSs
-            * `output_name` - (Required) name of the new aggregated metric
-        * `routing_rule` - (Required) Routing Rule object
-          * `destination` - (Required) - end destination of the input metric. Must be `RealTime` or `Drop`
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]] aggregation_rules: Aggregation rules in the ruleset
-        :param pulumi.Input[str] metric_name: Name of the metric
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]] routing_rules: Location to send the input metric
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]] aggregation_rules: List of aggregation rules for the metric
+        :param pulumi.Input[str] metric_name: Name of the input metric
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]] routing_rules: Routing Rule object
         """
         ...
     @overload
@@ -275,28 +253,6 @@ class MetricRuleset(pulumi.CustomResource):
         > **NOTE** When managing metric rulesets to drop data use a session token for an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.
 
         ## Example
-
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `metric_name` - (Required) Name of the input metric
-        * `aggregation_rules` - (Optional) List of aggregation rules for the metric
-          * `enabled` - (Required) When false, this rule will not generate aggregated MTSs
-          * `name` - (Optional) name of the aggregation rule
-          * `matcher` - (Required) Matcher object
-            * `type` - (Required) Type of matcher. Must always be "dimension"
-            * `filters` - (Optional) List of filters to filter the set of input MTSs
-              * `property` - (Required) - Name of the dimension
-              * `property_value` - (Required) - Value of the dimension
-              * `not` - When true, this filter will match all values not matching the property_values
-          * `aggregator` - (Required) - Aggregator object
-            * `type` - (Required) Type of aggregator. Must always be "rollup"
-            * `dimensions` - (Required) List of dimensions to either be kept or dropped in the new aggregated MTSs
-            * `drop_dimensions` - (Required) when true, the specified dimensions will be dropped from the aggregated MTSs
-            * `output_name` - (Required) name of the new aggregated metric
-        * `routing_rule` - (Required) Routing Rule object
-          * `destination` - (Required) - end destination of the input metric. Must be `RealTime` or `Drop`
 
         :param str resource_name: The name of the resource.
         :param MetricRulesetArgs args: The arguments to use to populate this resource's properties.
@@ -364,14 +320,14 @@ class MetricRuleset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]] aggregation_rules: Aggregation rules in the ruleset
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetAggregationRuleArgs']]]] aggregation_rules: List of aggregation rules for the metric
         :param pulumi.Input[str] created: Timestamp of when the metric ruleset was created
         :param pulumi.Input[str] creator: ID of the creator of the metric ruleset
         :param pulumi.Input[str] last_updated: Timestamp of when the metric ruleset was last updated
         :param pulumi.Input[str] last_updated_by: ID of user who last updated the metric ruleset
         :param pulumi.Input[str] last_updated_by_name: Name of user who last updated this metric ruleset
-        :param pulumi.Input[str] metric_name: Name of the metric
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]] routing_rules: Location to send the input metric
+        :param pulumi.Input[str] metric_name: Name of the input metric
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricRulesetRoutingRuleArgs']]]] routing_rules: Routing Rule object
         :param pulumi.Input[str] version: Version of the ruleset
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -393,7 +349,7 @@ class MetricRuleset(pulumi.CustomResource):
     @pulumi.getter(name="aggregationRules")
     def aggregation_rules(self) -> pulumi.Output[Optional[Sequence['outputs.MetricRulesetAggregationRule']]]:
         """
-        Aggregation rules in the ruleset
+        List of aggregation rules for the metric
         """
         return pulumi.get(self, "aggregation_rules")
 
@@ -441,7 +397,7 @@ class MetricRuleset(pulumi.CustomResource):
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Output[str]:
         """
-        Name of the metric
+        Name of the input metric
         """
         return pulumi.get(self, "metric_name")
 
@@ -449,7 +405,7 @@ class MetricRuleset(pulumi.CustomResource):
     @pulumi.getter(name="routingRules")
     def routing_rules(self) -> pulumi.Output[Sequence['outputs.MetricRulesetRoutingRule']]:
         """
-        Location to send the input metric
+        Routing Rule object
         """
         return pulumi.get(self, "routing_rules")
 

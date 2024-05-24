@@ -14,31 +14,31 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class TimeChartAxisLeft
     {
         /// <summary>
-        /// A line to draw as a high watermark
+        /// A line to draw as a high watermark.
         /// </summary>
         public readonly double? HighWatermark;
         /// <summary>
-        /// A label to attach to the high watermark line
+        /// A label to attach to the high watermark line.
         /// </summary>
         public readonly string? HighWatermarkLabel;
         /// <summary>
-        /// Label of the left axis
+        /// Label of the left axis.
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// A line to draw as a low watermark
+        /// A line to draw as a low watermark.
         /// </summary>
         public readonly double? LowWatermark;
         /// <summary>
-        /// A label to attach to the low watermark line
+        /// A label to attach to the low watermark line.
         /// </summary>
         public readonly string? LowWatermarkLabel;
         /// <summary>
-        /// The maximum value for the left axis
+        /// The maximum value for the left axis.
         /// </summary>
         public readonly double? MaxValue;
         /// <summary>
-        /// The minimum value for the left axis
+        /// The minimum value for the left axis.
         /// </summary>
         public readonly double? MinValue;
         public readonly ImmutableArray<Outputs.TimeChartAxisLeftWatermark> Watermarks;

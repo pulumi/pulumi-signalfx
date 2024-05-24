@@ -12,35 +12,6 @@ import * as utilities from "./utilities";
  * > **NOTE** When managing Org tokens, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator).
  *
  * ## Example
- *
- * ## Arguments
- *
- * The following arguments are supported in the resource block:
- *
- * * `name` - (Required) Name of the token.
- * * `description` - (Optional) Description of the token.
- * * `disabled` - (Optional) Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
- * * `secret` - The secret token created by the API. You cannot set this value.
- * * `notifications` - (Optional) Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
- * * `hostOrUsageLimits` - (Optional) Specify Usage-based limits for this token.
- *   * `hostLimit` - (Optional) Max number of hosts that can use this token
- *   * `hostNotificationThreshold` - (Optional) Notification threshold for hosts
- *   * `containerLimit` - (Optional) Max number of Docker containers that can use this token
- *   * `containerNotificationThreshold` - (Optional) Notification threshold for Docker containers
- *   * `customMetricsLimit` - (Optional) Max number of custom metrics that can be sent with this token
- *   * `customMetricsNotificationThreshold` - (Optional) Notification threshold for custom metrics
- *   * `highResMetricsLimit` - (Optional) Max number of hi-res metrics that can be sent with this toke
- *   * `highResMetricsNotificationThreshold` - (Optional) Notification threshold for hi-res metrics
- * * `dpmLimits` (Optional) Specify DPM-based limits for this token.
- *   * `dpmNotificationThreshold` - (Optional) DPM level at which Splunk Observability Cloud sends the notification for this token. If you don't specify a notification, Splunk Observability Cloud sends the generic notification.
- *   * `dpmLimit` - (Required) The datapoints per minute (dpm) limit for this token. If you exceed this limit, Splunk Observability Cloud sends out an alert.
- *
- * ## Attributes
- *
- * In a addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the token.
- * * `secret` - The assigned token.
  */
 export class OrgToken extends pulumi.CustomResource {
     /**
@@ -75,25 +46,32 @@ export class OrgToken extends pulumi.CustomResource {
      */
     public readonly authScopes!: pulumi.Output<string[]>;
     /**
-     * Description of the token (Optional)
+     * Description of the token.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-     * Defaults to `false`
+     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specify DPM-based limits for this token.
+     */
     public readonly dpmLimits!: pulumi.Output<outputs.OrgTokenDpmLimits | undefined>;
+    /**
+     * Specify Usage-based limits for this token.
+     */
     public readonly hostOrUsageLimits!: pulumi.Output<outputs.OrgTokenHostOrUsageLimits | undefined>;
     /**
-     * Name of the token
+     * Name of the token.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
      */
     public readonly notifications!: pulumi.Output<string[] | undefined>;
+    /**
+     * The secret token created by the API. You cannot set this value.
+     */
     public /*out*/ readonly secret!: pulumi.Output<string>;
 
     /**
@@ -144,25 +122,32 @@ export interface OrgTokenState {
      */
     authScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description of the token (Optional)
+     * Description of the token.
      */
     description?: pulumi.Input<string>;
     /**
-     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-     * Defaults to `false`
+     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * Specify DPM-based limits for this token.
+     */
     dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
+    /**
+     * Specify Usage-based limits for this token.
+     */
     hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
     /**
-     * Name of the token
+     * Name of the token.
      */
     name?: pulumi.Input<string>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The secret token created by the API. You cannot set this value.
+     */
     secret?: pulumi.Input<string>;
 }
 
@@ -175,23 +160,27 @@ export interface OrgTokenArgs {
      */
     authScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Description of the token (Optional)
+     * Description of the token.
      */
     description?: pulumi.Input<string>;
     /**
-     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication.
-     * Defaults to `false`
+     * Flag that controls enabling the token. If set to `true`, the token is disabled, and you can't use it for authentication. Defaults to `false`.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * Specify DPM-based limits for this token.
+     */
     dpmLimits?: pulumi.Input<inputs.OrgTokenDpmLimits>;
+    /**
+     * Specify Usage-based limits for this token.
+     */
     hostOrUsageLimits?: pulumi.Input<inputs.OrgTokenHostOrUsageLimits>;
     /**
-     * Name of the token
+     * Name of the token.
      */
     name?: pulumi.Input<string>;
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See
-     * https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * Where to send notifications about this token's limits. See the Notification Format laid out in detectors.
      */
     notifications?: pulumi.Input<pulumi.Input<string>[]>;
 }

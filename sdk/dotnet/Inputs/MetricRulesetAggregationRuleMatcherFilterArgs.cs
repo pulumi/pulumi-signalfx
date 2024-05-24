@@ -13,13 +13,13 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class MetricRulesetAggregationRuleMatcherFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flag specifying equals or not equals
+        /// When true, this filter will match all values not matching the property_values
         /// </summary>
         [Input("not", required: true)]
         public Input<bool> Not { get; set; } = null!;
 
         /// <summary>
-        /// Name of dimension to match
+        /// Name of the dimension
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<string>? _propertyValues;
 
         /// <summary>
-        /// List of property values to match
+        /// Value of the dimension
         /// </summary>
         public InputList<string> PropertyValues
         {

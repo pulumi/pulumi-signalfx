@@ -23,27 +23,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * * `name` - (Required) Name of the integration.
- * * `enabled` - (Required) Whether the integration is enabled.
- * * `auth_method` - (Required) Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
- * * `api_token` - (Required if `auth_method` is `EmailAndToken`) The API token for the user email
- * * `user_email` - (Required if `auth_method` is `EmailAndToken`) Email address used to authenticate the Jira integration.
- * * `username` - (Required if `auth_method` is `UsernameAndPassword`) User name used to authenticate the Jira integration.
- * * `password` - (Required if `auth_method` is `UsernameAndPassword`) Password used to authenticate the Jira integration.
- * * `base_url` - (Required) Base URL of the Jira instance that&#39;s integrated with SignalFx.
- * * `issue_type` - (Required) Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
- * * `project_key` - (Required) Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
- * * `assignee_name` - (Required) Jira user name for the assignee.
- * * `assignee_display_name` - (Optional) Jira display name for the assignee.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the integration.
- * 
  */
 @ResourceType(type="signalfx:jira/integration:Integration")
 public class Integration extends com.pulumi.resources.CustomResource {
@@ -62,42 +41,42 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apiToken);
     }
     /**
-     * Jira display name for the assignee
+     * Jira display name for the assignee.
      * 
      */
     @Export(name="assigneeDisplayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> assigneeDisplayName;
 
     /**
-     * @return Jira display name for the assignee
+     * @return Jira display name for the assignee.
      * 
      */
     public Output<Optional<String>> assigneeDisplayName() {
         return Codegen.optional(this.assigneeDisplayName);
     }
     /**
-     * Jira user name for the assignee
+     * Jira user name for the assignee.
      * 
      */
     @Export(name="assigneeName", refs={String.class}, tree="[0]")
     private Output<String> assigneeName;
 
     /**
-     * @return Jira user name for the assignee
+     * @return Jira user name for the assignee.
      * 
      */
     public Output<String> assigneeName() {
         return this.assigneeName;
     }
     /**
-     * Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+     * Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
      * 
      */
     @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
-     * @return Authentication method used when creating the Jira integration. One of `EmailAndToken` or `UsernameAndPassword`
+     * @return Authentication method used when creating the Jira integration. One of `EmailAndToken` (using `user_email` and `api_token`) or `UsernameAndPassword` (using `username` and `password`).
      * 
      */
     public Output<String> authMethod() {
@@ -118,44 +97,42 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.baseUrl;
     }
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-     * validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
+     * Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
      * 
      */
     @Export(name="issueType", refs={String.class}, tree="[0]")
     private Output<String> issueType;
 
     /**
-     * @return Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud
-     * validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
+     * @return Issue type (for example, Story) for tickets that Jira creates for detector notifications. Splunk Observability Cloud validates issue types, so you must specify a type that&#39;s valid for the Jira project specified in `projectKey`.
      * 
      */
     public Output<String> issueType() {
         return this.issueType;
     }
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Output<String> name() {
@@ -176,16 +153,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-     * this project.
+     * Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      * 
      */
     @Export(name="projectKey", refs={String.class}, tree="[0]")
     private Output<String> projectKey;
 
     /**
-     * @return Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to
-     * this project.
+     * @return Jira key of an existing project. When Jira creates a new ticket for a detector notification, the ticket is assigned to this project.
      * 
      */
     public Output<String> projectKey() {

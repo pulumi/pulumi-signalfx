@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SingleValueChartVizOption {
     /**
-     * @return Color to use
+     * @return The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
     private @Nullable String color;
@@ -23,12 +23,12 @@ public final class SingleValueChartVizOption {
      */
     private @Nullable String displayName;
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     private String label;
     /**
-     * @return An arbitrary prefix to display with the value of this plot
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     private @Nullable String valuePrefix;
@@ -38,14 +38,14 @@ public final class SingleValueChartVizOption {
      */
     private @Nullable String valueSuffix;
     /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     private @Nullable String valueUnit;
 
     private SingleValueChartVizOption() {}
     /**
-     * @return Color to use
+     * @return The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
     public Optional<String> color() {
@@ -59,14 +59,14 @@ public final class SingleValueChartVizOption {
         return Optional.ofNullable(this.displayName);
     }
     /**
-     * @return The label used in the publish statement that displays the plot (metric time series data) you want to customize
+     * @return Label used in the publish statement that displays the plot (metric time series data) you want to customize.
      * 
      */
     public String label() {
         return this.label;
     }
     /**
-     * @return An arbitrary prefix to display with the value of this plot
+     * @return , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
      * 
      */
     public Optional<String> valuePrefix() {
@@ -80,7 +80,7 @@ public final class SingleValueChartVizOption {
         return Optional.ofNullable(this.valueSuffix);
     }
     /**
-     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+     * @return A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
      * 
      */
     public Optional<String> valueUnit() {

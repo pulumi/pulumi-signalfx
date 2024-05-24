@@ -16,22 +16,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SloTarget {
     /**
-     * @return SLO alert rules
+     * @return List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     private List<SloTargetAlertRule> alertRules;
     /**
-     * @return (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * @return Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     private @Nullable String compliancePeriod;
     /**
-     * @return (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * @return It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
      * 
      */
     private @Nullable String cycleStart;
     /**
-     * @return (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * @return The cycle type of the calendar window, e.g. week, month.
      * 
      */
     private @Nullable String cycleType;
@@ -41,35 +41,35 @@ public final class SloTarget {
      */
     private Double slo;
     /**
-     * @return SLO target type can be the following type: `RollingWindow`
+     * @return SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
      * 
      */
     private String type;
 
     private SloTarget() {}
     /**
-     * @return SLO alert rules
+     * @return List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
      * 
      */
     public List<SloTargetAlertRule> alertRules() {
         return this.alertRules;
     }
     /**
-     * @return (Required for `RollingWindow` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
+     * @return Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
      * 
      */
     public Optional<String> compliancePeriod() {
         return Optional.ofNullable(this.compliancePeriod);
     }
     /**
-     * @return (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
+     * @return It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
      * 
      */
     public Optional<String> cycleStart() {
         return Optional.ofNullable(this.cycleStart);
     }
     /**
-     * @return (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
+     * @return The cycle type of the calendar window, e.g. week, month.
      * 
      */
     public Optional<String> cycleType() {
@@ -83,7 +83,7 @@ public final class SloTarget {
         return this.slo;
     }
     /**
-     * @return SLO target type can be the following type: `RollingWindow`
+     * @return SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
      * 
      */
     public String type() {

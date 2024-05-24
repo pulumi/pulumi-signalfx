@@ -14,7 +14,7 @@ namespace Pulumi.SignalFx.Outputs
     public sealed class DetectorVizOption
     {
         /// <summary>
-        /// Color to use
+        /// Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
         /// </summary>
         public readonly string? Color;
         /// <summary>
@@ -22,11 +22,15 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// An arbitrary prefix to display with the value of this plot
+        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
+        /// 
+        /// **Notes**
+        /// 
+        /// Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
         /// </summary>
         public readonly string? ValuePrefix;
         /// <summary>
@@ -34,7 +38,7 @@ namespace Pulumi.SignalFx.Outputs
         /// </summary>
         public readonly string? ValueSuffix;
         /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         /// </summary>
         public readonly string? ValueUnit;
 

@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ViewColumn struct {
-	// Name of the column
+	// Name of the log view.
 	Name string `pulumi:"name"`
 }
 
@@ -30,7 +30,7 @@ type ViewColumnInput interface {
 }
 
 type ViewColumnArgs struct {
-	// Name of the column
+	// Name of the log view.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -85,7 +85,7 @@ func (o ViewColumnOutput) ToViewColumnOutputWithContext(ctx context.Context) Vie
 	return o
 }
 
-// Name of the column
+// Name of the log view.
 func (o ViewColumnOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ViewColumn) string { return v.Name }).(pulumi.StringOutput)
 }

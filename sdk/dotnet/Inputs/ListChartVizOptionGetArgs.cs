@@ -13,7 +13,7 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class ListChartVizOptionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Color to use
+        /// The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
         /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
@@ -25,13 +25,13 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The label used in the publish statement that displays the plot (metric time series data) you want to customize
+        /// Label used in the publish statement that displays the plot (metric time series data) you want to customize.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// An arbitrary prefix to display with the value of this plot
+        /// , `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
         /// </summary>
         [Input("valuePrefix")]
         public Input<string>? ValuePrefix { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.SignalFx.Inputs
         public Input<string>? ValueSuffix { get; set; }
 
         /// <summary>
-        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes)
+        /// A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
         /// </summary>
         [Input("valueUnit")]
         public Input<string>? ValueUnit { get; set; }

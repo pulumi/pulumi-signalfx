@@ -19,14 +19,14 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
     public static final MetricRulesetAggregationRuleMatcherArgs Empty = new MetricRulesetAggregationRuleMatcherArgs();
 
     /**
-     * List of filters to match on
+     * List of filters to filter the set of input MTSs
      * 
      */
     @Import(name="filters")
     private @Nullable Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>> filters;
 
     /**
-     * @return List of filters to match on
+     * @return List of filters to filter the set of input MTSs
      * 
      */
     public Optional<Output<List<MetricRulesetAggregationRuleMatcherFilterArgs>>> filters() {
@@ -34,14 +34,14 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
     }
 
     /**
-     * The type of the matcher
+     * Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the matcher
+     * @return Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     public Output<String> type() {
@@ -74,7 +74,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param filters List of filters to match on
+         * @param filters List of filters to filter the set of input MTSs
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param filters List of filters to match on
+         * @param filters List of filters to filter the set of input MTSs
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param filters List of filters to match on
+         * @param filters List of filters to filter the set of input MTSs
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param type The type of the matcher
+         * @param type Type of matcher. Must always be &#34;dimension&#34;
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class MetricRulesetAggregationRuleMatcherArgs extends com.pulumi.re
         }
 
         /**
-         * @param type The type of the matcher
+         * @param type Type of matcher. Must always be &#34;dimension&#34;
          * 
          * @return builder
          * 

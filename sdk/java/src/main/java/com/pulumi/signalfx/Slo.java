@@ -65,85 +65,46 @@ import javax.annotation.Nullable;
  * 
  * Or configure one inline:
  * 
- * ## Arguments
- * 
- * * `name` - (Required) Name of the SLO. Each SLO name must be unique within an organization.
- * * `description` - (Optional) Description of the SLO.
- * * `type` - (Required) Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
- * * `input` - (Required) Properties to configure an SLO object inputs
- *     * `program_text` - (Required) SignalFlow program and arguments text strings that define the streams used as successful event count and total event count
- *     * `good_events_label` - (Required) Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of successful events
- *     * `total_events_label` - (Required) Label used in `&#34;program_text&#34;` that refers to the data block which contains the stream of total events
- * * `target` - (Required) Define target value of the service level indicator in the appropriate time period.
- *     * `type` - (Required) SLO target type can be the following type: `&#34;RollingWindow&#34;`, `&#34;CalendarWindow&#34;`
- *     * `compliance_period` - (Required for `&#34;RollingWindow&#34;` type) Compliance period of this SLO. This value must be within the range of 1d (1 days) to 30d (30 days), inclusive.
- *     * `cycle_type` - (Required for `CalendarWindow` type) The cycle type of the calendar window, e.g. week, month.
- *     * `cycle_start` - (Optional for `CalendarWindow` type)  It can be used to change the cycle start time. For example, you can specify sunday as the start of the week (instead of the default monday)
- *     * `slo` - (Required) Target value in the form of a percentage
- *     * `alert_rule` - (Required) List of alert rules you want to set for this SLO target. An SLO alert rule of type BREACH is always required.
- *         * `type` - (Required) SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- *         * `rule` - (Required) Set of rules used for alerting.
- *             * `severity` - (Required) The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
- *             * `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
- *             * `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.
- *             * `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
- *             * `parameterized_body` - (Optional) Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
- *             * `parameterized_subject` - (Optional) Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
- *             * `runbook_url` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.
- *             * `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
- *             * `parameters` - (Optional) Parameters for the SLO alert rule. Each SLO alert rule type accepts different parameters. If not specified, default parameters are used.
- *                 * `fire_lasting` - (Optional) Duration that indicates how long the alert condition is met before the alert is triggered. The value must be positive and smaller than the compliance period of the SLO target. Note: `&#34;BREACH&#34;` and `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the fireLasting parameter. Default: `&#34;5m&#34;`
- *                 * `percent_of_lasting` - (Optional) Percentage of the `&#34;fire_lasting&#34;` duration that the alert condition is met before the alert is triggered. Note: `&#34;BREACH&#34;` and `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percent_of_lasting&#34;` parameter. Default: `100`
- *                 * `percent_error_budget_left` - (Optional) Error budget must be equal to or smaller than this percentage for the alert to be triggered. Note: `&#34;ERROR_BUDGET_LEFT&#34;` alert rules use the `&#34;percent_error_budget_left&#34;` parameter. Default: `100`
- *                 * `short_window_1` - (Optional) Short window 1 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;long_window_1&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;short_window_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- *                 * `short_window_2` - (Optional) Short window 2 used in burn rate alert calculation. This value must be longer than 1/30 of `&#34;long_window_2&#34;`. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;short_window_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- *                 * `long_window_1` - (Optional) Long window 1 used in burn rate alert calculation. This value must be longer than `&#34;short_window_1&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;long_window_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- *                 * `long_window_2` - (Optional) Long window 2 used in burn rate alert calculation. This value must be longer than `&#34;short_window_2&#34;` and shorter than 90 days. Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;long_window_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- *                 * `burn_rate_threshold_1` - (Optional) Burn rate threshold 1 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burn_rate_threshold_1&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- *                 * `burn_rate_threshold_2` - (Optional) Burn rate threshold 2 used in burn rate alert calculation. This value must be between 0 and 100/(100-SLO target). Note: `&#34;BURN_RATE&#34;` alert rules use the `&#34;burn_rate_threshold_2&#34;` parameter. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
- * 
  */
 @ResourceType(type="signalfx:index/slo:Slo")
 public class Slo extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the SLO
+     * Description of the SLO.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the SLO
+     * @return Description of the SLO.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * SignalFlow program and arguments text strings that define the streams used as successful event count and total event
-     * count
+     * Properties to configure an SLO object inputs
      * 
      */
     @Export(name="input", refs={SloInput.class}, tree="[0]")
     private Output<SloInput> input;
 
     /**
-     * @return SignalFlow program and arguments text strings that define the streams used as successful event count and total event
-     * count
+     * @return Properties to configure an SLO object inputs
      * 
      */
     public Output<SloInput> input() {
         return this.input;
     }
     /**
-     * Name of the SLO
+     * Name of the SLO. Each SLO name must be unique within an organization.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the SLO
+     * @return Name of the SLO. Each SLO name must be unique within an organization.
      * 
      */
     public Output<String> name() {
@@ -164,14 +125,14 @@ public class Slo extends com.pulumi.resources.CustomResource {
         return this.target;
     }
     /**
-     * Type of the SLO. Currently only RequestBased SLO is supported
+     * Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the SLO. Currently only RequestBased SLO is supported
+     * @return Type of the SLO. Currently just: `&#34;RequestBased&#34;` is supported.
      * 
      */
     public Output<String> type() {

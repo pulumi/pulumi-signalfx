@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.MetricRulesetAggregationRuleMatcherFilterArgs>? _filters;
 
         /// <summary>
-        /// List of filters to match on
+        /// List of filters to filter the set of input MTSs
         /// </summary>
         public InputList<Inputs.MetricRulesetAggregationRuleMatcherFilterArgs> Filters
         {
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// The type of the matcher
+        /// Type of matcher. Must always be "dimension"
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

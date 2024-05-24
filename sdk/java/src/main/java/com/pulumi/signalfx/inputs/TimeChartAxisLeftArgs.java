@@ -19,14 +19,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     public static final TimeChartAxisLeftArgs Empty = new TimeChartAxisLeftArgs();
 
     /**
-     * A line to draw as a high watermark
+     * A line to draw as a high watermark.
      * 
      */
     @Import(name="highWatermark")
     private @Nullable Output<Double> highWatermark;
 
     /**
-     * @return A line to draw as a high watermark
+     * @return A line to draw as a high watermark.
      * 
      */
     public Optional<Output<Double>> highWatermark() {
@@ -34,14 +34,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A label to attach to the high watermark line
+     * A label to attach to the high watermark line.
      * 
      */
     @Import(name="highWatermarkLabel")
     private @Nullable Output<String> highWatermarkLabel;
 
     /**
-     * @return A label to attach to the high watermark line
+     * @return A label to attach to the high watermark line.
      * 
      */
     public Optional<Output<String>> highWatermarkLabel() {
@@ -49,14 +49,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Label of the left axis
+     * Label of the left axis.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Label of the left axis
+     * @return Label of the left axis.
      * 
      */
     public Optional<Output<String>> label() {
@@ -64,14 +64,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A line to draw as a low watermark
+     * A line to draw as a low watermark.
      * 
      */
     @Import(name="lowWatermark")
     private @Nullable Output<Double> lowWatermark;
 
     /**
-     * @return A line to draw as a low watermark
+     * @return A line to draw as a low watermark.
      * 
      */
     public Optional<Output<Double>> lowWatermark() {
@@ -79,14 +79,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A label to attach to the low watermark line
+     * A label to attach to the low watermark line.
      * 
      */
     @Import(name="lowWatermarkLabel")
     private @Nullable Output<String> lowWatermarkLabel;
 
     /**
-     * @return A label to attach to the low watermark line
+     * @return A label to attach to the low watermark line.
      * 
      */
     public Optional<Output<String>> lowWatermarkLabel() {
@@ -94,14 +94,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The maximum value for the left axis
+     * The maximum value for the left axis.
      * 
      */
     @Import(name="maxValue")
     private @Nullable Output<Double> maxValue;
 
     /**
-     * @return The maximum value for the left axis
+     * @return The maximum value for the left axis.
      * 
      */
     public Optional<Output<Double>> maxValue() {
@@ -109,14 +109,14 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The minimum value for the left axis
+     * The minimum value for the left axis.
      * 
      */
     @Import(name="minValue")
     private @Nullable Output<Double> minValue;
 
     /**
-     * @return The minimum value for the left axis
+     * @return The minimum value for the left axis.
      * 
      */
     public Optional<Output<Double>> minValue() {
@@ -162,7 +162,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param highWatermark A line to draw as a high watermark
+         * @param highWatermark A line to draw as a high watermark.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param highWatermark A line to draw as a high watermark
+         * @param highWatermark A line to draw as a high watermark.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param highWatermarkLabel A label to attach to the high watermark line
+         * @param highWatermarkLabel A label to attach to the high watermark line.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param highWatermarkLabel A label to attach to the high watermark line
+         * @param highWatermarkLabel A label to attach to the high watermark line.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param label Label of the left axis
+         * @param label Label of the left axis.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param label Label of the left axis
+         * @param label Label of the left axis.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lowWatermark A line to draw as a low watermark
+         * @param lowWatermark A line to draw as a low watermark.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lowWatermark A line to draw as a low watermark
+         * @param lowWatermark A line to draw as a low watermark.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lowWatermarkLabel A label to attach to the low watermark line
+         * @param lowWatermarkLabel A label to attach to the low watermark line.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lowWatermarkLabel A label to attach to the low watermark line
+         * @param lowWatermarkLabel A label to attach to the low watermark line.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxValue The maximum value for the left axis
+         * @param maxValue The maximum value for the left axis.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxValue The maximum value for the left axis
+         * @param maxValue The maximum value for the left axis.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param minValue The minimum value for the left axis
+         * @param minValue The minimum value for the left axis.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class TimeChartAxisLeftArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param minValue The minimum value for the left axis
+         * @param minValue The minimum value for the left axis.
          * 
          * @return builder
          * 

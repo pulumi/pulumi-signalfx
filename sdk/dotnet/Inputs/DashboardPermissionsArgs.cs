@@ -16,7 +16,7 @@ namespace Pulumi.SignalFx.Inputs
         private InputList<Inputs.DashboardPermissionsAclArgs>? _acls;
 
         /// <summary>
-        /// The custom access control list for this dashboard
+        /// List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
         /// </summary>
         public InputList<Inputs.DashboardPermissionsAclArgs> Acls
         {
@@ -25,7 +25,7 @@ namespace Pulumi.SignalFx.Inputs
         }
 
         /// <summary>
-        /// The ID of the dashboard group that this dashboard inherits permissions from
+        /// ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

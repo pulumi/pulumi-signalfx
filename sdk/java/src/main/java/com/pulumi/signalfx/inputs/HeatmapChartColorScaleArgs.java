@@ -18,14 +18,14 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
     public static final HeatmapChartColorScaleArgs Empty = new HeatmapChartColorScaleArgs();
 
     /**
-     * The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
     @Import(name="color", required=true)
     private Output<String> color;
 
     /**
-     * @return The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+     * @return The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
      * 
      */
     public Output<String> color() {
@@ -33,14 +33,14 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Indicates the lower threshold non-inclusive value for this range
+     * Indicates the lower threshold non-inclusive value for this range.
      * 
      */
     @Import(name="gt")
     private @Nullable Output<Double> gt;
 
     /**
-     * @return Indicates the lower threshold non-inclusive value for this range
+     * @return Indicates the lower threshold non-inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> gt() {
@@ -48,14 +48,14 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Indicates the lower threshold inclusive value for this range
+     * Indicates the lower threshold inclusive value for this range.
      * 
      */
     @Import(name="gte")
     private @Nullable Output<Double> gte;
 
     /**
-     * @return Indicates the lower threshold inclusive value for this range
+     * @return Indicates the lower threshold inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> gte() {
@@ -63,14 +63,14 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Indicates the upper threshold non-inculsive value for this range
+     * Indicates the upper threshold non-inclusive value for this range.
      * 
      */
     @Import(name="lt")
     private @Nullable Output<Double> lt;
 
     /**
-     * @return Indicates the upper threshold non-inculsive value for this range
+     * @return Indicates the upper threshold non-inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> lt() {
@@ -78,14 +78,14 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Indicates the upper threshold inclusive value for this range
+     * Indicates the upper threshold inclusive value for this range.
      * 
      */
     @Import(name="lte")
     private @Nullable Output<Double> lte;
 
     /**
-     * @return Indicates the upper threshold inclusive value for this range
+     * @return Indicates the upper threshold inclusive value for this range.
      * 
      */
     public Optional<Output<Double>> lte() {
@@ -121,7 +121,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param color The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+         * @param color The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param color The color to use. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
+         * @param color The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gt Indicates the lower threshold non-inclusive value for this range
+         * @param gt Indicates the lower threshold non-inclusive value for this range.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gt Indicates the lower threshold non-inclusive value for this range
+         * @param gt Indicates the lower threshold non-inclusive value for this range.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gte Indicates the lower threshold inclusive value for this range
+         * @param gte Indicates the lower threshold inclusive value for this range.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gte Indicates the lower threshold inclusive value for this range
+         * @param gte Indicates the lower threshold inclusive value for this range.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lt Indicates the upper threshold non-inculsive value for this range
+         * @param lt Indicates the upper threshold non-inclusive value for this range.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lt Indicates the upper threshold non-inculsive value for this range
+         * @param lt Indicates the upper threshold non-inclusive value for this range.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lte Indicates the upper threshold inclusive value for this range
+         * @param lte Indicates the upper threshold inclusive value for this range.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class HeatmapChartColorScaleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lte Indicates the upper threshold inclusive value for this range
+         * @param lte Indicates the upper threshold inclusive value for this range.
          * 
          * @return builder
          * 

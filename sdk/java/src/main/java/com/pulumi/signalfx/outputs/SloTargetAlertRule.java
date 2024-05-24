@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class SloTargetAlertRule {
     /**
-     * @return Set of rules used for alerting
+     * @return Set of rules used for alerting.
      * 
      */
     private List<SloTargetAlertRuleRule> rules;
     /**
-     * @return SLO alert rule type
+     * @return SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     private String type;
 
     private SloTargetAlertRule() {}
     /**
-     * @return Set of rules used for alerting
+     * @return Set of rules used for alerting.
      * 
      */
     public List<SloTargetAlertRuleRule> rules() {
         return this.rules;
     }
     /**
-     * @return SLO alert rule type
+     * @return SLO alert rule can be one of the following types: BREACH, ERROR_BUDGET_LEFT, BURN_RATE. Within an SLO object, you can only specify one SLO alert_rule per type. For example, you can&#39;t specify two alert_rule of type BREACH. See [SLO alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/slo/burn-rate-alerts.html) for more info.
      * 
      */
     public String type() {

@@ -36,26 +36,24 @@ class DetectorArgs:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Detector resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
-        :param pulumi.Input[str] description: Description of the detector
-        :param pulumi.Input[bool] disable_sampling: (false by default) When false, samples a subset of the output MTS in the visualization.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[int] max_delay: Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
-        :param pulumi.Input[int] min_delay: Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-               is 900 (15m)
-        :param pulumi.Input[str] name: Name of the detector
-        :param pulumi.Input[bool] show_data_markers: (true by default) When true, markers will be drawn for each datapoint within the visualization.
-        :param pulumi.Input[bool] show_event_lines: (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-               to 3600
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
-        :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         pulumi.set(__self__, "program_text", program_text)
         pulumi.set(__self__, "rules", rules)
@@ -96,7 +94,7 @@ class DetectorArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -108,7 +106,7 @@ class DetectorArgs:
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]:
         """
-        Set of rules used for alerting
+        Set of rules used for alerting.
         """
         return pulumi.get(self, "rules")
 
@@ -120,7 +118,7 @@ class DetectorArgs:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard
+        Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -132,7 +130,7 @@ class DetectorArgs:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard
+        User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -144,7 +142,7 @@ class DetectorArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the detector
+        Description of the detector.
         """
         return pulumi.get(self, "description")
 
@@ -156,7 +154,7 @@ class DetectorArgs:
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) When false, samples a subset of the output MTS in the visualization.
+        When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
@@ -168,7 +166,7 @@ class DetectorArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
@@ -180,7 +178,7 @@ class DetectorArgs:
     @pulumi.getter(name="maxDelay")
     def max_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
+        allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         """
         return pulumi.get(self, "max_delay")
 
@@ -192,8 +190,7 @@ class DetectorArgs:
     @pulumi.getter(name="minDelay")
     def min_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-        is 900 (15m)
+        How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         """
         return pulumi.get(self, "min_delay")
 
@@ -205,7 +202,7 @@ class DetectorArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the detector
+        Name of the detector.
         """
         return pulumi.get(self, "name")
 
@@ -217,7 +214,7 @@ class DetectorArgs:
     @pulumi.getter(name="showDataMarkers")
     def show_data_markers(self) -> Optional[pulumi.Input[bool]]:
         """
-        (true by default) When true, markers will be drawn for each datapoint within the visualization.
+        When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
@@ -229,7 +226,7 @@ class DetectorArgs:
     @pulumi.getter(name="showEventLines")
     def show_event_lines(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
+        When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
@@ -241,7 +238,7 @@ class DetectorArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
@@ -253,7 +250,7 @@ class DetectorArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags associated with the detector
+        Tags associated with the detector.
         """
         return pulumi.get(self, "tags")
 
@@ -265,7 +262,7 @@ class DetectorArgs:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs to associate the detector to
+        Team IDs to associate the detector to.
         """
         return pulumi.get(self, "teams")
 
@@ -277,8 +274,7 @@ class DetectorArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-        to 3600
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
         return pulumi.get(self, "time_range")
 
@@ -302,7 +298,7 @@ class DetectorArgs:
     @pulumi.getter(name="vizOptions")
     def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
         """
-        Plot-level customization options, associated with a publish statement
+        Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 
@@ -336,29 +332,26 @@ class _DetectorState:
                  viz_options: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]] = None):
         """
         Input properties used for looking up and filtering Detector resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
-        :param pulumi.Input[str] description: Description of the detector
-        :param pulumi.Input[bool] disable_sampling: (false by default) When false, samples a subset of the output MTS in the visualization.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
-               should be triggered
-        :param pulumi.Input[int] max_delay: Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
-        :param pulumi.Input[int] min_delay: Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-               is 900 (15m)
-        :param pulumi.Input[str] name: Name of the detector
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting
-        :param pulumi.Input[bool] show_data_markers: (true by default) When true, markers will be drawn for each datapoint within the visualization.
-        :param pulumi.Input[bool] show_event_lines: (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-               to 3600
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+        :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting.
+        :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
-        :param pulumi.Input[str] url: URL of the detector
-        :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement
+        :param pulumi.Input[str] url: The URL of the detector.
+        :param pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         if authorized_writer_teams is not None:
             pulumi.set(__self__, "authorized_writer_teams", authorized_writer_teams)
@@ -405,7 +398,7 @@ class _DetectorState:
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs that have write access to this dashboard
+        Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -417,7 +410,7 @@ class _DetectorState:
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        User IDs that have write access to this dashboard
+        User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -429,7 +422,7 @@ class _DetectorState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the detector
+        Description of the detector.
         """
         return pulumi.get(self, "description")
 
@@ -441,7 +434,7 @@ class _DetectorState:
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) When false, samples a subset of the output MTS in the visualization.
+        When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
@@ -453,7 +446,7 @@ class _DetectorState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
@@ -465,8 +458,7 @@ class _DetectorState:
     @pulumi.getter(name="labelResolutions")
     def label_resolutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]]:
         """
-        Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
-        should be triggered
+        The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         """
         return pulumi.get(self, "label_resolutions")
 
@@ -478,7 +470,7 @@ class _DetectorState:
     @pulumi.getter(name="maxDelay")
     def max_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
+        allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         """
         return pulumi.get(self, "max_delay")
 
@@ -490,8 +482,7 @@ class _DetectorState:
     @pulumi.getter(name="minDelay")
     def min_delay(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-        is 900 (15m)
+        How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         """
         return pulumi.get(self, "min_delay")
 
@@ -503,7 +494,7 @@ class _DetectorState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the detector
+        Name of the detector.
         """
         return pulumi.get(self, "name")
 
@@ -515,7 +506,7 @@ class _DetectorState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -527,7 +518,7 @@ class _DetectorState:
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]]:
         """
-        Set of rules used for alerting
+        Set of rules used for alerting.
         """
         return pulumi.get(self, "rules")
 
@@ -539,7 +530,7 @@ class _DetectorState:
     @pulumi.getter(name="showDataMarkers")
     def show_data_markers(self) -> Optional[pulumi.Input[bool]]:
         """
-        (true by default) When true, markers will be drawn for each datapoint within the visualization.
+        When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
@@ -551,7 +542,7 @@ class _DetectorState:
     @pulumi.getter(name="showEventLines")
     def show_event_lines(self) -> Optional[pulumi.Input[bool]]:
         """
-        (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
+        When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
@@ -563,7 +554,7 @@ class _DetectorState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch. Used for visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
@@ -575,7 +566,7 @@ class _DetectorState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Tags associated with the detector
+        Tags associated with the detector.
         """
         return pulumi.get(self, "tags")
 
@@ -587,7 +578,7 @@ class _DetectorState:
     @pulumi.getter
     def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Team IDs to associate the detector to
+        Team IDs to associate the detector to.
         """
         return pulumi.get(self, "teams")
 
@@ -599,8 +590,7 @@ class _DetectorState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-        to 3600
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
         return pulumi.get(self, "time_range")
 
@@ -624,7 +614,7 @@ class _DetectorState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the detector
+        The URL of the detector.
         """
         return pulumi.get(self, "url")
 
@@ -636,7 +626,7 @@ class _DetectorState:
     @pulumi.getter(name="vizOptions")
     def viz_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DetectorVizOptionArgs']]]]:
         """
-        Plot-level customization options, associated with a publish statement
+        Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 
@@ -720,57 +710,6 @@ class Detector(pulumi.CustomResource):
 
         Or configure one inline:
 
-        ## Arguments
-
-        * `name` - (Required) Name of the detector.
-        * `program_text` - (Required) Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-        * `description` - (Optional) Description of the detector.
-        * `authorized_writer_teams` - (Optional) Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-        * `authorized_writer_users` - (Optional) User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
-        * `min_delay` - (Optional) How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
-        * `show_data_markers` - (Optional) When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
-        * `show_event_lines` - (Optional) When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
-        * `disable_sampling` - (Optional) When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
-        * `time_range` - (Optional) Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
-        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `tags` - (Optional) Tags associated with the detector.
-        * `teams` - (Optional) Team IDs to associate the detector to.
-        * `rule` - (Required) Set of rules used for alerting.
-            * `detect_label` - (Required) A detect label which matches a detect label within `program_text`.
-            * `severity` - (Required) The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-            * `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-            * `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.
-            * `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
-            * `parameterized_body` - (Optional) Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
-            * `parameterized_subject` - (Optional) Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
-            * `runbook_url` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-            * `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-        * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
-            * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-            * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-            * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-            * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-
-        **Notes**
-
-        Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
-
-        - `max_delay` allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
-        - `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
-
-        See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the detector.
-        * `label_resolutions` - The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
-        * `url` - The URL of the detector.
-
         ## Import
 
         Detectors can be imported using their string ID (recoverable from URL: `/#/detector/v2/abc123/edit`, e.g.
@@ -781,26 +720,24 @@ class Detector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
-        :param pulumi.Input[str] description: Description of the detector
-        :param pulumi.Input[bool] disable_sampling: (false by default) When false, samples a subset of the output MTS in the visualization.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[int] max_delay: Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
-        :param pulumi.Input[int] min_delay: Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-               is 900 (15m)
-        :param pulumi.Input[str] name: Name of the detector
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting
-        :param pulumi.Input[bool] show_data_markers: (true by default) When true, markers will be drawn for each datapoint within the visualization.
-        :param pulumi.Input[bool] show_event_lines: (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-               to 3600
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
+        :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         ...
     @overload
@@ -858,57 +795,6 @@ class Detector(pulumi.CustomResource):
         You can either configure a Webhook to use an existing integration's credential id:
 
         Or configure one inline:
-
-        ## Arguments
-
-        * `name` - (Required) Name of the detector.
-        * `program_text` - (Required) Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
-        * `description` - (Optional) Description of the detector.
-        * `authorized_writer_teams` - (Optional) Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
-        * `authorized_writer_users` - (Optional) User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
-        * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints. See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info. Max value is `900` seconds (15 minutes). `Auto` (as little as possible) by default.
-        * `min_delay` - (Optional) How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
-        * `show_data_markers` - (Optional) When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
-        * `show_event_lines` - (Optional) When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
-        * `disable_sampling` - (Optional) When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
-        * `time_range` - (Optional) Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
-        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `tags` - (Optional) Tags associated with the detector.
-        * `teams` - (Optional) Team IDs to associate the detector to.
-        * `rule` - (Required) Set of rules used for alerting.
-            * `detect_label` - (Required) A detect label which matches a detect label within `program_text`.
-            * `severity` - (Required) The severity of the rule, must be one of: `"Critical"`, `"Major"`, `"Minor"`, `"Warning"`, `"Info"`.
-            * `description` - (Optional) Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
-            * `disabled` - (Optional) When true, notifications and events will not be generated for the detect label. `false` by default.
-            * `notifications` - (Optional) List of strings specifying where notifications will be sent when an incident occurs. See [Create A Single Detector](https://dev.splunk.com/observability/reference/api/detectors/latest) for more info.
-            * `parameterized_body` - (Optional) Custom notification message body when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
-            * `parameterized_subject` - (Optional) Custom notification message subject when an alert is triggered. See [Set Up Detectors to Trigger Alerts](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html) for more info.
-            * `runbook_url` - (Optional) URL of page to consult when an alert is triggered. This can be used with custom notification messages.
-            * `tip` - (Optional) Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
-        * `viz_options` - (Optional) Plot-level customization options, associated with a publish statement.
-            * `label` - (Required) Label used in the publish statement that displays the plot (metric time series data) you want to customize.
-            * `display_name` - (Optional) Specifies an alternate value for the Plot Name column of the Data Table associated with the chart.
-            * `color` - (Optional) Color to use : gray, blue, azure, navy, brown, orange, yellow, iris, magenta, pink, purple, violet, lilac, emerald, green, aquamarine.
-            * `value_unit` - (Optional) A unit to attach to this plot. Units support automatic scaling (eg thousands of bytes will be displayed as kilobytes). Values values are `Bit, Kilobit, Megabit, Gigabit, Terabit, Petabit, Exabit, Zettabit, Yottabit, Byte, Kibibyte, Mebibyte, Gibibyte (note: this was previously typoed as Gigibyte), Tebibyte, Pebibyte, Exbibyte, Zebibyte, Yobibyte, Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week`.
-            * `value_prefix`, `value_suffix` - (Optional) Arbitrary prefix/suffix to display with the value of this plot.
-
-        **Notes**
-
-        Use both `max_delay` in your detector configuration and an `extrapolation` policy in your program text to reduce false positives and false negatives.
-
-        - `max_delay` allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
-        - `extrapolation` allows you to specify how to handle missing data. An extrapolation policy can be added to individual signals by updating the data block in your `program_text`.
-
-        See [Delayed Datapoints](https://docs.splunk.com/observability/en/data-visualization/charts/chart-builder.html#delayed-datapoints) for more info.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the detector.
-        * `label_resolutions` - The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
-        * `url` - The URL of the detector.
 
         ## Import
 
@@ -1021,29 +907,26 @@ class Detector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this dashboard
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this dashboard
-        :param pulumi.Input[str] description: Description of the detector
-        :param pulumi.Input[bool] disable_sampling: (false by default) When false, samples a subset of the output MTS in the visualization.
-        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
-               should be triggered
-        :param pulumi.Input[int] max_delay: Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
-        :param pulumi.Input[int] min_delay: Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-               is 900 (15m)
-        :param pulumi.Input[str] name: Name of the detector
-        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting
-        :param pulumi.Input[bool] show_data_markers: (true by default) When true, markers will be drawn for each datapoint within the visualization.
-        :param pulumi.Input[bool] show_event_lines: (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
-        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-               to 3600
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
+        :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
+        :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
+        :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
+        :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
+        :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
+        :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags associated with the detector.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] teams: Team IDs to associate the detector to.
+        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
-        :param pulumi.Input[str] url: URL of the detector
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement
+        :param pulumi.Input[str] url: The URL of the detector.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1075,7 +958,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterTeams")
     def authorized_writer_teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs that have write access to this dashboard
+        Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         """
         return pulumi.get(self, "authorized_writer_teams")
 
@@ -1083,7 +966,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="authorizedWriterUsers")
     def authorized_writer_users(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        User IDs that have write access to this dashboard
+        User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         """
         return pulumi.get(self, "authorized_writer_users")
 
@@ -1091,7 +974,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the detector
+        Description of the detector.
         """
         return pulumi.get(self, "description")
 
@@ -1099,7 +982,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> pulumi.Output[Optional[bool]]:
         """
-        (false by default) When false, samples a subset of the output MTS in the visualization.
+        When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         """
         return pulumi.get(self, "disable_sampling")
 
@@ -1107,7 +990,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
@@ -1115,8 +998,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="labelResolutions")
     def label_resolutions(self) -> pulumi.Output[Mapping[str, int]]:
         """
-        Resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert
-        should be triggered
+        The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         """
         return pulumi.get(self, "label_resolutions")
 
@@ -1124,7 +1006,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="maxDelay")
     def max_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum time (in seconds) to wait for late datapoints. Max value is 900 (15m)
+        allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         """
         return pulumi.get(self, "max_delay")
 
@@ -1132,8 +1014,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="minDelay")
     def min_delay(self) -> pulumi.Output[Optional[int]]:
         """
-        Minimum time (in seconds) for the computation to wait even if the datapoints are arriving in a timely fashion. Max value
-        is 900 (15m)
+        How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         """
         return pulumi.get(self, "min_delay")
 
@@ -1141,7 +1022,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the detector
+        Name of the detector.
         """
         return pulumi.get(self, "name")
 
@@ -1149,7 +1030,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the detector. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         """
         return pulumi.get(self, "program_text")
 
@@ -1157,7 +1038,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.DetectorRule']]:
         """
-        Set of rules used for alerting
+        Set of rules used for alerting.
         """
         return pulumi.get(self, "rules")
 
@@ -1165,7 +1046,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="showDataMarkers")
     def show_data_markers(self) -> pulumi.Output[Optional[bool]]:
         """
-        (true by default) When true, markers will be drawn for each datapoint within the visualization.
+        When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         """
         return pulumi.get(self, "show_data_markers")
 
@@ -1173,7 +1054,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="showEventLines")
     def show_event_lines(self) -> pulumi.Output[Optional[bool]]:
         """
-        (false by default) When true, vertical lines will be drawn for each triggered event within the visualization.
+        When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         """
         return pulumi.get(self, "show_event_lines")
 
@@ -1181,7 +1062,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch. Used for visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
@@ -1189,7 +1070,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Tags associated with the detector
+        Tags associated with the detector.
         """
         return pulumi.get(self, "tags")
 
@@ -1197,7 +1078,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def teams(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Team IDs to associate the detector to
+        Team IDs to associate the detector to.
         """
         return pulumi.get(self, "teams")
 
@@ -1205,8 +1086,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`. Defaults
-        to 3600
+        Seconds to display in the visualization. This is a rolling range from the current time. Example: `3600` corresponds to `-1h` in web UI. `3600` by default.
         """
         return pulumi.get(self, "time_range")
 
@@ -1222,7 +1102,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the detector
+        The URL of the detector.
         """
         return pulumi.get(self, "url")
 
@@ -1230,7 +1110,7 @@ class Detector(pulumi.CustomResource):
     @pulumi.getter(name="vizOptions")
     def viz_options(self) -> pulumi.Output[Optional[Sequence['outputs.DetectorVizOption']]]:
         """
-        Plot-level customization options, associated with a publish statement
+        Plot-level customization options, associated with a publish statement.
         """
         return pulumi.get(self, "viz_options")
 

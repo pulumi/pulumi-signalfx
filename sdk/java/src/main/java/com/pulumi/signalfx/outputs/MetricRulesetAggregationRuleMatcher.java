@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MetricRulesetAggregationRuleMatcher {
     /**
-     * @return List of filters to match on
+     * @return List of filters to filter the set of input MTSs
      * 
      */
     private @Nullable List<MetricRulesetAggregationRuleMatcherFilter> filters;
     /**
-     * @return The type of the matcher
+     * @return Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     private String type;
 
     private MetricRulesetAggregationRuleMatcher() {}
     /**
-     * @return List of filters to match on
+     * @return List of filters to filter the set of input MTSs
      * 
      */
     public List<MetricRulesetAggregationRuleMatcherFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The type of the matcher
+     * @return Type of matcher. Must always be &#34;dimension&#34;
      * 
      */
     public String type() {

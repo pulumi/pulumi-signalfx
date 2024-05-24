@@ -18,14 +18,14 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
     public static final DataLinkTargetExternalUrlArgs Empty = new DataLinkTargetExternalUrlArgs();
 
     /**
-     * The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
      * 
      */
     @Import(name="minimumTimeWindow")
     private @Nullable Output<String> minimumTimeWindow;
 
     /**
-     * @return The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+     * @return The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
      * 
      */
     public Optional<Output<String>> minimumTimeWindow() {
@@ -48,14 +48,14 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     @Import(name="propertyKeyMapping")
     private @Nullable Output<Map<String,String>> propertyKeyMapping;
 
     /**
-     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+     * @return Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
      * 
      */
     public Optional<Output<Map<String,String>>> propertyKeyMapping() {
@@ -63,14 +63,14 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Designates the format of minimumTimeWindow in the same data link target object.
+     * [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     @Import(name="timeFormat")
     private @Nullable Output<String> timeFormat;
 
     /**
-     * @return Designates the format of minimumTimeWindow in the same data link target object.
+     * @return [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
      * 
      */
     public Optional<Output<String>> timeFormat() {
@@ -78,14 +78,14 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * URL string for a Splunk instance or external system data link target.
+     * URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return URL string for a Splunk instance or external system data link target.
+     * @return URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
      * 
      */
     public Output<String> url() {
@@ -121,7 +121,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minimumTimeWindow The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+         * @param minimumTimeWindow The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minimumTimeWindow The minimum time window for a search sent to an external site. Depends on the value set for `time_format`.
+         * @param minimumTimeWindow The [minimum time window](https://dev.splunk.com/observability/docs/administration/datalinks/) for a search sent to an external site. Defaults to `6000`
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different
+         * @param propertyKeyMapping Describes the relationship between Splunk Observability Cloud metadata keys and external system properties when the key names are different.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeFormat Designates the format of minimumTimeWindow in the same data link target object.
+         * @param timeFormat [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeFormat Designates the format of minimumTimeWindow in the same data link target object.
+         * @param timeFormat [Designates the format](https://dev.splunk.com/observability/docs/administration/datalinks/) of `minimum_time_window` in the same data link target object. Must be one of `&#34;ISO8601&#34;`, `&#34;EpochSeconds&#34;` or `&#34;Epoch&#34;` (which is milliseconds). Defaults to `&#34;ISO8601&#34;`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param url URL string for a Splunk instance or external system data link target.
+         * @param url URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class DataLinkTargetExternalUrlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param url URL string for a Splunk instance or external system data link target.
+         * @param url URL string for a Splunk instance or external system data link target. [See the supported template variables](https://dev.splunk.com/observability/docs/administration/datalinks/).
          * 
          * @return builder
          * 

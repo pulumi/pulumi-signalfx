@@ -24,248 +24,214 @@ import javax.annotation.Nullable;
  * 
  * ## Example
  * 
- * ## Arguments
- * 
- * The following arguments are supported in the resource block:
- * 
- * * `name` - (Required) Name of the chart.
- * * `program_text` - (Required) Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
- * * `description` - (Optional) Description of the chart.
- * * `unit_prefix` - (Optional) Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
- * * `minimum_resolution` - (Optional) The minimum resolution (in seconds) to use for computing the underlying program.
- * * `max_delay` - (Optional) How long (in seconds) to wait for late datapoints.
- * * `timezone` - (Optional) The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
- * * `refresh_interval` - (Optional) How often (in seconds) to refresh the values of the heatmap.
- * * `disable_sampling` - (Optional) If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
- * * `group_by` - (Optional) Properties to group by in the heatmap (in nesting order).
- * * `sort_by` - (Optional) The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
- * * `hide_timestamp` - (Optional) Whether to show the timestamp in the chart. `false` by default.
- * * `color_range` - (Optional, Default) Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
- *     * `min_value` - (Optional) The minimum value within the coloring range.
- *     * `max_value` - (Optional) The maximum value within the coloring range.
- *     * `color` - (Required) The color range to use. The starting hex color value for data values in a heatmap chart. Specify the value as a 6-character hexadecimal value preceded by the &#39;#&#39; character, for example &#34;#ea1849&#34; (grass green).
- * * `color_scale` - (Optional.  Conflicts with `color_range`) One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
- *     * `gt` - (Optional) Indicates the lower threshold non-inclusive value for this range.
- *     * `gte` - (Optional) Indicates the lower threshold inclusive value for this range.
- *     * `lt` - (Optional) Indicates the upper threshold non-inclusive value for this range.
- *     * `lte` - (Optional) Indicates the upper threshold inclusive value for this range.
- *     * `color` - (Required) The color range to use. Hex values are not supported here. Must be one of gray, blue, light_blue, navy, dark_orange, orange, dark_yellow, magenta, cerise, pink, violet, purple, gray_blue, dark_green, green, aquamarine, red, yellow, vivid_yellow, light_green, or lime_green.
- * 
- * ## Attributes
- * 
- * In a addition to all arguments above, the following attributes are exported:
- * 
- * * `id` - The ID of the chart.
- * * `url` - The URL of the chart.
- * 
  */
 @ResourceType(type="signalfx:index/heatmapChart:HeatmapChart")
 public class HeatmapChart extends com.pulumi.resources.CustomResource {
     /**
-     * Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }
+     * Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     @Export(name="colorRange", refs={HeatmapChartColorRange.class}, tree="[0]")
     private Output</* @Nullable */ HeatmapChartColorRange> colorRange;
 
     /**
-     * @return Values and color for the color range. Example: colorRange : { min : 0, max : 100, color : &#34;#0000ff&#34; }
+     * @return Values and color for the color range. Example: `color_range : { min : 0, max : 100, color : &#34;#0000ff&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     public Output<Optional<HeatmapChartColorRange>> colorRange() {
         return Codegen.optional(this.colorRange);
     }
     /**
-     * Single color range including both the color to display for that range and the borders of the range
+     * One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     @Export(name="colorScales", refs={List.class,HeatmapChartColorScale.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HeatmapChartColorScale>> colorScales;
 
     /**
-     * @return Single color range including both the color to display for that range and the borders of the range
+     * @return One to N blocks, each defining a single color range including both the color to display for that range and the borders of the range. Example: `color_scale { gt = 60, color = &#34;blue&#34; } color_scale { lte = 60, color = &#34;yellow&#34; }`. Look at this [link](https://docs.splunk.com/observability/en/data-visualization/charts/chart-options.html).
      * 
      */
     public Output<Optional<List<HeatmapChartColorScale>>> colorScales() {
         return Codegen.optional(this.colorScales);
     }
     /**
-     * Description of the chart (Optional)
+     * Description of the chart.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the chart (Optional)
+     * @return Description of the chart.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * (false by default) If false, samples a subset of the output MTS, which improves UI performance
+     * If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      * 
      */
     @Export(name="disableSampling", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableSampling;
 
     /**
-     * @return (false by default) If false, samples a subset of the output MTS, which improves UI performance
+     * @return If `false`, samples a subset of the output MTS, which improves UI performance. `false` by default.
      * 
      */
     public Output<Optional<Boolean>> disableSampling() {
         return Codegen.optional(this.disableSampling);
     }
     /**
-     * Properties to group by in the heatmap (in nesting order)
+     * Properties to group by in the heatmap (in nesting order).
      * 
      */
     @Export(name="groupBies", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupBies;
 
     /**
-     * @return Properties to group by in the heatmap (in nesting order)
+     * @return Properties to group by in the heatmap (in nesting order).
      * 
      */
     public Output<Optional<List<String>>> groupBies() {
         return Codegen.optional(this.groupBies);
     }
     /**
-     * (false by default) Whether to show the timestamp in the chart
+     * Whether to show the timestamp in the chart. `false` by default.
      * 
      */
     @Export(name="hideTimestamp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hideTimestamp;
 
     /**
-     * @return (false by default) Whether to show the timestamp in the chart
+     * @return Whether to show the timestamp in the chart. `false` by default.
      * 
      */
     public Output<Optional<Boolean>> hideTimestamp() {
         return Codegen.optional(this.hideTimestamp);
     }
     /**
-     * How long (in seconds) to wait for late datapoints
+     * How long (in seconds) to wait for late datapoints.
      * 
      */
     @Export(name="maxDelay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxDelay;
 
     /**
-     * @return How long (in seconds) to wait for late datapoints
+     * @return How long (in seconds) to wait for late datapoints.
      * 
      */
     public Output<Optional<Integer>> maxDelay() {
         return Codegen.optional(this.maxDelay);
     }
     /**
-     * The minimum resolution (in seconds) to use for computing the underlying program
+     * The minimum resolution (in seconds) to use for computing the underlying program.
      * 
      */
     @Export(name="minimumResolution", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minimumResolution;
 
     /**
-     * @return The minimum resolution (in seconds) to use for computing the underlying program
+     * @return The minimum resolution (in seconds) to use for computing the underlying program.
      * 
      */
     public Output<Optional<Integer>> minimumResolution() {
         return Codegen.optional(this.minimumResolution);
     }
     /**
-     * Name of the chart
+     * Name of the chart.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the chart
+     * @return Name of the chart.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
      * 
      */
     @Export(name="programText", refs={String.class}, tree="[0]")
     private Output<String> programText;
 
     /**
-     * @return Signalflow program text for the chart. More info at &#34;https://developers.signalfx.com/docs/signalflow-overview&#34;
+     * @return Signalflow program text for the chart. More info at &lt;https://dev.splunk.com/observability/docs/signalflow/&gt;.
      * 
      */
     public Output<String> programText() {
         return this.programText;
     }
     /**
-     * How often (in seconds) to refresh the values of the heatmap
+     * How often (in seconds) to refresh the values of the heatmap.
      * 
      */
     @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
-     * @return How often (in seconds) to refresh the values of the heatmap
+     * @return How often (in seconds) to refresh the values of the heatmap.
      * 
      */
     public Output<Optional<Integer>> refreshInterval() {
         return Codegen.optional(this.refreshInterval);
     }
     /**
-     * The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
+     * The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      * 
      */
     @Export(name="sortBy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sortBy;
 
     /**
-     * @return The property to use when sorting the elements. Must be prepended with + for ascending or - for descending (e.g. -foo)
+     * @return The property to use when sorting the elements. Must be prepended with `+` for ascending or `-` for descending (e.g. `-foo`).
      * 
      */
     public Output<Optional<String>> sortBy() {
         return Codegen.optional(this.sortBy);
     }
     /**
-     * The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     * The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      * 
      */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**
-     * @return The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
+     * @return The property value is a string that denotes the geographic region associated with the time zone, (default UTC).
      * 
      */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }
     /**
-     * (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
     @Export(name="unitPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> unitPrefix;
 
     /**
-     * @return (Metric by default) Must be &#34;Metric&#34; or &#34;Binary&#34;
+     * @return Must be `&#34;Metric&#34;` or `&#34;Binary`&#34;. `&#34;Metric&#34;` by default.
      * 
      */
     public Output<Optional<String>> unitPrefix() {
         return Codegen.optional(this.unitPrefix);
     }
     /**
-     * URL of the chart
+     * The URL of the chart.
      * 
      */
     @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
-     * @return URL of the chart
+     * @return The URL of the chart.
      * 
      */
     public Output<String> url() {

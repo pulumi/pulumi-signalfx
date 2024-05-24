@@ -20,14 +20,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     public static final SloTargetAlertRuleRuleArgs Empty = new SloTargetAlertRuleRuleArgs();
 
     /**
-     * Description of the rule
+     * Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the rule
+     * @return Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
      * 
      */
     public Optional<Output<String>> description() {
@@ -35,14 +35,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (default: false) When true, notifications and events will not be generated for the detect label
+     * When true, notifications and events will not be generated for the detect label. `false` by default.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return (default: false) When true, notifications and events will not be generated for the detect label
+     * @return When true, notifications and events will not be generated for the detect label. `false` by default.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -50,14 +50,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      * 
      */
     @Import(name="notifications")
     private @Nullable Output<List<String>> notifications;
 
     /**
-     * @return List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+     * @return List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
      * 
      */
     public Optional<Output<List<String>>> notifications() {
@@ -65,14 +65,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
      * 
      */
     @Import(name="parameterizedBody")
     private @Nullable Output<String> parameterizedBody;
 
     /**
-     * @return Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * @return Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
      * 
      */
     public Optional<Output<String>> parameterizedBody() {
@@ -80,14 +80,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
      * 
      */
     @Import(name="parameterizedSubject")
     private @Nullable Output<String> parameterizedSubject;
 
     /**
-     * @return Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+     * @return Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
      * 
      */
     public Optional<Output<String>> parameterizedSubject() {
@@ -110,14 +110,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * URL of page to consult when an alert is triggered
+     * URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
     @Import(name="runbookUrl")
     private @Nullable Output<String> runbookUrl;
 
     /**
-     * @return URL of page to consult when an alert is triggered
+     * @return URL of page to consult when an alert is triggered. This can be used with custom notification messages.
      * 
      */
     public Optional<Output<String>> runbookUrl() {
@@ -125,14 +125,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
      * 
      */
     @Import(name="severity", required=true)
     private Output<String> severity;
 
     /**
-     * @return The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+     * @return The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
      * 
      */
     public Output<String> severity() {
@@ -140,14 +140,14 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Plain text suggested first course of action, such as a command to execute.
+     * Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
     @Import(name="tip")
     private @Nullable Output<String> tip;
 
     /**
-     * @return Plain text suggested first course of action, such as a command to execute.
+     * @return Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
      * 
      */
     public Optional<Output<String>> tip() {
@@ -187,7 +187,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description Description of the rule
+         * @param description Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description Description of the rule
+         * @param description Description for the rule. Displays as the alert condition in the Alert Rules tab of the detector editor in the web UI.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param disabled (default: false) When true, notifications and events will not be generated for the detect label
+         * @param disabled When true, notifications and events will not be generated for the detect label. `false` by default.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param disabled (default: false) When true, notifications and events will not be generated for the detect label
+         * @param disabled When true, notifications and events will not be generated for the detect label. `false` by default.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See https://developers.signalfx.com/v2/docs/detector-model#notifications-models for more info
+         * @param notifications List of strings specifying where notifications will be sent when an incident occurs. See [Create SLO](https://dev.splunk.com/observability/reference/api/slo/latest#endpoint-create-new-slo) for more info.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameterizedBody Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+         * @param parameterizedBody Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameterizedBody Custom notification message body when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+         * @param parameterizedBody Custom notification message body when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameterizedSubject Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+         * @param parameterizedSubject Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param parameterizedSubject Custom notification message subject when an alert is triggered. See https://developers.signalfx.com/v2/reference#detector-model for more info
+         * @param parameterizedSubject Custom notification message subject when an alert is triggered. See [Alert message](https://docs.splunk.com/observability/en/alerts-detectors-notifications/create-detectors-for-alerts.html#alert-messages) for more info.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param runbookUrl URL of page to consult when an alert is triggered
+         * @param runbookUrl URL of page to consult when an alert is triggered. This can be used with custom notification messages.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param runbookUrl URL of page to consult when an alert is triggered
+         * @param runbookUrl URL of page to consult when an alert is triggered. This can be used with custom notification messages.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param severity The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+         * @param severity The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param severity The severity of the rule, must be one of: Critical, Warning, Major, Minor, Info
+         * @param severity The severity of the rule, must be one of: `&#34;Critical&#34;`, `&#34;Major&#34;`, `&#34;Minor&#34;`, `&#34;Warning&#34;`, `&#34;Info&#34;`.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tip Plain text suggested first course of action, such as a command to execute.
+         * @param tip Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class SloTargetAlertRuleRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tip Plain text suggested first course of action, such as a command to execute.
+         * @param tip Plain text suggested first course of action, such as a command line to execute. This can be used with custom notification messages.
          * 
          * @return builder
          * 

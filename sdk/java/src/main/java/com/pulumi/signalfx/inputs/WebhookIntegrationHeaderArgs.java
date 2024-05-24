@@ -14,16 +14,32 @@ public final class WebhookIntegrationHeaderArgs extends com.pulumi.resources.Res
 
     public static final WebhookIntegrationHeaderArgs Empty = new WebhookIntegrationHeaderArgs();
 
+    /**
+     * The key of the header to send
+     * 
+     */
     @Import(name="headerKey", required=true)
     private Output<String> headerKey;
 
+    /**
+     * @return The key of the header to send
+     * 
+     */
     public Output<String> headerKey() {
         return this.headerKey;
     }
 
+    /**
+     * The value of the header to send
+     * 
+     */
     @Import(name="headerValue", required=true)
     private Output<String> headerValue;
 
+    /**
+     * @return The value of the header to send
+     * 
+     */
     public Output<String> headerValue() {
         return this.headerValue;
     }
@@ -53,20 +69,44 @@ public final class WebhookIntegrationHeaderArgs extends com.pulumi.resources.Res
             $ = new WebhookIntegrationHeaderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param headerKey The key of the header to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerKey(Output<String> headerKey) {
             $.headerKey = headerKey;
             return this;
         }
 
+        /**
+         * @param headerKey The key of the header to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerKey(String headerKey) {
             return headerKey(Output.of(headerKey));
         }
 
+        /**
+         * @param headerValue The value of the header to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerValue(Output<String> headerValue) {
             $.headerValue = headerValue;
             return this;
         }
 
+        /**
+         * @param headerValue The value of the header to send
+         * 
+         * @return builder
+         * 
+         */
         public Builder headerValue(String headerValue) {
             return headerValue(Output.of(headerValue));
         }

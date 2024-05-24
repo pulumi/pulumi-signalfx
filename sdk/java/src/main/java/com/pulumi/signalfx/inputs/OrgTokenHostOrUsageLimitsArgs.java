@@ -16,14 +16,14 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
     public static final OrgTokenHostOrUsageLimitsArgs Empty = new OrgTokenHostOrUsageLimitsArgs();
 
     /**
-     * Max number of containers that can use this token
+     * Max number of Docker containers that can use this token
      * 
      */
     @Import(name="containerLimit")
     private @Nullable Output<Integer> containerLimit;
 
     /**
-     * @return Max number of containers that can use this token
+     * @return Max number of Docker containers that can use this token
      * 
      */
     public Optional<Output<Integer>> containerLimit() {
@@ -31,14 +31,14 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Notification threshold for containers
+     * Notification threshold for Docker containers
      * 
      */
     @Import(name="containerNotificationThreshold")
     private @Nullable Output<Integer> containerNotificationThreshold;
 
     /**
-     * @return Notification threshold for containers
+     * @return Notification threshold for Docker containers
      * 
      */
     public Optional<Output<Integer>> containerNotificationThreshold() {
@@ -76,14 +76,14 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Max number of high-res metrics that can be sent with this token
+     * Max number of hi-res metrics that can be sent with this toke
      * 
      */
     @Import(name="highResMetricsLimit")
     private @Nullable Output<Integer> highResMetricsLimit;
 
     /**
-     * @return Max number of high-res metrics that can be sent with this token
+     * @return Max number of hi-res metrics that can be sent with this toke
      * 
      */
     public Optional<Output<Integer>> highResMetricsLimit() {
@@ -91,14 +91,14 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Notification threshold for high-res metrics
+     * Notification threshold for hi-res metrics
      * 
      */
     @Import(name="highResMetricsNotificationThreshold")
     private @Nullable Output<Integer> highResMetricsNotificationThreshold;
 
     /**
-     * @return Notification threshold for high-res metrics
+     * @return Notification threshold for hi-res metrics
      * 
      */
     public Optional<Output<Integer>> highResMetricsNotificationThreshold() {
@@ -167,7 +167,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param containerLimit Max number of containers that can use this token
+         * @param containerLimit Max number of Docker containers that can use this token
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param containerLimit Max number of containers that can use this token
+         * @param containerLimit Max number of Docker containers that can use this token
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param containerNotificationThreshold Notification threshold for containers
+         * @param containerNotificationThreshold Notification threshold for Docker containers
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param containerNotificationThreshold Notification threshold for containers
+         * @param containerNotificationThreshold Notification threshold for Docker containers
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param highResMetricsLimit Max number of high-res metrics that can be sent with this token
+         * @param highResMetricsLimit Max number of hi-res metrics that can be sent with this toke
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param highResMetricsLimit Max number of high-res metrics that can be sent with this token
+         * @param highResMetricsLimit Max number of hi-res metrics that can be sent with this toke
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param highResMetricsNotificationThreshold Notification threshold for high-res metrics
+         * @param highResMetricsNotificationThreshold Notification threshold for hi-res metrics
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class OrgTokenHostOrUsageLimitsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param highResMetricsNotificationThreshold Notification threshold for high-res metrics
+         * @param highResMetricsNotificationThreshold Notification threshold for hi-res metrics
          * 
          * @return builder
          * 

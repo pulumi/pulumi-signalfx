@@ -18,14 +18,14 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
     public static final DashboardPermissionsArgs Empty = new DashboardPermissionsArgs();
 
     /**
-     * The custom access control list for this dashboard
+     * List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      * 
      */
     @Import(name="acls")
     private @Nullable Output<List<DashboardPermissionsAclArgs>> acls;
 
     /**
-     * @return The custom access control list for this dashboard
+     * @return List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
      * 
      */
     public Optional<Output<List<DashboardPermissionsAclArgs>>> acls() {
@@ -33,14 +33,14 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the dashboard group that this dashboard inherits permissions from
+     * ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return The ID of the dashboard group that this dashboard inherits permissions from
+     * @return ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -73,7 +73,7 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acls The custom access control list for this dashboard
+         * @param acls List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acls The custom access control list for this dashboard
+         * @param acls List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param acls The custom access control list for this dashboard
+         * @param acls List of read and write permission configurations to specify which user, team, and organization can view and/or edit your dashboard. Use the `permissions.parent` instead if you want to inherit permissions.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parent The ID of the dashboard group that this dashboard inherits permissions from
+         * @param parent ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class DashboardPermissionsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param parent The ID of the dashboard group that this dashboard inherits permissions from
+         * @param parent ID of the dashboard group you want your dashboard to inherit permissions from. Use the `permissions.acl` instead if you want to specify various read and write permission configurations.
          * 
          * @return builder
          * 

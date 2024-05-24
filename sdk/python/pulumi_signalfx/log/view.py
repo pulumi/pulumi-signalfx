@@ -27,15 +27,15 @@ class ViewArgs:
                  time_range: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a View resource.
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart (Optional)
-        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: Sorting options configuration
-        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         pulumi.set(__self__, "program_text", program_text)
         if columns is not None:
@@ -59,7 +59,7 @@ class ViewArgs:
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Input[str]:
         """
-        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         """
         return pulumi.get(self, "program_text")
 
@@ -71,7 +71,7 @@ class ViewArgs:
     @pulumi.getter
     def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]]:
         """
-        Column configuration
+        The column headers to show on the log view.
         """
         return pulumi.get(self, "columns")
 
@@ -83,7 +83,7 @@ class ViewArgs:
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> Optional[pulumi.Input[str]]:
         """
-        default connection that the dashboard uses
+        The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         """
         return pulumi.get(self, "default_connection")
 
@@ -95,7 +95,7 @@ class ViewArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart (Optional)
+        Description of the log view.
         """
         return pulumi.get(self, "description")
 
@@ -107,7 +107,7 @@ class ViewArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch to end the visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
@@ -119,7 +119,7 @@ class ViewArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -131,7 +131,7 @@ class ViewArgs:
     @pulumi.getter(name="sortOptions")
     def sort_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]]:
         """
-        Sorting options configuration
+        The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         """
         return pulumi.get(self, "sort_options")
 
@@ -143,7 +143,7 @@ class ViewArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch to start the visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
@@ -155,7 +155,7 @@ class ViewArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
@@ -179,16 +179,16 @@ class _ViewState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering View resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart (Optional)
-        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: Sorting options configuration
-        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] url: The URL of the log view.
         """
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
@@ -215,7 +215,7 @@ class _ViewState:
     @pulumi.getter
     def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewColumnArgs']]]]:
         """
-        Column configuration
+        The column headers to show on the log view.
         """
         return pulumi.get(self, "columns")
 
@@ -227,7 +227,7 @@ class _ViewState:
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> Optional[pulumi.Input[str]]:
         """
-        default connection that the dashboard uses
+        The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         """
         return pulumi.get(self, "default_connection")
 
@@ -239,7 +239,7 @@ class _ViewState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the chart (Optional)
+        Description of the log view.
         """
         return pulumi.get(self, "description")
 
@@ -251,7 +251,7 @@ class _ViewState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch to end the visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
@@ -263,7 +263,7 @@ class _ViewState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the chart
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -275,7 +275,7 @@ class _ViewState:
     @pulumi.getter(name="programText")
     def program_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         """
         return pulumi.get(self, "program_text")
 
@@ -287,7 +287,7 @@ class _ViewState:
     @pulumi.getter(name="sortOptions")
     def sort_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ViewSortOptionArgs']]]]:
         """
-        Sorting options configuration
+        The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         """
         return pulumi.get(self, "sort_options")
 
@@ -299,7 +299,7 @@ class _ViewState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds since epoch to start the visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
@@ -311,7 +311,7 @@ class _ViewState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
@@ -323,7 +323,7 @@ class _ViewState:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the chart
+        The URL of the log view.
         """
         return pulumi.get(self, "url")
 
@@ -354,38 +354,17 @@ class View(pulumi.CustomResource):
 
         ## Example
 
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `name` - (Required) Name of the log view.
-        * `program_text` - (Required) Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
-        * `description` - (Optional) Description of the log view.
-        * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `columns` - (Optional) The column headers to show on the log view.
-        * `sort_options` - (Optional) The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
-        * `default_connection` - (Optional) The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the log view.
-        * `url` - The URL of the log view.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart (Optional)
-        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: Sorting options configuration
-        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         ...
     @overload
@@ -399,27 +378,6 @@ class View(pulumi.CustomResource):
         A log view displays log lines in a table form in a dashboard and shows you in detail what is happening and why.
 
         ## Example
-
-        ## Arguments
-
-        The following arguments are supported in the resource block:
-
-        * `name` - (Required) Name of the log view.
-        * `program_text` - (Required) Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
-        * `description` - (Optional) Description of the log view.
-        * `time_range` - (Optional) From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
-        * `start_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `end_time` - (Optional) Seconds since epoch. Used for visualization. Conflicts with `time_range`.
-        * `columns` - (Optional) The column headers to show on the log view.
-        * `sort_options` - (Optional) The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
-        * `default_connection` - (Optional) The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
-
-        ## Attributes
-
-        In a addition to all arguments above, the following attributes are exported:
-
-        * `id` - The ID of the log view.
-        * `url` - The URL of the log view.
 
         :param str resource_name: The name of the resource.
         :param ViewArgs args: The arguments to use to populate this resource's properties.
@@ -495,16 +453,16 @@ class View(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: Column configuration
-        :param pulumi.Input[str] default_connection: default connection that the dashboard uses
-        :param pulumi.Input[str] description: Description of the chart (Optional)
-        :param pulumi.Input[int] end_time: Seconds since epoch to end the visualization
-        :param pulumi.Input[str] name: Name of the chart
-        :param pulumi.Input[str] program_text: Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: Sorting options configuration
-        :param pulumi.Input[int] start_time: Seconds since epoch to start the visualization
-        :param pulumi.Input[int] time_range: Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
-        :param pulumi.Input[str] url: URL of the chart
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewColumnArgs']]]] columns: The column headers to show on the log view.
+        :param pulumi.Input[str] default_connection: The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
+        :param pulumi.Input[str] description: Description of the log view.
+        :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[str] name: Name of the log view.
+        :param pulumi.Input[str] program_text: Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ViewSortOptionArgs']]]] sort_options: The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
+        :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
+        :param pulumi.Input[int] time_range: From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
+        :param pulumi.Input[str] url: The URL of the log view.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -526,7 +484,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def columns(self) -> pulumi.Output[Optional[Sequence['outputs.ViewColumn']]]:
         """
-        Column configuration
+        The column headers to show on the log view.
         """
         return pulumi.get(self, "columns")
 
@@ -534,7 +492,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="defaultConnection")
     def default_connection(self) -> pulumi.Output[Optional[str]]:
         """
-        default connection that the dashboard uses
+        The connection that the log view uses to fetch data. This could be Splunk Enterprise, Splunk Enterprise Cloud or Observability Cloud.
         """
         return pulumi.get(self, "default_connection")
 
@@ -542,7 +500,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the chart (Optional)
+        Description of the log view.
         """
         return pulumi.get(self, "description")
 
@@ -550,7 +508,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch to end the visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "end_time")
 
@@ -558,7 +516,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the chart
+        Name of the log view.
         """
         return pulumi.get(self, "name")
 
@@ -566,7 +524,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="programText")
     def program_text(self) -> pulumi.Output[str]:
         """
-        Signalflow program text for the chart. More info at "https://developers.signalfx.com/docs/signalflow-overview"
+        Signalflow program text for the log view. More info at https://developers.signalfx.com/docs/signalflow-overview.
         """
         return pulumi.get(self, "program_text")
 
@@ -574,7 +532,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="sortOptions")
     def sort_options(self) -> pulumi.Output[Optional[Sequence['outputs.ViewSortOption']]]:
         """
-        Sorting options configuration
+        The sorting options configuration to specify if the log view table needs to be sorted in a particular field.
         """
         return pulumi.get(self, "sort_options")
 
@@ -582,7 +540,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds since epoch to start the visualization
+        Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         """
         return pulumi.get(self, "start_time")
 
@@ -590,7 +548,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output[Optional[int]]:
         """
-        Seconds to display in the visualization. This is a rolling range from the current time. Example: 3600 = `-1h`
+        From when to display data. Splunk Observability Cloud time syntax (e.g. `"-5m"`, `"-1h"`). Conflicts with `start_time` and `end_time`.
         """
         return pulumi.get(self, "time_range")
 
@@ -598,7 +556,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[str]:
         """
-        URL of the chart
+        The URL of the log view.
         """
         return pulumi.get(self, "url")
 

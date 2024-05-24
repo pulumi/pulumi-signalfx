@@ -12,17 +12,6 @@ import * as utilities from "../utilities";
  * > **WARNING** This resource implements a part of a workflow. You must use it with `signalfx.aws.Integration`.
  *
  * ## Example
- *
- * ## Arguments
- *
- * * `name` - (Required) The name of this integration
- *
- * ## Attributes
- *
- * In addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The ID of the integration to use with `signalfx.aws.Integration`
- * * `signalfxAwsAccount` - The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
  */
 export class TokenIntegration extends pulumi.CustomResource {
     /**
@@ -53,11 +42,11 @@ export class TokenIntegration extends pulumi.CustomResource {
     }
 
     /**
-     * Name of the integration
+     * The name of this integration
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Splunk Observability AWS account ID to use with an AWS role.
+     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      */
     public /*out*/ readonly signalfxAwsAccount!: pulumi.Output<string>;
     /**
@@ -99,11 +88,11 @@ export class TokenIntegration extends pulumi.CustomResource {
  */
 export interface TokenIntegrationState {
     /**
-     * Name of the integration
+     * The name of this integration
      */
     name?: pulumi.Input<string>;
     /**
-     * The Splunk Observability AWS account ID to use with an AWS role.
+     * The AWS Account ARN to use with your policies/roles, provided by Splunk Observability Cloud.
      */
     signalfxAwsAccount?: pulumi.Input<string>;
     /**
@@ -117,7 +106,7 @@ export interface TokenIntegrationState {
  */
 export interface TokenIntegrationArgs {
     /**
-     * Name of the integration
+     * The name of this integration
      */
     name?: pulumi.Input<string>;
 }

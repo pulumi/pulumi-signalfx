@@ -17,14 +17,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     public static final IntegrationState Empty = new IntegrationState();
 
     /**
-     * Opsgenie API key
+     * The API key
      * 
      */
     @Import(name="apiKey")
     private @Nullable Output<String> apiKey;
 
     /**
-     * @return Opsgenie API key
+     * @return The API key
      * 
      */
     public Optional<Output<String>> apiKey() {
@@ -32,14 +32,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Opsgenie API URL for integration
+     * Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
      * 
      */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
     /**
-     * @return Opsgenie API URL for integration
+     * @return Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
      * 
      */
     public Optional<Output<String>> apiUrl() {
@@ -47,14 +47,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the integration is enabled or not
+     * Whether the integration is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the integration is enabled or not
+     * @return Whether the integration is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -62,14 +62,14 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the integration
+     * Name of the integration.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the integration
+     * @return Name of the integration.
      * 
      */
     public Optional<Output<String>> name() {
@@ -104,7 +104,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiKey Opsgenie API key
+         * @param apiKey The API key
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiKey Opsgenie API key
+         * @param apiKey The API key
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiUrl Opsgenie API URL for integration
+         * @param apiUrl Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiUrl Opsgenie API URL for integration
+         * @param apiUrl Opsgenie API URL. Will default to `https://api.opsgenie.com`. You might also want `https://api.eu.opsgenie.com`.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled or not
+         * @param enabled Whether the integration is enabled.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Whether the integration is enabled or not
+         * @param enabled Whether the integration is enabled.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration
+         * @param name Name of the integration.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class IntegrationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the integration
+         * @param name Name of the integration.
          * 
          * @return builder
          * 

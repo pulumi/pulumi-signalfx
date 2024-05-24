@@ -13,19 +13,19 @@ namespace Pulumi.SignalFx.Inputs
     public sealed class AlertMutingRuleFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (false by default) whether this filter should be a "not" filter
+        /// Determines if this is a "not" filter. Defaults to `false`.
         /// </summary>
         [Input("negated")]
         public Input<bool>? Negated { get; set; }
 
         /// <summary>
-        /// the property to filter by
+        /// The property to filter.
         /// </summary>
         [Input("property", required: true)]
         public Input<string> Property { get; set; } = null!;
 
         /// <summary>
-        /// the value of the property to filter by
+        /// The property value to filter.
         /// </summary>
         [Input("propertyValue", required: true)]
         public Input<string> PropertyValue { get; set; } = null!;
