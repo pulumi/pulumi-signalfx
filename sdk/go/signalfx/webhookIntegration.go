@@ -24,9 +24,13 @@ type WebhookIntegration struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// A header to send with the request
 	Headers WebhookIntegrationHeaderArrayOutput `pulumi:"headers"`
+	// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+	Method pulumi.StringPtrOutput `pulumi:"method"`
 	// Name of the integration.
-	Name         pulumi.StringOutput    `pulumi:"name"`
-	SharedSecret pulumi.StringPtrOutput `pulumi:"sharedSecret"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Template for the payload to be sent with the webhook request in JSON format
+	PayloadTemplate pulumi.StringPtrOutput `pulumi:"payloadTemplate"`
+	SharedSecret    pulumi.StringPtrOutput `pulumi:"sharedSecret"`
 	// The URL to request
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 }
@@ -79,9 +83,13 @@ type webhookIntegrationState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// A header to send with the request
 	Headers []WebhookIntegrationHeader `pulumi:"headers"`
+	// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+	Method *string `pulumi:"method"`
 	// Name of the integration.
-	Name         *string `pulumi:"name"`
-	SharedSecret *string `pulumi:"sharedSecret"`
+	Name *string `pulumi:"name"`
+	// Template for the payload to be sent with the webhook request in JSON format
+	PayloadTemplate *string `pulumi:"payloadTemplate"`
+	SharedSecret    *string `pulumi:"sharedSecret"`
 	// The URL to request
 	Url *string `pulumi:"url"`
 }
@@ -91,9 +99,13 @@ type WebhookIntegrationState struct {
 	Enabled pulumi.BoolPtrInput
 	// A header to send with the request
 	Headers WebhookIntegrationHeaderArrayInput
+	// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+	Method pulumi.StringPtrInput
 	// Name of the integration.
-	Name         pulumi.StringPtrInput
-	SharedSecret pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Template for the payload to be sent with the webhook request in JSON format
+	PayloadTemplate pulumi.StringPtrInput
+	SharedSecret    pulumi.StringPtrInput
 	// The URL to request
 	Url pulumi.StringPtrInput
 }
@@ -107,9 +119,13 @@ type webhookIntegrationArgs struct {
 	Enabled bool `pulumi:"enabled"`
 	// A header to send with the request
 	Headers []WebhookIntegrationHeader `pulumi:"headers"`
+	// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+	Method *string `pulumi:"method"`
 	// Name of the integration.
-	Name         *string `pulumi:"name"`
-	SharedSecret *string `pulumi:"sharedSecret"`
+	Name *string `pulumi:"name"`
+	// Template for the payload to be sent with the webhook request in JSON format
+	PayloadTemplate *string `pulumi:"payloadTemplate"`
+	SharedSecret    *string `pulumi:"sharedSecret"`
 	// The URL to request
 	Url *string `pulumi:"url"`
 }
@@ -120,9 +136,13 @@ type WebhookIntegrationArgs struct {
 	Enabled pulumi.BoolInput
 	// A header to send with the request
 	Headers WebhookIntegrationHeaderArrayInput
+	// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+	Method pulumi.StringPtrInput
 	// Name of the integration.
-	Name         pulumi.StringPtrInput
-	SharedSecret pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Template for the payload to be sent with the webhook request in JSON format
+	PayloadTemplate pulumi.StringPtrInput
+	SharedSecret    pulumi.StringPtrInput
 	// The URL to request
 	Url pulumi.StringPtrInput
 }
@@ -224,9 +244,19 @@ func (o WebhookIntegrationOutput) Headers() WebhookIntegrationHeaderArrayOutput 
 	return o.ApplyT(func(v *WebhookIntegration) WebhookIntegrationHeaderArrayOutput { return v.Headers }).(WebhookIntegrationHeaderArrayOutput)
 }
 
+// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+func (o WebhookIntegrationOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringPtrOutput { return v.Method }).(pulumi.StringPtrOutput)
+}
+
 // Name of the integration.
 func (o WebhookIntegrationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Template for the payload to be sent with the webhook request in JSON format
+func (o WebhookIntegrationOutput) PayloadTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebhookIntegration) pulumi.StringPtrOutput { return v.PayloadTemplate }).(pulumi.StringPtrOutput)
 }
 
 func (o WebhookIntegrationOutput) SharedSecret() pulumi.StringPtrOutput {

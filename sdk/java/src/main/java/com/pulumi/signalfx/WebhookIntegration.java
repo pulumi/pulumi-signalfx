@@ -56,6 +56,20 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.headers);
     }
     /**
+     * HTTP method used for the webhook request, such as &#39;GET&#39;, &#39;POST&#39; and &#39;PUT&#39;
+     * 
+     */
+    @Export(name="method", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> method;
+
+    /**
+     * @return HTTP method used for the webhook request, such as &#39;GET&#39;, &#39;POST&#39; and &#39;PUT&#39;
+     * 
+     */
+    public Output<Optional<String>> method() {
+        return Codegen.optional(this.method);
+    }
+    /**
      * Name of the integration.
      * 
      */
@@ -68,6 +82,20 @@ public class WebhookIntegration extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Template for the payload to be sent with the webhook request in JSON format
+     * 
+     */
+    @Export(name="payloadTemplate", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> payloadTemplate;
+
+    /**
+     * @return Template for the payload to be sent with the webhook request in JSON format
+     * 
+     */
+    public Output<Optional<String>> payloadTemplate() {
+        return Codegen.optional(this.payloadTemplate);
     }
     @Export(name="sharedSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sharedSecret;

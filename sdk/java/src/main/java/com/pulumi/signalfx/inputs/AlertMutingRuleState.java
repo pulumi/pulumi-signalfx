@@ -6,6 +6,7 @@ package com.pulumi.signalfx.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.signalfx.inputs.AlertMutingRuleFilterArgs;
+import com.pulumi.signalfx.inputs.AlertMutingRuleRecurrenceArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -71,6 +72,21 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     * 
+     */
+    @Import(name="recurrence")
+    private @Nullable Output<AlertMutingRuleRecurrenceArgs> recurrence;
+
+    /**
+     * @return Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     * 
+     */
+    public Optional<Output<AlertMutingRuleRecurrenceArgs>> recurrence() {
+        return Optional.ofNullable(this.recurrence);
+    }
+
+    /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      * 
      */
@@ -107,6 +123,7 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
         this.detectors = $.detectors;
         this.effectiveStartTime = $.effectiveStartTime;
         this.filters = $.filters;
+        this.recurrence = $.recurrence;
         this.startTime = $.startTime;
         this.stopTime = $.stopTime;
     }
@@ -219,6 +236,27 @@ public final class AlertMutingRuleState extends com.pulumi.resources.ResourceArg
          */
         public Builder filters(AlertMutingRuleFilterArgs... filters) {
             return filters(List.of(filters));
+        }
+
+        /**
+         * @param recurrence Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recurrence(@Nullable Output<AlertMutingRuleRecurrenceArgs> recurrence) {
+            $.recurrence = recurrence;
+            return this;
+        }
+
+        /**
+         * @param recurrence Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recurrence(AlertMutingRuleRecurrenceArgs recurrence) {
+            return recurrence(Output.of(recurrence));
         }
 
         /**

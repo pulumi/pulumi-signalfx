@@ -50,9 +50,17 @@ export class WebhookIntegration extends pulumi.CustomResource {
      */
     public readonly headers!: pulumi.Output<outputs.WebhookIntegrationHeader[] | undefined>;
     /**
+     * HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+     */
+    public readonly method!: pulumi.Output<string | undefined>;
+    /**
      * Name of the integration.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Template for the payload to be sent with the webhook request in JSON format
+     */
+    public readonly payloadTemplate!: pulumi.Output<string | undefined>;
     public readonly sharedSecret!: pulumi.Output<string | undefined>;
     /**
      * The URL to request
@@ -74,7 +82,9 @@ export class WebhookIntegration extends pulumi.CustomResource {
             const state = argsOrState as WebhookIntegrationState | undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["headers"] = state ? state.headers : undefined;
+            resourceInputs["method"] = state ? state.method : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["payloadTemplate"] = state ? state.payloadTemplate : undefined;
             resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
@@ -84,7 +94,9 @@ export class WebhookIntegration extends pulumi.CustomResource {
             }
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["headers"] = args?.headers ? pulumi.secret(args.headers) : undefined;
+            resourceInputs["method"] = args ? args.method : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["payloadTemplate"] = args ? args.payloadTemplate : undefined;
             resourceInputs["sharedSecret"] = args?.sharedSecret ? pulumi.secret(args.sharedSecret) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
         }
@@ -108,9 +120,17 @@ export interface WebhookIntegrationState {
      */
     headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
+     * HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+     */
+    method?: pulumi.Input<string>;
+    /**
      * Name of the integration.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Template for the payload to be sent with the webhook request in JSON format
+     */
+    payloadTemplate?: pulumi.Input<string>;
     sharedSecret?: pulumi.Input<string>;
     /**
      * The URL to request
@@ -131,9 +151,17 @@ export interface WebhookIntegrationArgs {
      */
     headers?: pulumi.Input<pulumi.Input<inputs.WebhookIntegrationHeader>[]>;
     /**
+     * HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+     */
+    method?: pulumi.Input<string>;
+    /**
      * Name of the integration.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Template for the payload to be sent with the webhook request in JSON format
+     */
+    payloadTemplate?: pulumi.Input<string>;
     sharedSecret?: pulumi.Input<string>;
     /**
      * The URL to request

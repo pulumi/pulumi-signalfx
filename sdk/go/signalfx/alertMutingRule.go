@@ -29,6 +29,8 @@ type AlertMutingRule struct {
 	EffectiveStartTime pulumi.IntOutput         `pulumi:"effectiveStartTime"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayOutput `pulumi:"filters"`
+	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+	Recurrence AlertMutingRuleRecurrencePtrOutput `pulumi:"recurrence"`
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
 	StartTime pulumi.IntOutput `pulumi:"startTime"`
 	// Stop time of an alert muting rule as a Unix time stamp in seconds.
@@ -78,6 +80,8 @@ type alertMutingRuleState struct {
 	EffectiveStartTime *int     `pulumi:"effectiveStartTime"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters []AlertMutingRuleFilter `pulumi:"filters"`
+	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+	Recurrence *AlertMutingRuleRecurrence `pulumi:"recurrence"`
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
 	StartTime *int `pulumi:"startTime"`
 	// Stop time of an alert muting rule as a Unix time stamp in seconds.
@@ -92,6 +96,8 @@ type AlertMutingRuleState struct {
 	EffectiveStartTime pulumi.IntPtrInput
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayInput
+	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+	Recurrence AlertMutingRuleRecurrencePtrInput
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
 	StartTime pulumi.IntPtrInput
 	// Stop time of an alert muting rule as a Unix time stamp in seconds.
@@ -109,6 +115,8 @@ type alertMutingRuleArgs struct {
 	Detectors []string `pulumi:"detectors"`
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters []AlertMutingRuleFilter `pulumi:"filters"`
+	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+	Recurrence *AlertMutingRuleRecurrence `pulumi:"recurrence"`
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
 	StartTime int `pulumi:"startTime"`
 	// Stop time of an alert muting rule as a Unix time stamp in seconds.
@@ -123,6 +131,8 @@ type AlertMutingRuleArgs struct {
 	Detectors pulumi.StringArrayInput
 	// Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 	Filters AlertMutingRuleFilterArrayInput
+	// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+	Recurrence AlertMutingRuleRecurrencePtrInput
 	// Starting time of an alert muting rule as a Unit time stamp in seconds.
 	StartTime pulumi.IntInput
 	// Stop time of an alert muting rule as a Unix time stamp in seconds.
@@ -233,6 +243,11 @@ func (o AlertMutingRuleOutput) EffectiveStartTime() pulumi.IntOutput {
 // Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
 func (o AlertMutingRuleOutput) Filters() AlertMutingRuleFilterArrayOutput {
 	return o.ApplyT(func(v *AlertMutingRule) AlertMutingRuleFilterArrayOutput { return v.Filters }).(AlertMutingRuleFilterArrayOutput)
+}
+
+// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+func (o AlertMutingRuleOutput) Recurrence() AlertMutingRuleRecurrencePtrOutput {
+	return o.ApplyT(func(v *AlertMutingRule) AlertMutingRuleRecurrencePtrOutput { return v.Recurrence }).(AlertMutingRuleRecurrencePtrOutput)
 }
 
 // Starting time of an alert muting rule as a Unit time stamp in seconds.

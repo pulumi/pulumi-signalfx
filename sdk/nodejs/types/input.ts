@@ -20,6 +20,17 @@ export interface AlertMutingRuleFilter {
     propertyValue: pulumi.Input<string>;
 }
 
+export interface AlertMutingRuleRecurrence {
+    /**
+     * The unit of the period. Can be days (d) or weeks (w).
+     */
+    unit: pulumi.Input<string>;
+    /**
+     * The amount of time, expressed as an integer, applicable to the unit specified.
+     */
+    value: pulumi.Input<number>;
+}
+
 export interface DashboardChart {
     /**
      * ID of the chart to display.

@@ -18,21 +18,29 @@ class WebhookIntegrationArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payload_template: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebhookIntegration resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
+        :param pulumi.Input[str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] payload_template: Template for the payload to be sent with the webhook request in JSON format
         :param pulumi.Input[str] url: The URL to request
         """
         pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if payload_template is not None:
+            pulumi.set(__self__, "payload_template", payload_template)
         if shared_secret is not None:
             pulumi.set(__self__, "shared_secret", shared_secret)
         if url is not None:
@@ -64,6 +72,18 @@ class WebhookIntegrationArgs:
 
     @property
     @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the integration.
@@ -73,6 +93,18 @@ class WebhookIntegrationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="payloadTemplate")
+    def payload_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template for the payload to be sent with the webhook request in JSON format
+        """
+        return pulumi.get(self, "payload_template")
+
+    @payload_template.setter
+    def payload_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload_template", value)
 
     @property
     @pulumi.getter(name="sharedSecret")
@@ -101,22 +133,30 @@ class _WebhookIntegrationState:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payload_template: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WebhookIntegration resources.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input['WebhookIntegrationHeaderArgs']]] headers: A header to send with the request
+        :param pulumi.Input[str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] payload_template: Template for the payload to be sent with the webhook request in JSON format
         :param pulumi.Input[str] url: The URL to request
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if payload_template is not None:
+            pulumi.set(__self__, "payload_template", payload_template)
         if shared_secret is not None:
             pulumi.set(__self__, "shared_secret", shared_secret)
         if url is not None:
@@ -148,6 +188,18 @@ class _WebhookIntegrationState:
 
     @property
     @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the integration.
@@ -157,6 +209,18 @@ class _WebhookIntegrationState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="payloadTemplate")
+    def payload_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Template for the payload to be sent with the webhook request in JSON format
+        """
+        return pulumi.get(self, "payload_template")
+
+    @payload_template.setter
+    def payload_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload_template", value)
 
     @property
     @pulumi.getter(name="sharedSecret")
@@ -187,7 +251,9 @@ class WebhookIntegration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payload_template: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -202,7 +268,9 @@ class WebhookIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
+        :param pulumi.Input[str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] payload_template: Template for the payload to be sent with the webhook request in JSON format
         :param pulumi.Input[str] url: The URL to request
         """
         ...
@@ -235,7 +303,9 @@ class WebhookIntegration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 payload_template: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -251,7 +321,9 @@ class WebhookIntegration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["headers"] = None if headers is None else pulumi.Output.secret(headers)
+            __props__.__dict__["method"] = method
             __props__.__dict__["name"] = name
+            __props__.__dict__["payload_template"] = payload_template
             __props__.__dict__["shared_secret"] = None if shared_secret is None else pulumi.Output.secret(shared_secret)
             __props__.__dict__["url"] = url
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["headers", "sharedSecret"])
@@ -268,7 +340,9 @@ class WebhookIntegration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]]] = None,
+            method: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            payload_template: Optional[pulumi.Input[str]] = None,
             shared_secret: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None) -> 'WebhookIntegration':
         """
@@ -280,7 +354,9 @@ class WebhookIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether the integration is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WebhookIntegrationHeaderArgs']]]] headers: A header to send with the request
+        :param pulumi.Input[str] method: HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
         :param pulumi.Input[str] name: Name of the integration.
+        :param pulumi.Input[str] payload_template: Template for the payload to be sent with the webhook request in JSON format
         :param pulumi.Input[str] url: The URL to request
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -289,7 +365,9 @@ class WebhookIntegration(pulumi.CustomResource):
 
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["headers"] = headers
+        __props__.__dict__["method"] = method
         __props__.__dict__["name"] = name
+        __props__.__dict__["payload_template"] = payload_template
         __props__.__dict__["shared_secret"] = shared_secret
         __props__.__dict__["url"] = url
         return WebhookIntegration(resource_name, opts=opts, __props__=__props__)
@@ -312,11 +390,27 @@ class WebhookIntegration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def method(self) -> pulumi.Output[Optional[str]]:
+        """
+        HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+        """
+        return pulumi.get(self, "method")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Name of the integration.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="payloadTemplate")
+    def payload_template(self) -> pulumi.Output[Optional[str]]:
+        """
+        Template for the payload to be sent with the webhook request in JSON format
+        """
+        return pulumi.get(self, "payload_template")
 
     @property
     @pulumi.getter(name="sharedSecret")
