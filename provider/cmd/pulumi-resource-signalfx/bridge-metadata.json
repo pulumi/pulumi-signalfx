@@ -10,6 +10,9 @@
                     },
                     "filter": {
                         "maxItemsOne": false
+                    },
+                    "recurrence": {
+                        "maxItemsOne": true
                     }
                 }
             },
