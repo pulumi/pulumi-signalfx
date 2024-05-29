@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.83.0
 	github.com/pulumi/pulumi/sdk/v3 v3.116.1
-	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20240515152406-6ce6d999c55e
+	github.com/splunk-terraform/terraform-provider-signalfx v1.9.2-0.20240528091137-cca8ab9859f3
 )
 
 replace (
@@ -196,7 +196,7 @@ require (
 	github.com/segmentio/encoding v0.3.5 // indirect
 	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
-	github.com/signalfx/signalfx-go v1.34.0 // indirect
+	github.com/signalfx/signalfx-go v1.36.0 // indirect
 	github.com/skeema/knownhosts v1.2.2 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect

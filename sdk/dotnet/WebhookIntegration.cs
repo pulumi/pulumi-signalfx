@@ -32,10 +32,22 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.WebhookIntegrationHeader>> Headers { get; private set; } = null!;
 
         /// <summary>
+        /// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+        /// </summary>
+        [Output("method")]
+        public Output<string?> Method { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the integration.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Template for the payload to be sent with the webhook request in JSON format
+        /// </summary>
+        [Output("payloadTemplate")]
+        public Output<string?> PayloadTemplate { get; private set; } = null!;
 
         [Output("sharedSecret")]
         public Output<string?> SharedSecret { get; private set; } = null!;
@@ -120,10 +132,22 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
+        /// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+        /// </summary>
+        [Input("method")]
+        public Input<string>? Method { get; set; }
+
+        /// <summary>
         /// Name of the integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Template for the payload to be sent with the webhook request in JSON format
+        /// </summary>
+        [Input("payloadTemplate")]
+        public Input<string>? PayloadTemplate { get; set; }
 
         [Input("sharedSecret")]
         private Input<string>? _sharedSecret;
@@ -174,10 +198,22 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
+        /// HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'
+        /// </summary>
+        [Input("method")]
+        public Input<string>? Method { get; set; }
+
+        /// <summary>
         /// Name of the integration.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Template for the payload to be sent with the webhook request in JSON format
+        /// </summary>
+        [Input("payloadTemplate")]
+        public Input<string>? PayloadTemplate { get; set; }
 
         [Input("sharedSecret")]
         private Input<string>? _sharedSecret;

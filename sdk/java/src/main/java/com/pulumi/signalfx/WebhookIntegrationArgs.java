@@ -50,6 +50,21 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * HTTP method used for the webhook request, such as &#39;GET&#39;, &#39;POST&#39; and &#39;PUT&#39;
+     * 
+     */
+    @Import(name="method")
+    private @Nullable Output<String> method;
+
+    /**
+     * @return HTTP method used for the webhook request, such as &#39;GET&#39;, &#39;POST&#39; and &#39;PUT&#39;
+     * 
+     */
+    public Optional<Output<String>> method() {
+        return Optional.ofNullable(this.method);
+    }
+
+    /**
      * Name of the integration.
      * 
      */
@@ -62,6 +77,21 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Template for the payload to be sent with the webhook request in JSON format
+     * 
+     */
+    @Import(name="payloadTemplate")
+    private @Nullable Output<String> payloadTemplate;
+
+    /**
+     * @return Template for the payload to be sent with the webhook request in JSON format
+     * 
+     */
+    public Optional<Output<String>> payloadTemplate() {
+        return Optional.ofNullable(this.payloadTemplate);
     }
 
     @Import(name="sharedSecret")
@@ -91,7 +121,9 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
     private WebhookIntegrationArgs(WebhookIntegrationArgs $) {
         this.enabled = $.enabled;
         this.headers = $.headers;
+        this.method = $.method;
         this.name = $.name;
+        this.payloadTemplate = $.payloadTemplate;
         this.sharedSecret = $.sharedSecret;
         this.url = $.url;
     }
@@ -167,6 +199,27 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param method HTTP method used for the webhook request, such as &#39;GET&#39;, &#39;POST&#39; and &#39;PUT&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder method(@Nullable Output<String> method) {
+            $.method = method;
+            return this;
+        }
+
+        /**
+         * @param method HTTP method used for the webhook request, such as &#39;GET&#39;, &#39;POST&#39; and &#39;PUT&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder method(String method) {
+            return method(Output.of(method));
+        }
+
+        /**
          * @param name Name of the integration.
          * 
          * @return builder
@@ -185,6 +238,27 @@ public final class WebhookIntegrationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param payloadTemplate Template for the payload to be sent with the webhook request in JSON format
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payloadTemplate(@Nullable Output<String> payloadTemplate) {
+            $.payloadTemplate = payloadTemplate;
+            return this;
+        }
+
+        /**
+         * @param payloadTemplate Template for the payload to be sent with the webhook request in JSON format
+         * 
+         * @return builder
+         * 
+         */
+        public Builder payloadTemplate(String payloadTemplate) {
+            return payloadTemplate(Output.of(payloadTemplate));
         }
 
         public Builder sharedSecret(@Nullable Output<String> sharedSecret) {

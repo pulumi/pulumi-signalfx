@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AlertMutingRuleFilter',
+    'AlertMutingRuleRecurrence',
     'DashboardChart',
     'DashboardColumn',
     'DashboardEventOverlay',
@@ -121,6 +122,35 @@ class AlertMutingRuleFilter(dict):
         The property to filter.
         """
         return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class AlertMutingRuleRecurrence(dict):
+    def __init__(__self__, *,
+                 unit: str,
+                 value: int):
+        """
+        :param str unit: The unit of the period. Can be days (d) or weeks (w).
+        :param int value: The amount of time, expressed as an integer, applicable to the unit specified.
+        """
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> str:
+        """
+        The unit of the period. Can be days (d) or weeks (w).
+        """
+        return pulumi.get(self, "unit")
+
+    @property
+    @pulumi.getter
+    def value(self) -> int:
+        """
+        The amount of time, expressed as an integer, applicable to the unit specified.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

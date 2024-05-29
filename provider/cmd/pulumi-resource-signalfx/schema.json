@@ -241,6 +241,23 @@
                 "propertyValue"
             ]
         },
+        "signalfx:index/AlertMutingRuleRecurrence:AlertMutingRuleRecurrence": {
+            "properties": {
+                "unit": {
+                    "type": "string",
+                    "description": "The unit of the period. Can be days (d) or weeks (w).\n"
+                },
+                "value": {
+                    "type": "integer",
+                    "description": "The amount of time, expressed as an integer, applicable to the unit specified.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "unit",
+                "value"
+            ]
+        },
         "signalfx:index/DashboardChart:DashboardChart": {
             "properties": {
                 "chartId": {
@@ -2641,7 +2658,7 @@
             }
         },
         "signalfx:index/alertMutingRule:AlertMutingRule": {
-            "description": "Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.\n\nSplunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.\n\n\u003e **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.\n\n## Example\n\n```tf\nresource \"signalfx_alert_muting_rule\" \"rool_mooter_one\" {\n  description = \"mooted it NEW\"\n\n  start_time = 1573063243\n  stop_time  = 0 # Defaults to 0\n\n  detectors = [signalfx_detector.some_detector_id]\n\n  filter {\n    property       = \"foo\"\n    property_value = \"bar\"\n  }\n}\n```\n",
+            "description": "Provides a Splunk Observability Cloud resource for managing alert muting rules. See [Mute Notifications](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html) for more information.\n\nSplunk Observability Cloud currently allows linking an alert muting rule with only one detector ID. Specifying multiple detector IDs makes the muting rule obsolete.\n\n\u003e **WARNING** Splunk Observability Cloud does not allow the start time of a **currently active** muting rule to be modified. Attempting to modify a currently active rule destroys the existing rule and creates a new rule. This might result in the emission of notifications.\n\n## Example\n\n```tf\nresource \"signalfx_alert_muting_rule\" \"rool_mooter_one\" {\n  description = \"mooted it NEW\"\n\n  start_time = 1573063243\n  stop_time  = 0 # Defaults to 0\n\n  detectors = [signalfx_detector.some_detector_id]\n\n  filter {\n    property       = \"foo\"\n    property_value = \"bar\"\n  }\n\n  recurrence {\n    unit = \"d\"\n    value = 2\n  }\n}\n```\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -2663,6 +2680,10 @@
                         "$ref": "#/types/signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter"
                     },
                     "description": "Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.\n"
+                },
+                "recurrence": {
+                    "$ref": "#/types/signalfx:index/AlertMutingRuleRecurrence:AlertMutingRuleRecurrence",
+                    "description": "Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.\n"
                 },
                 "startTime": {
                     "type": "integer",
@@ -2696,6 +2717,10 @@
                         "$ref": "#/types/signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter"
                     },
                     "description": "Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.\n"
+                },
+                "recurrence": {
+                    "$ref": "#/types/signalfx:index/AlertMutingRuleRecurrence:AlertMutingRuleRecurrence",
+                    "description": "Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.\n"
                 },
                 "startTime": {
                     "type": "integer",
@@ -2734,6 +2759,10 @@
                             "$ref": "#/types/signalfx:index/AlertMutingRuleFilter:AlertMutingRuleFilter"
                         },
                         "description": "Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.\n"
+                    },
+                    "recurrence": {
+                        "$ref": "#/types/signalfx:index/AlertMutingRuleRecurrence:AlertMutingRuleRecurrence",
+                        "description": "Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.\n"
                     },
                     "startTime": {
                         "type": "integer",
@@ -5762,7 +5791,7 @@
             }
         },
         "signalfx:index/webhookIntegration:WebhookIntegration": {
-            "description": "Splunk Observability Cloud webhook integration.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n```tf\nresource \"signalfx_webhook_integration\" \"webhook_myteam\" {\n  name          = \"Webhook - My Team\"\n  enabled       = true\n  url           = \"https://www.example.com\"\n  shared_secret = \"abc1234\"\n\n  headers {\n    header_key   = \"some_header\"\n    header_value = \"value_for_that_header\"\n  }\n}\n```\n",
+            "description": "Splunk Observability Cloud webhook integration.\n\n\u003e **NOTE** When managing integrations, use a session token of an administrator to authenticate the Splunk Observability Cloud provider. See [Operations that require a session token for an administrator](https://dev.splunk.com/observability/docs/administration/authtokens#Operations-that-require-a-session-token-for-an-administrator). Otherwise you'll receive a 4xx error.\n\n## Example\n\n```tf\nresource \"signalfx_webhook_integration\" \"webhook_myteam\" {\n  name             = \"Webhook - My Team\"\n  enabled          = true\n  url              = \"https://www.example.com\"\n  shared_secret    = \"abc1234\"\n  method           = \"POST\"\n  payload_template = \u003c\u003c-EOF\n    {\n      \"incidentId\": \"{{{incidentId}}}\"\n    }\n  EOF\n\n  headers {\n    header_key   = \"some_header\"\n    header_value = \"value_for_that_header\"\n  }\n}\n```\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -5776,9 +5805,17 @@
                     "description": "A header to send with the request\n",
                     "secret": true
                 },
+                "method": {
+                    "type": "string",
+                    "description": "HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the integration.\n"
+                },
+                "payloadTemplate": {
+                    "type": "string",
+                    "description": "Template for the payload to be sent with the webhook request in JSON format\n"
                 },
                 "sharedSecret": {
                     "type": "string",
@@ -5806,9 +5843,17 @@
                     "description": "A header to send with the request\n",
                     "secret": true
                 },
+                "method": {
+                    "type": "string",
+                    "description": "HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the integration.\n"
+                },
+                "payloadTemplate": {
+                    "type": "string",
+                    "description": "Template for the payload to be sent with the webhook request in JSON format\n"
                 },
                 "sharedSecret": {
                     "type": "string",
@@ -5837,9 +5882,17 @@
                         "description": "A header to send with the request\n",
                         "secret": true
                     },
+                    "method": {
+                        "type": "string",
+                        "description": "HTTP method used for the webhook request, such as 'GET', 'POST' and 'PUT'\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the integration.\n"
+                    },
+                    "payloadTemplate": {
+                        "type": "string",
+                        "description": "Template for the payload to be sent with the webhook request in JSON format\n"
                     },
                     "sharedSecret": {
                         "type": "string",

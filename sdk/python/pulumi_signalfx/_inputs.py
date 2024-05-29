@@ -11,6 +11,7 @@ from . import _utilities
 
 __all__ = [
     'AlertMutingRuleFilterArgs',
+    'AlertMutingRuleRecurrenceArgs',
     'DashboardChartArgs',
     'DashboardColumnArgs',
     'DashboardEventOverlayArgs',
@@ -115,6 +116,43 @@ class AlertMutingRuleFilterArgs:
     @property.setter
     def property(self, value: pulumi.Input[str]):
         pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class AlertMutingRuleRecurrenceArgs:
+    def __init__(__self__, *,
+                 unit: pulumi.Input[str],
+                 value: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] unit: The unit of the period. Can be days (d) or weeks (w).
+        :param pulumi.Input[int] value: The amount of time, expressed as an integer, applicable to the unit specified.
+        """
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def unit(self) -> pulumi.Input[str]:
+        """
+        The unit of the period. Can be days (d) or weeks (w).
+        """
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: pulumi.Input[str]):
+        pulumi.set(self, "unit", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[int]:
+        """
+        The amount of time, expressed as an integer, applicable to the unit specified.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[int]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

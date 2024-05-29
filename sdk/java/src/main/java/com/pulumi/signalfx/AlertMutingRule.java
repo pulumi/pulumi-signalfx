@@ -11,6 +11,7 @@ import com.pulumi.signalfx.AlertMutingRuleArgs;
 import com.pulumi.signalfx.Utilities;
 import com.pulumi.signalfx.inputs.AlertMutingRuleState;
 import com.pulumi.signalfx.outputs.AlertMutingRuleFilter;
+import com.pulumi.signalfx.outputs.AlertMutingRuleRecurrence;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -76,6 +77,20 @@ public class AlertMutingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<AlertMutingRuleFilter>>> filters() {
         return Codegen.optional(this.filters);
+    }
+    /**
+     * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     * 
+     */
+    @Export(name="recurrence", refs={AlertMutingRuleRecurrence.class}, tree="[0]")
+    private Output</* @Nullable */ AlertMutingRuleRecurrence> recurrence;
+
+    /**
+     * @return Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     * 
+     */
+    public Output<Optional<AlertMutingRuleRecurrence>> recurrence() {
+        return Codegen.optional(this.recurrence);
     }
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.

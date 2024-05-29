@@ -57,6 +57,10 @@ export class AlertMutingRule extends pulumi.CustomResource {
      */
     public readonly filters!: pulumi.Output<outputs.AlertMutingRuleFilter[] | undefined>;
     /**
+     * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     */
+    public readonly recurrence!: pulumi.Output<outputs.AlertMutingRuleRecurrence | undefined>;
+    /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
     public readonly startTime!: pulumi.Output<number>;
@@ -82,6 +86,7 @@ export class AlertMutingRule extends pulumi.CustomResource {
             resourceInputs["detectors"] = state ? state.detectors : undefined;
             resourceInputs["effectiveStartTime"] = state ? state.effectiveStartTime : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["recurrence"] = state ? state.recurrence : undefined;
             resourceInputs["startTime"] = state ? state.startTime : undefined;
             resourceInputs["stopTime"] = state ? state.stopTime : undefined;
         } else {
@@ -95,6 +100,7 @@ export class AlertMutingRule extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["detectors"] = args ? args.detectors : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["recurrence"] = args ? args.recurrence : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
             resourceInputs["stopTime"] = args ? args.stopTime : undefined;
             resourceInputs["effectiveStartTime"] = undefined /*out*/;
@@ -122,6 +128,10 @@ export interface AlertMutingRuleState {
      */
     filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
     /**
+     * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     */
+    recurrence?: pulumi.Input<inputs.AlertMutingRuleRecurrence>;
+    /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */
     startTime?: pulumi.Input<number>;
@@ -147,6 +157,10 @@ export interface AlertMutingRuleArgs {
      * Filters for this rule. See [Creating muting rules from scratch](https://docs.splunk.com/Observability/alerts-detectors-notifications/mute-notifications.html#rule-from-scratch) for more information.
      */
     filters?: pulumi.Input<pulumi.Input<inputs.AlertMutingRuleFilter>[]>;
+    /**
+     * Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+     */
+    recurrence?: pulumi.Input<inputs.AlertMutingRuleRecurrence>;
     /**
      * Starting time of an alert muting rule as a Unit time stamp in seconds.
      */

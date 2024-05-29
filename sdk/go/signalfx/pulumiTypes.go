@@ -128,6 +128,162 @@ func (o AlertMutingRuleFilterArrayOutput) Index(i pulumi.IntInput) AlertMutingRu
 	}).(AlertMutingRuleFilterOutput)
 }
 
+type AlertMutingRuleRecurrence struct {
+	// The unit of the period. Can be days (d) or weeks (w).
+	Unit string `pulumi:"unit"`
+	// The amount of time, expressed as an integer, applicable to the unit specified.
+	Value int `pulumi:"value"`
+}
+
+// AlertMutingRuleRecurrenceInput is an input type that accepts AlertMutingRuleRecurrenceArgs and AlertMutingRuleRecurrenceOutput values.
+// You can construct a concrete instance of `AlertMutingRuleRecurrenceInput` via:
+//
+//	AlertMutingRuleRecurrenceArgs{...}
+type AlertMutingRuleRecurrenceInput interface {
+	pulumi.Input
+
+	ToAlertMutingRuleRecurrenceOutput() AlertMutingRuleRecurrenceOutput
+	ToAlertMutingRuleRecurrenceOutputWithContext(context.Context) AlertMutingRuleRecurrenceOutput
+}
+
+type AlertMutingRuleRecurrenceArgs struct {
+	// The unit of the period. Can be days (d) or weeks (w).
+	Unit pulumi.StringInput `pulumi:"unit"`
+	// The amount of time, expressed as an integer, applicable to the unit specified.
+	Value pulumi.IntInput `pulumi:"value"`
+}
+
+func (AlertMutingRuleRecurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertMutingRuleRecurrence)(nil)).Elem()
+}
+
+func (i AlertMutingRuleRecurrenceArgs) ToAlertMutingRuleRecurrenceOutput() AlertMutingRuleRecurrenceOutput {
+	return i.ToAlertMutingRuleRecurrenceOutputWithContext(context.Background())
+}
+
+func (i AlertMutingRuleRecurrenceArgs) ToAlertMutingRuleRecurrenceOutputWithContext(ctx context.Context) AlertMutingRuleRecurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleRecurrenceOutput)
+}
+
+func (i AlertMutingRuleRecurrenceArgs) ToAlertMutingRuleRecurrencePtrOutput() AlertMutingRuleRecurrencePtrOutput {
+	return i.ToAlertMutingRuleRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i AlertMutingRuleRecurrenceArgs) ToAlertMutingRuleRecurrencePtrOutputWithContext(ctx context.Context) AlertMutingRuleRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleRecurrenceOutput).ToAlertMutingRuleRecurrencePtrOutputWithContext(ctx)
+}
+
+// AlertMutingRuleRecurrencePtrInput is an input type that accepts AlertMutingRuleRecurrenceArgs, AlertMutingRuleRecurrencePtr and AlertMutingRuleRecurrencePtrOutput values.
+// You can construct a concrete instance of `AlertMutingRuleRecurrencePtrInput` via:
+//
+//	        AlertMutingRuleRecurrenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertMutingRuleRecurrencePtrInput interface {
+	pulumi.Input
+
+	ToAlertMutingRuleRecurrencePtrOutput() AlertMutingRuleRecurrencePtrOutput
+	ToAlertMutingRuleRecurrencePtrOutputWithContext(context.Context) AlertMutingRuleRecurrencePtrOutput
+}
+
+type alertMutingRuleRecurrencePtrType AlertMutingRuleRecurrenceArgs
+
+func AlertMutingRuleRecurrencePtr(v *AlertMutingRuleRecurrenceArgs) AlertMutingRuleRecurrencePtrInput {
+	return (*alertMutingRuleRecurrencePtrType)(v)
+}
+
+func (*alertMutingRuleRecurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertMutingRuleRecurrence)(nil)).Elem()
+}
+
+func (i *alertMutingRuleRecurrencePtrType) ToAlertMutingRuleRecurrencePtrOutput() AlertMutingRuleRecurrencePtrOutput {
+	return i.ToAlertMutingRuleRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *alertMutingRuleRecurrencePtrType) ToAlertMutingRuleRecurrencePtrOutputWithContext(ctx context.Context) AlertMutingRuleRecurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertMutingRuleRecurrencePtrOutput)
+}
+
+type AlertMutingRuleRecurrenceOutput struct{ *pulumi.OutputState }
+
+func (AlertMutingRuleRecurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertMutingRuleRecurrence)(nil)).Elem()
+}
+
+func (o AlertMutingRuleRecurrenceOutput) ToAlertMutingRuleRecurrenceOutput() AlertMutingRuleRecurrenceOutput {
+	return o
+}
+
+func (o AlertMutingRuleRecurrenceOutput) ToAlertMutingRuleRecurrenceOutputWithContext(ctx context.Context) AlertMutingRuleRecurrenceOutput {
+	return o
+}
+
+func (o AlertMutingRuleRecurrenceOutput) ToAlertMutingRuleRecurrencePtrOutput() AlertMutingRuleRecurrencePtrOutput {
+	return o.ToAlertMutingRuleRecurrencePtrOutputWithContext(context.Background())
+}
+
+func (o AlertMutingRuleRecurrenceOutput) ToAlertMutingRuleRecurrencePtrOutputWithContext(ctx context.Context) AlertMutingRuleRecurrencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertMutingRuleRecurrence) *AlertMutingRuleRecurrence {
+		return &v
+	}).(AlertMutingRuleRecurrencePtrOutput)
+}
+
+// The unit of the period. Can be days (d) or weeks (w).
+func (o AlertMutingRuleRecurrenceOutput) Unit() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertMutingRuleRecurrence) string { return v.Unit }).(pulumi.StringOutput)
+}
+
+// The amount of time, expressed as an integer, applicable to the unit specified.
+func (o AlertMutingRuleRecurrenceOutput) Value() pulumi.IntOutput {
+	return o.ApplyT(func(v AlertMutingRuleRecurrence) int { return v.Value }).(pulumi.IntOutput)
+}
+
+type AlertMutingRuleRecurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (AlertMutingRuleRecurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertMutingRuleRecurrence)(nil)).Elem()
+}
+
+func (o AlertMutingRuleRecurrencePtrOutput) ToAlertMutingRuleRecurrencePtrOutput() AlertMutingRuleRecurrencePtrOutput {
+	return o
+}
+
+func (o AlertMutingRuleRecurrencePtrOutput) ToAlertMutingRuleRecurrencePtrOutputWithContext(ctx context.Context) AlertMutingRuleRecurrencePtrOutput {
+	return o
+}
+
+func (o AlertMutingRuleRecurrencePtrOutput) Elem() AlertMutingRuleRecurrenceOutput {
+	return o.ApplyT(func(v *AlertMutingRuleRecurrence) AlertMutingRuleRecurrence {
+		if v != nil {
+			return *v
+		}
+		var ret AlertMutingRuleRecurrence
+		return ret
+	}).(AlertMutingRuleRecurrenceOutput)
+}
+
+// The unit of the period. Can be days (d) or weeks (w).
+func (o AlertMutingRuleRecurrencePtrOutput) Unit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertMutingRuleRecurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Unit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of time, expressed as an integer, applicable to the unit specified.
+func (o AlertMutingRuleRecurrencePtrOutput) Value() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AlertMutingRuleRecurrence) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.IntPtrOutput)
+}
+
 type DashboardChart struct {
 	// ID of the chart to display.
 	ChartId string `pulumi:"chartId"`
@@ -7344,6 +7500,8 @@ func (o WebhookIntegrationHeaderArrayOutput) Index(i pulumi.IntInput) WebhookInt
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleFilterInput)(nil)).Elem(), AlertMutingRuleFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleFilterArrayInput)(nil)).Elem(), AlertMutingRuleFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleRecurrenceInput)(nil)).Elem(), AlertMutingRuleRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertMutingRuleRecurrencePtrInput)(nil)).Elem(), AlertMutingRuleRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartInput)(nil)).Elem(), DashboardChartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartArrayInput)(nil)).Elem(), DashboardChartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardColumnInput)(nil)).Elem(), DashboardColumnArgs{})
@@ -7448,6 +7606,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookIntegrationHeaderArrayInput)(nil)).Elem(), WebhookIntegrationHeaderArray{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterOutput{})
 	pulumi.RegisterOutputType(AlertMutingRuleFilterArrayOutput{})
+	pulumi.RegisterOutputType(AlertMutingRuleRecurrenceOutput{})
+	pulumi.RegisterOutputType(AlertMutingRuleRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(DashboardChartOutput{})
 	pulumi.RegisterOutputType(DashboardChartArrayOutput{})
 	pulumi.RegisterOutputType(DashboardColumnOutput{})

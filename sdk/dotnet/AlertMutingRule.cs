@@ -43,6 +43,12 @@ namespace Pulumi.SignalFx
         public Output<ImmutableArray<Outputs.AlertMutingRuleFilter>> Filters { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+        /// </summary>
+        [Output("recurrence")]
+        public Output<Outputs.AlertMutingRuleRecurrence?> Recurrence { get; private set; } = null!;
+
+        /// <summary>
         /// Starting time of an alert muting rule as a Unit time stamp in seconds.
         /// </summary>
         [Output("startTime")]
@@ -131,6 +137,12 @@ namespace Pulumi.SignalFx
         }
 
         /// <summary>
+        /// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+        /// </summary>
+        [Input("recurrence")]
+        public Input<Inputs.AlertMutingRuleRecurrenceArgs>? Recurrence { get; set; }
+
+        /// <summary>
         /// Starting time of an alert muting rule as a Unit time stamp in seconds.
         /// </summary>
         [Input("startTime", required: true)]
@@ -182,6 +194,12 @@ namespace Pulumi.SignalFx
             get => _filters ?? (_filters = new InputList<Inputs.AlertMutingRuleFilterGetArgs>());
             set => _filters = value;
         }
+
+        /// <summary>
+        /// Defines the recurrence of the muting rule. Allows setting a recurring muting rule based on specified days or weeks.
+        /// </summary>
+        [Input("recurrence")]
+        public Input<Inputs.AlertMutingRuleRecurrenceGetArgs>? Recurrence { get; set; }
 
         /// <summary>
         /// Starting time of an alert muting rule as a Unit time stamp in seconds.

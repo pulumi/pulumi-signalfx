@@ -20,6 +20,17 @@ export interface AlertMutingRuleFilter {
     propertyValue: string;
 }
 
+export interface AlertMutingRuleRecurrence {
+    /**
+     * The unit of the period. Can be days (d) or weeks (w).
+     */
+    unit: string;
+    /**
+     * The amount of time, expressed as an integer, applicable to the unit specified.
+     */
+    value: number;
+}
+
 export interface DashboardChart {
     /**
      * ID of the chart to display.
