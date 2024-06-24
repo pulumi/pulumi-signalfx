@@ -188,13 +188,11 @@ class ListChartArgs:
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
+    @_utilities.deprecated("""Please use legend_options_fields""")
     def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
-        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
@@ -514,13 +512,11 @@ class _ListChartState:
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
+    @_utilities.deprecated("""Please use legend_options_fields""")
     def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
-        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
@@ -969,13 +965,11 @@ class ListChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
+    @_utilities.deprecated("""Please use legend_options_fields""")
     def legend_fields_to_hides(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
-        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-
         return pulumi.get(self, "legend_fields_to_hides")
 
     @property
