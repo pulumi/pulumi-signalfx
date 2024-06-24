@@ -267,13 +267,11 @@ class TimeChartArgs:
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
+    @_utilities.deprecated("""Please use legend_options_fields""")
     def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
-        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
@@ -402,13 +400,11 @@ class TimeChartArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""signalfx_time_chart.tags is being removed in the next release""")
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Tags associated with the chart
         """
-        warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
-        pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
-
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -711,13 +707,11 @@ class _TimeChartState:
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
+    @_utilities.deprecated("""Please use legend_options_fields""")
     def legend_fields_to_hides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
-        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-
         return pulumi.get(self, "legend_fields_to_hides")
 
     @legend_fields_to_hides.setter
@@ -858,13 +852,11 @@ class _TimeChartState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""signalfx_time_chart.tags is being removed in the next release""")
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Tags associated with the chart
         """
-        warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
-        pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
-
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1286,13 +1278,11 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="legendFieldsToHides")
+    @_utilities.deprecated("""Please use legend_options_fields""")
     def legend_fields_to_hides(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of properties that should not be displayed in the chart legend (i.e. dimension names). All the properties are visible by default. Deprecated, please use `legend_options_fields`.
         """
-        warnings.warn("""Please use legend_options_fields""", DeprecationWarning)
-        pulumi.log.warn("""legend_fields_to_hides is deprecated: Please use legend_options_fields""")
-
         return pulumi.get(self, "legend_fields_to_hides")
 
     @property
@@ -1385,13 +1375,11 @@ class TimeChart(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""signalfx_time_chart.tags is being removed in the next release""")
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Tags associated with the chart
         """
-        warnings.warn("""signalfx_time_chart.tags is being removed in the next release""", DeprecationWarning)
-        pulumi.log.warn("""tags is deprecated: signalfx_time_chart.tags is being removed in the next release""")
-
         return pulumi.get(self, "tags")
 
     @property
