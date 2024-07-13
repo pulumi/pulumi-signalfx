@@ -106,6 +106,10 @@ export class Detector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     */
+    public readonly detectorOrigin!: pulumi.Output<string | undefined>;
+    /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
     public readonly disableSampling!: pulumi.Output<boolean | undefined>;
@@ -129,6 +133,10 @@ export class Detector extends pulumi.CustomResource {
      * Name of the detector.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     */
+    public readonly parentDetectorId!: pulumi.Output<string | undefined>;
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -190,12 +198,14 @@ export class Detector extends pulumi.CustomResource {
             resourceInputs["authorizedWriterTeams"] = state ? state.authorizedWriterTeams : undefined;
             resourceInputs["authorizedWriterUsers"] = state ? state.authorizedWriterUsers : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["detectorOrigin"] = state ? state.detectorOrigin : undefined;
             resourceInputs["disableSampling"] = state ? state.disableSampling : undefined;
             resourceInputs["endTime"] = state ? state.endTime : undefined;
             resourceInputs["labelResolutions"] = state ? state.labelResolutions : undefined;
             resourceInputs["maxDelay"] = state ? state.maxDelay : undefined;
             resourceInputs["minDelay"] = state ? state.minDelay : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentDetectorId"] = state ? state.parentDetectorId : undefined;
             resourceInputs["programText"] = state ? state.programText : undefined;
             resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["showDataMarkers"] = state ? state.showDataMarkers : undefined;
@@ -218,11 +228,13 @@ export class Detector extends pulumi.CustomResource {
             resourceInputs["authorizedWriterTeams"] = args ? args.authorizedWriterTeams : undefined;
             resourceInputs["authorizedWriterUsers"] = args ? args.authorizedWriterUsers : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["detectorOrigin"] = args ? args.detectorOrigin : undefined;
             resourceInputs["disableSampling"] = args ? args.disableSampling : undefined;
             resourceInputs["endTime"] = args ? args.endTime : undefined;
             resourceInputs["maxDelay"] = args ? args.maxDelay : undefined;
             resourceInputs["minDelay"] = args ? args.minDelay : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentDetectorId"] = args ? args.parentDetectorId : undefined;
             resourceInputs["programText"] = args ? args.programText : undefined;
             resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["showDataMarkers"] = args ? args.showDataMarkers : undefined;
@@ -258,6 +270,10 @@ export interface DetectorState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     */
+    detectorOrigin?: pulumi.Input<string>;
+    /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
     disableSampling?: pulumi.Input<boolean>;
@@ -281,6 +297,10 @@ export interface DetectorState {
      * Name of the detector.
      */
     name?: pulumi.Input<string>;
+    /**
+     * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     */
+    parentDetectorId?: pulumi.Input<string>;
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */
@@ -344,6 +364,10 @@ export interface DetectorArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     */
+    detectorOrigin?: pulumi.Input<string>;
+    /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      */
     disableSampling?: pulumi.Input<boolean>;
@@ -363,6 +387,10 @@ export interface DetectorArgs {
      * Name of the detector.
      */
     name?: pulumi.Input<string>;
+    /**
+     * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     */
+    parentDetectorId?: pulumi.Input<string>;
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
      */

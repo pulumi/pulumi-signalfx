@@ -78,6 +78,8 @@ type Detector struct {
 	AuthorizedWriterUsers pulumi.StringArrayOutput `pulumi:"authorizedWriterUsers"`
 	// Description of the detector.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	DetectorOrigin pulumi.StringPtrOutput `pulumi:"detectorOrigin"`
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling pulumi.BoolPtrOutput `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
@@ -90,6 +92,8 @@ type Detector struct {
 	MinDelay pulumi.IntPtrOutput `pulumi:"minDelay"`
 	// Name of the detector.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	ParentDetectorId pulumi.StringPtrOutput `pulumi:"parentDetectorId"`
 	// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringOutput `pulumi:"programText"`
 	// Set of rules used for alerting.
@@ -156,6 +160,8 @@ type detectorState struct {
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// Description of the detector.
 	Description *string `pulumi:"description"`
+	// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	DetectorOrigin *string `pulumi:"detectorOrigin"`
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
@@ -168,6 +174,8 @@ type detectorState struct {
 	MinDelay *int `pulumi:"minDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
+	// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	ParentDetectorId *string `pulumi:"parentDetectorId"`
 	// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText *string `pulumi:"programText"`
 	// Set of rules used for alerting.
@@ -199,6 +207,8 @@ type DetectorState struct {
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// Description of the detector.
 	Description pulumi.StringPtrInput
+	// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	DetectorOrigin pulumi.StringPtrInput
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
@@ -211,6 +221,8 @@ type DetectorState struct {
 	MinDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
+	// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	ParentDetectorId pulumi.StringPtrInput
 	// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringPtrInput
 	// Set of rules used for alerting.
@@ -246,6 +258,8 @@ type detectorArgs struct {
 	AuthorizedWriterUsers []string `pulumi:"authorizedWriterUsers"`
 	// Description of the detector.
 	Description *string `pulumi:"description"`
+	// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	DetectorOrigin *string `pulumi:"detectorOrigin"`
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling *bool `pulumi:"disableSampling"`
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
@@ -256,6 +270,8 @@ type detectorArgs struct {
 	MinDelay *int `pulumi:"minDelay"`
 	// Name of the detector.
 	Name *string `pulumi:"name"`
+	// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	ParentDetectorId *string `pulumi:"parentDetectorId"`
 	// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText string `pulumi:"programText"`
 	// Set of rules used for alerting.
@@ -286,6 +302,8 @@ type DetectorArgs struct {
 	AuthorizedWriterUsers pulumi.StringArrayInput
 	// Description of the detector.
 	Description pulumi.StringPtrInput
+	// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	DetectorOrigin pulumi.StringPtrInput
 	// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 	DisableSampling pulumi.BoolPtrInput
 	// Seconds since epoch. Used for visualization. Conflicts with `timeRange`.
@@ -296,6 +314,8 @@ type DetectorArgs struct {
 	MinDelay pulumi.IntPtrInput
 	// Name of the detector.
 	Name pulumi.StringPtrInput
+	// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+	ParentDetectorId pulumi.StringPtrInput
 	// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
 	ProgramText pulumi.StringInput
 	// Set of rules used for alerting.
@@ -420,6 +440,11 @@ func (o DetectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+func (o DetectorOutput) DetectorOrigin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.DetectorOrigin }).(pulumi.StringPtrOutput)
+}
+
 // When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
 func (o DetectorOutput) DisableSampling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Detector) pulumi.BoolPtrOutput { return v.DisableSampling }).(pulumi.BoolPtrOutput)
@@ -448,6 +473,11 @@ func (o DetectorOutput) MinDelay() pulumi.IntPtrOutput {
 // Name of the detector.
 func (o DetectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Detector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+func (o DetectorOutput) ParentDetectorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Detector) pulumi.StringPtrOutput { return v.ParentDetectorId }).(pulumi.StringPtrOutput)
 }
 
 // Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).

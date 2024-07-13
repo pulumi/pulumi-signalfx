@@ -125,6 +125,20 @@ public class Detector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    @Export(name="detectorOrigin", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> detectorOrigin;
+
+    /**
+     * @return Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    public Output<Optional<String>> detectorOrigin() {
+        return Codegen.optional(this.detectorOrigin);
+    }
+    /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      * 
      */
@@ -207,6 +221,20 @@ public class Detector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    @Export(name="parentDetectorId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parentDetectorId;
+
+    /**
+     * @return ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    public Output<Optional<String>> parentDetectorId() {
+        return Codegen.optional(this.parentDetectorId);
     }
     /**
      * Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
