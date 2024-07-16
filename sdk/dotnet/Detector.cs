@@ -90,6 +90,12 @@ namespace Pulumi.SignalFx
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        /// </summary>
+        [Output("detectorOrigin")]
+        public Output<string?> DetectorOrigin { get; private set; } = null!;
+
+        /// <summary>
         /// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         /// </summary>
         [Output("disableSampling")]
@@ -124,6 +130,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        /// </summary>
+        [Output("parentDetectorId")]
+        public Output<string?> ParentDetectorId { get; private set; } = null!;
 
         /// <summary>
         /// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
@@ -268,6 +280,12 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        /// </summary>
+        [Input("detectorOrigin")]
+        public Input<string>? DetectorOrigin { get; set; }
+
+        /// <summary>
         /// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         /// </summary>
         [Input("disableSampling")]
@@ -296,6 +314,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        /// </summary>
+        [Input("parentDetectorId")]
+        public Input<string>? ParentDetectorId { get; set; }
 
         /// <summary>
         /// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
@@ -420,6 +444,12 @@ namespace Pulumi.SignalFx
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        /// </summary>
+        [Input("detectorOrigin")]
+        public Input<string>? DetectorOrigin { get; set; }
+
+        /// <summary>
         /// When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         /// </summary>
         [Input("disableSampling")]
@@ -460,6 +490,12 @@ namespace Pulumi.SignalFx
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        /// </summary>
+        [Input("parentDetectorId")]
+        public Input<string>? ParentDetectorId { get; set; }
 
         /// <summary>
         /// Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).

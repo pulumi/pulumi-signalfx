@@ -21,11 +21,13 @@ class DetectorArgs:
                  authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 detector_origin: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  min_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_detector_id: Optional[pulumi.Input[str]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
                  show_event_lines: Optional[pulumi.Input[bool]] = None,
                  start_time: Optional[pulumi.Input[int]] = None,
@@ -41,11 +43,13 @@ class DetectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[str] detector_origin: Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] parent_detector_id: ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
         :param pulumi.Input[bool] show_event_lines: When `true`, the visualization will display a vertical line for each event trigger. `false` by default.
         :param pulumi.Input[int] start_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
@@ -63,6 +67,8 @@ class DetectorArgs:
             pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if detector_origin is not None:
+            pulumi.set(__self__, "detector_origin", detector_origin)
         if disable_sampling is not None:
             pulumi.set(__self__, "disable_sampling", disable_sampling)
         if end_time is not None:
@@ -73,6 +79,8 @@ class DetectorArgs:
             pulumi.set(__self__, "min_delay", min_delay)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent_detector_id is not None:
+            pulumi.set(__self__, "parent_detector_id", parent_detector_id)
         if show_data_markers is not None:
             pulumi.set(__self__, "show_data_markers", show_data_markers)
         if show_event_lines is not None:
@@ -151,6 +159,18 @@ class DetectorArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="detectorOrigin")
+    def detector_origin(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        """
+        return pulumi.get(self, "detector_origin")
+
+    @detector_origin.setter
+    def detector_origin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detector_origin", value)
+
+    @property
     @pulumi.getter(name="disableSampling")
     def disable_sampling(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -209,6 +229,18 @@ class DetectorArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentDetectorId")
+    def parent_detector_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        """
+        return pulumi.get(self, "parent_detector_id")
+
+    @parent_detector_id.setter
+    def parent_detector_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_detector_id", value)
 
     @property
     @pulumi.getter(name="showDataMarkers")
@@ -313,12 +345,14 @@ class _DetectorState:
                  authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 detector_origin: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  min_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_detector_id: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
@@ -335,12 +369,14 @@ class _DetectorState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[str] detector_origin: Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] parent_detector_id: ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input['DetectorRuleArgs']]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
@@ -359,6 +395,8 @@ class _DetectorState:
             pulumi.set(__self__, "authorized_writer_users", authorized_writer_users)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if detector_origin is not None:
+            pulumi.set(__self__, "detector_origin", detector_origin)
         if disable_sampling is not None:
             pulumi.set(__self__, "disable_sampling", disable_sampling)
         if end_time is not None:
@@ -371,6 +409,8 @@ class _DetectorState:
             pulumi.set(__self__, "min_delay", min_delay)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if parent_detector_id is not None:
+            pulumi.set(__self__, "parent_detector_id", parent_detector_id)
         if program_text is not None:
             pulumi.set(__self__, "program_text", program_text)
         if rules is not None:
@@ -429,6 +469,18 @@ class _DetectorState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="detectorOrigin")
+    def detector_origin(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        """
+        return pulumi.get(self, "detector_origin")
+
+    @detector_origin.setter
+    def detector_origin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detector_origin", value)
 
     @property
     @pulumi.getter(name="disableSampling")
@@ -501,6 +553,18 @@ class _DetectorState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="parentDetectorId")
+    def parent_detector_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        """
+        return pulumi.get(self, "parent_detector_id")
+
+    @parent_detector_id.setter
+    def parent_detector_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_detector_id", value)
 
     @property
     @pulumi.getter(name="programText")
@@ -643,11 +707,13 @@ class Detector(pulumi.CustomResource):
                  authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 detector_origin: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  min_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_detector_id: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
@@ -723,11 +789,13 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[str] detector_origin: Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] parent_detector_id: ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
@@ -822,11 +890,13 @@ class Detector(pulumi.CustomResource):
                  authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 detector_origin: Optional[pulumi.Input[str]] = None,
                  disable_sampling: Optional[pulumi.Input[bool]] = None,
                  end_time: Optional[pulumi.Input[int]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
                  min_delay: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 parent_detector_id: Optional[pulumi.Input[str]] = None,
                  program_text: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
                  show_data_markers: Optional[pulumi.Input[bool]] = None,
@@ -849,11 +919,13 @@ class Detector(pulumi.CustomResource):
             __props__.__dict__["authorized_writer_teams"] = authorized_writer_teams
             __props__.__dict__["authorized_writer_users"] = authorized_writer_users
             __props__.__dict__["description"] = description
+            __props__.__dict__["detector_origin"] = detector_origin
             __props__.__dict__["disable_sampling"] = disable_sampling
             __props__.__dict__["end_time"] = end_time
             __props__.__dict__["max_delay"] = max_delay
             __props__.__dict__["min_delay"] = min_delay
             __props__.__dict__["name"] = name
+            __props__.__dict__["parent_detector_id"] = parent_detector_id
             if program_text is None and not opts.urn:
                 raise TypeError("Missing required property 'program_text'")
             __props__.__dict__["program_text"] = program_text
@@ -883,12 +955,14 @@ class Detector(pulumi.CustomResource):
             authorized_writer_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             authorized_writer_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            detector_origin: Optional[pulumi.Input[str]] = None,
             disable_sampling: Optional[pulumi.Input[bool]] = None,
             end_time: Optional[pulumi.Input[int]] = None,
             label_resolutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[int]]]] = None,
             max_delay: Optional[pulumi.Input[int]] = None,
             min_delay: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            parent_detector_id: Optional[pulumi.Input[str]] = None,
             program_text: Optional[pulumi.Input[str]] = None,
             rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]]] = None,
             show_data_markers: Optional[pulumi.Input[bool]] = None,
@@ -910,12 +984,14 @@ class Detector(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_teams: Team IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's team id (or user id in `authorized_writer_users`).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_writer_users: User IDs that have write access to this detector. Remember to use an admin's token if using this feature and to include that admin's user id (or team id in `authorized_writer_teams`).
         :param pulumi.Input[str] description: Description of the detector.
+        :param pulumi.Input[str] detector_origin: Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[bool] disable_sampling: When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
         :param pulumi.Input[int] end_time: Seconds since epoch. Used for visualization. Conflicts with `time_range`.
         :param pulumi.Input[Mapping[str, pulumi.Input[int]]] label_resolutions: The resolutions of the detector alerts in milliseconds that indicate how often data is analyzed to determine if an alert should be triggered.
         :param pulumi.Input[int] max_delay: allows Splunk Observability Cloud to continue with computation if there is a lag in receiving data points.
         :param pulumi.Input[int] min_delay: How long (in seconds) to wait even if the datapoints are arriving in a timely fashion. Max value is 900 (15m).
         :param pulumi.Input[str] name: Name of the detector.
+        :param pulumi.Input[str] parent_detector_id: ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
         :param pulumi.Input[str] program_text: Signalflow program text for the detector. More info [in the Splunk Observability Cloud docs](https://dev.splunk.com/observability/docs/signalflow/).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DetectorRuleArgs']]]] rules: Set of rules used for alerting.
         :param pulumi.Input[bool] show_data_markers: When `true`, markers will be drawn for each datapoint within the visualization. `true` by default.
@@ -935,12 +1011,14 @@ class Detector(pulumi.CustomResource):
         __props__.__dict__["authorized_writer_teams"] = authorized_writer_teams
         __props__.__dict__["authorized_writer_users"] = authorized_writer_users
         __props__.__dict__["description"] = description
+        __props__.__dict__["detector_origin"] = detector_origin
         __props__.__dict__["disable_sampling"] = disable_sampling
         __props__.__dict__["end_time"] = end_time
         __props__.__dict__["label_resolutions"] = label_resolutions
         __props__.__dict__["max_delay"] = max_delay
         __props__.__dict__["min_delay"] = min_delay
         __props__.__dict__["name"] = name
+        __props__.__dict__["parent_detector_id"] = parent_detector_id
         __props__.__dict__["program_text"] = program_text
         __props__.__dict__["rules"] = rules
         __props__.__dict__["show_data_markers"] = show_data_markers
@@ -977,6 +1055,14 @@ class Detector(pulumi.CustomResource):
         Description of the detector.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="detectorOrigin")
+    def detector_origin(self) -> pulumi.Output[Optional[str]]:
+        """
+        Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        """
+        return pulumi.get(self, "detector_origin")
 
     @property
     @pulumi.getter(name="disableSampling")
@@ -1025,6 +1111,14 @@ class Detector(pulumi.CustomResource):
         Name of the detector.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentDetectorId")
+    def parent_detector_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+        """
+        return pulumi.get(self, "parent_detector_id")
 
     @property
     @pulumi.getter(name="programText")

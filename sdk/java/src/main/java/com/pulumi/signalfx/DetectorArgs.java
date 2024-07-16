@@ -67,6 +67,21 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    @Import(name="detectorOrigin")
+    private @Nullable Output<String> detectorOrigin;
+
+    /**
+     * @return Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    public Optional<Output<String>> detectorOrigin() {
+        return Optional.ofNullable(this.detectorOrigin);
+    }
+
+    /**
      * When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
      * 
      */
@@ -139,6 +154,21 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    @Import(name="parentDetectorId")
+    private @Nullable Output<String> parentDetectorId;
+
+    /**
+     * @return ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+     * 
+     */
+    public Optional<Output<String>> parentDetectorId() {
+        return Optional.ofNullable(this.parentDetectorId);
     }
 
     /**
@@ -297,11 +327,13 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         this.authorizedWriterTeams = $.authorizedWriterTeams;
         this.authorizedWriterUsers = $.authorizedWriterUsers;
         this.description = $.description;
+        this.detectorOrigin = $.detectorOrigin;
         this.disableSampling = $.disableSampling;
         this.endTime = $.endTime;
         this.maxDelay = $.maxDelay;
         this.minDelay = $.minDelay;
         this.name = $.name;
+        this.parentDetectorId = $.parentDetectorId;
         this.programText = $.programText;
         this.rules = $.rules;
         this.showDataMarkers = $.showDataMarkers;
@@ -416,6 +448,27 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param detectorOrigin Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectorOrigin(@Nullable Output<String> detectorOrigin) {
+            $.detectorOrigin = detectorOrigin;
+            return this;
+        }
+
+        /**
+         * @param detectorOrigin Indicates how a detector was created. The possible values are: Standard and AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detectorOrigin(String detectorOrigin) {
+            return detectorOrigin(Output.of(detectorOrigin));
+        }
+
+        /**
          * @param disableSampling When `false`, the visualization may sample the output timeseries rather than displaying them all. `false` by default.
          * 
          * @return builder
@@ -518,6 +571,27 @@ public final class DetectorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param parentDetectorId ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentDetectorId(@Nullable Output<String> parentDetectorId) {
+            $.parentDetectorId = parentDetectorId;
+            return this;
+        }
+
+        /**
+         * @param parentDetectorId ID of the AutoDetect parent detector from which this detector is customized and created. This property is required for detectors with detectorOrigin of type AutoDetectCustomization. The value can only be set when creating the detector and cannot be modified later.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentDetectorId(String parentDetectorId) {
+            return parentDetectorId(Output.of(parentDetectorId));
         }
 
         /**
