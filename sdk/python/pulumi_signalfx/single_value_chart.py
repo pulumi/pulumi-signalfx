@@ -498,7 +498,7 @@ class SingleValueChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_by: Optional[pulumi.Input[str]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
@@ -510,7 +510,7 @@ class SingleValueChart(pulumi.CustomResource):
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         This chart type displays a single number in a large font, representing the current value of a single metric on a plot line.
@@ -522,7 +522,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
@@ -534,7 +534,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[bool] show_spark_line: Whether to show a trend line below the current value. `false` by default.
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         ...
     @overload
@@ -565,7 +565,7 @@ class SingleValueChart(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  color_by: Optional[pulumi.Input[str]] = None,
-                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
+                 color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
                  max_delay: Optional[pulumi.Input[int]] = None,
@@ -577,7 +577,7 @@ class SingleValueChart(pulumi.CustomResource):
                  show_spark_line: Optional[pulumi.Input[bool]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  unit_prefix: Optional[pulumi.Input[str]] = None,
-                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None,
+                 viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -615,7 +615,7 @@ class SingleValueChart(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             color_by: Optional[pulumi.Input[str]] = None,
-            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]]] = None,
+            color_scales: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             is_timestamp_hidden: Optional[pulumi.Input[bool]] = None,
             max_delay: Optional[pulumi.Input[int]] = None,
@@ -628,7 +628,7 @@ class SingleValueChart(pulumi.CustomResource):
             timezone: Optional[pulumi.Input[str]] = None,
             unit_prefix: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]]] = None) -> 'SingleValueChart':
+            viz_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]]] = None) -> 'SingleValueChart':
         """
         Get an existing SingleValueChart resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -637,7 +637,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] color_by: Must be `"Dimension"`, `"Scale"` or `"Metric"`. `"Dimension"` by default.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartColorScaleArgs']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartColorScaleArgs', 'SingleValueChartColorScaleArgsDict']]]] color_scales: Single color range including both the color to display for that range and the borders of the range. Example: `[{ gt = 60, color = "blue" }, { lte = 60, color = "yellow" }]`. Look at this [link](https://docs.signalfx.com/en/latest/charts/chart-options-tab.html).
         :param pulumi.Input[str] description: Description of the chart.
         :param pulumi.Input[bool] is_timestamp_hidden: Whether to hide the timestamp in the chart. `false` by default.
         :param pulumi.Input[int] max_delay: How long (in seconds) to wait for late datapoints
@@ -650,7 +650,7 @@ class SingleValueChart(pulumi.CustomResource):
         :param pulumi.Input[str] timezone: The property value is a string that denotes the geographic region associated with the time zone, (e.g. Australia/Sydney)
         :param pulumi.Input[str] unit_prefix: Must be `"Metric"` or `"Binary"`. `"Metric"` by default.
         :param pulumi.Input[str] url: The URL of the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SingleValueChartVizOptionArgs']]]] viz_options: Plot-level customization options, associated with a publish statement.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SingleValueChartVizOptionArgs', 'SingleValueChartVizOptionArgsDict']]]] viz_options: Plot-level customization options, associated with a publish statement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -73,7 +73,7 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ExternalIntegration(String name) {
+    public ExternalIntegration(java.lang.String name) {
         this(name, ExternalIntegrationArgs.Empty);
     }
     /**
@@ -81,7 +81,7 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ExternalIntegration(String name, @Nullable ExternalIntegrationArgs args) {
+    public ExternalIntegration(java.lang.String name, @Nullable ExternalIntegrationArgs args) {
         this(name, args, null);
     }
     /**
@@ -90,15 +90,22 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ExternalIntegration(String name, @Nullable ExternalIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:aws/externalIntegration:ExternalIntegration", name, args == null ? ExternalIntegrationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ExternalIntegration(java.lang.String name, @Nullable ExternalIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:aws/externalIntegration:ExternalIntegration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ExternalIntegration(String name, Output<String> id, @Nullable ExternalIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:aws/externalIntegration:ExternalIntegration", name, state, makeResourceOptions(options, id));
+    private ExternalIntegration(java.lang.String name, Output<java.lang.String> id, @Nullable ExternalIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:aws/externalIntegration:ExternalIntegration", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ExternalIntegrationArgs makeArgs(@Nullable ExternalIntegrationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ExternalIntegrationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -118,7 +125,7 @@ public class ExternalIntegration extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ExternalIntegration get(String name, Output<String> id, @Nullable ExternalIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ExternalIntegration get(java.lang.String name, Output<java.lang.String> id, @Nullable ExternalIntegrationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ExternalIntegration(name, id, state, options);
     }
 }

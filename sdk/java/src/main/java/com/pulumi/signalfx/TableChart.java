@@ -213,7 +213,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TableChart(String name) {
+    public TableChart(java.lang.String name) {
         this(name, TableChartArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TableChart(String name, TableChartArgs args) {
+    public TableChart(java.lang.String name, TableChartArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,15 +230,22 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TableChart(String name, TableChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/tableChart:TableChart", name, args == null ? TableChartArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TableChart(java.lang.String name, TableChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/tableChart:TableChart", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TableChart(String name, Output<String> id, @Nullable TableChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("signalfx:index/tableChart:TableChart", name, state, makeResourceOptions(options, id));
+    private TableChart(java.lang.String name, Output<java.lang.String> id, @Nullable TableChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("signalfx:index/tableChart:TableChart", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TableChartArgs makeArgs(TableChartArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TableChartArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -254,7 +261,7 @@ public class TableChart extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TableChart get(String name, Output<String> id, @Nullable TableChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TableChart get(java.lang.String name, Output<java.lang.String> id, @Nullable TableChartState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TableChart(name, id, state, options);
     }
 }
